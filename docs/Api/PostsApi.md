@@ -12,6 +12,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 | [**getPost()**](PostsApi.md#getPost) | **GET** /v1/posts/{postId} | Get a single post |
 | [**listPosts()**](PostsApi.md#listPosts) | **GET** /v1/posts | List posts visible to the authenticated user |
 | [**retryPost()**](PostsApi.md#retryPost) | **POST** /v1/posts/{postId}/retry | Retry publishing a failed or partial post |
+| [**unpublishPost()**](PostsApi.md#unpublishPost) | **POST** /v1/posts/{postId}/unpublish | Delete a published post from a social media platform |
 | [**updatePost()**](PostsApi.md#updatePost) | **PUT** /v1/posts/{postId} | Update a post |
 
 
@@ -383,6 +384,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `unpublishPost()`
+
+```php
+unpublishPost($post_id, $unpublish_post_request): \Late\Model\UnpublishPost200Response
+```
+
+Delete a published post from a social media platform
+
+Permanently deletes a published post from the specified social media platform. The post record in Late is kept but its platform status is set to \"cancelled\".  **Supported platforms:** Threads, Facebook, Twitter/X, LinkedIn, YouTube, Pinterest, Reddit, Bluesky, Google Business, Telegram.  **Not supported:** - **Instagram:** No deletion API available. Posts must be deleted manually. - **TikTok:** No deletion API available. Posts must be deleted manually. - **Snapchat:** No deletion API available. Posts must be deleted manually.  **Platform notes:** - **Telegram:** Messages older than 48 hours may fail to delete (Telegram Bot API limitation). - **YouTube:** This permanently deletes the video from YouTube.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\PostsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string
+$unpublish_post_request = {"platform":"threads"}; // \Late\Model\UnpublishPostRequest
+
+try {
+    $result = $apiInstance->unpublishPost($post_id, $unpublish_post_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PostsApi->unpublishPost: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**|  | |
+| **unpublish_post_request** | [**\Late\Model\UnpublishPostRequest**](../Model/UnpublishPostRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

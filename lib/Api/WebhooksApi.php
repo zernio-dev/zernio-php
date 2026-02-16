@@ -1321,7 +1321,7 @@ class WebhooksApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\TestWebhook200Response|\Late\Model\InlineObject|\Late\Model\TestWebhook200Response
+     * @return \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject|\Late\Model\UnpublishPost200Response
      */
     public function testWebhook($test_webhook_request, string $contentType = self::contentTypes['testWebhook'][0])
     {
@@ -1339,7 +1339,7 @@ class WebhooksApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\TestWebhook200Response|\Late\Model\InlineObject|\Late\Model\TestWebhook200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject|\Late\Model\UnpublishPost200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function testWebhookWithHttpInfo($test_webhook_request, string $contentType = self::contentTypes['testWebhook'][0])
     {
@@ -1371,7 +1371,7 @@ class WebhooksApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\TestWebhook200Response',
+                        '\Late\Model\UnpublishPost200Response',
                         $request,
                         $response,
                     );
@@ -1383,7 +1383,7 @@ class WebhooksApi
                     );
                 case 500:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\TestWebhook200Response',
+                        '\Late\Model\UnpublishPost200Response',
                         $request,
                         $response,
                     );
@@ -1405,7 +1405,7 @@ class WebhooksApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\TestWebhook200Response',
+                '\Late\Model\UnpublishPost200Response',
                 $request,
                 $response,
             );
@@ -1414,7 +1414,7 @@ class WebhooksApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\TestWebhook200Response',
+                        '\Late\Model\UnpublishPost200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1430,7 +1430,7 @@ class WebhooksApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\TestWebhook200Response',
+                        '\Late\Model\UnpublishPost200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1476,7 +1476,7 @@ class WebhooksApi
      */
     public function testWebhookAsyncWithHttpInfo($test_webhook_request, string $contentType = self::contentTypes['testWebhook'][0])
     {
-        $returnType = '\Late\Model\TestWebhook200Response';
+        $returnType = '\Late\Model\UnpublishPost200Response';
         $request = $this->testWebhookRequest($test_webhook_request, $contentType);
 
         return $this->client

@@ -347,7 +347,6 @@ docs/Model/SnapchatPlatformData.md
 docs/Model/SocialAccount.md
 docs/Model/SocialAccountProfileId.md
 docs/Model/TelegramPlatformData.md
-docs/Model/TestWebhook200Response.md
 docs/Model/TestWebhookRequest.md
 docs/Model/ThreadsPlatformData.md
 docs/Model/TikTokPlatformData.md
@@ -357,6 +356,8 @@ docs/Model/TranscriptSegment.md
 docs/Model/TwitterPlatformData.md
 docs/Model/TwitterPlatformDataThreadItemsInner.md
 docs/Model/UnlikeInboxComment200Response.md
+docs/Model/UnpublishPost200Response.md
+docs/Model/UnpublishPostRequest.md
 docs/Model/UpdateAccount200Response.md
 docs/Model/UpdateAccountGroup200Response.md
 docs/Model/UpdateAccountGroupRequest.md
@@ -773,7 +774,6 @@ lib/Model/SnapchatPlatformData.php
 lib/Model/SocialAccount.php
 lib/Model/SocialAccountProfileId.php
 lib/Model/TelegramPlatformData.php
-lib/Model/TestWebhook200Response.php
 lib/Model/TestWebhookRequest.php
 lib/Model/ThreadsPlatformData.php
 lib/Model/TikTokPlatformData.php
@@ -783,6 +783,8 @@ lib/Model/TranscriptSegment.php
 lib/Model/TwitterPlatformData.php
 lib/Model/TwitterPlatformDataThreadItemsInner.php
 lib/Model/UnlikeInboxComment200Response.php
+lib/Model/UnpublishPost200Response.php
+lib/Model/UnpublishPostRequest.php
 lib/Model/UpdateAccount200Response.php
 lib/Model/UpdateAccountGroup200Response.php
 lib/Model/UpdateAccountGroupRequest.php
@@ -851,3 +853,5 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/UnpublishPost200ResponseTest.php
+test/Model/UnpublishPostRequestTest.php

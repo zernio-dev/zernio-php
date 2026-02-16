@@ -260,7 +260,7 @@ This endpoint does not need any parameter.
 ## `testWebhook()`
 
 ```php
-testWebhook($test_webhook_request): \Late\Model\TestWebhook200Response
+testWebhook($test_webhook_request): \Late\Model\UnpublishPost200Response
 ```
 
 Send test webhook
@@ -302,7 +302,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\TestWebhook200Response**](../Model/TestWebhook200Response.md)
+[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 

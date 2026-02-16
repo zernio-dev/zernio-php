@@ -175,6 +175,7 @@ Class | Method | HTTP request | Description
 *PostsApi* | [**getPost**](docs/Api/PostsApi.md#getpost) | **GET** /v1/posts/{postId} | Get a single post
 *PostsApi* | [**listPosts**](docs/Api/PostsApi.md#listposts) | **GET** /v1/posts | List posts visible to the authenticated user
 *PostsApi* | [**retryPost**](docs/Api/PostsApi.md#retrypost) | **POST** /v1/posts/{postId}/retry | Retry publishing a failed or partial post
+*PostsApi* | [**unpublishPost**](docs/Api/PostsApi.md#unpublishpost) | **POST** /v1/posts/{postId}/unpublish | Delete a published post from a social media platform
 *PostsApi* | [**updatePost**](docs/Api/PostsApi.md#updatepost) | **PUT** /v1/posts/{postId} | Update a post
 *ProfilesApi* | [**createProfile**](docs/Api/ProfilesApi.md#createprofile) | **POST** /v1/profiles | Create a new profile
 *ProfilesApi* | [**deleteProfile**](docs/Api/ProfilesApi.md#deleteprofile) | **DELETE** /v1/profiles/{profileId} | Delete a profile (must have no connected accounts)
@@ -530,7 +531,6 @@ Class | Method | HTTP request | Description
 - [SocialAccount](docs/Model/SocialAccount.md)
 - [SocialAccountProfileId](docs/Model/SocialAccountProfileId.md)
 - [TelegramPlatformData](docs/Model/TelegramPlatformData.md)
-- [TestWebhook200Response](docs/Model/TestWebhook200Response.md)
 - [TestWebhookRequest](docs/Model/TestWebhookRequest.md)
 - [ThreadsPlatformData](docs/Model/ThreadsPlatformData.md)
 - [TikTokPlatformData](docs/Model/TikTokPlatformData.md)
@@ -540,6 +540,8 @@ Class | Method | HTTP request | Description
 - [TwitterPlatformData](docs/Model/TwitterPlatformData.md)
 - [TwitterPlatformDataThreadItemsInner](docs/Model/TwitterPlatformDataThreadItemsInner.md)
 - [UnlikeInboxComment200Response](docs/Model/UnlikeInboxComment200Response.md)
+- [UnpublishPost200Response](docs/Model/UnpublishPost200Response.md)
+- [UnpublishPostRequest](docs/Model/UnpublishPostRequest.md)
 - [UpdateAccount200Response](docs/Model/UpdateAccount200Response.md)
 - [UpdateAccountGroup200Response](docs/Model/UpdateAccountGroup200Response.md)
 - [UpdateAccountGroupRequest](docs/Model/UpdateAccountGroupRequest.md)
