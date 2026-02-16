@@ -59,7 +59,8 @@ class InstagramPlatformDataUserTagsInner implements ModelInterface, ArrayAccess,
     protected static $openAPITypes = [
         'username' => 'string',
         'x' => 'float',
-        'y' => 'float'
+        'y' => 'float',
+        'media_index' => 'int'
     ];
 
     /**
@@ -72,7 +73,8 @@ class InstagramPlatformDataUserTagsInner implements ModelInterface, ArrayAccess,
     protected static $openAPIFormats = [
         'username' => null,
         'x' => null,
-        'y' => null
+        'y' => null,
+        'media_index' => null
     ];
 
     /**
@@ -83,7 +85,8 @@ class InstagramPlatformDataUserTagsInner implements ModelInterface, ArrayAccess,
     protected static array $openAPINullables = [
         'username' => false,
         'x' => false,
-        'y' => false
+        'y' => false,
+        'media_index' => false
     ];
 
     /**
@@ -174,7 +177,8 @@ class InstagramPlatformDataUserTagsInner implements ModelInterface, ArrayAccess,
     protected static $attributeMap = [
         'username' => 'username',
         'x' => 'x',
-        'y' => 'y'
+        'y' => 'y',
+        'media_index' => 'mediaIndex'
     ];
 
     /**
@@ -185,7 +189,8 @@ class InstagramPlatformDataUserTagsInner implements ModelInterface, ArrayAccess,
     protected static $setters = [
         'username' => 'setUsername',
         'x' => 'setX',
-        'y' => 'setY'
+        'y' => 'setY',
+        'media_index' => 'setMediaIndex'
     ];
 
     /**
@@ -196,7 +201,8 @@ class InstagramPlatformDataUserTagsInner implements ModelInterface, ArrayAccess,
     protected static $getters = [
         'username' => 'getUsername',
         'x' => 'getX',
-        'y' => 'getY'
+        'y' => 'getY',
+        'media_index' => 'getMediaIndex'
     ];
 
     /**
@@ -259,6 +265,7 @@ class InstagramPlatformDataUserTagsInner implements ModelInterface, ArrayAccess,
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('x', $data ?? [], null);
         $this->setIfExists('y', $data ?? [], null);
+        $this->setIfExists('media_index', $data ?? [], null);
     }
 
     /**
@@ -311,6 +318,10 @@ class InstagramPlatformDataUserTagsInner implements ModelInterface, ArrayAccess,
 
         if (($this->container['y'] < 0)) {
             $invalidProperties[] = "invalid value for 'y', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['media_index']) && ($this->container['media_index'] < 0)) {
+            $invalidProperties[] = "invalid value for 'media_index', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -421,6 +432,38 @@ class InstagramPlatformDataUserTagsInner implements ModelInterface, ArrayAccess,
         }
 
         $this->container['y'] = $y;
+
+        return $this;
+    }
+
+    /**
+     * Gets media_index
+     *
+     * @return int|null
+     */
+    public function getMediaIndex()
+    {
+        return $this->container['media_index'];
+    }
+
+    /**
+     * Sets media_index
+     *
+     * @param int|null $media_index Zero-based index of the carousel item to tag. Defaults to 0 (first image) if omitted. Only relevant for carousel posts. Tags targeting video items or out-of-range indices are ignored.
+     *
+     * @return self
+     */
+    public function setMediaIndex($media_index)
+    {
+        if (is_null($media_index)) {
+            throw new \InvalidArgumentException('non-nullable media_index cannot be null');
+        }
+
+        if (($media_index < 0)) {
+            throw new \InvalidArgumentException('invalid value for $media_index when calling InstagramPlatformDataUserTagsInner., must be bigger than or equal to 0.');
+        }
+
+        $this->container['media_index'] = $media_index;
 
         return $this;
     }

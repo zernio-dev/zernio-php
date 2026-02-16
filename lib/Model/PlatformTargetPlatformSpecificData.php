@@ -987,7 +987,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     /**
      * Sets user_tags
      *
-     * @param \Late\Model\InstagramPlatformDataUserTagsInner[]|null $user_tags Tag Instagram users in photos by username and position coordinates. Only works for single image posts and the first image of carousel posts. Not supported for stories or videos.
+     * @param \Late\Model\InstagramPlatformDataUserTagsInner[]|null $user_tags Tag Instagram users in photos by username and position coordinates. Not supported for stories or videos. For carousel posts, use the optional `mediaIndex` field to specify which slide each tag applies to. Tags without `mediaIndex` default to the first image (index 0) for backwards compatibility. Tags targeting video items are silently skipped (Instagram only supports tagging on images).
      *
      * @return self
      */
