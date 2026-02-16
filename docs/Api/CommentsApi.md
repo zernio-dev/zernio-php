@@ -425,7 +425,7 @@ sendPrivateReplyToComment($post_id, $comment_id, $send_private_reply_to_comment_
 
 Send private reply to comment author
 
-Send a private direct message to the author of a comment on your post. This is useful for handling customer inquiries or sensitive matters privately.  **Supported platforms:** Instagram only  **Limitations:** - Instagram only allows ONE private reply per comment - Must be sent within 7 days of the comment being posted - Only works for comments on posts owned by the connected account - Message goes to the user's Inbox (if they follow you) or Message Requests (if they don't) - Requires `instagram_business_manage_messages` permission (already included in Late's OAuth)  **Note:** This does not create a conversation thread until the user replies back.
+Send a private direct message to the author of a comment on your post. This is useful for handling customer inquiries or sensitive matters privately.  **Supported platforms:** Instagram, Facebook  **Limitations:** - Only ONE private reply per comment (platform API restriction) - Must be sent within 7 days of the comment being posted - Only works for comments on posts owned by the connected account - Text only (no media attachments) - Instagram: message goes to the user's Inbox (if they follow you) or Message Requests (if they don't). Requires `instagram_business_manage_messages` permission. - Facebook: message opens a Messenger conversation with the commenter. Requires `pages_messaging` permission.  **Note:** Both permissions are already included in Late's OAuth flow. This does not create a conversation thread until the user replies back.
 
 ### Example
 
@@ -444,7 +444,7 @@ $apiInstance = new Late\Api\CommentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$post_id = 'post_id_example'; // string | The Instagram media/post ID
+$post_id = 'post_id_example'; // string | The media/post ID (Instagram media ID or Facebook post ID)
 $comment_id = 'comment_id_example'; // string | The comment ID to send a private reply to
 $send_private_reply_to_comment_request = {"accountId":"507f1f77bcf86cd799439011","message":"Hi! Thanks for your comment. I wanted to reach out privately to help with your question."}; // \Late\Model\SendPrivateReplyToCommentRequest
 
@@ -460,7 +460,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_id** | **string**| The Instagram media/post ID | |
+| **post_id** | **string**| The media/post ID (Instagram media ID or Facebook post ID) | |
 | **comment_id** | **string**| The comment ID to send a private reply to | |
 | **send_private_reply_to_comment_request** | [**\Late\Model\SendPrivateReplyToCommentRequest**](../Model/SendPrivateReplyToCommentRequest.md)|  | |
 

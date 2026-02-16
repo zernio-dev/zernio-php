@@ -2220,7 +2220,7 @@ class CommentsApi
      *
      * Send private reply to comment author
      *
-     * @param  string $post_id The Instagram media/post ID (required)
+     * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
      * @param  \Late\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request send_private_reply_to_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPrivateReplyToComment'] to see the possible values for this operation
@@ -2240,7 +2240,7 @@ class CommentsApi
      *
      * Send private reply to comment author
      *
-     * @param  string $post_id The Instagram media/post ID (required)
+     * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
      * @param  \Late\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPrivateReplyToComment'] to see the possible values for this operation
@@ -2355,7 +2355,7 @@ class CommentsApi
      *
      * Send private reply to comment author
      *
-     * @param  string $post_id The Instagram media/post ID (required)
+     * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
      * @param  \Late\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPrivateReplyToComment'] to see the possible values for this operation
@@ -2378,7 +2378,7 @@ class CommentsApi
      *
      * Send private reply to comment author
      *
-     * @param  string $post_id The Instagram media/post ID (required)
+     * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
      * @param  \Late\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPrivateReplyToComment'] to see the possible values for this operation
@@ -2430,7 +2430,7 @@ class CommentsApi
     /**
      * Create request for operation 'sendPrivateReplyToComment'
      *
-     * @param  string $post_id The Instagram media/post ID (required)
+     * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
      * @param  \Late\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPrivateReplyToComment'] to see the possible values for this operation

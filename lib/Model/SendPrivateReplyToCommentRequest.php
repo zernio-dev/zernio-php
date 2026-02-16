@@ -315,7 +315,7 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
     /**
      * Sets account_id
      *
-     * @param string $account_id The Instagram social account ID
+     * @param string $account_id The social account ID (Instagram or Facebook)
      *
      * @return self
      */

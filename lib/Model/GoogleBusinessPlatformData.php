@@ -35,7 +35,7 @@ use \Late\ObjectSerializer;
  * GoogleBusinessPlatformData Class Doc Comment
  *
  * @category Class
- * @description Google Business Profile post settings: - Posts support text content and a single image (no videos) - Images must be publicly accessible URLs - Call-to-action buttons drive user engagement - Posts appear on your Google Business Profile and in Google Search/Maps - Use locationId to post to multiple locations from the same account connection
+ * @description Google Business Profile post settings: - Posts support text content and a single image (no videos) - Images must be publicly accessible URLs - Call-to-action buttons drive user engagement - Posts appear on your Google Business Profile and in Google Search/Maps - Use locationId to post to multiple locations from the same account connection - Language is auto-detected from content; override with languageCode if needed
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,6 +59,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'location_id' => 'string',
+        'language_code' => 'string',
         'call_to_action' => '\Late\Model\GoogleBusinessPlatformDataCallToAction'
     ];
 
@@ -71,6 +72,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'location_id' => null,
+        'language_code' => null,
         'call_to_action' => null
     ];
 
@@ -81,6 +83,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPINullables = [
         'location_id' => false,
+        'language_code' => false,
         'call_to_action' => false
     ];
 
@@ -171,6 +174,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'location_id' => 'locationId',
+        'language_code' => 'languageCode',
         'call_to_action' => 'callToAction'
     ];
 
@@ -181,6 +185,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'location_id' => 'setLocationId',
+        'language_code' => 'setLanguageCode',
         'call_to_action' => 'setCallToAction'
     ];
 
@@ -191,6 +196,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'location_id' => 'getLocationId',
+        'language_code' => 'getLanguageCode',
         'call_to_action' => 'getCallToAction'
     ];
 
@@ -252,6 +258,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(?array $data = null)
     {
         $this->setIfExists('location_id', $data ?? [], null);
+        $this->setIfExists('language_code', $data ?? [], null);
         $this->setIfExists('call_to_action', $data ?? [], null);
     }
 
@@ -320,6 +327,33 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable location_id cannot be null');
         }
         $this->container['location_id'] = $location_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets language_code
+     *
+     * @return string|null
+     */
+    public function getLanguageCode()
+    {
+        return $this->container['language_code'];
+    }
+
+    /**
+     * Sets language_code
+     *
+     * @param string|null $language_code BCP 47 language code for the post content (e.g., \"en\", \"de\", \"es\", \"fr\"). If omitted, the language is automatically detected from the post text. Setting this explicitly is recommended when auto-detection may not be accurate (e.g., very short posts, mixed-language content, or transliterated text).
+     *
+     * @return self
+     */
+    public function setLanguageCode($language_code)
+    {
+        if (is_null($language_code)) {
+            throw new \InvalidArgumentException('non-nullable language_code cannot be null');
+        }
+        $this->container['language_code'] = $language_code;
 
         return $this;
     }

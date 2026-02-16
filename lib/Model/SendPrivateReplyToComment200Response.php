@@ -246,6 +246,21 @@ class SendPrivateReplyToComment200Response implements ModelInterface, ArrayAcces
         return self::$openAPIModelName;
     }
 
+    public const PLATFORM_INSTAGRAM = 'instagram';
+    public const PLATFORM_FACEBOOK = 'facebook';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlatformAllowableValues()
+    {
+        return [
+            self::PLATFORM_INSTAGRAM,
+            self::PLATFORM_FACEBOOK,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -294,6 +309,15 @@ class SendPrivateReplyToComment200Response implements ModelInterface, ArrayAcces
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -412,6 +436,16 @@ class SendPrivateReplyToComment200Response implements ModelInterface, ArrayAcces
     {
         if (is_null($platform)) {
             throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['platform'] = $platform;
 
