@@ -4,6 +4,7 @@ API reference for Late. Authenticate with a Bearer API key.
 Base URL: https://getlate.dev/api
 
 
+For more information, please visit [https://getlate.dev](https://getlate.dev).
 
 ## Installation & Usage
 
@@ -631,7 +632,7 @@ vendor/bin/phpunit
 
 ## Author
 
-
+support@getlate.dev
 
 ## About this package
 
