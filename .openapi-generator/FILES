@@ -853,5 +853,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UnpublishPost200ResponseTest.php
-test/Model/UnpublishPostRequestTest.php
