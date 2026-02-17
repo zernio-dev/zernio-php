@@ -210,7 +210,7 @@ class ConnectApi
     /**
      * Operation completeTelegramConnect
      *
-     * Check Telegram connection status
+     * Check Telegram status
      *
      * @param  string $code The access code to check status for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeTelegramConnect'] to see the possible values for this operation
@@ -228,7 +228,7 @@ class ConnectApi
     /**
      * Operation completeTelegramConnectWithHttpInfo
      *
-     * Check Telegram connection status
+     * Check Telegram status
      *
      * @param  string $code The access code to check status for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeTelegramConnect'] to see the possible values for this operation
@@ -327,7 +327,7 @@ class ConnectApi
     /**
      * Operation completeTelegramConnectAsync
      *
-     * Check Telegram connection status
+     * Check Telegram status
      *
      * @param  string $code The access code to check status for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeTelegramConnect'] to see the possible values for this operation
@@ -348,7 +348,7 @@ class ConnectApi
     /**
      * Operation completeTelegramConnectAsyncWithHttpInfo
      *
-     * Check Telegram connection status
+     * Check Telegram status
      *
      * @param  string $code The access code to check status for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeTelegramConnect'] to see the possible values for this operation
@@ -497,7 +497,7 @@ class ConnectApi
     /**
      * Operation connectBlueskyCredentials
      *
-     * Connect Bluesky using app password
+     * Connect Bluesky account
      *
      * @param  \Late\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request connect_bluesky_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectBlueskyCredentials'] to see the possible values for this operation
@@ -515,7 +515,7 @@ class ConnectApi
     /**
      * Operation connectBlueskyCredentialsWithHttpInfo
      *
-     * Connect Bluesky using app password
+     * Connect Bluesky account
      *
      * @param  \Late\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectBlueskyCredentials'] to see the possible values for this operation
@@ -614,7 +614,7 @@ class ConnectApi
     /**
      * Operation connectBlueskyCredentialsAsync
      *
-     * Connect Bluesky using app password
+     * Connect Bluesky account
      *
      * @param  \Late\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectBlueskyCredentials'] to see the possible values for this operation
@@ -635,7 +635,7 @@ class ConnectApi
     /**
      * Operation connectBlueskyCredentialsAsyncWithHttpInfo
      *
-     * Connect Bluesky using app password
+     * Connect Bluesky account
      *
      * @param  \Late\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectBlueskyCredentials'] to see the possible values for this operation
@@ -782,11 +782,11 @@ class ConnectApi
     /**
      * Operation getConnectUrl
      *
-     * Start OAuth connection for a platform
+     * Get OAuth connect URL
      *
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
-     * @param  string|null $redirect_url Optional: Your custom redirect URL after connection completes.  **Standard Mode:** Omit &#x60;headless&#x3D;true&#x60; to use our hosted page selection UI.   After the user selects a Facebook Page, Late redirects here with:   &#x60;?connected&#x3D;facebook&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;  **Headless Mode (Facebook, LinkedIn, Pinterest, Google Business Profile &amp; Snapchat):** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint (not inside &#x60;redirect_url&#x60;), e.g.: &#x60;GET /v1/connect/facebook?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/linkedin?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/pinterest?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/googlebusiness?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/snapchat?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60;  After OAuth, the user is redirected directly to your &#x60;redirect_url&#x60; with OAuth data: - **Facebook:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;facebook&amp;step&#x3D;select_page&#x60; - **LinkedIn:** &#x60;?profileId&#x3D;X&amp;pendingDataToken&#x3D;TOKEN&amp;connect_token&#x3D;CT&amp;platform&#x3D;linkedin&amp;step&#x3D;select_organization&#x60;   Use &#x60;GET /v1/connect/pending-data?token&#x3D;TOKEN&#x60; to fetch tempToken, userProfile, organizations, refreshToken. - **Pinterest:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;pinterest&amp;step&#x3D;select_board&#x60; - **Google Business:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;googlebusiness&amp;step&#x3D;select_location&#x60; - **Snapchat:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;publicProfiles&#x3D;PROFILES&amp;connect_token&#x3D;CT&amp;platform&#x3D;snapchat&amp;step&#x3D;select_public_profile&#x60;   (publicProfiles contains &#x60;id&#x60;, &#x60;display_name&#x60;, &#x60;username&#x60;, &#x60;profile_image_url&#x60;, &#x60;subscriber_count&#x60;)  Then use the respective endpoints to build your custom UI: - Facebook: &#x60;/v1/connect/facebook/select-page&#x60; (GET to fetch, POST to save) - LinkedIn: &#x60;/v1/connect/linkedin/organizations&#x60; (GET to fetch logos), &#x60;/v1/connect/linkedin/select-organization&#x60; (POST to save) - Pinterest: &#x60;/v1/connect/pinterest/select-board&#x60; (GET to fetch, POST to save) - Google Business: &#x60;/v1/connect/googlebusiness/locations&#x60; (GET) and &#x60;/v1/connect/googlebusiness/select-location&#x60; (POST) - Snapchat: &#x60;/v1/connect/snapchat/select-profile&#x60; (POST to save selected public profile)  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
+     * @param  string|null $redirect_url Your custom redirect URL after connection completes.  **Standard Mode:** After the user selects an account, Late redirects here with &#x60;?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;.  **Headless Mode:** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint. After OAuth, the user is redirected to your URL with OAuth data (&#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;userProfile&#x60;, &#x60;connect_token&#x60;, &#x60;platform&#x60;, &#x60;step&#x60;). See the main endpoint description for details.  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -802,11 +802,11 @@ class ConnectApi
     /**
      * Operation getConnectUrlWithHttpInfo
      *
-     * Start OAuth connection for a platform
+     * Get OAuth connect URL
      *
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
-     * @param  string|null $redirect_url Optional: Your custom redirect URL after connection completes.  **Standard Mode:** Omit &#x60;headless&#x3D;true&#x60; to use our hosted page selection UI.   After the user selects a Facebook Page, Late redirects here with:   &#x60;?connected&#x3D;facebook&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;  **Headless Mode (Facebook, LinkedIn, Pinterest, Google Business Profile &amp; Snapchat):** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint (not inside &#x60;redirect_url&#x60;), e.g.: &#x60;GET /v1/connect/facebook?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/linkedin?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/pinterest?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/googlebusiness?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/snapchat?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60;  After OAuth, the user is redirected directly to your &#x60;redirect_url&#x60; with OAuth data: - **Facebook:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;facebook&amp;step&#x3D;select_page&#x60; - **LinkedIn:** &#x60;?profileId&#x3D;X&amp;pendingDataToken&#x3D;TOKEN&amp;connect_token&#x3D;CT&amp;platform&#x3D;linkedin&amp;step&#x3D;select_organization&#x60;   Use &#x60;GET /v1/connect/pending-data?token&#x3D;TOKEN&#x60; to fetch tempToken, userProfile, organizations, refreshToken. - **Pinterest:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;pinterest&amp;step&#x3D;select_board&#x60; - **Google Business:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;googlebusiness&amp;step&#x3D;select_location&#x60; - **Snapchat:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;publicProfiles&#x3D;PROFILES&amp;connect_token&#x3D;CT&amp;platform&#x3D;snapchat&amp;step&#x3D;select_public_profile&#x60;   (publicProfiles contains &#x60;id&#x60;, &#x60;display_name&#x60;, &#x60;username&#x60;, &#x60;profile_image_url&#x60;, &#x60;subscriber_count&#x60;)  Then use the respective endpoints to build your custom UI: - Facebook: &#x60;/v1/connect/facebook/select-page&#x60; (GET to fetch, POST to save) - LinkedIn: &#x60;/v1/connect/linkedin/organizations&#x60; (GET to fetch logos), &#x60;/v1/connect/linkedin/select-organization&#x60; (POST to save) - Pinterest: &#x60;/v1/connect/pinterest/select-board&#x60; (GET to fetch, POST to save) - Google Business: &#x60;/v1/connect/googlebusiness/locations&#x60; (GET) and &#x60;/v1/connect/googlebusiness/select-location&#x60; (POST) - Snapchat: &#x60;/v1/connect/snapchat/select-profile&#x60; (POST to save selected public profile)  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
+     * @param  string|null $redirect_url Your custom redirect URL after connection completes.  **Standard Mode:** After the user selects an account, Late redirects here with &#x60;?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;.  **Headless Mode:** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint. After OAuth, the user is redirected to your URL with OAuth data (&#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;userProfile&#x60;, &#x60;connect_token&#x60;, &#x60;platform&#x60;, &#x60;step&#x60;). See the main endpoint description for details.  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -903,11 +903,11 @@ class ConnectApi
     /**
      * Operation getConnectUrlAsync
      *
-     * Start OAuth connection for a platform
+     * Get OAuth connect URL
      *
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
-     * @param  string|null $redirect_url Optional: Your custom redirect URL after connection completes.  **Standard Mode:** Omit &#x60;headless&#x3D;true&#x60; to use our hosted page selection UI.   After the user selects a Facebook Page, Late redirects here with:   &#x60;?connected&#x3D;facebook&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;  **Headless Mode (Facebook, LinkedIn, Pinterest, Google Business Profile &amp; Snapchat):** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint (not inside &#x60;redirect_url&#x60;), e.g.: &#x60;GET /v1/connect/facebook?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/linkedin?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/pinterest?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/googlebusiness?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/snapchat?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60;  After OAuth, the user is redirected directly to your &#x60;redirect_url&#x60; with OAuth data: - **Facebook:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;facebook&amp;step&#x3D;select_page&#x60; - **LinkedIn:** &#x60;?profileId&#x3D;X&amp;pendingDataToken&#x3D;TOKEN&amp;connect_token&#x3D;CT&amp;platform&#x3D;linkedin&amp;step&#x3D;select_organization&#x60;   Use &#x60;GET /v1/connect/pending-data?token&#x3D;TOKEN&#x60; to fetch tempToken, userProfile, organizations, refreshToken. - **Pinterest:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;pinterest&amp;step&#x3D;select_board&#x60; - **Google Business:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;googlebusiness&amp;step&#x3D;select_location&#x60; - **Snapchat:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;publicProfiles&#x3D;PROFILES&amp;connect_token&#x3D;CT&amp;platform&#x3D;snapchat&amp;step&#x3D;select_public_profile&#x60;   (publicProfiles contains &#x60;id&#x60;, &#x60;display_name&#x60;, &#x60;username&#x60;, &#x60;profile_image_url&#x60;, &#x60;subscriber_count&#x60;)  Then use the respective endpoints to build your custom UI: - Facebook: &#x60;/v1/connect/facebook/select-page&#x60; (GET to fetch, POST to save) - LinkedIn: &#x60;/v1/connect/linkedin/organizations&#x60; (GET to fetch logos), &#x60;/v1/connect/linkedin/select-organization&#x60; (POST to save) - Pinterest: &#x60;/v1/connect/pinterest/select-board&#x60; (GET to fetch, POST to save) - Google Business: &#x60;/v1/connect/googlebusiness/locations&#x60; (GET) and &#x60;/v1/connect/googlebusiness/select-location&#x60; (POST) - Snapchat: &#x60;/v1/connect/snapchat/select-profile&#x60; (POST to save selected public profile)  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
+     * @param  string|null $redirect_url Your custom redirect URL after connection completes.  **Standard Mode:** After the user selects an account, Late redirects here with &#x60;?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;.  **Headless Mode:** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint. After OAuth, the user is redirected to your URL with OAuth data (&#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;userProfile&#x60;, &#x60;connect_token&#x60;, &#x60;platform&#x60;, &#x60;step&#x60;). See the main endpoint description for details.  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -926,11 +926,11 @@ class ConnectApi
     /**
      * Operation getConnectUrlAsyncWithHttpInfo
      *
-     * Start OAuth connection for a platform
+     * Get OAuth connect URL
      *
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
-     * @param  string|null $redirect_url Optional: Your custom redirect URL after connection completes.  **Standard Mode:** Omit &#x60;headless&#x3D;true&#x60; to use our hosted page selection UI.   After the user selects a Facebook Page, Late redirects here with:   &#x60;?connected&#x3D;facebook&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;  **Headless Mode (Facebook, LinkedIn, Pinterest, Google Business Profile &amp; Snapchat):** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint (not inside &#x60;redirect_url&#x60;), e.g.: &#x60;GET /v1/connect/facebook?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/linkedin?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/pinterest?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/googlebusiness?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/snapchat?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60;  After OAuth, the user is redirected directly to your &#x60;redirect_url&#x60; with OAuth data: - **Facebook:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;facebook&amp;step&#x3D;select_page&#x60; - **LinkedIn:** &#x60;?profileId&#x3D;X&amp;pendingDataToken&#x3D;TOKEN&amp;connect_token&#x3D;CT&amp;platform&#x3D;linkedin&amp;step&#x3D;select_organization&#x60;   Use &#x60;GET /v1/connect/pending-data?token&#x3D;TOKEN&#x60; to fetch tempToken, userProfile, organizations, refreshToken. - **Pinterest:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;pinterest&amp;step&#x3D;select_board&#x60; - **Google Business:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;googlebusiness&amp;step&#x3D;select_location&#x60; - **Snapchat:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;publicProfiles&#x3D;PROFILES&amp;connect_token&#x3D;CT&amp;platform&#x3D;snapchat&amp;step&#x3D;select_public_profile&#x60;   (publicProfiles contains &#x60;id&#x60;, &#x60;display_name&#x60;, &#x60;username&#x60;, &#x60;profile_image_url&#x60;, &#x60;subscriber_count&#x60;)  Then use the respective endpoints to build your custom UI: - Facebook: &#x60;/v1/connect/facebook/select-page&#x60; (GET to fetch, POST to save) - LinkedIn: &#x60;/v1/connect/linkedin/organizations&#x60; (GET to fetch logos), &#x60;/v1/connect/linkedin/select-organization&#x60; (POST to save) - Pinterest: &#x60;/v1/connect/pinterest/select-board&#x60; (GET to fetch, POST to save) - Google Business: &#x60;/v1/connect/googlebusiness/locations&#x60; (GET) and &#x60;/v1/connect/googlebusiness/select-location&#x60; (POST) - Snapchat: &#x60;/v1/connect/snapchat/select-profile&#x60; (POST to save selected public profile)  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
+     * @param  string|null $redirect_url Your custom redirect URL after connection completes.  **Standard Mode:** After the user selects an account, Late redirects here with &#x60;?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;.  **Headless Mode:** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint. After OAuth, the user is redirected to your URL with OAuth data (&#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;userProfile&#x60;, &#x60;connect_token&#x60;, &#x60;platform&#x60;, &#x60;step&#x60;). See the main endpoint description for details.  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -982,7 +982,7 @@ class ConnectApi
      *
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
-     * @param  string|null $redirect_url Optional: Your custom redirect URL after connection completes.  **Standard Mode:** Omit &#x60;headless&#x3D;true&#x60; to use our hosted page selection UI.   After the user selects a Facebook Page, Late redirects here with:   &#x60;?connected&#x3D;facebook&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;  **Headless Mode (Facebook, LinkedIn, Pinterest, Google Business Profile &amp; Snapchat):** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint (not inside &#x60;redirect_url&#x60;), e.g.: &#x60;GET /v1/connect/facebook?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/linkedin?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/pinterest?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/googlebusiness?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60; &#x60;GET /v1/connect/snapchat?profileId&#x3D;PROFILE_ID&amp;redirect_url&#x3D;https://yourapp.com/callback&amp;headless&#x3D;true&#x60;  After OAuth, the user is redirected directly to your &#x60;redirect_url&#x60; with OAuth data: - **Facebook:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;facebook&amp;step&#x3D;select_page&#x60; - **LinkedIn:** &#x60;?profileId&#x3D;X&amp;pendingDataToken&#x3D;TOKEN&amp;connect_token&#x3D;CT&amp;platform&#x3D;linkedin&amp;step&#x3D;select_organization&#x60;   Use &#x60;GET /v1/connect/pending-data?token&#x3D;TOKEN&#x60; to fetch tempToken, userProfile, organizations, refreshToken. - **Pinterest:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;pinterest&amp;step&#x3D;select_board&#x60; - **Google Business:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;connect_token&#x3D;CT&amp;platform&#x3D;googlebusiness&amp;step&#x3D;select_location&#x60; - **Snapchat:** &#x60;?profileId&#x3D;X&amp;tempToken&#x3D;Y&amp;userProfile&#x3D;Z&amp;publicProfiles&#x3D;PROFILES&amp;connect_token&#x3D;CT&amp;platform&#x3D;snapchat&amp;step&#x3D;select_public_profile&#x60;   (publicProfiles contains &#x60;id&#x60;, &#x60;display_name&#x60;, &#x60;username&#x60;, &#x60;profile_image_url&#x60;, &#x60;subscriber_count&#x60;)  Then use the respective endpoints to build your custom UI: - Facebook: &#x60;/v1/connect/facebook/select-page&#x60; (GET to fetch, POST to save) - LinkedIn: &#x60;/v1/connect/linkedin/organizations&#x60; (GET to fetch logos), &#x60;/v1/connect/linkedin/select-organization&#x60; (POST to save) - Pinterest: &#x60;/v1/connect/pinterest/select-board&#x60; (GET to fetch, POST to save) - Google Business: &#x60;/v1/connect/googlebusiness/locations&#x60; (GET) and &#x60;/v1/connect/googlebusiness/select-location&#x60; (POST) - Snapchat: &#x60;/v1/connect/snapchat/select-profile&#x60; (POST to save selected public profile)  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
+     * @param  string|null $redirect_url Your custom redirect URL after connection completes.  **Standard Mode:** After the user selects an account, Late redirects here with &#x60;?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;.  **Headless Mode:** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint. After OAuth, the user is redirected to your URL with OAuth data (&#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;userProfile&#x60;, &#x60;connect_token&#x60;, &#x60;platform&#x60;, &#x60;step&#x60;). See the main endpoint description for details.  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1104,7 +1104,7 @@ class ConnectApi
     /**
      * Operation getFacebookPages
      *
-     * List available Facebook pages for a connected account
+     * List Facebook pages
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPages'] to see the possible values for this operation
@@ -1122,7 +1122,7 @@ class ConnectApi
     /**
      * Operation getFacebookPagesWithHttpInfo
      *
-     * List available Facebook pages for a connected account
+     * List Facebook pages
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPages'] to see the possible values for this operation
@@ -1221,7 +1221,7 @@ class ConnectApi
     /**
      * Operation getFacebookPagesAsync
      *
-     * List available Facebook pages for a connected account
+     * List Facebook pages
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPages'] to see the possible values for this operation
@@ -1242,7 +1242,7 @@ class ConnectApi
     /**
      * Operation getFacebookPagesAsyncWithHttpInfo
      *
-     * List available Facebook pages for a connected account
+     * List Facebook pages
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPages'] to see the possible values for this operation
@@ -1390,7 +1390,7 @@ class ConnectApi
     /**
      * Operation getGmbLocations
      *
-     * List available Google Business Profile locations for a connected account
+     * List Google Business locations
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
@@ -1408,7 +1408,7 @@ class ConnectApi
     /**
      * Operation getGmbLocationsWithHttpInfo
      *
-     * List available Google Business Profile locations for a connected account
+     * List Google Business locations
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
@@ -1507,7 +1507,7 @@ class ConnectApi
     /**
      * Operation getGmbLocationsAsync
      *
-     * List available Google Business Profile locations for a connected account
+     * List Google Business locations
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
@@ -1528,7 +1528,7 @@ class ConnectApi
     /**
      * Operation getGmbLocationsAsyncWithHttpInfo
      *
-     * List available Google Business Profile locations for a connected account
+     * List Google Business locations
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
@@ -1676,7 +1676,7 @@ class ConnectApi
     /**
      * Operation getLinkedInOrganizations
      *
-     * Get available LinkedIn organizations for a connected account
+     * List LinkedIn orgs
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInOrganizations'] to see the possible values for this operation
@@ -1694,7 +1694,7 @@ class ConnectApi
     /**
      * Operation getLinkedInOrganizationsWithHttpInfo
      *
-     * Get available LinkedIn organizations for a connected account
+     * List LinkedIn orgs
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInOrganizations'] to see the possible values for this operation
@@ -1793,7 +1793,7 @@ class ConnectApi
     /**
      * Operation getLinkedInOrganizationsAsync
      *
-     * Get available LinkedIn organizations for a connected account
+     * List LinkedIn orgs
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInOrganizations'] to see the possible values for this operation
@@ -1814,7 +1814,7 @@ class ConnectApi
     /**
      * Operation getLinkedInOrganizationsAsyncWithHttpInfo
      *
-     * Get available LinkedIn organizations for a connected account
+     * List LinkedIn orgs
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInOrganizations'] to see the possible values for this operation
@@ -1962,7 +1962,7 @@ class ConnectApi
     /**
      * Operation getPendingOAuthData
      *
-     * Fetch pending OAuth selection data (Headless Mode)
+     * Get pending OAuth data
      *
      * @param  string $token The pending data token from the OAuth redirect URL (&#x60;pendingDataToken&#x60; parameter) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPendingOAuthData'] to see the possible values for this operation
@@ -1980,7 +1980,7 @@ class ConnectApi
     /**
      * Operation getPendingOAuthDataWithHttpInfo
      *
-     * Fetch pending OAuth selection data (Headless Mode)
+     * Get pending OAuth data
      *
      * @param  string $token The pending data token from the OAuth redirect URL (&#x60;pendingDataToken&#x60; parameter) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPendingOAuthData'] to see the possible values for this operation
@@ -2093,7 +2093,7 @@ class ConnectApi
     /**
      * Operation getPendingOAuthDataAsync
      *
-     * Fetch pending OAuth selection data (Headless Mode)
+     * Get pending OAuth data
      *
      * @param  string $token The pending data token from the OAuth redirect URL (&#x60;pendingDataToken&#x60; parameter) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPendingOAuthData'] to see the possible values for this operation
@@ -2114,7 +2114,7 @@ class ConnectApi
     /**
      * Operation getPendingOAuthDataAsyncWithHttpInfo
      *
-     * Fetch pending OAuth selection data (Headless Mode)
+     * Get pending OAuth data
      *
      * @param  string $token The pending data token from the OAuth redirect URL (&#x60;pendingDataToken&#x60; parameter) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPendingOAuthData'] to see the possible values for this operation
@@ -2263,7 +2263,7 @@ class ConnectApi
     /**
      * Operation getPinterestBoards
      *
-     * List Pinterest boards for a connected account
+     * List Pinterest boards
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPinterestBoards'] to see the possible values for this operation
@@ -2281,7 +2281,7 @@ class ConnectApi
     /**
      * Operation getPinterestBoardsWithHttpInfo
      *
-     * List Pinterest boards for a connected account
+     * List Pinterest boards
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPinterestBoards'] to see the possible values for this operation
@@ -2380,7 +2380,7 @@ class ConnectApi
     /**
      * Operation getPinterestBoardsAsync
      *
-     * List Pinterest boards for a connected account
+     * List Pinterest boards
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPinterestBoards'] to see the possible values for this operation
@@ -2401,7 +2401,7 @@ class ConnectApi
     /**
      * Operation getPinterestBoardsAsyncWithHttpInfo
      *
-     * List Pinterest boards for a connected account
+     * List Pinterest boards
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPinterestBoards'] to see the possible values for this operation
@@ -2549,7 +2549,7 @@ class ConnectApi
     /**
      * Operation getRedditFlairs
      *
-     * List available post flairs for a Reddit subreddit
+     * List subreddit flairs
      *
      * @param  string $account_id account_id (required)
      * @param  string $subreddit Subreddit name (without \&quot;r/\&quot; prefix) to fetch flairs for (required)
@@ -2568,7 +2568,7 @@ class ConnectApi
     /**
      * Operation getRedditFlairsWithHttpInfo
      *
-     * List available post flairs for a Reddit subreddit
+     * List subreddit flairs
      *
      * @param  string $account_id (required)
      * @param  string $subreddit Subreddit name (without \&quot;r/\&quot; prefix) to fetch flairs for (required)
@@ -2668,7 +2668,7 @@ class ConnectApi
     /**
      * Operation getRedditFlairsAsync
      *
-     * List available post flairs for a Reddit subreddit
+     * List subreddit flairs
      *
      * @param  string $account_id (required)
      * @param  string $subreddit Subreddit name (without \&quot;r/\&quot; prefix) to fetch flairs for (required)
@@ -2690,7 +2690,7 @@ class ConnectApi
     /**
      * Operation getRedditFlairsAsyncWithHttpInfo
      *
-     * List available post flairs for a Reddit subreddit
+     * List subreddit flairs
      *
      * @param  string $account_id (required)
      * @param  string $subreddit Subreddit name (without \&quot;r/\&quot; prefix) to fetch flairs for (required)
@@ -2856,7 +2856,7 @@ class ConnectApi
     /**
      * Operation getRedditSubreddits
      *
-     * List Reddit subreddits for a connected account
+     * List Reddit subreddits
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRedditSubreddits'] to see the possible values for this operation
@@ -2874,7 +2874,7 @@ class ConnectApi
     /**
      * Operation getRedditSubredditsWithHttpInfo
      *
-     * List Reddit subreddits for a connected account
+     * List Reddit subreddits
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRedditSubreddits'] to see the possible values for this operation
@@ -2973,7 +2973,7 @@ class ConnectApi
     /**
      * Operation getRedditSubredditsAsync
      *
-     * List Reddit subreddits for a connected account
+     * List Reddit subreddits
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRedditSubreddits'] to see the possible values for this operation
@@ -2994,7 +2994,7 @@ class ConnectApi
     /**
      * Operation getRedditSubredditsAsyncWithHttpInfo
      *
-     * List Reddit subreddits for a connected account
+     * List Reddit subreddits
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRedditSubreddits'] to see the possible values for this operation
@@ -3142,7 +3142,7 @@ class ConnectApi
     /**
      * Operation getTelegramConnectStatus
      *
-     * Generate Telegram access code
+     * Generate Telegram code
      *
      * @param  string $profile_id The profile ID to connect the Telegram account to (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTelegramConnectStatus'] to see the possible values for this operation
@@ -3160,7 +3160,7 @@ class ConnectApi
     /**
      * Operation getTelegramConnectStatusWithHttpInfo
      *
-     * Generate Telegram access code
+     * Generate Telegram code
      *
      * @param  string $profile_id The profile ID to connect the Telegram account to (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTelegramConnectStatus'] to see the possible values for this operation
@@ -3259,7 +3259,7 @@ class ConnectApi
     /**
      * Operation getTelegramConnectStatusAsync
      *
-     * Generate Telegram access code
+     * Generate Telegram code
      *
      * @param  string $profile_id The profile ID to connect the Telegram account to (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTelegramConnectStatus'] to see the possible values for this operation
@@ -3280,7 +3280,7 @@ class ConnectApi
     /**
      * Operation getTelegramConnectStatusAsyncWithHttpInfo
      *
-     * Generate Telegram access code
+     * Generate Telegram code
      *
      * @param  string $profile_id The profile ID to connect the Telegram account to (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTelegramConnectStatus'] to see the possible values for this operation
@@ -3429,7 +3429,7 @@ class ConnectApi
     /**
      * Operation handleOAuthCallback
      *
-     * Complete OAuth token exchange manually (for server-side flows)
+     * Complete OAuth callback
      *
      * @param  string $platform platform (required)
      * @param  \Late\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request handle_o_auth_callback_request (required)
@@ -3447,7 +3447,7 @@ class ConnectApi
     /**
      * Operation handleOAuthCallbackWithHttpInfo
      *
-     * Complete OAuth token exchange manually (for server-side flows)
+     * Complete OAuth callback
      *
      * @param  string $platform (required)
      * @param  \Late\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request (required)
@@ -3505,7 +3505,7 @@ class ConnectApi
     /**
      * Operation handleOAuthCallbackAsync
      *
-     * Complete OAuth token exchange manually (for server-side flows)
+     * Complete OAuth callback
      *
      * @param  string $platform (required)
      * @param  \Late\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request (required)
@@ -3527,7 +3527,7 @@ class ConnectApi
     /**
      * Operation handleOAuthCallbackAsyncWithHttpInfo
      *
-     * Complete OAuth token exchange manually (for server-side flows)
+     * Complete OAuth callback
      *
      * @param  string $platform (required)
      * @param  \Late\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request (required)
@@ -3678,7 +3678,7 @@ class ConnectApi
     /**
      * Operation initiateTelegramConnect
      *
-     * Direct Telegram connection (power users)
+     * Connect Telegram directly
      *
      * @param  \Late\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request initiate_telegram_connect_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateTelegramConnect'] to see the possible values for this operation
@@ -3696,7 +3696,7 @@ class ConnectApi
     /**
      * Operation initiateTelegramConnectWithHttpInfo
      *
-     * Direct Telegram connection (power users)
+     * Connect Telegram directly
      *
      * @param  \Late\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateTelegramConnect'] to see the possible values for this operation
@@ -3795,7 +3795,7 @@ class ConnectApi
     /**
      * Operation initiateTelegramConnectAsync
      *
-     * Direct Telegram connection (power users)
+     * Connect Telegram directly
      *
      * @param  \Late\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateTelegramConnect'] to see the possible values for this operation
@@ -3816,7 +3816,7 @@ class ConnectApi
     /**
      * Operation initiateTelegramConnectAsyncWithHttpInfo
      *
-     * Direct Telegram connection (power users)
+     * Connect Telegram directly
      *
      * @param  \Late\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateTelegramConnect'] to see the possible values for this operation
@@ -3963,7 +3963,7 @@ class ConnectApi
     /**
      * Operation listFacebookPages
      *
-     * List Facebook Pages after OAuth (Headless Mode)
+     * List Facebook pages
      *
      * @param  string $profile_id Profile ID from your connection flow (required)
      * @param  string $temp_token Temporary Facebook access token from the OAuth callback redirect (required)
@@ -3982,7 +3982,7 @@ class ConnectApi
     /**
      * Operation listFacebookPagesWithHttpInfo
      *
-     * List Facebook Pages after OAuth (Headless Mode)
+     * List Facebook pages
      *
      * @param  string $profile_id Profile ID from your connection flow (required)
      * @param  string $temp_token Temporary Facebook access token from the OAuth callback redirect (required)
@@ -4096,7 +4096,7 @@ class ConnectApi
     /**
      * Operation listFacebookPagesAsync
      *
-     * List Facebook Pages after OAuth (Headless Mode)
+     * List Facebook pages
      *
      * @param  string $profile_id Profile ID from your connection flow (required)
      * @param  string $temp_token Temporary Facebook access token from the OAuth callback redirect (required)
@@ -4118,7 +4118,7 @@ class ConnectApi
     /**
      * Operation listFacebookPagesAsyncWithHttpInfo
      *
-     * List Facebook Pages after OAuth (Headless Mode)
+     * List Facebook pages
      *
      * @param  string $profile_id Profile ID from your connection flow (required)
      * @param  string $temp_token Temporary Facebook access token from the OAuth callback redirect (required)
@@ -4290,7 +4290,7 @@ class ConnectApi
     /**
      * Operation listGoogleBusinessLocations
      *
-     * List Google Business Locations after OAuth (Headless Mode)
+     * List Google Business locations
      *
      * @param  string $profile_id Profile ID from your connection flow (required)
      * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
@@ -4309,7 +4309,7 @@ class ConnectApi
     /**
      * Operation listGoogleBusinessLocationsWithHttpInfo
      *
-     * List Google Business Locations after OAuth (Headless Mode)
+     * List Google Business locations
      *
      * @param  string $profile_id Profile ID from your connection flow (required)
      * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
@@ -4423,7 +4423,7 @@ class ConnectApi
     /**
      * Operation listGoogleBusinessLocationsAsync
      *
-     * List Google Business Locations after OAuth (Headless Mode)
+     * List Google Business locations
      *
      * @param  string $profile_id Profile ID from your connection flow (required)
      * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
@@ -4445,7 +4445,7 @@ class ConnectApi
     /**
      * Operation listGoogleBusinessLocationsAsyncWithHttpInfo
      *
-     * List Google Business Locations after OAuth (Headless Mode)
+     * List Google Business locations
      *
      * @param  string $profile_id Profile ID from your connection flow (required)
      * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
@@ -4617,7 +4617,7 @@ class ConnectApi
     /**
      * Operation listLinkedInOrganizations
      *
-     * Fetch full LinkedIn organization details (Headless Mode)
+     * List LinkedIn orgs
      *
      * @param  string $temp_token The temporary LinkedIn access token from the OAuth redirect (required)
      * @param  string $org_ids Comma-separated list of organization IDs to fetch details for (max 100) (required)
@@ -4636,7 +4636,7 @@ class ConnectApi
     /**
      * Operation listLinkedInOrganizationsWithHttpInfo
      *
-     * Fetch full LinkedIn organization details (Headless Mode)
+     * List LinkedIn orgs
      *
      * @param  string $temp_token The temporary LinkedIn access token from the OAuth redirect (required)
      * @param  string $org_ids Comma-separated list of organization IDs to fetch details for (max 100) (required)
@@ -4736,7 +4736,7 @@ class ConnectApi
     /**
      * Operation listLinkedInOrganizationsAsync
      *
-     * Fetch full LinkedIn organization details (Headless Mode)
+     * List LinkedIn orgs
      *
      * @param  string $temp_token The temporary LinkedIn access token from the OAuth redirect (required)
      * @param  string $org_ids Comma-separated list of organization IDs to fetch details for (max 100) (required)
@@ -4758,7 +4758,7 @@ class ConnectApi
     /**
      * Operation listLinkedInOrganizationsAsyncWithHttpInfo
      *
-     * Fetch full LinkedIn organization details (Headless Mode)
+     * List LinkedIn orgs
      *
      * @param  string $temp_token The temporary LinkedIn access token from the OAuth redirect (required)
      * @param  string $org_ids Comma-separated list of organization IDs to fetch details for (max 100) (required)
@@ -4925,7 +4925,7 @@ class ConnectApi
     /**
      * Operation listPinterestBoardsForSelection
      *
-     * List Pinterest Boards after OAuth (Headless Mode)
+     * List Pinterest boards
      *
      * @param  string $x_connect_token Short-lived connect token from the OAuth redirect (required)
      * @param  string $profile_id Your Late profile ID (required)
@@ -4945,7 +4945,7 @@ class ConnectApi
     /**
      * Operation listPinterestBoardsForSelectionWithHttpInfo
      *
-     * List Pinterest Boards after OAuth (Headless Mode)
+     * List Pinterest boards
      *
      * @param  string $x_connect_token Short-lived connect token from the OAuth redirect (required)
      * @param  string $profile_id Your Late profile ID (required)
@@ -5046,7 +5046,7 @@ class ConnectApi
     /**
      * Operation listPinterestBoardsForSelectionAsync
      *
-     * List Pinterest Boards after OAuth (Headless Mode)
+     * List Pinterest boards
      *
      * @param  string $x_connect_token Short-lived connect token from the OAuth redirect (required)
      * @param  string $profile_id Your Late profile ID (required)
@@ -5069,7 +5069,7 @@ class ConnectApi
     /**
      * Operation listPinterestBoardsForSelectionAsyncWithHttpInfo
      *
-     * List Pinterest Boards after OAuth (Headless Mode)
+     * List Pinterest boards
      *
      * @param  string $x_connect_token Short-lived connect token from the OAuth redirect (required)
      * @param  string $profile_id Your Late profile ID (required)
@@ -5249,7 +5249,7 @@ class ConnectApi
     /**
      * Operation listSnapchatProfiles
      *
-     * List Snapchat Public Profiles after OAuth (Headless Mode)
+     * List Snapchat profiles
      *
      * @param  string $x_connect_token Short-lived connect token from the OAuth redirect (required)
      * @param  string $profile_id Your Late profile ID (required)
@@ -5269,7 +5269,7 @@ class ConnectApi
     /**
      * Operation listSnapchatProfilesWithHttpInfo
      *
-     * List Snapchat Public Profiles after OAuth (Headless Mode)
+     * List Snapchat profiles
      *
      * @param  string $x_connect_token Short-lived connect token from the OAuth redirect (required)
      * @param  string $profile_id Your Late profile ID (required)
@@ -5370,7 +5370,7 @@ class ConnectApi
     /**
      * Operation listSnapchatProfilesAsync
      *
-     * List Snapchat Public Profiles after OAuth (Headless Mode)
+     * List Snapchat profiles
      *
      * @param  string $x_connect_token Short-lived connect token from the OAuth redirect (required)
      * @param  string $profile_id Your Late profile ID (required)
@@ -5393,7 +5393,7 @@ class ConnectApi
     /**
      * Operation listSnapchatProfilesAsyncWithHttpInfo
      *
-     * List Snapchat Public Profiles after OAuth (Headless Mode)
+     * List Snapchat profiles
      *
      * @param  string $x_connect_token Short-lived connect token from the OAuth redirect (required)
      * @param  string $profile_id Your Late profile ID (required)
@@ -5573,7 +5573,7 @@ class ConnectApi
     /**
      * Operation selectFacebookPage
      *
-     * Select a Facebook Page to complete the connection (Headless Mode)
+     * Select Facebook page
      *
      * @param  \Late\Model\SelectFacebookPageRequest $select_facebook_page_request select_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectFacebookPage'] to see the possible values for this operation
@@ -5591,7 +5591,7 @@ class ConnectApi
     /**
      * Operation selectFacebookPageWithHttpInfo
      *
-     * Select a Facebook Page to complete the connection (Headless Mode)
+     * Select Facebook page
      *
      * @param  \Late\Model\SelectFacebookPageRequest $select_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectFacebookPage'] to see the possible values for this operation
@@ -5690,7 +5690,7 @@ class ConnectApi
     /**
      * Operation selectFacebookPageAsync
      *
-     * Select a Facebook Page to complete the connection (Headless Mode)
+     * Select Facebook page
      *
      * @param  \Late\Model\SelectFacebookPageRequest $select_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectFacebookPage'] to see the possible values for this operation
@@ -5711,7 +5711,7 @@ class ConnectApi
     /**
      * Operation selectFacebookPageAsyncWithHttpInfo
      *
-     * Select a Facebook Page to complete the connection (Headless Mode)
+     * Select Facebook page
      *
      * @param  \Late\Model\SelectFacebookPageRequest $select_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectFacebookPage'] to see the possible values for this operation
@@ -5863,7 +5863,7 @@ class ConnectApi
     /**
      * Operation selectGoogleBusinessLocation
      *
-     * Select a Google Business location to complete the connection (Headless Mode)
+     * Select Google Business location
      *
      * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
@@ -5881,7 +5881,7 @@ class ConnectApi
     /**
      * Operation selectGoogleBusinessLocationWithHttpInfo
      *
-     * Select a Google Business location to complete the connection (Headless Mode)
+     * Select Google Business location
      *
      * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
@@ -5980,7 +5980,7 @@ class ConnectApi
     /**
      * Operation selectGoogleBusinessLocationAsync
      *
-     * Select a Google Business location to complete the connection (Headless Mode)
+     * Select Google Business location
      *
      * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
@@ -6001,7 +6001,7 @@ class ConnectApi
     /**
      * Operation selectGoogleBusinessLocationAsyncWithHttpInfo
      *
-     * Select a Google Business location to complete the connection (Headless Mode)
+     * Select Google Business location
      *
      * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
@@ -6153,7 +6153,7 @@ class ConnectApi
     /**
      * Operation selectLinkedInOrganization
      *
-     * Select LinkedIn organization or personal account after OAuth
+     * Select LinkedIn org
      *
      * @param  \Late\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request select_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectLinkedInOrganization'] to see the possible values for this operation
@@ -6171,7 +6171,7 @@ class ConnectApi
     /**
      * Operation selectLinkedInOrganizationWithHttpInfo
      *
-     * Select LinkedIn organization or personal account after OAuth
+     * Select LinkedIn org
      *
      * @param  \Late\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectLinkedInOrganization'] to see the possible values for this operation
@@ -6270,7 +6270,7 @@ class ConnectApi
     /**
      * Operation selectLinkedInOrganizationAsync
      *
-     * Select LinkedIn organization or personal account after OAuth
+     * Select LinkedIn org
      *
      * @param  \Late\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectLinkedInOrganization'] to see the possible values for this operation
@@ -6291,7 +6291,7 @@ class ConnectApi
     /**
      * Operation selectLinkedInOrganizationAsyncWithHttpInfo
      *
-     * Select LinkedIn organization or personal account after OAuth
+     * Select LinkedIn org
      *
      * @param  \Late\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectLinkedInOrganization'] to see the possible values for this operation
@@ -6438,7 +6438,7 @@ class ConnectApi
     /**
      * Operation selectPinterestBoard
      *
-     * Select a Pinterest Board to complete the connection (Headless Mode)
+     * Select Pinterest board
      *
      * @param  \Late\Model\SelectPinterestBoardRequest $select_pinterest_board_request select_pinterest_board_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectPinterestBoard'] to see the possible values for this operation
@@ -6456,7 +6456,7 @@ class ConnectApi
     /**
      * Operation selectPinterestBoardWithHttpInfo
      *
-     * Select a Pinterest Board to complete the connection (Headless Mode)
+     * Select Pinterest board
      *
      * @param  \Late\Model\SelectPinterestBoardRequest $select_pinterest_board_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectPinterestBoard'] to see the possible values for this operation
@@ -6555,7 +6555,7 @@ class ConnectApi
     /**
      * Operation selectPinterestBoardAsync
      *
-     * Select a Pinterest Board to complete the connection (Headless Mode)
+     * Select Pinterest board
      *
      * @param  \Late\Model\SelectPinterestBoardRequest $select_pinterest_board_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectPinterestBoard'] to see the possible values for this operation
@@ -6576,7 +6576,7 @@ class ConnectApi
     /**
      * Operation selectPinterestBoardAsyncWithHttpInfo
      *
-     * Select a Pinterest Board to complete the connection (Headless Mode)
+     * Select Pinterest board
      *
      * @param  \Late\Model\SelectPinterestBoardRequest $select_pinterest_board_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectPinterestBoard'] to see the possible values for this operation
@@ -6723,7 +6723,7 @@ class ConnectApi
     /**
      * Operation selectSnapchatProfile
      *
-     * Select a Snapchat Public Profile to complete the connection (Headless Mode)
+     * Select Snapchat profile
      *
      * @param  \Late\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request select_snapchat_profile_request (required)
      * @param  string|null $x_connect_token Short-lived connect token from the OAuth redirect (for API users) (optional)
@@ -6742,7 +6742,7 @@ class ConnectApi
     /**
      * Operation selectSnapchatProfileWithHttpInfo
      *
-     * Select a Snapchat Public Profile to complete the connection (Headless Mode)
+     * Select Snapchat profile
      *
      * @param  \Late\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request (required)
      * @param  string|null $x_connect_token Short-lived connect token from the OAuth redirect (for API users) (optional)
@@ -6842,7 +6842,7 @@ class ConnectApi
     /**
      * Operation selectSnapchatProfileAsync
      *
-     * Select a Snapchat Public Profile to complete the connection (Headless Mode)
+     * Select Snapchat profile
      *
      * @param  \Late\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request (required)
      * @param  string|null $x_connect_token Short-lived connect token from the OAuth redirect (for API users) (optional)
@@ -6864,7 +6864,7 @@ class ConnectApi
     /**
      * Operation selectSnapchatProfileAsyncWithHttpInfo
      *
-     * Select a Snapchat Public Profile to complete the connection (Headless Mode)
+     * Select Snapchat profile
      *
      * @param  \Late\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request (required)
      * @param  string|null $x_connect_token Short-lived connect token from the OAuth redirect (for API users) (optional)
@@ -7018,7 +7018,7 @@ class ConnectApi
     /**
      * Operation updateFacebookPage
      *
-     * Update selected Facebook page for a connected account
+     * Update Facebook page
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\UpdateFacebookPageRequest $update_facebook_page_request update_facebook_page_request (required)
@@ -7037,7 +7037,7 @@ class ConnectApi
     /**
      * Operation updateFacebookPageWithHttpInfo
      *
-     * Update selected Facebook page for a connected account
+     * Update Facebook page
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateFacebookPageRequest $update_facebook_page_request (required)
@@ -7137,7 +7137,7 @@ class ConnectApi
     /**
      * Operation updateFacebookPageAsync
      *
-     * Update selected Facebook page for a connected account
+     * Update Facebook page
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateFacebookPageRequest $update_facebook_page_request (required)
@@ -7159,7 +7159,7 @@ class ConnectApi
     /**
      * Operation updateFacebookPageAsyncWithHttpInfo
      *
-     * Update selected Facebook page for a connected account
+     * Update Facebook page
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateFacebookPageRequest $update_facebook_page_request (required)
@@ -7323,7 +7323,7 @@ class ConnectApi
     /**
      * Operation updateGmbLocation
      *
-     * Update selected Google Business Profile location for a connected account
+     * Update Google Business location
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request update_gmb_location_request (required)
@@ -7342,7 +7342,7 @@ class ConnectApi
     /**
      * Operation updateGmbLocationWithHttpInfo
      *
-     * Update selected Google Business Profile location for a connected account
+     * Update Google Business location
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
@@ -7442,7 +7442,7 @@ class ConnectApi
     /**
      * Operation updateGmbLocationAsync
      *
-     * Update selected Google Business Profile location for a connected account
+     * Update Google Business location
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
@@ -7464,7 +7464,7 @@ class ConnectApi
     /**
      * Operation updateGmbLocationAsyncWithHttpInfo
      *
-     * Update selected Google Business Profile location for a connected account
+     * Update Google Business location
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
@@ -7628,7 +7628,7 @@ class ConnectApi
     /**
      * Operation updateLinkedInOrganization
      *
-     * Switch LinkedIn account type (personal/organization)
+     * Switch LinkedIn account type
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request update_linked_in_organization_request (required)
@@ -7647,7 +7647,7 @@ class ConnectApi
     /**
      * Operation updateLinkedInOrganizationWithHttpInfo
      *
-     * Switch LinkedIn account type (personal/organization)
+     * Switch LinkedIn account type
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request (required)
@@ -7747,7 +7747,7 @@ class ConnectApi
     /**
      * Operation updateLinkedInOrganizationAsync
      *
-     * Switch LinkedIn account type (personal/organization)
+     * Switch LinkedIn account type
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request (required)
@@ -7769,7 +7769,7 @@ class ConnectApi
     /**
      * Operation updateLinkedInOrganizationAsyncWithHttpInfo
      *
-     * Switch LinkedIn account type (personal/organization)
+     * Switch LinkedIn account type
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request (required)
@@ -7933,7 +7933,7 @@ class ConnectApi
     /**
      * Operation updatePinterestBoards
      *
-     * Set default Pinterest board on the connection
+     * Set default Pinterest board
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request update_pinterest_boards_request (required)
@@ -7952,7 +7952,7 @@ class ConnectApi
     /**
      * Operation updatePinterestBoardsWithHttpInfo
      *
-     * Set default Pinterest board on the connection
+     * Set default Pinterest board
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request (required)
@@ -8052,7 +8052,7 @@ class ConnectApi
     /**
      * Operation updatePinterestBoardsAsync
      *
-     * Set default Pinterest board on the connection
+     * Set default Pinterest board
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request (required)
@@ -8074,7 +8074,7 @@ class ConnectApi
     /**
      * Operation updatePinterestBoardsAsyncWithHttpInfo
      *
-     * Set default Pinterest board on the connection
+     * Set default Pinterest board
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request (required)
@@ -8238,7 +8238,7 @@ class ConnectApi
     /**
      * Operation updateRedditSubreddits
      *
-     * Set default subreddit on the connection
+     * Set default subreddit
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request update_reddit_subreddits_request (required)
@@ -8257,7 +8257,7 @@ class ConnectApi
     /**
      * Operation updateRedditSubredditsWithHttpInfo
      *
-     * Set default subreddit on the connection
+     * Set default subreddit
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request (required)
@@ -8357,7 +8357,7 @@ class ConnectApi
     /**
      * Operation updateRedditSubredditsAsync
      *
-     * Set default subreddit on the connection
+     * Set default subreddit
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request (required)
@@ -8379,7 +8379,7 @@ class ConnectApi
     /**
      * Operation updateRedditSubredditsAsyncWithHttpInfo
      *
-     * Set default subreddit on the connection
+     * Set default subreddit
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request (required)

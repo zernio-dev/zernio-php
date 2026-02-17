@@ -129,7 +129,7 @@ class InvitesApi
     /**
      * Operation createInviteToken
      *
-     * Create a team member invite token
+     * Create invite token
      *
      * @param  \Late\Model\CreateInviteTokenRequest $create_invite_token_request create_invite_token_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInviteToken'] to see the possible values for this operation
@@ -147,7 +147,7 @@ class InvitesApi
     /**
      * Operation createInviteTokenWithHttpInfo
      *
-     * Create a team member invite token
+     * Create invite token
      *
      * @param  \Late\Model\CreateInviteTokenRequest $create_invite_token_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInviteToken'] to see the possible values for this operation
@@ -246,7 +246,7 @@ class InvitesApi
     /**
      * Operation createInviteTokenAsync
      *
-     * Create a team member invite token
+     * Create invite token
      *
      * @param  \Late\Model\CreateInviteTokenRequest $create_invite_token_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInviteToken'] to see the possible values for this operation
@@ -267,7 +267,7 @@ class InvitesApi
     /**
      * Operation createInviteTokenAsyncWithHttpInfo
      *
-     * Create a team member invite token
+     * Create invite token
      *
      * @param  \Late\Model\CreateInviteTokenRequest $create_invite_token_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInviteToken'] to see the possible values for this operation

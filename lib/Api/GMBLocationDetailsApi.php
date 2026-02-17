@@ -132,7 +132,7 @@ class GMBLocationDetailsApi
     /**
      * Operation getGoogleBusinessLocationDetails
      *
-     * Get Google Business Profile location details
+     * Get location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  string|null $read_mask Comma-separated fields to return. Defaults to common fields. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours (optional)
@@ -151,7 +151,7 @@ class GMBLocationDetailsApi
     /**
      * Operation getGoogleBusinessLocationDetailsWithHttpInfo
      *
-     * Get Google Business Profile location details
+     * Get location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  string|null $read_mask Comma-separated fields to return. Defaults to common fields. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours (optional)
@@ -279,7 +279,7 @@ class GMBLocationDetailsApi
     /**
      * Operation getGoogleBusinessLocationDetailsAsync
      *
-     * Get Google Business Profile location details
+     * Get location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  string|null $read_mask Comma-separated fields to return. Defaults to common fields. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours (optional)
@@ -301,7 +301,7 @@ class GMBLocationDetailsApi
     /**
      * Operation getGoogleBusinessLocationDetailsAsyncWithHttpInfo
      *
-     * Get Google Business Profile location details
+     * Get location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  string|null $read_mask Comma-separated fields to return. Defaults to common fields. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours (optional)
@@ -461,7 +461,7 @@ class GMBLocationDetailsApi
     /**
      * Operation updateGoogleBusinessLocationDetails
      *
-     * Update Google Business Profile location details
+     * Update location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessLocationDetailsRequest $update_google_business_location_details_request update_google_business_location_details_request (required)
@@ -480,7 +480,7 @@ class GMBLocationDetailsApi
     /**
      * Operation updateGoogleBusinessLocationDetailsWithHttpInfo
      *
-     * Update Google Business Profile location details
+     * Update location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessLocationDetailsRequest $update_google_business_location_details_request (required)
@@ -608,7 +608,7 @@ class GMBLocationDetailsApi
     /**
      * Operation updateGoogleBusinessLocationDetailsAsync
      *
-     * Update Google Business Profile location details
+     * Update location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessLocationDetailsRequest $update_google_business_location_details_request (required)
@@ -630,7 +630,7 @@ class GMBLocationDetailsApi
     /**
      * Operation updateGoogleBusinessLocationDetailsAsyncWithHttpInfo
      *
-     * Update Google Business Profile location details
+     * Update location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessLocationDetailsRequest $update_google_business_location_details_request (required)

@@ -6,10 +6,10 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createAccountGroup()**](AccountGroupsApi.md#createAccountGroup) | **POST** /v1/account-groups | Create a new account group |
-| [**deleteAccountGroup()**](AccountGroupsApi.md#deleteAccountGroup) | **DELETE** /v1/account-groups/{groupId} | Delete an account group |
-| [**listAccountGroups()**](AccountGroupsApi.md#listAccountGroups) | **GET** /v1/account-groups | List account groups for the authenticated user |
-| [**updateAccountGroup()**](AccountGroupsApi.md#updateAccountGroup) | **PUT** /v1/account-groups/{groupId} | Update an account group |
+| [**createAccountGroup()**](AccountGroupsApi.md#createAccountGroup) | **POST** /v1/account-groups | Create group |
+| [**deleteAccountGroup()**](AccountGroupsApi.md#deleteAccountGroup) | **DELETE** /v1/account-groups/{groupId} | Delete group |
+| [**listAccountGroups()**](AccountGroupsApi.md#listAccountGroups) | **GET** /v1/account-groups | List groups |
+| [**updateAccountGroup()**](AccountGroupsApi.md#updateAccountGroup) | **PUT** /v1/account-groups/{groupId} | Update group |
 
 
 ## `createAccountGroup()`
@@ -18,7 +18,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 createAccountGroup($create_account_group_request): \Late\Model\CreateAccountGroup201Response
 ```
 
-Create a new account group
+Create group
 
 ### Example
 
@@ -76,7 +76,7 @@ try {
 deleteAccountGroup($group_id): \Late\Model\DeleteAccountGroup200Response
 ```
 
-Delete an account group
+Delete group
 
 ### Example
 
@@ -134,7 +134,7 @@ try {
 listAccountGroups(): \Late\Model\ListAccountGroups200Response
 ```
 
-List account groups for the authenticated user
+List groups
 
 ### Example
 
@@ -189,7 +189,7 @@ This endpoint does not need any parameter.
 updateAccountGroup($group_id, $update_account_group_request): \Late\Model\UpdateAccountGroup200Response
 ```
 
-Update an account group
+Update group
 
 ### Example
 

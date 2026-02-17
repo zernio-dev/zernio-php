@@ -153,7 +153,7 @@ class CommentsApi
     /**
      * Operation deleteInboxComment
      *
-     * Delete a comment
+     * Delete comment
      *
      * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  **LinkedIn:** For third-party posts, pass the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the URL. (required)
      * @param  string $account_id account_id (required)
@@ -173,7 +173,7 @@ class CommentsApi
     /**
      * Operation deleteInboxCommentWithHttpInfo
      *
-     * Delete a comment
+     * Delete comment
      *
      * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  **LinkedIn:** For third-party posts, pass the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the URL. (required)
      * @param  string $account_id (required)
@@ -274,7 +274,7 @@ class CommentsApi
     /**
      * Operation deleteInboxCommentAsync
      *
-     * Delete a comment
+     * Delete comment
      *
      * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  **LinkedIn:** For third-party posts, pass the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the URL. (required)
      * @param  string $account_id (required)
@@ -297,7 +297,7 @@ class CommentsApi
     /**
      * Operation deleteInboxCommentAsyncWithHttpInfo
      *
-     * Delete a comment
+     * Delete comment
      *
      * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  **LinkedIn:** For third-party posts, pass the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the URL. (required)
      * @param  string $account_id (required)
@@ -481,7 +481,7 @@ class CommentsApi
     /**
      * Operation getInboxPostComments
      *
-     * Get comments for a post
+     * Get post comments
      *
      * @param  string $post_id The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID).  **LinkedIn:** For your own posts, the full URN stored in Late (e.g., &#x60;urn:li:share:7429218977714745345&#x60;) is used automatically. For third-party posts, pass either the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as &#x60;urn:li:activity:&#x60;). Note: LinkedIn post URLs use activity IDs (&#x60;linkedin.com/feed/update/urn:li:activity:XXXX&#x60;). (required)
      * @param  string $account_id account_id (required)
@@ -504,7 +504,7 @@ class CommentsApi
     /**
      * Operation getInboxPostCommentsWithHttpInfo
      *
-     * Get comments for a post
+     * Get post comments
      *
      * @param  string $post_id The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID).  **LinkedIn:** For your own posts, the full URN stored in Late (e.g., &#x60;urn:li:share:7429218977714745345&#x60;) is used automatically. For third-party posts, pass either the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as &#x60;urn:li:activity:&#x60;). Note: LinkedIn post URLs use activity IDs (&#x60;linkedin.com/feed/update/urn:li:activity:XXXX&#x60;). (required)
      * @param  string $account_id (required)
@@ -608,7 +608,7 @@ class CommentsApi
     /**
      * Operation getInboxPostCommentsAsync
      *
-     * Get comments for a post
+     * Get post comments
      *
      * @param  string $post_id The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID).  **LinkedIn:** For your own posts, the full URN stored in Late (e.g., &#x60;urn:li:share:7429218977714745345&#x60;) is used automatically. For third-party posts, pass either the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as &#x60;urn:li:activity:&#x60;). Note: LinkedIn post URLs use activity IDs (&#x60;linkedin.com/feed/update/urn:li:activity:XXXX&#x60;). (required)
      * @param  string $account_id (required)
@@ -634,7 +634,7 @@ class CommentsApi
     /**
      * Operation getInboxPostCommentsAsyncWithHttpInfo
      *
-     * Get comments for a post
+     * Get post comments
      *
      * @param  string $post_id The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID).  **LinkedIn:** For your own posts, the full URN stored in Late (e.g., &#x60;urn:li:share:7429218977714745345&#x60;) is used automatically. For third-party posts, pass either the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as &#x60;urn:li:activity:&#x60;). Note: LinkedIn post URLs use activity IDs (&#x60;linkedin.com/feed/update/urn:li:activity:XXXX&#x60;). (required)
      * @param  string $account_id (required)
@@ -854,7 +854,7 @@ class CommentsApi
     /**
      * Operation hideInboxComment
      *
-     * Hide a comment
+     * Hide comment
      *
      * @param  string $post_id post_id (required)
      * @param  string $comment_id comment_id (required)
@@ -874,7 +874,7 @@ class CommentsApi
     /**
      * Operation hideInboxCommentWithHttpInfo
      *
-     * Hide a comment
+     * Hide comment
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
@@ -975,7 +975,7 @@ class CommentsApi
     /**
      * Operation hideInboxCommentAsync
      *
-     * Hide a comment
+     * Hide comment
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
@@ -998,7 +998,7 @@ class CommentsApi
     /**
      * Operation hideInboxCommentAsyncWithHttpInfo
      *
-     * Hide a comment
+     * Hide comment
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
@@ -1179,7 +1179,7 @@ class CommentsApi
     /**
      * Operation likeInboxComment
      *
-     * Like a comment
+     * Like comment
      *
      * @param  string $post_id post_id (required)
      * @param  string $comment_id comment_id (required)
@@ -1199,7 +1199,7 @@ class CommentsApi
     /**
      * Operation likeInboxCommentWithHttpInfo
      *
-     * Like a comment
+     * Like comment
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
@@ -1300,7 +1300,7 @@ class CommentsApi
     /**
      * Operation likeInboxCommentAsync
      *
-     * Like a comment
+     * Like comment
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
@@ -1323,7 +1323,7 @@ class CommentsApi
     /**
      * Operation likeInboxCommentAsyncWithHttpInfo
      *
-     * Like a comment
+     * Like comment
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
@@ -1504,7 +1504,7 @@ class CommentsApi
     /**
      * Operation listInboxComments
      *
-     * List posts with comments across all accounts
+     * List commented posts
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1530,7 +1530,7 @@ class CommentsApi
     /**
      * Operation listInboxCommentsWithHttpInfo
      *
-     * List posts with comments across all accounts
+     * List commented posts
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1637,7 +1637,7 @@ class CommentsApi
     /**
      * Operation listInboxCommentsAsync
      *
-     * List posts with comments across all accounts
+     * List commented posts
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1666,7 +1666,7 @@ class CommentsApi
     /**
      * Operation listInboxCommentsAsyncWithHttpInfo
      *
-     * List posts with comments across all accounts
+     * List commented posts
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1914,7 +1914,7 @@ class CommentsApi
     /**
      * Operation replyToInboxPost
      *
-     * Reply to a post or comment
+     * Reply to comment
      *
      * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  **LinkedIn:** For third-party posts, pass the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the URL. (required)
      * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request reply_to_inbox_post_request (required)
@@ -1933,7 +1933,7 @@ class CommentsApi
     /**
      * Operation replyToInboxPostWithHttpInfo
      *
-     * Reply to a post or comment
+     * Reply to comment
      *
      * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  **LinkedIn:** For third-party posts, pass the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the URL. (required)
      * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
@@ -2033,7 +2033,7 @@ class CommentsApi
     /**
      * Operation replyToInboxPostAsync
      *
-     * Reply to a post or comment
+     * Reply to comment
      *
      * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  **LinkedIn:** For third-party posts, pass the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the URL. (required)
      * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
@@ -2055,7 +2055,7 @@ class CommentsApi
     /**
      * Operation replyToInboxPostAsyncWithHttpInfo
      *
-     * Reply to a post or comment
+     * Reply to comment
      *
      * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  **LinkedIn:** For third-party posts, pass the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the URL. (required)
      * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
@@ -2219,7 +2219,7 @@ class CommentsApi
     /**
      * Operation sendPrivateReplyToComment
      *
-     * Send private reply to comment author
+     * Send private reply
      *
      * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
@@ -2239,7 +2239,7 @@ class CommentsApi
     /**
      * Operation sendPrivateReplyToCommentWithHttpInfo
      *
-     * Send private reply to comment author
+     * Send private reply
      *
      * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
@@ -2354,7 +2354,7 @@ class CommentsApi
     /**
      * Operation sendPrivateReplyToCommentAsync
      *
-     * Send private reply to comment author
+     * Send private reply
      *
      * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
@@ -2377,7 +2377,7 @@ class CommentsApi
     /**
      * Operation sendPrivateReplyToCommentAsyncWithHttpInfo
      *
-     * Send private reply to comment author
+     * Send private reply
      *
      * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
@@ -2558,7 +2558,7 @@ class CommentsApi
     /**
      * Operation unhideInboxComment
      *
-     * Unhide a comment
+     * Unhide comment
      *
      * @param  string $post_id post_id (required)
      * @param  string $comment_id comment_id (required)
@@ -2578,7 +2578,7 @@ class CommentsApi
     /**
      * Operation unhideInboxCommentWithHttpInfo
      *
-     * Unhide a comment
+     * Unhide comment
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
@@ -2679,7 +2679,7 @@ class CommentsApi
     /**
      * Operation unhideInboxCommentAsync
      *
-     * Unhide a comment
+     * Unhide comment
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
@@ -2702,7 +2702,7 @@ class CommentsApi
     /**
      * Operation unhideInboxCommentAsyncWithHttpInfo
      *
-     * Unhide a comment
+     * Unhide comment
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
@@ -2885,7 +2885,7 @@ class CommentsApi
     /**
      * Operation unlikeInboxComment
      *
-     * Unlike a comment
+     * Unlike comment
      *
      * @param  string $post_id post_id (required)
      * @param  string $comment_id comment_id (required)
@@ -2906,7 +2906,7 @@ class CommentsApi
     /**
      * Operation unlikeInboxCommentWithHttpInfo
      *
-     * Unlike a comment
+     * Unlike comment
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
@@ -3008,7 +3008,7 @@ class CommentsApi
     /**
      * Operation unlikeInboxCommentAsync
      *
-     * Unlike a comment
+     * Unlike comment
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
@@ -3032,7 +3032,7 @@ class CommentsApi
     /**
      * Operation unlikeInboxCommentAsyncWithHttpInfo
      *
-     * Unlike a comment
+     * Unlike comment
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)

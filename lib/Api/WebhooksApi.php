@@ -144,7 +144,7 @@ class WebhooksApi
     /**
      * Operation createWebhookSettings
      *
-     * Create a new webhook
+     * Create webhook
      *
      * @param  \Late\Model\CreateWebhookSettingsRequest $create_webhook_settings_request create_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookSettings'] to see the possible values for this operation
@@ -162,7 +162,7 @@ class WebhooksApi
     /**
      * Operation createWebhookSettingsWithHttpInfo
      *
-     * Create a new webhook
+     * Create webhook
      *
      * @param  \Late\Model\CreateWebhookSettingsRequest $create_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookSettings'] to see the possible values for this operation
@@ -261,7 +261,7 @@ class WebhooksApi
     /**
      * Operation createWebhookSettingsAsync
      *
-     * Create a new webhook
+     * Create webhook
      *
      * @param  \Late\Model\CreateWebhookSettingsRequest $create_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookSettings'] to see the possible values for this operation
@@ -282,7 +282,7 @@ class WebhooksApi
     /**
      * Operation createWebhookSettingsAsyncWithHttpInfo
      *
-     * Create a new webhook
+     * Create webhook
      *
      * @param  \Late\Model\CreateWebhookSettingsRequest $create_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookSettings'] to see the possible values for this operation
@@ -429,7 +429,7 @@ class WebhooksApi
     /**
      * Operation deleteWebhookSettings
      *
-     * Delete a webhook
+     * Delete webhook
      *
      * @param  string $id Webhook ID to delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhookSettings'] to see the possible values for this operation
@@ -447,7 +447,7 @@ class WebhooksApi
     /**
      * Operation deleteWebhookSettingsWithHttpInfo
      *
-     * Delete a webhook
+     * Delete webhook
      *
      * @param  string $id Webhook ID to delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhookSettings'] to see the possible values for this operation
@@ -546,7 +546,7 @@ class WebhooksApi
     /**
      * Operation deleteWebhookSettingsAsync
      *
-     * Delete a webhook
+     * Delete webhook
      *
      * @param  string $id Webhook ID to delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhookSettings'] to see the possible values for this operation
@@ -567,7 +567,7 @@ class WebhooksApi
     /**
      * Operation deleteWebhookSettingsAsyncWithHttpInfo
      *
-     * Delete a webhook
+     * Delete webhook
      *
      * @param  string $id Webhook ID to delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhookSettings'] to see the possible values for this operation
@@ -716,7 +716,7 @@ class WebhooksApi
     /**
      * Operation getWebhookLogs
      *
-     * Get webhook delivery logs
+     * Get delivery logs
      *
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  string|null $status Filter by delivery status (optional)
@@ -737,7 +737,7 @@ class WebhooksApi
     /**
      * Operation getWebhookLogsWithHttpInfo
      *
-     * Get webhook delivery logs
+     * Get delivery logs
      *
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  string|null $status Filter by delivery status (optional)
@@ -839,7 +839,7 @@ class WebhooksApi
     /**
      * Operation getWebhookLogsAsync
      *
-     * Get webhook delivery logs
+     * Get delivery logs
      *
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  string|null $status Filter by delivery status (optional)
@@ -863,7 +863,7 @@ class WebhooksApi
     /**
      * Operation getWebhookLogsAsyncWithHttpInfo
      *
-     * Get webhook delivery logs
+     * Get delivery logs
      *
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  string|null $status Filter by delivery status (optional)
@@ -1048,7 +1048,7 @@ class WebhooksApi
     /**
      * Operation getWebhookSettings
      *
-     * List all webhooks
+     * List webhooks
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookSettings'] to see the possible values for this operation
      *
@@ -1065,7 +1065,7 @@ class WebhooksApi
     /**
      * Operation getWebhookSettingsWithHttpInfo
      *
-     * List all webhooks
+     * List webhooks
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookSettings'] to see the possible values for this operation
      *
@@ -1163,7 +1163,7 @@ class WebhooksApi
     /**
      * Operation getWebhookSettingsAsync
      *
-     * List all webhooks
+     * List webhooks
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookSettings'] to see the possible values for this operation
      *
@@ -1183,7 +1183,7 @@ class WebhooksApi
     /**
      * Operation getWebhookSettingsAsyncWithHttpInfo
      *
-     * List all webhooks
+     * List webhooks
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookSettings'] to see the possible values for this operation
      *
@@ -1613,7 +1613,7 @@ class WebhooksApi
     /**
      * Operation updateWebhookSettings
      *
-     * Update a webhook
+     * Update webhook
      *
      * @param  \Late\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request update_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookSettings'] to see the possible values for this operation
@@ -1631,7 +1631,7 @@ class WebhooksApi
     /**
      * Operation updateWebhookSettingsWithHttpInfo
      *
-     * Update a webhook
+     * Update webhook
      *
      * @param  \Late\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookSettings'] to see the possible values for this operation
@@ -1730,7 +1730,7 @@ class WebhooksApi
     /**
      * Operation updateWebhookSettingsAsync
      *
-     * Update a webhook
+     * Update webhook
      *
      * @param  \Late\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookSettings'] to see the possible values for this operation
@@ -1751,7 +1751,7 @@ class WebhooksApi
     /**
      * Operation updateWebhookSettingsAsyncWithHttpInfo
      *
-     * Update a webhook
+     * Update webhook
      *
      * @param  \Late\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookSettings'] to see the possible values for this operation

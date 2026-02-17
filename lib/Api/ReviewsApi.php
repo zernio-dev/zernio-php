@@ -135,7 +135,7 @@ class ReviewsApi
     /**
      * Operation deleteInboxReviewReply
      *
-     * Delete a review reply
+     * Delete review reply
      *
      * @param  string $review_id review_id (required)
      * @param  \Late\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request delete_inbox_review_reply_request (required)
@@ -154,7 +154,7 @@ class ReviewsApi
     /**
      * Operation deleteInboxReviewReplyWithHttpInfo
      *
-     * Delete a review reply
+     * Delete review reply
      *
      * @param  string $review_id (required)
      * @param  \Late\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request (required)
@@ -254,7 +254,7 @@ class ReviewsApi
     /**
      * Operation deleteInboxReviewReplyAsync
      *
-     * Delete a review reply
+     * Delete review reply
      *
      * @param  string $review_id (required)
      * @param  \Late\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request (required)
@@ -276,7 +276,7 @@ class ReviewsApi
     /**
      * Operation deleteInboxReviewReplyAsyncWithHttpInfo
      *
-     * Delete a review reply
+     * Delete review reply
      *
      * @param  string $review_id (required)
      * @param  \Late\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request (required)
@@ -440,7 +440,7 @@ class ReviewsApi
     /**
      * Operation listInboxReviews
      *
-     * List reviews across all accounts
+     * List reviews
      *
      * @param  string|null $profile_id profile_id (optional)
      * @param  string|null $platform platform (optional)
@@ -467,7 +467,7 @@ class ReviewsApi
     /**
      * Operation listInboxReviewsWithHttpInfo
      *
-     * List reviews across all accounts
+     * List reviews
      *
      * @param  string|null $profile_id (optional)
      * @param  string|null $platform (optional)
@@ -575,7 +575,7 @@ class ReviewsApi
     /**
      * Operation listInboxReviewsAsync
      *
-     * List reviews across all accounts
+     * List reviews
      *
      * @param  string|null $profile_id (optional)
      * @param  string|null $platform (optional)
@@ -605,7 +605,7 @@ class ReviewsApi
     /**
      * Operation listInboxReviewsAsyncWithHttpInfo
      *
-     * List reviews across all accounts
+     * List reviews
      *
      * @param  string|null $profile_id (optional)
      * @param  string|null $platform (optional)
@@ -874,7 +874,7 @@ class ReviewsApi
     /**
      * Operation replyToInboxReview
      *
-     * Reply to a review
+     * Reply to review
      *
      * @param  string $review_id Review ID (URL-encoded for Google Business) (required)
      * @param  \Late\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request reply_to_inbox_review_request (required)
@@ -893,7 +893,7 @@ class ReviewsApi
     /**
      * Operation replyToInboxReviewWithHttpInfo
      *
-     * Reply to a review
+     * Reply to review
      *
      * @param  string $review_id Review ID (URL-encoded for Google Business) (required)
      * @param  \Late\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request (required)
@@ -993,7 +993,7 @@ class ReviewsApi
     /**
      * Operation replyToInboxReviewAsync
      *
-     * Reply to a review
+     * Reply to review
      *
      * @param  string $review_id Review ID (URL-encoded for Google Business) (required)
      * @param  \Late\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request (required)
@@ -1015,7 +1015,7 @@ class ReviewsApi
     /**
      * Operation replyToInboxReviewAsyncWithHttpInfo
      *
-     * Reply to a review
+     * Reply to review
      *
      * @param  string $review_id Review ID (URL-encoded for Google Business) (required)
      * @param  \Late\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request (required)

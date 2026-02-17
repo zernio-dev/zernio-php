@@ -6,9 +6,9 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deleteInboxReviewReply()**](ReviewsApi.md#deleteInboxReviewReply) | **DELETE** /v1/inbox/reviews/{reviewId}/reply | Delete a review reply |
-| [**listInboxReviews()**](ReviewsApi.md#listInboxReviews) | **GET** /v1/inbox/reviews | List reviews across all accounts |
-| [**replyToInboxReview()**](ReviewsApi.md#replyToInboxReview) | **POST** /v1/inbox/reviews/{reviewId}/reply | Reply to a review |
+| [**deleteInboxReviewReply()**](ReviewsApi.md#deleteInboxReviewReply) | **DELETE** /v1/inbox/reviews/{reviewId}/reply | Delete review reply |
+| [**listInboxReviews()**](ReviewsApi.md#listInboxReviews) | **GET** /v1/inbox/reviews | List reviews |
+| [**replyToInboxReview()**](ReviewsApi.md#replyToInboxReview) | **POST** /v1/inbox/reviews/{reviewId}/reply | Reply to review |
 
 
 ## `deleteInboxReviewReply()`
@@ -17,7 +17,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 deleteInboxReviewReply($review_id, $delete_inbox_review_reply_request): \Late\Model\DeleteInboxReviewReply200Response
 ```
 
-Delete a review reply
+Delete review reply
 
 Delete a reply to a review (Google Business only). Requires accountId in request body.
 
@@ -79,7 +79,7 @@ try {
 listInboxReviews($profile_id, $platform, $min_rating, $max_rating, $has_reply, $sort_by, $sort_order, $limit, $cursor, $account_id): \Late\Model\ListInboxReviews200Response
 ```
 
-List reviews across all accounts
+List reviews
 
 Fetch reviews from all connected Facebook Pages and Google Business accounts. Aggregates data with filtering and sorting options.  **Supported platforms:** Facebook, Google Business
 
@@ -157,7 +157,7 @@ try {
 replyToInboxReview($review_id, $reply_to_inbox_review_request): \Late\Model\ReplyToInboxReview200Response
 ```
 
-Reply to a review
+Reply to review
 
 Post a reply to a review. Requires accountId in request body.
 

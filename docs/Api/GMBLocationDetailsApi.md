@@ -6,8 +6,8 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getGoogleBusinessLocationDetails()**](GMBLocationDetailsApi.md#getGoogleBusinessLocationDetails) | **GET** /v1/accounts/{accountId}/gmb-location-details | Get Google Business Profile location details |
-| [**updateGoogleBusinessLocationDetails()**](GMBLocationDetailsApi.md#updateGoogleBusinessLocationDetails) | **PUT** /v1/accounts/{accountId}/gmb-location-details | Update Google Business Profile location details |
+| [**getGoogleBusinessLocationDetails()**](GMBLocationDetailsApi.md#getGoogleBusinessLocationDetails) | **GET** /v1/accounts/{accountId}/gmb-location-details | Get location details |
+| [**updateGoogleBusinessLocationDetails()**](GMBLocationDetailsApi.md#updateGoogleBusinessLocationDetails) | **PUT** /v1/accounts/{accountId}/gmb-location-details | Update location details |
 
 
 ## `getGoogleBusinessLocationDetails()`
@@ -16,7 +16,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 getGoogleBusinessLocationDetails($account_id, $read_mask): \Late\Model\GetGoogleBusinessLocationDetails200Response
 ```
 
-Get Google Business Profile location details
+Get location details
 
 Fetches detailed location information including opening hours, special hours, business description, phone numbers, website, categories, and more.  Use the `readMask` query parameter to request specific fields.
 
@@ -78,7 +78,7 @@ try {
 updateGoogleBusinessLocationDetails($account_id, $update_google_business_location_details_request): \Late\Model\UpdateGoogleBusinessLocationDetails200Response
 ```
 
-Update Google Business Profile location details
+Update location details
 
 Updates location details such as opening hours, special hours, business description, phone, and website.  The `updateMask` field is required and specifies which fields to update.  Common update masks: - `regularHours` - Update opening hours - `specialHours` - Update holiday/special hours - `profile.description` - Update business description - `websiteUri` - Update website URL - `phoneNumbers` - Update phone numbers - `regularHours,specialHours` - Update both at once
 

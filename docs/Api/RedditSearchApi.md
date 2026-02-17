@@ -6,8 +6,8 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getRedditFeed()**](RedditSearchApi.md#getRedditFeed) | **GET** /v1/reddit/feed | Fetch subreddit feed via a connected account |
-| [**searchReddit()**](RedditSearchApi.md#searchReddit) | **GET** /v1/reddit/search | Search Reddit posts via a connected account |
+| [**getRedditFeed()**](RedditSearchApi.md#getRedditFeed) | **GET** /v1/reddit/feed | Get subreddit feed |
+| [**searchReddit()**](RedditSearchApi.md#searchReddit) | **GET** /v1/reddit/search | Search posts |
 
 
 ## `getRedditFeed()`
@@ -16,7 +16,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 getRedditFeed($account_id, $subreddit, $sort, $limit, $after, $t): \Late\Model\GetRedditFeed200Response
 ```
 
-Fetch subreddit feed via a connected account
+Get subreddit feed
 
 ### Example
 
@@ -84,7 +84,7 @@ try {
 searchReddit($account_id, $q, $subreddit, $restrict_sr, $sort, $limit, $after): \Late\Model\SearchReddit200Response
 ```
 
-Search Reddit posts via a connected account
+Search posts
 
 ### Example
 

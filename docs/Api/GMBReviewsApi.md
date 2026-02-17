@@ -6,7 +6,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getGoogleBusinessReviews()**](GMBReviewsApi.md#getGoogleBusinessReviews) | **GET** /v1/accounts/{accountId}/gmb-reviews | Get Google Business Profile reviews |
+| [**getGoogleBusinessReviews()**](GMBReviewsApi.md#getGoogleBusinessReviews) | **GET** /v1/accounts/{accountId}/gmb-reviews | Get reviews |
 
 
 ## `getGoogleBusinessReviews()`
@@ -15,7 +15,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 getGoogleBusinessReviews($account_id, $page_size, $page_token): \Late\Model\GetGoogleBusinessReviews200Response
 ```
 
-Get Google Business Profile reviews
+Get reviews
 
 Fetches reviews for a connected Google Business Profile account.  Returns all reviews for the business location, including: - Reviewer information (name, profile photo) - Star rating (1-5) - Review comment/text - Business owner's reply (if any) - Review timestamps  Use pagination via `nextPageToken` to fetch all reviews for locations with many reviews.
 

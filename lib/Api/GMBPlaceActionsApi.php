@@ -135,7 +135,7 @@ class GMBPlaceActionsApi
     /**
      * Operation createGoogleBusinessPlaceAction
      *
-     * Create a place action link (booking, ordering, reservation)
+     * Create action link
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessPlaceActionRequest $create_google_business_place_action_request create_google_business_place_action_request (required)
@@ -154,7 +154,7 @@ class GMBPlaceActionsApi
     /**
      * Operation createGoogleBusinessPlaceActionWithHttpInfo
      *
-     * Create a place action link (booking, ordering, reservation)
+     * Create action link
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessPlaceActionRequest $create_google_business_place_action_request (required)
@@ -268,7 +268,7 @@ class GMBPlaceActionsApi
     /**
      * Operation createGoogleBusinessPlaceActionAsync
      *
-     * Create a place action link (booking, ordering, reservation)
+     * Create action link
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessPlaceActionRequest $create_google_business_place_action_request (required)
@@ -290,7 +290,7 @@ class GMBPlaceActionsApi
     /**
      * Operation createGoogleBusinessPlaceActionAsyncWithHttpInfo
      *
-     * Create a place action link (booking, ordering, reservation)
+     * Create action link
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessPlaceActionRequest $create_google_business_place_action_request (required)
@@ -454,7 +454,7 @@ class GMBPlaceActionsApi
     /**
      * Operation deleteGoogleBusinessPlaceAction
      *
-     * Delete a place action link
+     * Delete action link
      *
      * @param  string $account_id account_id (required)
      * @param  string $name The resource name of the place action link (e.g. locations/123/placeActionLinks/456) (required)
@@ -473,7 +473,7 @@ class GMBPlaceActionsApi
     /**
      * Operation deleteGoogleBusinessPlaceActionWithHttpInfo
      *
-     * Delete a place action link
+     * Delete action link
      *
      * @param  string $account_id (required)
      * @param  string $name The resource name of the place action link (e.g. locations/123/placeActionLinks/456) (required)
@@ -587,7 +587,7 @@ class GMBPlaceActionsApi
     /**
      * Operation deleteGoogleBusinessPlaceActionAsync
      *
-     * Delete a place action link
+     * Delete action link
      *
      * @param  string $account_id (required)
      * @param  string $name The resource name of the place action link (e.g. locations/123/placeActionLinks/456) (required)
@@ -609,7 +609,7 @@ class GMBPlaceActionsApi
     /**
      * Operation deleteGoogleBusinessPlaceActionAsyncWithHttpInfo
      *
-     * Delete a place action link
+     * Delete action link
      *
      * @param  string $account_id (required)
      * @param  string $name The resource name of the place action link (e.g. locations/123/placeActionLinks/456) (required)
@@ -775,7 +775,7 @@ class GMBPlaceActionsApi
     /**
      * Operation listGoogleBusinessPlaceActions
      *
-     * List place action links (booking, ordering, reservations)
+     * List action links
      *
      * @param  string $account_id account_id (required)
      * @param  int|null $page_size page_size (optional, default to 100)
@@ -795,7 +795,7 @@ class GMBPlaceActionsApi
     /**
      * Operation listGoogleBusinessPlaceActionsWithHttpInfo
      *
-     * List place action links (booking, ordering, reservations)
+     * List action links
      *
      * @param  string $account_id (required)
      * @param  int|null $page_size (optional, default to 100)
@@ -910,7 +910,7 @@ class GMBPlaceActionsApi
     /**
      * Operation listGoogleBusinessPlaceActionsAsync
      *
-     * List place action links (booking, ordering, reservations)
+     * List action links
      *
      * @param  string $account_id (required)
      * @param  int|null $page_size (optional, default to 100)
@@ -933,7 +933,7 @@ class GMBPlaceActionsApi
     /**
      * Operation listGoogleBusinessPlaceActionsAsyncWithHttpInfo
      *
-     * List place action links (booking, ordering, reservations)
+     * List action links
      *
      * @param  string $account_id (required)
      * @param  int|null $page_size (optional, default to 100)

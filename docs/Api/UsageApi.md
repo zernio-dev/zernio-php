@@ -6,7 +6,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getUsageStats()**](UsageApi.md#getUsageStats) | **GET** /v1/usage-stats | Get plan and usage stats for current account |
+| [**getUsageStats()**](UsageApi.md#getUsageStats) | **GET** /v1/usage-stats | Get plan and usage stats |
 
 
 ## `getUsageStats()`
@@ -15,7 +15,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 getUsageStats(): \Late\Model\UsageStats
 ```
 
-Get plan and usage stats for current account
+Get plan and usage stats
 
 ### Example
 

@@ -144,7 +144,7 @@ class QueueApi
     /**
      * Operation createQueueSlot
      *
-     * Create a new queue for a profile
+     * Create schedule
      *
      * @param  \Late\Model\CreateQueueSlotRequest $create_queue_slot_request create_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQueueSlot'] to see the possible values for this operation
@@ -162,7 +162,7 @@ class QueueApi
     /**
      * Operation createQueueSlotWithHttpInfo
      *
-     * Create a new queue for a profile
+     * Create schedule
      *
      * @param  \Late\Model\CreateQueueSlotRequest $create_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQueueSlot'] to see the possible values for this operation
@@ -261,7 +261,7 @@ class QueueApi
     /**
      * Operation createQueueSlotAsync
      *
-     * Create a new queue for a profile
+     * Create schedule
      *
      * @param  \Late\Model\CreateQueueSlotRequest $create_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQueueSlot'] to see the possible values for this operation
@@ -282,7 +282,7 @@ class QueueApi
     /**
      * Operation createQueueSlotAsyncWithHttpInfo
      *
-     * Create a new queue for a profile
+     * Create schedule
      *
      * @param  \Late\Model\CreateQueueSlotRequest $create_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQueueSlot'] to see the possible values for this operation
@@ -429,7 +429,7 @@ class QueueApi
     /**
      * Operation deleteQueueSlot
      *
-     * Delete a queue schedule
+     * Delete schedule
      *
      * @param  string $profile_id profile_id (required)
      * @param  string $queue_id Queue ID to delete (required)
@@ -448,7 +448,7 @@ class QueueApi
     /**
      * Operation deleteQueueSlotWithHttpInfo
      *
-     * Delete a queue schedule
+     * Delete schedule
      *
      * @param  string $profile_id (required)
      * @param  string $queue_id Queue ID to delete (required)
@@ -548,7 +548,7 @@ class QueueApi
     /**
      * Operation deleteQueueSlotAsync
      *
-     * Delete a queue schedule
+     * Delete schedule
      *
      * @param  string $profile_id (required)
      * @param  string $queue_id Queue ID to delete (required)
@@ -570,7 +570,7 @@ class QueueApi
     /**
      * Operation deleteQueueSlotAsyncWithHttpInfo
      *
-     * Delete a queue schedule
+     * Delete schedule
      *
      * @param  string $profile_id (required)
      * @param  string $queue_id Queue ID to delete (required)
@@ -737,7 +737,7 @@ class QueueApi
     /**
      * Operation getNextQueueSlot
      *
-     * Preview the next available queue slot (informational only)
+     * Get next available slot
      *
      * @param  string $profile_id profile_id (required)
      * @param  string|null $queue_id Specific queue ID (optional, defaults to profile&#39;s default queue) (optional)
@@ -756,7 +756,7 @@ class QueueApi
     /**
      * Operation getNextQueueSlotWithHttpInfo
      *
-     * Preview the next available queue slot (informational only)
+     * Get next available slot
      *
      * @param  string $profile_id (required)
      * @param  string|null $queue_id Specific queue ID (optional, defaults to profile&#39;s default queue) (optional)
@@ -856,7 +856,7 @@ class QueueApi
     /**
      * Operation getNextQueueSlotAsync
      *
-     * Preview the next available queue slot (informational only)
+     * Get next available slot
      *
      * @param  string $profile_id (required)
      * @param  string|null $queue_id Specific queue ID (optional, defaults to profile&#39;s default queue) (optional)
@@ -878,7 +878,7 @@ class QueueApi
     /**
      * Operation getNextQueueSlotAsyncWithHttpInfo
      *
-     * Preview the next available queue slot (informational only)
+     * Get next available slot
      *
      * @param  string $profile_id (required)
      * @param  string|null $queue_id Specific queue ID (optional, defaults to profile&#39;s default queue) (optional)
@@ -1039,7 +1039,7 @@ class QueueApi
     /**
      * Operation listQueueSlots
      *
-     * Get queue schedules for a profile
+     * List schedules
      *
      * @param  string $profile_id Profile ID to get queues for (required)
      * @param  string|null $queue_id Specific queue ID to retrieve (optional) (optional)
@@ -1059,7 +1059,7 @@ class QueueApi
     /**
      * Operation listQueueSlotsWithHttpInfo
      *
-     * Get queue schedules for a profile
+     * List schedules
      *
      * @param  string $profile_id Profile ID to get queues for (required)
      * @param  string|null $queue_id Specific queue ID to retrieve (optional) (optional)
@@ -1160,7 +1160,7 @@ class QueueApi
     /**
      * Operation listQueueSlotsAsync
      *
-     * Get queue schedules for a profile
+     * List schedules
      *
      * @param  string $profile_id Profile ID to get queues for (required)
      * @param  string|null $queue_id Specific queue ID to retrieve (optional) (optional)
@@ -1183,7 +1183,7 @@ class QueueApi
     /**
      * Operation listQueueSlotsAsyncWithHttpInfo
      *
-     * Get queue schedules for a profile
+     * List schedules
      *
      * @param  string $profile_id Profile ID to get queues for (required)
      * @param  string|null $queue_id Specific queue ID to retrieve (optional) (optional)
@@ -1356,7 +1356,7 @@ class QueueApi
     /**
      * Operation previewQueue
      *
-     * Preview upcoming queue slots for a profile
+     * Preview upcoming slots
      *
      * @param  string $profile_id profile_id (required)
      * @param  int|null $count count (optional, default to 20)
@@ -1375,7 +1375,7 @@ class QueueApi
     /**
      * Operation previewQueueWithHttpInfo
      *
-     * Preview upcoming queue slots for a profile
+     * Preview upcoming slots
      *
      * @param  string $profile_id (required)
      * @param  int|null $count (optional, default to 20)
@@ -1475,7 +1475,7 @@ class QueueApi
     /**
      * Operation previewQueueAsync
      *
-     * Preview upcoming queue slots for a profile
+     * Preview upcoming slots
      *
      * @param  string $profile_id (required)
      * @param  int|null $count (optional, default to 20)
@@ -1497,7 +1497,7 @@ class QueueApi
     /**
      * Operation previewQueueAsyncWithHttpInfo
      *
-     * Preview upcoming queue slots for a profile
+     * Preview upcoming slots
      *
      * @param  string $profile_id (required)
      * @param  int|null $count (optional, default to 20)
@@ -1664,7 +1664,7 @@ class QueueApi
     /**
      * Operation updateQueueSlot
      *
-     * Create or update a queue schedule
+     * Update schedule
      *
      * @param  \Late\Model\UpdateQueueSlotRequest $update_queue_slot_request update_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateQueueSlot'] to see the possible values for this operation
@@ -1682,7 +1682,7 @@ class QueueApi
     /**
      * Operation updateQueueSlotWithHttpInfo
      *
-     * Create or update a queue schedule
+     * Update schedule
      *
      * @param  \Late\Model\UpdateQueueSlotRequest $update_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateQueueSlot'] to see the possible values for this operation
@@ -1781,7 +1781,7 @@ class QueueApi
     /**
      * Operation updateQueueSlotAsync
      *
-     * Create or update a queue schedule
+     * Update schedule
      *
      * @param  \Late\Model\UpdateQueueSlotRequest $update_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateQueueSlot'] to see the possible values for this operation
@@ -1802,7 +1802,7 @@ class QueueApi
     /**
      * Operation updateQueueSlotAsyncWithHttpInfo
      *
-     * Create or update a queue schedule
+     * Update schedule
      *
      * @param  \Late\Model\UpdateQueueSlotRequest $update_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateQueueSlot'] to see the possible values for this operation

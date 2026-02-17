@@ -129,7 +129,7 @@ class LinkedInMentionsApi
     /**
      * Operation getLinkedInMentions
      *
-     * Resolve a LinkedIn profile or company URL to a URN for @mentions
+     * Resolve LinkedIn mention
      *
      * @param  string $account_id The LinkedIn account ID (required)
      * @param  string $url LinkedIn profile URL, company URL, or vanity name. - Person: &#x60;miquelpalet&#x60;, &#x60;linkedin.com/in/miquelpalet&#x60; - Organization: &#x60;company/microsoft&#x60;, &#x60;linkedin.com/company/microsoft&#x60; (required)
@@ -149,7 +149,7 @@ class LinkedInMentionsApi
     /**
      * Operation getLinkedInMentionsWithHttpInfo
      *
-     * Resolve a LinkedIn profile or company URL to a URN for @mentions
+     * Resolve LinkedIn mention
      *
      * @param  string $account_id The LinkedIn account ID (required)
      * @param  string $url LinkedIn profile URL, company URL, or vanity name. - Person: &#x60;miquelpalet&#x60;, &#x60;linkedin.com/in/miquelpalet&#x60; - Organization: &#x60;company/microsoft&#x60;, &#x60;linkedin.com/company/microsoft&#x60; (required)
@@ -278,7 +278,7 @@ class LinkedInMentionsApi
     /**
      * Operation getLinkedInMentionsAsync
      *
-     * Resolve a LinkedIn profile or company URL to a URN for @mentions
+     * Resolve LinkedIn mention
      *
      * @param  string $account_id The LinkedIn account ID (required)
      * @param  string $url LinkedIn profile URL, company URL, or vanity name. - Person: &#x60;miquelpalet&#x60;, &#x60;linkedin.com/in/miquelpalet&#x60; - Organization: &#x60;company/microsoft&#x60;, &#x60;linkedin.com/company/microsoft&#x60; (required)
@@ -301,7 +301,7 @@ class LinkedInMentionsApi
     /**
      * Operation getLinkedInMentionsAsyncWithHttpInfo
      *
-     * Resolve a LinkedIn profile or company URL to a URN for @mentions
+     * Resolve LinkedIn mention
      *
      * @param  string $account_id The LinkedIn account ID (required)
      * @param  string $url LinkedIn profile URL, company URL, or vanity name. - Person: &#x60;miquelpalet&#x60;, &#x60;linkedin.com/in/miquelpalet&#x60; - Organization: &#x60;company/microsoft&#x60;, &#x60;linkedin.com/company/microsoft&#x60; (required)

@@ -153,7 +153,7 @@ class ToolsApi
     /**
      * Operation checkInstagramHashtags
      *
-     * Check Instagram hashtags for bans
+     * Check Instagram hashtag bans
      *
      * @param  \Late\Model\CheckInstagramHashtagsRequest $check_instagram_hashtags_request check_instagram_hashtags_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkInstagramHashtags'] to see the possible values for this operation
@@ -171,7 +171,7 @@ class ToolsApi
     /**
      * Operation checkInstagramHashtagsWithHttpInfo
      *
-     * Check Instagram hashtags for bans
+     * Check Instagram hashtag bans
      *
      * @param  \Late\Model\CheckInstagramHashtagsRequest $check_instagram_hashtags_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkInstagramHashtags'] to see the possible values for this operation
@@ -256,7 +256,7 @@ class ToolsApi
     /**
      * Operation checkInstagramHashtagsAsync
      *
-     * Check Instagram hashtags for bans
+     * Check Instagram hashtag bans
      *
      * @param  \Late\Model\CheckInstagramHashtagsRequest $check_instagram_hashtags_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkInstagramHashtags'] to see the possible values for this operation
@@ -277,7 +277,7 @@ class ToolsApi
     /**
      * Operation checkInstagramHashtagsAsyncWithHttpInfo
      *
-     * Check Instagram hashtags for bans
+     * Check Instagram hashtag bans
      *
      * @param  \Late\Model\CheckInstagramHashtagsRequest $check_instagram_hashtags_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkInstagramHashtags'] to see the possible values for this operation
@@ -424,7 +424,7 @@ class ToolsApi
     /**
      * Operation downloadBlueskyMedia
      *
-     * Download Bluesky video
+     * Download Bluesky media
      *
      * @param  string $url Bluesky post URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadBlueskyMedia'] to see the possible values for this operation
@@ -442,7 +442,7 @@ class ToolsApi
     /**
      * Operation downloadBlueskyMediaWithHttpInfo
      *
-     * Download Bluesky video
+     * Download Bluesky media
      *
      * @param  string $url Bluesky post URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadBlueskyMedia'] to see the possible values for this operation
@@ -527,7 +527,7 @@ class ToolsApi
     /**
      * Operation downloadBlueskyMediaAsync
      *
-     * Download Bluesky video
+     * Download Bluesky media
      *
      * @param  string $url Bluesky post URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadBlueskyMedia'] to see the possible values for this operation
@@ -548,7 +548,7 @@ class ToolsApi
     /**
      * Operation downloadBlueskyMediaAsyncWithHttpInfo
      *
-     * Download Bluesky video
+     * Download Bluesky media
      *
      * @param  string $url Bluesky post URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadBlueskyMedia'] to see the possible values for this operation
@@ -970,7 +970,7 @@ class ToolsApi
     /**
      * Operation downloadInstagramMedia
      *
-     * Download Instagram reel or post
+     * Download Instagram media
      *
      * @param  string $url Instagram reel or post URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadInstagramMedia'] to see the possible values for this operation
@@ -988,7 +988,7 @@ class ToolsApi
     /**
      * Operation downloadInstagramMediaWithHttpInfo
      *
-     * Download Instagram reel or post
+     * Download Instagram media
      *
      * @param  string $url Instagram reel or post URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadInstagramMedia'] to see the possible values for this operation
@@ -1073,7 +1073,7 @@ class ToolsApi
     /**
      * Operation downloadInstagramMediaAsync
      *
-     * Download Instagram reel or post
+     * Download Instagram media
      *
      * @param  string $url Instagram reel or post URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadInstagramMedia'] to see the possible values for this operation
@@ -1094,7 +1094,7 @@ class ToolsApi
     /**
      * Operation downloadInstagramMediaAsyncWithHttpInfo
      *
-     * Download Instagram reel or post
+     * Download Instagram media
      *
      * @param  string $url Instagram reel or post URL (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['downloadInstagramMedia'] to see the possible values for this operation
@@ -1819,7 +1819,7 @@ class ToolsApi
     /**
      * Operation downloadTwitterMedia
      *
-     * Download Twitter/X video
+     * Download Twitter/X media
      *
      * @param  string $url Twitter/X post URL (required)
      * @param  string|null $action action (optional, default to 'download')
@@ -1839,7 +1839,7 @@ class ToolsApi
     /**
      * Operation downloadTwitterMediaWithHttpInfo
      *
-     * Download Twitter/X video
+     * Download Twitter/X media
      *
      * @param  string $url Twitter/X post URL (required)
      * @param  string|null $action (optional, default to 'download')
@@ -1926,7 +1926,7 @@ class ToolsApi
     /**
      * Operation downloadTwitterMediaAsync
      *
-     * Download Twitter/X video
+     * Download Twitter/X media
      *
      * @param  string $url Twitter/X post URL (required)
      * @param  string|null $action (optional, default to 'download')
@@ -1949,7 +1949,7 @@ class ToolsApi
     /**
      * Operation downloadTwitterMediaAsyncWithHttpInfo
      *
-     * Download Twitter/X video
+     * Download Twitter/X media
      *
      * @param  string $url Twitter/X post URL (required)
      * @param  string|null $action (optional, default to 'download')
@@ -2122,7 +2122,7 @@ class ToolsApi
     /**
      * Operation downloadYouTubeVideo
      *
-     * Download YouTube video or audio
+     * Download YouTube video
      *
      * @param  string $url YouTube video URL or video ID (required)
      * @param  string|null $action Action to perform: &#39;download&#39; returns download URL, &#39;formats&#39; lists available formats (optional, default to 'download')
@@ -2144,7 +2144,7 @@ class ToolsApi
     /**
      * Operation downloadYouTubeVideoWithHttpInfo
      *
-     * Download YouTube video or audio
+     * Download YouTube video
      *
      * @param  string $url YouTube video URL or video ID (required)
      * @param  string|null $action Action to perform: &#39;download&#39; returns download URL, &#39;formats&#39; lists available formats (optional, default to 'download')
@@ -2247,7 +2247,7 @@ class ToolsApi
     /**
      * Operation downloadYouTubeVideoAsync
      *
-     * Download YouTube video or audio
+     * Download YouTube video
      *
      * @param  string $url YouTube video URL or video ID (required)
      * @param  string|null $action Action to perform: &#39;download&#39; returns download URL, &#39;formats&#39; lists available formats (optional, default to 'download')
@@ -2272,7 +2272,7 @@ class ToolsApi
     /**
      * Operation downloadYouTubeVideoAsyncWithHttpInfo
      *
-     * Download YouTube video or audio
+     * Download YouTube video
      *
      * @param  string $url YouTube video URL or video ID (required)
      * @param  string|null $action Action to perform: &#39;download&#39; returns download URL, &#39;formats&#39; lists available formats (optional, default to 'download')
@@ -2469,7 +2469,7 @@ class ToolsApi
     /**
      * Operation getYouTubeTranscript
      *
-     * Get YouTube video transcript
+     * Get YouTube transcript
      *
      * @param  string $url YouTube video URL or video ID (required)
      * @param  string|null $lang Language code for transcript (optional, default to 'en')
@@ -2488,7 +2488,7 @@ class ToolsApi
     /**
      * Operation getYouTubeTranscriptWithHttpInfo
      *
-     * Get YouTube video transcript
+     * Get YouTube transcript
      *
      * @param  string $url YouTube video URL or video ID (required)
      * @param  string|null $lang Language code for transcript (optional, default to 'en')
@@ -2574,7 +2574,7 @@ class ToolsApi
     /**
      * Operation getYouTubeTranscriptAsync
      *
-     * Get YouTube video transcript
+     * Get YouTube transcript
      *
      * @param  string $url YouTube video URL or video ID (required)
      * @param  string|null $lang Language code for transcript (optional, default to 'en')
@@ -2596,7 +2596,7 @@ class ToolsApi
     /**
      * Operation getYouTubeTranscriptAsyncWithHttpInfo
      *
-     * Get YouTube video transcript
+     * Get YouTube transcript
      *
      * @param  string $url YouTube video URL or video ID (required)
      * @param  string|null $lang Language code for transcript (optional, default to 'en')

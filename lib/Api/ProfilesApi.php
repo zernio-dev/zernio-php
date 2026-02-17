@@ -141,7 +141,7 @@ class ProfilesApi
     /**
      * Operation createProfile
      *
-     * Create a new profile
+     * Create profile
      *
      * @param  \Late\Model\CreateProfileRequest $create_profile_request create_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
@@ -159,7 +159,7 @@ class ProfilesApi
     /**
      * Operation createProfileWithHttpInfo
      *
-     * Create a new profile
+     * Create profile
      *
      * @param  \Late\Model\CreateProfileRequest $create_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
@@ -258,7 +258,7 @@ class ProfilesApi
     /**
      * Operation createProfileAsync
      *
-     * Create a new profile
+     * Create profile
      *
      * @param  \Late\Model\CreateProfileRequest $create_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
@@ -279,7 +279,7 @@ class ProfilesApi
     /**
      * Operation createProfileAsyncWithHttpInfo
      *
-     * Create a new profile
+     * Create profile
      *
      * @param  \Late\Model\CreateProfileRequest $create_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
@@ -426,7 +426,7 @@ class ProfilesApi
     /**
      * Operation deleteProfile
      *
-     * Delete a profile (must have no connected accounts)
+     * Delete profile
      *
      * @param  string $profile_id profile_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProfile'] to see the possible values for this operation
@@ -444,7 +444,7 @@ class ProfilesApi
     /**
      * Operation deleteProfileWithHttpInfo
      *
-     * Delete a profile (must have no connected accounts)
+     * Delete profile
      *
      * @param  string $profile_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProfile'] to see the possible values for this operation
@@ -557,7 +557,7 @@ class ProfilesApi
     /**
      * Operation deleteProfileAsync
      *
-     * Delete a profile (must have no connected accounts)
+     * Delete profile
      *
      * @param  string $profile_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProfile'] to see the possible values for this operation
@@ -578,7 +578,7 @@ class ProfilesApi
     /**
      * Operation deleteProfileAsyncWithHttpInfo
      *
-     * Delete a profile (must have no connected accounts)
+     * Delete profile
      *
      * @param  string $profile_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProfile'] to see the possible values for this operation
@@ -726,7 +726,7 @@ class ProfilesApi
     /**
      * Operation getProfile
      *
-     * Get a profile by id
+     * Get profile
      *
      * @param  string $profile_id profile_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProfile'] to see the possible values for this operation
@@ -744,7 +744,7 @@ class ProfilesApi
     /**
      * Operation getProfileWithHttpInfo
      *
-     * Get a profile by id
+     * Get profile
      *
      * @param  string $profile_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProfile'] to see the possible values for this operation
@@ -857,7 +857,7 @@ class ProfilesApi
     /**
      * Operation getProfileAsync
      *
-     * Get a profile by id
+     * Get profile
      *
      * @param  string $profile_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProfile'] to see the possible values for this operation
@@ -878,7 +878,7 @@ class ProfilesApi
     /**
      * Operation getProfileAsyncWithHttpInfo
      *
-     * Get a profile by id
+     * Get profile
      *
      * @param  string $profile_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProfile'] to see the possible values for this operation
@@ -1026,7 +1026,7 @@ class ProfilesApi
     /**
      * Operation listProfiles
      *
-     * List profiles visible to the authenticated user
+     * List profiles
      *
      * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have &#x60;isOverLimit: true&#x60; in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
@@ -1044,7 +1044,7 @@ class ProfilesApi
     /**
      * Operation listProfilesWithHttpInfo
      *
-     * List profiles visible to the authenticated user
+     * List profiles
      *
      * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have &#x60;isOverLimit: true&#x60; in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
@@ -1143,7 +1143,7 @@ class ProfilesApi
     /**
      * Operation listProfilesAsync
      *
-     * List profiles visible to the authenticated user
+     * List profiles
      *
      * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have &#x60;isOverLimit: true&#x60; in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
@@ -1164,7 +1164,7 @@ class ProfilesApi
     /**
      * Operation listProfilesAsyncWithHttpInfo
      *
-     * List profiles visible to the authenticated user
+     * List profiles
      *
      * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have &#x60;isOverLimit: true&#x60; in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
@@ -1307,7 +1307,7 @@ class ProfilesApi
     /**
      * Operation updateProfile
      *
-     * Update a profile
+     * Update profile
      *
      * @param  string $profile_id profile_id (required)
      * @param  \Late\Model\UpdateProfileRequest $update_profile_request update_profile_request (required)
@@ -1326,7 +1326,7 @@ class ProfilesApi
     /**
      * Operation updateProfileWithHttpInfo
      *
-     * Update a profile
+     * Update profile
      *
      * @param  string $profile_id (required)
      * @param  \Late\Model\UpdateProfileRequest $update_profile_request (required)
@@ -1440,7 +1440,7 @@ class ProfilesApi
     /**
      * Operation updateProfileAsync
      *
-     * Update a profile
+     * Update profile
      *
      * @param  string $profile_id (required)
      * @param  \Late\Model\UpdateProfileRequest $update_profile_request (required)
@@ -1462,7 +1462,7 @@ class ProfilesApi
     /**
      * Operation updateProfileAsyncWithHttpInfo
      *
-     * Update a profile
+     * Update profile
      *
      * @param  string $profile_id (required)
      * @param  \Late\Model\UpdateProfileRequest $update_profile_request (required)

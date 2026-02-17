@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * SnapchatPlatformData Class Doc Comment
  *
  * @category Class
- * @description Snapchat Public Profile API constraints:  **General Requirements:** - Snapchat requires a Public Profile to publish content - Media is required for all content types (no text-only posts) - Only one media item per post is supported - Media is automatically encrypted using AES-256-CBC before upload  **Content Types:** - **Story** (default): Ephemeral content visible for 24 hours. No caption/text supported. - **Saved Story**: Permanent story on your Public Profile. Uses post content as title (max 45 chars). - **Spotlight**: Video content for Snapchat&#39;s entertainment feed. Supports description (max 160 chars) with hashtags.  **Media Constraints:** - Images: max 20 MB, JPEG/PNG format - Videos: max 500 MB, MP4 format, 5-60 seconds duration, minimum 540x960px resolution - Aspect ratio: 9:16 recommended  **Analytics:** - Views, screenshots, shares, unique viewers, completion rate available - Analytics are fetched per content type (story/saved_story/spotlight)
+ * @description Snapchat requires a Public Profile. Media is required for all content types (single item only, auto-encrypted before upload).  **Content types:** Story (ephemeral 24h, no caption), Saved Story (permanent, title max 45 chars), Spotlight (video, description max 160 chars).  **Media limits:** Images max 20 MB (JPEG/PNG), videos max 500 MB (MP4, 5-60s, min 540x960px, 9:16 recommended).
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -144,7 +144,7 @@ class AccountsApi
     /**
      * Operation deleteAccount
      *
-     * Disconnect a social account
+     * Disconnect account
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAccount'] to see the possible values for this operation
@@ -162,7 +162,7 @@ class AccountsApi
     /**
      * Operation deleteAccountWithHttpInfo
      *
-     * Disconnect a social account
+     * Disconnect account
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAccount'] to see the possible values for this operation
@@ -275,7 +275,7 @@ class AccountsApi
     /**
      * Operation deleteAccountAsync
      *
-     * Disconnect a social account
+     * Disconnect account
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAccount'] to see the possible values for this operation
@@ -296,7 +296,7 @@ class AccountsApi
     /**
      * Operation deleteAccountAsyncWithHttpInfo
      *
-     * Disconnect a social account
+     * Disconnect account
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAccount'] to see the possible values for this operation
@@ -444,7 +444,7 @@ class AccountsApi
     /**
      * Operation getAccountHealth
      *
-     * Check health of a specific account
+     * Check account health
      *
      * @param  string $account_id The account ID to check (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountHealth'] to see the possible values for this operation
@@ -462,7 +462,7 @@ class AccountsApi
     /**
      * Operation getAccountHealthWithHttpInfo
      *
-     * Check health of a specific account
+     * Check account health
      *
      * @param  string $account_id The account ID to check (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountHealth'] to see the possible values for this operation
@@ -575,7 +575,7 @@ class AccountsApi
     /**
      * Operation getAccountHealthAsync
      *
-     * Check health of a specific account
+     * Check account health
      *
      * @param  string $account_id The account ID to check (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountHealth'] to see the possible values for this operation
@@ -596,7 +596,7 @@ class AccountsApi
     /**
      * Operation getAccountHealthAsyncWithHttpInfo
      *
-     * Check health of a specific account
+     * Check account health
      *
      * @param  string $account_id The account ID to check (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAccountHealth'] to see the possible values for this operation
@@ -744,7 +744,7 @@ class AccountsApi
     /**
      * Operation getAllAccountsHealth
      *
-     * Check health of all connected accounts
+     * Check accounts health
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -764,7 +764,7 @@ class AccountsApi
     /**
      * Operation getAllAccountsHealthWithHttpInfo
      *
-     * Check health of all connected accounts
+     * Check accounts health
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -865,7 +865,7 @@ class AccountsApi
     /**
      * Operation getAllAccountsHealthAsync
      *
-     * Check health of all connected accounts
+     * Check accounts health
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -888,7 +888,7 @@ class AccountsApi
     /**
      * Operation getAllAccountsHealthAsyncWithHttpInfo
      *
-     * Check health of all connected accounts
+     * Check accounts health
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1055,7 +1055,7 @@ class AccountsApi
     /**
      * Operation getFollowerStats
      *
-     * Get follower stats and growth metrics
+     * Get follower stats
      *
      * @param  string|null $account_ids Comma-separated list of account IDs (optional, defaults to all user&#39;s accounts) (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
@@ -1077,7 +1077,7 @@ class AccountsApi
     /**
      * Operation getFollowerStatsWithHttpInfo
      *
-     * Get follower stats and growth metrics
+     * Get follower stats
      *
      * @param  string|null $account_ids Comma-separated list of account IDs (optional, defaults to all user&#39;s accounts) (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
@@ -1194,7 +1194,7 @@ class AccountsApi
     /**
      * Operation getFollowerStatsAsync
      *
-     * Get follower stats and growth metrics
+     * Get follower stats
      *
      * @param  string|null $account_ids Comma-separated list of account IDs (optional, defaults to all user&#39;s accounts) (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
@@ -1219,7 +1219,7 @@ class AccountsApi
     /**
      * Operation getFollowerStatsAsyncWithHttpInfo
      *
-     * Get follower stats and growth metrics
+     * Get follower stats
      *
      * @param  string|null $account_ids Comma-separated list of account IDs (optional, defaults to all user&#39;s accounts) (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
@@ -1410,7 +1410,7 @@ class AccountsApi
     /**
      * Operation listAccounts
      *
-     * List connected social accounts
+     * List accounts
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
      * @param  bool|null $include_over_limit When true, includes accounts from profiles that exceed the user&#39;s plan limit. Useful for disconnecting accounts from over-limit profiles so they can be deleted. (optional, default to false)
@@ -1429,7 +1429,7 @@ class AccountsApi
     /**
      * Operation listAccountsWithHttpInfo
      *
-     * List connected social accounts
+     * List accounts
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
      * @param  bool|null $include_over_limit When true, includes accounts from profiles that exceed the user&#39;s plan limit. Useful for disconnecting accounts from over-limit profiles so they can be deleted. (optional, default to false)
@@ -1529,7 +1529,7 @@ class AccountsApi
     /**
      * Operation listAccountsAsync
      *
-     * List connected social accounts
+     * List accounts
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
      * @param  bool|null $include_over_limit When true, includes accounts from profiles that exceed the user&#39;s plan limit. Useful for disconnecting accounts from over-limit profiles so they can be deleted. (optional, default to false)
@@ -1551,7 +1551,7 @@ class AccountsApi
     /**
      * Operation listAccountsAsyncWithHttpInfo
      *
-     * List connected social accounts
+     * List accounts
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
      * @param  bool|null $include_over_limit When true, includes accounts from profiles that exceed the user&#39;s plan limit. Useful for disconnecting accounts from over-limit profiles so they can be deleted. (optional, default to false)
@@ -1706,7 +1706,7 @@ class AccountsApi
     /**
      * Operation updateAccount
      *
-     * Update a social account
+     * Update account
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\UpdateAccountRequest $update_account_request update_account_request (required)
@@ -1725,7 +1725,7 @@ class AccountsApi
     /**
      * Operation updateAccountWithHttpInfo
      *
-     * Update a social account
+     * Update account
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateAccountRequest $update_account_request (required)
@@ -1839,7 +1839,7 @@ class AccountsApi
     /**
      * Operation updateAccountAsync
      *
-     * Update a social account
+     * Update account
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateAccountRequest $update_account_request (required)
@@ -1861,7 +1861,7 @@ class AccountsApi
     /**
      * Operation updateAccountAsyncWithHttpInfo
      *
-     * Update a social account
+     * Update account
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateAccountRequest $update_account_request (required)

@@ -132,7 +132,7 @@ class UsersApi
     /**
      * Operation getUser
      *
-     * Get user by id (self or invited)
+     * Get user
      *
      * @param  string $user_id user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
@@ -150,7 +150,7 @@ class UsersApi
     /**
      * Operation getUserWithHttpInfo
      *
-     * Get user by id (self or invited)
+     * Get user
      *
      * @param  string $user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
@@ -263,7 +263,7 @@ class UsersApi
     /**
      * Operation getUserAsync
      *
-     * Get user by id (self or invited)
+     * Get user
      *
      * @param  string $user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
@@ -284,7 +284,7 @@ class UsersApi
     /**
      * Operation getUserAsyncWithHttpInfo
      *
-     * Get user by id (self or invited)
+     * Get user
      *
      * @param  string $user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
@@ -432,7 +432,7 @@ class UsersApi
     /**
      * Operation listUsers
      *
-     * List team users (root + invited)
+     * List users
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listUsers'] to see the possible values for this operation
      *
@@ -449,7 +449,7 @@ class UsersApi
     /**
      * Operation listUsersWithHttpInfo
      *
-     * List team users (root + invited)
+     * List users
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listUsers'] to see the possible values for this operation
      *
@@ -547,7 +547,7 @@ class UsersApi
     /**
      * Operation listUsersAsync
      *
-     * List team users (root + invited)
+     * List users
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listUsers'] to see the possible values for this operation
      *
@@ -567,7 +567,7 @@ class UsersApi
     /**
      * Operation listUsersAsyncWithHttpInfo
      *
-     * List team users (root + invited)
+     * List users
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listUsers'] to see the possible values for this operation
      *

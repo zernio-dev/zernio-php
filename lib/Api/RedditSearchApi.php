@@ -132,7 +132,7 @@ class RedditSearchApi
     /**
      * Operation getRedditFeed
      *
-     * Fetch subreddit feed via a connected account
+     * Get subreddit feed
      *
      * @param  string $account_id account_id (required)
      * @param  string|null $subreddit subreddit (optional)
@@ -155,7 +155,7 @@ class RedditSearchApi
     /**
      * Operation getRedditFeedWithHttpInfo
      *
-     * Fetch subreddit feed via a connected account
+     * Get subreddit feed
      *
      * @param  string $account_id (required)
      * @param  string|null $subreddit (optional)
@@ -259,7 +259,7 @@ class RedditSearchApi
     /**
      * Operation getRedditFeedAsync
      *
-     * Fetch subreddit feed via a connected account
+     * Get subreddit feed
      *
      * @param  string $account_id (required)
      * @param  string|null $subreddit (optional)
@@ -285,7 +285,7 @@ class RedditSearchApi
     /**
      * Operation getRedditFeedAsyncWithHttpInfo
      *
-     * Fetch subreddit feed via a connected account
+     * Get subreddit feed
      *
      * @param  string $account_id (required)
      * @param  string|null $subreddit (optional)
@@ -497,7 +497,7 @@ class RedditSearchApi
     /**
      * Operation searchReddit
      *
-     * Search Reddit posts via a connected account
+     * Search posts
      *
      * @param  string $account_id account_id (required)
      * @param  string $q q (required)
@@ -521,7 +521,7 @@ class RedditSearchApi
     /**
      * Operation searchRedditWithHttpInfo
      *
-     * Search Reddit posts via a connected account
+     * Search posts
      *
      * @param  string $account_id (required)
      * @param  string $q (required)
@@ -626,7 +626,7 @@ class RedditSearchApi
     /**
      * Operation searchRedditAsync
      *
-     * Search Reddit posts via a connected account
+     * Search posts
      *
      * @param  string $account_id (required)
      * @param  string $q (required)
@@ -653,7 +653,7 @@ class RedditSearchApi
     /**
      * Operation searchRedditAsyncWithHttpInfo
      *
-     * Search Reddit posts via a connected account
+     * Search posts
      *
      * @param  string $account_id (required)
      * @param  string $q (required)

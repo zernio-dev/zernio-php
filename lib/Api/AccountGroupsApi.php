@@ -138,7 +138,7 @@ class AccountGroupsApi
     /**
      * Operation createAccountGroup
      *
-     * Create a new account group
+     * Create group
      *
      * @param  \Late\Model\CreateAccountGroupRequest $create_account_group_request create_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAccountGroup'] to see the possible values for this operation
@@ -156,7 +156,7 @@ class AccountGroupsApi
     /**
      * Operation createAccountGroupWithHttpInfo
      *
-     * Create a new account group
+     * Create group
      *
      * @param  \Late\Model\CreateAccountGroupRequest $create_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAccountGroup'] to see the possible values for this operation
@@ -255,7 +255,7 @@ class AccountGroupsApi
     /**
      * Operation createAccountGroupAsync
      *
-     * Create a new account group
+     * Create group
      *
      * @param  \Late\Model\CreateAccountGroupRequest $create_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAccountGroup'] to see the possible values for this operation
@@ -276,7 +276,7 @@ class AccountGroupsApi
     /**
      * Operation createAccountGroupAsyncWithHttpInfo
      *
-     * Create a new account group
+     * Create group
      *
      * @param  \Late\Model\CreateAccountGroupRequest $create_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAccountGroup'] to see the possible values for this operation
@@ -423,7 +423,7 @@ class AccountGroupsApi
     /**
      * Operation deleteAccountGroup
      *
-     * Delete an account group
+     * Delete group
      *
      * @param  string $group_id group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAccountGroup'] to see the possible values for this operation
@@ -441,7 +441,7 @@ class AccountGroupsApi
     /**
      * Operation deleteAccountGroupWithHttpInfo
      *
-     * Delete an account group
+     * Delete group
      *
      * @param  string $group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAccountGroup'] to see the possible values for this operation
@@ -554,7 +554,7 @@ class AccountGroupsApi
     /**
      * Operation deleteAccountGroupAsync
      *
-     * Delete an account group
+     * Delete group
      *
      * @param  string $group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAccountGroup'] to see the possible values for this operation
@@ -575,7 +575,7 @@ class AccountGroupsApi
     /**
      * Operation deleteAccountGroupAsyncWithHttpInfo
      *
-     * Delete an account group
+     * Delete group
      *
      * @param  string $group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAccountGroup'] to see the possible values for this operation
@@ -723,7 +723,7 @@ class AccountGroupsApi
     /**
      * Operation listAccountGroups
      *
-     * List account groups for the authenticated user
+     * List groups
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountGroups'] to see the possible values for this operation
      *
@@ -740,7 +740,7 @@ class AccountGroupsApi
     /**
      * Operation listAccountGroupsWithHttpInfo
      *
-     * List account groups for the authenticated user
+     * List groups
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountGroups'] to see the possible values for this operation
      *
@@ -838,7 +838,7 @@ class AccountGroupsApi
     /**
      * Operation listAccountGroupsAsync
      *
-     * List account groups for the authenticated user
+     * List groups
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountGroups'] to see the possible values for this operation
      *
@@ -858,7 +858,7 @@ class AccountGroupsApi
     /**
      * Operation listAccountGroupsAsyncWithHttpInfo
      *
-     * List account groups for the authenticated user
+     * List groups
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountGroups'] to see the possible values for this operation
      *
@@ -989,7 +989,7 @@ class AccountGroupsApi
     /**
      * Operation updateAccountGroup
      *
-     * Update an account group
+     * Update group
      *
      * @param  string $group_id group_id (required)
      * @param  \Late\Model\UpdateAccountGroupRequest $update_account_group_request update_account_group_request (required)
@@ -1008,7 +1008,7 @@ class AccountGroupsApi
     /**
      * Operation updateAccountGroupWithHttpInfo
      *
-     * Update an account group
+     * Update group
      *
      * @param  string $group_id (required)
      * @param  \Late\Model\UpdateAccountGroupRequest $update_account_group_request (required)
@@ -1122,7 +1122,7 @@ class AccountGroupsApi
     /**
      * Operation updateAccountGroupAsync
      *
-     * Update an account group
+     * Update group
      *
      * @param  string $group_id (required)
      * @param  \Late\Model\UpdateAccountGroupRequest $update_account_group_request (required)
@@ -1144,7 +1144,7 @@ class AccountGroupsApi
     /**
      * Operation updateAccountGroupAsyncWithHttpInfo
      *
-     * Update an account group
+     * Update group
      *
      * @param  string $group_id (required)
      * @param  \Late\Model\UpdateAccountGroupRequest $update_account_group_request (required)

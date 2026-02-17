@@ -6,14 +6,14 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**bulkUploadPosts()**](PostsApi.md#bulkUploadPosts) | **POST** /v1/posts/bulk-upload | Validate and schedule multiple posts from CSV |
-| [**createPost()**](PostsApi.md#createPost) | **POST** /v1/posts | Create a draft, scheduled, or immediate post |
-| [**deletePost()**](PostsApi.md#deletePost) | **DELETE** /v1/posts/{postId} | Delete a post |
-| [**getPost()**](PostsApi.md#getPost) | **GET** /v1/posts/{postId} | Get a single post |
-| [**listPosts()**](PostsApi.md#listPosts) | **GET** /v1/posts | List posts visible to the authenticated user |
-| [**retryPost()**](PostsApi.md#retryPost) | **POST** /v1/posts/{postId}/retry | Retry publishing a failed or partial post |
-| [**unpublishPost()**](PostsApi.md#unpublishPost) | **POST** /v1/posts/{postId}/unpublish | Delete a published post from a social media platform |
-| [**updatePost()**](PostsApi.md#updatePost) | **PUT** /v1/posts/{postId} | Update a post |
+| [**bulkUploadPosts()**](PostsApi.md#bulkUploadPosts) | **POST** /v1/posts/bulk-upload | Bulk upload from CSV |
+| [**createPost()**](PostsApi.md#createPost) | **POST** /v1/posts | Create post |
+| [**deletePost()**](PostsApi.md#deletePost) | **DELETE** /v1/posts/{postId} | Delete post |
+| [**getPost()**](PostsApi.md#getPost) | **GET** /v1/posts/{postId} | Get post |
+| [**listPosts()**](PostsApi.md#listPosts) | **GET** /v1/posts | List posts |
+| [**retryPost()**](PostsApi.md#retryPost) | **POST** /v1/posts/{postId}/retry | Retry failed post |
+| [**unpublishPost()**](PostsApi.md#unpublishPost) | **POST** /v1/posts/{postId}/unpublish | Unpublish post |
+| [**updatePost()**](PostsApi.md#updatePost) | **PUT** /v1/posts/{postId} | Update post |
 
 
 ## `bulkUploadPosts()`
@@ -22,7 +22,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 bulkUploadPosts($dry_run, $file): \Late\Model\BulkUploadPosts200Response
 ```
 
-Validate and schedule multiple posts from CSV
+Bulk upload from CSV
 
 ### Example
 
@@ -82,9 +82,9 @@ try {
 createPost($create_post_request): \Late\Model\PostCreateResponse
 ```
 
-Create a draft, scheduled, or immediate post
+Create post
 
-**Getting Post URLs:** - For immediate posts (`publishNow: true`): The response includes `platformPostUrl` in each platform entry under `post.platforms[]`. - For scheduled posts: Fetch the post via `GET /v1/posts/{postId}` after the scheduled time; `platformPostUrl` will be populated once published.  **Content/Caption requirements:** - `content` (caption/description) is optional when:   - Media is attached (`mediaItems` or per-platform `customMedia`)   - All platforms have `customContent` set   - Posting only to YouTube (title is used instead) - Text-only posts (no media) require `content` - Stories do not use captions (content is ignored) - Reels, feed posts, and other media posts can have optional captions  Platform constraints: - YouTube requires a video in mediaItems; optional custom thumbnail via MediaItem.thumbnail. - Instagram and TikTok require media; do not mix videos and images for TikTok. - Instagram carousels support up to 10 items; Stories publish as 'story'. - Threads carousels support up to 10 images (no videos in carousels); single posts support one image or video. - Facebook Stories require media (single image or video); set contentType to 'story' in platformSpecificData. - LinkedIn multi-image supports up to 20 images; single PDF documents supported (max 100MB, ~300 pages, cannot mix with other media). - Pinterest supports single image via image_url or a single video per Pin; boardId is required. - Bluesky supports up to 4 images per post. Images may be automatically recompressed to ≤ ~1MB to satisfy Bluesky's blob limit. When no media is attached, a link preview may be generated for URLs in the text. - Snapchat requires media (single image or video); set contentType to 'story', 'saved_story', or 'spotlight' in platformSpecificData. Stories are ephemeral (24h), Saved Stories are permanent, Spotlight is for video content.  **Multi-page/multi-location posting:** Some platforms allow posting to multiple pages, organizations, or locations from a single account connection. Use the same accountId multiple times with different targets in platformSpecificData: - Facebook: `pageId` - post to multiple Facebook Pages (list via GET /v1/accounts/{id}/facebook-page) - LinkedIn: `organizationUrn` - post to multiple organizations (list via GET /v1/accounts/{id}/linkedin-organizations) - Google Business: `locationId` - post to multiple locations (list via GET /v1/accounts/{id}/gmb-locations) - Reddit: `subreddit` - post to multiple subreddits from the same account
+**Getting Post URLs:** - Immediate posts (`publishNow: true`): response includes `platformPostUrl` in `post.platforms[]`. - Scheduled posts: fetch via `GET /v1/posts/{postId}` after publish time for `platformPostUrl`.  **Content requirements:** - `content` is optional when media is attached, all platforms have `customContent`, or posting to YouTube only. - Text-only posts require `content`. Stories ignore captions.  **Platform constraints:** - YouTube: video required, optional thumbnail via `MediaItem.thumbnail` - Instagram/TikTok: media required; TikTok cannot mix videos and images - Instagram carousels: up to 10 items; Threads carousels: up to 10 images only - Facebook Stories: single image or video, set `contentType: 'story'` - LinkedIn: up to 20 images or a single PDF (max 100MB) - Pinterest: single image or video, `boardId` required - Bluesky: up to 4 images, auto-recompressed to ~1MB - Snapchat: single image or video, set `contentType` in platformSpecificData
 
 ### Example
 
@@ -142,9 +142,9 @@ try {
 deletePost($post_id): \Late\Model\PostDeleteResponse
 ```
 
-Delete a post
+Delete post
 
-Delete a post. Published posts cannot be deleted.  When deleting a scheduled or draft post that consumed upload quota, the quota will be automatically refunded.
+Delete a draft or scheduled post from Late. Only posts that have not been published can be deleted. To remove a published post from a social media platform, use the [Unpublish endpoint](#tag/Posts/operation/unpublishPost) instead. When deleting a scheduled or draft post that consumed upload quota, the quota will be automatically refunded.
 
 ### Example
 
@@ -202,7 +202,7 @@ try {
 getPost($post_id): \Late\Model\PostGetResponse
 ```
 
-Get a single post
+Get post
 
 Fetch a single post by ID. For published posts, this returns `platformPostUrl`  for each platform - useful for retrieving post URLs after scheduled posts publish.
 
@@ -262,7 +262,7 @@ try {
 listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden): \Late\Model\PostsListResponse
 ```
 
-List posts visible to the authenticated user
+List posts
 
 **Getting Post URLs:** For published posts, each platform entry includes `platformPostUrl` with the public URL. Use `status=published` filter to fetch only published posts with their URLs.  Notes and constraints by platform when interpreting the response: - YouTube: posts always include at least one video in mediaItems. - Instagram/TikTok: posts always include media; drafts may omit media until finalized in client. - TikTok: mediaItems will not mix photos and videos in the same post.
 
@@ -338,7 +338,7 @@ try {
 retryPost($post_id): \Late\Model\PostRetryResponse
 ```
 
-Retry publishing a failed or partial post
+Retry failed post
 
 ### Example
 
@@ -396,9 +396,9 @@ try {
 unpublishPost($post_id, $unpublish_post_request): \Late\Model\UnpublishPost200Response
 ```
 
-Delete a published post from a social media platform
+Unpublish post
 
-Permanently deletes a published post from the specified social media platform. The post record in Late is kept but its platform status is set to \"cancelled\".  **Supported platforms:** Threads, Facebook, Twitter/X, LinkedIn, YouTube, Pinterest, Reddit, Bluesky, Google Business, Telegram.  **Not supported:** - **Instagram:** No deletion API available. Posts must be deleted manually. - **TikTok:** No deletion API available. Posts must be deleted manually. - **Snapchat:** No deletion API available. Posts must be deleted manually.  **Platform notes:** - **Threaded posts (Twitter, Threads, Bluesky):** If the post was published as a thread, all items in the thread are deleted (not just the first one). Posts published before this feature was added will only have the first item deleted. - **Telegram:** Messages older than 48 hours may fail to delete (Telegram Bot API limitation). - **YouTube:** This permanently deletes the video from YouTube.
+Permanently deletes a published post from the specified social media platform. The post record in Late is kept but its platform status is updated to \"cancelled\". This does not delete the post from Late, only from the platform.  **Supported platforms:** Threads, Facebook, Twitter/X, LinkedIn, YouTube, Pinterest, Reddit, Bluesky, Google Business, Telegram.  **Not supported:** - **Instagram:** No deletion API available. Posts must be deleted manually. - **TikTok:** No deletion API available. Posts must be deleted manually. - **Snapchat:** No deletion API available. Posts must be deleted manually.  **Platform notes:** - **Threaded posts (Twitter, Threads, Bluesky):** If the post was published as a thread, all items in the thread are deleted (not just the first one). Posts published before this feature was added will only have the first item deleted. - **Telegram:** Messages older than 48 hours may fail to delete (Telegram Bot API limitation). - **YouTube:** This permanently deletes the video from YouTube.
 
 ### Example
 
@@ -458,7 +458,7 @@ try {
 updatePost($post_id, $update_post_request): \Late\Model\PostUpdateResponse
 ```
 
-Update a post
+Update post
 
 Update an existing post. Only draft, scheduled, failed, and partial posts can be edited. Published, publishing, and cancelled posts cannot be modified.
 

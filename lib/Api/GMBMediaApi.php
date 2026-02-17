@@ -135,7 +135,7 @@ class GMBMediaApi
     /**
      * Operation createGoogleBusinessMedia
      *
-     * Upload a photo to Google Business Profile
+     * Upload photo
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request create_google_business_media_request (required)
@@ -154,7 +154,7 @@ class GMBMediaApi
     /**
      * Operation createGoogleBusinessMediaWithHttpInfo
      *
-     * Upload a photo to Google Business Profile
+     * Upload photo
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
@@ -268,7 +268,7 @@ class GMBMediaApi
     /**
      * Operation createGoogleBusinessMediaAsync
      *
-     * Upload a photo to Google Business Profile
+     * Upload photo
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
@@ -290,7 +290,7 @@ class GMBMediaApi
     /**
      * Operation createGoogleBusinessMediaAsyncWithHttpInfo
      *
-     * Upload a photo to Google Business Profile
+     * Upload photo
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
@@ -454,7 +454,7 @@ class GMBMediaApi
     /**
      * Operation deleteGoogleBusinessMedia
      *
-     * Delete a photo from Google Business Profile
+     * Delete photo
      *
      * @param  string $account_id account_id (required)
      * @param  string $media_id The media item ID to delete (required)
@@ -473,7 +473,7 @@ class GMBMediaApi
     /**
      * Operation deleteGoogleBusinessMediaWithHttpInfo
      *
-     * Delete a photo from Google Business Profile
+     * Delete photo
      *
      * @param  string $account_id (required)
      * @param  string $media_id The media item ID to delete (required)
@@ -587,7 +587,7 @@ class GMBMediaApi
     /**
      * Operation deleteGoogleBusinessMediaAsync
      *
-     * Delete a photo from Google Business Profile
+     * Delete photo
      *
      * @param  string $account_id (required)
      * @param  string $media_id The media item ID to delete (required)
@@ -609,7 +609,7 @@ class GMBMediaApi
     /**
      * Operation deleteGoogleBusinessMediaAsyncWithHttpInfo
      *
-     * Delete a photo from Google Business Profile
+     * Delete photo
      *
      * @param  string $account_id (required)
      * @param  string $media_id The media item ID to delete (required)
@@ -775,7 +775,7 @@ class GMBMediaApi
     /**
      * Operation listGoogleBusinessMedia
      *
-     * List Google Business Profile media (photos)
+     * List media
      *
      * @param  string $account_id account_id (required)
      * @param  int|null $page_size Number of items to return (max 100) (optional, default to 100)
@@ -795,7 +795,7 @@ class GMBMediaApi
     /**
      * Operation listGoogleBusinessMediaWithHttpInfo
      *
-     * List Google Business Profile media (photos)
+     * List media
      *
      * @param  string $account_id (required)
      * @param  int|null $page_size Number of items to return (max 100) (optional, default to 100)
@@ -910,7 +910,7 @@ class GMBMediaApi
     /**
      * Operation listGoogleBusinessMediaAsync
      *
-     * List Google Business Profile media (photos)
+     * List media
      *
      * @param  string $account_id (required)
      * @param  int|null $page_size Number of items to return (max 100) (optional, default to 100)
@@ -933,7 +933,7 @@ class GMBMediaApi
     /**
      * Operation listGoogleBusinessMediaAsyncWithHttpInfo
      *
-     * List Google Business Profile media (photos)
+     * List media
      *
      * @param  string $account_id (required)
      * @param  int|null $page_size Number of items to return (max 100) (optional, default to 100)

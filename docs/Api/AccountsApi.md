@@ -6,12 +6,12 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deleteAccount()**](AccountsApi.md#deleteAccount) | **DELETE** /v1/accounts/{accountId} | Disconnect a social account |
-| [**getAccountHealth()**](AccountsApi.md#getAccountHealth) | **GET** /v1/accounts/{accountId}/health | Check health of a specific account |
-| [**getAllAccountsHealth()**](AccountsApi.md#getAllAccountsHealth) | **GET** /v1/accounts/health | Check health of all connected accounts |
-| [**getFollowerStats()**](AccountsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats and growth metrics |
-| [**listAccounts()**](AccountsApi.md#listAccounts) | **GET** /v1/accounts | List connected social accounts |
-| [**updateAccount()**](AccountsApi.md#updateAccount) | **PUT** /v1/accounts/{accountId} | Update a social account |
+| [**deleteAccount()**](AccountsApi.md#deleteAccount) | **DELETE** /v1/accounts/{accountId} | Disconnect account |
+| [**getAccountHealth()**](AccountsApi.md#getAccountHealth) | **GET** /v1/accounts/{accountId}/health | Check account health |
+| [**getAllAccountsHealth()**](AccountsApi.md#getAllAccountsHealth) | **GET** /v1/accounts/health | Check accounts health |
+| [**getFollowerStats()**](AccountsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
+| [**listAccounts()**](AccountsApi.md#listAccounts) | **GET** /v1/accounts | List accounts |
+| [**updateAccount()**](AccountsApi.md#updateAccount) | **PUT** /v1/accounts/{accountId} | Update account |
 
 
 ## `deleteAccount()`
@@ -20,7 +20,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 deleteAccount($account_id): \Late\Model\DeleteAccountGroup200Response
 ```
 
-Disconnect a social account
+Disconnect account
 
 ### Example
 
@@ -78,7 +78,7 @@ try {
 getAccountHealth($account_id): \Late\Model\GetAccountHealth200Response
 ```
 
-Check health of a specific account
+Check account health
 
 Returns detailed health information for a specific social account, including token status, granted permissions, missing permissions, and actionable recommendations.
 
@@ -138,7 +138,7 @@ try {
 getAllAccountsHealth($profile_id, $platform, $status): \Late\Model\GetAllAccountsHealth200Response
 ```
 
-Check health of all connected accounts
+Check accounts health
 
 Returns the health status of all connected social accounts, including token validity, permissions status, and any issues that need attention. Useful for monitoring account connections and identifying accounts that need reconnection.
 
@@ -202,7 +202,7 @@ try {
 getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity): \Late\Model\GetFollowerStats200Response
 ```
 
-Get follower stats and growth metrics
+Get follower stats
 
 Returns follower count history and growth metrics for connected social accounts. **Requires analytics add-on subscription.**  **Data Freshness:** Follower counts are automatically refreshed once per day.
 
@@ -270,7 +270,7 @@ try {
 listAccounts($profile_id, $include_over_limit): \Late\Model\ListAccounts200Response
 ```
 
-List connected social accounts
+List accounts
 
 Returns list of connected social accounts. By default, only returns accounts from profiles within the user's plan limit. Follower count data (followersCount, followersLastUpdated) is only included if user has analytics add-on.
 
@@ -332,7 +332,7 @@ try {
 updateAccount($account_id, $update_account_request): \Late\Model\UpdateAccount200Response
 ```
 
-Update a social account
+Update account
 
 ### Example
 

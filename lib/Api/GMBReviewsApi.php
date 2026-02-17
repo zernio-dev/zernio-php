@@ -129,7 +129,7 @@ class GMBReviewsApi
     /**
      * Operation getGoogleBusinessReviews
      *
-     * Get Google Business Profile reviews
+     * Get reviews
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
@@ -149,7 +149,7 @@ class GMBReviewsApi
     /**
      * Operation getGoogleBusinessReviewsWithHttpInfo
      *
-     * Get Google Business Profile reviews
+     * Get reviews
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
@@ -306,7 +306,7 @@ class GMBReviewsApi
     /**
      * Operation getGoogleBusinessReviewsAsync
      *
-     * Get Google Business Profile reviews
+     * Get reviews
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
@@ -329,7 +329,7 @@ class GMBReviewsApi
     /**
      * Operation getGoogleBusinessReviewsAsyncWithHttpInfo
      *
-     * Get Google Business Profile reviews
+     * Get reviews
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)

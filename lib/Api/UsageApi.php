@@ -129,7 +129,7 @@ class UsageApi
     /**
      * Operation getUsageStats
      *
-     * Get plan and usage stats for current account
+     * Get plan and usage stats
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
      *
@@ -146,7 +146,7 @@ class UsageApi
     /**
      * Operation getUsageStatsWithHttpInfo
      *
-     * Get plan and usage stats for current account
+     * Get plan and usage stats
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
      *
@@ -258,7 +258,7 @@ class UsageApi
     /**
      * Operation getUsageStatsAsync
      *
-     * Get plan and usage stats for current account
+     * Get plan and usage stats
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
      *
@@ -278,7 +278,7 @@ class UsageApi
     /**
      * Operation getUsageStatsAsyncWithHttpInfo
      *
-     * Get plan and usage stats for current account
+     * Get plan and usage stats
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
      *

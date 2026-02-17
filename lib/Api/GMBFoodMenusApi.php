@@ -132,7 +132,7 @@ class GMBFoodMenusApi
     /**
      * Operation getGoogleBusinessFoodMenus
      *
-     * Get Google Business Profile food menus
+     * Get food menus
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessFoodMenus'] to see the possible values for this operation
@@ -150,7 +150,7 @@ class GMBFoodMenusApi
     /**
      * Operation getGoogleBusinessFoodMenusWithHttpInfo
      *
-     * Get Google Business Profile food menus
+     * Get food menus
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessFoodMenus'] to see the possible values for this operation
@@ -305,7 +305,7 @@ class GMBFoodMenusApi
     /**
      * Operation getGoogleBusinessFoodMenusAsync
      *
-     * Get Google Business Profile food menus
+     * Get food menus
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessFoodMenus'] to see the possible values for this operation
@@ -326,7 +326,7 @@ class GMBFoodMenusApi
     /**
      * Operation getGoogleBusinessFoodMenusAsyncWithHttpInfo
      *
-     * Get Google Business Profile food menus
+     * Get food menus
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessFoodMenus'] to see the possible values for this operation
@@ -474,7 +474,7 @@ class GMBFoodMenusApi
     /**
      * Operation updateGoogleBusinessFoodMenus
      *
-     * Update Google Business Profile food menus
+     * Update food menus
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request update_google_business_food_menus_request (required)
@@ -493,7 +493,7 @@ class GMBFoodMenusApi
     /**
      * Operation updateGoogleBusinessFoodMenusWithHttpInfo
      *
-     * Update Google Business Profile food menus
+     * Update food menus
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
@@ -649,7 +649,7 @@ class GMBFoodMenusApi
     /**
      * Operation updateGoogleBusinessFoodMenusAsync
      *
-     * Update Google Business Profile food menus
+     * Update food menus
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
@@ -671,7 +671,7 @@ class GMBFoodMenusApi
     /**
      * Operation updateGoogleBusinessFoodMenusAsyncWithHttpInfo
      *
-     * Update Google Business Profile food menus
+     * Update food menus
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)

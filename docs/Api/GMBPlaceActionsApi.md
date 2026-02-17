@@ -6,9 +6,9 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createGoogleBusinessPlaceAction()**](GMBPlaceActionsApi.md#createGoogleBusinessPlaceAction) | **POST** /v1/accounts/{accountId}/gmb-place-actions | Create a place action link (booking, ordering, reservation) |
-| [**deleteGoogleBusinessPlaceAction()**](GMBPlaceActionsApi.md#deleteGoogleBusinessPlaceAction) | **DELETE** /v1/accounts/{accountId}/gmb-place-actions | Delete a place action link |
-| [**listGoogleBusinessPlaceActions()**](GMBPlaceActionsApi.md#listGoogleBusinessPlaceActions) | **GET** /v1/accounts/{accountId}/gmb-place-actions | List place action links (booking, ordering, reservations) |
+| [**createGoogleBusinessPlaceAction()**](GMBPlaceActionsApi.md#createGoogleBusinessPlaceAction) | **POST** /v1/accounts/{accountId}/gmb-place-actions | Create action link |
+| [**deleteGoogleBusinessPlaceAction()**](GMBPlaceActionsApi.md#deleteGoogleBusinessPlaceAction) | **DELETE** /v1/accounts/{accountId}/gmb-place-actions | Delete action link |
+| [**listGoogleBusinessPlaceActions()**](GMBPlaceActionsApi.md#listGoogleBusinessPlaceActions) | **GET** /v1/accounts/{accountId}/gmb-place-actions | List action links |
 
 
 ## `createGoogleBusinessPlaceAction()`
@@ -17,7 +17,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 createGoogleBusinessPlaceAction($account_id, $create_google_business_place_action_request): \Late\Model\CreateGoogleBusinessPlaceAction200Response
 ```
 
-Create a place action link (booking, ordering, reservation)
+Create action link
 
 Creates a place action link for a location.  Available action types: - `APPOINTMENT` - Booking an appointment - `ONLINE_APPOINTMENT` - Booking an online appointment - `DINING_RESERVATION` - Making a dining reservation (OpenTable, Resy, etc.) - `FOOD_ORDERING` - Ordering food for delivery and/or takeout (DoorDash, Uber Eats, etc.) - `FOOD_DELIVERY` - Ordering food for delivery only - `FOOD_TAKEOUT` - Ordering food for takeout only - `SHOP_ONLINE` - Shopping with delivery and/or pickup
 
@@ -79,7 +79,7 @@ try {
 deleteGoogleBusinessPlaceAction($account_id, $name): \Late\Model\DeleteGoogleBusinessPlaceAction200Response
 ```
 
-Delete a place action link
+Delete action link
 
 ### Example
 
@@ -139,7 +139,7 @@ try {
 listGoogleBusinessPlaceActions($account_id, $page_size, $page_token): \Late\Model\ListGoogleBusinessPlaceActions200Response
 ```
 
-List place action links (booking, ordering, reservations)
+List action links
 
 Lists place action links for a Google Business Profile location.  Place actions are the booking, ordering, and reservation buttons that appear on your listing.
 

@@ -6,8 +6,8 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getGoogleBusinessFoodMenus()**](GMBFoodMenusApi.md#getGoogleBusinessFoodMenus) | **GET** /v1/accounts/{accountId}/gmb-food-menus | Get Google Business Profile food menus |
-| [**updateGoogleBusinessFoodMenus()**](GMBFoodMenusApi.md#updateGoogleBusinessFoodMenus) | **PUT** /v1/accounts/{accountId}/gmb-food-menus | Update Google Business Profile food menus |
+| [**getGoogleBusinessFoodMenus()**](GMBFoodMenusApi.md#getGoogleBusinessFoodMenus) | **GET** /v1/accounts/{accountId}/gmb-food-menus | Get food menus |
+| [**updateGoogleBusinessFoodMenus()**](GMBFoodMenusApi.md#updateGoogleBusinessFoodMenus) | **PUT** /v1/accounts/{accountId}/gmb-food-menus | Update food menus |
 
 
 ## `getGoogleBusinessFoodMenus()`
@@ -16,7 +16,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 getGoogleBusinessFoodMenus($account_id): \Late\Model\GetGoogleBusinessFoodMenus200Response
 ```
 
-Get Google Business Profile food menus
+Get food menus
 
 Fetches food menus for a connected Google Business Profile location.  Returns the full menu structure including: - Menu names and descriptions - Sections (e.g. Appetizers, Entrees, Drinks) - Items with labels, pricing, dietary info, and allergens - Item options/variants  Only available for locations with food menu support (restaurants, cafes, etc.).
 
@@ -76,7 +76,7 @@ try {
 updateGoogleBusinessFoodMenus($account_id, $update_google_business_food_menus_request): \Late\Model\UpdateGoogleBusinessFoodMenus200Response
 ```
 
-Update Google Business Profile food menus
+Update food menus
 
 Updates the food menus for a connected Google Business Profile location.  Send the full menus array. Use `updateMask` for partial updates (e.g. `\"menus\"` to only update the menus field).  Each menu can contain sections, and each section can contain items with pricing, dietary restrictions, allergens, and more.
 

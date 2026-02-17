@@ -6,12 +6,12 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createQueueSlot()**](QueueApi.md#createQueueSlot) | **POST** /v1/queue/slots | Create a new queue for a profile |
-| [**deleteQueueSlot()**](QueueApi.md#deleteQueueSlot) | **DELETE** /v1/queue/slots | Delete a queue schedule |
-| [**getNextQueueSlot()**](QueueApi.md#getNextQueueSlot) | **GET** /v1/queue/next-slot | Preview the next available queue slot (informational only) |
-| [**listQueueSlots()**](QueueApi.md#listQueueSlots) | **GET** /v1/queue/slots | Get queue schedules for a profile |
-| [**previewQueue()**](QueueApi.md#previewQueue) | **GET** /v1/queue/preview | Preview upcoming queue slots for a profile |
-| [**updateQueueSlot()**](QueueApi.md#updateQueueSlot) | **PUT** /v1/queue/slots | Create or update a queue schedule |
+| [**createQueueSlot()**](QueueApi.md#createQueueSlot) | **POST** /v1/queue/slots | Create schedule |
+| [**deleteQueueSlot()**](QueueApi.md#deleteQueueSlot) | **DELETE** /v1/queue/slots | Delete schedule |
+| [**getNextQueueSlot()**](QueueApi.md#getNextQueueSlot) | **GET** /v1/queue/next-slot | Get next available slot |
+| [**listQueueSlots()**](QueueApi.md#listQueueSlots) | **GET** /v1/queue/slots | List schedules |
+| [**previewQueue()**](QueueApi.md#previewQueue) | **GET** /v1/queue/preview | Preview upcoming slots |
+| [**updateQueueSlot()**](QueueApi.md#updateQueueSlot) | **PUT** /v1/queue/slots | Update schedule |
 
 
 ## `createQueueSlot()`
@@ -20,7 +20,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 createQueueSlot($create_queue_slot_request): \Late\Model\CreateQueueSlot201Response
 ```
 
-Create a new queue for a profile
+Create schedule
 
 Create an additional queue for a profile. The first queue created becomes the default. Subsequent queues are non-default unless explicitly set.
 
@@ -80,7 +80,7 @@ try {
 deleteQueueSlot($profile_id, $queue_id): \Late\Model\DeleteQueueSlot200Response
 ```
 
-Delete a queue schedule
+Delete schedule
 
 Delete a queue from a profile. Requires queueId to specify which queue to delete. If deleting the default queue, another queue will be promoted to default.
 
@@ -142,7 +142,7 @@ try {
 getNextQueueSlot($profile_id, $queue_id): \Late\Model\GetNextQueueSlot200Response
 ```
 
-Preview the next available queue slot (informational only)
+Get next available slot
 
 Returns the next available queue slot for preview/informational purposes.  **Important: To schedule a post to the queue, do NOT use this endpoint's response with `scheduledFor`.** That creates a manual post, not a queue post.  Instead, use `POST /v1/posts` with `queuedFromProfile` (and optionally `queueId`). The system will automatically assign the next available slot with proper locking to prevent race conditions.  This endpoint is useful for: - Showing users when their next post will go out before they commit - Debugging/verifying queue configuration - Building UI previews  If no queueId is specified, uses the profile's default queue.
 
@@ -204,7 +204,7 @@ try {
 listQueueSlots($profile_id, $queue_id, $all): \Late\Model\ListQueueSlots200Response
 ```
 
-Get queue schedules for a profile
+List schedules
 
 Retrieve queue schedules for a profile. Each profile can have multiple queues. - Without `all=true`: Returns the default queue (or specific queue if queueId provided) - With `all=true`: Returns all queues for the profile
 
@@ -268,7 +268,7 @@ try {
 previewQueue($profile_id, $count): \Late\Model\PreviewQueue200Response
 ```
 
-Preview upcoming queue slots for a profile
+Preview upcoming slots
 
 ### Example
 
@@ -328,7 +328,7 @@ try {
 updateQueueSlot($update_queue_slot_request): \Late\Model\UpdateQueueSlot200Response
 ```
 
-Create or update a queue schedule
+Update schedule
 
 Create a new queue or update an existing one. - Without queueId: Creates or updates the default queue - With queueId: Updates the specific queue - With setAsDefault=true: Makes this queue the default for the profile
 

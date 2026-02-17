@@ -6,9 +6,9 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createGoogleBusinessMedia()**](GMBMediaApi.md#createGoogleBusinessMedia) | **POST** /v1/accounts/{accountId}/gmb-media | Upload a photo to Google Business Profile |
-| [**deleteGoogleBusinessMedia()**](GMBMediaApi.md#deleteGoogleBusinessMedia) | **DELETE** /v1/accounts/{accountId}/gmb-media | Delete a photo from Google Business Profile |
-| [**listGoogleBusinessMedia()**](GMBMediaApi.md#listGoogleBusinessMedia) | **GET** /v1/accounts/{accountId}/gmb-media | List Google Business Profile media (photos) |
+| [**createGoogleBusinessMedia()**](GMBMediaApi.md#createGoogleBusinessMedia) | **POST** /v1/accounts/{accountId}/gmb-media | Upload photo |
+| [**deleteGoogleBusinessMedia()**](GMBMediaApi.md#deleteGoogleBusinessMedia) | **DELETE** /v1/accounts/{accountId}/gmb-media | Delete photo |
+| [**listGoogleBusinessMedia()**](GMBMediaApi.md#listGoogleBusinessMedia) | **GET** /v1/accounts/{accountId}/gmb-media | List media |
 
 
 ## `createGoogleBusinessMedia()`
@@ -17,7 +17,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 createGoogleBusinessMedia($account_id, $create_google_business_media_request): \Late\Model\CreateGoogleBusinessMedia200Response
 ```
 
-Upload a photo to Google Business Profile
+Upload photo
 
 Creates a media item (photo) for a location from a publicly accessible URL.  Categories determine where the photo appears: - `COVER` - Cover photo - `PROFILE` - Profile photo - `LOGO` - Business logo - `EXTERIOR` - Exterior shots - `INTERIOR` - Interior shots - `FOOD_AND_DRINK` - Food and drink photos - `MENU` - Menu photos - `PRODUCT` - Product photos - `TEAMS` - Team/staff photos - `ADDITIONAL` - Other photos
 
@@ -79,7 +79,7 @@ try {
 deleteGoogleBusinessMedia($account_id, $media_id): \Late\Model\DeleteGoogleBusinessMedia200Response
 ```
 
-Delete a photo from Google Business Profile
+Delete photo
 
 ### Example
 
@@ -139,7 +139,7 @@ try {
 listGoogleBusinessMedia($account_id, $page_size, $page_token): \Late\Model\ListGoogleBusinessMedia200Response
 ```
 
-List Google Business Profile media (photos)
+List media
 
 Lists media items (photos) for a Google Business Profile location. Returns photo URLs, descriptions, categories, and metadata.
 

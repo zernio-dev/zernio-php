@@ -6,12 +6,12 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createWebhookSettings()**](WebhooksApi.md#createWebhookSettings) | **POST** /v1/webhooks/settings | Create a new webhook |
-| [**deleteWebhookSettings()**](WebhooksApi.md#deleteWebhookSettings) | **DELETE** /v1/webhooks/settings | Delete a webhook |
-| [**getWebhookLogs()**](WebhooksApi.md#getWebhookLogs) | **GET** /v1/webhooks/logs | Get webhook delivery logs |
-| [**getWebhookSettings()**](WebhooksApi.md#getWebhookSettings) | **GET** /v1/webhooks/settings | List all webhooks |
+| [**createWebhookSettings()**](WebhooksApi.md#createWebhookSettings) | **POST** /v1/webhooks/settings | Create webhook |
+| [**deleteWebhookSettings()**](WebhooksApi.md#deleteWebhookSettings) | **DELETE** /v1/webhooks/settings | Delete webhook |
+| [**getWebhookLogs()**](WebhooksApi.md#getWebhookLogs) | **GET** /v1/webhooks/logs | Get delivery logs |
+| [**getWebhookSettings()**](WebhooksApi.md#getWebhookSettings) | **GET** /v1/webhooks/settings | List webhooks |
 | [**testWebhook()**](WebhooksApi.md#testWebhook) | **POST** /v1/webhooks/test | Send test webhook |
-| [**updateWebhookSettings()**](WebhooksApi.md#updateWebhookSettings) | **PUT** /v1/webhooks/settings | Update a webhook |
+| [**updateWebhookSettings()**](WebhooksApi.md#updateWebhookSettings) | **PUT** /v1/webhooks/settings | Update webhook |
 
 
 ## `createWebhookSettings()`
@@ -20,7 +20,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 createWebhookSettings($create_webhook_settings_request): \Late\Model\UpdateWebhookSettings200Response
 ```
 
-Create a new webhook
+Create webhook
 
 Create a new webhook configuration. Maximum 10 webhooks per user.  **Note:** Webhooks are automatically disabled after 10 consecutive delivery failures.
 
@@ -80,7 +80,7 @@ try {
 deleteWebhookSettings($id): \Late\Model\UpdateRedditSubreddits200Response
 ```
 
-Delete a webhook
+Delete webhook
 
 Permanently delete a webhook configuration.
 
@@ -140,7 +140,7 @@ try {
 getWebhookLogs($limit, $status, $event, $webhook_id): \Late\Model\GetWebhookLogs200Response
 ```
 
-Get webhook delivery logs
+Get delivery logs
 
 Retrieve webhook delivery history. Logs are automatically deleted after 7 days.
 
@@ -206,7 +206,7 @@ try {
 getWebhookSettings(): \Late\Model\GetWebhookSettings200Response
 ```
 
-List all webhooks
+List webhooks
 
 Retrieve all configured webhooks for the authenticated user. Supports up to 10 webhooks per user.
 
@@ -323,7 +323,7 @@ try {
 updateWebhookSettings($update_webhook_settings_request): \Late\Model\UpdateWebhookSettings200Response
 ```
 
-Update a webhook
+Update webhook
 
 Update an existing webhook configuration. All fields except `_id` are optional - only provided fields will be updated.  **Note:** Webhooks are automatically disabled after 10 consecutive delivery failures.
 

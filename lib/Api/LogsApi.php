@@ -141,7 +141,7 @@ class LogsApi
     /**
      * Operation getLog
      *
-     * Get a single log entry
+     * Get log entry
      *
      * @param  string $log_id The log entry ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLog'] to see the possible values for this operation
@@ -159,7 +159,7 @@ class LogsApi
     /**
      * Operation getLogWithHttpInfo
      *
-     * Get a single log entry
+     * Get log entry
      *
      * @param  string $log_id The log entry ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLog'] to see the possible values for this operation
@@ -272,7 +272,7 @@ class LogsApi
     /**
      * Operation getLogAsync
      *
-     * Get a single log entry
+     * Get log entry
      *
      * @param  string $log_id The log entry ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLog'] to see the possible values for this operation
@@ -293,7 +293,7 @@ class LogsApi
     /**
      * Operation getLogAsyncWithHttpInfo
      *
-     * Get a single log entry
+     * Get log entry
      *
      * @param  string $log_id The log entry ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLog'] to see the possible values for this operation
@@ -441,7 +441,7 @@ class LogsApi
     /**
      * Operation getPostLogs
      *
-     * Get logs for a specific post
+     * Get post logs
      *
      * @param  string $post_id The post ID (required)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
@@ -460,7 +460,7 @@ class LogsApi
     /**
      * Operation getPostLogsWithHttpInfo
      *
-     * Get logs for a specific post
+     * Get post logs
      *
      * @param  string $post_id The post ID (required)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
@@ -574,7 +574,7 @@ class LogsApi
     /**
      * Operation getPostLogsAsync
      *
-     * Get logs for a specific post
+     * Get post logs
      *
      * @param  string $post_id The post ID (required)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
@@ -596,7 +596,7 @@ class LogsApi
     /**
      * Operation getPostLogsAsyncWithHttpInfo
      *
-     * Get logs for a specific post
+     * Get post logs
      *
      * @param  string $post_id The post ID (required)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
@@ -762,7 +762,7 @@ class LogsApi
     /**
      * Operation listConnectionLogs
      *
-     * Get connection logs
+     * List connection logs
      *
      * @param  string|null $platform Filter by platform (optional)
      * @param  string|null $event_type Filter by event type (optional)
@@ -785,7 +785,7 @@ class LogsApi
     /**
      * Operation listConnectionLogsWithHttpInfo
      *
-     * Get connection logs
+     * List connection logs
      *
      * @param  string|null $platform Filter by platform (optional)
      * @param  string|null $event_type Filter by event type (optional)
@@ -889,7 +889,7 @@ class LogsApi
     /**
      * Operation listConnectionLogsAsync
      *
-     * Get connection logs
+     * List connection logs
      *
      * @param  string|null $platform Filter by platform (optional)
      * @param  string|null $event_type Filter by event type (optional)
@@ -915,7 +915,7 @@ class LogsApi
     /**
      * Operation listConnectionLogsAsyncWithHttpInfo
      *
-     * Get connection logs
+     * List connection logs
      *
      * @param  string|null $platform Filter by platform (optional)
      * @param  string|null $event_type Filter by event type (optional)
@@ -1133,7 +1133,7 @@ class LogsApi
     /**
      * Operation listLogs
      *
-     * Get publishing logs (deprecated)
+     * List publishing logs (deprecated)
      *
      * @param  string|null $status Filter by log status (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1157,7 +1157,7 @@ class LogsApi
     /**
      * Operation listLogsWithHttpInfo
      *
-     * Get publishing logs (deprecated)
+     * List publishing logs (deprecated)
      *
      * @param  string|null $status Filter by log status (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1262,7 +1262,7 @@ class LogsApi
     /**
      * Operation listLogsAsync
      *
-     * Get publishing logs (deprecated)
+     * List publishing logs (deprecated)
      *
      * @param  string|null $status Filter by log status (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1289,7 +1289,7 @@ class LogsApi
     /**
      * Operation listLogsAsyncWithHttpInfo
      *
-     * Get publishing logs (deprecated)
+     * List publishing logs (deprecated)
      *
      * @param  string|null $status Filter by log status (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1509,7 +1509,7 @@ class LogsApi
     /**
      * Operation listPostsLogs
      *
-     * Get publishing logs
+     * List publishing logs
      *
      * @param  string|null $status Filter by log status (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1532,7 +1532,7 @@ class LogsApi
     /**
      * Operation listPostsLogsWithHttpInfo
      *
-     * Get publishing logs
+     * List publishing logs
      *
      * @param  string|null $status Filter by log status (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1636,7 +1636,7 @@ class LogsApi
     /**
      * Operation listPostsLogsAsync
      *
-     * Get publishing logs
+     * List publishing logs
      *
      * @param  string|null $status Filter by log status (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1662,7 +1662,7 @@ class LogsApi
     /**
      * Operation listPostsLogsAsyncWithHttpInfo
      *
-     * Get publishing logs
+     * List publishing logs
      *
      * @param  string|null $status Filter by log status (optional)
      * @param  string|null $platform Filter by platform (optional)

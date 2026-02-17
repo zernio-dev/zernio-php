@@ -6,11 +6,11 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createProfile()**](ProfilesApi.md#createProfile) | **POST** /v1/profiles | Create a new profile |
-| [**deleteProfile()**](ProfilesApi.md#deleteProfile) | **DELETE** /v1/profiles/{profileId} | Delete a profile (must have no connected accounts) |
-| [**getProfile()**](ProfilesApi.md#getProfile) | **GET** /v1/profiles/{profileId} | Get a profile by id |
-| [**listProfiles()**](ProfilesApi.md#listProfiles) | **GET** /v1/profiles | List profiles visible to the authenticated user |
-| [**updateProfile()**](ProfilesApi.md#updateProfile) | **PUT** /v1/profiles/{profileId} | Update a profile |
+| [**createProfile()**](ProfilesApi.md#createProfile) | **POST** /v1/profiles | Create profile |
+| [**deleteProfile()**](ProfilesApi.md#deleteProfile) | **DELETE** /v1/profiles/{profileId} | Delete profile |
+| [**getProfile()**](ProfilesApi.md#getProfile) | **GET** /v1/profiles/{profileId} | Get profile |
+| [**listProfiles()**](ProfilesApi.md#listProfiles) | **GET** /v1/profiles | List profiles |
+| [**updateProfile()**](ProfilesApi.md#updateProfile) | **PUT** /v1/profiles/{profileId} | Update profile |
 
 
 ## `createProfile()`
@@ -19,7 +19,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 createProfile($create_profile_request): \Late\Model\ProfileCreateResponse
 ```
 
-Create a new profile
+Create profile
 
 ### Example
 
@@ -77,7 +77,7 @@ try {
 deleteProfile($profile_id): \Late\Model\DeleteAccountGroup200Response
 ```
 
-Delete a profile (must have no connected accounts)
+Delete profile
 
 ### Example
 
@@ -135,7 +135,7 @@ try {
 getProfile($profile_id): \Late\Model\GetProfile200Response
 ```
 
-Get a profile by id
+Get profile
 
 ### Example
 
@@ -193,7 +193,7 @@ try {
 listProfiles($include_over_limit): \Late\Model\ProfilesListResponse
 ```
 
-List profiles visible to the authenticated user
+List profiles
 
 Returns profiles within the user's plan limit. Profiles are sorted by creation date (oldest first). Use `includeOverLimit=true` to include profiles that exceed the plan limit (for management/deletion purposes).
 
@@ -253,7 +253,7 @@ try {
 updateProfile($profile_id, $update_profile_request): \Late\Model\UpdateProfile200Response
 ```
 
-Update a profile
+Update profile
 
 ### Example
 

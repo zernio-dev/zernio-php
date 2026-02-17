@@ -141,7 +141,7 @@ class AnalyticsApi
     /**
      * Operation getAnalytics
      *
-     * Unified analytics for posts
+     * Get post analytics
      *
      * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs (from &#x60;POST /v1/posts&#x60;)  and External Post IDs (from this endpoint&#39;s list response). The API automatically  resolves Late Post IDs to their corresponding External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
@@ -168,7 +168,7 @@ class AnalyticsApi
     /**
      * Operation getAnalyticsWithHttpInfo
      *
-     * Unified analytics for posts
+     * Get post analytics
      *
      * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs (from &#x60;POST /v1/posts&#x60;)  and External Post IDs (from this endpoint&#39;s list response). The API automatically  resolves Late Post IDs to their corresponding External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
@@ -318,7 +318,7 @@ class AnalyticsApi
     /**
      * Operation getAnalyticsAsync
      *
-     * Unified analytics for posts
+     * Get post analytics
      *
      * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs (from &#x60;POST /v1/posts&#x60;)  and External Post IDs (from this endpoint&#39;s list response). The API automatically  resolves Late Post IDs to their corresponding External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
@@ -348,7 +348,7 @@ class AnalyticsApi
     /**
      * Operation getAnalyticsAsyncWithHttpInfo
      *
-     * Unified analytics for posts
+     * Get post analytics
      *
      * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs (from &#x60;POST /v1/posts&#x60;)  and External Post IDs (from this endpoint&#39;s list response). The API automatically  resolves Late Post IDs to their corresponding External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
@@ -608,7 +608,7 @@ class AnalyticsApi
     /**
      * Operation getFollowerStats
      *
-     * Get follower stats and growth metrics
+     * Get follower stats
      *
      * @param  string|null $account_ids Comma-separated list of account IDs (optional, defaults to all user&#39;s accounts) (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
@@ -630,7 +630,7 @@ class AnalyticsApi
     /**
      * Operation getFollowerStatsWithHttpInfo
      *
-     * Get follower stats and growth metrics
+     * Get follower stats
      *
      * @param  string|null $account_ids Comma-separated list of account IDs (optional, defaults to all user&#39;s accounts) (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
@@ -747,7 +747,7 @@ class AnalyticsApi
     /**
      * Operation getFollowerStatsAsync
      *
-     * Get follower stats and growth metrics
+     * Get follower stats
      *
      * @param  string|null $account_ids Comma-separated list of account IDs (optional, defaults to all user&#39;s accounts) (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
@@ -772,7 +772,7 @@ class AnalyticsApi
     /**
      * Operation getFollowerStatsAsyncWithHttpInfo
      *
-     * Get follower stats and growth metrics
+     * Get follower stats
      *
      * @param  string|null $account_ids Comma-separated list of account IDs (optional, defaults to all user&#39;s accounts) (optional)
      * @param  string|null $profile_id Filter by profile ID (optional)
@@ -963,7 +963,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInAggregateAnalytics
      *
-     * Get aggregate analytics for a LinkedIn personal account
+     * Get LinkedIn aggregate stats
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
      * @param  string|null $aggregation Type of aggregation for the analytics data. - &#x60;TOTAL&#x60; (default): Returns single totals for each metric - &#x60;DAILY&#x60;: Returns daily breakdown of metrics  Note: &#x60;MEMBERS_REACHED&#x60; metric is not available with &#x60;DAILY&#x60; aggregation. (optional, default to 'TOTAL')
@@ -985,7 +985,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInAggregateAnalyticsWithHttpInfo
      *
-     * Get aggregate analytics for a LinkedIn personal account
+     * Get LinkedIn aggregate stats
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
      * @param  string|null $aggregation Type of aggregation for the analytics data. - &#x60;TOTAL&#x60; (default): Returns single totals for each metric - &#x60;DAILY&#x60;: Returns daily breakdown of metrics  Note: &#x60;MEMBERS_REACHED&#x60; metric is not available with &#x60;DAILY&#x60; aggregation. (optional, default to 'TOTAL')
@@ -1130,7 +1130,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInAggregateAnalyticsAsync
      *
-     * Get aggregate analytics for a LinkedIn personal account
+     * Get LinkedIn aggregate stats
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
      * @param  string|null $aggregation Type of aggregation for the analytics data. - &#x60;TOTAL&#x60; (default): Returns single totals for each metric - &#x60;DAILY&#x60;: Returns daily breakdown of metrics  Note: &#x60;MEMBERS_REACHED&#x60; metric is not available with &#x60;DAILY&#x60; aggregation. (optional, default to 'TOTAL')
@@ -1155,7 +1155,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInAggregateAnalyticsAsyncWithHttpInfo
      *
-     * Get aggregate analytics for a LinkedIn personal account
+     * Get LinkedIn aggregate stats
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
      * @param  string|null $aggregation Type of aggregation for the analytics data. - &#x60;TOTAL&#x60; (default): Returns single totals for each metric - &#x60;DAILY&#x60;: Returns daily breakdown of metrics  Note: &#x60;MEMBERS_REACHED&#x60; metric is not available with &#x60;DAILY&#x60; aggregation. (optional, default to 'TOTAL')
@@ -1351,7 +1351,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInPostAnalytics
      *
-     * Get analytics for a specific LinkedIn post by URN
+     * Get LinkedIn post stats
      *
      * @param  string $account_id The ID of the LinkedIn account (required)
      * @param  string $urn The LinkedIn post URN (required)
@@ -1370,7 +1370,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInPostAnalyticsWithHttpInfo
      *
-     * Get analytics for a specific LinkedIn post by URN
+     * Get LinkedIn post stats
      *
      * @param  string $account_id The ID of the LinkedIn account (required)
      * @param  string $urn The LinkedIn post URN (required)
@@ -1512,7 +1512,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInPostAnalyticsAsync
      *
-     * Get analytics for a specific LinkedIn post by URN
+     * Get LinkedIn post stats
      *
      * @param  string $account_id The ID of the LinkedIn account (required)
      * @param  string $urn The LinkedIn post URN (required)
@@ -1534,7 +1534,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInPostAnalyticsAsyncWithHttpInfo
      *
-     * Get analytics for a specific LinkedIn post by URN
+     * Get LinkedIn post stats
      *
      * @param  string $account_id The ID of the LinkedIn account (required)
      * @param  string $urn The LinkedIn post URN (required)
@@ -1700,7 +1700,7 @@ class AnalyticsApi
     /**
      * Operation getYouTubeDailyViews
      *
-     * YouTube daily views breakdown
+     * Get YouTube daily views
      *
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Late account ID for the YouTube account (required)
@@ -1721,7 +1721,7 @@ class AnalyticsApi
     /**
      * Operation getYouTubeDailyViewsWithHttpInfo
      *
-     * YouTube daily views breakdown
+     * Get YouTube daily views
      *
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Late account ID for the YouTube account (required)
@@ -1893,7 +1893,7 @@ class AnalyticsApi
     /**
      * Operation getYouTubeDailyViewsAsync
      *
-     * YouTube daily views breakdown
+     * Get YouTube daily views
      *
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Late account ID for the YouTube account (required)
@@ -1917,7 +1917,7 @@ class AnalyticsApi
     /**
      * Operation getYouTubeDailyViewsAsyncWithHttpInfo
      *
-     * YouTube daily views breakdown
+     * Get YouTube daily views
      *
      * @param  string $video_id The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) (required)
      * @param  string $account_id The Late account ID for the YouTube account (required)

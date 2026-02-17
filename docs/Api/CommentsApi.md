@@ -6,15 +6,15 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deleteInboxComment()**](CommentsApi.md#deleteInboxComment) | **DELETE** /v1/inbox/comments/{postId} | Delete a comment |
-| [**getInboxPostComments()**](CommentsApi.md#getInboxPostComments) | **GET** /v1/inbox/comments/{postId} | Get comments for a post |
-| [**hideInboxComment()**](CommentsApi.md#hideInboxComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/hide | Hide a comment |
-| [**likeInboxComment()**](CommentsApi.md#likeInboxComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/like | Like a comment |
-| [**listInboxComments()**](CommentsApi.md#listInboxComments) | **GET** /v1/inbox/comments | List posts with comments across all accounts |
-| [**replyToInboxPost()**](CommentsApi.md#replyToInboxPost) | **POST** /v1/inbox/comments/{postId} | Reply to a post or comment |
-| [**sendPrivateReplyToComment()**](CommentsApi.md#sendPrivateReplyToComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/private-reply | Send private reply to comment author |
-| [**unhideInboxComment()**](CommentsApi.md#unhideInboxComment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/hide | Unhide a comment |
-| [**unlikeInboxComment()**](CommentsApi.md#unlikeInboxComment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/like | Unlike a comment |
+| [**deleteInboxComment()**](CommentsApi.md#deleteInboxComment) | **DELETE** /v1/inbox/comments/{postId} | Delete comment |
+| [**getInboxPostComments()**](CommentsApi.md#getInboxPostComments) | **GET** /v1/inbox/comments/{postId} | Get post comments |
+| [**hideInboxComment()**](CommentsApi.md#hideInboxComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/hide | Hide comment |
+| [**likeInboxComment()**](CommentsApi.md#likeInboxComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/like | Like comment |
+| [**listInboxComments()**](CommentsApi.md#listInboxComments) | **GET** /v1/inbox/comments | List commented posts |
+| [**replyToInboxPost()**](CommentsApi.md#replyToInboxPost) | **POST** /v1/inbox/comments/{postId} | Reply to comment |
+| [**sendPrivateReplyToComment()**](CommentsApi.md#sendPrivateReplyToComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/private-reply | Send private reply |
+| [**unhideInboxComment()**](CommentsApi.md#unhideInboxComment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/hide | Unhide comment |
+| [**unlikeInboxComment()**](CommentsApi.md#unlikeInboxComment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/like | Unlike comment |
 
 
 ## `deleteInboxComment()`
@@ -23,7 +23,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 deleteInboxComment($post_id, $account_id, $comment_id): \Late\Model\DeleteInboxComment200Response
 ```
 
-Delete a comment
+Delete comment
 
 Delete a comment on a post. Supported by Facebook, Instagram, Bluesky, Reddit, YouTube, LinkedIn, and TikTok. Requires accountId and commentId query parameters.
 
@@ -87,7 +87,7 @@ try {
 getInboxPostComments($post_id, $account_id, $subreddit, $limit, $cursor, $comment_id): \Late\Model\GetInboxPostComments200Response
 ```
 
-Get comments for a post
+Get post comments
 
 Fetch comments for a specific post. Requires accountId query parameter.
 
@@ -157,7 +157,7 @@ try {
 hideInboxComment($post_id, $comment_id, $hide_inbox_comment_request): \Late\Model\HideInboxComment200Response
 ```
 
-Hide a comment
+Hide comment
 
 Hide a comment on a post. Supported by Facebook, Instagram, and Threads. Hidden comments are only visible to the commenter and page admin.
 
@@ -221,7 +221,7 @@ try {
 likeInboxComment($post_id, $comment_id, $like_inbox_comment_request): \Late\Model\LikeInboxComment200Response
 ```
 
-Like a comment
+Like comment
 
 Like or upvote a comment on a post.  **Supported platforms:** Facebook, Twitter/X, Bluesky, Reddit  For Bluesky, the `cid` (content identifier) is required in the request body.
 
@@ -285,7 +285,7 @@ try {
 listInboxComments($profile_id, $platform, $min_comments, $since, $sort_by, $sort_order, $limit, $cursor, $account_id): \Late\Model\ListInboxComments200Response
 ```
 
-List posts with comments across all accounts
+List commented posts
 
 Fetch posts with their comment counts from all connected accounts. Aggregates data from multiple accounts in a single API call.  **Supported platforms:** Facebook, Instagram, Twitter/X, Bluesky, Threads, YouTube, LinkedIn, Reddit, TikTok (write-only)
 
@@ -361,7 +361,7 @@ try {
 replyToInboxPost($post_id, $reply_to_inbox_post_request): \Late\Model\ReplyToInboxPost200Response
 ```
 
-Reply to a post or comment
+Reply to comment
 
 Post a reply to a post or specific comment. Requires accountId in request body.
 
@@ -423,7 +423,7 @@ try {
 sendPrivateReplyToComment($post_id, $comment_id, $send_private_reply_to_comment_request): \Late\Model\SendPrivateReplyToComment200Response
 ```
 
-Send private reply to comment author
+Send private reply
 
 Send a private direct message to the author of a comment on your post. This is useful for handling customer inquiries or sensitive matters privately.  **Supported platforms:** Instagram, Facebook  **Limitations:** - Only ONE private reply per comment (platform API restriction) - Must be sent within 7 days of the comment being posted - Only works for comments on posts owned by the connected account - Text only (no media attachments) - Instagram: message goes to the user's Inbox (if they follow you) or Message Requests (if they don't). Requires `instagram_business_manage_messages` permission. - Facebook: message opens a Messenger conversation with the commenter. Requires `pages_messaging` permission.  **Note:** Both permissions are already included in Late's OAuth flow. This does not create a conversation thread until the user replies back.
 
@@ -487,7 +487,7 @@ try {
 unhideInboxComment($post_id, $comment_id, $account_id): \Late\Model\HideInboxComment200Response
 ```
 
-Unhide a comment
+Unhide comment
 
 Unhide a previously hidden comment. Supported by Facebook, Instagram, and Threads.
 
@@ -551,7 +551,7 @@ try {
 unlikeInboxComment($post_id, $comment_id, $account_id, $like_uri): \Late\Model\UnlikeInboxComment200Response
 ```
 
-Unlike a comment
+Unlike comment
 
 Remove a like from a comment.  **Supported platforms:** Facebook, Twitter/X, Bluesky, Reddit  For Bluesky, the `likeUri` query parameter is required.
 

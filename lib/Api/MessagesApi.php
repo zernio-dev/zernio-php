@@ -145,7 +145,7 @@ class MessagesApi
     /**
      * Operation editInboxMessage
      *
-     * Edit a message (Telegram only)
+     * Edit message
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The Telegram message ID to edit (required)
@@ -165,7 +165,7 @@ class MessagesApi
     /**
      * Operation editInboxMessageWithHttpInfo
      *
-     * Edit a message (Telegram only)
+     * Edit message
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The Telegram message ID to edit (required)
@@ -266,7 +266,7 @@ class MessagesApi
     /**
      * Operation editInboxMessageAsync
      *
-     * Edit a message (Telegram only)
+     * Edit message
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The Telegram message ID to edit (required)
@@ -289,7 +289,7 @@ class MessagesApi
     /**
      * Operation editInboxMessageAsyncWithHttpInfo
      *
-     * Edit a message (Telegram only)
+     * Edit message
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The Telegram message ID to edit (required)
@@ -470,7 +470,7 @@ class MessagesApi
     /**
      * Operation getInboxConversation
      *
-     * Get conversation details
+     * Get conversation
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id The social account ID (required)
@@ -489,7 +489,7 @@ class MessagesApi
     /**
      * Operation getInboxConversationWithHttpInfo
      *
-     * Get conversation details
+     * Get conversation
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id The social account ID (required)
@@ -589,7 +589,7 @@ class MessagesApi
     /**
      * Operation getInboxConversationAsync
      *
-     * Get conversation details
+     * Get conversation
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id The social account ID (required)
@@ -611,7 +611,7 @@ class MessagesApi
     /**
      * Operation getInboxConversationAsyncWithHttpInfo
      *
-     * Get conversation details
+     * Get conversation
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id The social account ID (required)
@@ -777,7 +777,7 @@ class MessagesApi
     /**
      * Operation getInboxConversationMessages
      *
-     * Get messages in a conversation
+     * List messages
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id Social account ID (required)
@@ -796,7 +796,7 @@ class MessagesApi
     /**
      * Operation getInboxConversationMessagesWithHttpInfo
      *
-     * Get messages in a conversation
+     * List messages
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id Social account ID (required)
@@ -896,7 +896,7 @@ class MessagesApi
     /**
      * Operation getInboxConversationMessagesAsync
      *
-     * Get messages in a conversation
+     * List messages
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id Social account ID (required)
@@ -918,7 +918,7 @@ class MessagesApi
     /**
      * Operation getInboxConversationMessagesAsyncWithHttpInfo
      *
-     * Get messages in a conversation
+     * List messages
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id Social account ID (required)
@@ -1084,7 +1084,7 @@ class MessagesApi
     /**
      * Operation listInboxConversations
      *
-     * List conversations across all accounts
+     * List conversations
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1108,7 +1108,7 @@ class MessagesApi
     /**
      * Operation listInboxConversationsWithHttpInfo
      *
-     * List conversations across all accounts
+     * List conversations
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1213,7 +1213,7 @@ class MessagesApi
     /**
      * Operation listInboxConversationsAsync
      *
-     * List conversations across all accounts
+     * List conversations
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1240,7 +1240,7 @@ class MessagesApi
     /**
      * Operation listInboxConversationsAsyncWithHttpInfo
      *
-     * List conversations across all accounts
+     * List conversations
      *
      * @param  string|null $profile_id Filter by profile ID (optional)
      * @param  string|null $platform Filter by platform (optional)
@@ -1461,7 +1461,7 @@ class MessagesApi
     /**
      * Operation sendInboxMessage
      *
-     * Send a message
+     * Send message
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  \Late\Model\SendInboxMessageRequest $send_inbox_message_request send_inbox_message_request (required)
@@ -1480,7 +1480,7 @@ class MessagesApi
     /**
      * Operation sendInboxMessageWithHttpInfo
      *
-     * Send a message
+     * Send message
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  \Late\Model\SendInboxMessageRequest $send_inbox_message_request (required)
@@ -1594,7 +1594,7 @@ class MessagesApi
     /**
      * Operation sendInboxMessageAsync
      *
-     * Send a message
+     * Send message
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  \Late\Model\SendInboxMessageRequest $send_inbox_message_request (required)
@@ -1616,7 +1616,7 @@ class MessagesApi
     /**
      * Operation sendInboxMessageAsyncWithHttpInfo
      *
-     * Send a message
+     * Send message
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  \Late\Model\SendInboxMessageRequest $send_inbox_message_request (required)

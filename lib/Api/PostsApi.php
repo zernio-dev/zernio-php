@@ -150,7 +150,7 @@ class PostsApi
     /**
      * Operation bulkUploadPosts
      *
-     * Validate and schedule multiple posts from CSV
+     * Bulk upload from CSV
      *
      * @param  bool|null $dry_run dry_run (optional, default to false)
      * @param  \SplFileObject|null $file file (optional)
@@ -169,7 +169,7 @@ class PostsApi
     /**
      * Operation bulkUploadPostsWithHttpInfo
      *
-     * Validate and schedule multiple posts from CSV
+     * Bulk upload from CSV
      *
      * @param  bool|null $dry_run (optional, default to false)
      * @param  \SplFileObject|null $file (optional)
@@ -283,7 +283,7 @@ class PostsApi
     /**
      * Operation bulkUploadPostsAsync
      *
-     * Validate and schedule multiple posts from CSV
+     * Bulk upload from CSV
      *
      * @param  bool|null $dry_run (optional, default to false)
      * @param  \SplFileObject|null $file (optional)
@@ -305,7 +305,7 @@ class PostsApi
     /**
      * Operation bulkUploadPostsAsyncWithHttpInfo
      *
-     * Validate and schedule multiple posts from CSV
+     * Bulk upload from CSV
      *
      * @param  bool|null $dry_run (optional, default to false)
      * @param  \SplFileObject|null $file (optional)
@@ -461,7 +461,7 @@ class PostsApi
     /**
      * Operation createPost
      *
-     * Create a draft, scheduled, or immediate post
+     * Create post
      *
      * @param  \Late\Model\CreatePostRequest $create_post_request create_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPost'] to see the possible values for this operation
@@ -479,7 +479,7 @@ class PostsApi
     /**
      * Operation createPostWithHttpInfo
      *
-     * Create a draft, scheduled, or immediate post
+     * Create post
      *
      * @param  \Late\Model\CreatePostRequest $create_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPost'] to see the possible values for this operation
@@ -634,7 +634,7 @@ class PostsApi
     /**
      * Operation createPostAsync
      *
-     * Create a draft, scheduled, or immediate post
+     * Create post
      *
      * @param  \Late\Model\CreatePostRequest $create_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPost'] to see the possible values for this operation
@@ -655,7 +655,7 @@ class PostsApi
     /**
      * Operation createPostAsyncWithHttpInfo
      *
-     * Create a draft, scheduled, or immediate post
+     * Create post
      *
      * @param  \Late\Model\CreatePostRequest $create_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPost'] to see the possible values for this operation
@@ -802,7 +802,7 @@ class PostsApi
     /**
      * Operation deletePost
      *
-     * Delete a post
+     * Delete post
      *
      * @param  string $post_id post_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePost'] to see the possible values for this operation
@@ -820,7 +820,7 @@ class PostsApi
     /**
      * Operation deletePostWithHttpInfo
      *
-     * Delete a post
+     * Delete post
      *
      * @param  string $post_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePost'] to see the possible values for this operation
@@ -933,7 +933,7 @@ class PostsApi
     /**
      * Operation deletePostAsync
      *
-     * Delete a post
+     * Delete post
      *
      * @param  string $post_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePost'] to see the possible values for this operation
@@ -954,7 +954,7 @@ class PostsApi
     /**
      * Operation deletePostAsyncWithHttpInfo
      *
-     * Delete a post
+     * Delete post
      *
      * @param  string $post_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deletePost'] to see the possible values for this operation
@@ -1102,7 +1102,7 @@ class PostsApi
     /**
      * Operation getPost
      *
-     * Get a single post
+     * Get post
      *
      * @param  string $post_id post_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPost'] to see the possible values for this operation
@@ -1120,7 +1120,7 @@ class PostsApi
     /**
      * Operation getPostWithHttpInfo
      *
-     * Get a single post
+     * Get post
      *
      * @param  string $post_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPost'] to see the possible values for this operation
@@ -1233,7 +1233,7 @@ class PostsApi
     /**
      * Operation getPostAsync
      *
-     * Get a single post
+     * Get post
      *
      * @param  string $post_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPost'] to see the possible values for this operation
@@ -1254,7 +1254,7 @@ class PostsApi
     /**
      * Operation getPostAsyncWithHttpInfo
      *
-     * Get a single post
+     * Get post
      *
      * @param  string $post_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPost'] to see the possible values for this operation
@@ -1402,7 +1402,7 @@ class PostsApi
     /**
      * Operation listPosts
      *
-     * List posts visible to the authenticated user
+     * List posts
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size (optional, default to 10)
@@ -1428,7 +1428,7 @@ class PostsApi
     /**
      * Operation listPostsWithHttpInfo
      *
-     * List posts visible to the authenticated user
+     * List posts
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size (optional, default to 10)
@@ -1535,7 +1535,7 @@ class PostsApi
     /**
      * Operation listPostsAsync
      *
-     * List posts visible to the authenticated user
+     * List posts
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size (optional, default to 10)
@@ -1564,7 +1564,7 @@ class PostsApi
     /**
      * Operation listPostsAsyncWithHttpInfo
      *
-     * List posts visible to the authenticated user
+     * List posts
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Page size (optional, default to 10)
@@ -1812,7 +1812,7 @@ class PostsApi
     /**
      * Operation retryPost
      *
-     * Retry publishing a failed or partial post
+     * Retry failed post
      *
      * @param  string $post_id post_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryPost'] to see the possible values for this operation
@@ -1830,7 +1830,7 @@ class PostsApi
     /**
      * Operation retryPostWithHttpInfo
      *
-     * Retry publishing a failed or partial post
+     * Retry failed post
      *
      * @param  string $post_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryPost'] to see the possible values for this operation
@@ -1957,7 +1957,7 @@ class PostsApi
     /**
      * Operation retryPostAsync
      *
-     * Retry publishing a failed or partial post
+     * Retry failed post
      *
      * @param  string $post_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryPost'] to see the possible values for this operation
@@ -1978,7 +1978,7 @@ class PostsApi
     /**
      * Operation retryPostAsyncWithHttpInfo
      *
-     * Retry publishing a failed or partial post
+     * Retry failed post
      *
      * @param  string $post_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['retryPost'] to see the possible values for this operation
@@ -2126,7 +2126,7 @@ class PostsApi
     /**
      * Operation unpublishPost
      *
-     * Delete a published post from a social media platform
+     * Unpublish post
      *
      * @param  string $post_id post_id (required)
      * @param  \Late\Model\UnpublishPostRequest $unpublish_post_request unpublish_post_request (required)
@@ -2145,7 +2145,7 @@ class PostsApi
     /**
      * Operation unpublishPostWithHttpInfo
      *
-     * Delete a published post from a social media platform
+     * Unpublish post
      *
      * @param  string $post_id (required)
      * @param  \Late\Model\UnpublishPostRequest $unpublish_post_request (required)
@@ -2259,7 +2259,7 @@ class PostsApi
     /**
      * Operation unpublishPostAsync
      *
-     * Delete a published post from a social media platform
+     * Unpublish post
      *
      * @param  string $post_id (required)
      * @param  \Late\Model\UnpublishPostRequest $unpublish_post_request (required)
@@ -2281,7 +2281,7 @@ class PostsApi
     /**
      * Operation unpublishPostAsyncWithHttpInfo
      *
-     * Delete a published post from a social media platform
+     * Unpublish post
      *
      * @param  string $post_id (required)
      * @param  \Late\Model\UnpublishPostRequest $unpublish_post_request (required)
@@ -2445,7 +2445,7 @@ class PostsApi
     /**
      * Operation updatePost
      *
-     * Update a post
+     * Update post
      *
      * @param  string $post_id post_id (required)
      * @param  \Late\Model\UpdatePostRequest $update_post_request update_post_request (required)
@@ -2464,7 +2464,7 @@ class PostsApi
     /**
      * Operation updatePostWithHttpInfo
      *
-     * Update a post
+     * Update post
      *
      * @param  string $post_id (required)
      * @param  \Late\Model\UpdatePostRequest $update_post_request (required)
@@ -2578,7 +2578,7 @@ class PostsApi
     /**
      * Operation updatePostAsync
      *
-     * Update a post
+     * Update post
      *
      * @param  string $post_id (required)
      * @param  \Late\Model\UpdatePostRequest $update_post_request (required)
@@ -2600,7 +2600,7 @@ class PostsApi
     /**
      * Operation updatePostAsyncWithHttpInfo
      *
-     * Update a post
+     * Update post
      *
      * @param  string $post_id (required)
      * @param  \Late\Model\UpdatePostRequest $update_post_request (required)

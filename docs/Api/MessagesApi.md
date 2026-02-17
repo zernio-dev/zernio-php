@@ -6,11 +6,11 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**editInboxMessage()**](MessagesApi.md#editInboxMessage) | **PATCH** /v1/inbox/conversations/{conversationId}/messages/{messageId} | Edit a message (Telegram only) |
-| [**getInboxConversation()**](MessagesApi.md#getInboxConversation) | **GET** /v1/inbox/conversations/{conversationId} | Get conversation details |
-| [**getInboxConversationMessages()**](MessagesApi.md#getInboxConversationMessages) | **GET** /v1/inbox/conversations/{conversationId}/messages | Get messages in a conversation |
-| [**listInboxConversations()**](MessagesApi.md#listInboxConversations) | **GET** /v1/inbox/conversations | List conversations across all accounts |
-| [**sendInboxMessage()**](MessagesApi.md#sendInboxMessage) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send a message |
+| [**editInboxMessage()**](MessagesApi.md#editInboxMessage) | **PATCH** /v1/inbox/conversations/{conversationId}/messages/{messageId} | Edit message |
+| [**getInboxConversation()**](MessagesApi.md#getInboxConversation) | **GET** /v1/inbox/conversations/{conversationId} | Get conversation |
+| [**getInboxConversationMessages()**](MessagesApi.md#getInboxConversationMessages) | **GET** /v1/inbox/conversations/{conversationId}/messages | List messages |
+| [**listInboxConversations()**](MessagesApi.md#listInboxConversations) | **GET** /v1/inbox/conversations | List conversations |
+| [**sendInboxMessage()**](MessagesApi.md#sendInboxMessage) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send message |
 | [**updateInboxConversation()**](MessagesApi.md#updateInboxConversation) | **PUT** /v1/inbox/conversations/{conversationId} | Update conversation status |
 
 
@@ -20,7 +20,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 editInboxMessage($conversation_id, $message_id, $edit_inbox_message_request): \Late\Model\EditInboxMessage200Response
 ```
 
-Edit a message (Telegram only)
+Edit message
 
 Edit the text and/or reply markup of a previously sent Telegram message. Only supported for Telegram. Returns 400 for other platforms.
 
@@ -84,7 +84,7 @@ try {
 getInboxConversation($conversation_id, $account_id): \Late\Model\GetInboxConversation200Response
 ```
 
-Get conversation details
+Get conversation
 
 Retrieve details and metadata for a specific conversation. Requires accountId query parameter.
 
@@ -146,7 +146,7 @@ try {
 getInboxConversationMessages($conversation_id, $account_id): \Late\Model\GetInboxConversationMessages200Response
 ```
 
-Get messages in a conversation
+List messages
 
 Fetch messages for a specific conversation. Requires accountId query parameter.
 
@@ -208,7 +208,7 @@ try {
 listInboxConversations($profile_id, $platform, $status, $sort_order, $limit, $cursor, $account_id): \Late\Model\ListInboxConversations200Response
 ```
 
-List conversations across all accounts
+List conversations
 
 Fetch conversations (DMs) from all connected messaging accounts in a single API call. Supports filtering by profile and platform. Results are aggregated and deduplicated.  **Supported platforms:** Facebook, Instagram, Twitter/X, Bluesky, Reddit, Telegram
 
@@ -280,9 +280,9 @@ try {
 sendInboxMessage($conversation_id, $send_inbox_message_request): \Late\Model\SendInboxMessage200Response
 ```
 
-Send a message
+Send message
 
-Send a message in a conversation. Supports text, attachments, quick replies, buttons, carousels, and message tags.  **Attachment support by platform:** - Telegram: Images, videos, documents (up to 50MB) - Facebook Messenger: Images, videos, audio, files - Instagram: Images, videos, audio via URL (8MB images, 25MB video/audio) - Twitter/X: Images, videos (requires media upload) - Bluesky: Not supported - Reddit: Not supported  **Interactive message support:** | Field | Instagram | Facebook | Telegram | |---|---|---|---| | quickReplies | Meta quick_replies (13 max) | Meta quick_replies (13 max) | ReplyKeyboardMarkup (one_time) | | buttons | Generic template | Generic template | Inline keyboard | | template | Generic template (carousel) | Generic template (carousel) | Ignored | | replyMarkup | Ignored | Ignored | InlineKeyboardMarkup / ReplyKeyboardMarkup | | messagingType | Ignored | RESPONSE / UPDATE / MESSAGE_TAG | Ignored | | messageTag | HUMAN_AGENT only | 4 tag types | Ignored | | replyTo | Ignored | Ignored | reply_parameters |  Platform-specific fields are silently ignored on unsupported platforms.
+Send a message in a conversation. Supports text, attachments, quick replies, buttons, carousels, and message tags.  **Attachment support by platform:** - Telegram: Images, videos, documents (up to 50MB) - Facebook Messenger: Images, videos, audio, files - Instagram: Images, videos, audio via URL (8MB images, 25MB video/audio) - Twitter/X: Images, videos (requires media upload) - Bluesky/Reddit: Not supported  **Interactive messages:** Supports quick replies, buttons, templates, and reply markup. Feature availability varies by platform (Instagram, Facebook, Telegram). Unsupported fields are silently ignored.
 
 ### Example
 

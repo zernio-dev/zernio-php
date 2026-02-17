@@ -6,9 +6,9 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createApiKey()**](APIKeysApi.md#createApiKey) | **POST** /v1/api-keys | Create a new API key |
-| [**deleteApiKey()**](APIKeysApi.md#deleteApiKey) | **DELETE** /v1/api-keys/{keyId} | Delete an API key |
-| [**listApiKeys()**](APIKeysApi.md#listApiKeys) | **GET** /v1/api-keys | List API keys for the current user |
+| [**createApiKey()**](APIKeysApi.md#createApiKey) | **POST** /v1/api-keys | Create key |
+| [**deleteApiKey()**](APIKeysApi.md#deleteApiKey) | **DELETE** /v1/api-keys/{keyId} | Delete key |
+| [**listApiKeys()**](APIKeysApi.md#listApiKeys) | **GET** /v1/api-keys | List keys |
 
 
 ## `createApiKey()`
@@ -17,7 +17,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 createApiKey($create_api_key_request): \Late\Model\CreateApiKey201Response
 ```
 
-Create a new API key
+Create key
 
 ### Example
 
@@ -75,7 +75,7 @@ try {
 deleteApiKey($key_id): \Late\Model\DeleteAccountGroup200Response
 ```
 
-Delete an API key
+Delete key
 
 ### Example
 
@@ -133,7 +133,7 @@ try {
 listApiKeys(): \Late\Model\ListApiKeys200Response
 ```
 
-List API keys for the current user
+List keys
 
 ### Example
 

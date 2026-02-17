@@ -135,7 +135,7 @@ class APIKeysApi
     /**
      * Operation createApiKey
      *
-     * Create a new API key
+     * Create key
      *
      * @param  \Late\Model\CreateApiKeyRequest $create_api_key_request create_api_key_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createApiKey'] to see the possible values for this operation
@@ -153,7 +153,7 @@ class APIKeysApi
     /**
      * Operation createApiKeyWithHttpInfo
      *
-     * Create a new API key
+     * Create key
      *
      * @param  \Late\Model\CreateApiKeyRequest $create_api_key_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createApiKey'] to see the possible values for this operation
@@ -252,7 +252,7 @@ class APIKeysApi
     /**
      * Operation createApiKeyAsync
      *
-     * Create a new API key
+     * Create key
      *
      * @param  \Late\Model\CreateApiKeyRequest $create_api_key_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createApiKey'] to see the possible values for this operation
@@ -273,7 +273,7 @@ class APIKeysApi
     /**
      * Operation createApiKeyAsyncWithHttpInfo
      *
-     * Create a new API key
+     * Create key
      *
      * @param  \Late\Model\CreateApiKeyRequest $create_api_key_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createApiKey'] to see the possible values for this operation
@@ -420,7 +420,7 @@ class APIKeysApi
     /**
      * Operation deleteApiKey
      *
-     * Delete an API key
+     * Delete key
      *
      * @param  string $key_id key_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiKey'] to see the possible values for this operation
@@ -438,7 +438,7 @@ class APIKeysApi
     /**
      * Operation deleteApiKeyWithHttpInfo
      *
-     * Delete an API key
+     * Delete key
      *
      * @param  string $key_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiKey'] to see the possible values for this operation
@@ -551,7 +551,7 @@ class APIKeysApi
     /**
      * Operation deleteApiKeyAsync
      *
-     * Delete an API key
+     * Delete key
      *
      * @param  string $key_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiKey'] to see the possible values for this operation
@@ -572,7 +572,7 @@ class APIKeysApi
     /**
      * Operation deleteApiKeyAsyncWithHttpInfo
      *
-     * Delete an API key
+     * Delete key
      *
      * @param  string $key_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiKey'] to see the possible values for this operation
@@ -720,7 +720,7 @@ class APIKeysApi
     /**
      * Operation listApiKeys
      *
-     * List API keys for the current user
+     * List keys
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listApiKeys'] to see the possible values for this operation
      *
@@ -737,7 +737,7 @@ class APIKeysApi
     /**
      * Operation listApiKeysWithHttpInfo
      *
-     * List API keys for the current user
+     * List keys
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listApiKeys'] to see the possible values for this operation
      *
@@ -835,7 +835,7 @@ class APIKeysApi
     /**
      * Operation listApiKeysAsync
      *
-     * List API keys for the current user
+     * List keys
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listApiKeys'] to see the possible values for this operation
      *
@@ -855,7 +855,7 @@ class APIKeysApi
     /**
      * Operation listApiKeysAsyncWithHttpInfo
      *
-     * List API keys for the current user
+     * List keys
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listApiKeys'] to see the possible values for this operation
      *

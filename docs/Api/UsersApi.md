@@ -6,8 +6,8 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getUser()**](UsersApi.md#getUser) | **GET** /v1/users/{userId} | Get user by id (self or invited) |
-| [**listUsers()**](UsersApi.md#listUsers) | **GET** /v1/users | List team users (root + invited) |
+| [**getUser()**](UsersApi.md#getUser) | **GET** /v1/users/{userId} | Get user |
+| [**listUsers()**](UsersApi.md#listUsers) | **GET** /v1/users | List users |
 
 
 ## `getUser()`
@@ -16,7 +16,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 getUser($user_id): \Late\Model\GetUser200Response
 ```
 
-Get user by id (self or invited)
+Get user
 
 ### Example
 
@@ -74,7 +74,7 @@ try {
 listUsers(): \Late\Model\ListUsers200Response
 ```
 
-List team users (root + invited)
+List users
 
 ### Example
 

@@ -129,7 +129,7 @@ class MediaApi
     /**
      * Operation getMediaPresignedUrl
      *
-     * Get a presigned URL for direct file upload (up to 5GB)
+     * Get presigned upload URL
      *
      * @param  \Late\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request get_media_presigned_url_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
@@ -147,7 +147,7 @@ class MediaApi
     /**
      * Operation getMediaPresignedUrlWithHttpInfo
      *
-     * Get a presigned URL for direct file upload (up to 5GB)
+     * Get presigned upload URL
      *
      * @param  \Late\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
@@ -260,7 +260,7 @@ class MediaApi
     /**
      * Operation getMediaPresignedUrlAsync
      *
-     * Get a presigned URL for direct file upload (up to 5GB)
+     * Get presigned upload URL
      *
      * @param  \Late\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
@@ -281,7 +281,7 @@ class MediaApi
     /**
      * Operation getMediaPresignedUrlAsyncWithHttpInfo
      *
-     * Get a presigned URL for direct file upload (up to 5GB)
+     * Get presigned upload URL
      *
      * @param  \Late\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation

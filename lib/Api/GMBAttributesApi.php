@@ -132,7 +132,7 @@ class GMBAttributesApi
     /**
      * Operation getGoogleBusinessAttributes
      *
-     * Get Google Business Profile location attributes
+     * Get attributes
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessAttributes'] to see the possible values for this operation
@@ -150,7 +150,7 @@ class GMBAttributesApi
     /**
      * Operation getGoogleBusinessAttributesWithHttpInfo
      *
-     * Get Google Business Profile location attributes
+     * Get attributes
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessAttributes'] to see the possible values for this operation
@@ -263,7 +263,7 @@ class GMBAttributesApi
     /**
      * Operation getGoogleBusinessAttributesAsync
      *
-     * Get Google Business Profile location attributes
+     * Get attributes
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessAttributes'] to see the possible values for this operation
@@ -284,7 +284,7 @@ class GMBAttributesApi
     /**
      * Operation getGoogleBusinessAttributesAsyncWithHttpInfo
      *
-     * Get Google Business Profile location attributes
+     * Get attributes
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessAttributes'] to see the possible values for this operation
@@ -432,7 +432,7 @@ class GMBAttributesApi
     /**
      * Operation updateGoogleBusinessAttributes
      *
-     * Update Google Business Profile location attributes
+     * Update attributes
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request update_google_business_attributes_request (required)
@@ -451,7 +451,7 @@ class GMBAttributesApi
     /**
      * Operation updateGoogleBusinessAttributesWithHttpInfo
      *
-     * Update Google Business Profile location attributes
+     * Update attributes
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request (required)
@@ -565,7 +565,7 @@ class GMBAttributesApi
     /**
      * Operation updateGoogleBusinessAttributesAsync
      *
-     * Update Google Business Profile location attributes
+     * Update attributes
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request (required)
@@ -587,7 +587,7 @@ class GMBAttributesApi
     /**
      * Operation updateGoogleBusinessAttributesAsyncWithHttpInfo
      *
-     * Update Google Business Profile location attributes
+     * Update attributes
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request (required)
