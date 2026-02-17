@@ -132,8 +132,8 @@ class LinkedInMentionsApi
      * Resolve LinkedIn mention
      *
      * @param  string $account_id The LinkedIn account ID (required)
-     * @param  string $url LinkedIn profile URL, company URL, or vanity name. - Person: &#x60;miquelpalet&#x60;, &#x60;linkedin.com/in/miquelpalet&#x60; - Organization: &#x60;company/microsoft&#x60;, &#x60;linkedin.com/company/microsoft&#x60; (required)
-     * @param  string|null $display_name The exact display name as shown on LinkedIn. - **Person mentions:** Required for clickable mentions. If not provided, a name is derived from the vanity URL which may not match exactly. - **Organization mentions:** Optional. If not provided, the company name is automatically retrieved from LinkedIn. (optional)
+     * @param  string $url LinkedIn profile URL, company URL, or vanity name. Person examples: miquelpalet, linkedin.com/in/miquelpalet. Organization examples: company/microsoft, linkedin.com/company/microsoft. (required)
+     * @param  string|null $display_name The exact display name as shown on LinkedIn. Required for person mentions (for clickable mentions; if not provided, a name is derived from the vanity URL which may not match). Optional for organization mentions (company name is auto-retrieved from LinkedIn). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInMentions'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -152,8 +152,8 @@ class LinkedInMentionsApi
      * Resolve LinkedIn mention
      *
      * @param  string $account_id The LinkedIn account ID (required)
-     * @param  string $url LinkedIn profile URL, company URL, or vanity name. - Person: &#x60;miquelpalet&#x60;, &#x60;linkedin.com/in/miquelpalet&#x60; - Organization: &#x60;company/microsoft&#x60;, &#x60;linkedin.com/company/microsoft&#x60; (required)
-     * @param  string|null $display_name The exact display name as shown on LinkedIn. - **Person mentions:** Required for clickable mentions. If not provided, a name is derived from the vanity URL which may not match exactly. - **Organization mentions:** Optional. If not provided, the company name is automatically retrieved from LinkedIn. (optional)
+     * @param  string $url LinkedIn profile URL, company URL, or vanity name. Person examples: miquelpalet, linkedin.com/in/miquelpalet. Organization examples: company/microsoft, linkedin.com/company/microsoft. (required)
+     * @param  string|null $display_name The exact display name as shown on LinkedIn. Required for person mentions (for clickable mentions; if not provided, a name is derived from the vanity URL which may not match). Optional for organization mentions (company name is auto-retrieved from LinkedIn). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInMentions'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -281,8 +281,8 @@ class LinkedInMentionsApi
      * Resolve LinkedIn mention
      *
      * @param  string $account_id The LinkedIn account ID (required)
-     * @param  string $url LinkedIn profile URL, company URL, or vanity name. - Person: &#x60;miquelpalet&#x60;, &#x60;linkedin.com/in/miquelpalet&#x60; - Organization: &#x60;company/microsoft&#x60;, &#x60;linkedin.com/company/microsoft&#x60; (required)
-     * @param  string|null $display_name The exact display name as shown on LinkedIn. - **Person mentions:** Required for clickable mentions. If not provided, a name is derived from the vanity URL which may not match exactly. - **Organization mentions:** Optional. If not provided, the company name is automatically retrieved from LinkedIn. (optional)
+     * @param  string $url LinkedIn profile URL, company URL, or vanity name. Person examples: miquelpalet, linkedin.com/in/miquelpalet. Organization examples: company/microsoft, linkedin.com/company/microsoft. (required)
+     * @param  string|null $display_name The exact display name as shown on LinkedIn. Required for person mentions (for clickable mentions; if not provided, a name is derived from the vanity URL which may not match). Optional for organization mentions (company name is auto-retrieved from LinkedIn). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInMentions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -304,8 +304,8 @@ class LinkedInMentionsApi
      * Resolve LinkedIn mention
      *
      * @param  string $account_id The LinkedIn account ID (required)
-     * @param  string $url LinkedIn profile URL, company URL, or vanity name. - Person: &#x60;miquelpalet&#x60;, &#x60;linkedin.com/in/miquelpalet&#x60; - Organization: &#x60;company/microsoft&#x60;, &#x60;linkedin.com/company/microsoft&#x60; (required)
-     * @param  string|null $display_name The exact display name as shown on LinkedIn. - **Person mentions:** Required for clickable mentions. If not provided, a name is derived from the vanity URL which may not match exactly. - **Organization mentions:** Optional. If not provided, the company name is automatically retrieved from LinkedIn. (optional)
+     * @param  string $url LinkedIn profile URL, company URL, or vanity name. Person examples: miquelpalet, linkedin.com/in/miquelpalet. Organization examples: company/microsoft, linkedin.com/company/microsoft. (required)
+     * @param  string|null $display_name The exact display name as shown on LinkedIn. Required for person mentions (for clickable mentions; if not provided, a name is derived from the vanity URL which may not match). Optional for organization mentions (company name is auto-retrieved from LinkedIn). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInMentions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -356,8 +356,8 @@ class LinkedInMentionsApi
      * Create request for operation 'getLinkedInMentions'
      *
      * @param  string $account_id The LinkedIn account ID (required)
-     * @param  string $url LinkedIn profile URL, company URL, or vanity name. - Person: &#x60;miquelpalet&#x60;, &#x60;linkedin.com/in/miquelpalet&#x60; - Organization: &#x60;company/microsoft&#x60;, &#x60;linkedin.com/company/microsoft&#x60; (required)
-     * @param  string|null $display_name The exact display name as shown on LinkedIn. - **Person mentions:** Required for clickable mentions. If not provided, a name is derived from the vanity URL which may not match exactly. - **Organization mentions:** Optional. If not provided, the company name is automatically retrieved from LinkedIn. (optional)
+     * @param  string $url LinkedIn profile URL, company URL, or vanity name. Person examples: miquelpalet, linkedin.com/in/miquelpalet. Organization examples: company/microsoft, linkedin.com/company/microsoft. (required)
+     * @param  string|null $display_name The exact display name as shown on LinkedIn. Required for person mentions (for clickable mentions; if not provided, a name is derived from the vanity URL which may not match). Optional for organization mentions (company name is auto-retrieved from LinkedIn). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInMentions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

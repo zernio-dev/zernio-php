@@ -733,7 +733,7 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tags
      *
-     * @param string[]|null $tags YouTube tag constraints when targeting YouTube: - No count cap; duplicates removed. - Each tag must be ≤ 100 chars. - Combined characters across all tags ≤ 500.
+     * @param string[]|null $tags YouTube constraints: each tag max 100 chars, combined max 500 chars, duplicates removed.
      *
      * @return self
      */

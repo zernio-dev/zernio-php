@@ -450,7 +450,7 @@ class InstagramPlatformDataUserTagsInner implements ModelInterface, ArrayAccess,
     /**
      * Sets media_index
      *
-     * @param int|null $media_index Zero-based index of the carousel item to tag. Defaults to 0 (first image) if omitted. Only relevant for carousel posts. Tags targeting video items or out-of-range indices are ignored.
+     * @param int|null $media_index Zero-based index of the carousel item to tag. Defaults to 0. Tags on video items or out-of-range indices are ignored.
      *
      * @return self
      */

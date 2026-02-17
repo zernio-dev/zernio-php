@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * InstagramPlatformData Class Doc Comment
  *
  * @category Class
- * @description Constraints: - Feed posts require images with aspect ratio between 0.8 (4:5 portrait) and 1.91 (1.91:1 landscape). - Images outside this range (e.g., 9:16 Stories/TikTok format) must use contentType &#39;story&#39;. - Validation happens at post creation; invalid images are rejected immediately with helpful error messages. - Carousels support up to 10 media items. - Stories require media; no captions are published with Stories. - User tags: coordinates range from 0.0 to 1.0 representing position from top-left corner. For carousels, use &#x60;mediaIndex&#x60; to tag specific slides. Tagged users receive notifications.  **Automatic Compression (similar to Bluesky):** - All images (story, post, carousel, thumbnails) exceeding 8 MB are automatically compressed using quality reduction and resizing. - Story videos exceeding 100 MB are automatically compressed. - Reel videos exceeding 300 MB are automatically compressed. - Compression uses Sharp (images) and FFmpeg (videos) to maintain quality while meeting size limits. - Original files are preserved; compressed versions are uploaded to blob storage automatically.
+ * @description Feed posts require aspect ratio 0.8-1.91; images outside this range must use contentType story. Carousels up to 10 items. Stories require media, no captions. User tag coordinates 0.0-1.0 from top-left. Images over 8 MB and videos over 100 MB (stories) or 300 MB (reels) are auto-compressed.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -524,7 +524,7 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets user_tags
      *
-     * @param \Late\Model\InstagramPlatformDataUserTagsInner[]|null $user_tags Tag Instagram users in photos by username and position coordinates. Not supported for stories or videos. For carousel posts, use the optional `mediaIndex` field to specify which slide each tag applies to. Tags without `mediaIndex` default to the first image (index 0) for backwards compatibility. Tags targeting video items are silently skipped (Instagram only supports tagging on images).
+     * @param \Late\Model\InstagramPlatformDataUserTagsInner[]|null $user_tags Tag Instagram users in photos by username and position. Not supported for stories or videos. For carousels, use mediaIndex to target specific slides (defaults to 0). Tags on video items are silently skipped.
      *
      * @return self
      */
@@ -551,7 +551,7 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets audio_name
      *
-     * @param string|null $audio_name Custom name for the original audio in Reels. Replaces the default \"Original Audio\" label. Only applies to Reels (video posts). Can only be set once - either during creation or later from the Instagram audio page in the app.
+     * @param string|null $audio_name Custom name for original audio in Reels. Replaces the default \"Original Audio\" label. Can only be set once.
      *
      * @return self
      */
@@ -578,7 +578,7 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets thumb_offset
      *
-     * @param int|null $thumb_offset Millisecond offset from the start of the video to use as the Reel thumbnail. Only applies to Reels (video posts). If a custom thumbnail URL (instagramThumbnail in mediaItems) is provided, it takes priority and this offset is ignored. Defaults to 0 (first frame).
+     * @param int|null $thumb_offset Millisecond offset from video start for the Reel thumbnail. Ignored if a custom thumbnail URL is provided. Defaults to 0.
      *
      * @return self
      */

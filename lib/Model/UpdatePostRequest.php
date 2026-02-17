@@ -371,7 +371,7 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets tiktok_settings
      *
-     * @param \Late\Model\TikTokPlatformData|null $tiktok_settings Root-level TikTok settings applied to all TikTok platforms in the request. This is a convenience shorthand. Settings here are merged into each TikTok platform's platformSpecificData, with platform-specific settings taking precedence.
+     * @param \Late\Model\TikTokPlatformData|null $tiktok_settings Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
      *
      * @return self
      */

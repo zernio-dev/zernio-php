@@ -349,7 +349,7 @@ class GoogleBusinessPlatformDataCallToAction implements ModelInterface, ArrayAcc
     /**
      * Sets type
      *
-     * @param string $type Button action type: - LEARN_MORE: Link to more information - BOOK: Booking/reservation link - ORDER: Online ordering link - SHOP: E-commerce/shopping link - SIGN_UP: Registration/signup link - CALL: Phone call action
+     * @param string $type Button action type: LEARN_MORE, BOOK, ORDER, SHOP, SIGN_UP, CALL
      *
      * @return self
      */

@@ -17,7 +17,7 @@ getGoogleBusinessReviews($account_id, $page_size, $page_token): \Late\Model\GetG
 
 Get reviews
 
-Fetches reviews for a connected Google Business Profile account.  Returns all reviews for the business location, including: - Reviewer information (name, profile photo) - Star rating (1-5) - Review comment/text - Business owner's reply (if any) - Review timestamps  Use pagination via `nextPageToken` to fetch all reviews for locations with many reviews.
+Fetches reviews for a connected Google Business Profile account. Returns all reviews including reviewer info, star rating, comment text, owner reply, and timestamps. Use pagination via nextPageToken for locations with many reviews.
 
 ### Example
 

@@ -44,7 +44,7 @@ $apiInstance = new Late\Api\CommentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$post_id = 'post_id_example'; // string | The post identifier. Accepts a Late post ID or a platform-specific post ID.  **LinkedIn:** For third-party posts, pass the full activity URN (e.g., `urn:li:activity:7422459067685855232`) or the raw numeric activity ID from the URL.
+$post_id = 'post_id_example'; // string | The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL.
 $account_id = 'account_id_example'; // string
 $comment_id = 'comment_id_example'; // string
 
@@ -60,7 +60,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_id** | **string**| The post identifier. Accepts a Late post ID or a platform-specific post ID.  **LinkedIn:** For third-party posts, pass the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the URL. | |
+| **post_id** | **string**| The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL. | |
 | **account_id** | **string**|  | |
 | **comment_id** | **string**|  | |
 
@@ -108,7 +108,7 @@ $apiInstance = new Late\Api\CommentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$post_id = 'post_id_example'; // string | The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID).  **LinkedIn:** For your own posts, the full URN stored in Late (e.g., `urn:li:share:7429218977714745345`) is used automatically. For third-party posts, pass either the full activity URN (e.g., `urn:li:activity:7422459067685855232`) or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as `urn:li:activity:`). Note: LinkedIn post URLs use activity IDs (`linkedin.com/feed/update/urn:li:activity:XXXX`).
+$post_id = 'post_id_example'; // string | The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID). LinkedIn: for your own posts, the full URN stored in Late is used automatically. For third-party posts, pass the full activity URN or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as urn:li:activity:).
 $account_id = 'account_id_example'; // string
 $subreddit = 'subreddit_example'; // string | (Reddit only) Subreddit name
 $limit = 25; // int | Maximum number of comments to return
@@ -127,7 +127,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_id** | **string**| The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID).  **LinkedIn:** For your own posts, the full URN stored in Late (e.g., &#x60;urn:li:share:7429218977714745345&#x60;) is used automatically. For third-party posts, pass either the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as &#x60;urn:li:activity:&#x60;). Note: LinkedIn post URLs use activity IDs (&#x60;linkedin.com/feed/update/urn:li:activity:XXXX&#x60;). | |
+| **post_id** | **string**| The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID). LinkedIn: for your own posts, the full URN stored in Late is used automatically. For third-party posts, pass the full activity URN or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as urn:li:activity:). | |
 | **account_id** | **string**|  | |
 | **subreddit** | **string**| (Reddit only) Subreddit name | [optional] |
 | **limit** | **int**| Maximum number of comments to return | [optional] [default to 25] |
@@ -223,7 +223,7 @@ likeInboxComment($post_id, $comment_id, $like_inbox_comment_request): \Late\Mode
 
 Like comment
 
-Like or upvote a comment on a post.  **Supported platforms:** Facebook, Twitter/X, Bluesky, Reddit  For Bluesky, the `cid` (content identifier) is required in the request body.
+Like or upvote a comment on a post. Supported platforms: Facebook, Twitter/X, Bluesky, Reddit. For Bluesky, the cid (content identifier) is required in the request body.
 
 ### Example
 
@@ -287,7 +287,7 @@ listInboxComments($profile_id, $platform, $min_comments, $since, $sort_by, $sort
 
 List commented posts
 
-Fetch posts with their comment counts from all connected accounts. Aggregates data from multiple accounts in a single API call.  **Supported platforms:** Facebook, Instagram, Twitter/X, Bluesky, Threads, YouTube, LinkedIn, Reddit, TikTok (write-only)
+Fetch posts with their comment counts from all connected accounts. Aggregates data from multiple accounts in a single API call.  Supported platforms: Facebook, Instagram, Twitter/X, Bluesky, Threads, YouTube, LinkedIn, Reddit, TikTok (write-only).
 
 ### Example
 
@@ -382,7 +382,7 @@ $apiInstance = new Late\Api\CommentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$post_id = 'post_id_example'; // string | The post identifier. Accepts a Late post ID or a platform-specific post ID.  **LinkedIn:** For third-party posts, pass the full activity URN (e.g., `urn:li:activity:7422459067685855232`) or the raw numeric activity ID from the URL.
+$post_id = 'post_id_example'; // string | The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL.
 $reply_to_inbox_post_request = new \Late\Model\ReplyToInboxPostRequest(); // \Late\Model\ReplyToInboxPostRequest
 
 try {
@@ -397,7 +397,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_id** | **string**| The post identifier. Accepts a Late post ID or a platform-specific post ID.  **LinkedIn:** For third-party posts, pass the full activity URN (e.g., &#x60;urn:li:activity:7422459067685855232&#x60;) or the raw numeric activity ID from the URL. | |
+| **post_id** | **string**| The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL. | |
 | **reply_to_inbox_post_request** | [**\Late\Model\ReplyToInboxPostRequest**](../Model/ReplyToInboxPostRequest.md)|  | |
 
 ### Return type
@@ -425,7 +425,7 @@ sendPrivateReplyToComment($post_id, $comment_id, $send_private_reply_to_comment_
 
 Send private reply
 
-Send a private direct message to the author of a comment on your post. This is useful for handling customer inquiries or sensitive matters privately.  **Supported platforms:** Instagram, Facebook  **Limitations:** - Only ONE private reply per comment (platform API restriction) - Must be sent within 7 days of the comment being posted - Only works for comments on posts owned by the connected account - Text only (no media attachments) - Instagram: message goes to the user's Inbox (if they follow you) or Message Requests (if they don't). Requires `instagram_business_manage_messages` permission. - Facebook: message opens a Messenger conversation with the commenter. Requires `pages_messaging` permission.  **Note:** Both permissions are already included in Late's OAuth flow. This does not create a conversation thread until the user replies back.
+Send a private direct message to the author of a comment on your post. Supported platforms: Instagram, Facebook. Only one private reply per comment (platform restriction), must be sent within 7 days, only for comments on your own posts, text only. Instagram messages go to Inbox or Message Requests; Facebook opens a Messenger conversation. Both permissions are already included in Late's OAuth flow.
 
 ### Example
 
@@ -553,7 +553,7 @@ unlikeInboxComment($post_id, $comment_id, $account_id, $like_uri): \Late\Model\U
 
 Unlike comment
 
-Remove a like from a comment.  **Supported platforms:** Facebook, Twitter/X, Bluesky, Reddit  For Bluesky, the `likeUri` query parameter is required.
+Remove a like from a comment. Supported platforms: Facebook, Twitter/X, Bluesky, Reddit. For Bluesky, the likeUri query parameter is required.
 
 ### Example
 

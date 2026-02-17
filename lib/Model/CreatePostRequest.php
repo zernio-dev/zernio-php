@@ -435,7 +435,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets content
      *
-     * @param string|null $content Post caption/text content. Optional when media is attached (images, videos, etc.). Required for text-only posts. Can also be omitted if all platforms have customContent set.
+     * @param string|null $content Post caption/text. Optional when media is attached or all platforms have customContent. Required for text-only posts.
      *
      * @return self
      */
@@ -624,7 +624,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets tags
      *
-     * @param string[]|null $tags Tags/keywords for the post. YouTube-specific constraints: - No count limit; duplicates are automatically removed - Each tag must be ≤ 100 characters - Combined total across all tags ≤ 500 characters (YouTube's limit)
+     * @param string[]|null $tags Tags/keywords. YouTube constraints: each tag max 100 chars, combined max 500 chars, duplicates auto-removed.
      *
      * @return self
      */
@@ -759,7 +759,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets tiktok_settings
      *
-     * @param \Late\Model\TikTokPlatformData|null $tiktok_settings Root-level TikTok settings applied to all TikTok platforms in the request. This is a convenience shorthand. Settings here are merged into each TikTok platform's platformSpecificData, with platform-specific settings taking precedence.
+     * @param \Late\Model\TikTokPlatformData|null $tiktok_settings Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
      *
      * @return self
      */
@@ -786,7 +786,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets queued_from_profile
      *
-     * @param string|null $queued_from_profile Profile ID to schedule via queue.  When provided (without `scheduledFor`), the post will be automatically assigned to the next available slot from the profile's queue. The system uses distributed locking to prevent race conditions when multiple posts are scheduled concurrently. Do not call `/v1/queue/next-slot` and then use that time in `scheduledFor`. That bypasses the queue system and can cause duplicate slot assignments.
+     * @param string|null $queued_from_profile Profile ID to schedule via queue. When provided without scheduledFor, the post is auto-assigned to the next available slot. Do not call /v1/queue/next-slot and use that time in scheduledFor, as that bypasses queue locking.
      *
      * @return self
      */

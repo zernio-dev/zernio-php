@@ -635,7 +635,7 @@ class ConnectionLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets event_type
      *
-     * @param string|null $event_type Type of connection event: - `connect_success` - New account connected successfully - `connect_failed` - Connection attempt failed - `disconnect` - Account was disconnected - `reconnect_success` - Existing account reconnected successfully - `reconnect_failed` - Reconnection attempt failed
+     * @param string|null $event_type Type of connection event: connect_success, connect_failed, disconnect, reconnect_success, reconnect_failed
      *
      * @return self
      */

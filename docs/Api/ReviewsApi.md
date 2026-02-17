@@ -81,7 +81,7 @@ listInboxReviews($profile_id, $platform, $min_rating, $max_rating, $has_reply, $
 
 List reviews
 
-Fetch reviews from all connected Facebook Pages and Google Business accounts. Aggregates data with filtering and sorting options.  **Supported platforms:** Facebook, Google Business
+Fetch reviews from all connected Facebook Pages and Google Business accounts. Aggregates data with filtering and sorting options. Supported platforms: Facebook, Google Business.
 
 ### Example
 

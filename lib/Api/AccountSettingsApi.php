@@ -153,7 +153,7 @@ class AccountSettingsApi
     /**
      * Operation deleteInstagramIceBreakers
      *
-     * Delete Instagram ice breakers
+     * Delete IG ice breakers
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInstagramIceBreakers'] to see the possible values for this operation
@@ -170,7 +170,7 @@ class AccountSettingsApi
     /**
      * Operation deleteInstagramIceBreakersWithHttpInfo
      *
-     * Delete Instagram ice breakers
+     * Delete IG ice breakers
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInstagramIceBreakers'] to see the possible values for this operation
@@ -227,7 +227,7 @@ class AccountSettingsApi
     /**
      * Operation deleteInstagramIceBreakersAsync
      *
-     * Delete Instagram ice breakers
+     * Delete IG ice breakers
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInstagramIceBreakers'] to see the possible values for this operation
@@ -248,7 +248,7 @@ class AccountSettingsApi
     /**
      * Operation deleteInstagramIceBreakersAsyncWithHttpInfo
      *
-     * Delete Instagram ice breakers
+     * Delete IG ice breakers
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInstagramIceBreakers'] to see the possible values for this operation
@@ -383,7 +383,7 @@ class AccountSettingsApi
     /**
      * Operation deleteMessengerMenu
      *
-     * Delete Facebook persistent menu
+     * Delete FB persistent menu
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMessengerMenu'] to see the possible values for this operation
@@ -400,7 +400,7 @@ class AccountSettingsApi
     /**
      * Operation deleteMessengerMenuWithHttpInfo
      *
-     * Delete Facebook persistent menu
+     * Delete FB persistent menu
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMessengerMenu'] to see the possible values for this operation
@@ -457,7 +457,7 @@ class AccountSettingsApi
     /**
      * Operation deleteMessengerMenuAsync
      *
-     * Delete Facebook persistent menu
+     * Delete FB persistent menu
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMessengerMenu'] to see the possible values for this operation
@@ -478,7 +478,7 @@ class AccountSettingsApi
     /**
      * Operation deleteMessengerMenuAsyncWithHttpInfo
      *
-     * Delete Facebook persistent menu
+     * Delete FB persistent menu
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMessengerMenu'] to see the possible values for this operation
@@ -613,7 +613,7 @@ class AccountSettingsApi
     /**
      * Operation deleteTelegramCommands
      *
-     * Delete Telegram bot commands
+     * Delete TG bot commands
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTelegramCommands'] to see the possible values for this operation
@@ -630,7 +630,7 @@ class AccountSettingsApi
     /**
      * Operation deleteTelegramCommandsWithHttpInfo
      *
-     * Delete Telegram bot commands
+     * Delete TG bot commands
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTelegramCommands'] to see the possible values for this operation
@@ -687,7 +687,7 @@ class AccountSettingsApi
     /**
      * Operation deleteTelegramCommandsAsync
      *
-     * Delete Telegram bot commands
+     * Delete TG bot commands
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTelegramCommands'] to see the possible values for this operation
@@ -708,7 +708,7 @@ class AccountSettingsApi
     /**
      * Operation deleteTelegramCommandsAsyncWithHttpInfo
      *
-     * Delete Telegram bot commands
+     * Delete TG bot commands
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTelegramCommands'] to see the possible values for this operation
@@ -843,7 +843,7 @@ class AccountSettingsApi
     /**
      * Operation getInstagramIceBreakers
      *
-     * Get Instagram ice breakers
+     * Get IG ice breakers
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramIceBreakers'] to see the possible values for this operation
@@ -861,7 +861,7 @@ class AccountSettingsApi
     /**
      * Operation getInstagramIceBreakersWithHttpInfo
      *
-     * Get Instagram ice breakers
+     * Get IG ice breakers
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramIceBreakers'] to see the possible values for this operation
@@ -960,7 +960,7 @@ class AccountSettingsApi
     /**
      * Operation getInstagramIceBreakersAsync
      *
-     * Get Instagram ice breakers
+     * Get IG ice breakers
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramIceBreakers'] to see the possible values for this operation
@@ -981,7 +981,7 @@ class AccountSettingsApi
     /**
      * Operation getInstagramIceBreakersAsyncWithHttpInfo
      *
-     * Get Instagram ice breakers
+     * Get IG ice breakers
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramIceBreakers'] to see the possible values for this operation
@@ -1129,7 +1129,7 @@ class AccountSettingsApi
     /**
      * Operation getMessengerMenu
      *
-     * Get Facebook persistent menu
+     * Get FB persistent menu
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMessengerMenu'] to see the possible values for this operation
@@ -1147,7 +1147,7 @@ class AccountSettingsApi
     /**
      * Operation getMessengerMenuWithHttpInfo
      *
-     * Get Facebook persistent menu
+     * Get FB persistent menu
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMessengerMenu'] to see the possible values for this operation
@@ -1246,7 +1246,7 @@ class AccountSettingsApi
     /**
      * Operation getMessengerMenuAsync
      *
-     * Get Facebook persistent menu
+     * Get FB persistent menu
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMessengerMenu'] to see the possible values for this operation
@@ -1267,7 +1267,7 @@ class AccountSettingsApi
     /**
      * Operation getMessengerMenuAsyncWithHttpInfo
      *
-     * Get Facebook persistent menu
+     * Get FB persistent menu
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMessengerMenu'] to see the possible values for this operation
@@ -1415,7 +1415,7 @@ class AccountSettingsApi
     /**
      * Operation getTelegramCommands
      *
-     * Get Telegram bot commands
+     * Get TG bot commands
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTelegramCommands'] to see the possible values for this operation
@@ -1433,7 +1433,7 @@ class AccountSettingsApi
     /**
      * Operation getTelegramCommandsWithHttpInfo
      *
-     * Get Telegram bot commands
+     * Get TG bot commands
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTelegramCommands'] to see the possible values for this operation
@@ -1532,7 +1532,7 @@ class AccountSettingsApi
     /**
      * Operation getTelegramCommandsAsync
      *
-     * Get Telegram bot commands
+     * Get TG bot commands
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTelegramCommands'] to see the possible values for this operation
@@ -1553,7 +1553,7 @@ class AccountSettingsApi
     /**
      * Operation getTelegramCommandsAsyncWithHttpInfo
      *
-     * Get Telegram bot commands
+     * Get TG bot commands
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTelegramCommands'] to see the possible values for this operation
@@ -1701,7 +1701,7 @@ class AccountSettingsApi
     /**
      * Operation setInstagramIceBreakers
      *
-     * Set Instagram ice breakers
+     * Set IG ice breakers
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request set_instagram_ice_breakers_request (required)
@@ -1719,7 +1719,7 @@ class AccountSettingsApi
     /**
      * Operation setInstagramIceBreakersWithHttpInfo
      *
-     * Set Instagram ice breakers
+     * Set IG ice breakers
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request (required)
@@ -1777,7 +1777,7 @@ class AccountSettingsApi
     /**
      * Operation setInstagramIceBreakersAsync
      *
-     * Set Instagram ice breakers
+     * Set IG ice breakers
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request (required)
@@ -1799,7 +1799,7 @@ class AccountSettingsApi
     /**
      * Operation setInstagramIceBreakersAsyncWithHttpInfo
      *
-     * Set Instagram ice breakers
+     * Set IG ice breakers
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request (required)
@@ -1950,7 +1950,7 @@ class AccountSettingsApi
     /**
      * Operation setMessengerMenu
      *
-     * Set Facebook persistent menu
+     * Set FB persistent menu
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\SetMessengerMenuRequest $set_messenger_menu_request set_messenger_menu_request (required)
@@ -1968,7 +1968,7 @@ class AccountSettingsApi
     /**
      * Operation setMessengerMenuWithHttpInfo
      *
-     * Set Facebook persistent menu
+     * Set FB persistent menu
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\SetMessengerMenuRequest $set_messenger_menu_request (required)
@@ -2026,7 +2026,7 @@ class AccountSettingsApi
     /**
      * Operation setMessengerMenuAsync
      *
-     * Set Facebook persistent menu
+     * Set FB persistent menu
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\SetMessengerMenuRequest $set_messenger_menu_request (required)
@@ -2048,7 +2048,7 @@ class AccountSettingsApi
     /**
      * Operation setMessengerMenuAsyncWithHttpInfo
      *
-     * Set Facebook persistent menu
+     * Set FB persistent menu
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\SetMessengerMenuRequest $set_messenger_menu_request (required)
@@ -2199,7 +2199,7 @@ class AccountSettingsApi
     /**
      * Operation setTelegramCommands
      *
-     * Set Telegram bot commands
+     * Set TG bot commands
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\SetTelegramCommandsRequest $set_telegram_commands_request set_telegram_commands_request (required)
@@ -2217,7 +2217,7 @@ class AccountSettingsApi
     /**
      * Operation setTelegramCommandsWithHttpInfo
      *
-     * Set Telegram bot commands
+     * Set TG bot commands
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\SetTelegramCommandsRequest $set_telegram_commands_request (required)
@@ -2275,7 +2275,7 @@ class AccountSettingsApi
     /**
      * Operation setTelegramCommandsAsync
      *
-     * Set Telegram bot commands
+     * Set TG bot commands
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\SetTelegramCommandsRequest $set_telegram_commands_request (required)
@@ -2297,7 +2297,7 @@ class AccountSettingsApi
     /**
      * Operation setTelegramCommandsAsyncWithHttpInfo
      *
-     * Set Telegram bot commands
+     * Set TG bot commands
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\SetTelegramCommandsRequest $set_telegram_commands_request (required)

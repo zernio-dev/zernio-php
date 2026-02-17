@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * GoogleBusinessPlatformData Class Doc Comment
  *
  * @category Class
- * @description Google Business Profile post settings: - Posts support text content and a single image (no videos) - Images must be publicly accessible URLs - Call-to-action buttons drive user engagement - Posts appear on your Google Business Profile and in Google Search/Maps - Use locationId to post to multiple locations from the same account connection - Language is auto-detected from content; override with languageCode if needed
+ * @description Posts support text and a single image (no videos). Images must be publicly accessible URLs. Optional call-to-action button. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting. Language is auto-detected; override with languageCode.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

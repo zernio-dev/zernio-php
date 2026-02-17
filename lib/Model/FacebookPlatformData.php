@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * FacebookPlatformData Class Doc Comment
  *
  * @category Class
- * @description Constraints: - Posts cannot mix videos and images. - Multiple images supported via attached_media (up to 10 images for feed posts). - Multiple videos in the same post are not supported. - Stories require media (single image or video); text captions are not displayed with stories. - Stories are ephemeral (disappear after 24 hours). - Use pageId to post to multiple pages from the same account connection.
+ * @description Cannot mix videos and images. Up to 10 images for feed posts. Stories require single image or video (no captions, ephemeral 24h). Use pageId for multi-page posting.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

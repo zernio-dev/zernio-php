@@ -143,10 +143,10 @@ class AnalyticsApi
      *
      * Get post analytics
      *
-     * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs (from &#x60;POST /v1/posts&#x60;)  and External Post IDs (from this endpoint&#39;s list response). The API automatically  resolves Late Post IDs to their corresponding External Post analytics. (optional)
+     * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs and External Post IDs. Late IDs are auto-resolved to External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
-     * @param  string|null $source Filter by post source: - &#x60;late&#x60; - Only posts scheduled/published via Late API - &#x60;external&#x60; - Only posts synced from the platform (not posted via Late) - &#x60;all&#x60; - All posts (default) (optional, default to 'all')
+     * @param  string|null $source Filter by post source: late (posted via Late API), external (synced from platform), all (default) (optional, default to 'all')
      * @param  \DateTime|null $from_date Inclusive lower bound (optional)
      * @param  \DateTime|null $to_date Inclusive upper bound (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
@@ -170,10 +170,10 @@ class AnalyticsApi
      *
      * Get post analytics
      *
-     * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs (from &#x60;POST /v1/posts&#x60;)  and External Post IDs (from this endpoint&#39;s list response). The API automatically  resolves Late Post IDs to their corresponding External Post analytics. (optional)
+     * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs and External Post IDs. Late IDs are auto-resolved to External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
-     * @param  string|null $source Filter by post source: - &#x60;late&#x60; - Only posts scheduled/published via Late API - &#x60;external&#x60; - Only posts synced from the platform (not posted via Late) - &#x60;all&#x60; - All posts (default) (optional, default to 'all')
+     * @param  string|null $source Filter by post source: late (posted via Late API), external (synced from platform), all (default) (optional, default to 'all')
      * @param  \DateTime|null $from_date Inclusive lower bound (optional)
      * @param  \DateTime|null $to_date Inclusive upper bound (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
@@ -320,10 +320,10 @@ class AnalyticsApi
      *
      * Get post analytics
      *
-     * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs (from &#x60;POST /v1/posts&#x60;)  and External Post IDs (from this endpoint&#39;s list response). The API automatically  resolves Late Post IDs to their corresponding External Post analytics. (optional)
+     * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs and External Post IDs. Late IDs are auto-resolved to External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
-     * @param  string|null $source Filter by post source: - &#x60;late&#x60; - Only posts scheduled/published via Late API - &#x60;external&#x60; - Only posts synced from the platform (not posted via Late) - &#x60;all&#x60; - All posts (default) (optional, default to 'all')
+     * @param  string|null $source Filter by post source: late (posted via Late API), external (synced from platform), all (default) (optional, default to 'all')
      * @param  \DateTime|null $from_date Inclusive lower bound (optional)
      * @param  \DateTime|null $to_date Inclusive upper bound (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
@@ -350,10 +350,10 @@ class AnalyticsApi
      *
      * Get post analytics
      *
-     * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs (from &#x60;POST /v1/posts&#x60;)  and External Post IDs (from this endpoint&#39;s list response). The API automatically  resolves Late Post IDs to their corresponding External Post analytics. (optional)
+     * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs and External Post IDs. Late IDs are auto-resolved to External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
-     * @param  string|null $source Filter by post source: - &#x60;late&#x60; - Only posts scheduled/published via Late API - &#x60;external&#x60; - Only posts synced from the platform (not posted via Late) - &#x60;all&#x60; - All posts (default) (optional, default to 'all')
+     * @param  string|null $source Filter by post source: late (posted via Late API), external (synced from platform), all (default) (optional, default to 'all')
      * @param  \DateTime|null $from_date Inclusive lower bound (optional)
      * @param  \DateTime|null $to_date Inclusive upper bound (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
@@ -409,10 +409,10 @@ class AnalyticsApi
     /**
      * Create request for operation 'getAnalytics'
      *
-     * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs (from &#x60;POST /v1/posts&#x60;)  and External Post IDs (from this endpoint&#39;s list response). The API automatically  resolves Late Post IDs to their corresponding External Post analytics. (optional)
+     * @param  string|null $post_id Returns analytics for a single post. Accepts both Late Post IDs and External Post IDs. Late IDs are auto-resolved to External Post analytics. (optional)
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
-     * @param  string|null $source Filter by post source: - &#x60;late&#x60; - Only posts scheduled/published via Late API - &#x60;external&#x60; - Only posts synced from the platform (not posted via Late) - &#x60;all&#x60; - All posts (default) (optional, default to 'all')
+     * @param  string|null $source Filter by post source: late (posted via Late API), external (synced from platform), all (default) (optional, default to 'all')
      * @param  \DateTime|null $from_date Inclusive lower bound (optional)
      * @param  \DateTime|null $to_date Inclusive upper bound (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
@@ -966,7 +966,7 @@ class AnalyticsApi
      * Get LinkedIn aggregate stats
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
-     * @param  string|null $aggregation Type of aggregation for the analytics data. - &#x60;TOTAL&#x60; (default): Returns single totals for each metric - &#x60;DAILY&#x60;: Returns daily breakdown of metrics  Note: &#x60;MEMBERS_REACHED&#x60; metric is not available with &#x60;DAILY&#x60; aggregation. (optional, default to 'TOTAL')
+     * @param  string|null $aggregation Type of aggregation: TOTAL (default, returns single totals) or DAILY (returns daily breakdown). Note: MEMBERS_REACHED is not available with DAILY aggregation. (optional, default to 'TOTAL')
      * @param  \DateTime|null $start_date Start date for analytics data in YYYY-MM-DD format. If provided without endDate, endDate defaults to today. If omitted entirely, returns lifetime analytics. (optional)
      * @param  \DateTime|null $end_date End date for analytics data in YYYY-MM-DD format (exclusive). If provided without startDate, startDate defaults to 30 days before endDate. (optional)
      * @param  string|null $metrics Comma-separated list of metrics to fetch. If omitted, fetches all available metrics. Valid values: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE (optional)
@@ -988,7 +988,7 @@ class AnalyticsApi
      * Get LinkedIn aggregate stats
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
-     * @param  string|null $aggregation Type of aggregation for the analytics data. - &#x60;TOTAL&#x60; (default): Returns single totals for each metric - &#x60;DAILY&#x60;: Returns daily breakdown of metrics  Note: &#x60;MEMBERS_REACHED&#x60; metric is not available with &#x60;DAILY&#x60; aggregation. (optional, default to 'TOTAL')
+     * @param  string|null $aggregation Type of aggregation: TOTAL (default, returns single totals) or DAILY (returns daily breakdown). Note: MEMBERS_REACHED is not available with DAILY aggregation. (optional, default to 'TOTAL')
      * @param  \DateTime|null $start_date Start date for analytics data in YYYY-MM-DD format. If provided without endDate, endDate defaults to today. If omitted entirely, returns lifetime analytics. (optional)
      * @param  \DateTime|null $end_date End date for analytics data in YYYY-MM-DD format (exclusive). If provided without startDate, startDate defaults to 30 days before endDate. (optional)
      * @param  string|null $metrics Comma-separated list of metrics to fetch. If omitted, fetches all available metrics. Valid values: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE (optional)
@@ -1133,7 +1133,7 @@ class AnalyticsApi
      * Get LinkedIn aggregate stats
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
-     * @param  string|null $aggregation Type of aggregation for the analytics data. - &#x60;TOTAL&#x60; (default): Returns single totals for each metric - &#x60;DAILY&#x60;: Returns daily breakdown of metrics  Note: &#x60;MEMBERS_REACHED&#x60; metric is not available with &#x60;DAILY&#x60; aggregation. (optional, default to 'TOTAL')
+     * @param  string|null $aggregation Type of aggregation: TOTAL (default, returns single totals) or DAILY (returns daily breakdown). Note: MEMBERS_REACHED is not available with DAILY aggregation. (optional, default to 'TOTAL')
      * @param  \DateTime|null $start_date Start date for analytics data in YYYY-MM-DD format. If provided without endDate, endDate defaults to today. If omitted entirely, returns lifetime analytics. (optional)
      * @param  \DateTime|null $end_date End date for analytics data in YYYY-MM-DD format (exclusive). If provided without startDate, startDate defaults to 30 days before endDate. (optional)
      * @param  string|null $metrics Comma-separated list of metrics to fetch. If omitted, fetches all available metrics. Valid values: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE (optional)
@@ -1158,7 +1158,7 @@ class AnalyticsApi
      * Get LinkedIn aggregate stats
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
-     * @param  string|null $aggregation Type of aggregation for the analytics data. - &#x60;TOTAL&#x60; (default): Returns single totals for each metric - &#x60;DAILY&#x60;: Returns daily breakdown of metrics  Note: &#x60;MEMBERS_REACHED&#x60; metric is not available with &#x60;DAILY&#x60; aggregation. (optional, default to 'TOTAL')
+     * @param  string|null $aggregation Type of aggregation: TOTAL (default, returns single totals) or DAILY (returns daily breakdown). Note: MEMBERS_REACHED is not available with DAILY aggregation. (optional, default to 'TOTAL')
      * @param  \DateTime|null $start_date Start date for analytics data in YYYY-MM-DD format. If provided without endDate, endDate defaults to today. If omitted entirely, returns lifetime analytics. (optional)
      * @param  \DateTime|null $end_date End date for analytics data in YYYY-MM-DD format (exclusive). If provided without startDate, startDate defaults to 30 days before endDate. (optional)
      * @param  string|null $metrics Comma-separated list of metrics to fetch. If omitted, fetches all available metrics. Valid values: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE (optional)
@@ -1212,7 +1212,7 @@ class AnalyticsApi
      * Create request for operation 'getLinkedInAggregateAnalytics'
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
-     * @param  string|null $aggregation Type of aggregation for the analytics data. - &#x60;TOTAL&#x60; (default): Returns single totals for each metric - &#x60;DAILY&#x60;: Returns daily breakdown of metrics  Note: &#x60;MEMBERS_REACHED&#x60; metric is not available with &#x60;DAILY&#x60; aggregation. (optional, default to 'TOTAL')
+     * @param  string|null $aggregation Type of aggregation: TOTAL (default, returns single totals) or DAILY (returns daily breakdown). Note: MEMBERS_REACHED is not available with DAILY aggregation. (optional, default to 'TOTAL')
      * @param  \DateTime|null $start_date Start date for analytics data in YYYY-MM-DD format. If provided without endDate, endDate defaults to today. If omitted entirely, returns lifetime analytics. (optional)
      * @param  \DateTime|null $end_date End date for analytics data in YYYY-MM-DD format (exclusive). If provided without startDate, startDate defaults to 30 days before endDate. (optional)
      * @param  string|null $metrics Comma-separated list of metrics to fetch. If omitted, fetches all available metrics. Valid values: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE (optional)

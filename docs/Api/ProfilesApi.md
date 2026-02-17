@@ -195,7 +195,7 @@ listProfiles($include_over_limit): \Late\Model\ProfilesListResponse
 
 List profiles
 
-Returns profiles within the user's plan limit. Profiles are sorted by creation date (oldest first). Use `includeOverLimit=true` to include profiles that exceed the plan limit (for management/deletion purposes).
+Returns profiles within the user's plan limit, sorted by creation date (oldest first). Use includeOverLimit=true to include profiles that exceed the plan limit (for management/deletion purposes).
 
 ### Example
 
@@ -214,7 +214,7 @@ $apiInstance = new Late\Api\ProfilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$include_over_limit = false; // bool | When true, includes profiles that exceed the user's plan limit. Over-limit profiles will have `isOverLimit: true` in the response. Useful for managing/deleting profiles after a plan downgrade.
+$include_over_limit = false; // bool | When true, includes profiles that exceed the user's plan limit. Over-limit profiles will have isOverLimit: true in the response. Useful for managing/deleting profiles after a plan downgrade.
 
 try {
     $result = $apiInstance->listProfiles($include_over_limit);
@@ -228,7 +228,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **include_over_limit** | **bool**| When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have &#x60;isOverLimit: true&#x60; in the response. Useful for managing/deleting profiles after a plan downgrade. | [optional] [default to false] |
+| **include_over_limit** | **bool**| When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have isOverLimit: true in the response. Useful for managing/deleting profiles after a plan downgrade. | [optional] [default to false] |
 
 ### Return type
 

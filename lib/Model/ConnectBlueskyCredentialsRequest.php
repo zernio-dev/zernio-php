@@ -387,7 +387,7 @@ class ConnectBlueskyCredentialsRequest implements ModelInterface, ArrayAccess, \
     /**
      * Sets state
      *
-     * @param string $state Required state parameter formatted as `{userId}-{profileId}`. - `userId`: Your Late user ID (get from `GET /v1/users` → `currentUserId`) - `profileId`: The profile ID to connect the account to (get from `GET /v1/profiles`)
+     * @param string $state Required state parameter formatted as {userId}-{profileId}. userId is your Late user ID (from GET /v1/users, currentUserId field), profileId is the profile to connect the account to (from GET /v1/profiles).
      *
      * @return self
      */

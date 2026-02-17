@@ -786,7 +786,7 @@ class ConnectApi
      *
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
-     * @param  string|null $redirect_url Your custom redirect URL after connection completes.  **Standard Mode:** After the user selects an account, Late redirects here with &#x60;?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;.  **Headless Mode:** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint. After OAuth, the user is redirected to your URL with OAuth data (&#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;userProfile&#x60;, &#x60;connect_token&#x60;, &#x60;platform&#x60;, &#x60;step&#x60;). See the main endpoint description for details.  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
+     * @param  string|null $redirect_url Your custom redirect URL after connection completes. Standard mode: Late redirects here with ?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y. Headless mode: pass headless&#x3D;true on this endpoint. User is redirected to your URL with OAuth data (profileId, tempToken, userProfile, connect_token, platform, step). See endpoint description for details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -806,7 +806,7 @@ class ConnectApi
      *
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
-     * @param  string|null $redirect_url Your custom redirect URL after connection completes.  **Standard Mode:** After the user selects an account, Late redirects here with &#x60;?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;.  **Headless Mode:** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint. After OAuth, the user is redirected to your URL with OAuth data (&#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;userProfile&#x60;, &#x60;connect_token&#x60;, &#x60;platform&#x60;, &#x60;step&#x60;). See the main endpoint description for details.  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
+     * @param  string|null $redirect_url Your custom redirect URL after connection completes. Standard mode: Late redirects here with ?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y. Headless mode: pass headless&#x3D;true on this endpoint. User is redirected to your URL with OAuth data (profileId, tempToken, userProfile, connect_token, platform, step). See endpoint description for details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -907,7 +907,7 @@ class ConnectApi
      *
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
-     * @param  string|null $redirect_url Your custom redirect URL after connection completes.  **Standard Mode:** After the user selects an account, Late redirects here with &#x60;?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;.  **Headless Mode:** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint. After OAuth, the user is redirected to your URL with OAuth data (&#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;userProfile&#x60;, &#x60;connect_token&#x60;, &#x60;platform&#x60;, &#x60;step&#x60;). See the main endpoint description for details.  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
+     * @param  string|null $redirect_url Your custom redirect URL after connection completes. Standard mode: Late redirects here with ?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y. Headless mode: pass headless&#x3D;true on this endpoint. User is redirected to your URL with OAuth data (profileId, tempToken, userProfile, connect_token, platform, step). See endpoint description for details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -930,7 +930,7 @@ class ConnectApi
      *
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
-     * @param  string|null $redirect_url Your custom redirect URL after connection completes.  **Standard Mode:** After the user selects an account, Late redirects here with &#x60;?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;.  **Headless Mode:** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint. After OAuth, the user is redirected to your URL with OAuth data (&#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;userProfile&#x60;, &#x60;connect_token&#x60;, &#x60;platform&#x60;, &#x60;step&#x60;). See the main endpoint description for details.  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
+     * @param  string|null $redirect_url Your custom redirect URL after connection completes. Standard mode: Late redirects here with ?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y. Headless mode: pass headless&#x3D;true on this endpoint. User is redirected to your URL with OAuth data (profileId, tempToken, userProfile, connect_token, platform, step). See endpoint description for details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -982,7 +982,7 @@ class ConnectApi
      *
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
-     * @param  string|null $redirect_url Your custom redirect URL after connection completes.  **Standard Mode:** After the user selects an account, Late redirects here with &#x60;?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y&#x60;.  **Headless Mode:** Pass &#x60;headless&#x3D;true&#x60; as a query parameter on this endpoint. After OAuth, the user is redirected to your URL with OAuth data (&#x60;profileId&#x60;, &#x60;tempToken&#x60;, &#x60;userProfile&#x60;, &#x60;connect_token&#x60;, &#x60;platform&#x60;, &#x60;step&#x60;). See the main endpoint description for details.  Example: &#x60;https://yourdomain.com/integrations/callback&#x60; (optional)
+     * @param  string|null $redirect_url Your custom redirect URL after connection completes. Standard mode: Late redirects here with ?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y. Headless mode: pass headless&#x3D;true on this endpoint. User is redirected to your URL with OAuth data (profileId, tempToken, userProfile, connect_token, platform, step). See endpoint description for details. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1390,7 +1390,7 @@ class ConnectApi
     /**
      * Operation getGmbLocations
      *
-     * List Google Business locations
+     * List GBP locations
      *
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
@@ -1408,7 +1408,7 @@ class ConnectApi
     /**
      * Operation getGmbLocationsWithHttpInfo
      *
-     * List Google Business locations
+     * List GBP locations
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
@@ -1507,7 +1507,7 @@ class ConnectApi
     /**
      * Operation getGmbLocationsAsync
      *
-     * List Google Business locations
+     * List GBP locations
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
@@ -1528,7 +1528,7 @@ class ConnectApi
     /**
      * Operation getGmbLocationsAsyncWithHttpInfo
      *
-     * List Google Business locations
+     * List GBP locations
      *
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
@@ -1964,7 +1964,7 @@ class ConnectApi
      *
      * Get pending OAuth data
      *
-     * @param  string $token The pending data token from the OAuth redirect URL (&#x60;pendingDataToken&#x60; parameter) (required)
+     * @param  string $token The pending data token from the OAuth redirect URL (pendingDataToken parameter) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPendingOAuthData'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1982,7 +1982,7 @@ class ConnectApi
      *
      * Get pending OAuth data
      *
-     * @param  string $token The pending data token from the OAuth redirect URL (&#x60;pendingDataToken&#x60; parameter) (required)
+     * @param  string $token The pending data token from the OAuth redirect URL (pendingDataToken parameter) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPendingOAuthData'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2095,7 +2095,7 @@ class ConnectApi
      *
      * Get pending OAuth data
      *
-     * @param  string $token The pending data token from the OAuth redirect URL (&#x60;pendingDataToken&#x60; parameter) (required)
+     * @param  string $token The pending data token from the OAuth redirect URL (pendingDataToken parameter) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPendingOAuthData'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2116,7 +2116,7 @@ class ConnectApi
      *
      * Get pending OAuth data
      *
-     * @param  string $token The pending data token from the OAuth redirect URL (&#x60;pendingDataToken&#x60; parameter) (required)
+     * @param  string $token The pending data token from the OAuth redirect URL (pendingDataToken parameter) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPendingOAuthData'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2166,7 +2166,7 @@ class ConnectApi
     /**
      * Create request for operation 'getPendingOAuthData'
      *
-     * @param  string $token The pending data token from the OAuth redirect URL (&#x60;pendingDataToken&#x60; parameter) (required)
+     * @param  string $token The pending data token from the OAuth redirect URL (pendingDataToken parameter) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPendingOAuthData'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4290,7 +4290,7 @@ class ConnectApi
     /**
      * Operation listGoogleBusinessLocations
      *
-     * List Google Business locations
+     * List GBP locations
      *
      * @param  string $profile_id Profile ID from your connection flow (required)
      * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
@@ -4309,7 +4309,7 @@ class ConnectApi
     /**
      * Operation listGoogleBusinessLocationsWithHttpInfo
      *
-     * List Google Business locations
+     * List GBP locations
      *
      * @param  string $profile_id Profile ID from your connection flow (required)
      * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
@@ -4423,7 +4423,7 @@ class ConnectApi
     /**
      * Operation listGoogleBusinessLocationsAsync
      *
-     * List Google Business locations
+     * List GBP locations
      *
      * @param  string $profile_id Profile ID from your connection flow (required)
      * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
@@ -4445,7 +4445,7 @@ class ConnectApi
     /**
      * Operation listGoogleBusinessLocationsAsyncWithHttpInfo
      *
-     * List Google Business locations
+     * List GBP locations
      *
      * @param  string $profile_id Profile ID from your connection flow (required)
      * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
@@ -5863,7 +5863,7 @@ class ConnectApi
     /**
      * Operation selectGoogleBusinessLocation
      *
-     * Select Google Business location
+     * Select GBP location
      *
      * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
@@ -5881,7 +5881,7 @@ class ConnectApi
     /**
      * Operation selectGoogleBusinessLocationWithHttpInfo
      *
-     * Select Google Business location
+     * Select GBP location
      *
      * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
@@ -5980,7 +5980,7 @@ class ConnectApi
     /**
      * Operation selectGoogleBusinessLocationAsync
      *
-     * Select Google Business location
+     * Select GBP location
      *
      * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
@@ -6001,7 +6001,7 @@ class ConnectApi
     /**
      * Operation selectGoogleBusinessLocationAsyncWithHttpInfo
      *
-     * Select Google Business location
+     * Select GBP location
      *
      * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
@@ -7323,7 +7323,7 @@ class ConnectApi
     /**
      * Operation updateGmbLocation
      *
-     * Update Google Business location
+     * Update GBP location
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request update_gmb_location_request (required)
@@ -7342,7 +7342,7 @@ class ConnectApi
     /**
      * Operation updateGmbLocationWithHttpInfo
      *
-     * Update Google Business location
+     * Update GBP location
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
@@ -7442,7 +7442,7 @@ class ConnectApi
     /**
      * Operation updateGmbLocationAsync
      *
-     * Update Google Business location
+     * Update GBP location
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
@@ -7464,7 +7464,7 @@ class ConnectApi
     /**
      * Operation updateGmbLocationAsyncWithHttpInfo
      *
-     * Update Google Business location
+     * Update GBP location
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)

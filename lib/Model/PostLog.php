@@ -714,7 +714,7 @@ class PostLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets action
      *
-     * @param string|null $action Type of action logged: - `publish` - Initial publish attempt - `retry` - Retry after failure - `media_upload` - Media upload step - `rate_limit_pause` - Account paused due to rate limits - `token_refresh` - Token was refreshed - `cancelled` - Post was cancelled
+     * @param string|null $action Type of action logged: publish (initial attempt), retry (after failure), media_upload, rate_limit_pause, token_refresh, cancelled
      *
      * @return self
      */

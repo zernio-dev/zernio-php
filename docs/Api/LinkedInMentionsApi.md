@@ -17,7 +17,7 @@ getLinkedInMentions($account_id, $url, $display_name): \Late\Model\GetLinkedInMe
 
 Resolve LinkedIn mention
 
-Converts a LinkedIn profile or company URL to a URN for @mentions in posts. Supports person mentions (`linkedin.com/in/username` or just `username`) and organization mentions (`linkedin.com/company/name` or `company/name`).  Person mentions require the connected account to have admin access to at least one LinkedIn Organization. Organization mentions work with any account.  For person mentions to be clickable, provide the `displayName` parameter matching the exact name on their LinkedIn profile. Organization names are fetched automatically.  Use the returned `mentionFormat` value directly in your post content.
+Converts a LinkedIn profile or company URL to a URN for @mentions in posts. Supports person mentions (linkedin.com/in/username or just username) and org mentions (linkedin.com/company/name or company/name). Person mentions require admin access to at least one LinkedIn Organization. Org mentions work with any account. For person mentions to be clickable, provide the displayName parameter matching the exact name on their profile. Org names are fetched automatically. Use the returned mentionFormat directly in post content.
 
 ### Example
 
@@ -37,8 +37,8 @@ $apiInstance = new Late\Api\LinkedInMentionsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The LinkedIn account ID
-$url = miquelpalet; // string | LinkedIn profile URL, company URL, or vanity name. - Person: `miquelpalet`, `linkedin.com/in/miquelpalet` - Organization: `company/microsoft`, `linkedin.com/company/microsoft`
-$display_name = Miquel Palet; // string | The exact display name as shown on LinkedIn. - **Person mentions:** Required for clickable mentions. If not provided, a name is derived from the vanity URL which may not match exactly. - **Organization mentions:** Optional. If not provided, the company name is automatically retrieved from LinkedIn.
+$url = miquelpalet; // string | LinkedIn profile URL, company URL, or vanity name. Person examples: miquelpalet, linkedin.com/in/miquelpalet. Organization examples: company/microsoft, linkedin.com/company/microsoft.
+$display_name = Miquel Palet; // string | The exact display name as shown on LinkedIn. Required for person mentions (for clickable mentions; if not provided, a name is derived from the vanity URL which may not match). Optional for organization mentions (company name is auto-retrieved from LinkedIn).
 
 try {
     $result = $apiInstance->getLinkedInMentions($account_id, $url, $display_name);
@@ -53,8 +53,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The LinkedIn account ID | |
-| **url** | **string**| LinkedIn profile URL, company URL, or vanity name. - Person: &#x60;miquelpalet&#x60;, &#x60;linkedin.com/in/miquelpalet&#x60; - Organization: &#x60;company/microsoft&#x60;, &#x60;linkedin.com/company/microsoft&#x60; | |
-| **display_name** | **string**| The exact display name as shown on LinkedIn. - **Person mentions:** Required for clickable mentions. If not provided, a name is derived from the vanity URL which may not match exactly. - **Organization mentions:** Optional. If not provided, the company name is automatically retrieved from LinkedIn. | [optional] |
+| **url** | **string**| LinkedIn profile URL, company URL, or vanity name. Person examples: miquelpalet, linkedin.com/in/miquelpalet. Organization examples: company/microsoft, linkedin.com/company/microsoft. | |
+| **display_name** | **string**| The exact display name as shown on LinkedIn. Required for person mentions (for clickable mentions; if not provided, a name is derived from the vanity URL which may not match). Optional for organization mentions (company name is auto-retrieved from LinkedIn). | [optional] |
 
 ### Return type
 

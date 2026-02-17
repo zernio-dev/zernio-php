@@ -1028,7 +1028,7 @@ class ProfilesApi
      *
      * List profiles
      *
-     * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have &#x60;isOverLimit: true&#x60; in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
+     * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have isOverLimit: true in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1046,7 +1046,7 @@ class ProfilesApi
      *
      * List profiles
      *
-     * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have &#x60;isOverLimit: true&#x60; in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
+     * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have isOverLimit: true in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1145,7 +1145,7 @@ class ProfilesApi
      *
      * List profiles
      *
-     * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have &#x60;isOverLimit: true&#x60; in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
+     * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have isOverLimit: true in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1166,7 +1166,7 @@ class ProfilesApi
      *
      * List profiles
      *
-     * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have &#x60;isOverLimit: true&#x60; in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
+     * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have isOverLimit: true in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1216,7 +1216,7 @@ class ProfilesApi
     /**
      * Create request for operation 'listProfiles'
      *
-     * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have &#x60;isOverLimit: true&#x60; in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
+     * @param  bool|null $include_over_limit When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have isOverLimit: true in the response. Useful for managing/deleting profiles after a plan downgrade. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

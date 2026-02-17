@@ -1,6 +1,6 @@
 <?php
 /**
- * SocialAccountProfileId
+ * ListPostsLogs200ResponsePagination
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * SocialAccountProfileId Class Doc Comment
+ * ListPostsLogs200ResponsePagination Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListPostsLogs200ResponsePagination implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SocialAccount_profileId';
+    protected static $openAPIModelName = 'listPostsLogs_200_response_pagination';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,11 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
-        'user_id' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'color' => 'string',
-        'is_default' => 'bool',
-        'is_over_limit' => 'bool',
-        'created_at' => '\DateTime'
+        'total' => 'int',
+        'limit' => 'int',
+        'skip' => 'int',
+        'pages' => 'int',
+        'has_more' => 'bool'
     ];
 
     /**
@@ -76,14 +73,11 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
-        'user_id' => null,
-        'name' => null,
-        'description' => null,
-        'color' => null,
-        'is_default' => null,
-        'is_over_limit' => null,
-        'created_at' => 'date-time'
+        'total' => null,
+        'limit' => null,
+        'skip' => null,
+        'pages' => null,
+        'has_more' => null
     ];
 
     /**
@@ -92,14 +86,11 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
-        'user_id' => false,
-        'name' => false,
-        'description' => false,
-        'color' => false,
-        'is_default' => false,
-        'is_over_limit' => false,
-        'created_at' => false
+        'total' => false,
+        'limit' => false,
+        'skip' => false,
+        'pages' => false,
+        'has_more' => false
     ];
 
     /**
@@ -188,14 +179,11 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
-        'user_id' => 'userId',
-        'name' => 'name',
-        'description' => 'description',
-        'color' => 'color',
-        'is_default' => 'isDefault',
-        'is_over_limit' => 'isOverLimit',
-        'created_at' => 'createdAt'
+        'total' => 'total',
+        'limit' => 'limit',
+        'skip' => 'skip',
+        'pages' => 'pages',
+        'has_more' => 'hasMore'
     ];
 
     /**
@@ -204,14 +192,11 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
-        'user_id' => 'setUserId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'color' => 'setColor',
-        'is_default' => 'setIsDefault',
-        'is_over_limit' => 'setIsOverLimit',
-        'created_at' => 'setCreatedAt'
+        'total' => 'setTotal',
+        'limit' => 'setLimit',
+        'skip' => 'setSkip',
+        'pages' => 'setPages',
+        'has_more' => 'setHasMore'
     ];
 
     /**
@@ -220,14 +205,11 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
-        'user_id' => 'getUserId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'color' => 'getColor',
-        'is_default' => 'getIsDefault',
-        'is_over_limit' => 'getIsOverLimit',
-        'created_at' => 'getCreatedAt'
+        'total' => 'getTotal',
+        'limit' => 'getLimit',
+        'skip' => 'getSkip',
+        'pages' => 'getPages',
+        'has_more' => 'getHasMore'
     ];
 
     /**
@@ -287,14 +269,11 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
-        $this->setIfExists('user_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('color', $data ?? [], null);
-        $this->setIfExists('is_default', $data ?? [], null);
-        $this->setIfExists('is_over_limit', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('skip', $data ?? [], null);
+        $this->setIfExists('pages', $data ?? [], null);
+        $this->setIfExists('has_more', $data ?? [], null);
     }
 
     /**
@@ -340,217 +319,136 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets _id
+     * Gets total
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getId()
+    public function getTotal()
     {
-        return $this->container['_id'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets _id
+     * Sets total
      *
-     * @param string|null $_id _id
+     * @param int|null $total Total number of logs matching the query
      *
      * @return self
      */
-    public function setId($_id)
+    public function setTotal($total)
     {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
+        if (is_null($total)) {
+            throw new \InvalidArgumentException('non-nullable total cannot be null');
         }
-        $this->container['_id'] = $_id;
+        $this->container['total'] = $total;
 
         return $this;
     }
 
     /**
-     * Gets user_id
+     * Gets limit
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getUserId()
+    public function getLimit()
     {
-        return $this->container['user_id'];
+        return $this->container['limit'];
     }
 
     /**
-     * Sets user_id
+     * Sets limit
      *
-     * @param string|null $user_id user_id
+     * @param int|null $limit limit
      *
      * @return self
      */
-    public function setUserId($user_id)
+    public function setLimit($limit)
     {
-        if (is_null($user_id)) {
-            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
+        if (is_null($limit)) {
+            throw new \InvalidArgumentException('non-nullable limit cannot be null');
         }
-        $this->container['user_id'] = $user_id;
+        $this->container['limit'] = $limit;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets skip
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getName()
+    public function getSkip()
     {
-        return $this->container['name'];
+        return $this->container['skip'];
     }
 
     /**
-     * Sets name
+     * Sets skip
      *
-     * @param string|null $name name
+     * @param int|null $skip skip
      *
      * @return self
      */
-    public function setName($name)
+    public function setSkip($skip)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($skip)) {
+            throw new \InvalidArgumentException('non-nullable skip cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['skip'] = $skip;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets pages
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getDescription()
+    public function getPages()
     {
-        return $this->container['description'];
+        return $this->container['pages'];
     }
 
     /**
-     * Sets description
+     * Sets pages
      *
-     * @param string|null $description description
+     * @param int|null $pages Total number of pages
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setPages($pages)
     {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        if (is_null($pages)) {
+            throw new \InvalidArgumentException('non-nullable pages cannot be null');
         }
-        $this->container['description'] = $description;
+        $this->container['pages'] = $pages;
 
         return $this;
     }
 
     /**
-     * Gets color
-     *
-     * @return string|null
-     */
-    public function getColor()
-    {
-        return $this->container['color'];
-    }
-
-    /**
-     * Sets color
-     *
-     * @param string|null $color color
-     *
-     * @return self
-     */
-    public function setColor($color)
-    {
-        if (is_null($color)) {
-            throw new \InvalidArgumentException('non-nullable color cannot be null');
-        }
-        $this->container['color'] = $color;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_default
+     * Gets has_more
      *
      * @return bool|null
      */
-    public function getIsDefault()
+    public function getHasMore()
     {
-        return $this->container['is_default'];
+        return $this->container['has_more'];
     }
 
     /**
-     * Sets is_default
+     * Sets has_more
      *
-     * @param bool|null $is_default is_default
+     * @param bool|null $has_more has_more
      *
      * @return self
      */
-    public function setIsDefault($is_default)
+    public function setHasMore($has_more)
     {
-        if (is_null($is_default)) {
-            throw new \InvalidArgumentException('non-nullable is_default cannot be null');
+        if (is_null($has_more)) {
+            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
         }
-        $this->container['is_default'] = $is_default;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_over_limit
-     *
-     * @return bool|null
-     */
-    public function getIsOverLimit()
-    {
-        return $this->container['is_over_limit'];
-    }
-
-    /**
-     * Sets is_over_limit
-     *
-     * @param bool|null $is_over_limit Only present when includeOverLimit=true is used. Indicates if this profile exceeds the user's plan limit. Over-limit profiles cannot be used for posting but can be managed (disconnected accounts, deleted).
-     *
-     * @return self
-     */
-    public function setIsOverLimit($is_over_limit)
-    {
-        if (is_null($is_over_limit)) {
-            throw new \InvalidArgumentException('non-nullable is_over_limit cannot be null');
-        }
-        $this->container['is_over_limit'] = $is_over_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['has_more'] = $has_more;
 
         return $this;
     }

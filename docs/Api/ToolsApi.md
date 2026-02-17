@@ -6,7 +6,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**checkInstagramHashtags()**](ToolsApi.md#checkInstagramHashtags) | **POST** /v1/tools/instagram/hashtag-checker | Check Instagram hashtag bans |
+| [**checkInstagramHashtags()**](ToolsApi.md#checkInstagramHashtags) | **POST** /v1/tools/instagram/hashtag-checker | Check IG hashtag bans |
 | [**downloadBlueskyMedia()**](ToolsApi.md#downloadBlueskyMedia) | **GET** /v1/tools/bluesky/download | Download Bluesky media |
 | [**downloadFacebookVideo()**](ToolsApi.md#downloadFacebookVideo) | **GET** /v1/tools/facebook/download | Download Facebook video |
 | [**downloadInstagramMedia()**](ToolsApi.md#downloadInstagramMedia) | **GET** /v1/tools/instagram/download | Download Instagram media |
@@ -23,9 +23,9 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 checkInstagramHashtags($check_instagram_hashtags_request): \Late\Model\CheckInstagramHashtags200Response
 ```
 
-Check Instagram hashtag bans
+Check IG hashtag bans
 
-Check if Instagram hashtags are banned, restricted, or safe to use.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+Check if Instagram hashtags are banned, restricted, or safe to use.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 
 ### Example
 
@@ -85,7 +85,7 @@ downloadBlueskyMedia($url): \Late\Model\DownloadBlueskyMedia200Response
 
 Download Bluesky media
 
-Download videos from Bluesky posts.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+Download videos from Bluesky posts.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 
 ### Example
 
@@ -145,7 +145,7 @@ downloadFacebookVideo($url): \Late\Model\DownloadFacebookVideo200Response
 
 Download Facebook video
 
-Download videos and reels from Facebook.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+Download videos and reels from Facebook.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 
 ### Example
 
@@ -205,7 +205,7 @@ downloadInstagramMedia($url): \Late\Model\DownloadInstagramMedia200Response
 
 Download Instagram media
 
-Download Instagram reels, posts, or photos.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+Download Instagram reels, posts, or photos.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 
 ### Example
 
@@ -265,7 +265,7 @@ downloadLinkedInVideo($url): \Late\Model\DownloadInstagramMedia200Response
 
 Download LinkedIn video
 
-Download videos from LinkedIn posts.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+Download videos from LinkedIn posts.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 
 ### Example
 
@@ -325,7 +325,7 @@ downloadTikTokVideo($url, $action, $format_id): \Late\Model\DownloadTikTokVideo2
 
 Download TikTok video
 
-Download TikTok videos with or without watermark.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+Download TikTok videos with or without watermark.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 
 ### Example
 
@@ -389,7 +389,7 @@ downloadTwitterMedia($url, $action, $format_id): \Late\Model\DownloadInstagramMe
 
 Download Twitter/X media
 
-Download videos from Twitter/X posts.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+Download videos from Twitter/X posts.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 
 ### Example
 
@@ -453,7 +453,7 @@ downloadYouTubeVideo($url, $action, $format, $quality, $format_id): \Late\Model\
 
 Download YouTube video
 
-Download YouTube videos or audio. Returns available formats or direct download URL.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+Download YouTube videos or audio. Returns available formats or direct download URL.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 
 ### Example
 
@@ -521,7 +521,7 @@ getYouTubeTranscript($url, $lang): \Late\Model\GetYouTubeTranscript200Response
 
 Get YouTube transcript
 
-Extract transcript/captions from a YouTube video.  **Rate Limits:** Build (50/day), Accelerate (500/day), Unlimited (unlimited)
+Extract transcript/captions from a YouTube video.  Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited).
 
 ### Example
 

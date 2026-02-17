@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * YouTubePlatformData Class Doc Comment
  *
  * @category Class
- * @description YouTube video upload settings: - Videos ≤ 3 minutes are automatically detected as YouTube Shorts - Videos &gt; 3 minutes become regular YouTube videos - Custom thumbnails supported for regular videos (via mediaItem.thumbnail) - Custom thumbnails NOT supported for Shorts via API - Scheduled videos are uploaded immediately as the specified visibility and published at scheduled time - Visibility defaults to \&quot;public\&quot; if not specified - madeForKids defaults to false (not child-directed) - Set containsSyntheticMedia: true if your video contains AI-generated content
+ * @description Videos up to 3 min are auto-detected as Shorts, longer as regular videos. Custom thumbnails supported for regular videos only (via mediaItem.thumbnail). Scheduled videos are uploaded immediately with the specified visibility. madeForKids defaults to false.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -404,7 +404,7 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets visibility
      *
-     * @param string|null $visibility Video visibility setting: - public: Anyone can search for and watch (default) - unlisted: Only people with the link can watch - private: Only you and people you specifically share with can watch
+     * @param string|null $visibility Video visibility: public (default, anyone can watch), unlisted (link only), private (invite only)
      *
      * @return self
      */
@@ -441,7 +441,7 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets made_for_kids
      *
-     * @param bool|null $made_for_kids COPPA compliance: Audience designation for the video. - true: Video is made for kids (child-directed content) - false: Video is NOT made for kids (default)  This field maps to YouTube's `selfDeclaredMadeForKids` setting. Videos marked as made for kids have restricted features (no comments, no notifications, limited ad targeting).  IMPORTANT: If not specified, defaults to false. YouTube requires this to be explicitly set, otherwise the video may be blocked from views until configured in YouTube Studio.
+     * @param bool|null $made_for_kids COPPA compliance flag. Set true for child-directed content (restricts comments, notifications, ad targeting). Defaults to false. YouTube may block views if not explicitly set.
      *
      * @return self
      */
@@ -499,7 +499,7 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets contains_synthetic_media
      *
-     * @param bool|null $contains_synthetic_media AI-generated content disclosure flag. Set to true if your video contains AI-generated or synthetic content that could be mistaken for real people, places, or events. This helps viewers understand when realistic content has been created or altered using AI. YouTube may add a label to videos when this is set. Added to YouTube Data API in October 2024.
+     * @param bool|null $contains_synthetic_media AI-generated content disclosure. Set true if the video contains synthetic content that could be mistaken for real. YouTube may add a label.
      *
      * @return self
      */
@@ -526,7 +526,7 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets category_id
      *
-     * @param string|null $category_id YouTube video category ID. Defaults to '22' (People & Blogs). Common categories: 1 (Film & Animation), 2 (Autos & Vehicles), 10 (Music), 15 (Pets & Animals), 17 (Sports), 20 (Gaming), 22 (People & Blogs), 23 (Comedy), 24 (Entertainment), 25 (News & Politics), 26 (Howto & Style), 27 (Education), 28 (Science & Technology).
+     * @param string|null $category_id YouTube video category ID. Defaults to 22 (People & Blogs). Common: 1 (Film), 2 (Autos), 10 (Music), 15 (Pets), 17 (Sports), 20 (Gaming), 23 (Comedy), 24 (Entertainment), 25 (News), 26 (Howto), 27 (Education), 28 (Science & Tech).
      *
      * @return self
      */

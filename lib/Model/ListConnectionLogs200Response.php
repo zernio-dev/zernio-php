@@ -59,7 +59,7 @@ class ListConnectionLogs200Response implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'logs' => '\Late\Model\ConnectionLog[]',
-        'pagination' => '\Late\Model\ListLogs200ResponsePagination'
+        'pagination' => '\Late\Model\ListPostsLogs200ResponsePagination'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ListConnectionLogs200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets pagination
      *
-     * @return \Late\Model\ListLogs200ResponsePagination|null
+     * @return \Late\Model\ListPostsLogs200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -337,7 +337,7 @@ class ListConnectionLogs200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets pagination
      *
-     * @param \Late\Model\ListLogs200ResponsePagination|null $pagination pagination
+     * @param \Late\Model\ListPostsLogs200ResponsePagination|null $pagination pagination
      *
      * @return self
      */

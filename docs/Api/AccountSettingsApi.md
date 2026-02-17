@@ -6,15 +6,15 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**deleteInstagramIceBreakers()**](AccountSettingsApi.md#deleteInstagramIceBreakers) | **DELETE** /v1/accounts/{accountId}/instagram-ice-breakers | Delete Instagram ice breakers |
-| [**deleteMessengerMenu()**](AccountSettingsApi.md#deleteMessengerMenu) | **DELETE** /v1/accounts/{accountId}/messenger-menu | Delete Facebook persistent menu |
-| [**deleteTelegramCommands()**](AccountSettingsApi.md#deleteTelegramCommands) | **DELETE** /v1/accounts/{accountId}/telegram-commands | Delete Telegram bot commands |
-| [**getInstagramIceBreakers()**](AccountSettingsApi.md#getInstagramIceBreakers) | **GET** /v1/accounts/{accountId}/instagram-ice-breakers | Get Instagram ice breakers |
-| [**getMessengerMenu()**](AccountSettingsApi.md#getMessengerMenu) | **GET** /v1/accounts/{accountId}/messenger-menu | Get Facebook persistent menu |
-| [**getTelegramCommands()**](AccountSettingsApi.md#getTelegramCommands) | **GET** /v1/accounts/{accountId}/telegram-commands | Get Telegram bot commands |
-| [**setInstagramIceBreakers()**](AccountSettingsApi.md#setInstagramIceBreakers) | **PUT** /v1/accounts/{accountId}/instagram-ice-breakers | Set Instagram ice breakers |
-| [**setMessengerMenu()**](AccountSettingsApi.md#setMessengerMenu) | **PUT** /v1/accounts/{accountId}/messenger-menu | Set Facebook persistent menu |
-| [**setTelegramCommands()**](AccountSettingsApi.md#setTelegramCommands) | **PUT** /v1/accounts/{accountId}/telegram-commands | Set Telegram bot commands |
+| [**deleteInstagramIceBreakers()**](AccountSettingsApi.md#deleteInstagramIceBreakers) | **DELETE** /v1/accounts/{accountId}/instagram-ice-breakers | Delete IG ice breakers |
+| [**deleteMessengerMenu()**](AccountSettingsApi.md#deleteMessengerMenu) | **DELETE** /v1/accounts/{accountId}/messenger-menu | Delete FB persistent menu |
+| [**deleteTelegramCommands()**](AccountSettingsApi.md#deleteTelegramCommands) | **DELETE** /v1/accounts/{accountId}/telegram-commands | Delete TG bot commands |
+| [**getInstagramIceBreakers()**](AccountSettingsApi.md#getInstagramIceBreakers) | **GET** /v1/accounts/{accountId}/instagram-ice-breakers | Get IG ice breakers |
+| [**getMessengerMenu()**](AccountSettingsApi.md#getMessengerMenu) | **GET** /v1/accounts/{accountId}/messenger-menu | Get FB persistent menu |
+| [**getTelegramCommands()**](AccountSettingsApi.md#getTelegramCommands) | **GET** /v1/accounts/{accountId}/telegram-commands | Get TG bot commands |
+| [**setInstagramIceBreakers()**](AccountSettingsApi.md#setInstagramIceBreakers) | **PUT** /v1/accounts/{accountId}/instagram-ice-breakers | Set IG ice breakers |
+| [**setMessengerMenu()**](AccountSettingsApi.md#setMessengerMenu) | **PUT** /v1/accounts/{accountId}/messenger-menu | Set FB persistent menu |
+| [**setTelegramCommands()**](AccountSettingsApi.md#setTelegramCommands) | **PUT** /v1/accounts/{accountId}/telegram-commands | Set TG bot commands |
 
 
 ## `deleteInstagramIceBreakers()`
@@ -23,7 +23,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 deleteInstagramIceBreakers($account_id)
 ```
 
-Delete Instagram ice breakers
+Delete IG ice breakers
 
 ### Example
 
@@ -80,7 +80,7 @@ void (empty response body)
 deleteMessengerMenu($account_id)
 ```
 
-Delete Facebook persistent menu
+Delete FB persistent menu
 
 ### Example
 
@@ -137,7 +137,7 @@ void (empty response body)
 deleteTelegramCommands($account_id)
 ```
 
-Delete Telegram bot commands
+Delete TG bot commands
 
 ### Example
 
@@ -194,7 +194,7 @@ void (empty response body)
 getInstagramIceBreakers($account_id): \Late\Model\GetMessengerMenu200Response
 ```
 
-Get Instagram ice breakers
+Get IG ice breakers
 
 Get the ice breaker configuration for an Instagram account.
 
@@ -254,7 +254,7 @@ try {
 getMessengerMenu($account_id): \Late\Model\GetMessengerMenu200Response
 ```
 
-Get Facebook persistent menu
+Get FB persistent menu
 
 Get the persistent menu configuration for a Facebook Messenger account.
 
@@ -314,7 +314,7 @@ try {
 getTelegramCommands($account_id): \Late\Model\GetTelegramCommands200Response
 ```
 
-Get Telegram bot commands
+Get TG bot commands
 
 Get the bot commands configuration for a Telegram account.
 
@@ -374,7 +374,7 @@ try {
 setInstagramIceBreakers($account_id, $set_instagram_ice_breakers_request)
 ```
 
-Set Instagram ice breakers
+Set IG ice breakers
 
 Set ice breakers for an Instagram account. Max 4 ice breakers, question max 80 chars.
 
@@ -435,7 +435,7 @@ void (empty response body)
 setMessengerMenu($account_id, $set_messenger_menu_request)
 ```
 
-Set Facebook persistent menu
+Set FB persistent menu
 
 Set the persistent menu for a Facebook Messenger account. Max 3 top-level items, max 5 nested items.
 
@@ -496,7 +496,7 @@ void (empty response body)
 setTelegramCommands($account_id, $set_telegram_commands_request)
 ```
 
-Set Telegram bot commands
+Set TG bot commands
 
 Set bot commands for a Telegram account.
 

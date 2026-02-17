@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * LinkedInPlatformData Class Doc Comment
  *
  * @category Class
- * @description Constraints: - Multi-image posts support up to 20 images. - Multi-video posts are not supported. - Single PDF document posts are supported (max 100MB, ~300 pages). Documents cannot be mixed with other media. - Post ID is returned in the x-restli-id response header. - Link previews are automatically generated for URLs when no media is attached (can be disabled with disableLinkPreview). - Use organizationUrn to post to multiple organizations from the same account connection.
+ * @description Up to 20 images, no multi-video. Single PDF supported (max 100MB, ~300 pages, cannot mix with other media). Link previews auto-generated when no media attached (disable with disableLinkPreview). Use organizationUrn for multi-org posting.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

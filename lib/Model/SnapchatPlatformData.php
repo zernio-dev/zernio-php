@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * SnapchatPlatformData Class Doc Comment
  *
  * @category Class
- * @description Snapchat requires a Public Profile. Media is required for all content types (single item only, auto-encrypted before upload).  **Content types:** Story (ephemeral 24h, no caption), Saved Story (permanent, title max 45 chars), Spotlight (video, description max 160 chars).  **Media limits:** Images max 20 MB (JPEG/PNG), videos max 500 MB (MP4, 5-60s, min 540x960px, 9:16 recommended).
+ * @description Requires a Public Profile. Media required for all content types (single item only, auto-encrypted). Content types: story (ephemeral 24h, no caption), saved_story (permanent, title max 45 chars), spotlight (video, description max 160 chars). Images max 20 MB (JPEG/PNG), videos max 500 MB (MP4, 5-60s, min 540x960px).
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -330,7 +330,7 @@ class SnapchatPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets content_type
      *
-     * @param string|null $content_type Type of Snapchat content to publish: - `story` - Ephemeral snap visible for 24 hours (default) - `saved_story` - Permanent story saved to Public Profile - `spotlight` - Video posted to Spotlight (Snapchat's TikTok-like feed)
+     * @param string|null $content_type Content type: story (ephemeral 24h, default), saved_story (permanent on Public Profile), spotlight (video feed)
      *
      * @return self
      */

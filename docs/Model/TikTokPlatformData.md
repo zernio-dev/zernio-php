@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**draft** | **bool** | When true, Late sends the post to the TikTok Creator Inbox as a draft instead of publishing it immediately. When omitted or false, TikTok uses direct posting (live publish) as usual. | [optional]
+**draft** | **bool** | When true, sends the post to the TikTok Creator Inbox as a draft instead of publishing immediately. | [optional]
 **privacy_level** | **string** | One of the values returned by the TikTok creator info API for the account | [optional]
 **allow_comment** | **bool** | Allow comments on the post | [optional]
 **allow_duet** | **bool** | Allow duets (required for video posts) | [optional]
@@ -19,6 +19,6 @@ Name | Type | Description | Notes
 **photo_cover_index** | **int** | Optional for photo carousels. Index of image to use as cover, 0-based (defaults to 0/first image). | [optional]
 **auto_add_music** | **bool** | When true, TikTok may add recommended music (photos only) | [optional]
 **video_made_with_ai** | **bool** | Set true to disclose AI-generated content | [optional]
-**description** | **string** | Optional long-form description for photo posts (max 4000 chars). Recommended for photo posts when content exceeds 90 characters, as photo titles are automatically truncated to 90 chars (after stripping hashtags/URLs). | [optional]
+**description** | **string** | Optional long-form description for photo posts (max 4000 chars). Recommended when content exceeds 90 chars, as photo titles are auto-truncated. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

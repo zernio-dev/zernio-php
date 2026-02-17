@@ -1,6 +1,6 @@
 <?php
 /**
- * SocialAccountProfileId
+ * ListPostsLogs200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * SocialAccountProfileId Class Doc Comment
+ * ListPostsLogs200Response Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListPostsLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SocialAccount_profileId';
+    protected static $openAPIModelName = 'listPostsLogs_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,8 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
-        'user_id' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'color' => 'string',
-        'is_default' => 'bool',
-        'is_over_limit' => 'bool',
-        'created_at' => '\DateTime'
+        'logs' => '\Late\Model\PostLog[]',
+        'pagination' => '\Late\Model\ListPostsLogs200ResponsePagination'
     ];
 
     /**
@@ -76,14 +70,8 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
-        'user_id' => null,
-        'name' => null,
-        'description' => null,
-        'color' => null,
-        'is_default' => null,
-        'is_over_limit' => null,
-        'created_at' => 'date-time'
+        'logs' => null,
+        'pagination' => null
     ];
 
     /**
@@ -92,14 +80,8 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
-        'user_id' => false,
-        'name' => false,
-        'description' => false,
-        'color' => false,
-        'is_default' => false,
-        'is_over_limit' => false,
-        'created_at' => false
+        'logs' => false,
+        'pagination' => false
     ];
 
     /**
@@ -188,14 +170,8 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
-        'user_id' => 'userId',
-        'name' => 'name',
-        'description' => 'description',
-        'color' => 'color',
-        'is_default' => 'isDefault',
-        'is_over_limit' => 'isOverLimit',
-        'created_at' => 'createdAt'
+        'logs' => 'logs',
+        'pagination' => 'pagination'
     ];
 
     /**
@@ -204,14 +180,8 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
-        'user_id' => 'setUserId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'color' => 'setColor',
-        'is_default' => 'setIsDefault',
-        'is_over_limit' => 'setIsOverLimit',
-        'created_at' => 'setCreatedAt'
+        'logs' => 'setLogs',
+        'pagination' => 'setPagination'
     ];
 
     /**
@@ -220,14 +190,8 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
-        'user_id' => 'getUserId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'color' => 'getColor',
-        'is_default' => 'getIsDefault',
-        'is_over_limit' => 'getIsOverLimit',
-        'created_at' => 'getCreatedAt'
+        'logs' => 'getLogs',
+        'pagination' => 'getPagination'
     ];
 
     /**
@@ -287,14 +251,8 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
-        $this->setIfExists('user_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('color', $data ?? [], null);
-        $this->setIfExists('is_default', $data ?? [], null);
-        $this->setIfExists('is_over_limit', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('logs', $data ?? [], null);
+        $this->setIfExists('pagination', $data ?? [], null);
     }
 
     /**
@@ -340,217 +298,55 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets _id
+     * Gets logs
      *
-     * @return string|null
+     * @return \Late\Model\PostLog[]|null
      */
-    public function getId()
+    public function getLogs()
     {
-        return $this->container['_id'];
+        return $this->container['logs'];
     }
 
     /**
-     * Sets _id
+     * Sets logs
      *
-     * @param string|null $_id _id
+     * @param \Late\Model\PostLog[]|null $logs logs
      *
      * @return self
      */
-    public function setId($_id)
+    public function setLogs($logs)
     {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
+        if (is_null($logs)) {
+            throw new \InvalidArgumentException('non-nullable logs cannot be null');
         }
-        $this->container['_id'] = $_id;
+        $this->container['logs'] = $logs;
 
         return $this;
     }
 
     /**
-     * Gets user_id
+     * Gets pagination
      *
-     * @return string|null
+     * @return \Late\Model\ListPostsLogs200ResponsePagination|null
      */
-    public function getUserId()
+    public function getPagination()
     {
-        return $this->container['user_id'];
+        return $this->container['pagination'];
     }
 
     /**
-     * Sets user_id
+     * Sets pagination
      *
-     * @param string|null $user_id user_id
+     * @param \Late\Model\ListPostsLogs200ResponsePagination|null $pagination pagination
      *
      * @return self
      */
-    public function setUserId($user_id)
+    public function setPagination($pagination)
     {
-        if (is_null($user_id)) {
-            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
+        if (is_null($pagination)) {
+            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
         }
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets color
-     *
-     * @return string|null
-     */
-    public function getColor()
-    {
-        return $this->container['color'];
-    }
-
-    /**
-     * Sets color
-     *
-     * @param string|null $color color
-     *
-     * @return self
-     */
-    public function setColor($color)
-    {
-        if (is_null($color)) {
-            throw new \InvalidArgumentException('non-nullable color cannot be null');
-        }
-        $this->container['color'] = $color;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_default
-     *
-     * @return bool|null
-     */
-    public function getIsDefault()
-    {
-        return $this->container['is_default'];
-    }
-
-    /**
-     * Sets is_default
-     *
-     * @param bool|null $is_default is_default
-     *
-     * @return self
-     */
-    public function setIsDefault($is_default)
-    {
-        if (is_null($is_default)) {
-            throw new \InvalidArgumentException('non-nullable is_default cannot be null');
-        }
-        $this->container['is_default'] = $is_default;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_over_limit
-     *
-     * @return bool|null
-     */
-    public function getIsOverLimit()
-    {
-        return $this->container['is_over_limit'];
-    }
-
-    /**
-     * Sets is_over_limit
-     *
-     * @param bool|null $is_over_limit Only present when includeOverLimit=true is used. Indicates if this profile exceeds the user's plan limit. Over-limit profiles cannot be used for posting but can be managed (disconnected accounts, deleted).
-     *
-     * @return self
-     */
-    public function setIsOverLimit($is_over_limit)
-    {
-        if (is_null($is_over_limit)) {
-            throw new \InvalidArgumentException('non-nullable is_over_limit cannot be null');
-        }
-        $this->container['is_over_limit'] = $is_over_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
+        $this->container['pagination'] = $pagination;
 
         return $this;
     }

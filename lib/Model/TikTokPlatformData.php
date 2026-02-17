@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * TikTokPlatformData Class Doc Comment
  *
  * @category Class
- * @description TikTok platform-specific settings for video/photo posting.  **Constraints:** - Photo carousels support up to 35 images. - **Title length limits**:   - Videos: up to 2200 chars (full content used as title)   - Photos: content is automatically truncated to 90 chars for title (hashtags/URLs stripped). Use &#39;description&#39; field for longer text (up to 4000 chars). - privacyLevel must be chosen from creator_info.privacy_level_options (no defaulting). - allowDuet and allowStitch required for videos; allowComment for all. - contentPreviewConfirmed and expressConsentGiven must be true before posting.  **Note:** Both camelCase and snake_case field names are accepted for backwards compatibility. The nested &#x60;tiktokSettings&#x60; object format is also still supported but deprecated.
+ * @description Photo carousels up to 35 images. Video titles up to 2200 chars; photo titles auto-truncated to 90 chars (use description field for longer text up to 4000 chars). privacyLevel must match creator_info options. allowDuet/allowStitch required for videos. contentPreviewConfirmed and expressConsentGiven must be true. Both camelCase and snake_case accepted.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -471,7 +471,7 @@ class TikTokPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets draft
      *
-     * @param bool|null $draft When true, Late sends the post to the TikTok Creator Inbox as a draft instead of publishing it immediately. When omitted or false, TikTok uses direct posting (live publish) as usual.
+     * @param bool|null $draft When true, sends the post to the TikTok Creator Inbox as a draft instead of publishing immediately.
      *
      * @return self
      */
@@ -906,7 +906,7 @@ class TikTokPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets description
      *
-     * @param string|null $description Optional long-form description for photo posts (max 4000 chars). Recommended for photo posts when content exceeds 90 characters, as photo titles are automatically truncated to 90 chars (after stripping hashtags/URLs).
+     * @param string|null $description Optional long-form description for photo posts (max 4000 chars). Recommended when content exceeds 90 chars, as photo titles are auto-truncated.
      *
      * @return self
      */

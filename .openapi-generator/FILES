@@ -163,7 +163,6 @@ docs/Model/GetLinkedInPostAnalytics200Response.md
 docs/Model/GetLinkedInPostAnalytics200ResponseAnalytics.md
 docs/Model/GetLinkedInPostAnalytics400Response.md
 docs/Model/GetLinkedInPostAnalytics403Response.md
-docs/Model/GetLog200Response.md
 docs/Model/GetMediaPresignedUrl200Response.md
 docs/Model/GetMediaPresignedUrlRequest.md
 docs/Model/GetMessengerMenu200Response.md
@@ -244,10 +243,10 @@ docs/Model/ListInboxReviews200ResponseDataInnerReviewer.md
 docs/Model/ListInboxReviews200ResponseSummary.md
 docs/Model/ListLinkedInOrganizations200Response.md
 docs/Model/ListLinkedInOrganizations200ResponseOrganizationsInner.md
-docs/Model/ListLogs200Response.md
-docs/Model/ListLogs200ResponsePagination.md
 docs/Model/ListPinterestBoardsForSelection200Response.md
 docs/Model/ListPinterestBoardsForSelection200ResponseBoardsInner.md
+docs/Model/ListPostsLogs200Response.md
+docs/Model/ListPostsLogs200ResponsePagination.md
 docs/Model/ListQueueSlots200Response.md
 docs/Model/ListQueueSlots200ResponseOneOf.md
 docs/Model/ListQueueSlots200ResponseOneOf1.md
@@ -272,9 +271,6 @@ docs/Model/PostCreateResponse.md
 docs/Model/PostDeleteResponse.md
 docs/Model/PostGetResponse.md
 docs/Model/PostLog.md
-docs/Model/PostLogDetail.md
-docs/Model/PostLogDetailAllOfAccountId.md
-docs/Model/PostLogDetailAllOfPostId.md
 docs/Model/PostLogPostId.md
 docs/Model/PostLogPostIdOneOf.md
 docs/Model/PostLogRequest.md
@@ -350,7 +346,6 @@ docs/Model/TelegramPlatformData.md
 docs/Model/TestWebhookRequest.md
 docs/Model/ThreadsPlatformData.md
 docs/Model/TikTokPlatformData.md
-docs/Model/TikTokSettings.md
 docs/Model/TranscriptResponse.md
 docs/Model/TranscriptSegment.md
 docs/Model/TwitterPlatformData.md
@@ -589,7 +584,6 @@ lib/Model/GetLinkedInPostAnalytics200Response.php
 lib/Model/GetLinkedInPostAnalytics200ResponseAnalytics.php
 lib/Model/GetLinkedInPostAnalytics400Response.php
 lib/Model/GetLinkedInPostAnalytics403Response.php
-lib/Model/GetLog200Response.php
 lib/Model/GetMediaPresignedUrl200Response.php
 lib/Model/GetMediaPresignedUrlRequest.php
 lib/Model/GetMessengerMenu200Response.php
@@ -670,10 +664,10 @@ lib/Model/ListInboxReviews200ResponseDataInnerReviewer.php
 lib/Model/ListInboxReviews200ResponseSummary.php
 lib/Model/ListLinkedInOrganizations200Response.php
 lib/Model/ListLinkedInOrganizations200ResponseOrganizationsInner.php
-lib/Model/ListLogs200Response.php
-lib/Model/ListLogs200ResponsePagination.php
 lib/Model/ListPinterestBoardsForSelection200Response.php
 lib/Model/ListPinterestBoardsForSelection200ResponseBoardsInner.php
+lib/Model/ListPostsLogs200Response.php
+lib/Model/ListPostsLogs200ResponsePagination.php
 lib/Model/ListQueueSlots200Response.php
 lib/Model/ListQueueSlots200ResponseOneOf.php
 lib/Model/ListQueueSlots200ResponseOneOf1.php
@@ -699,9 +693,6 @@ lib/Model/PostCreateResponse.php
 lib/Model/PostDeleteResponse.php
 lib/Model/PostGetResponse.php
 lib/Model/PostLog.php
-lib/Model/PostLogDetail.php
-lib/Model/PostLogDetailAllOfAccountId.php
-lib/Model/PostLogDetailAllOfPostId.php
 lib/Model/PostLogPostId.php
 lib/Model/PostLogPostIdOneOf.php
 lib/Model/PostLogRequest.php
@@ -777,7 +768,6 @@ lib/Model/TelegramPlatformData.php
 lib/Model/TestWebhookRequest.php
 lib/Model/ThreadsPlatformData.php
 lib/Model/TikTokPlatformData.php
-lib/Model/TikTokSettings.php
 lib/Model/TranscriptResponse.php
 lib/Model/TranscriptSegment.php
 lib/Model/TwitterPlatformData.php
@@ -853,3 +843,5 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListPostsLogs200ResponsePaginationTest.php
+test/Model/ListPostsLogs200ResponseTest.php

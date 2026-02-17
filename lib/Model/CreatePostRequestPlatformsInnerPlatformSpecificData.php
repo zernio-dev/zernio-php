@@ -811,7 +811,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets content_type
      *
-     * @param string|null $content_type Type of Snapchat content to publish: - `story` - Ephemeral snap visible for 24 hours (default) - `saved_story` - Permanent story saved to Public Profile - `spotlight` - Video posted to Spotlight (Snapchat's TikTok-like feed)
+     * @param string|null $content_type Content type: story (ephemeral 24h, default), saved_story (permanent on Public Profile), spotlight (video feed)
      *
      * @return self
      */
@@ -987,7 +987,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets user_tags
      *
-     * @param \Late\Model\InstagramPlatformDataUserTagsInner[]|null $user_tags Tag Instagram users in photos by username and position coordinates. Not supported for stories or videos. For carousel posts, use the optional `mediaIndex` field to specify which slide each tag applies to. Tags without `mediaIndex` default to the first image (index 0) for backwards compatibility. Tags targeting video items are silently skipped (Instagram only supports tagging on images).
+     * @param \Late\Model\InstagramPlatformDataUserTagsInner[]|null $user_tags Tag Instagram users in photos by username and position. Not supported for stories or videos. For carousels, use mediaIndex to target specific slides (defaults to 0). Tags on video items are silently skipped.
      *
      * @return self
      */
@@ -1014,7 +1014,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets audio_name
      *
-     * @param string|null $audio_name Custom name for the original audio in Reels. Replaces the default \"Original Audio\" label. Only applies to Reels (video posts). Can only be set once - either during creation or later from the Instagram audio page in the app.
+     * @param string|null $audio_name Custom name for original audio in Reels. Replaces the default \"Original Audio\" label. Can only be set once.
      *
      * @return self
      */
@@ -1041,7 +1041,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets thumb_offset
      *
-     * @param int|null $thumb_offset Millisecond offset from the start of the video to use as the Reel thumbnail. Only applies to Reels (video posts). If a custom thumbnail URL (instagramThumbnail in mediaItems) is provided, it takes priority and this offset is ignored. Defaults to 0 (first frame).
+     * @param int|null $thumb_offset Millisecond offset from video start for the Reel thumbnail. Ignored if a custom thumbnail URL is provided. Defaults to 0.
      *
      * @return self
      */
@@ -1266,7 +1266,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets visibility
      *
-     * @param string|null $visibility Video visibility setting: - public: Anyone can search for and watch (default) - unlisted: Only people with the link can watch - private: Only you and people you specifically share with can watch
+     * @param string|null $visibility Video visibility: public (default, anyone can watch), unlisted (link only), private (invite only)
      *
      * @return self
      */
@@ -1303,7 +1303,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets made_for_kids
      *
-     * @param bool|null $made_for_kids COPPA compliance: Audience designation for the video. - true: Video is made for kids (child-directed content) - false: Video is NOT made for kids (default)  This field maps to YouTube's `selfDeclaredMadeForKids` setting. Videos marked as made for kids have restricted features (no comments, no notifications, limited ad targeting).  IMPORTANT: If not specified, defaults to false. YouTube requires this to be explicitly set, otherwise the video may be blocked from views until configured in YouTube Studio.
+     * @param bool|null $made_for_kids COPPA compliance flag. Set true for child-directed content (restricts comments, notifications, ad targeting). Defaults to false. YouTube may block views if not explicitly set.
      *
      * @return self
      */
@@ -1330,7 +1330,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets contains_synthetic_media
      *
-     * @param bool|null $contains_synthetic_media AI-generated content disclosure flag. Set to true if your video contains AI-generated or synthetic content that could be mistaken for real people, places, or events. This helps viewers understand when realistic content has been created or altered using AI. YouTube may add a label to videos when this is set. Added to YouTube Data API in October 2024.
+     * @param bool|null $contains_synthetic_media AI-generated content disclosure. Set true if the video contains synthetic content that could be mistaken for real. YouTube may add a label.
      *
      * @return self
      */
@@ -1357,7 +1357,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets category_id
      *
-     * @param string|null $category_id YouTube video category ID. Defaults to '22' (People & Blogs). Common categories: 1 (Film & Animation), 2 (Autos & Vehicles), 10 (Music), 15 (Pets & Animals), 17 (Sports), 20 (Gaming), 22 (People & Blogs), 23 (Comedy), 24 (Entertainment), 25 (News & Politics), 26 (Howto & Style), 27 (Education), 28 (Science & Technology).
+     * @param string|null $category_id YouTube video category ID. Defaults to 22 (People & Blogs). Common: 1 (Film), 2 (Autos), 10 (Music), 15 (Pets), 17 (Sports), 20 (Gaming), 23 (Comedy), 24 (Entertainment), 25 (News), 26 (Howto), 27 (Education), 28 (Science & Tech).
      *
      * @return self
      */
@@ -1465,7 +1465,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets draft
      *
-     * @param bool|null $draft When true, Late sends the post to the TikTok Creator Inbox as a draft instead of publishing it immediately. When omitted or false, TikTok uses direct posting (live publish) as usual.
+     * @param bool|null $draft When true, sends the post to the TikTok Creator Inbox as a draft instead of publishing immediately.
      *
      * @return self
      */
@@ -1900,7 +1900,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets description
      *
-     * @param string|null $description Optional long-form description for photo posts (max 4000 chars). Recommended for photo posts when content exceeds 90 characters, as photo titles are automatically truncated to 90 chars (after stripping hashtags/URLs).
+     * @param string|null $description Optional long-form description for photo posts (max 4000 chars). Recommended when content exceeds 90 chars, as photo titles are auto-truncated.
      *
      * @return self
      */

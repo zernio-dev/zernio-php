@@ -153,7 +153,7 @@ class ToolsApi
     /**
      * Operation checkInstagramHashtags
      *
-     * Check Instagram hashtag bans
+     * Check IG hashtag bans
      *
      * @param  \Late\Model\CheckInstagramHashtagsRequest $check_instagram_hashtags_request check_instagram_hashtags_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkInstagramHashtags'] to see the possible values for this operation
@@ -171,7 +171,7 @@ class ToolsApi
     /**
      * Operation checkInstagramHashtagsWithHttpInfo
      *
-     * Check Instagram hashtag bans
+     * Check IG hashtag bans
      *
      * @param  \Late\Model\CheckInstagramHashtagsRequest $check_instagram_hashtags_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkInstagramHashtags'] to see the possible values for this operation
@@ -256,7 +256,7 @@ class ToolsApi
     /**
      * Operation checkInstagramHashtagsAsync
      *
-     * Check Instagram hashtag bans
+     * Check IG hashtag bans
      *
      * @param  \Late\Model\CheckInstagramHashtagsRequest $check_instagram_hashtags_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkInstagramHashtags'] to see the possible values for this operation
@@ -277,7 +277,7 @@ class ToolsApi
     /**
      * Operation checkInstagramHashtagsAsyncWithHttpInfo
      *
-     * Check Instagram hashtag bans
+     * Check IG hashtag bans
      *
      * @param  \Late\Model\CheckInstagramHashtagsRequest $check_instagram_hashtags_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkInstagramHashtags'] to see the possible values for this operation

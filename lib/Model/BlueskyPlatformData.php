@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * BlueskyPlatformData Class Doc Comment
  *
  * @category Class
- * @description Bluesky post settings: - Supports text posts with up to 4 images per post - Videos supported (single video per post) - threadItems creates a reply chain (Bluesky thread) - Images exceeding Bluesky&#39;s 1MB limit are automatically compressed - Alt text for images is supported via mediaItem properties
+ * @description Bluesky post settings. Supports text posts with up to 4 images or a single video. threadItems creates a reply chain (Bluesky thread). Images exceeding 1MB are automatically compressed. Alt text supported via mediaItem properties.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

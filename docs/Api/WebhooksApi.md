@@ -1,6 +1,6 @@
 # Late\WebhooksApi
 
-Configure webhooks to receive real-time notifications about post status changes, account events, and incoming messages.  **Available Events:** - &#x60;post.scheduled&#x60; - When a post is successfully scheduled - &#x60;post.published&#x60; - When a post is successfully published - &#x60;post.failed&#x60; - When a post fails to publish on all platforms - &#x60;post.partial&#x60; - When a post publishes to some platforms but fails on others - &#x60;account.connected&#x60; - When a social account is successfully connected - &#x60;account.disconnected&#x60; - When a social account is disconnected (token expired/revoked) - &#x60;message.received&#x60; - When a new DM is received (Instagram, Telegram)  **Security:** - Optional HMAC-SHA256 signature sent in &#x60;X-Late-Signature&#x60; header - Configure a secret key in webhook settings to enable signature verification - Custom headers can be added to webhook requests for additional authentication
+Configure webhooks for real-time notifications. Events: post.scheduled, post.published, post.failed, post.partial, account.connected, account.disconnected, message.received. Security: optional HMAC-SHA256 signature in X-Late-Signature header. Configure a secret key to enable verification. Custom headers supported.
 
 All URIs are relative to https://getlate.dev/api, except if the operation defines another base path.
 
@@ -22,7 +22,7 @@ createWebhookSettings($create_webhook_settings_request): \Late\Model\UpdateWebho
 
 Create webhook
 
-Create a new webhook configuration. Maximum 10 webhooks per user.  **Note:** Webhooks are automatically disabled after 10 consecutive delivery failures.
+Create a new webhook configuration. Maximum 10 webhooks per user.  Webhooks are automatically disabled after 10 consecutive delivery failures.
 
 ### Example
 
@@ -265,7 +265,7 @@ testWebhook($test_webhook_request): \Late\Model\UnpublishPost200Response
 
 Send test webhook
 
-Send a test webhook to verify your endpoint is configured correctly. The test payload includes `event: \"webhook.test\"` to distinguish it from real events.
+Send a test webhook to verify your endpoint is configured correctly. The test payload includes event: \"webhook.test\" to distinguish it from real events.
 
 ### Example
 
@@ -325,7 +325,7 @@ updateWebhookSettings($update_webhook_settings_request): \Late\Model\UpdateWebho
 
 Update webhook
 
-Update an existing webhook configuration. All fields except `_id` are optional - only provided fields will be updated.  **Note:** Webhooks are automatically disabled after 10 consecutive delivery failures.
+Update an existing webhook configuration. All fields except _id are optional; only provided fields will be updated.  Webhooks are automatically disabled after 10 consecutive delivery failures.
 
 ### Example
 
