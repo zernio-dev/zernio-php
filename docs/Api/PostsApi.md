@@ -103,7 +103,7 @@ $apiInstance = new Late\Api\PostsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_post_request = new \Late\Model\CreatePostRequest(); // \Late\Model\CreatePostRequest
+$create_post_request = {"content":"Check out these photos!","mediaItems":[{"type":"image","url":"https://example.com/photo1.jpg"},{"type":"image","url":"https://example.com/photo2.jpg"}],"platforms":[{"platform":"tiktok","accountId":"64e1f0a9e2b5af0012ab34cd"}],"tiktokSettings":{"draft":true,"privacyLevel":"PUBLIC_TO_EVERYONE","allowComment":true,"contentPreviewConfirmed":true,"expressConsentGiven":true}}; // \Late\Model\CreatePostRequest
 
 try {
     $result = $apiInstance->createPost($create_post_request);
