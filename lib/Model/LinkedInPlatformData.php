@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * LinkedInPlatformData Class Doc Comment
  *
  * @category Class
- * @description Up to 20 images, no multi-video. Single PDF supported (max 100MB, ~300 pages, cannot mix with other media). Link previews auto-generated when no media attached (disable with disableLinkPreview). Use organizationUrn for multi-org posting.
+ * @description Up to 20 images, no multi-video. Single PDF supported (max 100MB). Link previews auto-generated when no media attached. Use organizationUrn for multi-org posting.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -318,7 +318,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets organization_urn
      *
-     * @param string|null $organization_urn Target LinkedIn Organization URN for multi-organization posting. Format: \"urn:li:organization:123456789\" If omitted, uses the selected/default organization on the connection. Use GET /api/v1/accounts/{id}/linkedin-organizations to list available organizations.
+     * @param string|null $organization_urn Target LinkedIn Organization URN (e.g. \"urn:li:organization:123456789\"). If omitted, uses the default org. Use GET /v1/accounts/{id}/linkedin-organizations to list orgs.
      *
      * @return self
      */

@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * TelegramPlatformData Class Doc Comment
  *
  * @category Class
- * @description Supports text, images (up to 10), videos (up to 10), and mixed media albums. Captions up to 1024 chars for media posts, 4096 for text-only. Channel posts show channel name as author; group posts show bot name. Analytics not available via Telegram Bot API.
+ * @description Text, images (up to 10), videos (up to 10), and mixed media albums. Captions up to 1024 chars for media, 4096 for text-only.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

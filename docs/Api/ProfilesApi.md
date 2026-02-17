@@ -21,6 +21,8 @@ createProfile($create_profile_request): \Late\Model\ProfileCreateResponse
 
 Create profile
 
+Creates a new profile with a name, optional description, and color.
+
 ### Example
 
 ```php
@@ -78,6 +80,8 @@ deleteProfile($profile_id): \Late\Model\DeleteAccountGroup200Response
 ```
 
 Delete profile
+
+Permanently deletes a profile by ID.
 
 ### Example
 
@@ -137,6 +141,8 @@ getProfile($profile_id): \Late\Model\GetProfile200Response
 
 Get profile
 
+Returns a single profile by ID, including its name, color, and default status.
+
 ### Example
 
 ```php
@@ -195,7 +201,7 @@ listProfiles($include_over_limit): \Late\Model\ProfilesListResponse
 
 List profiles
 
-Returns profiles within the user's plan limit, sorted by creation date (oldest first). Use includeOverLimit=true to include profiles that exceed the plan limit (for management/deletion purposes).
+Returns profiles sorted by creation date. Use includeOverLimit=true to include profiles that exceed the plan limit.
 
 ### Example
 
@@ -214,7 +220,7 @@ $apiInstance = new Late\Api\ProfilesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$include_over_limit = false; // bool | When true, includes profiles that exceed the user's plan limit. Over-limit profiles will have isOverLimit: true in the response. Useful for managing/deleting profiles after a plan downgrade.
+$include_over_limit = false; // bool | When true, includes over-limit profiles (marked with isOverLimit: true).
 
 try {
     $result = $apiInstance->listProfiles($include_over_limit);
@@ -228,7 +234,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **include_over_limit** | **bool**| When true, includes profiles that exceed the user&#39;s plan limit. Over-limit profiles will have isOverLimit: true in the response. Useful for managing/deleting profiles after a plan downgrade. | [optional] [default to false] |
+| **include_over_limit** | **bool**| When true, includes over-limit profiles (marked with isOverLimit: true). | [optional] [default to false] |
 
 ### Return type
 
@@ -254,6 +260,8 @@ updateProfile($profile_id, $update_profile_request): \Late\Model\UpdateProfile20
 ```
 
 Update profile
+
+Updates a profile's name, description, color, or default status.
 
 ### Example
 

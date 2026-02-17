@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **platform_specific_data** | [**\Late\Model\PlatformTargetPlatformSpecificData**](PlatformTargetPlatformSpecificData.md) |  | [optional]
 **status** | **string** | Platform-specific status: pending, publishing, published, failed | [optional]
 **platform_post_id** | **string** | The native post ID on the platform (populated after successful publish) | [optional]
-**platform_post_url** | **string** | Public URL of the published post on the platform. Populated after successful publish. For immediate posts (publishNow&#x3D;true),  this is included in the response. For scheduled posts, fetch the post  via GET /v1/posts/{postId} after the scheduled time. | [optional]
+**platform_post_url** | **string** | Public URL of the published post. Included in the response for immediate posts; for scheduled posts, fetch via GET /v1/posts/{postId} after publish time. | [optional]
 **published_at** | **\DateTime** | Timestamp when the post was published to this platform | [optional]
 **error_message** | **string** | Human-readable error message when status is failed. Contains platform-specific error details explaining why the publish failed. | [optional]
 **error_category** | **string** | Error category for programmatic handling: auth_expired (token expired/revoked), user_content (wrong format/too long), user_abuse (rate limits/spam), account_issue (config problems), platform_rejected (policy violation), platform_error (5xx/maintenance), system_error (Late infra), unknown | [optional]

@@ -17,6 +17,8 @@ getUsageStats(): \Late\Model\UsageStats
 
 Get plan and usage stats
 
+Returns the current plan name, billing period, plan limits, and usage counts.
+
 ### Example
 
 ```php

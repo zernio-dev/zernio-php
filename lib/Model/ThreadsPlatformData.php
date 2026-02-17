@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * ThreadsPlatformData Class Doc Comment
  *
  * @category Class
- * @description Carousels support up to 10 images (no videos). Single posts support one image or video. Videos must be H.264/AAC MP4, max 5 min. Images must be JPEG/PNG, max 8 MB. threadItems creates a reply chain.
+ * @description Up to 10 images per carousel (no videos). Videos must be H.264/AAC MP4, max 5 min. Images JPEG/PNG, max 8 MB. Use threadItems for reply chains.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

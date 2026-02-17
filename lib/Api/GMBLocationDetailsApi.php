@@ -135,7 +135,7 @@ class GMBLocationDetailsApi
      * Get location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
-     * @param  string|null $read_mask Comma-separated fields to return. Defaults to common fields. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours (optional)
+     * @param  string|null $read_mask Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -154,7 +154,7 @@ class GMBLocationDetailsApi
      * Get location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
-     * @param  string|null $read_mask Comma-separated fields to return. Defaults to common fields. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours (optional)
+     * @param  string|null $read_mask Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -282,7 +282,7 @@ class GMBLocationDetailsApi
      * Get location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
-     * @param  string|null $read_mask Comma-separated fields to return. Defaults to common fields. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours (optional)
+     * @param  string|null $read_mask Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -304,7 +304,7 @@ class GMBLocationDetailsApi
      * Get location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
-     * @param  string|null $read_mask Comma-separated fields to return. Defaults to common fields. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours (optional)
+     * @param  string|null $read_mask Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -355,7 +355,7 @@ class GMBLocationDetailsApi
      * Create request for operation 'getGoogleBusinessLocationDetails'
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
-     * @param  string|null $read_mask Comma-separated fields to return. Defaults to common fields. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours (optional)
+     * @param  string|null $read_mask Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

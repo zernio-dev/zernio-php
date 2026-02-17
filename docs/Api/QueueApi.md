@@ -144,7 +144,7 @@ getNextQueueSlot($profile_id, $queue_id): \Late\Model\GetNextQueueSlot200Respons
 
 Get next available slot
 
-Returns the next available queue slot for preview/informational purposes. Do NOT use this response with scheduledFor to schedule a post, as that creates a manual post, not a queue post. Instead, use POST /v1/posts with queuedFromProfile (and optionally queueId). Useful for showing users when their next post will go out, debugging queue configuration, or building UI previews.  If no queueId is specified, uses the profile's default queue.
+Returns the next available queue slot for preview purposes. To create a queue post, use POST /v1/posts with queuedFromProfile instead of scheduledFor.
 
 ### Example
 
@@ -206,7 +206,7 @@ listQueueSlots($profile_id, $queue_id, $all): \Late\Model\ListQueueSlots200Respo
 
 List schedules
 
-Retrieve queue schedules for a profile. Each profile can have multiple queues. Without all=true, returns the default queue (or specific queue if queueId provided). With all=true, returns all queues for the profile.
+Returns queue schedules for a profile. Use all=true for all queues, or queueId for a specific one. Defaults to the default queue.
 
 ### Example
 
@@ -269,6 +269,8 @@ previewQueue($profile_id, $count): \Late\Model\PreviewQueue200Response
 ```
 
 Preview upcoming slots
+
+Returns the next N upcoming queue slot times for a profile as ISO datetime strings.
 
 ### Example
 

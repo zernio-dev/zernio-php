@@ -155,7 +155,7 @@ class CommentsApi
      *
      * Delete comment
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL. (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  string $account_id account_id (required)
      * @param  string $comment_id comment_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxComment'] to see the possible values for this operation
@@ -175,7 +175,7 @@ class CommentsApi
      *
      * Delete comment
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL. (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  string $account_id (required)
      * @param  string $comment_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxComment'] to see the possible values for this operation
@@ -276,7 +276,7 @@ class CommentsApi
      *
      * Delete comment
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL. (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  string $account_id (required)
      * @param  string $comment_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxComment'] to see the possible values for this operation
@@ -299,7 +299,7 @@ class CommentsApi
      *
      * Delete comment
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL. (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  string $account_id (required)
      * @param  string $comment_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxComment'] to see the possible values for this operation
@@ -351,7 +351,7 @@ class CommentsApi
     /**
      * Create request for operation 'deleteInboxComment'
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL. (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  string $account_id (required)
      * @param  string $comment_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxComment'] to see the possible values for this operation
@@ -483,7 +483,7 @@ class CommentsApi
      *
      * Get post comments
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID). LinkedIn: for your own posts, the full URN stored in Late is used automatically. For third-party posts, pass the full activity URN or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as urn:li:activity:). (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. Late IDs are auto-resolved. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  string $account_id account_id (required)
      * @param  string|null $subreddit (Reddit only) Subreddit name (optional)
      * @param  int|null $limit Maximum number of comments to return (optional, default to 25)
@@ -506,7 +506,7 @@ class CommentsApi
      *
      * Get post comments
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID). LinkedIn: for your own posts, the full URN stored in Late is used automatically. For third-party posts, pass the full activity URN or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as urn:li:activity:). (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. Late IDs are auto-resolved. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  string $account_id (required)
      * @param  string|null $subreddit (Reddit only) Subreddit name (optional)
      * @param  int|null $limit Maximum number of comments to return (optional, default to 25)
@@ -610,7 +610,7 @@ class CommentsApi
      *
      * Get post comments
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID). LinkedIn: for your own posts, the full URN stored in Late is used automatically. For third-party posts, pass the full activity URN or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as urn:li:activity:). (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. Late IDs are auto-resolved. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  string $account_id (required)
      * @param  string|null $subreddit (Reddit only) Subreddit name (optional)
      * @param  int|null $limit Maximum number of comments to return (optional, default to 25)
@@ -636,7 +636,7 @@ class CommentsApi
      *
      * Get post comments
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID). LinkedIn: for your own posts, the full URN stored in Late is used automatically. For third-party posts, pass the full activity URN or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as urn:li:activity:). (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. Late IDs are auto-resolved. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  string $account_id (required)
      * @param  string|null $subreddit (Reddit only) Subreddit name (optional)
      * @param  int|null $limit Maximum number of comments to return (optional, default to 25)
@@ -691,7 +691,7 @@ class CommentsApi
     /**
      * Create request for operation 'getInboxPostComments'
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID (MongoDB ObjectId) which is automatically resolved to the platform-specific post ID, or a platform-specific post ID directly (e.g. tweet ID, Facebook Graph ID, YouTube video ID). LinkedIn: for your own posts, the full URN stored in Late is used automatically. For third-party posts, pass the full activity URN or the raw numeric activity ID from the LinkedIn URL (automatically wrapped as urn:li:activity:). (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. Late IDs are auto-resolved. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  string $account_id (required)
      * @param  string|null $subreddit (Reddit only) Subreddit name (optional)
      * @param  int|null $limit Maximum number of comments to return (optional, default to 25)
@@ -1916,7 +1916,7 @@ class CommentsApi
      *
      * Reply to comment
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL. (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request reply_to_inbox_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxPost'] to see the possible values for this operation
      *
@@ -1935,7 +1935,7 @@ class CommentsApi
      *
      * Reply to comment
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL. (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxPost'] to see the possible values for this operation
      *
@@ -2035,7 +2035,7 @@ class CommentsApi
      *
      * Reply to comment
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL. (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxPost'] to see the possible values for this operation
      *
@@ -2057,7 +2057,7 @@ class CommentsApi
      *
      * Reply to comment
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL. (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxPost'] to see the possible values for this operation
      *
@@ -2108,7 +2108,7 @@ class CommentsApi
     /**
      * Create request for operation 'replyToInboxPost'
      *
-     * @param  string $post_id The post identifier. Accepts a Late post ID or a platform-specific post ID.  LinkedIn: for third-party posts, pass the full activity URN (e.g. urn:li:activity:7422459067685855232) or the raw numeric activity ID from the URL. (required)
+     * @param  string $post_id Late post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
      * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxPost'] to see the possible values for this operation
      *

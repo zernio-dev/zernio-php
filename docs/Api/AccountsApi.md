@@ -22,6 +22,8 @@ deleteAccount($account_id): \Late\Model\DeleteAccountGroup200Response
 
 Disconnect account
 
+Disconnects and removes a connected social account.
+
 ### Example
 
 ```php
@@ -80,7 +82,7 @@ getAccountHealth($account_id): \Late\Model\GetAccountHealth200Response
 
 Check account health
 
-Returns detailed health information for a specific social account, including token status, granted permissions, missing permissions, and actionable recommendations.
+Returns detailed health info for a specific account including token status, permissions, and recommendations.
 
 ### Example
 
@@ -140,7 +142,7 @@ getAllAccountsHealth($profile_id, $platform, $status): \Late\Model\GetAllAccount
 
 Check accounts health
 
-Returns the health status of all connected social accounts, including token validity, permissions status, and any issues that need attention. Useful for monitoring account connections and identifying accounts that need reconnection.
+Returns health status of all connected accounts including token validity, permissions, and issues needing attention.
 
 ### Example
 
@@ -272,7 +274,7 @@ listAccounts($profile_id, $include_over_limit): \Late\Model\ListAccounts200Respo
 
 List accounts
 
-Returns list of connected social accounts. By default, only returns accounts from profiles within the user's plan limit. Follower count data (followersCount, followersLastUpdated) is only included if user has analytics add-on.
+Returns connected social accounts. Only includes accounts within the plan limit by default. Follower data requires analytics add-on.
 
 ### Example
 
@@ -292,7 +294,7 @@ $apiInstance = new Late\Api\AccountsApi(
     $config
 );
 $profile_id = 'profile_id_example'; // string | Filter accounts by profile ID
-$include_over_limit = false; // bool | When true, includes accounts from profiles that exceed the user's plan limit. Useful for disconnecting accounts from over-limit profiles so they can be deleted.
+$include_over_limit = false; // bool | When true, includes accounts from over-limit profiles.
 
 try {
     $result = $apiInstance->listAccounts($profile_id, $include_over_limit);
@@ -307,7 +309,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| Filter accounts by profile ID | [optional] |
-| **include_over_limit** | **bool**| When true, includes accounts from profiles that exceed the user&#39;s plan limit. Useful for disconnecting accounts from over-limit profiles so they can be deleted. | [optional] [default to false] |
+| **include_over_limit** | **bool**| When true, includes accounts from over-limit profiles. | [optional] [default to false] |
 
 ### Return type
 
@@ -333,6 +335,8 @@ updateAccount($account_id, $update_account_request): \Late\Model\UpdateAccount20
 ```
 
 Update account
+
+Updates a connected social account's display name or username override.
 
 ### Example
 

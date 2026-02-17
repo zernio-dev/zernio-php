@@ -18,7 +18,7 @@ getGoogleBusinessLocationDetails($account_id, $read_mask): \Late\Model\GetGoogle
 
 Get location details
 
-Fetches detailed location information including opening hours, special hours, business description, phone numbers, website, categories, and more.  Use the readMask query parameter to request specific fields.
+Returns detailed GBP location info (hours, description, phone, website, categories). Use readMask to request specific fields.
 
 ### Example
 
@@ -38,7 +38,7 @@ $apiInstance = new Late\Api\GMBLocationDetailsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The Late account ID (from /v1/accounts)
-$read_mask = 'read_mask_example'; // string | Comma-separated fields to return. Defaults to common fields. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours
+$read_mask = 'read_mask_example'; // string | Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours.
 
 try {
     $result = $apiInstance->getGoogleBusinessLocationDetails($account_id, $read_mask);
@@ -53,7 +53,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The Late account ID (from /v1/accounts) | |
-| **read_mask** | **string**| Comma-separated fields to return. Defaults to common fields. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours | [optional] |
+| **read_mask** | **string**| Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. | [optional] |
 
 ### Return type
 
@@ -80,7 +80,7 @@ updateGoogleBusinessLocationDetails($account_id, $update_google_business_locatio
 
 Update location details
 
-Updates location details such as opening hours, special hours, business description, phone, and website. The updateMask field is required and specifies which fields to update. Common masks: regularHours, specialHours, profile.description, websiteUri, phoneNumbers. Combine with commas (e.g. regularHours,specialHours).
+Updates GBP location details (hours, description, phone, website). The updateMask field is required and specifies which fields to update.
 
 ### Example
 

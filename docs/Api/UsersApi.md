@@ -18,6 +18,8 @@ getUser($user_id): \Late\Model\GetUser200Response
 
 Get user
 
+Returns a single user's details by ID, including name, email, and role.
+
 ### Example
 
 ```php
@@ -75,6 +77,8 @@ listUsers(): \Late\Model\ListUsers200Response
 ```
 
 List users
+
+Returns all users in the workspace including roles and profile access. Also returns the currentUserId of the caller.
 
 ### Example
 

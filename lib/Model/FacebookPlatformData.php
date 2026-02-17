@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * FacebookPlatformData Class Doc Comment
  *
  * @category Class
- * @description Cannot mix videos and images. Up to 10 images for feed posts. Stories require single image or video (no captions, ephemeral 24h). Use pageId for multi-page posting.
+ * @description Up to 10 images for feed posts, cannot mix videos and images. Stories require single image or video (ephemeral 24h, no captions). Use pageId for multi-page posting.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -404,7 +404,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets page_id
      *
-     * @param string|null $page_id Target Facebook Page ID for multi-page posting. If omitted, uses the selected/default page on the connection. Use GET /api/v1/accounts/{id}/facebook-page to list available pages.
+     * @param string|null $page_id Target Facebook Page ID for multi-page posting. If omitted, uses the default page. Use GET /v1/accounts/{id}/facebook-page to list pages.
      *
      * @return self
      */

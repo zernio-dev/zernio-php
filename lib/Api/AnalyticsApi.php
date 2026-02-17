@@ -966,10 +966,10 @@ class AnalyticsApi
      * Get LinkedIn aggregate stats
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
-     * @param  string|null $aggregation Type of aggregation: TOTAL (default, returns single totals) or DAILY (returns daily breakdown). Note: MEMBERS_REACHED is not available with DAILY aggregation. (optional, default to 'TOTAL')
-     * @param  \DateTime|null $start_date Start date for analytics data in YYYY-MM-DD format. If provided without endDate, endDate defaults to today. If omitted entirely, returns lifetime analytics. (optional)
-     * @param  \DateTime|null $end_date End date for analytics data in YYYY-MM-DD format (exclusive). If provided without startDate, startDate defaults to 30 days before endDate. (optional)
-     * @param  string|null $metrics Comma-separated list of metrics to fetch. If omitted, fetches all available metrics. Valid values: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE (optional)
+     * @param  string|null $aggregation TOTAL (default, lifetime totals) or DAILY (time series). MEMBERS_REACHED not available with DAILY. (optional, default to 'TOTAL')
+     * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). If omitted, returns lifetime analytics. (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD, exclusive). Defaults to today if omitted. (optional)
+     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE. Omit for all. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInAggregateAnalytics'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -988,10 +988,10 @@ class AnalyticsApi
      * Get LinkedIn aggregate stats
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
-     * @param  string|null $aggregation Type of aggregation: TOTAL (default, returns single totals) or DAILY (returns daily breakdown). Note: MEMBERS_REACHED is not available with DAILY aggregation. (optional, default to 'TOTAL')
-     * @param  \DateTime|null $start_date Start date for analytics data in YYYY-MM-DD format. If provided without endDate, endDate defaults to today. If omitted entirely, returns lifetime analytics. (optional)
-     * @param  \DateTime|null $end_date End date for analytics data in YYYY-MM-DD format (exclusive). If provided without startDate, startDate defaults to 30 days before endDate. (optional)
-     * @param  string|null $metrics Comma-separated list of metrics to fetch. If omitted, fetches all available metrics. Valid values: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE (optional)
+     * @param  string|null $aggregation TOTAL (default, lifetime totals) or DAILY (time series). MEMBERS_REACHED not available with DAILY. (optional, default to 'TOTAL')
+     * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). If omitted, returns lifetime analytics. (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD, exclusive). Defaults to today if omitted. (optional)
+     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE. Omit for all. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInAggregateAnalytics'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1133,10 +1133,10 @@ class AnalyticsApi
      * Get LinkedIn aggregate stats
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
-     * @param  string|null $aggregation Type of aggregation: TOTAL (default, returns single totals) or DAILY (returns daily breakdown). Note: MEMBERS_REACHED is not available with DAILY aggregation. (optional, default to 'TOTAL')
-     * @param  \DateTime|null $start_date Start date for analytics data in YYYY-MM-DD format. If provided without endDate, endDate defaults to today. If omitted entirely, returns lifetime analytics. (optional)
-     * @param  \DateTime|null $end_date End date for analytics data in YYYY-MM-DD format (exclusive). If provided without startDate, startDate defaults to 30 days before endDate. (optional)
-     * @param  string|null $metrics Comma-separated list of metrics to fetch. If omitted, fetches all available metrics. Valid values: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE (optional)
+     * @param  string|null $aggregation TOTAL (default, lifetime totals) or DAILY (time series). MEMBERS_REACHED not available with DAILY. (optional, default to 'TOTAL')
+     * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). If omitted, returns lifetime analytics. (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD, exclusive). Defaults to today if omitted. (optional)
+     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE. Omit for all. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInAggregateAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1158,10 +1158,10 @@ class AnalyticsApi
      * Get LinkedIn aggregate stats
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
-     * @param  string|null $aggregation Type of aggregation: TOTAL (default, returns single totals) or DAILY (returns daily breakdown). Note: MEMBERS_REACHED is not available with DAILY aggregation. (optional, default to 'TOTAL')
-     * @param  \DateTime|null $start_date Start date for analytics data in YYYY-MM-DD format. If provided without endDate, endDate defaults to today. If omitted entirely, returns lifetime analytics. (optional)
-     * @param  \DateTime|null $end_date End date for analytics data in YYYY-MM-DD format (exclusive). If provided without startDate, startDate defaults to 30 days before endDate. (optional)
-     * @param  string|null $metrics Comma-separated list of metrics to fetch. If omitted, fetches all available metrics. Valid values: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE (optional)
+     * @param  string|null $aggregation TOTAL (default, lifetime totals) or DAILY (time series). MEMBERS_REACHED not available with DAILY. (optional, default to 'TOTAL')
+     * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). If omitted, returns lifetime analytics. (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD, exclusive). Defaults to today if omitted. (optional)
+     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE. Omit for all. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInAggregateAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1212,10 +1212,10 @@ class AnalyticsApi
      * Create request for operation 'getLinkedInAggregateAnalytics'
      *
      * @param  string $account_id The ID of the LinkedIn personal account (required)
-     * @param  string|null $aggregation Type of aggregation: TOTAL (default, returns single totals) or DAILY (returns daily breakdown). Note: MEMBERS_REACHED is not available with DAILY aggregation. (optional, default to 'TOTAL')
-     * @param  \DateTime|null $start_date Start date for analytics data in YYYY-MM-DD format. If provided without endDate, endDate defaults to today. If omitted entirely, returns lifetime analytics. (optional)
-     * @param  \DateTime|null $end_date End date for analytics data in YYYY-MM-DD format (exclusive). If provided without startDate, startDate defaults to 30 days before endDate. (optional)
-     * @param  string|null $metrics Comma-separated list of metrics to fetch. If omitted, fetches all available metrics. Valid values: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE (optional)
+     * @param  string|null $aggregation TOTAL (default, lifetime totals) or DAILY (time series). MEMBERS_REACHED not available with DAILY. (optional, default to 'TOTAL')
+     * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). If omitted, returns lifetime analytics. (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD, exclusive). Defaults to today if omitted. (optional)
+     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE. Omit for all. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInAggregateAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

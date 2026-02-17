@@ -20,6 +20,8 @@ createAccountGroup($create_account_group_request): \Late\Model\CreateAccountGrou
 
 Create group
 
+Creates a new account group with a name and a list of social account IDs.
+
 ### Example
 
 ```php
@@ -77,6 +79,8 @@ deleteAccountGroup($group_id): \Late\Model\DeleteAccountGroup200Response
 ```
 
 Delete group
+
+Permanently deletes an account group. The accounts themselves are not affected.
 
 ### Example
 
@@ -136,6 +140,8 @@ listAccountGroups(): \Late\Model\ListAccountGroups200Response
 
 List groups
 
+Returns all account groups for the authenticated user, including group names and associated account IDs.
+
 ### Example
 
 ```php
@@ -190,6 +196,8 @@ updateAccountGroup($group_id, $update_account_group_request): \Late\Model\Update
 ```
 
 Update group
+
+Updates the name or account list of an existing group. You can rename the group, change its accounts, or both.
 
 ### Example
 

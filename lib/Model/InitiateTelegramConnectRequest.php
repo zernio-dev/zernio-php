@@ -316,7 +316,7 @@ class InitiateTelegramConnectRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets chat_id
      *
-     * @param string $chat_id The Telegram chat ID. Can be: - Numeric ID (e.g., \"-1001234567890\") - Username with @ prefix (e.g., \"@mychannel\")
+     * @param string $chat_id The Telegram chat ID. Numeric ID (e.g. \"-1001234567890\") or username with @ prefix (e.g. \"@mychannel\").
      *
      * @return self
      */

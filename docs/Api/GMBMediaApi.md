@@ -81,6 +81,8 @@ deleteGoogleBusinessMedia($account_id, $media_id): \Late\Model\DeleteGoogleBusin
 
 Delete photo
 
+Deletes a photo or media item from a GBP location.
+
 ### Example
 
 ```php

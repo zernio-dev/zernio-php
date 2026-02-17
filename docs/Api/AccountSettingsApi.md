@@ -25,6 +25,8 @@ deleteInstagramIceBreakers($account_id)
 
 Delete IG ice breakers
 
+Removes the ice breaker questions from an Instagram account's Messenger experience.
+
 ### Example
 
 ```php
@@ -82,6 +84,8 @@ deleteMessengerMenu($account_id)
 
 Delete FB persistent menu
 
+Removes the persistent menu from Facebook Messenger conversations for this account.
+
 ### Example
 
 ```php
@@ -138,6 +142,8 @@ deleteTelegramCommands($account_id)
 ```
 
 Delete TG bot commands
+
+Clears all bot commands configured for a Telegram bot account.
 
 ### Example
 

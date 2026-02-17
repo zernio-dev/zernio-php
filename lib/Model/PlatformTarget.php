@@ -665,7 +665,7 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets platform_post_url
      *
-     * @param string|null $platform_post_url Public URL of the published post on the platform. Populated after successful publish. For immediate posts (publishNow=true),  this is included in the response. For scheduled posts, fetch the post  via GET /v1/posts/{postId} after the scheduled time.
+     * @param string|null $platform_post_url Public URL of the published post. Included in the response for immediate posts; for scheduled posts, fetch via GET /v1/posts/{postId} after publish time.
      *
      * @return self
      */

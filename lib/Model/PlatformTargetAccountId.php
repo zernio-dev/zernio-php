@@ -494,7 +494,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets profile_url
      *
-     * @param string|null $profile_url Full profile URL for the connected account. Available for all platforms: - Twitter/X: https://x.com/{username} - Instagram: https://instagram.com/{username} - TikTok: https://tiktok.com/@{username} - YouTube: https://youtube.com/@{handle} or https://youtube.com/channel/{id} - LinkedIn Personal: https://www.linkedin.com/in/{vanityName}/ - LinkedIn Organization: https://www.linkedin.com/company/{vanityName}/ - Threads: https://threads.net/@{username} - Pinterest: https://pinterest.com/{username} - Reddit: https://reddit.com/user/{username} - Bluesky: https://bsky.app/profile/{handle} - Facebook: https://facebook.com/{username} or https://facebook.com/{pageId} - Google Business: Google Maps URL for the business location
+     * @param string|null $profile_url Full profile URL for the connected account on its platform.
      *
      * @return self
      */

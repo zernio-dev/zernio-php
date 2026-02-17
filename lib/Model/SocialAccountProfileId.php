@@ -514,7 +514,7 @@ class SocialAccountProfileId implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets is_over_limit
      *
-     * @param bool|null $is_over_limit Only present when includeOverLimit=true is used. Indicates if this profile exceeds the user's plan limit. Over-limit profiles cannot be used for posting but can be managed (disconnected accounts, deleted).
+     * @param bool|null $is_over_limit Only present when includeOverLimit=true. Indicates if this profile exceeds the plan limit.
      *
      * @return self
      */

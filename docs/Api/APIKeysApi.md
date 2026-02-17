@@ -19,6 +19,8 @@ createApiKey($create_api_key_request): \Late\Model\CreateApiKey201Response
 
 Create key
 
+Creates a new API key with an optional expiry. The full key value is only returned once in the response.
+
 ### Example
 
 ```php
@@ -77,6 +79,8 @@ deleteApiKey($key_id): \Late\Model\DeleteAccountGroup200Response
 
 Delete key
 
+Permanently revokes and deletes an API key.
+
 ### Example
 
 ```php
@@ -134,6 +138,8 @@ listApiKeys(): \Late\Model\ListApiKeys200Response
 ```
 
 List keys
+
+Returns all API keys for the authenticated user. Keys are returned with a preview only, not the full key value.
 
 ### Example
 

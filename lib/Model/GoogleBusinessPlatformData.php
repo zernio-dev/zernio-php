@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * GoogleBusinessPlatformData Class Doc Comment
  *
  * @category Class
- * @description Posts support text and a single image (no videos). Images must be publicly accessible URLs. Optional call-to-action button. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting. Language is auto-detected; override with languageCode.
+ * @description Text and single image only (no videos). Optional call-to-action button. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -318,7 +318,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets location_id
      *
-     * @param string|null $location_id Target Google Business location ID for multi-location posting. Format: \"locations/123456789\" If omitted, uses the selected/default location on the connection. Use GET /api/v1/accounts/{id}/gmb-locations to list available locations.
+     * @param string|null $location_id Target GBP location ID (e.g. \"locations/123456789\"). If omitted, uses the default location. Use GET /v1/accounts/{id}/gmb-locations to list locations.
      *
      * @return self
      */
@@ -345,7 +345,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets language_code
      *
-     * @param string|null $language_code BCP 47 language code for the post content (e.g., \"en\", \"de\", \"es\", \"fr\"). If omitted, the language is automatically detected from the post text. Setting this explicitly is recommended when auto-detection may not be accurate (e.g., very short posts, mixed-language content, or transliterated text).
+     * @param string|null $language_code BCP 47 language code (e.g. \"en\", \"de\", \"es\"). Auto-detected if omitted. Set explicitly for short or mixed-language posts.
      *
      * @return self
      */

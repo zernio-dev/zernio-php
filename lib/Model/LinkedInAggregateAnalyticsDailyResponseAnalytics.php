@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * LinkedInAggregateAnalyticsDailyResponseAnalytics Class Doc Comment
  *
  * @category Class
- * @description Daily breakdown of each metric. Each metric contains an array of date/count pairs. Note: &#39;reach&#39; (MEMBERS_REACHED) is not available with DAILY aggregation per LinkedIn API limitations.
+ * @description Daily breakdown of each metric as date/count pairs. Reach not available with DAILY aggregation.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

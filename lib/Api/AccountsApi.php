@@ -1413,7 +1413,7 @@ class AccountsApi
      * List accounts
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
-     * @param  bool|null $include_over_limit When true, includes accounts from profiles that exceed the user&#39;s plan limit. Useful for disconnecting accounts from over-limit profiles so they can be deleted. (optional, default to false)
+     * @param  bool|null $include_over_limit When true, includes accounts from over-limit profiles. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1432,7 +1432,7 @@ class AccountsApi
      * List accounts
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
-     * @param  bool|null $include_over_limit When true, includes accounts from profiles that exceed the user&#39;s plan limit. Useful for disconnecting accounts from over-limit profiles so they can be deleted. (optional, default to false)
+     * @param  bool|null $include_over_limit When true, includes accounts from over-limit profiles. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1532,7 +1532,7 @@ class AccountsApi
      * List accounts
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
-     * @param  bool|null $include_over_limit When true, includes accounts from profiles that exceed the user&#39;s plan limit. Useful for disconnecting accounts from over-limit profiles so they can be deleted. (optional, default to false)
+     * @param  bool|null $include_over_limit When true, includes accounts from over-limit profiles. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1554,7 +1554,7 @@ class AccountsApi
      * List accounts
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
-     * @param  bool|null $include_over_limit When true, includes accounts from profiles that exceed the user&#39;s plan limit. Useful for disconnecting accounts from over-limit profiles so they can be deleted. (optional, default to false)
+     * @param  bool|null $include_over_limit When true, includes accounts from over-limit profiles. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1605,7 +1605,7 @@ class AccountsApi
      * Create request for operation 'listAccounts'
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
-     * @param  bool|null $include_over_limit When true, includes accounts from profiles that exceed the user&#39;s plan limit. Useful for disconnecting accounts from over-limit profiles so they can be deleted. (optional, default to false)
+     * @param  bool|null $include_over_limit When true, includes accounts from over-limit profiles. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

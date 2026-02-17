@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * RedditPlatformData Class Doc Comment
  *
  * @category Class
- * @description Posts are either link (with URL/media) or self (text-only). If media is provided, the first item URL is used as the link; use forceSelf to override. Subreddit defaults to the account&#39;s configured one. Images over 20 MB are auto-compressed. Some subreddits require a flair; if missing, the first available flair is used as fallback.
+ * @description Posts are either link (with URL/media) or self (text-only). Use forceSelf to override. Subreddit defaults to the account&#39;s configured one. Some subreddits require a flair.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -336,7 +336,7 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets subreddit
      *
-     * @param string|null $subreddit Target subreddit name (without \"r/\" prefix). Overrides the default subreddit configured on the account connection. Use GET /api/v1/accounts/{id}/reddit-subreddits to list available subreddits.
+     * @param string|null $subreddit Target subreddit name (without \"r/\" prefix). Overrides the default. Use GET /v1/accounts/{id}/reddit-subreddits to list options.
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets flair_id
      *
-     * @param string|null $flair_id Flair ID for the post. Required by some subreddits. Use GET /api/v1/accounts/{id}/reddit-flairs?subreddit=name to list available flairs.
+     * @param string|null $flair_id Flair ID for the post. Required by some subreddits. Use GET /v1/accounts/{id}/reddit-flairs?subreddit=name to list flairs.
      *
      * @return self
      */

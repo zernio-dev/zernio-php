@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * MediaItem Class Doc Comment
  *
  * @category Class
- * @description Media referenced in posts. URLs must be publicly reachable over HTTPS. When using third-party storage, ensure signed links remain valid until upload completes. Use POST /v1/media/presign to get a presigned URL for direct cloud storage upload (up to 5GB). Late automatically compresses images and videos that exceed platform limits server-side during publishing. Videos larger than 200 MB may not be compressed due to timeout constraints.
+ * @description Media referenced in posts. URLs must be publicly reachable over HTTPS. Use POST /v1/media/presign for uploads up to 5GB. Late auto-compresses images and videos that exceed platform limits (videos over 200 MB may not be compressed).
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

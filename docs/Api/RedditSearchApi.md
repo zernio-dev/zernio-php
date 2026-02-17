@@ -18,6 +18,8 @@ getRedditFeed($account_id, $subreddit, $sort, $limit, $after, $t): \Late\Model\G
 
 Get subreddit feed
 
+Fetch posts from a subreddit feed. Supports sorting, time filtering, and cursor-based pagination.
+
 ### Example
 
 ```php
@@ -85,6 +87,8 @@ searchReddit($account_id, $q, $subreddit, $restrict_sr, $sort, $limit, $after): 
 ```
 
 Search posts
+
+Search Reddit posts using a connected account. Optionally scope to a specific subreddit.
 
 ### Example
 
