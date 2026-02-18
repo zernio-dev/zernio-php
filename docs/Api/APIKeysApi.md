@@ -38,7 +38,7 @@ $apiInstance = new Late\Api\APIKeysApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_api_key_request = {"name":"Production API Key","expiresIn":365}; // \Late\Model\CreateApiKeyRequest
+$create_api_key_request = {"name":"Analytics Read-Only Key","scope":"profiles","profileIds":["6507a1b2c3d4e5f6a7b8c9d0"],"permission":"read"}; // \Late\Model\CreateApiKeyRequest
 
 try {
     $result = $apiInstance->createApiKey($create_api_key_request);

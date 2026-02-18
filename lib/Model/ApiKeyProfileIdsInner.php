@@ -1,6 +1,6 @@
 <?php
 /**
- * ApiKey
+ * ApiKeyProfileIdsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * ApiKey Class Doc Comment
+ * ApiKeyProfileIdsInner Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
+class ApiKeyProfileIdsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ApiKey';
+    protected static $openAPIModelName = 'ApiKey_profileIds_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +58,9 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
+        '_id' => 'string',
         'name' => 'string',
-        'key_preview' => 'string',
-        'expires_at' => '\DateTime',
-        'created_at' => '\DateTime',
-        'key' => 'string',
-        'scope' => 'string',
-        'profile_ids' => '\Late\Model\ApiKeyProfileIdsInner[]',
-        'permission' => 'string'
+        'color' => 'string'
     ];
 
     /**
@@ -77,15 +71,9 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
+        '_id' => null,
         'name' => null,
-        'key_preview' => null,
-        'expires_at' => 'date-time',
-        'created_at' => 'date-time',
-        'key' => null,
-        'scope' => null,
-        'profile_ids' => null,
-        'permission' => null
+        'color' => null
     ];
 
     /**
@@ -94,15 +82,9 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
+        '_id' => false,
         'name' => false,
-        'key_preview' => false,
-        'expires_at' => false,
-        'created_at' => false,
-        'key' => false,
-        'scope' => false,
-        'profile_ids' => false,
-        'permission' => false
+        'color' => false
     ];
 
     /**
@@ -191,15 +173,9 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        '_id' => '_id',
         'name' => 'name',
-        'key_preview' => 'keyPreview',
-        'expires_at' => 'expiresAt',
-        'created_at' => 'createdAt',
-        'key' => 'key',
-        'scope' => 'scope',
-        'profile_ids' => 'profileIds',
-        'permission' => 'permission'
+        'color' => 'color'
     ];
 
     /**
@@ -208,15 +184,9 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        '_id' => 'setId',
         'name' => 'setName',
-        'key_preview' => 'setKeyPreview',
-        'expires_at' => 'setExpiresAt',
-        'created_at' => 'setCreatedAt',
-        'key' => 'setKey',
-        'scope' => 'setScope',
-        'profile_ids' => 'setProfileIds',
-        'permission' => 'setPermission'
+        'color' => 'setColor'
     ];
 
     /**
@@ -225,15 +195,9 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        '_id' => 'getId',
         'name' => 'getName',
-        'key_preview' => 'getKeyPreview',
-        'expires_at' => 'getExpiresAt',
-        'created_at' => 'getCreatedAt',
-        'key' => 'getKey',
-        'scope' => 'getScope',
-        'profile_ids' => 'getProfileIds',
-        'permission' => 'getPermission'
+        'color' => 'getColor'
     ];
 
     /**
@@ -277,36 +241,6 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const SCOPE_FULL = 'full';
-    public const SCOPE_PROFILES = 'profiles';
-    public const PERMISSION_READ_WRITE = 'read-write';
-    public const PERMISSION_READ = 'read';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getScopeAllowableValues()
-    {
-        return [
-            self::SCOPE_FULL,
-            self::SCOPE_PROFILES,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getPermissionAllowableValues()
-    {
-        return [
-            self::PERMISSION_READ_WRITE,
-            self::PERMISSION_READ,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -323,15 +257,9 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('key_preview', $data ?? [], null);
-        $this->setIfExists('expires_at', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
-        $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('scope', $data ?? [], 'full');
-        $this->setIfExists('profile_ids', $data ?? [], null);
-        $this->setIfExists('permission', $data ?? [], 'read-write');
+        $this->setIfExists('color', $data ?? [], null);
     }
 
     /**
@@ -361,24 +289,6 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getScopeAllowableValues();
-        if (!is_null($this->container['scope']) && !in_array($this->container['scope'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'scope', must be one of '%s'",
-                $this->container['scope'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getPermissionAllowableValues();
-        if (!is_null($this->container['permission']) && !in_array($this->container['permission'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'permission', must be one of '%s'",
-                $this->container['permission'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -395,28 +305,28 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets id
+     * Gets _id
      *
      * @return string|null
      */
     public function getId()
     {
-        return $this->container['id'];
+        return $this->container['_id'];
     }
 
     /**
-     * Sets id
+     * Sets _id
      *
-     * @param string|null $id id
+     * @param string|null $_id _id
      *
      * @return self
      */
-    public function setId($id)
+    public function setId($_id)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($_id)) {
+            throw new \InvalidArgumentException('non-nullable _id cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['_id'] = $_id;
 
         return $this;
     }
@@ -449,210 +359,28 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets key_preview
+     * Gets color
      *
      * @return string|null
      */
-    public function getKeyPreview()
+    public function getColor()
     {
-        return $this->container['key_preview'];
+        return $this->container['color'];
     }
 
     /**
-     * Sets key_preview
+     * Sets color
      *
-     * @param string|null $key_preview key_preview
+     * @param string|null $color color
      *
      * @return self
      */
-    public function setKeyPreview($key_preview)
+    public function setColor($color)
     {
-        if (is_null($key_preview)) {
-            throw new \InvalidArgumentException('non-nullable key_preview cannot be null');
+        if (is_null($color)) {
+            throw new \InvalidArgumentException('non-nullable color cannot be null');
         }
-        $this->container['key_preview'] = $key_preview;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at
-     *
-     * @return \DateTime|null
-     */
-    public function getExpiresAt()
-    {
-        return $this->container['expires_at'];
-    }
-
-    /**
-     * Sets expires_at
-     *
-     * @param \DateTime|null $expires_at expires_at
-     *
-     * @return self
-     */
-    public function setExpiresAt($expires_at)
-    {
-        if (is_null($expires_at)) {
-            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
-        }
-        $this->container['expires_at'] = $expires_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets created_at
-     *
-     * @return \DateTime|null
-     */
-    public function getCreatedAt()
-    {
-        return $this->container['created_at'];
-    }
-
-    /**
-     * Sets created_at
-     *
-     * @param \DateTime|null $created_at created_at
-     *
-     * @return self
-     */
-    public function setCreatedAt($created_at)
-    {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
-        }
-        $this->container['created_at'] = $created_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets key
-     *
-     * @return string|null
-     */
-    public function getKey()
-    {
-        return $this->container['key'];
-    }
-
-    /**
-     * Sets key
-     *
-     * @param string|null $key Returned only once, on creation
-     *
-     * @return self
-     */
-    public function setKey($key)
-    {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
-        }
-        $this->container['key'] = $key;
-
-        return $this;
-    }
-
-    /**
-     * Gets scope
-     *
-     * @return string|null
-     */
-    public function getScope()
-    {
-        return $this->container['scope'];
-    }
-
-    /**
-     * Sets scope
-     *
-     * @param string|null $scope 'full' grants access to all profiles, 'profiles' restricts to specific profiles
-     *
-     * @return self
-     */
-    public function setScope($scope)
-    {
-        if (is_null($scope)) {
-            throw new \InvalidArgumentException('non-nullable scope cannot be null');
-        }
-        $allowedValues = $this->getScopeAllowableValues();
-        if (!in_array($scope, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'scope', must be one of '%s'",
-                    $scope,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['scope'] = $scope;
-
-        return $this;
-    }
-
-    /**
-     * Gets profile_ids
-     *
-     * @return \Late\Model\ApiKeyProfileIdsInner[]|null
-     */
-    public function getProfileIds()
-    {
-        return $this->container['profile_ids'];
-    }
-
-    /**
-     * Sets profile_ids
-     *
-     * @param \Late\Model\ApiKeyProfileIdsInner[]|null $profile_ids Profiles this key can access (populated with name and color). Only present when scope is 'profiles'.
-     *
-     * @return self
-     */
-    public function setProfileIds($profile_ids)
-    {
-        if (is_null($profile_ids)) {
-            throw new \InvalidArgumentException('non-nullable profile_ids cannot be null');
-        }
-        $this->container['profile_ids'] = $profile_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets permission
-     *
-     * @return string|null
-     */
-    public function getPermission()
-    {
-        return $this->container['permission'];
-    }
-
-    /**
-     * Sets permission
-     *
-     * @param string|null $permission 'read-write' allows all operations, 'read' restricts to GET requests only
-     *
-     * @return self
-     */
-    public function setPermission($permission)
-    {
-        if (is_null($permission)) {
-            throw new \InvalidArgumentException('non-nullable permission cannot be null');
-        }
-        $allowedValues = $this->getPermissionAllowableValues();
-        if (!in_array($permission, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'permission', must be one of '%s'",
-                    $permission,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['permission'] = $permission;
+        $this->container['color'] = $color;
 
         return $this;
     }

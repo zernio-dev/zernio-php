@@ -59,7 +59,10 @@ class CreateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'expires_in' => 'int'
+        'expires_in' => 'int',
+        'scope' => 'string',
+        'profile_ids' => 'string[]',
+        'permission' => 'string'
     ];
 
     /**
@@ -71,7 +74,10 @@ class CreateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'name' => null,
-        'expires_in' => null
+        'expires_in' => null,
+        'scope' => null,
+        'profile_ids' => null,
+        'permission' => null
     ];
 
     /**
@@ -81,7 +87,10 @@ class CreateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'name' => false,
-        'expires_in' => false
+        'expires_in' => false,
+        'scope' => false,
+        'profile_ids' => false,
+        'permission' => false
     ];
 
     /**
@@ -171,7 +180,10 @@ class CreateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'expires_in' => 'expiresIn'
+        'expires_in' => 'expiresIn',
+        'scope' => 'scope',
+        'profile_ids' => 'profileIds',
+        'permission' => 'permission'
     ];
 
     /**
@@ -181,7 +193,10 @@ class CreateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'name' => 'setName',
-        'expires_in' => 'setExpiresIn'
+        'expires_in' => 'setExpiresIn',
+        'scope' => 'setScope',
+        'profile_ids' => 'setProfileIds',
+        'permission' => 'setPermission'
     ];
 
     /**
@@ -191,7 +206,10 @@ class CreateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'name' => 'getName',
-        'expires_in' => 'getExpiresIn'
+        'expires_in' => 'getExpiresIn',
+        'scope' => 'getScope',
+        'profile_ids' => 'getProfileIds',
+        'permission' => 'getPermission'
     ];
 
     /**
@@ -235,6 +253,36 @@ class CreateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
+    public const SCOPE_FULL = 'full';
+    public const SCOPE_PROFILES = 'profiles';
+    public const PERMISSION_READ_WRITE = 'read-write';
+    public const PERMISSION_READ = 'read';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getScopeAllowableValues()
+    {
+        return [
+            self::SCOPE_FULL,
+            self::SCOPE_PROFILES,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPermissionAllowableValues()
+    {
+        return [
+            self::PERMISSION_READ_WRITE,
+            self::PERMISSION_READ,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -253,6 +301,9 @@ class CreateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('expires_in', $data ?? [], null);
+        $this->setIfExists('scope', $data ?? [], 'full');
+        $this->setIfExists('profile_ids', $data ?? [], null);
+        $this->setIfExists('permission', $data ?? [], 'read-write');
     }
 
     /**
@@ -285,6 +336,24 @@ class CreateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        $allowedValues = $this->getScopeAllowableValues();
+        if (!is_null($this->container['scope']) && !in_array($this->container['scope'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'scope', must be one of '%s'",
+                $this->container['scope'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getPermissionAllowableValues();
+        if (!is_null($this->container['permission']) && !in_array($this->container['permission'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'permission', must be one of '%s'",
+                $this->container['permission'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -350,6 +419,107 @@ class CreateApiKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable expires_in cannot be null');
         }
         $this->container['expires_in'] = $expires_in;
+
+        return $this;
+    }
+
+    /**
+     * Gets scope
+     *
+     * @return string|null
+     */
+    public function getScope()
+    {
+        return $this->container['scope'];
+    }
+
+    /**
+     * Sets scope
+     *
+     * @param string|null $scope 'full' grants access to all profiles (default), 'profiles' restricts to specific profiles
+     *
+     * @return self
+     */
+    public function setScope($scope)
+    {
+        if (is_null($scope)) {
+            throw new \InvalidArgumentException('non-nullable scope cannot be null');
+        }
+        $allowedValues = $this->getScopeAllowableValues();
+        if (!in_array($scope, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'scope', must be one of '%s'",
+                    $scope,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['scope'] = $scope;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_ids
+     *
+     * @return string[]|null
+     */
+    public function getProfileIds()
+    {
+        return $this->container['profile_ids'];
+    }
+
+    /**
+     * Sets profile_ids
+     *
+     * @param string[]|null $profile_ids Profile IDs this key can access. Required when scope is 'profiles'.
+     *
+     * @return self
+     */
+    public function setProfileIds($profile_ids)
+    {
+        if (is_null($profile_ids)) {
+            throw new \InvalidArgumentException('non-nullable profile_ids cannot be null');
+        }
+        $this->container['profile_ids'] = $profile_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets permission
+     *
+     * @return string|null
+     */
+    public function getPermission()
+    {
+        return $this->container['permission'];
+    }
+
+    /**
+     * Sets permission
+     *
+     * @param string|null $permission 'read-write' allows all operations (default), 'read' restricts to GET requests only
+     *
+     * @return self
+     */
+    public function setPermission($permission)
+    {
+        if (is_null($permission)) {
+            throw new \InvalidArgumentException('non-nullable permission cannot be null');
+        }
+        $allowedValues = $this->getPermissionAllowableValues();
+        if (!in_array($permission, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'permission', must be one of '%s'",
+                    $permission,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['permission'] = $permission;
 
         return $this;
     }

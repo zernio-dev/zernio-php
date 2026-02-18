@@ -61,7 +61,7 @@ $apiInstance = new Late\Api\APIKeysApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_api_key_request = {"name":"Production API Key","expiresIn":365}; // \Late\Model\CreateApiKeyRequest
+$create_api_key_request = {"name":"Analytics Read-Only Key","scope":"profiles","profileIds":["6507a1b2c3d4e5f6a7b8c9d0"],"permission":"read"}; // \Late\Model\CreateApiKeyRequest
 
 try {
     $result = $apiInstance->createApiKey($create_api_key_request);
@@ -220,6 +220,7 @@ Class | Method | HTTP request | Description
 - [AnalyticsOverview](docs/Model/AnalyticsOverview.md)
 - [AnalyticsSinglePostResponse](docs/Model/AnalyticsSinglePostResponse.md)
 - [ApiKey](docs/Model/ApiKey.md)
+- [ApiKeyProfileIdsInner](docs/Model/ApiKeyProfileIdsInner.md)
 - [BlueskyPlatformData](docs/Model/BlueskyPlatformData.md)
 - [BulkUploadPosts200Response](docs/Model/BulkUploadPosts200Response.md)
 - [BulkUploadPosts200ResponseErrorsInner](docs/Model/BulkUploadPosts200ResponseErrorsInner.md)

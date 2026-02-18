@@ -38,6 +38,7 @@ docs/Model/AnalyticsListResponsePostsInner.md
 docs/Model/AnalyticsOverview.md
 docs/Model/AnalyticsSinglePostResponse.md
 docs/Model/ApiKey.md
+docs/Model/ApiKeyProfileIdsInner.md
 docs/Model/BlueskyPlatformData.md
 docs/Model/BulkUploadPosts200Response.md
 docs/Model/BulkUploadPosts200ResponseErrorsInner.md
@@ -459,6 +460,7 @@ lib/Model/AnalyticsListResponsePostsInner.php
 lib/Model/AnalyticsOverview.php
 lib/Model/AnalyticsSinglePostResponse.php
 lib/Model/ApiKey.php
+lib/Model/ApiKeyProfileIdsInner.php
 lib/Model/BlueskyPlatformData.php
 lib/Model/BulkUploadPosts200Response.php
 lib/Model/BulkUploadPosts200ResponseErrorsInner.php
@@ -843,3 +845,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ApiKeyProfileIdsInnerTest.php
