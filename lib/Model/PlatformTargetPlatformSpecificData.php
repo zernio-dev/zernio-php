@@ -61,6 +61,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     protected static $openAPITypes = [
         'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
         'content_type' => 'string',
+        'title' => 'string',
         'first_comment' => 'string',
         'page_id' => 'string',
         'share_to_feed' => 'bool',
@@ -71,7 +72,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'thumb_offset' => 'int',
         'organization_urn' => 'string',
         'disable_link_preview' => 'bool',
-        'title' => 'string',
         'board_id' => 'string',
         'link' => 'string',
         'cover_image_url' => 'string',
@@ -119,6 +119,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     protected static $openAPIFormats = [
         'thread_items' => null,
         'content_type' => null,
+        'title' => null,
         'first_comment' => null,
         'page_id' => null,
         'share_to_feed' => null,
@@ -129,7 +130,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'thumb_offset' => null,
         'organization_urn' => null,
         'disable_link_preview' => null,
-        'title' => null,
         'board_id' => null,
         'link' => 'uri',
         'cover_image_url' => 'uri',
@@ -175,6 +175,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     protected static array $openAPINullables = [
         'thread_items' => false,
         'content_type' => false,
+        'title' => false,
         'first_comment' => false,
         'page_id' => false,
         'share_to_feed' => false,
@@ -185,7 +186,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'thumb_offset' => false,
         'organization_urn' => false,
         'disable_link_preview' => false,
-        'title' => false,
         'board_id' => false,
         'link' => false,
         'cover_image_url' => false,
@@ -311,6 +311,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     protected static $attributeMap = [
         'thread_items' => 'threadItems',
         'content_type' => 'contentType',
+        'title' => 'title',
         'first_comment' => 'firstComment',
         'page_id' => 'pageId',
         'share_to_feed' => 'shareToFeed',
@@ -321,7 +322,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'thumb_offset' => 'thumbOffset',
         'organization_urn' => 'organizationUrn',
         'disable_link_preview' => 'disableLinkPreview',
-        'title' => 'title',
         'board_id' => 'boardId',
         'link' => 'link',
         'cover_image_url' => 'coverImageUrl',
@@ -367,6 +367,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     protected static $setters = [
         'thread_items' => 'setThreadItems',
         'content_type' => 'setContentType',
+        'title' => 'setTitle',
         'first_comment' => 'setFirstComment',
         'page_id' => 'setPageId',
         'share_to_feed' => 'setShareToFeed',
@@ -377,7 +378,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'thumb_offset' => 'setThumbOffset',
         'organization_urn' => 'setOrganizationUrn',
         'disable_link_preview' => 'setDisableLinkPreview',
-        'title' => 'setTitle',
         'board_id' => 'setBoardId',
         'link' => 'setLink',
         'cover_image_url' => 'setCoverImageUrl',
@@ -423,6 +423,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     protected static $getters = [
         'thread_items' => 'getThreadItems',
         'content_type' => 'getContentType',
+        'title' => 'getTitle',
         'first_comment' => 'getFirstComment',
         'page_id' => 'getPageId',
         'share_to_feed' => 'getShareToFeed',
@@ -433,7 +434,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'thumb_offset' => 'getThumbOffset',
         'organization_urn' => 'getOrganizationUrn',
         'disable_link_preview' => 'getDisableLinkPreview',
-        'title' => 'getTitle',
         'board_id' => 'getBoardId',
         'link' => 'getLink',
         'cover_image_url' => 'getCoverImageUrl',
@@ -613,6 +613,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     {
         $this->setIfExists('thread_items', $data ?? [], null);
         $this->setIfExists('content_type', $data ?? [], 'story');
+        $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('first_comment', $data ?? [], null);
         $this->setIfExists('page_id', $data ?? [], null);
         $this->setIfExists('share_to_feed', $data ?? [], true);
@@ -623,7 +624,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         $this->setIfExists('thumb_offset', $data ?? [], null);
         $this->setIfExists('organization_urn', $data ?? [], null);
         $this->setIfExists('disable_link_preview', $data ?? [], null);
-        $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('board_id', $data ?? [], null);
         $this->setIfExists('link', $data ?? [], null);
         $this->setIfExists('cover_image_url', $data ?? [], null);
@@ -697,16 +697,16 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
             );
         }
 
+        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 300)) {
+            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 300.";
+        }
+
         if (!is_null($this->container['first_comment']) && (mb_strlen($this->container['first_comment']) > 10000)) {
             $invalidProperties[] = "invalid value for 'first_comment', the character length must be smaller than or equal to 10000.";
         }
 
         if (!is_null($this->container['thumb_offset']) && ($this->container['thumb_offset'] < 0)) {
             $invalidProperties[] = "invalid value for 'thumb_offset', must be bigger than or equal to 0.";
-        }
-
-        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 300)) {
-            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 300.";
         }
 
         $allowedValues = $this->getVisibilityAllowableValues();
@@ -832,6 +832,37 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
             );
         }
         $this->container['content_type'] = $content_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title Post title. Defaults to the first line of content, truncated to 300 characters.
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        if ((mb_strlen($title) > 300)) {
+            throw new \InvalidArgumentException('invalid length for $title when calling PlatformTargetPlatformSpecificData., must be smaller than or equal to 300.');
+        }
+
+        $this->container['title'] = $title;
 
         return $this;
     }
@@ -1111,37 +1142,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable disable_link_preview cannot be null');
         }
         $this->container['disable_link_preview'] = $disable_link_preview;
-
-        return $this;
-    }
-
-    /**
-     * Gets title
-     *
-     * @return string|null
-     */
-    public function getTitle()
-    {
-        return $this->container['title'];
-    }
-
-    /**
-     * Sets title
-     *
-     * @param string|null $title Post title. Defaults to the first line of content, truncated to 300 characters.
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        if (is_null($title)) {
-            throw new \InvalidArgumentException('non-nullable title cannot be null');
-        }
-        if ((mb_strlen($title) > 300)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling PlatformTargetPlatformSpecificData., must be smaller than or equal to 300.');
-        }
-
-        $this->container['title'] = $title;
 
         return $this;
     }

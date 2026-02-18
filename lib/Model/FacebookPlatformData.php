@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * FacebookPlatformData Class Doc Comment
  *
  * @category Class
- * @description Up to 10 images for feed posts, cannot mix videos and images. Stories require single image or video (ephemeral 24h, no captions). Use pageId for multi-page posting.
+ * @description Feed posts support up to 10 images (no mixed video+image). Stories require single media (24h, no captions). Reels require single vertical video (9:16, 3-60s).
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,6 +60,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'content_type' => 'string',
+        'title' => 'string',
         'first_comment' => 'string',
         'page_id' => 'string'
     ];
@@ -73,6 +74,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'content_type' => null,
+        'title' => null,
         'first_comment' => null,
         'page_id' => null
     ];
@@ -84,6 +86,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'content_type' => false,
+        'title' => false,
         'first_comment' => false,
         'page_id' => false
     ];
@@ -175,6 +178,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'content_type' => 'contentType',
+        'title' => 'title',
         'first_comment' => 'firstComment',
         'page_id' => 'pageId'
     ];
@@ -186,6 +190,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'content_type' => 'setContentType',
+        'title' => 'setTitle',
         'first_comment' => 'setFirstComment',
         'page_id' => 'setPageId'
     ];
@@ -197,6 +202,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'content_type' => 'getContentType',
+        'title' => 'getTitle',
         'first_comment' => 'getFirstComment',
         'page_id' => 'getPageId'
     ];
@@ -243,6 +249,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     public const CONTENT_TYPE_STORY = 'story';
+    public const CONTENT_TYPE_REEL = 'reel';
 
     /**
      * Gets allowable values of the enum
@@ -253,6 +260,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         return [
             self::CONTENT_TYPE_STORY,
+            self::CONTENT_TYPE_REEL,
         ];
     }
 
@@ -272,6 +280,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(?array $data = null)
     {
         $this->setIfExists('content_type', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('first_comment', $data ?? [], null);
         $this->setIfExists('page_id', $data ?? [], null);
     }
@@ -340,7 +349,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets content_type
      *
-     * @param string|null $content_type Set to 'story' to publish as a Facebook Page Story (24-hour ephemeral content). Requires media.
+     * @param string|null $content_type Set to 'story' for Page Stories (24h ephemeral) or 'reel' for Reels (short vertical video). Defaults to feed post if omitted.
      *
      * @return self
      */
@@ -365,6 +374,33 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     }
 
     /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title Reel title (only for contentType=reel). Separate from the caption/content field.
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
      * Gets first_comment
      *
      * @return string|null
@@ -377,7 +413,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets first_comment
      *
-     * @param string|null $first_comment Optional first comment to post immediately after publishing (feed posts only, not stories)
+     * @param string|null $first_comment Optional first comment to post immediately after publishing (feed posts only, not stories or reels)
      *
      * @return self
      */
