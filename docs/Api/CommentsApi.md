@@ -25,7 +25,7 @@ deleteInboxComment($post_id, $account_id, $comment_id): \Late\Model\DeleteInboxC
 
 Delete comment
 
-Delete a comment on a post. Supported by Facebook, Instagram, Bluesky, Reddit, YouTube, LinkedIn, and TikTok. Requires accountId and commentId query parameters.
+Delete a comment on a post. Supported by Facebook, Instagram, Bluesky, Reddit, YouTube, and LinkedIn. Requires accountId and commentId query parameters.
 
 ### Example
 
