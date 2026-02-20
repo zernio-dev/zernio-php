@@ -61,6 +61,7 @@ class MediaItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'type' => 'string',
         'url' => 'string',
+        'title' => 'string',
         'filename' => 'string',
         'size' => 'int',
         'mime_type' => 'string',
@@ -79,6 +80,7 @@ class MediaItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'type' => null,
         'url' => 'uri',
+        'title' => null,
         'filename' => null,
         'size' => null,
         'mime_type' => null,
@@ -95,6 +97,7 @@ class MediaItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'type' => false,
         'url' => false,
+        'title' => false,
         'filename' => false,
         'size' => false,
         'mime_type' => false,
@@ -191,6 +194,7 @@ class MediaItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'type' => 'type',
         'url' => 'url',
+        'title' => 'title',
         'filename' => 'filename',
         'size' => 'size',
         'mime_type' => 'mimeType',
@@ -207,6 +211,7 @@ class MediaItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'type' => 'setType',
         'url' => 'setUrl',
+        'title' => 'setTitle',
         'filename' => 'setFilename',
         'size' => 'setSize',
         'mime_type' => 'setMimeType',
@@ -223,6 +228,7 @@ class MediaItem implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'type' => 'getType',
         'url' => 'getUrl',
+        'title' => 'getTitle',
         'filename' => 'getFilename',
         'size' => 'getSize',
         'mime_type' => 'getMimeType',
@@ -309,6 +315,7 @@ class MediaItem implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('filename', $data ?? [], null);
         $this->setIfExists('size', $data ?? [], null);
         $this->setIfExists('mime_type', $data ?? [], null);
@@ -428,6 +435,33 @@ class MediaItem implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
         $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title Optional title for the media item. Used as the document title for LinkedIn PDF/carousel posts. If omitted, falls back to the post title, then the filename.
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
 
         return $this;
     }

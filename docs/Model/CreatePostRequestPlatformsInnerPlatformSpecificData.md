@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **user_tags** | [**\Late\Model\InstagramPlatformDataUserTagsInner[]**](InstagramPlatformDataUserTagsInner.md) | Tag Instagram users in photos by username and position. Not supported for stories or videos. For carousels, use mediaIndex to target specific slides (defaults to 0). Tags on video items are silently skipped. | [optional]
 **audio_name** | **string** | Custom name for original audio in Reels. Replaces the default \&quot;Original Audio\&quot; label. Can only be set once. | [optional]
 **thumb_offset** | **int** | Millisecond offset from video start for the Reel thumbnail. Ignored if a custom thumbnail URL is provided. Defaults to 0. | [optional]
+**document_title** | **string** | Title displayed on LinkedIn document (PDF/carousel) posts. Required by LinkedIn for document posts. If omitted, falls back to the media item title, then the filename. | [optional]
 **organization_urn** | **string** | Target LinkedIn Organization URN (e.g. \&quot;urn:li:organization:123456789\&quot;). If omitted, uses the default org. Use GET /v1/accounts/{id}/linkedin-organizations to list orgs. | [optional]
 **disable_link_preview** | **bool** | Set to true to disable automatic link previews for URLs in the post content (default is false) | [optional]
 **board_id** | **string** | Target Pinterest board ID. If omitted, the first available board is used. | [optional]

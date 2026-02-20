@@ -70,6 +70,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'user_tags' => '\Late\Model\InstagramPlatformDataUserTagsInner[]',
         'audio_name' => 'string',
         'thumb_offset' => 'int',
+        'document_title' => 'string',
         'organization_urn' => 'string',
         'disable_link_preview' => 'bool',
         'board_id' => 'string',
@@ -128,6 +129,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'user_tags' => null,
         'audio_name' => null,
         'thumb_offset' => null,
+        'document_title' => null,
         'organization_urn' => null,
         'disable_link_preview' => null,
         'board_id' => null,
@@ -184,6 +186,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'user_tags' => false,
         'audio_name' => false,
         'thumb_offset' => false,
+        'document_title' => false,
         'organization_urn' => false,
         'disable_link_preview' => false,
         'board_id' => false,
@@ -320,6 +323,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'user_tags' => 'userTags',
         'audio_name' => 'audioName',
         'thumb_offset' => 'thumbOffset',
+        'document_title' => 'documentTitle',
         'organization_urn' => 'organizationUrn',
         'disable_link_preview' => 'disableLinkPreview',
         'board_id' => 'boardId',
@@ -376,6 +380,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'user_tags' => 'setUserTags',
         'audio_name' => 'setAudioName',
         'thumb_offset' => 'setThumbOffset',
+        'document_title' => 'setDocumentTitle',
         'organization_urn' => 'setOrganizationUrn',
         'disable_link_preview' => 'setDisableLinkPreview',
         'board_id' => 'setBoardId',
@@ -432,6 +437,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'user_tags' => 'getUserTags',
         'audio_name' => 'getAudioName',
         'thumb_offset' => 'getThumbOffset',
+        'document_title' => 'getDocumentTitle',
         'organization_urn' => 'getOrganizationUrn',
         'disable_link_preview' => 'getDisableLinkPreview',
         'board_id' => 'getBoardId',
@@ -622,6 +628,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         $this->setIfExists('user_tags', $data ?? [], null);
         $this->setIfExists('audio_name', $data ?? [], null);
         $this->setIfExists('thumb_offset', $data ?? [], null);
+        $this->setIfExists('document_title', $data ?? [], null);
         $this->setIfExists('organization_urn', $data ?? [], null);
         $this->setIfExists('disable_link_preview', $data ?? [], null);
         $this->setIfExists('board_id', $data ?? [], null);
@@ -1088,6 +1095,33 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         }
 
         $this->container['thumb_offset'] = $thumb_offset;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_title
+     *
+     * @return string|null
+     */
+    public function getDocumentTitle()
+    {
+        return $this->container['document_title'];
+    }
+
+    /**
+     * Sets document_title
+     *
+     * @param string|null $document_title Title displayed on LinkedIn document (PDF/carousel) posts. Required by LinkedIn for document posts. If omitted, falls back to the media item title, then the filename.
+     *
+     * @return self
+     */
+    public function setDocumentTitle($document_title)
+    {
+        if (is_null($document_title)) {
+            throw new \InvalidArgumentException('non-nullable document_title cannot be null');
+        }
+        $this->container['document_title'] = $document_title;
 
         return $this;
     }

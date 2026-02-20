@@ -59,6 +59,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'document_title' => 'string',
         'organization_urn' => 'string',
         'first_comment' => 'string',
         'disable_link_preview' => 'bool'
@@ -72,6 +73,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'document_title' => null,
         'organization_urn' => null,
         'first_comment' => null,
         'disable_link_preview' => null
@@ -83,6 +85,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'document_title' => false,
         'organization_urn' => false,
         'first_comment' => false,
         'disable_link_preview' => false
@@ -174,6 +177,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'document_title' => 'documentTitle',
         'organization_urn' => 'organizationUrn',
         'first_comment' => 'firstComment',
         'disable_link_preview' => 'disableLinkPreview'
@@ -185,6 +189,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'document_title' => 'setDocumentTitle',
         'organization_urn' => 'setOrganizationUrn',
         'first_comment' => 'setFirstComment',
         'disable_link_preview' => 'setDisableLinkPreview'
@@ -196,6 +201,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'document_title' => 'getDocumentTitle',
         'organization_urn' => 'getOrganizationUrn',
         'first_comment' => 'getFirstComment',
         'disable_link_preview' => 'getDisableLinkPreview'
@@ -258,6 +264,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('document_title', $data ?? [], null);
         $this->setIfExists('organization_urn', $data ?? [], null);
         $this->setIfExists('first_comment', $data ?? [], null);
         $this->setIfExists('disable_link_preview', $data ?? [], null);
@@ -304,6 +311,33 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets document_title
+     *
+     * @return string|null
+     */
+    public function getDocumentTitle()
+    {
+        return $this->container['document_title'];
+    }
+
+    /**
+     * Sets document_title
+     *
+     * @param string|null $document_title Title displayed on LinkedIn document (PDF/carousel) posts. Required by LinkedIn for document posts. If omitted, falls back to the media item title, then the filename.
+     *
+     * @return self
+     */
+    public function setDocumentTitle($document_title)
+    {
+        if (is_null($document_title)) {
+            throw new \InvalidArgumentException('non-nullable document_title cannot be null');
+        }
+        $this->container['document_title'] = $document_title;
+
+        return $this;
+    }
 
     /**
      * Gets organization_urn

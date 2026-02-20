@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** |  | [optional]
 **url** | **string** |  | [optional]
+**title** | **string** | Optional title for the media item. Used as the document title for LinkedIn PDF/carousel posts. If omitted, falls back to the post title, then the filename. | [optional]
 **filename** | **string** |  | [optional]
 **size** | **int** | Optional file size in bytes | [optional]
 **mime_type** | **string** | Optional MIME type (e.g. image/jpeg, video/mp4) | [optional]
