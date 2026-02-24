@@ -286,6 +286,8 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     public const PLATFORM_INSTAGRAM = 'instagram';
     public const PLATFORM_FACEBOOK = 'facebook';
     public const PLATFORM_TELEGRAM = 'telegram';
+    public const PLATFORM_BLUESKY = 'bluesky';
+    public const PLATFORM_REDDIT = 'reddit';
     public const DIRECTION_INCOMING = 'incoming';
 
     /**
@@ -299,6 +301,8 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
             self::PLATFORM_INSTAGRAM,
             self::PLATFORM_FACEBOOK,
             self::PLATFORM_TELEGRAM,
+            self::PLATFORM_BLUESKY,
+            self::PLATFORM_REDDIT,
         ];
     }
 

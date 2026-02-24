@@ -1,6 +1,6 @@
 <?php
 /**
- * Webhook
+ * WebhookPayloadComment
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * Webhook Class Doc Comment
+ * WebhookPayloadComment Class Doc Comment
  *
  * @category Class
- * @description Individual webhook configuration for receiving real-time notifications
+ * @description Webhook payload for comment received events (Instagram, Facebook, Twitter/X, YouTube, LinkedIn, Bluesky, Reddit)
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Webhook';
+    protected static $openAPIModelName = 'WebhookPayloadComment';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +59,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
-        'name' => 'string',
-        'url' => 'string',
-        'secret' => 'string',
-        'events' => 'string[]',
-        'is_active' => 'bool',
-        'last_fired_at' => '\DateTime',
-        'failure_count' => 'int',
-        'custom_headers' => 'array<string,string>'
+        'event' => 'string',
+        'comment' => '\Late\Model\WebhookPayloadCommentComment',
+        'post' => '\Late\Model\WebhookPayloadCommentPost',
+        'account' => '\Late\Model\WebhookPayloadCommentAccount',
+        'timestamp' => '\DateTime'
     ];
 
     /**
@@ -78,15 +74,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
-        'name' => null,
-        'url' => 'uri',
-        'secret' => null,
-        'events' => null,
-        'is_active' => null,
-        'last_fired_at' => 'date-time',
-        'failure_count' => null,
-        'custom_headers' => null
+        'event' => null,
+        'comment' => null,
+        'post' => null,
+        'account' => null,
+        'timestamp' => 'date-time'
     ];
 
     /**
@@ -95,15 +87,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
-        'name' => false,
-        'url' => false,
-        'secret' => false,
-        'events' => false,
-        'is_active' => false,
-        'last_fired_at' => false,
-        'failure_count' => false,
-        'custom_headers' => false
+        'event' => false,
+        'comment' => false,
+        'post' => false,
+        'account' => false,
+        'timestamp' => false
     ];
 
     /**
@@ -192,15 +180,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
-        'name' => 'name',
-        'url' => 'url',
-        'secret' => 'secret',
-        'events' => 'events',
-        'is_active' => 'isActive',
-        'last_fired_at' => 'lastFiredAt',
-        'failure_count' => 'failureCount',
-        'custom_headers' => 'customHeaders'
+        'event' => 'event',
+        'comment' => 'comment',
+        'post' => 'post',
+        'account' => 'account',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -209,15 +193,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'secret' => 'setSecret',
-        'events' => 'setEvents',
-        'is_active' => 'setIsActive',
-        'last_fired_at' => 'setLastFiredAt',
-        'failure_count' => 'setFailureCount',
-        'custom_headers' => 'setCustomHeaders'
+        'event' => 'setEvent',
+        'comment' => 'setComment',
+        'post' => 'setPost',
+        'account' => 'setAccount',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -226,15 +206,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'secret' => 'getSecret',
-        'events' => 'getEvents',
-        'is_active' => 'getIsActive',
-        'last_fired_at' => 'getLastFiredAt',
-        'failure_count' => 'getFailureCount',
-        'custom_headers' => 'getCustomHeaders'
+        'event' => 'getEvent',
+        'comment' => 'getComment',
+        'post' => 'getPost',
+        'account' => 'getAccount',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -278,31 +254,17 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const EVENTS_POST_SCHEDULED = 'post.scheduled';
-    public const EVENTS_POST_PUBLISHED = 'post.published';
-    public const EVENTS_POST_FAILED = 'post.failed';
-    public const EVENTS_POST_PARTIAL = 'post.partial';
-    public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
-    public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
-    public const EVENTS_MESSAGE_RECEIVED = 'message.received';
-    public const EVENTS_COMMENT_RECEIVED = 'comment.received';
+    public const EVENT_COMMENT_RECEIVED = 'comment.received';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getEventsAllowableValues()
+    public function getEventAllowableValues()
     {
         return [
-            self::EVENTS_POST_SCHEDULED,
-            self::EVENTS_POST_PUBLISHED,
-            self::EVENTS_POST_FAILED,
-            self::EVENTS_POST_PARTIAL,
-            self::EVENTS_ACCOUNT_CONNECTED,
-            self::EVENTS_ACCOUNT_DISCONNECTED,
-            self::EVENTS_MESSAGE_RECEIVED,
-            self::EVENTS_COMMENT_RECEIVED,
+            self::EVENT_COMMENT_RECEIVED,
         ];
     }
 
@@ -321,15 +283,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('secret', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], null);
-        $this->setIfExists('last_fired_at', $data ?? [], null);
-        $this->setIfExists('failure_count', $data ?? [], null);
-        $this->setIfExists('custom_headers', $data ?? [], null);
+        $this->setIfExists('event', $data ?? [], null);
+        $this->setIfExists('comment', $data ?? [], null);
+        $this->setIfExists('post', $data ?? [], null);
+        $this->setIfExists('account', $data ?? [], null);
+        $this->setIfExists('timestamp', $data ?? [], null);
     }
 
     /**
@@ -359,8 +317,13 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
+        $allowedValues = $this->getEventAllowableValues();
+        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'event', must be one of '%s'",
+                $this->container['event'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -379,257 +342,146 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets _id
+     * Gets event
      *
      * @return string|null
      */
-    public function getId()
+    public function getEvent()
     {
-        return $this->container['_id'];
+        return $this->container['event'];
     }
 
     /**
-     * Sets _id
+     * Sets event
      *
-     * @param string|null $_id Unique webhook identifier
+     * @param string|null $event event
      *
      * @return self
      */
-    public function setId($_id)
+    public function setEvent($event)
     {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
+        if (is_null($event)) {
+            throw new \InvalidArgumentException('non-nullable event cannot be null');
         }
-        $this->container['_id'] = $_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Webhook name (for identification)
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Webhook., must be smaller than or equal to 50.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string|null
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string|null $url Webhook endpoint URL
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
-        }
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets secret
-     *
-     * @return string|null
-     */
-    public function getSecret()
-    {
-        return $this->container['secret'];
-    }
-
-    /**
-     * Sets secret
-     *
-     * @param string|null $secret Secret key for HMAC-SHA256 signature (not returned in responses for security)
-     *
-     * @return self
-     */
-    public function setSecret($secret)
-    {
-        if (is_null($secret)) {
-            throw new \InvalidArgumentException('non-nullable secret cannot be null');
-        }
-        $this->container['secret'] = $secret;
-
-        return $this;
-    }
-
-    /**
-     * Gets events
-     *
-     * @return string[]|null
-     */
-    public function getEvents()
-    {
-        return $this->container['events'];
-    }
-
-    /**
-     * Sets events
-     *
-     * @param string[]|null $events Events subscribed to
-     *
-     * @return self
-     */
-    public function setEvents($events)
-    {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
-        }
-        $allowedValues = $this->getEventsAllowableValues();
-        if (array_diff($events, $allowedValues)) {
+        $allowedValues = $this->getEventAllowableValues();
+        if (!in_array($event, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'events', must be one of '%s'",
+                    "Invalid value '%s' for 'event', must be one of '%s'",
+                    $event,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['events'] = $events;
+        $this->container['event'] = $event;
 
         return $this;
     }
 
     /**
-     * Gets is_active
+     * Gets comment
      *
-     * @return bool|null
+     * @return \Late\Model\WebhookPayloadCommentComment|null
      */
-    public function getIsActive()
+    public function getComment()
     {
-        return $this->container['is_active'];
+        return $this->container['comment'];
     }
 
     /**
-     * Sets is_active
+     * Sets comment
      *
-     * @param bool|null $is_active Whether webhook delivery is enabled
+     * @param \Late\Model\WebhookPayloadCommentComment|null $comment comment
      *
      * @return self
      */
-    public function setIsActive($is_active)
+    public function setComment($comment)
     {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
+        if (is_null($comment)) {
+            throw new \InvalidArgumentException('non-nullable comment cannot be null');
         }
-        $this->container['is_active'] = $is_active;
+        $this->container['comment'] = $comment;
 
         return $this;
     }
 
     /**
-     * Gets last_fired_at
+     * Gets post
+     *
+     * @return \Late\Model\WebhookPayloadCommentPost|null
+     */
+    public function getPost()
+    {
+        return $this->container['post'];
+    }
+
+    /**
+     * Sets post
+     *
+     * @param \Late\Model\WebhookPayloadCommentPost|null $post post
+     *
+     * @return self
+     */
+    public function setPost($post)
+    {
+        if (is_null($post)) {
+            throw new \InvalidArgumentException('non-nullable post cannot be null');
+        }
+        $this->container['post'] = $post;
+
+        return $this;
+    }
+
+    /**
+     * Gets account
+     *
+     * @return \Late\Model\WebhookPayloadCommentAccount|null
+     */
+    public function getAccount()
+    {
+        return $this->container['account'];
+    }
+
+    /**
+     * Sets account
+     *
+     * @param \Late\Model\WebhookPayloadCommentAccount|null $account account
+     *
+     * @return self
+     */
+    public function setAccount($account)
+    {
+        if (is_null($account)) {
+            throw new \InvalidArgumentException('non-nullable account cannot be null');
+        }
+        $this->container['account'] = $account;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
      *
      * @return \DateTime|null
      */
-    public function getLastFiredAt()
+    public function getTimestamp()
     {
-        return $this->container['last_fired_at'];
+        return $this->container['timestamp'];
     }
 
     /**
-     * Sets last_fired_at
+     * Sets timestamp
      *
-     * @param \DateTime|null $last_fired_at Timestamp of last successful webhook delivery
+     * @param \DateTime|null $timestamp timestamp
      *
      * @return self
      */
-    public function setLastFiredAt($last_fired_at)
+    public function setTimestamp($timestamp)
     {
-        if (is_null($last_fired_at)) {
-            throw new \InvalidArgumentException('non-nullable last_fired_at cannot be null');
+        if (is_null($timestamp)) {
+            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
         }
-        $this->container['last_fired_at'] = $last_fired_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets failure_count
-     *
-     * @return int|null
-     */
-    public function getFailureCount()
-    {
-        return $this->container['failure_count'];
-    }
-
-    /**
-     * Sets failure_count
-     *
-     * @param int|null $failure_count Consecutive delivery failures (resets on success, webhook disabled at 10)
-     *
-     * @return self
-     */
-    public function setFailureCount($failure_count)
-    {
-        if (is_null($failure_count)) {
-            throw new \InvalidArgumentException('non-nullable failure_count cannot be null');
-        }
-        $this->container['failure_count'] = $failure_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets custom_headers
-     *
-     * @return array<string,string>|null
-     */
-    public function getCustomHeaders()
-    {
-        return $this->container['custom_headers'];
-    }
-
-    /**
-     * Sets custom_headers
-     *
-     * @param array<string,string>|null $custom_headers Custom headers included in webhook requests
-     *
-     * @return self
-     */
-    public function setCustomHeaders($custom_headers)
-    {
-        if (is_null($custom_headers)) {
-            throw new \InvalidArgumentException('non-nullable custom_headers cannot be null');
-        }
-        $this->container['custom_headers'] = $custom_headers;
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * WebhookPayloadMessage Class Doc Comment
  *
  * @category Class
- * @description Webhook payload for message received events (DMs from Instagram, Telegram)
+ * @description Webhook payload for message received events (DMs from Instagram, Facebook, Telegram, Bluesky, Reddit)
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

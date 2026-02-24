@@ -1,6 +1,6 @@
 <?php
 /**
- * Webhook
+ * WebhookPayloadCommentComment
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * Webhook Class Doc Comment
+ * WebhookPayloadCommentComment Class Doc Comment
  *
  * @category Class
- * @description Individual webhook configuration for receiving real-time notifications
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Webhook';
+    protected static $openAPIModelName = 'WebhookPayloadComment_comment';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +58,15 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
-        'name' => 'string',
-        'url' => 'string',
-        'secret' => 'string',
-        'events' => 'string[]',
-        'is_active' => 'bool',
-        'last_fired_at' => '\DateTime',
-        'failure_count' => 'int',
-        'custom_headers' => 'array<string,string>'
+        'id' => 'string',
+        'post_id' => 'string',
+        'platform_post_id' => 'string',
+        'platform' => 'string',
+        'text' => 'string',
+        'author' => '\Late\Model\WebhookPayloadCommentCommentAuthor',
+        'created_at' => '\DateTime',
+        'is_reply' => 'bool',
+        'parent_comment_id' => 'string'
     ];
 
     /**
@@ -78,15 +77,15 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
-        'name' => null,
-        'url' => 'uri',
-        'secret' => null,
-        'events' => null,
-        'is_active' => null,
-        'last_fired_at' => 'date-time',
-        'failure_count' => null,
-        'custom_headers' => null
+        'id' => null,
+        'post_id' => null,
+        'platform_post_id' => null,
+        'platform' => null,
+        'text' => null,
+        'author' => null,
+        'created_at' => 'date-time',
+        'is_reply' => null,
+        'parent_comment_id' => null
     ];
 
     /**
@@ -95,15 +94,15 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
-        'name' => false,
-        'url' => false,
-        'secret' => false,
-        'events' => false,
-        'is_active' => false,
-        'last_fired_at' => false,
-        'failure_count' => false,
-        'custom_headers' => false
+        'id' => false,
+        'post_id' => false,
+        'platform_post_id' => false,
+        'platform' => false,
+        'text' => false,
+        'author' => false,
+        'created_at' => false,
+        'is_reply' => false,
+        'parent_comment_id' => false
     ];
 
     /**
@@ -192,15 +191,15 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
-        'name' => 'name',
-        'url' => 'url',
-        'secret' => 'secret',
-        'events' => 'events',
-        'is_active' => 'isActive',
-        'last_fired_at' => 'lastFiredAt',
-        'failure_count' => 'failureCount',
-        'custom_headers' => 'customHeaders'
+        'id' => 'id',
+        'post_id' => 'postId',
+        'platform_post_id' => 'platformPostId',
+        'platform' => 'platform',
+        'text' => 'text',
+        'author' => 'author',
+        'created_at' => 'createdAt',
+        'is_reply' => 'isReply',
+        'parent_comment_id' => 'parentCommentId'
     ];
 
     /**
@@ -209,15 +208,15 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'secret' => 'setSecret',
-        'events' => 'setEvents',
-        'is_active' => 'setIsActive',
-        'last_fired_at' => 'setLastFiredAt',
-        'failure_count' => 'setFailureCount',
-        'custom_headers' => 'setCustomHeaders'
+        'id' => 'setId',
+        'post_id' => 'setPostId',
+        'platform_post_id' => 'setPlatformPostId',
+        'platform' => 'setPlatform',
+        'text' => 'setText',
+        'author' => 'setAuthor',
+        'created_at' => 'setCreatedAt',
+        'is_reply' => 'setIsReply',
+        'parent_comment_id' => 'setParentCommentId'
     ];
 
     /**
@@ -226,15 +225,15 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'secret' => 'getSecret',
-        'events' => 'getEvents',
-        'is_active' => 'getIsActive',
-        'last_fired_at' => 'getLastFiredAt',
-        'failure_count' => 'getFailureCount',
-        'custom_headers' => 'getCustomHeaders'
+        'id' => 'getId',
+        'post_id' => 'getPostId',
+        'platform_post_id' => 'getPlatformPostId',
+        'platform' => 'getPlatform',
+        'text' => 'getText',
+        'author' => 'getAuthor',
+        'created_at' => 'getCreatedAt',
+        'is_reply' => 'getIsReply',
+        'parent_comment_id' => 'getParentCommentId'
     ];
 
     /**
@@ -278,31 +277,29 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const EVENTS_POST_SCHEDULED = 'post.scheduled';
-    public const EVENTS_POST_PUBLISHED = 'post.published';
-    public const EVENTS_POST_FAILED = 'post.failed';
-    public const EVENTS_POST_PARTIAL = 'post.partial';
-    public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
-    public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
-    public const EVENTS_MESSAGE_RECEIVED = 'message.received';
-    public const EVENTS_COMMENT_RECEIVED = 'comment.received';
+    public const PLATFORM_INSTAGRAM = 'instagram';
+    public const PLATFORM_FACEBOOK = 'facebook';
+    public const PLATFORM_TWITTER = 'twitter';
+    public const PLATFORM_YOUTUBE = 'youtube';
+    public const PLATFORM_LINKEDIN = 'linkedin';
+    public const PLATFORM_BLUESKY = 'bluesky';
+    public const PLATFORM_REDDIT = 'reddit';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getEventsAllowableValues()
+    public function getPlatformAllowableValues()
     {
         return [
-            self::EVENTS_POST_SCHEDULED,
-            self::EVENTS_POST_PUBLISHED,
-            self::EVENTS_POST_FAILED,
-            self::EVENTS_POST_PARTIAL,
-            self::EVENTS_ACCOUNT_CONNECTED,
-            self::EVENTS_ACCOUNT_DISCONNECTED,
-            self::EVENTS_MESSAGE_RECEIVED,
-            self::EVENTS_COMMENT_RECEIVED,
+            self::PLATFORM_INSTAGRAM,
+            self::PLATFORM_FACEBOOK,
+            self::PLATFORM_TWITTER,
+            self::PLATFORM_YOUTUBE,
+            self::PLATFORM_LINKEDIN,
+            self::PLATFORM_BLUESKY,
+            self::PLATFORM_REDDIT,
         ];
     }
 
@@ -321,15 +318,15 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('secret', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], null);
-        $this->setIfExists('last_fired_at', $data ?? [], null);
-        $this->setIfExists('failure_count', $data ?? [], null);
-        $this->setIfExists('custom_headers', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('post_id', $data ?? [], null);
+        $this->setIfExists('platform_post_id', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('author', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('is_reply', $data ?? [], null);
+        $this->setIfExists('parent_comment_id', $data ?? [], null);
     }
 
     /**
@@ -359,8 +356,13 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -379,257 +381,254 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets _id
+     * Gets id
      *
      * @return string|null
      */
     public function getId()
     {
-        return $this->container['_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets _id
+     * Sets id
      *
-     * @param string|null $_id Unique webhook identifier
+     * @param string|null $id Platform comment ID
      *
      * @return self
      */
-    public function setId($_id)
+    public function setId($id)
     {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['_id'] = $_id;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets post_id
      *
      * @return string|null
      */
-    public function getName()
+    public function getPostId()
     {
-        return $this->container['name'];
+        return $this->container['post_id'];
     }
 
     /**
-     * Sets name
+     * Sets post_id
      *
-     * @param string|null $name Webhook name (for identification)
+     * @param string|null $post_id Internal post ID
      *
      * @return self
      */
-    public function setName($name)
+    public function setPostId($post_id)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($post_id)) {
+            throw new \InvalidArgumentException('non-nullable post_id cannot be null');
         }
-        if ((mb_strlen($name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Webhook., must be smaller than or equal to 50.');
-        }
-
-        $this->container['name'] = $name;
+        $this->container['post_id'] = $post_id;
 
         return $this;
     }
 
     /**
-     * Gets url
+     * Gets platform_post_id
      *
      * @return string|null
      */
-    public function getUrl()
+    public function getPlatformPostId()
     {
-        return $this->container['url'];
+        return $this->container['platform_post_id'];
     }
 
     /**
-     * Sets url
+     * Sets platform_post_id
      *
-     * @param string|null $url Webhook endpoint URL
+     * @param string|null $platform_post_id Platform's post ID
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setPlatformPostId($platform_post_id)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($platform_post_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_post_id cannot be null');
         }
-        $this->container['url'] = $url;
+        $this->container['platform_post_id'] = $platform_post_id;
 
         return $this;
     }
 
     /**
-     * Gets secret
+     * Gets platform
      *
      * @return string|null
      */
-    public function getSecret()
+    public function getPlatform()
     {
-        return $this->container['secret'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets secret
+     * Sets platform
      *
-     * @param string|null $secret Secret key for HMAC-SHA256 signature (not returned in responses for security)
+     * @param string|null $platform platform
      *
      * @return self
      */
-    public function setSecret($secret)
+    public function setPlatform($platform)
     {
-        if (is_null($secret)) {
-            throw new \InvalidArgumentException('non-nullable secret cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $this->container['secret'] = $secret;
-
-        return $this;
-    }
-
-    /**
-     * Gets events
-     *
-     * @return string[]|null
-     */
-    public function getEvents()
-    {
-        return $this->container['events'];
-    }
-
-    /**
-     * Sets events
-     *
-     * @param string[]|null $events Events subscribed to
-     *
-     * @return self
-     */
-    public function setEvents($events)
-    {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
-        }
-        $allowedValues = $this->getEventsAllowableValues();
-        if (array_diff($events, $allowedValues)) {
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'events', must be one of '%s'",
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['events'] = $events;
+        $this->container['platform'] = $platform;
 
         return $this;
     }
 
     /**
-     * Gets is_active
+     * Gets text
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getIsActive()
+    public function getText()
     {
-        return $this->container['is_active'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets is_active
+     * Sets text
      *
-     * @param bool|null $is_active Whether webhook delivery is enabled
+     * @param string|null $text Comment text content
      *
      * @return self
      */
-    public function setIsActive($is_active)
+    public function setText($text)
     {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
+        if (is_null($text)) {
+            throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
-        $this->container['is_active'] = $is_active;
+        $this->container['text'] = $text;
 
         return $this;
     }
 
     /**
-     * Gets last_fired_at
+     * Gets author
+     *
+     * @return \Late\Model\WebhookPayloadCommentCommentAuthor|null
+     */
+    public function getAuthor()
+    {
+        return $this->container['author'];
+    }
+
+    /**
+     * Sets author
+     *
+     * @param \Late\Model\WebhookPayloadCommentCommentAuthor|null $author author
+     *
+     * @return self
+     */
+    public function setAuthor($author)
+    {
+        if (is_null($author)) {
+            throw new \InvalidArgumentException('non-nullable author cannot be null');
+        }
+        $this->container['author'] = $author;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
      *
      * @return \DateTime|null
      */
-    public function getLastFiredAt()
+    public function getCreatedAt()
     {
-        return $this->container['last_fired_at'];
+        return $this->container['created_at'];
     }
 
     /**
-     * Sets last_fired_at
+     * Sets created_at
      *
-     * @param \DateTime|null $last_fired_at Timestamp of last successful webhook delivery
+     * @param \DateTime|null $created_at created_at
      *
      * @return self
      */
-    public function setLastFiredAt($last_fired_at)
+    public function setCreatedAt($created_at)
     {
-        if (is_null($last_fired_at)) {
-            throw new \InvalidArgumentException('non-nullable last_fired_at cannot be null');
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
         }
-        $this->container['last_fired_at'] = $last_fired_at;
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }
 
     /**
-     * Gets failure_count
+     * Gets is_reply
      *
-     * @return int|null
+     * @return bool|null
      */
-    public function getFailureCount()
+    public function getIsReply()
     {
-        return $this->container['failure_count'];
+        return $this->container['is_reply'];
     }
 
     /**
-     * Sets failure_count
+     * Sets is_reply
      *
-     * @param int|null $failure_count Consecutive delivery failures (resets on success, webhook disabled at 10)
+     * @param bool|null $is_reply Whether this is a reply to another comment
      *
      * @return self
      */
-    public function setFailureCount($failure_count)
+    public function setIsReply($is_reply)
     {
-        if (is_null($failure_count)) {
-            throw new \InvalidArgumentException('non-nullable failure_count cannot be null');
+        if (is_null($is_reply)) {
+            throw new \InvalidArgumentException('non-nullable is_reply cannot be null');
         }
-        $this->container['failure_count'] = $failure_count;
+        $this->container['is_reply'] = $is_reply;
 
         return $this;
     }
 
     /**
-     * Gets custom_headers
+     * Gets parent_comment_id
      *
-     * @return array<string,string>|null
+     * @return string|null
      */
-    public function getCustomHeaders()
+    public function getParentCommentId()
     {
-        return $this->container['custom_headers'];
+        return $this->container['parent_comment_id'];
     }
 
     /**
-     * Sets custom_headers
+     * Sets parent_comment_id
      *
-     * @param array<string,string>|null $custom_headers Custom headers included in webhook requests
+     * @param string|null $parent_comment_id Parent comment ID if this is a reply
      *
      * @return self
      */
-    public function setCustomHeaders($custom_headers)
+    public function setParentCommentId($parent_comment_id)
     {
-        if (is_null($custom_headers)) {
-            throw new \InvalidArgumentException('non-nullable custom_headers cannot be null');
+        if (is_null($parent_comment_id)) {
+            throw new \InvalidArgumentException('non-nullable parent_comment_id cannot be null');
         }
-        $this->container['custom_headers'] = $custom_headers;
+        $this->container['parent_comment_id'] = $parent_comment_id;
 
         return $this;
     }
