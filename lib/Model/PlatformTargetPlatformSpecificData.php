@@ -59,6 +59,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
+        'reply_settings' => 'string',
         'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
         'content_type' => 'string',
         'title' => 'string',
@@ -118,6 +119,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'reply_settings' => null,
         'thread_items' => null,
         'content_type' => null,
         'title' => null,
@@ -175,6 +177,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'reply_settings' => false,
         'thread_items' => false,
         'content_type' => false,
         'title' => false,
@@ -312,6 +315,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
+        'reply_settings' => 'replySettings',
         'thread_items' => 'threadItems',
         'content_type' => 'contentType',
         'title' => 'title',
@@ -369,6 +373,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
+        'reply_settings' => 'setReplySettings',
         'thread_items' => 'setThreadItems',
         'content_type' => 'setContentType',
         'title' => 'setTitle',
@@ -426,6 +431,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
+        'reply_settings' => 'getReplySettings',
         'thread_items' => 'getThreadItems',
         'content_type' => 'getContentType',
         'title' => 'getTitle',
@@ -518,6 +524,9 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    public const REPLY_SETTINGS_FOLLOWING = 'following';
+    public const REPLY_SETTINGS_MENTIONED_USERS = 'mentionedUsers';
+    public const REPLY_SETTINGS_SUBSCRIBERS = 'subscribers';
     public const CONTENT_TYPE_STORY = 'story';
     public const CONTENT_TYPE_SAVED_STORY = 'saved_story';
     public const CONTENT_TYPE_SPOTLIGHT = 'spotlight';
@@ -532,6 +541,20 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     public const PARSE_MODE_HTML = 'HTML';
     public const PARSE_MODE_MARKDOWN = 'Markdown';
     public const PARSE_MODE_MARKDOWN_V2 = 'MarkdownV2';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getReplySettingsAllowableValues()
+    {
+        return [
+            self::REPLY_SETTINGS_FOLLOWING,
+            self::REPLY_SETTINGS_MENTIONED_USERS,
+            self::REPLY_SETTINGS_SUBSCRIBERS,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -617,6 +640,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('reply_settings', $data ?? [], null);
         $this->setIfExists('thread_items', $data ?? [], null);
         $this->setIfExists('content_type', $data ?? [], 'story');
         $this->setIfExists('title', $data ?? [], null);
@@ -694,6 +718,15 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getReplySettingsAllowableValues();
+        if (!is_null($this->container['reply_settings']) && !in_array($this->container['reply_settings'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'reply_settings', must be one of '%s'",
+                $this->container['reply_settings'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getContentTypeAllowableValues();
         if (!is_null($this->container['content_type']) && !in_array($this->container['content_type'], $allowedValues, true)) {
@@ -778,6 +811,43 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets reply_settings
+     *
+     * @return string|null
+     */
+    public function getReplySettings()
+    {
+        return $this->container['reply_settings'];
+    }
+
+    /**
+     * Sets reply_settings
+     *
+     * @param string|null $reply_settings Controls who can reply to the tweet. \"following\" allows only people you follow, \"mentionedUsers\" allows only mentioned users, \"subscribers\" allows only subscribers. Omit for default (everyone can reply). For threads, applies to the first tweet only.
+     *
+     * @return self
+     */
+    public function setReplySettings($reply_settings)
+    {
+        if (is_null($reply_settings)) {
+            throw new \InvalidArgumentException('non-nullable reply_settings cannot be null');
+        }
+        $allowedValues = $this->getReplySettingsAllowableValues();
+        if (!in_array($reply_settings, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'reply_settings', must be one of '%s'",
+                    $reply_settings,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['reply_settings'] = $reply_settings;
+
+        return $this;
+    }
 
     /**
      * Gets thread_items

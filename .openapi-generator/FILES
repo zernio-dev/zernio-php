@@ -855,8 +855,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadCommentAccountTest.php
-test/Model/WebhookPayloadCommentCommentAuthorTest.php
-test/Model/WebhookPayloadCommentCommentTest.php
-test/Model/WebhookPayloadCommentPostTest.php
-test/Model/WebhookPayloadCommentTest.php

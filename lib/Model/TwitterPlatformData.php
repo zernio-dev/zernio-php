@@ -58,6 +58,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
+        'reply_settings' => 'string',
         'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]'
     ];
 
@@ -69,6 +70,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'reply_settings' => null,
         'thread_items' => null
     ];
 
@@ -78,6 +80,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'reply_settings' => false,
         'thread_items' => false
     ];
 
@@ -167,6 +170,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'reply_settings' => 'replySettings',
         'thread_items' => 'threadItems'
     ];
 
@@ -176,6 +180,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'reply_settings' => 'setReplySettings',
         'thread_items' => 'setThreadItems'
     ];
 
@@ -185,6 +190,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'reply_settings' => 'getReplySettings',
         'thread_items' => 'getThreadItems'
     ];
 
@@ -229,6 +235,23 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
+    public const REPLY_SETTINGS_FOLLOWING = 'following';
+    public const REPLY_SETTINGS_MENTIONED_USERS = 'mentionedUsers';
+    public const REPLY_SETTINGS_SUBSCRIBERS = 'subscribers';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getReplySettingsAllowableValues()
+    {
+        return [
+            self::REPLY_SETTINGS_FOLLOWING,
+            self::REPLY_SETTINGS_MENTIONED_USERS,
+            self::REPLY_SETTINGS_SUBSCRIBERS,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -245,6 +268,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('reply_settings', $data ?? [], null);
         $this->setIfExists('thread_items', $data ?? [], null);
     }
 
@@ -275,6 +299,15 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getReplySettingsAllowableValues();
+        if (!is_null($this->container['reply_settings']) && !in_array($this->container['reply_settings'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'reply_settings', must be one of '%s'",
+                $this->container['reply_settings'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -289,6 +322,43 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets reply_settings
+     *
+     * @return string|null
+     */
+    public function getReplySettings()
+    {
+        return $this->container['reply_settings'];
+    }
+
+    /**
+     * Sets reply_settings
+     *
+     * @param string|null $reply_settings Controls who can reply to the tweet. \"following\" allows only people you follow, \"mentionedUsers\" allows only mentioned users, \"subscribers\" allows only subscribers. Omit for default (everyone can reply). For threads, applies to the first tweet only.
+     *
+     * @return self
+     */
+    public function setReplySettings($reply_settings)
+    {
+        if (is_null($reply_settings)) {
+            throw new \InvalidArgumentException('non-nullable reply_settings cannot be null');
+        }
+        $allowedValues = $this->getReplySettingsAllowableValues();
+        if (!in_array($reply_settings, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'reply_settings', must be one of '%s'",
+                    $reply_settings,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['reply_settings'] = $reply_settings;
+
+        return $this;
+    }
 
     /**
      * Gets thread_items
