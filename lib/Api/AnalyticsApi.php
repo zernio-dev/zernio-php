@@ -78,6 +78,15 @@ class AnalyticsApi
         'getAnalytics' => [
             'application/json',
         ],
+        'getBestTimeToPost' => [
+            'application/json',
+        ],
+        'getContentDecay' => [
+            'application/json',
+        ],
+        'getDailyMetrics' => [
+            'application/json',
+        ],
         'getFollowerStats' => [
             'application/json',
         ],
@@ -85,6 +94,9 @@ class AnalyticsApi
             'application/json',
         ],
         'getLinkedInPostAnalytics' => [
+            'application/json',
+        ],
+        'getPostingFrequency' => [
             'application/json',
         ],
         'getYouTubeDailyViews' => [
@@ -539,6 +551,966 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $order,
             'order', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getBestTimeToPost
+     *
+     * Get best times to post
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\GetBestTimeToPost200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response
+     */
+    public function getBestTimeToPost($platform = null, $profile_id = null, string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    {
+        list($response) = $this->getBestTimeToPostWithHttpInfo($platform, $profile_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getBestTimeToPostWithHttpInfo
+     *
+     * Get best times to post
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\GetBestTimeToPost200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getBestTimeToPostWithHttpInfo($platform = null, $profile_id = null, string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    {
+        $request = $this->getBestTimeToPostRequest($platform, $profile_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetBestTimeToPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetBestTimeToPost403Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetBestTimeToPost200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetBestTimeToPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetBestTimeToPost403Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getBestTimeToPostAsync
+     *
+     * Get best times to post
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getBestTimeToPostAsync($platform = null, $profile_id = null, string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    {
+        return $this->getBestTimeToPostAsyncWithHttpInfo($platform, $profile_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getBestTimeToPostAsyncWithHttpInfo
+     *
+     * Get best times to post
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getBestTimeToPostAsyncWithHttpInfo($platform = null, $profile_id = null, string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    {
+        $returnType = '\Late\Model\GetBestTimeToPost200Response';
+        $request = $this->getBestTimeToPostRequest($platform, $profile_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getBestTimeToPost'
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getBestTimeToPostRequest($platform = null, $profile_id = null, string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    {
+
+
+
+
+        $resourcePath = '/v1/analytics/best-time';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $profile_id,
+            'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getContentDecay
+     *
+     * Get content performance decay
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\GetContentDecay200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response
+     */
+    public function getContentDecay($platform = null, $profile_id = null, string $contentType = self::contentTypes['getContentDecay'][0])
+    {
+        list($response) = $this->getContentDecayWithHttpInfo($platform, $profile_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getContentDecayWithHttpInfo
+     *
+     * Get content performance decay
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\GetContentDecay200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getContentDecayWithHttpInfo($platform = null, $profile_id = null, string $contentType = self::contentTypes['getContentDecay'][0])
+    {
+        $request = $this->getContentDecayRequest($platform, $profile_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetContentDecay200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetBestTimeToPost403Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetContentDecay200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetContentDecay200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetBestTimeToPost403Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getContentDecayAsync
+     *
+     * Get content performance decay
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getContentDecayAsync($platform = null, $profile_id = null, string $contentType = self::contentTypes['getContentDecay'][0])
+    {
+        return $this->getContentDecayAsyncWithHttpInfo($platform, $profile_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getContentDecayAsyncWithHttpInfo
+     *
+     * Get content performance decay
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getContentDecayAsyncWithHttpInfo($platform = null, $profile_id = null, string $contentType = self::contentTypes['getContentDecay'][0])
+    {
+        $returnType = '\Late\Model\GetContentDecay200Response';
+        $request = $this->getContentDecayRequest($platform, $profile_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getContentDecay'
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getContentDecayRequest($platform = null, $profile_id = null, string $contentType = self::contentTypes['getContentDecay'][0])
+    {
+
+
+
+
+        $resourcePath = '/v1/analytics/content-decay';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $profile_id,
+            'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getDailyMetrics
+     *
+     * Get daily aggregated metrics
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
+     * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\GetDailyMetrics200Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response
+     */
+    public function getDailyMetrics($platform = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getDailyMetrics'][0])
+    {
+        list($response) = $this->getDailyMetricsWithHttpInfo($platform, $profile_id, $from_date, $to_date, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getDailyMetricsWithHttpInfo
+     *
+     * Get daily aggregated metrics
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
+     * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\GetDailyMetrics200Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getDailyMetricsWithHttpInfo($platform = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getDailyMetrics'][0])
+    {
+        $request = $this->getDailyMetricsRequest($platform, $profile_id, $from_date, $to_date, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetDailyMetrics200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetAnalytics402Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetDailyMetrics200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetDailyMetrics200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetAnalytics402Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getDailyMetricsAsync
+     *
+     * Get daily aggregated metrics
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
+     * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDailyMetricsAsync($platform = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getDailyMetrics'][0])
+    {
+        return $this->getDailyMetricsAsyncWithHttpInfo($platform, $profile_id, $from_date, $to_date, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getDailyMetricsAsyncWithHttpInfo
+     *
+     * Get daily aggregated metrics
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
+     * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDailyMetricsAsyncWithHttpInfo($platform = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getDailyMetrics'][0])
+    {
+        $returnType = '\Late\Model\GetDailyMetrics200Response';
+        $request = $this->getDailyMetricsRequest($platform, $profile_id, $from_date, $to_date, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getDailyMetrics'
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
+     * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getDailyMetricsRequest($platform = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getDailyMetrics'][0])
+    {
+
+
+
+
+
+
+        $resourcePath = '/v1/analytics/daily-metrics';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $profile_id,
+            'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_date,
+            'fromDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_date,
+            'toDate', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1638,6 +2610,316 @@ class AnalyticsApi
                 $resourcePath
             );
         }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getPostingFrequency
+     *
+     * Get posting frequency vs engagement
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\GetPostingFrequency200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response
+     */
+    public function getPostingFrequency($platform = null, $profile_id = null, string $contentType = self::contentTypes['getPostingFrequency'][0])
+    {
+        list($response) = $this->getPostingFrequencyWithHttpInfo($platform, $profile_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getPostingFrequencyWithHttpInfo
+     *
+     * Get posting frequency vs engagement
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\GetPostingFrequency200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPostingFrequencyWithHttpInfo($platform = null, $profile_id = null, string $contentType = self::contentTypes['getPostingFrequency'][0])
+    {
+        $request = $this->getPostingFrequencyRequest($platform, $profile_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetPostingFrequency200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetBestTimeToPost403Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetPostingFrequency200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetPostingFrequency200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetBestTimeToPost403Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPostingFrequencyAsync
+     *
+     * Get posting frequency vs engagement
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPostingFrequencyAsync($platform = null, $profile_id = null, string $contentType = self::contentTypes['getPostingFrequency'][0])
+    {
+        return $this->getPostingFrequencyAsyncWithHttpInfo($platform, $profile_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPostingFrequencyAsyncWithHttpInfo
+     *
+     * Get posting frequency vs engagement
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPostingFrequencyAsyncWithHttpInfo($platform = null, $profile_id = null, string $contentType = self::contentTypes['getPostingFrequency'][0])
+    {
+        $returnType = '\Late\Model\GetPostingFrequency200Response';
+        $request = $this->getPostingFrequencyRequest($platform, $profile_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPostingFrequency'
+     *
+     * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
+     * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getPostingFrequencyRequest($platform = null, $profile_id = null, string $contentType = self::contentTypes['getPostingFrequency'][0])
+    {
+
+
+
+
+        $resourcePath = '/v1/analytics/posting-frequency';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $profile_id,
+            'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
 
 
         $headers = $this->headerSelector->selectHeaders(

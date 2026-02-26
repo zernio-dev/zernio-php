@@ -7,9 +7,13 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getAnalytics()**](AnalyticsApi.md#getAnalytics) | **GET** /v1/analytics | Get post analytics |
+| [**getBestTimeToPost()**](AnalyticsApi.md#getBestTimeToPost) | **GET** /v1/analytics/best-time | Get best times to post |
+| [**getContentDecay()**](AnalyticsApi.md#getContentDecay) | **GET** /v1/analytics/content-decay | Get content performance decay |
+| [**getDailyMetrics()**](AnalyticsApi.md#getDailyMetrics) | **GET** /v1/analytics/daily-metrics | Get daily aggregated metrics |
 | [**getFollowerStats()**](AnalyticsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
 | [**getLinkedInAggregateAnalytics()**](AnalyticsApi.md#getLinkedInAggregateAnalytics) | **GET** /v1/accounts/{accountId}/linkedin-aggregate-analytics | Get LinkedIn aggregate stats |
 | [**getLinkedInPostAnalytics()**](AnalyticsApi.md#getLinkedInPostAnalytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats |
+| [**getPostingFrequency()**](AnalyticsApi.md#getPostingFrequency) | **GET** /v1/analytics/posting-frequency | Get posting frequency vs engagement |
 | [**getYouTubeDailyViews()**](AnalyticsApi.md#getYouTubeDailyViews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views |
 
 
@@ -77,6 +81,196 @@ try {
 ### Return type
 
 [**\Late\Model\GetAnalytics200Response**](../Model/GetAnalytics200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getBestTimeToPost()`
+
+```php
+getBestTimeToPost($platform, $profile_id): \Late\Model\GetBestTimeToPost200Response
+```
+
+Get best times to post
+
+Returns the best times to post based on historical engagement data. Groups all published posts by day of week and hour (UTC), calculating average engagement per slot. Use this to auto-schedule posts at optimal times. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
+$profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
+
+try {
+    $result = $apiInstance->getBestTimeToPost($platform, $profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getBestTimeToPost: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
+| **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
+
+### Return type
+
+[**\Late\Model\GetBestTimeToPost200Response**](../Model/GetBestTimeToPost200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getContentDecay()`
+
+```php
+getContentDecay($platform, $profile_id): \Late\Model\GetContentDecay200Response
+```
+
+Get content performance decay
+
+Returns how engagement accumulates over time after a post is published. Each bucket shows what percentage of the post's total engagement had been reached by that time window. Useful for understanding content lifespan (e.g. \"posts reach 78% of total engagement within 24 hours\"). Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
+$profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
+
+try {
+    $result = $apiInstance->getContentDecay($platform, $profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getContentDecay: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
+| **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
+
+### Return type
+
+[**\Late\Model\GetContentDecay200Response**](../Model/GetContentDecay200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getDailyMetrics()`
+
+```php
+getDailyMetrics($platform, $profile_id, $from_date, $to_date): \Late\Model\GetDailyMetrics200Response
+```
+
+Get daily aggregated metrics
+
+Returns daily aggregated analytics metrics and a per-platform breakdown. Each day includes post count, platform distribution, and summed metrics (impressions, reach, likes, comments, shares, saves, clicks, views). Defaults to the last 180 days. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
+$profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive start date (ISO 8601). Defaults to 180 days ago.
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive end date (ISO 8601). Defaults to now.
+
+try {
+    $result = $apiInstance->getDailyMetrics($platform, $profile_id, $from_date, $to_date);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getDailyMetrics: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
+| **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
+| **from_date** | **\DateTime**| Inclusive start date (ISO 8601). Defaults to 180 days ago. | [optional] |
+| **to_date** | **\DateTime**| Inclusive end date (ISO 8601). Defaults to now. | [optional] |
+
+### Return type
+
+[**\Late\Model\GetDailyMetrics200Response**](../Model/GetDailyMetrics200Response.md)
 
 ### Authorization
 
@@ -275,6 +469,68 @@ try {
 ### Return type
 
 [**\Late\Model\GetLinkedInPostAnalytics200Response**](../Model/GetLinkedInPostAnalytics200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getPostingFrequency()`
+
+```php
+getPostingFrequency($platform, $profile_id): \Late\Model\GetPostingFrequency200Response
+```
+
+Get posting frequency vs engagement
+
+Returns the correlation between posting frequency (posts per week) and engagement rate, broken down by platform. Helps find the optimal posting cadence for each platform. Each row represents a specific (platform, posts_per_week) combination with the average engagement rate observed across all weeks matching that frequency. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
+$profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
+
+try {
+    $result = $apiInstance->getPostingFrequency($platform, $profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getPostingFrequency: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
+| **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
+
+### Return type
+
+[**\Late\Model\GetPostingFrequency200Response**](../Model/GetPostingFrequency200Response.md)
 
 ### Authorization
 
