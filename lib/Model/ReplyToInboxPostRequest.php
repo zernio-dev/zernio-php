@@ -61,7 +61,6 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'account_id' => 'string',
         'message' => 'string',
         'comment_id' => 'string',
-        'subreddit' => 'string',
         'parent_cid' => 'string',
         'root_uri' => 'string',
         'root_cid' => 'string'
@@ -78,7 +77,6 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'account_id' => null,
         'message' => null,
         'comment_id' => null,
-        'subreddit' => null,
         'parent_cid' => null,
         'root_uri' => null,
         'root_cid' => null
@@ -93,7 +91,6 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'account_id' => false,
         'message' => false,
         'comment_id' => false,
-        'subreddit' => false,
         'parent_cid' => false,
         'root_uri' => false,
         'root_cid' => false
@@ -188,7 +185,6 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'account_id' => 'accountId',
         'message' => 'message',
         'comment_id' => 'commentId',
-        'subreddit' => 'subreddit',
         'parent_cid' => 'parentCid',
         'root_uri' => 'rootUri',
         'root_cid' => 'rootCid'
@@ -203,7 +199,6 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'account_id' => 'setAccountId',
         'message' => 'setMessage',
         'comment_id' => 'setCommentId',
-        'subreddit' => 'setSubreddit',
         'parent_cid' => 'setParentCid',
         'root_uri' => 'setRootUri',
         'root_cid' => 'setRootCid'
@@ -218,7 +213,6 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'account_id' => 'getAccountId',
         'message' => 'getMessage',
         'comment_id' => 'getCommentId',
-        'subreddit' => 'getSubreddit',
         'parent_cid' => 'getParentCid',
         'root_uri' => 'getRootUri',
         'root_cid' => 'getRootCid'
@@ -284,7 +278,6 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('comment_id', $data ?? [], null);
-        $this->setIfExists('subreddit', $data ?? [], null);
         $this->setIfExists('parent_cid', $data ?? [], null);
         $this->setIfExists('root_uri', $data ?? [], null);
         $this->setIfExists('root_cid', $data ?? [], null);
@@ -415,33 +408,6 @@ class ReplyToInboxPostRequest implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable comment_id cannot be null');
         }
         $this->container['comment_id'] = $comment_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets subreddit
-     *
-     * @return string|null
-     */
-    public function getSubreddit()
-    {
-        return $this->container['subreddit'];
-    }
-
-    /**
-     * Sets subreddit
-     *
-     * @param string|null $subreddit (Reddit only) Subreddit name for replies
-     *
-     * @return self
-     */
-    public function setSubreddit($subreddit)
-    {
-        if (is_null($subreddit)) {
-            throw new \InvalidArgumentException('non-nullable subreddit cannot be null');
-        }
-        $this->container['subreddit'] = $subreddit;
 
         return $this;
     }
