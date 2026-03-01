@@ -236,19 +236,6 @@ class ValidateSubreddit200ResponseOneOf1 implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
-    public const EXISTS_FALSE = 'false';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getExistsAllowableValues()
-    {
-        return [
-            self::EXISTS_FALSE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -296,15 +283,6 @@ class ValidateSubreddit200ResponseOneOf1 implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getExistsAllowableValues();
-        if (!is_null($this->container['exists']) && !in_array($this->container['exists'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'exists', must be one of '%s'",
-                $this->container['exists'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -341,16 +319,6 @@ class ValidateSubreddit200ResponseOneOf1 implements ModelInterface, ArrayAccess,
     {
         if (is_null($exists)) {
             throw new \InvalidArgumentException('non-nullable exists cannot be null');
-        }
-        $allowedValues = $this->getExistsAllowableValues();
-        if (!in_array($exists, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'exists', must be one of '%s'",
-                    $exists,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['exists'] = $exists;
 

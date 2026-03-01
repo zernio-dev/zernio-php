@@ -242,19 +242,6 @@ class ValidatePost200ResponseOneOf1 implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
-    public const VALID_FALSE = 'false';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getValidAllowableValues()
-    {
-        return [
-            self::VALID_FALSE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -303,15 +290,6 @@ class ValidatePost200ResponseOneOf1 implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getValidAllowableValues();
-        if (!is_null($this->container['valid']) && !in_array($this->container['valid'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'valid', must be one of '%s'",
-                $this->container['valid'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -348,16 +326,6 @@ class ValidatePost200ResponseOneOf1 implements ModelInterface, ArrayAccess, \Jso
     {
         if (is_null($valid)) {
             throw new \InvalidArgumentException('non-nullable valid cannot be null');
-        }
-        $allowedValues = $this->getValidAllowableValues();
-        if (!in_array($valid, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'valid', must be one of '%s'",
-                    $valid,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['valid'] = $valid;
 
