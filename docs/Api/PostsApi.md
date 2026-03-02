@@ -261,7 +261,7 @@ try {
 ## `listPosts()`
 
 ```php
-listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden): \Late\Model\PostsListResponse
+listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by): \Late\Model\PostsListResponse
 ```
 
 List posts
@@ -294,9 +294,11 @@ $created_by = 'created_by_example'; // string
 $date_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $include_hidden = false; // bool
+$search = 'search_example'; // string | Search posts by text content.
+$sort_by = 'scheduled-desc'; // string | Sort order for results.
 
 try {
-    $result = $apiInstance->listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden);
+    $result = $apiInstance->listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PostsApi->listPosts: ', $e->getMessage(), PHP_EOL;
@@ -316,6 +318,8 @@ try {
 | **date_from** | **\DateTime**|  | [optional] |
 | **date_to** | **\DateTime**|  | [optional] |
 | **include_hidden** | **bool**|  | [optional] [default to false] |
+| **search** | **string**| Search posts by text content. | [optional] |
+| **sort_by** | **string**| Sort order for results. | [optional] [default to &#39;scheduled-desc&#39;] |
 
 ### Return type
 

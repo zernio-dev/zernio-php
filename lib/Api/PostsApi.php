@@ -1413,15 +1413,17 @@ class PostsApi
      * @param  \DateTime|null $date_from date_from (optional)
      * @param  \DateTime|null $date_to date_to (optional)
      * @param  bool|null $include_hidden include_hidden (optional, default to false)
+     * @param  string|null $search Search posts by text content. (optional)
+     * @param  string|null $sort_by Sort order for results. (optional, default to 'scheduled-desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPosts'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\PostsListResponse|\Late\Model\InlineObject
      */
-    public function listPosts($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPosts($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', string $contentType = self::contentTypes['listPosts'][0])
     {
-        list($response) = $this->listPostsWithHttpInfo($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $contentType);
+        list($response) = $this->listPostsWithHttpInfo($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $contentType);
         return $response;
     }
 
@@ -1439,15 +1441,17 @@ class PostsApi
      * @param  \DateTime|null $date_from (optional)
      * @param  \DateTime|null $date_to (optional)
      * @param  bool|null $include_hidden (optional, default to false)
+     * @param  string|null $search Search posts by text content. (optional)
+     * @param  string|null $sort_by Sort order for results. (optional, default to 'scheduled-desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPosts'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\PostsListResponse|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPostsWithHttpInfo($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPostsWithHttpInfo($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', string $contentType = self::contentTypes['listPosts'][0])
     {
-        $request = $this->listPostsRequest($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $contentType);
+        $request = $this->listPostsRequest($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1546,14 +1550,16 @@ class PostsApi
      * @param  \DateTime|null $date_from (optional)
      * @param  \DateTime|null $date_to (optional)
      * @param  bool|null $include_hidden (optional, default to false)
+     * @param  string|null $search Search posts by text content. (optional)
+     * @param  string|null $sort_by Sort order for results. (optional, default to 'scheduled-desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPosts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPostsAsync($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPostsAsync($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', string $contentType = self::contentTypes['listPosts'][0])
     {
-        return $this->listPostsAsyncWithHttpInfo($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $contentType)
+        return $this->listPostsAsyncWithHttpInfo($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1575,15 +1581,17 @@ class PostsApi
      * @param  \DateTime|null $date_from (optional)
      * @param  \DateTime|null $date_to (optional)
      * @param  bool|null $include_hidden (optional, default to false)
+     * @param  string|null $search Search posts by text content. (optional)
+     * @param  string|null $sort_by Sort order for results. (optional, default to 'scheduled-desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPosts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPostsAsyncWithHttpInfo($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPostsAsyncWithHttpInfo($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', string $contentType = self::contentTypes['listPosts'][0])
     {
         $returnType = '\Late\Model\PostsListResponse';
-        $request = $this->listPostsRequest($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $contentType);
+        $request = $this->listPostsRequest($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1633,12 +1641,14 @@ class PostsApi
      * @param  \DateTime|null $date_from (optional)
      * @param  \DateTime|null $date_to (optional)
      * @param  bool|null $include_hidden (optional, default to false)
+     * @param  string|null $search Search posts by text content. (optional)
+     * @param  string|null $sort_by Sort order for results. (optional, default to 'scheduled-desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPosts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPostsRequest($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, string $contentType = self::contentTypes['listPosts'][0])
+    public function listPostsRequest($page = 1, $limit = 10, $status = null, $platform = null, $profile_id = null, $created_by = null, $date_from = null, $date_to = null, $include_hidden = false, $search = null, $sort_by = 'scheduled-desc', string $contentType = self::contentTypes['listPosts'][0])
     {
 
         if ($page !== null && $page < 1) {
@@ -1652,6 +1662,8 @@ class PostsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling PostsApi.listPosts, must be bigger than or equal to 1.');
         }
         
+
+
 
 
 
@@ -1744,6 +1756,24 @@ class PostsApi
             $include_hidden,
             'includeHidden', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search,
+            'search', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort_by,
+            'sortBy', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

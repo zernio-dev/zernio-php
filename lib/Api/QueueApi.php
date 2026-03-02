@@ -1359,6 +1359,7 @@ class QueueApi
      * Preview upcoming slots
      *
      * @param  string $profile_id profile_id (required)
+     * @param  string|null $queue_id Filter by specific queue ID. Omit to use the default queue. (optional)
      * @param  int|null $count count (optional, default to 20)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewQueue'] to see the possible values for this operation
      *
@@ -1366,9 +1367,9 @@ class QueueApi
      * @throws \InvalidArgumentException
      * @return \Late\Model\PreviewQueue200Response|\Late\Model\InlineObject
      */
-    public function previewQueue($profile_id, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
+    public function previewQueue($profile_id, $queue_id = null, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
     {
-        list($response) = $this->previewQueueWithHttpInfo($profile_id, $count, $contentType);
+        list($response) = $this->previewQueueWithHttpInfo($profile_id, $queue_id, $count, $contentType);
         return $response;
     }
 
@@ -1378,6 +1379,7 @@ class QueueApi
      * Preview upcoming slots
      *
      * @param  string $profile_id (required)
+     * @param  string|null $queue_id Filter by specific queue ID. Omit to use the default queue. (optional)
      * @param  int|null $count (optional, default to 20)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewQueue'] to see the possible values for this operation
      *
@@ -1385,9 +1387,9 @@ class QueueApi
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\PreviewQueue200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function previewQueueWithHttpInfo($profile_id, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
+    public function previewQueueWithHttpInfo($profile_id, $queue_id = null, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
     {
-        $request = $this->previewQueueRequest($profile_id, $count, $contentType);
+        $request = $this->previewQueueRequest($profile_id, $queue_id, $count, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1478,15 +1480,16 @@ class QueueApi
      * Preview upcoming slots
      *
      * @param  string $profile_id (required)
+     * @param  string|null $queue_id Filter by specific queue ID. Omit to use the default queue. (optional)
      * @param  int|null $count (optional, default to 20)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewQueue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function previewQueueAsync($profile_id, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
+    public function previewQueueAsync($profile_id, $queue_id = null, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
     {
-        return $this->previewQueueAsyncWithHttpInfo($profile_id, $count, $contentType)
+        return $this->previewQueueAsyncWithHttpInfo($profile_id, $queue_id, $count, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1500,16 +1503,17 @@ class QueueApi
      * Preview upcoming slots
      *
      * @param  string $profile_id (required)
+     * @param  string|null $queue_id Filter by specific queue ID. Omit to use the default queue. (optional)
      * @param  int|null $count (optional, default to 20)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewQueue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function previewQueueAsyncWithHttpInfo($profile_id, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
+    public function previewQueueAsyncWithHttpInfo($profile_id, $queue_id = null, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
     {
         $returnType = '\Late\Model\PreviewQueue200Response';
-        $request = $this->previewQueueRequest($profile_id, $count, $contentType);
+        $request = $this->previewQueueRequest($profile_id, $queue_id, $count, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1551,13 +1555,14 @@ class QueueApi
      * Create request for operation 'previewQueue'
      *
      * @param  string $profile_id (required)
+     * @param  string|null $queue_id Filter by specific queue ID. Omit to use the default queue. (optional)
      * @param  int|null $count (optional, default to 20)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewQueue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function previewQueueRequest($profile_id, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
+    public function previewQueueRequest($profile_id, $queue_id = null, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
     {
 
         // verify the required parameter 'profile_id' is set
@@ -1566,6 +1571,7 @@ class QueueApi
                 'Missing the required parameter $profile_id when calling previewQueue'
             );
         }
+
 
         if ($count !== null && $count > 100) {
             throw new \InvalidArgumentException('invalid value for "$count" when calling QueueApi.previewQueue, must be smaller than or equal to 100.');
@@ -1590,6 +1596,15 @@ class QueueApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $queue_id,
+            'queueId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

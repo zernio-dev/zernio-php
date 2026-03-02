@@ -1413,6 +1413,7 @@ class AccountsApi
      * List accounts
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
+     * @param  string|null $platform Filter accounts by platform (e.g. \&quot;instagram\&quot;, \&quot;twitter\&quot;). (optional)
      * @param  bool|null $include_over_limit When true, includes accounts from over-limit profiles. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
@@ -1420,9 +1421,9 @@ class AccountsApi
      * @throws \InvalidArgumentException
      * @return \Late\Model\ListAccounts200Response|\Late\Model\InlineObject
      */
-    public function listAccounts($profile_id = null, $include_over_limit = false, string $contentType = self::contentTypes['listAccounts'][0])
+    public function listAccounts($profile_id = null, $platform = null, $include_over_limit = false, string $contentType = self::contentTypes['listAccounts'][0])
     {
-        list($response) = $this->listAccountsWithHttpInfo($profile_id, $include_over_limit, $contentType);
+        list($response) = $this->listAccountsWithHttpInfo($profile_id, $platform, $include_over_limit, $contentType);
         return $response;
     }
 
@@ -1432,6 +1433,7 @@ class AccountsApi
      * List accounts
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
+     * @param  string|null $platform Filter accounts by platform (e.g. \&quot;instagram\&quot;, \&quot;twitter\&quot;). (optional)
      * @param  bool|null $include_over_limit When true, includes accounts from over-limit profiles. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
@@ -1439,9 +1441,9 @@ class AccountsApi
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ListAccounts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAccountsWithHttpInfo($profile_id = null, $include_over_limit = false, string $contentType = self::contentTypes['listAccounts'][0])
+    public function listAccountsWithHttpInfo($profile_id = null, $platform = null, $include_over_limit = false, string $contentType = self::contentTypes['listAccounts'][0])
     {
-        $request = $this->listAccountsRequest($profile_id, $include_over_limit, $contentType);
+        $request = $this->listAccountsRequest($profile_id, $platform, $include_over_limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1532,15 +1534,16 @@ class AccountsApi
      * List accounts
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
+     * @param  string|null $platform Filter accounts by platform (e.g. \&quot;instagram\&quot;, \&quot;twitter\&quot;). (optional)
      * @param  bool|null $include_over_limit When true, includes accounts from over-limit profiles. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAccountsAsync($profile_id = null, $include_over_limit = false, string $contentType = self::contentTypes['listAccounts'][0])
+    public function listAccountsAsync($profile_id = null, $platform = null, $include_over_limit = false, string $contentType = self::contentTypes['listAccounts'][0])
     {
-        return $this->listAccountsAsyncWithHttpInfo($profile_id, $include_over_limit, $contentType)
+        return $this->listAccountsAsyncWithHttpInfo($profile_id, $platform, $include_over_limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1554,16 +1557,17 @@ class AccountsApi
      * List accounts
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
+     * @param  string|null $platform Filter accounts by platform (e.g. \&quot;instagram\&quot;, \&quot;twitter\&quot;). (optional)
      * @param  bool|null $include_over_limit When true, includes accounts from over-limit profiles. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAccountsAsyncWithHttpInfo($profile_id = null, $include_over_limit = false, string $contentType = self::contentTypes['listAccounts'][0])
+    public function listAccountsAsyncWithHttpInfo($profile_id = null, $platform = null, $include_over_limit = false, string $contentType = self::contentTypes['listAccounts'][0])
     {
         $returnType = '\Late\Model\ListAccounts200Response';
-        $request = $this->listAccountsRequest($profile_id, $include_over_limit, $contentType);
+        $request = $this->listAccountsRequest($profile_id, $platform, $include_over_limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1605,14 +1609,16 @@ class AccountsApi
      * Create request for operation 'listAccounts'
      *
      * @param  string|null $profile_id Filter accounts by profile ID (optional)
+     * @param  string|null $platform Filter accounts by platform (e.g. \&quot;instagram\&quot;, \&quot;twitter\&quot;). (optional)
      * @param  bool|null $include_over_limit When true, includes accounts from over-limit profiles. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAccountsRequest($profile_id = null, $include_over_limit = false, string $contentType = self::contentTypes['listAccounts'][0])
+    public function listAccountsRequest($profile_id = null, $platform = null, $include_over_limit = false, string $contentType = self::contentTypes['listAccounts'][0])
     {
+
 
 
 
@@ -1628,6 +1634,15 @@ class AccountsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $profile_id,
             'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

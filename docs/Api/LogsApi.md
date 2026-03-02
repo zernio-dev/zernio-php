@@ -146,7 +146,7 @@ try {
 ## `listPostsLogs()`
 
 ```php
-listPostsLogs($status, $platform, $action, $days, $limit, $skip): \Late\Model\ListPostsLogs200Response
+listPostsLogs($status, $platform, $action, $days, $limit, $skip, $search): \Late\Model\ListPostsLogs200Response
 ```
 
 List publishing logs
@@ -176,9 +176,10 @@ $action = 'action_example'; // string | Filter by action type
 $days = 7; // int | Number of days to look back (max 7)
 $limit = 50; // int | Maximum number of logs to return (max 100)
 $skip = 0; // int | Number of logs to skip (for pagination)
+$search = 'search_example'; // string | Search through log entries by text content.
 
 try {
-    $result = $apiInstance->listPostsLogs($status, $platform, $action, $days, $limit, $skip);
+    $result = $apiInstance->listPostsLogs($status, $platform, $action, $days, $limit, $skip, $search);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LogsApi->listPostsLogs: ', $e->getMessage(), PHP_EOL;
@@ -195,6 +196,7 @@ try {
 | **days** | **int**| Number of days to look back (max 7) | [optional] [default to 7] |
 | **limit** | **int**| Maximum number of logs to return (max 100) | [optional] [default to 50] |
 | **skip** | **int**| Number of logs to skip (for pagination) | [optional] [default to 0] |
+| **search** | **string**| Search through log entries by text content. | [optional] |
 
 ### Return type
 

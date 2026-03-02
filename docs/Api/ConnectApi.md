@@ -159,7 +159,7 @@ try {
 ## `getConnectUrl()`
 
 ```php
-getConnectUrl($platform, $profile_id, $redirect_url): \Late\Model\GetConnectUrl200Response
+getConnectUrl($platform, $profile_id, $redirect_url, $headless): \Late\Model\GetConnectUrl200Response
 ```
 
 Get OAuth connect URL
@@ -186,9 +186,10 @@ $apiInstance = new Late\Api\ConnectApi(
 $platform = 'platform_example'; // string | Social media platform to connect
 $profile_id = 'profile_id_example'; // string | Your Late profile ID (get from /v1/profiles)
 $redirect_url = 'redirect_url_example'; // string | Your custom redirect URL after connection completes. Standard mode appends ?connected={platform}&profileId=X&username=Y. Headless mode appends OAuth data params.
+$headless = false; // bool | When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Late's default account selection UI. Use this to build a custom connect experience.
 
 try {
-    $result = $apiInstance->getConnectUrl($platform, $profile_id, $redirect_url);
+    $result = $apiInstance->getConnectUrl($platform, $profile_id, $redirect_url, $headless);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->getConnectUrl: ', $e->getMessage(), PHP_EOL;
@@ -202,6 +203,7 @@ try {
 | **platform** | **string**| Social media platform to connect | |
 | **profile_id** | **string**| Your Late profile ID (get from /v1/profiles) | |
 | **redirect_url** | **string**| Your custom redirect URL after connection completes. Standard mode appends ?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y. Headless mode appends OAuth data params. | [optional] |
+| **headless** | **bool**| When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Late&#39;s default account selection UI. Use this to build a custom connect experience. | [optional] [default to false] |
 
 ### Return type
 

@@ -787,15 +787,16 @@ class ConnectApi
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
      * @param  string|null $redirect_url Your custom redirect URL after connection completes. Standard mode appends ?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y. Headless mode appends OAuth data params. (optional)
+     * @param  bool|null $headless When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Late&#39;s default account selection UI. Use this to build a custom connect experience. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetConnectUrl200Response|\Late\Model\InlineObject
      */
-    public function getConnectUrl($platform, $profile_id, $redirect_url = null, string $contentType = self::contentTypes['getConnectUrl'][0])
+    public function getConnectUrl($platform, $profile_id, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
-        list($response) = $this->getConnectUrlWithHttpInfo($platform, $profile_id, $redirect_url, $contentType);
+        list($response) = $this->getConnectUrlWithHttpInfo($platform, $profile_id, $redirect_url, $headless, $contentType);
         return $response;
     }
 
@@ -807,15 +808,16 @@ class ConnectApi
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
      * @param  string|null $redirect_url Your custom redirect URL after connection completes. Standard mode appends ?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y. Headless mode appends OAuth data params. (optional)
+     * @param  bool|null $headless When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Late&#39;s default account selection UI. Use this to build a custom connect experience. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetConnectUrl200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getConnectUrlWithHttpInfo($platform, $profile_id, $redirect_url = null, string $contentType = self::contentTypes['getConnectUrl'][0])
+    public function getConnectUrlWithHttpInfo($platform, $profile_id, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
-        $request = $this->getConnectUrlRequest($platform, $profile_id, $redirect_url, $contentType);
+        $request = $this->getConnectUrlRequest($platform, $profile_id, $redirect_url, $headless, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -908,14 +910,15 @@ class ConnectApi
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
      * @param  string|null $redirect_url Your custom redirect URL after connection completes. Standard mode appends ?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y. Headless mode appends OAuth data params. (optional)
+     * @param  bool|null $headless When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Late&#39;s default account selection UI. Use this to build a custom connect experience. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getConnectUrlAsync($platform, $profile_id, $redirect_url = null, string $contentType = self::contentTypes['getConnectUrl'][0])
+    public function getConnectUrlAsync($platform, $profile_id, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
-        return $this->getConnectUrlAsyncWithHttpInfo($platform, $profile_id, $redirect_url, $contentType)
+        return $this->getConnectUrlAsyncWithHttpInfo($platform, $profile_id, $redirect_url, $headless, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -931,15 +934,16 @@ class ConnectApi
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
      * @param  string|null $redirect_url Your custom redirect URL after connection completes. Standard mode appends ?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y. Headless mode appends OAuth data params. (optional)
+     * @param  bool|null $headless When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Late&#39;s default account selection UI. Use this to build a custom connect experience. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getConnectUrlAsyncWithHttpInfo($platform, $profile_id, $redirect_url = null, string $contentType = self::contentTypes['getConnectUrl'][0])
+    public function getConnectUrlAsyncWithHttpInfo($platform, $profile_id, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
         $returnType = '\Late\Model\GetConnectUrl200Response';
-        $request = $this->getConnectUrlRequest($platform, $profile_id, $redirect_url, $contentType);
+        $request = $this->getConnectUrlRequest($platform, $profile_id, $redirect_url, $headless, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -983,12 +987,13 @@ class ConnectApi
      * @param  string $platform Social media platform to connect (required)
      * @param  string $profile_id Your Late profile ID (get from /v1/profiles) (required)
      * @param  string|null $redirect_url Your custom redirect URL after connection completes. Standard mode appends ?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;username&#x3D;Y. Headless mode appends OAuth data params. (optional)
+     * @param  bool|null $headless When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Late&#39;s default account selection UI. Use this to build a custom connect experience. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getConnectUrlRequest($platform, $profile_id, $redirect_url = null, string $contentType = self::contentTypes['getConnectUrl'][0])
+    public function getConnectUrlRequest($platform, $profile_id, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
 
         // verify the required parameter 'platform' is set
@@ -1004,6 +1009,7 @@ class ConnectApi
                 'Missing the required parameter $profile_id when calling getConnectUrl'
             );
         }
+
 
 
 
@@ -1028,6 +1034,15 @@ class ConnectApi
             $redirect_url,
             'redirect_url', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $headless,
+            'headless', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

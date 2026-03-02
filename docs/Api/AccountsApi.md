@@ -269,7 +269,7 @@ try {
 ## `listAccounts()`
 
 ```php
-listAccounts($profile_id, $include_over_limit): \Late\Model\ListAccounts200Response
+listAccounts($profile_id, $platform, $include_over_limit): \Late\Model\ListAccounts200Response
 ```
 
 List accounts
@@ -294,10 +294,11 @@ $apiInstance = new Late\Api\AccountsApi(
     $config
 );
 $profile_id = 'profile_id_example'; // string | Filter accounts by profile ID
+$platform = 'platform_example'; // string | Filter accounts by platform (e.g. \"instagram\", \"twitter\").
 $include_over_limit = false; // bool | When true, includes accounts from over-limit profiles.
 
 try {
-    $result = $apiInstance->listAccounts($profile_id, $include_over_limit);
+    $result = $apiInstance->listAccounts($profile_id, $platform, $include_over_limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->listAccounts: ', $e->getMessage(), PHP_EOL;
@@ -309,6 +310,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| Filter accounts by profile ID | [optional] |
+| **platform** | **string**| Filter accounts by platform (e.g. \&quot;instagram\&quot;, \&quot;twitter\&quot;). | [optional] |
 | **include_over_limit** | **bool**| When true, includes accounts from over-limit profiles. | [optional] [default to false] |
 
 ### Return type

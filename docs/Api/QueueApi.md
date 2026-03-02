@@ -265,7 +265,7 @@ try {
 ## `previewQueue()`
 
 ```php
-previewQueue($profile_id, $count): \Late\Model\PreviewQueue200Response
+previewQueue($profile_id, $queue_id, $count): \Late\Model\PreviewQueue200Response
 ```
 
 Preview upcoming slots
@@ -290,10 +290,11 @@ $apiInstance = new Late\Api\QueueApi(
     $config
 );
 $profile_id = 'profile_id_example'; // string
+$queue_id = 'queue_id_example'; // string | Filter by specific queue ID. Omit to use the default queue.
 $count = 20; // int
 
 try {
-    $result = $apiInstance->previewQueue($profile_id, $count);
+    $result = $apiInstance->previewQueue($profile_id, $queue_id, $count);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QueueApi->previewQueue: ', $e->getMessage(), PHP_EOL;
@@ -305,6 +306,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**|  | |
+| **queue_id** | **string**| Filter by specific queue ID. Omit to use the default queue. | [optional] |
 | **count** | **int**|  | [optional] [default to 20] |
 
 ### Return type

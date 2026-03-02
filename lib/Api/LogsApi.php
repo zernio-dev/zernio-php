@@ -835,15 +835,16 @@ class LogsApi
      * @param  int|null $days Number of days to look back (max 7) (optional, default to 7)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  int|null $skip Number of logs to skip (for pagination) (optional, default to 0)
+     * @param  string|null $search Search through log entries by text content. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPostsLogs'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\ListPostsLogs200Response|\Late\Model\InlineObject
      */
-    public function listPostsLogs($status = null, $platform = null, $action = null, $days = 7, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listPostsLogs'][0])
+    public function listPostsLogs($status = null, $platform = null, $action = null, $days = 7, $limit = 50, $skip = 0, $search = null, string $contentType = self::contentTypes['listPostsLogs'][0])
     {
-        list($response) = $this->listPostsLogsWithHttpInfo($status, $platform, $action, $days, $limit, $skip, $contentType);
+        list($response) = $this->listPostsLogsWithHttpInfo($status, $platform, $action, $days, $limit, $skip, $search, $contentType);
         return $response;
     }
 
@@ -858,15 +859,16 @@ class LogsApi
      * @param  int|null $days Number of days to look back (max 7) (optional, default to 7)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  int|null $skip Number of logs to skip (for pagination) (optional, default to 0)
+     * @param  string|null $search Search through log entries by text content. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPostsLogs'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ListPostsLogs200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listPostsLogsWithHttpInfo($status = null, $platform = null, $action = null, $days = 7, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listPostsLogs'][0])
+    public function listPostsLogsWithHttpInfo($status = null, $platform = null, $action = null, $days = 7, $limit = 50, $skip = 0, $search = null, string $contentType = self::contentTypes['listPostsLogs'][0])
     {
-        $request = $this->listPostsLogsRequest($status, $platform, $action, $days, $limit, $skip, $contentType);
+        $request = $this->listPostsLogsRequest($status, $platform, $action, $days, $limit, $skip, $search, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -962,14 +964,15 @@ class LogsApi
      * @param  int|null $days Number of days to look back (max 7) (optional, default to 7)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  int|null $skip Number of logs to skip (for pagination) (optional, default to 0)
+     * @param  string|null $search Search through log entries by text content. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPostsLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPostsLogsAsync($status = null, $platform = null, $action = null, $days = 7, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listPostsLogs'][0])
+    public function listPostsLogsAsync($status = null, $platform = null, $action = null, $days = 7, $limit = 50, $skip = 0, $search = null, string $contentType = self::contentTypes['listPostsLogs'][0])
     {
-        return $this->listPostsLogsAsyncWithHttpInfo($status, $platform, $action, $days, $limit, $skip, $contentType)
+        return $this->listPostsLogsAsyncWithHttpInfo($status, $platform, $action, $days, $limit, $skip, $search, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -988,15 +991,16 @@ class LogsApi
      * @param  int|null $days Number of days to look back (max 7) (optional, default to 7)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  int|null $skip Number of logs to skip (for pagination) (optional, default to 0)
+     * @param  string|null $search Search through log entries by text content. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPostsLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listPostsLogsAsyncWithHttpInfo($status = null, $platform = null, $action = null, $days = 7, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listPostsLogs'][0])
+    public function listPostsLogsAsyncWithHttpInfo($status = null, $platform = null, $action = null, $days = 7, $limit = 50, $skip = 0, $search = null, string $contentType = self::contentTypes['listPostsLogs'][0])
     {
         $returnType = '\Late\Model\ListPostsLogs200Response';
-        $request = $this->listPostsLogsRequest($status, $platform, $action, $days, $limit, $skip, $contentType);
+        $request = $this->listPostsLogsRequest($status, $platform, $action, $days, $limit, $skip, $search, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1043,12 +1047,13 @@ class LogsApi
      * @param  int|null $days Number of days to look back (max 7) (optional, default to 7)
      * @param  int|null $limit Maximum number of logs to return (max 100) (optional, default to 50)
      * @param  int|null $skip Number of logs to skip (for pagination) (optional, default to 0)
+     * @param  string|null $search Search through log entries by text content. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPostsLogs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listPostsLogsRequest($status = null, $platform = null, $action = null, $days = 7, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listPostsLogs'][0])
+    public function listPostsLogsRequest($status = null, $platform = null, $action = null, $days = 7, $limit = 50, $skip = 0, $search = null, string $contentType = self::contentTypes['listPostsLogs'][0])
     {
 
 
@@ -1072,6 +1077,7 @@ class LogsApi
             throw new \InvalidArgumentException('invalid value for "$skip" when calling LogsApi.listPostsLogs, must be bigger than or equal to 0.');
         }
         
+
 
         $resourcePath = '/v1/posts/logs';
         $formParams = [];
@@ -1130,6 +1136,15 @@ class LogsApi
             $skip,
             'skip', // param base name
             'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search,
+            'search', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

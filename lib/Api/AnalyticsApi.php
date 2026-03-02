@@ -624,15 +624,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetBestTimeToPost200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response
      */
-    public function getBestTimeToPost($platform = null, $profile_id = null, string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    public function getBestTimeToPost($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
-        list($response) = $this->getBestTimeToPostWithHttpInfo($platform, $profile_id, $contentType);
+        list($response) = $this->getBestTimeToPostWithHttpInfo($platform, $profile_id, $source, $contentType);
         return $response;
     }
 
@@ -643,15 +644,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetBestTimeToPost200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBestTimeToPostWithHttpInfo($platform = null, $profile_id = null, string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    public function getBestTimeToPostWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
-        $request = $this->getBestTimeToPostRequest($platform, $profile_id, $contentType);
+        $request = $this->getBestTimeToPostRequest($platform, $profile_id, $source, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -757,14 +759,15 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBestTimeToPostAsync($platform = null, $profile_id = null, string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    public function getBestTimeToPostAsync($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
-        return $this->getBestTimeToPostAsyncWithHttpInfo($platform, $profile_id, $contentType)
+        return $this->getBestTimeToPostAsyncWithHttpInfo($platform, $profile_id, $source, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -779,15 +782,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBestTimeToPostAsyncWithHttpInfo($platform = null, $profile_id = null, string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    public function getBestTimeToPostAsyncWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
         $returnType = '\Late\Model\GetBestTimeToPost200Response';
-        $request = $this->getBestTimeToPostRequest($platform, $profile_id, $contentType);
+        $request = $this->getBestTimeToPostRequest($platform, $profile_id, $source, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -830,13 +834,15 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBestTimeToPostRequest($platform = null, $profile_id = null, string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    public function getBestTimeToPostRequest($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
+
 
 
 
@@ -861,6 +867,15 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $profile_id,
             'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $source,
+            'source', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -934,15 +949,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetContentDecay200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response
      */
-    public function getContentDecay($platform = null, $profile_id = null, string $contentType = self::contentTypes['getContentDecay'][0])
+    public function getContentDecay($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
-        list($response) = $this->getContentDecayWithHttpInfo($platform, $profile_id, $contentType);
+        list($response) = $this->getContentDecayWithHttpInfo($platform, $profile_id, $source, $contentType);
         return $response;
     }
 
@@ -953,15 +969,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetContentDecay200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getContentDecayWithHttpInfo($platform = null, $profile_id = null, string $contentType = self::contentTypes['getContentDecay'][0])
+    public function getContentDecayWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
-        $request = $this->getContentDecayRequest($platform, $profile_id, $contentType);
+        $request = $this->getContentDecayRequest($platform, $profile_id, $source, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1067,14 +1084,15 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContentDecayAsync($platform = null, $profile_id = null, string $contentType = self::contentTypes['getContentDecay'][0])
+    public function getContentDecayAsync($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
-        return $this->getContentDecayAsyncWithHttpInfo($platform, $profile_id, $contentType)
+        return $this->getContentDecayAsyncWithHttpInfo($platform, $profile_id, $source, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1089,15 +1107,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContentDecayAsyncWithHttpInfo($platform = null, $profile_id = null, string $contentType = self::contentTypes['getContentDecay'][0])
+    public function getContentDecayAsyncWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
         $returnType = '\Late\Model\GetContentDecay200Response';
-        $request = $this->getContentDecayRequest($platform, $profile_id, $contentType);
+        $request = $this->getContentDecayRequest($platform, $profile_id, $source, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1140,13 +1159,15 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getContentDecayRequest($platform = null, $profile_id = null, string $contentType = self::contentTypes['getContentDecay'][0])
+    public function getContentDecayRequest($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
+
 
 
 
@@ -1171,6 +1192,15 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $profile_id,
             'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $source,
+            'source', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1246,15 +1276,16 @@ class AnalyticsApi
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetDailyMetrics200Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response
      */
-    public function getDailyMetrics($platform = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getDailyMetrics'][0])
+    public function getDailyMetrics($platform = null, $profile_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
-        list($response) = $this->getDailyMetricsWithHttpInfo($platform, $profile_id, $from_date, $to_date, $contentType);
+        list($response) = $this->getDailyMetricsWithHttpInfo($platform, $profile_id, $from_date, $to_date, $source, $contentType);
         return $response;
     }
 
@@ -1267,15 +1298,16 @@ class AnalyticsApi
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetDailyMetrics200Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDailyMetricsWithHttpInfo($platform = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getDailyMetrics'][0])
+    public function getDailyMetricsWithHttpInfo($platform = null, $profile_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
-        $request = $this->getDailyMetricsRequest($platform, $profile_id, $from_date, $to_date, $contentType);
+        $request = $this->getDailyMetricsRequest($platform, $profile_id, $from_date, $to_date, $source, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1383,14 +1415,15 @@ class AnalyticsApi
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDailyMetricsAsync($platform = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getDailyMetrics'][0])
+    public function getDailyMetricsAsync($platform = null, $profile_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
-        return $this->getDailyMetricsAsyncWithHttpInfo($platform, $profile_id, $from_date, $to_date, $contentType)
+        return $this->getDailyMetricsAsyncWithHttpInfo($platform, $profile_id, $from_date, $to_date, $source, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1407,15 +1440,16 @@ class AnalyticsApi
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDailyMetricsAsyncWithHttpInfo($platform = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getDailyMetrics'][0])
+    public function getDailyMetricsAsyncWithHttpInfo($platform = null, $profile_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
         $returnType = '\Late\Model\GetDailyMetrics200Response';
-        $request = $this->getDailyMetricsRequest($platform, $profile_id, $from_date, $to_date, $contentType);
+        $request = $this->getDailyMetricsRequest($platform, $profile_id, $from_date, $to_date, $source, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1460,13 +1494,15 @@ class AnalyticsApi
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getDailyMetricsRequest($platform = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getDailyMetrics'][0])
+    public function getDailyMetricsRequest($platform = null, $profile_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
+
 
 
 
@@ -1511,6 +1547,15 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $to_date,
             'toDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $source,
+            'source', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2676,15 +2721,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetPostingFrequency200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response
      */
-    public function getPostingFrequency($platform = null, $profile_id = null, string $contentType = self::contentTypes['getPostingFrequency'][0])
+    public function getPostingFrequency($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
-        list($response) = $this->getPostingFrequencyWithHttpInfo($platform, $profile_id, $contentType);
+        list($response) = $this->getPostingFrequencyWithHttpInfo($platform, $profile_id, $source, $contentType);
         return $response;
     }
 
@@ -2695,15 +2741,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetPostingFrequency200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPostingFrequencyWithHttpInfo($platform = null, $profile_id = null, string $contentType = self::contentTypes['getPostingFrequency'][0])
+    public function getPostingFrequencyWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
-        $request = $this->getPostingFrequencyRequest($platform, $profile_id, $contentType);
+        $request = $this->getPostingFrequencyRequest($platform, $profile_id, $source, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2809,14 +2856,15 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPostingFrequencyAsync($platform = null, $profile_id = null, string $contentType = self::contentTypes['getPostingFrequency'][0])
+    public function getPostingFrequencyAsync($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
-        return $this->getPostingFrequencyAsyncWithHttpInfo($platform, $profile_id, $contentType)
+        return $this->getPostingFrequencyAsyncWithHttpInfo($platform, $profile_id, $source, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2831,15 +2879,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPostingFrequencyAsyncWithHttpInfo($platform = null, $profile_id = null, string $contentType = self::contentTypes['getPostingFrequency'][0])
+    public function getPostingFrequencyAsyncWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
         $returnType = '\Late\Model\GetPostingFrequency200Response';
-        $request = $this->getPostingFrequencyRequest($platform, $profile_id, $contentType);
+        $request = $this->getPostingFrequencyRequest($platform, $profile_id, $source, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2882,13 +2931,15 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPostingFrequencyRequest($platform = null, $profile_id = null, string $contentType = self::contentTypes['getPostingFrequency'][0])
+    public function getPostingFrequencyRequest($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
+
 
 
 
@@ -2913,6 +2964,15 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $profile_id,
             'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $source,
+            'source', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

@@ -98,7 +98,7 @@ try {
 ## `getBestTimeToPost()`
 
 ```php
-getBestTimeToPost($platform, $profile_id): \Late\Model\GetBestTimeToPost200Response
+getBestTimeToPost($platform, $profile_id, $source): \Late\Model\GetBestTimeToPost200Response
 ```
 
 Get best times to post
@@ -124,9 +124,10 @@ $apiInstance = new Late\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
+$source = 'all'; // string | Filter by post origin. \"late\" for posts published via Late, \"external\" for posts imported from platforms.
 
 try {
-    $result = $apiInstance->getBestTimeToPost($platform, $profile_id);
+    $result = $apiInstance->getBestTimeToPost($platform, $profile_id, $source);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getBestTimeToPost: ', $e->getMessage(), PHP_EOL;
@@ -139,6 +140,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
+| **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
 
@@ -160,7 +162,7 @@ try {
 ## `getContentDecay()`
 
 ```php
-getContentDecay($platform, $profile_id): \Late\Model\GetContentDecay200Response
+getContentDecay($platform, $profile_id, $source): \Late\Model\GetContentDecay200Response
 ```
 
 Get content performance decay
@@ -186,9 +188,10 @@ $apiInstance = new Late\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
+$source = 'all'; // string | Filter by post origin. \"late\" for posts published via Late, \"external\" for posts imported from platforms.
 
 try {
-    $result = $apiInstance->getContentDecay($platform, $profile_id);
+    $result = $apiInstance->getContentDecay($platform, $profile_id, $source);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getContentDecay: ', $e->getMessage(), PHP_EOL;
@@ -201,6 +204,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
+| **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
 
@@ -222,7 +226,7 @@ try {
 ## `getDailyMetrics()`
 
 ```php
-getDailyMetrics($platform, $profile_id, $from_date, $to_date): \Late\Model\GetDailyMetrics200Response
+getDailyMetrics($platform, $profile_id, $from_date, $to_date, $source): \Late\Model\GetDailyMetrics200Response
 ```
 
 Get daily aggregated metrics
@@ -250,9 +254,10 @@ $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive start date (ISO 8601). Defaults to 180 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive end date (ISO 8601). Defaults to now.
+$source = 'all'; // string | Filter by post origin. \"late\" for posts published via Late, \"external\" for posts imported from platforms.
 
 try {
-    $result = $apiInstance->getDailyMetrics($platform, $profile_id, $from_date, $to_date);
+    $result = $apiInstance->getDailyMetrics($platform, $profile_id, $from_date, $to_date, $source);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getDailyMetrics: ', $e->getMessage(), PHP_EOL;
@@ -267,6 +272,7 @@ try {
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
 | **from_date** | **\DateTime**| Inclusive start date (ISO 8601). Defaults to 180 days ago. | [optional] |
 | **to_date** | **\DateTime**| Inclusive end date (ISO 8601). Defaults to now. | [optional] |
+| **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
 
@@ -486,7 +492,7 @@ try {
 ## `getPostingFrequency()`
 
 ```php
-getPostingFrequency($platform, $profile_id): \Late\Model\GetPostingFrequency200Response
+getPostingFrequency($platform, $profile_id, $source): \Late\Model\GetPostingFrequency200Response
 ```
 
 Get posting frequency vs engagement
@@ -512,9 +518,10 @@ $apiInstance = new Late\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
+$source = 'all'; // string | Filter by post origin. \"late\" for posts published via Late, \"external\" for posts imported from platforms.
 
 try {
-    $result = $apiInstance->getPostingFrequency($platform, $profile_id);
+    $result = $apiInstance->getPostingFrequency($platform, $profile_id, $source);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getPostingFrequency: ', $e->getMessage(), PHP_EOL;
@@ -527,6 +534,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
+| **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
 
