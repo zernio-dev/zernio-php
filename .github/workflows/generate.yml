@@ -50,6 +50,12 @@ jobs:
             --git-user-id=getlate-dev \
             --git-repo-id=late-php
 
+      - name: Install dependencies
+        run: composer install --no-interaction
+
+      - name: Run tests
+        run: ./vendor/bin/phpunit
+
       - name: Check for changes
         id: changes
         run: |
