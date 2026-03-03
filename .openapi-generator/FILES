@@ -927,8 +927,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetPostTimeline200ResponseTest.php
-test/Model/GetPostTimeline200ResponseTimelineInnerTest.php
-test/Model/GetPostTimeline400ResponseTest.php
-test/Model/GetPostTimeline403ResponseTest.php
-test/Model/GetPostTimeline404ResponseTest.php
