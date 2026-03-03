@@ -96,6 +96,9 @@ class AnalyticsApi
         'getLinkedInPostAnalytics' => [
             'application/json',
         ],
+        'getPostTimeline' => [
+            'application/json',
+        ],
         'getPostingFrequency' => [
             'application/json',
         ],
@@ -2655,6 +2658,379 @@ class AnalyticsApi
                 $resourcePath
             );
         }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getPostTimeline
+     *
+     * Get post analytics timeline
+     *
+     * @param  string $post_id The post to fetch timeline for. Accepts an ExternalPost ID, a platformPostId, or a Late Post ID. (required)
+     * @param  \DateTime|null $from_date Start of date range (ISO 8601). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (ISO 8601). Defaults to now. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostTimeline'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\GetPostTimeline200Response|\Late\Model\GetPostTimeline400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetPostTimeline403Response|\Late\Model\GetPostTimeline404Response
+     */
+    public function getPostTimeline($post_id, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getPostTimeline'][0])
+    {
+        list($response) = $this->getPostTimelineWithHttpInfo($post_id, $from_date, $to_date, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getPostTimelineWithHttpInfo
+     *
+     * Get post analytics timeline
+     *
+     * @param  string $post_id The post to fetch timeline for. Accepts an ExternalPost ID, a platformPostId, or a Late Post ID. (required)
+     * @param  \DateTime|null $from_date Start of date range (ISO 8601). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (ISO 8601). Defaults to now. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostTimeline'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\GetPostTimeline200Response|\Late\Model\GetPostTimeline400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetPostTimeline403Response|\Late\Model\GetPostTimeline404Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPostTimelineWithHttpInfo($post_id, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getPostTimeline'][0])
+    {
+        $request = $this->getPostTimelineRequest($post_id, $from_date, $to_date, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetPostTimeline200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetPostTimeline400Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetAnalytics402Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetPostTimeline403Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetPostTimeline404Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetPostTimeline200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetPostTimeline200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetPostTimeline400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetAnalytics402Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetPostTimeline403Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetPostTimeline404Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPostTimelineAsync
+     *
+     * Get post analytics timeline
+     *
+     * @param  string $post_id The post to fetch timeline for. Accepts an ExternalPost ID, a platformPostId, or a Late Post ID. (required)
+     * @param  \DateTime|null $from_date Start of date range (ISO 8601). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (ISO 8601). Defaults to now. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostTimeline'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPostTimelineAsync($post_id, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getPostTimeline'][0])
+    {
+        return $this->getPostTimelineAsyncWithHttpInfo($post_id, $from_date, $to_date, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPostTimelineAsyncWithHttpInfo
+     *
+     * Get post analytics timeline
+     *
+     * @param  string $post_id The post to fetch timeline for. Accepts an ExternalPost ID, a platformPostId, or a Late Post ID. (required)
+     * @param  \DateTime|null $from_date Start of date range (ISO 8601). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (ISO 8601). Defaults to now. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostTimeline'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPostTimelineAsyncWithHttpInfo($post_id, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getPostTimeline'][0])
+    {
+        $returnType = '\Late\Model\GetPostTimeline200Response';
+        $request = $this->getPostTimelineRequest($post_id, $from_date, $to_date, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPostTimeline'
+     *
+     * @param  string $post_id The post to fetch timeline for. Accepts an ExternalPost ID, a platformPostId, or a Late Post ID. (required)
+     * @param  \DateTime|null $from_date Start of date range (ISO 8601). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (ISO 8601). Defaults to now. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostTimeline'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getPostTimelineRequest($post_id, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getPostTimeline'][0])
+    {
+
+        // verify the required parameter 'post_id' is set
+        if ($post_id === null || (is_array($post_id) && count($post_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $post_id when calling getPostTimeline'
+            );
+        }
+
+
+
+
+        $resourcePath = '/v1/analytics/post-timeline';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $post_id,
+            'postId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_date,
+            'fromDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_date,
+            'toDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
 
 
         $headers = $this->headerSelector->selectHeaders(

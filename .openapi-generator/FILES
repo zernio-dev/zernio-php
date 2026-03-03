@@ -183,6 +183,11 @@ docs/Model/GetPendingOAuthData200ResponseOrganizationsInner.md
 docs/Model/GetPinterestBoards200Response.md
 docs/Model/GetPinterestBoards200ResponseBoardsInner.md
 docs/Model/GetPostLogs200Response.md
+docs/Model/GetPostTimeline200Response.md
+docs/Model/GetPostTimeline200ResponseTimelineInner.md
+docs/Model/GetPostTimeline400Response.md
+docs/Model/GetPostTimeline403Response.md
+docs/Model/GetPostTimeline404Response.md
 docs/Model/GetPostingFrequency200Response.md
 docs/Model/GetPostingFrequency200ResponseFrequencyInner.md
 docs/Model/GetProfile200Response.md
@@ -641,6 +646,11 @@ lib/Model/GetPendingOAuthData200ResponseOrganizationsInner.php
 lib/Model/GetPinterestBoards200Response.php
 lib/Model/GetPinterestBoards200ResponseBoardsInner.php
 lib/Model/GetPostLogs200Response.php
+lib/Model/GetPostTimeline200Response.php
+lib/Model/GetPostTimeline200ResponseTimelineInner.php
+lib/Model/GetPostTimeline400Response.php
+lib/Model/GetPostTimeline403Response.php
+lib/Model/GetPostTimeline404Response.php
 lib/Model/GetPostingFrequency200Response.php
 lib/Model/GetPostingFrequency200ResponseFrequencyInner.php
 lib/Model/GetProfile200Response.php
@@ -917,3 +927,8 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetPostTimeline200ResponseTest.php
+test/Model/GetPostTimeline200ResponseTimelineInnerTest.php
+test/Model/GetPostTimeline400ResponseTest.php
+test/Model/GetPostTimeline403ResponseTest.php
+test/Model/GetPostTimeline404ResponseTest.php

@@ -13,6 +13,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 | [**getFollowerStats()**](AnalyticsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
 | [**getLinkedInAggregateAnalytics()**](AnalyticsApi.md#getLinkedInAggregateAnalytics) | **GET** /v1/accounts/{accountId}/linkedin-aggregate-analytics | Get LinkedIn aggregate stats |
 | [**getLinkedInPostAnalytics()**](AnalyticsApi.md#getLinkedInPostAnalytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats |
+| [**getPostTimeline()**](AnalyticsApi.md#getPostTimeline) | **GET** /v1/analytics/post-timeline | Get post analytics timeline |
 | [**getPostingFrequency()**](AnalyticsApi.md#getPostingFrequency) | **GET** /v1/analytics/posting-frequency | Get posting frequency vs engagement |
 | [**getYouTubeDailyViews()**](AnalyticsApi.md#getYouTubeDailyViews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views |
 
@@ -475,6 +476,70 @@ try {
 ### Return type
 
 [**\Late\Model\GetLinkedInPostAnalytics200Response**](../Model/GetLinkedInPostAnalytics200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getPostTimeline()`
+
+```php
+getPostTimeline($post_id, $from_date, $to_date): \Late\Model\GetPostTimeline200Response
+```
+
+Get post analytics timeline
+
+Returns a daily timeline of analytics metrics for a specific post, showing how impressions, likes, and other metrics evolved day-by-day since publishing. Each row represents one day of data per platform. For multi-platform Late posts, returns separate rows for each platform. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string | The post to fetch timeline for. Accepts an ExternalPost ID, a platformPostId, or a Late Post ID.
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of date range (ISO 8601). Defaults to 90 days ago.
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of date range (ISO 8601). Defaults to now.
+
+try {
+    $result = $apiInstance->getPostTimeline($post_id, $from_date, $to_date);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getPostTimeline: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**| The post to fetch timeline for. Accepts an ExternalPost ID, a platformPostId, or a Late Post ID. | |
+| **from_date** | **\DateTime**| Start of date range (ISO 8601). Defaults to 90 days ago. | [optional] |
+| **to_date** | **\DateTime**| End of date range (ISO 8601). Defaults to now. | [optional] |
+
+### Return type
+
+[**\Late\Model\GetPostTimeline200Response**](../Model/GetPostTimeline200Response.md)
 
 ### Authorization
 

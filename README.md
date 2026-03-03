@@ -107,6 +107,7 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**getFollowerStats**](docs/Api/AnalyticsApi.md#getfollowerstats) | **GET** /v1/accounts/follower-stats | Get follower stats
 *AnalyticsApi* | [**getLinkedInAggregateAnalytics**](docs/Api/AnalyticsApi.md#getlinkedinaggregateanalytics) | **GET** /v1/accounts/{accountId}/linkedin-aggregate-analytics | Get LinkedIn aggregate stats
 *AnalyticsApi* | [**getLinkedInPostAnalytics**](docs/Api/AnalyticsApi.md#getlinkedinpostanalytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats
+*AnalyticsApi* | [**getPostTimeline**](docs/Api/AnalyticsApi.md#getposttimeline) | **GET** /v1/analytics/post-timeline | Get post analytics timeline
 *AnalyticsApi* | [**getPostingFrequency**](docs/Api/AnalyticsApi.md#getpostingfrequency) | **GET** /v1/analytics/posting-frequency | Get posting frequency vs engagement
 *AnalyticsApi* | [**getYouTubeDailyViews**](docs/Api/AnalyticsApi.md#getyoutubedailyviews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views
 *CommentsApi* | [**deleteInboxComment**](docs/Api/CommentsApi.md#deleteinboxcomment) | **DELETE** /v1/inbox/comments/{postId} | Delete comment
@@ -372,6 +373,11 @@ Class | Method | HTTP request | Description
 - [GetPinterestBoards200Response](docs/Model/GetPinterestBoards200Response.md)
 - [GetPinterestBoards200ResponseBoardsInner](docs/Model/GetPinterestBoards200ResponseBoardsInner.md)
 - [GetPostLogs200Response](docs/Model/GetPostLogs200Response.md)
+- [GetPostTimeline200Response](docs/Model/GetPostTimeline200Response.md)
+- [GetPostTimeline200ResponseTimelineInner](docs/Model/GetPostTimeline200ResponseTimelineInner.md)
+- [GetPostTimeline400Response](docs/Model/GetPostTimeline400Response.md)
+- [GetPostTimeline403Response](docs/Model/GetPostTimeline403Response.md)
+- [GetPostTimeline404Response](docs/Model/GetPostTimeline404Response.md)
 - [GetPostingFrequency200Response](docs/Model/GetPostingFrequency200Response.md)
 - [GetPostingFrequency200ResponseFrequencyInner](docs/Model/GetPostingFrequency200ResponseFrequencyInner.md)
 - [GetProfile200Response](docs/Model/GetProfile200Response.md)
