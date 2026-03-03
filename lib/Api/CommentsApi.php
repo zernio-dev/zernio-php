@@ -162,7 +162,7 @@ class CommentsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\DeleteInboxComment200Response|\Late\Model\InlineObject
+     * @return \Late\Model\DeleteInboxComment200Response|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject
      */
     public function deleteInboxComment($post_id, $account_id, $comment_id, string $contentType = self::contentTypes['deleteInboxComment'][0])
     {
@@ -182,7 +182,7 @@ class CommentsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\DeleteInboxComment200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\DeleteInboxComment200Response|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteInboxCommentWithHttpInfo($post_id, $account_id, $comment_id, string $contentType = self::contentTypes['deleteInboxComment'][0])
     {
@@ -215,6 +215,12 @@ class CommentsApi
                 case 200:
                     return $this->handleResponseWithDataType(
                         '\Late\Model\DeleteInboxComment200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
@@ -252,6 +258,14 @@ class CommentsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Late\Model\DeleteInboxComment200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
