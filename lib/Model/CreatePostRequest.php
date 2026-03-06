@@ -72,6 +72,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'crossposting_enabled' => 'bool',
         'metadata' => 'array<string,mixed>',
         'tiktok_settings' => '\Late\Model\TikTokPlatformData',
+        'recycling' => '\Late\Model\RecyclingConfig',
         'queued_from_profile' => 'string',
         'queue_id' => 'string'
     ];
@@ -98,6 +99,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'crossposting_enabled' => null,
         'metadata' => null,
         'tiktok_settings' => null,
+        'recycling' => null,
         'queued_from_profile' => null,
         'queue_id' => null
     ];
@@ -122,6 +124,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'crossposting_enabled' => false,
         'metadata' => false,
         'tiktok_settings' => false,
+        'recycling' => false,
         'queued_from_profile' => false,
         'queue_id' => false
     ];
@@ -226,6 +229,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'crossposting_enabled' => 'crosspostingEnabled',
         'metadata' => 'metadata',
         'tiktok_settings' => 'tiktokSettings',
+        'recycling' => 'recycling',
         'queued_from_profile' => 'queuedFromProfile',
         'queue_id' => 'queueId'
     ];
@@ -250,6 +254,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'crossposting_enabled' => 'setCrosspostingEnabled',
         'metadata' => 'setMetadata',
         'tiktok_settings' => 'setTiktokSettings',
+        'recycling' => 'setRecycling',
         'queued_from_profile' => 'setQueuedFromProfile',
         'queue_id' => 'setQueueId'
     ];
@@ -274,6 +279,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'crossposting_enabled' => 'getCrosspostingEnabled',
         'metadata' => 'getMetadata',
         'tiktok_settings' => 'getTiktokSettings',
+        'recycling' => 'getRecycling',
         'queued_from_profile' => 'getQueuedFromProfile',
         'queue_id' => 'getQueueId'
     ];
@@ -349,6 +355,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('crossposting_enabled', $data ?? [], true);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('tiktok_settings', $data ?? [], null);
+        $this->setIfExists('recycling', $data ?? [], null);
         $this->setIfExists('queued_from_profile', $data ?? [], null);
         $this->setIfExists('queue_id', $data ?? [], null);
     }
@@ -769,6 +776,33 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable tiktok_settings cannot be null');
         }
         $this->container['tiktok_settings'] = $tiktok_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets recycling
+     *
+     * @return \Late\Model\RecyclingConfig|null
+     */
+    public function getRecycling()
+    {
+        return $this->container['recycling'];
+    }
+
+    /**
+     * Sets recycling
+     *
+     * @param \Late\Model\RecyclingConfig|null $recycling recycling
+     *
+     * @return self
+     */
+    public function setRecycling($recycling)
+    {
+        if (is_null($recycling)) {
+            throw new \InvalidArgumentException('non-nullable recycling cannot be null');
+        }
+        $this->container['recycling'] = $recycling;
 
         return $this;
     }

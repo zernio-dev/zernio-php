@@ -72,6 +72,8 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
         'mentions' => 'string[]',
         'visibility' => 'string',
         'metadata' => 'array<string,mixed>',
+        'recycling' => '\Late\Model\RecyclingState',
+        'recycled_from_post_id' => 'string',
         'queued_from_profile' => 'string',
         'queue_id' => 'string',
         'created_at' => '\DateTime',
@@ -100,6 +102,8 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
         'mentions' => null,
         'visibility' => null,
         'metadata' => null,
+        'recycling' => null,
+        'recycled_from_post_id' => null,
         'queued_from_profile' => null,
         'queue_id' => null,
         'created_at' => 'date-time',
@@ -126,6 +130,8 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
         'mentions' => false,
         'visibility' => false,
         'metadata' => false,
+        'recycling' => false,
+        'recycled_from_post_id' => false,
         'queued_from_profile' => false,
         'queue_id' => false,
         'created_at' => false,
@@ -232,6 +238,8 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
         'mentions' => 'mentions',
         'visibility' => 'visibility',
         'metadata' => 'metadata',
+        'recycling' => 'recycling',
+        'recycled_from_post_id' => 'recycledFromPostId',
         'queued_from_profile' => 'queuedFromProfile',
         'queue_id' => 'queueId',
         'created_at' => 'createdAt',
@@ -258,6 +266,8 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
         'mentions' => 'setMentions',
         'visibility' => 'setVisibility',
         'metadata' => 'setMetadata',
+        'recycling' => 'setRecycling',
+        'recycled_from_post_id' => 'setRecycledFromPostId',
         'queued_from_profile' => 'setQueuedFromProfile',
         'queue_id' => 'setQueueId',
         'created_at' => 'setCreatedAt',
@@ -284,6 +294,8 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
         'mentions' => 'getMentions',
         'visibility' => 'getVisibility',
         'metadata' => 'getMetadata',
+        'recycling' => 'getRecycling',
+        'recycled_from_post_id' => 'getRecycledFromPostId',
         'queued_from_profile' => 'getQueuedFromProfile',
         'queue_id' => 'getQueueId',
         'created_at' => 'getCreatedAt',
@@ -401,6 +413,8 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('mentions', $data ?? [], null);
         $this->setIfExists('visibility', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('recycling', $data ?? [], null);
+        $this->setIfExists('recycled_from_post_id', $data ?? [], null);
         $this->setIfExists('queued_from_profile', $data ?? [], null);
         $this->setIfExists('queue_id', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
@@ -861,6 +875,60 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable metadata cannot be null');
         }
         $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets recycling
+     *
+     * @return \Late\Model\RecyclingState|null
+     */
+    public function getRecycling()
+    {
+        return $this->container['recycling'];
+    }
+
+    /**
+     * Sets recycling
+     *
+     * @param \Late\Model\RecyclingState|null $recycling recycling
+     *
+     * @return self
+     */
+    public function setRecycling($recycling)
+    {
+        if (is_null($recycling)) {
+            throw new \InvalidArgumentException('non-nullable recycling cannot be null');
+        }
+        $this->container['recycling'] = $recycling;
+
+        return $this;
+    }
+
+    /**
+     * Gets recycled_from_post_id
+     *
+     * @return string|null
+     */
+    public function getRecycledFromPostId()
+    {
+        return $this->container['recycled_from_post_id'];
+    }
+
+    /**
+     * Sets recycled_from_post_id
+     *
+     * @param string|null $recycled_from_post_id ID of the original post if this post was created via recycling
+     *
+     * @return self
+     */
+    public function setRecycledFromPostId($recycled_from_post_id)
+    {
+        if (is_null($recycled_from_post_id)) {
+            throw new \InvalidArgumentException('non-nullable recycled_from_post_id cannot be null');
+        }
+        $this->container['recycled_from_post_id'] = $recycled_from_post_id;
 
         return $this;
     }

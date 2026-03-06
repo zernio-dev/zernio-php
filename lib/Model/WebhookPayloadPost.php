@@ -246,6 +246,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
     public const EVENT_POST_PUBLISHED = 'post.published';
     public const EVENT_POST_FAILED = 'post.failed';
     public const EVENT_POST_PARTIAL = 'post.partial';
+    public const EVENT_POST_RECYCLED = 'post.recycled';
 
     /**
      * Gets allowable values of the enum
@@ -259,6 +260,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
             self::EVENT_POST_PUBLISHED,
             self::EVENT_POST_FAILED,
             self::EVENT_POST_PARTIAL,
+            self::EVENT_POST_RECYCLED,
         ];
     }
 

@@ -311,6 +311,8 @@ docs/Model/QueueSchedule.md
 docs/Model/QueueSlot.md
 docs/Model/QueueSlotsResponse.md
 docs/Model/QueueUpdateResponse.md
+docs/Model/RecyclingConfig.md
+docs/Model/RecyclingState.md
 docs/Model/RedditPlatformData.md
 docs/Model/ReplyToInboxPost200Response.md
 docs/Model/ReplyToInboxPost200ResponseData.md
@@ -775,6 +777,8 @@ lib/Model/QueueSchedule.php
 lib/Model/QueueSlot.php
 lib/Model/QueueSlotsResponse.php
 lib/Model/QueueUpdateResponse.php
+lib/Model/RecyclingConfig.php
+lib/Model/RecyclingState.php
 lib/Model/RedditPlatformData.php
 lib/Model/ReplyToInboxPost200Response.php
 lib/Model/ReplyToInboxPost200ResponseData.php
@@ -927,3 +931,5 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/RecyclingConfigTest.php
+test/Model/RecyclingStateTest.php

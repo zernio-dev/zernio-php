@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **mentions** | **string[]** |  | [optional]
 **visibility** | **string** |  | [optional]
 **metadata** | **array<string,mixed>** |  | [optional]
+**recycling** | [**\Late\Model\RecyclingState**](RecyclingState.md) |  | [optional]
+**recycled_from_post_id** | **string** | ID of the original post if this post was created via recycling | [optional]
 **queued_from_profile** | **string** | Profile ID if the post was scheduled via the queue | [optional]
 **queue_id** | **string** | Queue ID if the post was scheduled via a specific queue | [optional]
 **created_at** | **\DateTime** |  | [optional]
