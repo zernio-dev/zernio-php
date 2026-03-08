@@ -126,7 +126,7 @@ jobs:
             ## Auto-generated SDK Update
 
             ```bash
-            composer require getlate/late-php
+            composer require getlate-dev/late-php
             ```
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
