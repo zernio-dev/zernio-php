@@ -183,6 +183,11 @@ docs/Model/GetPendingOAuthData200ResponseOrganizationsInner.md
 docs/Model/GetPinterestBoards200Response.md
 docs/Model/GetPinterestBoards200ResponseBoardsInner.md
 docs/Model/GetPostLogs200Response.md
+docs/Model/GetPostReactions200Response.md
+docs/Model/GetPostReactions200ResponseMeta.md
+docs/Model/GetPostReactions200ResponsePagination.md
+docs/Model/GetPostReactions200ResponseReactionsInner.md
+docs/Model/GetPostReactions200ResponseReactionsInnerFrom.md
 docs/Model/GetPostTimeline200Response.md
 docs/Model/GetPostTimeline200ResponseTimelineInner.md
 docs/Model/GetPostTimeline400Response.md
@@ -648,6 +653,11 @@ lib/Model/GetPendingOAuthData200ResponseOrganizationsInner.php
 lib/Model/GetPinterestBoards200Response.php
 lib/Model/GetPinterestBoards200ResponseBoardsInner.php
 lib/Model/GetPostLogs200Response.php
+lib/Model/GetPostReactions200Response.php
+lib/Model/GetPostReactions200ResponseMeta.php
+lib/Model/GetPostReactions200ResponsePagination.php
+lib/Model/GetPostReactions200ResponseReactionsInner.php
+lib/Model/GetPostReactions200ResponseReactionsInnerFrom.php
 lib/Model/GetPostTimeline200Response.php
 lib/Model/GetPostTimeline200ResponseTimelineInner.php
 lib/Model/GetPostTimeline400Response.php
@@ -931,3 +941,8 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetPostReactions200ResponseMetaTest.php
+test/Model/GetPostReactions200ResponsePaginationTest.php
+test/Model/GetPostReactions200ResponseReactionsInnerFromTest.php
+test/Model/GetPostReactions200ResponseReactionsInnerTest.php
+test/Model/GetPostReactions200ResponseTest.php

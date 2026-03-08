@@ -8,6 +8,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 | ------------- | ------------- | ------------- |
 | [**deleteInboxComment()**](CommentsApi.md#deleteInboxComment) | **DELETE** /v1/inbox/comments/{postId} | Delete comment |
 | [**getInboxPostComments()**](CommentsApi.md#getInboxPostComments) | **GET** /v1/inbox/comments/{postId} | Get post comments |
+| [**getPostReactions()**](CommentsApi.md#getPostReactions) | **GET** /v1/inbox/reactions/{postId} | Get post reactions (who reacted) |
 | [**hideInboxComment()**](CommentsApi.md#hideInboxComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/hide | Hide comment |
 | [**likeInboxComment()**](CommentsApi.md#likeInboxComment) | **POST** /v1/inbox/comments/{postId}/{commentId}/like | Like comment |
 | [**listInboxComments()**](CommentsApi.md#listInboxComments) | **GET** /v1/inbox/comments | List commented posts |
@@ -137,6 +138,72 @@ try {
 ### Return type
 
 [**\Late\Model\GetInboxPostComments200Response**](../Model/GetInboxPostComments200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getPostReactions()`
+
+```php
+getPostReactions($post_id, $account_id, $limit, $cursor): \Late\Model\GetPostReactions200Response
+```
+
+Get post reactions (who reacted)
+
+Fetch individual reactions for a post, including reactor profiles (name, headline/title, picture, profile URL). Currently only supported for **LinkedIn organization/company page** posts. LinkedIn restricts reaction data for personal profiles (r_member_social_feed is a closed permission).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\CommentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string | Late post ID or platform-specific post ID (LinkedIn activity URN or numeric ID).
+$account_id = 'account_id_example'; // string | The social account ID (must be a LinkedIn organization account).
+$limit = 25; // int | Maximum number of reactions to return per page.
+$cursor = 'cursor_example'; // string | Offset-based pagination start index.
+
+try {
+    $result = $apiInstance->getPostReactions($post_id, $account_id, $limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CommentsApi->getPostReactions: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**| Late post ID or platform-specific post ID (LinkedIn activity URN or numeric ID). | |
+| **account_id** | **string**| The social account ID (must be a LinkedIn organization account). | |
+| **limit** | **int**| Maximum number of reactions to return per page. | [optional] [default to 25] |
+| **cursor** | **string**| Offset-based pagination start index. | [optional] |
+
+### Return type
+
+[**\Late\Model\GetPostReactions200Response**](../Model/GetPostReactions200Response.md)
 
 ### Authorization
 
