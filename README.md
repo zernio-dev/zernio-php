@@ -6,7 +6,7 @@ Base URL: https://getlate.dev/api
 
 For more information, please visit [https://getlate.dev](https://getlate.dev).
 
-## Installation & Usage
+## Installation
 
 ### Requirements
 
@@ -14,31 +14,8 @@ PHP 8.1 and later.
 
 ### Composer
 
-To install the bindings via [Composer](https://getcomposer.org/), add the following to `composer.json`:
-
-```json
-{
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/getlate-dev/late-php.git"
-    }
-  ],
-  "require": {
-    "getlate-dev/late-php": "*@dev"
-  }
-}
-```
-
-Then run `composer install`
-
-### Manual Installation
-
-Download the files and include `autoload.php`:
-
-```php
-<?php
-require_once('/path/to/Late/vendor/autoload.php');
+```bash
+composer require getlate-dev/late-php
 ```
 
 ## Getting Started

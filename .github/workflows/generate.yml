@@ -50,6 +50,28 @@ jobs:
             --git-user-id=getlate-dev \
             --git-repo-id=late-php
 
+      - name: Patch README install instructions
+        run: |
+          python3 -c "
+          import re, textwrap
+          with open('README.md', 'r') as f:
+              content = f.read()
+          install_section = textwrap.dedent('''## Installation
+
+          ### Requirements
+
+          PHP 8.1 and later.
+
+          ### Composer
+
+          \`\`\`bash
+          composer require getlate-dev/late-php
+          \`\`\`''')
+          content = re.sub(r'## Installation & Usage.*?(?=\n## )', install_section + '\n\n', content, flags=re.DOTALL)
+          with open('README.md', 'w') as f:
+              f.write(content)
+          "
+
       - name: Install dependencies
         run: composer install --no-interaction
 
