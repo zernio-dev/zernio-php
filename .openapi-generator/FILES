@@ -941,8 +941,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetLinkedInPostReactions200ResponsePaginationTest.php
-test/Model/GetLinkedInPostReactions200ResponseReactionsInnerFromTest.php
-test/Model/GetLinkedInPostReactions200ResponseReactionsInnerTest.php
-test/Model/GetLinkedInPostReactions200ResponseTest.php
-test/Model/GetLinkedInPostReactions400ResponseTest.php

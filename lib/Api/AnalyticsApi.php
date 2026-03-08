@@ -2723,7 +2723,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInPostReactions
      *
-     * Get LinkedIn post reactions (who reacted)
+     * Get LinkedIn post reactions
      *
      * @param  string $account_id The ID of the LinkedIn organization account (required)
      * @param  string $urn The LinkedIn post URN (required)
@@ -2744,7 +2744,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInPostReactionsWithHttpInfo
      *
-     * Get LinkedIn post reactions (who reacted)
+     * Get LinkedIn post reactions
      *
      * @param  string $account_id The ID of the LinkedIn organization account (required)
      * @param  string $urn The LinkedIn post URN (required)
@@ -2860,7 +2860,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInPostReactionsAsync
      *
-     * Get LinkedIn post reactions (who reacted)
+     * Get LinkedIn post reactions
      *
      * @param  string $account_id The ID of the LinkedIn organization account (required)
      * @param  string $urn The LinkedIn post URN (required)
@@ -2884,7 +2884,7 @@ class AnalyticsApi
     /**
      * Operation getLinkedInPostReactionsAsyncWithHttpInfo
      *
-     * Get LinkedIn post reactions (who reacted)
+     * Get LinkedIn post reactions
      *
      * @param  string $account_id The ID of the LinkedIn organization account (required)
      * @param  string $urn The LinkedIn post URN (required)
