@@ -107,12 +107,12 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**getFollowerStats**](docs/Api/AnalyticsApi.md#getfollowerstats) | **GET** /v1/accounts/follower-stats | Get follower stats
 *AnalyticsApi* | [**getLinkedInAggregateAnalytics**](docs/Api/AnalyticsApi.md#getlinkedinaggregateanalytics) | **GET** /v1/accounts/{accountId}/linkedin-aggregate-analytics | Get LinkedIn aggregate stats
 *AnalyticsApi* | [**getLinkedInPostAnalytics**](docs/Api/AnalyticsApi.md#getlinkedinpostanalytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats
+*AnalyticsApi* | [**getLinkedInPostReactions**](docs/Api/AnalyticsApi.md#getlinkedinpostreactions) | **GET** /v1/accounts/{accountId}/linkedin-post-reactions | Get LinkedIn post reactions (who reacted)
 *AnalyticsApi* | [**getPostTimeline**](docs/Api/AnalyticsApi.md#getposttimeline) | **GET** /v1/analytics/post-timeline | Get post analytics timeline
 *AnalyticsApi* | [**getPostingFrequency**](docs/Api/AnalyticsApi.md#getpostingfrequency) | **GET** /v1/analytics/posting-frequency | Get posting frequency vs engagement
 *AnalyticsApi* | [**getYouTubeDailyViews**](docs/Api/AnalyticsApi.md#getyoutubedailyviews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views
 *CommentsApi* | [**deleteInboxComment**](docs/Api/CommentsApi.md#deleteinboxcomment) | **DELETE** /v1/inbox/comments/{postId} | Delete comment
 *CommentsApi* | [**getInboxPostComments**](docs/Api/CommentsApi.md#getinboxpostcomments) | **GET** /v1/inbox/comments/{postId} | Get post comments
-*CommentsApi* | [**getPostReactions**](docs/Api/CommentsApi.md#getpostreactions) | **GET** /v1/inbox/reactions/{postId} | Get post reactions (who reacted)
 *CommentsApi* | [**hideInboxComment**](docs/Api/CommentsApi.md#hideinboxcomment) | **POST** /v1/inbox/comments/{postId}/{commentId}/hide | Hide comment
 *CommentsApi* | [**likeInboxComment**](docs/Api/CommentsApi.md#likeinboxcomment) | **POST** /v1/inbox/comments/{postId}/{commentId}/like | Like comment
 *CommentsApi* | [**listInboxComments**](docs/Api/CommentsApi.md#listinboxcomments) | **GET** /v1/inbox/comments | List commented posts
@@ -365,6 +365,11 @@ Class | Method | HTTP request | Description
 - [GetLinkedInPostAnalytics200ResponseAnalytics](docs/Model/GetLinkedInPostAnalytics200ResponseAnalytics.md)
 - [GetLinkedInPostAnalytics400Response](docs/Model/GetLinkedInPostAnalytics400Response.md)
 - [GetLinkedInPostAnalytics403Response](docs/Model/GetLinkedInPostAnalytics403Response.md)
+- [GetLinkedInPostReactions200Response](docs/Model/GetLinkedInPostReactions200Response.md)
+- [GetLinkedInPostReactions200ResponsePagination](docs/Model/GetLinkedInPostReactions200ResponsePagination.md)
+- [GetLinkedInPostReactions200ResponseReactionsInner](docs/Model/GetLinkedInPostReactions200ResponseReactionsInner.md)
+- [GetLinkedInPostReactions200ResponseReactionsInnerFrom](docs/Model/GetLinkedInPostReactions200ResponseReactionsInnerFrom.md)
+- [GetLinkedInPostReactions400Response](docs/Model/GetLinkedInPostReactions400Response.md)
 - [GetMediaPresignedUrl200Response](docs/Model/GetMediaPresignedUrl200Response.md)
 - [GetMediaPresignedUrlRequest](docs/Model/GetMediaPresignedUrlRequest.md)
 - [GetMessengerMenu200Response](docs/Model/GetMessengerMenu200Response.md)
@@ -374,11 +379,6 @@ Class | Method | HTTP request | Description
 - [GetPinterestBoards200Response](docs/Model/GetPinterestBoards200Response.md)
 - [GetPinterestBoards200ResponseBoardsInner](docs/Model/GetPinterestBoards200ResponseBoardsInner.md)
 - [GetPostLogs200Response](docs/Model/GetPostLogs200Response.md)
-- [GetPostReactions200Response](docs/Model/GetPostReactions200Response.md)
-- [GetPostReactions200ResponseMeta](docs/Model/GetPostReactions200ResponseMeta.md)
-- [GetPostReactions200ResponsePagination](docs/Model/GetPostReactions200ResponsePagination.md)
-- [GetPostReactions200ResponseReactionsInner](docs/Model/GetPostReactions200ResponseReactionsInner.md)
-- [GetPostReactions200ResponseReactionsInnerFrom](docs/Model/GetPostReactions200ResponseReactionsInnerFrom.md)
 - [GetPostTimeline200Response](docs/Model/GetPostTimeline200Response.md)
 - [GetPostTimeline200ResponseTimelineInner](docs/Model/GetPostTimeline200ResponseTimelineInner.md)
 - [GetPostTimeline400Response](docs/Model/GetPostTimeline400Response.md)
