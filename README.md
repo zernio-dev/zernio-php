@@ -18,6 +18,7 @@ PHP 8.1 and later.
 composer require getlate-dev/late-php
 ```
 
+
 ## Getting Started
 
 Please follow the [installation procedure](#installation--usage) and then run the following:

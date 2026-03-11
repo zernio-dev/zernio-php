@@ -59,6 +59,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
+        'reply_to_tweet_id' => 'string',
         'reply_settings' => 'string',
         'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
         'content_type' => 'string',
@@ -119,6 +120,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'reply_to_tweet_id' => null,
         'reply_settings' => null,
         'thread_items' => null,
         'content_type' => null,
@@ -177,6 +179,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'reply_to_tweet_id' => false,
         'reply_settings' => false,
         'thread_items' => false,
         'content_type' => false,
@@ -315,6 +318,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
+        'reply_to_tweet_id' => 'replyToTweetId',
         'reply_settings' => 'replySettings',
         'thread_items' => 'threadItems',
         'content_type' => 'contentType',
@@ -373,6 +377,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
+        'reply_to_tweet_id' => 'setReplyToTweetId',
         'reply_settings' => 'setReplySettings',
         'thread_items' => 'setThreadItems',
         'content_type' => 'setContentType',
@@ -431,6 +436,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
+        'reply_to_tweet_id' => 'getReplyToTweetId',
         'reply_settings' => 'getReplySettings',
         'thread_items' => 'getThreadItems',
         'content_type' => 'getContentType',
@@ -527,6 +533,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     public const REPLY_SETTINGS_FOLLOWING = 'following';
     public const REPLY_SETTINGS_MENTIONED_USERS = 'mentionedUsers';
     public const REPLY_SETTINGS_SUBSCRIBERS = 'subscribers';
+    public const REPLY_SETTINGS_VERIFIED = 'verified';
     public const CONTENT_TYPE_STORY = 'story';
     public const CONTENT_TYPE_SAVED_STORY = 'saved_story';
     public const CONTENT_TYPE_SPOTLIGHT = 'spotlight';
@@ -553,6 +560,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
             self::REPLY_SETTINGS_FOLLOWING,
             self::REPLY_SETTINGS_MENTIONED_USERS,
             self::REPLY_SETTINGS_SUBSCRIBERS,
+            self::REPLY_SETTINGS_VERIFIED,
         ];
     }
 
@@ -640,6 +648,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('reply_to_tweet_id', $data ?? [], null);
         $this->setIfExists('reply_settings', $data ?? [], null);
         $this->setIfExists('thread_items', $data ?? [], null);
         $this->setIfExists('content_type', $data ?? [], 'story');
@@ -813,6 +822,33 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
 
 
     /**
+     * Gets reply_to_tweet_id
+     *
+     * @return string|null
+     */
+    public function getReplyToTweetId()
+    {
+        return $this->container['reply_to_tweet_id'];
+    }
+
+    /**
+     * Sets reply_to_tweet_id
+     *
+     * @param string|null $reply_to_tweet_id ID of an existing tweet to reply to. The published tweet will appear as a reply in that tweet's thread. For threads, only the first tweet replies to the target; subsequent tweets chain normally.
+     *
+     * @return self
+     */
+    public function setReplyToTweetId($reply_to_tweet_id)
+    {
+        if (is_null($reply_to_tweet_id)) {
+            throw new \InvalidArgumentException('non-nullable reply_to_tweet_id cannot be null');
+        }
+        $this->container['reply_to_tweet_id'] = $reply_to_tweet_id;
+
+        return $this;
+    }
+
+    /**
      * Gets reply_settings
      *
      * @return string|null
@@ -825,7 +861,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     /**
      * Sets reply_settings
      *
-     * @param string|null $reply_settings Controls who can reply to the tweet. \"following\" allows only people you follow, \"mentionedUsers\" allows only mentioned users, \"subscribers\" allows only subscribers. Omit for default (everyone can reply). For threads, applies to the first tweet only.
+     * @param string|null $reply_settings Controls who can reply to the tweet. \"following\" allows only people you follow, \"mentionedUsers\" allows only mentioned users, \"subscribers\" allows only subscribers, \"verified\" allows only verified users. Omit for default (everyone can reply). For threads, applies to the first tweet only. Cannot be combined with replyToTweetId.
      *
      * @return self
      */
