@@ -226,14 +226,10 @@ Class | Method | HTTP request | Description
 *WhatsAppApi* | [**updateWhatsAppBusinessProfile**](docs/Api/WhatsAppApi.md#updatewhatsappbusinessprofile) | **POST** /v1/whatsapp/business-profile | Update business profile
 *WhatsAppApi* | [**updateWhatsAppContact**](docs/Api/WhatsAppApi.md#updatewhatsappcontact) | **PUT** /v1/whatsapp/contacts/{contactId} | Update contact
 *WhatsAppApi* | [**updateWhatsAppTemplate**](docs/Api/WhatsAppApi.md#updatewhatsapptemplate) | **PATCH** /v1/whatsapp/templates/{templateName} | Update template
-*WhatsAppPhoneNumbersApi* | [**getPreverifiedWhatsAppNumbers**](docs/Api/WhatsAppPhoneNumbersApi.md#getpreverifiedwhatsappnumbers) | **GET** /v1/whatsapp/phone-numbers/preverified | Get pre-verified numbers
 *WhatsAppPhoneNumbersApi* | [**getWhatsAppPhoneNumber**](docs/Api/WhatsAppPhoneNumbersApi.md#getwhatsappphonenumber) | **GET** /v1/whatsapp/phone-numbers/{phoneNumberId} | Get phone number
 *WhatsAppPhoneNumbersApi* | [**getWhatsAppPhoneNumbers**](docs/Api/WhatsAppPhoneNumbersApi.md#getwhatsappphonenumbers) | **GET** /v1/whatsapp/phone-numbers | List phone numbers
 *WhatsAppPhoneNumbersApi* | [**purchaseWhatsAppPhoneNumber**](docs/Api/WhatsAppPhoneNumbersApi.md#purchasewhatsappphonenumber) | **POST** /v1/whatsapp/phone-numbers/purchase | Purchase phone number
 *WhatsAppPhoneNumbersApi* | [**releaseWhatsAppPhoneNumber**](docs/Api/WhatsAppPhoneNumbersApi.md#releasewhatsappphonenumber) | **DELETE** /v1/whatsapp/phone-numbers/{phoneNumberId} | Release phone number
-*WhatsAppPhoneNumbersApi* | [**requestWhatsAppVerificationCode**](docs/Api/WhatsAppPhoneNumbersApi.md#requestwhatsappverificationcode) | **POST** /v1/whatsapp/phone-numbers/{phoneNumberId}/request-code | Request OTP
-*WhatsAppPhoneNumbersApi* | [**searchAvailableWhatsAppNumbers**](docs/Api/WhatsAppPhoneNumbersApi.md#searchavailablewhatsappnumbers) | **GET** /v1/whatsapp/phone-numbers/available | Search available numbers
-*WhatsAppPhoneNumbersApi* | [**verifyWhatsAppPhoneNumber**](docs/Api/WhatsAppPhoneNumbersApi.md#verifywhatsappphonenumber) | **POST** /v1/whatsapp/phone-numbers/{phoneNumberId}/verify | Verify OTP
 
 ## Models
 
@@ -421,8 +417,6 @@ Class | Method | HTTP request | Description
 - [GetPostTimeline404Response](docs/Model/GetPostTimeline404Response.md)
 - [GetPostingFrequency200Response](docs/Model/GetPostingFrequency200Response.md)
 - [GetPostingFrequency200ResponseFrequencyInner](docs/Model/GetPostingFrequency200ResponseFrequencyInner.md)
-- [GetPreverifiedWhatsAppNumbers200Response](docs/Model/GetPreverifiedWhatsAppNumbers200Response.md)
-- [GetPreverifiedWhatsAppNumbers200ResponseNumbersInner](docs/Model/GetPreverifiedWhatsAppNumbers200ResponseNumbersInner.md)
 - [GetProfile200Response](docs/Model/GetProfile200Response.md)
 - [GetRedditFeed200Response](docs/Model/GetRedditFeed200Response.md)
 - [GetRedditFlairs200Response](docs/Model/GetRedditFlairs200Response.md)
@@ -596,12 +590,9 @@ Class | Method | HTTP request | Description
 - [ReplyToInboxReview200Response](docs/Model/ReplyToInboxReview200Response.md)
 - [ReplyToInboxReview200ResponseReply](docs/Model/ReplyToInboxReview200ResponseReply.md)
 - [ReplyToInboxReviewRequest](docs/Model/ReplyToInboxReviewRequest.md)
-- [RequestWhatsAppVerificationCode200Response](docs/Model/RequestWhatsAppVerificationCode200Response.md)
-- [RequestWhatsAppVerificationCodeRequest](docs/Model/RequestWhatsAppVerificationCodeRequest.md)
 - [ScheduleWhatsAppBroadcast200Response](docs/Model/ScheduleWhatsAppBroadcast200Response.md)
 - [ScheduleWhatsAppBroadcast200ResponseBroadcast](docs/Model/ScheduleWhatsAppBroadcast200ResponseBroadcast.md)
 - [ScheduleWhatsAppBroadcastRequest](docs/Model/ScheduleWhatsAppBroadcastRequest.md)
-- [SearchAvailableWhatsAppNumbers200Response](docs/Model/SearchAvailableWhatsAppNumbers200Response.md)
 - [SearchReddit200Response](docs/Model/SearchReddit200Response.md)
 - [SearchReddit200ResponsePostsInner](docs/Model/SearchReddit200ResponsePostsInner.md)
 - [SelectFacebookPage200Response](docs/Model/SelectFacebookPage200Response.md)
@@ -730,8 +721,6 @@ Class | Method | HTTP request | Description
 - [ValidateSubreddit200ResponseOneOf](docs/Model/ValidateSubreddit200ResponseOneOf.md)
 - [ValidateSubreddit200ResponseOneOf1](docs/Model/ValidateSubreddit200ResponseOneOf1.md)
 - [ValidateSubreddit200ResponseOneOfSubreddit](docs/Model/ValidateSubreddit200ResponseOneOfSubreddit.md)
-- [VerifyWhatsAppPhoneNumber200Response](docs/Model/VerifyWhatsAppPhoneNumber200Response.md)
-- [VerifyWhatsAppPhoneNumberRequest](docs/Model/VerifyWhatsAppPhoneNumberRequest.md)
 - [Webhook](docs/Model/Webhook.md)
 - [WebhookLog](docs/Model/WebhookLog.md)
 - [WebhookPayloadAccountConnected](docs/Model/WebhookPayloadAccountConnected.md)
