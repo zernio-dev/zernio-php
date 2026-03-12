@@ -66,7 +66,9 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         'special_hours' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHours',
         'profile' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseProfile',
         'website_uri' => 'string',
-        'phone_numbers' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponsePhoneNumbers'
+        'phone_numbers' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponsePhoneNumbers',
+        'categories' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseCategories',
+        'service_items' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInner[]'
     ];
 
     /**
@@ -85,7 +87,9 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         'special_hours' => null,
         'profile' => null,
         'website_uri' => null,
-        'phone_numbers' => null
+        'phone_numbers' => null,
+        'categories' => null,
+        'service_items' => null
     ];
 
     /**
@@ -102,7 +106,9 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         'special_hours' => false,
         'profile' => false,
         'website_uri' => false,
-        'phone_numbers' => false
+        'phone_numbers' => false,
+        'categories' => false,
+        'service_items' => false
     ];
 
     /**
@@ -199,7 +205,9 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         'special_hours' => 'specialHours',
         'profile' => 'profile',
         'website_uri' => 'websiteUri',
-        'phone_numbers' => 'phoneNumbers'
+        'phone_numbers' => 'phoneNumbers',
+        'categories' => 'categories',
+        'service_items' => 'serviceItems'
     ];
 
     /**
@@ -216,7 +224,9 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         'special_hours' => 'setSpecialHours',
         'profile' => 'setProfile',
         'website_uri' => 'setWebsiteUri',
-        'phone_numbers' => 'setPhoneNumbers'
+        'phone_numbers' => 'setPhoneNumbers',
+        'categories' => 'setCategories',
+        'service_items' => 'setServiceItems'
     ];
 
     /**
@@ -233,7 +243,9 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         'special_hours' => 'getSpecialHours',
         'profile' => 'getProfile',
         'website_uri' => 'getWebsiteUri',
-        'phone_numbers' => 'getPhoneNumbers'
+        'phone_numbers' => 'getPhoneNumbers',
+        'categories' => 'getCategories',
+        'service_items' => 'getServiceItems'
     ];
 
     /**
@@ -302,6 +314,8 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         $this->setIfExists('profile', $data ?? [], null);
         $this->setIfExists('website_uri', $data ?? [], null);
         $this->setIfExists('phone_numbers', $data ?? [], null);
+        $this->setIfExists('categories', $data ?? [], null);
+        $this->setIfExists('service_items', $data ?? [], null);
     }
 
     /**
@@ -585,6 +599,60 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
             throw new \InvalidArgumentException('non-nullable phone_numbers cannot be null');
         }
         $this->container['phone_numbers'] = $phone_numbers;
+
+        return $this;
+    }
+
+    /**
+     * Gets categories
+     *
+     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseCategories|null
+     */
+    public function getCategories()
+    {
+        return $this->container['categories'];
+    }
+
+    /**
+     * Sets categories
+     *
+     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseCategories|null $categories categories
+     *
+     * @return self
+     */
+    public function setCategories($categories)
+    {
+        if (is_null($categories)) {
+            throw new \InvalidArgumentException('non-nullable categories cannot be null');
+        }
+        $this->container['categories'] = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_items
+     *
+     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInner[]|null
+     */
+    public function getServiceItems()
+    {
+        return $this->container['service_items'];
+    }
+
+    /**
+     * Sets service_items
+     *
+     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInner[]|null $service_items Services offered (returned when readMask includes 'serviceItems')
+     *
+     * @return self
+     */
+    public function setServiceItems($service_items)
+    {
+        if (is_null($service_items)) {
+            throw new \InvalidArgumentException('non-nullable service_items cannot be null');
+        }
+        $this->container['service_items'] = $service_items;
 
         return $this;
     }

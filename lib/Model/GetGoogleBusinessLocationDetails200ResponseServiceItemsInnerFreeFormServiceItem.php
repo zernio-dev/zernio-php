@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateGoogleBusinessLocationDetailsRequest
+ * GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerFreeFormServiceItem
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * UpdateGoogleBusinessLocationDetailsRequest Class Doc Comment
+ * GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerFreeFormServiceItem Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerFreeFormServiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateGoogleBusinessLocationDetails_request';
+    protected static $openAPIModelName = 'getGoogleBusinessLocationDetails_200_response_serviceItems_inner_freeFormServiceItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,8 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
-        'update_mask' => 'string',
-        'regular_hours' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHours',
-        'special_hours' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHours',
-        'profile' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestProfile',
-        'website_uri' => 'string',
-        'phone_numbers' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponsePhoneNumbers',
-        'categories' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestCategories',
-        'service_items' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner[]'
+        'category' => 'string',
+        'label' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerFreeFormServiceItemLabel'
     ];
 
     /**
@@ -76,14 +70,8 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'update_mask' => null,
-        'regular_hours' => null,
-        'special_hours' => null,
-        'profile' => null,
-        'website_uri' => null,
-        'phone_numbers' => null,
-        'categories' => null,
-        'service_items' => null
+        'category' => null,
+        'label' => null
     ];
 
     /**
@@ -92,14 +80,8 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'update_mask' => false,
-        'regular_hours' => false,
-        'special_hours' => false,
-        'profile' => false,
-        'website_uri' => false,
-        'phone_numbers' => false,
-        'categories' => false,
-        'service_items' => false
+        'category' => false,
+        'label' => false
     ];
 
     /**
@@ -188,14 +170,8 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
      * @var string[]
      */
     protected static $attributeMap = [
-        'update_mask' => 'updateMask',
-        'regular_hours' => 'regularHours',
-        'special_hours' => 'specialHours',
-        'profile' => 'profile',
-        'website_uri' => 'websiteUri',
-        'phone_numbers' => 'phoneNumbers',
-        'categories' => 'categories',
-        'service_items' => 'serviceItems'
+        'category' => 'category',
+        'label' => 'label'
     ];
 
     /**
@@ -204,14 +180,8 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
      * @var string[]
      */
     protected static $setters = [
-        'update_mask' => 'setUpdateMask',
-        'regular_hours' => 'setRegularHours',
-        'special_hours' => 'setSpecialHours',
-        'profile' => 'setProfile',
-        'website_uri' => 'setWebsiteUri',
-        'phone_numbers' => 'setPhoneNumbers',
-        'categories' => 'setCategories',
-        'service_items' => 'setServiceItems'
+        'category' => 'setCategory',
+        'label' => 'setLabel'
     ];
 
     /**
@@ -220,14 +190,8 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
      * @var string[]
      */
     protected static $getters = [
-        'update_mask' => 'getUpdateMask',
-        'regular_hours' => 'getRegularHours',
-        'special_hours' => 'getSpecialHours',
-        'profile' => 'getProfile',
-        'website_uri' => 'getWebsiteUri',
-        'phone_numbers' => 'getPhoneNumbers',
-        'categories' => 'getCategories',
-        'service_items' => 'getServiceItems'
+        'category' => 'getCategory',
+        'label' => 'getLabel'
     ];
 
     /**
@@ -287,14 +251,8 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('update_mask', $data ?? [], null);
-        $this->setIfExists('regular_hours', $data ?? [], null);
-        $this->setIfExists('special_hours', $data ?? [], null);
-        $this->setIfExists('profile', $data ?? [], null);
-        $this->setIfExists('website_uri', $data ?? [], null);
-        $this->setIfExists('phone_numbers', $data ?? [], null);
-        $this->setIfExists('categories', $data ?? [], null);
-        $this->setIfExists('service_items', $data ?? [], null);
+        $this->setIfExists('category', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
     }
 
     /**
@@ -324,9 +282,6 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     {
         $invalidProperties = [];
 
-        if ($this->container['update_mask'] === null) {
-            $invalidProperties[] = "'update_mask' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -343,217 +298,55 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
 
 
     /**
-     * Gets update_mask
-     *
-     * @return string
-     */
-    public function getUpdateMask()
-    {
-        return $this->container['update_mask'];
-    }
-
-    /**
-     * Sets update_mask
-     *
-     * @param string $update_mask Required. Comma-separated fields to update (e.g. 'regularHours', 'specialHours', 'profile.description', 'categories', 'serviceItems'). Any valid Google Business Information API updateMask field is supported.
-     *
-     * @return self
-     */
-    public function setUpdateMask($update_mask)
-    {
-        if (is_null($update_mask)) {
-            throw new \InvalidArgumentException('non-nullable update_mask cannot be null');
-        }
-        $this->container['update_mask'] = $update_mask;
-
-        return $this;
-    }
-
-    /**
-     * Gets regular_hours
-     *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHours|null
-     */
-    public function getRegularHours()
-    {
-        return $this->container['regular_hours'];
-    }
-
-    /**
-     * Sets regular_hours
-     *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHours|null $regular_hours regular_hours
-     *
-     * @return self
-     */
-    public function setRegularHours($regular_hours)
-    {
-        if (is_null($regular_hours)) {
-            throw new \InvalidArgumentException('non-nullable regular_hours cannot be null');
-        }
-        $this->container['regular_hours'] = $regular_hours;
-
-        return $this;
-    }
-
-    /**
-     * Gets special_hours
-     *
-     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHours|null
-     */
-    public function getSpecialHours()
-    {
-        return $this->container['special_hours'];
-    }
-
-    /**
-     * Sets special_hours
-     *
-     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHours|null $special_hours special_hours
-     *
-     * @return self
-     */
-    public function setSpecialHours($special_hours)
-    {
-        if (is_null($special_hours)) {
-            throw new \InvalidArgumentException('non-nullable special_hours cannot be null');
-        }
-        $this->container['special_hours'] = $special_hours;
-
-        return $this;
-    }
-
-    /**
-     * Gets profile
-     *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestProfile|null
-     */
-    public function getProfile()
-    {
-        return $this->container['profile'];
-    }
-
-    /**
-     * Sets profile
-     *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestProfile|null $profile profile
-     *
-     * @return self
-     */
-    public function setProfile($profile)
-    {
-        if (is_null($profile)) {
-            throw new \InvalidArgumentException('non-nullable profile cannot be null');
-        }
-        $this->container['profile'] = $profile;
-
-        return $this;
-    }
-
-    /**
-     * Gets website_uri
+     * Gets category
      *
      * @return string|null
      */
-    public function getWebsiteUri()
+    public function getCategory()
     {
-        return $this->container['website_uri'];
+        return $this->container['category'];
     }
 
     /**
-     * Sets website_uri
+     * Sets category
      *
-     * @param string|null $website_uri website_uri
+     * @param string|null $category category
      *
      * @return self
      */
-    public function setWebsiteUri($website_uri)
+    public function setCategory($category)
     {
-        if (is_null($website_uri)) {
-            throw new \InvalidArgumentException('non-nullable website_uri cannot be null');
+        if (is_null($category)) {
+            throw new \InvalidArgumentException('non-nullable category cannot be null');
         }
-        $this->container['website_uri'] = $website_uri;
+        $this->container['category'] = $category;
 
         return $this;
     }
 
     /**
-     * Gets phone_numbers
+     * Gets label
      *
-     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponsePhoneNumbers|null
+     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerFreeFormServiceItemLabel|null
      */
-    public function getPhoneNumbers()
+    public function getLabel()
     {
-        return $this->container['phone_numbers'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets phone_numbers
+     * Sets label
      *
-     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponsePhoneNumbers|null $phone_numbers phone_numbers
+     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerFreeFormServiceItemLabel|null $label label
      *
      * @return self
      */
-    public function setPhoneNumbers($phone_numbers)
+    public function setLabel($label)
     {
-        if (is_null($phone_numbers)) {
-            throw new \InvalidArgumentException('non-nullable phone_numbers cannot be null');
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
-        $this->container['phone_numbers'] = $phone_numbers;
-
-        return $this;
-    }
-
-    /**
-     * Gets categories
-     *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestCategories|null
-     */
-    public function getCategories()
-    {
-        return $this->container['categories'];
-    }
-
-    /**
-     * Sets categories
-     *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestCategories|null $categories categories
-     *
-     * @return self
-     */
-    public function setCategories($categories)
-    {
-        if (is_null($categories)) {
-            throw new \InvalidArgumentException('non-nullable categories cannot be null');
-        }
-        $this->container['categories'] = $categories;
-
-        return $this;
-    }
-
-    /**
-     * Gets service_items
-     *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner[]|null
-     */
-    public function getServiceItems()
-    {
-        return $this->container['service_items'];
-    }
-
-    /**
-     * Sets service_items
-     *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner[]|null $service_items Services offered by the business. Use updateMask='serviceItems' to update.
-     *
-     * @return self
-     */
-    public function setServiceItems($service_items)
-    {
-        if (is_null($service_items)) {
-            throw new \InvalidArgumentException('non-nullable service_items cannot be null');
-        }
-        $this->container['service_items'] = $service_items;
+        $this->container['label'] = $label;
 
         return $this;
     }
