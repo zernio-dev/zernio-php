@@ -13,7 +13,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 ## `getGoogleBusinessLocationDetails()`
 
 ```php
-getGoogleBusinessLocationDetails($account_id, $read_mask): \Late\Model\GetGoogleBusinessLocationDetails200Response
+getGoogleBusinessLocationDetails($account_id, $location_id, $read_mask): \Late\Model\GetGoogleBusinessLocationDetails200Response
 ```
 
 Get location details
@@ -38,10 +38,11 @@ $apiInstance = new Late\Api\GMBLocationDetailsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The Late account ID (from /v1/accounts)
+$location_id = 'location_id_example'; // string | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 $read_mask = 'read_mask_example'; // string | Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours.
 
 try {
-    $result = $apiInstance->getGoogleBusinessLocationDetails($account_id, $read_mask);
+    $result = $apiInstance->getGoogleBusinessLocationDetails($account_id, $location_id, $read_mask);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GMBLocationDetailsApi->getGoogleBusinessLocationDetails: ', $e->getMessage(), PHP_EOL;
@@ -53,6 +54,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The Late account ID (from /v1/accounts) | |
+| **location_id** | **string**| Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 | **read_mask** | **string**| Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. | [optional] |
 
 ### Return type
@@ -75,7 +77,7 @@ try {
 ## `updateGoogleBusinessLocationDetails()`
 
 ```php
-updateGoogleBusinessLocationDetails($account_id, $update_google_business_location_details_request): \Late\Model\UpdateGoogleBusinessLocationDetails200Response
+updateGoogleBusinessLocationDetails($account_id, $update_google_business_location_details_request, $location_id): \Late\Model\UpdateGoogleBusinessLocationDetails200Response
 ```
 
 Update location details
@@ -101,9 +103,10 @@ $apiInstance = new Late\Api\GMBLocationDetailsApi(
 );
 $account_id = 'account_id_example'; // string | The Late account ID (from /v1/accounts)
 $update_google_business_location_details_request = {"updateMask":"regularHours,specialHours","regularHours":{"periods":[{"openDay":"MONDAY","openTime":"09:00","closeDay":"MONDAY","closeTime":"17:00"},{"openDay":"SATURDAY","openTime":"10:00","closeDay":"SATURDAY","closeTime":"14:00"}]},"specialHours":{"specialHourPeriods":[{"startDate":{"year":2026,"month":12,"day":25},"closed":true},{"startDate":{"year":2026,"month":12,"day":31},"openTime":"09:00","closeTime":"15:00"}]}}; // \Late\Model\UpdateGoogleBusinessLocationDetailsRequest
+$location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
-    $result = $apiInstance->updateGoogleBusinessLocationDetails($account_id, $update_google_business_location_details_request);
+    $result = $apiInstance->updateGoogleBusinessLocationDetails($account_id, $update_google_business_location_details_request, $location_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GMBLocationDetailsApi->updateGoogleBusinessLocationDetails: ', $e->getMessage(), PHP_EOL;
@@ -116,6 +119,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The Late account ID (from /v1/accounts) | |
 | **update_google_business_location_details_request** | [**\Late\Model\UpdateGoogleBusinessLocationDetailsRequest**](../Model/UpdateGoogleBusinessLocationDetailsRequest.md)|  | |
+| **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
 

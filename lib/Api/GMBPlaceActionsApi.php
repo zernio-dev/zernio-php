@@ -139,15 +139,16 @@ class GMBPlaceActionsApi
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessPlaceActionRequest $create_google_business_place_action_request create_google_business_place_action_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\CreateGoogleBusinessPlaceAction200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
      */
-    public function createGoogleBusinessPlaceAction($account_id, $create_google_business_place_action_request, string $contentType = self::contentTypes['createGoogleBusinessPlaceAction'][0])
+    public function createGoogleBusinessPlaceAction($account_id, $create_google_business_place_action_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessPlaceAction'][0])
     {
-        list($response) = $this->createGoogleBusinessPlaceActionWithHttpInfo($account_id, $create_google_business_place_action_request, $contentType);
+        list($response) = $this->createGoogleBusinessPlaceActionWithHttpInfo($account_id, $create_google_business_place_action_request, $location_id, $contentType);
         return $response;
     }
 
@@ -158,15 +159,16 @@ class GMBPlaceActionsApi
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessPlaceActionRequest $create_google_business_place_action_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\CreateGoogleBusinessPlaceAction200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createGoogleBusinessPlaceActionWithHttpInfo($account_id, $create_google_business_place_action_request, string $contentType = self::contentTypes['createGoogleBusinessPlaceAction'][0])
+    public function createGoogleBusinessPlaceActionWithHttpInfo($account_id, $create_google_business_place_action_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessPlaceAction'][0])
     {
-        $request = $this->createGoogleBusinessPlaceActionRequest($account_id, $create_google_business_place_action_request, $contentType);
+        $request = $this->createGoogleBusinessPlaceActionRequest($account_id, $create_google_business_place_action_request, $location_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -272,14 +274,15 @@ class GMBPlaceActionsApi
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessPlaceActionRequest $create_google_business_place_action_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createGoogleBusinessPlaceActionAsync($account_id, $create_google_business_place_action_request, string $contentType = self::contentTypes['createGoogleBusinessPlaceAction'][0])
+    public function createGoogleBusinessPlaceActionAsync($account_id, $create_google_business_place_action_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessPlaceAction'][0])
     {
-        return $this->createGoogleBusinessPlaceActionAsyncWithHttpInfo($account_id, $create_google_business_place_action_request, $contentType)
+        return $this->createGoogleBusinessPlaceActionAsyncWithHttpInfo($account_id, $create_google_business_place_action_request, $location_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -294,15 +297,16 @@ class GMBPlaceActionsApi
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessPlaceActionRequest $create_google_business_place_action_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createGoogleBusinessPlaceActionAsyncWithHttpInfo($account_id, $create_google_business_place_action_request, string $contentType = self::contentTypes['createGoogleBusinessPlaceAction'][0])
+    public function createGoogleBusinessPlaceActionAsyncWithHttpInfo($account_id, $create_google_business_place_action_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessPlaceAction'][0])
     {
         $returnType = '\Late\Model\CreateGoogleBusinessPlaceAction200Response';
-        $request = $this->createGoogleBusinessPlaceActionRequest($account_id, $create_google_business_place_action_request, $contentType);
+        $request = $this->createGoogleBusinessPlaceActionRequest($account_id, $create_google_business_place_action_request, $location_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -345,12 +349,13 @@ class GMBPlaceActionsApi
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessPlaceActionRequest $create_google_business_place_action_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createGoogleBusinessPlaceActionRequest($account_id, $create_google_business_place_action_request, string $contentType = self::contentTypes['createGoogleBusinessPlaceAction'][0])
+    public function createGoogleBusinessPlaceActionRequest($account_id, $create_google_business_place_action_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessPlaceAction'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -368,6 +373,7 @@ class GMBPlaceActionsApi
         }
 
 
+
         $resourcePath = '/v1/accounts/{accountId}/gmb-place-actions';
         $formParams = [];
         $queryParams = [];
@@ -375,6 +381,15 @@ class GMBPlaceActionsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -458,15 +473,16 @@ class GMBPlaceActionsApi
      *
      * @param  string $account_id account_id (required)
      * @param  string $name The resource name of the place action link (e.g. locations/123/placeActionLinks/456) (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\DeleteGoogleBusinessPlaceAction200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
      */
-    public function deleteGoogleBusinessPlaceAction($account_id, $name, string $contentType = self::contentTypes['deleteGoogleBusinessPlaceAction'][0])
+    public function deleteGoogleBusinessPlaceAction($account_id, $name, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessPlaceAction'][0])
     {
-        list($response) = $this->deleteGoogleBusinessPlaceActionWithHttpInfo($account_id, $name, $contentType);
+        list($response) = $this->deleteGoogleBusinessPlaceActionWithHttpInfo($account_id, $name, $location_id, $contentType);
         return $response;
     }
 
@@ -477,15 +493,16 @@ class GMBPlaceActionsApi
      *
      * @param  string $account_id (required)
      * @param  string $name The resource name of the place action link (e.g. locations/123/placeActionLinks/456) (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\DeleteGoogleBusinessPlaceAction200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteGoogleBusinessPlaceActionWithHttpInfo($account_id, $name, string $contentType = self::contentTypes['deleteGoogleBusinessPlaceAction'][0])
+    public function deleteGoogleBusinessPlaceActionWithHttpInfo($account_id, $name, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessPlaceAction'][0])
     {
-        $request = $this->deleteGoogleBusinessPlaceActionRequest($account_id, $name, $contentType);
+        $request = $this->deleteGoogleBusinessPlaceActionRequest($account_id, $name, $location_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -591,14 +608,15 @@ class GMBPlaceActionsApi
      *
      * @param  string $account_id (required)
      * @param  string $name The resource name of the place action link (e.g. locations/123/placeActionLinks/456) (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteGoogleBusinessPlaceActionAsync($account_id, $name, string $contentType = self::contentTypes['deleteGoogleBusinessPlaceAction'][0])
+    public function deleteGoogleBusinessPlaceActionAsync($account_id, $name, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessPlaceAction'][0])
     {
-        return $this->deleteGoogleBusinessPlaceActionAsyncWithHttpInfo($account_id, $name, $contentType)
+        return $this->deleteGoogleBusinessPlaceActionAsyncWithHttpInfo($account_id, $name, $location_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -613,15 +631,16 @@ class GMBPlaceActionsApi
      *
      * @param  string $account_id (required)
      * @param  string $name The resource name of the place action link (e.g. locations/123/placeActionLinks/456) (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteGoogleBusinessPlaceActionAsyncWithHttpInfo($account_id, $name, string $contentType = self::contentTypes['deleteGoogleBusinessPlaceAction'][0])
+    public function deleteGoogleBusinessPlaceActionAsyncWithHttpInfo($account_id, $name, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessPlaceAction'][0])
     {
         $returnType = '\Late\Model\DeleteGoogleBusinessPlaceAction200Response';
-        $request = $this->deleteGoogleBusinessPlaceActionRequest($account_id, $name, $contentType);
+        $request = $this->deleteGoogleBusinessPlaceActionRequest($account_id, $name, $location_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -664,12 +683,13 @@ class GMBPlaceActionsApi
      *
      * @param  string $account_id (required)
      * @param  string $name The resource name of the place action link (e.g. locations/123/placeActionLinks/456) (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessPlaceAction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteGoogleBusinessPlaceActionRequest($account_id, $name, string $contentType = self::contentTypes['deleteGoogleBusinessPlaceAction'][0])
+    public function deleteGoogleBusinessPlaceActionRequest($account_id, $name, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessPlaceAction'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -687,6 +707,7 @@ class GMBPlaceActionsApi
         }
 
 
+
         $resourcePath = '/v1/accounts/{accountId}/gmb-place-actions';
         $formParams = [];
         $queryParams = [];
@@ -694,6 +715,15 @@ class GMBPlaceActionsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $name,
@@ -778,6 +808,7 @@ class GMBPlaceActionsApi
      * List action links
      *
      * @param  string $account_id account_id (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size page_size (optional, default to 100)
      * @param  string|null $page_token page_token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessPlaceActions'] to see the possible values for this operation
@@ -786,9 +817,9 @@ class GMBPlaceActionsApi
      * @throws \InvalidArgumentException
      * @return \Late\Model\ListGoogleBusinessPlaceActions200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
      */
-    public function listGoogleBusinessPlaceActions($account_id, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessPlaceActions'][0])
+    public function listGoogleBusinessPlaceActions($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessPlaceActions'][0])
     {
-        list($response) = $this->listGoogleBusinessPlaceActionsWithHttpInfo($account_id, $page_size, $page_token, $contentType);
+        list($response) = $this->listGoogleBusinessPlaceActionsWithHttpInfo($account_id, $location_id, $page_size, $page_token, $contentType);
         return $response;
     }
 
@@ -798,6 +829,7 @@ class GMBPlaceActionsApi
      * List action links
      *
      * @param  string $account_id (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size (optional, default to 100)
      * @param  string|null $page_token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessPlaceActions'] to see the possible values for this operation
@@ -806,9 +838,9 @@ class GMBPlaceActionsApi
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ListGoogleBusinessPlaceActions200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listGoogleBusinessPlaceActionsWithHttpInfo($account_id, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessPlaceActions'][0])
+    public function listGoogleBusinessPlaceActionsWithHttpInfo($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessPlaceActions'][0])
     {
-        $request = $this->listGoogleBusinessPlaceActionsRequest($account_id, $page_size, $page_token, $contentType);
+        $request = $this->listGoogleBusinessPlaceActionsRequest($account_id, $location_id, $page_size, $page_token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -913,6 +945,7 @@ class GMBPlaceActionsApi
      * List action links
      *
      * @param  string $account_id (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size (optional, default to 100)
      * @param  string|null $page_token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessPlaceActions'] to see the possible values for this operation
@@ -920,9 +953,9 @@ class GMBPlaceActionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listGoogleBusinessPlaceActionsAsync($account_id, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessPlaceActions'][0])
+    public function listGoogleBusinessPlaceActionsAsync($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessPlaceActions'][0])
     {
-        return $this->listGoogleBusinessPlaceActionsAsyncWithHttpInfo($account_id, $page_size, $page_token, $contentType)
+        return $this->listGoogleBusinessPlaceActionsAsyncWithHttpInfo($account_id, $location_id, $page_size, $page_token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -936,6 +969,7 @@ class GMBPlaceActionsApi
      * List action links
      *
      * @param  string $account_id (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size (optional, default to 100)
      * @param  string|null $page_token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessPlaceActions'] to see the possible values for this operation
@@ -943,10 +977,10 @@ class GMBPlaceActionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listGoogleBusinessPlaceActionsAsyncWithHttpInfo($account_id, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessPlaceActions'][0])
+    public function listGoogleBusinessPlaceActionsAsyncWithHttpInfo($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessPlaceActions'][0])
     {
         $returnType = '\Late\Model\ListGoogleBusinessPlaceActions200Response';
-        $request = $this->listGoogleBusinessPlaceActionsRequest($account_id, $page_size, $page_token, $contentType);
+        $request = $this->listGoogleBusinessPlaceActionsRequest($account_id, $location_id, $page_size, $page_token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -988,6 +1022,7 @@ class GMBPlaceActionsApi
      * Create request for operation 'listGoogleBusinessPlaceActions'
      *
      * @param  string $account_id (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size (optional, default to 100)
      * @param  string|null $page_token (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessPlaceActions'] to see the possible values for this operation
@@ -995,7 +1030,7 @@ class GMBPlaceActionsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listGoogleBusinessPlaceActionsRequest($account_id, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessPlaceActions'][0])
+    public function listGoogleBusinessPlaceActionsRequest($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessPlaceActions'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -1004,6 +1039,7 @@ class GMBPlaceActionsApi
                 'Missing the required parameter $account_id when calling listGoogleBusinessPlaceActions'
             );
         }
+
 
         if ($page_size !== null && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling GMBPlaceActionsApi.listGoogleBusinessPlaceActions, must be smaller than or equal to 100.');
@@ -1018,6 +1054,15 @@ class GMBPlaceActionsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $page_size,

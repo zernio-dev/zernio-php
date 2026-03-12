@@ -12,7 +12,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 ## `getGoogleBusinessReviews()`
 
 ```php
-getGoogleBusinessReviews($account_id, $page_size, $page_token): \Late\Model\GetGoogleBusinessReviews200Response
+getGoogleBusinessReviews($account_id, $location_id, $page_size, $page_token): \Late\Model\GetGoogleBusinessReviews200Response
 ```
 
 Get reviews
@@ -37,11 +37,12 @@ $apiInstance = new Late\Api\GMBReviewsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | The Late account ID (from /v1/accounts)
+$location_id = 'location_id_example'; // string | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 $page_size = 50; // int | Number of reviews to fetch per page (max 50)
 $page_token = 'page_token_example'; // string | Pagination token from previous response
 
 try {
-    $result = $apiInstance->getGoogleBusinessReviews($account_id, $page_size, $page_token);
+    $result = $apiInstance->getGoogleBusinessReviews($account_id, $location_id, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GMBReviewsApi->getGoogleBusinessReviews: ', $e->getMessage(), PHP_EOL;
@@ -53,6 +54,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The Late account ID (from /v1/accounts) | |
+| **location_id** | **string**| Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 | **page_size** | **int**| Number of reviews to fetch per page (max 50) | [optional] [default to 50] |
 | **page_token** | **string**| Pagination token from previous response | [optional] |
 

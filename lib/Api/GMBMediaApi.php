@@ -139,15 +139,16 @@ class GMBMediaApi
      *
      * @param  string $account_id account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request create_google_business_media_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessMedia'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\CreateGoogleBusinessMedia200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
      */
-    public function createGoogleBusinessMedia($account_id, $create_google_business_media_request, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
+    public function createGoogleBusinessMedia($account_id, $create_google_business_media_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
     {
-        list($response) = $this->createGoogleBusinessMediaWithHttpInfo($account_id, $create_google_business_media_request, $contentType);
+        list($response) = $this->createGoogleBusinessMediaWithHttpInfo($account_id, $create_google_business_media_request, $location_id, $contentType);
         return $response;
     }
 
@@ -158,15 +159,16 @@ class GMBMediaApi
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessMedia'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\CreateGoogleBusinessMedia200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createGoogleBusinessMediaWithHttpInfo($account_id, $create_google_business_media_request, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
+    public function createGoogleBusinessMediaWithHttpInfo($account_id, $create_google_business_media_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
     {
-        $request = $this->createGoogleBusinessMediaRequest($account_id, $create_google_business_media_request, $contentType);
+        $request = $this->createGoogleBusinessMediaRequest($account_id, $create_google_business_media_request, $location_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -272,14 +274,15 @@ class GMBMediaApi
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessMedia'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createGoogleBusinessMediaAsync($account_id, $create_google_business_media_request, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
+    public function createGoogleBusinessMediaAsync($account_id, $create_google_business_media_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
     {
-        return $this->createGoogleBusinessMediaAsyncWithHttpInfo($account_id, $create_google_business_media_request, $contentType)
+        return $this->createGoogleBusinessMediaAsyncWithHttpInfo($account_id, $create_google_business_media_request, $location_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -294,15 +297,16 @@ class GMBMediaApi
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessMedia'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createGoogleBusinessMediaAsyncWithHttpInfo($account_id, $create_google_business_media_request, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
+    public function createGoogleBusinessMediaAsyncWithHttpInfo($account_id, $create_google_business_media_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
     {
         $returnType = '\Late\Model\CreateGoogleBusinessMedia200Response';
-        $request = $this->createGoogleBusinessMediaRequest($account_id, $create_google_business_media_request, $contentType);
+        $request = $this->createGoogleBusinessMediaRequest($account_id, $create_google_business_media_request, $location_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -345,12 +349,13 @@ class GMBMediaApi
      *
      * @param  string $account_id (required)
      * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessMedia'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createGoogleBusinessMediaRequest($account_id, $create_google_business_media_request, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
+    public function createGoogleBusinessMediaRequest($account_id, $create_google_business_media_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -368,6 +373,7 @@ class GMBMediaApi
         }
 
 
+
         $resourcePath = '/v1/accounts/{accountId}/gmb-media';
         $formParams = [];
         $queryParams = [];
@@ -375,6 +381,15 @@ class GMBMediaApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -458,15 +473,16 @@ class GMBMediaApi
      *
      * @param  string $account_id account_id (required)
      * @param  string $media_id The media item ID to delete (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessMedia'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\DeleteGoogleBusinessMedia200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
      */
-    public function deleteGoogleBusinessMedia($account_id, $media_id, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
+    public function deleteGoogleBusinessMedia($account_id, $media_id, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
     {
-        list($response) = $this->deleteGoogleBusinessMediaWithHttpInfo($account_id, $media_id, $contentType);
+        list($response) = $this->deleteGoogleBusinessMediaWithHttpInfo($account_id, $media_id, $location_id, $contentType);
         return $response;
     }
 
@@ -477,15 +493,16 @@ class GMBMediaApi
      *
      * @param  string $account_id (required)
      * @param  string $media_id The media item ID to delete (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessMedia'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\DeleteGoogleBusinessMedia200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteGoogleBusinessMediaWithHttpInfo($account_id, $media_id, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
+    public function deleteGoogleBusinessMediaWithHttpInfo($account_id, $media_id, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
     {
-        $request = $this->deleteGoogleBusinessMediaRequest($account_id, $media_id, $contentType);
+        $request = $this->deleteGoogleBusinessMediaRequest($account_id, $media_id, $location_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -591,14 +608,15 @@ class GMBMediaApi
      *
      * @param  string $account_id (required)
      * @param  string $media_id The media item ID to delete (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessMedia'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteGoogleBusinessMediaAsync($account_id, $media_id, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
+    public function deleteGoogleBusinessMediaAsync($account_id, $media_id, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
     {
-        return $this->deleteGoogleBusinessMediaAsyncWithHttpInfo($account_id, $media_id, $contentType)
+        return $this->deleteGoogleBusinessMediaAsyncWithHttpInfo($account_id, $media_id, $location_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -613,15 +631,16 @@ class GMBMediaApi
      *
      * @param  string $account_id (required)
      * @param  string $media_id The media item ID to delete (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessMedia'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteGoogleBusinessMediaAsyncWithHttpInfo($account_id, $media_id, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
+    public function deleteGoogleBusinessMediaAsyncWithHttpInfo($account_id, $media_id, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
     {
         $returnType = '\Late\Model\DeleteGoogleBusinessMedia200Response';
-        $request = $this->deleteGoogleBusinessMediaRequest($account_id, $media_id, $contentType);
+        $request = $this->deleteGoogleBusinessMediaRequest($account_id, $media_id, $location_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -664,12 +683,13 @@ class GMBMediaApi
      *
      * @param  string $account_id (required)
      * @param  string $media_id The media item ID to delete (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessMedia'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteGoogleBusinessMediaRequest($account_id, $media_id, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
+    public function deleteGoogleBusinessMediaRequest($account_id, $media_id, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -687,6 +707,7 @@ class GMBMediaApi
         }
 
 
+
         $resourcePath = '/v1/accounts/{accountId}/gmb-media';
         $formParams = [];
         $queryParams = [];
@@ -694,6 +715,15 @@ class GMBMediaApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $media_id,
@@ -778,6 +808,7 @@ class GMBMediaApi
      * List media
      *
      * @param  string $account_id account_id (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size Number of items to return (max 100) (optional, default to 100)
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessMedia'] to see the possible values for this operation
@@ -786,9 +817,9 @@ class GMBMediaApi
      * @throws \InvalidArgumentException
      * @return \Late\Model\ListGoogleBusinessMedia200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
      */
-    public function listGoogleBusinessMedia($account_id, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
+    public function listGoogleBusinessMedia($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
     {
-        list($response) = $this->listGoogleBusinessMediaWithHttpInfo($account_id, $page_size, $page_token, $contentType);
+        list($response) = $this->listGoogleBusinessMediaWithHttpInfo($account_id, $location_id, $page_size, $page_token, $contentType);
         return $response;
     }
 
@@ -798,6 +829,7 @@ class GMBMediaApi
      * List media
      *
      * @param  string $account_id (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size Number of items to return (max 100) (optional, default to 100)
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessMedia'] to see the possible values for this operation
@@ -806,9 +838,9 @@ class GMBMediaApi
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ListGoogleBusinessMedia200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listGoogleBusinessMediaWithHttpInfo($account_id, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
+    public function listGoogleBusinessMediaWithHttpInfo($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
     {
-        $request = $this->listGoogleBusinessMediaRequest($account_id, $page_size, $page_token, $contentType);
+        $request = $this->listGoogleBusinessMediaRequest($account_id, $location_id, $page_size, $page_token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -913,6 +945,7 @@ class GMBMediaApi
      * List media
      *
      * @param  string $account_id (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size Number of items to return (max 100) (optional, default to 100)
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessMedia'] to see the possible values for this operation
@@ -920,9 +953,9 @@ class GMBMediaApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listGoogleBusinessMediaAsync($account_id, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
+    public function listGoogleBusinessMediaAsync($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
     {
-        return $this->listGoogleBusinessMediaAsyncWithHttpInfo($account_id, $page_size, $page_token, $contentType)
+        return $this->listGoogleBusinessMediaAsyncWithHttpInfo($account_id, $location_id, $page_size, $page_token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -936,6 +969,7 @@ class GMBMediaApi
      * List media
      *
      * @param  string $account_id (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size Number of items to return (max 100) (optional, default to 100)
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessMedia'] to see the possible values for this operation
@@ -943,10 +977,10 @@ class GMBMediaApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listGoogleBusinessMediaAsyncWithHttpInfo($account_id, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
+    public function listGoogleBusinessMediaAsyncWithHttpInfo($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
     {
         $returnType = '\Late\Model\ListGoogleBusinessMedia200Response';
-        $request = $this->listGoogleBusinessMediaRequest($account_id, $page_size, $page_token, $contentType);
+        $request = $this->listGoogleBusinessMediaRequest($account_id, $location_id, $page_size, $page_token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -988,6 +1022,7 @@ class GMBMediaApi
      * Create request for operation 'listGoogleBusinessMedia'
      *
      * @param  string $account_id (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size Number of items to return (max 100) (optional, default to 100)
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessMedia'] to see the possible values for this operation
@@ -995,7 +1030,7 @@ class GMBMediaApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listGoogleBusinessMediaRequest($account_id, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
+    public function listGoogleBusinessMediaRequest($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -1004,6 +1039,7 @@ class GMBMediaApi
                 'Missing the required parameter $account_id when calling listGoogleBusinessMedia'
             );
         }
+
 
         if ($page_size !== null && $page_size > 100) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling GMBMediaApi.listGoogleBusinessMedia, must be smaller than or equal to 100.');
@@ -1018,6 +1054,15 @@ class GMBMediaApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $page_size,

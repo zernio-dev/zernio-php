@@ -13,7 +13,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 ## `getGoogleBusinessAttributes()`
 
 ```php
-getGoogleBusinessAttributes($account_id): \Late\Model\GetGoogleBusinessAttributes200Response
+getGoogleBusinessAttributes($account_id, $location_id): \Late\Model\GetGoogleBusinessAttributes200Response
 ```
 
 Get attributes
@@ -38,9 +38,10 @@ $apiInstance = new Late\Api\GMBAttributesApi(
     $config
 );
 $account_id = 'account_id_example'; // string
+$location_id = 'location_id_example'; // string | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
-    $result = $apiInstance->getGoogleBusinessAttributes($account_id);
+    $result = $apiInstance->getGoogleBusinessAttributes($account_id, $location_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GMBAttributesApi->getGoogleBusinessAttributes: ', $e->getMessage(), PHP_EOL;
@@ -52,6 +53,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
+| **location_id** | **string**| Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
 
@@ -73,7 +75,7 @@ try {
 ## `updateGoogleBusinessAttributes()`
 
 ```php
-updateGoogleBusinessAttributes($account_id, $update_google_business_attributes_request): \Late\Model\UpdateGoogleBusinessAttributes200Response
+updateGoogleBusinessAttributes($account_id, $update_google_business_attributes_request, $location_id): \Late\Model\UpdateGoogleBusinessAttributes200Response
 ```
 
 Update attributes
@@ -99,9 +101,10 @@ $apiInstance = new Late\Api\GMBAttributesApi(
 );
 $account_id = 'account_id_example'; // string
 $update_google_business_attributes_request = {"attributes":[{"name":"has_delivery","values":[true]},{"name":"has_takeout","values":[true]},{"name":"has_outdoor_seating","values":[false]}],"attributeMask":"has_delivery,has_takeout,has_outdoor_seating"}; // \Late\Model\UpdateGoogleBusinessAttributesRequest
+$location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
-    $result = $apiInstance->updateGoogleBusinessAttributes($account_id, $update_google_business_attributes_request);
+    $result = $apiInstance->updateGoogleBusinessAttributes($account_id, $update_google_business_attributes_request, $location_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GMBAttributesApi->updateGoogleBusinessAttributes: ', $e->getMessage(), PHP_EOL;
@@ -114,6 +117,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
 | **update_google_business_attributes_request** | [**\Late\Model\UpdateGoogleBusinessAttributesRequest**](../Model/UpdateGoogleBusinessAttributesRequest.md)|  | |
+| **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
 

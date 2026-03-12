@@ -135,15 +135,16 @@ class GMBFoodMenusApi
      * Get food menus
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetGoogleBusinessFoodMenus200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse
      */
-    public function getGoogleBusinessFoodMenus($account_id, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
+    public function getGoogleBusinessFoodMenus($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
     {
-        list($response) = $this->getGoogleBusinessFoodMenusWithHttpInfo($account_id, $contentType);
+        list($response) = $this->getGoogleBusinessFoodMenusWithHttpInfo($account_id, $location_id, $contentType);
         return $response;
     }
 
@@ -153,15 +154,16 @@ class GMBFoodMenusApi
      * Get food menus
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetGoogleBusinessFoodMenus200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getGoogleBusinessFoodMenusWithHttpInfo($account_id, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
+    public function getGoogleBusinessFoodMenusWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
     {
-        $request = $this->getGoogleBusinessFoodMenusRequest($account_id, $contentType);
+        $request = $this->getGoogleBusinessFoodMenusRequest($account_id, $location_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -308,14 +310,15 @@ class GMBFoodMenusApi
      * Get food menus
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGoogleBusinessFoodMenusAsync($account_id, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
+    public function getGoogleBusinessFoodMenusAsync($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
     {
-        return $this->getGoogleBusinessFoodMenusAsyncWithHttpInfo($account_id, $contentType)
+        return $this->getGoogleBusinessFoodMenusAsyncWithHttpInfo($account_id, $location_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -329,15 +332,16 @@ class GMBFoodMenusApi
      * Get food menus
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGoogleBusinessFoodMenusAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
+    public function getGoogleBusinessFoodMenusAsyncWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
     {
         $returnType = '\Late\Model\GetGoogleBusinessFoodMenus200Response';
-        $request = $this->getGoogleBusinessFoodMenusRequest($account_id, $contentType);
+        $request = $this->getGoogleBusinessFoodMenusRequest($account_id, $location_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -379,12 +383,13 @@ class GMBFoodMenusApi
      * Create request for operation 'getGoogleBusinessFoodMenus'
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getGoogleBusinessFoodMenusRequest($account_id, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
+    public function getGoogleBusinessFoodMenusRequest($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -395,6 +400,7 @@ class GMBFoodMenusApi
         }
 
 
+
         $resourcePath = '/v1/accounts/{accountId}/gmb-food-menus';
         $formParams = [];
         $queryParams = [];
@@ -402,6 +408,15 @@ class GMBFoodMenusApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -478,15 +493,16 @@ class GMBFoodMenusApi
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request update_google_business_food_menus_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\UpdateGoogleBusinessFoodMenus200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse
      */
-    public function updateGoogleBusinessFoodMenus($account_id, $update_google_business_food_menus_request, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
+    public function updateGoogleBusinessFoodMenus($account_id, $update_google_business_food_menus_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
     {
-        list($response) = $this->updateGoogleBusinessFoodMenusWithHttpInfo($account_id, $update_google_business_food_menus_request, $contentType);
+        list($response) = $this->updateGoogleBusinessFoodMenusWithHttpInfo($account_id, $update_google_business_food_menus_request, $location_id, $contentType);
         return $response;
     }
 
@@ -497,15 +513,16 @@ class GMBFoodMenusApi
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\UpdateGoogleBusinessFoodMenus200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateGoogleBusinessFoodMenusWithHttpInfo($account_id, $update_google_business_food_menus_request, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
+    public function updateGoogleBusinessFoodMenusWithHttpInfo($account_id, $update_google_business_food_menus_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
     {
-        $request = $this->updateGoogleBusinessFoodMenusRequest($account_id, $update_google_business_food_menus_request, $contentType);
+        $request = $this->updateGoogleBusinessFoodMenusRequest($account_id, $update_google_business_food_menus_request, $location_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -653,14 +670,15 @@ class GMBFoodMenusApi
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateGoogleBusinessFoodMenusAsync($account_id, $update_google_business_food_menus_request, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
+    public function updateGoogleBusinessFoodMenusAsync($account_id, $update_google_business_food_menus_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
     {
-        return $this->updateGoogleBusinessFoodMenusAsyncWithHttpInfo($account_id, $update_google_business_food_menus_request, $contentType)
+        return $this->updateGoogleBusinessFoodMenusAsyncWithHttpInfo($account_id, $update_google_business_food_menus_request, $location_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -675,15 +693,16 @@ class GMBFoodMenusApi
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateGoogleBusinessFoodMenusAsyncWithHttpInfo($account_id, $update_google_business_food_menus_request, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
+    public function updateGoogleBusinessFoodMenusAsyncWithHttpInfo($account_id, $update_google_business_food_menus_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
     {
         $returnType = '\Late\Model\UpdateGoogleBusinessFoodMenus200Response';
-        $request = $this->updateGoogleBusinessFoodMenusRequest($account_id, $update_google_business_food_menus_request, $contentType);
+        $request = $this->updateGoogleBusinessFoodMenusRequest($account_id, $update_google_business_food_menus_request, $location_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -726,12 +745,13 @@ class GMBFoodMenusApi
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateGoogleBusinessFoodMenusRequest($account_id, $update_google_business_food_menus_request, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
+    public function updateGoogleBusinessFoodMenusRequest($account_id, $update_google_business_food_menus_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -749,6 +769,7 @@ class GMBFoodMenusApi
         }
 
 
+
         $resourcePath = '/v1/accounts/{accountId}/gmb-food-menus';
         $formParams = [];
         $queryParams = [];
@@ -756,6 +777,15 @@ class GMBFoodMenusApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params

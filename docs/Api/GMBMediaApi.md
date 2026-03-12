@@ -14,7 +14,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 ## `createGoogleBusinessMedia()`
 
 ```php
-createGoogleBusinessMedia($account_id, $create_google_business_media_request): \Late\Model\CreateGoogleBusinessMedia200Response
+createGoogleBusinessMedia($account_id, $create_google_business_media_request, $location_id): \Late\Model\CreateGoogleBusinessMedia200Response
 ```
 
 Upload photo
@@ -40,9 +40,10 @@ $apiInstance = new Late\Api\GMBMediaApi(
 );
 $account_id = 'account_id_example'; // string
 $create_google_business_media_request = {"sourceUrl":"https://example.com/photos/restaurant-interior.jpg","description":"Dining area with outdoor seating","category":"INTERIOR"}; // \Late\Model\CreateGoogleBusinessMediaRequest
+$location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
-    $result = $apiInstance->createGoogleBusinessMedia($account_id, $create_google_business_media_request);
+    $result = $apiInstance->createGoogleBusinessMedia($account_id, $create_google_business_media_request, $location_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GMBMediaApi->createGoogleBusinessMedia: ', $e->getMessage(), PHP_EOL;
@@ -55,6 +56,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
 | **create_google_business_media_request** | [**\Late\Model\CreateGoogleBusinessMediaRequest**](../Model/CreateGoogleBusinessMediaRequest.md)|  | |
+| **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
 
@@ -76,7 +78,7 @@ try {
 ## `deleteGoogleBusinessMedia()`
 
 ```php
-deleteGoogleBusinessMedia($account_id, $media_id): \Late\Model\DeleteGoogleBusinessMedia200Response
+deleteGoogleBusinessMedia($account_id, $media_id, $location_id): \Late\Model\DeleteGoogleBusinessMedia200Response
 ```
 
 Delete photo
@@ -102,9 +104,10 @@ $apiInstance = new Late\Api\GMBMediaApi(
 );
 $account_id = 'account_id_example'; // string
 $media_id = 'media_id_example'; // string | The media item ID to delete
+$location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
-    $result = $apiInstance->deleteGoogleBusinessMedia($account_id, $media_id);
+    $result = $apiInstance->deleteGoogleBusinessMedia($account_id, $media_id, $location_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GMBMediaApi->deleteGoogleBusinessMedia: ', $e->getMessage(), PHP_EOL;
@@ -117,6 +120,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
 | **media_id** | **string**| The media item ID to delete | |
+| **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
 
@@ -138,7 +142,7 @@ try {
 ## `listGoogleBusinessMedia()`
 
 ```php
-listGoogleBusinessMedia($account_id, $page_size, $page_token): \Late\Model\ListGoogleBusinessMedia200Response
+listGoogleBusinessMedia($account_id, $location_id, $page_size, $page_token): \Late\Model\ListGoogleBusinessMedia200Response
 ```
 
 List media
@@ -163,11 +167,12 @@ $apiInstance = new Late\Api\GMBMediaApi(
     $config
 );
 $account_id = 'account_id_example'; // string
+$location_id = 'location_id_example'; // string | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 $page_size = 100; // int | Number of items to return (max 100)
 $page_token = 'page_token_example'; // string | Pagination token from previous response
 
 try {
-    $result = $apiInstance->listGoogleBusinessMedia($account_id, $page_size, $page_token);
+    $result = $apiInstance->listGoogleBusinessMedia($account_id, $location_id, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GMBMediaApi->listGoogleBusinessMedia: ', $e->getMessage(), PHP_EOL;
@@ -179,6 +184,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
+| **location_id** | **string**| Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 | **page_size** | **int**| Number of items to return (max 100) | [optional] [default to 100] |
 | **page_token** | **string**| Pagination token from previous response | [optional] |
 

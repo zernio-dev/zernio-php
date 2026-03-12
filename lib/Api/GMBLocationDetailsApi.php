@@ -135,6 +135,7 @@ class GMBLocationDetailsApi
      * Get location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string|null $read_mask Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
@@ -142,9 +143,9 @@ class GMBLocationDetailsApi
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetGoogleBusinessLocationDetails200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1
      */
-    public function getGoogleBusinessLocationDetails($account_id, $read_mask = null, string $contentType = self::contentTypes['getGoogleBusinessLocationDetails'][0])
+    public function getGoogleBusinessLocationDetails($account_id, $location_id = null, $read_mask = null, string $contentType = self::contentTypes['getGoogleBusinessLocationDetails'][0])
     {
-        list($response) = $this->getGoogleBusinessLocationDetailsWithHttpInfo($account_id, $read_mask, $contentType);
+        list($response) = $this->getGoogleBusinessLocationDetailsWithHttpInfo($account_id, $location_id, $read_mask, $contentType);
         return $response;
     }
 
@@ -154,6 +155,7 @@ class GMBLocationDetailsApi
      * Get location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string|null $read_mask Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
@@ -161,9 +163,9 @@ class GMBLocationDetailsApi
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetGoogleBusinessLocationDetails200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getGoogleBusinessLocationDetailsWithHttpInfo($account_id, $read_mask = null, string $contentType = self::contentTypes['getGoogleBusinessLocationDetails'][0])
+    public function getGoogleBusinessLocationDetailsWithHttpInfo($account_id, $location_id = null, $read_mask = null, string $contentType = self::contentTypes['getGoogleBusinessLocationDetails'][0])
     {
-        $request = $this->getGoogleBusinessLocationDetailsRequest($account_id, $read_mask, $contentType);
+        $request = $this->getGoogleBusinessLocationDetailsRequest($account_id, $location_id, $read_mask, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -282,15 +284,16 @@ class GMBLocationDetailsApi
      * Get location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string|null $read_mask Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGoogleBusinessLocationDetailsAsync($account_id, $read_mask = null, string $contentType = self::contentTypes['getGoogleBusinessLocationDetails'][0])
+    public function getGoogleBusinessLocationDetailsAsync($account_id, $location_id = null, $read_mask = null, string $contentType = self::contentTypes['getGoogleBusinessLocationDetails'][0])
     {
-        return $this->getGoogleBusinessLocationDetailsAsyncWithHttpInfo($account_id, $read_mask, $contentType)
+        return $this->getGoogleBusinessLocationDetailsAsyncWithHttpInfo($account_id, $location_id, $read_mask, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -304,16 +307,17 @@ class GMBLocationDetailsApi
      * Get location details
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string|null $read_mask Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGoogleBusinessLocationDetailsAsyncWithHttpInfo($account_id, $read_mask = null, string $contentType = self::contentTypes['getGoogleBusinessLocationDetails'][0])
+    public function getGoogleBusinessLocationDetailsAsyncWithHttpInfo($account_id, $location_id = null, $read_mask = null, string $contentType = self::contentTypes['getGoogleBusinessLocationDetails'][0])
     {
         $returnType = '\Late\Model\GetGoogleBusinessLocationDetails200Response';
-        $request = $this->getGoogleBusinessLocationDetailsRequest($account_id, $read_mask, $contentType);
+        $request = $this->getGoogleBusinessLocationDetailsRequest($account_id, $location_id, $read_mask, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -355,13 +359,14 @@ class GMBLocationDetailsApi
      * Create request for operation 'getGoogleBusinessLocationDetails'
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string|null $read_mask Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, profile, openInfo, metadata, moreHours. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getGoogleBusinessLocationDetailsRequest($account_id, $read_mask = null, string $contentType = self::contentTypes['getGoogleBusinessLocationDetails'][0])
+    public function getGoogleBusinessLocationDetailsRequest($account_id, $location_id = null, $read_mask = null, string $contentType = self::contentTypes['getGoogleBusinessLocationDetails'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -373,6 +378,7 @@ class GMBLocationDetailsApi
 
 
 
+
         $resourcePath = '/v1/accounts/{accountId}/gmb-location-details';
         $formParams = [];
         $queryParams = [];
@@ -380,6 +386,15 @@ class GMBLocationDetailsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $read_mask,
@@ -465,15 +480,16 @@ class GMBLocationDetailsApi
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessLocationDetailsRequest $update_google_business_location_details_request update_google_business_location_details_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\UpdateGoogleBusinessLocationDetails200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1
      */
-    public function updateGoogleBusinessLocationDetails($account_id, $update_google_business_location_details_request, string $contentType = self::contentTypes['updateGoogleBusinessLocationDetails'][0])
+    public function updateGoogleBusinessLocationDetails($account_id, $update_google_business_location_details_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessLocationDetails'][0])
     {
-        list($response) = $this->updateGoogleBusinessLocationDetailsWithHttpInfo($account_id, $update_google_business_location_details_request, $contentType);
+        list($response) = $this->updateGoogleBusinessLocationDetailsWithHttpInfo($account_id, $update_google_business_location_details_request, $location_id, $contentType);
         return $response;
     }
 
@@ -484,15 +500,16 @@ class GMBLocationDetailsApi
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessLocationDetailsRequest $update_google_business_location_details_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\UpdateGoogleBusinessLocationDetails200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateGoogleBusinessLocationDetailsWithHttpInfo($account_id, $update_google_business_location_details_request, string $contentType = self::contentTypes['updateGoogleBusinessLocationDetails'][0])
+    public function updateGoogleBusinessLocationDetailsWithHttpInfo($account_id, $update_google_business_location_details_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessLocationDetails'][0])
     {
-        $request = $this->updateGoogleBusinessLocationDetailsRequest($account_id, $update_google_business_location_details_request, $contentType);
+        $request = $this->updateGoogleBusinessLocationDetailsRequest($account_id, $update_google_business_location_details_request, $location_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -612,14 +629,15 @@ class GMBLocationDetailsApi
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessLocationDetailsRequest $update_google_business_location_details_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateGoogleBusinessLocationDetailsAsync($account_id, $update_google_business_location_details_request, string $contentType = self::contentTypes['updateGoogleBusinessLocationDetails'][0])
+    public function updateGoogleBusinessLocationDetailsAsync($account_id, $update_google_business_location_details_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessLocationDetails'][0])
     {
-        return $this->updateGoogleBusinessLocationDetailsAsyncWithHttpInfo($account_id, $update_google_business_location_details_request, $contentType)
+        return $this->updateGoogleBusinessLocationDetailsAsyncWithHttpInfo($account_id, $update_google_business_location_details_request, $location_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -634,15 +652,16 @@ class GMBLocationDetailsApi
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessLocationDetailsRequest $update_google_business_location_details_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateGoogleBusinessLocationDetailsAsyncWithHttpInfo($account_id, $update_google_business_location_details_request, string $contentType = self::contentTypes['updateGoogleBusinessLocationDetails'][0])
+    public function updateGoogleBusinessLocationDetailsAsyncWithHttpInfo($account_id, $update_google_business_location_details_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessLocationDetails'][0])
     {
         $returnType = '\Late\Model\UpdateGoogleBusinessLocationDetails200Response';
-        $request = $this->updateGoogleBusinessLocationDetailsRequest($account_id, $update_google_business_location_details_request, $contentType);
+        $request = $this->updateGoogleBusinessLocationDetailsRequest($account_id, $update_google_business_location_details_request, $location_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -685,12 +704,13 @@ class GMBLocationDetailsApi
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
      * @param  \Late\Model\UpdateGoogleBusinessLocationDetailsRequest $update_google_business_location_details_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessLocationDetails'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateGoogleBusinessLocationDetailsRequest($account_id, $update_google_business_location_details_request, string $contentType = self::contentTypes['updateGoogleBusinessLocationDetails'][0])
+    public function updateGoogleBusinessLocationDetailsRequest($account_id, $update_google_business_location_details_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessLocationDetails'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -708,6 +728,7 @@ class GMBLocationDetailsApi
         }
 
 
+
         $resourcePath = '/v1/accounts/{accountId}/gmb-location-details';
         $formParams = [];
         $queryParams = [];
@@ -715,6 +736,15 @@ class GMBLocationDetailsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params

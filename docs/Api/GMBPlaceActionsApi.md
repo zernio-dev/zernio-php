@@ -14,7 +14,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 ## `createGoogleBusinessPlaceAction()`
 
 ```php
-createGoogleBusinessPlaceAction($account_id, $create_google_business_place_action_request): \Late\Model\CreateGoogleBusinessPlaceAction200Response
+createGoogleBusinessPlaceAction($account_id, $create_google_business_place_action_request, $location_id): \Late\Model\CreateGoogleBusinessPlaceAction200Response
 ```
 
 Create action link
@@ -40,9 +40,10 @@ $apiInstance = new Late\Api\GMBPlaceActionsApi(
 );
 $account_id = 'account_id_example'; // string
 $create_google_business_place_action_request = {"uri":"https://order.ubereats.com/joespizza","placeActionType":"FOOD_ORDERING"}; // \Late\Model\CreateGoogleBusinessPlaceActionRequest
+$location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
-    $result = $apiInstance->createGoogleBusinessPlaceAction($account_id, $create_google_business_place_action_request);
+    $result = $apiInstance->createGoogleBusinessPlaceAction($account_id, $create_google_business_place_action_request, $location_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GMBPlaceActionsApi->createGoogleBusinessPlaceAction: ', $e->getMessage(), PHP_EOL;
@@ -55,6 +56,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
 | **create_google_business_place_action_request** | [**\Late\Model\CreateGoogleBusinessPlaceActionRequest**](../Model/CreateGoogleBusinessPlaceActionRequest.md)|  | |
+| **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
 
@@ -76,7 +78,7 @@ try {
 ## `deleteGoogleBusinessPlaceAction()`
 
 ```php
-deleteGoogleBusinessPlaceAction($account_id, $name): \Late\Model\DeleteGoogleBusinessPlaceAction200Response
+deleteGoogleBusinessPlaceAction($account_id, $name, $location_id): \Late\Model\DeleteGoogleBusinessPlaceAction200Response
 ```
 
 Delete action link
@@ -102,9 +104,10 @@ $apiInstance = new Late\Api\GMBPlaceActionsApi(
 );
 $account_id = 'account_id_example'; // string
 $name = 'name_example'; // string | The resource name of the place action link (e.g. locations/123/placeActionLinks/456)
+$location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
-    $result = $apiInstance->deleteGoogleBusinessPlaceAction($account_id, $name);
+    $result = $apiInstance->deleteGoogleBusinessPlaceAction($account_id, $name, $location_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GMBPlaceActionsApi->deleteGoogleBusinessPlaceAction: ', $e->getMessage(), PHP_EOL;
@@ -117,6 +120,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
 | **name** | **string**| The resource name of the place action link (e.g. locations/123/placeActionLinks/456) | |
+| **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
 
@@ -138,7 +142,7 @@ try {
 ## `listGoogleBusinessPlaceActions()`
 
 ```php
-listGoogleBusinessPlaceActions($account_id, $page_size, $page_token): \Late\Model\ListGoogleBusinessPlaceActions200Response
+listGoogleBusinessPlaceActions($account_id, $location_id, $page_size, $page_token): \Late\Model\ListGoogleBusinessPlaceActions200Response
 ```
 
 List action links
@@ -163,11 +167,12 @@ $apiInstance = new Late\Api\GMBPlaceActionsApi(
     $config
 );
 $account_id = 'account_id_example'; // string
+$location_id = 'location_id_example'; // string | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 $page_size = 100; // int
 $page_token = 'page_token_example'; // string
 
 try {
-    $result = $apiInstance->listGoogleBusinessPlaceActions($account_id, $page_size, $page_token);
+    $result = $apiInstance->listGoogleBusinessPlaceActions($account_id, $location_id, $page_size, $page_token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling GMBPlaceActionsApi->listGoogleBusinessPlaceActions: ', $e->getMessage(), PHP_EOL;
@@ -179,6 +184,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
+| **location_id** | **string**| Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 | **page_size** | **int**|  | [optional] [default to 100] |
 | **page_token** | **string**|  | [optional] |
 

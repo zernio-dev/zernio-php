@@ -132,6 +132,7 @@ class GMBReviewsApi
      * Get reviews
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessReviews'] to see the possible values for this operation
@@ -140,9 +141,9 @@ class GMBReviewsApi
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetGoogleBusinessReviews200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse
      */
-    public function getGoogleBusinessReviews($account_id, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
+    public function getGoogleBusinessReviews($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
     {
-        list($response) = $this->getGoogleBusinessReviewsWithHttpInfo($account_id, $page_size, $page_token, $contentType);
+        list($response) = $this->getGoogleBusinessReviewsWithHttpInfo($account_id, $location_id, $page_size, $page_token, $contentType);
         return $response;
     }
 
@@ -152,6 +153,7 @@ class GMBReviewsApi
      * Get reviews
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessReviews'] to see the possible values for this operation
@@ -160,9 +162,9 @@ class GMBReviewsApi
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetGoogleBusinessReviews200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getGoogleBusinessReviewsWithHttpInfo($account_id, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
+    public function getGoogleBusinessReviewsWithHttpInfo($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
     {
-        $request = $this->getGoogleBusinessReviewsRequest($account_id, $page_size, $page_token, $contentType);
+        $request = $this->getGoogleBusinessReviewsRequest($account_id, $location_id, $page_size, $page_token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -309,6 +311,7 @@ class GMBReviewsApi
      * Get reviews
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessReviews'] to see the possible values for this operation
@@ -316,9 +319,9 @@ class GMBReviewsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGoogleBusinessReviewsAsync($account_id, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
+    public function getGoogleBusinessReviewsAsync($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
     {
-        return $this->getGoogleBusinessReviewsAsyncWithHttpInfo($account_id, $page_size, $page_token, $contentType)
+        return $this->getGoogleBusinessReviewsAsyncWithHttpInfo($account_id, $location_id, $page_size, $page_token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -332,6 +335,7 @@ class GMBReviewsApi
      * Get reviews
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessReviews'] to see the possible values for this operation
@@ -339,10 +343,10 @@ class GMBReviewsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGoogleBusinessReviewsAsyncWithHttpInfo($account_id, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
+    public function getGoogleBusinessReviewsAsyncWithHttpInfo($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
     {
         $returnType = '\Late\Model\GetGoogleBusinessReviews200Response';
-        $request = $this->getGoogleBusinessReviewsRequest($account_id, $page_size, $page_token, $contentType);
+        $request = $this->getGoogleBusinessReviewsRequest($account_id, $location_id, $page_size, $page_token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -384,6 +388,7 @@ class GMBReviewsApi
      * Create request for operation 'getGoogleBusinessReviews'
      *
      * @param  string $account_id The Late account ID (from /v1/accounts) (required)
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessReviews'] to see the possible values for this operation
@@ -391,7 +396,7 @@ class GMBReviewsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getGoogleBusinessReviewsRequest($account_id, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
+    public function getGoogleBusinessReviewsRequest($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -400,6 +405,7 @@ class GMBReviewsApi
                 'Missing the required parameter $account_id when calling getGoogleBusinessReviews'
             );
         }
+
 
         if ($page_size !== null && $page_size > 50) {
             throw new \InvalidArgumentException('invalid value for "$page_size" when calling GMBReviewsApi.getGoogleBusinessReviews, must be smaller than or equal to 50.');
@@ -417,6 +423,15 @@ class GMBReviewsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $page_size,
