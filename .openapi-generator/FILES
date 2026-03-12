@@ -1115,8 +1115,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConnectWhatsAppCredentials200ResponseAccountTest.php
-test/Model/ConnectWhatsAppCredentials200ResponseTest.php
-test/Model/ConnectWhatsAppCredentialsRequestTest.php
-test/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerTest.php
-test/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrlTest.php
