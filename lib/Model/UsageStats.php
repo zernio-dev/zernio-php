@@ -61,6 +61,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
         'plan_name' => 'string',
         'billing_period' => 'string',
         'signup_date' => '\DateTime',
+        'billing_anchor_day' => 'int',
         'limits' => '\Late\Model\UsageStatsLimits',
         'usage' => '\Late\Model\UsageStatsUsage'
     ];
@@ -76,6 +77,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
         'plan_name' => null,
         'billing_period' => null,
         'signup_date' => 'date-time',
+        'billing_anchor_day' => null,
         'limits' => null,
         'usage' => null
     ];
@@ -89,6 +91,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
         'plan_name' => false,
         'billing_period' => false,
         'signup_date' => false,
+        'billing_anchor_day' => false,
         'limits' => false,
         'usage' => false
     ];
@@ -182,6 +185,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
         'plan_name' => 'planName',
         'billing_period' => 'billingPeriod',
         'signup_date' => 'signupDate',
+        'billing_anchor_day' => 'billingAnchorDay',
         'limits' => 'limits',
         'usage' => 'usage'
     ];
@@ -195,6 +199,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
         'plan_name' => 'setPlanName',
         'billing_period' => 'setBillingPeriod',
         'signup_date' => 'setSignupDate',
+        'billing_anchor_day' => 'setBillingAnchorDay',
         'limits' => 'setLimits',
         'usage' => 'setUsage'
     ];
@@ -208,6 +213,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
         'plan_name' => 'getPlanName',
         'billing_period' => 'getBillingPeriod',
         'signup_date' => 'getSignupDate',
+        'billing_anchor_day' => 'getBillingAnchorDay',
         'limits' => 'getLimits',
         'usage' => 'getUsage'
     ];
@@ -287,6 +293,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('plan_name', $data ?? [], null);
         $this->setIfExists('billing_period', $data ?? [], null);
         $this->setIfExists('signup_date', $data ?? [], null);
+        $this->setIfExists('billing_anchor_day', $data ?? [], null);
         $this->setIfExists('limits', $data ?? [], null);
         $this->setIfExists('usage', $data ?? [], null);
     }
@@ -429,6 +436,33 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable signup_date cannot be null');
         }
         $this->container['signup_date'] = $signup_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets billing_anchor_day
+     *
+     * @return int|null
+     */
+    public function getBillingAnchorDay()
+    {
+        return $this->container['billing_anchor_day'];
+    }
+
+    /**
+     * Sets billing_anchor_day
+     *
+     * @param int|null $billing_anchor_day Day of month (1-31) when the billing cycle resets
+     *
+     * @return self
+     */
+    public function setBillingAnchorDay($billing_anchor_day)
+    {
+        if (is_null($billing_anchor_day)) {
+            throw new \InvalidArgumentException('non-nullable billing_anchor_day cannot be null');
+        }
+        $this->container['billing_anchor_day'] = $billing_anchor_day;
 
         return $this;
     }
