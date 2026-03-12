@@ -8,6 +8,7 @@ All URIs are relative to https://getlate.dev/api, except if the operation define
 | ------------- | ------------- | ------------- |
 | [**completeTelegramConnect()**](ConnectApi.md#completeTelegramConnect) | **PATCH** /v1/connect/telegram | Check Telegram status |
 | [**connectBlueskyCredentials()**](ConnectApi.md#connectBlueskyCredentials) | **POST** /v1/connect/bluesky/credentials | Connect Bluesky account |
+| [**connectWhatsAppCredentials()**](ConnectApi.md#connectWhatsAppCredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials |
 | [**getConnectUrl()**](ConnectApi.md#getConnectUrl) | **GET** /v1/connect/{platform} | Get OAuth connect URL |
 | [**getFacebookPages()**](ConnectApi.md#getFacebookPages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages |
 | [**getGmbLocations()**](ConnectApi.md#getGmbLocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List GBP locations |
@@ -142,6 +143,66 @@ try {
 ### Return type
 
 [**\Late\Model\ConnectBlueskyCredentials200Response**](../Model/ConnectBlueskyCredentials200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectWhatsAppCredentials()`
+
+```php
+connectWhatsAppCredentials($connect_whats_app_credentials_request): \Late\Model\ConnectWhatsAppCredentials200Response
+```
+
+Connect WhatsApp via credentials
+
+Connect a WhatsApp Business Account by providing Meta credentials directly. This is the headless alternative to the Embedded Signup browser flow.  To get the required credentials: 1. Go to Meta Business Suite (business.facebook.com) 2. Create or select a WhatsApp Business Account 3. In Business Settings > System Users, create a System User 4. Assign it the `whatsapp_business_management` and `whatsapp_business_messaging` permissions 5. Generate a permanent access token 6. Get the WABA ID from WhatsApp Manager > Account Tools > Phone Numbers 7. Get the Phone Number ID from the same page (click on the number)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$connect_whats_app_credentials_request = {"profileId":"6507a1b2c3d4e5f6a7b8c9d0","accessToken":"EAABsbCS...your-system-user-token","wabaId":"123456789012345","phoneNumberId":"987654321098765"}; // \Late\Model\ConnectWhatsAppCredentialsRequest
+
+try {
+    $result = $apiInstance->connectWhatsAppCredentials($connect_whats_app_credentials_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectWhatsAppCredentials: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **connect_whats_app_credentials_request** | [**\Late\Model\ConnectWhatsAppCredentialsRequest**](../Model/ConnectWhatsAppCredentialsRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\ConnectWhatsAppCredentials200Response**](../Model/ConnectWhatsAppCredentials200Response.md)
 
 ### Authorization
 

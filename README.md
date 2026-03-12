@@ -100,6 +100,7 @@ Class | Method | HTTP request | Description
 *CommentsApi* | [**unlikeInboxComment**](docs/Api/CommentsApi.md#unlikeinboxcomment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/like | Unlike comment
 *ConnectApi* | [**completeTelegramConnect**](docs/Api/ConnectApi.md#completetelegramconnect) | **PATCH** /v1/connect/telegram | Check Telegram status
 *ConnectApi* | [**connectBlueskyCredentials**](docs/Api/ConnectApi.md#connectblueskycredentials) | **POST** /v1/connect/bluesky/credentials | Connect Bluesky account
+*ConnectApi* | [**connectWhatsAppCredentials**](docs/Api/ConnectApi.md#connectwhatsappcredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials
 *ConnectApi* | [**getConnectUrl**](docs/Api/ConnectApi.md#getconnecturl) | **GET** /v1/connect/{platform} | Get OAuth connect URL
 *ConnectApi* | [**getFacebookPages**](docs/Api/ConnectApi.md#getfacebookpages) | **GET** /v1/accounts/{accountId}/facebook-page | List Facebook pages
 *ConnectApi* | [**getGmbLocations**](docs/Api/ConnectApi.md#getgmblocations) | **GET** /v1/accounts/{accountId}/gmb-locations | List GBP locations
@@ -263,6 +264,9 @@ Class | Method | HTTP request | Description
 - [CompleteTelegramConnect200Response](docs/Model/CompleteTelegramConnect200Response.md)
 - [ConnectBlueskyCredentials200Response](docs/Model/ConnectBlueskyCredentials200Response.md)
 - [ConnectBlueskyCredentialsRequest](docs/Model/ConnectBlueskyCredentialsRequest.md)
+- [ConnectWhatsAppCredentials200Response](docs/Model/ConnectWhatsAppCredentials200Response.md)
+- [ConnectWhatsAppCredentials200ResponseAccount](docs/Model/ConnectWhatsAppCredentials200ResponseAccount.md)
+- [ConnectWhatsAppCredentialsRequest](docs/Model/ConnectWhatsAppCredentialsRequest.md)
 - [Connected](docs/Model/Connected.md)
 - [ConnectedAccount](docs/Model/ConnectedAccount.md)
 - [ConnectionLog](docs/Model/ConnectionLog.md)
@@ -300,6 +304,8 @@ Class | Method | HTTP request | Description
 - [CreateWhatsAppTemplate200Response](docs/Model/CreateWhatsAppTemplate200Response.md)
 - [CreateWhatsAppTemplate200ResponseTemplate](docs/Model/CreateWhatsAppTemplate200ResponseTemplate.md)
 - [CreateWhatsAppTemplateRequest](docs/Model/CreateWhatsAppTemplateRequest.md)
+- [CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner](docs/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner.md)
+- [CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl](docs/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl.md)
 - [DeleteAccountGroup200Response](docs/Model/DeleteAccountGroup200Response.md)
 - [DeleteGoogleBusinessMedia200Response](docs/Model/DeleteGoogleBusinessMedia200Response.md)
 - [DeleteGoogleBusinessPlaceAction200Response](docs/Model/DeleteGoogleBusinessPlaceAction200Response.md)

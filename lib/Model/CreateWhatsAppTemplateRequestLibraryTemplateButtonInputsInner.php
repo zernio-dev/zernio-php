@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateWhatsAppTemplate200ResponseTemplate
+ * CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * CreateWhatsAppTemplate200ResponseTemplate Class Doc Comment
+ * CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createWhatsAppTemplate_200_response_template';
+    protected static $openAPIModelName = 'createWhatsAppTemplate_request_library_template_button_inputs_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,9 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'status' => 'string',
-        'category' => 'string',
-        'language' => 'string'
+        'type' => 'string',
+        'url' => '\Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl',
+        'phone_number' => 'string'
     ];
 
     /**
@@ -73,11 +71,9 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'status' => null,
-        'category' => null,
-        'language' => null
+        'type' => null,
+        'url' => null,
+        'phone_number' => null
     ];
 
     /**
@@ -86,11 +82,9 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'status' => false,
-        'category' => false,
-        'language' => false
+        'type' => false,
+        'url' => false,
+        'phone_number' => false
     ];
 
     /**
@@ -179,11 +173,9 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'status' => 'status',
-        'category' => 'category',
-        'language' => 'language'
+        'type' => 'type',
+        'url' => 'url',
+        'phone_number' => 'phone_number'
     ];
 
     /**
@@ -192,11 +184,9 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'status' => 'setStatus',
-        'category' => 'setCategory',
-        'language' => 'setLanguage'
+        'type' => 'setType',
+        'url' => 'setUrl',
+        'phone_number' => 'setPhoneNumber'
     ];
 
     /**
@@ -205,11 +195,9 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'status' => 'getStatus',
-        'category' => 'getCategory',
-        'language' => 'getLanguage'
+        'type' => 'getType',
+        'url' => 'getUrl',
+        'phone_number' => 'getPhoneNumber'
     ];
 
     /**
@@ -253,6 +241,23 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
+    public const TYPE_QUICK_REPLY = 'QUICK_REPLY';
+    public const TYPE_URL = 'URL';
+    public const TYPE_PHONE_NUMBER = 'PHONE_NUMBER';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_QUICK_REPLY,
+            self::TYPE_URL,
+            self::TYPE_PHONE_NUMBER,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -269,11 +274,9 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('category', $data ?? [], null);
-        $this->setIfExists('language', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('phone_number', $data ?? [], null);
     }
 
     /**
@@ -303,6 +306,15 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -319,136 +331,92 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
 
 
     /**
-     * Gets id
+     * Gets type
      *
      * @return string|null
      */
-    public function getId()
+    public function getType()
     {
-        return $this->container['id'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets id
+     * Sets type
      *
-     * @param string|null $id id
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setId($id)
+    public function setType($type)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['id'] = $id;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets url
      *
-     * @return string|null
+     * @return \Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl|null
      */
-    public function getName()
+    public function getUrl()
     {
-        return $this->container['name'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets name
+     * Sets url
      *
-     * @param string|null $name name
+     * @param \Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl|null $url url
      *
      * @return self
      */
-    public function setName($name)
+    public function setUrl($url)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets phone_number
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getPhoneNumber()
     {
-        return $this->container['status'];
+        return $this->container['phone_number'];
     }
 
     /**
-     * Sets status
+     * Sets phone_number
      *
-     * @param string|null $status APPROVED for library templates, PENDING for custom
+     * @param string|null $phone_number phone_number
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setPhoneNumber($phone_number)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($phone_number)) {
+            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
         }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets category
-     *
-     * @return string|null
-     */
-    public function getCategory()
-    {
-        return $this->container['category'];
-    }
-
-    /**
-     * Sets category
-     *
-     * @param string|null $category category
-     *
-     * @return self
-     */
-    public function setCategory($category)
-    {
-        if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
-        }
-        $this->container['category'] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Gets language
-     *
-     * @return string|null
-     */
-    public function getLanguage()
-    {
-        return $this->container['language'];
-    }
-
-    /**
-     * Sets language
-     *
-     * @param string|null $language language
-     *
-     * @return self
-     */
-    public function setLanguage($language)
-    {
-        if (is_null($language)) {
-            throw new \InvalidArgumentException('non-nullable language cannot be null');
-        }
-        $this->container['language'] = $language;
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }

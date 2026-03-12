@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | [optional]
 **name** | **string** |  | [optional]
-**status** | **string** |  | [optional]
+**status** | **string** | APPROVED for library templates, PENDING for custom | [optional]
 **category** | **string** |  | [optional]
 **language** | **string** |  | [optional]
 

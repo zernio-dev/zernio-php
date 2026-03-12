@@ -62,7 +62,10 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => 'string',
         'category' => 'string',
         'language' => 'string',
-        'components' => 'object[]'
+        'components' => 'object[]',
+        'library_template_name' => 'string',
+        'library_template_body_inputs' => 'object',
+        'library_template_button_inputs' => '\Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner[]'
     ];
 
     /**
@@ -77,7 +80,10 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => null,
         'category' => null,
         'language' => null,
-        'components' => null
+        'components' => null,
+        'library_template_name' => null,
+        'library_template_body_inputs' => null,
+        'library_template_button_inputs' => null
     ];
 
     /**
@@ -90,7 +96,10 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => false,
         'category' => false,
         'language' => false,
-        'components' => false
+        'components' => false,
+        'library_template_name' => false,
+        'library_template_body_inputs' => false,
+        'library_template_button_inputs' => false
     ];
 
     /**
@@ -183,7 +192,10 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => 'name',
         'category' => 'category',
         'language' => 'language',
-        'components' => 'components'
+        'components' => 'components',
+        'library_template_name' => 'library_template_name',
+        'library_template_body_inputs' => 'library_template_body_inputs',
+        'library_template_button_inputs' => 'library_template_button_inputs'
     ];
 
     /**
@@ -196,7 +208,10 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => 'setName',
         'category' => 'setCategory',
         'language' => 'setLanguage',
-        'components' => 'setComponents'
+        'components' => 'setComponents',
+        'library_template_name' => 'setLibraryTemplateName',
+        'library_template_body_inputs' => 'setLibraryTemplateBodyInputs',
+        'library_template_button_inputs' => 'setLibraryTemplateButtonInputs'
     ];
 
     /**
@@ -209,7 +224,10 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => 'getName',
         'category' => 'getCategory',
         'language' => 'getLanguage',
-        'components' => 'getComponents'
+        'components' => 'getComponents',
+        'library_template_name' => 'getLibraryTemplateName',
+        'library_template_body_inputs' => 'getLibraryTemplateBodyInputs',
+        'library_template_button_inputs' => 'getLibraryTemplateButtonInputs'
     ];
 
     /**
@@ -291,6 +309,9 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('category', $data ?? [], null);
         $this->setIfExists('language', $data ?? [], null);
         $this->setIfExists('components', $data ?? [], null);
+        $this->setIfExists('library_template_name', $data ?? [], null);
+        $this->setIfExists('library_template_body_inputs', $data ?? [], null);
+        $this->setIfExists('library_template_button_inputs', $data ?? [], null);
     }
 
     /**
@@ -344,9 +365,6 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
 
         if ($this->container['language'] === null) {
             $invalidProperties[] = "'language' can't be null";
-        }
-        if ($this->container['components'] === null) {
-            $invalidProperties[] = "'components' can't be null";
         }
         return $invalidProperties;
     }
@@ -489,7 +507,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets components
      *
-     * @return object[]
+     * @return object[]|null
      */
     public function getComponents()
     {
@@ -499,7 +517,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets components
      *
-     * @param object[] $components Template components (header, body, footer, buttons)
+     * @param object[]|null $components Template components (header, body, footer, buttons). Required for custom templates, omit when using library_template_name.
      *
      * @return self
      */
@@ -509,6 +527,87 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable components cannot be null');
         }
         $this->container['components'] = $components;
+
+        return $this;
+    }
+
+    /**
+     * Gets library_template_name
+     *
+     * @return string|null
+     */
+    public function getLibraryTemplateName()
+    {
+        return $this->container['library_template_name'];
+    }
+
+    /**
+     * Sets library_template_name
+     *
+     * @param string|null $library_template_name Name of a pre-built template from Meta's template library (e.g., \"appointment_reminder\", \"auto_pay_reminder_1\", \"address_update\"). When provided, the template is pre-approved by Meta with no review wait. Omit `components` when using this field.
+     *
+     * @return self
+     */
+    public function setLibraryTemplateName($library_template_name)
+    {
+        if (is_null($library_template_name)) {
+            throw new \InvalidArgumentException('non-nullable library_template_name cannot be null');
+        }
+        $this->container['library_template_name'] = $library_template_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets library_template_body_inputs
+     *
+     * @return object|null
+     */
+    public function getLibraryTemplateBodyInputs()
+    {
+        return $this->container['library_template_body_inputs'];
+    }
+
+    /**
+     * Sets library_template_body_inputs
+     *
+     * @param object|null $library_template_body_inputs Optional body customizations for library templates. Available options depend on the template (e.g., add_contact_number, add_learn_more_link, add_security_recommendation, add_track_package_link, code_expiration_minutes).
+     *
+     * @return self
+     */
+    public function setLibraryTemplateBodyInputs($library_template_body_inputs)
+    {
+        if (is_null($library_template_body_inputs)) {
+            throw new \InvalidArgumentException('non-nullable library_template_body_inputs cannot be null');
+        }
+        $this->container['library_template_body_inputs'] = $library_template_body_inputs;
+
+        return $this;
+    }
+
+    /**
+     * Gets library_template_button_inputs
+     *
+     * @return \Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner[]|null
+     */
+    public function getLibraryTemplateButtonInputs()
+    {
+        return $this->container['library_template_button_inputs'];
+    }
+
+    /**
+     * Sets library_template_button_inputs
+     *
+     * @param \Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner[]|null $library_template_button_inputs Optional button customizations for library templates. Each item specifies button type and configuration (e.g., URL, phone number, quick reply).
+     *
+     * @return self
+     */
+    public function setLibraryTemplateButtonInputs($library_template_button_inputs)
+    {
+        if (is_null($library_template_button_inputs)) {
+            throw new \InvalidArgumentException('non-nullable library_template_button_inputs cannot be null');
+        }
+        $this->container['library_template_button_inputs'] = $library_template_button_inputs;
 
         return $this;
     }

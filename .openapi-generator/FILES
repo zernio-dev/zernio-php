@@ -63,6 +63,9 @@ docs/Model/CheckInstagramHashtagsRequest.md
 docs/Model/CompleteTelegramConnect200Response.md
 docs/Model/ConnectBlueskyCredentials200Response.md
 docs/Model/ConnectBlueskyCredentialsRequest.md
+docs/Model/ConnectWhatsAppCredentials200Response.md
+docs/Model/ConnectWhatsAppCredentials200ResponseAccount.md
+docs/Model/ConnectWhatsAppCredentialsRequest.md
 docs/Model/Connected.md
 docs/Model/ConnectedAccount.md
 docs/Model/ConnectionLog.md
@@ -100,6 +103,8 @@ docs/Model/CreateWhatsAppContactRequest.md
 docs/Model/CreateWhatsAppTemplate200Response.md
 docs/Model/CreateWhatsAppTemplate200ResponseTemplate.md
 docs/Model/CreateWhatsAppTemplateRequest.md
+docs/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner.md
+docs/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl.md
 docs/Model/DeleteAccountGroup200Response.md
 docs/Model/DeleteGoogleBusinessMedia200Response.md
 docs/Model/DeleteGoogleBusinessPlaceAction200Response.md
@@ -615,6 +620,9 @@ lib/Model/CheckInstagramHashtagsRequest.php
 lib/Model/CompleteTelegramConnect200Response.php
 lib/Model/ConnectBlueskyCredentials200Response.php
 lib/Model/ConnectBlueskyCredentialsRequest.php
+lib/Model/ConnectWhatsAppCredentials200Response.php
+lib/Model/ConnectWhatsAppCredentials200ResponseAccount.php
+lib/Model/ConnectWhatsAppCredentialsRequest.php
 lib/Model/Connected.php
 lib/Model/ConnectedAccount.php
 lib/Model/ConnectionLog.php
@@ -652,6 +660,8 @@ lib/Model/CreateWhatsAppContactRequest.php
 lib/Model/CreateWhatsAppTemplate200Response.php
 lib/Model/CreateWhatsAppTemplate200ResponseTemplate.php
 lib/Model/CreateWhatsAppTemplateRequest.php
+lib/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner.php
+lib/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl.php
 lib/Model/DeleteAccountGroup200Response.php
 lib/Model/DeleteGoogleBusinessMedia200Response.php
 lib/Model/DeleteGoogleBusinessPlaceAction200Response.php
@@ -1105,3 +1115,8 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectWhatsAppCredentials200ResponseAccountTest.php
+test/Model/ConnectWhatsAppCredentials200ResponseTest.php
+test/Model/ConnectWhatsAppCredentialsRequestTest.php
+test/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerTest.php
+test/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrlTest.php

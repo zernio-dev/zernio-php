@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateWhatsAppTemplate200ResponseTemplate
+ * ConnectWhatsAppCredentials200ResponseAccount
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * CreateWhatsAppTemplate200ResponseTemplate Class Doc Comment
+ * ConnectWhatsAppCredentials200ResponseAccount Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConnectWhatsAppCredentials200ResponseAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createWhatsAppTemplate_200_response_template';
+    protected static $openAPIModelName = 'connectWhatsAppCredentials_200_response_account';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,14 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'status' => 'string',
-        'category' => 'string',
-        'language' => 'string'
+        'account_id' => 'string',
+        'platform' => 'string',
+        'username' => 'string',
+        'display_name' => 'string',
+        'is_active' => 'bool',
+        'phone_number' => 'string',
+        'verified_name' => 'string',
+        'quality_rating' => 'string'
     ];
 
     /**
@@ -73,11 +76,14 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'status' => null,
-        'category' => null,
-        'language' => null
+        'account_id' => null,
+        'platform' => null,
+        'username' => null,
+        'display_name' => null,
+        'is_active' => null,
+        'phone_number' => null,
+        'verified_name' => null,
+        'quality_rating' => null
     ];
 
     /**
@@ -86,11 +92,14 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'status' => false,
-        'category' => false,
-        'language' => false
+        'account_id' => false,
+        'platform' => false,
+        'username' => false,
+        'display_name' => false,
+        'is_active' => false,
+        'phone_number' => false,
+        'verified_name' => false,
+        'quality_rating' => false
     ];
 
     /**
@@ -179,11 +188,14 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'status' => 'status',
-        'category' => 'category',
-        'language' => 'language'
+        'account_id' => 'accountId',
+        'platform' => 'platform',
+        'username' => 'username',
+        'display_name' => 'displayName',
+        'is_active' => 'isActive',
+        'phone_number' => 'phoneNumber',
+        'verified_name' => 'verifiedName',
+        'quality_rating' => 'qualityRating'
     ];
 
     /**
@@ -192,11 +204,14 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'status' => 'setStatus',
-        'category' => 'setCategory',
-        'language' => 'setLanguage'
+        'account_id' => 'setAccountId',
+        'platform' => 'setPlatform',
+        'username' => 'setUsername',
+        'display_name' => 'setDisplayName',
+        'is_active' => 'setIsActive',
+        'phone_number' => 'setPhoneNumber',
+        'verified_name' => 'setVerifiedName',
+        'quality_rating' => 'setQualityRating'
     ];
 
     /**
@@ -205,11 +220,14 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'status' => 'getStatus',
-        'category' => 'getCategory',
-        'language' => 'getLanguage'
+        'account_id' => 'getAccountId',
+        'platform' => 'getPlatform',
+        'username' => 'getUsername',
+        'display_name' => 'getDisplayName',
+        'is_active' => 'getIsActive',
+        'phone_number' => 'getPhoneNumber',
+        'verified_name' => 'getVerifiedName',
+        'quality_rating' => 'getQualityRating'
     ];
 
     /**
@@ -253,6 +271,19 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
+    public const PLATFORM_WHATSAPP = 'whatsapp';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlatformAllowableValues()
+    {
+        return [
+            self::PLATFORM_WHATSAPP,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -269,11 +300,14 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('category', $data ?? [], null);
-        $this->setIfExists('language', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('username', $data ?? [], null);
+        $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('is_active', $data ?? [], null);
+        $this->setIfExists('phone_number', $data ?? [], null);
+        $this->setIfExists('verified_name', $data ?? [], null);
+        $this->setIfExists('quality_rating', $data ?? [], null);
     }
 
     /**
@@ -303,6 +337,15 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -319,136 +362,227 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
 
 
     /**
-     * Gets id
+     * Gets account_id
      *
      * @return string|null
      */
-    public function getId()
+    public function getAccountId()
     {
-        return $this->container['id'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets id
+     * Sets account_id
      *
-     * @param string|null $id id
+     * @param string|null $account_id account_id
      *
      * @return self
      */
-    public function setId($id)
+    public function setAccountId($account_id)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets platform
      *
      * @return string|null
      */
-    public function getName()
+    public function getPlatform()
     {
-        return $this->container['name'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets name
+     * Sets platform
      *
-     * @param string|null $name name
+     * @param string|null $platform platform
      *
      * @return self
      */
-    public function setName($name)
+    public function setPlatform($platform)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $this->container['name'] = $name;
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['platform'] = $platform;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets username
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getUsername()
     {
-        return $this->container['status'];
+        return $this->container['username'];
     }
 
     /**
-     * Sets status
+     * Sets username
      *
-     * @param string|null $status APPROVED for library templates, PENDING for custom
+     * @param string|null $username Display phone number
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setUsername($username)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($username)) {
+            throw new \InvalidArgumentException('non-nullable username cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['username'] = $username;
 
         return $this;
     }
 
     /**
-     * Gets category
+     * Gets display_name
      *
      * @return string|null
      */
-    public function getCategory()
+    public function getDisplayName()
     {
-        return $this->container['category'];
+        return $this->container['display_name'];
     }
 
     /**
-     * Sets category
+     * Sets display_name
      *
-     * @param string|null $category category
+     * @param string|null $display_name Meta-verified business name
      *
      * @return self
      */
-    public function setCategory($category)
+    public function setDisplayName($display_name)
     {
-        if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
+        if (is_null($display_name)) {
+            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
-        $this->container['category'] = $category;
+        $this->container['display_name'] = $display_name;
 
         return $this;
     }
 
     /**
-     * Gets language
+     * Gets is_active
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getLanguage()
+    public function getIsActive()
     {
-        return $this->container['language'];
+        return $this->container['is_active'];
     }
 
     /**
-     * Sets language
+     * Sets is_active
      *
-     * @param string|null $language language
+     * @param bool|null $is_active is_active
      *
      * @return self
      */
-    public function setLanguage($language)
+    public function setIsActive($is_active)
     {
-        if (is_null($language)) {
-            throw new \InvalidArgumentException('non-nullable language cannot be null');
+        if (is_null($is_active)) {
+            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
         }
-        $this->container['language'] = $language;
+        $this->container['is_active'] = $is_active;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number
+     *
+     * @return string|null
+     */
+    public function getPhoneNumber()
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number
+     *
+     * @param string|null $phone_number phone_number
+     *
+     * @return self
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        if (is_null($phone_number)) {
+            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+        }
+        $this->container['phone_number'] = $phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets verified_name
+     *
+     * @return string|null
+     */
+    public function getVerifiedName()
+    {
+        return $this->container['verified_name'];
+    }
+
+    /**
+     * Sets verified_name
+     *
+     * @param string|null $verified_name verified_name
+     *
+     * @return self
+     */
+    public function setVerifiedName($verified_name)
+    {
+        if (is_null($verified_name)) {
+            throw new \InvalidArgumentException('non-nullable verified_name cannot be null');
+        }
+        $this->container['verified_name'] = $verified_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets quality_rating
+     *
+     * @return string|null
+     */
+    public function getQualityRating()
+    {
+        return $this->container['quality_rating'];
+    }
+
+    /**
+     * Sets quality_rating
+     *
+     * @param string|null $quality_rating GREEN, YELLOW, or RED
+     *
+     * @return self
+     */
+    public function setQualityRating($quality_rating)
+    {
+        if (is_null($quality_rating)) {
+            throw new \InvalidArgumentException('non-nullable quality_rating cannot be null');
+        }
+        $this->container['quality_rating'] = $quality_rating;
 
         return $this;
     }

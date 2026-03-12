@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateWhatsAppTemplate200ResponseTemplate
+ * ConnectWhatsAppCredentials200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * CreateWhatsAppTemplate200ResponseTemplate Class Doc Comment
+ * ConnectWhatsAppCredentials200Response Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConnectWhatsAppCredentials200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createWhatsAppTemplate_200_response_template';
+    protected static $openAPIModelName = 'connectWhatsAppCredentials_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'status' => 'string',
-        'category' => 'string',
-        'language' => 'string'
+        'message' => 'string',
+        'account' => '\Late\Model\ConnectWhatsAppCredentials200ResponseAccount'
     ];
 
     /**
@@ -73,11 +70,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'status' => null,
-        'category' => null,
-        'language' => null
+        'message' => null,
+        'account' => null
     ];
 
     /**
@@ -86,11 +80,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'status' => false,
-        'category' => false,
-        'language' => false
+        'message' => false,
+        'account' => false
     ];
 
     /**
@@ -179,11 +170,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'status' => 'status',
-        'category' => 'category',
-        'language' => 'language'
+        'message' => 'message',
+        'account' => 'account'
     ];
 
     /**
@@ -192,11 +180,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'status' => 'setStatus',
-        'category' => 'setCategory',
-        'language' => 'setLanguage'
+        'message' => 'setMessage',
+        'account' => 'setAccount'
     ];
 
     /**
@@ -205,11 +190,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'status' => 'getStatus',
-        'category' => 'getCategory',
-        'language' => 'getLanguage'
+        'message' => 'getMessage',
+        'account' => 'getAccount'
     ];
 
     /**
@@ -269,11 +251,8 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('category', $data ?? [], null);
-        $this->setIfExists('language', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('account', $data ?? [], null);
     }
 
     /**
@@ -319,136 +298,55 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
 
 
     /**
-     * Gets id
+     * Gets message
      *
      * @return string|null
      */
-    public function getId()
+    public function getMessage()
     {
-        return $this->container['id'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets id
+     * Sets message
      *
-     * @param string|null $id id
+     * @param string|null $message message
      *
      * @return self
      */
-    public function setId($id)
+    public function setMessage($message)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets account
      *
-     * @return string|null
+     * @return \Late\Model\ConnectWhatsAppCredentials200ResponseAccount|null
      */
-    public function getName()
+    public function getAccount()
     {
-        return $this->container['name'];
+        return $this->container['account'];
     }
 
     /**
-     * Sets name
+     * Sets account
      *
-     * @param string|null $name name
+     * @param \Late\Model\ConnectWhatsAppCredentials200ResponseAccount|null $account account
      *
      * @return self
      */
-    public function setName($name)
+    public function setAccount($account)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($account)) {
+            throw new \InvalidArgumentException('non-nullable account cannot be null');
         }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status APPROVED for library templates, PENDING for custom
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets category
-     *
-     * @return string|null
-     */
-    public function getCategory()
-    {
-        return $this->container['category'];
-    }
-
-    /**
-     * Sets category
-     *
-     * @param string|null $category category
-     *
-     * @return self
-     */
-    public function setCategory($category)
-    {
-        if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
-        }
-        $this->container['category'] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Gets language
-     *
-     * @return string|null
-     */
-    public function getLanguage()
-    {
-        return $this->container['language'];
-    }
-
-    /**
-     * Sets language
-     *
-     * @param string|null $language language
-     *
-     * @return self
-     */
-    public function setLanguage($language)
-    {
-        if (is_null($language)) {
-            throw new \InvalidArgumentException('non-nullable language cannot be null');
-        }
-        $this->container['language'] = $language;
+        $this->container['account'] = $account;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateWhatsAppTemplate200ResponseTemplate
+ * ConnectWhatsAppCredentialsRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * CreateWhatsAppTemplate200ResponseTemplate Class Doc Comment
+ * ConnectWhatsAppCredentialsRequest Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConnectWhatsAppCredentialsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createWhatsAppTemplate_200_response_template';
+    protected static $openAPIModelName = 'connectWhatsAppCredentials_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,10 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'status' => 'string',
-        'category' => 'string',
-        'language' => 'string'
+        'profile_id' => 'string',
+        'access_token' => 'string',
+        'waba_id' => 'string',
+        'phone_number_id' => 'string'
     ];
 
     /**
@@ -73,11 +72,10 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'status' => null,
-        'category' => null,
-        'language' => null
+        'profile_id' => null,
+        'access_token' => null,
+        'waba_id' => null,
+        'phone_number_id' => null
     ];
 
     /**
@@ -86,11 +84,10 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'status' => false,
-        'category' => false,
-        'language' => false
+        'profile_id' => false,
+        'access_token' => false,
+        'waba_id' => false,
+        'phone_number_id' => false
     ];
 
     /**
@@ -179,11 +176,10 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'status' => 'status',
-        'category' => 'category',
-        'language' => 'language'
+        'profile_id' => 'profileId',
+        'access_token' => 'accessToken',
+        'waba_id' => 'wabaId',
+        'phone_number_id' => 'phoneNumberId'
     ];
 
     /**
@@ -192,11 +188,10 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'status' => 'setStatus',
-        'category' => 'setCategory',
-        'language' => 'setLanguage'
+        'profile_id' => 'setProfileId',
+        'access_token' => 'setAccessToken',
+        'waba_id' => 'setWabaId',
+        'phone_number_id' => 'setPhoneNumberId'
     ];
 
     /**
@@ -205,11 +200,10 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'status' => 'getStatus',
-        'category' => 'getCategory',
-        'language' => 'getLanguage'
+        'profile_id' => 'getProfileId',
+        'access_token' => 'getAccessToken',
+        'waba_id' => 'getWabaId',
+        'phone_number_id' => 'getPhoneNumberId'
     ];
 
     /**
@@ -269,11 +263,10 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('category', $data ?? [], null);
-        $this->setIfExists('language', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
+        $this->setIfExists('access_token', $data ?? [], null);
+        $this->setIfExists('waba_id', $data ?? [], null);
+        $this->setIfExists('phone_number_id', $data ?? [], null);
     }
 
     /**
@@ -303,6 +296,18 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
     {
         $invalidProperties = [];
 
+        if ($this->container['profile_id'] === null) {
+            $invalidProperties[] = "'profile_id' can't be null";
+        }
+        if ($this->container['access_token'] === null) {
+            $invalidProperties[] = "'access_token' can't be null";
+        }
+        if ($this->container['waba_id'] === null) {
+            $invalidProperties[] = "'waba_id' can't be null";
+        }
+        if ($this->container['phone_number_id'] === null) {
+            $invalidProperties[] = "'phone_number_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -319,136 +324,109 @@ class CreateWhatsAppTemplate200ResponseTemplate implements ModelInterface, Array
 
 
     /**
-     * Gets id
+     * Gets profile_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getId()
+    public function getProfileId()
     {
-        return $this->container['id'];
+        return $this->container['profile_id'];
     }
 
     /**
-     * Sets id
+     * Sets profile_id
      *
-     * @param string|null $id id
+     * @param string $profile_id Your Late profile ID
      *
      * @return self
      */
-    public function setId($id)
+    public function setProfileId($profile_id)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['profile_id'] = $profile_id;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets access_token
      *
-     * @return string|null
+     * @return string
      */
-    public function getName()
+    public function getAccessToken()
     {
-        return $this->container['name'];
+        return $this->container['access_token'];
     }
 
     /**
-     * Sets name
+     * Sets access_token
      *
-     * @param string|null $name name
+     * @param string $access_token Permanent System User access token from Meta Business Suite
      *
      * @return self
      */
-    public function setName($name)
+    public function setAccessToken($access_token)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($access_token)) {
+            throw new \InvalidArgumentException('non-nullable access_token cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['access_token'] = $access_token;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets waba_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getStatus()
+    public function getWabaId()
     {
-        return $this->container['status'];
+        return $this->container['waba_id'];
     }
 
     /**
-     * Sets status
+     * Sets waba_id
      *
-     * @param string|null $status APPROVED for library templates, PENDING for custom
+     * @param string $waba_id WhatsApp Business Account ID from Meta
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setWabaId($waba_id)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($waba_id)) {
+            throw new \InvalidArgumentException('non-nullable waba_id cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['waba_id'] = $waba_id;
 
         return $this;
     }
 
     /**
-     * Gets category
+     * Gets phone_number_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getCategory()
+    public function getPhoneNumberId()
     {
-        return $this->container['category'];
+        return $this->container['phone_number_id'];
     }
 
     /**
-     * Sets category
+     * Sets phone_number_id
      *
-     * @param string|null $category category
+     * @param string $phone_number_id Phone Number ID from Meta WhatsApp Manager
      *
      * @return self
      */
-    public function setCategory($category)
+    public function setPhoneNumberId($phone_number_id)
     {
-        if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
+        if (is_null($phone_number_id)) {
+            throw new \InvalidArgumentException('non-nullable phone_number_id cannot be null');
         }
-        $this->container['category'] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Gets language
-     *
-     * @return string|null
-     */
-    public function getLanguage()
-    {
-        return $this->container['language'];
-    }
-
-    /**
-     * Sets language
-     *
-     * @param string|null $language language
-     *
-     * @return self
-     */
-    public function setLanguage($language)
-    {
-        if (is_null($language)) {
-            throw new \InvalidArgumentException('non-nullable language cannot be null');
-        }
-        $this->container['language'] = $language;
+        $this->container['phone_number_id'] = $phone_number_id;
 
         return $this;
     }
