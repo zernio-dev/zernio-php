@@ -72,7 +72,8 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'last_updated' => '\DateTime',
         'growth' => 'float',
         'growth_percentage' => 'float',
-        'data_points' => 'float'
+        'data_points' => 'float',
+        'account_stats' => '\Late\Model\AccountWithFollowerStatsAllOfAccountStats'
     ];
 
     /**
@@ -97,7 +98,8 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'last_updated' => 'date-time',
         'growth' => null,
         'growth_percentage' => null,
-        'data_points' => null
+        'data_points' => null,
+        'account_stats' => null
     ];
 
     /**
@@ -120,7 +122,8 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'last_updated' => false,
         'growth' => false,
         'growth_percentage' => false,
-        'data_points' => false
+        'data_points' => false,
+        'account_stats' => false
     ];
 
     /**
@@ -223,7 +226,8 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'last_updated' => 'lastUpdated',
         'growth' => 'growth',
         'growth_percentage' => 'growthPercentage',
-        'data_points' => 'dataPoints'
+        'data_points' => 'dataPoints',
+        'account_stats' => 'accountStats'
     ];
 
     /**
@@ -246,7 +250,8 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'last_updated' => 'setLastUpdated',
         'growth' => 'setGrowth',
         'growth_percentage' => 'setGrowthPercentage',
-        'data_points' => 'setDataPoints'
+        'data_points' => 'setDataPoints',
+        'account_stats' => 'setAccountStats'
     ];
 
     /**
@@ -269,7 +274,8 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'last_updated' => 'getLastUpdated',
         'growth' => 'getGrowth',
         'growth_percentage' => 'getGrowthPercentage',
-        'data_points' => 'getDataPoints'
+        'data_points' => 'getDataPoints',
+        'account_stats' => 'getAccountStats'
     ];
 
     /**
@@ -344,6 +350,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('growth', $data ?? [], null);
         $this->setIfExists('growth_percentage', $data ?? [], null);
         $this->setIfExists('data_points', $data ?? [], null);
+        $this->setIfExists('account_stats', $data ?? [], null);
     }
 
     /**
@@ -789,6 +796,33 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable data_points cannot be null');
         }
         $this->container['data_points'] = $data_points;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_stats
+     *
+     * @return \Late\Model\AccountWithFollowerStatsAllOfAccountStats|null
+     */
+    public function getAccountStats()
+    {
+        return $this->container['account_stats'];
+    }
+
+    /**
+     * Sets account_stats
+     *
+     * @param \Late\Model\AccountWithFollowerStatsAllOfAccountStats|null $account_stats account_stats
+     *
+     * @return self
+     */
+    public function setAccountStats($account_stats)
+    {
+        if (is_null($account_stats)) {
+            throw new \InvalidArgumentException('non-nullable account_stats cannot be null');
+        }
+        $this->container['account_stats'] = $account_stats;
 
         return $this;
     }

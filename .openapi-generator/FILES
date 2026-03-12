@@ -35,6 +35,7 @@ docs/Api/WhatsAppApi.md
 docs/Api/WhatsAppPhoneNumbersApi.md
 docs/Model/AccountGetResponse.md
 docs/Model/AccountWithFollowerStats.md
+docs/Model/AccountWithFollowerStatsAllOfAccountStats.md
 docs/Model/AccountsListResponse.md
 docs/Model/AddWhatsAppBroadcastRecipients200Response.md
 docs/Model/AddWhatsAppBroadcastRecipientsRequest.md
@@ -251,6 +252,8 @@ docs/Model/GetWhatsAppContacts200Response.md
 docs/Model/GetWhatsAppContacts200ResponseContactsInner.md
 docs/Model/GetWhatsAppContacts200ResponseFilters.md
 docs/Model/GetWhatsAppContacts200ResponsePagination.md
+docs/Model/GetWhatsAppDisplayName200Response.md
+docs/Model/GetWhatsAppDisplayName200ResponseDisplayName.md
 docs/Model/GetWhatsAppGroups200Response.md
 docs/Model/GetWhatsAppGroups200ResponseGroupsInner.md
 docs/Model/GetWhatsAppGroups200ResponseSummary.md
@@ -495,6 +498,9 @@ docs/Model/UpdateWhatsAppBusinessProfileRequest.md
 docs/Model/UpdateWhatsAppContact200Response.md
 docs/Model/UpdateWhatsAppContact200ResponseContact.md
 docs/Model/UpdateWhatsAppContactRequest.md
+docs/Model/UpdateWhatsAppDisplayName200Response.md
+docs/Model/UpdateWhatsAppDisplayName200ResponseDisplayName.md
+docs/Model/UpdateWhatsAppDisplayNameRequest.md
 docs/Model/UpdateWhatsAppTemplate200Response.md
 docs/Model/UpdateWhatsAppTemplate200ResponseTemplate.md
 docs/Model/UpdateWhatsAppTemplateRequest.md
@@ -592,6 +598,7 @@ lib/FormDataProcessor.php
 lib/HeaderSelector.php
 lib/Model/AccountGetResponse.php
 lib/Model/AccountWithFollowerStats.php
+lib/Model/AccountWithFollowerStatsAllOfAccountStats.php
 lib/Model/AccountsListResponse.php
 lib/Model/AddWhatsAppBroadcastRecipients200Response.php
 lib/Model/AddWhatsAppBroadcastRecipientsRequest.php
@@ -808,6 +815,8 @@ lib/Model/GetWhatsAppContacts200Response.php
 lib/Model/GetWhatsAppContacts200ResponseContactsInner.php
 lib/Model/GetWhatsAppContacts200ResponseFilters.php
 lib/Model/GetWhatsAppContacts200ResponsePagination.php
+lib/Model/GetWhatsAppDisplayName200Response.php
+lib/Model/GetWhatsAppDisplayName200ResponseDisplayName.php
 lib/Model/GetWhatsAppGroups200Response.php
 lib/Model/GetWhatsAppGroups200ResponseGroupsInner.php
 lib/Model/GetWhatsAppGroups200ResponseSummary.php
@@ -1053,6 +1062,9 @@ lib/Model/UpdateWhatsAppBusinessProfileRequest.php
 lib/Model/UpdateWhatsAppContact200Response.php
 lib/Model/UpdateWhatsAppContact200ResponseContact.php
 lib/Model/UpdateWhatsAppContactRequest.php
+lib/Model/UpdateWhatsAppDisplayName200Response.php
+lib/Model/UpdateWhatsAppDisplayName200ResponseDisplayName.php
+lib/Model/UpdateWhatsAppDisplayNameRequest.php
 lib/Model/UpdateWhatsAppTemplate200Response.php
 lib/Model/UpdateWhatsAppTemplate200ResponseTemplate.php
 lib/Model/UpdateWhatsAppTemplateRequest.php
@@ -1115,3 +1127,9 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AccountWithFollowerStatsAllOfAccountStatsTest.php
+test/Model/GetWhatsAppDisplayName200ResponseDisplayNameTest.php
+test/Model/GetWhatsAppDisplayName200ResponseTest.php
+test/Model/UpdateWhatsAppDisplayName200ResponseDisplayNameTest.php
+test/Model/UpdateWhatsAppDisplayName200ResponseTest.php
+test/Model/UpdateWhatsAppDisplayNameRequestTest.php

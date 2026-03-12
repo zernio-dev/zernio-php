@@ -126,6 +126,9 @@ class WhatsAppApi
         'getWhatsAppContacts' => [
             'application/json',
         ],
+        'getWhatsAppDisplayName' => [
+            'application/json',
+        ],
         'getWhatsAppGroups' => [
             'application/json',
         ],
@@ -159,8 +162,14 @@ class WhatsAppApi
         'updateWhatsAppContact' => [
             'application/json',
         ],
+        'updateWhatsAppDisplayName' => [
+            'application/json',
+        ],
         'updateWhatsAppTemplate' => [
             'application/json',
+        ],
+        'uploadWhatsAppProfilePhoto' => [
+            'multipart/form-data',
         ],
     ];
 
@@ -5402,6 +5411,293 @@ class WhatsAppApi
     }
 
     /**
+     * Operation getWhatsAppDisplayName
+     *
+     * Get display name and review status
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\GetWhatsAppDisplayName200Response|\Late\Model\InlineObject
+     */
+    public function getWhatsAppDisplayName($account_id, string $contentType = self::contentTypes['getWhatsAppDisplayName'][0])
+    {
+        list($response) = $this->getWhatsAppDisplayNameWithHttpInfo($account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWhatsAppDisplayNameWithHttpInfo
+     *
+     * Get display name and review status
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\GetWhatsAppDisplayName200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWhatsAppDisplayNameWithHttpInfo($account_id, string $contentType = self::contentTypes['getWhatsAppDisplayName'][0])
+    {
+        $request = $this->getWhatsAppDisplayNameRequest($account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetWhatsAppDisplayName200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetWhatsAppDisplayName200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetWhatsAppDisplayName200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWhatsAppDisplayNameAsync
+     *
+     * Get display name and review status
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppDisplayNameAsync($account_id, string $contentType = self::contentTypes['getWhatsAppDisplayName'][0])
+    {
+        return $this->getWhatsAppDisplayNameAsyncWithHttpInfo($account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWhatsAppDisplayNameAsyncWithHttpInfo
+     *
+     * Get display name and review status
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppDisplayNameAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getWhatsAppDisplayName'][0])
+    {
+        $returnType = '\Late\Model\GetWhatsAppDisplayName200Response';
+        $request = $this->getWhatsAppDisplayNameRequest($account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWhatsAppDisplayName'
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWhatsAppDisplayNameRequest($account_id, string $contentType = self::contentTypes['getWhatsAppDisplayName'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getWhatsAppDisplayName'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/business-profile/display-name';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getWhatsAppGroups
      *
      * List contact groups
@@ -8694,6 +8990,291 @@ class WhatsAppApi
     }
 
     /**
+     * Operation updateWhatsAppDisplayName
+     *
+     * Request display name change
+     *
+     * @param  \Late\Model\UpdateWhatsAppDisplayNameRequest $update_whats_app_display_name_request update_whats_app_display_name_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppDisplayName'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UpdateWhatsAppDisplayName200Response|\Late\Model\InlineObject
+     */
+    public function updateWhatsAppDisplayName($update_whats_app_display_name_request, string $contentType = self::contentTypes['updateWhatsAppDisplayName'][0])
+    {
+        list($response) = $this->updateWhatsAppDisplayNameWithHttpInfo($update_whats_app_display_name_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateWhatsAppDisplayNameWithHttpInfo
+     *
+     * Request display name change
+     *
+     * @param  \Late\Model\UpdateWhatsAppDisplayNameRequest $update_whats_app_display_name_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppDisplayName'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UpdateWhatsAppDisplayName200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateWhatsAppDisplayNameWithHttpInfo($update_whats_app_display_name_request, string $contentType = self::contentTypes['updateWhatsAppDisplayName'][0])
+    {
+        $request = $this->updateWhatsAppDisplayNameRequest($update_whats_app_display_name_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateWhatsAppDisplayName200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateWhatsAppDisplayName200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateWhatsAppDisplayName200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateWhatsAppDisplayNameAsync
+     *
+     * Request display name change
+     *
+     * @param  \Late\Model\UpdateWhatsAppDisplayNameRequest $update_whats_app_display_name_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppDisplayName'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateWhatsAppDisplayNameAsync($update_whats_app_display_name_request, string $contentType = self::contentTypes['updateWhatsAppDisplayName'][0])
+    {
+        return $this->updateWhatsAppDisplayNameAsyncWithHttpInfo($update_whats_app_display_name_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateWhatsAppDisplayNameAsyncWithHttpInfo
+     *
+     * Request display name change
+     *
+     * @param  \Late\Model\UpdateWhatsAppDisplayNameRequest $update_whats_app_display_name_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppDisplayName'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateWhatsAppDisplayNameAsyncWithHttpInfo($update_whats_app_display_name_request, string $contentType = self::contentTypes['updateWhatsAppDisplayName'][0])
+    {
+        $returnType = '\Late\Model\UpdateWhatsAppDisplayName200Response';
+        $request = $this->updateWhatsAppDisplayNameRequest($update_whats_app_display_name_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateWhatsAppDisplayName'
+     *
+     * @param  \Late\Model\UpdateWhatsAppDisplayNameRequest $update_whats_app_display_name_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppDisplayName'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateWhatsAppDisplayNameRequest($update_whats_app_display_name_request, string $contentType = self::contentTypes['updateWhatsAppDisplayName'][0])
+    {
+
+        // verify the required parameter 'update_whats_app_display_name_request' is set
+        if ($update_whats_app_display_name_request === null || (is_array($update_whats_app_display_name_request) && count($update_whats_app_display_name_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_whats_app_display_name_request when calling updateWhatsAppDisplayName'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/business-profile/display-name';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_whats_app_display_name_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_whats_app_display_name_request));
+            } else {
+                $httpBody = $update_whats_app_display_name_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation updateWhatsAppTemplate
      *
      * Update template
@@ -9006,6 +9587,307 @@ class WhatsAppApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation uploadWhatsAppProfilePhoto
+     *
+     * Upload profile picture
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \SplFileObject $file Image file (JPEG or PNG, max 5MB, recommended 640x640) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadWhatsAppProfilePhoto'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject
+     */
+    public function uploadWhatsAppProfilePhoto($account_id, $file, string $contentType = self::contentTypes['uploadWhatsAppProfilePhoto'][0])
+    {
+        list($response) = $this->uploadWhatsAppProfilePhotoWithHttpInfo($account_id, $file, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation uploadWhatsAppProfilePhotoWithHttpInfo
+     *
+     * Upload profile picture
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \SplFileObject $file Image file (JPEG or PNG, max 5MB, recommended 640x640) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadWhatsAppProfilePhoto'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function uploadWhatsAppProfilePhotoWithHttpInfo($account_id, $file, string $contentType = self::contentTypes['uploadWhatsAppProfilePhoto'][0])
+    {
+        $request = $this->uploadWhatsAppProfilePhotoRequest($account_id, $file, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UnpublishPost200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation uploadWhatsAppProfilePhotoAsync
+     *
+     * Upload profile picture
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \SplFileObject $file Image file (JPEG or PNG, max 5MB, recommended 640x640) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadWhatsAppProfilePhoto'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadWhatsAppProfilePhotoAsync($account_id, $file, string $contentType = self::contentTypes['uploadWhatsAppProfilePhoto'][0])
+    {
+        return $this->uploadWhatsAppProfilePhotoAsyncWithHttpInfo($account_id, $file, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation uploadWhatsAppProfilePhotoAsyncWithHttpInfo
+     *
+     * Upload profile picture
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \SplFileObject $file Image file (JPEG or PNG, max 5MB, recommended 640x640) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadWhatsAppProfilePhoto'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadWhatsAppProfilePhotoAsyncWithHttpInfo($account_id, $file, string $contentType = self::contentTypes['uploadWhatsAppProfilePhoto'][0])
+    {
+        $returnType = '\Late\Model\UnpublishPost200Response';
+        $request = $this->uploadWhatsAppProfilePhotoRequest($account_id, $file, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'uploadWhatsAppProfilePhoto'
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \SplFileObject $file Image file (JPEG or PNG, max 5MB, recommended 640x640) (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadWhatsAppProfilePhoto'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function uploadWhatsAppProfilePhotoRequest($account_id, $file, string $contentType = self::contentTypes['uploadWhatsAppProfilePhoto'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling uploadWhatsAppProfilePhoto'
+            );
+        }
+
+        // verify the required parameter 'file' is set
+        if ($file === null || (is_array($file) && count($file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $file when calling uploadWhatsAppProfilePhoto'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/business-profile/photo';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+        // form params
+        $formDataProcessor = new FormDataProcessor();
+
+        $formData = $formDataProcessor->prepare([
+            'account_id' => $account_id,
+            'file' => $file,
+        ]);
+
+        $formParams = $formDataProcessor->flatten($formData);
+        $multipart = $formDataProcessor->has_file;
+
+        $multipart = true;
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
