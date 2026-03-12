@@ -1127,9 +1127,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AccountWithFollowerStatsAllOfAccountStatsTest.php
-test/Model/GetWhatsAppDisplayName200ResponseDisplayNameTest.php
-test/Model/GetWhatsAppDisplayName200ResponseTest.php
-test/Model/UpdateWhatsAppDisplayName200ResponseDisplayNameTest.php
-test/Model/UpdateWhatsAppDisplayName200ResponseTest.php
-test/Model/UpdateWhatsAppDisplayNameRequestTest.php
