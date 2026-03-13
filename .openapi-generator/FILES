@@ -1181,13 +1181,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/TwitterEngagementApiTest.php
-test/Model/BookmarkPost200ResponseTest.php
-test/Model/BookmarkPostRequestTest.php
-test/Model/FollowUser200ResponseTest.php
-test/Model/FollowUserRequestTest.php
-test/Model/RemoveBookmark200ResponseTest.php
-test/Model/RetweetPost200ResponseTest.php
-test/Model/RetweetPostRequestTest.php
-test/Model/UndoRetweet200ResponseTest.php
-test/Model/UnfollowUser200ResponseTest.php
