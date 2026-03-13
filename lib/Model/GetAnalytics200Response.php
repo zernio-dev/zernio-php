@@ -68,6 +68,9 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'platform' => 'string',
         'platform_post_url' => 'string',
         'is_external' => 'bool',
+        'thumbnail_url' => 'string',
+        'media_type' => 'string',
+        'media_items' => '\Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]',
         'overview' => '\Late\Model\AnalyticsOverview',
         'posts' => '\Late\Model\AnalyticsListResponsePostsInner[]',
         'pagination' => '\Late\Model\Pagination',
@@ -93,6 +96,9 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'platform' => null,
         'platform_post_url' => 'uri',
         'is_external' => null,
+        'thumbnail_url' => 'uri',
+        'media_type' => null,
+        'media_items' => null,
         'overview' => null,
         'posts' => null,
         'pagination' => null,
@@ -116,6 +122,9 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'platform' => false,
         'platform_post_url' => false,
         'is_external' => false,
+        'thumbnail_url' => false,
+        'media_type' => false,
+        'media_items' => false,
         'overview' => false,
         'posts' => false,
         'pagination' => false,
@@ -219,6 +228,9 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'platform' => 'platform',
         'platform_post_url' => 'platformPostUrl',
         'is_external' => 'isExternal',
+        'thumbnail_url' => 'thumbnailUrl',
+        'media_type' => 'mediaType',
+        'media_items' => 'mediaItems',
         'overview' => 'overview',
         'posts' => 'posts',
         'pagination' => 'pagination',
@@ -242,6 +254,9 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'platform' => 'setPlatform',
         'platform_post_url' => 'setPlatformPostUrl',
         'is_external' => 'setIsExternal',
+        'thumbnail_url' => 'setThumbnailUrl',
+        'media_type' => 'setMediaType',
+        'media_items' => 'setMediaItems',
         'overview' => 'setOverview',
         'posts' => 'setPosts',
         'pagination' => 'setPagination',
@@ -265,6 +280,9 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'platform' => 'getPlatform',
         'platform_post_url' => 'getPlatformPostUrl',
         'is_external' => 'getIsExternal',
+        'thumbnail_url' => 'getThumbnailUrl',
+        'media_type' => 'getMediaType',
+        'media_items' => 'getMediaItems',
         'overview' => 'getOverview',
         'posts' => 'getPosts',
         'pagination' => 'getPagination',
@@ -313,6 +331,25 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
+    public const MEDIA_TYPE_IMAGE = 'image';
+    public const MEDIA_TYPE_VIDEO = 'video';
+    public const MEDIA_TYPE_CAROUSEL = 'carousel';
+    public const MEDIA_TYPE_TEXT = 'text';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMediaTypeAllowableValues()
+    {
+        return [
+            self::MEDIA_TYPE_IMAGE,
+            self::MEDIA_TYPE_VIDEO,
+            self::MEDIA_TYPE_CAROUSEL,
+            self::MEDIA_TYPE_TEXT,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -339,6 +376,9 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('platform_post_url', $data ?? [], null);
         $this->setIfExists('is_external', $data ?? [], null);
+        $this->setIfExists('thumbnail_url', $data ?? [], null);
+        $this->setIfExists('media_type', $data ?? [], null);
+        $this->setIfExists('media_items', $data ?? [], null);
         $this->setIfExists('overview', $data ?? [], null);
         $this->setIfExists('posts', $data ?? [], null);
         $this->setIfExists('pagination', $data ?? [], null);
@@ -372,6 +412,15 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getMediaTypeAllowableValues();
+        if (!is_null($this->container['media_type']) && !in_array($this->container['media_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'media_type', must be one of '%s'",
+                $this->container['media_type'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -654,6 +703,97 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable is_external cannot be null');
         }
         $this->container['is_external'] = $is_external;
+
+        return $this;
+    }
+
+    /**
+     * Gets thumbnail_url
+     *
+     * @return string|null
+     */
+    public function getThumbnailUrl()
+    {
+        return $this->container['thumbnail_url'];
+    }
+
+    /**
+     * Sets thumbnail_url
+     *
+     * @param string|null $thumbnail_url thumbnail_url
+     *
+     * @return self
+     */
+    public function setThumbnailUrl($thumbnail_url)
+    {
+        if (is_null($thumbnail_url)) {
+            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
+        }
+        $this->container['thumbnail_url'] = $thumbnail_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets media_type
+     *
+     * @return string|null
+     */
+    public function getMediaType()
+    {
+        return $this->container['media_type'];
+    }
+
+    /**
+     * Sets media_type
+     *
+     * @param string|null $media_type media_type
+     *
+     * @return self
+     */
+    public function setMediaType($media_type)
+    {
+        if (is_null($media_type)) {
+            throw new \InvalidArgumentException('non-nullable media_type cannot be null');
+        }
+        $allowedValues = $this->getMediaTypeAllowableValues();
+        if (!in_array($media_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'media_type', must be one of '%s'",
+                    $media_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['media_type'] = $media_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets media_items
+     *
+     * @return \Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]|null
+     */
+    public function getMediaItems()
+    {
+        return $this->container['media_items'];
+    }
+
+    /**
+     * Sets media_items
+     *
+     * @param \Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]|null $media_items All media items for this post. Carousel posts contain one entry per slide.
+     *
+     * @return self
+     */
+    public function setMediaItems($media_items)
+    {
+        if (is_null($media_items)) {
+            throw new \InvalidArgumentException('non-nullable media_items cannot be null');
+        }
+        $this->container['media_items'] = $media_items;
 
         return $this;
     }

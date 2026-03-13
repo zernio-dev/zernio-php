@@ -16,6 +16,6 @@ Name | Type | Description | Notes
 **is_external** | **bool** |  | [optional]
 **thumbnail_url** | **string** |  | [optional]
 **media_type** | **string** |  | [optional]
-**media_items** | [**\Late\Model\MediaItem[]**](MediaItem.md) |  | [optional]
+**media_items** | [**\Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]**](AnalyticsSinglePostResponseMediaItemsInner.md) | All media items for this post. Carousel posts contain one entry per slide. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

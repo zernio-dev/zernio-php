@@ -70,7 +70,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'is_external' => 'bool',
         'thumbnail_url' => 'string',
         'media_type' => 'string',
-        'media_items' => '\Late\Model\MediaItem[]'
+        'media_items' => '\Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]'
     ];
 
     /**
@@ -305,6 +305,8 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
     public const MEDIA_TYPE_VIDEO = 'video';
     public const MEDIA_TYPE_GIF = 'gif';
     public const MEDIA_TYPE_DOCUMENT = 'document';
+    public const MEDIA_TYPE_CAROUSEL = 'carousel';
+    public const MEDIA_TYPE_TEXT = 'text';
 
     /**
      * Gets allowable values of the enum
@@ -318,6 +320,8 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
             self::MEDIA_TYPE_VIDEO,
             self::MEDIA_TYPE_GIF,
             self::MEDIA_TYPE_DOCUMENT,
+            self::MEDIA_TYPE_CAROUSEL,
+            self::MEDIA_TYPE_TEXT,
         ];
     }
 
@@ -739,7 +743,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Gets media_items
      *
-     * @return \Late\Model\MediaItem[]|null
+     * @return \Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]|null
      */
     public function getMediaItems()
     {
@@ -749,7 +753,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets media_items
      *
-     * @param \Late\Model\MediaItem[]|null $media_items media_items
+     * @param \Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]|null $media_items All media items for this post. Carousel posts contain one entry per slide.
      *
      * @return self
      */
