@@ -27,6 +27,7 @@ docs/Api/QueueApi.md
 docs/Api/RedditSearchApi.md
 docs/Api/ReviewsApi.md
 docs/Api/ToolsApi.md
+docs/Api/TwitterEngagementApi.md
 docs/Api/UsageApi.md
 docs/Api/UsersApi.md
 docs/Api/ValidateApi.md
@@ -48,6 +49,8 @@ docs/Model/AnalyticsSinglePostResponseMediaItemsInner.md
 docs/Model/ApiKey.md
 docs/Model/ApiKeyProfileIdsInner.md
 docs/Model/BlueskyPlatformData.md
+docs/Model/BookmarkPost200Response.md
+docs/Model/BookmarkPostRequest.md
 docs/Model/BulkDeleteWhatsAppContacts200Response.md
 docs/Model/BulkDeleteWhatsAppContactsRequest.md
 docs/Model/BulkUpdateWhatsAppContacts200Response.md
@@ -132,6 +135,8 @@ docs/Model/EditInboxMessageRequestReplyMarkupKeyboardInnerInner.md
 docs/Model/ErrorResponse.md
 docs/Model/Expired.md
 docs/Model/FacebookPlatformData.md
+docs/Model/FollowUser200Response.md
+docs/Model/FollowUserRequest.md
 docs/Model/FollowerStatsResponse.md
 docs/Model/FoodMenu.md
 docs/Model/FoodMenuItem.md
@@ -397,6 +402,7 @@ docs/Model/RecyclingState.md
 docs/Model/RedditPlatformData.md
 docs/Model/ReleaseWhatsAppPhoneNumber200Response.md
 docs/Model/ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber.md
+docs/Model/RemoveBookmark200Response.md
 docs/Model/RemoveWhatsAppBroadcastRecipients200Response.md
 docs/Model/RemoveWhatsAppBroadcastRecipientsRequest.md
 docs/Model/RenameWhatsAppGroup200Response.md
@@ -407,6 +413,8 @@ docs/Model/ReplyToInboxPostRequest.md
 docs/Model/ReplyToInboxReview200Response.md
 docs/Model/ReplyToInboxReview200ResponseReply.md
 docs/Model/ReplyToInboxReviewRequest.md
+docs/Model/RetweetPost200Response.md
+docs/Model/RetweetPostRequest.md
 docs/Model/ScheduleWhatsAppBroadcast200Response.md
 docs/Model/ScheduleWhatsAppBroadcast200ResponseBroadcast.md
 docs/Model/ScheduleWhatsAppBroadcastRequest.md
@@ -467,6 +475,8 @@ docs/Model/TranscriptResponse.md
 docs/Model/TranscriptSegment.md
 docs/Model/TwitterPlatformData.md
 docs/Model/TwitterPlatformDataThreadItemsInner.md
+docs/Model/UndoRetweet200Response.md
+docs/Model/UnfollowUser200Response.md
 docs/Model/UnlikeInboxComment200Response.md
 docs/Model/UnpublishPost200Response.md
 docs/Model/UnpublishPostRequest.md
@@ -603,6 +613,7 @@ lib/Api/QueueApi.php
 lib/Api/RedditSearchApi.php
 lib/Api/ReviewsApi.php
 lib/Api/ToolsApi.php
+lib/Api/TwitterEngagementApi.php
 lib/Api/UsageApi.php
 lib/Api/UsersApi.php
 lib/Api/ValidateApi.php
@@ -628,6 +639,8 @@ lib/Model/AnalyticsSinglePostResponseMediaItemsInner.php
 lib/Model/ApiKey.php
 lib/Model/ApiKeyProfileIdsInner.php
 lib/Model/BlueskyPlatformData.php
+lib/Model/BookmarkPost200Response.php
+lib/Model/BookmarkPostRequest.php
 lib/Model/BulkDeleteWhatsAppContacts200Response.php
 lib/Model/BulkDeleteWhatsAppContactsRequest.php
 lib/Model/BulkUpdateWhatsAppContacts200Response.php
@@ -712,6 +725,8 @@ lib/Model/EditInboxMessageRequestReplyMarkupKeyboardInnerInner.php
 lib/Model/ErrorResponse.php
 lib/Model/Expired.php
 lib/Model/FacebookPlatformData.php
+lib/Model/FollowUser200Response.php
+lib/Model/FollowUserRequest.php
 lib/Model/FollowerStatsResponse.php
 lib/Model/FoodMenu.php
 lib/Model/FoodMenuItem.php
@@ -978,6 +993,7 @@ lib/Model/RecyclingState.php
 lib/Model/RedditPlatformData.php
 lib/Model/ReleaseWhatsAppPhoneNumber200Response.php
 lib/Model/ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber.php
+lib/Model/RemoveBookmark200Response.php
 lib/Model/RemoveWhatsAppBroadcastRecipients200Response.php
 lib/Model/RemoveWhatsAppBroadcastRecipientsRequest.php
 lib/Model/RenameWhatsAppGroup200Response.php
@@ -988,6 +1004,8 @@ lib/Model/ReplyToInboxPostRequest.php
 lib/Model/ReplyToInboxReview200Response.php
 lib/Model/ReplyToInboxReview200ResponseReply.php
 lib/Model/ReplyToInboxReviewRequest.php
+lib/Model/RetweetPost200Response.php
+lib/Model/RetweetPostRequest.php
 lib/Model/ScheduleWhatsAppBroadcast200Response.php
 lib/Model/ScheduleWhatsAppBroadcast200ResponseBroadcast.php
 lib/Model/ScheduleWhatsAppBroadcastRequest.php
@@ -1048,6 +1066,8 @@ lib/Model/TranscriptResponse.php
 lib/Model/TranscriptSegment.php
 lib/Model/TwitterPlatformData.php
 lib/Model/TwitterPlatformDataThreadItemsInner.php
+lib/Model/UndoRetweet200Response.php
+lib/Model/UnfollowUser200Response.php
 lib/Model/UnlikeInboxComment200Response.php
 lib/Model/UnpublishPost200Response.php
 lib/Model/UnpublishPostRequest.php
@@ -1161,4 +1181,13 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AnalyticsSinglePostResponseMediaItemsInnerTest.php
+test/Api/TwitterEngagementApiTest.php
+test/Model/BookmarkPost200ResponseTest.php
+test/Model/BookmarkPostRequestTest.php
+test/Model/FollowUser200ResponseTest.php
+test/Model/FollowUserRequestTest.php
+test/Model/RemoveBookmark200ResponseTest.php
+test/Model/RetweetPost200ResponseTest.php
+test/Model/RetweetPostRequestTest.php
+test/Model/UndoRetweet200ResponseTest.php
+test/Model/UnfollowUser200ResponseTest.php
