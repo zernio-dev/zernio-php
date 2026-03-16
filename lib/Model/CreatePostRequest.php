@@ -577,7 +577,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets is_draft
      *
-     * @param bool|null $is_draft is_draft
+     * @param bool|null $is_draft When true, saves the post as a draft. When none of scheduledFor, publishNow, or queuedFromProfile are provided, the post defaults to draft automatically.
      *
      * @return self
      */
