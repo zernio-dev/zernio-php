@@ -1,6 +1,6 @@
 <?php
 /**
- * AnalyticsOverview
+ * GetAnalytics400Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * AnalyticsOverview Class Doc Comment
+ * GetAnalytics400Response Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetAnalytics400Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AnalyticsOverview';
+    protected static $openAPIModelName = 'getAnalytics_400_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,8 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'total_posts' => 'int',
-        'published_posts' => 'int',
-        'scheduled_posts' => 'int',
-        'last_sync' => '\DateTime',
-        'data_staleness' => '\Late\Model\AnalyticsOverviewDataStaleness'
+        'error' => 'string',
+        'details' => 'object'
     ];
 
     /**
@@ -73,11 +70,8 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'total_posts' => null,
-        'published_posts' => null,
-        'scheduled_posts' => null,
-        'last_sync' => 'date-time',
-        'data_staleness' => null
+        'error' => null,
+        'details' => null
     ];
 
     /**
@@ -86,11 +80,8 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'total_posts' => false,
-        'published_posts' => false,
-        'scheduled_posts' => false,
-        'last_sync' => false,
-        'data_staleness' => false
+        'error' => false,
+        'details' => false
     ];
 
     /**
@@ -179,11 +170,8 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'total_posts' => 'totalPosts',
-        'published_posts' => 'publishedPosts',
-        'scheduled_posts' => 'scheduledPosts',
-        'last_sync' => 'lastSync',
-        'data_staleness' => 'dataStaleness'
+        'error' => 'error',
+        'details' => 'details'
     ];
 
     /**
@@ -192,11 +180,8 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'total_posts' => 'setTotalPosts',
-        'published_posts' => 'setPublishedPosts',
-        'scheduled_posts' => 'setScheduledPosts',
-        'last_sync' => 'setLastSync',
-        'data_staleness' => 'setDataStaleness'
+        'error' => 'setError',
+        'details' => 'setDetails'
     ];
 
     /**
@@ -205,11 +190,8 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'total_posts' => 'getTotalPosts',
-        'published_posts' => 'getPublishedPosts',
-        'scheduled_posts' => 'getScheduledPosts',
-        'last_sync' => 'getLastSync',
-        'data_staleness' => 'getDataStaleness'
+        'error' => 'getError',
+        'details' => 'getDetails'
     ];
 
     /**
@@ -269,11 +251,8 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('total_posts', $data ?? [], null);
-        $this->setIfExists('published_posts', $data ?? [], null);
-        $this->setIfExists('scheduled_posts', $data ?? [], null);
-        $this->setIfExists('last_sync', $data ?? [], null);
-        $this->setIfExists('data_staleness', $data ?? [], null);
+        $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('details', $data ?? [], null);
     }
 
     /**
@@ -319,136 +298,55 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets total_posts
+     * Gets error
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getTotalPosts()
+    public function getError()
     {
-        return $this->container['total_posts'];
+        return $this->container['error'];
     }
 
     /**
-     * Sets total_posts
+     * Sets error
      *
-     * @param int|null $total_posts total_posts
+     * @param string|null $error error
      *
      * @return self
      */
-    public function setTotalPosts($total_posts)
+    public function setError($error)
     {
-        if (is_null($total_posts)) {
-            throw new \InvalidArgumentException('non-nullable total_posts cannot be null');
+        if (is_null($error)) {
+            throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
-        $this->container['total_posts'] = $total_posts;
+        $this->container['error'] = $error;
 
         return $this;
     }
 
     /**
-     * Gets published_posts
+     * Gets details
      *
-     * @return int|null
+     * @return object|null
      */
-    public function getPublishedPosts()
+    public function getDetails()
     {
-        return $this->container['published_posts'];
+        return $this->container['details'];
     }
 
     /**
-     * Sets published_posts
+     * Sets details
      *
-     * @param int|null $published_posts published_posts
+     * @param object|null $details Detailed validation errors
      *
      * @return self
      */
-    public function setPublishedPosts($published_posts)
+    public function setDetails($details)
     {
-        if (is_null($published_posts)) {
-            throw new \InvalidArgumentException('non-nullable published_posts cannot be null');
+        if (is_null($details)) {
+            throw new \InvalidArgumentException('non-nullable details cannot be null');
         }
-        $this->container['published_posts'] = $published_posts;
-
-        return $this;
-    }
-
-    /**
-     * Gets scheduled_posts
-     *
-     * @return int|null
-     */
-    public function getScheduledPosts()
-    {
-        return $this->container['scheduled_posts'];
-    }
-
-    /**
-     * Sets scheduled_posts
-     *
-     * @param int|null $scheduled_posts scheduled_posts
-     *
-     * @return self
-     */
-    public function setScheduledPosts($scheduled_posts)
-    {
-        if (is_null($scheduled_posts)) {
-            throw new \InvalidArgumentException('non-nullable scheduled_posts cannot be null');
-        }
-        $this->container['scheduled_posts'] = $scheduled_posts;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_sync
-     *
-     * @return \DateTime|null
-     */
-    public function getLastSync()
-    {
-        return $this->container['last_sync'];
-    }
-
-    /**
-     * Sets last_sync
-     *
-     * @param \DateTime|null $last_sync last_sync
-     *
-     * @return self
-     */
-    public function setLastSync($last_sync)
-    {
-        if (is_null($last_sync)) {
-            throw new \InvalidArgumentException('non-nullable last_sync cannot be null');
-        }
-        $this->container['last_sync'] = $last_sync;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_staleness
-     *
-     * @return \Late\Model\AnalyticsOverviewDataStaleness|null
-     */
-    public function getDataStaleness()
-    {
-        return $this->container['data_staleness'];
-    }
-
-    /**
-     * Sets data_staleness
-     *
-     * @param \Late\Model\AnalyticsOverviewDataStaleness|null $data_staleness data_staleness
-     *
-     * @return self
-     */
-    public function setDataStaleness($data_staleness)
-    {
-        if (is_null($data_staleness)) {
-            throw new \InvalidArgumentException('non-nullable data_staleness cannot be null');
-        }
-        $this->container['data_staleness'] = $data_staleness;
+        $this->container['details'] = $details;
 
         return $this;
     }

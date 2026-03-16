@@ -63,7 +63,9 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
         'account_id' => 'string',
         'account_username' => 'string',
         'analytics' => '\Late\Model\PostAnalytics',
-        'account_metrics' => '\Late\Model\PlatformAnalyticsAccountMetrics'
+        'sync_status' => 'string',
+        'platform_post_url' => 'string',
+        'error_message' => 'string'
     ];
 
     /**
@@ -79,7 +81,9 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
         'account_id' => null,
         'account_username' => null,
         'analytics' => null,
-        'account_metrics' => null
+        'sync_status' => null,
+        'platform_post_url' => 'uri',
+        'error_message' => null
     ];
 
     /**
@@ -93,7 +97,9 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
         'account_id' => false,
         'account_username' => false,
         'analytics' => false,
-        'account_metrics' => false
+        'sync_status' => false,
+        'platform_post_url' => false,
+        'error_message' => false
     ];
 
     /**
@@ -187,7 +193,9 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
         'account_id' => 'accountId',
         'account_username' => 'accountUsername',
         'analytics' => 'analytics',
-        'account_metrics' => 'accountMetrics'
+        'sync_status' => 'syncStatus',
+        'platform_post_url' => 'platformPostUrl',
+        'error_message' => 'errorMessage'
     ];
 
     /**
@@ -201,7 +209,9 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
         'account_id' => 'setAccountId',
         'account_username' => 'setAccountUsername',
         'analytics' => 'setAnalytics',
-        'account_metrics' => 'setAccountMetrics'
+        'sync_status' => 'setSyncStatus',
+        'platform_post_url' => 'setPlatformPostUrl',
+        'error_message' => 'setErrorMessage'
     ];
 
     /**
@@ -215,7 +225,9 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
         'account_id' => 'getAccountId',
         'account_username' => 'getAccountUsername',
         'analytics' => 'getAnalytics',
-        'account_metrics' => 'getAccountMetrics'
+        'sync_status' => 'getSyncStatus',
+        'platform_post_url' => 'getPlatformPostUrl',
+        'error_message' => 'getErrorMessage'
     ];
 
     /**
@@ -259,6 +271,38 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$openAPIModelName;
     }
 
+    public const STATUS_PUBLISHED = 'published';
+    public const STATUS_FAILED = 'failed';
+    public const SYNC_STATUS_SYNCED = 'synced';
+    public const SYNC_STATUS_PENDING = 'pending';
+    public const SYNC_STATUS_UNAVAILABLE = 'unavailable';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_PUBLISHED,
+            self::STATUS_FAILED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSyncStatusAllowableValues()
+    {
+        return [
+            self::SYNC_STATUS_SYNCED,
+            self::SYNC_STATUS_PENDING,
+            self::SYNC_STATUS_UNAVAILABLE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -280,7 +324,9 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('account_username', $data ?? [], null);
         $this->setIfExists('analytics', $data ?? [], null);
-        $this->setIfExists('account_metrics', $data ?? [], null);
+        $this->setIfExists('sync_status', $data ?? [], null);
+        $this->setIfExists('platform_post_url', $data ?? [], null);
+        $this->setIfExists('error_message', $data ?? [], null);
     }
 
     /**
@@ -309,6 +355,24 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSyncStatusAllowableValues();
+        if (!is_null($this->container['sync_status']) && !in_array($this->container['sync_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'sync_status', must be one of '%s'",
+                $this->container['sync_status'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -373,6 +437,16 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['status'] = $status;
 
@@ -461,28 +535,92 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets account_metrics
+     * Gets sync_status
      *
-     * @return \Late\Model\PlatformAnalyticsAccountMetrics|null
+     * @return string|null
      */
-    public function getAccountMetrics()
+    public function getSyncStatus()
     {
-        return $this->container['account_metrics'];
+        return $this->container['sync_status'];
     }
 
     /**
-     * Sets account_metrics
+     * Sets sync_status
      *
-     * @param \Late\Model\PlatformAnalyticsAccountMetrics|null $account_metrics account_metrics
+     * @param string|null $sync_status Sync state of analytics for this platform
      *
      * @return self
      */
-    public function setAccountMetrics($account_metrics)
+    public function setSyncStatus($sync_status)
     {
-        if (is_null($account_metrics)) {
-            throw new \InvalidArgumentException('non-nullable account_metrics cannot be null');
+        if (is_null($sync_status)) {
+            throw new \InvalidArgumentException('non-nullable sync_status cannot be null');
         }
-        $this->container['account_metrics'] = $account_metrics;
+        $allowedValues = $this->getSyncStatusAllowableValues();
+        if (!in_array($sync_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sync_status', must be one of '%s'",
+                    $sync_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sync_status'] = $sync_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_post_url
+     *
+     * @return string|null
+     */
+    public function getPlatformPostUrl()
+    {
+        return $this->container['platform_post_url'];
+    }
+
+    /**
+     * Sets platform_post_url
+     *
+     * @param string|null $platform_post_url platform_post_url
+     *
+     * @return self
+     */
+    public function setPlatformPostUrl($platform_post_url)
+    {
+        if (is_null($platform_post_url)) {
+            throw new \InvalidArgumentException('non-nullable platform_post_url cannot be null');
+        }
+        $this->container['platform_post_url'] = $platform_post_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets error_message
+     *
+     * @return string|null
+     */
+    public function getErrorMessage()
+    {
+        return $this->container['error_message'];
+    }
+
+    /**
+     * Sets error_message
+     *
+     * @param string|null $error_message Error details when status is failed
+     *
+     * @return self
+     */
+    public function setErrorMessage($error_message)
+    {
+        if (is_null($error_message)) {
+            throw new \InvalidArgumentException('non-nullable error_message cannot be null');
+        }
+        $this->container['error_message'] = $error_message;
 
         return $this;
     }

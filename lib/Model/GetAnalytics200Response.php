@@ -59,6 +59,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'post_id' => 'string',
+        'late_post_id' => 'string',
         'status' => 'string',
         'content' => 'string',
         'scheduled_for' => '\DateTime',
@@ -68,6 +69,8 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'platform' => 'string',
         'platform_post_url' => 'string',
         'is_external' => 'bool',
+        'sync_status' => 'string',
+        'message' => 'string',
         'thumbnail_url' => 'string',
         'media_type' => 'string',
         'media_items' => '\Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]',
@@ -87,6 +90,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'post_id' => null,
+        'late_post_id' => null,
         'status' => null,
         'content' => null,
         'scheduled_for' => 'date-time',
@@ -96,6 +100,8 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'platform' => null,
         'platform_post_url' => 'uri',
         'is_external' => null,
+        'sync_status' => null,
+        'message' => null,
         'thumbnail_url' => 'uri',
         'media_type' => null,
         'media_items' => null,
@@ -113,6 +119,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPINullables = [
         'post_id' => false,
+        'late_post_id' => false,
         'status' => false,
         'content' => false,
         'scheduled_for' => false,
@@ -122,6 +129,8 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'platform' => false,
         'platform_post_url' => false,
         'is_external' => false,
+        'sync_status' => false,
+        'message' => false,
         'thumbnail_url' => false,
         'media_type' => false,
         'media_items' => false,
@@ -219,6 +228,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $attributeMap = [
         'post_id' => 'postId',
+        'late_post_id' => 'latePostId',
         'status' => 'status',
         'content' => 'content',
         'scheduled_for' => 'scheduledFor',
@@ -228,6 +238,8 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'platform' => 'platform',
         'platform_post_url' => 'platformPostUrl',
         'is_external' => 'isExternal',
+        'sync_status' => 'syncStatus',
+        'message' => 'message',
         'thumbnail_url' => 'thumbnailUrl',
         'media_type' => 'mediaType',
         'media_items' => 'mediaItems',
@@ -245,6 +257,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'post_id' => 'setPostId',
+        'late_post_id' => 'setLatePostId',
         'status' => 'setStatus',
         'content' => 'setContent',
         'scheduled_for' => 'setScheduledFor',
@@ -254,6 +267,8 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'platform' => 'setPlatform',
         'platform_post_url' => 'setPlatformPostUrl',
         'is_external' => 'setIsExternal',
+        'sync_status' => 'setSyncStatus',
+        'message' => 'setMessage',
         'thumbnail_url' => 'setThumbnailUrl',
         'media_type' => 'setMediaType',
         'media_items' => 'setMediaItems',
@@ -271,6 +286,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'post_id' => 'getPostId',
+        'late_post_id' => 'getLatePostId',
         'status' => 'getStatus',
         'content' => 'getContent',
         'scheduled_for' => 'getScheduledFor',
@@ -280,6 +296,8 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'platform' => 'getPlatform',
         'platform_post_url' => 'getPlatformPostUrl',
         'is_external' => 'getIsExternal',
+        'sync_status' => 'getSyncStatus',
+        'message' => 'getMessage',
         'thumbnail_url' => 'getThumbnailUrl',
         'media_type' => 'getMediaType',
         'media_items' => 'getMediaItems',
@@ -331,10 +349,46 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
+    public const STATUS_PUBLISHED = 'published';
+    public const STATUS_FAILED = 'failed';
+    public const STATUS_PARTIAL = 'partial';
+    public const SYNC_STATUS_SYNCED = 'synced';
+    public const SYNC_STATUS_PENDING = 'pending';
+    public const SYNC_STATUS_PARTIAL = 'partial';
+    public const SYNC_STATUS_UNAVAILABLE = 'unavailable';
     public const MEDIA_TYPE_IMAGE = 'image';
     public const MEDIA_TYPE_VIDEO = 'video';
     public const MEDIA_TYPE_CAROUSEL = 'carousel';
     public const MEDIA_TYPE_TEXT = 'text';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_PUBLISHED,
+            self::STATUS_FAILED,
+            self::STATUS_PARTIAL,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSyncStatusAllowableValues()
+    {
+        return [
+            self::SYNC_STATUS_SYNCED,
+            self::SYNC_STATUS_PENDING,
+            self::SYNC_STATUS_PARTIAL,
+            self::SYNC_STATUS_UNAVAILABLE,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -367,6 +421,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     public function __construct(?array $data = null)
     {
         $this->setIfExists('post_id', $data ?? [], null);
+        $this->setIfExists('late_post_id', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('content', $data ?? [], null);
         $this->setIfExists('scheduled_for', $data ?? [], null);
@@ -376,6 +431,8 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('platform_post_url', $data ?? [], null);
         $this->setIfExists('is_external', $data ?? [], null);
+        $this->setIfExists('sync_status', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('thumbnail_url', $data ?? [], null);
         $this->setIfExists('media_type', $data ?? [], null);
         $this->setIfExists('media_items', $data ?? [], null);
@@ -412,6 +469,24 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSyncStatusAllowableValues();
+        if (!is_null($this->container['sync_status']) && !in_array($this->container['sync_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'sync_status', must be one of '%s'",
+                $this->container['sync_status'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getMediaTypeAllowableValues();
         if (!is_null($this->container['media_type']) && !in_array($this->container['media_type'], $allowedValues, true)) {
@@ -465,6 +540,33 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
+     * Gets late_post_id
+     *
+     * @return string|null
+     */
+    public function getLatePostId()
+    {
+        return $this->container['late_post_id'];
+    }
+
+    /**
+     * Sets late_post_id
+     *
+     * @param string|null $late_post_id Original Late post ID if scheduled via Late
+     *
+     * @return self
+     */
+    public function setLatePostId($late_post_id)
+    {
+        if (is_null($late_post_id)) {
+            throw new \InvalidArgumentException('non-nullable late_post_id cannot be null');
+        }
+        $this->container['late_post_id'] = $late_post_id;
+
+        return $this;
+    }
+
+    /**
      * Gets status
      *
      * @return string|null
@@ -477,7 +579,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string|null $status Overall post status. \"partial\" when some platforms published and others failed.
      *
      * @return self
      */
@@ -485,6 +587,16 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     {
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['status'] = $status;
 
@@ -703,6 +815,70 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable is_external cannot be null');
         }
         $this->container['is_external'] = $is_external;
+
+        return $this;
+    }
+
+    /**
+     * Gets sync_status
+     *
+     * @return string|null
+     */
+    public function getSyncStatus()
+    {
+        return $this->container['sync_status'];
+    }
+
+    /**
+     * Sets sync_status
+     *
+     * @param string|null $sync_status Overall sync state across all platforms
+     *
+     * @return self
+     */
+    public function setSyncStatus($sync_status)
+    {
+        if (is_null($sync_status)) {
+            throw new \InvalidArgumentException('non-nullable sync_status cannot be null');
+        }
+        $allowedValues = $this->getSyncStatusAllowableValues();
+        if (!in_array($sync_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sync_status', must be one of '%s'",
+                    $sync_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sync_status'] = $sync_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message Human-readable status message for pending, partial, or failed states
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        }
+        $this->container['message'] = $message;
 
         return $this;
     }

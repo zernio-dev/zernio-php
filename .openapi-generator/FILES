@@ -44,6 +44,7 @@ docs/Model/AddWhatsAppBroadcastRecipientsRequestRecipientsInner.md
 docs/Model/AnalyticsListResponse.md
 docs/Model/AnalyticsListResponsePostsInner.md
 docs/Model/AnalyticsOverview.md
+docs/Model/AnalyticsOverviewDataStaleness.md
 docs/Model/AnalyticsSinglePostResponse.md
 docs/Model/AnalyticsSinglePostResponseMediaItemsInner.md
 docs/Model/ApiKey.md
@@ -152,6 +153,7 @@ docs/Model/GetAllAccountsHealth200Response.md
 docs/Model/GetAllAccountsHealth200ResponseAccountsInner.md
 docs/Model/GetAllAccountsHealth200ResponseSummary.md
 docs/Model/GetAnalytics200Response.md
+docs/Model/GetAnalytics400Response.md
 docs/Model/GetAnalytics402Response.md
 docs/Model/GetBestTimeToPost200Response.md
 docs/Model/GetBestTimeToPost200ResponseSlotsInner.md
@@ -360,7 +362,6 @@ docs/Model/Pagination.md
 docs/Model/Pending.md
 docs/Model/PinterestPlatformData.md
 docs/Model/PlatformAnalytics.md
-docs/Model/PlatformAnalyticsAccountMetrics.md
 docs/Model/PlatformTarget.md
 docs/Model/PlatformTargetAccountId.md
 docs/Model/PlatformTargetPlatformSpecificData.md
@@ -634,6 +635,7 @@ lib/Model/AddWhatsAppBroadcastRecipientsRequestRecipientsInner.php
 lib/Model/AnalyticsListResponse.php
 lib/Model/AnalyticsListResponsePostsInner.php
 lib/Model/AnalyticsOverview.php
+lib/Model/AnalyticsOverviewDataStaleness.php
 lib/Model/AnalyticsSinglePostResponse.php
 lib/Model/AnalyticsSinglePostResponseMediaItemsInner.php
 lib/Model/ApiKey.php
@@ -742,6 +744,7 @@ lib/Model/GetAllAccountsHealth200Response.php
 lib/Model/GetAllAccountsHealth200ResponseAccountsInner.php
 lib/Model/GetAllAccountsHealth200ResponseSummary.php
 lib/Model/GetAnalytics200Response.php
+lib/Model/GetAnalytics400Response.php
 lib/Model/GetAnalytics402Response.php
 lib/Model/GetBestTimeToPost200Response.php
 lib/Model/GetBestTimeToPost200ResponseSlotsInner.php
@@ -951,7 +954,6 @@ lib/Model/Pagination.php
 lib/Model/Pending.php
 lib/Model/PinterestPlatformData.php
 lib/Model/PlatformAnalytics.php
-lib/Model/PlatformAnalyticsAccountMetrics.php
 lib/Model/PlatformTarget.php
 lib/Model/PlatformTargetAccountId.php
 lib/Model/PlatformTargetPlatformSpecificData.php
@@ -1181,3 +1183,5 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AnalyticsOverviewDataStalenessTest.php
+test/Model/GetAnalytics400ResponseTest.php

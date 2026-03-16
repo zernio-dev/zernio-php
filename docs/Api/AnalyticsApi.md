@@ -27,7 +27,7 @@ getAnalytics($post_id, $platform, $profile_id, $source, $from_date, $to_date, $l
 
 Get post analytics
 
-Returns analytics for posts. With postId, returns a single post. Without it, returns a paginated list with overview stats. Accepts both Late Post IDs and External Post IDs (auto-resolved). Data is cached and refreshed at most once per hour. For follower stats, use /v1/accounts/follower-stats.
+Returns analytics for posts. With postId, returns a single post. Without it, returns a paginated list with overview stats. Accepts both Late Post IDs and External Post IDs (auto-resolved). fromDate defaults to 90 days ago if omitted, max range 366 days. Single post lookups may return 202 (sync pending) or 424 (all platforms failed). For follower stats, use /v1/accounts/follower-stats.
 
 ### Example
 
@@ -50,11 +50,11 @@ $post_id = 'post_id_example'; // string | Returns analytics for a single post. A
 $platform = 'platform_example'; // string | Filter by platform (default \"all\")
 $profile_id = 'profile_id_example'; // string | Filter by profile ID (default \"all\")
 $source = 'all'; // string | Filter by post source: late (posted via Late API), external (synced from platform), all (default)
-$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive lower bound
-$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive upper bound
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days.
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted.
 $limit = 50; // int | Page size (default 50)
 $page = 1; // int | Page number (default 1)
-$sort_by = 'date'; // string | Sort by date or engagement
+$sort_by = 'date'; // string | Sort by date, engagement, or a specific metric
 $order = 'desc'; // string | Sort order
 
 try {
@@ -73,11 +73,11 @@ try {
 | **platform** | **string**| Filter by platform (default \&quot;all\&quot;) | [optional] |
 | **profile_id** | **string**| Filter by profile ID (default \&quot;all\&quot;) | [optional] |
 | **source** | **string**| Filter by post source: late (posted via Late API), external (synced from platform), all (default) | [optional] [default to &#39;all&#39;] |
-| **from_date** | **\DateTime**| Inclusive lower bound | [optional] |
-| **to_date** | **\DateTime**| Inclusive upper bound | [optional] |
+| **from_date** | **\DateTime**| Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. | [optional] |
+| **to_date** | **\DateTime**| Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. | [optional] |
 | **limit** | **int**| Page size (default 50) | [optional] [default to 50] |
 | **page** | **int**| Page number (default 1) | [optional] [default to 1] |
-| **sort_by** | **string**| Sort by date or engagement | [optional] [default to &#39;date&#39;] |
+| **sort_by** | **string**| Sort by date, engagement, or a specific metric | [optional] [default to &#39;date&#39;] |
 | **order** | **string**| Sort order | [optional] [default to &#39;desc&#39;] |
 
 ### Return type

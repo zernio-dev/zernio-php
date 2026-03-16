@@ -165,17 +165,17 @@ class AnalyticsApi
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
      * @param  string|null $source Filter by post source: late (posted via Late API), external (synced from platform), all (default) (optional, default to 'all')
-     * @param  \DateTime|null $from_date Inclusive lower bound (optional)
-     * @param  \DateTime|null $to_date Inclusive upper bound (optional)
+     * @param  \DateTime|null $from_date Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. (optional)
+     * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
      * @param  int|null $page Page number (default 1) (optional, default to 1)
-     * @param  string|null $sort_by Sort by date or engagement (optional, default to 'date')
+     * @param  string|null $sort_by Sort by date, engagement, or a specific metric (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetAnalytics200Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\InlineObject1|\Late\Model\ErrorResponse
+     * @return \Late\Model\GetAnalytics200Response|\Late\Model\AnalyticsSinglePostResponse|\Late\Model\GetAnalytics400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\InlineObject1|\Late\Model\AnalyticsSinglePostResponse|\Late\Model\ErrorResponse
      */
     public function getAnalytics($post_id = null, $platform = null, $profile_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', string $contentType = self::contentTypes['getAnalytics'][0])
     {
@@ -192,17 +192,17 @@ class AnalyticsApi
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
      * @param  string|null $source Filter by post source: late (posted via Late API), external (synced from platform), all (default) (optional, default to 'all')
-     * @param  \DateTime|null $from_date Inclusive lower bound (optional)
-     * @param  \DateTime|null $to_date Inclusive upper bound (optional)
+     * @param  \DateTime|null $from_date Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. (optional)
+     * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
      * @param  int|null $page Page number (default 1) (optional, default to 1)
-     * @param  string|null $sort_by Sort by date or engagement (optional, default to 'date')
+     * @param  string|null $sort_by Sort by date, engagement, or a specific metric (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetAnalytics200Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\InlineObject1|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\GetAnalytics200Response|\Late\Model\AnalyticsSinglePostResponse|\Late\Model\GetAnalytics400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\InlineObject1|\Late\Model\AnalyticsSinglePostResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAnalyticsWithHttpInfo($post_id = null, $platform = null, $profile_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', string $contentType = self::contentTypes['getAnalytics'][0])
     {
@@ -238,6 +238,18 @@ class AnalyticsApi
                         $request,
                         $response,
                     );
+                case 202:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\AnalyticsSinglePostResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetAnalytics400Response',
+                        $request,
+                        $response,
+                    );
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Late\Model\InlineObject',
@@ -253,6 +265,12 @@ class AnalyticsApi
                 case 404:
                     return $this->handleResponseWithDataType(
                         '\Late\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 424:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\AnalyticsSinglePostResponse',
                         $request,
                         $response,
                     );
@@ -294,6 +312,22 @@ class AnalyticsApi
                     );
                     $e->setResponseObject($data);
                     throw $e;
+                case 202:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\AnalyticsSinglePostResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetAnalytics400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -314,6 +348,14 @@ class AnalyticsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Late\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 424:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\AnalyticsSinglePostResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -342,11 +384,11 @@ class AnalyticsApi
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
      * @param  string|null $source Filter by post source: late (posted via Late API), external (synced from platform), all (default) (optional, default to 'all')
-     * @param  \DateTime|null $from_date Inclusive lower bound (optional)
-     * @param  \DateTime|null $to_date Inclusive upper bound (optional)
+     * @param  \DateTime|null $from_date Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. (optional)
+     * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
      * @param  int|null $page Page number (default 1) (optional, default to 1)
-     * @param  string|null $sort_by Sort by date or engagement (optional, default to 'date')
+     * @param  string|null $sort_by Sort by date, engagement, or a specific metric (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
@@ -372,11 +414,11 @@ class AnalyticsApi
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
      * @param  string|null $source Filter by post source: late (posted via Late API), external (synced from platform), all (default) (optional, default to 'all')
-     * @param  \DateTime|null $from_date Inclusive lower bound (optional)
-     * @param  \DateTime|null $to_date Inclusive upper bound (optional)
+     * @param  \DateTime|null $from_date Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. (optional)
+     * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
      * @param  int|null $page Page number (default 1) (optional, default to 1)
-     * @param  string|null $sort_by Sort by date or engagement (optional, default to 'date')
+     * @param  string|null $sort_by Sort by date, engagement, or a specific metric (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
@@ -431,11 +473,11 @@ class AnalyticsApi
      * @param  string|null $platform Filter by platform (default \&quot;all\&quot;) (optional)
      * @param  string|null $profile_id Filter by profile ID (default \&quot;all\&quot;) (optional)
      * @param  string|null $source Filter by post source: late (posted via Late API), external (synced from platform), all (default) (optional, default to 'all')
-     * @param  \DateTime|null $from_date Inclusive lower bound (optional)
-     * @param  \DateTime|null $to_date Inclusive upper bound (optional)
+     * @param  \DateTime|null $from_date Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. (optional)
+     * @param  \DateTime|null $to_date Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. (optional)
      * @param  int|null $limit Page size (default 50) (optional, default to 50)
      * @param  int|null $page Page number (default 1) (optional, default to 1)
-     * @param  string|null $sort_by Sort by date or engagement (optional, default to 'date')
+     * @param  string|null $sort_by Sort by date, engagement, or a specific metric (optional, default to 'date')
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *

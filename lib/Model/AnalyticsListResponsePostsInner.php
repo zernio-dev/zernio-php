@@ -59,6 +59,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         '_id' => 'string',
+        'late_post_id' => 'string',
         'content' => 'string',
         'scheduled_for' => '\DateTime',
         'published_at' => '\DateTime',
@@ -68,6 +69,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'platform' => 'string',
         'platform_post_url' => 'string',
         'is_external' => 'bool',
+        'profile_id' => 'string',
         'thumbnail_url' => 'string',
         'media_type' => 'string',
         'media_items' => '\Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]'
@@ -82,6 +84,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPIFormats = [
         '_id' => null,
+        'late_post_id' => null,
         'content' => null,
         'scheduled_for' => 'date-time',
         'published_at' => 'date-time',
@@ -91,6 +94,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'platform' => null,
         'platform_post_url' => 'uri',
         'is_external' => null,
+        'profile_id' => null,
         'thumbnail_url' => 'uri',
         'media_type' => null,
         'media_items' => null
@@ -103,6 +107,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
       */
     protected static array $openAPINullables = [
         '_id' => false,
+        'late_post_id' => false,
         'content' => false,
         'scheduled_for' => false,
         'published_at' => false,
@@ -112,6 +117,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'platform' => false,
         'platform_post_url' => false,
         'is_external' => false,
+        'profile_id' => false,
         'thumbnail_url' => false,
         'media_type' => false,
         'media_items' => false
@@ -204,6 +210,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
      */
     protected static $attributeMap = [
         '_id' => '_id',
+        'late_post_id' => 'latePostId',
         'content' => 'content',
         'scheduled_for' => 'scheduledFor',
         'published_at' => 'publishedAt',
@@ -213,6 +220,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'platform' => 'platform',
         'platform_post_url' => 'platformPostUrl',
         'is_external' => 'isExternal',
+        'profile_id' => 'profileId',
         'thumbnail_url' => 'thumbnailUrl',
         'media_type' => 'mediaType',
         'media_items' => 'mediaItems'
@@ -225,6 +233,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
      */
     protected static $setters = [
         '_id' => 'setId',
+        'late_post_id' => 'setLatePostId',
         'content' => 'setContent',
         'scheduled_for' => 'setScheduledFor',
         'published_at' => 'setPublishedAt',
@@ -234,6 +243,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'platform' => 'setPlatform',
         'platform_post_url' => 'setPlatformPostUrl',
         'is_external' => 'setIsExternal',
+        'profile_id' => 'setProfileId',
         'thumbnail_url' => 'setThumbnailUrl',
         'media_type' => 'setMediaType',
         'media_items' => 'setMediaItems'
@@ -246,6 +256,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
      */
     protected static $getters = [
         '_id' => 'getId',
+        'late_post_id' => 'getLatePostId',
         'content' => 'getContent',
         'scheduled_for' => 'getScheduledFor',
         'published_at' => 'getPublishedAt',
@@ -255,6 +266,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'platform' => 'getPlatform',
         'platform_post_url' => 'getPlatformPostUrl',
         'is_external' => 'getIsExternal',
+        'profile_id' => 'getProfileId',
         'thumbnail_url' => 'getThumbnailUrl',
         'media_type' => 'getMediaType',
         'media_items' => 'getMediaItems'
@@ -341,6 +353,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
     public function __construct(?array $data = null)
     {
         $this->setIfExists('_id', $data ?? [], null);
+        $this->setIfExists('late_post_id', $data ?? [], null);
         $this->setIfExists('content', $data ?? [], null);
         $this->setIfExists('scheduled_for', $data ?? [], null);
         $this->setIfExists('published_at', $data ?? [], null);
@@ -350,6 +363,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('platform_post_url', $data ?? [], null);
         $this->setIfExists('is_external', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('thumbnail_url', $data ?? [], null);
         $this->setIfExists('media_type', $data ?? [], null);
         $this->setIfExists('media_items', $data ?? [], null);
@@ -429,6 +443,33 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable _id cannot be null');
         }
         $this->container['_id'] = $_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets late_post_id
+     *
+     * @return string|null
+     */
+    public function getLatePostId()
+    {
+        return $this->container['late_post_id'];
+    }
+
+    /**
+     * Sets late_post_id
+     *
+     * @param string|null $late_post_id Original Late post ID if scheduled via Late
+     *
+     * @return self
+     */
+    public function setLatePostId($late_post_id)
+    {
+        if (is_null($late_post_id)) {
+            throw new \InvalidArgumentException('non-nullable late_post_id cannot be null');
+        }
+        $this->container['late_post_id'] = $late_post_id;
 
         return $this;
     }
@@ -672,6 +713,33 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable is_external cannot be null');
         }
         $this->container['is_external'] = $is_external;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_id
+     *
+     * @return string|null
+     */
+    public function getProfileId()
+    {
+        return $this->container['profile_id'];
+    }
+
+    /**
+     * Sets profile_id
+     *
+     * @param string|null $profile_id profile_id
+     *
+     * @return self
+     */
+    public function setProfileId($profile_id)
+    {
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
+        }
+        $this->container['profile_id'] = $profile_id;
 
         return $this;
     }
