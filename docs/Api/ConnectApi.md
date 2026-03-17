@@ -64,7 +64,7 @@ $apiInstance = new Late\Api\ConnectApi(
     new GuzzleHttp\Client(),
     $config
 );
-$code = LATE-ABC123; // string | The access code to check status for
+$code = ZRN-ABC123; // string | The access code to check status for
 
 try {
     $result = $apiInstance->completeTelegramConnect($code);
