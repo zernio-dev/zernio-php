@@ -2,7 +2,7 @@
 
 
 
-All URIs are relative to https://getlate.dev/api, except if the operation defines another base path.
+All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -225,7 +225,7 @@ getConnectUrl($platform, $profile_id, $redirect_url, $headless): \Late\Model\Get
 
 Get OAuth connect URL
 
-Initiate an OAuth connection flow. Returns an authUrl to redirect the user to. Standard flow: Late hosts the selection UI, then redirects to your redirect_url. Headless mode (headless=true): user is redirected to your redirect_url with OAuth data for custom UI. Use the platform-specific selection endpoints to complete.
+Initiate an OAuth connection flow. Returns an authUrl to redirect the user to. Standard flow: Zernio hosts the selection UI, then redirects to your redirect_url. Headless mode (headless=true): user is redirected to your redirect_url with OAuth data for custom UI. Use the platform-specific selection endpoints to complete.
 
 ### Example
 
@@ -245,9 +245,9 @@ $apiInstance = new Late\Api\ConnectApi(
     $config
 );
 $platform = 'platform_example'; // string | Social media platform to connect
-$profile_id = 'profile_id_example'; // string | Your Late profile ID (get from /v1/profiles)
+$profile_id = 'profile_id_example'; // string | Your Zernio profile ID (get from /v1/profiles)
 $redirect_url = 'redirect_url_example'; // string | Your custom redirect URL after connection completes. Standard mode appends ?connected={platform}&profileId=X&accountId=Y&username=Z. Headless mode appends OAuth data params for platforms requiring selection (e.g. LinkedIn orgs, Facebook pages). If no selection is needed, the account is created directly and the redirect includes accountId.
-$headless = false; // bool | When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Late's default account selection UI. Use this to build a custom connect experience.
+$headless = false; // bool | When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Zernio's default account selection UI. Use this to build a custom connect experience.
 
 try {
     $result = $apiInstance->getConnectUrl($platform, $profile_id, $redirect_url, $headless);
@@ -262,9 +262,9 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Social media platform to connect | |
-| **profile_id** | **string**| Your Late profile ID (get from /v1/profiles) | |
+| **profile_id** | **string**| Your Zernio profile ID (get from /v1/profiles) | |
 | **redirect_url** | **string**| Your custom redirect URL after connection completes. Standard mode appends ?connected&#x3D;{platform}&amp;profileId&#x3D;X&amp;accountId&#x3D;Y&amp;username&#x3D;Z. Headless mode appends OAuth data params for platforms requiring selection (e.g. LinkedIn orgs, Facebook pages). If no selection is needed, the account is created directly and the redirect includes accountId. | [optional] |
-| **headless** | **bool**| When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Late&#39;s default account selection UI. Use this to build a custom connect experience. | [optional] [default to false] |
+| **headless** | **bool**| When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Zernio&#39;s default account selection UI. Use this to build a custom connect experience. | [optional] [default to false] |
 
 ### Return type
 
@@ -1110,7 +1110,7 @@ $apiInstance = new Late\Api\ConnectApi(
     $config
 );
 $x_connect_token = 'x_connect_token_example'; // string | Short-lived connect token from the OAuth redirect
-$profile_id = 'profile_id_example'; // string | Your Late profile ID
+$profile_id = 'profile_id_example'; // string | Your Zernio profile ID
 $temp_token = 'temp_token_example'; // string | Temporary Pinterest access token from the OAuth callback redirect
 
 try {
@@ -1126,7 +1126,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **x_connect_token** | **string**| Short-lived connect token from the OAuth redirect | |
-| **profile_id** | **string**| Your Late profile ID | |
+| **profile_id** | **string**| Your Zernio profile ID | |
 | **temp_token** | **string**| Temporary Pinterest access token from the OAuth callback redirect | |
 
 ### Return type
@@ -1174,7 +1174,7 @@ $apiInstance = new Late\Api\ConnectApi(
     $config
 );
 $x_connect_token = 'x_connect_token_example'; // string | Short-lived connect token from the OAuth redirect
-$profile_id = 'profile_id_example'; // string | Your Late profile ID
+$profile_id = 'profile_id_example'; // string | Your Zernio profile ID
 $temp_token = 'temp_token_example'; // string | Temporary Snapchat access token from the OAuth callback redirect
 
 try {
@@ -1190,7 +1190,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **x_connect_token** | **string**| Short-lived connect token from the OAuth redirect | |
-| **profile_id** | **string**| Your Late profile ID | |
+| **profile_id** | **string**| Your Zernio profile ID | |
 | **temp_token** | **string**| Temporary Snapchat access token from the OAuth callback redirect | |
 
 ### Return type

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**profile_id** | **string** | Your Late profile ID |
+**profile_id** | **string** | Your Zernio profile ID |
 **board_id** | **string** | The Pinterest Board ID selected by the user |
 **board_name** | **string** | The board name (for display purposes) | [optional]
 **temp_token** | **string** | Temporary Pinterest access token from OAuth |

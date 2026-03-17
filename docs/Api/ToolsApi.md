@@ -2,7 +2,7 @@
 
 Media download and utility tools. Available to paid plans only. Rate limits: Build (50/day), Accelerate (500/day), Unlimited (unlimited). All responses include X-RateLimit-Limit, X-RateLimit-Remaining, and X-RateLimit-Reset headers.
 
-All URIs are relative to https://getlate.dev/api, except if the operation defines another base path.
+All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |

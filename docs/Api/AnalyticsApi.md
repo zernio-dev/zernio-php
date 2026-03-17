@@ -2,7 +2,7 @@
 
 
 
-All URIs are relative to https://getlate.dev/api, except if the operation defines another base path.
+All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -27,7 +27,7 @@ getAnalytics($post_id, $platform, $profile_id, $source, $from_date, $to_date, $l
 
 Get post analytics
 
-Returns analytics for posts. With postId, returns a single post. Without it, returns a paginated list with overview stats. Accepts both Late Post IDs and External Post IDs (auto-resolved). fromDate defaults to 90 days ago if omitted, max range 366 days. Single post lookups may return 202 (sync pending) or 424 (all platforms failed). For follower stats, use /v1/accounts/follower-stats.
+Returns analytics for posts. With postId, returns a single post. Without it, returns a paginated list with overview stats. Accepts both Zernio Post IDs and External Post IDs (auto-resolved). fromDate defaults to 90 days ago if omitted, max range 366 days. Single post lookups may return 202 (sync pending) or 424 (all platforms failed). For follower stats, use /v1/accounts/follower-stats.
 
 ### Example
 
@@ -46,10 +46,10 @@ $apiInstance = new Late\Api\AnalyticsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$post_id = 'post_id_example'; // string | Returns analytics for a single post. Accepts both Late Post IDs and External Post IDs. Late IDs are auto-resolved to External Post analytics.
+$post_id = 'post_id_example'; // string | Returns analytics for a single post. Accepts both Zernio Post IDs and External Post IDs. Zernio IDs are auto-resolved to External Post analytics.
 $platform = 'platform_example'; // string | Filter by platform (default \"all\")
 $profile_id = 'profile_id_example'; // string | Filter by profile ID (default \"all\")
-$source = 'all'; // string | Filter by post source: late (posted via Late API), external (synced from platform), all (default)
+$source = 'all'; // string | Filter by post source: late (posted via Zernio API), external (synced from platform), all (default)
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted.
 $limit = 50; // int | Page size (default 50)
@@ -69,10 +69,10 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_id** | **string**| Returns analytics for a single post. Accepts both Late Post IDs and External Post IDs. Late IDs are auto-resolved to External Post analytics. | [optional] |
+| **post_id** | **string**| Returns analytics for a single post. Accepts both Zernio Post IDs and External Post IDs. Zernio IDs are auto-resolved to External Post analytics. | [optional] |
 | **platform** | **string**| Filter by platform (default \&quot;all\&quot;) | [optional] |
 | **profile_id** | **string**| Filter by profile ID (default \&quot;all\&quot;) | [optional] |
-| **source** | **string**| Filter by post source: late (posted via Late API), external (synced from platform), all (default) | [optional] [default to &#39;all&#39;] |
+| **source** | **string**| Filter by post source: late (posted via Zernio API), external (synced from platform), all (default) | [optional] [default to &#39;all&#39;] |
 | **from_date** | **\DateTime**| Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. | [optional] |
 | **to_date** | **\DateTime**| Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. | [optional] |
 | **limit** | **int**| Page size (default 50) | [optional] [default to 50] |
@@ -126,7 +126,7 @@ $apiInstance = new Late\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
-$source = 'all'; // string | Filter by post origin. \"late\" for posts published via Late, \"external\" for posts imported from platforms.
+$source = 'all'; // string | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms.
 
 try {
     $result = $apiInstance->getBestTimeToPost($platform, $profile_id, $source);
@@ -142,7 +142,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
-| **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
+| **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
 
@@ -190,7 +190,7 @@ $apiInstance = new Late\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
-$source = 'all'; // string | Filter by post origin. \"late\" for posts published via Late, \"external\" for posts imported from platforms.
+$source = 'all'; // string | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms.
 
 try {
     $result = $apiInstance->getContentDecay($platform, $profile_id, $source);
@@ -206,7 +206,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
-| **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
+| **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
 
@@ -256,7 +256,7 @@ $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive start date (ISO 8601). Defaults to 180 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive end date (ISO 8601). Defaults to now.
-$source = 'all'; // string | Filter by post origin. \"late\" for posts published via Late, \"external\" for posts imported from platforms.
+$source = 'all'; // string | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms.
 
 try {
     $result = $apiInstance->getDailyMetrics($platform, $profile_id, $from_date, $to_date, $source);
@@ -274,7 +274,7 @@ try {
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
 | **from_date** | **\DateTime**| Inclusive start date (ISO 8601). Defaults to 180 days ago. | [optional] |
 | **to_date** | **\DateTime**| Inclusive end date (ISO 8601). Defaults to now. | [optional] |
-| **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
+| **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
 
@@ -565,7 +565,7 @@ getPostTimeline($post_id, $from_date, $to_date): \Late\Model\GetPostTimeline200R
 
 Get post analytics timeline
 
-Returns a daily timeline of analytics metrics for a specific post, showing how impressions, likes, and other metrics evolved day-by-day since publishing. Each row represents one day of data per platform. For multi-platform Late posts, returns separate rows for each platform. Requires the Analytics add-on.
+Returns a daily timeline of analytics metrics for a specific post, showing how impressions, likes, and other metrics evolved day-by-day since publishing. Each row represents one day of data per platform. For multi-platform Zernio posts, returns separate rows for each platform. Requires the Analytics add-on.
 
 ### Example
 
@@ -584,7 +584,7 @@ $apiInstance = new Late\Api\AnalyticsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$post_id = 'post_id_example'; // string | The post to fetch timeline for. Accepts an ExternalPost ID, a platformPostId, or a Late Post ID.
+$post_id = 'post_id_example'; // string | The post to fetch timeline for. Accepts an ExternalPost ID, a platformPostId, or a Zernio Post ID.
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of date range (ISO 8601). Defaults to 90 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of date range (ISO 8601). Defaults to now.
 
@@ -600,7 +600,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_id** | **string**| The post to fetch timeline for. Accepts an ExternalPost ID, a platformPostId, or a Late Post ID. | |
+| **post_id** | **string**| The post to fetch timeline for. Accepts an ExternalPost ID, a platformPostId, or a Zernio Post ID. | |
 | **from_date** | **\DateTime**| Start of date range (ISO 8601). Defaults to 90 days ago. | [optional] |
 | **to_date** | **\DateTime**| End of date range (ISO 8601). Defaults to now. | [optional] |
 
@@ -650,7 +650,7 @@ $apiInstance = new Late\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
-$source = 'all'; // string | Filter by post origin. \"late\" for posts published via Late, \"external\" for posts imported from platforms.
+$source = 'all'; // string | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms.
 
 try {
     $result = $apiInstance->getPostingFrequency($platform, $profile_id, $source);
@@ -666,7 +666,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
-| **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Late, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
+| **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
 
@@ -713,7 +713,7 @@ $apiInstance = new Late\Api\AnalyticsApi(
     $config
 );
 $video_id = 'video_id_example'; // string | The YouTube video ID (e.g., \"dQw4w9WgXcQ\")
-$account_id = 'account_id_example'; // string | The Late account ID for the YouTube account
+$account_id = 'account_id_example'; // string | The Zernio account ID for the YouTube account
 $start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date (YYYY-MM-DD). Defaults to 30 days ago.
 $end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency).
 
@@ -730,7 +730,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **video_id** | **string**| The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) | |
-| **account_id** | **string**| The Late account ID for the YouTube account | |
+| **account_id** | **string**| The Zernio account ID for the YouTube account | |
 | **start_date** | **\DateTime**| Start date (YYYY-MM-DD). Defaults to 30 days ago. | [optional] |
 | **end_date** | **\DateTime**| End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). | [optional] |
 

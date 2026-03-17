@@ -2,7 +2,7 @@
 
 
 
-All URIs are relative to https://getlate.dev/api, except if the operation defines another base path.
+All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -37,7 +37,7 @@ $apiInstance = new Late\Api\GMBFoodMenusApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The Late account ID (from /v1/accounts)
+$account_id = 'account_id_example'; // string | The Zernio account ID (from /v1/accounts)
 $location_id = 'location_id_example'; // string | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
@@ -52,7 +52,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The Late account ID (from /v1/accounts) | |
+| **account_id** | **string**| The Zernio account ID (from /v1/accounts) | |
 | **location_id** | **string**| Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
@@ -99,7 +99,7 @@ $apiInstance = new Late\Api\GMBFoodMenusApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The Late account ID (from /v1/accounts)
+$account_id = 'account_id_example'; // string | The Zernio account ID (from /v1/accounts)
 $update_google_business_food_menus_request = {"menus":[{"labels":[{"displayName":"Dinner Menu","languageCode":"en"}],"sections":[{"labels":[{"displayName":"Mains"}],"items":[{"labels":[{"displayName":"Grilled Salmon","description":"With seasonal vegetables"}],"attributes":{"price":{"currencyCode":"USD","units":"24"},"allergen":["FISH"]}}]}]}],"updateMask":"menus"}; // \Late\Model\UpdateGoogleBusinessFoodMenusRequest
 $location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
@@ -115,7 +115,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The Late account ID (from /v1/accounts) | |
+| **account_id** | **string**| The Zernio account ID (from /v1/accounts) | |
 | **update_google_business_food_menus_request** | [**\Late\Model\UpdateGoogleBusinessFoodMenusRequest**](../Model/UpdateGoogleBusinessFoodMenusRequest.md)|  | |
 | **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 

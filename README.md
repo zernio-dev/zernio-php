@@ -1,10 +1,10 @@
 # Late
 
-API reference for Late. Authenticate with a Bearer API key.
-Base URL: https://getlate.dev/api
+API reference for Zernio. Authenticate with a Bearer API key.
+Base URL: https://zernio.com/api
 
 
-For more information, please visit [https://getlate.dev](https://getlate.dev).
+For more information, please visit [https://zernio.com](https://zernio.com).
 
 ## Installation
 
@@ -15,7 +15,7 @@ PHP 8.1 and later.
 ### Composer
 
 ```bash
-composer require getlate-dev/late-php
+composer require zernio-dev/zernio-php
 ```
 
 
@@ -52,7 +52,7 @@ try {
 
 ## API Endpoints
 
-All URIs are relative to *https://getlate.dev/api*
+All URIs are relative to *https://zernio.com/api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
@@ -824,7 +824,7 @@ vendor/bin/phpunit
 
 ## Author
 
-support@getlate.dev
+support@zernio.com
 
 ## About this package
 

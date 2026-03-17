@@ -2,7 +2,7 @@
 
 WhatsApp Business API for sending messages, managing contacts, templates, broadcasts, and conversations. All endpoints require an accountId parameter identifying the WhatsApp-connected social account.
 
-All URIs are relative to https://getlate.dev/api, except if the operation defines another base path.
+All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |

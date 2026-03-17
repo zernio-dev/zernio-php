@@ -2,7 +2,7 @@
 
 
 
-All URIs are relative to https://getlate.dev/api, except if the operation defines another base path.
+All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
@@ -36,7 +36,7 @@ $apiInstance = new Late\Api\GMBReviewsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | The Late account ID (from /v1/accounts)
+$account_id = 'account_id_example'; // string | The Zernio account ID (from /v1/accounts)
 $location_id = 'location_id_example'; // string | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 $page_size = 50; // int | Number of reviews to fetch per page (max 50)
 $page_token = 'page_token_example'; // string | Pagination token from previous response
@@ -53,7 +53,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| The Late account ID (from /v1/accounts) | |
+| **account_id** | **string**| The Zernio account ID (from /v1/accounts) | |
 | **location_id** | **string**| Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 | **page_size** | **int**| Number of reviews to fetch per page (max 50) | [optional] [default to 50] |
 | **page_token** | **string**| Pagination token from previous response | [optional] |
