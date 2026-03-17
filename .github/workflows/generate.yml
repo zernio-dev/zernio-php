@@ -36,7 +36,7 @@ jobs:
 
       - name: Fetch latest OpenAPI spec
         run: |
-          curl -f -o openapi.yaml https://getlate.dev/openapi.yaml
+          curl -f -o openapi.yaml https://zernio.com/openapi.yaml
           echo "Fetched OpenAPI spec"
 
       - name: Generate SDK
@@ -47,8 +47,8 @@ jobs:
             -o . \
             --skip-validate-spec \
             --additional-properties=packageName=Late,invokerPackage=Late,apiPackage=Api,modelPackage=Model \
-            --git-user-id=getlate-dev \
-            --git-repo-id=late-php
+            --git-user-id=zernio-dev \
+            --git-repo-id=zernio-php
 
       - name: Patch README install instructions
         run: |
@@ -65,7 +65,7 @@ jobs:
           ### Composer
 
           \`\`\`bash
-          composer require getlate-dev/late-php
+          composer require zernio-dev/zernio-php
           \`\`\`''')
           content = re.sub(r'## Installation & Usage.*?(?=\n## )', install_section + '\n\n', content, flags=re.DOTALL)
           with open('README.md', 'w') as f:
@@ -126,7 +126,7 @@ jobs:
             ## Auto-generated SDK Update
 
             ```bash
-            composer require getlate-dev/late-php
+            composer require zernio-dev/zernio-php
             ```
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
