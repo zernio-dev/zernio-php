@@ -1,8 +1,9 @@
-# Late
+# Zernio PHP SDK
 
-API reference for Zernio. Authenticate with a Bearer API key.
-Base URL: https://zernio.com/api
+Official PHP SDK for the [Zernio](https://zernio.com) social media scheduling API.
+Authenticate with a Bearer API key. Base URL: https://zernio.com/api
 
+> **Note:** This SDK uses the `Late` PHP namespace (e.g. `Late\Configuration`, `Late\Api\PostsApi`) for backwards compatibility. All classes remain under the `Late` namespace. This does not affect functionality.
 
 For more information, please visit [https://zernio.com](https://zernio.com).
 

@@ -8,7 +8,10 @@
     "php",
     "sdk",
     "rest",
-    "api"
+    "api",
+    "zernio",
+    "social-media",
+    "scheduling"
   ],
   "homepage": "https://openapi-generator.tech",
   "license": "unlicense",
