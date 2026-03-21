@@ -10,6 +10,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAccountHealth()**](AccountsApi.md#getAccountHealth) | **GET** /v1/accounts/{accountId}/health | Check account health |
 | [**getAllAccountsHealth()**](AccountsApi.md#getAllAccountsHealth) | **GET** /v1/accounts/health | Check accounts health |
 | [**getFollowerStats()**](AccountsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
+| [**getTikTokCreatorInfo()**](AccountsApi.md#getTikTokCreatorInfo) | **GET** /v1/accounts/{accountId}/tiktok/creator-info | Get TikTok creator info |
 | [**listAccounts()**](AccountsApi.md#listAccounts) | **GET** /v1/accounts | List accounts |
 | [**updateAccount()**](AccountsApi.md#updateAccount) | **PUT** /v1/accounts/{accountId} | Update account |
 
@@ -252,6 +253,68 @@ try {
 ### Return type
 
 [**\Late\Model\GetFollowerStats200Response**](../Model/GetFollowerStats200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTikTokCreatorInfo()`
+
+```php
+getTikTokCreatorInfo($account_id, $media_type): \Late\Model\GetTikTokCreatorInfo200Response
+```
+
+Get TikTok creator info
+
+Returns TikTok creator details, available privacy levels, posting limits, and commercial content options for a specific TikTok account. Only works with TikTok accounts.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The TikTok account ID
+$media_type = 'video'; // string | The media type to get creator info for (affects available interaction settings)
+
+try {
+    $result = $apiInstance->getTikTokCreatorInfo($account_id, $media_type);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->getTikTokCreatorInfo: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The TikTok account ID | |
+| **media_type** | **string**| The media type to get creator info for (affects available interaction settings) | [optional] [default to &#39;video&#39;] |
+
+### Return type
+
+[**\Late\Model\GetTikTokCreatorInfo200Response**](../Model/GetTikTokCreatorInfo200Response.md)
 
 ### Authorization
 

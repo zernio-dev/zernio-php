@@ -248,6 +248,11 @@ docs/Model/GetRedditSubreddits200ResponseSubredditsInner.md
 docs/Model/GetTelegramCommands200Response.md
 docs/Model/GetTelegramCommands200ResponseDataInner.md
 docs/Model/GetTelegramConnectStatus200Response.md
+docs/Model/GetTikTokCreatorInfo200Response.md
+docs/Model/GetTikTokCreatorInfo200ResponseCommercialContentTypesInner.md
+docs/Model/GetTikTokCreatorInfo200ResponseCreator.md
+docs/Model/GetTikTokCreatorInfo200ResponsePostingLimits.md
+docs/Model/GetTikTokCreatorInfo200ResponsePrivacyLevelsInner.md
 docs/Model/GetUser200Response.md
 docs/Model/GetUser200ResponseUser.md
 docs/Model/GetWebhookLogs200Response.md
@@ -839,6 +844,11 @@ lib/Model/GetRedditSubreddits200ResponseSubredditsInner.php
 lib/Model/GetTelegramCommands200Response.php
 lib/Model/GetTelegramCommands200ResponseDataInner.php
 lib/Model/GetTelegramConnectStatus200Response.php
+lib/Model/GetTikTokCreatorInfo200Response.php
+lib/Model/GetTikTokCreatorInfo200ResponseCommercialContentTypesInner.php
+lib/Model/GetTikTokCreatorInfo200ResponseCreator.php
+lib/Model/GetTikTokCreatorInfo200ResponsePostingLimits.php
+lib/Model/GetTikTokCreatorInfo200ResponsePrivacyLevelsInner.php
 lib/Model/GetUser200Response.php
 lib/Model/GetUser200ResponseUser.php
 lib/Model/GetWebhookLogs200Response.php
@@ -1183,3 +1193,8 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetTikTokCreatorInfo200ResponseCommercialContentTypesInnerTest.php
+test/Model/GetTikTokCreatorInfo200ResponseCreatorTest.php
+test/Model/GetTikTokCreatorInfo200ResponsePostingLimitsTest.php
+test/Model/GetTikTokCreatorInfo200ResponsePrivacyLevelsInnerTest.php
+test/Model/GetTikTokCreatorInfo200ResponseTest.php

@@ -97,6 +97,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'express_consent_given' => 'bool',
         'media_type' => 'string',
         'video_cover_timestamp_ms' => 'int',
+        'video_cover_image_url' => 'string',
         'photo_cover_index' => 'int',
         'auto_add_music' => 'bool',
         'video_made_with_ai' => 'bool',
@@ -158,6 +159,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'express_consent_given' => null,
         'media_type' => null,
         'video_cover_timestamp_ms' => null,
+        'video_cover_image_url' => 'uri',
         'photo_cover_index' => null,
         'auto_add_music' => null,
         'video_made_with_ai' => null,
@@ -217,6 +219,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'express_consent_given' => false,
         'media_type' => false,
         'video_cover_timestamp_ms' => false,
+        'video_cover_image_url' => false,
         'photo_cover_index' => false,
         'auto_add_music' => false,
         'video_made_with_ai' => false,
@@ -356,6 +359,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'express_consent_given' => 'expressConsentGiven',
         'media_type' => 'mediaType',
         'video_cover_timestamp_ms' => 'videoCoverTimestampMs',
+        'video_cover_image_url' => 'videoCoverImageUrl',
         'photo_cover_index' => 'photoCoverIndex',
         'auto_add_music' => 'autoAddMusic',
         'video_made_with_ai' => 'videoMadeWithAi',
@@ -415,6 +419,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'express_consent_given' => 'setExpressConsentGiven',
         'media_type' => 'setMediaType',
         'video_cover_timestamp_ms' => 'setVideoCoverTimestampMs',
+        'video_cover_image_url' => 'setVideoCoverImageUrl',
         'photo_cover_index' => 'setPhotoCoverIndex',
         'auto_add_music' => 'setAutoAddMusic',
         'video_made_with_ai' => 'setVideoMadeWithAi',
@@ -474,6 +479,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'express_consent_given' => 'getExpressConsentGiven',
         'media_type' => 'getMediaType',
         'video_cover_timestamp_ms' => 'getVideoCoverTimestampMs',
+        'video_cover_image_url' => 'getVideoCoverImageUrl',
         'photo_cover_index' => 'getPhotoCoverIndex',
         'auto_add_music' => 'getAutoAddMusic',
         'video_made_with_ai' => 'getVideoMadeWithAi',
@@ -686,6 +692,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         $this->setIfExists('express_consent_given', $data ?? [], null);
         $this->setIfExists('media_type', $data ?? [], null);
         $this->setIfExists('video_cover_timestamp_ms', $data ?? [], null);
+        $this->setIfExists('video_cover_image_url', $data ?? [], null);
         $this->setIfExists('photo_cover_index', $data ?? [], null);
         $this->setIfExists('auto_add_music', $data ?? [], null);
         $this->setIfExists('video_made_with_ai', $data ?? [], null);
@@ -1922,7 +1929,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets video_cover_timestamp_ms
      *
-     * @param int|null $video_cover_timestamp_ms Optional for video posts. Timestamp in milliseconds to select which frame to use as thumbnail (defaults to 1000ms/1 second).
+     * @param int|null $video_cover_timestamp_ms Optional for video posts. Timestamp in milliseconds to select which frame to use as thumbnail (defaults to 1000ms/1 second). Ignored when videoCoverImageUrl is provided.
      *
      * @return self
      */
@@ -1937,6 +1944,33 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         }
 
         $this->container['video_cover_timestamp_ms'] = $video_cover_timestamp_ms;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_cover_image_url
+     *
+     * @return string|null
+     */
+    public function getVideoCoverImageUrl()
+    {
+        return $this->container['video_cover_image_url'];
+    }
+
+    /**
+     * Sets video_cover_image_url
+     *
+     * @param string|null $video_cover_image_url Optional for video posts. URL of a custom thumbnail image (JPG, PNG, or WebP, max 20MB). The image is prepended as a 1-second still frame to the video and used as the cover. Overrides videoCoverTimestampMs when provided.
+     *
+     * @return self
+     */
+    public function setVideoCoverImageUrl($video_cover_image_url)
+    {
+        if (is_null($video_cover_image_url)) {
+            throw new \InvalidArgumentException('non-nullable video_cover_image_url cannot be null');
+        }
+        $this->container['video_cover_image_url'] = $video_cover_image_url;
 
         return $this;
     }
