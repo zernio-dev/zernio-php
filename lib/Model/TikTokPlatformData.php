@@ -827,7 +827,7 @@ class TikTokPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets video_cover_image_url
      *
-     * @param string|null $video_cover_image_url Optional for video posts. URL of a custom thumbnail image (JPG, PNG, or WebP, max 20MB). The image is prepended as a 1-second still frame to the video and used as the cover. Overrides videoCoverTimestampMs when provided.
+     * @param string|null $video_cover_image_url Optional for video posts. URL of a custom thumbnail image (JPG, PNG, or WebP, max 20MB). The image is stitched as a single frame at the start of the video and used as the cover. Overrides videoCoverTimestampMs when provided.
      *
      * @return self
      */

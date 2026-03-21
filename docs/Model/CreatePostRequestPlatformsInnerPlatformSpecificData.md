@@ -43,7 +43,7 @@ Name | Type | Description | Notes
 **express_consent_given** | **bool** | User has given express consent for posting | [optional]
 **media_type** | **string** | Optional override. Defaults based on provided media items. | [optional]
 **video_cover_timestamp_ms** | **int** | Optional for video posts. Timestamp in milliseconds to select which frame to use as thumbnail (defaults to 1000ms/1 second). Ignored when videoCoverImageUrl is provided. | [optional]
-**video_cover_image_url** | **string** | Optional for video posts. URL of a custom thumbnail image (JPG, PNG, or WebP, max 20MB). The image is prepended as a 1-second still frame to the video and used as the cover. Overrides videoCoverTimestampMs when provided. | [optional]
+**video_cover_image_url** | **string** | Optional for video posts. URL of a custom thumbnail image (JPG, PNG, or WebP, max 20MB). The image is stitched as a single frame at the start of the video and used as the cover. Overrides videoCoverTimestampMs when provided. | [optional]
 **photo_cover_index** | **int** | Optional for photo carousels. Index of image to use as cover, 0-based (defaults to 0/first image). | [optional]
 **auto_add_music** | **bool** | When true, TikTok may add recommended music (photos only) | [optional]
 **video_made_with_ai** | **bool** | Set true to disclose AI-generated content | [optional]

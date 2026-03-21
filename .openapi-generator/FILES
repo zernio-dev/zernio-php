@@ -1193,8 +1193,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetTikTokCreatorInfo200ResponseCommercialContentTypesInnerTest.php
-test/Model/GetTikTokCreatorInfo200ResponseCreatorTest.php
-test/Model/GetTikTokCreatorInfo200ResponsePostingLimitsTest.php
-test/Model/GetTikTokCreatorInfo200ResponsePrivacyLevelsInnerTest.php
-test/Model/GetTikTokCreatorInfo200ResponseTest.php
