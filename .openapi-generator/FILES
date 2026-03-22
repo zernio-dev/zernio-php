@@ -207,6 +207,7 @@ docs/Model/GetInboxPostComments200ResponseCommentsInner.md
 docs/Model/GetInboxPostComments200ResponseCommentsInnerFrom.md
 docs/Model/GetInboxPostComments200ResponseMeta.md
 docs/Model/GetInboxPostComments200ResponsePagination.md
+docs/Model/GetInstagramAccountInsights404Response.md
 docs/Model/GetLinkedInAggregateAnalytics200Response.md
 docs/Model/GetLinkedInAggregateAnalytics400Response.md
 docs/Model/GetLinkedInAggregateAnalytics402Response.md
@@ -308,6 +309,13 @@ docs/Model/InitiateTelegramConnect200ResponseAccount.md
 docs/Model/InitiateTelegramConnectRequest.md
 docs/Model/InlineObject.md
 docs/Model/InlineObject1.md
+docs/Model/InstagramAccountInsightsResponse.md
+docs/Model/InstagramAccountInsightsResponseDateRange.md
+docs/Model/InstagramAccountInsightsResponseMetricsValue.md
+docs/Model/InstagramAccountInsightsResponseMetricsValueBreakdownsInner.md
+docs/Model/InstagramAccountInsightsResponseMetricsValueValuesInner.md
+docs/Model/InstagramDemographicsResponse.md
+docs/Model/InstagramDemographicsResponseDemographicsValueInner.md
 docs/Model/InstagramPlatformData.md
 docs/Model/InstagramPlatformDataTrialParams.md
 docs/Model/InstagramPlatformDataUserTagsInner.md
@@ -803,6 +811,7 @@ lib/Model/GetInboxPostComments200ResponseCommentsInner.php
 lib/Model/GetInboxPostComments200ResponseCommentsInnerFrom.php
 lib/Model/GetInboxPostComments200ResponseMeta.php
 lib/Model/GetInboxPostComments200ResponsePagination.php
+lib/Model/GetInstagramAccountInsights404Response.php
 lib/Model/GetLinkedInAggregateAnalytics200Response.php
 lib/Model/GetLinkedInAggregateAnalytics400Response.php
 lib/Model/GetLinkedInAggregateAnalytics402Response.php
@@ -904,6 +913,13 @@ lib/Model/InitiateTelegramConnect200ResponseAccount.php
 lib/Model/InitiateTelegramConnectRequest.php
 lib/Model/InlineObject.php
 lib/Model/InlineObject1.php
+lib/Model/InstagramAccountInsightsResponse.php
+lib/Model/InstagramAccountInsightsResponseDateRange.php
+lib/Model/InstagramAccountInsightsResponseMetricsValue.php
+lib/Model/InstagramAccountInsightsResponseMetricsValueBreakdownsInner.php
+lib/Model/InstagramAccountInsightsResponseMetricsValueValuesInner.php
+lib/Model/InstagramDemographicsResponse.php
+lib/Model/InstagramDemographicsResponseDemographicsValueInner.php
 lib/Model/InstagramPlatformData.php
 lib/Model/InstagramPlatformDataTrialParams.php
 lib/Model/InstagramPlatformDataUserTagsInner.php
@@ -1193,3 +1209,11 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetInstagramAccountInsights404ResponseTest.php
+test/Model/InstagramAccountInsightsResponseDateRangeTest.php
+test/Model/InstagramAccountInsightsResponseMetricsValueBreakdownsInnerTest.php
+test/Model/InstagramAccountInsightsResponseMetricsValueTest.php
+test/Model/InstagramAccountInsightsResponseMetricsValueValuesInnerTest.php
+test/Model/InstagramAccountInsightsResponseTest.php
+test/Model/InstagramDemographicsResponseDemographicsValueInnerTest.php
+test/Model/InstagramDemographicsResponseTest.php

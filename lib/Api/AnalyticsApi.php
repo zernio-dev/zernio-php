@@ -90,6 +90,12 @@ class AnalyticsApi
         'getFollowerStats' => [
             'application/json',
         ],
+        'getInstagramAccountInsights' => [
+            'application/json',
+        ],
+        'getInstagramDemographics' => [
+            'application/json',
+        ],
         'getLinkedInAggregateAnalytics' => [
             'application/json',
         ],
@@ -1959,6 +1965,812 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $granularity,
             'granularity', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getInstagramAccountInsights
+     *
+     * Get Instagram account-level insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals and supports breakdowns. \&quot;time_series\&quot; returns daily values but only works with the \&quot;reach\&quot; metric. (optional, default to 'total_value')
+     * @param  string|null $breakdown Breakdown dimension (only valid with metricType&#x3D;total_value). Valid values depend on the metric: media_product_type, follow_type, follower_type, contact_button_type. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramAccountInsights'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\InstagramAccountInsightsResponse|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response|\Late\Model\GetInstagramAccountInsights404Response
+     */
+    public function getInstagramAccountInsights($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', $breakdown = null, string $contentType = self::contentTypes['getInstagramAccountInsights'][0])
+    {
+        list($response) = $this->getInstagramAccountInsightsWithHttpInfo($account_id, $metrics, $since, $until, $metric_type, $breakdown, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getInstagramAccountInsightsWithHttpInfo
+     *
+     * Get Instagram account-level insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals and supports breakdowns. \&quot;time_series\&quot; returns daily values but only works with the \&quot;reach\&quot; metric. (optional, default to 'total_value')
+     * @param  string|null $breakdown Breakdown dimension (only valid with metricType&#x3D;total_value). Valid values depend on the metric: media_product_type, follow_type, follower_type, contact_button_type. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramAccountInsights'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\InstagramAccountInsightsResponse|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response|\Late\Model\GetInstagramAccountInsights404Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getInstagramAccountInsightsWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', $breakdown = null, string $contentType = self::contentTypes['getInstagramAccountInsights'][0])
+    {
+        $request = $this->getInstagramAccountInsightsRequest($account_id, $metrics, $since, $until, $metric_type, $breakdown, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InstagramAccountInsightsResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetAnalytics402Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetInstagramAccountInsights404Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\InstagramAccountInsightsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InstagramAccountInsightsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetAnalytics402Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetInstagramAccountInsights404Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getInstagramAccountInsightsAsync
+     *
+     * Get Instagram account-level insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals and supports breakdowns. \&quot;time_series\&quot; returns daily values but only works with the \&quot;reach\&quot; metric. (optional, default to 'total_value')
+     * @param  string|null $breakdown Breakdown dimension (only valid with metricType&#x3D;total_value). Valid values depend on the metric: media_product_type, follow_type, follower_type, contact_button_type. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramAccountInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getInstagramAccountInsightsAsync($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', $breakdown = null, string $contentType = self::contentTypes['getInstagramAccountInsights'][0])
+    {
+        return $this->getInstagramAccountInsightsAsyncWithHttpInfo($account_id, $metrics, $since, $until, $metric_type, $breakdown, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getInstagramAccountInsightsAsyncWithHttpInfo
+     *
+     * Get Instagram account-level insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals and supports breakdowns. \&quot;time_series\&quot; returns daily values but only works with the \&quot;reach\&quot; metric. (optional, default to 'total_value')
+     * @param  string|null $breakdown Breakdown dimension (only valid with metricType&#x3D;total_value). Valid values depend on the metric: media_product_type, follow_type, follower_type, contact_button_type. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramAccountInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getInstagramAccountInsightsAsyncWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', $breakdown = null, string $contentType = self::contentTypes['getInstagramAccountInsights'][0])
+    {
+        $returnType = '\Late\Model\InstagramAccountInsightsResponse';
+        $request = $this->getInstagramAccountInsightsRequest($account_id, $metrics, $since, $until, $metric_type, $breakdown, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getInstagramAccountInsights'
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals and supports breakdowns. \&quot;time_series\&quot; returns daily values but only works with the \&quot;reach\&quot; metric. (optional, default to 'total_value')
+     * @param  string|null $breakdown Breakdown dimension (only valid with metricType&#x3D;total_value). Valid values depend on the metric: media_product_type, follow_type, follower_type, contact_button_type. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramAccountInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getInstagramAccountInsightsRequest($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', $breakdown = null, string $contentType = self::contentTypes['getInstagramAccountInsights'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getInstagramAccountInsights'
+            );
+        }
+
+
+
+
+
+
+
+        $resourcePath = '/v1/analytics/instagram/account-insights';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metrics,
+            'metrics', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $since,
+            'since', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $until,
+            'until', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metric_type,
+            'metricType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $breakdown,
+            'breakdown', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getInstagramDemographics
+     *
+     * Get Instagram audience demographics
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
+     * @param  string|null $metric \&quot;follower_demographics\&quot; for follower audience data, or \&quot;engaged_audience_demographics\&quot; for engaged viewers. (optional, default to 'follower_demographics')
+     * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, city, country, gender. Defaults to all four if omitted. (optional)
+     * @param  string|null $timeframe Time period for demographic data. Defaults to \&quot;this_month\&quot;. (optional, default to 'this_month')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramDemographics'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\InstagramDemographicsResponse|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response|\Late\Model\GetInstagramAccountInsights404Response
+     */
+    public function getInstagramDemographics($account_id, $metric = 'follower_demographics', $breakdown = null, $timeframe = 'this_month', string $contentType = self::contentTypes['getInstagramDemographics'][0])
+    {
+        list($response) = $this->getInstagramDemographicsWithHttpInfo($account_id, $metric, $breakdown, $timeframe, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getInstagramDemographicsWithHttpInfo
+     *
+     * Get Instagram audience demographics
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
+     * @param  string|null $metric \&quot;follower_demographics\&quot; for follower audience data, or \&quot;engaged_audience_demographics\&quot; for engaged viewers. (optional, default to 'follower_demographics')
+     * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, city, country, gender. Defaults to all four if omitted. (optional)
+     * @param  string|null $timeframe Time period for demographic data. Defaults to \&quot;this_month\&quot;. (optional, default to 'this_month')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramDemographics'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\InstagramDemographicsResponse|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response|\Late\Model\GetInstagramAccountInsights404Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getInstagramDemographicsWithHttpInfo($account_id, $metric = 'follower_demographics', $breakdown = null, $timeframe = 'this_month', string $contentType = self::contentTypes['getInstagramDemographics'][0])
+    {
+        $request = $this->getInstagramDemographicsRequest($account_id, $metric, $breakdown, $timeframe, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InstagramDemographicsResponse',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetAnalytics402Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetInstagramAccountInsights404Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\InstagramDemographicsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InstagramDemographicsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetAnalytics402Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetInstagramAccountInsights404Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getInstagramDemographicsAsync
+     *
+     * Get Instagram audience demographics
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
+     * @param  string|null $metric \&quot;follower_demographics\&quot; for follower audience data, or \&quot;engaged_audience_demographics\&quot; for engaged viewers. (optional, default to 'follower_demographics')
+     * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, city, country, gender. Defaults to all four if omitted. (optional)
+     * @param  string|null $timeframe Time period for demographic data. Defaults to \&quot;this_month\&quot;. (optional, default to 'this_month')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramDemographics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getInstagramDemographicsAsync($account_id, $metric = 'follower_demographics', $breakdown = null, $timeframe = 'this_month', string $contentType = self::contentTypes['getInstagramDemographics'][0])
+    {
+        return $this->getInstagramDemographicsAsyncWithHttpInfo($account_id, $metric, $breakdown, $timeframe, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getInstagramDemographicsAsyncWithHttpInfo
+     *
+     * Get Instagram audience demographics
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
+     * @param  string|null $metric \&quot;follower_demographics\&quot; for follower audience data, or \&quot;engaged_audience_demographics\&quot; for engaged viewers. (optional, default to 'follower_demographics')
+     * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, city, country, gender. Defaults to all four if omitted. (optional)
+     * @param  string|null $timeframe Time period for demographic data. Defaults to \&quot;this_month\&quot;. (optional, default to 'this_month')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramDemographics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getInstagramDemographicsAsyncWithHttpInfo($account_id, $metric = 'follower_demographics', $breakdown = null, $timeframe = 'this_month', string $contentType = self::contentTypes['getInstagramDemographics'][0])
+    {
+        $returnType = '\Late\Model\InstagramDemographicsResponse';
+        $request = $this->getInstagramDemographicsRequest($account_id, $metric, $breakdown, $timeframe, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getInstagramDemographics'
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
+     * @param  string|null $metric \&quot;follower_demographics\&quot; for follower audience data, or \&quot;engaged_audience_demographics\&quot; for engaged viewers. (optional, default to 'follower_demographics')
+     * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, city, country, gender. Defaults to all four if omitted. (optional)
+     * @param  string|null $timeframe Time period for demographic data. Defaults to \&quot;this_month\&quot;. (optional, default to 'this_month')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramDemographics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getInstagramDemographicsRequest($account_id, $metric = 'follower_demographics', $breakdown = null, $timeframe = 'this_month', string $contentType = self::contentTypes['getInstagramDemographics'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getInstagramDemographics'
+            );
+        }
+
+
+
+
+
+        $resourcePath = '/v1/analytics/instagram/demographics';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metric,
+            'metric', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $breakdown,
+            'breakdown', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $timeframe,
+            'timeframe', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

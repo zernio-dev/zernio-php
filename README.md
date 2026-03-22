@@ -84,6 +84,8 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**getContentDecay**](docs/Api/AnalyticsApi.md#getcontentdecay) | **GET** /v1/analytics/content-decay | Get content performance decay
 *AnalyticsApi* | [**getDailyMetrics**](docs/Api/AnalyticsApi.md#getdailymetrics) | **GET** /v1/analytics/daily-metrics | Get daily aggregated metrics
 *AnalyticsApi* | [**getFollowerStats**](docs/Api/AnalyticsApi.md#getfollowerstats) | **GET** /v1/accounts/follower-stats | Get follower stats
+*AnalyticsApi* | [**getInstagramAccountInsights**](docs/Api/AnalyticsApi.md#getinstagramaccountinsights) | **GET** /v1/analytics/instagram/account-insights | Get Instagram account-level insights
+*AnalyticsApi* | [**getInstagramDemographics**](docs/Api/AnalyticsApi.md#getinstagramdemographics) | **GET** /v1/analytics/instagram/demographics | Get Instagram audience demographics
 *AnalyticsApi* | [**getLinkedInAggregateAnalytics**](docs/Api/AnalyticsApi.md#getlinkedinaggregateanalytics) | **GET** /v1/accounts/{accountId}/linkedin-aggregate-analytics | Get LinkedIn aggregate stats
 *AnalyticsApi* | [**getLinkedInPostAnalytics**](docs/Api/AnalyticsApi.md#getlinkedinpostanalytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats
 *AnalyticsApi* | [**getLinkedInPostReactions**](docs/Api/AnalyticsApi.md#getlinkedinpostreactions) | **GET** /v1/accounts/{accountId}/linkedin-post-reactions | Get LinkedIn post reactions
@@ -417,6 +419,7 @@ Class | Method | HTTP request | Description
 - [GetInboxPostComments200ResponseCommentsInnerFrom](docs/Model/GetInboxPostComments200ResponseCommentsInnerFrom.md)
 - [GetInboxPostComments200ResponseMeta](docs/Model/GetInboxPostComments200ResponseMeta.md)
 - [GetInboxPostComments200ResponsePagination](docs/Model/GetInboxPostComments200ResponsePagination.md)
+- [GetInstagramAccountInsights404Response](docs/Model/GetInstagramAccountInsights404Response.md)
 - [GetLinkedInAggregateAnalytics200Response](docs/Model/GetLinkedInAggregateAnalytics200Response.md)
 - [GetLinkedInAggregateAnalytics400Response](docs/Model/GetLinkedInAggregateAnalytics400Response.md)
 - [GetLinkedInAggregateAnalytics402Response](docs/Model/GetLinkedInAggregateAnalytics402Response.md)
@@ -518,6 +521,13 @@ Class | Method | HTTP request | Description
 - [InitiateTelegramConnectRequest](docs/Model/InitiateTelegramConnectRequest.md)
 - [InlineObject](docs/Model/InlineObject.md)
 - [InlineObject1](docs/Model/InlineObject1.md)
+- [InstagramAccountInsightsResponse](docs/Model/InstagramAccountInsightsResponse.md)
+- [InstagramAccountInsightsResponseDateRange](docs/Model/InstagramAccountInsightsResponseDateRange.md)
+- [InstagramAccountInsightsResponseMetricsValue](docs/Model/InstagramAccountInsightsResponseMetricsValue.md)
+- [InstagramAccountInsightsResponseMetricsValueBreakdownsInner](docs/Model/InstagramAccountInsightsResponseMetricsValueBreakdownsInner.md)
+- [InstagramAccountInsightsResponseMetricsValueValuesInner](docs/Model/InstagramAccountInsightsResponseMetricsValueValuesInner.md)
+- [InstagramDemographicsResponse](docs/Model/InstagramDemographicsResponse.md)
+- [InstagramDemographicsResponseDemographicsValueInner](docs/Model/InstagramDemographicsResponseDemographicsValueInner.md)
 - [InstagramPlatformData](docs/Model/InstagramPlatformData.md)
 - [InstagramPlatformDataTrialParams](docs/Model/InstagramPlatformDataTrialParams.md)
 - [InstagramPlatformDataUserTagsInner](docs/Model/InstagramPlatformDataUserTagsInner.md)
