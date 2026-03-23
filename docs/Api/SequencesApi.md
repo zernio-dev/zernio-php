@@ -79,7 +79,7 @@ try {
 ## `createSequence()`
 
 ```php
-createSequence($create_sequence_request)
+createSequence($create_sequence_request): \Late\Model\CreateSequence200Response
 ```
 
 Create a sequence
@@ -104,7 +104,8 @@ $apiInstance = new Late\Api\SequencesApi(
 $create_sequence_request = new \Late\Model\CreateSequenceRequest(); // \Late\Model\CreateSequenceRequest
 
 try {
-    $apiInstance->createSequence($create_sequence_request);
+    $result = $apiInstance->createSequence($create_sequence_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SequencesApi->createSequence: ', $e->getMessage(), PHP_EOL;
 }
@@ -118,7 +119,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\CreateSequence200Response**](../Model/CreateSequence200Response.md)
 
 ### Authorization
 

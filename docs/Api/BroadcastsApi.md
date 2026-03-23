@@ -139,7 +139,7 @@ try {
 ## `createBroadcast()`
 
 ```php
-createBroadcast($create_broadcast_request)
+createBroadcast($create_broadcast_request): \Late\Model\CreateBroadcast200Response
 ```
 
 Create a broadcast draft
@@ -164,7 +164,8 @@ $apiInstance = new Late\Api\BroadcastsApi(
 $create_broadcast_request = new \Late\Model\CreateBroadcastRequest(); // \Late\Model\CreateBroadcastRequest
 
 try {
-    $apiInstance->createBroadcast($create_broadcast_request);
+    $result = $apiInstance->createBroadcast($create_broadcast_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastsApi->createBroadcast: ', $e->getMessage(), PHP_EOL;
 }
@@ -178,7 +179,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\CreateBroadcast200Response**](../Model/CreateBroadcast200Response.md)
 
 ### Authorization
 
