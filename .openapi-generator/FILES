@@ -488,6 +488,7 @@ docs/Model/TikTokPlatformData.md
 docs/Model/TranscriptResponse.md
 docs/Model/TranscriptSegment.md
 docs/Model/TwitterPlatformData.md
+docs/Model/TwitterPlatformDataPoll.md
 docs/Model/TwitterPlatformDataThreadItemsInner.md
 docs/Model/UndoRetweet200Response.md
 docs/Model/UnfollowUser200Response.md
@@ -1093,6 +1094,7 @@ lib/Model/TikTokPlatformData.php
 lib/Model/TranscriptResponse.php
 lib/Model/TranscriptSegment.php
 lib/Model/TwitterPlatformData.php
+lib/Model/TwitterPlatformDataPoll.php
 lib/Model/TwitterPlatformDataThreadItemsInner.php
 lib/Model/UndoRetweet200Response.php
 lib/Model/UnfollowUser200Response.php
@@ -1209,3 +1211,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/TwitterPlatformDataPollTest.php

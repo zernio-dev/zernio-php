@@ -1,6 +1,6 @@
 <?php
 /**
- * TwitterPlatformData
+ * TwitterPlatformDataPoll
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * TwitterPlatformData Class Doc Comment
+ * TwitterPlatformDataPoll Class Doc Comment
  *
  * @category Class
+ * @description Create a poll with this tweet. Mutually exclusive with media attachments and threads.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializable
+class TwitterPlatformDataPoll implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'TwitterPlatformData';
+    protected static $openAPIModelName = 'TwitterPlatformData_poll';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +59,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'reply_to_tweet_id' => 'string',
-        'reply_settings' => 'string',
-        'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
-        'poll' => '\Late\Model\TwitterPlatformDataPoll'
+        'options' => 'string[]',
+        'duration_minutes' => 'int'
     ];
 
     /**
@@ -72,10 +71,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'reply_to_tweet_id' => null,
-        'reply_settings' => null,
-        'thread_items' => null,
-        'poll' => null
+        'options' => null,
+        'duration_minutes' => null
     ];
 
     /**
@@ -84,10 +81,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'reply_to_tweet_id' => false,
-        'reply_settings' => false,
-        'thread_items' => false,
-        'poll' => false
+        'options' => false,
+        'duration_minutes' => false
     ];
 
     /**
@@ -176,10 +171,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'reply_to_tweet_id' => 'replyToTweetId',
-        'reply_settings' => 'replySettings',
-        'thread_items' => 'threadItems',
-        'poll' => 'poll'
+        'options' => 'options',
+        'duration_minutes' => 'duration_minutes'
     ];
 
     /**
@@ -188,10 +181,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'reply_to_tweet_id' => 'setReplyToTweetId',
-        'reply_settings' => 'setReplySettings',
-        'thread_items' => 'setThreadItems',
-        'poll' => 'setPoll'
+        'options' => 'setOptions',
+        'duration_minutes' => 'setDurationMinutes'
     ];
 
     /**
@@ -200,10 +191,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'reply_to_tweet_id' => 'getReplyToTweetId',
-        'reply_settings' => 'getReplySettings',
-        'thread_items' => 'getThreadItems',
-        'poll' => 'getPoll'
+        'options' => 'getOptions',
+        'duration_minutes' => 'getDurationMinutes'
     ];
 
     /**
@@ -247,25 +236,6 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const REPLY_SETTINGS_FOLLOWING = 'following';
-    public const REPLY_SETTINGS_MENTIONED_USERS = 'mentionedUsers';
-    public const REPLY_SETTINGS_SUBSCRIBERS = 'subscribers';
-    public const REPLY_SETTINGS_VERIFIED = 'verified';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getReplySettingsAllowableValues()
-    {
-        return [
-            self::REPLY_SETTINGS_FOLLOWING,
-            self::REPLY_SETTINGS_MENTIONED_USERS,
-            self::REPLY_SETTINGS_SUBSCRIBERS,
-            self::REPLY_SETTINGS_VERIFIED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -282,10 +252,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('reply_to_tweet_id', $data ?? [], null);
-        $this->setIfExists('reply_settings', $data ?? [], null);
-        $this->setIfExists('thread_items', $data ?? [], null);
-        $this->setIfExists('poll', $data ?? [], null);
+        $this->setIfExists('options', $data ?? [], null);
+        $this->setIfExists('duration_minutes', $data ?? [], null);
     }
 
     /**
@@ -315,13 +283,26 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getReplySettingsAllowableValues();
-        if (!is_null($this->container['reply_settings']) && !in_array($this->container['reply_settings'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'reply_settings', must be one of '%s'",
-                $this->container['reply_settings'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['options'] === null) {
+            $invalidProperties[] = "'options' can't be null";
+        }
+        if ((count($this->container['options']) > 4)) {
+            $invalidProperties[] = "invalid value for 'options', number of items must be less than or equal to 4.";
+        }
+
+        if ((count($this->container['options']) < 2)) {
+            $invalidProperties[] = "invalid value for 'options', number of items must be greater than or equal to 2.";
+        }
+
+        if ($this->container['duration_minutes'] === null) {
+            $invalidProperties[] = "'duration_minutes' can't be null";
+        }
+        if (($this->container['duration_minutes'] > 10080)) {
+            $invalidProperties[] = "invalid value for 'duration_minutes', must be smaller than or equal to 10080.";
+        }
+
+        if (($this->container['duration_minutes'] < 5)) {
+            $invalidProperties[] = "invalid value for 'duration_minutes', must be bigger than or equal to 5.";
         }
 
         return $invalidProperties;
@@ -340,119 +321,70 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets reply_to_tweet_id
+     * Gets options
      *
-     * @return string|null
+     * @return string[]
      */
-    public function getReplyToTweetId()
+    public function getOptions()
     {
-        return $this->container['reply_to_tweet_id'];
+        return $this->container['options'];
     }
 
     /**
-     * Sets reply_to_tweet_id
+     * Sets options
      *
-     * @param string|null $reply_to_tweet_id ID of an existing tweet to reply to. The published tweet will appear as a reply in that tweet's thread. For threads, only the first tweet replies to the target; subsequent tweets chain normally.
+     * @param string[] $options Poll options (2-4 choices, max 25 characters each)
      *
      * @return self
      */
-    public function setReplyToTweetId($reply_to_tweet_id)
+    public function setOptions($options)
     {
-        if (is_null($reply_to_tweet_id)) {
-            throw new \InvalidArgumentException('non-nullable reply_to_tweet_id cannot be null');
+        if (is_null($options)) {
+            throw new \InvalidArgumentException('non-nullable options cannot be null');
         }
-        $this->container['reply_to_tweet_id'] = $reply_to_tweet_id;
+
+        if ((count($options) > 4)) {
+            throw new \InvalidArgumentException('invalid value for $options when calling TwitterPlatformDataPoll., number of items must be less than or equal to 4.');
+        }
+        if ((count($options) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $options when calling TwitterPlatformDataPoll., number of items must be greater than or equal to 2.');
+        }
+        $this->container['options'] = $options;
 
         return $this;
     }
 
     /**
-     * Gets reply_settings
+     * Gets duration_minutes
      *
-     * @return string|null
+     * @return int
      */
-    public function getReplySettings()
+    public function getDurationMinutes()
     {
-        return $this->container['reply_settings'];
+        return $this->container['duration_minutes'];
     }
 
     /**
-     * Sets reply_settings
+     * Sets duration_minutes
      *
-     * @param string|null $reply_settings Controls who can reply to the tweet. \"following\" allows only people you follow, \"mentionedUsers\" allows only mentioned users, \"subscribers\" allows only subscribers, \"verified\" allows only verified users. Omit for default (everyone can reply). For threads, applies to the first tweet only. Cannot be combined with replyToTweetId.
+     * @param int $duration_minutes Poll duration in minutes (5 min to 7 days)
      *
      * @return self
      */
-    public function setReplySettings($reply_settings)
+    public function setDurationMinutes($duration_minutes)
     {
-        if (is_null($reply_settings)) {
-            throw new \InvalidArgumentException('non-nullable reply_settings cannot be null');
+        if (is_null($duration_minutes)) {
+            throw new \InvalidArgumentException('non-nullable duration_minutes cannot be null');
         }
-        $allowedValues = $this->getReplySettingsAllowableValues();
-        if (!in_array($reply_settings, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'reply_settings', must be one of '%s'",
-                    $reply_settings,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if (($duration_minutes > 10080)) {
+            throw new \InvalidArgumentException('invalid value for $duration_minutes when calling TwitterPlatformDataPoll., must be smaller than or equal to 10080.');
         }
-        $this->container['reply_settings'] = $reply_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets thread_items
-     *
-     * @return \Late\Model\TwitterPlatformDataThreadItemsInner[]|null
-     */
-    public function getThreadItems()
-    {
-        return $this->container['thread_items'];
-    }
-
-    /**
-     * Sets thread_items
-     *
-     * @param \Late\Model\TwitterPlatformDataThreadItemsInner[]|null $thread_items Sequence of tweets in a thread. First item is the root tweet.
-     *
-     * @return self
-     */
-    public function setThreadItems($thread_items)
-    {
-        if (is_null($thread_items)) {
-            throw new \InvalidArgumentException('non-nullable thread_items cannot be null');
+        if (($duration_minutes < 5)) {
+            throw new \InvalidArgumentException('invalid value for $duration_minutes when calling TwitterPlatformDataPoll., must be bigger than or equal to 5.');
         }
-        $this->container['thread_items'] = $thread_items;
 
-        return $this;
-    }
-
-    /**
-     * Gets poll
-     *
-     * @return \Late\Model\TwitterPlatformDataPoll|null
-     */
-    public function getPoll()
-    {
-        return $this->container['poll'];
-    }
-
-    /**
-     * Sets poll
-     *
-     * @param \Late\Model\TwitterPlatformDataPoll|null $poll poll
-     *
-     * @return self
-     */
-    public function setPoll($poll)
-    {
-        if (is_null($poll)) {
-            throw new \InvalidArgumentException('non-nullable poll cannot be null');
-        }
-        $this->container['poll'] = $poll;
+        $this->container['duration_minutes'] = $duration_minutes;
 
         return $this;
     }

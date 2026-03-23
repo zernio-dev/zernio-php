@@ -700,6 +700,7 @@ Class | Method | HTTP request | Description
 - [TranscriptResponse](docs/Model/TranscriptResponse.md)
 - [TranscriptSegment](docs/Model/TranscriptSegment.md)
 - [TwitterPlatformData](docs/Model/TwitterPlatformData.md)
+- [TwitterPlatformDataPoll](docs/Model/TwitterPlatformDataPoll.md)
 - [TwitterPlatformDataThreadItemsInner](docs/Model/TwitterPlatformDataThreadItemsInner.md)
 - [UndoRetweet200Response](docs/Model/UndoRetweet200Response.md)
 - [UnfollowUser200Response](docs/Model/UnfollowUser200Response.md)

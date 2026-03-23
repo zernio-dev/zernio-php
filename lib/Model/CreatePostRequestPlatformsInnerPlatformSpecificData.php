@@ -61,6 +61,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'reply_to_tweet_id' => 'string',
         'reply_settings' => 'string',
         'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
+        'poll' => '\Late\Model\TwitterPlatformDataPoll',
         'content_type' => 'string',
         'title' => 'string',
         'first_comment' => 'string',
@@ -123,6 +124,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'reply_to_tweet_id' => null,
         'reply_settings' => null,
         'thread_items' => null,
+        'poll' => null,
         'content_type' => null,
         'title' => null,
         'first_comment' => null,
@@ -183,6 +185,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'reply_to_tweet_id' => false,
         'reply_settings' => false,
         'thread_items' => false,
+        'poll' => false,
         'content_type' => false,
         'title' => false,
         'first_comment' => false,
@@ -323,6 +326,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'reply_to_tweet_id' => 'replyToTweetId',
         'reply_settings' => 'replySettings',
         'thread_items' => 'threadItems',
+        'poll' => 'poll',
         'content_type' => 'contentType',
         'title' => 'title',
         'first_comment' => 'firstComment',
@@ -383,6 +387,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'reply_to_tweet_id' => 'setReplyToTweetId',
         'reply_settings' => 'setReplySettings',
         'thread_items' => 'setThreadItems',
+        'poll' => 'setPoll',
         'content_type' => 'setContentType',
         'title' => 'setTitle',
         'first_comment' => 'setFirstComment',
@@ -443,6 +448,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'reply_to_tweet_id' => 'getReplyToTweetId',
         'reply_settings' => 'getReplySettings',
         'thread_items' => 'getThreadItems',
+        'poll' => 'getPoll',
         'content_type' => 'getContentType',
         'title' => 'getTitle',
         'first_comment' => 'getFirstComment',
@@ -656,6 +662,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         $this->setIfExists('reply_to_tweet_id', $data ?? [], null);
         $this->setIfExists('reply_settings', $data ?? [], null);
         $this->setIfExists('thread_items', $data ?? [], null);
+        $this->setIfExists('poll', $data ?? [], null);
         $this->setIfExists('content_type', $data ?? [], 'story');
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('first_comment', $data ?? [], null);
@@ -914,6 +921,33 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
             throw new \InvalidArgumentException('non-nullable thread_items cannot be null');
         }
         $this->container['thread_items'] = $thread_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets poll
+     *
+     * @return \Late\Model\TwitterPlatformDataPoll|null
+     */
+    public function getPoll()
+    {
+        return $this->container['poll'];
+    }
+
+    /**
+     * Sets poll
+     *
+     * @param \Late\Model\TwitterPlatformDataPoll|null $poll poll
+     *
+     * @return self
+     */
+    public function setPoll($poll)
+    {
+        if (is_null($poll)) {
+            throw new \InvalidArgumentException('non-nullable poll cannot be null');
+        }
+        $this->container['poll'] = $poll;
 
         return $this;
     }

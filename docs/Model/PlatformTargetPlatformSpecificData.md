@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **reply_to_tweet_id** | **string** | ID of an existing tweet to reply to. The published tweet will appear as a reply in that tweet&#39;s thread. For threads, only the first tweet replies to the target; subsequent tweets chain normally. | [optional]
 **reply_settings** | **string** | Controls who can reply to the tweet. \&quot;following\&quot; allows only people you follow, \&quot;mentionedUsers\&quot; allows only mentioned users, \&quot;subscribers\&quot; allows only subscribers, \&quot;verified\&quot; allows only verified users. Omit for default (everyone can reply). For threads, applies to the first tweet only. Cannot be combined with replyToTweetId. | [optional]
 **thread_items** | [**\Late\Model\TwitterPlatformDataThreadItemsInner[]**](TwitterPlatformDataThreadItemsInner.md) | Sequence of posts in a Bluesky thread (root then replies in order). | [optional]
+**poll** | [**\Late\Model\TwitterPlatformDataPoll**](TwitterPlatformDataPoll.md) |  | [optional]
 **content_type** | **string** | Content type: story (ephemeral 24h, default), saved_story (permanent on Public Profile), spotlight (video feed) | [optional] [default to 'story']
 **title** | **string** | Post title. Defaults to the first line of content, truncated to 300 characters. | [optional]
 **first_comment** | **string** | Optional first comment to post immediately after video upload. Up to 10,000 characters (YouTube&#39;s comment limit). | [optional]
