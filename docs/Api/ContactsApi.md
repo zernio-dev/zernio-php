@@ -18,7 +18,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `bulkCreateContacts()`
 
 ```php
-bulkCreateContacts($bulk_create_contacts_request)
+bulkCreateContacts($bulk_create_contacts_request): \Late\Model\BulkCreateContacts200Response
 ```
 
 Bulk create contacts
@@ -45,7 +45,8 @@ $apiInstance = new Late\Api\ContactsApi(
 $bulk_create_contacts_request = new \Late\Model\BulkCreateContactsRequest(); // \Late\Model\BulkCreateContactsRequest
 
 try {
-    $apiInstance->bulkCreateContacts($bulk_create_contacts_request);
+    $result = $apiInstance->bulkCreateContacts($bulk_create_contacts_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactsApi->bulkCreateContacts: ', $e->getMessage(), PHP_EOL;
 }
@@ -59,7 +60,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\BulkCreateContacts200Response**](../Model/BulkCreateContacts200Response.md)
 
 ### Authorization
 
@@ -77,7 +78,7 @@ void (empty response body)
 ## `createContact()`
 
 ```php
-createContact($create_contact_request)
+createContact($create_contact_request): \Late\Model\CreateContact200Response
 ```
 
 Create a contact
@@ -104,7 +105,8 @@ $apiInstance = new Late\Api\ContactsApi(
 $create_contact_request = new \Late\Model\CreateContactRequest(); // \Late\Model\CreateContactRequest
 
 try {
-    $apiInstance->createContact($create_contact_request);
+    $result = $apiInstance->createContact($create_contact_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactsApi->createContact: ', $e->getMessage(), PHP_EOL;
 }
@@ -118,7 +120,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\CreateContact200Response**](../Model/CreateContact200Response.md)
 
 ### Authorization
 
@@ -193,7 +195,7 @@ void (empty response body)
 ## `getContact()`
 
 ```php
-getContact($contact_id)
+getContact($contact_id): \Late\Model\GetContact200Response
 ```
 
 Get contact with channels
@@ -218,7 +220,8 @@ $apiInstance = new Late\Api\ContactsApi(
 $contact_id = 'contact_id_example'; // string
 
 try {
-    $apiInstance->getContact($contact_id);
+    $result = $apiInstance->getContact($contact_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactsApi->getContact: ', $e->getMessage(), PHP_EOL;
 }
@@ -232,7 +235,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\GetContact200Response**](../Model/GetContact200Response.md)
 
 ### Authorization
 
@@ -250,7 +253,7 @@ void (empty response body)
 ## `getContactChannels()`
 
 ```php
-getContactChannels($contact_id)
+getContactChannels($contact_id): \Late\Model\GetContactChannels200Response
 ```
 
 List channels for a contact
@@ -275,7 +278,8 @@ $apiInstance = new Late\Api\ContactsApi(
 $contact_id = 'contact_id_example'; // string
 
 try {
-    $apiInstance->getContactChannels($contact_id);
+    $result = $apiInstance->getContactChannels($contact_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactsApi->getContactChannels: ', $e->getMessage(), PHP_EOL;
 }
@@ -289,7 +293,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\GetContactChannels200Response**](../Model/GetContactChannels200Response.md)
 
 ### Authorization
 
@@ -307,7 +311,7 @@ void (empty response body)
 ## `listContacts()`
 
 ```php
-listContacts($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip)
+listContacts($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip): \Late\Model\ListContacts200Response
 ```
 
 List contacts
@@ -340,7 +344,8 @@ $limit = 50; // int
 $skip = 0; // int
 
 try {
-    $apiInstance->listContacts($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip);
+    $result = $apiInstance->listContacts($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactsApi->listContacts: ', $e->getMessage(), PHP_EOL;
 }
@@ -360,7 +365,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\ListContacts200Response**](../Model/ListContacts200Response.md)
 
 ### Authorization
 
@@ -378,7 +383,7 @@ void (empty response body)
 ## `updateContact()`
 
 ```php
-updateContact($contact_id, $update_contact_request)
+updateContact($contact_id, $update_contact_request): \Late\Model\UpdateContact200Response
 ```
 
 Update a contact
@@ -404,7 +409,8 @@ $contact_id = 'contact_id_example'; // string
 $update_contact_request = new \Late\Model\UpdateContactRequest(); // \Late\Model\UpdateContactRequest
 
 try {
-    $apiInstance->updateContact($contact_id, $update_contact_request);
+    $result = $apiInstance->updateContact($contact_id, $update_contact_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContactsApi->updateContact: ', $e->getMessage(), PHP_EOL;
 }
@@ -419,7 +425,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\UpdateContact200Response**](../Model/UpdateContact200Response.md)
 
 ### Authorization
 

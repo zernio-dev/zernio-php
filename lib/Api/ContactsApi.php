@@ -154,11 +154,12 @@ class ContactsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\BulkCreateContacts200Response|\Late\Model\InlineObject
      */
     public function bulkCreateContacts($bulk_create_contacts_request, string $contentType = self::contentTypes['bulkCreateContacts'][0])
     {
-        $this->bulkCreateContactsWithHttpInfo($bulk_create_contacts_request, $contentType);
+        list($response) = $this->bulkCreateContactsWithHttpInfo($bulk_create_contacts_request, $contentType);
+        return $response;
     }
 
     /**
@@ -171,7 +172,7 @@ class ContactsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\BulkCreateContacts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function bulkCreateContactsWithHttpInfo($bulk_create_contacts_request, string $contentType = self::contentTypes['bulkCreateContacts'][0])
     {
@@ -200,9 +201,51 @@ class ContactsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\BulkCreateContacts200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\BulkCreateContacts200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\BulkCreateContacts200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -252,14 +295,27 @@ class ContactsApi
      */
     public function bulkCreateContactsAsyncWithHttpInfo($bulk_create_contacts_request, string $contentType = self::contentTypes['bulkCreateContacts'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\BulkCreateContacts200Response';
         $request = $this->bulkCreateContactsRequest($bulk_create_contacts_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -383,11 +439,12 @@ class ContactsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\CreateContact200Response|\Late\Model\InlineObject
      */
     public function createContact($create_contact_request, string $contentType = self::contentTypes['createContact'][0])
     {
-        $this->createContactWithHttpInfo($create_contact_request, $contentType);
+        list($response) = $this->createContactWithHttpInfo($create_contact_request, $contentType);
+        return $response;
     }
 
     /**
@@ -400,7 +457,7 @@ class ContactsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\CreateContact200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createContactWithHttpInfo($create_contact_request, string $contentType = self::contentTypes['createContact'][0])
     {
@@ -429,9 +486,51 @@ class ContactsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\CreateContact200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\CreateContact200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\CreateContact200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -481,14 +580,27 @@ class ContactsApi
      */
     public function createContactAsyncWithHttpInfo($create_contact_request, string $contentType = self::contentTypes['createContact'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\CreateContact200Response';
         $request = $this->createContactRequest($create_contact_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -850,11 +962,12 @@ class ContactsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\GetContact200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
      */
     public function getContact($contact_id, string $contentType = self::contentTypes['getContact'][0])
     {
-        $this->getContactWithHttpInfo($contact_id, $contentType);
+        list($response) = $this->getContactWithHttpInfo($contact_id, $contentType);
+        return $response;
     }
 
     /**
@@ -867,7 +980,7 @@ class ContactsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\GetContact200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getContactWithHttpInfo($contact_id, string $contentType = self::contentTypes['getContact'][0])
     {
@@ -896,9 +1009,57 @@ class ContactsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetContact200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetContact200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetContact200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -956,14 +1117,27 @@ class ContactsApi
      */
     public function getContactAsyncWithHttpInfo($contact_id, string $contentType = self::contentTypes['getContact'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\GetContact200Response';
         $request = $this->getContactRequest($contact_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1088,11 +1262,12 @@ class ContactsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\GetContactChannels200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
      */
     public function getContactChannels($contact_id, string $contentType = self::contentTypes['getContactChannels'][0])
     {
-        $this->getContactChannelsWithHttpInfo($contact_id, $contentType);
+        list($response) = $this->getContactChannelsWithHttpInfo($contact_id, $contentType);
+        return $response;
     }
 
     /**
@@ -1105,7 +1280,7 @@ class ContactsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\GetContactChannels200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getContactChannelsWithHttpInfo($contact_id, string $contentType = self::contentTypes['getContactChannels'][0])
     {
@@ -1134,9 +1309,57 @@ class ContactsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetContactChannels200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetContactChannels200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetContactChannels200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1194,14 +1417,27 @@ class ContactsApi
      */
     public function getContactChannelsAsyncWithHttpInfo($contact_id, string $contentType = self::contentTypes['getContactChannels'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\GetContactChannels200Response';
         $request = $this->getContactChannelsRequest($contact_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1332,11 +1568,12 @@ class ContactsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\ListContacts200Response|\Late\Model\InlineObject
      */
     public function listContacts($profile_id = null, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
     {
-        $this->listContactsWithHttpInfo($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip, $contentType);
+        list($response) = $this->listContactsWithHttpInfo($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip, $contentType);
+        return $response;
     }
 
     /**
@@ -1355,7 +1592,7 @@ class ContactsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\ListContacts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listContactsWithHttpInfo($profile_id = null, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
     {
@@ -1384,9 +1621,51 @@ class ContactsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\ListContacts200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\ListContacts200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\ListContacts200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1448,14 +1727,27 @@ class ContactsApi
      */
     public function listContactsAsyncWithHttpInfo($profile_id = null, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\ListContacts200Response';
         $request = $this->listContactsRequest($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1645,11 +1937,12 @@ class ContactsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\UpdateContact200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
      */
     public function updateContact($contact_id, $update_contact_request = null, string $contentType = self::contentTypes['updateContact'][0])
     {
-        $this->updateContactWithHttpInfo($contact_id, $update_contact_request, $contentType);
+        list($response) = $this->updateContactWithHttpInfo($contact_id, $update_contact_request, $contentType);
+        return $response;
     }
 
     /**
@@ -1663,7 +1956,7 @@ class ContactsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\UpdateContact200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateContactWithHttpInfo($contact_id, $update_contact_request = null, string $contentType = self::contentTypes['updateContact'][0])
     {
@@ -1692,9 +1985,57 @@ class ContactsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateContact200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateContact200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateContact200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1754,14 +2095,27 @@ class ContactsApi
      */
     public function updateContactAsyncWithHttpInfo($contact_id, $update_contact_request = null, string $contentType = self::contentTypes['updateContact'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\UpdateContact200Response';
         $request = $this->updateContactRequest($contact_id, $update_contact_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

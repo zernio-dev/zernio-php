@@ -17,7 +17,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createCommentAutomation()`
 
 ```php
-createCommentAutomation($create_comment_automation_request)
+createCommentAutomation($create_comment_automation_request): \Late\Model\CreateCommentAutomation200Response
 ```
 
 Create a comment-to-DM automation
@@ -44,7 +44,8 @@ $apiInstance = new Late\Api\CommentAutomationsApi(
 $create_comment_automation_request = new \Late\Model\CreateCommentAutomationRequest(); // \Late\Model\CreateCommentAutomationRequest
 
 try {
-    $apiInstance->createCommentAutomation($create_comment_automation_request);
+    $result = $apiInstance->createCommentAutomation($create_comment_automation_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommentAutomationsApi->createCommentAutomation: ', $e->getMessage(), PHP_EOL;
 }
@@ -58,7 +59,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\CreateCommentAutomation200Response**](../Model/CreateCommentAutomation200Response.md)
 
 ### Authorization
 
@@ -133,7 +134,7 @@ void (empty response body)
 ## `getCommentAutomation()`
 
 ```php
-getCommentAutomation($automation_id)
+getCommentAutomation($automation_id): \Late\Model\GetCommentAutomation200Response
 ```
 
 Get automation details with recent logs
@@ -158,7 +159,8 @@ $apiInstance = new Late\Api\CommentAutomationsApi(
 $automation_id = 'automation_id_example'; // string
 
 try {
-    $apiInstance->getCommentAutomation($automation_id);
+    $result = $apiInstance->getCommentAutomation($automation_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommentAutomationsApi->getCommentAutomation: ', $e->getMessage(), PHP_EOL;
 }
@@ -172,7 +174,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\GetCommentAutomation200Response**](../Model/GetCommentAutomation200Response.md)
 
 ### Authorization
 
@@ -190,7 +192,7 @@ void (empty response body)
 ## `listCommentAutomationLogs()`
 
 ```php
-listCommentAutomationLogs($automation_id, $status, $limit, $skip)
+listCommentAutomationLogs($automation_id, $status, $limit, $skip): \Late\Model\ListCommentAutomationLogs200Response
 ```
 
 List trigger logs for an automation
@@ -220,7 +222,8 @@ $limit = 50; // int
 $skip = 0; // int
 
 try {
-    $apiInstance->listCommentAutomationLogs($automation_id, $status, $limit, $skip);
+    $result = $apiInstance->listCommentAutomationLogs($automation_id, $status, $limit, $skip);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommentAutomationsApi->listCommentAutomationLogs: ', $e->getMessage(), PHP_EOL;
 }
@@ -237,7 +240,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\ListCommentAutomationLogs200Response**](../Model/ListCommentAutomationLogs200Response.md)
 
 ### Authorization
 
@@ -315,7 +318,7 @@ try {
 ## `updateCommentAutomation()`
 
 ```php
-updateCommentAutomation($automation_id, $update_comment_automation_request)
+updateCommentAutomation($automation_id, $update_comment_automation_request): \Late\Model\UpdateCommentAutomation200Response
 ```
 
 Update automation settings
@@ -341,7 +344,8 @@ $automation_id = 'automation_id_example'; // string
 $update_comment_automation_request = new \Late\Model\UpdateCommentAutomationRequest(); // \Late\Model\UpdateCommentAutomationRequest
 
 try {
-    $apiInstance->updateCommentAutomation($automation_id, $update_comment_automation_request);
+    $result = $apiInstance->updateCommentAutomation($automation_id, $update_comment_automation_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CommentAutomationsApi->updateCommentAutomation: ', $e->getMessage(), PHP_EOL;
 }
@@ -356,7 +360,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\UpdateCommentAutomation200Response**](../Model/UpdateCommentAutomation200Response.md)
 
 ### Authorization
 

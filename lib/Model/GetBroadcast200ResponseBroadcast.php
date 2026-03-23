@@ -65,7 +65,7 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
         'account_id' => 'string',
         'message' => '\Late\Model\GetBroadcast200ResponseBroadcastMessage',
         'template' => '\Late\Model\GetWhatsAppBroadcasts200ResponseBroadcastsInnerTemplate',
-        'segment_filters' => '\Late\Model\GetBroadcast200ResponseBroadcastSegmentFilters',
+        'segment_filters' => '\Late\Model\ListContacts200ResponseFilters',
         'status' => 'string',
         'scheduled_at' => '\DateTime',
         'started_at' => '\DateTime',
@@ -640,7 +640,7 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
     /**
      * Gets segment_filters
      *
-     * @return \Late\Model\GetBroadcast200ResponseBroadcastSegmentFilters|null
+     * @return \Late\Model\ListContacts200ResponseFilters|null
      */
     public function getSegmentFilters()
     {
@@ -650,7 +650,7 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
     /**
      * Sets segment_filters
      *
-     * @param \Late\Model\GetBroadcast200ResponseBroadcastSegmentFilters|null $segment_filters segment_filters
+     * @param \Late\Model\ListContacts200ResponseFilters|null $segment_filters segment_filters
      *
      * @return self
      */

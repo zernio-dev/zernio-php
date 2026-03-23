@@ -409,11 +409,12 @@ class CustomFieldsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\CreateCustomField200Response|\Late\Model\InlineObject
      */
     public function createCustomField($create_custom_field_request, string $contentType = self::contentTypes['createCustomField'][0])
     {
-        $this->createCustomFieldWithHttpInfo($create_custom_field_request, $contentType);
+        list($response) = $this->createCustomFieldWithHttpInfo($create_custom_field_request, $contentType);
+        return $response;
     }
 
     /**
@@ -426,7 +427,7 @@ class CustomFieldsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\CreateCustomField200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCustomFieldWithHttpInfo($create_custom_field_request, string $contentType = self::contentTypes['createCustomField'][0])
     {
@@ -455,9 +456,51 @@ class CustomFieldsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\CreateCustomField200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\CreateCustomField200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\CreateCustomField200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -507,14 +550,27 @@ class CustomFieldsApi
      */
     public function createCustomFieldAsyncWithHttpInfo($create_custom_field_request, string $contentType = self::contentTypes['createCustomField'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\CreateCustomField200Response';
         $request = $this->createCustomFieldRequest($create_custom_field_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -876,11 +932,12 @@ class CustomFieldsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\ListCustomFields200Response|\Late\Model\InlineObject
      */
     public function listCustomFields($profile_id = null, string $contentType = self::contentTypes['listCustomFields'][0])
     {
-        $this->listCustomFieldsWithHttpInfo($profile_id, $contentType);
+        list($response) = $this->listCustomFieldsWithHttpInfo($profile_id, $contentType);
+        return $response;
     }
 
     /**
@@ -893,7 +950,7 @@ class CustomFieldsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\ListCustomFields200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCustomFieldsWithHttpInfo($profile_id = null, string $contentType = self::contentTypes['listCustomFields'][0])
     {
@@ -922,9 +979,51 @@ class CustomFieldsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\ListCustomFields200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\ListCustomFields200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\ListCustomFields200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -974,14 +1073,27 @@ class CustomFieldsApi
      */
     public function listCustomFieldsAsyncWithHttpInfo($profile_id = null, string $contentType = self::contentTypes['listCustomFields'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\ListCustomFields200Response';
         $request = $this->listCustomFieldsRequest($profile_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1379,11 +1491,12 @@ class CustomFieldsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\UpdateCustomField200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
      */
     public function updateCustomField($field_id, $update_custom_field_request = null, string $contentType = self::contentTypes['updateCustomField'][0])
     {
-        $this->updateCustomFieldWithHttpInfo($field_id, $update_custom_field_request, $contentType);
+        list($response) = $this->updateCustomFieldWithHttpInfo($field_id, $update_custom_field_request, $contentType);
+        return $response;
     }
 
     /**
@@ -1397,7 +1510,7 @@ class CustomFieldsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\UpdateCustomField200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateCustomFieldWithHttpInfo($field_id, $update_custom_field_request = null, string $contentType = self::contentTypes['updateCustomField'][0])
     {
@@ -1426,9 +1539,57 @@ class CustomFieldsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateCustomField200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateCustomField200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateCustomField200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1488,14 +1649,27 @@ class CustomFieldsApi
      */
     public function updateCustomFieldAsyncWithHttpInfo($field_id, $update_custom_field_request = null, string $contentType = self::contentTypes['updateCustomField'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\UpdateCustomField200Response';
         $request = $this->updateCustomFieldRequest($field_id, $update_custom_field_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

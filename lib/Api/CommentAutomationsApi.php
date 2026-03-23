@@ -151,11 +151,12 @@ class CommentAutomationsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\CreateCommentAutomation200Response|\Late\Model\InlineObject
      */
     public function createCommentAutomation($create_comment_automation_request, string $contentType = self::contentTypes['createCommentAutomation'][0])
     {
-        $this->createCommentAutomationWithHttpInfo($create_comment_automation_request, $contentType);
+        list($response) = $this->createCommentAutomationWithHttpInfo($create_comment_automation_request, $contentType);
+        return $response;
     }
 
     /**
@@ -168,7 +169,7 @@ class CommentAutomationsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\CreateCommentAutomation200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCommentAutomationWithHttpInfo($create_comment_automation_request, string $contentType = self::contentTypes['createCommentAutomation'][0])
     {
@@ -197,9 +198,51 @@ class CommentAutomationsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\CreateCommentAutomation200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\CreateCommentAutomation200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\CreateCommentAutomation200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -249,14 +292,27 @@ class CommentAutomationsApi
      */
     public function createCommentAutomationAsyncWithHttpInfo($create_comment_automation_request, string $contentType = self::contentTypes['createCommentAutomation'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\CreateCommentAutomation200Response';
         $request = $this->createCommentAutomationRequest($create_comment_automation_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -618,11 +674,12 @@ class CommentAutomationsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\GetCommentAutomation200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
      */
     public function getCommentAutomation($automation_id, string $contentType = self::contentTypes['getCommentAutomation'][0])
     {
-        $this->getCommentAutomationWithHttpInfo($automation_id, $contentType);
+        list($response) = $this->getCommentAutomationWithHttpInfo($automation_id, $contentType);
+        return $response;
     }
 
     /**
@@ -635,7 +692,7 @@ class CommentAutomationsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\GetCommentAutomation200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCommentAutomationWithHttpInfo($automation_id, string $contentType = self::contentTypes['getCommentAutomation'][0])
     {
@@ -664,9 +721,57 @@ class CommentAutomationsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetCommentAutomation200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetCommentAutomation200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetCommentAutomation200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -724,14 +829,27 @@ class CommentAutomationsApi
      */
     public function getCommentAutomationAsyncWithHttpInfo($automation_id, string $contentType = self::contentTypes['getCommentAutomation'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\GetCommentAutomation200Response';
         $request = $this->getCommentAutomationRequest($automation_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -859,11 +977,12 @@ class CommentAutomationsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\ListCommentAutomationLogs200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
      */
     public function listCommentAutomationLogs($automation_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listCommentAutomationLogs'][0])
     {
-        $this->listCommentAutomationLogsWithHttpInfo($automation_id, $status, $limit, $skip, $contentType);
+        list($response) = $this->listCommentAutomationLogsWithHttpInfo($automation_id, $status, $limit, $skip, $contentType);
+        return $response;
     }
 
     /**
@@ -879,7 +998,7 @@ class CommentAutomationsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\ListCommentAutomationLogs200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCommentAutomationLogsWithHttpInfo($automation_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listCommentAutomationLogs'][0])
     {
@@ -908,9 +1027,57 @@ class CommentAutomationsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\ListCommentAutomationLogs200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\ListCommentAutomationLogs200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\ListCommentAutomationLogs200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -974,14 +1141,27 @@ class CommentAutomationsApi
      */
     public function listCommentAutomationLogsAsyncWithHttpInfo($automation_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listCommentAutomationLogs'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\ListCommentAutomationLogs200Response';
         $request = $this->listCommentAutomationLogsRequest($automation_id, $status, $limit, $skip, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -1421,11 +1601,12 @@ class CommentAutomationsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\UpdateCommentAutomation200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
      */
     public function updateCommentAutomation($automation_id, $update_comment_automation_request = null, string $contentType = self::contentTypes['updateCommentAutomation'][0])
     {
-        $this->updateCommentAutomationWithHttpInfo($automation_id, $update_comment_automation_request, $contentType);
+        list($response) = $this->updateCommentAutomationWithHttpInfo($automation_id, $update_comment_automation_request, $contentType);
+        return $response;
     }
 
     /**
@@ -1439,7 +1620,7 @@ class CommentAutomationsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\UpdateCommentAutomation200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateCommentAutomationWithHttpInfo($automation_id, $update_comment_automation_request = null, string $contentType = self::contentTypes['updateCommentAutomation'][0])
     {
@@ -1468,9 +1649,57 @@ class CommentAutomationsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateCommentAutomation200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateCommentAutomation200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateCommentAutomation200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1530,14 +1759,27 @@ class CommentAutomationsApi
      */
     public function updateCommentAutomationAsyncWithHttpInfo($automation_id, $update_comment_automation_request = null, string $contentType = self::contentTypes['updateCommentAutomation'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\UpdateCommentAutomation200Response';
         $request = $this->updateCommentAutomationRequest($automation_id, $update_comment_automation_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

@@ -76,7 +76,7 @@ void (empty response body)
 ## `createCustomField()`
 
 ```php
-createCustomField($create_custom_field_request)
+createCustomField($create_custom_field_request): \Late\Model\CreateCustomField200Response
 ```
 
 Create a custom field definition
@@ -101,7 +101,8 @@ $apiInstance = new Late\Api\CustomFieldsApi(
 $create_custom_field_request = new \Late\Model\CreateCustomFieldRequest(); // \Late\Model\CreateCustomFieldRequest
 
 try {
-    $apiInstance->createCustomField($create_custom_field_request);
+    $result = $apiInstance->createCustomField($create_custom_field_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomFieldsApi->createCustomField: ', $e->getMessage(), PHP_EOL;
 }
@@ -115,7 +116,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\CreateCustomField200Response**](../Model/CreateCustomField200Response.md)
 
 ### Authorization
 
@@ -190,7 +191,7 @@ void (empty response body)
 ## `listCustomFields()`
 
 ```php
-listCustomFields($profile_id)
+listCustomFields($profile_id): \Late\Model\ListCustomFields200Response
 ```
 
 List custom field definitions
@@ -215,7 +216,8 @@ $apiInstance = new Late\Api\CustomFieldsApi(
 $profile_id = 'profile_id_example'; // string | Filter by profile. Omit to list across all profiles
 
 try {
-    $apiInstance->listCustomFields($profile_id);
+    $result = $apiInstance->listCustomFields($profile_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomFieldsApi->listCustomFields: ', $e->getMessage(), PHP_EOL;
 }
@@ -229,7 +231,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\ListCustomFields200Response**](../Model/ListCustomFields200Response.md)
 
 ### Authorization
 
@@ -308,7 +310,7 @@ void (empty response body)
 ## `updateCustomField()`
 
 ```php
-updateCustomField($field_id, $update_custom_field_request)
+updateCustomField($field_id, $update_custom_field_request): \Late\Model\UpdateCustomField200Response
 ```
 
 Update a custom field definition
@@ -334,7 +336,8 @@ $field_id = 'field_id_example'; // string
 $update_custom_field_request = new \Late\Model\UpdateCustomFieldRequest(); // \Late\Model\UpdateCustomFieldRequest
 
 try {
-    $apiInstance->updateCustomField($field_id, $update_custom_field_request);
+    $result = $apiInstance->updateCustomField($field_id, $update_custom_field_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomFieldsApi->updateCustomField: ', $e->getMessage(), PHP_EOL;
 }
@@ -349,7 +352,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\UpdateCustomField200Response**](../Model/UpdateCustomField200Response.md)
 
 ### Authorization
 
