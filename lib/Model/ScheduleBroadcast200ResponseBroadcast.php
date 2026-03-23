@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSequenceRequestStepsInner
+ * ScheduleBroadcast200ResponseBroadcast
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * CreateSequenceRequestStepsInner Class Doc Comment
+ * ScheduleBroadcast200ResponseBroadcast Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class ScheduleBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createSequence_request_steps_inner';
+    protected static $openAPIModelName = 'scheduleBroadcast_200_response_broadcast';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order' => 'int',
-        'delay_minutes' => 'int',
-        'message' => '\Late\Model\GetBroadcast200ResponseBroadcastMessage',
-        'template' => '\Late\Model\CreateSequenceRequestStepsInnerTemplate'
+        'id' => 'string',
+        'status' => 'string',
+        'scheduled_at' => '\DateTime'
     ];
 
     /**
@@ -72,10 +71,9 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'order' => null,
-        'delay_minutes' => null,
-        'message' => null,
-        'template' => null
+        'id' => null,
+        'status' => null,
+        'scheduled_at' => 'date-time'
     ];
 
     /**
@@ -84,10 +82,9 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'order' => false,
-        'delay_minutes' => false,
-        'message' => false,
-        'template' => false
+        'id' => false,
+        'status' => false,
+        'scheduled_at' => false
     ];
 
     /**
@@ -176,10 +173,9 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'order' => 'order',
-        'delay_minutes' => 'delayMinutes',
-        'message' => 'message',
-        'template' => 'template'
+        'id' => 'id',
+        'status' => 'status',
+        'scheduled_at' => 'scheduledAt'
     ];
 
     /**
@@ -188,10 +184,9 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'order' => 'setOrder',
-        'delay_minutes' => 'setDelayMinutes',
-        'message' => 'setMessage',
-        'template' => 'setTemplate'
+        'id' => 'setId',
+        'status' => 'setStatus',
+        'scheduled_at' => 'setScheduledAt'
     ];
 
     /**
@@ -200,10 +195,9 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'order' => 'getOrder',
-        'delay_minutes' => 'getDelayMinutes',
-        'message' => 'getMessage',
-        'template' => 'getTemplate'
+        'id' => 'getId',
+        'status' => 'getStatus',
+        'scheduled_at' => 'getScheduledAt'
     ];
 
     /**
@@ -263,10 +257,9 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('order', $data ?? [], null);
-        $this->setIfExists('delay_minutes', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('template', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('scheduled_at', $data ?? [], null);
     }
 
     /**
@@ -296,12 +289,6 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['order'] === null) {
-            $invalidProperties[] = "'order' can't be null";
-        }
-        if ($this->container['delay_minutes'] === null) {
-            $invalidProperties[] = "'delay_minutes' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -318,109 +305,82 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets order
+     * Gets id
      *
-     * @return int
+     * @return string|null
      */
-    public function getOrder()
+    public function getId()
     {
-        return $this->container['order'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets order
+     * Sets id
      *
-     * @param int $order order
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setOrder($order)
+    public function setId($id)
     {
-        if (is_null($order)) {
-            throw new \InvalidArgumentException('non-nullable order cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['order'] = $order;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets delay_minutes
+     * Gets status
      *
-     * @return int
+     * @return string|null
      */
-    public function getDelayMinutes()
+    public function getStatus()
     {
-        return $this->container['delay_minutes'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets delay_minutes
+     * Sets status
      *
-     * @param int $delay_minutes delay_minutes
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setDelayMinutes($delay_minutes)
+    public function setStatus($status)
     {
-        if (is_null($delay_minutes)) {
-            throw new \InvalidArgumentException('non-nullable delay_minutes cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['delay_minutes'] = $delay_minutes;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets scheduled_at
      *
-     * @return \Late\Model\GetBroadcast200ResponseBroadcastMessage|null
+     * @return \DateTime|null
      */
-    public function getMessage()
+    public function getScheduledAt()
     {
-        return $this->container['message'];
+        return $this->container['scheduled_at'];
     }
 
     /**
-     * Sets message
+     * Sets scheduled_at
      *
-     * @param \Late\Model\GetBroadcast200ResponseBroadcastMessage|null $message message
+     * @param \DateTime|null $scheduled_at scheduled_at
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setScheduledAt($scheduled_at)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($scheduled_at)) {
+            throw new \InvalidArgumentException('non-nullable scheduled_at cannot be null');
         }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets template
-     *
-     * @return \Late\Model\CreateSequenceRequestStepsInnerTemplate|null
-     */
-    public function getTemplate()
-    {
-        return $this->container['template'];
-    }
-
-    /**
-     * Sets template
-     *
-     * @param \Late\Model\CreateSequenceRequestStepsInnerTemplate|null $template template
-     *
-     * @return self
-     */
-    public function setTemplate($template)
-    {
-        if (is_null($template)) {
-            throw new \InvalidArgumentException('non-nullable template cannot be null');
-        }
-        $this->container['template'] = $template;
+        $this->container['scheduled_at'] = $scheduled_at;
 
         return $this;
     }

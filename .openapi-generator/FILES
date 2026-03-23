@@ -43,6 +43,8 @@ docs/Model/AccountGetResponse.md
 docs/Model/AccountWithFollowerStats.md
 docs/Model/AccountWithFollowerStatsAllOfAccountStats.md
 docs/Model/AccountsListResponse.md
+docs/Model/ActivateSequence200Response.md
+docs/Model/AddBroadcastRecipients200Response.md
 docs/Model/AddBroadcastRecipientsRequest.md
 docs/Model/AddWhatsAppBroadcastRecipients200Response.md
 docs/Model/AddWhatsAppBroadcastRecipientsRequest.md
@@ -67,6 +69,8 @@ docs/Model/BulkUpdateWhatsAppContactsRequest.md
 docs/Model/BulkUploadPosts200Response.md
 docs/Model/BulkUploadPosts200ResponseErrorsInner.md
 docs/Model/BulkUploadPosts429Response.md
+docs/Model/CancelBroadcast200Response.md
+docs/Model/CancelBroadcast200ResponseBroadcast.md
 docs/Model/CancelWhatsAppBroadcastSchedule200Response.md
 docs/Model/CancelWhatsAppBroadcastSchedule200ResponseBroadcast.md
 docs/Model/CaptionResponse.md
@@ -116,7 +120,6 @@ docs/Model/CreateQueueSlot201Response.md
 docs/Model/CreateQueueSlotRequest.md
 docs/Model/CreateSequenceRequest.md
 docs/Model/CreateSequenceRequestStepsInner.md
-docs/Model/CreateSequenceRequestStepsInnerMessage.md
 docs/Model/CreateSequenceRequestStepsInnerTemplate.md
 docs/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.md
 docs/Model/CreateWebhookSettingsRequest.md
@@ -154,6 +157,7 @@ docs/Model/EditInboxMessage200ResponseData.md
 docs/Model/EditInboxMessageRequest.md
 docs/Model/EditInboxMessageRequestReplyMarkup.md
 docs/Model/EditInboxMessageRequestReplyMarkupKeyboardInnerInner.md
+docs/Model/EnrollContacts200Response.md
 docs/Model/EnrollContactsRequest.md
 docs/Model/ErrorResponse.md
 docs/Model/Expired.md
@@ -180,6 +184,10 @@ docs/Model/GetAnalytics402Response.md
 docs/Model/GetBestTimeToPost200Response.md
 docs/Model/GetBestTimeToPost200ResponseSlotsInner.md
 docs/Model/GetBestTimeToPost403Response.md
+docs/Model/GetBroadcast200Response.md
+docs/Model/GetBroadcast200ResponseBroadcast.md
+docs/Model/GetBroadcast200ResponseBroadcastMessage.md
+docs/Model/GetBroadcast200ResponseBroadcastSegmentFilters.md
 docs/Model/GetConnectUrl200Response.md
 docs/Model/GetContentDecay200Response.md
 docs/Model/GetContentDecay200ResponseBucketsInner.md
@@ -268,6 +276,10 @@ docs/Model/GetRedditFlairs200Response.md
 docs/Model/GetRedditFlairs200ResponseFlairsInner.md
 docs/Model/GetRedditSubreddits200Response.md
 docs/Model/GetRedditSubreddits200ResponseSubredditsInner.md
+docs/Model/GetSequence200Response.md
+docs/Model/GetSequence200ResponseSequence.md
+docs/Model/GetSequence200ResponseSequenceStepsInner.md
+docs/Model/GetSequence200ResponseSequenceStepsInnerTemplate.md
 docs/Model/GetTelegramCommands200Response.md
 docs/Model/GetTelegramCommands200ResponseDataInner.md
 docs/Model/GetTelegramConnectStatus200Response.md
@@ -354,6 +366,8 @@ docs/Model/ListAccountGroups200Response.md
 docs/Model/ListAccountGroups200ResponseGroupsInner.md
 docs/Model/ListAccounts200Response.md
 docs/Model/ListApiKeys200Response.md
+docs/Model/ListBroadcastRecipients200Response.md
+docs/Model/ListBroadcastRecipients200ResponseRecipientsInner.md
 docs/Model/ListBroadcasts200Response.md
 docs/Model/ListBroadcasts200ResponseBroadcastsInner.md
 docs/Model/ListCommentAutomations200Response.md
@@ -391,6 +405,8 @@ docs/Model/ListPostsLogs200ResponsePagination.md
 docs/Model/ListQueueSlots200Response.md
 docs/Model/ListQueueSlots200ResponseOneOf.md
 docs/Model/ListQueueSlots200ResponseOneOf1.md
+docs/Model/ListSequenceEnrollments200Response.md
+docs/Model/ListSequenceEnrollments200ResponseEnrollmentsInner.md
 docs/Model/ListSequences200Response.md
 docs/Model/ListSequences200ResponseSequencesInner.md
 docs/Model/ListSnapchatProfiles200Response.md
@@ -458,6 +474,8 @@ docs/Model/ReplyToInboxReview200ResponseReply.md
 docs/Model/ReplyToInboxReviewRequest.md
 docs/Model/RetweetPost200Response.md
 docs/Model/RetweetPostRequest.md
+docs/Model/ScheduleBroadcast200Response.md
+docs/Model/ScheduleBroadcast200ResponseBroadcast.md
 docs/Model/ScheduleBroadcastRequest.md
 docs/Model/ScheduleWhatsAppBroadcast200Response.md
 docs/Model/ScheduleWhatsAppBroadcast200ResponseBroadcast.md
@@ -531,6 +549,8 @@ docs/Model/UpdateAccount200Response.md
 docs/Model/UpdateAccountGroup200Response.md
 docs/Model/UpdateAccountGroupRequest.md
 docs/Model/UpdateAccountRequest.md
+docs/Model/UpdateBroadcast200Response.md
+docs/Model/UpdateBroadcast200ResponseBroadcast.md
 docs/Model/UpdateCommentAutomationRequest.md
 docs/Model/UpdateContactRequest.md
 docs/Model/UpdateCustomFieldRequest.md
@@ -569,6 +589,8 @@ docs/Model/UpdateQueueSlot200Response.md
 docs/Model/UpdateQueueSlotRequest.md
 docs/Model/UpdateRedditSubreddits200Response.md
 docs/Model/UpdateRedditSubredditsRequest.md
+docs/Model/UpdateSequence200Response.md
+docs/Model/UpdateSequence200ResponseSequence.md
 docs/Model/UpdateWebhookSettings200Response.md
 docs/Model/UpdateWebhookSettingsRequest.md
 docs/Model/UpdateWhatsAppBusinessProfileRequest.md
@@ -683,6 +705,8 @@ lib/Model/AccountGetResponse.php
 lib/Model/AccountWithFollowerStats.php
 lib/Model/AccountWithFollowerStatsAllOfAccountStats.php
 lib/Model/AccountsListResponse.php
+lib/Model/ActivateSequence200Response.php
+lib/Model/AddBroadcastRecipients200Response.php
 lib/Model/AddBroadcastRecipientsRequest.php
 lib/Model/AddWhatsAppBroadcastRecipients200Response.php
 lib/Model/AddWhatsAppBroadcastRecipientsRequest.php
@@ -707,6 +731,8 @@ lib/Model/BulkUpdateWhatsAppContactsRequest.php
 lib/Model/BulkUploadPosts200Response.php
 lib/Model/BulkUploadPosts200ResponseErrorsInner.php
 lib/Model/BulkUploadPosts429Response.php
+lib/Model/CancelBroadcast200Response.php
+lib/Model/CancelBroadcast200ResponseBroadcast.php
 lib/Model/CancelWhatsAppBroadcastSchedule200Response.php
 lib/Model/CancelWhatsAppBroadcastSchedule200ResponseBroadcast.php
 lib/Model/CaptionResponse.php
@@ -756,7 +782,6 @@ lib/Model/CreateQueueSlot201Response.php
 lib/Model/CreateQueueSlotRequest.php
 lib/Model/CreateSequenceRequest.php
 lib/Model/CreateSequenceRequestStepsInner.php
-lib/Model/CreateSequenceRequestStepsInnerMessage.php
 lib/Model/CreateSequenceRequestStepsInnerTemplate.php
 lib/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.php
 lib/Model/CreateWebhookSettingsRequest.php
@@ -794,6 +819,7 @@ lib/Model/EditInboxMessage200ResponseData.php
 lib/Model/EditInboxMessageRequest.php
 lib/Model/EditInboxMessageRequestReplyMarkup.php
 lib/Model/EditInboxMessageRequestReplyMarkupKeyboardInnerInner.php
+lib/Model/EnrollContacts200Response.php
 lib/Model/EnrollContactsRequest.php
 lib/Model/ErrorResponse.php
 lib/Model/Expired.php
@@ -820,6 +846,10 @@ lib/Model/GetAnalytics402Response.php
 lib/Model/GetBestTimeToPost200Response.php
 lib/Model/GetBestTimeToPost200ResponseSlotsInner.php
 lib/Model/GetBestTimeToPost403Response.php
+lib/Model/GetBroadcast200Response.php
+lib/Model/GetBroadcast200ResponseBroadcast.php
+lib/Model/GetBroadcast200ResponseBroadcastMessage.php
+lib/Model/GetBroadcast200ResponseBroadcastSegmentFilters.php
 lib/Model/GetConnectUrl200Response.php
 lib/Model/GetContentDecay200Response.php
 lib/Model/GetContentDecay200ResponseBucketsInner.php
@@ -908,6 +938,10 @@ lib/Model/GetRedditFlairs200Response.php
 lib/Model/GetRedditFlairs200ResponseFlairsInner.php
 lib/Model/GetRedditSubreddits200Response.php
 lib/Model/GetRedditSubreddits200ResponseSubredditsInner.php
+lib/Model/GetSequence200Response.php
+lib/Model/GetSequence200ResponseSequence.php
+lib/Model/GetSequence200ResponseSequenceStepsInner.php
+lib/Model/GetSequence200ResponseSequenceStepsInnerTemplate.php
 lib/Model/GetTelegramCommands200Response.php
 lib/Model/GetTelegramCommands200ResponseDataInner.php
 lib/Model/GetTelegramConnectStatus200Response.php
@@ -994,6 +1028,8 @@ lib/Model/ListAccountGroups200Response.php
 lib/Model/ListAccountGroups200ResponseGroupsInner.php
 lib/Model/ListAccounts200Response.php
 lib/Model/ListApiKeys200Response.php
+lib/Model/ListBroadcastRecipients200Response.php
+lib/Model/ListBroadcastRecipients200ResponseRecipientsInner.php
 lib/Model/ListBroadcasts200Response.php
 lib/Model/ListBroadcasts200ResponseBroadcastsInner.php
 lib/Model/ListCommentAutomations200Response.php
@@ -1031,6 +1067,8 @@ lib/Model/ListPostsLogs200ResponsePagination.php
 lib/Model/ListQueueSlots200Response.php
 lib/Model/ListQueueSlots200ResponseOneOf.php
 lib/Model/ListQueueSlots200ResponseOneOf1.php
+lib/Model/ListSequenceEnrollments200Response.php
+lib/Model/ListSequenceEnrollments200ResponseEnrollmentsInner.php
 lib/Model/ListSequences200Response.php
 lib/Model/ListSequences200ResponseSequencesInner.php
 lib/Model/ListSnapchatProfiles200Response.php
@@ -1099,6 +1137,8 @@ lib/Model/ReplyToInboxReview200ResponseReply.php
 lib/Model/ReplyToInboxReviewRequest.php
 lib/Model/RetweetPost200Response.php
 lib/Model/RetweetPostRequest.php
+lib/Model/ScheduleBroadcast200Response.php
+lib/Model/ScheduleBroadcast200ResponseBroadcast.php
 lib/Model/ScheduleBroadcastRequest.php
 lib/Model/ScheduleWhatsAppBroadcast200Response.php
 lib/Model/ScheduleWhatsAppBroadcast200ResponseBroadcast.php
@@ -1172,6 +1212,8 @@ lib/Model/UpdateAccount200Response.php
 lib/Model/UpdateAccountGroup200Response.php
 lib/Model/UpdateAccountGroupRequest.php
 lib/Model/UpdateAccountRequest.php
+lib/Model/UpdateBroadcast200Response.php
+lib/Model/UpdateBroadcast200ResponseBroadcast.php
 lib/Model/UpdateCommentAutomationRequest.php
 lib/Model/UpdateContactRequest.php
 lib/Model/UpdateCustomFieldRequest.php
@@ -1210,6 +1252,8 @@ lib/Model/UpdateQueueSlot200Response.php
 lib/Model/UpdateQueueSlotRequest.php
 lib/Model/UpdateRedditSubreddits200Response.php
 lib/Model/UpdateRedditSubredditsRequest.php
+lib/Model/UpdateSequence200Response.php
+lib/Model/UpdateSequence200ResponseSequence.php
 lib/Model/UpdateWebhookSettings200Response.php
 lib/Model/UpdateWebhookSettingsRequest.php
 lib/Model/UpdateWhatsAppBusinessProfileRequest.php
@@ -1281,8 +1325,26 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListBroadcasts200ResponseBroadcastsInnerTest.php
-test/Model/ListBroadcasts200ResponseTest.php
-test/Model/ListSequences200ResponseSequencesInnerTest.php
-test/Model/ListSequences200ResponseTest.php
-test/Model/SendBroadcast200ResponseTest.php
+test/Model/ActivateSequence200ResponseTest.php
+test/Model/AddBroadcastRecipients200ResponseTest.php
+test/Model/CancelBroadcast200ResponseBroadcastTest.php
+test/Model/CancelBroadcast200ResponseTest.php
+test/Model/EnrollContacts200ResponseTest.php
+test/Model/GetBroadcast200ResponseBroadcastMessageTest.php
+test/Model/GetBroadcast200ResponseBroadcastSegmentFiltersTest.php
+test/Model/GetBroadcast200ResponseBroadcastTest.php
+test/Model/GetBroadcast200ResponseTest.php
+test/Model/GetSequence200ResponseSequenceStepsInnerTemplateTest.php
+test/Model/GetSequence200ResponseSequenceStepsInnerTest.php
+test/Model/GetSequence200ResponseSequenceTest.php
+test/Model/GetSequence200ResponseTest.php
+test/Model/ListBroadcastRecipients200ResponseRecipientsInnerTest.php
+test/Model/ListBroadcastRecipients200ResponseTest.php
+test/Model/ListSequenceEnrollments200ResponseEnrollmentsInnerTest.php
+test/Model/ListSequenceEnrollments200ResponseTest.php
+test/Model/ScheduleBroadcast200ResponseBroadcastTest.php
+test/Model/ScheduleBroadcast200ResponseTest.php
+test/Model/UpdateBroadcast200ResponseBroadcastTest.php
+test/Model/UpdateBroadcast200ResponseTest.php
+test/Model/UpdateSequence200ResponseSequenceTest.php
+test/Model/UpdateSequence200ResponseTest.php

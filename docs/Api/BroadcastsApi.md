@@ -21,7 +21,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `addBroadcastRecipients()`
 
 ```php
-addBroadcastRecipients($broadcast_id, $add_broadcast_recipients_request)
+addBroadcastRecipients($broadcast_id, $add_broadcast_recipients_request): \Late\Model\AddBroadcastRecipients200Response
 ```
 
 Add recipients to a broadcast
@@ -47,7 +47,8 @@ $broadcast_id = 'broadcast_id_example'; // string
 $add_broadcast_recipients_request = new \Late\Model\AddBroadcastRecipientsRequest(); // \Late\Model\AddBroadcastRecipientsRequest
 
 try {
-    $apiInstance->addBroadcastRecipients($broadcast_id, $add_broadcast_recipients_request);
+    $result = $apiInstance->addBroadcastRecipients($broadcast_id, $add_broadcast_recipients_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastsApi->addBroadcastRecipients: ', $e->getMessage(), PHP_EOL;
 }
@@ -62,7 +63,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\AddBroadcastRecipients200Response**](../Model/AddBroadcastRecipients200Response.md)
 
 ### Authorization
 
@@ -80,7 +81,7 @@ void (empty response body)
 ## `cancelBroadcast()`
 
 ```php
-cancelBroadcast($broadcast_id)
+cancelBroadcast($broadcast_id): \Late\Model\CancelBroadcast200Response
 ```
 
 Cancel a broadcast
@@ -105,7 +106,8 @@ $apiInstance = new Late\Api\BroadcastsApi(
 $broadcast_id = 'broadcast_id_example'; // string
 
 try {
-    $apiInstance->cancelBroadcast($broadcast_id);
+    $result = $apiInstance->cancelBroadcast($broadcast_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastsApi->cancelBroadcast: ', $e->getMessage(), PHP_EOL;
 }
@@ -119,7 +121,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\CancelBroadcast200Response**](../Model/CancelBroadcast200Response.md)
 
 ### Authorization
 
@@ -251,7 +253,7 @@ void (empty response body)
 ## `getBroadcast()`
 
 ```php
-getBroadcast($broadcast_id)
+getBroadcast($broadcast_id): \Late\Model\GetBroadcast200Response
 ```
 
 Get broadcast details
@@ -276,7 +278,8 @@ $apiInstance = new Late\Api\BroadcastsApi(
 $broadcast_id = 'broadcast_id_example'; // string
 
 try {
-    $apiInstance->getBroadcast($broadcast_id);
+    $result = $apiInstance->getBroadcast($broadcast_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastsApi->getBroadcast: ', $e->getMessage(), PHP_EOL;
 }
@@ -290,7 +293,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\GetBroadcast200Response**](../Model/GetBroadcast200Response.md)
 
 ### Authorization
 
@@ -308,7 +311,7 @@ void (empty response body)
 ## `listBroadcastRecipients()`
 
 ```php
-listBroadcastRecipients($broadcast_id, $status, $limit, $skip)
+listBroadcastRecipients($broadcast_id, $status, $limit, $skip): \Late\Model\ListBroadcastRecipients200Response
 ```
 
 List broadcast recipients
@@ -336,7 +339,8 @@ $limit = 50; // int
 $skip = 0; // int
 
 try {
-    $apiInstance->listBroadcastRecipients($broadcast_id, $status, $limit, $skip);
+    $result = $apiInstance->listBroadcastRecipients($broadcast_id, $status, $limit, $skip);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastsApi->listBroadcastRecipients: ', $e->getMessage(), PHP_EOL;
 }
@@ -353,7 +357,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\ListBroadcastRecipients200Response**](../Model/ListBroadcastRecipients200Response.md)
 
 ### Authorization
 
@@ -437,7 +441,7 @@ try {
 ## `scheduleBroadcast()`
 
 ```php
-scheduleBroadcast($broadcast_id, $schedule_broadcast_request)
+scheduleBroadcast($broadcast_id, $schedule_broadcast_request): \Late\Model\ScheduleBroadcast200Response
 ```
 
 Schedule broadcast for later
@@ -463,7 +467,8 @@ $broadcast_id = 'broadcast_id_example'; // string
 $schedule_broadcast_request = new \Late\Model\ScheduleBroadcastRequest(); // \Late\Model\ScheduleBroadcastRequest
 
 try {
-    $apiInstance->scheduleBroadcast($broadcast_id, $schedule_broadcast_request);
+    $result = $apiInstance->scheduleBroadcast($broadcast_id, $schedule_broadcast_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastsApi->scheduleBroadcast: ', $e->getMessage(), PHP_EOL;
 }
@@ -478,7 +483,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\ScheduleBroadcast200Response**](../Model/ScheduleBroadcast200Response.md)
 
 ### Authorization
 
@@ -554,7 +559,7 @@ try {
 ## `updateBroadcast()`
 
 ```php
-updateBroadcast($broadcast_id)
+updateBroadcast($broadcast_id): \Late\Model\UpdateBroadcast200Response
 ```
 
 Update a broadcast
@@ -579,7 +584,8 @@ $apiInstance = new Late\Api\BroadcastsApi(
 $broadcast_id = 'broadcast_id_example'; // string
 
 try {
-    $apiInstance->updateBroadcast($broadcast_id);
+    $result = $apiInstance->updateBroadcast($broadcast_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastsApi->updateBroadcast: ', $e->getMessage(), PHP_EOL;
 }
@@ -593,7 +599,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\UpdateBroadcast200Response**](../Model/UpdateBroadcast200Response.md)
 
 ### Authorization
 

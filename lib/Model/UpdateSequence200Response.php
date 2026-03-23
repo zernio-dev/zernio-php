@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSequenceRequestStepsInner
+ * UpdateSequence200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * CreateSequenceRequestStepsInner Class Doc Comment
+ * UpdateSequence200Response Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateSequence200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createSequence_request_steps_inner';
+    protected static $openAPIModelName = 'updateSequence_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order' => 'int',
-        'delay_minutes' => 'int',
-        'message' => '\Late\Model\GetBroadcast200ResponseBroadcastMessage',
-        'template' => '\Late\Model\CreateSequenceRequestStepsInnerTemplate'
+        'success' => 'bool',
+        'sequence' => '\Late\Model\UpdateSequence200ResponseSequence'
     ];
 
     /**
@@ -72,10 +70,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'order' => null,
-        'delay_minutes' => null,
-        'message' => null,
-        'template' => null
+        'success' => null,
+        'sequence' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'order' => false,
-        'delay_minutes' => false,
-        'message' => false,
-        'template' => false
+        'success' => false,
+        'sequence' => false
     ];
 
     /**
@@ -176,10 +170,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'order' => 'order',
-        'delay_minutes' => 'delayMinutes',
-        'message' => 'message',
-        'template' => 'template'
+        'success' => 'success',
+        'sequence' => 'sequence'
     ];
 
     /**
@@ -188,10 +180,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'order' => 'setOrder',
-        'delay_minutes' => 'setDelayMinutes',
-        'message' => 'setMessage',
-        'template' => 'setTemplate'
+        'success' => 'setSuccess',
+        'sequence' => 'setSequence'
     ];
 
     /**
@@ -200,10 +190,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'order' => 'getOrder',
-        'delay_minutes' => 'getDelayMinutes',
-        'message' => 'getMessage',
-        'template' => 'getTemplate'
+        'success' => 'getSuccess',
+        'sequence' => 'getSequence'
     ];
 
     /**
@@ -263,10 +251,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('order', $data ?? [], null);
-        $this->setIfExists('delay_minutes', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('template', $data ?? [], null);
+        $this->setIfExists('success', $data ?? [], null);
+        $this->setIfExists('sequence', $data ?? [], null);
     }
 
     /**
@@ -296,12 +282,6 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['order'] === null) {
-            $invalidProperties[] = "'order' can't be null";
-        }
-        if ($this->container['delay_minutes'] === null) {
-            $invalidProperties[] = "'delay_minutes' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -318,109 +298,55 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets order
+     * Gets success
      *
-     * @return int
+     * @return bool|null
      */
-    public function getOrder()
+    public function getSuccess()
     {
-        return $this->container['order'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets order
+     * Sets success
      *
-     * @param int $order order
+     * @param bool|null $success success
      *
      * @return self
      */
-    public function setOrder($order)
+    public function setSuccess($success)
     {
-        if (is_null($order)) {
-            throw new \InvalidArgumentException('non-nullable order cannot be null');
+        if (is_null($success)) {
+            throw new \InvalidArgumentException('non-nullable success cannot be null');
         }
-        $this->container['order'] = $order;
+        $this->container['success'] = $success;
 
         return $this;
     }
 
     /**
-     * Gets delay_minutes
+     * Gets sequence
      *
-     * @return int
+     * @return \Late\Model\UpdateSequence200ResponseSequence|null
      */
-    public function getDelayMinutes()
+    public function getSequence()
     {
-        return $this->container['delay_minutes'];
+        return $this->container['sequence'];
     }
 
     /**
-     * Sets delay_minutes
+     * Sets sequence
      *
-     * @param int $delay_minutes delay_minutes
+     * @param \Late\Model\UpdateSequence200ResponseSequence|null $sequence sequence
      *
      * @return self
      */
-    public function setDelayMinutes($delay_minutes)
+    public function setSequence($sequence)
     {
-        if (is_null($delay_minutes)) {
-            throw new \InvalidArgumentException('non-nullable delay_minutes cannot be null');
+        if (is_null($sequence)) {
+            throw new \InvalidArgumentException('non-nullable sequence cannot be null');
         }
-        $this->container['delay_minutes'] = $delay_minutes;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return \Late\Model\GetBroadcast200ResponseBroadcastMessage|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param \Late\Model\GetBroadcast200ResponseBroadcastMessage|null $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets template
-     *
-     * @return \Late\Model\CreateSequenceRequestStepsInnerTemplate|null
-     */
-    public function getTemplate()
-    {
-        return $this->container['template'];
-    }
-
-    /**
-     * Sets template
-     *
-     * @param \Late\Model\CreateSequenceRequestStepsInnerTemplate|null $template template
-     *
-     * @return self
-     */
-    public function setTemplate($template)
-    {
-        if (is_null($template)) {
-            throw new \InvalidArgumentException('non-nullable template cannot be null');
-        }
-        $this->container['template'] = $template;
+        $this->container['sequence'] = $sequence;
 
         return $this;
     }

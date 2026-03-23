@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSequenceRequestStepsInner
+ * UpdateBroadcast200ResponseBroadcast
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * CreateSequenceRequestStepsInner Class Doc Comment
+ * UpdateBroadcast200ResponseBroadcast Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createSequence_request_steps_inner';
+    protected static $openAPIModelName = 'updateBroadcast_200_response_broadcast';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,11 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order' => 'int',
-        'delay_minutes' => 'int',
-        'message' => '\Late\Model\GetBroadcast200ResponseBroadcastMessage',
-        'template' => '\Late\Model\CreateSequenceRequestStepsInnerTemplate'
+        'id' => 'string',
+        'name' => 'string',
+        'description' => 'string',
+        'status' => 'string',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -72,10 +73,11 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'order' => null,
-        'delay_minutes' => null,
-        'message' => null,
-        'template' => null
+        'id' => null,
+        'name' => null,
+        'description' => null,
+        'status' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -84,10 +86,11 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'order' => false,
-        'delay_minutes' => false,
-        'message' => false,
-        'template' => false
+        'id' => false,
+        'name' => false,
+        'description' => false,
+        'status' => false,
+        'updated_at' => false
     ];
 
     /**
@@ -176,10 +179,11 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'order' => 'order',
-        'delay_minutes' => 'delayMinutes',
-        'message' => 'message',
-        'template' => 'template'
+        'id' => 'id',
+        'name' => 'name',
+        'description' => 'description',
+        'status' => 'status',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -188,10 +192,11 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'order' => 'setOrder',
-        'delay_minutes' => 'setDelayMinutes',
-        'message' => 'setMessage',
-        'template' => 'setTemplate'
+        'id' => 'setId',
+        'name' => 'setName',
+        'description' => 'setDescription',
+        'status' => 'setStatus',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -200,10 +205,11 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'order' => 'getOrder',
-        'delay_minutes' => 'getDelayMinutes',
-        'message' => 'getMessage',
-        'template' => 'getTemplate'
+        'id' => 'getId',
+        'name' => 'getName',
+        'description' => 'getDescription',
+        'status' => 'getStatus',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -263,10 +269,11 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('order', $data ?? [], null);
-        $this->setIfExists('delay_minutes', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('template', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -296,12 +303,6 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['order'] === null) {
-            $invalidProperties[] = "'order' can't be null";
-        }
-        if ($this->container['delay_minutes'] === null) {
-            $invalidProperties[] = "'delay_minutes' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -318,109 +319,136 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets order
+     * Gets id
      *
-     * @return int
+     * @return string|null
      */
-    public function getOrder()
+    public function getId()
     {
-        return $this->container['order'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets order
+     * Sets id
      *
-     * @param int $order order
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setOrder($order)
+    public function setId($id)
     {
-        if (is_null($order)) {
-            throw new \InvalidArgumentException('non-nullable order cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['order'] = $order;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets delay_minutes
+     * Gets name
      *
-     * @return int
+     * @return string|null
      */
-    public function getDelayMinutes()
+    public function getName()
     {
-        return $this->container['delay_minutes'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets delay_minutes
+     * Sets name
      *
-     * @param int $delay_minutes delay_minutes
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setDelayMinutes($delay_minutes)
+    public function setName($name)
     {
-        if (is_null($delay_minutes)) {
-            throw new \InvalidArgumentException('non-nullable delay_minutes cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['delay_minutes'] = $delay_minutes;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets description
      *
-     * @return \Late\Model\GetBroadcast200ResponseBroadcastMessage|null
+     * @return string|null
      */
-    public function getMessage()
+    public function getDescription()
     {
-        return $this->container['message'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets message
+     * Sets description
      *
-     * @param \Late\Model\GetBroadcast200ResponseBroadcastMessage|null $message message
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setDescription($description)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets template
+     * Gets status
      *
-     * @return \Late\Model\CreateSequenceRequestStepsInnerTemplate|null
+     * @return string|null
      */
-    public function getTemplate()
+    public function getStatus()
     {
-        return $this->container['template'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets template
+     * Sets status
      *
-     * @param \Late\Model\CreateSequenceRequestStepsInnerTemplate|null $template template
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setTemplate($template)
+    public function setStatus($status)
     {
-        if (is_null($template)) {
-            throw new \InvalidArgumentException('non-nullable template cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['template'] = $template;
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        }
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }

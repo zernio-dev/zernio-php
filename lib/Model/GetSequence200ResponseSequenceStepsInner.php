@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSequenceRequestStepsInner
+ * GetSequence200ResponseSequenceStepsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * CreateSequenceRequestStepsInner Class Doc Comment
+ * GetSequence200ResponseSequenceStepsInner Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetSequence200ResponseSequenceStepsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createSequence_request_steps_inner';
+    protected static $openAPIModelName = 'getSequence_200_response_sequence_steps_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -61,7 +61,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
         'order' => 'int',
         'delay_minutes' => 'int',
         'message' => '\Late\Model\GetBroadcast200ResponseBroadcastMessage',
-        'template' => '\Late\Model\CreateSequenceRequestStepsInnerTemplate'
+        'template' => '\Late\Model\GetSequence200ResponseSequenceStepsInnerTemplate'
     ];
 
     /**
@@ -296,12 +296,6 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['order'] === null) {
-            $invalidProperties[] = "'order' can't be null";
-        }
-        if ($this->container['delay_minutes'] === null) {
-            $invalidProperties[] = "'delay_minutes' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -320,7 +314,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Gets order
      *
-     * @return int
+     * @return int|null
      */
     public function getOrder()
     {
@@ -330,7 +324,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets order
      *
-     * @param int $order order
+     * @param int|null $order order
      *
      * @return self
      */
@@ -347,7 +341,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Gets delay_minutes
      *
-     * @return int
+     * @return int|null
      */
     public function getDelayMinutes()
     {
@@ -357,7 +351,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets delay_minutes
      *
-     * @param int $delay_minutes delay_minutes
+     * @param int|null $delay_minutes delay_minutes
      *
      * @return self
      */
@@ -401,7 +395,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Gets template
      *
-     * @return \Late\Model\CreateSequenceRequestStepsInnerTemplate|null
+     * @return \Late\Model\GetSequence200ResponseSequenceStepsInnerTemplate|null
      */
     public function getTemplate()
     {
@@ -411,7 +405,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets template
      *
-     * @param \Late\Model\CreateSequenceRequestStepsInnerTemplate|null $template template
+     * @param \Late\Model\GetSequence200ResponseSequenceStepsInnerTemplate|null $template template
      *
      * @return self
      */

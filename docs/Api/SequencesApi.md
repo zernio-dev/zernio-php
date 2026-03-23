@@ -21,7 +21,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `activateSequence()`
 
 ```php
-activateSequence($sequence_id)
+activateSequence($sequence_id): \Late\Model\ActivateSequence200Response
 ```
 
 Activate a sequence
@@ -46,7 +46,8 @@ $apiInstance = new Late\Api\SequencesApi(
 $sequence_id = 'sequence_id_example'; // string
 
 try {
-    $apiInstance->activateSequence($sequence_id);
+    $result = $apiInstance->activateSequence($sequence_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SequencesApi->activateSequence: ', $e->getMessage(), PHP_EOL;
 }
@@ -60,7 +61,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\ActivateSequence200Response**](../Model/ActivateSequence200Response.md)
 
 ### Authorization
 
@@ -192,7 +193,7 @@ void (empty response body)
 ## `enrollContacts()`
 
 ```php
-enrollContacts($sequence_id, $enroll_contacts_request)
+enrollContacts($sequence_id, $enroll_contacts_request): \Late\Model\EnrollContacts200Response
 ```
 
 Enroll contacts in a sequence
@@ -218,7 +219,8 @@ $sequence_id = 'sequence_id_example'; // string
 $enroll_contacts_request = new \Late\Model\EnrollContactsRequest(); // \Late\Model\EnrollContactsRequest
 
 try {
-    $apiInstance->enrollContacts($sequence_id, $enroll_contacts_request);
+    $result = $apiInstance->enrollContacts($sequence_id, $enroll_contacts_request);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SequencesApi->enrollContacts: ', $e->getMessage(), PHP_EOL;
 }
@@ -233,7 +235,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\EnrollContacts200Response**](../Model/EnrollContacts200Response.md)
 
 ### Authorization
 
@@ -251,7 +253,7 @@ void (empty response body)
 ## `getSequence()`
 
 ```php
-getSequence($sequence_id)
+getSequence($sequence_id): \Late\Model\GetSequence200Response
 ```
 
 Get sequence with steps
@@ -276,7 +278,8 @@ $apiInstance = new Late\Api\SequencesApi(
 $sequence_id = 'sequence_id_example'; // string
 
 try {
-    $apiInstance->getSequence($sequence_id);
+    $result = $apiInstance->getSequence($sequence_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SequencesApi->getSequence: ', $e->getMessage(), PHP_EOL;
 }
@@ -290,7 +293,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\GetSequence200Response**](../Model/GetSequence200Response.md)
 
 ### Authorization
 
@@ -308,7 +311,7 @@ void (empty response body)
 ## `listSequenceEnrollments()`
 
 ```php
-listSequenceEnrollments($sequence_id, $status, $limit, $skip)
+listSequenceEnrollments($sequence_id, $status, $limit, $skip): \Late\Model\ListSequenceEnrollments200Response
 ```
 
 List enrollments for a sequence
@@ -336,7 +339,8 @@ $limit = 50; // int
 $skip = 0; // int
 
 try {
-    $apiInstance->listSequenceEnrollments($sequence_id, $status, $limit, $skip);
+    $result = $apiInstance->listSequenceEnrollments($sequence_id, $status, $limit, $skip);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SequencesApi->listSequenceEnrollments: ', $e->getMessage(), PHP_EOL;
 }
@@ -353,7 +357,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\ListSequenceEnrollments200Response**](../Model/ListSequenceEnrollments200Response.md)
 
 ### Authorization
 
@@ -435,7 +439,7 @@ try {
 ## `pauseSequence()`
 
 ```php
-pauseSequence($sequence_id)
+pauseSequence($sequence_id): \Late\Model\ActivateSequence200Response
 ```
 
 Pause a sequence
@@ -460,7 +464,8 @@ $apiInstance = new Late\Api\SequencesApi(
 $sequence_id = 'sequence_id_example'; // string
 
 try {
-    $apiInstance->pauseSequence($sequence_id);
+    $result = $apiInstance->pauseSequence($sequence_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SequencesApi->pauseSequence: ', $e->getMessage(), PHP_EOL;
 }
@@ -474,7 +479,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\ActivateSequence200Response**](../Model/ActivateSequence200Response.md)
 
 ### Authorization
 
@@ -551,7 +556,7 @@ void (empty response body)
 ## `updateSequence()`
 
 ```php
-updateSequence($sequence_id)
+updateSequence($sequence_id): \Late\Model\UpdateSequence200Response
 ```
 
 Update a sequence
@@ -576,7 +581,8 @@ $apiInstance = new Late\Api\SequencesApi(
 $sequence_id = 'sequence_id_example'; // string
 
 try {
-    $apiInstance->updateSequence($sequence_id);
+    $result = $apiInstance->updateSequence($sequence_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SequencesApi->updateSequence: ', $e->getMessage(), PHP_EOL;
 }
@@ -590,7 +596,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\UpdateSequence200Response**](../Model/UpdateSequence200Response.md)
 
 ### Authorization
 
