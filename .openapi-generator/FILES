@@ -1209,11 +1209,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetInstagramAccountInsights404ResponseTest.php
-test/Model/InstagramAccountInsightsResponseDateRangeTest.php
-test/Model/InstagramAccountInsightsResponseMetricsValueBreakdownsInnerTest.php
-test/Model/InstagramAccountInsightsResponseMetricsValueTest.php
-test/Model/InstagramAccountInsightsResponseMetricsValueValuesInnerTest.php
-test/Model/InstagramAccountInsightsResponseTest.php
-test/Model/InstagramDemographicsResponseDemographicsValueInnerTest.php
-test/Model/InstagramDemographicsResponseTest.php

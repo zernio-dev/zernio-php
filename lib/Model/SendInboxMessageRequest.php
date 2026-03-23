@@ -60,6 +60,8 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'account_id' => 'string',
         'message' => 'string',
+        'attachment_url' => 'string',
+        'attachment_type' => 'string',
         'quick_replies' => '\Late\Model\SendInboxMessageRequestQuickRepliesInner[]',
         'buttons' => '\Late\Model\SendInboxMessageRequestButtonsInner[]',
         'template' => '\Late\Model\SendInboxMessageRequestTemplate',
@@ -79,6 +81,8 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPIFormats = [
         'account_id' => null,
         'message' => null,
+        'attachment_url' => null,
+        'attachment_type' => null,
         'quick_replies' => null,
         'buttons' => null,
         'template' => null,
@@ -96,6 +100,8 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static array $openAPINullables = [
         'account_id' => false,
         'message' => false,
+        'attachment_url' => false,
+        'attachment_type' => false,
         'quick_replies' => false,
         'buttons' => false,
         'template' => false,
@@ -193,6 +199,8 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $attributeMap = [
         'account_id' => 'accountId',
         'message' => 'message',
+        'attachment_url' => 'attachmentUrl',
+        'attachment_type' => 'attachmentType',
         'quick_replies' => 'quickReplies',
         'buttons' => 'buttons',
         'template' => 'template',
@@ -210,6 +218,8 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $setters = [
         'account_id' => 'setAccountId',
         'message' => 'setMessage',
+        'attachment_url' => 'setAttachmentUrl',
+        'attachment_type' => 'setAttachmentType',
         'quick_replies' => 'setQuickReplies',
         'buttons' => 'setButtons',
         'template' => 'setTemplate',
@@ -227,6 +237,8 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $getters = [
         'account_id' => 'getAccountId',
         'message' => 'getMessage',
+        'attachment_url' => 'getAttachmentUrl',
+        'attachment_type' => 'getAttachmentType',
         'quick_replies' => 'getQuickReplies',
         'buttons' => 'getButtons',
         'template' => 'getTemplate',
@@ -277,6 +289,10 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
+    public const ATTACHMENT_TYPE_IMAGE = 'image';
+    public const ATTACHMENT_TYPE_VIDEO = 'video';
+    public const ATTACHMENT_TYPE_AUDIO = 'audio';
+    public const ATTACHMENT_TYPE_FILE = 'file';
     public const MESSAGING_TYPE_RESPONSE = 'RESPONSE';
     public const MESSAGING_TYPE_UPDATE = 'UPDATE';
     public const MESSAGING_TYPE_MESSAGE_TAG = 'MESSAGE_TAG';
@@ -284,6 +300,21 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public const MESSAGE_TAG_POST_PURCHASE_UPDATE = 'POST_PURCHASE_UPDATE';
     public const MESSAGE_TAG_ACCOUNT_UPDATE = 'ACCOUNT_UPDATE';
     public const MESSAGE_TAG_HUMAN_AGENT = 'HUMAN_AGENT';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAttachmentTypeAllowableValues()
+    {
+        return [
+            self::ATTACHMENT_TYPE_IMAGE,
+            self::ATTACHMENT_TYPE_VIDEO,
+            self::ATTACHMENT_TYPE_AUDIO,
+            self::ATTACHMENT_TYPE_FILE,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -331,6 +362,8 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('attachment_url', $data ?? [], null);
+        $this->setIfExists('attachment_type', $data ?? [], null);
         $this->setIfExists('quick_replies', $data ?? [], null);
         $this->setIfExists('buttons', $data ?? [], null);
         $this->setIfExists('template', $data ?? [], null);
@@ -370,6 +403,15 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
+        $allowedValues = $this->getAttachmentTypeAllowableValues();
+        if (!is_null($this->container['attachment_type']) && !in_array($this->container['attachment_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'attachment_type', must be one of '%s'",
+                $this->container['attachment_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if (!is_null($this->container['quick_replies']) && (count($this->container['quick_replies']) > 13)) {
             $invalidProperties[] = "invalid value for 'quick_replies', number of items must be less than or equal to 13.";
         }
@@ -461,6 +503,70 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
         $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets attachment_url
+     *
+     * @return string|null
+     */
+    public function getAttachmentUrl()
+    {
+        return $this->container['attachment_url'];
+    }
+
+    /**
+     * Sets attachment_url
+     *
+     * @param string|null $attachment_url URL of the attachment to send (image, video, audio, or file). The URL must be publicly accessible. For binary file uploads, use multipart/form-data instead.
+     *
+     * @return self
+     */
+    public function setAttachmentUrl($attachment_url)
+    {
+        if (is_null($attachment_url)) {
+            throw new \InvalidArgumentException('non-nullable attachment_url cannot be null');
+        }
+        $this->container['attachment_url'] = $attachment_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets attachment_type
+     *
+     * @return string|null
+     */
+    public function getAttachmentType()
+    {
+        return $this->container['attachment_type'];
+    }
+
+    /**
+     * Sets attachment_type
+     *
+     * @param string|null $attachment_type Type of attachment. Defaults to file if not specified.
+     *
+     * @return self
+     */
+    public function setAttachmentType($attachment_type)
+    {
+        if (is_null($attachment_type)) {
+            throw new \InvalidArgumentException('non-nullable attachment_type cannot be null');
+        }
+        $allowedValues = $this->getAttachmentTypeAllowableValues();
+        if (!in_array($attachment_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'attachment_type', must be one of '%s'",
+                    $attachment_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['attachment_type'] = $attachment_type;
 
         return $this;
     }
