@@ -59,6 +59,7 @@ class AddBroadcastRecipientsRequest implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'contact_ids' => 'string[]',
+        'phones' => 'string[]',
         'use_segment' => 'bool'
     ];
 
@@ -71,6 +72,7 @@ class AddBroadcastRecipientsRequest implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPIFormats = [
         'contact_ids' => null,
+        'phones' => null,
         'use_segment' => null
     ];
 
@@ -81,6 +83,7 @@ class AddBroadcastRecipientsRequest implements ModelInterface, ArrayAccess, \Jso
       */
     protected static array $openAPINullables = [
         'contact_ids' => false,
+        'phones' => false,
         'use_segment' => false
     ];
 
@@ -171,6 +174,7 @@ class AddBroadcastRecipientsRequest implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $attributeMap = [
         'contact_ids' => 'contactIds',
+        'phones' => 'phones',
         'use_segment' => 'useSegment'
     ];
 
@@ -181,6 +185,7 @@ class AddBroadcastRecipientsRequest implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $setters = [
         'contact_ids' => 'setContactIds',
+        'phones' => 'setPhones',
         'use_segment' => 'setUseSegment'
     ];
 
@@ -191,6 +196,7 @@ class AddBroadcastRecipientsRequest implements ModelInterface, ArrayAccess, \Jso
      */
     protected static $getters = [
         'contact_ids' => 'getContactIds',
+        'phones' => 'getPhones',
         'use_segment' => 'getUseSegment'
     ];
 
@@ -252,6 +258,7 @@ class AddBroadcastRecipientsRequest implements ModelInterface, ArrayAccess, \Jso
     public function __construct(?array $data = null)
     {
         $this->setIfExists('contact_ids', $data ?? [], null);
+        $this->setIfExists('phones', $data ?? [], null);
         $this->setIfExists('use_segment', $data ?? [], null);
     }
 
@@ -320,6 +327,33 @@ class AddBroadcastRecipientsRequest implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable contact_ids cannot be null');
         }
         $this->container['contact_ids'] = $contact_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets phones
+     *
+     * @return string[]|null
+     */
+    public function getPhones()
+    {
+        return $this->container['phones'];
+    }
+
+    /**
+     * Sets phones
+     *
+     * @param string[]|null $phones Raw phone numbers (auto-creates contacts). Useful for WhatsApp/Telegram manual entry
+     *
+     * @return self
+     */
+    public function setPhones($phones)
+    {
+        if (is_null($phones)) {
+            throw new \InvalidArgumentException('non-nullable phones cannot be null');
+        }
+        $this->container['phones'] = $phones;
 
         return $this;
     }
