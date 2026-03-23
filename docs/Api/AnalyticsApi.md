@@ -24,7 +24,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getAnalytics()`
 
 ```php
-getAnalytics($post_id, $platform, $profile_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order): \Late\Model\GetAnalytics200Response
+getAnalytics($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order): \Late\Model\GetAnalytics200Response
 ```
 
 Get post analytics
@@ -51,6 +51,7 @@ $apiInstance = new Late\Api\AnalyticsApi(
 $post_id = 'post_id_example'; // string | Returns analytics for a single post. Accepts both Zernio Post IDs and External Post IDs. Zernio IDs are auto-resolved to External Post analytics.
 $platform = 'platform_example'; // string | Filter by platform (default \"all\")
 $profile_id = 'profile_id_example'; // string | Filter by profile ID (default \"all\")
+$account_id = 'account_id_example'; // string | Filter by social account ID
 $source = 'all'; // string | Filter by post source: late (posted via Zernio API), external (synced from platform), all (default)
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted.
@@ -60,7 +61,7 @@ $sort_by = 'date'; // string | Sort by date, engagement, or a specific metric
 $order = 'desc'; // string | Sort order
 
 try {
-    $result = $apiInstance->getAnalytics($post_id, $platform, $profile_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order);
+    $result = $apiInstance->getAnalytics($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getAnalytics: ', $e->getMessage(), PHP_EOL;
@@ -74,6 +75,7 @@ try {
 | **post_id** | **string**| Returns analytics for a single post. Accepts both Zernio Post IDs and External Post IDs. Zernio IDs are auto-resolved to External Post analytics. | [optional] |
 | **platform** | **string**| Filter by platform (default \&quot;all\&quot;) | [optional] |
 | **profile_id** | **string**| Filter by profile ID (default \&quot;all\&quot;) | [optional] |
+| **account_id** | **string**| Filter by social account ID | [optional] |
 | **source** | **string**| Filter by post source: late (posted via Zernio API), external (synced from platform), all (default) | [optional] [default to &#39;all&#39;] |
 | **from_date** | **\DateTime**| Inclusive lower bound (YYYY-MM-DD). Defaults to 90 days ago if omitted. Max range is 366 days. | [optional] |
 | **to_date** | **\DateTime**| Inclusive upper bound (YYYY-MM-DD). Defaults to today if omitted. | [optional] |
@@ -230,7 +232,7 @@ try {
 ## `getDailyMetrics()`
 
 ```php
-getDailyMetrics($platform, $profile_id, $from_date, $to_date, $source): \Late\Model\GetDailyMetrics200Response
+getDailyMetrics($platform, $profile_id, $account_id, $from_date, $to_date, $source): \Late\Model\GetDailyMetrics200Response
 ```
 
 Get daily aggregated metrics
@@ -256,12 +258,13 @@ $apiInstance = new Late\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
+$account_id = 'account_id_example'; // string | Filter by social account ID
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive start date (ISO 8601). Defaults to 180 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Inclusive end date (ISO 8601). Defaults to now.
 $source = 'all'; // string | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms.
 
 try {
-    $result = $apiInstance->getDailyMetrics($platform, $profile_id, $from_date, $to_date, $source);
+    $result = $apiInstance->getDailyMetrics($platform, $profile_id, $account_id, $from_date, $to_date, $source);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getDailyMetrics: ', $e->getMessage(), PHP_EOL;
@@ -274,6 +277,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
+| **account_id** | **string**| Filter by social account ID | [optional] |
 | **from_date** | **\DateTime**| Inclusive start date (ISO 8601). Defaults to 180 days ago. | [optional] |
 | **to_date** | **\DateTime**| Inclusive end date (ISO 8601). Defaults to now. | [optional] |
 | **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
