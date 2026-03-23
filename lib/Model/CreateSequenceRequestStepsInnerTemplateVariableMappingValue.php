@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSequenceRequestStepsInner
+ * CreateSequenceRequestStepsInnerTemplateVariableMappingValue
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * CreateSequenceRequestStepsInner Class Doc Comment
+ * CreateSequenceRequestStepsInnerTemplateVariableMappingValue Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateSequenceRequestStepsInnerTemplateVariableMappingValue implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createSequence_request_steps_inner';
+    protected static $openAPIModelName = 'createSequence_request_steps_inner_template_variableMapping_value';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'order' => 'int',
-        'delay_minutes' => 'int',
-        'message' => '\Late\Model\CreateSequenceRequestStepsInnerMessage',
-        'template' => '\Late\Model\CreateSequenceRequestStepsInnerTemplate'
+        'field' => 'string',
+        'custom_value' => 'string'
     ];
 
     /**
@@ -72,10 +70,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'order' => null,
-        'delay_minutes' => null,
-        'message' => null,
-        'template' => null
+        'field' => null,
+        'custom_value' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'order' => false,
-        'delay_minutes' => false,
-        'message' => false,
-        'template' => false
+        'field' => false,
+        'custom_value' => false
     ];
 
     /**
@@ -176,10 +170,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'order' => 'order',
-        'delay_minutes' => 'delayMinutes',
-        'message' => 'message',
-        'template' => 'template'
+        'field' => 'field',
+        'custom_value' => 'customValue'
     ];
 
     /**
@@ -188,10 +180,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'order' => 'setOrder',
-        'delay_minutes' => 'setDelayMinutes',
-        'message' => 'setMessage',
-        'template' => 'setTemplate'
+        'field' => 'setField',
+        'custom_value' => 'setCustomValue'
     ];
 
     /**
@@ -200,10 +190,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'order' => 'getOrder',
-        'delay_minutes' => 'getDelayMinutes',
-        'message' => 'getMessage',
-        'template' => 'getTemplate'
+        'field' => 'getField',
+        'custom_value' => 'getCustomValue'
     ];
 
     /**
@@ -247,6 +235,27 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
+    public const FIELD_NAME = 'name';
+    public const FIELD_PHONE = 'phone';
+    public const FIELD_EMAIL = 'email';
+    public const FIELD_COMPANY = 'company';
+    public const FIELD_CUSTOM = 'custom';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFieldAllowableValues()
+    {
+        return [
+            self::FIELD_NAME,
+            self::FIELD_PHONE,
+            self::FIELD_EMAIL,
+            self::FIELD_COMPANY,
+            self::FIELD_CUSTOM,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +272,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('order', $data ?? [], null);
-        $this->setIfExists('delay_minutes', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('template', $data ?? [], null);
+        $this->setIfExists('field', $data ?? [], null);
+        $this->setIfExists('custom_value', $data ?? [], null);
     }
 
     /**
@@ -296,12 +303,15 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['order'] === null) {
-            $invalidProperties[] = "'order' can't be null";
+        $allowedValues = $this->getFieldAllowableValues();
+        if (!is_null($this->container['field']) && !in_array($this->container['field'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'field', must be one of '%s'",
+                $this->container['field'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['delay_minutes'] === null) {
-            $invalidProperties[] = "'delay_minutes' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -318,109 +328,65 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets order
+     * Gets field
      *
-     * @return int
+     * @return string|null
      */
-    public function getOrder()
+    public function getField()
     {
-        return $this->container['order'];
+        return $this->container['field'];
     }
 
     /**
-     * Sets order
+     * Sets field
      *
-     * @param int $order order
+     * @param string|null $field field
      *
      * @return self
      */
-    public function setOrder($order)
+    public function setField($field)
     {
-        if (is_null($order)) {
-            throw new \InvalidArgumentException('non-nullable order cannot be null');
+        if (is_null($field)) {
+            throw new \InvalidArgumentException('non-nullable field cannot be null');
         }
-        $this->container['order'] = $order;
+        $allowedValues = $this->getFieldAllowableValues();
+        if (!in_array($field, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'field', must be one of '%s'",
+                    $field,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['field'] = $field;
 
         return $this;
     }
 
     /**
-     * Gets delay_minutes
+     * Gets custom_value
      *
-     * @return int
+     * @return string|null
      */
-    public function getDelayMinutes()
+    public function getCustomValue()
     {
-        return $this->container['delay_minutes'];
+        return $this->container['custom_value'];
     }
 
     /**
-     * Sets delay_minutes
+     * Sets custom_value
      *
-     * @param int $delay_minutes delay_minutes
+     * @param string|null $custom_value Static value when field is \"custom\"
      *
      * @return self
      */
-    public function setDelayMinutes($delay_minutes)
+    public function setCustomValue($custom_value)
     {
-        if (is_null($delay_minutes)) {
-            throw new \InvalidArgumentException('non-nullable delay_minutes cannot be null');
+        if (is_null($custom_value)) {
+            throw new \InvalidArgumentException('non-nullable custom_value cannot be null');
         }
-        $this->container['delay_minutes'] = $delay_minutes;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     *
-     * @return \Late\Model\CreateSequenceRequestStepsInnerMessage|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param \Late\Model\CreateSequenceRequestStepsInnerMessage|null $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets template
-     *
-     * @return \Late\Model\CreateSequenceRequestStepsInnerTemplate|null
-     */
-    public function getTemplate()
-    {
-        return $this->container['template'];
-    }
-
-    /**
-     * Sets template
-     *
-     * @param \Late\Model\CreateSequenceRequestStepsInnerTemplate|null $template template
-     *
-     * @return self
-     */
-    public function setTemplate($template)
-    {
-        if (is_null($template)) {
-            throw new \InvalidArgumentException('non-nullable template cannot be null');
-        }
-        $this->container['template'] = $template;
+        $this->container['custom_value'] = $custom_value;
 
         return $this;
     }

@@ -117,6 +117,8 @@ docs/Model/CreateQueueSlotRequest.md
 docs/Model/CreateSequenceRequest.md
 docs/Model/CreateSequenceRequestStepsInner.md
 docs/Model/CreateSequenceRequestStepsInnerMessage.md
+docs/Model/CreateSequenceRequestStepsInnerTemplate.md
+docs/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.md
 docs/Model/CreateWebhookSettingsRequest.md
 docs/Model/CreateWhatsAppBroadcast200Response.md
 docs/Model/CreateWhatsAppBroadcast200ResponseBroadcast.md
@@ -750,6 +752,8 @@ lib/Model/CreateQueueSlotRequest.php
 lib/Model/CreateSequenceRequest.php
 lib/Model/CreateSequenceRequestStepsInner.php
 lib/Model/CreateSequenceRequestStepsInnerMessage.php
+lib/Model/CreateSequenceRequestStepsInnerTemplate.php
+lib/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.php
 lib/Model/CreateWebhookSettingsRequest.php
 lib/Model/CreateWhatsAppBroadcast200Response.php
 lib/Model/CreateWhatsAppBroadcast200ResponseBroadcast.php
@@ -1267,3 +1271,5 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateSequenceRequestStepsInnerTemplateTest.php
+test/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValueTest.php

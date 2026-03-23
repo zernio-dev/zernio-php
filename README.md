@@ -363,6 +363,8 @@ Class | Method | HTTP request | Description
 - [CreateSequenceRequest](docs/Model/CreateSequenceRequest.md)
 - [CreateSequenceRequestStepsInner](docs/Model/CreateSequenceRequestStepsInner.md)
 - [CreateSequenceRequestStepsInnerMessage](docs/Model/CreateSequenceRequestStepsInnerMessage.md)
+- [CreateSequenceRequestStepsInnerTemplate](docs/Model/CreateSequenceRequestStepsInnerTemplate.md)
+- [CreateSequenceRequestStepsInnerTemplateVariableMappingValue](docs/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.md)
 - [CreateWebhookSettingsRequest](docs/Model/CreateWebhookSettingsRequest.md)
 - [CreateWhatsAppBroadcast200Response](docs/Model/CreateWhatsAppBroadcast200Response.md)
 - [CreateWhatsAppBroadcast200ResponseBroadcast](docs/Model/CreateWhatsAppBroadcast200ResponseBroadcast.md)
