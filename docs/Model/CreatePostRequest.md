@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **title** | **string** |  | [optional]
 **content** | **string** | Post caption/text. Optional when media is attached or all platforms have customContent. Required for text-only posts. | [optional]
 **media_items** | [**\Late\Model\CreatePostRequestMediaItemsInner[]**](CreatePostRequestMediaItemsInner.md) |  | [optional]
-**platforms** | [**\Late\Model\CreatePostRequestPlatformsInner[]**](CreatePostRequestPlatformsInner.md) |  | [optional]
+**platforms** | [**\Late\Model\CreatePostRequestPlatformsInner[]**](CreatePostRequestPlatformsInner.md) | Target platforms and accounts for this post. Required for non-draft posts (returns 400 if empty). Drafts can omit platforms. | [optional]
 **scheduled_for** | **\DateTime** |  | [optional]
 **publish_now** | **bool** |  | [optional] [default to false]
 **is_draft** | **bool** | When true, saves the post as a draft. When none of scheduledFor, publishNow, or queuedFromProfile are provided, the post defaults to draft automatically. | [optional] [default to false]

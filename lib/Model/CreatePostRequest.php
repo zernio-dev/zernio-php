@@ -496,7 +496,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets platforms
      *
-     * @param \Late\Model\CreatePostRequestPlatformsInner[]|null $platforms platforms
+     * @param \Late\Model\CreatePostRequestPlatformsInner[]|null $platforms Target platforms and accounts for this post. Required for non-draft posts (returns 400 if empty). Drafts can omit platforms.
      *
      * @return self
      */
