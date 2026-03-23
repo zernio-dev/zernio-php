@@ -63,6 +63,7 @@ class GetWhatsAppBroadcasts200ResponseBroadcastsInner implements ModelInterface,
         'description' => 'string',
         'template' => '\Late\Model\GetWhatsAppBroadcasts200ResponseBroadcastsInnerTemplate',
         'status' => 'string',
+        'message_preview' => 'string',
         'recipient_count' => 'int',
         'scheduled_at' => '\DateTime',
         'started_at' => '\DateTime',
@@ -87,6 +88,7 @@ class GetWhatsAppBroadcasts200ResponseBroadcastsInner implements ModelInterface,
         'description' => null,
         'template' => null,
         'status' => null,
+        'message_preview' => null,
         'recipient_count' => null,
         'scheduled_at' => 'date-time',
         'started_at' => 'date-time',
@@ -109,6 +111,7 @@ class GetWhatsAppBroadcasts200ResponseBroadcastsInner implements ModelInterface,
         'description' => false,
         'template' => false,
         'status' => false,
+        'message_preview' => false,
         'recipient_count' => false,
         'scheduled_at' => false,
         'started_at' => false,
@@ -211,6 +214,7 @@ class GetWhatsAppBroadcasts200ResponseBroadcastsInner implements ModelInterface,
         'description' => 'description',
         'template' => 'template',
         'status' => 'status',
+        'message_preview' => 'messagePreview',
         'recipient_count' => 'recipientCount',
         'scheduled_at' => 'scheduledAt',
         'started_at' => 'startedAt',
@@ -233,6 +237,7 @@ class GetWhatsAppBroadcasts200ResponseBroadcastsInner implements ModelInterface,
         'description' => 'setDescription',
         'template' => 'setTemplate',
         'status' => 'setStatus',
+        'message_preview' => 'setMessagePreview',
         'recipient_count' => 'setRecipientCount',
         'scheduled_at' => 'setScheduledAt',
         'started_at' => 'setStartedAt',
@@ -255,6 +260,7 @@ class GetWhatsAppBroadcasts200ResponseBroadcastsInner implements ModelInterface,
         'description' => 'getDescription',
         'template' => 'getTemplate',
         'status' => 'getStatus',
+        'message_preview' => 'getMessagePreview',
         'recipient_count' => 'getRecipientCount',
         'scheduled_at' => 'getScheduledAt',
         'started_at' => 'getStartedAt',
@@ -351,6 +357,7 @@ class GetWhatsAppBroadcasts200ResponseBroadcastsInner implements ModelInterface,
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('template', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('message_preview', $data ?? [], null);
         $this->setIfExists('recipient_count', $data ?? [], null);
         $this->setIfExists('scheduled_at', $data ?? [], null);
         $this->setIfExists('started_at', $data ?? [], null);
@@ -554,6 +561,33 @@ class GetWhatsAppBroadcasts200ResponseBroadcastsInner implements ModelInterface,
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_preview
+     *
+     * @return string|null
+     */
+    public function getMessagePreview()
+    {
+        return $this->container['message_preview'];
+    }
+
+    /**
+     * Sets message_preview
+     *
+     * @param string|null $message_preview Template name or message text snippet
+     *
+     * @return self
+     */
+    public function setMessagePreview($message_preview)
+    {
+        if (is_null($message_preview)) {
+            throw new \InvalidArgumentException('non-nullable message_preview cannot be null');
+        }
+        $this->container['message_preview'] = $message_preview;
 
         return $this;
     }
