@@ -92,6 +92,22 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**getPostTimeline**](docs/Api/AnalyticsApi.md#getposttimeline) | **GET** /v1/analytics/post-timeline | Get post analytics timeline
 *AnalyticsApi* | [**getPostingFrequency**](docs/Api/AnalyticsApi.md#getpostingfrequency) | **GET** /v1/analytics/posting-frequency | Get posting frequency vs engagement
 *AnalyticsApi* | [**getYouTubeDailyViews**](docs/Api/AnalyticsApi.md#getyoutubedailyviews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views
+*BroadcastsApi* | [**addBroadcastRecipients**](docs/Api/BroadcastsApi.md#addbroadcastrecipients) | **POST** /v1/broadcasts/{broadcastId}/recipients | Add recipients to a broadcast
+*BroadcastsApi* | [**cancelBroadcast**](docs/Api/BroadcastsApi.md#cancelbroadcast) | **POST** /v1/broadcasts/{broadcastId}/cancel | Cancel a broadcast
+*BroadcastsApi* | [**createBroadcast**](docs/Api/BroadcastsApi.md#createbroadcast) | **POST** /v1/broadcasts | Create a broadcast draft
+*BroadcastsApi* | [**deleteBroadcast**](docs/Api/BroadcastsApi.md#deletebroadcast) | **DELETE** /v1/broadcasts/{broadcastId} | Delete a broadcast (draft only)
+*BroadcastsApi* | [**getBroadcast**](docs/Api/BroadcastsApi.md#getbroadcast) | **GET** /v1/broadcasts/{broadcastId} | Get broadcast details
+*BroadcastsApi* | [**listBroadcastRecipients**](docs/Api/BroadcastsApi.md#listbroadcastrecipients) | **GET** /v1/broadcasts/{broadcastId}/recipients | List broadcast recipients
+*BroadcastsApi* | [**listBroadcasts**](docs/Api/BroadcastsApi.md#listbroadcasts) | **GET** /v1/broadcasts | List broadcasts
+*BroadcastsApi* | [**scheduleBroadcast**](docs/Api/BroadcastsApi.md#schedulebroadcast) | **POST** /v1/broadcasts/{broadcastId}/schedule | Schedule broadcast for later
+*BroadcastsApi* | [**sendBroadcast**](docs/Api/BroadcastsApi.md#sendbroadcast) | **POST** /v1/broadcasts/{broadcastId}/send | Trigger immediate send
+*BroadcastsApi* | [**updateBroadcast**](docs/Api/BroadcastsApi.md#updatebroadcast) | **PATCH** /v1/broadcasts/{broadcastId} | Update a broadcast
+*CommentAutomationsApi* | [**createCommentAutomation**](docs/Api/CommentAutomationsApi.md#createcommentautomation) | **POST** /v1/comment-automations | Create a comment-to-DM automation
+*CommentAutomationsApi* | [**deleteCommentAutomation**](docs/Api/CommentAutomationsApi.md#deletecommentautomation) | **DELETE** /v1/comment-automations/{automationId} | Delete automation and all logs
+*CommentAutomationsApi* | [**getCommentAutomation**](docs/Api/CommentAutomationsApi.md#getcommentautomation) | **GET** /v1/comment-automations/{automationId} | Get automation details with recent logs
+*CommentAutomationsApi* | [**listCommentAutomationLogs**](docs/Api/CommentAutomationsApi.md#listcommentautomationlogs) | **GET** /v1/comment-automations/{automationId}/logs | List trigger logs for an automation
+*CommentAutomationsApi* | [**listCommentAutomations**](docs/Api/CommentAutomationsApi.md#listcommentautomations) | **GET** /v1/comment-automations | List comment-to-DM automations
+*CommentAutomationsApi* | [**updateCommentAutomation**](docs/Api/CommentAutomationsApi.md#updatecommentautomation) | **PATCH** /v1/comment-automations/{automationId} | Update automation settings
 *CommentsApi* | [**deleteInboxComment**](docs/Api/CommentsApi.md#deleteinboxcomment) | **DELETE** /v1/inbox/comments/{postId} | Delete comment
 *CommentsApi* | [**getInboxPostComments**](docs/Api/CommentsApi.md#getinboxpostcomments) | **GET** /v1/inbox/comments/{postId} | Get post comments
 *CommentsApi* | [**hideInboxComment**](docs/Api/CommentsApi.md#hideinboxcomment) | **POST** /v1/inbox/comments/{postId}/{commentId}/hide | Hide comment
@@ -130,6 +146,19 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**updateLinkedInOrganization**](docs/Api/ConnectApi.md#updatelinkedinorganization) | **PUT** /v1/accounts/{accountId}/linkedin-organization | Switch LinkedIn account type
 *ConnectApi* | [**updatePinterestBoards**](docs/Api/ConnectApi.md#updatepinterestboards) | **PUT** /v1/accounts/{accountId}/pinterest-boards | Set default Pinterest board
 *ConnectApi* | [**updateRedditSubreddits**](docs/Api/ConnectApi.md#updateredditsubreddits) | **PUT** /v1/accounts/{accountId}/reddit-subreddits | Set default subreddit
+*ContactsApi* | [**bulkCreateContacts**](docs/Api/ContactsApi.md#bulkcreatecontacts) | **POST** /v1/contacts/bulk | Bulk create contacts
+*ContactsApi* | [**createContact**](docs/Api/ContactsApi.md#createcontact) | **POST** /v1/contacts | Create a contact
+*ContactsApi* | [**deleteContact**](docs/Api/ContactsApi.md#deletecontact) | **DELETE** /v1/contacts/{contactId} | Delete a contact
+*ContactsApi* | [**getContact**](docs/Api/ContactsApi.md#getcontact) | **GET** /v1/contacts/{contactId} | Get contact with channels
+*ContactsApi* | [**getContactChannels**](docs/Api/ContactsApi.md#getcontactchannels) | **GET** /v1/contacts/{contactId}/channels | List channels for a contact
+*ContactsApi* | [**listContacts**](docs/Api/ContactsApi.md#listcontacts) | **GET** /v1/contacts | List contacts
+*ContactsApi* | [**updateContact**](docs/Api/ContactsApi.md#updatecontact) | **PATCH** /v1/contacts/{contactId} | Update a contact
+*CustomFieldsApi* | [**clearContactFieldValue**](docs/Api/CustomFieldsApi.md#clearcontactfieldvalue) | **DELETE** /v1/contacts/{contactId}/fields/{slug} | Clear a custom field value
+*CustomFieldsApi* | [**createCustomField**](docs/Api/CustomFieldsApi.md#createcustomfield) | **POST** /v1/custom-fields | Create a custom field definition
+*CustomFieldsApi* | [**deleteCustomField**](docs/Api/CustomFieldsApi.md#deletecustomfield) | **DELETE** /v1/custom-fields/{fieldId} | Delete a custom field definition
+*CustomFieldsApi* | [**listCustomFields**](docs/Api/CustomFieldsApi.md#listcustomfields) | **GET** /v1/custom-fields | List custom field definitions
+*CustomFieldsApi* | [**setContactFieldValue**](docs/Api/CustomFieldsApi.md#setcontactfieldvalue) | **PUT** /v1/contacts/{contactId}/fields/{slug} | Set a custom field value
+*CustomFieldsApi* | [**updateCustomField**](docs/Api/CustomFieldsApi.md#updatecustomfield) | **PATCH** /v1/custom-fields/{fieldId} | Update a custom field definition
 *GMBAttributesApi* | [**getGoogleBusinessAttributes**](docs/Api/GMBAttributesApi.md#getgooglebusinessattributes) | **GET** /v1/accounts/{accountId}/gmb-attributes | Get attributes
 *GMBAttributesApi* | [**updateGoogleBusinessAttributes**](docs/Api/GMBAttributesApi.md#updategooglebusinessattributes) | **PUT** /v1/accounts/{accountId}/gmb-attributes | Update attributes
 *GMBFoodMenusApi* | [**getGoogleBusinessFoodMenus**](docs/Api/GMBFoodMenusApi.md#getgooglebusinessfoodmenus) | **GET** /v1/accounts/{accountId}/gmb-food-menus | Get food menus
@@ -179,6 +208,16 @@ Class | Method | HTTP request | Description
 *ReviewsApi* | [**deleteInboxReviewReply**](docs/Api/ReviewsApi.md#deleteinboxreviewreply) | **DELETE** /v1/inbox/reviews/{reviewId}/reply | Delete review reply
 *ReviewsApi* | [**listInboxReviews**](docs/Api/ReviewsApi.md#listinboxreviews) | **GET** /v1/inbox/reviews | List reviews
 *ReviewsApi* | [**replyToInboxReview**](docs/Api/ReviewsApi.md#replytoinboxreview) | **POST** /v1/inbox/reviews/{reviewId}/reply | Reply to review
+*SequencesApi* | [**activateSequence**](docs/Api/SequencesApi.md#activatesequence) | **POST** /v1/sequences/{sequenceId}/activate | Activate a sequence
+*SequencesApi* | [**createSequence**](docs/Api/SequencesApi.md#createsequence) | **POST** /v1/sequences | Create a sequence
+*SequencesApi* | [**deleteSequence**](docs/Api/SequencesApi.md#deletesequence) | **DELETE** /v1/sequences/{sequenceId} | Delete a sequence
+*SequencesApi* | [**enrollContacts**](docs/Api/SequencesApi.md#enrollcontacts) | **POST** /v1/sequences/{sequenceId}/enroll | Enroll contacts in a sequence
+*SequencesApi* | [**getSequence**](docs/Api/SequencesApi.md#getsequence) | **GET** /v1/sequences/{sequenceId} | Get sequence with steps
+*SequencesApi* | [**listSequenceEnrollments**](docs/Api/SequencesApi.md#listsequenceenrollments) | **GET** /v1/sequences/{sequenceId}/enrollments | List enrollments for a sequence
+*SequencesApi* | [**listSequences**](docs/Api/SequencesApi.md#listsequences) | **GET** /v1/sequences | List sequences
+*SequencesApi* | [**pauseSequence**](docs/Api/SequencesApi.md#pausesequence) | **POST** /v1/sequences/{sequenceId}/pause | Pause a sequence
+*SequencesApi* | [**unenrollContact**](docs/Api/SequencesApi.md#unenrollcontact) | **DELETE** /v1/sequences/{sequenceId}/enroll/{contactId} | Unenroll a contact from a sequence
+*SequencesApi* | [**updateSequence**](docs/Api/SequencesApi.md#updatesequence) | **PATCH** /v1/sequences/{sequenceId} | Update a sequence
 *ToolsApi* | [**checkInstagramHashtags**](docs/Api/ToolsApi.md#checkinstagramhashtags) | **POST** /v1/tools/instagram/hashtag-checker | Check IG hashtag bans
 *ToolsApi* | [**downloadBlueskyMedia**](docs/Api/ToolsApi.md#downloadblueskymedia) | **GET** /v1/tools/bluesky/download | Download Bluesky media
 *ToolsApi* | [**downloadFacebookVideo**](docs/Api/ToolsApi.md#downloadfacebookvideo) | **GET** /v1/tools/facebook/download | Download Facebook video
@@ -250,6 +289,7 @@ Class | Method | HTTP request | Description
 - [AccountWithFollowerStats](docs/Model/AccountWithFollowerStats.md)
 - [AccountWithFollowerStatsAllOfAccountStats](docs/Model/AccountWithFollowerStatsAllOfAccountStats.md)
 - [AccountsListResponse](docs/Model/AccountsListResponse.md)
+- [AddBroadcastRecipientsRequest](docs/Model/AddBroadcastRecipientsRequest.md)
 - [AddWhatsAppBroadcastRecipients200Response](docs/Model/AddWhatsAppBroadcastRecipients200Response.md)
 - [AddWhatsAppBroadcastRecipientsRequest](docs/Model/AddWhatsAppBroadcastRecipientsRequest.md)
 - [AddWhatsAppBroadcastRecipientsRequestRecipientsInner](docs/Model/AddWhatsAppBroadcastRecipientsRequestRecipientsInner.md)
@@ -264,6 +304,8 @@ Class | Method | HTTP request | Description
 - [BlueskyPlatformData](docs/Model/BlueskyPlatformData.md)
 - [BookmarkPost200Response](docs/Model/BookmarkPost200Response.md)
 - [BookmarkPostRequest](docs/Model/BookmarkPostRequest.md)
+- [BulkCreateContactsRequest](docs/Model/BulkCreateContactsRequest.md)
+- [BulkCreateContactsRequestContactsInner](docs/Model/BulkCreateContactsRequestContactsInner.md)
 - [BulkDeleteWhatsAppContacts200Response](docs/Model/BulkDeleteWhatsAppContacts200Response.md)
 - [BulkDeleteWhatsAppContactsRequest](docs/Model/BulkDeleteWhatsAppContactsRequest.md)
 - [BulkUpdateWhatsAppContacts200Response](docs/Model/BulkUpdateWhatsAppContacts200Response.md)
@@ -294,6 +336,14 @@ Class | Method | HTTP request | Description
 - [CreateAccountGroupRequest](docs/Model/CreateAccountGroupRequest.md)
 - [CreateApiKey201Response](docs/Model/CreateApiKey201Response.md)
 - [CreateApiKeyRequest](docs/Model/CreateApiKeyRequest.md)
+- [CreateBroadcastRequest](docs/Model/CreateBroadcastRequest.md)
+- [CreateBroadcastRequestMessage](docs/Model/CreateBroadcastRequestMessage.md)
+- [CreateBroadcastRequestMessageAttachmentsInner](docs/Model/CreateBroadcastRequestMessageAttachmentsInner.md)
+- [CreateBroadcastRequestSegmentFilters](docs/Model/CreateBroadcastRequestSegmentFilters.md)
+- [CreateBroadcastRequestTemplate](docs/Model/CreateBroadcastRequestTemplate.md)
+- [CreateCommentAutomationRequest](docs/Model/CreateCommentAutomationRequest.md)
+- [CreateContactRequest](docs/Model/CreateContactRequest.md)
+- [CreateCustomFieldRequest](docs/Model/CreateCustomFieldRequest.md)
 - [CreateGoogleBusinessMedia200Response](docs/Model/CreateGoogleBusinessMedia200Response.md)
 - [CreateGoogleBusinessMediaRequest](docs/Model/CreateGoogleBusinessMediaRequest.md)
 - [CreateGoogleBusinessPlaceAction200Response](docs/Model/CreateGoogleBusinessPlaceAction200Response.md)
@@ -310,6 +360,9 @@ Class | Method | HTTP request | Description
 - [CreateProfileRequest](docs/Model/CreateProfileRequest.md)
 - [CreateQueueSlot201Response](docs/Model/CreateQueueSlot201Response.md)
 - [CreateQueueSlotRequest](docs/Model/CreateQueueSlotRequest.md)
+- [CreateSequenceRequest](docs/Model/CreateSequenceRequest.md)
+- [CreateSequenceRequestStepsInner](docs/Model/CreateSequenceRequestStepsInner.md)
+- [CreateSequenceRequestStepsInnerMessage](docs/Model/CreateSequenceRequestStepsInnerMessage.md)
 - [CreateWebhookSettingsRequest](docs/Model/CreateWebhookSettingsRequest.md)
 - [CreateWhatsAppBroadcast200Response](docs/Model/CreateWhatsAppBroadcast200Response.md)
 - [CreateWhatsAppBroadcast200ResponseBroadcast](docs/Model/CreateWhatsAppBroadcast200ResponseBroadcast.md)
@@ -345,6 +398,7 @@ Class | Method | HTTP request | Description
 - [EditInboxMessageRequest](docs/Model/EditInboxMessageRequest.md)
 - [EditInboxMessageRequestReplyMarkup](docs/Model/EditInboxMessageRequestReplyMarkup.md)
 - [EditInboxMessageRequestReplyMarkupKeyboardInnerInner](docs/Model/EditInboxMessageRequestReplyMarkupKeyboardInnerInner.md)
+- [EnrollContactsRequest](docs/Model/EnrollContactsRequest.md)
 - [ErrorResponse](docs/Model/ErrorResponse.md)
 - [Expired](docs/Model/Expired.md)
 - [FacebookPlatformData](docs/Model/FacebookPlatformData.md)
@@ -544,6 +598,9 @@ Class | Method | HTTP request | Description
 - [ListAccountGroups200ResponseGroupsInner](docs/Model/ListAccountGroups200ResponseGroupsInner.md)
 - [ListAccounts200Response](docs/Model/ListAccounts200Response.md)
 - [ListApiKeys200Response](docs/Model/ListApiKeys200Response.md)
+- [ListCommentAutomations200Response](docs/Model/ListCommentAutomations200Response.md)
+- [ListCommentAutomations200ResponseAutomationsInner](docs/Model/ListCommentAutomations200ResponseAutomationsInner.md)
+- [ListCommentAutomations200ResponseAutomationsInnerStats](docs/Model/ListCommentAutomations200ResponseAutomationsInnerStats.md)
 - [ListConnectionLogs200Response](docs/Model/ListConnectionLogs200Response.md)
 - [ListFacebookPages200Response](docs/Model/ListFacebookPages200Response.md)
 - [ListFacebookPages200ResponsePagesInner](docs/Model/ListFacebookPages200ResponsePagesInner.md)
@@ -641,6 +698,7 @@ Class | Method | HTTP request | Description
 - [ReplyToInboxReviewRequest](docs/Model/ReplyToInboxReviewRequest.md)
 - [RetweetPost200Response](docs/Model/RetweetPost200Response.md)
 - [RetweetPostRequest](docs/Model/RetweetPostRequest.md)
+- [ScheduleBroadcastRequest](docs/Model/ScheduleBroadcastRequest.md)
 - [ScheduleWhatsAppBroadcast200Response](docs/Model/ScheduleWhatsAppBroadcast200Response.md)
 - [ScheduleWhatsAppBroadcast200ResponseBroadcast](docs/Model/ScheduleWhatsAppBroadcast200ResponseBroadcast.md)
 - [ScheduleWhatsAppBroadcastRequest](docs/Model/ScheduleWhatsAppBroadcastRequest.md)
@@ -685,6 +743,7 @@ Class | Method | HTTP request | Description
 - [SendWhatsAppBulkRequest](docs/Model/SendWhatsAppBulkRequest.md)
 - [SendWhatsAppBulkRequestRecipientsInner](docs/Model/SendWhatsAppBulkRequestRecipientsInner.md)
 - [SendWhatsAppBulkRequestTemplate](docs/Model/SendWhatsAppBulkRequestTemplate.md)
+- [SetContactFieldValueRequest](docs/Model/SetContactFieldValueRequest.md)
 - [SetInstagramIceBreakersRequest](docs/Model/SetInstagramIceBreakersRequest.md)
 - [SetInstagramIceBreakersRequestIceBreakersInner](docs/Model/SetInstagramIceBreakersRequestIceBreakersInner.md)
 - [SetMessengerMenuRequest](docs/Model/SetMessengerMenuRequest.md)
@@ -711,6 +770,9 @@ Class | Method | HTTP request | Description
 - [UpdateAccountGroup200Response](docs/Model/UpdateAccountGroup200Response.md)
 - [UpdateAccountGroupRequest](docs/Model/UpdateAccountGroupRequest.md)
 - [UpdateAccountRequest](docs/Model/UpdateAccountRequest.md)
+- [UpdateCommentAutomationRequest](docs/Model/UpdateCommentAutomationRequest.md)
+- [UpdateContactRequest](docs/Model/UpdateContactRequest.md)
+- [UpdateCustomFieldRequest](docs/Model/UpdateCustomFieldRequest.md)
 - [UpdateFacebookPage200Response](docs/Model/UpdateFacebookPage200Response.md)
 - [UpdateFacebookPage200ResponseSelectedPage](docs/Model/UpdateFacebookPage200ResponseSelectedPage.md)
 - [UpdateFacebookPageRequest](docs/Model/UpdateFacebookPageRequest.md)

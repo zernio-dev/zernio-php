@@ -231,6 +231,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\AddWhatsAppBroadcastRecipients200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @deprecated
      */
     public function addWhatsAppBroadcastRecipients($broadcast_id, $add_whats_app_broadcast_recipients_request, string $contentType = self::contentTypes['addWhatsAppBroadcastRecipients'][0])
     {
@@ -250,6 +251,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\AddWhatsAppBroadcastRecipients200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function addWhatsAppBroadcastRecipientsWithHttpInfo($broadcast_id, $add_whats_app_broadcast_recipients_request, string $contentType = self::contentTypes['addWhatsAppBroadcastRecipients'][0])
     {
@@ -363,6 +365,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function addWhatsAppBroadcastRecipientsAsync($broadcast_id, $add_whats_app_broadcast_recipients_request, string $contentType = self::contentTypes['addWhatsAppBroadcastRecipients'][0])
     {
@@ -385,6 +388,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function addWhatsAppBroadcastRecipientsAsyncWithHttpInfo($broadcast_id, $add_whats_app_broadcast_recipients_request, string $contentType = self::contentTypes['addWhatsAppBroadcastRecipients'][0])
     {
@@ -436,6 +440,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function addWhatsAppBroadcastRecipientsRequest($broadcast_id, $add_whats_app_broadcast_recipients_request, string $contentType = self::contentTypes['addWhatsAppBroadcastRecipients'][0])
     {
@@ -549,6 +554,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\BulkDeleteWhatsAppContacts200Response|\Late\Model\InlineObject
+     * @deprecated
      */
     public function bulkDeleteWhatsAppContacts($bulk_delete_whats_app_contacts_request, string $contentType = self::contentTypes['bulkDeleteWhatsAppContacts'][0])
     {
@@ -567,6 +573,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\BulkDeleteWhatsAppContacts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function bulkDeleteWhatsAppContactsWithHttpInfo($bulk_delete_whats_app_contacts_request, string $contentType = self::contentTypes['bulkDeleteWhatsAppContacts'][0])
     {
@@ -665,6 +672,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function bulkDeleteWhatsAppContactsAsync($bulk_delete_whats_app_contacts_request, string $contentType = self::contentTypes['bulkDeleteWhatsAppContacts'][0])
     {
@@ -686,6 +694,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function bulkDeleteWhatsAppContactsAsyncWithHttpInfo($bulk_delete_whats_app_contacts_request, string $contentType = self::contentTypes['bulkDeleteWhatsAppContacts'][0])
     {
@@ -736,6 +745,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function bulkDeleteWhatsAppContactsRequest($bulk_delete_whats_app_contacts_request, string $contentType = self::contentTypes['bulkDeleteWhatsAppContacts'][0])
     {
@@ -834,6 +844,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\BulkUpdateWhatsAppContacts200Response|\Late\Model\InlineObject
+     * @deprecated
      */
     public function bulkUpdateWhatsAppContacts($bulk_update_whats_app_contacts_request, string $contentType = self::contentTypes['bulkUpdateWhatsAppContacts'][0])
     {
@@ -852,6 +863,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\BulkUpdateWhatsAppContacts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function bulkUpdateWhatsAppContactsWithHttpInfo($bulk_update_whats_app_contacts_request, string $contentType = self::contentTypes['bulkUpdateWhatsAppContacts'][0])
     {
@@ -950,6 +962,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function bulkUpdateWhatsAppContactsAsync($bulk_update_whats_app_contacts_request, string $contentType = self::contentTypes['bulkUpdateWhatsAppContacts'][0])
     {
@@ -971,6 +984,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function bulkUpdateWhatsAppContactsAsyncWithHttpInfo($bulk_update_whats_app_contacts_request, string $contentType = self::contentTypes['bulkUpdateWhatsAppContacts'][0])
     {
@@ -1021,6 +1035,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function bulkUpdateWhatsAppContactsRequest($bulk_update_whats_app_contacts_request, string $contentType = self::contentTypes['bulkUpdateWhatsAppContacts'][0])
     {
@@ -1119,6 +1134,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\CancelWhatsAppBroadcastSchedule200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @deprecated
      */
     public function cancelWhatsAppBroadcastSchedule($broadcast_id, string $contentType = self::contentTypes['cancelWhatsAppBroadcastSchedule'][0])
     {
@@ -1137,6 +1153,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\CancelWhatsAppBroadcastSchedule200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function cancelWhatsAppBroadcastScheduleWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['cancelWhatsAppBroadcastSchedule'][0])
     {
@@ -1249,6 +1266,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function cancelWhatsAppBroadcastScheduleAsync($broadcast_id, string $contentType = self::contentTypes['cancelWhatsAppBroadcastSchedule'][0])
     {
@@ -1270,6 +1288,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function cancelWhatsAppBroadcastScheduleAsyncWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['cancelWhatsAppBroadcastSchedule'][0])
     {
@@ -1320,6 +1339,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function cancelWhatsAppBroadcastScheduleRequest($broadcast_id, string $contentType = self::contentTypes['cancelWhatsAppBroadcastSchedule'][0])
     {
@@ -1419,6 +1439,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\CreateWhatsAppBroadcast200Response|\Late\Model\InlineObject
+     * @deprecated
      */
     public function createWhatsAppBroadcast($create_whats_app_broadcast_request, string $contentType = self::contentTypes['createWhatsAppBroadcast'][0])
     {
@@ -1437,6 +1458,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\CreateWhatsAppBroadcast200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createWhatsAppBroadcastWithHttpInfo($create_whats_app_broadcast_request, string $contentType = self::contentTypes['createWhatsAppBroadcast'][0])
     {
@@ -1535,6 +1557,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createWhatsAppBroadcastAsync($create_whats_app_broadcast_request, string $contentType = self::contentTypes['createWhatsAppBroadcast'][0])
     {
@@ -1556,6 +1579,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createWhatsAppBroadcastAsyncWithHttpInfo($create_whats_app_broadcast_request, string $contentType = self::contentTypes['createWhatsAppBroadcast'][0])
     {
@@ -1606,6 +1630,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createWhatsAppBroadcastRequest($create_whats_app_broadcast_request, string $contentType = self::contentTypes['createWhatsAppBroadcast'][0])
     {
@@ -1704,6 +1729,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\CreateWhatsAppContact200Response|\Late\Model\InlineObject
+     * @deprecated
      */
     public function createWhatsAppContact($create_whats_app_contact_request, string $contentType = self::contentTypes['createWhatsAppContact'][0])
     {
@@ -1722,6 +1748,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\CreateWhatsAppContact200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createWhatsAppContactWithHttpInfo($create_whats_app_contact_request, string $contentType = self::contentTypes['createWhatsAppContact'][0])
     {
@@ -1820,6 +1847,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createWhatsAppContactAsync($create_whats_app_contact_request, string $contentType = self::contentTypes['createWhatsAppContact'][0])
     {
@@ -1841,6 +1869,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createWhatsAppContactAsyncWithHttpInfo($create_whats_app_contact_request, string $contentType = self::contentTypes['createWhatsAppContact'][0])
     {
@@ -1891,6 +1920,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createWhatsAppContactRequest($create_whats_app_contact_request, string $contentType = self::contentTypes['createWhatsAppContact'][0])
     {
@@ -2274,6 +2304,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @deprecated
      */
     public function deleteWhatsAppBroadcast($broadcast_id, string $contentType = self::contentTypes['deleteWhatsAppBroadcast'][0])
     {
@@ -2292,6 +2323,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function deleteWhatsAppBroadcastWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['deleteWhatsAppBroadcast'][0])
     {
@@ -2404,6 +2436,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteWhatsAppBroadcastAsync($broadcast_id, string $contentType = self::contentTypes['deleteWhatsAppBroadcast'][0])
     {
@@ -2425,6 +2458,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteWhatsAppBroadcastAsyncWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['deleteWhatsAppBroadcast'][0])
     {
@@ -2475,6 +2509,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function deleteWhatsAppBroadcastRequest($broadcast_id, string $contentType = self::contentTypes['deleteWhatsAppBroadcast'][0])
     {
@@ -2574,6 +2609,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @deprecated
      */
     public function deleteWhatsAppContact($contact_id, string $contentType = self::contentTypes['deleteWhatsAppContact'][0])
     {
@@ -2592,6 +2628,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function deleteWhatsAppContactWithHttpInfo($contact_id, string $contentType = self::contentTypes['deleteWhatsAppContact'][0])
     {
@@ -2704,6 +2741,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteWhatsAppContactAsync($contact_id, string $contentType = self::contentTypes['deleteWhatsAppContact'][0])
     {
@@ -2725,6 +2763,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteWhatsAppContactAsyncWithHttpInfo($contact_id, string $contentType = self::contentTypes['deleteWhatsAppContact'][0])
     {
@@ -2775,6 +2814,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function deleteWhatsAppContactRequest($contact_id, string $contentType = self::contentTypes['deleteWhatsAppContact'][0])
     {
@@ -2874,6 +2914,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\RenameWhatsAppGroup200Response|\Late\Model\InlineObject
+     * @deprecated
      */
     public function deleteWhatsAppGroup($delete_whats_app_group_request, string $contentType = self::contentTypes['deleteWhatsAppGroup'][0])
     {
@@ -2892,6 +2933,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\RenameWhatsAppGroup200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function deleteWhatsAppGroupWithHttpInfo($delete_whats_app_group_request, string $contentType = self::contentTypes['deleteWhatsAppGroup'][0])
     {
@@ -2990,6 +3032,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteWhatsAppGroupAsync($delete_whats_app_group_request, string $contentType = self::contentTypes['deleteWhatsAppGroup'][0])
     {
@@ -3011,6 +3054,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function deleteWhatsAppGroupAsyncWithHttpInfo($delete_whats_app_group_request, string $contentType = self::contentTypes['deleteWhatsAppGroup'][0])
     {
@@ -3061,6 +3105,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function deleteWhatsAppGroupRequest($delete_whats_app_group_request, string $contentType = self::contentTypes['deleteWhatsAppGroup'][0])
     {
@@ -3480,6 +3525,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetWhatsAppBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @deprecated
      */
     public function getWhatsAppBroadcast($broadcast_id, string $contentType = self::contentTypes['getWhatsAppBroadcast'][0])
     {
@@ -3498,6 +3544,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetWhatsAppBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getWhatsAppBroadcastWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['getWhatsAppBroadcast'][0])
     {
@@ -3610,6 +3657,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppBroadcastAsync($broadcast_id, string $contentType = self::contentTypes['getWhatsAppBroadcast'][0])
     {
@@ -3631,6 +3679,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppBroadcastAsyncWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['getWhatsAppBroadcast'][0])
     {
@@ -3681,6 +3730,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getWhatsAppBroadcastRequest($broadcast_id, string $contentType = self::contentTypes['getWhatsAppBroadcast'][0])
     {
@@ -3783,6 +3833,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetWhatsAppBroadcastRecipients200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @deprecated
      */
     public function getWhatsAppBroadcastRecipients($broadcast_id, $status = null, $limit = 100, $skip = 0, string $contentType = self::contentTypes['getWhatsAppBroadcastRecipients'][0])
     {
@@ -3804,6 +3855,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetWhatsAppBroadcastRecipients200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getWhatsAppBroadcastRecipientsWithHttpInfo($broadcast_id, $status = null, $limit = 100, $skip = 0, string $contentType = self::contentTypes['getWhatsAppBroadcastRecipients'][0])
     {
@@ -3919,6 +3971,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppBroadcastRecipientsAsync($broadcast_id, $status = null, $limit = 100, $skip = 0, string $contentType = self::contentTypes['getWhatsAppBroadcastRecipients'][0])
     {
@@ -3943,6 +3996,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppBroadcastRecipientsAsyncWithHttpInfo($broadcast_id, $status = null, $limit = 100, $skip = 0, string $contentType = self::contentTypes['getWhatsAppBroadcastRecipients'][0])
     {
@@ -3996,6 +4050,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getWhatsAppBroadcastRecipientsRequest($broadcast_id, $status = null, $limit = 100, $skip = 0, string $contentType = self::contentTypes['getWhatsAppBroadcastRecipients'][0])
     {
@@ -4128,6 +4183,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetWhatsAppBroadcasts200Response|\Late\Model\InlineObject
+     * @deprecated
      */
     public function getWhatsAppBroadcasts($account_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['getWhatsAppBroadcasts'][0])
     {
@@ -4149,6 +4205,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetWhatsAppBroadcasts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getWhatsAppBroadcastsWithHttpInfo($account_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['getWhatsAppBroadcasts'][0])
     {
@@ -4250,6 +4307,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppBroadcastsAsync($account_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['getWhatsAppBroadcasts'][0])
     {
@@ -4274,6 +4332,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppBroadcastsAsyncWithHttpInfo($account_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['getWhatsAppBroadcasts'][0])
     {
@@ -4327,6 +4386,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getWhatsAppBroadcastsRequest($account_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['getWhatsAppBroadcasts'][0])
     {
@@ -4744,6 +4804,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetWhatsAppContact200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @deprecated
      */
     public function getWhatsAppContact($contact_id, string $contentType = self::contentTypes['getWhatsAppContact'][0])
     {
@@ -4762,6 +4823,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetWhatsAppContact200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getWhatsAppContactWithHttpInfo($contact_id, string $contentType = self::contentTypes['getWhatsAppContact'][0])
     {
@@ -4874,6 +4936,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppContactAsync($contact_id, string $contentType = self::contentTypes['getWhatsAppContact'][0])
     {
@@ -4895,6 +4958,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppContactAsyncWithHttpInfo($contact_id, string $contentType = self::contentTypes['getWhatsAppContact'][0])
     {
@@ -4945,6 +5009,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getWhatsAppContactRequest($contact_id, string $contentType = self::contentTypes['getWhatsAppContact'][0])
     {
@@ -5050,6 +5115,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetWhatsAppContacts200Response|\Late\Model\InlineObject
+     * @deprecated
      */
     public function getWhatsAppContacts($account_id, $search = null, $tag = null, $group = null, $opted_in = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['getWhatsAppContacts'][0])
     {
@@ -5074,6 +5140,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetWhatsAppContacts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getWhatsAppContactsWithHttpInfo($account_id, $search = null, $tag = null, $group = null, $opted_in = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['getWhatsAppContacts'][0])
     {
@@ -5178,6 +5245,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppContactsAsync($account_id, $search = null, $tag = null, $group = null, $opted_in = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['getWhatsAppContacts'][0])
     {
@@ -5205,6 +5273,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppContactsAsyncWithHttpInfo($account_id, $search = null, $tag = null, $group = null, $opted_in = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['getWhatsAppContacts'][0])
     {
@@ -5261,6 +5330,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getWhatsAppContactsRequest($account_id, $search = null, $tag = null, $group = null, $opted_in = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['getWhatsAppContacts'][0])
     {
@@ -5708,6 +5778,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetWhatsAppGroups200Response|\Late\Model\InlineObject
+     * @deprecated
      */
     public function getWhatsAppGroups($account_id, string $contentType = self::contentTypes['getWhatsAppGroups'][0])
     {
@@ -5726,6 +5797,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetWhatsAppGroups200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getWhatsAppGroupsWithHttpInfo($account_id, string $contentType = self::contentTypes['getWhatsAppGroups'][0])
     {
@@ -5824,6 +5896,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppGroupsAsync($account_id, string $contentType = self::contentTypes['getWhatsAppGroups'][0])
     {
@@ -5845,6 +5918,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWhatsAppGroupsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getWhatsAppGroups'][0])
     {
@@ -5895,6 +5969,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getWhatsAppGroupsRequest($account_id, string $contentType = self::contentTypes['getWhatsAppGroups'][0])
     {
@@ -6603,6 +6678,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\ImportWhatsAppContacts200Response|\Late\Model\InlineObject
+     * @deprecated
      */
     public function importWhatsAppContacts($import_whats_app_contacts_request, string $contentType = self::contentTypes['importWhatsAppContacts'][0])
     {
@@ -6621,6 +6697,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ImportWhatsAppContacts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function importWhatsAppContactsWithHttpInfo($import_whats_app_contacts_request, string $contentType = self::contentTypes['importWhatsAppContacts'][0])
     {
@@ -6719,6 +6796,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function importWhatsAppContactsAsync($import_whats_app_contacts_request, string $contentType = self::contentTypes['importWhatsAppContacts'][0])
     {
@@ -6740,6 +6818,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function importWhatsAppContactsAsyncWithHttpInfo($import_whats_app_contacts_request, string $contentType = self::contentTypes['importWhatsAppContacts'][0])
     {
@@ -6790,6 +6869,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function importWhatsAppContactsRequest($import_whats_app_contacts_request, string $contentType = self::contentTypes['importWhatsAppContacts'][0])
     {
@@ -6889,6 +6969,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\RemoveWhatsAppBroadcastRecipients200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @deprecated
      */
     public function removeWhatsAppBroadcastRecipients($broadcast_id, $remove_whats_app_broadcast_recipients_request, string $contentType = self::contentTypes['removeWhatsAppBroadcastRecipients'][0])
     {
@@ -6908,6 +6989,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\RemoveWhatsAppBroadcastRecipients200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function removeWhatsAppBroadcastRecipientsWithHttpInfo($broadcast_id, $remove_whats_app_broadcast_recipients_request, string $contentType = self::contentTypes['removeWhatsAppBroadcastRecipients'][0])
     {
@@ -7021,6 +7103,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function removeWhatsAppBroadcastRecipientsAsync($broadcast_id, $remove_whats_app_broadcast_recipients_request, string $contentType = self::contentTypes['removeWhatsAppBroadcastRecipients'][0])
     {
@@ -7043,6 +7126,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function removeWhatsAppBroadcastRecipientsAsyncWithHttpInfo($broadcast_id, $remove_whats_app_broadcast_recipients_request, string $contentType = self::contentTypes['removeWhatsAppBroadcastRecipients'][0])
     {
@@ -7094,6 +7178,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function removeWhatsAppBroadcastRecipientsRequest($broadcast_id, $remove_whats_app_broadcast_recipients_request, string $contentType = self::contentTypes['removeWhatsAppBroadcastRecipients'][0])
     {
@@ -7207,6 +7292,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\RenameWhatsAppGroup200Response|\Late\Model\InlineObject
+     * @deprecated
      */
     public function renameWhatsAppGroup($rename_whats_app_group_request, string $contentType = self::contentTypes['renameWhatsAppGroup'][0])
     {
@@ -7225,6 +7311,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\RenameWhatsAppGroup200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function renameWhatsAppGroupWithHttpInfo($rename_whats_app_group_request, string $contentType = self::contentTypes['renameWhatsAppGroup'][0])
     {
@@ -7323,6 +7410,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function renameWhatsAppGroupAsync($rename_whats_app_group_request, string $contentType = self::contentTypes['renameWhatsAppGroup'][0])
     {
@@ -7344,6 +7432,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function renameWhatsAppGroupAsyncWithHttpInfo($rename_whats_app_group_request, string $contentType = self::contentTypes['renameWhatsAppGroup'][0])
     {
@@ -7394,6 +7483,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function renameWhatsAppGroupRequest($rename_whats_app_group_request, string $contentType = self::contentTypes['renameWhatsAppGroup'][0])
     {
@@ -7493,6 +7583,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\ScheduleWhatsAppBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @deprecated
      */
     public function scheduleWhatsAppBroadcast($broadcast_id, $schedule_whats_app_broadcast_request, string $contentType = self::contentTypes['scheduleWhatsAppBroadcast'][0])
     {
@@ -7512,6 +7603,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ScheduleWhatsAppBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function scheduleWhatsAppBroadcastWithHttpInfo($broadcast_id, $schedule_whats_app_broadcast_request, string $contentType = self::contentTypes['scheduleWhatsAppBroadcast'][0])
     {
@@ -7625,6 +7717,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function scheduleWhatsAppBroadcastAsync($broadcast_id, $schedule_whats_app_broadcast_request, string $contentType = self::contentTypes['scheduleWhatsAppBroadcast'][0])
     {
@@ -7647,6 +7740,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function scheduleWhatsAppBroadcastAsyncWithHttpInfo($broadcast_id, $schedule_whats_app_broadcast_request, string $contentType = self::contentTypes['scheduleWhatsAppBroadcast'][0])
     {
@@ -7698,6 +7792,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function scheduleWhatsAppBroadcastRequest($broadcast_id, $schedule_whats_app_broadcast_request, string $contentType = self::contentTypes['scheduleWhatsAppBroadcast'][0])
     {
@@ -7811,6 +7906,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\SendWhatsAppBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @deprecated
      */
     public function sendWhatsAppBroadcast($broadcast_id, string $contentType = self::contentTypes['sendWhatsAppBroadcast'][0])
     {
@@ -7829,6 +7925,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\SendWhatsAppBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function sendWhatsAppBroadcastWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['sendWhatsAppBroadcast'][0])
     {
@@ -7941,6 +8038,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function sendWhatsAppBroadcastAsync($broadcast_id, string $contentType = self::contentTypes['sendWhatsAppBroadcast'][0])
     {
@@ -7962,6 +8060,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function sendWhatsAppBroadcastAsyncWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['sendWhatsAppBroadcast'][0])
     {
@@ -8012,6 +8111,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function sendWhatsAppBroadcastRequest($broadcast_id, string $contentType = self::contentTypes['sendWhatsAppBroadcast'][0])
     {
@@ -8111,6 +8211,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\SendWhatsAppBulk200Response|\Late\Model\InlineObject
+     * @deprecated
      */
     public function sendWhatsAppBulk($send_whats_app_bulk_request, string $contentType = self::contentTypes['sendWhatsAppBulk'][0])
     {
@@ -8129,6 +8230,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\SendWhatsAppBulk200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function sendWhatsAppBulkWithHttpInfo($send_whats_app_bulk_request, string $contentType = self::contentTypes['sendWhatsAppBulk'][0])
     {
@@ -8227,6 +8329,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function sendWhatsAppBulkAsync($send_whats_app_bulk_request, string $contentType = self::contentTypes['sendWhatsAppBulk'][0])
     {
@@ -8248,6 +8351,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function sendWhatsAppBulkAsyncWithHttpInfo($send_whats_app_bulk_request, string $contentType = self::contentTypes['sendWhatsAppBulk'][0])
     {
@@ -8298,6 +8402,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function sendWhatsAppBulkRequest($send_whats_app_bulk_request, string $contentType = self::contentTypes['sendWhatsAppBulk'][0])
     {
@@ -8682,6 +8787,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\UpdateWhatsAppContact200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @deprecated
      */
     public function updateWhatsAppContact($contact_id, $update_whats_app_contact_request, string $contentType = self::contentTypes['updateWhatsAppContact'][0])
     {
@@ -8701,6 +8807,7 @@ class WhatsAppApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\UpdateWhatsAppContact200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function updateWhatsAppContactWithHttpInfo($contact_id, $update_whats_app_contact_request, string $contentType = self::contentTypes['updateWhatsAppContact'][0])
     {
@@ -8814,6 +8921,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function updateWhatsAppContactAsync($contact_id, $update_whats_app_contact_request, string $contentType = self::contentTypes['updateWhatsAppContact'][0])
     {
@@ -8836,6 +8944,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function updateWhatsAppContactAsyncWithHttpInfo($contact_id, $update_whats_app_contact_request, string $contentType = self::contentTypes['updateWhatsAppContact'][0])
     {
@@ -8887,6 +8996,7 @@ class WhatsAppApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function updateWhatsAppContactRequest($contact_id, $update_whats_app_contact_request, string $contentType = self::contentTypes['updateWhatsAppContact'][0])
     {
