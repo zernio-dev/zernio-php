@@ -371,7 +371,7 @@ void (empty response body)
 ## `listBroadcasts()`
 
 ```php
-listBroadcasts($profile_id, $status, $platform, $limit, $skip)
+listBroadcasts($profile_id, $status, $platform, $limit, $skip): \Late\Model\ListBroadcasts200Response
 ```
 
 List broadcasts
@@ -400,7 +400,8 @@ $limit = 50; // int
 $skip = 0; // int
 
 try {
-    $apiInstance->listBroadcasts($profile_id, $status, $platform, $limit, $skip);
+    $result = $apiInstance->listBroadcasts($profile_id, $status, $platform, $limit, $skip);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastsApi->listBroadcasts: ', $e->getMessage(), PHP_EOL;
 }
@@ -418,7 +419,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\ListBroadcasts200Response**](../Model/ListBroadcasts200Response.md)
 
 ### Authorization
 
@@ -495,7 +496,7 @@ void (empty response body)
 ## `sendBroadcast()`
 
 ```php
-sendBroadcast($broadcast_id)
+sendBroadcast($broadcast_id): \Late\Model\SendBroadcast200Response
 ```
 
 Trigger immediate send
@@ -520,7 +521,8 @@ $apiInstance = new Late\Api\BroadcastsApi(
 $broadcast_id = 'broadcast_id_example'; // string
 
 try {
-    $apiInstance->sendBroadcast($broadcast_id);
+    $result = $apiInstance->sendBroadcast($broadcast_id);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastsApi->sendBroadcast: ', $e->getMessage(), PHP_EOL;
 }
@@ -534,7 +536,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\SendBroadcast200Response**](../Model/SendBroadcast200Response.md)
 
 ### Authorization
 

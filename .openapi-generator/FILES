@@ -354,6 +354,8 @@ docs/Model/ListAccountGroups200Response.md
 docs/Model/ListAccountGroups200ResponseGroupsInner.md
 docs/Model/ListAccounts200Response.md
 docs/Model/ListApiKeys200Response.md
+docs/Model/ListBroadcasts200Response.md
+docs/Model/ListBroadcasts200ResponseBroadcastsInner.md
 docs/Model/ListCommentAutomations200Response.md
 docs/Model/ListCommentAutomations200ResponseAutomationsInner.md
 docs/Model/ListCommentAutomations200ResponseAutomationsInnerStats.md
@@ -389,6 +391,8 @@ docs/Model/ListPostsLogs200ResponsePagination.md
 docs/Model/ListQueueSlots200Response.md
 docs/Model/ListQueueSlots200ResponseOneOf.md
 docs/Model/ListQueueSlots200ResponseOneOf1.md
+docs/Model/ListSequences200Response.md
+docs/Model/ListSequences200ResponseSequencesInner.md
 docs/Model/ListSnapchatProfiles200Response.md
 docs/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.md
 docs/Model/ListUsers200Response.md
@@ -479,6 +483,7 @@ docs/Model/SelectSnapchatProfile200Response.md
 docs/Model/SelectSnapchatProfile200ResponseAccount.md
 docs/Model/SelectSnapchatProfileRequest.md
 docs/Model/SelectSnapchatProfileRequestSelectedPublicProfile.md
+docs/Model/SendBroadcast200Response.md
 docs/Model/SendInboxMessage200Response.md
 docs/Model/SendInboxMessage200ResponseData.md
 docs/Model/SendInboxMessage400Response.md
@@ -989,6 +994,8 @@ lib/Model/ListAccountGroups200Response.php
 lib/Model/ListAccountGroups200ResponseGroupsInner.php
 lib/Model/ListAccounts200Response.php
 lib/Model/ListApiKeys200Response.php
+lib/Model/ListBroadcasts200Response.php
+lib/Model/ListBroadcasts200ResponseBroadcastsInner.php
 lib/Model/ListCommentAutomations200Response.php
 lib/Model/ListCommentAutomations200ResponseAutomationsInner.php
 lib/Model/ListCommentAutomations200ResponseAutomationsInnerStats.php
@@ -1024,6 +1031,8 @@ lib/Model/ListPostsLogs200ResponsePagination.php
 lib/Model/ListQueueSlots200Response.php
 lib/Model/ListQueueSlots200ResponseOneOf.php
 lib/Model/ListQueueSlots200ResponseOneOf1.php
+lib/Model/ListSequences200Response.php
+lib/Model/ListSequences200ResponseSequencesInner.php
 lib/Model/ListSnapchatProfiles200Response.php
 lib/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.php
 lib/Model/ListUsers200Response.php
@@ -1115,6 +1124,7 @@ lib/Model/SelectSnapchatProfile200Response.php
 lib/Model/SelectSnapchatProfile200ResponseAccount.php
 lib/Model/SelectSnapchatProfileRequest.php
 lib/Model/SelectSnapchatProfileRequestSelectedPublicProfile.php
+lib/Model/SendBroadcast200Response.php
 lib/Model/SendInboxMessage200Response.php
 lib/Model/SendInboxMessage200ResponseData.php
 lib/Model/SendInboxMessage400Response.php
@@ -1271,3 +1281,8 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListBroadcasts200ResponseBroadcastsInnerTest.php
+test/Model/ListBroadcasts200ResponseTest.php
+test/Model/ListSequences200ResponseSequencesInnerTest.php
+test/Model/ListSequences200ResponseTest.php
+test/Model/SendBroadcast200ResponseTest.php

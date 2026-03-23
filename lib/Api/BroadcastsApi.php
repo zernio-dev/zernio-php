@@ -1650,11 +1650,12 @@ class BroadcastsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\ListBroadcasts200Response|\Late\Model\InlineObject
      */
     public function listBroadcasts($profile_id = null, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
     {
-        $this->listBroadcastsWithHttpInfo($profile_id, $status, $platform, $limit, $skip, $contentType);
+        list($response) = $this->listBroadcastsWithHttpInfo($profile_id, $status, $platform, $limit, $skip, $contentType);
+        return $response;
     }
 
     /**
@@ -1671,7 +1672,7 @@ class BroadcastsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\ListBroadcasts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listBroadcastsWithHttpInfo($profile_id = null, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
     {
@@ -1700,9 +1701,51 @@ class BroadcastsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\ListBroadcasts200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\ListBroadcasts200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\ListBroadcasts200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1760,14 +1803,27 @@ class BroadcastsApi
      */
     public function listBroadcastsAsyncWithHttpInfo($profile_id = null, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\ListBroadcasts200Response';
         $request = $this->listBroadcastsRequest($profile_id, $status, $platform, $limit, $skip, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -2188,11 +2244,12 @@ class BroadcastsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\SendBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
      */
     public function sendBroadcast($broadcast_id, string $contentType = self::contentTypes['sendBroadcast'][0])
     {
-        $this->sendBroadcastWithHttpInfo($broadcast_id, $contentType);
+        list($response) = $this->sendBroadcastWithHttpInfo($broadcast_id, $contentType);
+        return $response;
     }
 
     /**
@@ -2205,7 +2262,7 @@ class BroadcastsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\SendBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendBroadcastWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['sendBroadcast'][0])
     {
@@ -2234,9 +2291,57 @@ class BroadcastsApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\SendBroadcast200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\SendBroadcast200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\SendBroadcast200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2294,14 +2399,27 @@ class BroadcastsApi
      */
     public function sendBroadcastAsyncWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['sendBroadcast'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\SendBroadcast200Response';
         $request = $this->sendBroadcastRequest($broadcast_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();

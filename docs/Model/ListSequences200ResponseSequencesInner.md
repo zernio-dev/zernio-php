@@ -1,0 +1,23 @@
+# # ListSequences200ResponseSequencesInner
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **string** |  | [optional]
+**name** | **string** |  | [optional]
+**description** | **string** |  | [optional]
+**platform** | **string** |  | [optional]
+**account_id** | **string** |  | [optional]
+**account_name** | **string** | Display name of the sending account | [optional]
+**message_preview** | **string** | First step template name or message text snippet | [optional]
+**status** | **string** |  | [optional]
+**steps_count** | **int** |  | [optional]
+**exit_on_reply** | **bool** |  | [optional]
+**exit_on_unsubscribe** | **bool** |  | [optional]
+**total_enrolled** | **int** |  | [optional]
+**total_completed** | **int** |  | [optional]
+**total_exited** | **int** |  | [optional]
+**created_at** | **\DateTime** |  | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

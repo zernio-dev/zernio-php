@@ -371,7 +371,7 @@ void (empty response body)
 ## `listSequences()`
 
 ```php
-listSequences($profile_id, $status, $limit, $skip)
+listSequences($profile_id, $status, $limit, $skip): \Late\Model\ListSequences200Response
 ```
 
 List sequences
@@ -399,7 +399,8 @@ $limit = 50; // int
 $skip = 0; // int
 
 try {
-    $apiInstance->listSequences($profile_id, $status, $limit, $skip);
+    $result = $apiInstance->listSequences($profile_id, $status, $limit, $skip);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SequencesApi->listSequences: ', $e->getMessage(), PHP_EOL;
 }
@@ -416,7 +417,7 @@ try {
 
 ### Return type
 
-void (empty response body)
+[**\Late\Model\ListSequences200Response**](../Model/ListSequences200Response.md)
 
 ### Authorization
 

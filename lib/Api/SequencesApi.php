@@ -1649,11 +1649,12 @@ class SequencesApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \Late\Model\ListSequences200Response|\Late\Model\InlineObject
      */
     public function listSequences($profile_id = null, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
     {
-        $this->listSequencesWithHttpInfo($profile_id, $status, $limit, $skip, $contentType);
+        list($response) = $this->listSequencesWithHttpInfo($profile_id, $status, $limit, $skip, $contentType);
+        return $response;
     }
 
     /**
@@ -1669,7 +1670,7 @@ class SequencesApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\ListSequences200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSequencesWithHttpInfo($profile_id = null, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
     {
@@ -1698,9 +1699,51 @@ class SequencesApi
             $statusCode = $response->getStatusCode();
 
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\ListSequences200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\ListSequences200Response',
+                $request,
+                $response,
+            );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\ListSequences200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1756,14 +1799,27 @@ class SequencesApi
      */
     public function listSequencesAsyncWithHttpInfo($profile_id = null, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
     {
-        $returnType = '';
+        $returnType = '\Late\Model\ListSequences200Response';
         $request = $this->listSequencesRequest($profile_id, $status, $limit, $skip, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
