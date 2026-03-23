@@ -1641,7 +1641,7 @@ class BroadcastsApi
      *
      * List broadcasts
      *
-     * @param  string $profile_id profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $status status (optional)
      * @param  string|null $platform platform (optional)
      * @param  int|null $limit limit (optional, default to 50)
@@ -1652,7 +1652,7 @@ class BroadcastsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function listBroadcasts($profile_id, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
+    public function listBroadcasts($profile_id = null, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
     {
         $this->listBroadcastsWithHttpInfo($profile_id, $status, $platform, $limit, $skip, $contentType);
     }
@@ -1662,7 +1662,7 @@ class BroadcastsApi
      *
      * List broadcasts
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  int|null $limit (optional, default to 50)
@@ -1673,7 +1673,7 @@ class BroadcastsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listBroadcastsWithHttpInfo($profile_id, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
+    public function listBroadcastsWithHttpInfo($profile_id = null, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
     {
         $request = $this->listBroadcastsRequest($profile_id, $status, $platform, $limit, $skip, $contentType);
 
@@ -1723,7 +1723,7 @@ class BroadcastsApi
      *
      * List broadcasts
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  int|null $limit (optional, default to 50)
@@ -1733,7 +1733,7 @@ class BroadcastsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listBroadcastsAsync($profile_id, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
+    public function listBroadcastsAsync($profile_id = null, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
     {
         return $this->listBroadcastsAsyncWithHttpInfo($profile_id, $status, $platform, $limit, $skip, $contentType)
             ->then(
@@ -1748,7 +1748,7 @@ class BroadcastsApi
      *
      * List broadcasts
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  int|null $limit (optional, default to 50)
@@ -1758,7 +1758,7 @@ class BroadcastsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listBroadcastsAsyncWithHttpInfo($profile_id, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
+    public function listBroadcastsAsyncWithHttpInfo($profile_id = null, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
     {
         $returnType = '';
         $request = $this->listBroadcastsRequest($profile_id, $status, $platform, $limit, $skip, $contentType);
@@ -1789,7 +1789,7 @@ class BroadcastsApi
     /**
      * Create request for operation 'listBroadcasts'
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  int|null $limit (optional, default to 50)
@@ -1799,15 +1799,9 @@ class BroadcastsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listBroadcastsRequest($profile_id, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
+    public function listBroadcastsRequest($profile_id = null, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
     {
 
-        // verify the required parameter 'profile_id' is set
-        if ($profile_id === null || (is_array($profile_id) && count($profile_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $profile_id when calling listBroadcasts'
-            );
-        }
 
 
 
@@ -1828,7 +1822,7 @@ class BroadcastsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

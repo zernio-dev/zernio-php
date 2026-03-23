@@ -1321,7 +1321,7 @@ class ContactsApi
      *
      * List contacts
      *
-     * @param  string $profile_id profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $search search (optional)
      * @param  string|null $tag tag (optional)
      * @param  string|null $platform platform (optional)
@@ -1334,7 +1334,7 @@ class ContactsApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function listContacts($profile_id, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
+    public function listContacts($profile_id = null, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
     {
         $this->listContactsWithHttpInfo($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip, $contentType);
     }
@@ -1344,7 +1344,7 @@ class ContactsApi
      *
      * List contacts
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $search (optional)
      * @param  string|null $tag (optional)
      * @param  string|null $platform (optional)
@@ -1357,7 +1357,7 @@ class ContactsApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listContactsWithHttpInfo($profile_id, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
+    public function listContactsWithHttpInfo($profile_id = null, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
     {
         $request = $this->listContactsRequest($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip, $contentType);
 
@@ -1407,7 +1407,7 @@ class ContactsApi
      *
      * List contacts
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $search (optional)
      * @param  string|null $tag (optional)
      * @param  string|null $platform (optional)
@@ -1419,7 +1419,7 @@ class ContactsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listContactsAsync($profile_id, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
+    public function listContactsAsync($profile_id = null, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
     {
         return $this->listContactsAsyncWithHttpInfo($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip, $contentType)
             ->then(
@@ -1434,7 +1434,7 @@ class ContactsApi
      *
      * List contacts
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $search (optional)
      * @param  string|null $tag (optional)
      * @param  string|null $platform (optional)
@@ -1446,7 +1446,7 @@ class ContactsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listContactsAsyncWithHttpInfo($profile_id, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
+    public function listContactsAsyncWithHttpInfo($profile_id = null, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
     {
         $returnType = '';
         $request = $this->listContactsRequest($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip, $contentType);
@@ -1477,7 +1477,7 @@ class ContactsApi
     /**
      * Create request for operation 'listContacts'
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $search (optional)
      * @param  string|null $tag (optional)
      * @param  string|null $platform (optional)
@@ -1489,15 +1489,9 @@ class ContactsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listContactsRequest($profile_id, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
+    public function listContactsRequest($profile_id = null, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
     {
 
-        // verify the required parameter 'profile_id' is set
-        if ($profile_id === null || (is_array($profile_id) && count($profile_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $profile_id when calling listContacts'
-            );
-        }
 
 
 
@@ -1523,7 +1517,7 @@ class ContactsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(

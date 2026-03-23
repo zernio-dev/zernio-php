@@ -279,7 +279,7 @@ $apiInstance = new Late\Api\CommentAutomationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$profile_id = 'profile_id_example'; // string | Profile ID
+$profile_id = 'profile_id_example'; // string | Filter by profile. Omit to list across all profiles
 
 try {
     $result = $apiInstance->listCommentAutomations($profile_id);
@@ -293,7 +293,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **profile_id** | **string**| Profile ID | |
+| **profile_id** | **string**| Filter by profile. Omit to list across all profiles | [optional] |
 
 ### Return type
 

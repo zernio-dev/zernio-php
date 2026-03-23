@@ -212,7 +212,7 @@ $apiInstance = new Late\Api\CustomFieldsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$profile_id = 'profile_id_example'; // string
+$profile_id = 'profile_id_example'; // string | Filter by profile. Omit to list across all profiles
 
 try {
     $apiInstance->listCustomFields($profile_id);
@@ -225,7 +225,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **profile_id** | **string**|  | |
+| **profile_id** | **string**| Filter by profile. Omit to list across all profiles | [optional] |
 
 ### Return type
 

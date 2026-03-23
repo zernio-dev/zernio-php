@@ -393,7 +393,7 @@ $apiInstance = new Late\Api\BroadcastsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$profile_id = 'profile_id_example'; // string
+$profile_id = 'profile_id_example'; // string | Filter by profile. Omit to list across all profiles
 $status = 'status_example'; // string
 $platform = 'platform_example'; // string
 $limit = 50; // int
@@ -410,7 +410,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **profile_id** | **string**|  | |
+| **profile_id** | **string**| Filter by profile. Omit to list across all profiles | [optional] |
 | **status** | **string**|  | [optional] |
 | **platform** | **string**|  | [optional] |
 | **limit** | **int**|  | [optional] [default to 50] |

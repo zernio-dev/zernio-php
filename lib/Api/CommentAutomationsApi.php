@@ -1134,14 +1134,14 @@ class CommentAutomationsApi
      *
      * List comment-to-DM automations
      *
-     * @param  string $profile_id Profile ID (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommentAutomations'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\ListCommentAutomations200Response|\Late\Model\InlineObject
      */
-    public function listCommentAutomations($profile_id, string $contentType = self::contentTypes['listCommentAutomations'][0])
+    public function listCommentAutomations($profile_id = null, string $contentType = self::contentTypes['listCommentAutomations'][0])
     {
         list($response) = $this->listCommentAutomationsWithHttpInfo($profile_id, $contentType);
         return $response;
@@ -1152,14 +1152,14 @@ class CommentAutomationsApi
      *
      * List comment-to-DM automations
      *
-     * @param  string $profile_id Profile ID (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommentAutomations'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ListCommentAutomations200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCommentAutomationsWithHttpInfo($profile_id, string $contentType = self::contentTypes['listCommentAutomations'][0])
+    public function listCommentAutomationsWithHttpInfo($profile_id = null, string $contentType = self::contentTypes['listCommentAutomations'][0])
     {
         $request = $this->listCommentAutomationsRequest($profile_id, $contentType);
 
@@ -1251,13 +1251,13 @@ class CommentAutomationsApi
      *
      * List comment-to-DM automations
      *
-     * @param  string $profile_id Profile ID (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommentAutomations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCommentAutomationsAsync($profile_id, string $contentType = self::contentTypes['listCommentAutomations'][0])
+    public function listCommentAutomationsAsync($profile_id = null, string $contentType = self::contentTypes['listCommentAutomations'][0])
     {
         return $this->listCommentAutomationsAsyncWithHttpInfo($profile_id, $contentType)
             ->then(
@@ -1272,13 +1272,13 @@ class CommentAutomationsApi
      *
      * List comment-to-DM automations
      *
-     * @param  string $profile_id Profile ID (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommentAutomations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCommentAutomationsAsyncWithHttpInfo($profile_id, string $contentType = self::contentTypes['listCommentAutomations'][0])
+    public function listCommentAutomationsAsyncWithHttpInfo($profile_id = null, string $contentType = self::contentTypes['listCommentAutomations'][0])
     {
         $returnType = '\Late\Model\ListCommentAutomations200Response';
         $request = $this->listCommentAutomationsRequest($profile_id, $contentType);
@@ -1322,21 +1322,15 @@ class CommentAutomationsApi
     /**
      * Create request for operation 'listCommentAutomations'
      *
-     * @param  string $profile_id Profile ID (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommentAutomations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listCommentAutomationsRequest($profile_id, string $contentType = self::contentTypes['listCommentAutomations'][0])
+    public function listCommentAutomationsRequest($profile_id = null, string $contentType = self::contentTypes['listCommentAutomations'][0])
     {
 
-        // verify the required parameter 'profile_id' is set
-        if ($profile_id === null || (is_array($profile_id) && count($profile_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $profile_id when calling listCommentAutomations'
-            );
-        }
 
 
         $resourcePath = '/v1/comment-automations';
@@ -1353,7 +1347,7 @@ class CommentAutomationsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 

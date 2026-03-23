@@ -871,14 +871,14 @@ class CustomFieldsApi
      *
      * List custom field definitions
      *
-     * @param  string $profile_id profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCustomFields'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function listCustomFields($profile_id, string $contentType = self::contentTypes['listCustomFields'][0])
+    public function listCustomFields($profile_id = null, string $contentType = self::contentTypes['listCustomFields'][0])
     {
         $this->listCustomFieldsWithHttpInfo($profile_id, $contentType);
     }
@@ -888,14 +888,14 @@ class CustomFieldsApi
      *
      * List custom field definitions
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCustomFields'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCustomFieldsWithHttpInfo($profile_id, string $contentType = self::contentTypes['listCustomFields'][0])
+    public function listCustomFieldsWithHttpInfo($profile_id = null, string $contentType = self::contentTypes['listCustomFields'][0])
     {
         $request = $this->listCustomFieldsRequest($profile_id, $contentType);
 
@@ -945,13 +945,13 @@ class CustomFieldsApi
      *
      * List custom field definitions
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCustomFields'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomFieldsAsync($profile_id, string $contentType = self::contentTypes['listCustomFields'][0])
+    public function listCustomFieldsAsync($profile_id = null, string $contentType = self::contentTypes['listCustomFields'][0])
     {
         return $this->listCustomFieldsAsyncWithHttpInfo($profile_id, $contentType)
             ->then(
@@ -966,13 +966,13 @@ class CustomFieldsApi
      *
      * List custom field definitions
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCustomFields'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCustomFieldsAsyncWithHttpInfo($profile_id, string $contentType = self::contentTypes['listCustomFields'][0])
+    public function listCustomFieldsAsyncWithHttpInfo($profile_id = null, string $contentType = self::contentTypes['listCustomFields'][0])
     {
         $returnType = '';
         $request = $this->listCustomFieldsRequest($profile_id, $contentType);
@@ -1003,21 +1003,15 @@ class CustomFieldsApi
     /**
      * Create request for operation 'listCustomFields'
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCustomFields'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listCustomFieldsRequest($profile_id, string $contentType = self::contentTypes['listCustomFields'][0])
+    public function listCustomFieldsRequest($profile_id = null, string $contentType = self::contentTypes['listCustomFields'][0])
     {
 
-        // verify the required parameter 'profile_id' is set
-        if ($profile_id === null || (is_array($profile_id) && count($profile_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $profile_id when calling listCustomFields'
-            );
-        }
 
 
         $resourcePath = '/v1/custom-fields';
@@ -1034,7 +1028,7 @@ class CustomFieldsApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 

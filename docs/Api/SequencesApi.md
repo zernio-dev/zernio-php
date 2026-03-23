@@ -393,7 +393,7 @@ $apiInstance = new Late\Api\SequencesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$profile_id = 'profile_id_example'; // string
+$profile_id = 'profile_id_example'; // string | Filter by profile. Omit to list across all profiles
 $status = 'status_example'; // string
 $limit = 50; // int
 $skip = 0; // int
@@ -409,7 +409,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **profile_id** | **string**|  | |
+| **profile_id** | **string**| Filter by profile. Omit to list across all profiles | [optional] |
 | **status** | **string**|  | [optional] |
 | **limit** | **int**|  | [optional] [default to 50] |
 | **skip** | **int**|  | [optional] [default to 0] |

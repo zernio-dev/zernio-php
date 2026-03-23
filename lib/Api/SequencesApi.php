@@ -1641,7 +1641,7 @@ class SequencesApi
      *
      * List sequences
      *
-     * @param  string $profile_id profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $status status (optional)
      * @param  int|null $limit limit (optional, default to 50)
      * @param  int|null $skip skip (optional, default to 0)
@@ -1651,7 +1651,7 @@ class SequencesApi
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function listSequences($profile_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
+    public function listSequences($profile_id = null, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
     {
         $this->listSequencesWithHttpInfo($profile_id, $status, $limit, $skip, $contentType);
     }
@@ -1661,7 +1661,7 @@ class SequencesApi
      *
      * List sequences
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $status (optional)
      * @param  int|null $limit (optional, default to 50)
      * @param  int|null $skip (optional, default to 0)
@@ -1671,7 +1671,7 @@ class SequencesApi
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listSequencesWithHttpInfo($profile_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
+    public function listSequencesWithHttpInfo($profile_id = null, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
     {
         $request = $this->listSequencesRequest($profile_id, $status, $limit, $skip, $contentType);
 
@@ -1721,7 +1721,7 @@ class SequencesApi
      *
      * List sequences
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $status (optional)
      * @param  int|null $limit (optional, default to 50)
      * @param  int|null $skip (optional, default to 0)
@@ -1730,7 +1730,7 @@ class SequencesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listSequencesAsync($profile_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
+    public function listSequencesAsync($profile_id = null, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
     {
         return $this->listSequencesAsyncWithHttpInfo($profile_id, $status, $limit, $skip, $contentType)
             ->then(
@@ -1745,7 +1745,7 @@ class SequencesApi
      *
      * List sequences
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $status (optional)
      * @param  int|null $limit (optional, default to 50)
      * @param  int|null $skip (optional, default to 0)
@@ -1754,7 +1754,7 @@ class SequencesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listSequencesAsyncWithHttpInfo($profile_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
+    public function listSequencesAsyncWithHttpInfo($profile_id = null, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
     {
         $returnType = '';
         $request = $this->listSequencesRequest($profile_id, $status, $limit, $skip, $contentType);
@@ -1785,7 +1785,7 @@ class SequencesApi
     /**
      * Create request for operation 'listSequences'
      *
-     * @param  string $profile_id (required)
+     * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string|null $status (optional)
      * @param  int|null $limit (optional, default to 50)
      * @param  int|null $skip (optional, default to 0)
@@ -1794,15 +1794,9 @@ class SequencesApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listSequencesRequest($profile_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
+    public function listSequencesRequest($profile_id = null, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
     {
 
-        // verify the required parameter 'profile_id' is set
-        if ($profile_id === null || (is_array($profile_id) && count($profile_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $profile_id when calling listSequences'
-            );
-        }
 
 
 
@@ -1822,7 +1816,7 @@ class SequencesApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
