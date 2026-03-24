@@ -552,7 +552,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets late_post_id
      *
-     * @param string|null $late_post_id Original Late post ID if scheduled via Late
+     * @param string|null $late_post_id Original Zernio post ID if scheduled via Zernio
      *
      * @return self
      */

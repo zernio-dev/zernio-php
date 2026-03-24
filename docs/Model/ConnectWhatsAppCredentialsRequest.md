@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**profile_id** | **string** | Your Late profile ID |
+**profile_id** | **string** | Your Zernio profile ID |
 **access_token** | **string** | Permanent System User access token from Meta Business Suite |
 **waba_id** | **string** | WhatsApp Business Account ID from Meta |
 **phone_number_id** | **string** | Phone Number ID from Meta WhatsApp Manager |

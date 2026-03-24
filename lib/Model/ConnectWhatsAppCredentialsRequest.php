@@ -336,7 +336,7 @@ class ConnectWhatsAppCredentialsRequest implements ModelInterface, ArrayAccess, 
     /**
      * Sets profile_id
      *
-     * @param string $profile_id Your Late profile ID
+     * @param string $profile_id Your Zernio profile ID
      *
      * @return self
      */
