@@ -801,7 +801,7 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets mentions
      *
-     * @param string[]|null $mentions mentions
+     * @param string[]|null $mentions Stored for reference only. This field does NOT automatically create @mentions when publishing. For LinkedIn @mentions, use the /v1/accounts/{accountId}/linkedin-mentions endpoint to resolve profile URLs to URNs, then embed the returned mentionFormat directly in the post content field.
      *
      * @return self
      */

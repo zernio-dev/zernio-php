@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **status** | **string** |  | [optional]
 **tags** | **string[]** | YouTube constraints: each tag max 100 chars, combined max 500 chars, duplicates removed. | [optional]
 **hashtags** | **string[]** |  | [optional]
-**mentions** | **string[]** |  | [optional]
+**mentions** | **string[]** | Stored for reference only. This field does NOT automatically create @mentions when publishing. For LinkedIn @mentions, use the /v1/accounts/{accountId}/linkedin-mentions endpoint to resolve profile URLs to URNs, then embed the returned mentionFormat directly in the post content field. | [optional]
 **visibility** | **string** |  | [optional]
 **metadata** | **array<string,mixed>** |  | [optional]
 **recycling** | [**\Late\Model\RecyclingState**](RecyclingState.md) |  | [optional]

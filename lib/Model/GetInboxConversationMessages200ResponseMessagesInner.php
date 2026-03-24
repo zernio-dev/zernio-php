@@ -65,6 +65,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'message' => 'string',
         'sender_id' => 'string',
         'sender_name' => 'string',
+        'sender_verified_type' => 'string',
         'direction' => 'string',
         'created_at' => '\DateTime',
         'attachments' => '\Late\Model\GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner[]',
@@ -88,6 +89,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'message' => null,
         'sender_id' => null,
         'sender_name' => null,
+        'sender_verified_type' => null,
         'direction' => null,
         'created_at' => 'date-time',
         'attachments' => null,
@@ -109,6 +111,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'message' => false,
         'sender_id' => false,
         'sender_name' => false,
+        'sender_verified_type' => false,
         'direction' => false,
         'created_at' => false,
         'attachments' => false,
@@ -210,6 +213,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'message' => 'message',
         'sender_id' => 'senderId',
         'sender_name' => 'senderName',
+        'sender_verified_type' => 'senderVerifiedType',
         'direction' => 'direction',
         'created_at' => 'createdAt',
         'attachments' => 'attachments',
@@ -231,6 +235,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'message' => 'setMessage',
         'sender_id' => 'setSenderId',
         'sender_name' => 'setSenderName',
+        'sender_verified_type' => 'setSenderVerifiedType',
         'direction' => 'setDirection',
         'created_at' => 'setCreatedAt',
         'attachments' => 'setAttachments',
@@ -252,6 +257,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'message' => 'getMessage',
         'sender_id' => 'getSenderId',
         'sender_name' => 'getSenderName',
+        'sender_verified_type' => 'getSenderVerifiedType',
         'direction' => 'getDirection',
         'created_at' => 'getCreatedAt',
         'attachments' => 'getAttachments',
@@ -301,8 +307,27 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         return self::$openAPIModelName;
     }
 
+    public const SENDER_VERIFIED_TYPE_BLUE = 'blue';
+    public const SENDER_VERIFIED_TYPE_GOVERNMENT = 'government';
+    public const SENDER_VERIFIED_TYPE_BUSINESS = 'business';
+    public const SENDER_VERIFIED_TYPE_NONE = 'none';
     public const DIRECTION_INCOMING = 'incoming';
     public const DIRECTION_OUTGOING = 'outgoing';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSenderVerifiedTypeAllowableValues()
+    {
+        return [
+            self::SENDER_VERIFIED_TYPE_BLUE,
+            self::SENDER_VERIFIED_TYPE_GOVERNMENT,
+            self::SENDER_VERIFIED_TYPE_BUSINESS,
+            self::SENDER_VERIFIED_TYPE_NONE,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -339,6 +364,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('sender_id', $data ?? [], null);
         $this->setIfExists('sender_name', $data ?? [], null);
+        $this->setIfExists('sender_verified_type', $data ?? [], null);
         $this->setIfExists('direction', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('attachments', $data ?? [], null);
@@ -373,6 +399,15 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getSenderVerifiedTypeAllowableValues();
+        if (!is_null($this->container['sender_verified_type']) && !in_array($this->container['sender_verified_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'sender_verified_type', must be one of '%s'",
+                $this->container['sender_verified_type'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getDirectionAllowableValues();
         if (!is_null($this->container['direction']) && !in_array($this->container['direction'], $allowedValues, true)) {
@@ -583,6 +618,43 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
             throw new \InvalidArgumentException('non-nullable sender_name cannot be null');
         }
         $this->container['sender_name'] = $sender_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets sender_verified_type
+     *
+     * @return string|null
+     */
+    public function getSenderVerifiedType()
+    {
+        return $this->container['sender_verified_type'];
+    }
+
+    /**
+     * Sets sender_verified_type
+     *
+     * @param string|null $sender_verified_type X/Twitter verified badge type. Only present for Twitter/X messages.
+     *
+     * @return self
+     */
+    public function setSenderVerifiedType($sender_verified_type)
+    {
+        if (is_null($sender_verified_type)) {
+            throw new \InvalidArgumentException('non-nullable sender_verified_type cannot be null');
+        }
+        $allowedValues = $this->getSenderVerifiedTypeAllowableValues();
+        if (!in_array($sender_verified_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'sender_verified_type', must be one of '%s'",
+                    $sender_verified_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['sender_verified_type'] = $sender_verified_type;
 
         return $this;
     }

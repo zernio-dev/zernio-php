@@ -62,7 +62,8 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
         'name' => 'string',
         'username' => 'string',
         'picture' => 'string',
-        'is_owner' => 'bool'
+        'is_owner' => 'bool',
+        'verified_type' => 'string'
     ];
 
     /**
@@ -77,7 +78,8 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
         'name' => null,
         'username' => null,
         'picture' => null,
-        'is_owner' => null
+        'is_owner' => null,
+        'verified_type' => null
     ];
 
     /**
@@ -90,7 +92,8 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
         'name' => false,
         'username' => false,
         'picture' => false,
-        'is_owner' => false
+        'is_owner' => false,
+        'verified_type' => false
     ];
 
     /**
@@ -183,7 +186,8 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
         'name' => 'name',
         'username' => 'username',
         'picture' => 'picture',
-        'is_owner' => 'isOwner'
+        'is_owner' => 'isOwner',
+        'verified_type' => 'verifiedType'
     ];
 
     /**
@@ -196,7 +200,8 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
         'name' => 'setName',
         'username' => 'setUsername',
         'picture' => 'setPicture',
-        'is_owner' => 'setIsOwner'
+        'is_owner' => 'setIsOwner',
+        'verified_type' => 'setVerifiedType'
     ];
 
     /**
@@ -209,7 +214,8 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
         'name' => 'getName',
         'username' => 'getUsername',
         'picture' => 'getPicture',
-        'is_owner' => 'getIsOwner'
+        'is_owner' => 'getIsOwner',
+        'verified_type' => 'getVerifiedType'
     ];
 
     /**
@@ -253,6 +259,25 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
         return self::$openAPIModelName;
     }
 
+    public const VERIFIED_TYPE_BLUE = 'blue';
+    public const VERIFIED_TYPE_GOVERNMENT = 'government';
+    public const VERIFIED_TYPE_BUSINESS = 'business';
+    public const VERIFIED_TYPE_NONE = 'none';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getVerifiedTypeAllowableValues()
+    {
+        return [
+            self::VERIFIED_TYPE_BLUE,
+            self::VERIFIED_TYPE_GOVERNMENT,
+            self::VERIFIED_TYPE_BUSINESS,
+            self::VERIFIED_TYPE_NONE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -274,6 +299,7 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('picture', $data ?? [], null);
         $this->setIfExists('is_owner', $data ?? [], null);
+        $this->setIfExists('verified_type', $data ?? [], null);
     }
 
     /**
@@ -302,6 +328,15 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getVerifiedTypeAllowableValues();
+        if (!is_null($this->container['verified_type']) && !in_array($this->container['verified_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'verified_type', must be one of '%s'",
+                $this->container['verified_type'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -449,6 +484,43 @@ class GetInboxPostComments200ResponseCommentsInnerFrom implements ModelInterface
             throw new \InvalidArgumentException('non-nullable is_owner cannot be null');
         }
         $this->container['is_owner'] = $is_owner;
+
+        return $this;
+    }
+
+    /**
+     * Gets verified_type
+     *
+     * @return string|null
+     */
+    public function getVerifiedType()
+    {
+        return $this->container['verified_type'];
+    }
+
+    /**
+     * Sets verified_type
+     *
+     * @param string|null $verified_type X/Twitter verified badge type. Only present for Twitter/X comments.
+     *
+     * @return self
+     */
+    public function setVerifiedType($verified_type)
+    {
+        if (is_null($verified_type)) {
+            throw new \InvalidArgumentException('non-nullable verified_type cannot be null');
+        }
+        $allowedValues = $this->getVerifiedTypeAllowableValues();
+        if (!in_array($verified_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'verified_type', must be one of '%s'",
+                    $verified_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['verified_type'] = $verified_type;
 
         return $this;
     }

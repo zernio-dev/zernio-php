@@ -64,6 +64,7 @@ class WebhookPayloadMessageConversation implements ModelInterface, ArrayAccess, 
         'participant_name' => 'string',
         'participant_username' => 'string',
         'participant_picture' => 'string',
+        'participant_verified_type' => 'string',
         'status' => 'string'
     ];
 
@@ -81,6 +82,7 @@ class WebhookPayloadMessageConversation implements ModelInterface, ArrayAccess, 
         'participant_name' => null,
         'participant_username' => null,
         'participant_picture' => null,
+        'participant_verified_type' => null,
         'status' => null
     ];
 
@@ -96,6 +98,7 @@ class WebhookPayloadMessageConversation implements ModelInterface, ArrayAccess, 
         'participant_name' => false,
         'participant_username' => false,
         'participant_picture' => false,
+        'participant_verified_type' => false,
         'status' => false
     ];
 
@@ -191,6 +194,7 @@ class WebhookPayloadMessageConversation implements ModelInterface, ArrayAccess, 
         'participant_name' => 'participantName',
         'participant_username' => 'participantUsername',
         'participant_picture' => 'participantPicture',
+        'participant_verified_type' => 'participantVerifiedType',
         'status' => 'status'
     ];
 
@@ -206,6 +210,7 @@ class WebhookPayloadMessageConversation implements ModelInterface, ArrayAccess, 
         'participant_name' => 'setParticipantName',
         'participant_username' => 'setParticipantUsername',
         'participant_picture' => 'setParticipantPicture',
+        'participant_verified_type' => 'setParticipantVerifiedType',
         'status' => 'setStatus'
     ];
 
@@ -221,6 +226,7 @@ class WebhookPayloadMessageConversation implements ModelInterface, ArrayAccess, 
         'participant_name' => 'getParticipantName',
         'participant_username' => 'getParticipantUsername',
         'participant_picture' => 'getParticipantPicture',
+        'participant_verified_type' => 'getParticipantVerifiedType',
         'status' => 'getStatus'
     ];
 
@@ -265,8 +271,27 @@ class WebhookPayloadMessageConversation implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
+    public const PARTICIPANT_VERIFIED_TYPE_BLUE = 'blue';
+    public const PARTICIPANT_VERIFIED_TYPE_GOVERNMENT = 'government';
+    public const PARTICIPANT_VERIFIED_TYPE_BUSINESS = 'business';
+    public const PARTICIPANT_VERIFIED_TYPE_NONE = 'none';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_ARCHIVED = 'archived';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getParticipantVerifiedTypeAllowableValues()
+    {
+        return [
+            self::PARTICIPANT_VERIFIED_TYPE_BLUE,
+            self::PARTICIPANT_VERIFIED_TYPE_GOVERNMENT,
+            self::PARTICIPANT_VERIFIED_TYPE_BUSINESS,
+            self::PARTICIPANT_VERIFIED_TYPE_NONE,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -302,6 +327,7 @@ class WebhookPayloadMessageConversation implements ModelInterface, ArrayAccess, 
         $this->setIfExists('participant_name', $data ?? [], null);
         $this->setIfExists('participant_username', $data ?? [], null);
         $this->setIfExists('participant_picture', $data ?? [], null);
+        $this->setIfExists('participant_verified_type', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
     }
 
@@ -331,6 +357,15 @@ class WebhookPayloadMessageConversation implements ModelInterface, ArrayAccess, 
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getParticipantVerifiedTypeAllowableValues();
+        if (!is_null($this->container['participant_verified_type']) && !in_array($this->container['participant_verified_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'participant_verified_type', must be one of '%s'",
+                $this->container['participant_verified_type'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
@@ -514,6 +549,43 @@ class WebhookPayloadMessageConversation implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable participant_picture cannot be null');
         }
         $this->container['participant_picture'] = $participant_picture;
+
+        return $this;
+    }
+
+    /**
+     * Gets participant_verified_type
+     *
+     * @return string|null
+     */
+    public function getParticipantVerifiedType()
+    {
+        return $this->container['participant_verified_type'];
+    }
+
+    /**
+     * Sets participant_verified_type
+     *
+     * @param string|null $participant_verified_type X/Twitter verified badge type. Only present for Twitter/X conversations.
+     *
+     * @return self
+     */
+    public function setParticipantVerifiedType($participant_verified_type)
+    {
+        if (is_null($participant_verified_type)) {
+            throw new \InvalidArgumentException('non-nullable participant_verified_type cannot be null');
+        }
+        $allowedValues = $this->getParticipantVerifiedTypeAllowableValues();
+        if (!in_array($participant_verified_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'participant_verified_type', must be one of '%s'",
+                    $participant_verified_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['participant_verified_type'] = $participant_verified_type;
 
         return $this;
     }
