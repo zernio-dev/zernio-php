@@ -59,6 +59,7 @@ class ThreadsPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
+        'topic_tag' => 'string',
         'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]'
     ];
 
@@ -70,6 +71,7 @@ class ThreadsPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'topic_tag' => null,
         'thread_items' => null
     ];
 
@@ -79,6 +81,7 @@ class ThreadsPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'topic_tag' => false,
         'thread_items' => false
     ];
 
@@ -168,6 +171,7 @@ class ThreadsPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'topic_tag' => 'topic_tag',
         'thread_items' => 'threadItems'
     ];
 
@@ -177,6 +181,7 @@ class ThreadsPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'topic_tag' => 'setTopicTag',
         'thread_items' => 'setThreadItems'
     ];
 
@@ -186,6 +191,7 @@ class ThreadsPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'topic_tag' => 'getTopicTag',
         'thread_items' => 'getThreadItems'
     ];
 
@@ -246,6 +252,7 @@ class ThreadsPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('topic_tag', $data ?? [], null);
         $this->setIfExists('thread_items', $data ?? [], null);
     }
 
@@ -276,6 +283,14 @@ class ThreadsPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
+        if (!is_null($this->container['topic_tag']) && (mb_strlen($this->container['topic_tag']) > 50)) {
+            $invalidProperties[] = "invalid value for 'topic_tag', the character length must be smaller than or equal to 50.";
+        }
+
+        if (!is_null($this->container['topic_tag']) && (mb_strlen($this->container['topic_tag']) < 1)) {
+            $invalidProperties[] = "invalid value for 'topic_tag', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -290,6 +305,40 @@ class ThreadsPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets topic_tag
+     *
+     * @return string|null
+     */
+    public function getTopicTag()
+    {
+        return $this->container['topic_tag'];
+    }
+
+    /**
+     * Sets topic_tag
+     *
+     * @param string|null $topic_tag Topic tag for post categorization and discoverability on Threads. Must be 1-50 characters, cannot contain periods (.) or ampersands (&). Overrides auto-extraction from content hashtags when provided.
+     *
+     * @return self
+     */
+    public function setTopicTag($topic_tag)
+    {
+        if (is_null($topic_tag)) {
+            throw new \InvalidArgumentException('non-nullable topic_tag cannot be null');
+        }
+        if ((mb_strlen($topic_tag) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $topic_tag when calling ThreadsPlatformData., must be smaller than or equal to 50.');
+        }
+        if ((mb_strlen($topic_tag) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $topic_tag when calling ThreadsPlatformData., must be bigger than or equal to 1.');
+        }
+
+        $this->container['topic_tag'] = $topic_tag;
+
+        return $this;
+    }
 
     /**
      * Gets thread_items

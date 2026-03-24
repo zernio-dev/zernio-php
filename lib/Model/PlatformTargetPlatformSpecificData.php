@@ -63,6 +63,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_settings' => 'string',
         'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
         'poll' => '\Late\Model\TwitterPlatformDataPoll',
+        'topic_tag' => 'string',
         'content_type' => 'string',
         'title' => 'string',
         'first_comment' => 'string',
@@ -126,6 +127,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_settings' => null,
         'thread_items' => null,
         'poll' => null,
+        'topic_tag' => null,
         'content_type' => null,
         'title' => null,
         'first_comment' => null,
@@ -187,6 +189,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_settings' => false,
         'thread_items' => false,
         'poll' => false,
+        'topic_tag' => false,
         'content_type' => false,
         'title' => false,
         'first_comment' => false,
@@ -328,6 +331,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_settings' => 'replySettings',
         'thread_items' => 'threadItems',
         'poll' => 'poll',
+        'topic_tag' => 'topic_tag',
         'content_type' => 'contentType',
         'title' => 'title',
         'first_comment' => 'firstComment',
@@ -389,6 +393,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_settings' => 'setReplySettings',
         'thread_items' => 'setThreadItems',
         'poll' => 'setPoll',
+        'topic_tag' => 'setTopicTag',
         'content_type' => 'setContentType',
         'title' => 'setTitle',
         'first_comment' => 'setFirstComment',
@@ -450,6 +455,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_settings' => 'getReplySettings',
         'thread_items' => 'getThreadItems',
         'poll' => 'getPoll',
+        'topic_tag' => 'getTopicTag',
         'content_type' => 'getContentType',
         'title' => 'getTitle',
         'first_comment' => 'getFirstComment',
@@ -664,6 +670,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         $this->setIfExists('reply_settings', $data ?? [], null);
         $this->setIfExists('thread_items', $data ?? [], null);
         $this->setIfExists('poll', $data ?? [], null);
+        $this->setIfExists('topic_tag', $data ?? [], null);
         $this->setIfExists('content_type', $data ?? [], 'story');
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('first_comment', $data ?? [], null);
@@ -749,6 +756,14 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
                 $this->container['reply_settings'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['topic_tag']) && (mb_strlen($this->container['topic_tag']) > 50)) {
+            $invalidProperties[] = "invalid value for 'topic_tag', the character length must be smaller than or equal to 50.";
+        }
+
+        if (!is_null($this->container['topic_tag']) && (mb_strlen($this->container['topic_tag']) < 1)) {
+            $invalidProperties[] = "invalid value for 'topic_tag', the character length must be bigger than or equal to 1.";
         }
 
         $allowedValues = $this->getContentTypeAllowableValues();
@@ -949,6 +964,40 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable poll cannot be null');
         }
         $this->container['poll'] = $poll;
+
+        return $this;
+    }
+
+    /**
+     * Gets topic_tag
+     *
+     * @return string|null
+     */
+    public function getTopicTag()
+    {
+        return $this->container['topic_tag'];
+    }
+
+    /**
+     * Sets topic_tag
+     *
+     * @param string|null $topic_tag Topic tag for post categorization and discoverability on Threads. Must be 1-50 characters, cannot contain periods (.) or ampersands (&). Overrides auto-extraction from content hashtags when provided.
+     *
+     * @return self
+     */
+    public function setTopicTag($topic_tag)
+    {
+        if (is_null($topic_tag)) {
+            throw new \InvalidArgumentException('non-nullable topic_tag cannot be null');
+        }
+        if ((mb_strlen($topic_tag) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $topic_tag when calling PlatformTargetPlatformSpecificData., must be smaller than or equal to 50.');
+        }
+        if ((mb_strlen($topic_tag) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $topic_tag when calling PlatformTargetPlatformSpecificData., must be bigger than or equal to 1.');
+        }
+
+        $this->container['topic_tag'] = $topic_tag;
 
         return $this;
     }
