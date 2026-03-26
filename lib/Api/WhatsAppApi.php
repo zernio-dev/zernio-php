@@ -78,6 +78,12 @@ class WhatsAppApi
         'addWhatsAppBroadcastRecipients' => [
             'application/json',
         ],
+        'addWhatsAppGroupParticipants' => [
+            'application/json',
+        ],
+        'approveWhatsAppGroupJoinRequests' => [
+            'application/json',
+        ],
         'bulkDeleteWhatsAppContacts' => [
             'application/json',
         ],
@@ -93,6 +99,12 @@ class WhatsAppApi
         'createWhatsAppContact' => [
             'application/json',
         ],
+        'createWhatsAppGroupChat' => [
+            'application/json',
+        ],
+        'createWhatsAppGroupInviteLink' => [
+            'application/json',
+        ],
         'createWhatsAppTemplate' => [
             'application/json',
         ],
@@ -103,6 +115,9 @@ class WhatsAppApi
             'application/json',
         ],
         'deleteWhatsAppGroup' => [
+            'application/json',
+        ],
+        'deleteWhatsAppGroupChat' => [
             'application/json',
         ],
         'deleteWhatsAppTemplate' => [
@@ -129,6 +144,9 @@ class WhatsAppApi
         'getWhatsAppDisplayName' => [
             'application/json',
         ],
+        'getWhatsAppGroupChat' => [
+            'application/json',
+        ],
         'getWhatsAppGroups' => [
             'application/json',
         ],
@@ -141,7 +159,19 @@ class WhatsAppApi
         'importWhatsAppContacts' => [
             'application/json',
         ],
+        'listWhatsAppGroupChats' => [
+            'application/json',
+        ],
+        'listWhatsAppGroupJoinRequests' => [
+            'application/json',
+        ],
+        'rejectWhatsAppGroupJoinRequests' => [
+            'application/json',
+        ],
         'removeWhatsAppBroadcastRecipients' => [
+            'application/json',
+        ],
+        'removeWhatsAppGroupParticipants' => [
             'application/json',
         ],
         'renameWhatsAppGroup' => [
@@ -163,6 +193,9 @@ class WhatsAppApi
             'application/json',
         ],
         'updateWhatsAppDisplayName' => [
+            'application/json',
+        ],
+        'updateWhatsAppGroupChat' => [
             'application/json',
         ],
         'updateWhatsAppTemplate' => [
@@ -537,6 +570,658 @@ class WhatsAppApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation addWhatsAppGroupParticipants
+     *
+     * Add participants
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\AddWhatsAppGroupParticipantsRequest $add_whats_app_group_participants_request add_whats_app_group_participants_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWhatsAppGroupParticipants'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject
+     */
+    public function addWhatsAppGroupParticipants($group_id, $account_id, $add_whats_app_group_participants_request, string $contentType = self::contentTypes['addWhatsAppGroupParticipants'][0])
+    {
+        list($response) = $this->addWhatsAppGroupParticipantsWithHttpInfo($group_id, $account_id, $add_whats_app_group_participants_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation addWhatsAppGroupParticipantsWithHttpInfo
+     *
+     * Add participants
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\AddWhatsAppGroupParticipantsRequest $add_whats_app_group_participants_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWhatsAppGroupParticipants'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function addWhatsAppGroupParticipantsWithHttpInfo($group_id, $account_id, $add_whats_app_group_participants_request, string $contentType = self::contentTypes['addWhatsAppGroupParticipants'][0])
+    {
+        $request = $this->addWhatsAppGroupParticipantsRequest($group_id, $account_id, $add_whats_app_group_participants_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UnpublishPost200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation addWhatsAppGroupParticipantsAsync
+     *
+     * Add participants
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\AddWhatsAppGroupParticipantsRequest $add_whats_app_group_participants_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWhatsAppGroupParticipants'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addWhatsAppGroupParticipantsAsync($group_id, $account_id, $add_whats_app_group_participants_request, string $contentType = self::contentTypes['addWhatsAppGroupParticipants'][0])
+    {
+        return $this->addWhatsAppGroupParticipantsAsyncWithHttpInfo($group_id, $account_id, $add_whats_app_group_participants_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation addWhatsAppGroupParticipantsAsyncWithHttpInfo
+     *
+     * Add participants
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\AddWhatsAppGroupParticipantsRequest $add_whats_app_group_participants_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWhatsAppGroupParticipants'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addWhatsAppGroupParticipantsAsyncWithHttpInfo($group_id, $account_id, $add_whats_app_group_participants_request, string $contentType = self::contentTypes['addWhatsAppGroupParticipants'][0])
+    {
+        $returnType = '\Late\Model\UnpublishPost200Response';
+        $request = $this->addWhatsAppGroupParticipantsRequest($group_id, $account_id, $add_whats_app_group_participants_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'addWhatsAppGroupParticipants'
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\AddWhatsAppGroupParticipantsRequest $add_whats_app_group_participants_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addWhatsAppGroupParticipants'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function addWhatsAppGroupParticipantsRequest($group_id, $account_id, $add_whats_app_group_participants_request, string $contentType = self::contentTypes['addWhatsAppGroupParticipants'][0])
+    {
+
+        // verify the required parameter 'group_id' is set
+        if ($group_id === null || (is_array($group_id) && count($group_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $group_id when calling addWhatsAppGroupParticipants'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling addWhatsAppGroupParticipants'
+            );
+        }
+
+        // verify the required parameter 'add_whats_app_group_participants_request' is set
+        if ($add_whats_app_group_participants_request === null || (is_array($add_whats_app_group_participants_request) && count($add_whats_app_group_participants_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $add_whats_app_group_participants_request when calling addWhatsAppGroupParticipants'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/wa-groups/{groupId}/participants';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($group_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'groupId' . '}',
+                ObjectSerializer::toPathValue($group_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($add_whats_app_group_participants_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($add_whats_app_group_participants_request));
+            } else {
+                $httpBody = $add_whats_app_group_participants_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation approveWhatsAppGroupJoinRequests
+     *
+     * Approve join requests
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\ApproveWhatsAppGroupJoinRequestsRequest $approve_whats_app_group_join_requests_request approve_whats_app_group_join_requests_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['approveWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject
+     */
+    public function approveWhatsAppGroupJoinRequests($group_id, $account_id, $approve_whats_app_group_join_requests_request, string $contentType = self::contentTypes['approveWhatsAppGroupJoinRequests'][0])
+    {
+        list($response) = $this->approveWhatsAppGroupJoinRequestsWithHttpInfo($group_id, $account_id, $approve_whats_app_group_join_requests_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation approveWhatsAppGroupJoinRequestsWithHttpInfo
+     *
+     * Approve join requests
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\ApproveWhatsAppGroupJoinRequestsRequest $approve_whats_app_group_join_requests_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['approveWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function approveWhatsAppGroupJoinRequestsWithHttpInfo($group_id, $account_id, $approve_whats_app_group_join_requests_request, string $contentType = self::contentTypes['approveWhatsAppGroupJoinRequests'][0])
+    {
+        $request = $this->approveWhatsAppGroupJoinRequestsRequest($group_id, $account_id, $approve_whats_app_group_join_requests_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UnpublishPost200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation approveWhatsAppGroupJoinRequestsAsync
+     *
+     * Approve join requests
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\ApproveWhatsAppGroupJoinRequestsRequest $approve_whats_app_group_join_requests_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['approveWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function approveWhatsAppGroupJoinRequestsAsync($group_id, $account_id, $approve_whats_app_group_join_requests_request, string $contentType = self::contentTypes['approveWhatsAppGroupJoinRequests'][0])
+    {
+        return $this->approveWhatsAppGroupJoinRequestsAsyncWithHttpInfo($group_id, $account_id, $approve_whats_app_group_join_requests_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation approveWhatsAppGroupJoinRequestsAsyncWithHttpInfo
+     *
+     * Approve join requests
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\ApproveWhatsAppGroupJoinRequestsRequest $approve_whats_app_group_join_requests_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['approveWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function approveWhatsAppGroupJoinRequestsAsyncWithHttpInfo($group_id, $account_id, $approve_whats_app_group_join_requests_request, string $contentType = self::contentTypes['approveWhatsAppGroupJoinRequests'][0])
+    {
+        $returnType = '\Late\Model\UnpublishPost200Response';
+        $request = $this->approveWhatsAppGroupJoinRequestsRequest($group_id, $account_id, $approve_whats_app_group_join_requests_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'approveWhatsAppGroupJoinRequests'
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\ApproveWhatsAppGroupJoinRequestsRequest $approve_whats_app_group_join_requests_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['approveWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function approveWhatsAppGroupJoinRequestsRequest($group_id, $account_id, $approve_whats_app_group_join_requests_request, string $contentType = self::contentTypes['approveWhatsAppGroupJoinRequests'][0])
+    {
+
+        // verify the required parameter 'group_id' is set
+        if ($group_id === null || (is_array($group_id) && count($group_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $group_id when calling approveWhatsAppGroupJoinRequests'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling approveWhatsAppGroupJoinRequests'
+            );
+        }
+
+        // verify the required parameter 'approve_whats_app_group_join_requests_request' is set
+        if ($approve_whats_app_group_join_requests_request === null || (is_array($approve_whats_app_group_join_requests_request) && count($approve_whats_app_group_join_requests_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $approve_whats_app_group_join_requests_request when calling approveWhatsAppGroupJoinRequests'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/wa-groups/{groupId}/join-requests';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($group_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'groupId' . '}',
+                ObjectSerializer::toPathValue($group_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($approve_whats_app_group_join_requests_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($approve_whats_app_group_join_requests_request));
+            } else {
+                $httpBody = $approve_whats_app_group_join_requests_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -2009,6 +2694,598 @@ class WhatsAppApi
     }
 
     /**
+     * Operation createWhatsAppGroupChat
+     *
+     * Create group
+     *
+     * @param  \Late\Model\CreateWhatsAppGroupChatRequest $create_whats_app_group_chat_request create_whats_app_group_chat_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\CreateWhatsAppGroupChat201Response|\Late\Model\InlineObject
+     */
+    public function createWhatsAppGroupChat($create_whats_app_group_chat_request, string $contentType = self::contentTypes['createWhatsAppGroupChat'][0])
+    {
+        list($response) = $this->createWhatsAppGroupChatWithHttpInfo($create_whats_app_group_chat_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createWhatsAppGroupChatWithHttpInfo
+     *
+     * Create group
+     *
+     * @param  \Late\Model\CreateWhatsAppGroupChatRequest $create_whats_app_group_chat_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\CreateWhatsAppGroupChat201Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createWhatsAppGroupChatWithHttpInfo($create_whats_app_group_chat_request, string $contentType = self::contentTypes['createWhatsAppGroupChat'][0])
+    {
+        $request = $this->createWhatsAppGroupChatRequest($create_whats_app_group_chat_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\CreateWhatsAppGroupChat201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\CreateWhatsAppGroupChat201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\CreateWhatsAppGroupChat201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createWhatsAppGroupChatAsync
+     *
+     * Create group
+     *
+     * @param  \Late\Model\CreateWhatsAppGroupChatRequest $create_whats_app_group_chat_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createWhatsAppGroupChatAsync($create_whats_app_group_chat_request, string $contentType = self::contentTypes['createWhatsAppGroupChat'][0])
+    {
+        return $this->createWhatsAppGroupChatAsyncWithHttpInfo($create_whats_app_group_chat_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createWhatsAppGroupChatAsyncWithHttpInfo
+     *
+     * Create group
+     *
+     * @param  \Late\Model\CreateWhatsAppGroupChatRequest $create_whats_app_group_chat_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createWhatsAppGroupChatAsyncWithHttpInfo($create_whats_app_group_chat_request, string $contentType = self::contentTypes['createWhatsAppGroupChat'][0])
+    {
+        $returnType = '\Late\Model\CreateWhatsAppGroupChat201Response';
+        $request = $this->createWhatsAppGroupChatRequest($create_whats_app_group_chat_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createWhatsAppGroupChat'
+     *
+     * @param  \Late\Model\CreateWhatsAppGroupChatRequest $create_whats_app_group_chat_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createWhatsAppGroupChatRequest($create_whats_app_group_chat_request, string $contentType = self::contentTypes['createWhatsAppGroupChat'][0])
+    {
+
+        // verify the required parameter 'create_whats_app_group_chat_request' is set
+        if ($create_whats_app_group_chat_request === null || (is_array($create_whats_app_group_chat_request) && count($create_whats_app_group_chat_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_whats_app_group_chat_request when calling createWhatsAppGroupChat'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/wa-groups';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_whats_app_group_chat_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_whats_app_group_chat_request));
+            } else {
+                $httpBody = $create_whats_app_group_chat_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createWhatsAppGroupInviteLink
+     *
+     * Create invite link
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupInviteLink'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\CreateWhatsAppGroupInviteLink200Response|\Late\Model\InlineObject
+     */
+    public function createWhatsAppGroupInviteLink($group_id, $account_id, string $contentType = self::contentTypes['createWhatsAppGroupInviteLink'][0])
+    {
+        list($response) = $this->createWhatsAppGroupInviteLinkWithHttpInfo($group_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createWhatsAppGroupInviteLinkWithHttpInfo
+     *
+     * Create invite link
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupInviteLink'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\CreateWhatsAppGroupInviteLink200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createWhatsAppGroupInviteLinkWithHttpInfo($group_id, $account_id, string $contentType = self::contentTypes['createWhatsAppGroupInviteLink'][0])
+    {
+        $request = $this->createWhatsAppGroupInviteLinkRequest($group_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\CreateWhatsAppGroupInviteLink200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\CreateWhatsAppGroupInviteLink200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\CreateWhatsAppGroupInviteLink200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createWhatsAppGroupInviteLinkAsync
+     *
+     * Create invite link
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupInviteLink'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createWhatsAppGroupInviteLinkAsync($group_id, $account_id, string $contentType = self::contentTypes['createWhatsAppGroupInviteLink'][0])
+    {
+        return $this->createWhatsAppGroupInviteLinkAsyncWithHttpInfo($group_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createWhatsAppGroupInviteLinkAsyncWithHttpInfo
+     *
+     * Create invite link
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupInviteLink'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createWhatsAppGroupInviteLinkAsyncWithHttpInfo($group_id, $account_id, string $contentType = self::contentTypes['createWhatsAppGroupInviteLink'][0])
+    {
+        $returnType = '\Late\Model\CreateWhatsAppGroupInviteLink200Response';
+        $request = $this->createWhatsAppGroupInviteLinkRequest($group_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createWhatsAppGroupInviteLink'
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppGroupInviteLink'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createWhatsAppGroupInviteLinkRequest($group_id, $account_id, string $contentType = self::contentTypes['createWhatsAppGroupInviteLink'][0])
+    {
+
+        // verify the required parameter 'group_id' is set
+        if ($group_id === null || (is_array($group_id) && count($group_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $group_id when calling createWhatsAppGroupInviteLink'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling createWhatsAppGroupInviteLink'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/wa-groups/{groupId}/invite-link';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($group_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'groupId' . '}',
+                ObjectSerializer::toPathValue($group_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createWhatsAppTemplate
      *
      * Create template
@@ -3144,6 +4421,327 @@ class WhatsAppApi
                 $httpBody = $delete_whats_app_group_request;
             }
         } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteWhatsAppGroupChat
+     *
+     * Delete group
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     */
+    public function deleteWhatsAppGroupChat($group_id, $account_id, string $contentType = self::contentTypes['deleteWhatsAppGroupChat'][0])
+    {
+        list($response) = $this->deleteWhatsAppGroupChatWithHttpInfo($group_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteWhatsAppGroupChatWithHttpInfo
+     *
+     * Delete group
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteWhatsAppGroupChatWithHttpInfo($group_id, $account_id, string $contentType = self::contentTypes['deleteWhatsAppGroupChat'][0])
+    {
+        $request = $this->deleteWhatsAppGroupChatRequest($group_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UnpublishPost200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteWhatsAppGroupChatAsync
+     *
+     * Delete group
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteWhatsAppGroupChatAsync($group_id, $account_id, string $contentType = self::contentTypes['deleteWhatsAppGroupChat'][0])
+    {
+        return $this->deleteWhatsAppGroupChatAsyncWithHttpInfo($group_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteWhatsAppGroupChatAsyncWithHttpInfo
+     *
+     * Delete group
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteWhatsAppGroupChatAsyncWithHttpInfo($group_id, $account_id, string $contentType = self::contentTypes['deleteWhatsAppGroupChat'][0])
+    {
+        $returnType = '\Late\Model\UnpublishPost200Response';
+        $request = $this->deleteWhatsAppGroupChatRequest($group_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteWhatsAppGroupChat'
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteWhatsAppGroupChatRequest($group_id, $account_id, string $contentType = self::contentTypes['deleteWhatsAppGroupChat'][0])
+    {
+
+        // verify the required parameter 'group_id' is set
+        if ($group_id === null || (is_array($group_id) && count($group_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $group_id when calling deleteWhatsAppGroupChat'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling deleteWhatsAppGroupChat'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/wa-groups/{groupId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($group_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'groupId' . '}',
+                ObjectSerializer::toPathValue($group_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -5768,6 +7366,327 @@ class WhatsAppApi
     }
 
     /**
+     * Operation getWhatsAppGroupChat
+     *
+     * Get group info
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\GetWhatsAppGroupChat200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     */
+    public function getWhatsAppGroupChat($group_id, $account_id, string $contentType = self::contentTypes['getWhatsAppGroupChat'][0])
+    {
+        list($response) = $this->getWhatsAppGroupChatWithHttpInfo($group_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWhatsAppGroupChatWithHttpInfo
+     *
+     * Get group info
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\GetWhatsAppGroupChat200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWhatsAppGroupChatWithHttpInfo($group_id, $account_id, string $contentType = self::contentTypes['getWhatsAppGroupChat'][0])
+    {
+        $request = $this->getWhatsAppGroupChatRequest($group_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetWhatsAppGroupChat200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetWhatsAppGroupChat200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetWhatsAppGroupChat200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWhatsAppGroupChatAsync
+     *
+     * Get group info
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppGroupChatAsync($group_id, $account_id, string $contentType = self::contentTypes['getWhatsAppGroupChat'][0])
+    {
+        return $this->getWhatsAppGroupChatAsyncWithHttpInfo($group_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWhatsAppGroupChatAsyncWithHttpInfo
+     *
+     * Get group info
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppGroupChatAsyncWithHttpInfo($group_id, $account_id, string $contentType = self::contentTypes['getWhatsAppGroupChat'][0])
+    {
+        $returnType = '\Late\Model\GetWhatsAppGroupChat200Response';
+        $request = $this->getWhatsAppGroupChatRequest($group_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWhatsAppGroupChat'
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWhatsAppGroupChatRequest($group_id, $account_id, string $contentType = self::contentTypes['getWhatsAppGroupChat'][0])
+    {
+
+        // verify the required parameter 'group_id' is set
+        if ($group_id === null || (is_array($group_id) && count($group_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $group_id when calling getWhatsAppGroupChat'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getWhatsAppGroupChat'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/wa-groups/{groupId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($group_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'groupId' . '}',
+                ObjectSerializer::toPathValue($group_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getWhatsAppGroups
      *
      * List contact groups
@@ -6958,6 +8877,959 @@ class WhatsAppApi
     }
 
     /**
+     * Operation listWhatsAppGroupChats
+     *
+     * List active groups
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  int|null $limit Max groups to return (optional, default to 25)
+     * @param  string|null $after Pagination cursor (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupChats'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\ListWhatsAppGroupChats200Response|\Late\Model\InlineObject
+     */
+    public function listWhatsAppGroupChats($account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['listWhatsAppGroupChats'][0])
+    {
+        list($response) = $this->listWhatsAppGroupChatsWithHttpInfo($account_id, $limit, $after, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listWhatsAppGroupChatsWithHttpInfo
+     *
+     * List active groups
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  int|null $limit Max groups to return (optional, default to 25)
+     * @param  string|null $after Pagination cursor (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupChats'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\ListWhatsAppGroupChats200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listWhatsAppGroupChatsWithHttpInfo($account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['listWhatsAppGroupChats'][0])
+    {
+        $request = $this->listWhatsAppGroupChatsRequest($account_id, $limit, $after, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\ListWhatsAppGroupChats200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\ListWhatsAppGroupChats200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\ListWhatsAppGroupChats200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listWhatsAppGroupChatsAsync
+     *
+     * List active groups
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  int|null $limit Max groups to return (optional, default to 25)
+     * @param  string|null $after Pagination cursor (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupChats'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listWhatsAppGroupChatsAsync($account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['listWhatsAppGroupChats'][0])
+    {
+        return $this->listWhatsAppGroupChatsAsyncWithHttpInfo($account_id, $limit, $after, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listWhatsAppGroupChatsAsyncWithHttpInfo
+     *
+     * List active groups
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  int|null $limit Max groups to return (optional, default to 25)
+     * @param  string|null $after Pagination cursor (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupChats'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listWhatsAppGroupChatsAsyncWithHttpInfo($account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['listWhatsAppGroupChats'][0])
+    {
+        $returnType = '\Late\Model\ListWhatsAppGroupChats200Response';
+        $request = $this->listWhatsAppGroupChatsRequest($account_id, $limit, $after, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listWhatsAppGroupChats'
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  int|null $limit Max groups to return (optional, default to 25)
+     * @param  string|null $after Pagination cursor (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupChats'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listWhatsAppGroupChatsRequest($account_id, $limit = 25, $after = null, string $contentType = self::contentTypes['listWhatsAppGroupChats'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listWhatsAppGroupChats'
+            );
+        }
+
+        if ($limit !== null && $limit > 1024) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling WhatsAppApi.listWhatsAppGroupChats, must be smaller than or equal to 1024.');
+        }
+        
+
+
+        $resourcePath = '/v1/whatsapp/wa-groups';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listWhatsAppGroupJoinRequests
+     *
+     * List join requests
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\ListWhatsAppGroupJoinRequests200Response|\Late\Model\InlineObject
+     */
+    public function listWhatsAppGroupJoinRequests($group_id, $account_id, string $contentType = self::contentTypes['listWhatsAppGroupJoinRequests'][0])
+    {
+        list($response) = $this->listWhatsAppGroupJoinRequestsWithHttpInfo($group_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listWhatsAppGroupJoinRequestsWithHttpInfo
+     *
+     * List join requests
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\ListWhatsAppGroupJoinRequests200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listWhatsAppGroupJoinRequestsWithHttpInfo($group_id, $account_id, string $contentType = self::contentTypes['listWhatsAppGroupJoinRequests'][0])
+    {
+        $request = $this->listWhatsAppGroupJoinRequestsRequest($group_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\ListWhatsAppGroupJoinRequests200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\ListWhatsAppGroupJoinRequests200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\ListWhatsAppGroupJoinRequests200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listWhatsAppGroupJoinRequestsAsync
+     *
+     * List join requests
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listWhatsAppGroupJoinRequestsAsync($group_id, $account_id, string $contentType = self::contentTypes['listWhatsAppGroupJoinRequests'][0])
+    {
+        return $this->listWhatsAppGroupJoinRequestsAsyncWithHttpInfo($group_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listWhatsAppGroupJoinRequestsAsyncWithHttpInfo
+     *
+     * List join requests
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listWhatsAppGroupJoinRequestsAsyncWithHttpInfo($group_id, $account_id, string $contentType = self::contentTypes['listWhatsAppGroupJoinRequests'][0])
+    {
+        $returnType = '\Late\Model\ListWhatsAppGroupJoinRequests200Response';
+        $request = $this->listWhatsAppGroupJoinRequestsRequest($group_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listWhatsAppGroupJoinRequests'
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listWhatsAppGroupJoinRequestsRequest($group_id, $account_id, string $contentType = self::contentTypes['listWhatsAppGroupJoinRequests'][0])
+    {
+
+        // verify the required parameter 'group_id' is set
+        if ($group_id === null || (is_array($group_id) && count($group_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $group_id when calling listWhatsAppGroupJoinRequests'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listWhatsAppGroupJoinRequests'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/wa-groups/{groupId}/join-requests';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($group_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'groupId' . '}',
+                ObjectSerializer::toPathValue($group_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation rejectWhatsAppGroupJoinRequests
+     *
+     * Reject join requests
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\RejectWhatsAppGroupJoinRequestsRequest $reject_whats_app_group_join_requests_request reject_whats_app_group_join_requests_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rejectWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject
+     */
+    public function rejectWhatsAppGroupJoinRequests($group_id, $account_id, $reject_whats_app_group_join_requests_request, string $contentType = self::contentTypes['rejectWhatsAppGroupJoinRequests'][0])
+    {
+        list($response) = $this->rejectWhatsAppGroupJoinRequestsWithHttpInfo($group_id, $account_id, $reject_whats_app_group_join_requests_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation rejectWhatsAppGroupJoinRequestsWithHttpInfo
+     *
+     * Reject join requests
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\RejectWhatsAppGroupJoinRequestsRequest $reject_whats_app_group_join_requests_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rejectWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function rejectWhatsAppGroupJoinRequestsWithHttpInfo($group_id, $account_id, $reject_whats_app_group_join_requests_request, string $contentType = self::contentTypes['rejectWhatsAppGroupJoinRequests'][0])
+    {
+        $request = $this->rejectWhatsAppGroupJoinRequestsRequest($group_id, $account_id, $reject_whats_app_group_join_requests_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UnpublishPost200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation rejectWhatsAppGroupJoinRequestsAsync
+     *
+     * Reject join requests
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\RejectWhatsAppGroupJoinRequestsRequest $reject_whats_app_group_join_requests_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rejectWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function rejectWhatsAppGroupJoinRequestsAsync($group_id, $account_id, $reject_whats_app_group_join_requests_request, string $contentType = self::contentTypes['rejectWhatsAppGroupJoinRequests'][0])
+    {
+        return $this->rejectWhatsAppGroupJoinRequestsAsyncWithHttpInfo($group_id, $account_id, $reject_whats_app_group_join_requests_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation rejectWhatsAppGroupJoinRequestsAsyncWithHttpInfo
+     *
+     * Reject join requests
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\RejectWhatsAppGroupJoinRequestsRequest $reject_whats_app_group_join_requests_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rejectWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function rejectWhatsAppGroupJoinRequestsAsyncWithHttpInfo($group_id, $account_id, $reject_whats_app_group_join_requests_request, string $contentType = self::contentTypes['rejectWhatsAppGroupJoinRequests'][0])
+    {
+        $returnType = '\Late\Model\UnpublishPost200Response';
+        $request = $this->rejectWhatsAppGroupJoinRequestsRequest($group_id, $account_id, $reject_whats_app_group_join_requests_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'rejectWhatsAppGroupJoinRequests'
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\RejectWhatsAppGroupJoinRequestsRequest $reject_whats_app_group_join_requests_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rejectWhatsAppGroupJoinRequests'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function rejectWhatsAppGroupJoinRequestsRequest($group_id, $account_id, $reject_whats_app_group_join_requests_request, string $contentType = self::contentTypes['rejectWhatsAppGroupJoinRequests'][0])
+    {
+
+        // verify the required parameter 'group_id' is set
+        if ($group_id === null || (is_array($group_id) && count($group_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $group_id when calling rejectWhatsAppGroupJoinRequests'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling rejectWhatsAppGroupJoinRequests'
+            );
+        }
+
+        // verify the required parameter 'reject_whats_app_group_join_requests_request' is set
+        if ($reject_whats_app_group_join_requests_request === null || (is_array($reject_whats_app_group_join_requests_request) && count($reject_whats_app_group_join_requests_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $reject_whats_app_group_join_requests_request when calling rejectWhatsAppGroupJoinRequests'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/wa-groups/{groupId}/join-requests';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($group_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'groupId' . '}',
+                ObjectSerializer::toPathValue($group_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($reject_whats_app_group_join_requests_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($reject_whats_app_group_join_requests_request));
+            } else {
+                $httpBody = $reject_whats_app_group_join_requests_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation removeWhatsAppBroadcastRecipients
      *
      * Remove recipients
@@ -7230,6 +10102,332 @@ class WhatsAppApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($remove_whats_app_broadcast_recipients_request));
             } else {
                 $httpBody = $remove_whats_app_broadcast_recipients_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeWhatsAppGroupParticipants
+     *
+     * Remove participants
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\RemoveWhatsAppGroupParticipantsRequest $remove_whats_app_group_participants_request remove_whats_app_group_participants_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWhatsAppGroupParticipants'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject
+     */
+    public function removeWhatsAppGroupParticipants($group_id, $account_id, $remove_whats_app_group_participants_request, string $contentType = self::contentTypes['removeWhatsAppGroupParticipants'][0])
+    {
+        list($response) = $this->removeWhatsAppGroupParticipantsWithHttpInfo($group_id, $account_id, $remove_whats_app_group_participants_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation removeWhatsAppGroupParticipantsWithHttpInfo
+     *
+     * Remove participants
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\RemoveWhatsAppGroupParticipantsRequest $remove_whats_app_group_participants_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWhatsAppGroupParticipants'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeWhatsAppGroupParticipantsWithHttpInfo($group_id, $account_id, $remove_whats_app_group_participants_request, string $contentType = self::contentTypes['removeWhatsAppGroupParticipants'][0])
+    {
+        $request = $this->removeWhatsAppGroupParticipantsRequest($group_id, $account_id, $remove_whats_app_group_participants_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UnpublishPost200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeWhatsAppGroupParticipantsAsync
+     *
+     * Remove participants
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\RemoveWhatsAppGroupParticipantsRequest $remove_whats_app_group_participants_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWhatsAppGroupParticipants'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeWhatsAppGroupParticipantsAsync($group_id, $account_id, $remove_whats_app_group_participants_request, string $contentType = self::contentTypes['removeWhatsAppGroupParticipants'][0])
+    {
+        return $this->removeWhatsAppGroupParticipantsAsyncWithHttpInfo($group_id, $account_id, $remove_whats_app_group_participants_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeWhatsAppGroupParticipantsAsyncWithHttpInfo
+     *
+     * Remove participants
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\RemoveWhatsAppGroupParticipantsRequest $remove_whats_app_group_participants_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWhatsAppGroupParticipants'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeWhatsAppGroupParticipantsAsyncWithHttpInfo($group_id, $account_id, $remove_whats_app_group_participants_request, string $contentType = self::contentTypes['removeWhatsAppGroupParticipants'][0])
+    {
+        $returnType = '\Late\Model\UnpublishPost200Response';
+        $request = $this->removeWhatsAppGroupParticipantsRequest($group_id, $account_id, $remove_whats_app_group_participants_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeWhatsAppGroupParticipants'
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\RemoveWhatsAppGroupParticipantsRequest $remove_whats_app_group_participants_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeWhatsAppGroupParticipants'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeWhatsAppGroupParticipantsRequest($group_id, $account_id, $remove_whats_app_group_participants_request, string $contentType = self::contentTypes['removeWhatsAppGroupParticipants'][0])
+    {
+
+        // verify the required parameter 'group_id' is set
+        if ($group_id === null || (is_array($group_id) && count($group_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $group_id when calling removeWhatsAppGroupParticipants'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling removeWhatsAppGroupParticipants'
+            );
+        }
+
+        // verify the required parameter 'remove_whats_app_group_participants_request' is set
+        if ($remove_whats_app_group_participants_request === null || (is_array($remove_whats_app_group_participants_request) && count($remove_whats_app_group_participants_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $remove_whats_app_group_participants_request when calling removeWhatsAppGroupParticipants'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/wa-groups/{groupId}/participants';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($group_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'groupId' . '}',
+                ObjectSerializer::toPathValue($group_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($remove_whats_app_group_participants_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($remove_whats_app_group_participants_request));
+            } else {
+                $httpBody = $remove_whats_app_group_participants_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -9333,6 +12531,346 @@ class WhatsAppApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_whats_app_display_name_request));
             } else {
                 $httpBody = $update_whats_app_display_name_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateWhatsAppGroupChat
+     *
+     * Update group settings
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\UpdateWhatsAppGroupChatRequest $update_whats_app_group_chat_request update_whats_app_group_chat_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     */
+    public function updateWhatsAppGroupChat($group_id, $account_id, $update_whats_app_group_chat_request, string $contentType = self::contentTypes['updateWhatsAppGroupChat'][0])
+    {
+        list($response) = $this->updateWhatsAppGroupChatWithHttpInfo($group_id, $account_id, $update_whats_app_group_chat_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateWhatsAppGroupChatWithHttpInfo
+     *
+     * Update group settings
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\UpdateWhatsAppGroupChatRequest $update_whats_app_group_chat_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateWhatsAppGroupChatWithHttpInfo($group_id, $account_id, $update_whats_app_group_chat_request, string $contentType = self::contentTypes['updateWhatsAppGroupChat'][0])
+    {
+        $request = $this->updateWhatsAppGroupChatRequest($group_id, $account_id, $update_whats_app_group_chat_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UnpublishPost200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UnpublishPost200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UnpublishPost200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateWhatsAppGroupChatAsync
+     *
+     * Update group settings
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\UpdateWhatsAppGroupChatRequest $update_whats_app_group_chat_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateWhatsAppGroupChatAsync($group_id, $account_id, $update_whats_app_group_chat_request, string $contentType = self::contentTypes['updateWhatsAppGroupChat'][0])
+    {
+        return $this->updateWhatsAppGroupChatAsyncWithHttpInfo($group_id, $account_id, $update_whats_app_group_chat_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateWhatsAppGroupChatAsyncWithHttpInfo
+     *
+     * Update group settings
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\UpdateWhatsAppGroupChatRequest $update_whats_app_group_chat_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateWhatsAppGroupChatAsyncWithHttpInfo($group_id, $account_id, $update_whats_app_group_chat_request, string $contentType = self::contentTypes['updateWhatsAppGroupChat'][0])
+    {
+        $returnType = '\Late\Model\UnpublishPost200Response';
+        $request = $this->updateWhatsAppGroupChatRequest($group_id, $account_id, $update_whats_app_group_chat_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateWhatsAppGroupChat'
+     *
+     * @param  string $group_id Group ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  \Late\Model\UpdateWhatsAppGroupChatRequest $update_whats_app_group_chat_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWhatsAppGroupChat'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateWhatsAppGroupChatRequest($group_id, $account_id, $update_whats_app_group_chat_request, string $contentType = self::contentTypes['updateWhatsAppGroupChat'][0])
+    {
+
+        // verify the required parameter 'group_id' is set
+        if ($group_id === null || (is_array($group_id) && count($group_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $group_id when calling updateWhatsAppGroupChat'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling updateWhatsAppGroupChat'
+            );
+        }
+
+        // verify the required parameter 'update_whats_app_group_chat_request' is set
+        if ($update_whats_app_group_chat_request === null || (is_array($update_whats_app_group_chat_request) && count($update_whats_app_group_chat_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_whats_app_group_chat_request when calling updateWhatsAppGroupChat'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/wa-groups/{groupId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($group_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'groupId' . '}',
+                ObjectSerializer::toPathValue($group_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_whats_app_group_chat_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_whats_app_group_chat_request));
+            } else {
+                $httpBody = $update_whats_app_group_chat_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

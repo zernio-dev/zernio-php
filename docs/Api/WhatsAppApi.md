@@ -7,15 +7,20 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**addWhatsAppBroadcastRecipients()**](WhatsAppApi.md#addWhatsAppBroadcastRecipients) | **PATCH** /v1/whatsapp/broadcasts/{broadcastId}/recipients | Add recipients |
+| [**addWhatsAppGroupParticipants()**](WhatsAppApi.md#addWhatsAppGroupParticipants) | **POST** /v1/whatsapp/wa-groups/{groupId}/participants | Add participants |
+| [**approveWhatsAppGroupJoinRequests()**](WhatsAppApi.md#approveWhatsAppGroupJoinRequests) | **POST** /v1/whatsapp/wa-groups/{groupId}/join-requests | Approve join requests |
 | [**bulkDeleteWhatsAppContacts()**](WhatsAppApi.md#bulkDeleteWhatsAppContacts) | **DELETE** /v1/whatsapp/contacts/bulk | Bulk delete contacts |
 | [**bulkUpdateWhatsAppContacts()**](WhatsAppApi.md#bulkUpdateWhatsAppContacts) | **POST** /v1/whatsapp/contacts/bulk | Bulk update contacts |
 | [**cancelWhatsAppBroadcastSchedule()**](WhatsAppApi.md#cancelWhatsAppBroadcastSchedule) | **DELETE** /v1/whatsapp/broadcasts/{broadcastId}/schedule | Cancel scheduled broadcast |
 | [**createWhatsAppBroadcast()**](WhatsAppApi.md#createWhatsAppBroadcast) | **POST** /v1/whatsapp/broadcasts | Create broadcast |
 | [**createWhatsAppContact()**](WhatsAppApi.md#createWhatsAppContact) | **POST** /v1/whatsapp/contacts | Create contact |
+| [**createWhatsAppGroupChat()**](WhatsAppApi.md#createWhatsAppGroupChat) | **POST** /v1/whatsapp/wa-groups | Create group |
+| [**createWhatsAppGroupInviteLink()**](WhatsAppApi.md#createWhatsAppGroupInviteLink) | **POST** /v1/whatsapp/wa-groups/{groupId}/invite-link | Create invite link |
 | [**createWhatsAppTemplate()**](WhatsAppApi.md#createWhatsAppTemplate) | **POST** /v1/whatsapp/templates | Create template |
 | [**deleteWhatsAppBroadcast()**](WhatsAppApi.md#deleteWhatsAppBroadcast) | **DELETE** /v1/whatsapp/broadcasts/{broadcastId} | Delete broadcast |
 | [**deleteWhatsAppContact()**](WhatsAppApi.md#deleteWhatsAppContact) | **DELETE** /v1/whatsapp/contacts/{contactId} | Delete contact |
 | [**deleteWhatsAppGroup()**](WhatsAppApi.md#deleteWhatsAppGroup) | **DELETE** /v1/whatsapp/groups | Delete group |
+| [**deleteWhatsAppGroupChat()**](WhatsAppApi.md#deleteWhatsAppGroupChat) | **DELETE** /v1/whatsapp/wa-groups/{groupId} | Delete group |
 | [**deleteWhatsAppTemplate()**](WhatsAppApi.md#deleteWhatsAppTemplate) | **DELETE** /v1/whatsapp/templates/{templateName} | Delete template |
 | [**getWhatsAppBroadcast()**](WhatsAppApi.md#getWhatsAppBroadcast) | **GET** /v1/whatsapp/broadcasts/{broadcastId} | Get broadcast |
 | [**getWhatsAppBroadcastRecipients()**](WhatsAppApi.md#getWhatsAppBroadcastRecipients) | **GET** /v1/whatsapp/broadcasts/{broadcastId}/recipients | List recipients |
@@ -24,11 +29,16 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getWhatsAppContact()**](WhatsAppApi.md#getWhatsAppContact) | **GET** /v1/whatsapp/contacts/{contactId} | Get contact |
 | [**getWhatsAppContacts()**](WhatsAppApi.md#getWhatsAppContacts) | **GET** /v1/whatsapp/contacts | List contacts |
 | [**getWhatsAppDisplayName()**](WhatsAppApi.md#getWhatsAppDisplayName) | **GET** /v1/whatsapp/business-profile/display-name | Get display name and review status |
+| [**getWhatsAppGroupChat()**](WhatsAppApi.md#getWhatsAppGroupChat) | **GET** /v1/whatsapp/wa-groups/{groupId} | Get group info |
 | [**getWhatsAppGroups()**](WhatsAppApi.md#getWhatsAppGroups) | **GET** /v1/whatsapp/groups | List contact groups |
 | [**getWhatsAppTemplate()**](WhatsAppApi.md#getWhatsAppTemplate) | **GET** /v1/whatsapp/templates/{templateName} | Get template |
 | [**getWhatsAppTemplates()**](WhatsAppApi.md#getWhatsAppTemplates) | **GET** /v1/whatsapp/templates | List templates |
 | [**importWhatsAppContacts()**](WhatsAppApi.md#importWhatsAppContacts) | **POST** /v1/whatsapp/contacts/import | Bulk import contacts |
+| [**listWhatsAppGroupChats()**](WhatsAppApi.md#listWhatsAppGroupChats) | **GET** /v1/whatsapp/wa-groups | List active groups |
+| [**listWhatsAppGroupJoinRequests()**](WhatsAppApi.md#listWhatsAppGroupJoinRequests) | **GET** /v1/whatsapp/wa-groups/{groupId}/join-requests | List join requests |
+| [**rejectWhatsAppGroupJoinRequests()**](WhatsAppApi.md#rejectWhatsAppGroupJoinRequests) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/join-requests | Reject join requests |
 | [**removeWhatsAppBroadcastRecipients()**](WhatsAppApi.md#removeWhatsAppBroadcastRecipients) | **DELETE** /v1/whatsapp/broadcasts/{broadcastId}/recipients | Remove recipients |
+| [**removeWhatsAppGroupParticipants()**](WhatsAppApi.md#removeWhatsAppGroupParticipants) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/participants | Remove participants |
 | [**renameWhatsAppGroup()**](WhatsAppApi.md#renameWhatsAppGroup) | **POST** /v1/whatsapp/groups | Rename group |
 | [**scheduleWhatsAppBroadcast()**](WhatsAppApi.md#scheduleWhatsAppBroadcast) | **POST** /v1/whatsapp/broadcasts/{broadcastId}/schedule | Schedule broadcast |
 | [**sendWhatsAppBroadcast()**](WhatsAppApi.md#sendWhatsAppBroadcast) | **POST** /v1/whatsapp/broadcasts/{broadcastId}/send | Send broadcast |
@@ -36,6 +46,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateWhatsAppBusinessProfile()**](WhatsAppApi.md#updateWhatsAppBusinessProfile) | **POST** /v1/whatsapp/business-profile | Update business profile |
 | [**updateWhatsAppContact()**](WhatsAppApi.md#updateWhatsAppContact) | **PUT** /v1/whatsapp/contacts/{contactId} | Update contact |
 | [**updateWhatsAppDisplayName()**](WhatsAppApi.md#updateWhatsAppDisplayName) | **POST** /v1/whatsapp/business-profile/display-name | Request display name change |
+| [**updateWhatsAppGroupChat()**](WhatsAppApi.md#updateWhatsAppGroupChat) | **POST** /v1/whatsapp/wa-groups/{groupId} | Update group settings |
 | [**updateWhatsAppTemplate()**](WhatsAppApi.md#updateWhatsAppTemplate) | **PATCH** /v1/whatsapp/templates/{templateName} | Update template |
 | [**uploadWhatsAppProfilePhoto()**](WhatsAppApi.md#uploadWhatsAppProfilePhoto) | **POST** /v1/whatsapp/business-profile/photo | Upload profile picture |
 
@@ -88,6 +99,134 @@ try {
 ### Return type
 
 [**\Late\Model\AddWhatsAppBroadcastRecipients200Response**](../Model/AddWhatsAppBroadcastRecipients200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `addWhatsAppGroupParticipants()`
+
+```php
+addWhatsAppGroupParticipants($group_id, $account_id, $add_whats_app_group_participants_request): \Late\Model\UnpublishPost200Response
+```
+
+Add participants
+
+Add participants to a WhatsApp group. Maximum 8 participants per request.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string | Group ID
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$add_whats_app_group_participants_request = new \Late\Model\AddWhatsAppGroupParticipantsRequest(); // \Late\Model\AddWhatsAppGroupParticipantsRequest
+
+try {
+    $result = $apiInstance->addWhatsAppGroupParticipants($group_id, $account_id, $add_whats_app_group_participants_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->addWhatsAppGroupParticipants: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**| Group ID | |
+| **account_id** | **string**| WhatsApp social account ID | |
+| **add_whats_app_group_participants_request** | [**\Late\Model\AddWhatsAppGroupParticipantsRequest**](../Model/AddWhatsAppGroupParticipantsRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `approveWhatsAppGroupJoinRequests()`
+
+```php
+approveWhatsAppGroupJoinRequests($group_id, $account_id, $approve_whats_app_group_join_requests_request): \Late\Model\UnpublishPost200Response
+```
+
+Approve join requests
+
+Approve pending join requests for a WhatsApp group.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string | Group ID
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$approve_whats_app_group_join_requests_request = new \Late\Model\ApproveWhatsAppGroupJoinRequestsRequest(); // \Late\Model\ApproveWhatsAppGroupJoinRequestsRequest
+
+try {
+    $result = $apiInstance->approveWhatsAppGroupJoinRequests($group_id, $account_id, $approve_whats_app_group_join_requests_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->approveWhatsAppGroupJoinRequests: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**| Group ID | |
+| **account_id** | **string**| WhatsApp social account ID | |
+| **approve_whats_app_group_join_requests_request** | [**\Late\Model\ApproveWhatsAppGroupJoinRequestsRequest**](../Model/ApproveWhatsAppGroupJoinRequestsRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
@@ -402,6 +541,128 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createWhatsAppGroupChat()`
+
+```php
+createWhatsAppGroupChat($create_whats_app_group_chat_request): \Late\Model\CreateWhatsAppGroupChat201Response
+```
+
+Create group
+
+Create a new WhatsApp group chat. Returns the group ID and optionally an invite link.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_whats_app_group_chat_request = new \Late\Model\CreateWhatsAppGroupChatRequest(); // \Late\Model\CreateWhatsAppGroupChatRequest
+
+try {
+    $result = $apiInstance->createWhatsAppGroupChat($create_whats_app_group_chat_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->createWhatsAppGroupChat: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_whats_app_group_chat_request** | [**\Late\Model\CreateWhatsAppGroupChatRequest**](../Model/CreateWhatsAppGroupChatRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\CreateWhatsAppGroupChat201Response**](../Model/CreateWhatsAppGroupChat201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createWhatsAppGroupInviteLink()`
+
+```php
+createWhatsAppGroupInviteLink($group_id, $account_id): \Late\Model\CreateWhatsAppGroupInviteLink200Response
+```
+
+Create invite link
+
+Create a new invite link for a WhatsApp group. The previous link is revoked.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string | Group ID
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+
+try {
+    $result = $apiInstance->createWhatsAppGroupInviteLink($group_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->createWhatsAppGroupInviteLink: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**| Group ID | |
+| **account_id** | **string**| WhatsApp social account ID | |
+
+### Return type
+
+[**\Late\Model\CreateWhatsAppGroupInviteLink200Response**](../Model/CreateWhatsAppGroupInviteLink200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `createWhatsAppTemplate()`
 
 ```php
@@ -636,6 +897,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteWhatsAppGroupChat()`
+
+```php
+deleteWhatsAppGroupChat($group_id, $account_id): \Late\Model\UnpublishPost200Response
+```
+
+Delete group
+
+Delete a WhatsApp group and remove all participants.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string | Group ID
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+
+try {
+    $result = $apiInstance->deleteWhatsAppGroupChat($group_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->deleteWhatsAppGroupChat: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**| Group ID | |
+| **account_id** | **string**| WhatsApp social account ID | |
+
+### Return type
+
+[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1148,6 +1471,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getWhatsAppGroupChat()`
+
+```php
+getWhatsAppGroupChat($group_id, $account_id): \Late\Model\GetWhatsAppGroupChat200Response
+```
+
+Get group info
+
+Retrieve metadata about a WhatsApp group including subject, description, participants, and settings.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string | Group ID
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+
+try {
+    $result = $apiInstance->getWhatsAppGroupChat($group_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->getWhatsAppGroupChat: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**| Group ID | |
+| **account_id** | **string**| WhatsApp social account ID | |
+
+### Return type
+
+[**\Late\Model\GetWhatsAppGroupChat200Response**](../Model/GetWhatsAppGroupChat200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getWhatsAppGroups()`
 
 ```php
@@ -1390,6 +1775,196 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listWhatsAppGroupChats()`
+
+```php
+listWhatsAppGroupChats($account_id, $limit, $after): \Late\Model\ListWhatsAppGroupChats200Response
+```
+
+List active groups
+
+List active WhatsApp group chats for a business phone number. These are actual WhatsApp group conversations on the platform.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$limit = 25; // int | Max groups to return
+$after = 'after_example'; // string | Pagination cursor
+
+try {
+    $result = $apiInstance->listWhatsAppGroupChats($account_id, $limit, $after);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->listWhatsAppGroupChats: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| WhatsApp social account ID | |
+| **limit** | **int**| Max groups to return | [optional] [default to 25] |
+| **after** | **string**| Pagination cursor | [optional] |
+
+### Return type
+
+[**\Late\Model\ListWhatsAppGroupChats200Response**](../Model/ListWhatsAppGroupChats200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listWhatsAppGroupJoinRequests()`
+
+```php
+listWhatsAppGroupJoinRequests($group_id, $account_id): \Late\Model\ListWhatsAppGroupJoinRequests200Response
+```
+
+List join requests
+
+List pending join requests for a WhatsApp group (only for groups with approval_required mode).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string | Group ID
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+
+try {
+    $result = $apiInstance->listWhatsAppGroupJoinRequests($group_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->listWhatsAppGroupJoinRequests: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**| Group ID | |
+| **account_id** | **string**| WhatsApp social account ID | |
+
+### Return type
+
+[**\Late\Model\ListWhatsAppGroupJoinRequests200Response**](../Model/ListWhatsAppGroupJoinRequests200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `rejectWhatsAppGroupJoinRequests()`
+
+```php
+rejectWhatsAppGroupJoinRequests($group_id, $account_id, $reject_whats_app_group_join_requests_request): \Late\Model\UnpublishPost200Response
+```
+
+Reject join requests
+
+Reject pending join requests for a WhatsApp group.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string | Group ID
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$reject_whats_app_group_join_requests_request = new \Late\Model\RejectWhatsAppGroupJoinRequestsRequest(); // \Late\Model\RejectWhatsAppGroupJoinRequestsRequest
+
+try {
+    $result = $apiInstance->rejectWhatsAppGroupJoinRequests($group_id, $account_id, $reject_whats_app_group_join_requests_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->rejectWhatsAppGroupJoinRequests: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**| Group ID | |
+| **account_id** | **string**| WhatsApp social account ID | |
+| **reject_whats_app_group_join_requests_request** | [**\Late\Model\RejectWhatsAppGroupJoinRequestsRequest**](../Model/RejectWhatsAppGroupJoinRequestsRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `removeWhatsAppBroadcastRecipients()`
 
 ```php
@@ -1438,6 +2013,70 @@ try {
 ### Return type
 
 [**\Late\Model\RemoveWhatsAppBroadcastRecipients200Response**](../Model/RemoveWhatsAppBroadcastRecipients200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeWhatsAppGroupParticipants()`
+
+```php
+removeWhatsAppGroupParticipants($group_id, $account_id, $remove_whats_app_group_participants_request): \Late\Model\UnpublishPost200Response
+```
+
+Remove participants
+
+Remove participants from a WhatsApp group.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string | Group ID
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$remove_whats_app_group_participants_request = new \Late\Model\RemoveWhatsAppGroupParticipantsRequest(); // \Late\Model\RemoveWhatsAppGroupParticipantsRequest
+
+try {
+    $result = $apiInstance->removeWhatsAppGroupParticipants($group_id, $account_id, $remove_whats_app_group_participants_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->removeWhatsAppGroupParticipants: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**| Group ID | |
+| **account_id** | **string**| WhatsApp social account ID | |
+| **remove_whats_app_group_participants_request** | [**\Late\Model\RemoveWhatsAppGroupParticipantsRequest**](../Model/RemoveWhatsAppGroupParticipantsRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
@@ -1862,6 +2501,70 @@ try {
 ### Return type
 
 [**\Late\Model\UpdateWhatsAppDisplayName200Response**](../Model/UpdateWhatsAppDisplayName200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateWhatsAppGroupChat()`
+
+```php
+updateWhatsAppGroupChat($group_id, $account_id, $update_whats_app_group_chat_request): \Late\Model\UnpublishPost200Response
+```
+
+Update group settings
+
+Update the subject, description, or join approval mode of a WhatsApp group.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$group_id = 'group_id_example'; // string | Group ID
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$update_whats_app_group_chat_request = new \Late\Model\UpdateWhatsAppGroupChatRequest(); // \Late\Model\UpdateWhatsAppGroupChatRequest
+
+try {
+    $result = $apiInstance->updateWhatsAppGroupChat($group_id, $account_id, $update_whats_app_group_chat_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->updateWhatsAppGroupChat: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **group_id** | **string**| Group ID | |
+| **account_id** | **string**| WhatsApp social account ID | |
+| **update_whats_app_group_chat_request** | [**\Late\Model\UpdateWhatsAppGroupChatRequest**](../Model/UpdateWhatsAppGroupChatRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
