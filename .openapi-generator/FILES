@@ -613,6 +613,8 @@ docs/Model/UpdateInboxConversation200ResponseData.md
 docs/Model/UpdateInboxConversationRequest.md
 docs/Model/UpdateLinkedInOrganizationRequest.md
 docs/Model/UpdatePinterestBoardsRequest.md
+docs/Model/UpdatePostMetadata200Response.md
+docs/Model/UpdatePostMetadataRequest.md
 docs/Model/UpdatePostRequest.md
 docs/Model/UpdateProfile200Response.md
 docs/Model/UpdateProfileRequest.md
@@ -1307,6 +1309,8 @@ lib/Model/UpdateInboxConversation200ResponseData.php
 lib/Model/UpdateInboxConversationRequest.php
 lib/Model/UpdateLinkedInOrganizationRequest.php
 lib/Model/UpdatePinterestBoardsRequest.php
+lib/Model/UpdatePostMetadata200Response.php
+lib/Model/UpdatePostMetadataRequest.php
 lib/Model/UpdatePostRequest.php
 lib/Model/UpdateProfile200Response.php
 lib/Model/UpdateProfileRequest.php
@@ -1387,3 +1391,5 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/UpdatePostMetadata200ResponseTest.php
+test/Model/UpdatePostMetadataRequestTest.php

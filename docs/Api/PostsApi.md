@@ -14,6 +14,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**retryPost()**](PostsApi.md#retryPost) | **POST** /v1/posts/{postId}/retry | Retry failed post |
 | [**unpublishPost()**](PostsApi.md#unpublishPost) | **POST** /v1/posts/{postId}/unpublish | Unpublish post |
 | [**updatePost()**](PostsApi.md#updatePost) | **PUT** /v1/posts/{postId} | Update post |
+| [**updatePostMetadata()**](PostsApi.md#updatePostMetadata) | **POST** /v1/posts/{postId}/update-metadata | Update post metadata |
 
 
 ## `bulkUploadPosts()`
@@ -508,6 +509,68 @@ try {
 ### Return type
 
 [**\Late\Model\PostUpdateResponse**](../Model/PostUpdateResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updatePostMetadata()`
+
+```php
+updatePostMetadata($post_id, $update_post_metadata_request): \Late\Model\UpdatePostMetadata200Response
+```
+
+Update post metadata
+
+Updates metadata of an already-published post on the specified platform without re-uploading the media. Currently only supported for YouTube videos (title, description, tags, category, privacy status). The post must have \"published\" status on the target platform. At least one updatable field is required.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\PostsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string
+$update_post_metadata_request = {"platform":"youtube","title":"Updated Video Title","description":"New SEO-optimized description","tags":["seo","marketing","tutorial"]}; // \Late\Model\UpdatePostMetadataRequest
+
+try {
+    $result = $apiInstance->updatePostMetadata($post_id, $update_post_metadata_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PostsApi->updatePostMetadata: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**|  | |
+| **update_post_metadata_request** | [**\Late\Model\UpdatePostMetadataRequest**](../Model/UpdatePostMetadataRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UpdatePostMetadata200Response**](../Model/UpdatePostMetadata200Response.md)
 
 ### Authorization
 
