@@ -2799,7 +2799,7 @@ class PostsApi
      *
      * Update post metadata
      *
-     * @param  string $post_id post_id (required)
+     * @param  string $post_id Zernio post ID, or \&quot;_\&quot; when using direct video ID mode (required)
      * @param  \Late\Model\UpdatePostMetadataRequest $update_post_metadata_request update_post_metadata_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePostMetadata'] to see the possible values for this operation
      *
@@ -2818,7 +2818,7 @@ class PostsApi
      *
      * Update post metadata
      *
-     * @param  string $post_id (required)
+     * @param  string $post_id Zernio post ID, or \&quot;_\&quot; when using direct video ID mode (required)
      * @param  \Late\Model\UpdatePostMetadataRequest $update_post_metadata_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePostMetadata'] to see the possible values for this operation
      *
@@ -2932,7 +2932,7 @@ class PostsApi
      *
      * Update post metadata
      *
-     * @param  string $post_id (required)
+     * @param  string $post_id Zernio post ID, or \&quot;_\&quot; when using direct video ID mode (required)
      * @param  \Late\Model\UpdatePostMetadataRequest $update_post_metadata_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePostMetadata'] to see the possible values for this operation
      *
@@ -2954,7 +2954,7 @@ class PostsApi
      *
      * Update post metadata
      *
-     * @param  string $post_id (required)
+     * @param  string $post_id Zernio post ID, or \&quot;_\&quot; when using direct video ID mode (required)
      * @param  \Late\Model\UpdatePostMetadataRequest $update_post_metadata_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePostMetadata'] to see the possible values for this operation
      *
@@ -3005,7 +3005,7 @@ class PostsApi
     /**
      * Create request for operation 'updatePostMetadata'
      *
-     * @param  string $post_id (required)
+     * @param  string $post_id Zernio post ID, or \&quot;_\&quot; when using direct video ID mode (required)
      * @param  \Late\Model\UpdatePostMetadataRequest $update_post_metadata_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePostMetadata'] to see the possible values for this operation
      *

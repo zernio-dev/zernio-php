@@ -531,7 +531,7 @@ updatePostMetadata($post_id, $update_post_metadata_request): \Late\Model\UpdateP
 
 Update post metadata
 
-Updates metadata of an already-published post on the specified platform without re-uploading the media. Currently only supported for YouTube videos (title, description, tags, category, privacy status). The post must have \"published\" status on the target platform. At least one updatable field is required.
+Updates metadata of a published video on the specified platform without re-uploading. Currently only supported for YouTube. At least one updatable field is required.  **Two modes:**  1. **Post-based** (video published through Zernio): pass the Zernio postId in the URL and `platform` in the body. 2. **Direct video ID** (video uploaded outside Zernio, e.g. directly to YouTube): use `_` as the postId,    and pass `videoId` + `accountId` + `platform` in the body. The accountId is the Zernio social account ID    for the connected YouTube channel.
 
 ### Example
 
@@ -550,7 +550,7 @@ $apiInstance = new Late\Api\PostsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$post_id = 'post_id_example'; // string
+$post_id = 'post_id_example'; // string | Zernio post ID, or \"_\" when using direct video ID mode
 $update_post_metadata_request = {"platform":"youtube","title":"Updated Video Title","description":"New SEO-optimized description","tags":["seo","marketing","tutorial"]}; // \Late\Model\UpdatePostMetadataRequest
 
 try {
@@ -565,7 +565,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **post_id** | **string**|  | |
+| **post_id** | **string**| Zernio post ID, or \&quot;_\&quot; when using direct video ID mode | |
 | **update_post_metadata_request** | [**\Late\Model\UpdatePostMetadataRequest**](../Model/UpdatePostMetadataRequest.md)|  | |
 
 ### Return type

@@ -59,6 +59,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'platform' => 'string',
+        'video_id' => 'string',
+        'account_id' => 'string',
         'title' => 'string',
         'description' => 'string',
         'tags' => 'string[]',
@@ -75,6 +77,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'platform' => null,
+        'video_id' => null,
+        'account_id' => null,
         'title' => null,
         'description' => null,
         'tags' => null,
@@ -89,6 +93,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'platform' => false,
+        'video_id' => false,
+        'account_id' => false,
         'title' => false,
         'description' => false,
         'tags' => false,
@@ -183,6 +189,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'platform' => 'platform',
+        'video_id' => 'videoId',
+        'account_id' => 'accountId',
         'title' => 'title',
         'description' => 'description',
         'tags' => 'tags',
@@ -197,6 +205,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'platform' => 'setPlatform',
+        'video_id' => 'setVideoId',
+        'account_id' => 'setAccountId',
         'title' => 'setTitle',
         'description' => 'setDescription',
         'tags' => 'setTags',
@@ -211,6 +221,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'platform' => 'getPlatform',
+        'video_id' => 'getVideoId',
+        'account_id' => 'getAccountId',
         'title' => 'getTitle',
         'description' => 'getDescription',
         'tags' => 'getTags',
@@ -306,6 +318,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('video_id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('tags', $data ?? [], null);
@@ -413,6 +427,60 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_id
+     *
+     * @return string|null
+     */
+    public function getVideoId()
+    {
+        return $this->container['video_id'];
+    }
+
+    /**
+     * Sets video_id
+     *
+     * @param string|null $video_id YouTube video ID (required for direct mode, ignored for post-based mode)
+     *
+     * @return self
+     */
+    public function setVideoId($video_id)
+    {
+        if (is_null($video_id)) {
+            throw new \InvalidArgumentException('non-nullable video_id cannot be null');
+        }
+        $this->container['video_id'] = $video_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id Zernio social account ID (required for direct mode, ignored for post-based mode)
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }

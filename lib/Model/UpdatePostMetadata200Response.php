@@ -60,6 +60,7 @@ class UpdatePostMetadata200Response implements ModelInterface, ArrayAccess, \Jso
     protected static $openAPITypes = [
         'success' => 'bool',
         'message' => 'string',
+        'video_id' => 'string',
         'updated_fields' => 'string[]'
     ];
 
@@ -73,6 +74,7 @@ class UpdatePostMetadata200Response implements ModelInterface, ArrayAccess, \Jso
     protected static $openAPIFormats = [
         'success' => null,
         'message' => null,
+        'video_id' => null,
         'updated_fields' => null
     ];
 
@@ -84,6 +86,7 @@ class UpdatePostMetadata200Response implements ModelInterface, ArrayAccess, \Jso
     protected static array $openAPINullables = [
         'success' => false,
         'message' => false,
+        'video_id' => false,
         'updated_fields' => false
     ];
 
@@ -175,6 +178,7 @@ class UpdatePostMetadata200Response implements ModelInterface, ArrayAccess, \Jso
     protected static $attributeMap = [
         'success' => 'success',
         'message' => 'message',
+        'video_id' => 'videoId',
         'updated_fields' => 'updatedFields'
     ];
 
@@ -186,6 +190,7 @@ class UpdatePostMetadata200Response implements ModelInterface, ArrayAccess, \Jso
     protected static $setters = [
         'success' => 'setSuccess',
         'message' => 'setMessage',
+        'video_id' => 'setVideoId',
         'updated_fields' => 'setUpdatedFields'
     ];
 
@@ -197,6 +202,7 @@ class UpdatePostMetadata200Response implements ModelInterface, ArrayAccess, \Jso
     protected static $getters = [
         'success' => 'getSuccess',
         'message' => 'getMessage',
+        'video_id' => 'getVideoId',
         'updated_fields' => 'getUpdatedFields'
     ];
 
@@ -259,6 +265,7 @@ class UpdatePostMetadata200Response implements ModelInterface, ArrayAccess, \Jso
     {
         $this->setIfExists('success', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('video_id', $data ?? [], null);
         $this->setIfExists('updated_fields', $data ?? [], null);
     }
 
@@ -354,6 +361,33 @@ class UpdatePostMetadata200Response implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
         $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_id
+     *
+     * @return string|null
+     */
+    public function getVideoId()
+    {
+        return $this->container['video_id'];
+    }
+
+    /**
+     * Sets video_id
+     *
+     * @param string|null $video_id Only present in direct video ID mode
+     *
+     * @return self
+     */
+    public function setVideoId($video_id)
+    {
+        if (is_null($video_id)) {
+            throw new \InvalidArgumentException('non-nullable video_id cannot be null');
+        }
+        $this->container['video_id'] = $video_id;
 
         return $this;
     }
