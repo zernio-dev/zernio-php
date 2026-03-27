@@ -1,6 +1,6 @@
 # Late\WebhooksApi
 
-Configure webhooks for real-time notifications. Events: post.scheduled, post.published, post.failed, post.partial, post.recycled, account.connected, account.disconnected, message.received, comment.received. Security: optional HMAC-SHA256 signature in X-Zernio-Signature header. Configure a secret key to enable verification. Custom headers supported.
+Configure webhooks for real-time notifications. Events: post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, comment.received, webhook.test. Security: optional HMAC-SHA256 signature in X-Zernio-Signature header. Configure a secret key to enable verification. Custom headers supported.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -41,7 +41,7 @@ $apiInstance = new Late\Api\WebhooksApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_webhook_settings_request = {"name":"My Production Webhook","url":"https://example.com/webhook","secret":"your-secret-key","events":["post.scheduled","post.published","post.failed","post.partial","account.connected","account.disconnected","message.received","comment.received"],"isActive":true}; // \Late\Model\CreateWebhookSettingsRequest
+$create_webhook_settings_request = {"name":"My Production Webhook","url":"https://example.com/webhook","secret":"your-secret-key","events":["post.scheduled","post.published","post.failed","post.partial","post.cancelled","post.recycled","account.connected","account.disconnected","message.received","comment.received"],"isActive":true}; // \Late\Model\CreateWebhookSettingsRequest
 
 try {
     $result = $apiInstance->createWebhookSettings($create_webhook_settings_request);

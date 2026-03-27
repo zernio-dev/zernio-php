@@ -332,6 +332,21 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
+        if ($this->container['profile_id'] === null) {
+            $invalidProperties[] = "'profile_id' can't be null";
+        }
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
+        if ($this->container['username'] === null) {
+            $invalidProperties[] = "'username' can't be null";
+        }
+        if ($this->container['disconnection_type'] === null) {
+            $invalidProperties[] = "'disconnection_type' can't be null";
+        }
         $allowedValues = $this->getDisconnectionTypeAllowableValues();
         if (!is_null($this->container['disconnection_type']) && !in_array($this->container['disconnection_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -341,6 +356,9 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
             );
         }
 
+        if ($this->container['reason'] === null) {
+            $invalidProperties[] = "'reason' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -359,7 +377,7 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     /**
      * Gets account_id
      *
-     * @return string|null
+     * @return string
      */
     public function getAccountId()
     {
@@ -369,7 +387,7 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     /**
      * Sets account_id
      *
-     * @param string|null $account_id The account's unique identifier (same as used in /v1/accounts/{accountId})
+     * @param string $account_id The account's unique identifier (same as used in /v1/accounts/{accountId})
      *
      * @return self
      */
@@ -386,7 +404,7 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     /**
      * Gets profile_id
      *
-     * @return string|null
+     * @return string
      */
     public function getProfileId()
     {
@@ -396,7 +414,7 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     /**
      * Sets profile_id
      *
-     * @param string|null $profile_id The profile's unique identifier this account belongs to
+     * @param string $profile_id The profile's unique identifier this account belongs to
      *
      * @return self
      */
@@ -413,7 +431,7 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     /**
      * Gets platform
      *
-     * @return string|null
+     * @return string
      */
     public function getPlatform()
     {
@@ -423,7 +441,7 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     /**
      * Sets platform
      *
-     * @param string|null $platform platform
+     * @param string $platform platform
      *
      * @return self
      */
@@ -440,7 +458,7 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     /**
      * Gets username
      *
-     * @return string|null
+     * @return string
      */
     public function getUsername()
     {
@@ -450,7 +468,7 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     /**
      * Sets username
      *
-     * @param string|null $username username
+     * @param string $username username
      *
      * @return self
      */
@@ -494,7 +512,7 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     /**
      * Gets disconnection_type
      *
-     * @return string|null
+     * @return string
      */
     public function getDisconnectionType()
     {
@@ -504,7 +522,7 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     /**
      * Sets disconnection_type
      *
-     * @param string|null $disconnection_type Whether the disconnection was intentional (user action) or unintentional (token expired/revoked)
+     * @param string $disconnection_type Whether the disconnection was intentional (user action) or unintentional (token expired/revoked)
      *
      * @return self
      */
@@ -531,7 +549,7 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     /**
      * Gets reason
      *
-     * @return string|null
+     * @return string
      */
     public function getReason()
     {
@@ -541,7 +559,7 @@ class WebhookPayloadAccountDisconnectedAccount implements ModelInterface, ArrayA
     /**
      * Sets reason
      *
-     * @param string|null $reason Human-readable reason for the disconnection
+     * @param string $reason Human-readable reason for the disconnection
      *
      * @return self
      */

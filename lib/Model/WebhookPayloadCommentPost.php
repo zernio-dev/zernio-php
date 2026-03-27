@@ -282,6 +282,12 @@ class WebhookPayloadCommentPost implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['platform_post_id'] === null) {
+            $invalidProperties[] = "'platform_post_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -300,7 +306,7 @@ class WebhookPayloadCommentPost implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -310,7 +316,7 @@ class WebhookPayloadCommentPost implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets id
      *
-     * @param string|null $id Internal post ID
+     * @param string $id Internal post ID
      *
      * @return self
      */
@@ -327,7 +333,7 @@ class WebhookPayloadCommentPost implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets platform_post_id
      *
-     * @return string|null
+     * @return string
      */
     public function getPlatformPostId()
     {
@@ -337,7 +343,7 @@ class WebhookPayloadCommentPost implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets platform_post_id
      *
-     * @param string|null $platform_post_id Platform's post ID
+     * @param string $platform_post_id Platform's post ID
      *
      * @return self
      */

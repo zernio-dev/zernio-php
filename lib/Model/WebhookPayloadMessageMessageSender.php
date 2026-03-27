@@ -303,6 +303,9 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -321,7 +324,7 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -331,7 +334,7 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string $id id
      *
      * @return self
      */

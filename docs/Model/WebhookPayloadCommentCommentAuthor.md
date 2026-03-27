@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** | Author&#39;s platform ID | [optional]
+**id** | **string** | Author&#39;s platform ID |
 **username** | **string** |  | [optional]
 **name** | **string** |  | [optional]
 **picture** | **string** |  | [optional]

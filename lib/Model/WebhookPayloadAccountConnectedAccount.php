@@ -303,6 +303,18 @@ class WebhookPayloadAccountConnectedAccount implements ModelInterface, ArrayAcce
     {
         $invalidProperties = [];
 
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
+        if ($this->container['profile_id'] === null) {
+            $invalidProperties[] = "'profile_id' can't be null";
+        }
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
+        if ($this->container['username'] === null) {
+            $invalidProperties[] = "'username' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -321,7 +333,7 @@ class WebhookPayloadAccountConnectedAccount implements ModelInterface, ArrayAcce
     /**
      * Gets account_id
      *
-     * @return string|null
+     * @return string
      */
     public function getAccountId()
     {
@@ -331,7 +343,7 @@ class WebhookPayloadAccountConnectedAccount implements ModelInterface, ArrayAcce
     /**
      * Sets account_id
      *
-     * @param string|null $account_id The account's unique identifier (same as used in /v1/accounts/{accountId})
+     * @param string $account_id The account's unique identifier (same as used in /v1/accounts/{accountId})
      *
      * @return self
      */
@@ -348,7 +360,7 @@ class WebhookPayloadAccountConnectedAccount implements ModelInterface, ArrayAcce
     /**
      * Gets profile_id
      *
-     * @return string|null
+     * @return string
      */
     public function getProfileId()
     {
@@ -358,7 +370,7 @@ class WebhookPayloadAccountConnectedAccount implements ModelInterface, ArrayAcce
     /**
      * Sets profile_id
      *
-     * @param string|null $profile_id The profile's unique identifier this account belongs to
+     * @param string $profile_id The profile's unique identifier this account belongs to
      *
      * @return self
      */
@@ -375,7 +387,7 @@ class WebhookPayloadAccountConnectedAccount implements ModelInterface, ArrayAcce
     /**
      * Gets platform
      *
-     * @return string|null
+     * @return string
      */
     public function getPlatform()
     {
@@ -385,7 +397,7 @@ class WebhookPayloadAccountConnectedAccount implements ModelInterface, ArrayAcce
     /**
      * Sets platform
      *
-     * @param string|null $platform platform
+     * @param string $platform platform
      *
      * @return self
      */
@@ -402,7 +414,7 @@ class WebhookPayloadAccountConnectedAccount implements ModelInterface, ArrayAcce
     /**
      * Gets username
      *
-     * @return string|null
+     * @return string
      */
     public function getUsername()
     {
@@ -412,7 +424,7 @@ class WebhookPayloadAccountConnectedAccount implements ModelInterface, ArrayAcce
     /**
      * Sets username
      *
-     * @param string|null $username username
+     * @param string $username username
      *
      * @return self
      */

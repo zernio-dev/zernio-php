@@ -60,6 +60,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     protected static $openAPITypes = [
         'platform' => 'string',
         'status' => 'string',
+        'platform_post_id' => 'string',
         'published_url' => 'string',
         'error' => 'string'
     ];
@@ -74,6 +75,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     protected static $openAPIFormats = [
         'platform' => null,
         'status' => null,
+        'platform_post_id' => null,
         'published_url' => null,
         'error' => null
     ];
@@ -86,6 +88,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     protected static array $openAPINullables = [
         'platform' => false,
         'status' => false,
+        'platform_post_id' => false,
         'published_url' => false,
         'error' => false
     ];
@@ -178,6 +181,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     protected static $attributeMap = [
         'platform' => 'platform',
         'status' => 'status',
+        'platform_post_id' => 'platformPostId',
         'published_url' => 'publishedUrl',
         'error' => 'error'
     ];
@@ -190,6 +194,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     protected static $setters = [
         'platform' => 'setPlatform',
         'status' => 'setStatus',
+        'platform_post_id' => 'setPlatformPostId',
         'published_url' => 'setPublishedUrl',
         'error' => 'setError'
     ];
@@ -202,6 +207,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     protected static $getters = [
         'platform' => 'getPlatform',
         'status' => 'getStatus',
+        'platform_post_id' => 'getPlatformPostId',
         'published_url' => 'getPublishedUrl',
         'error' => 'getError'
     ];
@@ -265,6 +271,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     {
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('platform_post_id', $data ?? [], null);
         $this->setIfExists('published_url', $data ?? [], null);
         $this->setIfExists('error', $data ?? [], null);
     }
@@ -296,6 +303,12 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     {
         $invalidProperties = [];
 
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -314,7 +327,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     /**
      * Gets platform
      *
-     * @return string|null
+     * @return string
      */
     public function getPlatform()
     {
@@ -324,7 +337,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     /**
      * Sets platform
      *
-     * @param string|null $platform platform
+     * @param string $platform platform
      *
      * @return self
      */
@@ -341,7 +354,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     /**
      * Gets status
      *
-     * @return string|null
+     * @return string
      */
     public function getStatus()
     {
@@ -351,7 +364,7 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string $status status
      *
      * @return self
      */
@@ -361,6 +374,33 @@ class WebhookPayloadPostPostPlatformsInner implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_post_id
+     *
+     * @return string|null
+     */
+    public function getPlatformPostId()
+    {
+        return $this->container['platform_post_id'];
+    }
+
+    /**
+     * Sets platform_post_id
+     *
+     * @param string|null $platform_post_id platform_post_id
+     *
+     * @return self
+     */
+    public function setPlatformPostId($platform_post_id)
+    {
+        if (is_null($platform_post_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_post_id cannot be null');
+        }
+        $this->container['platform_post_id'] = $platform_post_id;
 
         return $this;
     }

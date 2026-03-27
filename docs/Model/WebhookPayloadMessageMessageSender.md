@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional]
+**id** | **string** |  |
 **name** | **string** |  | [optional]
 **username** | **string** |  | [optional]
 **picture** | **string** |  | [optional]

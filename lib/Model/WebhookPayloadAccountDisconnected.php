@@ -59,6 +59,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'event' => 'string',
         'account' => '\Late\Model\WebhookPayloadAccountDisconnectedAccount',
         'timestamp' => '\DateTime'
@@ -72,6 +73,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'event' => null,
         'account' => null,
         'timestamp' => 'date-time'
@@ -83,6 +85,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'event' => false,
         'account' => false,
         'timestamp' => false
@@ -174,6 +177,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'event' => 'event',
         'account' => 'account',
         'timestamp' => 'timestamp'
@@ -185,6 +189,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'event' => 'setEvent',
         'account' => 'setAccount',
         'timestamp' => 'setTimestamp'
@@ -196,6 +201,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'event' => 'getEvent',
         'account' => 'getAccount',
         'timestamp' => 'getTimestamp'
@@ -271,6 +277,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
         $this->setIfExists('account', $data ?? [], null);
         $this->setIfExists('timestamp', $data ?? [], null);
@@ -303,6 +310,12 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['event'] === null) {
+            $invalidProperties[] = "'event' can't be null";
+        }
         $allowedValues = $this->getEventAllowableValues();
         if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -312,6 +325,12 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
             );
         }
 
+        if ($this->container['account'] === null) {
+            $invalidProperties[] = "'account' can't be null";
+        }
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -328,9 +347,36 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
 
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Stable webhook event ID
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets event
      *
-     * @return string|null
+     * @return string
      */
     public function getEvent()
     {
@@ -340,7 +386,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
     /**
      * Sets event
      *
-     * @param string|null $event event
+     * @param string $event event
      *
      * @return self
      */
@@ -367,7 +413,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
     /**
      * Gets account
      *
-     * @return \Late\Model\WebhookPayloadAccountDisconnectedAccount|null
+     * @return \Late\Model\WebhookPayloadAccountDisconnectedAccount
      */
     public function getAccount()
     {
@@ -377,7 +423,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
     /**
      * Sets account
      *
-     * @param \Late\Model\WebhookPayloadAccountDisconnectedAccount|null $account account
+     * @param \Late\Model\WebhookPayloadAccountDisconnectedAccount $account account
      *
      * @return self
      */
@@ -394,7 +440,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
     /**
      * Gets timestamp
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getTimestamp()
     {
@@ -404,7 +450,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
     /**
      * Sets timestamp
      *
-     * @param \DateTime|null $timestamp timestamp
+     * @param \DateTime $timestamp timestamp
      *
      * @return self
      */

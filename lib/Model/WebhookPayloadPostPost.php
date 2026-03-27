@@ -310,6 +310,21 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['content'] === null) {
+            $invalidProperties[] = "'content' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        if ($this->container['scheduled_for'] === null) {
+            $invalidProperties[] = "'scheduled_for' can't be null";
+        }
+        if ($this->container['platforms'] === null) {
+            $invalidProperties[] = "'platforms' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -328,7 +343,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -338,7 +353,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string $id id
      *
      * @return self
      */
@@ -355,7 +370,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets content
      *
-     * @return string|null
+     * @return string
      */
     public function getContent()
     {
@@ -365,7 +380,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets content
      *
-     * @param string|null $content content
+     * @param string $content content
      *
      * @return self
      */
@@ -382,7 +397,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets status
      *
-     * @return string|null
+     * @return string
      */
     public function getStatus()
     {
@@ -392,7 +407,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string $status status
      *
      * @return self
      */
@@ -409,7 +424,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets scheduled_for
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getScheduledFor()
     {
@@ -419,7 +434,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets scheduled_for
      *
-     * @param \DateTime|null $scheduled_for scheduled_for
+     * @param \DateTime $scheduled_for scheduled_for
      *
      * @return self
      */
@@ -463,7 +478,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets platforms
      *
-     * @return \Late\Model\WebhookPayloadPostPostPlatformsInner[]|null
+     * @return \Late\Model\WebhookPayloadPostPostPlatformsInner[]
      */
     public function getPlatforms()
     {
@@ -473,7 +488,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets platforms
      *
-     * @param \Late\Model\WebhookPayloadPostPostPlatformsInner[]|null $platforms platforms
+     * @param \Late\Model\WebhookPayloadPostPostPlatformsInner[] $platforms platforms
      *
      * @return self
      */

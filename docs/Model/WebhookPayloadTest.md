@@ -1,13 +1,12 @@
-# # WebhookPayloadPostPostPlatformsInner
+# # WebhookPayloadTest
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**platform** | **string** |  |
-**status** | **string** |  |
-**platform_post_id** | **string** |  | [optional]
-**published_url** | **string** |  | [optional]
-**error** | **string** |  | [optional]
+**id** | **string** | Stable webhook event ID |
+**event** | **string** |  |
+**message** | **string** | Human-readable test message |
+**timestamp** | **\DateTime** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

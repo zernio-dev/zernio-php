@@ -296,6 +296,9 @@ class WebhookPayloadCommentCommentAuthor implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -314,7 +317,7 @@ class WebhookPayloadCommentCommentAuthor implements ModelInterface, ArrayAccess,
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -324,7 +327,7 @@ class WebhookPayloadCommentCommentAuthor implements ModelInterface, ArrayAccess,
     /**
      * Sets id
      *
-     * @param string|null $id Author's platform ID
+     * @param string $id Author's platform ID
      *
      * @return self
      */

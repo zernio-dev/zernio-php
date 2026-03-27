@@ -59,6 +59,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'event' => 'string',
         'comment' => '\Late\Model\WebhookPayloadCommentComment',
         'post' => '\Late\Model\WebhookPayloadCommentPost',
@@ -74,6 +75,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'event' => null,
         'comment' => null,
         'post' => null,
@@ -87,6 +89,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'event' => false,
         'comment' => false,
         'post' => false,
@@ -180,6 +183,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'event' => 'event',
         'comment' => 'comment',
         'post' => 'post',
@@ -193,6 +197,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'event' => 'setEvent',
         'comment' => 'setComment',
         'post' => 'setPost',
@@ -206,6 +211,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'event' => 'getEvent',
         'comment' => 'getComment',
         'post' => 'getPost',
@@ -283,6 +289,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
         $this->setIfExists('comment', $data ?? [], null);
         $this->setIfExists('post', $data ?? [], null);
@@ -317,6 +324,12 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['event'] === null) {
+            $invalidProperties[] = "'event' can't be null";
+        }
         $allowedValues = $this->getEventAllowableValues();
         if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -326,6 +339,18 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
             );
         }
 
+        if ($this->container['comment'] === null) {
+            $invalidProperties[] = "'comment' can't be null";
+        }
+        if ($this->container['post'] === null) {
+            $invalidProperties[] = "'post' can't be null";
+        }
+        if ($this->container['account'] === null) {
+            $invalidProperties[] = "'account' can't be null";
+        }
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -342,9 +367,36 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Stable webhook event ID
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets event
      *
-     * @return string|null
+     * @return string
      */
     public function getEvent()
     {
@@ -354,7 +406,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets event
      *
-     * @param string|null $event event
+     * @param string $event event
      *
      * @return self
      */
@@ -381,7 +433,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets comment
      *
-     * @return \Late\Model\WebhookPayloadCommentComment|null
+     * @return \Late\Model\WebhookPayloadCommentComment
      */
     public function getComment()
     {
@@ -391,7 +443,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets comment
      *
-     * @param \Late\Model\WebhookPayloadCommentComment|null $comment comment
+     * @param \Late\Model\WebhookPayloadCommentComment $comment comment
      *
      * @return self
      */
@@ -408,7 +460,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets post
      *
-     * @return \Late\Model\WebhookPayloadCommentPost|null
+     * @return \Late\Model\WebhookPayloadCommentPost
      */
     public function getPost()
     {
@@ -418,7 +470,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets post
      *
-     * @param \Late\Model\WebhookPayloadCommentPost|null $post post
+     * @param \Late\Model\WebhookPayloadCommentPost $post post
      *
      * @return self
      */
@@ -435,7 +487,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets account
      *
-     * @return \Late\Model\WebhookPayloadCommentAccount|null
+     * @return \Late\Model\WebhookPayloadCommentAccount
      */
     public function getAccount()
     {
@@ -445,7 +497,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets account
      *
-     * @param \Late\Model\WebhookPayloadCommentAccount|null $account account
+     * @param \Late\Model\WebhookPayloadCommentAccount $account account
      *
      * @return self
      */
@@ -462,7 +514,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets timestamp
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getTimestamp()
     {
@@ -472,7 +524,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets timestamp
      *
-     * @param \DateTime|null $timestamp timestamp
+     * @param \DateTime $timestamp timestamp
      *
      * @return self
      */

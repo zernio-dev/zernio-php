@@ -296,6 +296,15 @@ class WebhookPayloadMessageAccount implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
+        if ($this->container['username'] === null) {
+            $invalidProperties[] = "'username' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -314,7 +323,7 @@ class WebhookPayloadMessageAccount implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -324,7 +333,7 @@ class WebhookPayloadMessageAccount implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string|null $id Social account ID
+     * @param string $id Social account ID
      *
      * @return self
      */
@@ -341,7 +350,7 @@ class WebhookPayloadMessageAccount implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets platform
      *
-     * @return string|null
+     * @return string
      */
     public function getPlatform()
     {
@@ -351,7 +360,7 @@ class WebhookPayloadMessageAccount implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets platform
      *
-     * @param string|null $platform platform
+     * @param string $platform platform
      *
      * @return self
      */
@@ -368,7 +377,7 @@ class WebhookPayloadMessageAccount implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets username
      *
-     * @return string|null
+     * @return string
      */
     public function getUsername()
     {
@@ -378,7 +387,7 @@ class WebhookPayloadMessageAccount implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets username
      *
-     * @param string|null $username username
+     * @param string $username username
      *
      * @return self
      */

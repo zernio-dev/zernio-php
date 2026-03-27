@@ -289,6 +289,12 @@ class WebhookPayloadMessageMessageAttachmentsInner implements ModelInterface, Ar
     {
         $invalidProperties = [];
 
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -307,7 +313,7 @@ class WebhookPayloadMessageMessageAttachmentsInner implements ModelInterface, Ar
     /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -317,7 +323,7 @@ class WebhookPayloadMessageMessageAttachmentsInner implements ModelInterface, Ar
     /**
      * Sets type
      *
-     * @param string|null $type Attachment type (image, video, file, sticker, audio)
+     * @param string $type Attachment type (image, video, file, sticker, audio)
      *
      * @return self
      */
@@ -334,7 +340,7 @@ class WebhookPayloadMessageMessageAttachmentsInner implements ModelInterface, Ar
     /**
      * Gets url
      *
-     * @return string|null
+     * @return string
      */
     public function getUrl()
     {
@@ -344,7 +350,7 @@ class WebhookPayloadMessageMessageAttachmentsInner implements ModelInterface, Ar
     /**
      * Sets url
      *
-     * @param string|null $url Attachment URL (may expire for Meta platforms)
+     * @param string $url Attachment URL (may expire for Meta platforms)
      *
      * @return self
      */

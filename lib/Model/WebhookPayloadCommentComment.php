@@ -356,6 +356,18 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['post_id'] === null) {
+            $invalidProperties[] = "'post_id' can't be null";
+        }
+        if ($this->container['platform_post_id'] === null) {
+            $invalidProperties[] = "'platform_post_id' can't be null";
+        }
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
         $allowedValues = $this->getPlatformAllowableValues();
         if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -365,6 +377,21 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
             );
         }
 
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
+        }
+        if ($this->container['author'] === null) {
+            $invalidProperties[] = "'author' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['is_reply'] === null) {
+            $invalidProperties[] = "'is_reply' can't be null";
+        }
+        if ($this->container['parent_comment_id'] === null) {
+            $invalidProperties[] = "'parent_comment_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -383,7 +410,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -393,7 +420,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string|null $id Platform comment ID
+     * @param string $id Platform comment ID
      *
      * @return self
      */
@@ -410,7 +437,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets post_id
      *
-     * @return string|null
+     * @return string
      */
     public function getPostId()
     {
@@ -420,7 +447,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets post_id
      *
-     * @param string|null $post_id Internal post ID
+     * @param string $post_id Internal post ID
      *
      * @return self
      */
@@ -437,7 +464,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets platform_post_id
      *
-     * @return string|null
+     * @return string
      */
     public function getPlatformPostId()
     {
@@ -447,7 +474,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets platform_post_id
      *
-     * @param string|null $platform_post_id Platform's post ID
+     * @param string $platform_post_id Platform's post ID
      *
      * @return self
      */
@@ -464,7 +491,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets platform
      *
-     * @return string|null
+     * @return string
      */
     public function getPlatform()
     {
@@ -474,7 +501,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets platform
      *
-     * @param string|null $platform platform
+     * @param string $platform platform
      *
      * @return self
      */
@@ -501,7 +528,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets text
      *
-     * @return string|null
+     * @return string
      */
     public function getText()
     {
@@ -511,7 +538,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets text
      *
-     * @param string|null $text Comment text content
+     * @param string $text Comment text content
      *
      * @return self
      */
@@ -528,7 +555,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets author
      *
-     * @return \Late\Model\WebhookPayloadCommentCommentAuthor|null
+     * @return \Late\Model\WebhookPayloadCommentCommentAuthor
      */
     public function getAuthor()
     {
@@ -538,7 +565,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets author
      *
-     * @param \Late\Model\WebhookPayloadCommentCommentAuthor|null $author author
+     * @param \Late\Model\WebhookPayloadCommentCommentAuthor $author author
      *
      * @return self
      */
@@ -555,7 +582,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets created_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -565,7 +592,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime $created_at created_at
      *
      * @return self
      */
@@ -582,7 +609,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets is_reply
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsReply()
     {
@@ -592,7 +619,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets is_reply
      *
-     * @param bool|null $is_reply Whether this is a reply to another comment
+     * @param bool $is_reply Whether this is a reply to another comment
      *
      * @return self
      */
@@ -609,7 +636,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets parent_comment_id
      *
-     * @return string|null
+     * @return string
      */
     public function getParentCommentId()
     {
@@ -619,7 +646,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets parent_comment_id
      *
-     * @param string|null $parent_comment_id Parent comment ID if this is a reply
+     * @param string $parent_comment_id Parent comment ID if this is a reply
      *
      * @return self
      */

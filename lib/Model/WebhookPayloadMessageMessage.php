@@ -286,9 +286,9 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     public const PLATFORM_INSTAGRAM = 'instagram';
     public const PLATFORM_FACEBOOK = 'facebook';
     public const PLATFORM_TELEGRAM = 'telegram';
-    public const PLATFORM_BLUESKY = 'bluesky';
-    public const PLATFORM_REDDIT = 'reddit';
+    public const PLATFORM_WHATSAPP = 'whatsapp';
     public const DIRECTION_INCOMING = 'incoming';
+    public const DIRECTION_OUTGOING = 'outgoing';
 
     /**
      * Gets allowable values of the enum
@@ -301,8 +301,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
             self::PLATFORM_INSTAGRAM,
             self::PLATFORM_FACEBOOK,
             self::PLATFORM_TELEGRAM,
-            self::PLATFORM_BLUESKY,
-            self::PLATFORM_REDDIT,
+            self::PLATFORM_WHATSAPP,
         ];
     }
 
@@ -315,6 +314,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     {
         return [
             self::DIRECTION_INCOMING,
+            self::DIRECTION_OUTGOING,
         ];
     }
 
@@ -372,6 +372,15 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['conversation_id'] === null) {
+            $invalidProperties[] = "'conversation_id' can't be null";
+        }
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
         $allowedValues = $this->getPlatformAllowableValues();
         if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -381,6 +390,12 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
             );
         }
 
+        if ($this->container['platform_message_id'] === null) {
+            $invalidProperties[] = "'platform_message_id' can't be null";
+        }
+        if ($this->container['direction'] === null) {
+            $invalidProperties[] = "'direction' can't be null";
+        }
         $allowedValues = $this->getDirectionAllowableValues();
         if (!is_null($this->container['direction']) && !in_array($this->container['direction'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -390,6 +405,21 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
             );
         }
 
+        if ($this->container['text'] === null) {
+            $invalidProperties[] = "'text' can't be null";
+        }
+        if ($this->container['attachments'] === null) {
+            $invalidProperties[] = "'attachments' can't be null";
+        }
+        if ($this->container['sender'] === null) {
+            $invalidProperties[] = "'sender' can't be null";
+        }
+        if ($this->container['sent_at'] === null) {
+            $invalidProperties[] = "'sent_at' can't be null";
+        }
+        if ($this->container['is_read'] === null) {
+            $invalidProperties[] = "'is_read' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -408,7 +438,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -418,7 +448,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets id
      *
-     * @param string|null $id Internal message ID
+     * @param string $id Internal message ID
      *
      * @return self
      */
@@ -435,7 +465,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets conversation_id
      *
-     * @return string|null
+     * @return string
      */
     public function getConversationId()
     {
@@ -445,7 +475,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets conversation_id
      *
-     * @param string|null $conversation_id Internal conversation ID
+     * @param string $conversation_id Internal conversation ID
      *
      * @return self
      */
@@ -462,7 +492,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets platform
      *
-     * @return string|null
+     * @return string
      */
     public function getPlatform()
     {
@@ -472,7 +502,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets platform
      *
-     * @param string|null $platform platform
+     * @param string $platform platform
      *
      * @return self
      */
@@ -499,7 +529,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets platform_message_id
      *
-     * @return string|null
+     * @return string
      */
     public function getPlatformMessageId()
     {
@@ -509,7 +539,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets platform_message_id
      *
-     * @param string|null $platform_message_id Platform's message ID
+     * @param string $platform_message_id Platform's message ID
      *
      * @return self
      */
@@ -526,7 +556,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets direction
      *
-     * @return string|null
+     * @return string
      */
     public function getDirection()
     {
@@ -536,7 +566,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets direction
      *
-     * @param string|null $direction direction
+     * @param string $direction direction
      *
      * @return self
      */
@@ -563,7 +593,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets text
      *
-     * @return string|null
+     * @return string
      */
     public function getText()
     {
@@ -573,7 +603,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets text
      *
-     * @param string|null $text Message text content
+     * @param string $text Message text content
      *
      * @return self
      */
@@ -590,7 +620,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets attachments
      *
-     * @return \Late\Model\WebhookPayloadMessageMessageAttachmentsInner[]|null
+     * @return \Late\Model\WebhookPayloadMessageMessageAttachmentsInner[]
      */
     public function getAttachments()
     {
@@ -600,7 +630,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets attachments
      *
-     * @param \Late\Model\WebhookPayloadMessageMessageAttachmentsInner[]|null $attachments attachments
+     * @param \Late\Model\WebhookPayloadMessageMessageAttachmentsInner[] $attachments attachments
      *
      * @return self
      */
@@ -617,7 +647,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets sender
      *
-     * @return \Late\Model\WebhookPayloadMessageMessageSender|null
+     * @return \Late\Model\WebhookPayloadMessageMessageSender
      */
     public function getSender()
     {
@@ -627,7 +657,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets sender
      *
-     * @param \Late\Model\WebhookPayloadMessageMessageSender|null $sender sender
+     * @param \Late\Model\WebhookPayloadMessageMessageSender $sender sender
      *
      * @return self
      */
@@ -644,7 +674,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets sent_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getSentAt()
     {
@@ -654,7 +684,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets sent_at
      *
-     * @param \DateTime|null $sent_at sent_at
+     * @param \DateTime $sent_at sent_at
      *
      * @return self
      */
@@ -671,7 +701,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets is_read
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsRead()
     {
@@ -681,7 +711,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets is_read
      *
-     * @param bool|null $is_read is_read
+     * @param bool $is_read is_read
      *
      * @return self
      */

@@ -306,6 +306,7 @@ class WebhookLog implements ModelInterface, ArrayAccess, \JsonSerializable
     public const EVENT_POST_PUBLISHED = 'post.published';
     public const EVENT_POST_FAILED = 'post.failed';
     public const EVENT_POST_PARTIAL = 'post.partial';
+    public const EVENT_POST_CANCELLED = 'post.cancelled';
     public const EVENT_POST_RECYCLED = 'post.recycled';
     public const EVENT_ACCOUNT_CONNECTED = 'account.connected';
     public const EVENT_ACCOUNT_DISCONNECTED = 'account.disconnected';
@@ -327,6 +328,7 @@ class WebhookLog implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENT_POST_PUBLISHED,
             self::EVENT_POST_FAILED,
             self::EVENT_POST_PARTIAL,
+            self::EVENT_POST_CANCELLED,
             self::EVENT_POST_RECYCLED,
             self::EVENT_ACCOUNT_CONNECTED,
             self::EVENT_ACCOUNT_DISCONNECTED,

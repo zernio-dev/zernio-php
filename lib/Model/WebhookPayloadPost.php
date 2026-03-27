@@ -59,6 +59,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'event' => 'string',
         'post' => '\Late\Model\WebhookPayloadPostPost',
         'timestamp' => '\DateTime'
@@ -72,6 +73,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'event' => null,
         'post' => null,
         'timestamp' => 'date-time'
@@ -83,6 +85,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'event' => false,
         'post' => false,
         'timestamp' => false
@@ -174,6 +177,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'event' => 'event',
         'post' => 'post',
         'timestamp' => 'timestamp'
@@ -185,6 +189,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'event' => 'setEvent',
         'post' => 'setPost',
         'timestamp' => 'setTimestamp'
@@ -196,6 +201,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'event' => 'getEvent',
         'post' => 'getPost',
         'timestamp' => 'getTimestamp'
@@ -246,6 +252,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
     public const EVENT_POST_PUBLISHED = 'post.published';
     public const EVENT_POST_FAILED = 'post.failed';
     public const EVENT_POST_PARTIAL = 'post.partial';
+    public const EVENT_POST_CANCELLED = 'post.cancelled';
     public const EVENT_POST_RECYCLED = 'post.recycled';
 
     /**
@@ -260,6 +267,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
             self::EVENT_POST_PUBLISHED,
             self::EVENT_POST_FAILED,
             self::EVENT_POST_PARTIAL,
+            self::EVENT_POST_CANCELLED,
             self::EVENT_POST_RECYCLED,
         ];
     }
@@ -279,6 +287,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
         $this->setIfExists('post', $data ?? [], null);
         $this->setIfExists('timestamp', $data ?? [], null);
@@ -311,6 +320,12 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['event'] === null) {
+            $invalidProperties[] = "'event' can't be null";
+        }
         $allowedValues = $this->getEventAllowableValues();
         if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -320,6 +335,12 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
 
+        if ($this->container['post'] === null) {
+            $invalidProperties[] = "'post' can't be null";
+        }
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -336,9 +357,36 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Stable webhook event ID
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets event
      *
-     * @return string|null
+     * @return string
      */
     public function getEvent()
     {
@@ -348,7 +396,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets event
      *
-     * @param string|null $event event
+     * @param string $event event
      *
      * @return self
      */
@@ -375,7 +423,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets post
      *
-     * @return \Late\Model\WebhookPayloadPostPost|null
+     * @return \Late\Model\WebhookPayloadPostPost
      */
     public function getPost()
     {
@@ -385,7 +433,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets post
      *
-     * @param \Late\Model\WebhookPayloadPostPost|null $post post
+     * @param \Late\Model\WebhookPayloadPostPost $post post
      *
      * @return self
      */
@@ -402,7 +450,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets timestamp
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getTimestamp()
     {
@@ -412,7 +460,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets timestamp
      *
-     * @param \DateTime|null $timestamp timestamp
+     * @param \DateTime $timestamp timestamp
      *
      * @return self
      */

@@ -269,6 +269,7 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     public const EVENTS_POST_PUBLISHED = 'post.published';
     public const EVENTS_POST_FAILED = 'post.failed';
     public const EVENTS_POST_PARTIAL = 'post.partial';
+    public const EVENTS_POST_CANCELLED = 'post.cancelled';
     public const EVENTS_POST_RECYCLED = 'post.recycled';
     public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
     public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
@@ -287,6 +288,7 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
             self::EVENTS_POST_PUBLISHED,
             self::EVENTS_POST_FAILED,
             self::EVENTS_POST_PARTIAL,
+            self::EVENTS_POST_CANCELLED,
             self::EVENTS_POST_RECYCLED,
             self::EVENTS_ACCOUNT_CONNECTED,
             self::EVENTS_ACCOUNT_DISCONNECTED,

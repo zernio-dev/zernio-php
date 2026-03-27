@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * WebhookPayloadMessage Class Doc Comment
  *
  * @category Class
- * @description Webhook payload for message received events (DMs from Instagram, Facebook, Telegram, Bluesky, Reddit)
+ * @description Webhook payload for message received events
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,6 +59,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'event' => 'string',
         'message' => '\Late\Model\WebhookPayloadMessageMessage',
         'conversation' => '\Late\Model\WebhookPayloadMessageConversation',
@@ -75,6 +76,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'event' => null,
         'message' => null,
         'conversation' => null,
@@ -89,6 +91,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'event' => false,
         'message' => false,
         'conversation' => false,
@@ -183,6 +186,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'event' => 'event',
         'message' => 'message',
         'conversation' => 'conversation',
@@ -197,6 +201,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'event' => 'setEvent',
         'message' => 'setMessage',
         'conversation' => 'setConversation',
@@ -211,6 +216,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'event' => 'getEvent',
         'message' => 'getMessage',
         'conversation' => 'getConversation',
@@ -289,6 +295,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('conversation', $data ?? [], null);
@@ -324,6 +331,12 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['event'] === null) {
+            $invalidProperties[] = "'event' can't be null";
+        }
         $allowedValues = $this->getEventAllowableValues();
         if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -333,6 +346,18 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
             );
         }
 
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['conversation'] === null) {
+            $invalidProperties[] = "'conversation' can't be null";
+        }
+        if ($this->container['account'] === null) {
+            $invalidProperties[] = "'account' can't be null";
+        }
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -349,9 +374,36 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Stable webhook event ID
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets event
      *
-     * @return string|null
+     * @return string
      */
     public function getEvent()
     {
@@ -361,7 +413,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets event
      *
-     * @param string|null $event event
+     * @param string $event event
      *
      * @return self
      */
@@ -388,7 +440,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets message
      *
-     * @return \Late\Model\WebhookPayloadMessageMessage|null
+     * @return \Late\Model\WebhookPayloadMessageMessage
      */
     public function getMessage()
     {
@@ -398,7 +450,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets message
      *
-     * @param \Late\Model\WebhookPayloadMessageMessage|null $message message
+     * @param \Late\Model\WebhookPayloadMessageMessage $message message
      *
      * @return self
      */
@@ -415,7 +467,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets conversation
      *
-     * @return \Late\Model\WebhookPayloadMessageConversation|null
+     * @return \Late\Model\WebhookPayloadMessageConversation
      */
     public function getConversation()
     {
@@ -425,7 +477,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets conversation
      *
-     * @param \Late\Model\WebhookPayloadMessageConversation|null $conversation conversation
+     * @param \Late\Model\WebhookPayloadMessageConversation $conversation conversation
      *
      * @return self
      */
@@ -442,7 +494,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets account
      *
-     * @return \Late\Model\WebhookPayloadMessageAccount|null
+     * @return \Late\Model\WebhookPayloadMessageAccount
      */
     public function getAccount()
     {
@@ -452,7 +504,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets account
      *
-     * @param \Late\Model\WebhookPayloadMessageAccount|null $account account
+     * @param \Late\Model\WebhookPayloadMessageAccount $account account
      *
      * @return self
      */
@@ -496,7 +548,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets timestamp
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getTimestamp()
     {
@@ -506,7 +558,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets timestamp
      *
-     * @param \DateTime|null $timestamp timestamp
+     * @param \DateTime $timestamp timestamp
      *
      * @return self
      */
