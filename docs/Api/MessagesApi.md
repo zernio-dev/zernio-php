@@ -6,13 +6,146 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**addMessageReaction()**](MessagesApi.md#addMessageReaction) | **POST** /v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions | Add reaction |
+| [**deleteInboxMessage()**](MessagesApi.md#deleteInboxMessage) | **DELETE** /v1/inbox/conversations/{conversationId}/messages/{messageId} | Delete message |
 | [**editInboxMessage()**](MessagesApi.md#editInboxMessage) | **PATCH** /v1/inbox/conversations/{conversationId}/messages/{messageId} | Edit message |
 | [**getInboxConversation()**](MessagesApi.md#getInboxConversation) | **GET** /v1/inbox/conversations/{conversationId} | Get conversation |
 | [**getInboxConversationMessages()**](MessagesApi.md#getInboxConversationMessages) | **GET** /v1/inbox/conversations/{conversationId}/messages | List messages |
 | [**listInboxConversations()**](MessagesApi.md#listInboxConversations) | **GET** /v1/inbox/conversations | List conversations |
+| [**removeMessageReaction()**](MessagesApi.md#removeMessageReaction) | **DELETE** /v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions | Remove reaction |
 | [**sendInboxMessage()**](MessagesApi.md#sendInboxMessage) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send message |
+| [**sendTypingIndicator()**](MessagesApi.md#sendTypingIndicator) | **POST** /v1/inbox/conversations/{conversationId}/typing | Send typing indicator |
 | [**updateInboxConversation()**](MessagesApi.md#updateInboxConversation) | **PUT** /v1/inbox/conversations/{conversationId} | Update conversation status |
+| [**uploadMediaDirect()**](MessagesApi.md#uploadMediaDirect) | **POST** /v1/media/upload-direct | Upload media file |
 
+
+## `addMessageReaction()`
+
+```php
+addMessageReaction($conversation_id, $message_id, $add_message_reaction_request): \Late\Model\UpdateRedditSubreddits200Response
+```
+
+Add reaction
+
+Add an emoji reaction to a message. Platform support: - **Telegram**: Supports a subset of Unicode emoji reactions - **WhatsApp**: Supports any standard emoji (one reaction per message per sender) - **All others**: Returns 400 (not supported)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$conversation_id = 'conversation_id_example'; // string | The conversation ID
+$message_id = 'message_id_example'; // string | The platform message ID to react to
+$add_message_reaction_request = new \Late\Model\AddMessageReactionRequest(); // \Late\Model\AddMessageReactionRequest
+
+try {
+    $result = $apiInstance->addMessageReaction($conversation_id, $message_id, $add_message_reaction_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->addMessageReaction: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **conversation_id** | **string**| The conversation ID | |
+| **message_id** | **string**| The platform message ID to react to | |
+| **add_message_reaction_request** | [**\Late\Model\AddMessageReactionRequest**](../Model/AddMessageReactionRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UpdateRedditSubreddits200Response**](../Model/UpdateRedditSubreddits200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteInboxMessage()`
+
+```php
+deleteInboxMessage($conversation_id, $message_id, $account_id): \Late\Model\UpdateRedditSubreddits200Response
+```
+
+Delete message
+
+Delete a message from a conversation. Platform support varies: - **Telegram**: Full delete (bot's own messages anytime, others if admin) - **X/Twitter**: Full delete (own DM events only) - **Bluesky**: Delete for self only (recipient still sees it) - **Reddit**: Delete from sender's view only - **Facebook, Instagram, WhatsApp**: Not supported (returns 400)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$conversation_id = 'conversation_id_example'; // string | The conversation ID
+$message_id = 'message_id_example'; // string | The platform message ID to delete
+$account_id = 'account_id_example'; // string | Social account ID
+
+try {
+    $result = $apiInstance->deleteInboxMessage($conversation_id, $message_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->deleteInboxMessage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **conversation_id** | **string**| The conversation ID | |
+| **message_id** | **string**| The platform message ID to delete | |
+| **account_id** | **string**| Social account ID | |
+
+### Return type
+
+[**\Late\Model\UpdateRedditSubreddits200Response**](../Model/UpdateRedditSubreddits200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `editInboxMessage()`
 
@@ -274,6 +407,70 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `removeMessageReaction()`
+
+```php
+removeMessageReaction($conversation_id, $message_id, $account_id): \Late\Model\UpdateRedditSubreddits200Response
+```
+
+Remove reaction
+
+Remove a reaction from a message. Platform support: - **Telegram**: Send empty reaction array to clear - **WhatsApp**: Send empty emoji to remove - **All others**: Returns 400 (not supported)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$conversation_id = 'conversation_id_example'; // string | The conversation ID
+$message_id = 'message_id_example'; // string | The platform message ID
+$account_id = 'account_id_example'; // string | Social account ID
+
+try {
+    $result = $apiInstance->removeMessageReaction($conversation_id, $message_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->removeMessageReaction: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **conversation_id** | **string**| The conversation ID | |
+| **message_id** | **string**| The platform message ID | |
+| **account_id** | **string**| Social account ID | |
+
+### Return type
+
+[**\Late\Model\UpdateRedditSubreddits200Response**](../Model/UpdateRedditSubreddits200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `sendInboxMessage()`
 
 ```php
@@ -336,6 +533,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `sendTypingIndicator()`
+
+```php
+sendTypingIndicator($conversation_id, $send_typing_indicator_request): \Late\Model\UpdateRedditSubreddits200Response
+```
+
+Send typing indicator
+
+Show a typing indicator in a conversation. Platform support: - **Facebook Messenger**: Shows \"Page is typing...\" for 20 seconds - **Telegram**: Shows \"Bot is typing...\" for 5 seconds - **All others**: Returns 200 but no-op (platform doesn't support it)  Typing indicators are best-effort. The endpoint always returns 200 even if the platform call fails.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$conversation_id = 'conversation_id_example'; // string | The conversation ID
+$send_typing_indicator_request = new \Late\Model\SendTypingIndicatorRequest(); // \Late\Model\SendTypingIndicatorRequest
+
+try {
+    $result = $apiInstance->sendTypingIndicator($conversation_id, $send_typing_indicator_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->sendTypingIndicator: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **conversation_id** | **string**| The conversation ID | |
+| **send_typing_indicator_request** | [**\Late\Model\SendTypingIndicatorRequest**](../Model/SendTypingIndicatorRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UpdateRedditSubreddits200Response**](../Model/UpdateRedditSubreddits200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updateInboxConversation()`
 
 ```php
@@ -392,6 +651,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `uploadMediaDirect()`
+
+```php
+uploadMediaDirect($file, $content_type): \Late\Model\UploadMediaDirect200Response
+```
+
+Upload media file
+
+Upload a media file using API key authentication and get back a publicly accessible URL. The URL can be used as `attachmentUrl` when sending inbox messages.  Files are stored in temporary storage and auto-delete after 7 days. Maximum file size is 25MB.  Unlike `/v1/media/upload` (which uses upload tokens for end-user flows), this endpoint uses standard Bearer token authentication for programmatic use.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$file = '/path/to/file.txt'; // \SplFileObject | The file to upload (max 25MB)
+$content_type = 'content_type_example'; // string | Override MIME type (e.g. \\\"image/jpeg\\\"). Auto-detected from file if not provided.
+
+try {
+    $result = $apiInstance->uploadMediaDirect($file, $content_type);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->uploadMediaDirect: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **file** | **\SplFileObject****\SplFileObject**| The file to upload (max 25MB) | |
+| **content_type** | **string**| Override MIME type (e.g. \\\&quot;image/jpeg\\\&quot;). Auto-detected from file if not provided. | [optional] |
+
+### Return type
+
+[**\Late\Model\UploadMediaDirect200Response**](../Model/UploadMediaDirect200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `multipart/form-data`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

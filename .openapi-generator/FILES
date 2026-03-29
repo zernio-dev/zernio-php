@@ -47,6 +47,7 @@ docs/Model/AccountsListResponse.md
 docs/Model/ActivateSequence200Response.md
 docs/Model/AddBroadcastRecipients200Response.md
 docs/Model/AddBroadcastRecipientsRequest.md
+docs/Model/AddMessageReactionRequest.md
 docs/Model/AddWhatsAppBroadcastRecipients200Response.md
 docs/Model/AddWhatsAppBroadcastRecipientsRequest.md
 docs/Model/AddWhatsAppBroadcastRecipientsRequestRecipientsInner.md
@@ -558,6 +559,7 @@ docs/Model/SendInboxMessageRequestTemplateElementsInner.md
 docs/Model/SendInboxMessageRequestTemplateElementsInnerButtonsInner.md
 docs/Model/SendPrivateReplyToComment200Response.md
 docs/Model/SendPrivateReplyToCommentRequest.md
+docs/Model/SendTypingIndicatorRequest.md
 docs/Model/SendWhatsAppBroadcast200Response.md
 docs/Model/SendWhatsAppBulk200Response.md
 docs/Model/SendWhatsAppBulk200ResponseResultsInner.md
@@ -655,6 +657,7 @@ docs/Model/UpdateWhatsAppGroupChatRequest.md
 docs/Model/UpdateWhatsAppTemplate200Response.md
 docs/Model/UpdateWhatsAppTemplate200ResponseTemplate.md
 docs/Model/UpdateWhatsAppTemplateRequest.md
+docs/Model/UploadMediaDirect200Response.md
 docs/Model/UploadTokenResponse.md
 docs/Model/UploadTokenStatusResponse.md
 docs/Model/UploadedFile.md
@@ -762,6 +765,7 @@ lib/Model/AccountsListResponse.php
 lib/Model/ActivateSequence200Response.php
 lib/Model/AddBroadcastRecipients200Response.php
 lib/Model/AddBroadcastRecipientsRequest.php
+lib/Model/AddMessageReactionRequest.php
 lib/Model/AddWhatsAppBroadcastRecipients200Response.php
 lib/Model/AddWhatsAppBroadcastRecipientsRequest.php
 lib/Model/AddWhatsAppBroadcastRecipientsRequestRecipientsInner.php
@@ -1274,6 +1278,7 @@ lib/Model/SendInboxMessageRequestTemplateElementsInner.php
 lib/Model/SendInboxMessageRequestTemplateElementsInnerButtonsInner.php
 lib/Model/SendPrivateReplyToComment200Response.php
 lib/Model/SendPrivateReplyToCommentRequest.php
+lib/Model/SendTypingIndicatorRequest.php
 lib/Model/SendWhatsAppBroadcast200Response.php
 lib/Model/SendWhatsAppBulk200Response.php
 lib/Model/SendWhatsAppBulk200ResponseResultsInner.php
@@ -1371,6 +1376,7 @@ lib/Model/UpdateWhatsAppGroupChatRequest.php
 lib/Model/UpdateWhatsAppTemplate200Response.php
 lib/Model/UpdateWhatsAppTemplate200ResponseTemplate.php
 lib/Model/UpdateWhatsAppTemplateRequest.php
+lib/Model/UploadMediaDirect200Response.php
 lib/Model/UploadTokenResponse.php
 lib/Model/UploadTokenStatusResponse.php
 lib/Model/UploadedFile.php
@@ -1431,3 +1437,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AddMessageReactionRequestTest.php
+test/Model/SendTypingIndicatorRequestTest.php
+test/Model/UploadMediaDirect200ResponseTest.php

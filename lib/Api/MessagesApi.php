@@ -75,6 +75,12 @@ class MessagesApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'addMessageReaction' => [
+            'application/json',
+        ],
+        'deleteInboxMessage' => [
+            'application/json',
+        ],
         'editInboxMessage' => [
             'application/json',
         ],
@@ -87,12 +93,21 @@ class MessagesApi
         'listInboxConversations' => [
             'application/json',
         ],
+        'removeMessageReaction' => [
+            'application/json',
+        ],
         'sendInboxMessage' => [
             'application/json',
             'multipart/form-data',
         ],
+        'sendTypingIndicator' => [
+            'application/json',
+        ],
         'updateInboxConversation' => [
             'application/json',
+        ],
+        'uploadMediaDirect' => [
+            'multipart/form-data',
         ],
     ];
 
@@ -140,6 +155,658 @@ class MessagesApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation addMessageReaction
+     *
+     * Add reaction
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID to react to (required)
+     * @param  \Late\Model\AddMessageReactionRequest $add_message_reaction_request add_message_reaction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMessageReaction'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject
+     */
+    public function addMessageReaction($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
+    {
+        list($response) = $this->addMessageReactionWithHttpInfo($conversation_id, $message_id, $add_message_reaction_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation addMessageReactionWithHttpInfo
+     *
+     * Add reaction
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID to react to (required)
+     * @param  \Late\Model\AddMessageReactionRequest $add_message_reaction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMessageReaction'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function addMessageReactionWithHttpInfo($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
+    {
+        $request = $this->addMessageReactionRequest($conversation_id, $message_id, $add_message_reaction_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateRedditSubreddits200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation addMessageReactionAsync
+     *
+     * Add reaction
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID to react to (required)
+     * @param  \Late\Model\AddMessageReactionRequest $add_message_reaction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMessageReaction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addMessageReactionAsync($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
+    {
+        return $this->addMessageReactionAsyncWithHttpInfo($conversation_id, $message_id, $add_message_reaction_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation addMessageReactionAsyncWithHttpInfo
+     *
+     * Add reaction
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID to react to (required)
+     * @param  \Late\Model\AddMessageReactionRequest $add_message_reaction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMessageReaction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addMessageReactionAsyncWithHttpInfo($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
+    {
+        $returnType = '\Late\Model\UpdateRedditSubreddits200Response';
+        $request = $this->addMessageReactionRequest($conversation_id, $message_id, $add_message_reaction_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'addMessageReaction'
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID to react to (required)
+     * @param  \Late\Model\AddMessageReactionRequest $add_message_reaction_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMessageReaction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function addMessageReactionRequest($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
+    {
+
+        // verify the required parameter 'conversation_id' is set
+        if ($conversation_id === null || (is_array($conversation_id) && count($conversation_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $conversation_id when calling addMessageReaction'
+            );
+        }
+
+        // verify the required parameter 'message_id' is set
+        if ($message_id === null || (is_array($message_id) && count($message_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $message_id when calling addMessageReaction'
+            );
+        }
+
+        // verify the required parameter 'add_message_reaction_request' is set
+        if ($add_message_reaction_request === null || (is_array($add_message_reaction_request) && count($add_message_reaction_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $add_message_reaction_request when calling addMessageReaction'
+            );
+        }
+
+
+        $resourcePath = '/v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($conversation_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'conversationId' . '}',
+                ObjectSerializer::toPathValue($conversation_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($message_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'messageId' . '}',
+                ObjectSerializer::toPathValue($message_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($add_message_reaction_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($add_message_reaction_request));
+            } else {
+                $httpBody = $add_message_reaction_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteInboxMessage
+     *
+     * Delete message
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID to delete (required)
+     * @param  string $account_id Social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxMessage'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject
+     */
+    public function deleteInboxMessage($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
+    {
+        list($response) = $this->deleteInboxMessageWithHttpInfo($conversation_id, $message_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteInboxMessageWithHttpInfo
+     *
+     * Delete message
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID to delete (required)
+     * @param  string $account_id Social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxMessage'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteInboxMessageWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
+    {
+        $request = $this->deleteInboxMessageRequest($conversation_id, $message_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateRedditSubreddits200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteInboxMessageAsync
+     *
+     * Delete message
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID to delete (required)
+     * @param  string $account_id Social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteInboxMessageAsync($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
+    {
+        return $this->deleteInboxMessageAsyncWithHttpInfo($conversation_id, $message_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteInboxMessageAsyncWithHttpInfo
+     *
+     * Delete message
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID to delete (required)
+     * @param  string $account_id Social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteInboxMessageAsyncWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
+    {
+        $returnType = '\Late\Model\UpdateRedditSubreddits200Response';
+        $request = $this->deleteInboxMessageRequest($conversation_id, $message_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteInboxMessage'
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID to delete (required)
+     * @param  string $account_id Social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteInboxMessageRequest($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
+    {
+
+        // verify the required parameter 'conversation_id' is set
+        if ($conversation_id === null || (is_array($conversation_id) && count($conversation_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $conversation_id when calling deleteInboxMessage'
+            );
+        }
+
+        // verify the required parameter 'message_id' is set
+        if ($message_id === null || (is_array($message_id) && count($message_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $message_id when calling deleteInboxMessage'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling deleteInboxMessage'
+            );
+        }
+
+
+        $resourcePath = '/v1/inbox/conversations/{conversationId}/messages/{messageId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($conversation_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'conversationId' . '}',
+                ObjectSerializer::toPathValue($conversation_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($message_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'messageId' . '}',
+                ObjectSerializer::toPathValue($message_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -1459,6 +2126,333 @@ class MessagesApi
     }
 
     /**
+     * Operation removeMessageReaction
+     *
+     * Remove reaction
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID (required)
+     * @param  string $account_id Social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMessageReaction'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject
+     */
+    public function removeMessageReaction($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
+    {
+        list($response) = $this->removeMessageReactionWithHttpInfo($conversation_id, $message_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation removeMessageReactionWithHttpInfo
+     *
+     * Remove reaction
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID (required)
+     * @param  string $account_id Social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMessageReaction'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeMessageReactionWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
+    {
+        $request = $this->removeMessageReactionRequest($conversation_id, $message_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateRedditSubreddits200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeMessageReactionAsync
+     *
+     * Remove reaction
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID (required)
+     * @param  string $account_id Social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMessageReaction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeMessageReactionAsync($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
+    {
+        return $this->removeMessageReactionAsyncWithHttpInfo($conversation_id, $message_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeMessageReactionAsyncWithHttpInfo
+     *
+     * Remove reaction
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID (required)
+     * @param  string $account_id Social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMessageReaction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeMessageReactionAsyncWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
+    {
+        $returnType = '\Late\Model\UpdateRedditSubreddits200Response';
+        $request = $this->removeMessageReactionRequest($conversation_id, $message_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeMessageReaction'
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  string $message_id The platform message ID (required)
+     * @param  string $account_id Social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMessageReaction'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeMessageReactionRequest($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
+    {
+
+        // verify the required parameter 'conversation_id' is set
+        if ($conversation_id === null || (is_array($conversation_id) && count($conversation_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $conversation_id when calling removeMessageReaction'
+            );
+        }
+
+        // verify the required parameter 'message_id' is set
+        if ($message_id === null || (is_array($message_id) && count($message_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $message_id when calling removeMessageReaction'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling removeMessageReaction'
+            );
+        }
+
+
+        $resourcePath = '/v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($conversation_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'conversationId' . '}',
+                ObjectSerializer::toPathValue($conversation_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($message_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'messageId' . '}',
+                ObjectSerializer::toPathValue($message_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation sendInboxMessage
      *
      * Send message
@@ -1726,6 +2720,311 @@ class MessagesApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($send_inbox_message_request));
             } else {
                 $httpBody = $send_inbox_message_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation sendTypingIndicator
+     *
+     * Send typing indicator
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  \Late\Model\SendTypingIndicatorRequest $send_typing_indicator_request send_typing_indicator_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendTypingIndicator'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject
+     */
+    public function sendTypingIndicator($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
+    {
+        list($response) = $this->sendTypingIndicatorWithHttpInfo($conversation_id, $send_typing_indicator_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation sendTypingIndicatorWithHttpInfo
+     *
+     * Send typing indicator
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  \Late\Model\SendTypingIndicatorRequest $send_typing_indicator_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendTypingIndicator'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function sendTypingIndicatorWithHttpInfo($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
+    {
+        $request = $this->sendTypingIndicatorRequest($conversation_id, $send_typing_indicator_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateRedditSubreddits200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation sendTypingIndicatorAsync
+     *
+     * Send typing indicator
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  \Late\Model\SendTypingIndicatorRequest $send_typing_indicator_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendTypingIndicator'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendTypingIndicatorAsync($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
+    {
+        return $this->sendTypingIndicatorAsyncWithHttpInfo($conversation_id, $send_typing_indicator_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation sendTypingIndicatorAsyncWithHttpInfo
+     *
+     * Send typing indicator
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  \Late\Model\SendTypingIndicatorRequest $send_typing_indicator_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendTypingIndicator'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendTypingIndicatorAsyncWithHttpInfo($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
+    {
+        $returnType = '\Late\Model\UpdateRedditSubreddits200Response';
+        $request = $this->sendTypingIndicatorRequest($conversation_id, $send_typing_indicator_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'sendTypingIndicator'
+     *
+     * @param  string $conversation_id The conversation ID (required)
+     * @param  \Late\Model\SendTypingIndicatorRequest $send_typing_indicator_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendTypingIndicator'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function sendTypingIndicatorRequest($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
+    {
+
+        // verify the required parameter 'conversation_id' is set
+        if ($conversation_id === null || (is_array($conversation_id) && count($conversation_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $conversation_id when calling sendTypingIndicator'
+            );
+        }
+
+        // verify the required parameter 'send_typing_indicator_request' is set
+        if ($send_typing_indicator_request === null || (is_array($send_typing_indicator_request) && count($send_typing_indicator_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $send_typing_indicator_request when calling sendTypingIndicator'
+            );
+        }
+
+
+        $resourcePath = '/v1/inbox/conversations/{conversationId}/typing';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($conversation_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'conversationId' . '}',
+                ObjectSerializer::toPathValue($conversation_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($send_typing_indicator_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($send_typing_indicator_request));
+            } else {
+                $httpBody = $send_typing_indicator_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2076,6 +3375,301 @@ class MessagesApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation uploadMediaDirect
+     *
+     * Upload media file
+     *
+     * @param  \SplFileObject $file The file to upload (max 25MB) (required)
+     * @param  string|null $content_type Override MIME type (e.g. \\\&quot;image/jpeg\\\&quot;). Auto-detected from file if not provided. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadMediaDirect'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UploadMediaDirect200Response|\Late\Model\InlineObject
+     */
+    public function uploadMediaDirect($file, $content_type = null, string $contentType = self::contentTypes['uploadMediaDirect'][0])
+    {
+        list($response) = $this->uploadMediaDirectWithHttpInfo($file, $content_type, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation uploadMediaDirectWithHttpInfo
+     *
+     * Upload media file
+     *
+     * @param  \SplFileObject $file The file to upload (max 25MB) (required)
+     * @param  string|null $content_type Override MIME type (e.g. \\\&quot;image/jpeg\\\&quot;). Auto-detected from file if not provided. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadMediaDirect'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UploadMediaDirect200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function uploadMediaDirectWithHttpInfo($file, $content_type = null, string $contentType = self::contentTypes['uploadMediaDirect'][0])
+    {
+        $request = $this->uploadMediaDirectRequest($file, $content_type, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UploadMediaDirect200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UploadMediaDirect200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UploadMediaDirect200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation uploadMediaDirectAsync
+     *
+     * Upload media file
+     *
+     * @param  \SplFileObject $file The file to upload (max 25MB) (required)
+     * @param  string|null $content_type Override MIME type (e.g. \\\&quot;image/jpeg\\\&quot;). Auto-detected from file if not provided. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadMediaDirect'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadMediaDirectAsync($file, $content_type = null, string $contentType = self::contentTypes['uploadMediaDirect'][0])
+    {
+        return $this->uploadMediaDirectAsyncWithHttpInfo($file, $content_type, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation uploadMediaDirectAsyncWithHttpInfo
+     *
+     * Upload media file
+     *
+     * @param  \SplFileObject $file The file to upload (max 25MB) (required)
+     * @param  string|null $content_type Override MIME type (e.g. \\\&quot;image/jpeg\\\&quot;). Auto-detected from file if not provided. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadMediaDirect'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadMediaDirectAsyncWithHttpInfo($file, $content_type = null, string $contentType = self::contentTypes['uploadMediaDirect'][0])
+    {
+        $returnType = '\Late\Model\UploadMediaDirect200Response';
+        $request = $this->uploadMediaDirectRequest($file, $content_type, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'uploadMediaDirect'
+     *
+     * @param  \SplFileObject $file The file to upload (max 25MB) (required)
+     * @param  string|null $content_type Override MIME type (e.g. \\\&quot;image/jpeg\\\&quot;). Auto-detected from file if not provided. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadMediaDirect'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function uploadMediaDirectRequest($file, $content_type = null, string $contentType = self::contentTypes['uploadMediaDirect'][0])
+    {
+
+        // verify the required parameter 'file' is set
+        if ($file === null || (is_array($file) && count($file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $file when calling uploadMediaDirect'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/media/upload-direct';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+        // form params
+        $formDataProcessor = new FormDataProcessor();
+
+        $formData = $formDataProcessor->prepare([
+            'file' => $file,
+            'content_type' => $content_type,
+        ]);
+
+        $formParams = $formDataProcessor->flatten($formData);
+        $multipart = $formDataProcessor->has_file;
+
+        $multipart = true;
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
