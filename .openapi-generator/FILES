@@ -356,6 +356,8 @@ docs/Model/GetYouTubeDailyViews403Response.md
 docs/Model/GetYouTubeDailyViews500Response.md
 docs/Model/GetYouTubeTranscript200Response.md
 docs/Model/GetYouTubeTranscript200ResponseSegmentsInner.md
+docs/Model/GetYoutubePlaylists200Response.md
+docs/Model/GetYoutubePlaylists200ResponsePlaylistsInner.md
 docs/Model/GoogleBusinessPlatformData.md
 docs/Model/GoogleBusinessPlatformDataCallToAction.md
 docs/Model/HandleOAuthCallbackRequest.md
@@ -640,7 +642,6 @@ docs/Model/UpdateProfile200Response.md
 docs/Model/UpdateProfileRequest.md
 docs/Model/UpdateQueueSlot200Response.md
 docs/Model/UpdateQueueSlotRequest.md
-docs/Model/UpdateRedditSubreddits200Response.md
 docs/Model/UpdateRedditSubredditsRequest.md
 docs/Model/UpdateSequence200Response.md
 docs/Model/UpdateSequence200ResponseSequence.md
@@ -657,6 +658,8 @@ docs/Model/UpdateWhatsAppGroupChatRequest.md
 docs/Model/UpdateWhatsAppTemplate200Response.md
 docs/Model/UpdateWhatsAppTemplate200ResponseTemplate.md
 docs/Model/UpdateWhatsAppTemplateRequest.md
+docs/Model/UpdateYoutubeDefaultPlaylist200Response.md
+docs/Model/UpdateYoutubeDefaultPlaylistRequest.md
 docs/Model/UploadMediaDirect200Response.md
 docs/Model/UploadTokenResponse.md
 docs/Model/UploadTokenStatusResponse.md
@@ -1074,6 +1077,8 @@ lib/Model/GetYouTubeDailyViews403Response.php
 lib/Model/GetYouTubeDailyViews500Response.php
 lib/Model/GetYouTubeTranscript200Response.php
 lib/Model/GetYouTubeTranscript200ResponseSegmentsInner.php
+lib/Model/GetYoutubePlaylists200Response.php
+lib/Model/GetYoutubePlaylists200ResponsePlaylistsInner.php
 lib/Model/GoogleBusinessPlatformData.php
 lib/Model/GoogleBusinessPlatformDataCallToAction.php
 lib/Model/HandleOAuthCallbackRequest.php
@@ -1359,7 +1364,6 @@ lib/Model/UpdateProfile200Response.php
 lib/Model/UpdateProfileRequest.php
 lib/Model/UpdateQueueSlot200Response.php
 lib/Model/UpdateQueueSlotRequest.php
-lib/Model/UpdateRedditSubreddits200Response.php
 lib/Model/UpdateRedditSubredditsRequest.php
 lib/Model/UpdateSequence200Response.php
 lib/Model/UpdateSequence200ResponseSequence.php
@@ -1376,6 +1380,8 @@ lib/Model/UpdateWhatsAppGroupChatRequest.php
 lib/Model/UpdateWhatsAppTemplate200Response.php
 lib/Model/UpdateWhatsAppTemplate200ResponseTemplate.php
 lib/Model/UpdateWhatsAppTemplateRequest.php
+lib/Model/UpdateYoutubeDefaultPlaylist200Response.php
+lib/Model/UpdateYoutubeDefaultPlaylistRequest.php
 lib/Model/UploadMediaDirect200Response.php
 lib/Model/UploadTokenResponse.php
 lib/Model/UploadTokenStatusResponse.php
@@ -1437,3 +1443,7 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetYoutubePlaylists200ResponsePlaylistsInnerTest.php
+test/Model/GetYoutubePlaylists200ResponseTest.php
+test/Model/UpdateYoutubeDefaultPlaylist200ResponseTest.php
+test/Model/UpdateYoutubeDefaultPlaylistRequestTest.php

@@ -111,6 +111,9 @@ class ConnectApi
         'getTelegramConnectStatus' => [
             'application/json',
         ],
+        'getYoutubePlaylists' => [
+            'application/json',
+        ],
         'handleOAuthCallback' => [
             'application/json',
         ],
@@ -160,6 +163,9 @@ class ConnectApi
             'application/json',
         ],
         'updateRedditSubreddits' => [
+            'application/json',
+        ],
+        'updateYoutubeDefaultPlaylist' => [
             'application/json',
         ],
     ];
@@ -3656,6 +3662,292 @@ class ConnectApi
         ) ?? []);
 
 
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getYoutubePlaylists
+     *
+     * List YouTube playlists
+     *
+     * @param  string $account_id account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYoutubePlaylists'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\GetYoutubePlaylists200Response|\Late\Model\InlineObject
+     */
+    public function getYoutubePlaylists($account_id, string $contentType = self::contentTypes['getYoutubePlaylists'][0])
+    {
+        list($response) = $this->getYoutubePlaylistsWithHttpInfo($account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getYoutubePlaylistsWithHttpInfo
+     *
+     * List YouTube playlists
+     *
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYoutubePlaylists'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\GetYoutubePlaylists200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getYoutubePlaylistsWithHttpInfo($account_id, string $contentType = self::contentTypes['getYoutubePlaylists'][0])
+    {
+        $request = $this->getYoutubePlaylistsRequest($account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetYoutubePlaylists200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetYoutubePlaylists200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetYoutubePlaylists200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getYoutubePlaylistsAsync
+     *
+     * List YouTube playlists
+     *
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYoutubePlaylists'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getYoutubePlaylistsAsync($account_id, string $contentType = self::contentTypes['getYoutubePlaylists'][0])
+    {
+        return $this->getYoutubePlaylistsAsyncWithHttpInfo($account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getYoutubePlaylistsAsyncWithHttpInfo
+     *
+     * List YouTube playlists
+     *
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYoutubePlaylists'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getYoutubePlaylistsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getYoutubePlaylists'][0])
+    {
+        $returnType = '\Late\Model\GetYoutubePlaylists200Response';
+        $request = $this->getYoutubePlaylistsRequest($account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getYoutubePlaylists'
+     *
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYoutubePlaylists'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getYoutubePlaylistsRequest($account_id, string $contentType = self::contentTypes['getYoutubePlaylists'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getYoutubePlaylists'
+            );
+        }
+
+
+        $resourcePath = '/v1/accounts/{accountId}/youtube-playlists';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -8535,7 +8827,7 @@ class ConnectApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject
+     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
      */
     public function updateRedditSubreddits($account_id, $update_reddit_subreddits_request, string $contentType = self::contentTypes['updateRedditSubreddits'][0])
     {
@@ -8554,7 +8846,7 @@ class ConnectApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateRedditSubredditsWithHttpInfo($account_id, $update_reddit_subreddits_request, string $contentType = self::contentTypes['updateRedditSubreddits'][0])
     {
@@ -8586,7 +8878,7 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
@@ -8614,7 +8906,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateRedditSubreddits200Response',
+                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -8623,7 +8915,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8679,7 +8971,7 @@ class ConnectApi
      */
     public function updateRedditSubredditsAsyncWithHttpInfo($account_id, $update_reddit_subreddits_request, string $contentType = self::contentTypes['updateRedditSubreddits'][0])
     {
-        $returnType = '\Late\Model\UpdateRedditSubreddits200Response';
+        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->updateRedditSubredditsRequest($account_id, $update_reddit_subreddits_request, $contentType);
 
         return $this->client
@@ -8778,6 +9070,311 @@ class ConnectApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_reddit_subreddits_request));
             } else {
                 $httpBody = $update_reddit_subreddits_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateYoutubeDefaultPlaylist
+     *
+     * Set default YouTube playlist
+     *
+     * @param  string $account_id account_id (required)
+     * @param  \Late\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request update_youtube_default_playlist_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateYoutubeDefaultPlaylist'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
+     */
+    public function updateYoutubeDefaultPlaylist($account_id, $update_youtube_default_playlist_request, string $contentType = self::contentTypes['updateYoutubeDefaultPlaylist'][0])
+    {
+        list($response) = $this->updateYoutubeDefaultPlaylistWithHttpInfo($account_id, $update_youtube_default_playlist_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateYoutubeDefaultPlaylistWithHttpInfo
+     *
+     * Set default YouTube playlist
+     *
+     * @param  string $account_id (required)
+     * @param  \Late\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateYoutubeDefaultPlaylist'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateYoutubeDefaultPlaylistWithHttpInfo($account_id, $update_youtube_default_playlist_request, string $contentType = self::contentTypes['updateYoutubeDefaultPlaylist'][0])
+    {
+        $request = $this->updateYoutubeDefaultPlaylistRequest($account_id, $update_youtube_default_playlist_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateYoutubeDefaultPlaylistAsync
+     *
+     * Set default YouTube playlist
+     *
+     * @param  string $account_id (required)
+     * @param  \Late\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateYoutubeDefaultPlaylist'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateYoutubeDefaultPlaylistAsync($account_id, $update_youtube_default_playlist_request, string $contentType = self::contentTypes['updateYoutubeDefaultPlaylist'][0])
+    {
+        return $this->updateYoutubeDefaultPlaylistAsyncWithHttpInfo($account_id, $update_youtube_default_playlist_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateYoutubeDefaultPlaylistAsyncWithHttpInfo
+     *
+     * Set default YouTube playlist
+     *
+     * @param  string $account_id (required)
+     * @param  \Late\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateYoutubeDefaultPlaylist'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateYoutubeDefaultPlaylistAsyncWithHttpInfo($account_id, $update_youtube_default_playlist_request, string $contentType = self::contentTypes['updateYoutubeDefaultPlaylist'][0])
+    {
+        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
+        $request = $this->updateYoutubeDefaultPlaylistRequest($account_id, $update_youtube_default_playlist_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateYoutubeDefaultPlaylist'
+     *
+     * @param  string $account_id (required)
+     * @param  \Late\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateYoutubeDefaultPlaylist'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateYoutubeDefaultPlaylistRequest($account_id, $update_youtube_default_playlist_request, string $contentType = self::contentTypes['updateYoutubeDefaultPlaylist'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling updateYoutubeDefaultPlaylist'
+            );
+        }
+
+        // verify the required parameter 'update_youtube_default_playlist_request' is set
+        if ($update_youtube_default_playlist_request === null || (is_array($update_youtube_default_playlist_request) && count($update_youtube_default_playlist_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_youtube_default_playlist_request when calling updateYoutubeDefaultPlaylist'
+            );
+        }
+
+
+        $resourcePath = '/v1/accounts/{accountId}/youtube-playlists';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_youtube_default_playlist_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_youtube_default_playlist_request));
+            } else {
+                $httpBody = $update_youtube_default_playlist_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

@@ -18,6 +18,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getRedditFlairs()**](ConnectApi.md#getRedditFlairs) | **GET** /v1/accounts/{accountId}/reddit-flairs | List subreddit flairs |
 | [**getRedditSubreddits()**](ConnectApi.md#getRedditSubreddits) | **GET** /v1/accounts/{accountId}/reddit-subreddits | List Reddit subreddits |
 | [**getTelegramConnectStatus()**](ConnectApi.md#getTelegramConnectStatus) | **GET** /v1/connect/telegram | Generate Telegram code |
+| [**getYoutubePlaylists()**](ConnectApi.md#getYoutubePlaylists) | **GET** /v1/accounts/{accountId}/youtube-playlists | List YouTube playlists |
 | [**handleOAuthCallback()**](ConnectApi.md#handleOAuthCallback) | **POST** /v1/connect/{platform} | Complete OAuth callback |
 | [**initiateTelegramConnect()**](ConnectApi.md#initiateTelegramConnect) | **POST** /v1/connect/telegram | Connect Telegram directly |
 | [**listFacebookPages()**](ConnectApi.md#listFacebookPages) | **GET** /v1/connect/facebook/select-page | List Facebook pages |
@@ -35,6 +36,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**updateLinkedInOrganization()**](ConnectApi.md#updateLinkedInOrganization) | **PUT** /v1/accounts/{accountId}/linkedin-organization | Switch LinkedIn account type |
 | [**updatePinterestBoards()**](ConnectApi.md#updatePinterestBoards) | **PUT** /v1/accounts/{accountId}/pinterest-boards | Set default Pinterest board |
 | [**updateRedditSubreddits()**](ConnectApi.md#updateRedditSubreddits) | **PUT** /v1/accounts/{accountId}/reddit-subreddits | Set default subreddit |
+| [**updateYoutubeDefaultPlaylist()**](ConnectApi.md#updateYoutubeDefaultPlaylist) | **PUT** /v1/accounts/{accountId}/youtube-playlists | Set default YouTube playlist |
 
 
 ## `completeTelegramConnect()`
@@ -751,6 +753,66 @@ try {
 ### Return type
 
 [**\Late\Model\GetTelegramConnectStatus200Response**](../Model/GetTelegramConnectStatus200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getYoutubePlaylists()`
+
+```php
+getYoutubePlaylists($account_id): \Late\Model\GetYoutubePlaylists200Response
+```
+
+List YouTube playlists
+
+Returns the playlists available for a connected YouTube account. Use this to get a playlist ID when creating a YouTube post with the `playlistId` field.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+
+try {
+    $result = $apiInstance->getYoutubePlaylists($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->getYoutubePlaylists: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+
+### Return type
+
+[**\Late\Model\GetYoutubePlaylists200Response**](../Model/GetYoutubePlaylists200Response.md)
 
 ### Authorization
 
@@ -1773,7 +1835,7 @@ try {
 ## `updateRedditSubreddits()`
 
 ```php
-updateRedditSubreddits($account_id, $update_reddit_subreddits_request): \Late\Model\UpdateRedditSubreddits200Response
+updateRedditSubreddits($account_id, $update_reddit_subreddits_request): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Set default subreddit
@@ -1817,7 +1879,69 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateRedditSubreddits200Response**](../Model/UpdateRedditSubreddits200Response.md)
+[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateYoutubeDefaultPlaylist()`
+
+```php
+updateYoutubeDefaultPlaylist($account_id, $update_youtube_default_playlist_request): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
+```
+
+Set default YouTube playlist
+
+Sets the default playlist used when publishing videos for this account. When a post does not specify a `playlistId`, the default playlist is not automatically used (it is stored for client-side convenience).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$update_youtube_default_playlist_request = {"defaultPlaylistId":"PLxxxxxxxxxxxxx","defaultPlaylistName":"Tutorials"}; // \Late\Model\UpdateYoutubeDefaultPlaylistRequest
+
+try {
+    $result = $apiInstance->updateYoutubeDefaultPlaylist($account_id, $update_youtube_default_playlist_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->updateYoutubeDefaultPlaylist: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **update_youtube_default_playlist_request** | [**\Late\Model\UpdateYoutubeDefaultPlaylistRequest**](../Model/UpdateYoutubeDefaultPlaylistRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 

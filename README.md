@@ -129,6 +129,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**getRedditFlairs**](docs/Api/ConnectApi.md#getredditflairs) | **GET** /v1/accounts/{accountId}/reddit-flairs | List subreddit flairs
 *ConnectApi* | [**getRedditSubreddits**](docs/Api/ConnectApi.md#getredditsubreddits) | **GET** /v1/accounts/{accountId}/reddit-subreddits | List Reddit subreddits
 *ConnectApi* | [**getTelegramConnectStatus**](docs/Api/ConnectApi.md#gettelegramconnectstatus) | **GET** /v1/connect/telegram | Generate Telegram code
+*ConnectApi* | [**getYoutubePlaylists**](docs/Api/ConnectApi.md#getyoutubeplaylists) | **GET** /v1/accounts/{accountId}/youtube-playlists | List YouTube playlists
 *ConnectApi* | [**handleOAuthCallback**](docs/Api/ConnectApi.md#handleoauthcallback) | **POST** /v1/connect/{platform} | Complete OAuth callback
 *ConnectApi* | [**initiateTelegramConnect**](docs/Api/ConnectApi.md#initiatetelegramconnect) | **POST** /v1/connect/telegram | Connect Telegram directly
 *ConnectApi* | [**listFacebookPages**](docs/Api/ConnectApi.md#listfacebookpages) | **GET** /v1/connect/facebook/select-page | List Facebook pages
@@ -146,6 +147,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**updateLinkedInOrganization**](docs/Api/ConnectApi.md#updatelinkedinorganization) | **PUT** /v1/accounts/{accountId}/linkedin-organization | Switch LinkedIn account type
 *ConnectApi* | [**updatePinterestBoards**](docs/Api/ConnectApi.md#updatepinterestboards) | **PUT** /v1/accounts/{accountId}/pinterest-boards | Set default Pinterest board
 *ConnectApi* | [**updateRedditSubreddits**](docs/Api/ConnectApi.md#updateredditsubreddits) | **PUT** /v1/accounts/{accountId}/reddit-subreddits | Set default subreddit
+*ConnectApi* | [**updateYoutubeDefaultPlaylist**](docs/Api/ConnectApi.md#updateyoutubedefaultplaylist) | **PUT** /v1/accounts/{accountId}/youtube-playlists | Set default YouTube playlist
 *ContactsApi* | [**bulkCreateContacts**](docs/Api/ContactsApi.md#bulkcreatecontacts) | **POST** /v1/contacts/bulk | Bulk create contacts
 *ContactsApi* | [**createContact**](docs/Api/ContactsApi.md#createcontact) | **POST** /v1/contacts | Create a contact
 *ContactsApi* | [**deleteContact**](docs/Api/ContactsApi.md#deletecontact) | **DELETE** /v1/contacts/{contactId} | Delete a contact
@@ -618,6 +620,8 @@ Class | Method | HTTP request | Description
 - [GetYouTubeDailyViews500Response](docs/Model/GetYouTubeDailyViews500Response.md)
 - [GetYouTubeTranscript200Response](docs/Model/GetYouTubeTranscript200Response.md)
 - [GetYouTubeTranscript200ResponseSegmentsInner](docs/Model/GetYouTubeTranscript200ResponseSegmentsInner.md)
+- [GetYoutubePlaylists200Response](docs/Model/GetYoutubePlaylists200Response.md)
+- [GetYoutubePlaylists200ResponsePlaylistsInner](docs/Model/GetYoutubePlaylists200ResponsePlaylistsInner.md)
 - [GoogleBusinessPlatformData](docs/Model/GoogleBusinessPlatformData.md)
 - [GoogleBusinessPlatformDataCallToAction](docs/Model/GoogleBusinessPlatformDataCallToAction.md)
 - [HandleOAuthCallbackRequest](docs/Model/HandleOAuthCallbackRequest.md)
@@ -902,7 +906,6 @@ Class | Method | HTTP request | Description
 - [UpdateProfileRequest](docs/Model/UpdateProfileRequest.md)
 - [UpdateQueueSlot200Response](docs/Model/UpdateQueueSlot200Response.md)
 - [UpdateQueueSlotRequest](docs/Model/UpdateQueueSlotRequest.md)
-- [UpdateRedditSubreddits200Response](docs/Model/UpdateRedditSubreddits200Response.md)
 - [UpdateRedditSubredditsRequest](docs/Model/UpdateRedditSubredditsRequest.md)
 - [UpdateSequence200Response](docs/Model/UpdateSequence200Response.md)
 - [UpdateSequence200ResponseSequence](docs/Model/UpdateSequence200ResponseSequence.md)
@@ -919,6 +922,8 @@ Class | Method | HTTP request | Description
 - [UpdateWhatsAppTemplate200Response](docs/Model/UpdateWhatsAppTemplate200Response.md)
 - [UpdateWhatsAppTemplate200ResponseTemplate](docs/Model/UpdateWhatsAppTemplate200ResponseTemplate.md)
 - [UpdateWhatsAppTemplateRequest](docs/Model/UpdateWhatsAppTemplateRequest.md)
+- [UpdateYoutubeDefaultPlaylist200Response](docs/Model/UpdateYoutubeDefaultPlaylist200Response.md)
+- [UpdateYoutubeDefaultPlaylistRequest](docs/Model/UpdateYoutubeDefaultPlaylistRequest.md)
 - [UploadMediaDirect200Response](docs/Model/UploadMediaDirect200Response.md)
 - [UploadTokenResponse](docs/Model/UploadTokenResponse.md)
 - [UploadTokenStatusResponse](docs/Model/UploadTokenStatusResponse.md)

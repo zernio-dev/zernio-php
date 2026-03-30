@@ -77,7 +77,7 @@ try {
 ## `deleteWebhookSettings()`
 
 ```php
-deleteWebhookSettings($id): \Late\Model\UpdateRedditSubreddits200Response
+deleteWebhookSettings($id): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Delete webhook
@@ -119,7 +119,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateRedditSubreddits200Response**](../Model/UpdateRedditSubreddits200Response.md)
+[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 

@@ -169,7 +169,7 @@ class MessagesApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject
+     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
      */
     public function addMessageReaction($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
     {
@@ -189,7 +189,7 @@ class MessagesApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function addMessageReactionWithHttpInfo($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
     {
@@ -221,7 +221,7 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
@@ -249,7 +249,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateRedditSubreddits200Response',
+                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -258,7 +258,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -316,7 +316,7 @@ class MessagesApi
      */
     public function addMessageReactionAsyncWithHttpInfo($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
     {
-        $returnType = '\Late\Model\UpdateRedditSubreddits200Response';
+        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->addMessageReactionRequest($conversation_id, $message_id, $add_message_reaction_request, $contentType);
 
         return $this->client
@@ -494,7 +494,7 @@ class MessagesApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject
+     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
      */
     public function deleteInboxMessage($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
     {
@@ -514,7 +514,7 @@ class MessagesApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteInboxMessageWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
     {
@@ -546,7 +546,7 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
@@ -574,7 +574,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateRedditSubreddits200Response',
+                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -583,7 +583,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -641,7 +641,7 @@ class MessagesApi
      */
     public function deleteInboxMessageAsyncWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
     {
-        $returnType = '\Late\Model\UpdateRedditSubreddits200Response';
+        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->deleteInboxMessageRequest($conversation_id, $message_id, $account_id, $contentType);
 
         return $this->client
@@ -2137,7 +2137,7 @@ class MessagesApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject
+     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
      */
     public function removeMessageReaction($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
     {
@@ -2157,7 +2157,7 @@ class MessagesApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeMessageReactionWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
     {
@@ -2189,7 +2189,7 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
@@ -2217,7 +2217,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateRedditSubreddits200Response',
+                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -2226,7 +2226,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2284,7 +2284,7 @@ class MessagesApi
      */
     public function removeMessageReactionAsyncWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
     {
-        $returnType = '\Late\Model\UpdateRedditSubreddits200Response';
+        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->removeMessageReactionRequest($conversation_id, $message_id, $account_id, $contentType);
 
         return $this->client
@@ -2782,7 +2782,7 @@ class MessagesApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject
+     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
      */
     public function sendTypingIndicator($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
     {
@@ -2801,7 +2801,7 @@ class MessagesApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendTypingIndicatorWithHttpInfo($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
     {
@@ -2833,7 +2833,7 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
@@ -2861,7 +2861,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateRedditSubreddits200Response',
+                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -2870,7 +2870,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2926,7 +2926,7 @@ class MessagesApi
      */
     public function sendTypingIndicatorAsyncWithHttpInfo($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
     {
-        $returnType = '\Late\Model\UpdateRedditSubreddits200Response';
+        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->sendTypingIndicatorRequest($conversation_id, $send_typing_indicator_request, $contentType);
 
         return $this->client

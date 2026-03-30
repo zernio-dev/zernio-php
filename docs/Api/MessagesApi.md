@@ -22,7 +22,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `addMessageReaction()`
 
 ```php
-addMessageReaction($conversation_id, $message_id, $add_message_reaction_request): \Late\Model\UpdateRedditSubreddits200Response
+addMessageReaction($conversation_id, $message_id, $add_message_reaction_request): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Add reaction
@@ -68,7 +68,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateRedditSubreddits200Response**](../Model/UpdateRedditSubreddits200Response.md)
+[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -86,7 +86,7 @@ try {
 ## `deleteInboxMessage()`
 
 ```php
-deleteInboxMessage($conversation_id, $message_id, $account_id): \Late\Model\UpdateRedditSubreddits200Response
+deleteInboxMessage($conversation_id, $message_id, $account_id): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Delete message
@@ -132,7 +132,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateRedditSubreddits200Response**](../Model/UpdateRedditSubreddits200Response.md)
+[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -410,7 +410,7 @@ try {
 ## `removeMessageReaction()`
 
 ```php
-removeMessageReaction($conversation_id, $message_id, $account_id): \Late\Model\UpdateRedditSubreddits200Response
+removeMessageReaction($conversation_id, $message_id, $account_id): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Remove reaction
@@ -456,7 +456,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateRedditSubreddits200Response**](../Model/UpdateRedditSubreddits200Response.md)
+[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -536,7 +536,7 @@ try {
 ## `sendTypingIndicator()`
 
 ```php
-sendTypingIndicator($conversation_id, $send_typing_indicator_request): \Late\Model\UpdateRedditSubreddits200Response
+sendTypingIndicator($conversation_id, $send_typing_indicator_request): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Send typing indicator
@@ -580,7 +580,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateRedditSubreddits200Response**](../Model/UpdateRedditSubreddits200Response.md)
+[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 

@@ -436,7 +436,7 @@ class WebhooksApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject
+     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
      */
     public function deleteWebhookSettings($id, string $contentType = self::contentTypes['deleteWebhookSettings'][0])
     {
@@ -454,7 +454,7 @@ class WebhooksApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateRedditSubreddits200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteWebhookSettingsWithHttpInfo($id, string $contentType = self::contentTypes['deleteWebhookSettings'][0])
     {
@@ -486,7 +486,7 @@ class WebhooksApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
@@ -514,7 +514,7 @@ class WebhooksApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateRedditSubreddits200Response',
+                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -523,7 +523,7 @@ class WebhooksApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateRedditSubreddits200Response',
+                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -577,7 +577,7 @@ class WebhooksApi
      */
     public function deleteWebhookSettingsAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteWebhookSettings'][0])
     {
-        $returnType = '\Late\Model\UpdateRedditSubreddits200Response';
+        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->deleteWebhookSettingsRequest($id, $contentType);
 
         return $this->client

@@ -86,6 +86,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'made_for_kids' => 'bool',
         'contains_synthetic_media' => 'bool',
         'category_id' => 'string',
+        'playlist_id' => 'string',
         'location_id' => 'string',
         'language_code' => 'string',
         'call_to_action' => '\Late\Model\GoogleBusinessPlatformDataCallToAction',
@@ -152,6 +153,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'made_for_kids' => null,
         'contains_synthetic_media' => null,
         'category_id' => null,
+        'playlist_id' => null,
         'location_id' => null,
         'language_code' => null,
         'call_to_action' => null,
@@ -216,6 +218,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'made_for_kids' => false,
         'contains_synthetic_media' => false,
         'category_id' => false,
+        'playlist_id' => false,
         'location_id' => false,
         'language_code' => false,
         'call_to_action' => false,
@@ -360,6 +363,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'made_for_kids' => 'madeForKids',
         'contains_synthetic_media' => 'containsSyntheticMedia',
         'category_id' => 'categoryId',
+        'playlist_id' => 'playlistId',
         'location_id' => 'locationId',
         'language_code' => 'languageCode',
         'call_to_action' => 'callToAction',
@@ -424,6 +428,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'made_for_kids' => 'setMadeForKids',
         'contains_synthetic_media' => 'setContainsSyntheticMedia',
         'category_id' => 'setCategoryId',
+        'playlist_id' => 'setPlaylistId',
         'location_id' => 'setLocationId',
         'language_code' => 'setLanguageCode',
         'call_to_action' => 'setCallToAction',
@@ -488,6 +493,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'made_for_kids' => 'getMadeForKids',
         'contains_synthetic_media' => 'getContainsSyntheticMedia',
         'category_id' => 'getCategoryId',
+        'playlist_id' => 'getPlaylistId',
         'location_id' => 'getLocationId',
         'language_code' => 'getLanguageCode',
         'call_to_action' => 'getCallToAction',
@@ -705,6 +711,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         $this->setIfExists('made_for_kids', $data ?? [], false);
         $this->setIfExists('contains_synthetic_media', $data ?? [], false);
         $this->setIfExists('category_id', $data ?? [], '22');
+        $this->setIfExists('playlist_id', $data ?? [], null);
         $this->setIfExists('location_id', $data ?? [], null);
         $this->setIfExists('language_code', $data ?? [], null);
         $this->setIfExists('call_to_action', $data ?? [], null);
@@ -1665,6 +1672,33 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
             throw new \InvalidArgumentException('non-nullable category_id cannot be null');
         }
         $this->container['category_id'] = $category_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets playlist_id
+     *
+     * @return string|null
+     */
+    public function getPlaylistId()
+    {
+        return $this->container['playlist_id'];
+    }
+
+    /**
+     * Sets playlist_id
+     *
+     * @param string|null $playlist_id Optional YouTube playlist ID to add the video to after upload (e.g. 'PLxxxxxxxxxxxxx'). Use GET /v1/accounts/{id}/youtube-playlists to list available playlists. Works for both immediate and scheduled uploads. Quota cost: 50 YouTube API units per call.
+     *
+     * @return self
+     */
+    public function setPlaylistId($playlist_id)
+    {
+        if (is_null($playlist_id)) {
+            throw new \InvalidArgumentException('non-nullable playlist_id cannot be null');
+        }
+        $this->container['playlist_id'] = $playlist_id;
 
         return $this;
     }

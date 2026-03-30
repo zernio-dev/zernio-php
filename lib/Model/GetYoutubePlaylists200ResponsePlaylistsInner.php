@@ -1,6 +1,6 @@
 <?php
 /**
- * YouTubePlatformData
+ * GetYoutubePlaylists200ResponsePlaylistsInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * YouTubePlatformData Class Doc Comment
+ * GetYoutubePlaylists200ResponsePlaylistsInner Class Doc Comment
  *
  * @category Class
- * @description Videos under 3 min auto-detected as Shorts. Custom thumbnails for regular videos only. Scheduled videos are uploaded immediately with the specified visibility.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetYoutubePlaylists200ResponsePlaylistsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'YouTubePlatformData';
+    protected static $openAPIModelName = 'getYoutubePlaylists_200_response_playlists_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +58,12 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
+        'id' => 'string',
         'title' => 'string',
-        'visibility' => 'string',
-        'made_for_kids' => 'bool',
-        'first_comment' => 'string',
-        'contains_synthetic_media' => 'bool',
-        'category_id' => 'string',
-        'playlist_id' => 'string'
+        'description' => 'string',
+        'privacy' => 'string',
+        'item_count' => 'int',
+        'thumbnail_url' => 'string'
     ];
 
     /**
@@ -76,13 +74,12 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'id' => null,
         'title' => null,
-        'visibility' => null,
-        'made_for_kids' => null,
-        'first_comment' => null,
-        'contains_synthetic_media' => null,
-        'category_id' => null,
-        'playlist_id' => null
+        'description' => null,
+        'privacy' => null,
+        'item_count' => null,
+        'thumbnail_url' => null
     ];
 
     /**
@@ -91,13 +88,12 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'id' => false,
         'title' => false,
-        'visibility' => false,
-        'made_for_kids' => false,
-        'first_comment' => false,
-        'contains_synthetic_media' => false,
-        'category_id' => false,
-        'playlist_id' => false
+        'description' => false,
+        'privacy' => false,
+        'item_count' => false,
+        'thumbnail_url' => false
     ];
 
     /**
@@ -186,13 +182,12 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
+        'id' => 'id',
         'title' => 'title',
-        'visibility' => 'visibility',
-        'made_for_kids' => 'madeForKids',
-        'first_comment' => 'firstComment',
-        'contains_synthetic_media' => 'containsSyntheticMedia',
-        'category_id' => 'categoryId',
-        'playlist_id' => 'playlistId'
+        'description' => 'description',
+        'privacy' => 'privacy',
+        'item_count' => 'itemCount',
+        'thumbnail_url' => 'thumbnailUrl'
     ];
 
     /**
@@ -201,13 +196,12 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
+        'id' => 'setId',
         'title' => 'setTitle',
-        'visibility' => 'setVisibility',
-        'made_for_kids' => 'setMadeForKids',
-        'first_comment' => 'setFirstComment',
-        'contains_synthetic_media' => 'setContainsSyntheticMedia',
-        'category_id' => 'setCategoryId',
-        'playlist_id' => 'setPlaylistId'
+        'description' => 'setDescription',
+        'privacy' => 'setPrivacy',
+        'item_count' => 'setItemCount',
+        'thumbnail_url' => 'setThumbnailUrl'
     ];
 
     /**
@@ -216,13 +210,12 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
+        'id' => 'getId',
         'title' => 'getTitle',
-        'visibility' => 'getVisibility',
-        'made_for_kids' => 'getMadeForKids',
-        'first_comment' => 'getFirstComment',
-        'contains_synthetic_media' => 'getContainsSyntheticMedia',
-        'category_id' => 'getCategoryId',
-        'playlist_id' => 'getPlaylistId'
+        'description' => 'getDescription',
+        'privacy' => 'getPrivacy',
+        'item_count' => 'getItemCount',
+        'thumbnail_url' => 'getThumbnailUrl'
     ];
 
     /**
@@ -266,21 +259,21 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         return self::$openAPIModelName;
     }
 
-    public const VISIBILITY__PUBLIC = 'public';
-    public const VISIBILITY__PRIVATE = 'private';
-    public const VISIBILITY_UNLISTED = 'unlisted';
+    public const PRIVACY__PUBLIC = 'public';
+    public const PRIVACY__PRIVATE = 'private';
+    public const PRIVACY_UNLISTED = 'unlisted';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getVisibilityAllowableValues()
+    public function getPrivacyAllowableValues()
     {
         return [
-            self::VISIBILITY__PUBLIC,
-            self::VISIBILITY__PRIVATE,
-            self::VISIBILITY_UNLISTED,
+            self::PRIVACY__PUBLIC,
+            self::PRIVACY__PRIVATE,
+            self::PRIVACY_UNLISTED,
         ];
     }
 
@@ -299,13 +292,12 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
-        $this->setIfExists('visibility', $data ?? [], 'public');
-        $this->setIfExists('made_for_kids', $data ?? [], false);
-        $this->setIfExists('first_comment', $data ?? [], null);
-        $this->setIfExists('contains_synthetic_media', $data ?? [], false);
-        $this->setIfExists('category_id', $data ?? [], '22');
-        $this->setIfExists('playlist_id', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('privacy', $data ?? [], null);
+        $this->setIfExists('item_count', $data ?? [], null);
+        $this->setIfExists('thumbnail_url', $data ?? [], null);
     }
 
     /**
@@ -335,21 +327,13 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 100)) {
-            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 100.";
-        }
-
-        $allowedValues = $this->getVisibilityAllowableValues();
-        if (!is_null($this->container['visibility']) && !in_array($this->container['visibility'], $allowedValues, true)) {
+        $allowedValues = $this->getPrivacyAllowableValues();
+        if (!is_null($this->container['privacy']) && !in_array($this->container['privacy'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'visibility', must be one of '%s'",
-                $this->container['visibility'],
+                "invalid value '%s' for 'privacy', must be one of '%s'",
+                $this->container['privacy'],
                 implode("', '", $allowedValues)
             );
-        }
-
-        if (!is_null($this->container['first_comment']) && (mb_strlen($this->container['first_comment']) > 10000)) {
-            $invalidProperties[] = "invalid value for 'first_comment', the character length must be smaller than or equal to 10000.";
         }
 
         return $invalidProperties;
@@ -368,6 +352,33 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
+     * Gets id
+     *
+     * @return string|null
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string|null $id id
+     *
+     * @return self
+     */
+    public function setId($id)
+    {
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        }
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets title
      *
      * @return string|null
@@ -380,7 +391,7 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets title
      *
-     * @param string|null $title Video title. Defaults to first line of content or \"Untitled Video\". Must be ≤ 100 characters.
+     * @param string|null $title title
      *
      * @return self
      */
@@ -389,187 +400,125 @@ class YouTubePlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         if (is_null($title)) {
             throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
-        if ((mb_strlen($title) > 100)) {
-            throw new \InvalidArgumentException('invalid length for $title when calling YouTubePlatformData., must be smaller than or equal to 100.');
-        }
-
         $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets visibility
+     * Gets description
      *
      * @return string|null
      */
-    public function getVisibility()
+    public function getDescription()
     {
-        return $this->container['visibility'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets visibility
+     * Sets description
      *
-     * @param string|null $visibility Video visibility: public (default, anyone can watch), unlisted (link only), private (invite only)
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setVisibility($visibility)
+    public function setDescription($description)
     {
-        if (is_null($visibility)) {
-            throw new \InvalidArgumentException('non-nullable visibility cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $allowedValues = $this->getVisibilityAllowableValues();
-        if (!in_array($visibility, $allowedValues, true)) {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets privacy
+     *
+     * @return string|null
+     */
+    public function getPrivacy()
+    {
+        return $this->container['privacy'];
+    }
+
+    /**
+     * Sets privacy
+     *
+     * @param string|null $privacy privacy
+     *
+     * @return self
+     */
+    public function setPrivacy($privacy)
+    {
+        if (is_null($privacy)) {
+            throw new \InvalidArgumentException('non-nullable privacy cannot be null');
+        }
+        $allowedValues = $this->getPrivacyAllowableValues();
+        if (!in_array($privacy, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'visibility', must be one of '%s'",
-                    $visibility,
+                    "Invalid value '%s' for 'privacy', must be one of '%s'",
+                    $privacy,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['visibility'] = $visibility;
+        $this->container['privacy'] = $privacy;
 
         return $this;
     }
 
     /**
-     * Gets made_for_kids
+     * Gets item_count
      *
-     * @return bool|null
+     * @return int|null
      */
-    public function getMadeForKids()
+    public function getItemCount()
     {
-        return $this->container['made_for_kids'];
+        return $this->container['item_count'];
     }
 
     /**
-     * Sets made_for_kids
+     * Sets item_count
      *
-     * @param bool|null $made_for_kids COPPA compliance flag. Set true for child-directed content (restricts comments, notifications, ad targeting). Defaults to false. YouTube may block views if not explicitly set.
+     * @param int|null $item_count item_count
      *
      * @return self
      */
-    public function setMadeForKids($made_for_kids)
+    public function setItemCount($item_count)
     {
-        if (is_null($made_for_kids)) {
-            throw new \InvalidArgumentException('non-nullable made_for_kids cannot be null');
+        if (is_null($item_count)) {
+            throw new \InvalidArgumentException('non-nullable item_count cannot be null');
         }
-        $this->container['made_for_kids'] = $made_for_kids;
+        $this->container['item_count'] = $item_count;
 
         return $this;
     }
 
     /**
-     * Gets first_comment
+     * Gets thumbnail_url
      *
      * @return string|null
      */
-    public function getFirstComment()
+    public function getThumbnailUrl()
     {
-        return $this->container['first_comment'];
+        return $this->container['thumbnail_url'];
     }
 
     /**
-     * Sets first_comment
+     * Sets thumbnail_url
      *
-     * @param string|null $first_comment Optional first comment to post immediately after video upload. Up to 10,000 characters (YouTube's comment limit).
+     * @param string|null $thumbnail_url thumbnail_url
      *
      * @return self
      */
-    public function setFirstComment($first_comment)
+    public function setThumbnailUrl($thumbnail_url)
     {
-        if (is_null($first_comment)) {
-            throw new \InvalidArgumentException('non-nullable first_comment cannot be null');
+        if (is_null($thumbnail_url)) {
+            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
         }
-        if ((mb_strlen($first_comment) > 10000)) {
-            throw new \InvalidArgumentException('invalid length for $first_comment when calling YouTubePlatformData., must be smaller than or equal to 10000.');
-        }
-
-        $this->container['first_comment'] = $first_comment;
-
-        return $this;
-    }
-
-    /**
-     * Gets contains_synthetic_media
-     *
-     * @return bool|null
-     */
-    public function getContainsSyntheticMedia()
-    {
-        return $this->container['contains_synthetic_media'];
-    }
-
-    /**
-     * Sets contains_synthetic_media
-     *
-     * @param bool|null $contains_synthetic_media AI-generated content disclosure. Set true if the video contains synthetic content that could be mistaken for real. YouTube may add a label.
-     *
-     * @return self
-     */
-    public function setContainsSyntheticMedia($contains_synthetic_media)
-    {
-        if (is_null($contains_synthetic_media)) {
-            throw new \InvalidArgumentException('non-nullable contains_synthetic_media cannot be null');
-        }
-        $this->container['contains_synthetic_media'] = $contains_synthetic_media;
-
-        return $this;
-    }
-
-    /**
-     * Gets category_id
-     *
-     * @return string|null
-     */
-    public function getCategoryId()
-    {
-        return $this->container['category_id'];
-    }
-
-    /**
-     * Sets category_id
-     *
-     * @param string|null $category_id YouTube video category ID. Defaults to 22 (People & Blogs). Common: 1 (Film), 2 (Autos), 10 (Music), 15 (Pets), 17 (Sports), 20 (Gaming), 23 (Comedy), 24 (Entertainment), 25 (News), 26 (Howto), 27 (Education), 28 (Science & Tech).
-     *
-     * @return self
-     */
-    public function setCategoryId($category_id)
-    {
-        if (is_null($category_id)) {
-            throw new \InvalidArgumentException('non-nullable category_id cannot be null');
-        }
-        $this->container['category_id'] = $category_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets playlist_id
-     *
-     * @return string|null
-     */
-    public function getPlaylistId()
-    {
-        return $this->container['playlist_id'];
-    }
-
-    /**
-     * Sets playlist_id
-     *
-     * @param string|null $playlist_id Optional YouTube playlist ID to add the video to after upload (e.g. 'PLxxxxxxxxxxxxx'). Use GET /v1/accounts/{id}/youtube-playlists to list available playlists. Works for both immediate and scheduled uploads. Quota cost: 50 YouTube API units per call.
-     *
-     * @return self
-     */
-    public function setPlaylistId($playlist_id)
-    {
-        if (is_null($playlist_id)) {
-            throw new \InvalidArgumentException('non-nullable playlist_id cannot be null');
-        }
-        $this->container['playlist_id'] = $playlist_id;
+        $this->container['thumbnail_url'] = $thumbnail_url;
 
         return $this;
     }
