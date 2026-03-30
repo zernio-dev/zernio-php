@@ -74,6 +74,8 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'user_tags' => '\Late\Model\InstagramPlatformDataUserTagsInner[]',
         'audio_name' => 'string',
         'thumb_offset' => 'int',
+        'instagram_thumbnail' => 'string',
+        'reel_cover' => 'string',
         'document_title' => 'string',
         'organization_urn' => 'string',
         'disable_link_preview' => 'bool',
@@ -138,6 +140,8 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'user_tags' => null,
         'audio_name' => null,
         'thumb_offset' => null,
+        'instagram_thumbnail' => 'uri',
+        'reel_cover' => 'uri',
         'document_title' => null,
         'organization_urn' => null,
         'disable_link_preview' => null,
@@ -200,6 +204,8 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'user_tags' => false,
         'audio_name' => false,
         'thumb_offset' => false,
+        'instagram_thumbnail' => false,
+        'reel_cover' => false,
         'document_title' => false,
         'organization_urn' => false,
         'disable_link_preview' => false,
@@ -342,6 +348,8 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'user_tags' => 'userTags',
         'audio_name' => 'audioName',
         'thumb_offset' => 'thumbOffset',
+        'instagram_thumbnail' => 'instagramThumbnail',
+        'reel_cover' => 'reelCover',
         'document_title' => 'documentTitle',
         'organization_urn' => 'organizationUrn',
         'disable_link_preview' => 'disableLinkPreview',
@@ -404,6 +412,8 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'user_tags' => 'setUserTags',
         'audio_name' => 'setAudioName',
         'thumb_offset' => 'setThumbOffset',
+        'instagram_thumbnail' => 'setInstagramThumbnail',
+        'reel_cover' => 'setReelCover',
         'document_title' => 'setDocumentTitle',
         'organization_urn' => 'setOrganizationUrn',
         'disable_link_preview' => 'setDisableLinkPreview',
@@ -466,6 +476,8 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'user_tags' => 'getUserTags',
         'audio_name' => 'getAudioName',
         'thumb_offset' => 'getThumbOffset',
+        'instagram_thumbnail' => 'getInstagramThumbnail',
+        'reel_cover' => 'getReelCover',
         'document_title' => 'getDocumentTitle',
         'organization_urn' => 'getOrganizationUrn',
         'disable_link_preview' => 'getDisableLinkPreview',
@@ -681,6 +693,8 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         $this->setIfExists('user_tags', $data ?? [], null);
         $this->setIfExists('audio_name', $data ?? [], null);
         $this->setIfExists('thumb_offset', $data ?? [], null);
+        $this->setIfExists('instagram_thumbnail', $data ?? [], null);
+        $this->setIfExists('reel_cover', $data ?? [], null);
         $this->setIfExists('document_title', $data ?? [], null);
         $this->setIfExists('organization_urn', $data ?? [], null);
         $this->setIfExists('disable_link_preview', $data ?? [], null);
@@ -1276,7 +1290,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     /**
      * Sets thumb_offset
      *
-     * @param int|null $thumb_offset Millisecond offset from video start for the Reel thumbnail. Ignored if a custom thumbnail URL is provided. Defaults to 0.
+     * @param int|null $thumb_offset Millisecond offset from video start for the Reel cover frame. Ignored when instagramThumbnail or reelCover is provided. Defaults to 0.
      *
      * @return self
      */
@@ -1291,6 +1305,60 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         }
 
         $this->container['thumb_offset'] = $thumb_offset;
+
+        return $this;
+    }
+
+    /**
+     * Gets instagram_thumbnail
+     *
+     * @return string|null
+     */
+    public function getInstagramThumbnail()
+    {
+        return $this->container['instagram_thumbnail'];
+    }
+
+    /**
+     * Sets instagram_thumbnail
+     *
+     * @param string|null $instagram_thumbnail Custom cover image URL for Instagram Reels (JPG or PNG, publicly accessible). Overrides thumbOffset when provided. Also accepted as reelCover (alias).
+     *
+     * @return self
+     */
+    public function setInstagramThumbnail($instagram_thumbnail)
+    {
+        if (is_null($instagram_thumbnail)) {
+            throw new \InvalidArgumentException('non-nullable instagram_thumbnail cannot be null');
+        }
+        $this->container['instagram_thumbnail'] = $instagram_thumbnail;
+
+        return $this;
+    }
+
+    /**
+     * Gets reel_cover
+     *
+     * @return string|null
+     */
+    public function getReelCover()
+    {
+        return $this->container['reel_cover'];
+    }
+
+    /**
+     * Sets reel_cover
+     *
+     * @param string|null $reel_cover Alias for instagramThumbnail. If both are provided, instagramThumbnail takes priority.
+     *
+     * @return self
+     */
+    public function setReelCover($reel_cover)
+    {
+        if (is_null($reel_cover)) {
+            throw new \InvalidArgumentException('non-nullable reel_cover cannot be null');
+        }
+        $this->container['reel_cover'] = $reel_cover;
 
         return $this;
     }

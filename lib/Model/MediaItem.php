@@ -587,7 +587,7 @@ class MediaItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets instagram_thumbnail
      *
-     * @param string|null $instagram_thumbnail Optional custom cover image URL for Instagram Reels
+     * @param string|null $instagram_thumbnail Custom cover image URL for Instagram Reels. Can also be set via platformSpecificData.instagramThumbnail or platformSpecificData.reelCover. Resolution order: this field > platformSpecificData.instagramThumbnail > platformSpecificData.reelCover > platformSpecificData.thumbnailUrl (legacy).
      *
      * @return self
      */
