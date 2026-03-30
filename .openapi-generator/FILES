@@ -1459,11 +1459,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WhatsAppBodyComponentExampleTest.php
-test/Model/WhatsAppBodyComponentTest.php
-test/Model/WhatsAppButtonsComponentTest.php
-test/Model/WhatsAppFooterComponentTest.php
-test/Model/WhatsAppHeaderComponentExampleTest.php
-test/Model/WhatsAppHeaderComponentTest.php
-test/Model/WhatsAppTemplateButtonTest.php
-test/Model/WhatsAppTemplateComponentTest.php

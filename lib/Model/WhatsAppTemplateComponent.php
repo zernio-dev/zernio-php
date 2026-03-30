@@ -43,7 +43,7 @@ use \Late\ObjectSerializer;
  */
 class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = 'type';
+    public const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.
@@ -330,9 +330,6 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('add_security_recommendation', $data ?? [], null);
         $this->setIfExists('code_expiration_minutes', $data ?? [], null);
         $this->setIfExists('buttons', $data ?? [], null);
-
-        // Initialize discriminator property with the model name.
-        $this->container['type'] = static::$openAPIModelName;
     }
 
     /**

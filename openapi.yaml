@@ -349,21 +349,12 @@ components:
           type: string
         navigate_screen:
           type: string
-      discriminator:
-        propertyName: type
     WhatsAppTemplateComponent:
       oneOf:
         - $ref: '#/components/schemas/WhatsAppHeaderComponent'
         - $ref: '#/components/schemas/WhatsAppBodyComponent'
         - $ref: '#/components/schemas/WhatsAppFooterComponent'
         - $ref: '#/components/schemas/WhatsAppButtonsComponent'
-      discriminator:
-        propertyName: type
-        mapping:
-          HEADER: '#/components/schemas/WhatsAppHeaderComponent'
-          BODY: '#/components/schemas/WhatsAppBodyComponent'
-          FOOTER: '#/components/schemas/WhatsAppFooterComponent'
-          BUTTONS: '#/components/schemas/WhatsAppButtonsComponent'
     WhatsAppHeaderComponent:
       type: object
       required: [type, format]
