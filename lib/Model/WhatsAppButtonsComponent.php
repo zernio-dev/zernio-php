@@ -235,7 +235,7 @@ class WhatsAppButtonsComponent implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
-    public const TYPE_BUTTONS = 'BUTTONS';
+    public const TYPE_BUTTONS = 'buttons';
 
     /**
      * Gets allowable values of the enum

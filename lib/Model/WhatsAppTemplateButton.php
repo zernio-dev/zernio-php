@@ -307,16 +307,16 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
         return self::$openAPIModelName;
     }
 
-    public const TYPE_QUICK_REPLY = 'QUICK_REPLY';
-    public const TYPE_URL = 'URL';
-    public const TYPE_PHONE_NUMBER = 'PHONE_NUMBER';
-    public const TYPE_OTP = 'OTP';
-    public const TYPE_FLOW = 'FLOW';
-    public const TYPE_MPM = 'MPM';
-    public const TYPE_CATALOG = 'CATALOG';
-    public const OTP_TYPE_COPY_CODE = 'COPY_CODE';
-    public const OTP_TYPE_ONE_TAP = 'ONE_TAP';
-    public const OTP_TYPE_ZERO_TAP = 'ZERO_TAP';
+    public const TYPE_QUICK_REPLY = 'quick_reply';
+    public const TYPE_URL = 'url';
+    public const TYPE_PHONE_NUMBER = 'phone_number';
+    public const TYPE_OTP = 'otp';
+    public const TYPE_FLOW = 'flow';
+    public const TYPE_MPM = 'mpm';
+    public const TYPE_CATALOG = 'catalog';
+    public const OTP_TYPE_COPY_CODE = 'copy_code';
+    public const OTP_TYPE_ONE_TAP = 'one_tap';
+    public const OTP_TYPE_ZERO_TAP = 'zero_tap';
 
     /**
      * Gets allowable values of the enum
@@ -578,7 +578,7 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets phone_number
      *
-     * @param string|null $phone_number Required when type is PHONE_NUMBER
+     * @param string|null $phone_number Required when type is phone_number
      *
      * @return self
      */
@@ -605,7 +605,7 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets otp_type
      *
-     * @param string|null $otp_type Required when type is OTP
+     * @param string|null $otp_type Required when type is otp
      *
      * @return self
      */

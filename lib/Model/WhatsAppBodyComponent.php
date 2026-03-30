@@ -247,7 +247,7 @@ class WhatsAppBodyComponent implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-    public const TYPE_BODY = 'BODY';
+    public const TYPE_BODY = 'body';
 
     /**
      * Gets allowable values of the enum

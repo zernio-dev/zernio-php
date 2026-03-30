@@ -521,7 +521,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets components
      *
-     * @param \Late\Model\WhatsAppTemplateComponent[]|null $components Template components (HEADER, BODY, FOOTER, BUTTONS). Required for custom templates, omit when using library_template_name.
+     * @param \Late\Model\WhatsAppTemplateComponent[]|null $components Template components (header, body, footer, buttons). Required for custom templates, omit when using library_template_name.
      *
      * @return self
      */

@@ -241,7 +241,7 @@ class WhatsAppFooterComponent implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    public const TYPE_FOOTER = 'FOOTER';
+    public const TYPE_FOOTER = 'footer';
 
     /**
      * Gets allowable values of the enum

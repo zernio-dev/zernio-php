@@ -345,7 +345,7 @@ class WhatsAppHeaderComponentExample implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets header_handle
      *
-     * @param string[]|null $header_handle When the header format is a media type (IMAGE, VIDEO, GIF, DOCUMENT), provide a public URL here. Zernio will download and upload it to WhatsApp on your behalf, replacing it with the internal file handle before creating the template.
+     * @param string[]|null $header_handle When the header format is a media type (image, video, gif, document), provide a public URL here. Zernio will download and upload it to WhatsApp on your behalf, replacing it with the internal file handle before creating the template.
      *
      * @return self
      */

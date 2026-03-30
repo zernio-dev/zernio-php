@@ -315,7 +315,7 @@ components:
       properties:
         type:
           type: string
-          enum: [QUICK_REPLY, URL, PHONE_NUMBER, OTP, FLOW, MPM, CATALOG]
+          enum: [quick_reply, url, phone_number, otp, flow, mpm, catalog]
         text:
           type: string
         url:
@@ -328,11 +328,11 @@ components:
           description: Example values for URL suffix variables
         phone_number:
           type: string
-          description: Required when type is PHONE_NUMBER
+          description: Required when type is phone_number
         otp_type:
           type: string
-          enum: [COPY_CODE, ONE_TAP, ZERO_TAP]
-          description: Required when type is OTP
+          enum: [copy_code, one_tap, zero_tap]
+          description: Required when type is otp
         autofill_text:
           type: string
         package_name:
@@ -355,16 +355,23 @@ components:
         - $ref: '#/components/schemas/WhatsAppBodyComponent'
         - $ref: '#/components/schemas/WhatsAppFooterComponent'
         - $ref: '#/components/schemas/WhatsAppButtonsComponent'
+      discriminator:
+        propertyName: type
+        mapping:
+          header: '#/components/schemas/WhatsAppHeaderComponent'
+          body: '#/components/schemas/WhatsAppBodyComponent'
+          footer: '#/components/schemas/WhatsAppFooterComponent'
+          buttons: '#/components/schemas/WhatsAppButtonsComponent'
     WhatsAppHeaderComponent:
       type: object
       required: [type, format]
       properties:
         type:
           type: string
-          enum: [HEADER]
+          enum: [header]
         format:
           type: string
-          enum: [TEXT, IMAGE, VIDEO, GIF, DOCUMENT, LOCATION]
+          enum: [text, image, video, gif, document, location]
         text:
           type: string
           description: Header text (may include {{1}} variable). Used when format is TEXT.
@@ -382,14 +389,14 @@ components:
               items:
                 type: string
                 format: uri
-              description: When the header format is a media type (IMAGE, VIDEO, GIF, DOCUMENT), provide a public URL here. Zernio will download and upload it to WhatsApp on your behalf, replacing it with the internal file handle before creating the template.
+              description: When the header format is a media type (image, video, gif, document), provide a public URL here. Zernio will download and upload it to WhatsApp on your behalf, replacing it with the internal file handle before creating the template.
     WhatsAppBodyComponent:
       type: object
       required: [type, text]
       properties:
         type:
           type: string
-          enum: [BODY]
+          enum: [body]
         text:
           type: string
           description: Body text with optional {{n}} variables
@@ -411,7 +418,7 @@ components:
       properties:
         type:
           type: string
-          enum: [FOOTER]
+          enum: [footer]
         text:
           type: string
           description: Static footer text
@@ -425,7 +432,7 @@ components:
       properties:
         type:
           type: string
-          enum: [BUTTONS]
+          enum: [buttons]
         buttons:
           type: array
           minItems: 1
@@ -14154,7 +14161,7 @@ paths:
                   description: Template language code (e.g., en_US)
                 components:
                   type: array
-                  description: "Template components (HEADER, BODY, FOOTER, BUTTONS). Required for custom templates, omit when using library_template_name."
+                  description: "Template components (header, body, footer, buttons). Required for custom templates, omit when using library_template_name."
                   minItems: 1
                   items:
                     $ref: '#/components/schemas/WhatsAppTemplateComponent'
@@ -14180,7 +14187,7 @@ paths:
                     properties:
                       type:
                         type: string
-                        enum: [QUICK_REPLY, URL, PHONE_NUMBER]
+                        enum: [quick_reply, url, phone_number]
                       url:
                         type: object
                         properties:
@@ -14196,19 +14203,19 @@ paths:
                   category: "UTILITY"
                   language: "en_US"
                   components:
-                    - type: "HEADER"
-                      format: "IMAGE"
+                    - type: "header"
+                      format: "image"
                       example:
                         header_handle: ["https://example.com/header.jpg"]
-                    - type: "BODY"
+                    - type: "body"
                       text: "Your order {{1}} has been confirmed. Expected delivery: {{2}}"
                       example:
                         body_text: [["ORD-12345", "March 31"]]
-                    - type: "FOOTER"
+                    - type: "footer"
                       text: "Thank you for your purchase"
-                    - type: "BUTTONS"
+                    - type: "buttons"
                       buttons:
-                        - type: "QUICK_REPLY"
+                        - type: "quick_reply"
                           text: "Track Order"
               library:
                 summary: Library template (pre-approved, no review)
@@ -14219,7 +14226,7 @@ paths:
                   language: "en_US"
                   library_template_name: "appointment_reminder"
                   library_template_button_inputs:
-                    - type: "URL"
+                    - type: "url"
                       url:
                         base_url: "https://myapp.com/appointments/{{1}}"
       responses:
@@ -14327,13 +14334,13 @@ paths:
             example:
               accountId: "507f1f77bcf86cd799439011"
               components:
-                - type: "BODY"
+                - type: "body"
                   text: "Updated: Your order {{1}} is confirmed. Delivery by {{2}}"
                   example:
                     body_text: [["ORD-12345", "April 1"]]
-                - type: "BUTTONS"
+                - type: "buttons"
                   buttons:
-                    - type: "QUICK_REPLY"
+                    - type: "quick_reply"
                       text: "Track Order"
       responses:
         '200':

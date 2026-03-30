@@ -43,7 +43,7 @@ use \Late\ObjectSerializer;
  */
 class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'type';
 
     /**
       * The original name of the model.
@@ -265,16 +265,16 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const TYPE_HEADER = 'HEADER';
-    public const TYPE_BODY = 'BODY';
-    public const TYPE_FOOTER = 'FOOTER';
-    public const TYPE_BUTTONS = 'BUTTONS';
-    public const FORMAT_TEXT = 'TEXT';
-    public const FORMAT_IMAGE = 'IMAGE';
-    public const FORMAT_VIDEO = 'VIDEO';
-    public const FORMAT_GIF = 'GIF';
-    public const FORMAT_DOCUMENT = 'DOCUMENT';
-    public const FORMAT_LOCATION = 'LOCATION';
+    public const TYPE_HEADER = 'header';
+    public const TYPE_BODY = 'body';
+    public const TYPE_FOOTER = 'footer';
+    public const TYPE_BUTTONS = 'buttons';
+    public const FORMAT_TEXT = 'text';
+    public const FORMAT_IMAGE = 'image';
+    public const FORMAT_VIDEO = 'video';
+    public const FORMAT_GIF = 'gif';
+    public const FORMAT_DOCUMENT = 'document';
+    public const FORMAT_LOCATION = 'location';
 
     /**
      * Gets allowable values of the enum
@@ -330,6 +330,9 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('add_security_recommendation', $data ?? [], null);
         $this->setIfExists('code_expiration_minutes', $data ?? [], null);
         $this->setIfExists('buttons', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['type'] = static::$openAPIModelName;
     }
 
     /**

@@ -241,9 +241,9 @@ class CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner implements M
         return self::$openAPIModelName;
     }
 
-    public const TYPE_QUICK_REPLY = 'QUICK_REPLY';
-    public const TYPE_URL = 'URL';
-    public const TYPE_PHONE_NUMBER = 'PHONE_NUMBER';
+    public const TYPE_QUICK_REPLY = 'quick_reply';
+    public const TYPE_URL = 'url';
+    public const TYPE_PHONE_NUMBER = 'phone_number';
 
     /**
      * Gets allowable values of the enum

@@ -247,13 +247,13 @@ class WhatsAppHeaderComponent implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    public const TYPE_HEADER = 'HEADER';
-    public const FORMAT_TEXT = 'TEXT';
-    public const FORMAT_IMAGE = 'IMAGE';
-    public const FORMAT_VIDEO = 'VIDEO';
-    public const FORMAT_GIF = 'GIF';
-    public const FORMAT_DOCUMENT = 'DOCUMENT';
-    public const FORMAT_LOCATION = 'LOCATION';
+    public const TYPE_HEADER = 'header';
+    public const FORMAT_TEXT = 'text';
+    public const FORMAT_IMAGE = 'image';
+    public const FORMAT_VIDEO = 'video';
+    public const FORMAT_GIF = 'gif';
+    public const FORMAT_DOCUMENT = 'document';
+    public const FORMAT_LOCATION = 'location';
 
     /**
      * Gets allowable values of the enum

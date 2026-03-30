@@ -690,7 +690,7 @@ $apiInstance = new Late\Api\WhatsAppApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_whats_app_template_request = {"accountId":"507f1f77bcf86cd799439011","name":"order_confirmation","category":"UTILITY","language":"en_US","components":[{"type":"HEADER","format":"IMAGE","example":{"header_handle":["https://example.com/header.jpg"]}},{"type":"BODY","text":"Your order {{1}} has been confirmed. Expected delivery: {{2}}","example":{"body_text":[["ORD-12345","March 31"]]}},{"type":"FOOTER","text":"Thank you for your purchase"},{"type":"BUTTONS","buttons":[{"type":"QUICK_REPLY","text":"Track Order"}]}]}; // \Late\Model\CreateWhatsAppTemplateRequest
+$create_whats_app_template_request = {"accountId":"507f1f77bcf86cd799439011","name":"order_confirmation","category":"UTILITY","language":"en_US","components":[{"type":"header","format":"image","example":{"header_handle":["https://example.com/header.jpg"]}},{"type":"body","text":"Your order {{1}} has been confirmed. Expected delivery: {{2}}","example":{"body_text":[["ORD-12345","March 31"]]}},{"type":"footer","text":"Thank you for your purchase"},{"type":"buttons","buttons":[{"type":"quick_reply","text":"Track Order"}]}]}; // \Late\Model\CreateWhatsAppTemplateRequest
 
 try {
     $result = $apiInstance->createWhatsAppTemplate($create_whats_app_template_request);
@@ -2607,7 +2607,7 @@ $apiInstance = new Late\Api\WhatsAppApi(
     $config
 );
 $template_name = 'template_name_example'; // string | Template name
-$update_whats_app_template_request = {"accountId":"507f1f77bcf86cd799439011","components":[{"type":"BODY","text":"Updated: Your order {{1}} is confirmed. Delivery by {{2}}","example":{"body_text":[["ORD-12345","April 1"]]}},{"type":"BUTTONS","buttons":[{"type":"QUICK_REPLY","text":"Track Order"}]}]}; // \Late\Model\UpdateWhatsAppTemplateRequest
+$update_whats_app_template_request = {"accountId":"507f1f77bcf86cd799439011","components":[{"type":"body","text":"Updated: Your order {{1}} is confirmed. Delivery by {{2}}","example":{"body_text":[["ORD-12345","April 1"]]}},{"type":"buttons","buttons":[{"type":"quick_reply","text":"Track Order"}]}]}; // \Late\Model\UpdateWhatsAppTemplateRequest
 
 try {
     $result = $apiInstance->updateWhatsAppTemplate($template_name, $update_whats_app_template_request);
