@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateWhatsAppTemplateRequest
+ * WhatsAppHeaderComponent
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * UpdateWhatsAppTemplateRequest Class Doc Comment
+ * WhatsAppHeaderComponent Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsAppHeaderComponent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateWhatsAppTemplate_request';
+    protected static $openAPIModelName = 'WhatsAppHeaderComponent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_id' => 'string',
-        'components' => '\Late\Model\WhatsAppTemplateComponent[]'
+        'type' => 'string',
+        'format' => 'string',
+        'text' => 'string',
+        'example' => '\Late\Model\WhatsAppHeaderComponentExample'
     ];
 
     /**
@@ -70,8 +72,10 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_id' => null,
-        'components' => null
+        'type' => null,
+        'format' => null,
+        'text' => null,
+        'example' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_id' => false,
-        'components' => false
+        'type' => false,
+        'format' => false,
+        'text' => false,
+        'example' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_id' => 'accountId',
-        'components' => 'components'
+        'type' => 'type',
+        'format' => 'format',
+        'text' => 'text',
+        'example' => 'example'
     ];
 
     /**
@@ -180,8 +188,10 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'account_id' => 'setAccountId',
-        'components' => 'setComponents'
+        'type' => 'setType',
+        'format' => 'setFormat',
+        'text' => 'setText',
+        'example' => 'setExample'
     ];
 
     /**
@@ -190,8 +200,10 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'account_id' => 'getAccountId',
-        'components' => 'getComponents'
+        'type' => 'getType',
+        'format' => 'getFormat',
+        'text' => 'getText',
+        'example' => 'getExample'
     ];
 
     /**
@@ -235,6 +247,42 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
+    public const TYPE_HEADER = 'HEADER';
+    public const FORMAT_TEXT = 'TEXT';
+    public const FORMAT_IMAGE = 'IMAGE';
+    public const FORMAT_VIDEO = 'VIDEO';
+    public const FORMAT_GIF = 'GIF';
+    public const FORMAT_DOCUMENT = 'DOCUMENT';
+    public const FORMAT_LOCATION = 'LOCATION';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_HEADER,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormatAllowableValues()
+    {
+        return [
+            self::FORMAT_TEXT,
+            self::FORMAT_IMAGE,
+            self::FORMAT_VIDEO,
+            self::FORMAT_GIF,
+            self::FORMAT_DOCUMENT,
+            self::FORMAT_LOCATION,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +299,10 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('components', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('format', $data ?? [], null);
+        $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('example', $data ?? [], null);
     }
 
     /**
@@ -282,14 +332,28 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['account_id'] === null) {
-            $invalidProperties[] = "'account_id' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['components'] === null) {
-            $invalidProperties[] = "'components' can't be null";
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ((count($this->container['components']) < 1)) {
-            $invalidProperties[] = "invalid value for 'components', number of items must be greater than or equal to 1.";
+
+        if ($this->container['format'] === null) {
+            $invalidProperties[] = "'format' can't be null";
+        }
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!is_null($this->container['format']) && !in_array($this->container['format'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'format', must be one of '%s'",
+                $this->container['format'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -308,60 +372,129 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets account_id
+     * Gets type
      *
      * @return string
      */
-    public function getAccountId()
+    public function getType()
     {
-        return $this->container['account_id'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets account_id
+     * Sets type
      *
-     * @param string $account_id WhatsApp social account ID
+     * @param string $type type
      *
      * @return self
      */
-    public function setAccountId($account_id)
+    public function setType($type)
     {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['account_id'] = $account_id;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets components
+     * Gets format
      *
-     * @return \Late\Model\WhatsAppTemplateComponent[]
+     * @return string
      */
-    public function getComponents()
+    public function getFormat()
     {
-        return $this->container['components'];
+        return $this->container['format'];
     }
 
     /**
-     * Sets components
+     * Sets format
      *
-     * @param \Late\Model\WhatsAppTemplateComponent[] $components Updated template components
+     * @param string $format format
      *
      * @return self
      */
-    public function setComponents($components)
+    public function setFormat($format)
     {
-        if (is_null($components)) {
-            throw new \InvalidArgumentException('non-nullable components cannot be null');
+        if (is_null($format)) {
+            throw new \InvalidArgumentException('non-nullable format cannot be null');
         }
-
-
-        if ((count($components) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $components when calling UpdateWhatsAppTemplateRequest., number of items must be greater than or equal to 1.');
+        $allowedValues = $this->getFormatAllowableValues();
+        if (!in_array($format, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'format', must be one of '%s'",
+                    $format,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['components'] = $components;
+        $this->container['format'] = $format;
+
+        return $this;
+    }
+
+    /**
+     * Gets text
+     *
+     * @return string|null
+     */
+    public function getText()
+    {
+        return $this->container['text'];
+    }
+
+    /**
+     * Sets text
+     *
+     * @param string|null $text Header text (may include {{1}} variable). Used when format is TEXT.
+     *
+     * @return self
+     */
+    public function setText($text)
+    {
+        if (is_null($text)) {
+            throw new \InvalidArgumentException('non-nullable text cannot be null');
+        }
+        $this->container['text'] = $text;
+
+        return $this;
+    }
+
+    /**
+     * Gets example
+     *
+     * @return \Late\Model\WhatsAppHeaderComponentExample|null
+     */
+    public function getExample()
+    {
+        return $this->container['example'];
+    }
+
+    /**
+     * Sets example
+     *
+     * @param \Late\Model\WhatsAppHeaderComponentExample|null $example example
+     *
+     * @return self
+     */
+    public function setExample($example)
+    {
+        if (is_null($example)) {
+            throw new \InvalidArgumentException('non-nullable example cannot be null');
+        }
+        $this->container['example'] = $example;
 
         return $this;
     }

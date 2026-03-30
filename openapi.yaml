@@ -309,6 +309,137 @@ components:
         details:
           type: object
           additionalProperties: true
+    WhatsAppTemplateButton:
+      type: object
+      required: [type, text]
+      properties:
+        type:
+          type: string
+          enum: [QUICK_REPLY, URL, PHONE_NUMBER, OTP, FLOW, MPM, CATALOG]
+        text:
+          type: string
+        url:
+          type: string
+          format: uri
+          description: Required when type is URL
+        example:
+          type: array
+          items: { type: string }
+          description: Example values for URL suffix variables
+        phone_number:
+          type: string
+          description: Required when type is PHONE_NUMBER
+        otp_type:
+          type: string
+          enum: [COPY_CODE, ONE_TAP, ZERO_TAP]
+          description: Required when type is OTP
+        autofill_text:
+          type: string
+        package_name:
+          type: string
+        signature_hash:
+          type: string
+        flow_id:
+          type: string
+        flow_name:
+          type: string
+        flow_json:
+          type: string
+        flow_action:
+          type: string
+        navigate_screen:
+          type: string
+      discriminator:
+        propertyName: type
+    WhatsAppTemplateComponent:
+      oneOf:
+        - $ref: '#/components/schemas/WhatsAppHeaderComponent'
+        - $ref: '#/components/schemas/WhatsAppBodyComponent'
+        - $ref: '#/components/schemas/WhatsAppFooterComponent'
+        - $ref: '#/components/schemas/WhatsAppButtonsComponent'
+      discriminator:
+        propertyName: type
+        mapping:
+          HEADER: '#/components/schemas/WhatsAppHeaderComponent'
+          BODY: '#/components/schemas/WhatsAppBodyComponent'
+          FOOTER: '#/components/schemas/WhatsAppFooterComponent'
+          BUTTONS: '#/components/schemas/WhatsAppButtonsComponent'
+    WhatsAppHeaderComponent:
+      type: object
+      required: [type, format]
+      properties:
+        type:
+          type: string
+          enum: [HEADER]
+        format:
+          type: string
+          enum: [TEXT, IMAGE, VIDEO, GIF, DOCUMENT, LOCATION]
+        text:
+          type: string
+          description: Header text (may include {{1}} variable). Used when format is TEXT.
+        example:
+          type: object
+          properties:
+            header_text:
+              type: array
+              items: { type: string }
+              description: Sample values for header text variables
+            header_handle:
+              type: array
+              minItems: 1
+              maxItems: 1
+              items:
+                type: string
+                format: uri
+              description: When the header format is a media type (IMAGE, VIDEO, GIF, DOCUMENT), provide a public URL here. Zernio will download and upload it to WhatsApp on your behalf, replacing it with the internal file handle before creating the template.
+    WhatsAppBodyComponent:
+      type: object
+      required: [type, text]
+      properties:
+        type:
+          type: string
+          enum: [BODY]
+        text:
+          type: string
+          description: Body text with optional {{n}} variables
+        add_security_recommendation:
+          type: boolean
+          description: Add security recommendation text (authentication templates only)
+        example:
+          type: object
+          properties:
+            body_text:
+              type: array
+              items:
+                type: array
+                items: { type: string }
+              description: Sample values for body variables (array of arrays)
+    WhatsAppFooterComponent:
+      type: object
+      required: [type]
+      properties:
+        type:
+          type: string
+          enum: [FOOTER]
+        text:
+          type: string
+          description: Static footer text
+        code_expiration_minutes:
+          type: integer
+          minimum: 1
+          description: OTP code expiry in minutes (authentication templates only)
+    WhatsAppButtonsComponent:
+      type: object
+      required: [type, buttons]
+      properties:
+        type:
+          type: string
+          enum: [BUTTONS]
+        buttons:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/WhatsAppTemplateButton'
     FoodMenuLabel:
       type: object
       required: [displayName]
@@ -14032,9 +14163,10 @@ paths:
                   description: Template language code (e.g., en_US)
                 components:
                   type: array
-                  description: "Template components (header, body, footer, buttons). Required for custom templates, omit when using library_template_name."
+                  description: "Template components (HEADER, BODY, FOOTER, BUTTONS). Required for custom templates, omit when using library_template_name."
+                  minItems: 1
                   items:
-                    type: object
+                    $ref: '#/components/schemas/WhatsAppTemplateComponent'
                 library_template_name:
                   type: string
                   description: |
@@ -14073,8 +14205,20 @@ paths:
                   category: "UTILITY"
                   language: "en_US"
                   components:
-                    - type: "body"
+                    - type: "HEADER"
+                      format: "IMAGE"
+                      example:
+                        header_handle: ["https://example.com/header.jpg"]
+                    - type: "BODY"
                       text: "Your order {{1}} has been confirmed. Expected delivery: {{2}}"
+                      example:
+                        body_text: [["ORD-12345", "March 31"]]
+                    - type: "FOOTER"
+                      text: "Thank you for your purchase"
+                    - type: "BUTTONS"
+                      buttons:
+                        - type: "QUICK_REPLY"
+                          text: "Track Order"
               library:
                 summary: Library template (pre-approved, no review)
                 value:
@@ -14186,13 +14330,20 @@ paths:
                 components:
                   type: array
                   description: Updated template components
+                  minItems: 1
                   items:
-                    type: object
+                    $ref: '#/components/schemas/WhatsAppTemplateComponent'
             example:
               accountId: "507f1f77bcf86cd799439011"
               components:
-                - type: "body"
+                - type: "BODY"
                   text: "Updated: Your order {{1}} is confirmed. Delivery by {{2}}"
+                  example:
+                    body_text: [["ORD-12345", "April 1"]]
+                - type: "BUTTONS"
+                  buttons:
+                    - type: "QUICK_REPLY"
+                      text: "Track Order"
       responses:
         '200':
           description: Template updated successfully

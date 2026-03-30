@@ -62,7 +62,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => 'string',
         'category' => 'string',
         'language' => 'string',
-        'components' => 'object[]',
+        'components' => '\Late\Model\WhatsAppTemplateComponent[]',
         'library_template_name' => 'string',
         'library_template_body_inputs' => 'object',
         'library_template_button_inputs' => '\Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner[]'
@@ -366,6 +366,10 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         if ($this->container['language'] === null) {
             $invalidProperties[] = "'language' can't be null";
         }
+        if (!is_null($this->container['components']) && (count($this->container['components']) < 1)) {
+            $invalidProperties[] = "invalid value for 'components', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -507,7 +511,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets components
      *
-     * @return object[]|null
+     * @return \Late\Model\WhatsAppTemplateComponent[]|null
      */
     public function getComponents()
     {
@@ -517,7 +521,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets components
      *
-     * @param object[]|null $components Template components (header, body, footer, buttons). Required for custom templates, omit when using library_template_name.
+     * @param \Late\Model\WhatsAppTemplateComponent[]|null $components Template components (HEADER, BODY, FOOTER, BUTTONS). Required for custom templates, omit when using library_template_name.
      *
      * @return self
      */
@@ -525,6 +529,11 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     {
         if (is_null($components)) {
             throw new \InvalidArgumentException('non-nullable components cannot be null');
+        }
+
+
+        if ((count($components) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $components when calling CreateWhatsAppTemplateRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['components'] = $components;
 

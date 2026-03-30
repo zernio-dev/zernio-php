@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateWhatsAppTemplateRequest
+ * WhatsAppBodyComponentExample
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * UpdateWhatsAppTemplateRequest Class Doc Comment
+ * WhatsAppBodyComponentExample Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsAppBodyComponentExample implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateWhatsAppTemplate_request';
+    protected static $openAPIModelName = 'WhatsAppBodyComponent_example';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_id' => 'string',
-        'components' => '\Late\Model\WhatsAppTemplateComponent[]'
+        'body_text' => 'string[][]'
     ];
 
     /**
@@ -70,8 +69,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_id' => null,
-        'components' => null
+        'body_text' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_id' => false,
-        'components' => false
+        'body_text' => false
     ];
 
     /**
@@ -170,8 +167,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_id' => 'accountId',
-        'components' => 'components'
+        'body_text' => 'body_text'
     ];
 
     /**
@@ -180,8 +176,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'account_id' => 'setAccountId',
-        'components' => 'setComponents'
+        'body_text' => 'setBodyText'
     ];
 
     /**
@@ -190,8 +185,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'account_id' => 'getAccountId',
-        'components' => 'getComponents'
+        'body_text' => 'getBodyText'
     ];
 
     /**
@@ -251,8 +245,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('components', $data ?? [], null);
+        $this->setIfExists('body_text', $data ?? [], null);
     }
 
     /**
@@ -282,16 +275,6 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['account_id'] === null) {
-            $invalidProperties[] = "'account_id' can't be null";
-        }
-        if ($this->container['components'] === null) {
-            $invalidProperties[] = "'components' can't be null";
-        }
-        if ((count($this->container['components']) < 1)) {
-            $invalidProperties[] = "invalid value for 'components', number of items must be greater than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -308,60 +291,28 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets account_id
+     * Gets body_text
      *
-     * @return string
+     * @return string[][]|null
      */
-    public function getAccountId()
+    public function getBodyText()
     {
-        return $this->container['account_id'];
+        return $this->container['body_text'];
     }
 
     /**
-     * Sets account_id
+     * Sets body_text
      *
-     * @param string $account_id WhatsApp social account ID
+     * @param string[][]|null $body_text Sample values for body variables (array of arrays)
      *
      * @return self
      */
-    public function setAccountId($account_id)
+    public function setBodyText($body_text)
     {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        if (is_null($body_text)) {
+            throw new \InvalidArgumentException('non-nullable body_text cannot be null');
         }
-        $this->container['account_id'] = $account_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets components
-     *
-     * @return \Late\Model\WhatsAppTemplateComponent[]
-     */
-    public function getComponents()
-    {
-        return $this->container['components'];
-    }
-
-    /**
-     * Sets components
-     *
-     * @param \Late\Model\WhatsAppTemplateComponent[] $components Updated template components
-     *
-     * @return self
-     */
-    public function setComponents($components)
-    {
-        if (is_null($components)) {
-            throw new \InvalidArgumentException('non-nullable components cannot be null');
-        }
-
-
-        if ((count($components) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $components when calling UpdateWhatsAppTemplateRequest., number of items must be greater than or equal to 1.');
-        }
-        $this->container['components'] = $components;
+        $this->container['body_text'] = $body_text;
 
         return $this;
     }

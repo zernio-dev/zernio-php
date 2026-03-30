@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateWhatsAppTemplateRequest
+ * WhatsAppHeaderComponentExample
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * UpdateWhatsAppTemplateRequest Class Doc Comment
+ * WhatsAppHeaderComponentExample Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsAppHeaderComponentExample implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateWhatsAppTemplate_request';
+    protected static $openAPIModelName = 'WhatsAppHeaderComponent_example';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_id' => 'string',
-        'components' => '\Late\Model\WhatsAppTemplateComponent[]'
+        'header_text' => 'string[]',
+        'header_handle' => 'string[]'
     ];
 
     /**
@@ -70,8 +70,8 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_id' => null,
-        'components' => null
+        'header_text' => null,
+        'header_handle' => 'uri'
     ];
 
     /**
@@ -80,8 +80,8 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_id' => false,
-        'components' => false
+        'header_text' => false,
+        'header_handle' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_id' => 'accountId',
-        'components' => 'components'
+        'header_text' => 'header_text',
+        'header_handle' => 'header_handle'
     ];
 
     /**
@@ -180,8 +180,8 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'account_id' => 'setAccountId',
-        'components' => 'setComponents'
+        'header_text' => 'setHeaderText',
+        'header_handle' => 'setHeaderHandle'
     ];
 
     /**
@@ -190,8 +190,8 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'account_id' => 'getAccountId',
-        'components' => 'getComponents'
+        'header_text' => 'getHeaderText',
+        'header_handle' => 'getHeaderHandle'
     ];
 
     /**
@@ -251,8 +251,8 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('components', $data ?? [], null);
+        $this->setIfExists('header_text', $data ?? [], null);
+        $this->setIfExists('header_handle', $data ?? [], null);
     }
 
     /**
@@ -282,14 +282,12 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['account_id'] === null) {
-            $invalidProperties[] = "'account_id' can't be null";
+        if (!is_null($this->container['header_handle']) && (count($this->container['header_handle']) > 1)) {
+            $invalidProperties[] = "invalid value for 'header_handle', number of items must be less than or equal to 1.";
         }
-        if ($this->container['components'] === null) {
-            $invalidProperties[] = "'components' can't be null";
-        }
-        if ((count($this->container['components']) < 1)) {
-            $invalidProperties[] = "invalid value for 'components', number of items must be greater than or equal to 1.";
+
+        if (!is_null($this->container['header_handle']) && (count($this->container['header_handle']) < 1)) {
+            $invalidProperties[] = "invalid value for 'header_handle', number of items must be greater than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -308,60 +306,62 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets account_id
+     * Gets header_text
      *
-     * @return string
+     * @return string[]|null
      */
-    public function getAccountId()
+    public function getHeaderText()
     {
-        return $this->container['account_id'];
+        return $this->container['header_text'];
     }
 
     /**
-     * Sets account_id
+     * Sets header_text
      *
-     * @param string $account_id WhatsApp social account ID
+     * @param string[]|null $header_text Sample values for header text variables
      *
      * @return self
      */
-    public function setAccountId($account_id)
+    public function setHeaderText($header_text)
     {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        if (is_null($header_text)) {
+            throw new \InvalidArgumentException('non-nullable header_text cannot be null');
         }
-        $this->container['account_id'] = $account_id;
+        $this->container['header_text'] = $header_text;
 
         return $this;
     }
 
     /**
-     * Gets components
+     * Gets header_handle
      *
-     * @return \Late\Model\WhatsAppTemplateComponent[]
+     * @return string[]|null
      */
-    public function getComponents()
+    public function getHeaderHandle()
     {
-        return $this->container['components'];
+        return $this->container['header_handle'];
     }
 
     /**
-     * Sets components
+     * Sets header_handle
      *
-     * @param \Late\Model\WhatsAppTemplateComponent[] $components Updated template components
+     * @param string[]|null $header_handle When the header format is a media type (IMAGE, VIDEO, GIF, DOCUMENT), provide a public URL here. Zernio will download and upload it to WhatsApp on your behalf, replacing it with the internal file handle before creating the template.
      *
      * @return self
      */
-    public function setComponents($components)
+    public function setHeaderHandle($header_handle)
     {
-        if (is_null($components)) {
-            throw new \InvalidArgumentException('non-nullable components cannot be null');
+        if (is_null($header_handle)) {
+            throw new \InvalidArgumentException('non-nullable header_handle cannot be null');
         }
 
-
-        if ((count($components) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $components when calling UpdateWhatsAppTemplateRequest., number of items must be greater than or equal to 1.');
+        if ((count($header_handle) > 1)) {
+            throw new \InvalidArgumentException('invalid value for $header_handle when calling WhatsAppHeaderComponentExample., number of items must be less than or equal to 1.');
         }
-        $this->container['components'] = $components;
+        if ((count($header_handle) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $header_handle when calling WhatsAppHeaderComponentExample., number of items must be greater than or equal to 1.');
+        }
+        $this->container['header_handle'] = $header_handle;
 
         return $this;
     }
