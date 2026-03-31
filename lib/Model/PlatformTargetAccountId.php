@@ -66,7 +66,8 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         'profile_url' => 'string',
         'is_active' => 'bool',
         'followers_count' => 'float',
-        'followers_last_updated' => '\DateTime'
+        'followers_last_updated' => '\DateTime',
+        'metadata' => 'object'
     ];
 
     /**
@@ -85,7 +86,8 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         'profile_url' => null,
         'is_active' => null,
         'followers_count' => null,
-        'followers_last_updated' => 'date-time'
+        'followers_last_updated' => 'date-time',
+        'metadata' => null
     ];
 
     /**
@@ -102,7 +104,8 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         'profile_url' => false,
         'is_active' => false,
         'followers_count' => false,
-        'followers_last_updated' => false
+        'followers_last_updated' => false,
+        'metadata' => false
     ];
 
     /**
@@ -199,7 +202,8 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         'profile_url' => 'profileUrl',
         'is_active' => 'isActive',
         'followers_count' => 'followersCount',
-        'followers_last_updated' => 'followersLastUpdated'
+        'followers_last_updated' => 'followersLastUpdated',
+        'metadata' => 'metadata'
     ];
 
     /**
@@ -216,7 +220,8 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         'profile_url' => 'setProfileUrl',
         'is_active' => 'setIsActive',
         'followers_count' => 'setFollowersCount',
-        'followers_last_updated' => 'setFollowersLastUpdated'
+        'followers_last_updated' => 'setFollowersLastUpdated',
+        'metadata' => 'setMetadata'
     ];
 
     /**
@@ -233,7 +238,8 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         'profile_url' => 'getProfileUrl',
         'is_active' => 'getIsActive',
         'followers_count' => 'getFollowersCount',
-        'followers_last_updated' => 'getFollowersLastUpdated'
+        'followers_last_updated' => 'getFollowersLastUpdated',
+        'metadata' => 'getMetadata'
     ];
 
     /**
@@ -302,6 +308,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('is_active', $data ?? [], null);
         $this->setIfExists('followers_count', $data ?? [], null);
         $this->setIfExists('followers_last_updated', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -585,6 +592,33 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable followers_last_updated cannot be null');
         }
         $this->container['followers_last_updated'] = $followers_last_updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return object|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param object|null $metadata Platform-specific metadata. Fields vary by platform. For WhatsApp accounts, includes: - `qualityRating`: Phone number quality rating from Meta (`GREEN`, `YELLOW`, `RED`, or `UNKNOWN`) - `nameStatus`: Display name review status (`APPROVED`, `PENDING_REVIEW`, `DECLINED`, or `NONE`). Messages cannot be sent until the display name is approved by Meta. - `messagingLimitTier`: Maximum unique business-initiated conversations per 24h rolling window (`TIER_250`, `TIER_1K`, `TIER_10K`, `TIER_100K`, or `TIER_UNLIMITED`). Scales automatically as quality rating improves. - `verifiedName`: Meta-verified business display name - `displayPhoneNumber`: Formatted phone number (e.g., \"+1 555-123-4567\") - `wabaId`: WhatsApp Business Account ID - `phoneNumberId`: Meta phone number ID
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }

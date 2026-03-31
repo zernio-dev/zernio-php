@@ -63,9 +63,7 @@ class ConnectWhatsAppCredentials200ResponseAccount implements ModelInterface, Ar
         'username' => 'string',
         'display_name' => 'string',
         'is_active' => 'bool',
-        'phone_number' => 'string',
-        'verified_name' => 'string',
-        'quality_rating' => 'string'
+        'selected_phone_number' => 'string'
     ];
 
     /**
@@ -81,9 +79,7 @@ class ConnectWhatsAppCredentials200ResponseAccount implements ModelInterface, Ar
         'username' => null,
         'display_name' => null,
         'is_active' => null,
-        'phone_number' => null,
-        'verified_name' => null,
-        'quality_rating' => null
+        'selected_phone_number' => null
     ];
 
     /**
@@ -97,9 +93,7 @@ class ConnectWhatsAppCredentials200ResponseAccount implements ModelInterface, Ar
         'username' => false,
         'display_name' => false,
         'is_active' => false,
-        'phone_number' => false,
-        'verified_name' => false,
-        'quality_rating' => false
+        'selected_phone_number' => false
     ];
 
     /**
@@ -193,9 +187,7 @@ class ConnectWhatsAppCredentials200ResponseAccount implements ModelInterface, Ar
         'username' => 'username',
         'display_name' => 'displayName',
         'is_active' => 'isActive',
-        'phone_number' => 'phoneNumber',
-        'verified_name' => 'verifiedName',
-        'quality_rating' => 'qualityRating'
+        'selected_phone_number' => 'selectedPhoneNumber'
     ];
 
     /**
@@ -209,9 +201,7 @@ class ConnectWhatsAppCredentials200ResponseAccount implements ModelInterface, Ar
         'username' => 'setUsername',
         'display_name' => 'setDisplayName',
         'is_active' => 'setIsActive',
-        'phone_number' => 'setPhoneNumber',
-        'verified_name' => 'setVerifiedName',
-        'quality_rating' => 'setQualityRating'
+        'selected_phone_number' => 'setSelectedPhoneNumber'
     ];
 
     /**
@@ -225,9 +215,7 @@ class ConnectWhatsAppCredentials200ResponseAccount implements ModelInterface, Ar
         'username' => 'getUsername',
         'display_name' => 'getDisplayName',
         'is_active' => 'getIsActive',
-        'phone_number' => 'getPhoneNumber',
-        'verified_name' => 'getVerifiedName',
-        'quality_rating' => 'getQualityRating'
+        'selected_phone_number' => 'getSelectedPhoneNumber'
     ];
 
     /**
@@ -305,9 +293,7 @@ class ConnectWhatsAppCredentials200ResponseAccount implements ModelInterface, Ar
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
-        $this->setIfExists('phone_number', $data ?? [], null);
-        $this->setIfExists('verified_name', $data ?? [], null);
-        $this->setIfExists('quality_rating', $data ?? [], null);
+        $this->setIfExists('selected_phone_number', $data ?? [], null);
     }
 
     /**
@@ -507,82 +493,28 @@ class ConnectWhatsAppCredentials200ResponseAccount implements ModelInterface, Ar
     }
 
     /**
-     * Gets phone_number
+     * Gets selected_phone_number
      *
      * @return string|null
      */
-    public function getPhoneNumber()
+    public function getSelectedPhoneNumber()
     {
-        return $this->container['phone_number'];
+        return $this->container['selected_phone_number'];
     }
 
     /**
-     * Sets phone_number
+     * Sets selected_phone_number
      *
-     * @param string|null $phone_number phone_number
+     * @param string|null $selected_phone_number The connected phone number
      *
      * @return self
      */
-    public function setPhoneNumber($phone_number)
+    public function setSelectedPhoneNumber($selected_phone_number)
     {
-        if (is_null($phone_number)) {
-            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+        if (is_null($selected_phone_number)) {
+            throw new \InvalidArgumentException('non-nullable selected_phone_number cannot be null');
         }
-        $this->container['phone_number'] = $phone_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets verified_name
-     *
-     * @return string|null
-     */
-    public function getVerifiedName()
-    {
-        return $this->container['verified_name'];
-    }
-
-    /**
-     * Sets verified_name
-     *
-     * @param string|null $verified_name verified_name
-     *
-     * @return self
-     */
-    public function setVerifiedName($verified_name)
-    {
-        if (is_null($verified_name)) {
-            throw new \InvalidArgumentException('non-nullable verified_name cannot be null');
-        }
-        $this->container['verified_name'] = $verified_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets quality_rating
-     *
-     * @return string|null
-     */
-    public function getQualityRating()
-    {
-        return $this->container['quality_rating'];
-    }
-
-    /**
-     * Sets quality_rating
-     *
-     * @param string|null $quality_rating GREEN, YELLOW, or RED
-     *
-     * @return self
-     */
-    public function setQualityRating($quality_rating)
-    {
-        if (is_null($quality_rating)) {
-            throw new \InvalidArgumentException('non-nullable quality_rating cannot be null');
-        }
-        $this->container['quality_rating'] = $quality_rating;
+        $this->container['selected_phone_number'] = $selected_phone_number;
 
         return $this;
     }

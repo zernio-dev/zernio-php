@@ -67,6 +67,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'is_active' => 'bool',
         'followers_count' => 'float',
         'followers_last_updated' => '\DateTime',
+        'metadata' => 'object',
         'profile_picture' => 'string',
         'current_followers' => 'float',
         'last_updated' => '\DateTime',
@@ -93,6 +94,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'is_active' => null,
         'followers_count' => null,
         'followers_last_updated' => 'date-time',
+        'metadata' => null,
         'profile_picture' => null,
         'current_followers' => null,
         'last_updated' => 'date-time',
@@ -117,6 +119,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'is_active' => false,
         'followers_count' => false,
         'followers_last_updated' => false,
+        'metadata' => false,
         'profile_picture' => false,
         'current_followers' => false,
         'last_updated' => false,
@@ -221,6 +224,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'is_active' => 'isActive',
         'followers_count' => 'followersCount',
         'followers_last_updated' => 'followersLastUpdated',
+        'metadata' => 'metadata',
         'profile_picture' => 'profilePicture',
         'current_followers' => 'currentFollowers',
         'last_updated' => 'lastUpdated',
@@ -245,6 +249,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'is_active' => 'setIsActive',
         'followers_count' => 'setFollowersCount',
         'followers_last_updated' => 'setFollowersLastUpdated',
+        'metadata' => 'setMetadata',
         'profile_picture' => 'setProfilePicture',
         'current_followers' => 'setCurrentFollowers',
         'last_updated' => 'setLastUpdated',
@@ -269,6 +274,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'is_active' => 'getIsActive',
         'followers_count' => 'getFollowersCount',
         'followers_last_updated' => 'getFollowersLastUpdated',
+        'metadata' => 'getMetadata',
         'profile_picture' => 'getProfilePicture',
         'current_followers' => 'getCurrentFollowers',
         'last_updated' => 'getLastUpdated',
@@ -344,6 +350,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('is_active', $data ?? [], null);
         $this->setIfExists('followers_count', $data ?? [], null);
         $this->setIfExists('followers_last_updated', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('profile_picture', $data ?? [], null);
         $this->setIfExists('current_followers', $data ?? [], null);
         $this->setIfExists('last_updated', $data ?? [], null);
@@ -634,6 +641,33 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable followers_last_updated cannot be null');
         }
         $this->container['followers_last_updated'] = $followers_last_updated;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return object|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param object|null $metadata Platform-specific metadata. Fields vary by platform. For WhatsApp accounts, includes: - `qualityRating`: Phone number quality rating from Meta (`GREEN`, `YELLOW`, `RED`, or `UNKNOWN`) - `nameStatus`: Display name review status (`APPROVED`, `PENDING_REVIEW`, `DECLINED`, or `NONE`). Messages cannot be sent until the display name is approved by Meta. - `messagingLimitTier`: Maximum unique business-initiated conversations per 24h rolling window (`TIER_250`, `TIER_1K`, `TIER_10K`, `TIER_100K`, or `TIER_UNLIMITED`). Scales automatically as quality rating improves. - `verifiedName`: Meta-verified business display name - `displayPhoneNumber`: Formatted phone number (e.g., \"+1 555-123-4567\") - `wabaId`: WhatsApp Business Account ID - `phoneNumberId`: Meta phone number ID
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }

@@ -9,8 +9,6 @@ Name | Type | Description | Notes
 **username** | **string** | Display phone number | [optional]
 **display_name** | **string** | Meta-verified business name | [optional]
 **is_active** | **bool** |  | [optional]
-**phone_number** | **string** |  | [optional]
-**verified_name** | **string** |  | [optional]
-**quality_rating** | **string** | GREEN, YELLOW, or RED | [optional]
+**selected_phone_number** | **string** | The connected phone number | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
