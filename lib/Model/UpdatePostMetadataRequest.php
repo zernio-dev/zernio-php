@@ -65,7 +65,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         'description' => 'string',
         'tags' => 'string[]',
         'category_id' => 'string',
-        'privacy_status' => 'string'
+        'privacy_status' => 'string',
+        'thumbnail_url' => 'string'
     ];
 
     /**
@@ -83,7 +84,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         'description' => null,
         'tags' => null,
         'category_id' => null,
-        'privacy_status' => null
+        'privacy_status' => null,
+        'thumbnail_url' => 'uri'
     ];
 
     /**
@@ -99,7 +101,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         'description' => false,
         'tags' => false,
         'category_id' => false,
-        'privacy_status' => false
+        'privacy_status' => false,
+        'thumbnail_url' => false
     ];
 
     /**
@@ -195,7 +198,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         'description' => 'description',
         'tags' => 'tags',
         'category_id' => 'categoryId',
-        'privacy_status' => 'privacyStatus'
+        'privacy_status' => 'privacyStatus',
+        'thumbnail_url' => 'thumbnailUrl'
     ];
 
     /**
@@ -211,7 +215,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         'description' => 'setDescription',
         'tags' => 'setTags',
         'category_id' => 'setCategoryId',
-        'privacy_status' => 'setPrivacyStatus'
+        'privacy_status' => 'setPrivacyStatus',
+        'thumbnail_url' => 'setThumbnailUrl'
     ];
 
     /**
@@ -227,7 +232,8 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         'description' => 'getDescription',
         'tags' => 'getTags',
         'category_id' => 'getCategoryId',
-        'privacy_status' => 'getPrivacyStatus'
+        'privacy_status' => 'getPrivacyStatus',
+        'thumbnail_url' => 'getThumbnailUrl'
     ];
 
     /**
@@ -325,6 +331,7 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('tags', $data ?? [], null);
         $this->setIfExists('category_id', $data ?? [], null);
         $this->setIfExists('privacy_status', $data ?? [], null);
+        $this->setIfExists('thumbnail_url', $data ?? [], null);
     }
 
     /**
@@ -630,6 +637,33 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['privacy_status'] = $privacy_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets thumbnail_url
+     *
+     * @return string|null
+     */
+    public function getThumbnailUrl()
+    {
+        return $this->container['thumbnail_url'];
+    }
+
+    /**
+     * Sets thumbnail_url
+     *
+     * @param string|null $thumbnail_url Public URL of a custom thumbnail image (JPEG, PNG, or GIF, max 2 MB, recommended 1280x720). Works on any video you own, including existing videos not published through Zernio. The channel must be verified (phone verification) to set custom thumbnails.
+     *
+     * @return self
+     */
+    public function setThumbnailUrl($thumbnail_url)
+    {
+        if (is_null($thumbnail_url)) {
+            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
+        }
+        $this->container['thumbnail_url'] = $thumbnail_url;
 
         return $this;
     }

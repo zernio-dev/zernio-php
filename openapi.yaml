@@ -5777,6 +5777,10 @@ paths:
                   type: string
                   enum: [public, private, unlisted]
                   description: Video privacy setting
+                thumbnailUrl:
+                  type: string
+                  format: uri
+                  description: "Public URL of a custom thumbnail image (JPEG, PNG, or GIF, max 2 MB, recommended 1280x720). Works on any video you own, including existing videos not published through Zernio. The channel must be verified (phone verification) to set custom thumbnails."
             examples:
               post-based:
                 summary: Update a video published through Zernio
@@ -5793,6 +5797,13 @@ paths:
                   accountId: "68fb37418bbca9c10cbfef26"
                   title: "Updated Title with SEO Keywords"
                   tags: ["seo", "youtube", "optimization"]
+              update-thumbnail:
+                summary: Update thumbnail on an existing video
+                value:
+                  platform: "youtube"
+                  videoId: "dQw4w9WgXcQ"
+                  accountId: "68fb37418bbca9c10cbfef26"
+                  thumbnailUrl: "https://example.com/my-thumbnail.jpg"
       responses:
         '200':
           description: Metadata updated successfully
