@@ -17525,6 +17525,8 @@ paths:
                           type: array
                           items: { type: object }
         '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: Ads add-on required
         '404': { $ref: '#/components/responses/NotFound' }
 
   /v1/ads/accounts:
@@ -17555,6 +17557,8 @@ paths:
                         currency: { type: string }
                         status: { type: string }
         '401': { $ref: '#/components/responses/Unauthorized' }
+        '422':
+          description: Platform ads connection required (TikTok Ads, X Ads) or Instagram missing linked Facebook account
 
   /v1/ads/boost:
     post:
@@ -17597,6 +17601,17 @@ paths:
                     ageMax: { type: integer, minimum: 13, maximum: 65 }
                     countries: { type: array, items: { type: string } }
                     interests: { type: array, items: { type: string } }
+                bidAmount: { type: number, description: "Max bid cap (Meta only)" }
+                tracking:
+                  type: object
+                  description: "Meta only. Tracking specs (pixel, URL tags)."
+                  properties:
+                    pixelId: { type: string }
+                    urlTags: { type: string }
+                specialAdCategories:
+                  type: array
+                  description: "Meta only. Required for housing, employment, credit, or political ads."
+                  items: { type: string, enum: [HOUSING, EMPLOYMENT, CREDIT, ISSUES_ELECTIONS_POLITICS] }
       responses:
         '201':
           description: Ad created
@@ -17627,7 +17642,7 @@ paths:
           application/json:
             schema:
               type: object
-              required: [accountId, adAccountId, name, goal, budgetAmount, budgetType, body, imageUrl]
+              required: [accountId, adAccountId, name, goal, budgetAmount, budgetType, body]
               properties:
                 accountId: { type: string }
                 adAccountId: { type: string }
@@ -17637,10 +17652,13 @@ paths:
                 budgetType: { type: string, enum: [daily, lifetime] }
                 currency: { type: string }
                 headline: { type: string, description: "Required for most platforms. Max: Meta=255, Google=30, Pinterest=100" }
+                longHeadline: { type: string, maxLength: 90, description: "Google Display only" }
                 body: { type: string, description: "Max: Google=90, Pinterest=500" }
                 callToAction: { type: string, enum: [LEARN_MORE, SHOP_NOW, SIGN_UP, BOOK_TRAVEL, CONTACT_US, DOWNLOAD, GET_OFFER, GET_QUOTE, SUBSCRIBE, WATCH_MORE], description: Meta only }
                 linkUrl: { type: string, format: uri }
-                imageUrl: { type: string, format: uri, description: Image URL (or video URL for TikTok) }
+                imageUrl: { type: string, format: uri, description: "Image URL (or video URL for TikTok). Not required for Google Search campaigns." }
+                businessName: { type: string, maxLength: 25, description: "Google Display only" }
+                boardId: { type: string, description: "Pinterest only. Board ID (auto-creates if not provided)." }
                 countries: { type: array, items: { type: string } }
                 ageMin: { type: integer, minimum: 13, maximum: 65 }
                 ageMax: { type: integer, minimum: 13, maximum: 65 }
@@ -17649,6 +17667,8 @@ paths:
                 audienceId: { type: string, description: Custom audience ID for targeting }
                 campaignType: { type: string, enum: [display, search], default: display, description: Google only }
                 keywords: { type: array, items: { type: string }, description: Google Search only }
+                additionalHeadlines: { type: array, items: { type: string }, description: "Google Search RSA only. Extra headlines." }
+                additionalDescriptions: { type: array, items: { type: string }, description: "Google Search RSA only. Extra descriptions." }
       responses:
         '201':
           description: Ad created
@@ -17717,6 +17737,8 @@ paths:
                         name: { type: string }
                         category: { type: string }
         '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: Ads add-on required
 
   /v1/ads/audiences:
     get:
@@ -17777,6 +17799,8 @@ paths:
                 sourceAudienceId: { type: string, description: Required for lookalike audiences }
                 country: { type: string, description: "2-letter code, required for lookalike audiences" }
                 ratio: { type: number, minimum: 0.01, maximum: 0.20, description: Required for lookalike audiences }
+                rule: { type: object, description: "Pixel event rule for website audiences (optional)" }
+                customerFileSource: { type: string, description: "Data source declaration for GDPR compliance (customer_list only)" }
       responses:
         '201':
           description: Audience created
@@ -17814,6 +17838,8 @@ paths:
                   audience: { type: object }
                   metaData: { type: object, nullable: true, description: Fresh data from Meta API }
         '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: Ads add-on required
         '404': { $ref: '#/components/responses/NotFound' }
     delete:
       operationId: deleteAdAudience
@@ -17834,6 +17860,8 @@ paths:
                 properties:
                   message: { type: string }
         '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: Ads add-on required
         '404': { $ref: '#/components/responses/NotFound' }
 
   /v1/ads/audiences/{audienceId}/users:
@@ -17875,6 +17903,10 @@ paths:
                   numReceived: { type: integer }
                   numInvalid: { type: integer }
         '400':
-          description: Invalid input or not a customer_list audience
+          description: Invalid input (empty users array, missing email/phone)
         '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: Ads add-on required
         '404': { $ref: '#/components/responses/NotFound' }
+        '422':
+          description: Audience is not a customer_list type or has no platform ID yet

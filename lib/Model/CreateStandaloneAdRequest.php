@@ -66,10 +66,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_type' => 'string',
         'currency' => 'string',
         'headline' => 'string',
+        'long_headline' => 'string',
         'body' => 'string',
         'call_to_action' => 'string',
         'link_url' => 'string',
         'image_url' => 'string',
+        'business_name' => 'string',
+        'board_id' => 'string',
         'countries' => 'string[]',
         'age_min' => 'int',
         'age_max' => 'int',
@@ -77,7 +80,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'end_date' => '\DateTime',
         'audience_id' => 'string',
         'campaign_type' => 'string',
-        'keywords' => 'string[]'
+        'keywords' => 'string[]',
+        'additional_headlines' => 'string[]',
+        'additional_descriptions' => 'string[]'
     ];
 
     /**
@@ -96,10 +101,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_type' => null,
         'currency' => null,
         'headline' => null,
+        'long_headline' => null,
         'body' => null,
         'call_to_action' => null,
         'link_url' => 'uri',
         'image_url' => 'uri',
+        'business_name' => null,
+        'board_id' => null,
         'countries' => null,
         'age_min' => null,
         'age_max' => null,
@@ -107,7 +115,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'end_date' => 'date-time',
         'audience_id' => null,
         'campaign_type' => null,
-        'keywords' => null
+        'keywords' => null,
+        'additional_headlines' => null,
+        'additional_descriptions' => null
     ];
 
     /**
@@ -124,10 +134,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_type' => false,
         'currency' => false,
         'headline' => false,
+        'long_headline' => false,
         'body' => false,
         'call_to_action' => false,
         'link_url' => false,
         'image_url' => false,
+        'business_name' => false,
+        'board_id' => false,
         'countries' => false,
         'age_min' => false,
         'age_max' => false,
@@ -135,7 +148,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'end_date' => false,
         'audience_id' => false,
         'campaign_type' => false,
-        'keywords' => false
+        'keywords' => false,
+        'additional_headlines' => false,
+        'additional_descriptions' => false
     ];
 
     /**
@@ -232,10 +247,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_type' => 'budgetType',
         'currency' => 'currency',
         'headline' => 'headline',
+        'long_headline' => 'longHeadline',
         'body' => 'body',
         'call_to_action' => 'callToAction',
         'link_url' => 'linkUrl',
         'image_url' => 'imageUrl',
+        'business_name' => 'businessName',
+        'board_id' => 'boardId',
         'countries' => 'countries',
         'age_min' => 'ageMin',
         'age_max' => 'ageMax',
@@ -243,7 +261,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'end_date' => 'endDate',
         'audience_id' => 'audienceId',
         'campaign_type' => 'campaignType',
-        'keywords' => 'keywords'
+        'keywords' => 'keywords',
+        'additional_headlines' => 'additionalHeadlines',
+        'additional_descriptions' => 'additionalDescriptions'
     ];
 
     /**
@@ -260,10 +280,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_type' => 'setBudgetType',
         'currency' => 'setCurrency',
         'headline' => 'setHeadline',
+        'long_headline' => 'setLongHeadline',
         'body' => 'setBody',
         'call_to_action' => 'setCallToAction',
         'link_url' => 'setLinkUrl',
         'image_url' => 'setImageUrl',
+        'business_name' => 'setBusinessName',
+        'board_id' => 'setBoardId',
         'countries' => 'setCountries',
         'age_min' => 'setAgeMin',
         'age_max' => 'setAgeMax',
@@ -271,7 +294,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'end_date' => 'setEndDate',
         'audience_id' => 'setAudienceId',
         'campaign_type' => 'setCampaignType',
-        'keywords' => 'setKeywords'
+        'keywords' => 'setKeywords',
+        'additional_headlines' => 'setAdditionalHeadlines',
+        'additional_descriptions' => 'setAdditionalDescriptions'
     ];
 
     /**
@@ -288,10 +313,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_type' => 'getBudgetType',
         'currency' => 'getCurrency',
         'headline' => 'getHeadline',
+        'long_headline' => 'getLongHeadline',
         'body' => 'getBody',
         'call_to_action' => 'getCallToAction',
         'link_url' => 'getLinkUrl',
         'image_url' => 'getImageUrl',
+        'business_name' => 'getBusinessName',
+        'board_id' => 'getBoardId',
         'countries' => 'getCountries',
         'age_min' => 'getAgeMin',
         'age_max' => 'getAgeMax',
@@ -299,7 +327,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'end_date' => 'getEndDate',
         'audience_id' => 'getAudienceId',
         'campaign_type' => 'getCampaignType',
-        'keywords' => 'getKeywords'
+        'keywords' => 'getKeywords',
+        'additional_headlines' => 'getAdditionalHeadlines',
+        'additional_descriptions' => 'getAdditionalDescriptions'
     ];
 
     /**
@@ -447,10 +477,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('budget_type', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('headline', $data ?? [], null);
+        $this->setIfExists('long_headline', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
         $this->setIfExists('call_to_action', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
+        $this->setIfExists('business_name', $data ?? [], null);
+        $this->setIfExists('board_id', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
         $this->setIfExists('age_min', $data ?? [], null);
         $this->setIfExists('age_max', $data ?? [], null);
@@ -459,6 +492,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('audience_id', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'display');
         $this->setIfExists('keywords', $data ?? [], null);
+        $this->setIfExists('additional_headlines', $data ?? [], null);
+        $this->setIfExists('additional_descriptions', $data ?? [], null);
     }
 
     /**
@@ -528,6 +563,10 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
+        if (!is_null($this->container['long_headline']) && (mb_strlen($this->container['long_headline']) > 90)) {
+            $invalidProperties[] = "invalid value for 'long_headline', the character length must be smaller than or equal to 90.";
+        }
+
         if ($this->container['body'] === null) {
             $invalidProperties[] = "'body' can't be null";
         }
@@ -540,9 +579,10 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
-        if ($this->container['image_url'] === null) {
-            $invalidProperties[] = "'image_url' can't be null";
+        if (!is_null($this->container['business_name']) && (mb_strlen($this->container['business_name']) > 25)) {
+            $invalidProperties[] = "invalid value for 'business_name', the character length must be smaller than or equal to 25.";
         }
+
         if (!is_null($this->container['age_min']) && ($this->container['age_min'] > 65)) {
             $invalidProperties[] = "invalid value for 'age_min', must be smaller than or equal to 65.";
         }
@@ -824,6 +864,37 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets long_headline
+     *
+     * @return string|null
+     */
+    public function getLongHeadline()
+    {
+        return $this->container['long_headline'];
+    }
+
+    /**
+     * Sets long_headline
+     *
+     * @param string|null $long_headline Google Display only
+     *
+     * @return self
+     */
+    public function setLongHeadline($long_headline)
+    {
+        if (is_null($long_headline)) {
+            throw new \InvalidArgumentException('non-nullable long_headline cannot be null');
+        }
+        if ((mb_strlen($long_headline) > 90)) {
+            throw new \InvalidArgumentException('invalid length for $long_headline when calling CreateStandaloneAdRequest., must be smaller than or equal to 90.');
+        }
+
+        $this->container['long_headline'] = $long_headline;
+
+        return $this;
+    }
+
+    /**
      * Gets body
      *
      * @return string
@@ -917,7 +988,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets image_url
      *
-     * @return string
+     * @return string|null
      */
     public function getImageUrl()
     {
@@ -927,7 +998,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets image_url
      *
-     * @param string $image_url Image URL (or video URL for TikTok)
+     * @param string|null $image_url Image URL (or video URL for TikTok). Not required for Google Search campaigns.
      *
      * @return self
      */
@@ -937,6 +1008,64 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable image_url cannot be null');
         }
         $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_name
+     *
+     * @return string|null
+     */
+    public function getBusinessName()
+    {
+        return $this->container['business_name'];
+    }
+
+    /**
+     * Sets business_name
+     *
+     * @param string|null $business_name Google Display only
+     *
+     * @return self
+     */
+    public function setBusinessName($business_name)
+    {
+        if (is_null($business_name)) {
+            throw new \InvalidArgumentException('non-nullable business_name cannot be null');
+        }
+        if ((mb_strlen($business_name) > 25)) {
+            throw new \InvalidArgumentException('invalid length for $business_name when calling CreateStandaloneAdRequest., must be smaller than or equal to 25.');
+        }
+
+        $this->container['business_name'] = $business_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets board_id
+     *
+     * @return string|null
+     */
+    public function getBoardId()
+    {
+        return $this->container['board_id'];
+    }
+
+    /**
+     * Sets board_id
+     *
+     * @param string|null $board_id Pinterest only. Board ID (auto-creates if not provided).
+     *
+     * @return self
+     */
+    public function setBoardId($board_id)
+    {
+        if (is_null($board_id)) {
+            throw new \InvalidArgumentException('non-nullable board_id cannot be null');
+        }
+        $this->container['board_id'] = $board_id;
 
         return $this;
     }
@@ -1179,6 +1308,60 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable keywords cannot be null');
         }
         $this->container['keywords'] = $keywords;
+
+        return $this;
+    }
+
+    /**
+     * Gets additional_headlines
+     *
+     * @return string[]|null
+     */
+    public function getAdditionalHeadlines()
+    {
+        return $this->container['additional_headlines'];
+    }
+
+    /**
+     * Sets additional_headlines
+     *
+     * @param string[]|null $additional_headlines Google Search RSA only. Extra headlines.
+     *
+     * @return self
+     */
+    public function setAdditionalHeadlines($additional_headlines)
+    {
+        if (is_null($additional_headlines)) {
+            throw new \InvalidArgumentException('non-nullable additional_headlines cannot be null');
+        }
+        $this->container['additional_headlines'] = $additional_headlines;
+
+        return $this;
+    }
+
+    /**
+     * Gets additional_descriptions
+     *
+     * @return string[]|null
+     */
+    public function getAdditionalDescriptions()
+    {
+        return $this->container['additional_descriptions'];
+    }
+
+    /**
+     * Sets additional_descriptions
+     *
+     * @param string[]|null $additional_descriptions Google Search RSA only. Extra descriptions.
+     *
+     * @return self
+     */
+    public function setAdditionalDescriptions($additional_descriptions)
+    {
+        if (is_null($additional_descriptions)) {
+            throw new \InvalidArgumentException('non-nullable additional_descriptions cannot be null');
+        }
+        $this->container['additional_descriptions'] = $additional_descriptions;
 
         return $this;
     }

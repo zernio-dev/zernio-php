@@ -67,7 +67,10 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget' => '\Late\Model\BoostPostRequestBudget',
         'currency' => 'string',
         'schedule' => '\Late\Model\BoostPostRequestSchedule',
-        'targeting' => '\Late\Model\BoostPostRequestTargeting'
+        'targeting' => '\Late\Model\BoostPostRequestTargeting',
+        'bid_amount' => 'float',
+        'tracking' => '\Late\Model\BoostPostRequestTracking',
+        'special_ad_categories' => 'string[]'
     ];
 
     /**
@@ -87,7 +90,10 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget' => null,
         'currency' => null,
         'schedule' => null,
-        'targeting' => null
+        'targeting' => null,
+        'bid_amount' => null,
+        'tracking' => null,
+        'special_ad_categories' => null
     ];
 
     /**
@@ -105,7 +111,10 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget' => false,
         'currency' => false,
         'schedule' => false,
-        'targeting' => false
+        'targeting' => false,
+        'bid_amount' => false,
+        'tracking' => false,
+        'special_ad_categories' => false
     ];
 
     /**
@@ -203,7 +212,10 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget' => 'budget',
         'currency' => 'currency',
         'schedule' => 'schedule',
-        'targeting' => 'targeting'
+        'targeting' => 'targeting',
+        'bid_amount' => 'bidAmount',
+        'tracking' => 'tracking',
+        'special_ad_categories' => 'specialAdCategories'
     ];
 
     /**
@@ -221,7 +233,10 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget' => 'setBudget',
         'currency' => 'setCurrency',
         'schedule' => 'setSchedule',
-        'targeting' => 'setTargeting'
+        'targeting' => 'setTargeting',
+        'bid_amount' => 'setBidAmount',
+        'tracking' => 'setTracking',
+        'special_ad_categories' => 'setSpecialAdCategories'
     ];
 
     /**
@@ -239,7 +254,10 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'budget' => 'getBudget',
         'currency' => 'getCurrency',
         'schedule' => 'getSchedule',
-        'targeting' => 'getTargeting'
+        'targeting' => 'getTargeting',
+        'bid_amount' => 'getBidAmount',
+        'tracking' => 'getTracking',
+        'special_ad_categories' => 'getSpecialAdCategories'
     ];
 
     /**
@@ -287,6 +305,10 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public const GOAL_TRAFFIC = 'traffic';
     public const GOAL_AWARENESS = 'awareness';
     public const GOAL_VIDEO_VIEWS = 'video_views';
+    public const SPECIAL_AD_CATEGORIES_HOUSING = 'HOUSING';
+    public const SPECIAL_AD_CATEGORIES_EMPLOYMENT = 'EMPLOYMENT';
+    public const SPECIAL_AD_CATEGORIES_CREDIT = 'CREDIT';
+    public const SPECIAL_AD_CATEGORIES_ISSUES_ELECTIONS_POLITICS = 'ISSUES_ELECTIONS_POLITICS';
 
     /**
      * Gets allowable values of the enum
@@ -300,6 +322,21 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             self::GOAL_TRAFFIC,
             self::GOAL_AWARENESS,
             self::GOAL_VIDEO_VIEWS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSpecialAdCategoriesAllowableValues()
+    {
+        return [
+            self::SPECIAL_AD_CATEGORIES_HOUSING,
+            self::SPECIAL_AD_CATEGORIES_EMPLOYMENT,
+            self::SPECIAL_AD_CATEGORIES_CREDIT,
+            self::SPECIAL_AD_CATEGORIES_ISSUES_ELECTIONS_POLITICS,
         ];
     }
 
@@ -328,6 +365,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('schedule', $data ?? [], null);
         $this->setIfExists('targeting', $data ?? [], null);
+        $this->setIfExists('bid_amount', $data ?? [], null);
+        $this->setIfExists('tracking', $data ?? [], null);
+        $this->setIfExists('special_ad_categories', $data ?? [], null);
     }
 
     /**
@@ -680,6 +720,96 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable targeting cannot be null');
         }
         $this->container['targeting'] = $targeting;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_amount
+     *
+     * @return float|null
+     */
+    public function getBidAmount()
+    {
+        return $this->container['bid_amount'];
+    }
+
+    /**
+     * Sets bid_amount
+     *
+     * @param float|null $bid_amount Max bid cap (Meta only)
+     *
+     * @return self
+     */
+    public function setBidAmount($bid_amount)
+    {
+        if (is_null($bid_amount)) {
+            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
+        }
+        $this->container['bid_amount'] = $bid_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking
+     *
+     * @return \Late\Model\BoostPostRequestTracking|null
+     */
+    public function getTracking()
+    {
+        return $this->container['tracking'];
+    }
+
+    /**
+     * Sets tracking
+     *
+     * @param \Late\Model\BoostPostRequestTracking|null $tracking tracking
+     *
+     * @return self
+     */
+    public function setTracking($tracking)
+    {
+        if (is_null($tracking)) {
+            throw new \InvalidArgumentException('non-nullable tracking cannot be null');
+        }
+        $this->container['tracking'] = $tracking;
+
+        return $this;
+    }
+
+    /**
+     * Gets special_ad_categories
+     *
+     * @return string[]|null
+     */
+    public function getSpecialAdCategories()
+    {
+        return $this->container['special_ad_categories'];
+    }
+
+    /**
+     * Sets special_ad_categories
+     *
+     * @param string[]|null $special_ad_categories Meta only. Required for housing, employment, credit, or political ads.
+     *
+     * @return self
+     */
+    public function setSpecialAdCategories($special_ad_categories)
+    {
+        if (is_null($special_ad_categories)) {
+            throw new \InvalidArgumentException('non-nullable special_ad_categories cannot be null');
+        }
+        $allowedValues = $this->getSpecialAdCategoriesAllowableValues();
+        if (array_diff($special_ad_categories, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'special_ad_categories', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['special_ad_categories'] = $special_ad_categories;
 
         return $this;
     }

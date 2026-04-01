@@ -67,7 +67,9 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'retention_days' => 'int',
         'source_audience_id' => 'string',
         'country' => 'string',
-        'ratio' => 'float'
+        'ratio' => 'float',
+        'rule' => 'object',
+        'customer_file_source' => 'string'
     ];
 
     /**
@@ -87,7 +89,9 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'retention_days' => null,
         'source_audience_id' => null,
         'country' => null,
-        'ratio' => null
+        'ratio' => null,
+        'rule' => null,
+        'customer_file_source' => null
     ];
 
     /**
@@ -105,7 +109,9 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'retention_days' => false,
         'source_audience_id' => false,
         'country' => false,
-        'ratio' => false
+        'ratio' => false,
+        'rule' => false,
+        'customer_file_source' => false
     ];
 
     /**
@@ -203,7 +209,9 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'retention_days' => 'retentionDays',
         'source_audience_id' => 'sourceAudienceId',
         'country' => 'country',
-        'ratio' => 'ratio'
+        'ratio' => 'ratio',
+        'rule' => 'rule',
+        'customer_file_source' => 'customerFileSource'
     ];
 
     /**
@@ -221,7 +229,9 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'retention_days' => 'setRetentionDays',
         'source_audience_id' => 'setSourceAudienceId',
         'country' => 'setCountry',
-        'ratio' => 'setRatio'
+        'ratio' => 'setRatio',
+        'rule' => 'setRule',
+        'customer_file_source' => 'setCustomerFileSource'
     ];
 
     /**
@@ -239,7 +249,9 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'retention_days' => 'getRetentionDays',
         'source_audience_id' => 'getSourceAudienceId',
         'country' => 'getCountry',
-        'ratio' => 'getRatio'
+        'ratio' => 'getRatio',
+        'rule' => 'getRule',
+        'customer_file_source' => 'getCustomerFileSource'
     ];
 
     /**
@@ -326,6 +338,8 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('source_audience_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('ratio', $data ?? [], null);
+        $this->setIfExists('rule', $data ?? [], null);
+        $this->setIfExists('customer_file_source', $data ?? [], null);
     }
 
     /**
@@ -707,6 +721,60 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         }
 
         $this->container['ratio'] = $ratio;
+
+        return $this;
+    }
+
+    /**
+     * Gets rule
+     *
+     * @return object|null
+     */
+    public function getRule()
+    {
+        return $this->container['rule'];
+    }
+
+    /**
+     * Sets rule
+     *
+     * @param object|null $rule Pixel event rule for website audiences (optional)
+     *
+     * @return self
+     */
+    public function setRule($rule)
+    {
+        if (is_null($rule)) {
+            throw new \InvalidArgumentException('non-nullable rule cannot be null');
+        }
+        $this->container['rule'] = $rule;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_file_source
+     *
+     * @return string|null
+     */
+    public function getCustomerFileSource()
+    {
+        return $this->container['customer_file_source'];
+    }
+
+    /**
+     * Sets customer_file_source
+     *
+     * @param string|null $customer_file_source Data source declaration for GDPR compliance (customer_list only)
+     *
+     * @return self
+     */
+    public function setCustomerFileSource($customer_file_source)
+    {
+        if (is_null($customer_file_source)) {
+            throw new \InvalidArgumentException('non-nullable customer_file_source cannot be null');
+        }
+        $this->container['customer_file_source'] = $customer_file_source;
 
         return $this;
     }
