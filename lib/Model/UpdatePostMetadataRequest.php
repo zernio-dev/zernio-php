@@ -66,7 +66,10 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         'tags' => 'string[]',
         'category_id' => 'string',
         'privacy_status' => 'string',
-        'thumbnail_url' => 'string'
+        'thumbnail_url' => 'string',
+        'made_for_kids' => 'bool',
+        'contains_synthetic_media' => 'bool',
+        'playlist_id' => 'string'
     ];
 
     /**
@@ -85,7 +88,10 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         'tags' => null,
         'category_id' => null,
         'privacy_status' => null,
-        'thumbnail_url' => 'uri'
+        'thumbnail_url' => 'uri',
+        'made_for_kids' => null,
+        'contains_synthetic_media' => null,
+        'playlist_id' => null
     ];
 
     /**
@@ -102,7 +108,10 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         'tags' => false,
         'category_id' => false,
         'privacy_status' => false,
-        'thumbnail_url' => false
+        'thumbnail_url' => false,
+        'made_for_kids' => false,
+        'contains_synthetic_media' => false,
+        'playlist_id' => false
     ];
 
     /**
@@ -199,7 +208,10 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         'tags' => 'tags',
         'category_id' => 'categoryId',
         'privacy_status' => 'privacyStatus',
-        'thumbnail_url' => 'thumbnailUrl'
+        'thumbnail_url' => 'thumbnailUrl',
+        'made_for_kids' => 'madeForKids',
+        'contains_synthetic_media' => 'containsSyntheticMedia',
+        'playlist_id' => 'playlistId'
     ];
 
     /**
@@ -216,7 +228,10 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         'tags' => 'setTags',
         'category_id' => 'setCategoryId',
         'privacy_status' => 'setPrivacyStatus',
-        'thumbnail_url' => 'setThumbnailUrl'
+        'thumbnail_url' => 'setThumbnailUrl',
+        'made_for_kids' => 'setMadeForKids',
+        'contains_synthetic_media' => 'setContainsSyntheticMedia',
+        'playlist_id' => 'setPlaylistId'
     ];
 
     /**
@@ -233,7 +248,10 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         'tags' => 'getTags',
         'category_id' => 'getCategoryId',
         'privacy_status' => 'getPrivacyStatus',
-        'thumbnail_url' => 'getThumbnailUrl'
+        'thumbnail_url' => 'getThumbnailUrl',
+        'made_for_kids' => 'getMadeForKids',
+        'contains_synthetic_media' => 'getContainsSyntheticMedia',
+        'playlist_id' => 'getPlaylistId'
     ];
 
     /**
@@ -332,6 +350,9 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('category_id', $data ?? [], null);
         $this->setIfExists('privacy_status', $data ?? [], null);
         $this->setIfExists('thumbnail_url', $data ?? [], null);
+        $this->setIfExists('made_for_kids', $data ?? [], null);
+        $this->setIfExists('contains_synthetic_media', $data ?? [], null);
+        $this->setIfExists('playlist_id', $data ?? [], null);
     }
 
     /**
@@ -664,6 +685,87 @@ class UpdatePostMetadataRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
         }
         $this->container['thumbnail_url'] = $thumbnail_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets made_for_kids
+     *
+     * @return bool|null
+     */
+    public function getMadeForKids()
+    {
+        return $this->container['made_for_kids'];
+    }
+
+    /**
+     * Sets made_for_kids
+     *
+     * @param bool|null $made_for_kids COPPA compliance flag. Set true for child-directed content (restricts comments, notifications, ad targeting).
+     *
+     * @return self
+     */
+    public function setMadeForKids($made_for_kids)
+    {
+        if (is_null($made_for_kids)) {
+            throw new \InvalidArgumentException('non-nullable made_for_kids cannot be null');
+        }
+        $this->container['made_for_kids'] = $made_for_kids;
+
+        return $this;
+    }
+
+    /**
+     * Gets contains_synthetic_media
+     *
+     * @return bool|null
+     */
+    public function getContainsSyntheticMedia()
+    {
+        return $this->container['contains_synthetic_media'];
+    }
+
+    /**
+     * Sets contains_synthetic_media
+     *
+     * @param bool|null $contains_synthetic_media AI-generated content disclosure. Set true if the video contains synthetic content that could be mistaken for real. YouTube may add a label.
+     *
+     * @return self
+     */
+    public function setContainsSyntheticMedia($contains_synthetic_media)
+    {
+        if (is_null($contains_synthetic_media)) {
+            throw new \InvalidArgumentException('non-nullable contains_synthetic_media cannot be null');
+        }
+        $this->container['contains_synthetic_media'] = $contains_synthetic_media;
+
+        return $this;
+    }
+
+    /**
+     * Gets playlist_id
+     *
+     * @return string|null
+     */
+    public function getPlaylistId()
+    {
+        return $this->container['playlist_id'];
+    }
+
+    /**
+     * Sets playlist_id
+     *
+     * @param string|null $playlist_id YouTube playlist ID to add the video to (e.g. 'PLxxxxxxxxxxxxx'). Use GET /v1/accounts/{id}/youtube-playlists to list available playlists. Only playlists owned by the channel are supported.
+     *
+     * @return self
+     */
+    public function setPlaylistId($playlist_id)
+    {
+        if (is_null($playlist_id)) {
+            throw new \InvalidArgumentException('non-nullable playlist_id cannot be null');
+        }
+        $this->container['playlist_id'] = $playlist_id;
 
         return $this;
     }

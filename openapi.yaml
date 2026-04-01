@@ -5792,6 +5792,15 @@ paths:
                   type: string
                   format: uri
                   description: "Public URL of a custom thumbnail image (JPEG, PNG, or GIF, max 2 MB, recommended 1280x720). Works on any video you own, including existing videos not published through Zernio. The channel must be verified (phone verification) to set custom thumbnails."
+                madeForKids:
+                  type: boolean
+                  description: "COPPA compliance flag. Set true for child-directed content (restricts comments, notifications, ad targeting)."
+                containsSyntheticMedia:
+                  type: boolean
+                  description: "AI-generated content disclosure. Set true if the video contains synthetic content that could be mistaken for real. YouTube may add a label."
+                playlistId:
+                  type: string
+                  description: "YouTube playlist ID to add the video to (e.g. 'PLxxxxxxxxxxxxx'). Use GET /v1/accounts/{id}/youtube-playlists to list available playlists. Only playlists owned by the channel are supported."
             examples:
               post-based:
                 summary: Update a video published through Zernio
