@@ -233,6 +233,22 @@ tags:
       Comment-to-DM growth automations. Set up keyword triggers on Instagram/Facebook posts so
       commenters automatically receive a DM. Supports dedup, optional public comment reply, and
       auto-creates contacts.
+  - name: Ads
+    description: |
+      Paid advertising management across Meta (Facebook/Instagram), Google, TikTok, LinkedIn, Pinterest, and X/Twitter.
+      Create, boost, pause/resume ads and campaigns, view metrics, manage audiences, and sync external ads.
+      Requires the Ads add-on.
+  - name: Ad Campaigns
+    description: |
+      Campaign-level operations. Campaigns are virtual aggregations of ads grouped by their platform campaign ID.
+      List campaigns with aggregate metrics, or pause/resume all ads in a campaign at once.
+      Requires the Ads add-on.
+  - name: Ad Audiences
+    description: |
+      Custom audience management for ad targeting. Create customer lists, website retargeting audiences,
+      and lookalike audiences. Upload user data (hashed server-side). Currently Meta-only for creation,
+      read-only for other platforms.
+      Requires the Ads add-on.
   - name: Webhooks
     description: |
       Configure webhooks for real-time notifications. Events: post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, comment.received, webhook.test.
@@ -2615,6 +2631,75 @@ components:
       properties:
         user:
           $ref: '#/components/schemas/User'
+    AdMetrics:
+      type: object
+      properties:
+        spend: { type: number }
+        impressions: { type: integer }
+        reach: { type: integer }
+        clicks: { type: integer }
+        ctr: { type: number, description: Click-through rate (%) }
+        cpc: { type: number, description: Cost per click }
+        cpm: { type: number, description: Cost per 1000 impressions }
+        engagement: { type: integer }
+        lastSyncedAt: { type: string, format: date-time }
+    Ad:
+      type: object
+      properties:
+        _id: { type: string }
+        name: { type: string }
+        platform: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] }
+        status: { type: string, enum: [active, paused, pending_review, rejected, completed, cancelled, error] }
+        adType: { type: string, enum: [boost, standalone] }
+        goal: { type: string, enum: [engagement, traffic, awareness, video_views] }
+        isExternal: { type: boolean, description: True for ads synced from platform ad managers }
+        budget:
+          type: object
+          nullable: true
+          properties:
+            amount: { type: number }
+            type: { type: string, enum: [daily, lifetime] }
+        metrics:
+          allOf:
+            - { $ref: '#/components/schemas/AdMetrics' }
+          nullable: true
+        platformAdId: { type: string }
+        platformAdAccountId: { type: string }
+        platformCampaignId: { type: string }
+        platformAdSetId: { type: string }
+        campaignName: { type: string }
+        adSetName: { type: string }
+        creative: { type: object, description: Platform-specific creative data }
+        targeting: { type: object }
+        schedule:
+          type: object
+          nullable: true
+          properties:
+            startDate: { type: string, format: date-time }
+            endDate: { type: string, format: date-time }
+        rejectionReason: { type: string }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+    AdCampaign:
+      type: object
+      properties:
+        platformCampaignId: { type: string }
+        platform: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] }
+        campaignName: { type: string }
+        status: { type: string, enum: [active, paused, pending_review, rejected, completed, cancelled, error], description: Derived from child ad statuses }
+        adCount: { type: integer }
+        budget:
+          type: object
+          nullable: true
+          properties:
+            amount: { type: number }
+            type: { type: string, enum: [daily, lifetime] }
+        metrics: { $ref: '#/components/schemas/AdMetrics' }
+        platformAdAccountId: { type: string }
+        accountId: { type: string }
+        profileId: { type: string }
+        earliestAd: { type: string, format: date-time }
+        latestAd: { type: string, format: date-time }
 webhooks:
   post.scheduled:
     post:
@@ -17192,5 +17277,604 @@ paths:
                       limit: { type: integer }
                       skip: { type: integer }
                       hasMore: { type: boolean }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  # ── Ads ──────────────────────────────────────────────────────────────────
+
+  /v1/ads:
+    get:
+      operationId: listAds
+      tags: [Ads]
+      summary: List ads
+      description: Returns a paginated list of ads with cached metrics. Use `source=all` to include externally-synced ads from platform ad managers.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PageParam'
+        - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 500, default: 50 } }
+        - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: zernio }, description: "zernio = Zernio-created only, all = include external ads" }
+        - { name: status, in: query, schema: { type: string, enum: [active, paused, pending_review, rejected, completed, cancelled, error] } }
+        - { name: platform, in: query, schema: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] } }
+        - { name: accountId, in: query, schema: { type: string }, description: Social account ID }
+        - { name: profileId, in: query, schema: { type: string }, description: Profile ID }
+        - { name: campaignId, in: query, schema: { type: string }, description: Platform campaign ID (filter ads within a campaign) }
+      responses:
+        '200':
+          description: Paginated ads
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ads:
+                    type: array
+                    items: { $ref: '#/components/schemas/Ad' }
+                  pagination: { $ref: '#/components/schemas/Pagination' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: Ads add-on required
+
+  /v1/ads/campaigns:
+    get:
+      operationId: listAdCampaigns
+      tags: [Ad Campaigns]
+      summary: List campaigns with aggregate metrics
+      description: |
+        Returns campaigns as virtual aggregations over ad documents grouped by platform campaign ID.
+        Metrics (spend, impressions, clicks, etc.) are summed across all ads in each campaign.
+        Campaign status is derived from child ad statuses (active > pending_review > paused > error > completed > cancelled > rejected).
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/PageParam'
+        - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 100, default: 20 } }
+        - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: zernio } }
+        - { name: platform, in: query, schema: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] } }
+        - { name: status, in: query, schema: { type: string, enum: [active, paused, pending_review, rejected, completed, cancelled, error] }, description: Filter by derived campaign status (post-aggregation) }
+        - { name: adAccountId, in: query, schema: { type: string }, description: Platform ad account ID (e.g. act_123 for Meta) }
+        - { name: accountId, in: query, schema: { type: string }, description: Social account ID }
+        - { name: profileId, in: query, schema: { type: string }, description: Profile ID }
+      responses:
+        '200':
+          description: Paginated campaigns
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  campaigns:
+                    type: array
+                    items: { $ref: '#/components/schemas/AdCampaign' }
+                  pagination: { $ref: '#/components/schemas/Pagination' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: Ads add-on required
+
+  /v1/ads/campaigns/{campaignId}/status:
+    put:
+      operationId: updateAdCampaignStatus
+      tags: [Ad Campaigns]
+      summary: Pause or resume a campaign
+      description: |
+        Updates the status of all ads in a campaign. Makes one platform API call (not per-ad) since status cascades through the campaign hierarchy.
+        Ads in terminal statuses (rejected, completed, cancelled) are automatically skipped.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: campaignId, in: path, required: true, schema: { type: string }, description: Platform campaign ID }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status, platform]
+              properties:
+                status: { type: string, enum: [active, paused] }
+                platform: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] }
+      responses:
+        '200':
+          description: Campaign status updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updated: { type: integer, description: Number of ads updated }
+                  skipped: { type: integer, description: Number of ads skipped }
+                  skippedReasons: { type: array, items: { type: string } }
+        '400':
+          description: Invalid input or campaign spans multiple social accounts
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404':
+          description: No ads found for this campaign
+
+  /v1/ads/{adId}:
+    get:
+      operationId: getAd
+      tags: [Ads]
+      summary: Get ad details
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: adId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Ad details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ad: { $ref: '#/components/schemas/Ad' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    put:
+      operationId: updateAd
+      tags: [Ads]
+      summary: Update ad (pause/resume, budget, targeting, name)
+      description: Update one or more fields on an ad. Status changes and budget updates are propagated to the platform. Targeting updates are Meta-only.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: adId, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status: { type: string, enum: [active, paused] }
+                budget:
+                  type: object
+                  properties:
+                    amount: { type: number, description: "Minimum varies by platform: TikTok=$20, Pinterest=$5, others=$1" }
+                    type: { type: string, enum: [daily, lifetime] }
+                targeting:
+                  type: object
+                  description: Meta-only. Targeting updates for other platforms are not supported after creation.
+                  properties:
+                    ageMin: { type: integer, minimum: 13, maximum: 65 }
+                    ageMax: { type: integer, minimum: 13, maximum: 65 }
+                    countries: { type: array, items: { type: string } }
+                    interests: { type: array, items: { type: string } }
+                name: { type: string }
+      responses:
+        '200':
+          description: Ad updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ad: { $ref: '#/components/schemas/Ad' }
+                  message: { type: string }
+        '400':
+          description: Invalid status transition or budget below minimum
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    delete:
+      operationId: deleteAd
+      tags: [Ads]
+      summary: Cancel an ad
+      description: Cancels the ad on the platform and marks it as cancelled in the database. The ad is preserved for history.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: adId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Ad cancelled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: { type: string }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  /v1/ads/{adId}/analytics:
+    get:
+      operationId: getAdAnalytics
+      tags: [Ads]
+      summary: Get ad analytics with daily breakdown
+      description: |
+        Returns real-time analytics from the platform API (not cached). Includes summary metrics,
+        daily breakdown, and optional demographic breakdowns (Meta and TikTok only).
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: adId, in: path, required: true, schema: { type: string } }
+        - name: breakdowns
+          in: query
+          schema: { type: string }
+          description: "Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language."
+      responses:
+        '200':
+          description: Ad analytics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ad:
+                    type: object
+                    properties:
+                      id: { type: string }
+                      name: { type: string }
+                      platform: { type: string }
+                      status: { type: string }
+                  analytics:
+                    type: object
+                    properties:
+                      summary: { $ref: '#/components/schemas/AdMetrics' }
+                      daily:
+                        type: array
+                        items:
+                          allOf:
+                            - { $ref: '#/components/schemas/AdMetrics' }
+                            - type: object
+                              properties:
+                                date: { type: string, format: date }
+                      breakdowns:
+                        type: object
+                        additionalProperties:
+                          type: array
+                          items: { type: object }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  /v1/ads/accounts:
+    get:
+      operationId: listAdAccounts
+      tags: [Ads]
+      summary: List ad accounts for a social account
+      description: Returns the platform ad accounts available for the given social account (e.g. Meta ad accounts, TikTok advertiser IDs, Google Ads customer IDs).
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: accountId, in: query, required: true, schema: { type: string }, description: Social account ID }
+      responses:
+        '200':
+          description: Ad accounts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accounts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string, description: "Platform ad account ID (e.g. act_123)" }
+                        name: { type: string }
+                        currency: { type: string }
+                        status: { type: string }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /v1/ads/boost:
+    post:
+      operationId: boostPost
+      tags: [Ads]
+      summary: Boost an existing post as a paid ad
+      description: Creates a paid ad campaign from an existing published post. Creates the full platform campaign hierarchy (campaign, ad set, ad).
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [accountId, adAccountId, name, goal, budget]
+              properties:
+                postId: { type: string, description: Zernio post ID (provide this or platformPostId) }
+                platformPostId: { type: string, description: Platform post ID (alternative to postId) }
+                accountId: { type: string, description: Social account ID }
+                adAccountId: { type: string, description: Platform ad account ID }
+                name: { type: string, maxLength: 255 }
+                goal: { type: string, enum: [engagement, traffic, awareness, video_views] }
+                budget:
+                  type: object
+                  required: [amount, type]
+                  properties:
+                    amount: { type: number, description: "Minimum varies: TikTok=$20, Pinterest=$5, others=$1" }
+                    type: { type: string, enum: [daily, lifetime] }
+                currency: { type: string, example: USD }
+                schedule:
+                  type: object
+                  properties:
+                    startDate: { type: string, format: date-time }
+                    endDate: { type: string, format: date-time, description: Required for lifetime budgets }
+                targeting:
+                  type: object
+                  properties:
+                    ageMin: { type: integer, minimum: 13, maximum: 65 }
+                    ageMax: { type: integer, minimum: 13, maximum: 65 }
+                    countries: { type: array, items: { type: string } }
+                    interests: { type: array, items: { type: string } }
+      responses:
+        '201':
+          description: Ad created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ad: { $ref: '#/components/schemas/Ad' }
+                  message: { type: string }
+        '400':
+          description: Missing required fields or invalid values
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: Ads add-on required
+
+  /v1/ads/create:
+    post:
+      operationId: createStandaloneAd
+      tags: [Ads]
+      summary: Create a standalone ad with custom creative
+      description: Creates a paid ad with custom creative (headline, body, image/video, link). Creates the full platform campaign hierarchy.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [accountId, adAccountId, name, goal, budgetAmount, budgetType, body, imageUrl]
+              properties:
+                accountId: { type: string }
+                adAccountId: { type: string }
+                name: { type: string, maxLength: 255 }
+                goal: { type: string, enum: [engagement, traffic, awareness, video_views] }
+                budgetAmount: { type: number }
+                budgetType: { type: string, enum: [daily, lifetime] }
+                currency: { type: string }
+                headline: { type: string, description: "Required for most platforms. Max: Meta=255, Google=30, Pinterest=100" }
+                body: { type: string, description: "Max: Google=90, Pinterest=500" }
+                callToAction: { type: string, enum: [LEARN_MORE, SHOP_NOW, SIGN_UP, BOOK_TRAVEL, CONTACT_US, DOWNLOAD, GET_OFFER, GET_QUOTE, SUBSCRIBE, WATCH_MORE], description: Meta only }
+                linkUrl: { type: string, format: uri }
+                imageUrl: { type: string, format: uri, description: Image URL (or video URL for TikTok) }
+                countries: { type: array, items: { type: string } }
+                ageMin: { type: integer, minimum: 13, maximum: 65 }
+                ageMax: { type: integer, minimum: 13, maximum: 65 }
+                interests: { type: array, items: { type: string } }
+                endDate: { type: string, format: date-time, description: Required for lifetime budgets }
+                audienceId: { type: string, description: Custom audience ID for targeting }
+                campaignType: { type: string, enum: [display, search], default: display, description: Google only }
+                keywords: { type: array, items: { type: string }, description: Google Search only }
+      responses:
+        '201':
+          description: Ad created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ad: { $ref: '#/components/schemas/Ad' }
+                  message: { type: string }
+        '400':
+          description: Missing required fields or invalid values
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: Ads add-on required
+
+  /v1/ads/sync:
+    post:
+      operationId: syncExternalAds
+      tags: [Ads]
+      summary: Sync external ads from platform ad managers
+      description: Discovers and imports ads created outside Zernio (e.g. in Meta Ads Manager, Google Ads). Upserts new ads and updates metrics/status for existing ones. Also runs automatically every 30 minutes.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Sync completed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean }
+                  synced: { type: integer, description: New ads imported }
+                  skipped: { type: integer, description: Already-synced ads updated }
+                  errors: { type: integer, description: Failed ad imports }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: Ads add-on required
+
+  /v1/ads/interests:
+    get:
+      operationId: searchAdInterests
+      tags: [Ads]
+      summary: Search targeting interests
+      description: Search for interest-based targeting options available on the platform.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: q, in: query, required: true, schema: { type: string }, description: Search query }
+        - { name: accountId, in: query, required: true, schema: { type: string }, description: Social account ID }
+      responses:
+        '200':
+          description: Matching interests
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  interests:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string }
+                        name: { type: string }
+                        category: { type: string }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /v1/ads/audiences:
+    get:
+      operationId: listAdAudiences
+      tags: [Ad Audiences]
+      summary: List custom audiences
+      description: Returns custom audiences for the given ad account. Supports Meta, Google, TikTok, and Pinterest.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: accountId, in: query, required: true, schema: { type: string }, description: Social account ID }
+        - { name: adAccountId, in: query, required: true, schema: { type: string }, description: Platform ad account ID }
+        - { name: platform, in: query, schema: { type: string, enum: [facebook, instagram, googleads, tiktok, pinterest] } }
+      responses:
+        '200':
+          description: Audiences
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  audiences:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string, nullable: true }
+                        platformAudienceId: { type: string }
+                        name: { type: string }
+                        description: { type: string }
+                        type: { type: string, enum: [customer_list, website, lookalike] }
+                        platform: { type: string }
+                        size: { type: integer }
+                        status: { type: string }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+    post:
+      operationId: createAdAudience
+      tags: [Ad Audiences]
+      summary: Create a custom audience (Meta only)
+      description: Create a customer list, website retargeting, or lookalike audience on Meta (Facebook/Instagram).
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [accountId, adAccountId, name, type]
+              properties:
+                accountId: { type: string }
+                adAccountId: { type: string, description: "Must start with act_" }
+                name: { type: string, maxLength: 255 }
+                description: { type: string }
+                type: { type: string, enum: [customer_list, website, lookalike] }
+                pixelId: { type: string, description: Required for website audiences }
+                retentionDays: { type: integer, minimum: 1, maximum: 180, description: Required for website audiences }
+                sourceAudienceId: { type: string, description: Required for lookalike audiences }
+                country: { type: string, description: "2-letter code, required for lookalike audiences" }
+                ratio: { type: number, minimum: 0.01, maximum: 0.20, description: Required for lookalike audiences }
+      responses:
+        '201':
+          description: Audience created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  audience: { type: object }
+                  message: { type: string }
+        '400':
+          description: Missing required fields
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: Ads add-on required
+
+  /v1/ads/audiences/{audienceId}:
+    get:
+      operationId: getAdAudience
+      tags: [Ad Audiences]
+      summary: Get audience details
+      description: Returns the local audience record and fresh data from Meta (if available).
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: audienceId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Audience details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  audience: { type: object }
+                  metaData: { type: object, nullable: true, description: Fresh data from Meta API }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    delete:
+      operationId: deleteAdAudience
+      tags: [Ad Audiences]
+      summary: Delete a custom audience
+      description: Deletes the audience from both Meta and the local database.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: audienceId, in: path, required: true, schema: { type: string } }
+      responses:
+        '200':
+          description: Audience deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: { type: string }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  /v1/ads/audiences/{audienceId}/users:
+    post:
+      operationId: addUsersToAdAudience
+      tags: [Ad Audiences]
+      summary: Add users to a customer list audience
+      description: Upload user data (emails and/or phone numbers) to a customer_list audience. Data is SHA256-hashed server-side before sending to Meta. Max 10,000 users per request.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: audienceId, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [users]
+              properties:
+                users:
+                  type: array
+                  maxItems: 10000
+                  items:
+                    type: object
+                    properties:
+                      email: { type: string, format: email }
+                      phone: { type: string }
+                    description: Each user must have at least email or phone
+      responses:
+        '200':
+          description: Users added
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: { type: string }
+                  numReceived: { type: integer }
+                  numInvalid: { type: integer }
+        '400':
+          description: Invalid input or not a customer_list audience
         '401': { $ref: '#/components/responses/Unauthorized' }
         '404': { $ref: '#/components/responses/NotFound' }
