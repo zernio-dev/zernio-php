@@ -17628,6 +17628,8 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403':
           description: Ads add-on required
+        '422':
+          description: Platform ads connection required (TikTok Ads, X Ads) or missing linked account
 
   /v1/ads/create:
     post:
@@ -17685,6 +17687,8 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403':
           description: Ads add-on required
+        '422':
+          description: Platform ads connection required (TikTok Ads, X Ads) or missing linked account
 
   /v1/ads/sync:
     post:
@@ -17775,6 +17779,8 @@ paths:
                         size: { type: integer }
                         status: { type: string }
         '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: Ads add-on required
     post:
       operationId: createAdAudience
       tags: [Ad Audiences]
