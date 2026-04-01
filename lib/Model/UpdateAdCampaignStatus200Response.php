@@ -60,7 +60,8 @@ class UpdateAdCampaignStatus200Response implements ModelInterface, ArrayAccess, 
     protected static $openAPITypes = [
         'updated' => 'int',
         'skipped' => 'int',
-        'skipped_reasons' => 'string[]'
+        'skipped_reasons' => 'string[]',
+        'message' => 'string'
     ];
 
     /**
@@ -73,7 +74,8 @@ class UpdateAdCampaignStatus200Response implements ModelInterface, ArrayAccess, 
     protected static $openAPIFormats = [
         'updated' => null,
         'skipped' => null,
-        'skipped_reasons' => null
+        'skipped_reasons' => null,
+        'message' => null
     ];
 
     /**
@@ -84,7 +86,8 @@ class UpdateAdCampaignStatus200Response implements ModelInterface, ArrayAccess, 
     protected static array $openAPINullables = [
         'updated' => false,
         'skipped' => false,
-        'skipped_reasons' => false
+        'skipped_reasons' => false,
+        'message' => false
     ];
 
     /**
@@ -175,7 +178,8 @@ class UpdateAdCampaignStatus200Response implements ModelInterface, ArrayAccess, 
     protected static $attributeMap = [
         'updated' => 'updated',
         'skipped' => 'skipped',
-        'skipped_reasons' => 'skippedReasons'
+        'skipped_reasons' => 'skippedReasons',
+        'message' => 'message'
     ];
 
     /**
@@ -186,7 +190,8 @@ class UpdateAdCampaignStatus200Response implements ModelInterface, ArrayAccess, 
     protected static $setters = [
         'updated' => 'setUpdated',
         'skipped' => 'setSkipped',
-        'skipped_reasons' => 'setSkippedReasons'
+        'skipped_reasons' => 'setSkippedReasons',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -197,7 +202,8 @@ class UpdateAdCampaignStatus200Response implements ModelInterface, ArrayAccess, 
     protected static $getters = [
         'updated' => 'getUpdated',
         'skipped' => 'getSkipped',
-        'skipped_reasons' => 'getSkippedReasons'
+        'skipped_reasons' => 'getSkippedReasons',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -260,6 +266,7 @@ class UpdateAdCampaignStatus200Response implements ModelInterface, ArrayAccess, 
         $this->setIfExists('updated', $data ?? [], null);
         $this->setIfExists('skipped', $data ?? [], null);
         $this->setIfExists('skipped_reasons', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
     }
 
     /**
@@ -381,6 +388,33 @@ class UpdateAdCampaignStatus200Response implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable skipped_reasons cannot be null');
         }
         $this->container['skipped_reasons'] = $skipped_reasons;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message Human-readable summary (present when no ads were actionable)
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        }
+        $this->container['message'] = $message;
 
         return $this;
     }

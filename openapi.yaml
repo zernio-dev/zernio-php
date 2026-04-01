@@ -2642,7 +2642,7 @@ components:
         cpc: { type: number, description: Cost per click }
         cpm: { type: number, description: Cost per 1000 impressions }
         engagement: { type: integer }
-        lastSyncedAt: { type: string, format: date-time }
+        lastSyncedAt: { type: string, format: date-time, description: "Present on individual ads only, not on campaign aggregations" }
     Ad:
       type: object
       properties:
@@ -17384,6 +17384,7 @@ paths:
                   updated: { type: integer, description: Number of ads updated }
                   skipped: { type: integer, description: Number of ads skipped }
                   skippedReasons: { type: array, items: { type: string } }
+                  message: { type: string, description: Human-readable summary (present when no ads were actionable) }
         '400':
           description: Invalid input or campaign spans multiple social accounts
         '401': { $ref: '#/components/responses/Unauthorized' }
@@ -17703,7 +17704,7 @@ paths:
                 properties:
                   success: { type: boolean }
                   synced: { type: integer, description: New ads imported }
-                  skipped: { type: integer, description: Already-synced ads updated }
+                  skipped: { type: integer, description: Already-known ads (skipped import, metrics still refreshed) }
                   errors: { type: integer, description: Failed ad imports }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403':

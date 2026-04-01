@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **cpc** | **float** | Cost per click | [optional]
 **cpm** | **float** | Cost per 1000 impressions | [optional]
 **engagement** | **int** |  | [optional]
-**last_synced_at** | **\DateTime** |  | [optional]
+**last_synced_at** | **\DateTime** | Present on individual ads only, not on campaign aggregations | [optional]
 **date** | **\DateTime** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

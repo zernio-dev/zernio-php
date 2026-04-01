@@ -378,7 +378,7 @@ class SyncExternalAds200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets skipped
      *
-     * @param int|null $skipped Already-synced ads updated
+     * @param int|null $skipped Already-known ads (skipped import
      *
      * @return self
      */

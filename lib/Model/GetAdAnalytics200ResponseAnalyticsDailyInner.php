@@ -582,7 +582,7 @@ class GetAdAnalytics200ResponseAnalyticsDailyInner implements ModelInterface, Ar
     /**
      * Sets last_synced_at
      *
-     * @param \DateTime|null $last_synced_at last_synced_at
+     * @param \DateTime|null $last_synced_at Present on individual ads only, not on campaign aggregations
      *
      * @return self
      */
