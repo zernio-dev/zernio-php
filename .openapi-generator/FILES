@@ -1503,6 +1503,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdTreeAdSetTest.php
-test/Model/AdTreeCampaignTest.php
-test/Model/GetAdTree200ResponseTest.php
