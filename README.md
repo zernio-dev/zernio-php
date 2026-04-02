@@ -84,6 +84,7 @@ Class | Method | HTTP request | Description
 *AdAudiencesApi* | [**deleteAdAudience**](docs/Api/AdAudiencesApi.md#deleteadaudience) | **DELETE** /v1/ads/audiences/{audienceId} | Delete a custom audience
 *AdAudiencesApi* | [**getAdAudience**](docs/Api/AdAudiencesApi.md#getadaudience) | **GET** /v1/ads/audiences/{audienceId} | Get audience details
 *AdAudiencesApi* | [**listAdAudiences**](docs/Api/AdAudiencesApi.md#listadaudiences) | **GET** /v1/ads/audiences | List custom audiences
+*AdCampaignsApi* | [**getAdTree**](docs/Api/AdCampaignsApi.md#getadtree) | **GET** /v1/ads/tree | Get nested campaign/ad-set/ad tree
 *AdCampaignsApi* | [**listAdCampaigns**](docs/Api/AdCampaignsApi.md#listadcampaigns) | **GET** /v1/ads/campaigns | List campaigns with aggregate metrics
 *AdCampaignsApi* | [**updateAdCampaignStatus**](docs/Api/AdCampaignsApi.md#updateadcampaignstatus) | **PUT** /v1/ads/campaigns/{campaignId}/status | Pause or resume a campaign
 *AdsApi* | [**boostPost**](docs/Api/AdsApi.md#boostpost) | **POST** /v1/ads/boost | Boost an existing post as a paid ad
@@ -252,6 +253,10 @@ Class | Method | HTTP request | Description
 *UsageApi* | [**getUsageStats**](docs/Api/UsageApi.md#getusagestats) | **GET** /v1/usage-stats | Get plan and usage stats
 *UsersApi* | [**getUser**](docs/Api/UsersApi.md#getuser) | **GET** /v1/users/{userId} | Get user
 *UsersApi* | [**listUsers**](docs/Api/UsersApi.md#listusers) | **GET** /v1/users | List users
+*ValidateApi* | [**validateMedia**](docs/Api/ValidateApi.md#validatemedia) | **POST** /v1/tools/validate/media | Validate media URL
+*ValidateApi* | [**validatePost**](docs/Api/ValidateApi.md#validatepost) | **POST** /v1/tools/validate/post | Validate post content
+*ValidateApi* | [**validatePostLength**](docs/Api/ValidateApi.md#validatepostlength) | **POST** /v1/tools/validate/post-length | Validate post character count
+*ValidateApi* | [**validateSubreddit**](docs/Api/ValidateApi.md#validatesubreddit) | **GET** /v1/tools/validate/subreddit | Check subreddit existence
 *WebhooksApi* | [**createWebhookSettings**](docs/Api/WebhooksApi.md#createwebhooksettings) | **POST** /v1/webhooks/settings | Create webhook
 *WebhooksApi* | [**deleteWebhookSettings**](docs/Api/WebhooksApi.md#deletewebhooksettings) | **DELETE** /v1/webhooks/settings | Delete webhook
 *WebhooksApi* | [**getWebhookLogs**](docs/Api/WebhooksApi.md#getwebhooklogs) | **GET** /v1/webhooks/logs | Get delivery logs
@@ -318,6 +323,8 @@ Class | Method | HTTP request | Description
 - [AdCampaign](docs/Model/AdCampaign.md)
 - [AdMetrics](docs/Model/AdMetrics.md)
 - [AdSchedule](docs/Model/AdSchedule.md)
+- [AdTreeAdSet](docs/Model/AdTreeAdSet.md)
+- [AdTreeCampaign](docs/Model/AdTreeCampaign.md)
 - [AddBroadcastRecipients200Response](docs/Model/AddBroadcastRecipients200Response.md)
 - [AddBroadcastRecipientsRequest](docs/Model/AddBroadcastRecipientsRequest.md)
 - [AddMessageReactionRequest](docs/Model/AddMessageReactionRequest.md)
@@ -471,6 +478,7 @@ Class | Method | HTTP request | Description
 - [GetAdAnalytics200ResponseAnalytics](docs/Model/GetAdAnalytics200ResponseAnalytics.md)
 - [GetAdAnalytics200ResponseAnalyticsDailyInner](docs/Model/GetAdAnalytics200ResponseAnalyticsDailyInner.md)
 - [GetAdAudience200Response](docs/Model/GetAdAudience200Response.md)
+- [GetAdTree200Response](docs/Model/GetAdTree200Response.md)
 - [GetAllAccountsHealth200Response](docs/Model/GetAllAccountsHealth200Response.md)
 - [GetAllAccountsHealth200ResponseAccountsInner](docs/Model/GetAllAccountsHealth200ResponseAccountsInner.md)
 - [GetAllAccountsHealth200ResponseSummary](docs/Model/GetAllAccountsHealth200ResponseSummary.md)
@@ -955,6 +963,25 @@ Class | Method | HTTP request | Description
 - [User](docs/Model/User.md)
 - [UserGetResponse](docs/Model/UserGetResponse.md)
 - [UsersListResponse](docs/Model/UsersListResponse.md)
+- [ValidateMedia200Response](docs/Model/ValidateMedia200Response.md)
+- [ValidateMedia200ResponsePlatformLimitsValue](docs/Model/ValidateMedia200ResponsePlatformLimitsValue.md)
+- [ValidateMediaRequest](docs/Model/ValidateMediaRequest.md)
+- [ValidatePost200Response](docs/Model/ValidatePost200Response.md)
+- [ValidatePost200ResponseOneOf](docs/Model/ValidatePost200ResponseOneOf.md)
+- [ValidatePost200ResponseOneOf1](docs/Model/ValidatePost200ResponseOneOf1.md)
+- [ValidatePost200ResponseOneOf1ErrorsInner](docs/Model/ValidatePost200ResponseOneOf1ErrorsInner.md)
+- [ValidatePost200ResponseOneOfWarningsInner](docs/Model/ValidatePost200ResponseOneOfWarningsInner.md)
+- [ValidatePostLength200Response](docs/Model/ValidatePostLength200Response.md)
+- [ValidatePostLength200ResponsePlatformsValue](docs/Model/ValidatePostLength200ResponsePlatformsValue.md)
+- [ValidatePostLengthRequest](docs/Model/ValidatePostLengthRequest.md)
+- [ValidatePostRequest](docs/Model/ValidatePostRequest.md)
+- [ValidatePostRequestMediaItemsInner](docs/Model/ValidatePostRequestMediaItemsInner.md)
+- [ValidatePostRequestPlatformsInner](docs/Model/ValidatePostRequestPlatformsInner.md)
+- [ValidatePostRequestPlatformsInnerCustomMediaInner](docs/Model/ValidatePostRequestPlatformsInnerCustomMediaInner.md)
+- [ValidateSubreddit200Response](docs/Model/ValidateSubreddit200Response.md)
+- [ValidateSubreddit200ResponseOneOf](docs/Model/ValidateSubreddit200ResponseOneOf.md)
+- [ValidateSubreddit200ResponseOneOf1](docs/Model/ValidateSubreddit200ResponseOneOf1.md)
+- [ValidateSubreddit200ResponseOneOfSubreddit](docs/Model/ValidateSubreddit200ResponseOneOfSubreddit.md)
 - [Webhook](docs/Model/Webhook.md)
 - [WebhookLog](docs/Model/WebhookLog.md)
 - [WebhookPayloadAccountConnected](docs/Model/WebhookPayloadAccountConnected.md)

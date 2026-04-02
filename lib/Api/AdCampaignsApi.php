@@ -75,6 +75,9 @@ class AdCampaignsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'getAdTree' => [
+            'application/json',
+        ],
         'listAdCampaigns' => [
             'application/json',
         ],
@@ -127,6 +130,401 @@ class AdCampaignsApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation getAdTree
+     *
+     * Get nested campaign/ad-set/ad tree
+     *
+     * @param  int|null $page Page number (1-based) (optional, default to 1)
+     * @param  int|null $limit Campaigns per page (optional, default to 20)
+     * @param  string|null $source source (optional, default to 'zernio')
+     * @param  string|null $platform platform (optional)
+     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (optional)
+     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $profile_id Profile ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\GetAdTree200Response|\Late\Model\InlineObject
+     */
+    public function getAdTree($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['getAdTree'][0])
+    {
+        list($response) = $this->getAdTreeWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getAdTreeWithHttpInfo
+     *
+     * Get nested campaign/ad-set/ad tree
+     *
+     * @param  int|null $page Page number (1-based) (optional, default to 1)
+     * @param  int|null $limit Campaigns per page (optional, default to 20)
+     * @param  string|null $source (optional, default to 'zernio')
+     * @param  string|null $platform (optional)
+     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (optional)
+     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $profile_id Profile ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\GetAdTree200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAdTreeWithHttpInfo($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['getAdTree'][0])
+    {
+        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetAdTree200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetAdTree200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetAdTree200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAdTreeAsync
+     *
+     * Get nested campaign/ad-set/ad tree
+     *
+     * @param  int|null $page Page number (1-based) (optional, default to 1)
+     * @param  int|null $limit Campaigns per page (optional, default to 20)
+     * @param  string|null $source (optional, default to 'zernio')
+     * @param  string|null $platform (optional)
+     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (optional)
+     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $profile_id Profile ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdTreeAsync($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['getAdTree'][0])
+    {
+        return $this->getAdTreeAsyncWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAdTreeAsyncWithHttpInfo
+     *
+     * Get nested campaign/ad-set/ad tree
+     *
+     * @param  int|null $page Page number (1-based) (optional, default to 1)
+     * @param  int|null $limit Campaigns per page (optional, default to 20)
+     * @param  string|null $source (optional, default to 'zernio')
+     * @param  string|null $platform (optional)
+     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (optional)
+     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $profile_id Profile ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdTreeAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['getAdTree'][0])
+    {
+        $returnType = '\Late\Model\GetAdTree200Response';
+        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAdTree'
+     *
+     * @param  int|null $page Page number (1-based) (optional, default to 1)
+     * @param  int|null $limit Campaigns per page (optional, default to 20)
+     * @param  string|null $source (optional, default to 'zernio')
+     * @param  string|null $platform (optional)
+     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (optional)
+     * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $profile_id Profile ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAdTreeRequest($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['getAdTree'][0])
+    {
+
+        if ($page !== null && $page < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page" when calling AdCampaignsApi.getAdTree, must be bigger than or equal to 1.');
+        }
+        
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdCampaignsApi.getAdTree, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdCampaignsApi.getAdTree, must be bigger than or equal to 1.');
+        }
+        
+
+
+
+
+
+
+
+        $resourcePath = '/v1/ads/tree';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page,
+            'page', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $source,
+            'source', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status,
+            'status', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $profile_id,
+            'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
