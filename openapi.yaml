@@ -2588,7 +2588,24 @@ components:
         platformAdSetId: { type: string }
         campaignName: { type: string }
         adSetName: { type: string }
-        creative: { type: object, description: Platform-specific creative data }
+        creative:
+          type: object
+          nullable: true
+          description: Platform-specific creative data. Fields vary by platform.
+          properties:
+            thumbnailUrl: { type: string, description: Primary thumbnail/image URL }
+            imageUrl: { type: string, description: Alternative image URL }
+            mediaUrls:
+              type: array
+              items: { type: string }
+              description: All media URLs for this ad (carousel images, multiple assets). Populated for Meta (carousel child_attachments), Google Ads (responsive display marketing_images), and LinkedIn (multi-image posts).
+            body: { type: string, description: Ad copy/text }
+            googleHeadline: { type: string, description: Google Ads headline }
+            googleDescription: { type: string, description: Google Ads description }
+            linkUrl: { type: string, description: Destination URL }
+            pinterestImageUrl: { type: string }
+            pinterestTitle: { type: string }
+            pinterestDescription: { type: string }
         targeting: { type: object }
         schedule:
           type: object

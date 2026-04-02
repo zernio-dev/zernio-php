@@ -50,6 +50,7 @@ docs/Model/ActivateSequence200Response.md
 docs/Model/Ad.md
 docs/Model/AdBudget.md
 docs/Model/AdCampaign.md
+docs/Model/AdCreative.md
 docs/Model/AdMetrics.md
 docs/Model/AdSchedule.md
 docs/Model/AdTreeAdSet.md
@@ -801,6 +802,7 @@ lib/Model/ActivateSequence200Response.php
 lib/Model/Ad.php
 lib/Model/AdBudget.php
 lib/Model/AdCampaign.php
+lib/Model/AdCreative.php
 lib/Model/AdMetrics.php
 lib/Model/AdSchedule.php
 lib/Model/AdTreeAdSet.php
@@ -1503,3 +1505,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdCreativeTest.php

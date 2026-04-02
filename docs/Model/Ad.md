@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **platform_ad_set_id** | **string** |  | [optional]
 **campaign_name** | **string** |  | [optional]
 **ad_set_name** | **string** |  | [optional]
-**creative** | **object** | Platform-specific creative data | [optional]
+**creative** | [**\Late\Model\AdCreative**](AdCreative.md) |  | [optional]
 **targeting** | **object** |  | [optional]
 **schedule** | [**\Late\Model\AdSchedule**](AdSchedule.md) |  | [optional]
 **rejection_reason** | **string** |  | [optional]

@@ -73,7 +73,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_set_id' => 'string',
         'campaign_name' => 'string',
         'ad_set_name' => 'string',
-        'creative' => 'object',
+        'creative' => '\Late\Model\AdCreative',
         'targeting' => 'object',
         'schedule' => '\Late\Model\AdSchedule',
         'rejection_reason' => 'string',
@@ -998,7 +998,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets creative
      *
-     * @return object|null
+     * @return \Late\Model\AdCreative|null
      */
     public function getCreative()
     {
@@ -1008,7 +1008,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets creative
      *
-     * @param object|null $creative Platform-specific creative data
+     * @param \Late\Model\AdCreative|null $creative creative
      *
      * @return self
      */

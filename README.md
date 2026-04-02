@@ -321,6 +321,7 @@ Class | Method | HTTP request | Description
 - [Ad](docs/Model/Ad.md)
 - [AdBudget](docs/Model/AdBudget.md)
 - [AdCampaign](docs/Model/AdCampaign.md)
+- [AdCreative](docs/Model/AdCreative.md)
 - [AdMetrics](docs/Model/AdMetrics.md)
 - [AdSchedule](docs/Model/AdSchedule.md)
 - [AdTreeAdSet](docs/Model/AdTreeAdSet.md)
