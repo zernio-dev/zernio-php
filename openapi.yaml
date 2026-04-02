@@ -164,7 +164,6 @@ tags:
   - name: Invites
   - name: Connect
   - name: Media
-  # - name: Video Clips  # AI Clipping feature temporarily disabled
   - name: Reddit Search
   - name: Facebook
   - name: GMB Reviews
@@ -2108,8 +2107,6 @@ components:
             uploads: { type: integer }
             profiles: { type: integer }
             lastReset: { type: string, format: date-time }
-    # VideoClipJob, VideoClip, VideoClipJobProcessing, VideoClipJobCompleted, VideoClipJobFailed, VideoClipUsageStats
-    # schemas removed - AI Clipping feature temporarily disabled
     PostAnalytics:
       type: object
       properties:
@@ -4852,9 +4849,6 @@ paths:
                 file_too_large:
                   value: { error: "File too large. Maximum size is 5GB." }
         '401': { $ref: '#/components/responses/Unauthorized' }
-  # Video Clips API paths removed - AI Clipping feature temporarily disabled
-  # /v1/video-clips, /v1/video-clips-replicate, /v1/video-clips/process,
-  # /v1/video-clips/jobs, /v1/video-clips/status/{jobId}, /v1/video-clips/monthly-stats
   /v1/reddit/search:
     get:
       operationId: searchReddit
