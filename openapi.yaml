@@ -5760,7 +5760,9 @@ paths:
       operationId: listAccounts
       tags: [Accounts]
       summary: List accounts
-      description: Returns connected social accounts. Only includes accounts within the plan limit by default. Follower data requires analytics add-on.
+      description: |
+        Returns connected social accounts. Only includes accounts within the plan limit by default. Follower data requires analytics add-on.
+        Supports optional server-side pagination via page/limit params. When omitted, returns all accounts (backward-compatible).
       parameters:
         - name: profileId
           in: query
@@ -5777,9 +5779,17 @@ paths:
             type: boolean
             default: false
           description: When true, includes accounts from over-limit profiles.
+        - name: page
+          in: query
+          schema: { type: integer, minimum: 1 }
+          description: Page number (1-based). When provided with limit, enables server-side pagination. Omit for all accounts.
+        - name: limit
+          in: query
+          schema: { type: integer, minimum: 1, maximum: 100 }
+          description: Page size. Required alongside page for pagination.
       responses:
         '200':
-          description: Accounts
+          description: Accounts (with optional pagination)
           content:
             application/json:
               schema:
@@ -5791,6 +5801,9 @@ paths:
                   hasAnalyticsAccess:
                     type: boolean
                     description: Whether user has analytics add-on access
+                  pagination:
+                    description: Only present when page/limit params are provided
+                    $ref: '#/components/schemas/Pagination'
               examples:
                 example:
                   value:

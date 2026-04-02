@@ -59,7 +59,8 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'accounts' => '\Late\Model\SocialAccount[]',
-        'has_analytics_access' => 'bool'
+        'has_analytics_access' => 'bool',
+        'pagination' => '\Late\Model\Pagination'
     ];
 
     /**
@@ -71,7 +72,8 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'accounts' => null,
-        'has_analytics_access' => null
+        'has_analytics_access' => null,
+        'pagination' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPINullables = [
         'accounts' => false,
-        'has_analytics_access' => false
+        'has_analytics_access' => false,
+        'pagination' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $attributeMap = [
         'accounts' => 'accounts',
-        'has_analytics_access' => 'hasAnalyticsAccess'
+        'has_analytics_access' => 'hasAnalyticsAccess',
+        'pagination' => 'pagination'
     ];
 
     /**
@@ -181,7 +185,8 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'accounts' => 'setAccounts',
-        'has_analytics_access' => 'setHasAnalyticsAccess'
+        'has_analytics_access' => 'setHasAnalyticsAccess',
+        'pagination' => 'setPagination'
     ];
 
     /**
@@ -191,7 +196,8 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'accounts' => 'getAccounts',
-        'has_analytics_access' => 'getHasAnalyticsAccess'
+        'has_analytics_access' => 'getHasAnalyticsAccess',
+        'pagination' => 'getPagination'
     ];
 
     /**
@@ -253,6 +259,7 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->setIfExists('accounts', $data ?? [], null);
         $this->setIfExists('has_analytics_access', $data ?? [], null);
+        $this->setIfExists('pagination', $data ?? [], null);
     }
 
     /**
@@ -347,6 +354,33 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable has_analytics_access cannot be null');
         }
         $this->container['has_analytics_access'] = $has_analytics_access;
+
+        return $this;
+    }
+
+    /**
+     * Gets pagination
+     *
+     * @return \Late\Model\Pagination|null
+     */
+    public function getPagination()
+    {
+        return $this->container['pagination'];
+    }
+
+    /**
+     * Sets pagination
+     *
+     * @param \Late\Model\Pagination|null $pagination Only present when page/limit params are provided
+     *
+     * @return self
+     */
+    public function setPagination($pagination)
+    {
+        if (is_null($pagination)) {
+            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        }
+        $this->container['pagination'] = $pagination;
 
         return $this;
     }
