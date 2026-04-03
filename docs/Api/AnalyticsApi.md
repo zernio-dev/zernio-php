@@ -19,6 +19,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getPostTimeline()**](AnalyticsApi.md#getPostTimeline) | **GET** /v1/analytics/post-timeline | Get post analytics timeline |
 | [**getPostingFrequency()**](AnalyticsApi.md#getPostingFrequency) | **GET** /v1/analytics/posting-frequency | Get posting frequency vs engagement |
 | [**getYouTubeDailyViews()**](AnalyticsApi.md#getYouTubeDailyViews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views |
+| [**getYouTubeDemographics()**](AnalyticsApi.md#getYouTubeDemographics) | **GET** /v1/analytics/youtube/demographics | Get YouTube audience demographics |
 
 
 ## `getAnalytics()`
@@ -879,6 +880,72 @@ try {
 ### Return type
 
 [**\Late\Model\YouTubeDailyViewsResponse**](../Model/YouTubeDailyViewsResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getYouTubeDemographics()`
+
+```php
+getYouTubeDemographics($account_id, $breakdown, $start_date, $end_date): \Late\Model\YouTubeDemographicsResponse
+```
+
+Get YouTube audience demographics
+
+Returns audience demographic insights for a YouTube channel, broken down by age, gender, and/or country. Age and gender values are viewer percentages (0-100). Country values are view counts. Data is based on signed-in viewers only, with a 2-3 day delay. Requires the Analytics add-on.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | The Zernio SocialAccount ID for the YouTube account
+$breakdown = 'breakdown_example'; // string | Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted.
+$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date in YYYY-MM-DD format. Defaults to 90 days ago.
+$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency).
+
+try {
+    $result = $apiInstance->getYouTubeDemographics($account_id, $breakdown, $start_date, $end_date);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getYouTubeDemographics: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| The Zernio SocialAccount ID for the YouTube account | |
+| **breakdown** | **string**| Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. | [optional] |
+| **start_date** | **\DateTime**| Start date in YYYY-MM-DD format. Defaults to 90 days ago. | [optional] |
+| **end_date** | **\DateTime**| End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). | [optional] |
+
+### Return type
+
+[**\Late\Model\YouTubeDemographicsResponse**](../Model/YouTubeDemographicsResponse.md)
 
 ### Authorization
 
