@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdatePostRequest
+ * EditPostRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * UpdatePostRequest Class Doc Comment
+ * EditPostRequest Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class EditPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updatePost_request';
+    protected static $openAPIModelName = 'editPost_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,8 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'content' => 'string',
-        'scheduled_for' => '\DateTime',
-        'tiktok_settings' => '\Late\Model\TikTokPlatformData',
-        'facebook_settings' => '\Late\Model\FacebookPlatformData',
-        'recycling' => '\Late\Model\RecyclingConfig'
+        'platform' => 'string',
+        'content' => 'string'
     ];
 
     /**
@@ -73,11 +70,8 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'content' => null,
-        'scheduled_for' => 'date-time',
-        'tiktok_settings' => null,
-        'facebook_settings' => null,
-        'recycling' => null
+        'platform' => null,
+        'content' => null
     ];
 
     /**
@@ -86,11 +80,8 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'content' => false,
-        'scheduled_for' => false,
-        'tiktok_settings' => false,
-        'facebook_settings' => false,
-        'recycling' => false
+        'platform' => false,
+        'content' => false
     ];
 
     /**
@@ -179,11 +170,8 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'content' => 'content',
-        'scheduled_for' => 'scheduledFor',
-        'tiktok_settings' => 'tiktokSettings',
-        'facebook_settings' => 'facebookSettings',
-        'recycling' => 'recycling'
+        'platform' => 'platform',
+        'content' => 'content'
     ];
 
     /**
@@ -192,11 +180,8 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'content' => 'setContent',
-        'scheduled_for' => 'setScheduledFor',
-        'tiktok_settings' => 'setTiktokSettings',
-        'facebook_settings' => 'setFacebookSettings',
-        'recycling' => 'setRecycling'
+        'platform' => 'setPlatform',
+        'content' => 'setContent'
     ];
 
     /**
@@ -205,11 +190,8 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'content' => 'getContent',
-        'scheduled_for' => 'getScheduledFor',
-        'tiktok_settings' => 'getTiktokSettings',
-        'facebook_settings' => 'getFacebookSettings',
-        'recycling' => 'getRecycling'
+        'platform' => 'getPlatform',
+        'content' => 'getContent'
     ];
 
     /**
@@ -253,6 +235,19 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$openAPIModelName;
     }
 
+    public const PLATFORM_TWITTER = 'twitter';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlatformAllowableValues()
+    {
+        return [
+            self::PLATFORM_TWITTER,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -269,11 +264,8 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('content', $data ?? [], null);
-        $this->setIfExists('scheduled_for', $data ?? [], null);
-        $this->setIfExists('tiktok_settings', $data ?? [], null);
-        $this->setIfExists('facebook_settings', $data ?? [], null);
-        $this->setIfExists('recycling', $data ?? [], null);
     }
 
     /**
@@ -303,6 +295,21 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['content'] === null) {
+            $invalidProperties[] = "'content' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -319,9 +326,46 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
+     * Gets platform
+     *
+     * @return string
+     */
+    public function getPlatform()
+    {
+        return $this->container['platform'];
+    }
+
+    /**
+     * Sets platform
+     *
+     * @param string $platform The platform to edit the post on. Currently only twitter is supported.
+     *
+     * @return self
+     */
+    public function setPlatform($platform)
+    {
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
      * Gets content
      *
-     * @return string|null
+     * @return string
      */
     public function getContent()
     {
@@ -331,7 +375,7 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets content
      *
-     * @param string|null $content content
+     * @param string $content The new tweet text content
      *
      * @return self
      */
@@ -341,114 +385,6 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable content cannot be null');
         }
         $this->container['content'] = $content;
-
-        return $this;
-    }
-
-    /**
-     * Gets scheduled_for
-     *
-     * @return \DateTime|null
-     */
-    public function getScheduledFor()
-    {
-        return $this->container['scheduled_for'];
-    }
-
-    /**
-     * Sets scheduled_for
-     *
-     * @param \DateTime|null $scheduled_for scheduled_for
-     *
-     * @return self
-     */
-    public function setScheduledFor($scheduled_for)
-    {
-        if (is_null($scheduled_for)) {
-            throw new \InvalidArgumentException('non-nullable scheduled_for cannot be null');
-        }
-        $this->container['scheduled_for'] = $scheduled_for;
-
-        return $this;
-    }
-
-    /**
-     * Gets tiktok_settings
-     *
-     * @return \Late\Model\TikTokPlatformData|null
-     */
-    public function getTiktokSettings()
-    {
-        return $this->container['tiktok_settings'];
-    }
-
-    /**
-     * Sets tiktok_settings
-     *
-     * @param \Late\Model\TikTokPlatformData|null $tiktok_settings Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
-     *
-     * @return self
-     */
-    public function setTiktokSettings($tiktok_settings)
-    {
-        if (is_null($tiktok_settings)) {
-            throw new \InvalidArgumentException('non-nullable tiktok_settings cannot be null');
-        }
-        $this->container['tiktok_settings'] = $tiktok_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets facebook_settings
-     *
-     * @return \Late\Model\FacebookPlatformData|null
-     */
-    public function getFacebookSettings()
-    {
-        return $this->container['facebook_settings'];
-    }
-
-    /**
-     * Sets facebook_settings
-     *
-     * @param \Late\Model\FacebookPlatformData|null $facebook_settings Root-level Facebook settings applied to all Facebook platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
-     *
-     * @return self
-     */
-    public function setFacebookSettings($facebook_settings)
-    {
-        if (is_null($facebook_settings)) {
-            throw new \InvalidArgumentException('non-nullable facebook_settings cannot be null');
-        }
-        $this->container['facebook_settings'] = $facebook_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets recycling
-     *
-     * @return \Late\Model\RecyclingConfig|null
-     */
-    public function getRecycling()
-    {
-        return $this->container['recycling'];
-    }
-
-    /**
-     * Sets recycling
-     *
-     * @param \Late\Model\RecyclingConfig|null $recycling recycling
-     *
-     * @return self
-     */
-    public function setRecycling($recycling)
-    {
-        if (is_null($recycling)) {
-            throw new \InvalidArgumentException('non-nullable recycling cannot be null');
-        }
-        $this->container['recycling'] = $recycling;
 
         return $this;
     }

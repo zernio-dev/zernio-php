@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdatePostRequest
+ * CreateInboxConversationRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * UpdatePostRequest Class Doc Comment
+ * CreateInboxConversationRequest Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updatePost_request';
+    protected static $openAPIModelName = 'createInboxConversation_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'content' => 'string',
-        'scheduled_for' => '\DateTime',
-        'tiktok_settings' => '\Late\Model\TikTokPlatformData',
-        'facebook_settings' => '\Late\Model\FacebookPlatformData',
-        'recycling' => '\Late\Model\RecyclingConfig'
+        'account_id' => 'string',
+        'participant_id' => 'string',
+        'participant_username' => 'string',
+        'message' => 'string',
+        'skip_dm_check' => 'bool'
     ];
 
     /**
@@ -73,11 +73,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'content' => null,
-        'scheduled_for' => 'date-time',
-        'tiktok_settings' => null,
-        'facebook_settings' => null,
-        'recycling' => null
+        'account_id' => null,
+        'participant_id' => null,
+        'participant_username' => null,
+        'message' => null,
+        'skip_dm_check' => null
     ];
 
     /**
@@ -86,11 +86,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'content' => false,
-        'scheduled_for' => false,
-        'tiktok_settings' => false,
-        'facebook_settings' => false,
-        'recycling' => false
+        'account_id' => false,
+        'participant_id' => false,
+        'participant_username' => false,
+        'message' => false,
+        'skip_dm_check' => false
     ];
 
     /**
@@ -179,11 +179,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'content' => 'content',
-        'scheduled_for' => 'scheduledFor',
-        'tiktok_settings' => 'tiktokSettings',
-        'facebook_settings' => 'facebookSettings',
-        'recycling' => 'recycling'
+        'account_id' => 'accountId',
+        'participant_id' => 'participantId',
+        'participant_username' => 'participantUsername',
+        'message' => 'message',
+        'skip_dm_check' => 'skipDmCheck'
     ];
 
     /**
@@ -192,11 +192,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'content' => 'setContent',
-        'scheduled_for' => 'setScheduledFor',
-        'tiktok_settings' => 'setTiktokSettings',
-        'facebook_settings' => 'setFacebookSettings',
-        'recycling' => 'setRecycling'
+        'account_id' => 'setAccountId',
+        'participant_id' => 'setParticipantId',
+        'participant_username' => 'setParticipantUsername',
+        'message' => 'setMessage',
+        'skip_dm_check' => 'setSkipDmCheck'
     ];
 
     /**
@@ -205,11 +205,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'content' => 'getContent',
-        'scheduled_for' => 'getScheduledFor',
-        'tiktok_settings' => 'getTiktokSettings',
-        'facebook_settings' => 'getFacebookSettings',
-        'recycling' => 'getRecycling'
+        'account_id' => 'getAccountId',
+        'participant_id' => 'getParticipantId',
+        'participant_username' => 'getParticipantUsername',
+        'message' => 'getMessage',
+        'skip_dm_check' => 'getSkipDmCheck'
     ];
 
     /**
@@ -269,11 +269,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('content', $data ?? [], null);
-        $this->setIfExists('scheduled_for', $data ?? [], null);
-        $this->setIfExists('tiktok_settings', $data ?? [], null);
-        $this->setIfExists('facebook_settings', $data ?? [], null);
-        $this->setIfExists('recycling', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('participant_id', $data ?? [], null);
+        $this->setIfExists('participant_username', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('skip_dm_check', $data ?? [], false);
     }
 
     /**
@@ -303,6 +303,9 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -319,136 +322,136 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets content
+     * Gets account_id
+     *
+     * @return string
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string $account_id The social account ID to send from
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets participant_id
      *
      * @return string|null
      */
-    public function getContent()
+    public function getParticipantId()
     {
-        return $this->container['content'];
+        return $this->container['participant_id'];
     }
 
     /**
-     * Sets content
+     * Sets participant_id
      *
-     * @param string|null $content content
+     * @param string|null $participant_id Twitter numeric user ID of the recipient. Provide either this or `participantUsername`.
      *
      * @return self
      */
-    public function setContent($content)
+    public function setParticipantId($participant_id)
     {
-        if (is_null($content)) {
-            throw new \InvalidArgumentException('non-nullable content cannot be null');
+        if (is_null($participant_id)) {
+            throw new \InvalidArgumentException('non-nullable participant_id cannot be null');
         }
-        $this->container['content'] = $content;
+        $this->container['participant_id'] = $participant_id;
 
         return $this;
     }
 
     /**
-     * Gets scheduled_for
+     * Gets participant_username
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getScheduledFor()
+    public function getParticipantUsername()
     {
-        return $this->container['scheduled_for'];
+        return $this->container['participant_username'];
     }
 
     /**
-     * Sets scheduled_for
+     * Sets participant_username
      *
-     * @param \DateTime|null $scheduled_for scheduled_for
+     * @param string|null $participant_username Twitter username (with or without @) of the recipient. Resolved to a user ID via lookup. Provide either this or `participantId`.
      *
      * @return self
      */
-    public function setScheduledFor($scheduled_for)
+    public function setParticipantUsername($participant_username)
     {
-        if (is_null($scheduled_for)) {
-            throw new \InvalidArgumentException('non-nullable scheduled_for cannot be null');
+        if (is_null($participant_username)) {
+            throw new \InvalidArgumentException('non-nullable participant_username cannot be null');
         }
-        $this->container['scheduled_for'] = $scheduled_for;
+        $this->container['participant_username'] = $participant_username;
 
         return $this;
     }
 
     /**
-     * Gets tiktok_settings
+     * Gets message
      *
-     * @return \Late\Model\TikTokPlatformData|null
+     * @return string|null
      */
-    public function getTiktokSettings()
+    public function getMessage()
     {
-        return $this->container['tiktok_settings'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets tiktok_settings
+     * Sets message
      *
-     * @param \Late\Model\TikTokPlatformData|null $tiktok_settings Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
+     * @param string|null $message Text content of the message. At least one of `message` or attachment is required.
      *
      * @return self
      */
-    public function setTiktokSettings($tiktok_settings)
+    public function setMessage($message)
     {
-        if (is_null($tiktok_settings)) {
-            throw new \InvalidArgumentException('non-nullable tiktok_settings cannot be null');
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
-        $this->container['tiktok_settings'] = $tiktok_settings;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets facebook_settings
+     * Gets skip_dm_check
      *
-     * @return \Late\Model\FacebookPlatformData|null
+     * @return bool|null
      */
-    public function getFacebookSettings()
+    public function getSkipDmCheck()
     {
-        return $this->container['facebook_settings'];
+        return $this->container['skip_dm_check'];
     }
 
     /**
-     * Sets facebook_settings
+     * Sets skip_dm_check
      *
-     * @param \Late\Model\FacebookPlatformData|null $facebook_settings Root-level Facebook settings applied to all Facebook platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
+     * @param bool|null $skip_dm_check Skip the `receives_your_dm` eligibility check before sending. Use if you have already verified the recipient accepts DMs.
      *
      * @return self
      */
-    public function setFacebookSettings($facebook_settings)
+    public function setSkipDmCheck($skip_dm_check)
     {
-        if (is_null($facebook_settings)) {
-            throw new \InvalidArgumentException('non-nullable facebook_settings cannot be null');
+        if (is_null($skip_dm_check)) {
+            throw new \InvalidArgumentException('non-nullable skip_dm_check cannot be null');
         }
-        $this->container['facebook_settings'] = $facebook_settings;
-
-        return $this;
-    }
-
-    /**
-     * Gets recycling
-     *
-     * @return \Late\Model\RecyclingConfig|null
-     */
-    public function getRecycling()
-    {
-        return $this->container['recycling'];
-    }
-
-    /**
-     * Sets recycling
-     *
-     * @param \Late\Model\RecyclingConfig|null $recycling recycling
-     *
-     * @return self
-     */
-    public function setRecycling($recycling)
-    {
-        if (is_null($recycling)) {
-            throw new \InvalidArgumentException('non-nullable recycling cannot be null');
-        }
-        $this->container['recycling'] = $recycling;
+        $this->container['skip_dm_check'] = $skip_dm_check;
 
         return $this;
     }

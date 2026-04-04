@@ -72,6 +72,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'crossposting_enabled' => 'bool',
         'metadata' => 'array<string,mixed>',
         'tiktok_settings' => '\Late\Model\TikTokPlatformData',
+        'facebook_settings' => '\Late\Model\FacebookPlatformData',
         'recycling' => '\Late\Model\RecyclingConfig',
         'queued_from_profile' => 'string',
         'queue_id' => 'string'
@@ -99,6 +100,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'crossposting_enabled' => null,
         'metadata' => null,
         'tiktok_settings' => null,
+        'facebook_settings' => null,
         'recycling' => null,
         'queued_from_profile' => null,
         'queue_id' => null
@@ -124,6 +126,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'crossposting_enabled' => false,
         'metadata' => false,
         'tiktok_settings' => false,
+        'facebook_settings' => false,
         'recycling' => false,
         'queued_from_profile' => false,
         'queue_id' => false
@@ -229,6 +232,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'crossposting_enabled' => 'crosspostingEnabled',
         'metadata' => 'metadata',
         'tiktok_settings' => 'tiktokSettings',
+        'facebook_settings' => 'facebookSettings',
         'recycling' => 'recycling',
         'queued_from_profile' => 'queuedFromProfile',
         'queue_id' => 'queueId'
@@ -254,6 +258,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'crossposting_enabled' => 'setCrosspostingEnabled',
         'metadata' => 'setMetadata',
         'tiktok_settings' => 'setTiktokSettings',
+        'facebook_settings' => 'setFacebookSettings',
         'recycling' => 'setRecycling',
         'queued_from_profile' => 'setQueuedFromProfile',
         'queue_id' => 'setQueueId'
@@ -279,6 +284,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'crossposting_enabled' => 'getCrosspostingEnabled',
         'metadata' => 'getMetadata',
         'tiktok_settings' => 'getTiktokSettings',
+        'facebook_settings' => 'getFacebookSettings',
         'recycling' => 'getRecycling',
         'queued_from_profile' => 'getQueuedFromProfile',
         'queue_id' => 'getQueueId'
@@ -355,6 +361,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         $this->setIfExists('crossposting_enabled', $data ?? [], true);
         $this->setIfExists('metadata', $data ?? [], null);
         $this->setIfExists('tiktok_settings', $data ?? [], null);
+        $this->setIfExists('facebook_settings', $data ?? [], null);
         $this->setIfExists('recycling', $data ?? [], null);
         $this->setIfExists('queued_from_profile', $data ?? [], null);
         $this->setIfExists('queue_id', $data ?? [], null);
@@ -776,6 +783,33 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable tiktok_settings cannot be null');
         }
         $this->container['tiktok_settings'] = $tiktok_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets facebook_settings
+     *
+     * @return \Late\Model\FacebookPlatformData|null
+     */
+    public function getFacebookSettings()
+    {
+        return $this->container['facebook_settings'];
+    }
+
+    /**
+     * Sets facebook_settings
+     *
+     * @param \Late\Model\FacebookPlatformData|null $facebook_settings Root-level Facebook settings applied to all Facebook platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
+     *
+     * @return self
+     */
+    public function setFacebookSettings($facebook_settings)
+    {
+        if (is_null($facebook_settings)) {
+            throw new \InvalidArgumentException('non-nullable facebook_settings cannot be null');
+        }
+        $this->container['facebook_settings'] = $facebook_settings;
 
         return $this;
     }

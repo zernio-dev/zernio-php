@@ -63,7 +63,9 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_settings' => 'string',
         'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
         'poll' => '\Late\Model\TwitterPlatformDataPoll',
+        'long_video' => 'bool',
         'topic_tag' => 'string',
+        'draft' => 'bool',
         'content_type' => 'string',
         'title' => 'string',
         'first_comment' => 'string',
@@ -91,7 +93,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'location_id' => 'string',
         'language_code' => 'string',
         'call_to_action' => '\Late\Model\GoogleBusinessPlatformDataCallToAction',
-        'draft' => 'bool',
         'privacy_level' => 'string',
         'allow_comment' => 'bool',
         'allow_duet' => 'bool',
@@ -130,7 +131,9 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_settings' => null,
         'thread_items' => null,
         'poll' => null,
+        'long_video' => null,
         'topic_tag' => null,
+        'draft' => null,
         'content_type' => null,
         'title' => null,
         'first_comment' => null,
@@ -158,7 +161,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'location_id' => null,
         'language_code' => null,
         'call_to_action' => null,
-        'draft' => null,
         'privacy_level' => null,
         'allow_comment' => null,
         'allow_duet' => null,
@@ -195,7 +197,9 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_settings' => false,
         'thread_items' => false,
         'poll' => false,
+        'long_video' => false,
         'topic_tag' => false,
+        'draft' => false,
         'content_type' => false,
         'title' => false,
         'first_comment' => false,
@@ -223,7 +227,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'location_id' => false,
         'language_code' => false,
         'call_to_action' => false,
-        'draft' => false,
         'privacy_level' => false,
         'allow_comment' => false,
         'allow_duet' => false,
@@ -340,7 +343,9 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_settings' => 'replySettings',
         'thread_items' => 'threadItems',
         'poll' => 'poll',
+        'long_video' => 'longVideo',
         'topic_tag' => 'topic_tag',
+        'draft' => 'draft',
         'content_type' => 'contentType',
         'title' => 'title',
         'first_comment' => 'firstComment',
@@ -368,7 +373,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'location_id' => 'locationId',
         'language_code' => 'languageCode',
         'call_to_action' => 'callToAction',
-        'draft' => 'draft',
         'privacy_level' => 'privacyLevel',
         'allow_comment' => 'allowComment',
         'allow_duet' => 'allowDuet',
@@ -405,7 +409,9 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_settings' => 'setReplySettings',
         'thread_items' => 'setThreadItems',
         'poll' => 'setPoll',
+        'long_video' => 'setLongVideo',
         'topic_tag' => 'setTopicTag',
+        'draft' => 'setDraft',
         'content_type' => 'setContentType',
         'title' => 'setTitle',
         'first_comment' => 'setFirstComment',
@@ -433,7 +439,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'location_id' => 'setLocationId',
         'language_code' => 'setLanguageCode',
         'call_to_action' => 'setCallToAction',
-        'draft' => 'setDraft',
         'privacy_level' => 'setPrivacyLevel',
         'allow_comment' => 'setAllowComment',
         'allow_duet' => 'setAllowDuet',
@@ -470,7 +475,9 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_settings' => 'getReplySettings',
         'thread_items' => 'getThreadItems',
         'poll' => 'getPoll',
+        'long_video' => 'getLongVideo',
         'topic_tag' => 'getTopicTag',
+        'draft' => 'getDraft',
         'content_type' => 'getContentType',
         'title' => 'getTitle',
         'first_comment' => 'getFirstComment',
@@ -498,7 +505,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'location_id' => 'getLocationId',
         'language_code' => 'getLanguageCode',
         'call_to_action' => 'getCallToAction',
-        'draft' => 'getDraft',
         'privacy_level' => 'getPrivacyLevel',
         'allow_comment' => 'getAllowComment',
         'allow_duet' => 'getAllowDuet',
@@ -688,7 +694,9 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         $this->setIfExists('reply_settings', $data ?? [], null);
         $this->setIfExists('thread_items', $data ?? [], null);
         $this->setIfExists('poll', $data ?? [], null);
+        $this->setIfExists('long_video', $data ?? [], false);
         $this->setIfExists('topic_tag', $data ?? [], null);
+        $this->setIfExists('draft', $data ?? [], null);
         $this->setIfExists('content_type', $data ?? [], 'story');
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('first_comment', $data ?? [], null);
@@ -716,7 +724,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         $this->setIfExists('location_id', $data ?? [], null);
         $this->setIfExists('language_code', $data ?? [], null);
         $this->setIfExists('call_to_action', $data ?? [], null);
-        $this->setIfExists('draft', $data ?? [], null);
         $this->setIfExists('privacy_level', $data ?? [], null);
         $this->setIfExists('allow_comment', $data ?? [], null);
         $this->setIfExists('allow_duet', $data ?? [], null);
@@ -990,6 +997,33 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     }
 
     /**
+     * Gets long_video
+     *
+     * @return bool|null
+     */
+    public function getLongVideo()
+    {
+        return $this->container['long_video'];
+    }
+
+    /**
+     * Sets long_video
+     *
+     * @param bool|null $long_video Enable long video uploads (over 140 seconds) using amplify_video media category. Requires the connected X account to have an active X Premium subscription. When true, videos are uploaded with the amplify_video category which supports longer durations (up to 10 minutes via API). When false or omitted, the standard tweet_video category is used (140 second limit). Note that not all Premium accounts have API long-video access, as X may require separate allowlisting.
+     *
+     * @return self
+     */
+    public function setLongVideo($long_video)
+    {
+        if (is_null($long_video)) {
+            throw new \InvalidArgumentException('non-nullable long_video cannot be null');
+        }
+        $this->container['long_video'] = $long_video;
+
+        return $this;
+    }
+
+    /**
      * Gets topic_tag
      *
      * @return string|null
@@ -1019,6 +1053,33 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         }
 
         $this->container['topic_tag'] = $topic_tag;
+
+        return $this;
+    }
+
+    /**
+     * Gets draft
+     *
+     * @return bool|null
+     */
+    public function getDraft()
+    {
+        return $this->container['draft'];
+    }
+
+    /**
+     * Sets draft
+     *
+     * @param bool|null $draft When true, sends the post to the TikTok Creator Inbox as a draft instead of publishing immediately.
+     *
+     * @return self
+     */
+    public function setDraft($draft)
+    {
+        if (is_null($draft)) {
+            throw new \InvalidArgumentException('non-nullable draft cannot be null');
+        }
+        $this->container['draft'] = $draft;
 
         return $this;
     }
@@ -1781,33 +1842,6 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable call_to_action cannot be null');
         }
         $this->container['call_to_action'] = $call_to_action;
-
-        return $this;
-    }
-
-    /**
-     * Gets draft
-     *
-     * @return bool|null
-     */
-    public function getDraft()
-    {
-        return $this->container['draft'];
-    }
-
-    /**
-     * Sets draft
-     *
-     * @param bool|null $draft When true, sends the post to the TikTok Creator Inbox as a draft instead of publishing immediately.
-     *
-     * @return self
-     */
-    public function setDraft($draft)
-    {
-        if (is_null($draft)) {
-            throw new \InvalidArgumentException('non-nullable draft cannot be null');
-        }
-        $this->container['draft'] = $draft;
 
         return $this;
     }

@@ -9,6 +9,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**bulkUploadPosts()**](PostsApi.md#bulkUploadPosts) | **POST** /v1/posts/bulk-upload | Bulk upload from CSV |
 | [**createPost()**](PostsApi.md#createPost) | **POST** /v1/posts | Create post |
 | [**deletePost()**](PostsApi.md#deletePost) | **DELETE** /v1/posts/{postId} | Delete post |
+| [**editPost()**](PostsApi.md#editPost) | **POST** /v1/posts/{postId}/edit | Edit published post |
 | [**getPost()**](PostsApi.md#getPost) | **GET** /v1/posts/{postId} | Get post |
 | [**listPosts()**](PostsApi.md#listPosts) | **GET** /v1/posts | List posts |
 | [**retryPost()**](PostsApi.md#retryPost) | **POST** /v1/posts/{postId}/retry | Retry failed post |
@@ -106,7 +107,7 @@ $apiInstance = new Late\Api\PostsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_post_request = {"content":"Check out our evergreen guide!","platforms":[{"platform":"twitter","accountId":"64e1f0a9e2b5af0012ab34cd"}],"scheduledFor":"2025-06-01T10:00:00Z","recycling":{"gap":2,"gapFreq":"week","expireCount":6,"contentVariations":["Check out our evergreen guide!","Don't miss our essential guide!","Our most popular guide, updated!"]}}; // \Late\Model\CreatePostRequest
+$create_post_request = {"content":"Draft post for review before publishing","platforms":[{"platform":"facebook","accountId":"64e1f0a9e2b5af0012ab34cd"}],"publishNow":true,"facebookSettings":{"draft":true}}; // \Late\Model\CreatePostRequest
 
 try {
     $result = $apiInstance->createPost($create_post_request);
@@ -193,6 +194,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `editPost()`
+
+```php
+editPost($post_id, $edit_post_request): \Late\Model\EditPost200Response
+```
+
+Edit published post
+
+Edit a published post on a social media platform. Currently only supported for X (Twitter).  **Requirements:** - Connected X account must have an active X Premium subscription - Must be within 1 hour of original publish time - Maximum 5 edits per tweet (enforced by X) - Text-only edits (media changes are not supported)  The post record in Zernio is updated with the new content and edit history.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\PostsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$post_id = 'post_id_example'; // string
+$edit_post_request = {"platform":"twitter","content":"Updated tweet text with corrected information"}; // \Late\Model\EditPostRequest
+
+try {
+    $result = $apiInstance->editPost($post_id, $edit_post_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling PostsApi->editPost: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_id** | **string**|  | |
+| **edit_post_request** | [**\Late\Model\EditPostRequest**](../Model/EditPostRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\EditPost200Response**](../Model/EditPost200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

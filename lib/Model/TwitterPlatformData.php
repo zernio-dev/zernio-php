@@ -61,7 +61,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'reply_to_tweet_id' => 'string',
         'reply_settings' => 'string',
         'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
-        'poll' => '\Late\Model\TwitterPlatformDataPoll'
+        'poll' => '\Late\Model\TwitterPlatformDataPoll',
+        'long_video' => 'bool'
     ];
 
     /**
@@ -75,7 +76,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'reply_to_tweet_id' => null,
         'reply_settings' => null,
         'thread_items' => null,
-        'poll' => null
+        'poll' => null,
+        'long_video' => null
     ];
 
     /**
@@ -87,7 +89,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'reply_to_tweet_id' => false,
         'reply_settings' => false,
         'thread_items' => false,
-        'poll' => false
+        'poll' => false,
+        'long_video' => false
     ];
 
     /**
@@ -179,7 +182,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'reply_to_tweet_id' => 'replyToTweetId',
         'reply_settings' => 'replySettings',
         'thread_items' => 'threadItems',
-        'poll' => 'poll'
+        'poll' => 'poll',
+        'long_video' => 'longVideo'
     ];
 
     /**
@@ -191,7 +195,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'reply_to_tweet_id' => 'setReplyToTweetId',
         'reply_settings' => 'setReplySettings',
         'thread_items' => 'setThreadItems',
-        'poll' => 'setPoll'
+        'poll' => 'setPoll',
+        'long_video' => 'setLongVideo'
     ];
 
     /**
@@ -203,7 +208,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'reply_to_tweet_id' => 'getReplyToTweetId',
         'reply_settings' => 'getReplySettings',
         'thread_items' => 'getThreadItems',
-        'poll' => 'getPoll'
+        'poll' => 'getPoll',
+        'long_video' => 'getLongVideo'
     ];
 
     /**
@@ -286,6 +292,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('reply_settings', $data ?? [], null);
         $this->setIfExists('thread_items', $data ?? [], null);
         $this->setIfExists('poll', $data ?? [], null);
+        $this->setIfExists('long_video', $data ?? [], false);
     }
 
     /**
@@ -453,6 +460,33 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable poll cannot be null');
         }
         $this->container['poll'] = $poll;
+
+        return $this;
+    }
+
+    /**
+     * Gets long_video
+     *
+     * @return bool|null
+     */
+    public function getLongVideo()
+    {
+        return $this->container['long_video'];
+    }
+
+    /**
+     * Sets long_video
+     *
+     * @param bool|null $long_video Enable long video uploads (over 140 seconds) using amplify_video media category. Requires the connected X account to have an active X Premium subscription. When true, videos are uploaded with the amplify_video category which supports longer durations (up to 10 minutes via API). When false or omitted, the standard tweet_video category is used (140 second limit). Note that not all Premium accounts have API long-video access, as X may require separate allowlisting.
+     *
+     * @return self
+     */
+    public function setLongVideo($long_video)
+    {
+        if (is_null($long_video)) {
+            throw new \InvalidArgumentException('non-nullable long_video cannot be null');
+        }
+        $this->container['long_video'] = $long_video;
 
         return $this;
     }

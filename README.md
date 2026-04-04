@@ -202,6 +202,7 @@ Class | Method | HTTP request | Description
 *LogsApi* | [**listPostsLogs**](docs/Api/LogsApi.md#listpostslogs) | **GET** /v1/posts/logs | List publishing logs
 *MediaApi* | [**getMediaPresignedUrl**](docs/Api/MediaApi.md#getmediapresignedurl) | **POST** /v1/media/presign | Get presigned upload URL
 *MessagesApi* | [**addMessageReaction**](docs/Api/MessagesApi.md#addmessagereaction) | **POST** /v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions | Add reaction
+*MessagesApi* | [**createInboxConversation**](docs/Api/MessagesApi.md#createinboxconversation) | **POST** /v1/inbox/conversations | Create conversation
 *MessagesApi* | [**deleteInboxMessage**](docs/Api/MessagesApi.md#deleteinboxmessage) | **DELETE** /v1/inbox/conversations/{conversationId}/messages/{messageId} | Delete message
 *MessagesApi* | [**editInboxMessage**](docs/Api/MessagesApi.md#editinboxmessage) | **PATCH** /v1/inbox/conversations/{conversationId}/messages/{messageId} | Edit message
 *MessagesApi* | [**getInboxConversation**](docs/Api/MessagesApi.md#getinboxconversation) | **GET** /v1/inbox/conversations/{conversationId} | Get conversation
@@ -215,6 +216,7 @@ Class | Method | HTTP request | Description
 *PostsApi* | [**bulkUploadPosts**](docs/Api/PostsApi.md#bulkuploadposts) | **POST** /v1/posts/bulk-upload | Bulk upload from CSV
 *PostsApi* | [**createPost**](docs/Api/PostsApi.md#createpost) | **POST** /v1/posts | Create post
 *PostsApi* | [**deletePost**](docs/Api/PostsApi.md#deletepost) | **DELETE** /v1/posts/{postId} | Delete post
+*PostsApi* | [**editPost**](docs/Api/PostsApi.md#editpost) | **POST** /v1/posts/{postId}/edit | Edit published post
 *PostsApi* | [**getPost**](docs/Api/PostsApi.md#getpost) | **GET** /v1/posts/{postId} | Get post
 *PostsApi* | [**listPosts**](docs/Api/PostsApi.md#listposts) | **GET** /v1/posts | List posts
 *PostsApi* | [**retryPost**](docs/Api/PostsApi.md#retrypost) | **POST** /v1/posts/{postId}/retry | Retry failed post
@@ -419,6 +421,11 @@ Class | Method | HTTP request | Description
 - [CreateGoogleBusinessMediaRequest](docs/Model/CreateGoogleBusinessMediaRequest.md)
 - [CreateGoogleBusinessPlaceAction200Response](docs/Model/CreateGoogleBusinessPlaceAction200Response.md)
 - [CreateGoogleBusinessPlaceActionRequest](docs/Model/CreateGoogleBusinessPlaceActionRequest.md)
+- [CreateInboxConversation201Response](docs/Model/CreateInboxConversation201Response.md)
+- [CreateInboxConversation201ResponseData](docs/Model/CreateInboxConversation201ResponseData.md)
+- [CreateInboxConversation400Response](docs/Model/CreateInboxConversation400Response.md)
+- [CreateInboxConversation422Response](docs/Model/CreateInboxConversation422Response.md)
+- [CreateInboxConversationRequest](docs/Model/CreateInboxConversationRequest.md)
 - [CreateInviteToken201Response](docs/Model/CreateInviteToken201Response.md)
 - [CreateInviteTokenRequest](docs/Model/CreateInviteTokenRequest.md)
 - [CreatePost409Response](docs/Model/CreatePost409Response.md)
@@ -471,6 +478,8 @@ Class | Method | HTTP request | Description
 - [EditInboxMessageRequest](docs/Model/EditInboxMessageRequest.md)
 - [EditInboxMessageRequestReplyMarkup](docs/Model/EditInboxMessageRequestReplyMarkup.md)
 - [EditInboxMessageRequestReplyMarkupKeyboardInnerInner](docs/Model/EditInboxMessageRequestReplyMarkupKeyboardInnerInner.md)
+- [EditPost200Response](docs/Model/EditPost200Response.md)
+- [EditPostRequest](docs/Model/EditPostRequest.md)
 - [EnrollContacts200Response](docs/Model/EnrollContacts200Response.md)
 - [EnrollContactsRequest](docs/Model/EnrollContactsRequest.md)
 - [ErrorResponse](docs/Model/ErrorResponse.md)

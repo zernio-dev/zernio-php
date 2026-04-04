@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdatePostRequest
+ * CreateInboxConversation201ResponseData
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * UpdatePostRequest Class Doc Comment
+ * CreateInboxConversation201ResponseData Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateInboxConversation201ResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updatePost_request';
+    protected static $openAPIModelName = 'createInboxConversation_201_response_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'content' => 'string',
-        'scheduled_for' => '\DateTime',
-        'tiktok_settings' => '\Late\Model\TikTokPlatformData',
-        'facebook_settings' => '\Late\Model\FacebookPlatformData',
-        'recycling' => '\Late\Model\RecyclingConfig'
+        'message_id' => 'string',
+        'conversation_id' => 'string',
+        'participant_id' => 'string',
+        'participant_name' => 'string',
+        'participant_username' => 'string'
     ];
 
     /**
@@ -73,11 +73,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'content' => null,
-        'scheduled_for' => 'date-time',
-        'tiktok_settings' => null,
-        'facebook_settings' => null,
-        'recycling' => null
+        'message_id' => null,
+        'conversation_id' => null,
+        'participant_id' => null,
+        'participant_name' => null,
+        'participant_username' => null
     ];
 
     /**
@@ -86,11 +86,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'content' => false,
-        'scheduled_for' => false,
-        'tiktok_settings' => false,
-        'facebook_settings' => false,
-        'recycling' => false
+        'message_id' => false,
+        'conversation_id' => false,
+        'participant_id' => false,
+        'participant_name' => false,
+        'participant_username' => false
     ];
 
     /**
@@ -179,11 +179,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'content' => 'content',
-        'scheduled_for' => 'scheduledFor',
-        'tiktok_settings' => 'tiktokSettings',
-        'facebook_settings' => 'facebookSettings',
-        'recycling' => 'recycling'
+        'message_id' => 'messageId',
+        'conversation_id' => 'conversationId',
+        'participant_id' => 'participantId',
+        'participant_name' => 'participantName',
+        'participant_username' => 'participantUsername'
     ];
 
     /**
@@ -192,11 +192,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'content' => 'setContent',
-        'scheduled_for' => 'setScheduledFor',
-        'tiktok_settings' => 'setTiktokSettings',
-        'facebook_settings' => 'setFacebookSettings',
-        'recycling' => 'setRecycling'
+        'message_id' => 'setMessageId',
+        'conversation_id' => 'setConversationId',
+        'participant_id' => 'setParticipantId',
+        'participant_name' => 'setParticipantName',
+        'participant_username' => 'setParticipantUsername'
     ];
 
     /**
@@ -205,11 +205,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'content' => 'getContent',
-        'scheduled_for' => 'getScheduledFor',
-        'tiktok_settings' => 'getTiktokSettings',
-        'facebook_settings' => 'getFacebookSettings',
-        'recycling' => 'getRecycling'
+        'message_id' => 'getMessageId',
+        'conversation_id' => 'getConversationId',
+        'participant_id' => 'getParticipantId',
+        'participant_name' => 'getParticipantName',
+        'participant_username' => 'getParticipantUsername'
     ];
 
     /**
@@ -269,11 +269,11 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('content', $data ?? [], null);
-        $this->setIfExists('scheduled_for', $data ?? [], null);
-        $this->setIfExists('tiktok_settings', $data ?? [], null);
-        $this->setIfExists('facebook_settings', $data ?? [], null);
-        $this->setIfExists('recycling', $data ?? [], null);
+        $this->setIfExists('message_id', $data ?? [], null);
+        $this->setIfExists('conversation_id', $data ?? [], null);
+        $this->setIfExists('participant_id', $data ?? [], null);
+        $this->setIfExists('participant_name', $data ?? [], null);
+        $this->setIfExists('participant_username', $data ?? [], null);
     }
 
     /**
@@ -319,136 +319,136 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets content
+     * Gets message_id
      *
      * @return string|null
      */
-    public function getContent()
+    public function getMessageId()
     {
-        return $this->container['content'];
+        return $this->container['message_id'];
     }
 
     /**
-     * Sets content
+     * Sets message_id
      *
-     * @param string|null $content content
+     * @param string|null $message_id Platform message ID (dm_event_id)
      *
      * @return self
      */
-    public function setContent($content)
+    public function setMessageId($message_id)
     {
-        if (is_null($content)) {
-            throw new \InvalidArgumentException('non-nullable content cannot be null');
+        if (is_null($message_id)) {
+            throw new \InvalidArgumentException('non-nullable message_id cannot be null');
         }
-        $this->container['content'] = $content;
+        $this->container['message_id'] = $message_id;
 
         return $this;
     }
 
     /**
-     * Gets scheduled_for
+     * Gets conversation_id
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getScheduledFor()
+    public function getConversationId()
     {
-        return $this->container['scheduled_for'];
+        return $this->container['conversation_id'];
     }
 
     /**
-     * Sets scheduled_for
+     * Sets conversation_id
      *
-     * @param \DateTime|null $scheduled_for scheduled_for
+     * @param string|null $conversation_id Platform conversation ID (dm_conversation_id)
      *
      * @return self
      */
-    public function setScheduledFor($scheduled_for)
+    public function setConversationId($conversation_id)
     {
-        if (is_null($scheduled_for)) {
-            throw new \InvalidArgumentException('non-nullable scheduled_for cannot be null');
+        if (is_null($conversation_id)) {
+            throw new \InvalidArgumentException('non-nullable conversation_id cannot be null');
         }
-        $this->container['scheduled_for'] = $scheduled_for;
+        $this->container['conversation_id'] = $conversation_id;
 
         return $this;
     }
 
     /**
-     * Gets tiktok_settings
+     * Gets participant_id
      *
-     * @return \Late\Model\TikTokPlatformData|null
+     * @return string|null
      */
-    public function getTiktokSettings()
+    public function getParticipantId()
     {
-        return $this->container['tiktok_settings'];
+        return $this->container['participant_id'];
     }
 
     /**
-     * Sets tiktok_settings
+     * Sets participant_id
      *
-     * @param \Late\Model\TikTokPlatformData|null $tiktok_settings Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
+     * @param string|null $participant_id Twitter numeric user ID of the recipient
      *
      * @return self
      */
-    public function setTiktokSettings($tiktok_settings)
+    public function setParticipantId($participant_id)
     {
-        if (is_null($tiktok_settings)) {
-            throw new \InvalidArgumentException('non-nullable tiktok_settings cannot be null');
+        if (is_null($participant_id)) {
+            throw new \InvalidArgumentException('non-nullable participant_id cannot be null');
         }
-        $this->container['tiktok_settings'] = $tiktok_settings;
+        $this->container['participant_id'] = $participant_id;
 
         return $this;
     }
 
     /**
-     * Gets facebook_settings
+     * Gets participant_name
      *
-     * @return \Late\Model\FacebookPlatformData|null
+     * @return string|null
      */
-    public function getFacebookSettings()
+    public function getParticipantName()
     {
-        return $this->container['facebook_settings'];
+        return $this->container['participant_name'];
     }
 
     /**
-     * Sets facebook_settings
+     * Sets participant_name
      *
-     * @param \Late\Model\FacebookPlatformData|null $facebook_settings Root-level Facebook settings applied to all Facebook platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
+     * @param string|null $participant_name Display name of the recipient
      *
      * @return self
      */
-    public function setFacebookSettings($facebook_settings)
+    public function setParticipantName($participant_name)
     {
-        if (is_null($facebook_settings)) {
-            throw new \InvalidArgumentException('non-nullable facebook_settings cannot be null');
+        if (is_null($participant_name)) {
+            throw new \InvalidArgumentException('non-nullable participant_name cannot be null');
         }
-        $this->container['facebook_settings'] = $facebook_settings;
+        $this->container['participant_name'] = $participant_name;
 
         return $this;
     }
 
     /**
-     * Gets recycling
+     * Gets participant_username
      *
-     * @return \Late\Model\RecyclingConfig|null
+     * @return string|null
      */
-    public function getRecycling()
+    public function getParticipantUsername()
     {
-        return $this->container['recycling'];
+        return $this->container['participant_username'];
     }
 
     /**
-     * Sets recycling
+     * Sets participant_username
      *
-     * @param \Late\Model\RecyclingConfig|null $recycling recycling
+     * @param string|null $participant_username Twitter username of the recipient
      *
      * @return self
      */
-    public function setRecycling($recycling)
+    public function setParticipantUsername($participant_username)
     {
-        if (is_null($recycling)) {
-            throw new \InvalidArgumentException('non-nullable recycling cannot be null');
+        if (is_null($participant_username)) {
+            throw new \InvalidArgumentException('non-nullable participant_username cannot be null');
         }
-        $this->container['recycling'] = $recycling;
+        $this->container['participant_username'] = $participant_username;
 
         return $this;
     }

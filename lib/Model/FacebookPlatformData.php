@@ -59,6 +59,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
+        'draft' => 'bool',
         'content_type' => 'string',
         'title' => 'string',
         'first_comment' => 'string',
@@ -73,6 +74,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'draft' => null,
         'content_type' => null,
         'title' => null,
         'first_comment' => null,
@@ -85,6 +87,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'draft' => false,
         'content_type' => false,
         'title' => false,
         'first_comment' => false,
@@ -177,6 +180,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
+        'draft' => 'draft',
         'content_type' => 'contentType',
         'title' => 'title',
         'first_comment' => 'firstComment',
@@ -189,6 +193,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
+        'draft' => 'setDraft',
         'content_type' => 'setContentType',
         'title' => 'setTitle',
         'first_comment' => 'setFirstComment',
@@ -201,6 +206,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
+        'draft' => 'getDraft',
         'content_type' => 'getContentType',
         'title' => 'getTitle',
         'first_comment' => 'getFirstComment',
@@ -279,6 +285,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('draft', $data ?? [], false);
         $this->setIfExists('content_type', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('first_comment', $data ?? [], null);
@@ -335,6 +342,33 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets draft
+     *
+     * @return bool|null
+     */
+    public function getDraft()
+    {
+        return $this->container['draft'];
+    }
+
+    /**
+     * Sets draft
+     *
+     * @param bool|null $draft When true, creates the post as an unpublished draft visible in Facebook Publishing Tools instead of publishing immediately. Supported for feed posts (text, link, image, video) and reels. Not supported for stories. Drafts expire after ~30 days.
+     *
+     * @return self
+     */
+    public function setDraft($draft)
+    {
+        if (is_null($draft)) {
+            throw new \InvalidArgumentException('non-nullable draft cannot be null');
+        }
+        $this->container['draft'] = $draft;
+
+        return $this;
+    }
 
     /**
      * Gets content_type
@@ -413,7 +447,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets first_comment
      *
-     * @param string|null $first_comment Optional first comment to post immediately after publishing (feed posts only, not stories or reels)
+     * @param string|null $first_comment Optional first comment to post immediately after publishing (feed posts only, not stories or reels). Skipped when draft is true.
      *
      * @return self
      */
