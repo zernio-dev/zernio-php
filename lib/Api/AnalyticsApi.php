@@ -90,6 +90,12 @@ class AnalyticsApi
         'getFollowerStats' => [
             'application/json',
         ],
+        'getGoogleBusinessPerformance' => [
+            'application/json',
+        ],
+        'getGoogleBusinessSearchKeywords' => [
+            'application/json',
+        ],
         'getInstagramAccountInsights' => [
             'application/json',
         ],
@@ -1998,6 +2004,745 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $granularity,
             'granularity', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getGoogleBusinessPerformance
+     *
+     * Get Google Business Profile performance metrics
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
+     * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
+     * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to 30 days ago. Max 18 months back. (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessPerformance'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\GetGoogleBusinessPerformance200Response|\Late\Model\GetGoogleBusinessPerformance400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response
+     */
+    public function getGoogleBusinessPerformance($account_id, $metrics = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getGoogleBusinessPerformance'][0])
+    {
+        list($response) = $this->getGoogleBusinessPerformanceWithHttpInfo($account_id, $metrics, $start_date, $end_date, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getGoogleBusinessPerformanceWithHttpInfo
+     *
+     * Get Google Business Profile performance metrics
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
+     * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
+     * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to 30 days ago. Max 18 months back. (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessPerformance'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\GetGoogleBusinessPerformance200Response|\Late\Model\GetGoogleBusinessPerformance400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getGoogleBusinessPerformanceWithHttpInfo($account_id, $metrics = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getGoogleBusinessPerformance'][0])
+    {
+        $request = $this->getGoogleBusinessPerformanceRequest($account_id, $metrics, $start_date, $end_date, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetGoogleBusinessPerformance200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetGoogleBusinessPerformance400Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetAnalytics402Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetGoogleBusinessPerformance200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetGoogleBusinessPerformance200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetGoogleBusinessPerformance400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetAnalytics402Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getGoogleBusinessPerformanceAsync
+     *
+     * Get Google Business Profile performance metrics
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
+     * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
+     * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to 30 days ago. Max 18 months back. (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessPerformance'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getGoogleBusinessPerformanceAsync($account_id, $metrics = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getGoogleBusinessPerformance'][0])
+    {
+        return $this->getGoogleBusinessPerformanceAsyncWithHttpInfo($account_id, $metrics, $start_date, $end_date, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getGoogleBusinessPerformanceAsyncWithHttpInfo
+     *
+     * Get Google Business Profile performance metrics
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
+     * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
+     * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to 30 days ago. Max 18 months back. (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessPerformance'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getGoogleBusinessPerformanceAsyncWithHttpInfo($account_id, $metrics = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getGoogleBusinessPerformance'][0])
+    {
+        $returnType = '\Late\Model\GetGoogleBusinessPerformance200Response';
+        $request = $this->getGoogleBusinessPerformanceRequest($account_id, $metrics, $start_date, $end_date, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getGoogleBusinessPerformance'
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
+     * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
+     * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). Defaults to 30 days ago. Max 18 months back. (optional)
+     * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessPerformance'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getGoogleBusinessPerformanceRequest($account_id, $metrics = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getGoogleBusinessPerformance'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getGoogleBusinessPerformance'
+            );
+        }
+
+
+
+
+
+        $resourcePath = '/v1/analytics/googlebusiness/performance';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metrics,
+            'metrics', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $start_date,
+            'startDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $end_date,
+            'endDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getGoogleBusinessSearchKeywords
+     *
+     * Get Google Business Profile search keywords
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
+     * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
+     * @param  string|null $end_month End month (YYYY-MM). Defaults to current month. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessSearchKeywords'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\GetGoogleBusinessSearchKeywords200Response|\Late\Model\GetGoogleBusinessSearchKeywords400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response
+     */
+    public function getGoogleBusinessSearchKeywords($account_id, $start_month = null, $end_month = null, string $contentType = self::contentTypes['getGoogleBusinessSearchKeywords'][0])
+    {
+        list($response) = $this->getGoogleBusinessSearchKeywordsWithHttpInfo($account_id, $start_month, $end_month, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getGoogleBusinessSearchKeywordsWithHttpInfo
+     *
+     * Get Google Business Profile search keywords
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
+     * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
+     * @param  string|null $end_month End month (YYYY-MM). Defaults to current month. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessSearchKeywords'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\GetGoogleBusinessSearchKeywords200Response|\Late\Model\GetGoogleBusinessSearchKeywords400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getGoogleBusinessSearchKeywordsWithHttpInfo($account_id, $start_month = null, $end_month = null, string $contentType = self::contentTypes['getGoogleBusinessSearchKeywords'][0])
+    {
+        $request = $this->getGoogleBusinessSearchKeywordsRequest($account_id, $start_month, $end_month, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetGoogleBusinessSearchKeywords200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetGoogleBusinessSearchKeywords400Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 402:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetAnalytics402Response',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\GetGoogleBusinessSearchKeywords200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetGoogleBusinessSearchKeywords200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetGoogleBusinessSearchKeywords400Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 402:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetAnalytics402Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getGoogleBusinessSearchKeywordsAsync
+     *
+     * Get Google Business Profile search keywords
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
+     * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
+     * @param  string|null $end_month End month (YYYY-MM). Defaults to current month. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessSearchKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getGoogleBusinessSearchKeywordsAsync($account_id, $start_month = null, $end_month = null, string $contentType = self::contentTypes['getGoogleBusinessSearchKeywords'][0])
+    {
+        return $this->getGoogleBusinessSearchKeywordsAsyncWithHttpInfo($account_id, $start_month, $end_month, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getGoogleBusinessSearchKeywordsAsyncWithHttpInfo
+     *
+     * Get Google Business Profile search keywords
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
+     * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
+     * @param  string|null $end_month End month (YYYY-MM). Defaults to current month. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessSearchKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getGoogleBusinessSearchKeywordsAsyncWithHttpInfo($account_id, $start_month = null, $end_month = null, string $contentType = self::contentTypes['getGoogleBusinessSearchKeywords'][0])
+    {
+        $returnType = '\Late\Model\GetGoogleBusinessSearchKeywords200Response';
+        $request = $this->getGoogleBusinessSearchKeywordsRequest($account_id, $start_month, $end_month, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getGoogleBusinessSearchKeywords'
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
+     * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
+     * @param  string|null $end_month End month (YYYY-MM). Defaults to current month. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessSearchKeywords'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getGoogleBusinessSearchKeywordsRequest($account_id, $start_month = null, $end_month = null, string $contentType = self::contentTypes['getGoogleBusinessSearchKeywords'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getGoogleBusinessSearchKeywords'
+            );
+        }
+
+        if ($start_month !== null && !preg_match("/^\\d{4}-\\d{2}$/", $start_month)) {
+            throw new \InvalidArgumentException("invalid value for \"start_month\" when calling AnalyticsApi.getGoogleBusinessSearchKeywords, must conform to the pattern /^\\d{4}-\\d{2}$/.");
+        }
+        
+        if ($end_month !== null && !preg_match("/^\\d{4}-\\d{2}$/", $end_month)) {
+            throw new \InvalidArgumentException("invalid value for \"end_month\" when calling AnalyticsApi.getGoogleBusinessSearchKeywords, must conform to the pattern /^\\d{4}-\\d{2}$/.");
+        }
+        
+
+        $resourcePath = '/v1/analytics/googlebusiness/search-keywords';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $start_month,
+            'startMonth', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $end_month,
+            'endMonth', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
