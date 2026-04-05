@@ -1589,10 +1589,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateInboxConversation201ResponseDataTest.php
-test/Model/CreateInboxConversation201ResponseTest.php
-test/Model/CreateInboxConversation400ResponseTest.php
-test/Model/CreateInboxConversation422ResponseTest.php
-test/Model/CreateInboxConversationRequestTest.php
-test/Model/EditPost200ResponseTest.php
-test/Model/EditPostRequestTest.php

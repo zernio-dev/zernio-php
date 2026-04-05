@@ -447,7 +447,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets first_comment
      *
-     * @param string|null $first_comment Optional first comment to post immediately after publishing (feed posts only, not stories or reels). Skipped when draft is true.
+     * @param string|null $first_comment Optional first comment to post immediately after publishing (feed posts and reels, not stories). Skipped when draft is true.
      *
      * @return self
      */
