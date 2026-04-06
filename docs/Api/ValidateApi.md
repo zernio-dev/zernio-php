@@ -195,12 +195,12 @@ try {
 ## `validateSubreddit()`
 
 ```php
-validateSubreddit($name): \Late\Model\ValidateSubreddit200Response
+validateSubreddit($name, $account_id): \Late\Model\ValidateSubreddit200Response
 ```
 
 Check subreddit existence
 
-Check if a subreddit exists and return basic info (title, subscriber count, NSFW status, post types allowed).  Uses Reddit's public JSON API (no Reddit auth needed). Returns `exists: false` for private, banned, or nonexistent subreddits.
+Check if a subreddit exists and return basic info (title, subscriber count, NSFW status, post types allowed).  When accountId is provided, uses authenticated Reddit OAuth API with automatic token refresh (recommended). Falls back to Reddit's public JSON API, which may be unreliable from server IPs. Returns `exists: false` for private, banned, or nonexistent subreddits.
 
 ### Example
 
@@ -220,9 +220,10 @@ $apiInstance = new Late\Api\ValidateApi(
     $config
 );
 $name = programming; // string | Subreddit name (with or without \"r/\" prefix)
+$account_id = 'account_id_example'; // string | Reddit social account ID for authenticated lookup (recommended for reliable results)
 
 try {
-    $result = $apiInstance->validateSubreddit($name);
+    $result = $apiInstance->validateSubreddit($name, $account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ValidateApi->validateSubreddit: ', $e->getMessage(), PHP_EOL;
@@ -234,6 +235,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **name** | **string**| Subreddit name (with or without \&quot;r/\&quot; prefix) | |
+| **account_id** | **string**| Reddit social account ID for authenticated lookup (recommended for reliable results) | [optional] |
 
 ### Return type
 

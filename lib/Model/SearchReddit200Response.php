@@ -58,8 +58,9 @@ class SearchReddit200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'posts' => '\Late\Model\SearchReddit200ResponsePostsInner[]',
-        'after' => 'string'
+        'items' => '\Late\Model\RedditPost[]',
+        'after' => 'string',
+        'before' => 'string'
     ];
 
     /**
@@ -70,8 +71,9 @@ class SearchReddit200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'posts' => null,
-        'after' => null
+        'items' => null,
+        'after' => null,
+        'before' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class SearchReddit200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'posts' => false,
-        'after' => false
+        'items' => false,
+        'after' => false,
+        'before' => false
     ];
 
     /**
@@ -170,8 +173,9 @@ class SearchReddit200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'posts' => 'posts',
-        'after' => 'after'
+        'items' => 'items',
+        'after' => 'after',
+        'before' => 'before'
     ];
 
     /**
@@ -180,8 +184,9 @@ class SearchReddit200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'posts' => 'setPosts',
-        'after' => 'setAfter'
+        'items' => 'setItems',
+        'after' => 'setAfter',
+        'before' => 'setBefore'
     ];
 
     /**
@@ -190,8 +195,9 @@ class SearchReddit200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'posts' => 'getPosts',
-        'after' => 'getAfter'
+        'items' => 'getItems',
+        'after' => 'getAfter',
+        'before' => 'getBefore'
     ];
 
     /**
@@ -251,8 +257,9 @@ class SearchReddit200Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('posts', $data ?? [], null);
+        $this->setIfExists('items', $data ?? [], null);
         $this->setIfExists('after', $data ?? [], null);
+        $this->setIfExists('before', $data ?? [], null);
     }
 
     /**
@@ -298,28 +305,28 @@ class SearchReddit200Response implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets posts
+     * Gets items
      *
-     * @return \Late\Model\SearchReddit200ResponsePostsInner[]|null
+     * @return \Late\Model\RedditPost[]|null
      */
-    public function getPosts()
+    public function getItems()
     {
-        return $this->container['posts'];
+        return $this->container['items'];
     }
 
     /**
-     * Sets posts
+     * Sets items
      *
-     * @param \Late\Model\SearchReddit200ResponsePostsInner[]|null $posts posts
+     * @param \Late\Model\RedditPost[]|null $items items
      *
      * @return self
      */
-    public function setPosts($posts)
+    public function setItems($items)
     {
-        if (is_null($posts)) {
-            throw new \InvalidArgumentException('non-nullable posts cannot be null');
+        if (is_null($items)) {
+            throw new \InvalidArgumentException('non-nullable items cannot be null');
         }
-        $this->container['posts'] = $posts;
+        $this->container['items'] = $items;
 
         return $this;
     }
@@ -347,6 +354,33 @@ class SearchReddit200Response implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable after cannot be null');
         }
         $this->container['after'] = $after;
+
+        return $this;
+    }
+
+    /**
+     * Gets before
+     *
+     * @return string|null
+     */
+    public function getBefore()
+    {
+        return $this->container['before'];
+    }
+
+    /**
+     * Sets before
+     *
+     * @param string|null $before before
+     *
+     * @return self
+     */
+    public function setBefore($before)
+    {
+        if (is_null($before)) {
+            throw new \InvalidArgumentException('non-nullable before cannot be null');
+        }
+        $this->container['before'] = $before;
 
         return $this;
     }

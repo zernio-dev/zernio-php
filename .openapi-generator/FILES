@@ -332,7 +332,6 @@ docs/Model/GetPostTimeline404Response.md
 docs/Model/GetPostingFrequency200Response.md
 docs/Model/GetPostingFrequency200ResponseFrequencyInner.md
 docs/Model/GetProfile200Response.md
-docs/Model/GetRedditFeed200Response.md
 docs/Model/GetRedditFlairs200Response.md
 docs/Model/GetRedditFlairs200ResponseFlairsInner.md
 docs/Model/GetRedditSubreddits200Response.md
@@ -549,6 +548,7 @@ docs/Model/QueueUpdateResponse.md
 docs/Model/RecyclingConfig.md
 docs/Model/RecyclingState.md
 docs/Model/RedditPlatformData.md
+docs/Model/RedditPost.md
 docs/Model/RejectWhatsAppGroupJoinRequestsRequest.md
 docs/Model/ReleaseWhatsAppPhoneNumber200Response.md
 docs/Model/ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber.md
@@ -575,7 +575,6 @@ docs/Model/ScheduleWhatsAppBroadcastRequest.md
 docs/Model/SearchAdInterests200Response.md
 docs/Model/SearchAdInterests200ResponseInterestsInner.md
 docs/Model/SearchReddit200Response.md
-docs/Model/SearchReddit200ResponsePostsInner.md
 docs/Model/SelectFacebookPage200Response.md
 docs/Model/SelectFacebookPage200ResponseAccount.md
 docs/Model/SelectFacebookPageRequest.md
@@ -1126,7 +1125,6 @@ lib/Model/GetPostTimeline404Response.php
 lib/Model/GetPostingFrequency200Response.php
 lib/Model/GetPostingFrequency200ResponseFrequencyInner.php
 lib/Model/GetProfile200Response.php
-lib/Model/GetRedditFeed200Response.php
 lib/Model/GetRedditFlairs200Response.php
 lib/Model/GetRedditFlairs200ResponseFlairsInner.php
 lib/Model/GetRedditSubreddits200Response.php
@@ -1344,6 +1342,7 @@ lib/Model/QueueUpdateResponse.php
 lib/Model/RecyclingConfig.php
 lib/Model/RecyclingState.php
 lib/Model/RedditPlatformData.php
+lib/Model/RedditPost.php
 lib/Model/RejectWhatsAppGroupJoinRequestsRequest.php
 lib/Model/ReleaseWhatsAppPhoneNumber200Response.php
 lib/Model/ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber.php
@@ -1370,7 +1369,6 @@ lib/Model/ScheduleWhatsAppBroadcastRequest.php
 lib/Model/SearchAdInterests200Response.php
 lib/Model/SearchAdInterests200ResponseInterestsInner.php
 lib/Model/SearchReddit200Response.php
-lib/Model/SearchReddit200ResponsePostsInner.php
 lib/Model/SelectFacebookPage200Response.php
 lib/Model/SelectFacebookPage200ResponseAccount.php
 lib/Model/SelectFacebookPageRequest.php
@@ -1589,3 +1587,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/RedditPostTest.php

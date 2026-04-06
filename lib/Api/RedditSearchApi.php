@@ -144,7 +144,7 @@ class RedditSearchApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetRedditFeed200Response|\Late\Model\InlineObject
+     * @return \Late\Model\SearchReddit200Response|\Late\Model\InlineObject
      */
     public function getRedditFeed($account_id, $subreddit = null, $sort = 'hot', $limit = 25, $after = null, $t = null, string $contentType = self::contentTypes['getRedditFeed'][0])
     {
@@ -167,7 +167,7 @@ class RedditSearchApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetRedditFeed200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\SearchReddit200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRedditFeedWithHttpInfo($account_id, $subreddit = null, $sort = 'hot', $limit = 25, $after = null, $t = null, string $contentType = self::contentTypes['getRedditFeed'][0])
     {
@@ -199,7 +199,7 @@ class RedditSearchApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetRedditFeed200Response',
+                        '\Late\Model\SearchReddit200Response',
                         $request,
                         $response,
                     );
@@ -227,7 +227,7 @@ class RedditSearchApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetRedditFeed200Response',
+                '\Late\Model\SearchReddit200Response',
                 $request,
                 $response,
             );
@@ -236,7 +236,7 @@ class RedditSearchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetRedditFeed200Response',
+                        '\Late\Model\SearchReddit200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -300,7 +300,7 @@ class RedditSearchApi
      */
     public function getRedditFeedAsyncWithHttpInfo($account_id, $subreddit = null, $sort = 'hot', $limit = 25, $after = null, $t = null, string $contentType = self::contentTypes['getRedditFeed'][0])
     {
-        $returnType = '\Late\Model\GetRedditFeed200Response';
+        $returnType = '\Late\Model\SearchReddit200Response';
         $request = $this->getRedditFeedRequest($account_id, $subreddit, $sort, $limit, $after, $t, $contentType);
 
         return $this->client

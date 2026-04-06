@@ -13,7 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getRedditFeed()`
 
 ```php
-getRedditFeed($account_id, $subreddit, $sort, $limit, $after, $t): \Late\Model\GetRedditFeed200Response
+getRedditFeed($account_id, $subreddit, $sort, $limit, $after, $t): \Late\Model\SearchReddit200Response
 ```
 
 Get subreddit feed
@@ -65,7 +65,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetRedditFeed200Response**](../Model/GetRedditFeed200Response.md)
+[**\Late\Model\SearchReddit200Response**](../Model/SearchReddit200Response.md)
 
 ### Authorization
 

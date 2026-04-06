@@ -954,15 +954,16 @@ class ValidateApi
      * Check subreddit existence
      *
      * @param  string $name Subreddit name (with or without \&quot;r/\&quot; prefix) (required)
+     * @param  string|null $account_id Reddit social account ID for authenticated lookup (recommended for reliable results) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateSubreddit'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\ValidateSubreddit200Response
      */
-    public function validateSubreddit($name, string $contentType = self::contentTypes['validateSubreddit'][0])
+    public function validateSubreddit($name, $account_id = null, string $contentType = self::contentTypes['validateSubreddit'][0])
     {
-        list($response) = $this->validateSubredditWithHttpInfo($name, $contentType);
+        list($response) = $this->validateSubredditWithHttpInfo($name, $account_id, $contentType);
         return $response;
     }
 
@@ -972,15 +973,16 @@ class ValidateApi
      * Check subreddit existence
      *
      * @param  string $name Subreddit name (with or without \&quot;r/\&quot; prefix) (required)
+     * @param  string|null $account_id Reddit social account ID for authenticated lookup (recommended for reliable results) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateSubreddit'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ValidateSubreddit200Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function validateSubredditWithHttpInfo($name, string $contentType = self::contentTypes['validateSubreddit'][0])
+    public function validateSubredditWithHttpInfo($name, $account_id = null, string $contentType = self::contentTypes['validateSubreddit'][0])
     {
-        $request = $this->validateSubredditRequest($name, $contentType);
+        $request = $this->validateSubredditRequest($name, $account_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1057,14 +1059,15 @@ class ValidateApi
      * Check subreddit existence
      *
      * @param  string $name Subreddit name (with or without \&quot;r/\&quot; prefix) (required)
+     * @param  string|null $account_id Reddit social account ID for authenticated lookup (recommended for reliable results) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateSubreddit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function validateSubredditAsync($name, string $contentType = self::contentTypes['validateSubreddit'][0])
+    public function validateSubredditAsync($name, $account_id = null, string $contentType = self::contentTypes['validateSubreddit'][0])
     {
-        return $this->validateSubredditAsyncWithHttpInfo($name, $contentType)
+        return $this->validateSubredditAsyncWithHttpInfo($name, $account_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1078,15 +1081,16 @@ class ValidateApi
      * Check subreddit existence
      *
      * @param  string $name Subreddit name (with or without \&quot;r/\&quot; prefix) (required)
+     * @param  string|null $account_id Reddit social account ID for authenticated lookup (recommended for reliable results) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateSubreddit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function validateSubredditAsyncWithHttpInfo($name, string $contentType = self::contentTypes['validateSubreddit'][0])
+    public function validateSubredditAsyncWithHttpInfo($name, $account_id = null, string $contentType = self::contentTypes['validateSubreddit'][0])
     {
         $returnType = '\Late\Model\ValidateSubreddit200Response';
-        $request = $this->validateSubredditRequest($name, $contentType);
+        $request = $this->validateSubredditRequest($name, $account_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1128,12 +1132,13 @@ class ValidateApi
      * Create request for operation 'validateSubreddit'
      *
      * @param  string $name Subreddit name (with or without \&quot;r/\&quot; prefix) (required)
+     * @param  string|null $account_id Reddit social account ID for authenticated lookup (recommended for reliable results) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateSubreddit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function validateSubredditRequest($name, string $contentType = self::contentTypes['validateSubreddit'][0])
+    public function validateSubredditRequest($name, $account_id = null, string $contentType = self::contentTypes['validateSubreddit'][0])
     {
 
         // verify the required parameter 'name' is set
@@ -1142,6 +1147,7 @@ class ValidateApi
                 'Missing the required parameter $name when calling validateSubreddit'
             );
         }
+
 
 
         $resourcePath = '/v1/tools/validate/subreddit';
@@ -1159,6 +1165,15 @@ class ValidateApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
 
 
