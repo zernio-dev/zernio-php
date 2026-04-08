@@ -60,8 +60,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'profile_id' => 'string',
         'location_id' => 'string',
-        'temp_token' => 'string',
-        'user_profile' => '\Late\Model\SelectGoogleBusinessLocationRequestUserProfile',
+        'pending_data_token' => 'string',
         'redirect_url' => 'string'
     ];
 
@@ -75,8 +74,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'profile_id' => null,
         'location_id' => null,
-        'temp_token' => null,
-        'user_profile' => null,
+        'pending_data_token' => null,
         'redirect_url' => 'uri'
     ];
 
@@ -88,8 +86,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     protected static array $openAPINullables = [
         'profile_id' => false,
         'location_id' => false,
-        'temp_token' => false,
-        'user_profile' => false,
+        'pending_data_token' => false,
         'redirect_url' => false
     ];
 
@@ -181,8 +178,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'profile_id' => 'profileId',
         'location_id' => 'locationId',
-        'temp_token' => 'tempToken',
-        'user_profile' => 'userProfile',
+        'pending_data_token' => 'pendingDataToken',
         'redirect_url' => 'redirect_url'
     ];
 
@@ -194,8 +190,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     protected static $setters = [
         'profile_id' => 'setProfileId',
         'location_id' => 'setLocationId',
-        'temp_token' => 'setTempToken',
-        'user_profile' => 'setUserProfile',
+        'pending_data_token' => 'setPendingDataToken',
         'redirect_url' => 'setRedirectUrl'
     ];
 
@@ -207,8 +202,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     protected static $getters = [
         'profile_id' => 'getProfileId',
         'location_id' => 'getLocationId',
-        'temp_token' => 'getTempToken',
-        'user_profile' => 'getUserProfile',
+        'pending_data_token' => 'getPendingDataToken',
         'redirect_url' => 'getRedirectUrl'
     ];
 
@@ -271,8 +265,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     {
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('location_id', $data ?? [], null);
-        $this->setIfExists('temp_token', $data ?? [], null);
-        $this->setIfExists('user_profile', $data ?? [], null);
+        $this->setIfExists('pending_data_token', $data ?? [], null);
         $this->setIfExists('redirect_url', $data ?? [], null);
     }
 
@@ -309,8 +302,8 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
         if ($this->container['location_id'] === null) {
             $invalidProperties[] = "'location_id' can't be null";
         }
-        if ($this->container['temp_token'] === null) {
-            $invalidProperties[] = "'temp_token' can't be null";
+        if ($this->container['pending_data_token'] === null) {
+            $invalidProperties[] = "'pending_data_token' can't be null";
         }
         return $invalidProperties;
     }
@@ -382,55 +375,28 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets temp_token
+     * Gets pending_data_token
      *
      * @return string
      */
-    public function getTempToken()
+    public function getPendingDataToken()
     {
-        return $this->container['temp_token'];
+        return $this->container['pending_data_token'];
     }
 
     /**
-     * Sets temp_token
+     * Sets pending_data_token
      *
-     * @param string $temp_token Temporary Google access token from OAuth
+     * @param string $pending_data_token Token from the OAuth callback redirect (pendingDataToken query param). Tokens and profile data are retrieved server-side from this token.
      *
      * @return self
      */
-    public function setTempToken($temp_token)
+    public function setPendingDataToken($pending_data_token)
     {
-        if (is_null($temp_token)) {
-            throw new \InvalidArgumentException('non-nullable temp_token cannot be null');
+        if (is_null($pending_data_token)) {
+            throw new \InvalidArgumentException('non-nullable pending_data_token cannot be null');
         }
-        $this->container['temp_token'] = $temp_token;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_profile
-     *
-     * @return \Late\Model\SelectGoogleBusinessLocationRequestUserProfile|null
-     */
-    public function getUserProfile()
-    {
-        return $this->container['user_profile'];
-    }
-
-    /**
-     * Sets user_profile
-     *
-     * @param \Late\Model\SelectGoogleBusinessLocationRequestUserProfile|null $user_profile user_profile
-     *
-     * @return self
-     */
-    public function setUserProfile($user_profile)
-    {
-        if (is_null($user_profile)) {
-            throw new \InvalidArgumentException('non-nullable user_profile cannot be null');
-        }
-        $this->container['user_profile'] = $user_profile;
+        $this->container['pending_data_token'] = $pending_data_token;
 
         return $this;
     }

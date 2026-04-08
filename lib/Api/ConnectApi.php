@@ -4873,17 +4873,18 @@ class ConnectApi
      *
      * List GBP locations
      *
-     * @param  string $profile_id Profile ID from your connection flow (required)
-     * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
+     * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
+     * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
+     * @param  string|null $temp_token Legacy. Direct Google access token. Use pendingDataToken instead when available. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessLocations'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\ListGoogleBusinessLocations200Response|\Late\Model\InlineObject|\Late\Model\GetYouTubeDailyViews400Response
      */
-    public function listGoogleBusinessLocations($profile_id, $temp_token, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
+    public function listGoogleBusinessLocations($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
-        list($response) = $this->listGoogleBusinessLocationsWithHttpInfo($profile_id, $temp_token, $contentType);
+        list($response) = $this->listGoogleBusinessLocationsWithHttpInfo($profile_id, $pending_data_token, $temp_token, $contentType);
         return $response;
     }
 
@@ -4892,17 +4893,18 @@ class ConnectApi
      *
      * List GBP locations
      *
-     * @param  string $profile_id Profile ID from your connection flow (required)
-     * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
+     * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
+     * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
+     * @param  string|null $temp_token Legacy. Direct Google access token. Use pendingDataToken instead when available. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessLocations'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ListGoogleBusinessLocations200Response|\Late\Model\InlineObject|\Late\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listGoogleBusinessLocationsWithHttpInfo($profile_id, $temp_token, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
+    public function listGoogleBusinessLocationsWithHttpInfo($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
-        $request = $this->listGoogleBusinessLocationsRequest($profile_id, $temp_token, $contentType);
+        $request = $this->listGoogleBusinessLocationsRequest($profile_id, $pending_data_token, $temp_token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5006,16 +5008,17 @@ class ConnectApi
      *
      * List GBP locations
      *
-     * @param  string $profile_id Profile ID from your connection flow (required)
-     * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
+     * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
+     * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
+     * @param  string|null $temp_token Legacy. Direct Google access token. Use pendingDataToken instead when available. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessLocations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listGoogleBusinessLocationsAsync($profile_id, $temp_token, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
+    public function listGoogleBusinessLocationsAsync($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
-        return $this->listGoogleBusinessLocationsAsyncWithHttpInfo($profile_id, $temp_token, $contentType)
+        return $this->listGoogleBusinessLocationsAsyncWithHttpInfo($profile_id, $pending_data_token, $temp_token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5028,17 +5031,18 @@ class ConnectApi
      *
      * List GBP locations
      *
-     * @param  string $profile_id Profile ID from your connection flow (required)
-     * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
+     * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
+     * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
+     * @param  string|null $temp_token Legacy. Direct Google access token. Use pendingDataToken instead when available. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessLocations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listGoogleBusinessLocationsAsyncWithHttpInfo($profile_id, $temp_token, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
+    public function listGoogleBusinessLocationsAsyncWithHttpInfo($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
         $returnType = '\Late\Model\ListGoogleBusinessLocations200Response';
-        $request = $this->listGoogleBusinessLocationsRequest($profile_id, $temp_token, $contentType);
+        $request = $this->listGoogleBusinessLocationsRequest($profile_id, $pending_data_token, $temp_token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5079,29 +5083,19 @@ class ConnectApi
     /**
      * Create request for operation 'listGoogleBusinessLocations'
      *
-     * @param  string $profile_id Profile ID from your connection flow (required)
-     * @param  string $temp_token Temporary Google access token from the OAuth callback redirect (required)
+     * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
+     * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
+     * @param  string|null $temp_token Legacy. Direct Google access token. Use pendingDataToken instead when available. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessLocations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listGoogleBusinessLocationsRequest($profile_id, $temp_token, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
+    public function listGoogleBusinessLocationsRequest($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
 
-        // verify the required parameter 'profile_id' is set
-        if ($profile_id === null || (is_array($profile_id) && count($profile_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $profile_id when calling listGoogleBusinessLocations'
-            );
-        }
 
-        // verify the required parameter 'temp_token' is set
-        if ($temp_token === null || (is_array($temp_token) && count($temp_token) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $temp_token when calling listGoogleBusinessLocations'
-            );
-        }
+
 
 
         $resourcePath = '/v1/connect/googlebusiness/locations';
@@ -5118,7 +5112,16 @@ class ConnectApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $pending_data_token,
+            'pendingDataToken', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
@@ -5127,7 +5130,7 @@ class ConnectApi
             'string', // openApiType
             'form', // style
             true, // explode
-            true // required
+            false // required
         ) ?? []);
 
 

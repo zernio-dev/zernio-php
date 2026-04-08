@@ -582,7 +582,6 @@ docs/Model/SelectFacebookPageRequestUserProfile.md
 docs/Model/SelectGoogleBusinessLocation200Response.md
 docs/Model/SelectGoogleBusinessLocation200ResponseAccount.md
 docs/Model/SelectGoogleBusinessLocationRequest.md
-docs/Model/SelectGoogleBusinessLocationRequestUserProfile.md
 docs/Model/SelectLinkedInOrganization200Response.md
 docs/Model/SelectLinkedInOrganization200ResponseAccount.md
 docs/Model/SelectLinkedInOrganization200ResponseBulkRefresh.md
@@ -1376,7 +1375,6 @@ lib/Model/SelectFacebookPageRequestUserProfile.php
 lib/Model/SelectGoogleBusinessLocation200Response.php
 lib/Model/SelectGoogleBusinessLocation200ResponseAccount.php
 lib/Model/SelectGoogleBusinessLocationRequest.php
-lib/Model/SelectGoogleBusinessLocationRequestUserProfile.php
 lib/Model/SelectLinkedInOrganization200Response.php
 lib/Model/SelectLinkedInOrganization200ResponseAccount.php
 lib/Model/SelectLinkedInOrganization200ResponseBulkRefresh.php

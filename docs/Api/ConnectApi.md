@@ -1018,12 +1018,12 @@ try {
 ## `listGoogleBusinessLocations()`
 
 ```php
-listGoogleBusinessLocations($profile_id, $temp_token): \Late\Model\ListGoogleBusinessLocations200Response
+listGoogleBusinessLocations($profile_id, $pending_data_token, $temp_token): \Late\Model\ListGoogleBusinessLocations200Response
 ```
 
 List GBP locations
 
-For headless flows. Returns the list of GBP locations the user can manage. Use X-Connect-Token if connecting via API key.
+For headless flows. Returns the list of GBP locations the user can manage. Use pendingDataToken (from the OAuth callback redirect) to list locations without consuming the token, so it remains available for select-location. Use X-Connect-Token header if connecting via API key.
 
 ### Example
 
@@ -1047,11 +1047,12 @@ $apiInstance = new Late\Api\ConnectApi(
     new GuzzleHttp\Client(),
     $config
 );
-$profile_id = 'profile_id_example'; // string | Profile ID from your connection flow
-$temp_token = 'temp_token_example'; // string | Temporary Google access token from the OAuth callback redirect
+$profile_id = 'profile_id_example'; // string | Profile ID from your connection flow. Required for auth validation when provided.
+$pending_data_token = 'pending_data_token_example'; // string | Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required.
+$temp_token = 'temp_token_example'; // string | Legacy. Direct Google access token. Use pendingDataToken instead when available.
 
 try {
-    $result = $apiInstance->listGoogleBusinessLocations($profile_id, $temp_token);
+    $result = $apiInstance->listGoogleBusinessLocations($profile_id, $pending_data_token, $temp_token);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->listGoogleBusinessLocations: ', $e->getMessage(), PHP_EOL;
@@ -1062,8 +1063,9 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **profile_id** | **string**| Profile ID from your connection flow | |
-| **temp_token** | **string**| Temporary Google access token from the OAuth callback redirect | |
+| **profile_id** | **string**| Profile ID from your connection flow. Required for auth validation when provided. | [optional] |
+| **pending_data_token** | **string**| Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. | [optional] |
+| **temp_token** | **string**| Legacy. Direct Google access token. Use pendingDataToken instead when available. | [optional] |
 
 ### Return type
 
@@ -1345,7 +1347,7 @@ selectGoogleBusinessLocation($select_google_business_location_request): \Late\Mo
 
 Select GBP location
 
-Complete the headless flow by saving the user's selected GBP location. Include userProfile from the OAuth redirect (contains refresh token). Use X-Connect-Token if connecting via API key.
+Complete the headless GBP flow by saving the user's selected location. The pendingDataToken is returned in your redirect URL after OAuth completes (step=select_location). Tokens and profile data are stored server-side, so only the pendingDataToken is needed here. Use X-Connect-Token header if connecting via API key.
 
 ### Example
 
@@ -1369,7 +1371,7 @@ $apiInstance = new Late\Api\ConnectApi(
     new GuzzleHttp\Client(),
     $config
 );
-$select_google_business_location_request = {"profileId":"507f1f77bcf86cd799439011","locationId":"9281089117903930794","tempToken":"ya29.xxxxx...","userProfile":{"id":"113303573364907650416","name":"John Doe","refreshToken":"1//0gxxxxx...","tokenExpiresIn":3599,"scope":"https://www.googleapis.com/auth/business.manage"},"redirect_url":"https://yourdomain.com/integrations/callback"}; // \Late\Model\SelectGoogleBusinessLocationRequest
+$select_google_business_location_request = {"profileId":"507f1f77bcf86cd799439011","locationId":"9281089117903930794","pendingDataToken":"a1b2c3d4e5f6...","redirect_url":"https://yourdomain.com/integrations/callback"}; // \Late\Model\SelectGoogleBusinessLocationRequest
 
 try {
     $result = $apiInstance->selectGoogleBusinessLocation($select_google_business_location_request);
