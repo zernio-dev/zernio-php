@@ -423,7 +423,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets thread_items
      *
-     * @param \Late\Model\TwitterPlatformDataThreadItemsInner[]|null $thread_items Sequence of tweets in a thread. First item is the root tweet.
+     * @param \Late\Model\TwitterPlatformDataThreadItemsInner[]|null $thread_items Complete sequence of tweets in a thread. The first item becomes the root tweet, subsequent items are chained as replies. When threadItems is provided, the top-level content field is used only for display and search purposes, it is NOT published. You must include your first tweet as threadItems[0].
      *
      * @return self
      */
