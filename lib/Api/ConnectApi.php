@@ -78,6 +78,9 @@ class ConnectApi
         'completeTelegramConnect' => [
             'application/json',
         ],
+        'connectAds' => [
+            'application/json',
+        ],
         'connectBlueskyCredentials' => [
             'application/json',
         ],
@@ -497,6 +500,358 @@ class ConnectApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation connectAds
+     *
+     * Connect ads for a platform
+     *
+     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
+     * @param  string $profile_id Your Zernio profile ID (required)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter, pinterest). Ignored for same-token and ads-only platforms. (optional)
+     * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
+     * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\ConnectAds200Response|\Late\Model\InlineObject
+     */
+    public function connectAds($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
+    {
+        list($response) = $this->connectAdsWithHttpInfo($platform, $profile_id, $account_id, $redirect_url, $headless, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation connectAdsWithHttpInfo
+     *
+     * Connect ads for a platform
+     *
+     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
+     * @param  string $profile_id Your Zernio profile ID (required)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter, pinterest). Ignored for same-token and ads-only platforms. (optional)
+     * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
+     * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\ConnectAds200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function connectAdsWithHttpInfo($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
+    {
+        $request = $this->connectAdsRequest($platform, $profile_id, $account_id, $redirect_url, $headless, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\ConnectAds200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\ConnectAds200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\ConnectAds200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation connectAdsAsync
+     *
+     * Connect ads for a platform
+     *
+     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
+     * @param  string $profile_id Your Zernio profile ID (required)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter, pinterest). Ignored for same-token and ads-only platforms. (optional)
+     * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
+     * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function connectAdsAsync($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
+    {
+        return $this->connectAdsAsyncWithHttpInfo($platform, $profile_id, $account_id, $redirect_url, $headless, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation connectAdsAsyncWithHttpInfo
+     *
+     * Connect ads for a platform
+     *
+     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
+     * @param  string $profile_id Your Zernio profile ID (required)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter, pinterest). Ignored for same-token and ads-only platforms. (optional)
+     * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
+     * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function connectAdsAsyncWithHttpInfo($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
+    {
+        $returnType = '\Late\Model\ConnectAds200Response';
+        $request = $this->connectAdsRequest($platform, $profile_id, $account_id, $redirect_url, $headless, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'connectAds'
+     *
+     * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
+     * @param  string $profile_id Your Zernio profile ID (required)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter, pinterest). Ignored for same-token and ads-only platforms. (optional)
+     * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
+     * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function connectAdsRequest($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
+    {
+
+        // verify the required parameter 'platform' is set
+        if ($platform === null || (is_array($platform) && count($platform) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $platform when calling connectAds'
+            );
+        }
+
+        // verify the required parameter 'profile_id' is set
+        if ($profile_id === null || (is_array($profile_id) && count($profile_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $profile_id when calling connectAds'
+            );
+        }
+
+
+
+
+
+        $resourcePath = '/v1/connect/{platform}/ads';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $profile_id,
+            'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $redirect_url,
+            'redirect_url', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $headless,
+            'headless', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($platform !== null) {
+            $resourcePath = str_replace(
+                '{' . 'platform' . '}',
+                ObjectSerializer::toPathValue($platform),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

@@ -7,6 +7,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**completeTelegramConnect()**](ConnectApi.md#completeTelegramConnect) | **PATCH** /v1/connect/telegram | Check Telegram status |
+| [**connectAds()**](ConnectApi.md#connectAds) | **GET** /v1/connect/{platform}/ads | Connect ads for a platform |
 | [**connectBlueskyCredentials()**](ConnectApi.md#connectBlueskyCredentials) | **POST** /v1/connect/bluesky/credentials | Connect Bluesky account |
 | [**connectWhatsAppCredentials()**](ConnectApi.md#connectWhatsAppCredentials) | **POST** /v1/connect/whatsapp/credentials | Connect WhatsApp via credentials |
 | [**getConnectUrl()**](ConnectApi.md#getConnectUrl) | **GET** /v1/connect/{platform} | Get OAuth connect URL |
@@ -85,6 +86,74 @@ try {
 ### Return type
 
 [**\Late\Model\CompleteTelegramConnect200Response**](../Model/CompleteTelegramConnect200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `connectAds()`
+
+```php
+connectAds($platform, $profile_id, $account_id, $redirect_url, $headless): \Late\Model\ConnectAds200Response
+```
+
+Connect ads for a platform
+
+Unified ads connection endpoint. Handles all platforms through a single route:  **Same-token platforms** (facebook, instagram, linkedin): If a posting account already exists, returns `alreadyConnected: true` immediately (no extra OAuth needed). If not, starts the normal OAuth flow, and the resulting account supports both posting and ads.  **Separate-token platforms** (tiktok, twitter, pinterest): Requires an existing posting account (`accountId` param). If ads are already connected, returns `alreadyConnected: true`. Otherwise, starts the platform-specific marketing API OAuth flow.  **Ads-only platforms** (googleads): If a Google Ads account exists, returns `alreadyConnected: true`. Otherwise, starts the Google Ads OAuth flow.  Use the `adsStatus` field from `GET /v1/accounts` to check which accounts need ads connection.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\ConnectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$platform = 'platform_example'; // string | Platform to connect ads for. Only platforms with ads support are accepted.
+$profile_id = 'profile_id_example'; // string | Your Zernio profile ID
+$account_id = 'account_id_example'; // string | Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter, pinterest). Ignored for same-token and ads-only platforms.
+$redirect_url = 'redirect_url_example'; // string | Custom redirect URL after OAuth completes (same-token platforms only)
+$headless = false; // bool | Enable headless mode (same-token platforms only)
+
+try {
+    $result = $apiInstance->connectAds($platform, $profile_id, $account_id, $redirect_url, $headless);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ConnectApi->connectAds: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **platform** | **string**| Platform to connect ads for. Only platforms with ads support are accepted. | |
+| **profile_id** | **string**| Your Zernio profile ID | |
+| **account_id** | **string**| Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter, pinterest). Ignored for same-token and ads-only platforms. | [optional] |
+| **redirect_url** | **string**| Custom redirect URL after OAuth completes (same-token platforms only) | [optional] |
+| **headless** | **bool**| Enable headless mode (same-token platforms only) | [optional] [default to false] |
+
+### Return type
+
+[**\Late\Model\ConnectAds200Response**](../Model/ConnectAds200Response.md)
 
 ### Authorization
 

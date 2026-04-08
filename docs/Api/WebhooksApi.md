@@ -142,7 +142,7 @@ getWebhookLogs($limit, $status, $event, $webhook_id): \Late\Model\GetWebhookLogs
 
 Get delivery logs
 
-Retrieve webhook delivery history. Logs are automatically deleted after 7 days.
+**Deprecated.** Use `GET /v1/logs?type=webhooks` instead. Retrieve webhook delivery history. Logs are retained for 90 days.
 
 ### Example
 

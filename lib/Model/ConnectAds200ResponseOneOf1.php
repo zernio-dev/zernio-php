@@ -1,6 +1,6 @@
 <?php
 /**
- * ListLogs200Response
+ * ConnectAds200ResponseOneOf1
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * ListLogs200Response Class Doc Comment
+ * ConnectAds200ResponseOneOf1 Class Doc Comment
  *
  * @category Class
+ * @description OAuth URL to redirect user to
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConnectAds200ResponseOneOf1 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listLogs_200_response';
+    protected static $openAPIModelName = 'connectAds_200_response_oneOf_1';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,8 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'logs' => '\Late\Model\ListLogs200ResponseLogsInner[]',
-        'pagination' => '\Late\Model\ListLogs200ResponsePagination'
+        'auth_url' => 'string',
+        'state' => 'string'
     ];
 
     /**
@@ -70,8 +71,8 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'logs' => null,
-        'pagination' => null
+        'auth_url' => 'uri',
+        'state' => null
     ];
 
     /**
@@ -80,8 +81,8 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'logs' => false,
-        'pagination' => false
+        'auth_url' => false,
+        'state' => false
     ];
 
     /**
@@ -170,8 +171,8 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'logs' => 'logs',
-        'pagination' => 'pagination'
+        'auth_url' => 'authUrl',
+        'state' => 'state'
     ];
 
     /**
@@ -180,8 +181,8 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'logs' => 'setLogs',
-        'pagination' => 'setPagination'
+        'auth_url' => 'setAuthUrl',
+        'state' => 'setState'
     ];
 
     /**
@@ -190,8 +191,8 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'logs' => 'getLogs',
-        'pagination' => 'getPagination'
+        'auth_url' => 'getAuthUrl',
+        'state' => 'getState'
     ];
 
     /**
@@ -251,8 +252,8 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('logs', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
+        $this->setIfExists('auth_url', $data ?? [], null);
+        $this->setIfExists('state', $data ?? [], null);
     }
 
     /**
@@ -298,55 +299,55 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets logs
+     * Gets auth_url
      *
-     * @return \Late\Model\ListLogs200ResponseLogsInner[]|null
+     * @return string|null
      */
-    public function getLogs()
+    public function getAuthUrl()
     {
-        return $this->container['logs'];
+        return $this->container['auth_url'];
     }
 
     /**
-     * Sets logs
+     * Sets auth_url
      *
-     * @param \Late\Model\ListLogs200ResponseLogsInner[]|null $logs logs
+     * @param string|null $auth_url auth_url
      *
      * @return self
      */
-    public function setLogs($logs)
+    public function setAuthUrl($auth_url)
     {
-        if (is_null($logs)) {
-            throw new \InvalidArgumentException('non-nullable logs cannot be null');
+        if (is_null($auth_url)) {
+            throw new \InvalidArgumentException('non-nullable auth_url cannot be null');
         }
-        $this->container['logs'] = $logs;
+        $this->container['auth_url'] = $auth_url;
 
         return $this;
     }
 
     /**
-     * Gets pagination
+     * Gets state
      *
-     * @return \Late\Model\ListLogs200ResponsePagination|null
+     * @return string|null
      */
-    public function getPagination()
+    public function getState()
     {
-        return $this->container['pagination'];
+        return $this->container['state'];
     }
 
     /**
-     * Sets pagination
+     * Sets state
      *
-     * @param \Late\Model\ListLogs200ResponsePagination|null $pagination pagination
+     * @param string|null $state state
      *
      * @return self
      */
-    public function setPagination($pagination)
+    public function setState($state)
     {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        if (is_null($state)) {
+            throw new \InvalidArgumentException('non-nullable state cannot be null');
         }
-        $this->container['pagination'] = $pagination;
+        $this->container['state'] = $state;
 
         return $this;
     }

@@ -98,6 +98,9 @@ docs/Model/CancelBroadcast200ResponseBroadcast.md
 docs/Model/CancelWhatsAppBroadcastSchedule200Response.md
 docs/Model/CancelWhatsAppBroadcastSchedule200ResponseBroadcast.md
 docs/Model/CompleteTelegramConnect200Response.md
+docs/Model/ConnectAds200Response.md
+docs/Model/ConnectAds200ResponseOneOf.md
+docs/Model/ConnectAds200ResponseOneOf1.md
 docs/Model/ConnectBlueskyCredentials200Response.md
 docs/Model/ConnectBlueskyCredentialsRequest.md
 docs/Model/ConnectWhatsAppCredentials200Response.md
@@ -478,6 +481,9 @@ docs/Model/ListInboxReviews200ResponseDataInnerReviewer.md
 docs/Model/ListInboxReviews200ResponseSummary.md
 docs/Model/ListLinkedInOrganizations200Response.md
 docs/Model/ListLinkedInOrganizations200ResponseOrganizationsInner.md
+docs/Model/ListLogs200Response.md
+docs/Model/ListLogs200ResponseLogsInner.md
+docs/Model/ListLogs200ResponsePagination.md
 docs/Model/ListPinterestBoardsForSelection200Response.md
 docs/Model/ListPinterestBoardsForSelection200ResponseBoardsInner.md
 docs/Model/ListPostsLogs200Response.md
@@ -890,6 +896,9 @@ lib/Model/CancelBroadcast200ResponseBroadcast.php
 lib/Model/CancelWhatsAppBroadcastSchedule200Response.php
 lib/Model/CancelWhatsAppBroadcastSchedule200ResponseBroadcast.php
 lib/Model/CompleteTelegramConnect200Response.php
+lib/Model/ConnectAds200Response.php
+lib/Model/ConnectAds200ResponseOneOf.php
+lib/Model/ConnectAds200ResponseOneOf1.php
 lib/Model/ConnectBlueskyCredentials200Response.php
 lib/Model/ConnectBlueskyCredentialsRequest.php
 lib/Model/ConnectWhatsAppCredentials200Response.php
@@ -1270,6 +1279,9 @@ lib/Model/ListInboxReviews200ResponseDataInnerReviewer.php
 lib/Model/ListInboxReviews200ResponseSummary.php
 lib/Model/ListLinkedInOrganizations200Response.php
 lib/Model/ListLinkedInOrganizations200ResponseOrganizationsInner.php
+lib/Model/ListLogs200Response.php
+lib/Model/ListLogs200ResponseLogsInner.php
+lib/Model/ListLogs200ResponsePagination.php
 lib/Model/ListPinterestBoardsForSelection200Response.php
 lib/Model/ListPinterestBoardsForSelection200ResponseBoardsInner.php
 lib/Model/ListPostsLogs200Response.php
@@ -1585,3 +1597,7 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ConnectAds200ResponseOneOf1Test.php
+test/Model/ConnectAds200ResponseOneOfTest.php
+test/Model/ConnectAds200ResponseTest.php
+test/Model/ListLogs200ResponseLogsInnerTest.php

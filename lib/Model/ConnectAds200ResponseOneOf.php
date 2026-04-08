@@ -1,6 +1,6 @@
 <?php
 /**
- * PlatformTargetAccountId
+ * ConnectAds200ResponseOneOf
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * PlatformTargetAccountId Class Doc Comment
+ * ConnectAds200ResponseOneOf Class Doc Comment
  *
  * @category Class
+ * @description Ads already connected (no OAuth needed)
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PlatformTarget_accountId';
+    protected static $openAPIModelName = 'connectAds_200_response_oneOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,17 +59,11 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
+        'already_connected' => 'bool',
+        'account_id' => 'string',
         'platform' => 'string',
-        'profile_id' => '\Late\Model\SocialAccountProfileId',
         'username' => 'string',
-        'display_name' => 'string',
-        'profile_url' => 'string',
-        'is_active' => 'bool',
-        'followers_count' => 'float',
-        'followers_last_updated' => '\DateTime',
-        'ads_status' => 'string',
-        'metadata' => 'object'
+        'display_name' => 'string'
     ];
 
     /**
@@ -79,17 +74,11 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
+        'already_connected' => null,
+        'account_id' => null,
         'platform' => null,
-        'profile_id' => null,
         'username' => null,
-        'display_name' => null,
-        'profile_url' => null,
-        'is_active' => null,
-        'followers_count' => null,
-        'followers_last_updated' => 'date-time',
-        'ads_status' => null,
-        'metadata' => null
+        'display_name' => null
     ];
 
     /**
@@ -98,17 +87,11 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
+        'already_connected' => false,
+        'account_id' => false,
         'platform' => false,
-        'profile_id' => false,
         'username' => false,
-        'display_name' => false,
-        'profile_url' => false,
-        'is_active' => false,
-        'followers_count' => false,
-        'followers_last_updated' => false,
-        'ads_status' => false,
-        'metadata' => false
+        'display_name' => false
     ];
 
     /**
@@ -197,17 +180,11 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
+        'already_connected' => 'alreadyConnected',
+        'account_id' => 'accountId',
         'platform' => 'platform',
-        'profile_id' => 'profileId',
         'username' => 'username',
-        'display_name' => 'displayName',
-        'profile_url' => 'profileUrl',
-        'is_active' => 'isActive',
-        'followers_count' => 'followersCount',
-        'followers_last_updated' => 'followersLastUpdated',
-        'ads_status' => 'adsStatus',
-        'metadata' => 'metadata'
+        'display_name' => 'displayName'
     ];
 
     /**
@@ -216,17 +193,11 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
+        'already_connected' => 'setAlreadyConnected',
+        'account_id' => 'setAccountId',
         'platform' => 'setPlatform',
-        'profile_id' => 'setProfileId',
         'username' => 'setUsername',
-        'display_name' => 'setDisplayName',
-        'profile_url' => 'setProfileUrl',
-        'is_active' => 'setIsActive',
-        'followers_count' => 'setFollowersCount',
-        'followers_last_updated' => 'setFollowersLastUpdated',
-        'ads_status' => 'setAdsStatus',
-        'metadata' => 'setMetadata'
+        'display_name' => 'setDisplayName'
     ];
 
     /**
@@ -235,17 +206,11 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
+        'already_connected' => 'getAlreadyConnected',
+        'account_id' => 'getAccountId',
         'platform' => 'getPlatform',
-        'profile_id' => 'getProfileId',
         'username' => 'getUsername',
-        'display_name' => 'getDisplayName',
-        'profile_url' => 'getProfileUrl',
-        'is_active' => 'getIsActive',
-        'followers_count' => 'getFollowersCount',
-        'followers_last_updated' => 'getFollowersLastUpdated',
-        'ads_status' => 'getAdsStatus',
-        'metadata' => 'getMetadata'
+        'display_name' => 'getDisplayName'
     ];
 
     /**
@@ -289,23 +254,6 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    public const ADS_STATUS_CONNECTED = 'connected';
-    public const ADS_STATUS_NOT_CONNECTED = 'not_connected';
-    public const ADS_STATUS_NOT_AVAILABLE = 'not_available';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAdsStatusAllowableValues()
-    {
-        return [
-            self::ADS_STATUS_CONNECTED,
-            self::ADS_STATUS_NOT_CONNECTED,
-            self::ADS_STATUS_NOT_AVAILABLE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -322,17 +270,11 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
+        $this->setIfExists('already_connected', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
-        $this->setIfExists('profile_url', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], null);
-        $this->setIfExists('followers_count', $data ?? [], null);
-        $this->setIfExists('followers_last_updated', $data ?? [], null);
-        $this->setIfExists('ads_status', $data ?? [], null);
-        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -362,15 +304,6 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getAdsStatusAllowableValues();
-        if (!is_null($this->container['ads_status']) && !in_array($this->container['ads_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ads_status', must be one of '%s'",
-                $this->container['ads_status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -387,28 +320,55 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets _id
+     * Gets already_connected
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getId()
+    public function getAlreadyConnected()
     {
-        return $this->container['_id'];
+        return $this->container['already_connected'];
     }
 
     /**
-     * Sets _id
+     * Sets already_connected
      *
-     * @param string|null $_id _id
+     * @param bool|null $already_connected already_connected
      *
      * @return self
      */
-    public function setId($_id)
+    public function setAlreadyConnected($already_connected)
     {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
+        if (is_null($already_connected)) {
+            throw new \InvalidArgumentException('non-nullable already_connected cannot be null');
         }
-        $this->container['_id'] = $_id;
+        $this->container['already_connected'] = $already_connected;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id account_id
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
@@ -436,33 +396,6 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
         $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets profile_id
-     *
-     * @return \Late\Model\SocialAccountProfileId|null
-     */
-    public function getProfileId()
-    {
-        return $this->container['profile_id'];
-    }
-
-    /**
-     * Sets profile_id
-     *
-     * @param \Late\Model\SocialAccountProfileId|null $profile_id profile_id
-     *
-     * @return self
-     */
-    public function setProfileId($profile_id)
-    {
-        if (is_null($profile_id)) {
-            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
-        }
-        $this->container['profile_id'] = $profile_id;
 
         return $this;
     }
@@ -517,178 +450,6 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
         $this->container['display_name'] = $display_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets profile_url
-     *
-     * @return string|null
-     */
-    public function getProfileUrl()
-    {
-        return $this->container['profile_url'];
-    }
-
-    /**
-     * Sets profile_url
-     *
-     * @param string|null $profile_url Full profile URL for the connected account on its platform.
-     *
-     * @return self
-     */
-    public function setProfileUrl($profile_url)
-    {
-        if (is_null($profile_url)) {
-            throw new \InvalidArgumentException('non-nullable profile_url cannot be null');
-        }
-        $this->container['profile_url'] = $profile_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_active
-     *
-     * @return bool|null
-     */
-    public function getIsActive()
-    {
-        return $this->container['is_active'];
-    }
-
-    /**
-     * Sets is_active
-     *
-     * @param bool|null $is_active is_active
-     *
-     * @return self
-     */
-    public function setIsActive($is_active)
-    {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
-        }
-        $this->container['is_active'] = $is_active;
-
-        return $this;
-    }
-
-    /**
-     * Gets followers_count
-     *
-     * @return float|null
-     */
-    public function getFollowersCount()
-    {
-        return $this->container['followers_count'];
-    }
-
-    /**
-     * Sets followers_count
-     *
-     * @param float|null $followers_count Follower count (only included if user has analytics add-on)
-     *
-     * @return self
-     */
-    public function setFollowersCount($followers_count)
-    {
-        if (is_null($followers_count)) {
-            throw new \InvalidArgumentException('non-nullable followers_count cannot be null');
-        }
-        $this->container['followers_count'] = $followers_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets followers_last_updated
-     *
-     * @return \DateTime|null
-     */
-    public function getFollowersLastUpdated()
-    {
-        return $this->container['followers_last_updated'];
-    }
-
-    /**
-     * Sets followers_last_updated
-     *
-     * @param \DateTime|null $followers_last_updated Last time follower count was updated (only included if user has analytics add-on)
-     *
-     * @return self
-     */
-    public function setFollowersLastUpdated($followers_last_updated)
-    {
-        if (is_null($followers_last_updated)) {
-            throw new \InvalidArgumentException('non-nullable followers_last_updated cannot be null');
-        }
-        $this->container['followers_last_updated'] = $followers_last_updated;
-
-        return $this;
-    }
-
-    /**
-     * Gets ads_status
-     *
-     * @return string|null
-     */
-    public function getAdsStatus()
-    {
-        return $this->container['ads_status'];
-    }
-
-    /**
-     * Sets ads_status
-     *
-     * @param string|null $ads_status Ads connection status for this account. - `connected`: Ads are ready to use (same-token platforms like Meta/LinkedIn, or separate ads token is present). - `not_connected`: Platform supports ads but requires a separate ads OAuth. Use `GET /v1/connect/{platform}/ads` to connect. - `not_available`: Platform does not support ads (e.g., YouTube, Reddit, Bluesky).
-     *
-     * @return self
-     */
-    public function setAdsStatus($ads_status)
-    {
-        if (is_null($ads_status)) {
-            throw new \InvalidArgumentException('non-nullable ads_status cannot be null');
-        }
-        $allowedValues = $this->getAdsStatusAllowableValues();
-        if (!in_array($ads_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ads_status', must be one of '%s'",
-                    $ads_status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['ads_status'] = $ads_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets metadata
-     *
-     * @return object|null
-     */
-    public function getMetadata()
-    {
-        return $this->container['metadata'];
-    }
-
-    /**
-     * Sets metadata
-     *
-     * @param object|null $metadata Platform-specific metadata. Fields vary by platform. For WhatsApp accounts, includes: - `qualityRating`: Phone number quality rating from Meta (`GREEN`, `YELLOW`, `RED`, or `UNKNOWN`) - `nameStatus`: Display name review status (`APPROVED`, `PENDING_REVIEW`, `DECLINED`, or `NONE`). Messages cannot be sent until the display name is approved by Meta. - `messagingLimitTier`: Maximum unique business-initiated conversations per 24h rolling window (`TIER_250`, `TIER_1K`, `TIER_10K`, `TIER_100K`, or `TIER_UNLIMITED`). Scales automatically as quality rating improves. - `verifiedName`: Meta-verified business display name - `displayPhoneNumber`: Formatted phone number (e.g., \"+1 555-123-4567\") - `wabaId`: WhatsApp Business Account ID - `phoneNumberId`: Meta phone number ID
-     *
-     * @return self
-     */
-    public function setMetadata($metadata)
-    {
-        if (is_null($metadata)) {
-            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
-        }
-        $this->container['metadata'] = $metadata;
 
         return $this;
     }

@@ -727,6 +727,7 @@ class WebhooksApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetWebhookLogs200Response|\Late\Model\InlineObject
+     * @deprecated
      */
     public function getWebhookLogs($limit = 50, $status = null, $event = null, $webhook_id = null, string $contentType = self::contentTypes['getWebhookLogs'][0])
     {
@@ -748,6 +749,7 @@ class WebhooksApi
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetWebhookLogs200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getWebhookLogsWithHttpInfo($limit = 50, $status = null, $event = null, $webhook_id = null, string $contentType = self::contentTypes['getWebhookLogs'][0])
     {
@@ -849,6 +851,7 @@ class WebhooksApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWebhookLogsAsync($limit = 50, $status = null, $event = null, $webhook_id = null, string $contentType = self::contentTypes['getWebhookLogs'][0])
     {
@@ -873,6 +876,7 @@ class WebhooksApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getWebhookLogsAsyncWithHttpInfo($limit = 50, $status = null, $event = null, $webhook_id = null, string $contentType = self::contentTypes['getWebhookLogs'][0])
     {
@@ -926,6 +930,7 @@ class WebhooksApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getWebhookLogsRequest($limit = 50, $status = null, $event = null, $webhook_id = null, string $contentType = self::contentTypes['getWebhookLogs'][0])
     {
