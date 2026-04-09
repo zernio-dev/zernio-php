@@ -1,6 +1,6 @@
 # Late\AdsApi
 
-Paid advertising management across Meta (Facebook/Instagram), Google, TikTok, LinkedIn, Pinterest, and X/Twitter. Create, boost, pause/resume ads and campaigns, view metrics, manage audiences, and sync external ads. Requires the Ads add-on.
+Paid advertising management across Meta (Facebook/Instagram), Google, TikTok, LinkedIn, Pinterest, and X/Twitter. Create, boost, pause/resume ads and campaigns, view metrics, and manage audiences. Requires the Ads add-on.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -14,7 +14,6 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAdAccounts()**](AdsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts for a social account |
 | [**listAds()**](AdsApi.md#listAds) | **GET** /v1/ads | List ads |
 | [**searchAdInterests()**](AdsApi.md#searchAdInterests) | **GET** /v1/ads/interests | Search targeting interests |
-| [**syncExternalAds()**](AdsApi.md#syncExternalAds) | **POST** /v1/ads/sync | Sync external ads from platform ad managers |
 | [**updateAd()**](AdsApi.md#updateAd) | **PUT** /v1/ads/{adId} | Update ad (pause/resume, budget, targeting, name) |
 
 
@@ -259,12 +258,12 @@ try {
 ## `getAdAnalytics()`
 
 ```php
-getAdAnalytics($ad_id, $breakdowns): \Late\Model\GetAdAnalytics200Response
+getAdAnalytics($ad_id, $from_date, $to_date, $breakdowns): \Late\Model\GetAdAnalytics200Response
 ```
 
 Get ad analytics with daily breakdown
 
-Returns real-time analytics from the platform API (not cached). Includes summary metrics, daily breakdown, and optional demographic breakdowns (Meta and TikTok only).
+Returns detailed performance analytics for an ad. Includes summary metrics, a daily timeline over the requested date range, and optional demographic breakdowns (Meta and TikTok only). If no date range is provided, defaults to the last 90 days. Date range is capped at 90 days max.
 
 ### Example
 
@@ -284,10 +283,12 @@ $apiInstance = new Late\Api\AdsApi(
     $config
 );
 $ad_id = 'ad_id_example'; // string
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of date range (YYYY-MM-DD). Defaults to 90 days ago.
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of date range (YYYY-MM-DD). Defaults to today. Max 90-day range.
 $breakdowns = 'breakdowns_example'; // string | Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language.
 
 try {
-    $result = $apiInstance->getAdAnalytics($ad_id, $breakdowns);
+    $result = $apiInstance->getAdAnalytics($ad_id, $from_date, $to_date, $breakdowns);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdsApi->getAdAnalytics: ', $e->getMessage(), PHP_EOL;
@@ -299,6 +300,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **ad_id** | **string**|  | |
+| **from_date** | **\DateTime**| Start of date range (YYYY-MM-DD). Defaults to 90 days ago. | [optional] |
+| **to_date** | **\DateTime**| End of date range (YYYY-MM-DD). Defaults to today. Max 90-day range. | [optional] |
 | **breakdowns** | **string**| Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. | [optional] |
 
 ### Return type
@@ -381,12 +384,12 @@ try {
 ## `listAds()`
 
 ```php
-listAds($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id): \Late\Model\ListAds200Response
+listAds($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $from_date, $to_date): \Late\Model\ListAds200Response
 ```
 
 List ads
 
-Returns a paginated list of ads with cached metrics. Use `source=all` to include externally-synced ads from platform ad managers.
+Returns a paginated list of ads with metrics computed over an optional date range. Use `source=all` to include externally-synced ads from platform ad managers. If no date range is provided, defaults to the last 90 days. Date range is capped at 90 days max.
 
 ### Example
 
@@ -413,9 +416,11 @@ $platform = 'platform_example'; // string
 $account_id = 'account_id_example'; // string | Social account ID
 $profile_id = 'profile_id_example'; // string | Profile ID
 $campaign_id = 'campaign_id_example'; // string | Platform campaign ID (filter ads within a campaign)
+$from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago.
+$to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range.
 
 try {
-    $result = $apiInstance->listAds($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id);
+    $result = $apiInstance->listAds($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $from_date, $to_date);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdsApi->listAds: ', $e->getMessage(), PHP_EOL;
@@ -434,6 +439,8 @@ try {
 | **account_id** | **string**| Social account ID | [optional] |
 | **profile_id** | **string**| Profile ID | [optional] |
 | **campaign_id** | **string**| Platform campaign ID (filter ads within a campaign) | [optional] |
+| **from_date** | **\DateTime**| Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. | [optional] |
+| **to_date** | **\DateTime**| End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. | [optional] |
 
 ### Return type
 
@@ -500,63 +507,6 @@ try {
 ### Return type
 
 [**\Late\Model\SearchAdInterests200Response**](../Model/SearchAdInterests200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `syncExternalAds()`
-
-```php
-syncExternalAds(): \Late\Model\SyncExternalAds200Response
-```
-
-Sync external ads from platform ad managers
-
-Discovers and imports ads created outside Zernio (e.g. in Meta Ads Manager, Google Ads). Upserts new ads and updates metrics/status for existing ones. Also runs automatically every 30 minutes.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Late\Api\AdsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-
-try {
-    $result = $apiInstance->syncExternalAds();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling AdsApi->syncExternalAds: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**\Late\Model\SyncExternalAds200Response**](../Model/SyncExternalAds200Response.md)
 
 ### Authorization
 

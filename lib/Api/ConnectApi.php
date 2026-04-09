@@ -513,7 +513,7 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter, pinterest). Ignored for same-token and ads-only platforms. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter). Ignored for same-token and ads-only platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
@@ -535,7 +535,7 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter, pinterest). Ignored for same-token and ads-only platforms. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter). Ignored for same-token and ads-only platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
@@ -638,7 +638,7 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter, pinterest). Ignored for same-token and ads-only platforms. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter). Ignored for same-token and ads-only platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
@@ -663,7 +663,7 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter, pinterest). Ignored for same-token and ads-only platforms. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter). Ignored for same-token and ads-only platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
@@ -717,7 +717,7 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter, pinterest). Ignored for same-token and ads-only platforms. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter). Ignored for same-token and ads-only platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation

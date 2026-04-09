@@ -99,9 +99,6 @@ class AdsApi
         'searchAdInterests' => [
             'application/json',
         ],
-        'syncExternalAds' => [
-            'application/json',
-        ],
         'updateAd' => [
             'application/json',
         ],
@@ -1329,6 +1326,8 @@ class AdsApi
      * Get ad analytics with daily breakdown
      *
      * @param  string $ad_id ad_id (required)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
@@ -1336,9 +1335,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetAdAnalytics200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
      */
-    public function getAdAnalytics($ad_id, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
+    public function getAdAnalytics($ad_id, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
     {
-        list($response) = $this->getAdAnalyticsWithHttpInfo($ad_id, $breakdowns, $contentType);
+        list($response) = $this->getAdAnalyticsWithHttpInfo($ad_id, $from_date, $to_date, $breakdowns, $contentType);
         return $response;
     }
 
@@ -1348,6 +1347,8 @@ class AdsApi
      * Get ad analytics with daily breakdown
      *
      * @param  string $ad_id (required)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
@@ -1355,9 +1356,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetAdAnalytics200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAdAnalyticsWithHttpInfo($ad_id, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
+    public function getAdAnalyticsWithHttpInfo($ad_id, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
     {
-        $request = $this->getAdAnalyticsRequest($ad_id, $breakdowns, $contentType);
+        $request = $this->getAdAnalyticsRequest($ad_id, $from_date, $to_date, $breakdowns, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1462,15 +1463,17 @@ class AdsApi
      * Get ad analytics with daily breakdown
      *
      * @param  string $ad_id (required)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdAnalyticsAsync($ad_id, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
+    public function getAdAnalyticsAsync($ad_id, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
     {
-        return $this->getAdAnalyticsAsyncWithHttpInfo($ad_id, $breakdowns, $contentType)
+        return $this->getAdAnalyticsAsyncWithHttpInfo($ad_id, $from_date, $to_date, $breakdowns, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1484,16 +1487,18 @@ class AdsApi
      * Get ad analytics with daily breakdown
      *
      * @param  string $ad_id (required)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdAnalyticsAsyncWithHttpInfo($ad_id, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
+    public function getAdAnalyticsAsyncWithHttpInfo($ad_id, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
     {
         $returnType = '\Late\Model\GetAdAnalytics200Response';
-        $request = $this->getAdAnalyticsRequest($ad_id, $breakdowns, $contentType);
+        $request = $this->getAdAnalyticsRequest($ad_id, $from_date, $to_date, $breakdowns, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1535,13 +1540,15 @@ class AdsApi
      * Create request for operation 'getAdAnalytics'
      *
      * @param  string $ad_id (required)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAdAnalyticsRequest($ad_id, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
+    public function getAdAnalyticsRequest($ad_id, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
     {
 
         // verify the required parameter 'ad_id' is set
@@ -1553,6 +1560,8 @@ class AdsApi
 
 
 
+
+
         $resourcePath = '/v1/ads/{adId}/analytics';
         $formParams = [];
         $queryParams = [];
@@ -1560,6 +1569,24 @@ class AdsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_date,
+            'fromDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_date,
+            'toDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $breakdowns,
@@ -1938,15 +1965,17 @@ class AdsApi
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\ListAds200Response|\Late\Model\InlineObject
      */
-    public function listAds($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAds($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
-        list($response) = $this->listAdsWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $contentType);
+        list($response) = $this->listAdsWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
         return $response;
     }
 
@@ -1963,15 +1992,17 @@ class AdsApi
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ListAds200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdsWithHttpInfo($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsWithHttpInfo($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
-        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $contentType);
+        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2069,14 +2100,16 @@ class AdsApi
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdsAsync($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsAsync($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
-        return $this->listAdsAsyncWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $contentType)
+        return $this->listAdsAsyncWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2097,15 +2130,17 @@ class AdsApi
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdsAsyncWithHttpInfo($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsAsyncWithHttpInfo($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
         $returnType = '\Late\Model\ListAds200Response';
-        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $contentType);
+        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2154,12 +2189,14 @@ class AdsApi
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdsRequest($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsRequest($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
 
         if ($page !== null && $page < 1) {
@@ -2173,6 +2210,8 @@ class AdsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.listAds, must be bigger than or equal to 1.');
         }
         
+
+
 
 
 
@@ -2254,6 +2293,24 @@ class AdsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $campaign_id,
             'campaignId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_date,
+            'fromDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_date,
+            'toDate', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -2622,272 +2679,6 @@ class AdsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation syncExternalAds
-     *
-     * Sync external ads from platform ad managers
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['syncExternalAds'] to see the possible values for this operation
-     *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Late\Model\SyncExternalAds200Response|\Late\Model\InlineObject
-     */
-    public function syncExternalAds(string $contentType = self::contentTypes['syncExternalAds'][0])
-    {
-        list($response) = $this->syncExternalAdsWithHttpInfo($contentType);
-        return $response;
-    }
-
-    /**
-     * Operation syncExternalAdsWithHttpInfo
-     *
-     * Sync external ads from platform ad managers
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['syncExternalAds'] to see the possible values for this operation
-     *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SyncExternalAds200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function syncExternalAdsWithHttpInfo(string $contentType = self::contentTypes['syncExternalAds'][0])
-    {
-        $request = $this->syncExternalAdsRequest($contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Late\Model\SyncExternalAds200Response',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Late\Model\SyncExternalAds200Response',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Late\Model\SyncExternalAds200Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation syncExternalAdsAsync
-     *
-     * Sync external ads from platform ad managers
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['syncExternalAds'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function syncExternalAdsAsync(string $contentType = self::contentTypes['syncExternalAds'][0])
-    {
-        return $this->syncExternalAdsAsyncWithHttpInfo($contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation syncExternalAdsAsyncWithHttpInfo
-     *
-     * Sync external ads from platform ad managers
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['syncExternalAds'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function syncExternalAdsAsyncWithHttpInfo(string $contentType = self::contentTypes['syncExternalAds'][0])
-    {
-        $returnType = '\Late\Model\SyncExternalAds200Response';
-        $request = $this->syncExternalAdsRequest($contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'syncExternalAds'
-     *
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['syncExternalAds'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function syncExternalAdsRequest(string $contentType = self::contentTypes['syncExternalAds'][0])
-    {
-
-
-        $resourcePath = '/v1/ads/sync';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

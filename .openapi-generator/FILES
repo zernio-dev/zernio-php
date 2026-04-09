@@ -191,6 +191,7 @@ docs/Model/DeleteInboxReviewReply200Response.md
 docs/Model/DeleteInboxReviewReplyRequest.md
 docs/Model/DeleteQueueSlot200Response.md
 docs/Model/DeleteWhatsAppGroupRequest.md
+docs/Model/DisconnectAdsRequest.md
 docs/Model/EditInboxMessage200Response.md
 docs/Model/EditInboxMessage200ResponseData.md
 docs/Model/EditInboxMessageRequest.md
@@ -634,7 +635,6 @@ docs/Model/SetTelegramCommandsRequestCommandsInner.md
 docs/Model/SnapchatPlatformData.md
 docs/Model/SocialAccount.md
 docs/Model/SocialAccountProfileId.md
-docs/Model/SyncExternalAds200Response.md
 docs/Model/TelegramPlatformData.md
 docs/Model/TestWebhookRequest.md
 docs/Model/ThreadsPlatformData.md
@@ -989,6 +989,7 @@ lib/Model/DeleteInboxReviewReply200Response.php
 lib/Model/DeleteInboxReviewReplyRequest.php
 lib/Model/DeleteQueueSlot200Response.php
 lib/Model/DeleteWhatsAppGroupRequest.php
+lib/Model/DisconnectAdsRequest.php
 lib/Model/EditInboxMessage200Response.php
 lib/Model/EditInboxMessage200ResponseData.php
 lib/Model/EditInboxMessageRequest.php
@@ -1433,7 +1434,6 @@ lib/Model/SetTelegramCommandsRequestCommandsInner.php
 lib/Model/SnapchatPlatformData.php
 lib/Model/SocialAccount.php
 lib/Model/SocialAccountProfileId.php
-lib/Model/SyncExternalAds200Response.php
 lib/Model/TelegramPlatformData.php
 lib/Model/TestWebhookRequest.php
 lib/Model/ThreadsPlatformData.php
@@ -1597,3 +1597,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/DisconnectAdsRequestTest.php
