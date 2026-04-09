@@ -1603,6 +1603,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadMessageSentMessageSenderTest.php
-test/Model/WebhookPayloadMessageSentMessageTest.php
-test/Model/WebhookPayloadMessageSentTest.php
