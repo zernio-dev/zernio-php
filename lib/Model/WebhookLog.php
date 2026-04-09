@@ -311,6 +311,7 @@ class WebhookLog implements ModelInterface, ArrayAccess, \JsonSerializable
     public const EVENT_ACCOUNT_CONNECTED = 'account.connected';
     public const EVENT_ACCOUNT_DISCONNECTED = 'account.disconnected';
     public const EVENT_MESSAGE_RECEIVED = 'message.received';
+    public const EVENT_MESSAGE_SENT = 'message.sent';
     public const EVENT_COMMENT_RECEIVED = 'comment.received';
     public const EVENT_WEBHOOK_TEST = 'webhook.test';
     public const STATUS_SUCCESS = 'success';
@@ -333,6 +334,7 @@ class WebhookLog implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENT_ACCOUNT_CONNECTED,
             self::EVENT_ACCOUNT_DISCONNECTED,
             self::EVENT_MESSAGE_RECEIVED,
+            self::EVENT_MESSAGE_SENT,
             self::EVENT_COMMENT_RECEIVED,
             self::EVENT_WEBHOOK_TEST,
         ];

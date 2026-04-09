@@ -774,6 +774,9 @@ docs/Model/WebhookPayloadMessageMessageAttachmentsInner.md
 docs/Model/WebhookPayloadMessageMessageSender.md
 docs/Model/WebhookPayloadMessageMessageSenderInstagramProfile.md
 docs/Model/WebhookPayloadMessageMetadata.md
+docs/Model/WebhookPayloadMessageSent.md
+docs/Model/WebhookPayloadMessageSentMessage.md
+docs/Model/WebhookPayloadMessageSentMessageSender.md
 docs/Model/WebhookPayloadPost.md
 docs/Model/WebhookPayloadPostPost.md
 docs/Model/WebhookPayloadPostPostPlatformsInner.md
@@ -1573,6 +1576,9 @@ lib/Model/WebhookPayloadMessageMessageAttachmentsInner.php
 lib/Model/WebhookPayloadMessageMessageSender.php
 lib/Model/WebhookPayloadMessageMessageSenderInstagramProfile.php
 lib/Model/WebhookPayloadMessageMetadata.php
+lib/Model/WebhookPayloadMessageSent.php
+lib/Model/WebhookPayloadMessageSentMessage.php
+lib/Model/WebhookPayloadMessageSentMessageSender.php
 lib/Model/WebhookPayloadPost.php
 lib/Model/WebhookPayloadPostPost.php
 lib/Model/WebhookPayloadPostPostPlatformsInner.php
@@ -1597,4 +1603,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/DisconnectAdsRequestTest.php
+test/Model/WebhookPayloadMessageSentMessageSenderTest.php
+test/Model/WebhookPayloadMessageSentMessageTest.php
+test/Model/WebhookPayloadMessageSentTest.php
