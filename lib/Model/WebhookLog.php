@@ -746,7 +746,7 @@ class WebhookLog implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attempt_number
      *
-     * @param int|null $attempt_number Delivery attempt number (max 3 retries)
+     * @param int|null $attempt_number Delivery attempt number (max 7 attempts)
      *
      * @return self
      */

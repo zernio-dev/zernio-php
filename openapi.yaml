@@ -852,7 +852,7 @@ components:
           description: Error message if delivery failed
         attemptNumber:
           type: integer
-          description: Delivery attempt number (max 3 retries)
+          description: Delivery attempt number (max 7 attempts)
         responseTime:
           type: integer
           description: Response time in milliseconds
