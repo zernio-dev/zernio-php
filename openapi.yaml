@@ -100,7 +100,7 @@ x-documentation:
     | Twitter/X | Yes | - | Yes | Yes |
     | Instagram | Yes | Yes | Yes | Yes |
     | Facebook | Yes | Stories | Yes | Yes |
-    | LinkedIn | Yes | - | Yes | - |
+    | LinkedIn | Yes | - | Partial | - |
     | TikTok | Yes | - | Yes | - |
     | YouTube | Yes | Shorts | Yes | Yes |
     | Pinterest | Yes | - | Yes | - |
@@ -110,6 +110,8 @@ x-documentation:
     | Google Business | Yes | - | - | Yes |
     | Telegram | Yes | - | - | - |
     | Snapchat | Yes | - | - | - |
+
+    > **LinkedIn Analytics Note:** For personal LinkedIn accounts, analytics are only available for posts published through Zernio. This is a LinkedIn API limitation: the `memberCreatorPostAnalytics` endpoint only returns metrics for posts authored by the authenticated user. Company/organization page analytics are not affected and work for all posts.
 
     ## Rate Limits
 
@@ -3365,6 +3367,8 @@ paths:
         Returns analytics for posts. With postId, returns a single post. Without it, returns a paginated list with overview stats.
         Accepts both Zernio Post IDs and External Post IDs (auto-resolved). fromDate defaults to 90 days ago if omitted, max range 366 days.
         Single post lookups may return 202 (sync pending) or 424 (all platforms failed). For follower stats, use /v1/accounts/follower-stats.
+
+        **LinkedIn personal accounts:** Analytics are only available for posts published through Zernio. LinkedIn's API only returns metrics for posts authored by the authenticated user. Organization/company page analytics work for all posts.
       parameters:
         - name: postId
           in: query
@@ -9892,7 +9896,7 @@ paths:
       operationId: getLinkedInAggregateAnalytics
       tags: [Analytics]
       summary: Get LinkedIn aggregate stats
-      description: Returns aggregate analytics across all posts for a LinkedIn personal account. Org accounts should use /v1/analytics instead. Requires r_member_postAnalytics scope.
+      description: Returns aggregate analytics across all posts for a LinkedIn personal account. Only includes posts published through Zernio (LinkedIn API limitation). Org accounts should use /v1/analytics instead. Requires r_member_postAnalytics scope.
       parameters:
         - name: accountId
           in: path
