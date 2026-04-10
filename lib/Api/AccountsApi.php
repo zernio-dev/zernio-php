@@ -452,15 +452,16 @@ class AccountsApi
      *
      * Disconnect ads from an account
      *
-     * @param  string $account_id The SocialAccount ID (parent posting account for same-token/separate-token platforms) (required)
-     * @param  \Late\Model\DisconnectAdsRequest $disconnect_ads_request disconnect_ads_request (required)
+     * @param  string $account_id The ads SocialAccount ID to disconnect (required)
+     * @param  \Late\Model\DisconnectAdsRequest|null $disconnect_ads_request disconnect_ads_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disconnectAds'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Late\Model\DeleteAccountGroup200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @deprecated
      */
-    public function disconnectAds($account_id, $disconnect_ads_request, string $contentType = self::contentTypes['disconnectAds'][0])
+    public function disconnectAds($account_id, $disconnect_ads_request = null, string $contentType = self::contentTypes['disconnectAds'][0])
     {
         list($response) = $this->disconnectAdsWithHttpInfo($account_id, $disconnect_ads_request, $contentType);
         return $response;
@@ -471,15 +472,16 @@ class AccountsApi
      *
      * Disconnect ads from an account
      *
-     * @param  string $account_id The SocialAccount ID (parent posting account for same-token/separate-token platforms) (required)
-     * @param  \Late\Model\DisconnectAdsRequest $disconnect_ads_request (required)
+     * @param  string $account_id The ads SocialAccount ID to disconnect (required)
+     * @param  \Late\Model\DisconnectAdsRequest|null $disconnect_ads_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disconnectAds'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\DeleteAccountGroup200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
-    public function disconnectAdsWithHttpInfo($account_id, $disconnect_ads_request, string $contentType = self::contentTypes['disconnectAds'][0])
+    public function disconnectAdsWithHttpInfo($account_id, $disconnect_ads_request = null, string $contentType = self::contentTypes['disconnectAds'][0])
     {
         $request = $this->disconnectAdsRequest($account_id, $disconnect_ads_request, $contentType);
 
@@ -585,14 +587,15 @@ class AccountsApi
      *
      * Disconnect ads from an account
      *
-     * @param  string $account_id The SocialAccount ID (parent posting account for same-token/separate-token platforms) (required)
-     * @param  \Late\Model\DisconnectAdsRequest $disconnect_ads_request (required)
+     * @param  string $account_id The ads SocialAccount ID to disconnect (required)
+     * @param  \Late\Model\DisconnectAdsRequest|null $disconnect_ads_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disconnectAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function disconnectAdsAsync($account_id, $disconnect_ads_request, string $contentType = self::contentTypes['disconnectAds'][0])
+    public function disconnectAdsAsync($account_id, $disconnect_ads_request = null, string $contentType = self::contentTypes['disconnectAds'][0])
     {
         return $this->disconnectAdsAsyncWithHttpInfo($account_id, $disconnect_ads_request, $contentType)
             ->then(
@@ -607,14 +610,15 @@ class AccountsApi
      *
      * Disconnect ads from an account
      *
-     * @param  string $account_id The SocialAccount ID (parent posting account for same-token/separate-token platforms) (required)
-     * @param  \Late\Model\DisconnectAdsRequest $disconnect_ads_request (required)
+     * @param  string $account_id The ads SocialAccount ID to disconnect (required)
+     * @param  \Late\Model\DisconnectAdsRequest|null $disconnect_ads_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disconnectAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
-    public function disconnectAdsAsyncWithHttpInfo($account_id, $disconnect_ads_request, string $contentType = self::contentTypes['disconnectAds'][0])
+    public function disconnectAdsAsyncWithHttpInfo($account_id, $disconnect_ads_request = null, string $contentType = self::contentTypes['disconnectAds'][0])
     {
         $returnType = '\Late\Model\DeleteAccountGroup200Response';
         $request = $this->disconnectAdsRequest($account_id, $disconnect_ads_request, $contentType);
@@ -658,14 +662,15 @@ class AccountsApi
     /**
      * Create request for operation 'disconnectAds'
      *
-     * @param  string $account_id The SocialAccount ID (parent posting account for same-token/separate-token platforms) (required)
-     * @param  \Late\Model\DisconnectAdsRequest $disconnect_ads_request (required)
+     * @param  string $account_id The ads SocialAccount ID to disconnect (required)
+     * @param  \Late\Model\DisconnectAdsRequest|null $disconnect_ads_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['disconnectAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
-    public function disconnectAdsRequest($account_id, $disconnect_ads_request, string $contentType = self::contentTypes['disconnectAds'][0])
+    public function disconnectAdsRequest($account_id, $disconnect_ads_request = null, string $contentType = self::contentTypes['disconnectAds'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -675,12 +680,6 @@ class AccountsApi
             );
         }
 
-        // verify the required parameter 'disconnect_ads_request' is set
-        if ($disconnect_ads_request === null || (is_array($disconnect_ads_request) && count($disconnect_ads_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $disconnect_ads_request when calling disconnectAds'
-            );
-        }
 
 
         $resourcePath = '/v1/accounts/{accountId}/disconnect-ads';

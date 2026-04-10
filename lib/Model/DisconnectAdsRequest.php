@@ -296,9 +296,6 @@ class DisconnectAdsRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
-        if ($this->container['ads_platform'] === null) {
-            $invalidProperties[] = "'ads_platform' can't be null";
-        }
         $allowedValues = $this->getAdsPlatformAllowableValues();
         if (!is_null($this->container['ads_platform']) && !in_array($this->container['ads_platform'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -326,7 +323,7 @@ class DisconnectAdsRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets ads_platform
      *
-     * @return string
+     * @return string|null
      */
     public function getAdsPlatform()
     {
@@ -336,7 +333,7 @@ class DisconnectAdsRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets ads_platform
      *
-     * @param string $ads_platform The ads platform to disconnect
+     * @param string|null $ads_platform The ads platform (optional, used for logging only)
      *
      * @return self
      */

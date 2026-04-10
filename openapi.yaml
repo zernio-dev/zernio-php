@@ -1985,11 +1985,31 @@ components:
 
     TikTokPlatformData:
       type: object
-      description: Photo carousels up to 35 images. Video titles up to 2200 chars, photo titles truncated to 90 chars. privacyLevel must match creator_info options. Both camelCase and snake_case accepted.
+      description: |
+        Photo carousels up to 35 images. Video titles up to 2200 chars, photo titles truncated to 90 chars.
+        privacyLevel must match creator_info options. Both camelCase and snake_case accepted.
+
+        **Creator Inbox (draft mode):** Set `draft: true` to send content to the TikTok Creator Inbox
+        instead of publishing immediately. The creator receives an inbox notification and completes
+        the post using TikTok's editing flow. This maps to TikTok's `post_mode: "MEDIA_UPLOAD"` internally.
+
+        **Important:** The field `publish_type` is NOT supported. Use `draft: true` for Creator Inbox flow.
+
+        **Photo drafts** use the `/v2/post/publish/content/init/` endpoint with `post_mode: "MEDIA_UPLOAD"`.
+        **Video drafts** use the dedicated `/v2/post/publish/inbox/video/init/` endpoint.
+
+        When `draft: true`, the `video.upload` scope is required. When `draft` is false or omitted
+        (direct post), the `video.publish` scope is required. For Creator Inbox, TikTok app version
+        must be 31.8 or higher.
       properties:
         draft:
           type: boolean
-          description: When true, sends the post to the TikTok Creator Inbox as a draft instead of publishing immediately.
+          description: |
+            When true, sends the post to the TikTok Creator Inbox as a draft instead of publishing
+            immediately. The creator receives an inbox notification to complete posting via TikTok's
+            editing flow. Maps to TikTok API `post_mode: "MEDIA_UPLOAD"` (photos) or the dedicated
+            inbox endpoint (videos). When false or omitted, publishes directly via `post_mode: "DIRECT_POST"`.
+            Note: `publish_type` is not a supported field. Use this field instead.
         privacyLevel:
           type: string
           description: One of the values returned by the TikTok creator info API for the account
@@ -2186,7 +2206,9 @@ components:
       type: object
       properties:
         _id: { type: string }
-        platform: { type: string }
+        platform:
+          type: string
+          enum: [tiktok, instagram, facebook, youtube, linkedin, twitter, threads, pinterest, reddit, bluesky, googlebusiness, telegram, snapchat, whatsapp, linkedinads, metaads, pinterestads, tiktokads, xads, googleads]
         profileId:
           oneOf:
             - type: string
@@ -2204,11 +2226,29 @@ components:
           type: string
           format: date-time
           description: Last time follower count was updated (only included if user has analytics add-on)
+        parentAccountId:
+          type: string
+          nullable: true
+          description: |
+            Reference to the parent posting SocialAccount. Set for ads accounts that share
+            or derive from a posting account's OAuth token. null for standalone ads (Google Ads)
+            and all posting accounts.
+        enabled:
+          type: boolean
+          description: |
+            Whether the user explicitly activated this account. false means the account was
+            created as a side effect (e.g., posting account auto-created when user connected
+            ads first). Posting UI and scheduler ignore accounts with enabled: false.
         adsStatus:
           type: string
           enum: [connected, not_connected, not_available]
+          deprecated: true
           description: |
-            Ads connection status for this account.
+            **Deprecated.** With the new ads account model, ads accounts are separate SocialAccount
+            documents. Check for accounts with ads platform values (metaads, linkedinads, pinterestads,
+            tiktokads, xads, googleads) instead.
+
+            Legacy behavior:
             - `connected`: Ads are ready to use (same-token platforms like Meta/LinkedIn, or separate ads token is present).
             - `not_connected`: Platform supports ads but requires a separate ads OAuth. Use `GET /v1/connect/{platform}/ads` to connect.
             - `not_available`: Platform does not support ads (e.g., YouTube, Reddit, Bluesky).
@@ -5394,7 +5434,12 @@ paths:
                       - "Don't miss our essential guide!"
                       - "Our most popular guide, updated!"
               tiktokPhotoCarousel:
-                summary: TikTok photo carousel with draft mode
+                summary: TikTok photo carousel (Creator Inbox draft)
+                description: |
+                  Sends photos to TikTok Creator Inbox as a draft. The creator receives an inbox
+                  notification and completes the post via TikTok's editing flow. Uses draft: true
+                  which maps to TikTok API post_mode MEDIA_UPLOAD. Note: publish_type is not a
+                  supported field; use draft instead.
                 value:
                   content: "Check out these photos!"
                   mediaItems:
@@ -5409,6 +5454,30 @@ paths:
                     draft: true
                     privacyLevel: "PUBLIC_TO_EVERYONE"
                     allowComment: true
+                    photoCoverIndex: 0
+                    autoAddMusic: false
+                    contentPreviewConfirmed: true
+                    expressConsentGiven: true
+              tiktokPhotoDirect:
+                summary: TikTok photo carousel (direct publish)
+                description: |
+                  Publishes photos directly to TikTok. With draft omitted or false, the post is
+                  published immediately via TikTok API post_mode DIRECT_POST.
+                value:
+                  content: "Check out these photos!"
+                  mediaItems:
+                    - type: image
+                      url: "https://example.com/photo1.jpg"
+                    - type: image
+                      url: "https://example.com/photo2.jpg"
+                  platforms:
+                    - platform: tiktok
+                      accountId: "64e1f0a9e2b5af0012ab34cd"
+                  tiktokSettings:
+                    privacyLevel: "PUBLIC_TO_EVERYONE"
+                    allowComment: true
+                    photoCoverIndex: 0
+                    autoAddMusic: false
                     contentPreviewConfirmed: true
                     expressConsentGiven: true
               tiktokVideo:
@@ -5427,6 +5496,25 @@ paths:
                     allowDuet: true
                     allowStitch: true
                     commercialContentType: "none"
+                    contentPreviewConfirmed: true
+                    expressConsentGiven: true
+              tiktokVideoDraft:
+                summary: TikTok video post (Creator Inbox draft)
+                description: |
+                  Sends a video to TikTok Creator Inbox as a draft. Video drafts use a dedicated
+                  TikTok endpoint (/v2/post/publish/inbox/video/init/) that only accepts source_info,
+                  so post_info fields (privacyLevel, allowComment, etc.) are set by the creator
+                  during TikTok's editing flow.
+                value:
+                  content: "New video draft!"
+                  mediaItems:
+                    - type: video
+                      url: "https://example.com/video.mp4"
+                  platforms:
+                    - platform: tiktok
+                      accountId: "64e1f0a9e2b5af0012ab34cd"
+                  tiktokSettings:
+                    draft: true
                     contentPreviewConfirmed: true
                     expressConsentGiven: true
               multiPlatform:
@@ -6636,32 +6724,27 @@ paths:
       operationId: disconnectAds
       tags: [Accounts]
       summary: Disconnect ads from an account
+      deprecated: true
       description: |
-        Disconnects ads from a social account without removing the posting connection.
+        **Deprecated.** Ads accounts are now standalone SocialAccount documents. Use `DELETE /v1/accounts/{accountId}` instead, passing the ads account's own ID.
 
-        **Same-token platforms** (metaads, linkedinads, pinterestads): Sets an `adsOptOut` flag. The posting account and OAuth token are preserved. Reconnecting ads clears the flag.
-
-        **Separate-token platforms** (tiktokads, xads): Clears the ads-specific metadata (marketing API tokens). The posting account stays intact.
-
-        **Standalone platforms** (googleads): Do not use this endpoint. Use `DELETE /v1/accounts/{accountId}` instead, since Google Ads accounts are standalone.
+        This endpoint is kept for backward compatibility. It soft-deletes the ads SocialAccount identified by `accountId` (which must be an ads account, not a posting account). The parent posting account is left untouched.
       parameters:
         - name: accountId
           in: path
           required: true
           schema: { type: string }
-          description: The SocialAccount ID (parent posting account for same-token/separate-token platforms)
+          description: The ads SocialAccount ID to disconnect
       requestBody:
-        required: true
         content:
           application/json:
             schema:
               type: object
-              required: [adsPlatform]
               properties:
                 adsPlatform:
                   type: string
                   enum: [metaads, linkedinads, pinterestads, tiktokads, xads]
-                  description: The ads platform to disconnect
+                  description: The ads platform (optional, used for logging only)
             example:
               adsPlatform: "tiktokads"
       security:
@@ -7249,15 +7332,15 @@ paths:
       tags: [Connect]
       summary: Connect ads for a platform
       description: |
-        Unified ads connection endpoint. Handles all platforms through a single route:
+        Unified ads connection endpoint. Creates a dedicated ads SocialAccount for the specified platform.
 
-        **Same-token platforms** (facebook, instagram, linkedin, pinterest): If a posting account already exists, returns `alreadyConnected: true` immediately (no extra OAuth needed). If not, starts the normal OAuth flow, and the resulting account supports both posting and ads.
+        **Same-token platforms** (facebook, instagram, linkedin, pinterest): Creates an ads SocialAccount (`metaads`, `linkedinads`, `pinterestads`) with a copied OAuth token from the parent posting account. If the ads account already exists, returns `alreadyConnected: true`. No extra OAuth needed.
 
-        **Separate-token platforms** (tiktok, twitter): Requires an existing posting account (`accountId` param). If ads are already connected, returns `alreadyConnected: true`. Otherwise, starts the platform-specific marketing API OAuth flow.
+        **Separate-token platforms** (tiktok, twitter): Starts the platform-specific marketing API OAuth flow and creates an ads SocialAccount (`tiktokads`, `xads`) with its own token. Requires an existing posting account (`accountId` param). If the ads account already exists, returns `alreadyConnected: true`.
 
-        **Ads-only platforms** (googleads): If a Google Ads account exists, returns `alreadyConnected: true`. Otherwise, starts the Google Ads OAuth flow.
+        **Standalone platforms** (googleads): Starts the Google Ads OAuth flow and creates a standalone ads SocialAccount (`googleads`) with no parent. If the account already exists, returns `alreadyConnected: true`.
 
-        Use the `adsStatus` field from `GET /v1/accounts` to check which accounts need ads connection.
+        Ads accounts appear as regular SocialAccount documents with ads platform values (e.g., `metaads`, `tiktokads`) in `GET /v1/accounts`.
       parameters:
         - name: platform
           in: path
@@ -7274,7 +7357,7 @@ paths:
         - name: accountId
           in: query
           schema: { type: string }
-          description: Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter). Ignored for same-token and ads-only platforms.
+          description: Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter). Ignored for same-token and standalone platforms.
         - name: redirect_url
           in: query
           schema: { type: string, format: uri }
