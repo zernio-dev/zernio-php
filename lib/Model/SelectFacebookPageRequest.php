@@ -312,6 +312,9 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['temp_token'] === null) {
             $invalidProperties[] = "'temp_token' can't be null";
         }
+        if ($this->container['user_profile'] === null) {
+            $invalidProperties[] = "'user_profile' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -411,7 +414,7 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets user_profile
      *
-     * @return \Late\Model\SelectFacebookPageRequestUserProfile|null
+     * @return \Late\Model\SelectFacebookPageRequestUserProfile
      */
     public function getUserProfile()
     {
@@ -421,7 +424,7 @@ class SelectFacebookPageRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets user_profile
      *
-     * @param \Late\Model\SelectFacebookPageRequestUserProfile|null $user_profile user_profile
+     * @param \Late\Model\SelectFacebookPageRequestUserProfile $user_profile user_profile
      *
      * @return self
      */
