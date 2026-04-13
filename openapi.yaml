@@ -3184,6 +3184,97 @@ webhooks:
       responses:
         '200':
           description: Webhook received successfully
+  message.edited:
+    post:
+      operationId: onMessageEdited
+      summary: Message edited event
+      description: |
+        Fired when a sender edits a previously-sent message. Supported on
+        Instagram, Facebook Messenger, and Telegram. The payload includes the
+        full `editHistory` so consumers can show prior versions.
+      tags: [Webhook Events]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookPayloadMessageEdited'
+      responses:
+        '200':
+          description: Webhook received successfully
+  message.deleted:
+    post:
+      operationId: onMessageDeleted
+      summary: Message deleted event
+      description: |
+        Fired when a sender deletes (unsends) a message. Supported on Instagram
+        (incoming unsend) and WhatsApp (when the business deletes an outgoing
+        message via the Cloud API). The payload retains the pre-delete `text`
+        and `attachments` so API consumers can access the original content for
+        moderation or compliance — the Zernio dashboard UI hides it.
+      tags: [Webhook Events]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookPayloadMessageDeleted'
+      responses:
+        '200':
+          description: Webhook received successfully
+  message.delivered:
+    post:
+      operationId: onMessageDelivered
+      summary: Message delivered event
+      description: |
+        Fired when an outgoing message is delivered to the recipient.
+        Supported on WhatsApp and Facebook Messenger.
+      tags: [Webhook Events]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookPayloadMessageDeliveryStatus'
+      responses:
+        '200':
+          description: Webhook received successfully
+  message.read:
+    post:
+      operationId: onMessageRead
+      summary: Message read event
+      description: |
+        Fired when an outgoing message is read by the recipient. Supported on
+        WhatsApp, Facebook Messenger, and Instagram.
+      tags: [Webhook Events]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookPayloadMessageDeliveryStatus'
+      responses:
+        '200':
+          description: Webhook received successfully
+  message.failed:
+    post:
+      operationId: onMessageFailed
+      summary: Message delivery failed event
+      description: |
+        Fired when an outgoing message fails to deliver. Currently only emitted
+        for WhatsApp (other platforms don't expose per-message failure via
+        webhook). The payload `error` object contains `code`, `title`, and
+        `message` from the platform.
+      tags: [Webhook Events]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookPayloadMessageDeliveryStatus'
+      responses:
+        '200':
+          description: Webhook received successfully
   comment.received:
     post:
       operationId: onCommentReceived

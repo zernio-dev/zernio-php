@@ -9,6 +9,11 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAccountConnected()**](WebhookEventsApi.md#onAccountConnected) | **POST** /account.connected | Account connected event |
 | [**onAccountDisconnected()**](WebhookEventsApi.md#onAccountDisconnected) | **POST** /account.disconnected | Account disconnected event |
 | [**onCommentReceived()**](WebhookEventsApi.md#onCommentReceived) | **POST** /comment.received | Comment received event |
+| [**onMessageDeleted()**](WebhookEventsApi.md#onMessageDeleted) | **POST** /message.deleted | Message deleted event |
+| [**onMessageDelivered()**](WebhookEventsApi.md#onMessageDelivered) | **POST** /message.delivered | Message delivered event |
+| [**onMessageEdited()**](WebhookEventsApi.md#onMessageEdited) | **POST** /message.edited | Message edited event |
+| [**onMessageFailed()**](WebhookEventsApi.md#onMessageFailed) | **POST** /message.failed | Message delivery failed event |
+| [**onMessageRead()**](WebhookEventsApi.md#onMessageRead) | **POST** /message.read | Message read event |
 | [**onMessageReceived()**](WebhookEventsApi.md#onMessageReceived) | **POST** /message.received | Message received event |
 | [**onMessageSent()**](WebhookEventsApi.md#onMessageSent) | **POST** /message.sent | Message sent event |
 | [**onPostCancelled()**](WebhookEventsApi.md#onPostCancelled) | **POST** /post.cancelled | Post cancelled event |
@@ -179,6 +184,301 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_comment** | [**\Late\Model\WebhookPayloadComment**](../Model/WebhookPayloadComment.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onMessageDeleted()`
+
+```php
+onMessageDeleted($webhook_payload_message_deleted)
+```
+
+Message deleted event
+
+Fired when a sender deletes (unsends) a message. Supported on Instagram (incoming unsend) and WhatsApp (when the business deletes an outgoing message via the Cloud API). The payload retains the pre-delete `text` and `attachments` so API consumers can access the original content for moderation or compliance — the Zernio dashboard UI hides it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_message_deleted = new \Late\Model\WebhookPayloadMessageDeleted(); // \Late\Model\WebhookPayloadMessageDeleted
+
+try {
+    $apiInstance->onMessageDeleted($webhook_payload_message_deleted);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onMessageDeleted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_message_deleted** | [**\Late\Model\WebhookPayloadMessageDeleted**](../Model/WebhookPayloadMessageDeleted.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onMessageDelivered()`
+
+```php
+onMessageDelivered($webhook_payload_message_delivery_status)
+```
+
+Message delivered event
+
+Fired when an outgoing message is delivered to the recipient. Supported on WhatsApp and Facebook Messenger.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_message_delivery_status = new \Late\Model\WebhookPayloadMessageDeliveryStatus(); // \Late\Model\WebhookPayloadMessageDeliveryStatus
+
+try {
+    $apiInstance->onMessageDelivered($webhook_payload_message_delivery_status);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onMessageDelivered: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_message_delivery_status** | [**\Late\Model\WebhookPayloadMessageDeliveryStatus**](../Model/WebhookPayloadMessageDeliveryStatus.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onMessageEdited()`
+
+```php
+onMessageEdited($webhook_payload_message_edited)
+```
+
+Message edited event
+
+Fired when a sender edits a previously-sent message. Supported on Instagram, Facebook Messenger, and Telegram. The payload includes the full `editHistory` so consumers can show prior versions.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_message_edited = new \Late\Model\WebhookPayloadMessageEdited(); // \Late\Model\WebhookPayloadMessageEdited
+
+try {
+    $apiInstance->onMessageEdited($webhook_payload_message_edited);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onMessageEdited: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_message_edited** | [**\Late\Model\WebhookPayloadMessageEdited**](../Model/WebhookPayloadMessageEdited.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onMessageFailed()`
+
+```php
+onMessageFailed($webhook_payload_message_delivery_status)
+```
+
+Message delivery failed event
+
+Fired when an outgoing message fails to deliver. Currently only emitted for WhatsApp (other platforms don't expose per-message failure via webhook). The payload `error` object contains `code`, `title`, and `message` from the platform.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_message_delivery_status = new \Late\Model\WebhookPayloadMessageDeliveryStatus(); // \Late\Model\WebhookPayloadMessageDeliveryStatus
+
+try {
+    $apiInstance->onMessageFailed($webhook_payload_message_delivery_status);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onMessageFailed: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_message_delivery_status** | [**\Late\Model\WebhookPayloadMessageDeliveryStatus**](../Model/WebhookPayloadMessageDeliveryStatus.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onMessageRead()`
+
+```php
+onMessageRead($webhook_payload_message_delivery_status)
+```
+
+Message read event
+
+Fired when an outgoing message is read by the recipient. Supported on WhatsApp, Facebook Messenger, and Instagram.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_message_delivery_status = new \Late\Model\WebhookPayloadMessageDeliveryStatus(); // \Late\Model\WebhookPayloadMessageDeliveryStatus
+
+try {
+    $apiInstance->onMessageRead($webhook_payload_message_delivery_status);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onMessageRead: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_message_delivery_status** | [**\Late\Model\WebhookPayloadMessageDeliveryStatus**](../Model/WebhookPayloadMessageDeliveryStatus.md)|  | |
 
 ### Return type
 

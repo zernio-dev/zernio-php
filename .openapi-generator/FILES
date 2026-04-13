@@ -1625,14 +1625,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AccountTest.php
-test/Model/ConversationTest.php
-test/Model/GetInboxConversationMessages200ResponseMessagesInnerDeliveryErrorTest.php
-test/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInnerTest.php
-test/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerTest.php
-test/Model/MessageTest.php
-test/Model/WebhookPayloadMessageDeletedTest.php
-test/Model/WebhookPayloadMessageDeliveryStatusErrorTest.php
-test/Model/WebhookPayloadMessageDeliveryStatusTest.php
-test/Model/WebhookPayloadMessageEditedEditHistoryInnerTest.php
-test/Model/WebhookPayloadMessageEditedTest.php

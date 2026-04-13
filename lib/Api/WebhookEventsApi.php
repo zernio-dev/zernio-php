@@ -84,6 +84,21 @@ class WebhookEventsApi
         'onCommentReceived' => [
             'application/json',
         ],
+        'onMessageDeleted' => [
+            'application/json',
+        ],
+        'onMessageDelivered' => [
+            'application/json',
+        ],
+        'onMessageEdited' => [
+            'application/json',
+        ],
+        'onMessageFailed' => [
+            'application/json',
+        ],
+        'onMessageRead' => [
+            'application/json',
+        ],
         'onMessageReceived' => [
             'application/json',
         ],
@@ -771,6 +786,1111 @@ class WebhookEventsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_comment));
             } else {
                 $httpBody = $webhook_payload_comment;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onMessageDeleted
+     *
+     * Message deleted event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted webhook_payload_message_deleted (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDeleted'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onMessageDeleted($webhook_payload_message_deleted, string $contentType = self::contentTypes['onMessageDeleted'][0])
+    {
+        $this->onMessageDeletedWithHttpInfo($webhook_payload_message_deleted, $contentType);
+    }
+
+    /**
+     * Operation onMessageDeletedWithHttpInfo
+     *
+     * Message deleted event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDeleted'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onMessageDeletedWithHttpInfo($webhook_payload_message_deleted, string $contentType = self::contentTypes['onMessageDeleted'][0])
+    {
+        $request = $this->onMessageDeletedRequest($webhook_payload_message_deleted, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onMessageDeletedAsync
+     *
+     * Message deleted event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDeleted'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onMessageDeletedAsync($webhook_payload_message_deleted, string $contentType = self::contentTypes['onMessageDeleted'][0])
+    {
+        return $this->onMessageDeletedAsyncWithHttpInfo($webhook_payload_message_deleted, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onMessageDeletedAsyncWithHttpInfo
+     *
+     * Message deleted event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDeleted'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onMessageDeletedAsyncWithHttpInfo($webhook_payload_message_deleted, string $contentType = self::contentTypes['onMessageDeleted'][0])
+    {
+        $returnType = '';
+        $request = $this->onMessageDeletedRequest($webhook_payload_message_deleted, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onMessageDeleted'
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDeleted'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onMessageDeletedRequest($webhook_payload_message_deleted, string $contentType = self::contentTypes['onMessageDeleted'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_message_deleted' is set
+        if ($webhook_payload_message_deleted === null || (is_array($webhook_payload_message_deleted) && count($webhook_payload_message_deleted) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_message_deleted when calling onMessageDeleted'
+            );
+        }
+
+
+        $resourcePath = '/message.deleted';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_message_deleted)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_message_deleted));
+            } else {
+                $httpBody = $webhook_payload_message_deleted;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onMessageDelivered
+     *
+     * Message delivered event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDelivered'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onMessageDelivered($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageDelivered'][0])
+    {
+        $this->onMessageDeliveredWithHttpInfo($webhook_payload_message_delivery_status, $contentType);
+    }
+
+    /**
+     * Operation onMessageDeliveredWithHttpInfo
+     *
+     * Message delivered event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDelivered'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onMessageDeliveredWithHttpInfo($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageDelivered'][0])
+    {
+        $request = $this->onMessageDeliveredRequest($webhook_payload_message_delivery_status, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onMessageDeliveredAsync
+     *
+     * Message delivered event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDelivered'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onMessageDeliveredAsync($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageDelivered'][0])
+    {
+        return $this->onMessageDeliveredAsyncWithHttpInfo($webhook_payload_message_delivery_status, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onMessageDeliveredAsyncWithHttpInfo
+     *
+     * Message delivered event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDelivered'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onMessageDeliveredAsyncWithHttpInfo($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageDelivered'][0])
+    {
+        $returnType = '';
+        $request = $this->onMessageDeliveredRequest($webhook_payload_message_delivery_status, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onMessageDelivered'
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDelivered'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onMessageDeliveredRequest($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageDelivered'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_message_delivery_status' is set
+        if ($webhook_payload_message_delivery_status === null || (is_array($webhook_payload_message_delivery_status) && count($webhook_payload_message_delivery_status) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_message_delivery_status when calling onMessageDelivered'
+            );
+        }
+
+
+        $resourcePath = '/message.delivered';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_message_delivery_status)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_message_delivery_status));
+            } else {
+                $httpBody = $webhook_payload_message_delivery_status;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onMessageEdited
+     *
+     * Message edited event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited webhook_payload_message_edited (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageEdited'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onMessageEdited($webhook_payload_message_edited, string $contentType = self::contentTypes['onMessageEdited'][0])
+    {
+        $this->onMessageEditedWithHttpInfo($webhook_payload_message_edited, $contentType);
+    }
+
+    /**
+     * Operation onMessageEditedWithHttpInfo
+     *
+     * Message edited event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageEdited'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onMessageEditedWithHttpInfo($webhook_payload_message_edited, string $contentType = self::contentTypes['onMessageEdited'][0])
+    {
+        $request = $this->onMessageEditedRequest($webhook_payload_message_edited, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onMessageEditedAsync
+     *
+     * Message edited event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageEdited'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onMessageEditedAsync($webhook_payload_message_edited, string $contentType = self::contentTypes['onMessageEdited'][0])
+    {
+        return $this->onMessageEditedAsyncWithHttpInfo($webhook_payload_message_edited, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onMessageEditedAsyncWithHttpInfo
+     *
+     * Message edited event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageEdited'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onMessageEditedAsyncWithHttpInfo($webhook_payload_message_edited, string $contentType = self::contentTypes['onMessageEdited'][0])
+    {
+        $returnType = '';
+        $request = $this->onMessageEditedRequest($webhook_payload_message_edited, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onMessageEdited'
+     *
+     * @param  \Late\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageEdited'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onMessageEditedRequest($webhook_payload_message_edited, string $contentType = self::contentTypes['onMessageEdited'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_message_edited' is set
+        if ($webhook_payload_message_edited === null || (is_array($webhook_payload_message_edited) && count($webhook_payload_message_edited) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_message_edited when calling onMessageEdited'
+            );
+        }
+
+
+        $resourcePath = '/message.edited';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_message_edited)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_message_edited));
+            } else {
+                $httpBody = $webhook_payload_message_edited;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onMessageFailed
+     *
+     * Message delivery failed event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageFailed'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onMessageFailed($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageFailed'][0])
+    {
+        $this->onMessageFailedWithHttpInfo($webhook_payload_message_delivery_status, $contentType);
+    }
+
+    /**
+     * Operation onMessageFailedWithHttpInfo
+     *
+     * Message delivery failed event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageFailed'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onMessageFailedWithHttpInfo($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageFailed'][0])
+    {
+        $request = $this->onMessageFailedRequest($webhook_payload_message_delivery_status, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onMessageFailedAsync
+     *
+     * Message delivery failed event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageFailed'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onMessageFailedAsync($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageFailed'][0])
+    {
+        return $this->onMessageFailedAsyncWithHttpInfo($webhook_payload_message_delivery_status, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onMessageFailedAsyncWithHttpInfo
+     *
+     * Message delivery failed event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageFailed'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onMessageFailedAsyncWithHttpInfo($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageFailed'][0])
+    {
+        $returnType = '';
+        $request = $this->onMessageFailedRequest($webhook_payload_message_delivery_status, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onMessageFailed'
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageFailed'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onMessageFailedRequest($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageFailed'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_message_delivery_status' is set
+        if ($webhook_payload_message_delivery_status === null || (is_array($webhook_payload_message_delivery_status) && count($webhook_payload_message_delivery_status) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_message_delivery_status when calling onMessageFailed'
+            );
+        }
+
+
+        $resourcePath = '/message.failed';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_message_delivery_status)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_message_delivery_status));
+            } else {
+                $httpBody = $webhook_payload_message_delivery_status;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onMessageRead
+     *
+     * Message read event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageRead'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onMessageRead($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageRead'][0])
+    {
+        $this->onMessageReadWithHttpInfo($webhook_payload_message_delivery_status, $contentType);
+    }
+
+    /**
+     * Operation onMessageReadWithHttpInfo
+     *
+     * Message read event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageRead'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onMessageReadWithHttpInfo($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageRead'][0])
+    {
+        $request = $this->onMessageReadRequest($webhook_payload_message_delivery_status, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onMessageReadAsync
+     *
+     * Message read event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageRead'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onMessageReadAsync($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageRead'][0])
+    {
+        return $this->onMessageReadAsyncWithHttpInfo($webhook_payload_message_delivery_status, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onMessageReadAsyncWithHttpInfo
+     *
+     * Message read event
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageRead'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onMessageReadAsyncWithHttpInfo($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageRead'][0])
+    {
+        $returnType = '';
+        $request = $this->onMessageReadRequest($webhook_payload_message_delivery_status, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onMessageRead'
+     *
+     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageRead'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onMessageReadRequest($webhook_payload_message_delivery_status, string $contentType = self::contentTypes['onMessageRead'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_message_delivery_status' is set
+        if ($webhook_payload_message_delivery_status === null || (is_array($webhook_payload_message_delivery_status) && count($webhook_payload_message_delivery_status) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_message_delivery_status when calling onMessageRead'
+            );
+        }
+
+
+        $resourcePath = '/message.read';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_message_delivery_status)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_message_delivery_status));
+            } else {
+                $httpBody = $webhook_payload_message_delivery_status;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
