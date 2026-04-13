@@ -61,6 +61,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'thumbnail_url' => 'string',
         'image_url' => 'string',
+        'video_id' => 'string',
+        'video_url' => 'string',
+        'object_type' => 'string',
         'media_urls' => 'string[]',
         'body' => 'string',
         'google_headline' => 'string',
@@ -81,6 +84,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'thumbnail_url' => null,
         'image_url' => null,
+        'video_id' => null,
+        'video_url' => null,
+        'object_type' => null,
         'media_urls' => null,
         'body' => null,
         'google_headline' => null,
@@ -99,6 +105,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'thumbnail_url' => false,
         'image_url' => false,
+        'video_id' => false,
+        'video_url' => false,
+        'object_type' => false,
         'media_urls' => false,
         'body' => false,
         'google_headline' => false,
@@ -197,6 +206,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'thumbnail_url' => 'thumbnailUrl',
         'image_url' => 'imageUrl',
+        'video_id' => 'videoId',
+        'video_url' => 'videoUrl',
+        'object_type' => 'objectType',
         'media_urls' => 'mediaUrls',
         'body' => 'body',
         'google_headline' => 'googleHeadline',
@@ -215,6 +227,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'thumbnail_url' => 'setThumbnailUrl',
         'image_url' => 'setImageUrl',
+        'video_id' => 'setVideoId',
+        'video_url' => 'setVideoUrl',
+        'object_type' => 'setObjectType',
         'media_urls' => 'setMediaUrls',
         'body' => 'setBody',
         'google_headline' => 'setGoogleHeadline',
@@ -233,6 +248,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'thumbnail_url' => 'getThumbnailUrl',
         'image_url' => 'getImageUrl',
+        'video_id' => 'getVideoId',
+        'video_url' => 'getVideoUrl',
+        'object_type' => 'getObjectType',
         'media_urls' => 'getMediaUrls',
         'body' => 'getBody',
         'google_headline' => 'getGoogleHeadline',
@@ -302,6 +320,9 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $this->setIfExists('thumbnail_url', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
+        $this->setIfExists('video_id', $data ?? [], null);
+        $this->setIfExists('video_url', $data ?? [], null);
+        $this->setIfExists('object_type', $data ?? [], null);
         $this->setIfExists('media_urls', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
         $this->setIfExists('google_headline', $data ?? [], null);
@@ -404,6 +425,87 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable image_url cannot be null');
         }
         $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_id
+     *
+     * @return string|null
+     */
+    public function getVideoId()
+    {
+        return $this->container['video_id'];
+    }
+
+    /**
+     * Sets video_id
+     *
+     * @param string|null $video_id Meta video ID for VIDEO-type ads. Null for non-video ads. Callers that need an embeddable MP4 can call GET /{videoId}?fields=source with the page access token.
+     *
+     * @return self
+     */
+    public function setVideoId($video_id)
+    {
+        if (is_null($video_id)) {
+            throw new \InvalidArgumentException('non-nullable video_id cannot be null');
+        }
+        $this->container['video_id'] = $video_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_url
+     *
+     * @return string|null
+     */
+    public function getVideoUrl()
+    {
+        return $this->container['video_url'];
+    }
+
+    /**
+     * Sets video_url
+     *
+     * @param string|null $video_url Public Facebook watch URL for VIDEO-type ads (https://www.facebook.com/watch/?v={videoId}). Null for non-video ads.
+     *
+     * @return self
+     */
+    public function setVideoUrl($video_url)
+    {
+        if (is_null($video_url)) {
+            throw new \InvalidArgumentException('non-nullable video_url cannot be null');
+        }
+        $this->container['video_url'] = $video_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_type
+     *
+     * @return string|null
+     */
+    public function getObjectType()
+    {
+        return $this->container['object_type'];
+    }
+
+    /**
+     * Sets object_type
+     *
+     * @param string|null $object_type Meta creative object_type (e.g. SHARE, VIDEO, PRIVACY_CHECK_FAIL, POST_DELETED). Use this to render state-aware previews — when Meta moderation strips image/video fields, only thumbnailUrl at 64x64 is available.
+     *
+     * @return self
+     */
+    public function setObjectType($object_type)
+    {
+        if (is_null($object_type)) {
+            throw new \InvalidArgumentException('non-nullable object_type cannot be null');
+        }
+        $this->container['object_type'] = $object_type;
 
         return $this;
     }
