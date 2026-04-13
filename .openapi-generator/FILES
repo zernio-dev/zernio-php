@@ -1629,9 +1629,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/InboxWebhookAccountTest.php
-test/Model/InboxWebhookConversationTest.php
-test/Model/InboxWebhookMessageAttachmentsInnerTest.php
-test/Model/InboxWebhookMessageSenderInstagramProfileTest.php
-test/Model/InboxWebhookMessageSenderTest.php
-test/Model/InboxWebhookMessageTest.php

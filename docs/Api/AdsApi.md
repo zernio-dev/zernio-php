@@ -384,7 +384,7 @@ try {
 ## `listAds()`
 
 ```php
-listAds($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $from_date, $to_date): \Late\Model\ListAds200Response
+listAds($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date): \Late\Model\ListAds200Response
 ```
 
 List ads
@@ -414,13 +414,14 @@ $source = 'zernio'; // string | zernio = Zernio-created only, all = include exte
 $status = 'status_example'; // string
 $platform = 'platform_example'; // string
 $account_id = 'account_id_example'; // string | Social account ID
+$ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree.
 $profile_id = 'profile_id_example'; // string | Profile ID
 $campaign_id = 'campaign_id_example'; // string | Platform campaign ID (filter ads within a campaign)
 $from_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago.
 $to_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range.
 
 try {
-    $result = $apiInstance->listAds($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $from_date, $to_date);
+    $result = $apiInstance->listAds($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdsApi->listAds: ', $e->getMessage(), PHP_EOL;
@@ -437,6 +438,7 @@ try {
 | **status** | **string**|  | [optional] |
 | **platform** | **string**|  | [optional] |
 | **account_id** | **string**| Social account ID | [optional] |
+| **ad_account_id** | **string**| Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. | [optional] |
 | **profile_id** | **string**| Profile ID | [optional] |
 | **campaign_id** | **string**| Platform campaign ID (filter ads within a campaign) | [optional] |
 | **from_date** | **\DateTime**| Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. | [optional] |

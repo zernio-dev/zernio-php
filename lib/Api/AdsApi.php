@@ -1963,6 +1963,7 @@ class AdsApi
      * @param  string|null $status status (optional)
      * @param  string|null $platform platform (optional)
      * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
@@ -1973,9 +1974,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \Late\Model\ListAds200Response|\Late\Model\InlineObject
      */
-    public function listAds($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAds($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
-        list($response) = $this->listAdsWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
+        list($response) = $this->listAdsWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
         return $response;
     }
 
@@ -1990,6 +1991,7 @@ class AdsApi
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
@@ -2000,9 +2002,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ListAds200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdsWithHttpInfo($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsWithHttpInfo($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
-        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
+        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2098,6 +2100,7 @@ class AdsApi
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
@@ -2107,9 +2110,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdsAsync($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsAsync($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
-        return $this->listAdsAsyncWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType)
+        return $this->listAdsAsyncWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2128,6 +2131,7 @@ class AdsApi
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
@@ -2137,10 +2141,10 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdsAsyncWithHttpInfo($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsAsyncWithHttpInfo($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
         $returnType = '\Late\Model\ListAds200Response';
-        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
+        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2187,6 +2191,7 @@ class AdsApi
      * @param  string|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
+     * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
@@ -2196,7 +2201,7 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdsRequest($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsRequest($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
 
         if ($page !== null && $page < 1) {
@@ -2210,6 +2215,7 @@ class AdsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.listAds, must be bigger than or equal to 1.');
         }
         
+
 
 
 
@@ -2275,6 +2281,15 @@ class AdsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $account_id,
             'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
