@@ -71,7 +71,18 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'attachments' => '\Late\Model\GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner[]',
         'subject' => 'string',
         'story_reply' => 'bool',
-        'is_story_mention' => 'bool'
+        'is_story_mention' => 'bool',
+        'is_edited' => 'bool',
+        'edited_at' => '\DateTime',
+        'edit_count' => 'int',
+        'edit_history' => '\Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]',
+        'is_deleted' => 'bool',
+        'deleted_at' => '\DateTime',
+        'delivery_status' => 'string',
+        'delivered_at' => '\DateTime',
+        'read_at' => '\DateTime',
+        'sent_at' => '\DateTime',
+        'delivery_error' => '\Late\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError'
     ];
 
     /**
@@ -95,7 +106,18 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'attachments' => null,
         'subject' => null,
         'story_reply' => null,
-        'is_story_mention' => null
+        'is_story_mention' => null,
+        'is_edited' => null,
+        'edited_at' => 'date-time',
+        'edit_count' => null,
+        'edit_history' => null,
+        'is_deleted' => null,
+        'deleted_at' => 'date-time',
+        'delivery_status' => null,
+        'delivered_at' => 'date-time',
+        'read_at' => 'date-time',
+        'sent_at' => 'date-time',
+        'delivery_error' => null
     ];
 
     /**
@@ -117,7 +139,18 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'attachments' => false,
         'subject' => false,
         'story_reply' => false,
-        'is_story_mention' => false
+        'is_story_mention' => false,
+        'is_edited' => false,
+        'edited_at' => false,
+        'edit_count' => false,
+        'edit_history' => false,
+        'is_deleted' => false,
+        'deleted_at' => false,
+        'delivery_status' => false,
+        'delivered_at' => false,
+        'read_at' => false,
+        'sent_at' => false,
+        'delivery_error' => false
     ];
 
     /**
@@ -219,7 +252,18 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'attachments' => 'attachments',
         'subject' => 'subject',
         'story_reply' => 'storyReply',
-        'is_story_mention' => 'isStoryMention'
+        'is_story_mention' => 'isStoryMention',
+        'is_edited' => 'isEdited',
+        'edited_at' => 'editedAt',
+        'edit_count' => 'editCount',
+        'edit_history' => 'editHistory',
+        'is_deleted' => 'isDeleted',
+        'deleted_at' => 'deletedAt',
+        'delivery_status' => 'deliveryStatus',
+        'delivered_at' => 'deliveredAt',
+        'read_at' => 'readAt',
+        'sent_at' => 'sentAt',
+        'delivery_error' => 'deliveryError'
     ];
 
     /**
@@ -241,7 +285,18 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'attachments' => 'setAttachments',
         'subject' => 'setSubject',
         'story_reply' => 'setStoryReply',
-        'is_story_mention' => 'setIsStoryMention'
+        'is_story_mention' => 'setIsStoryMention',
+        'is_edited' => 'setIsEdited',
+        'edited_at' => 'setEditedAt',
+        'edit_count' => 'setEditCount',
+        'edit_history' => 'setEditHistory',
+        'is_deleted' => 'setIsDeleted',
+        'deleted_at' => 'setDeletedAt',
+        'delivery_status' => 'setDeliveryStatus',
+        'delivered_at' => 'setDeliveredAt',
+        'read_at' => 'setReadAt',
+        'sent_at' => 'setSentAt',
+        'delivery_error' => 'setDeliveryError'
     ];
 
     /**
@@ -263,7 +318,18 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'attachments' => 'getAttachments',
         'subject' => 'getSubject',
         'story_reply' => 'getStoryReply',
-        'is_story_mention' => 'getIsStoryMention'
+        'is_story_mention' => 'getIsStoryMention',
+        'is_edited' => 'getIsEdited',
+        'edited_at' => 'getEditedAt',
+        'edit_count' => 'getEditCount',
+        'edit_history' => 'getEditHistory',
+        'is_deleted' => 'getIsDeleted',
+        'deleted_at' => 'getDeletedAt',
+        'delivery_status' => 'getDeliveryStatus',
+        'delivered_at' => 'getDeliveredAt',
+        'read_at' => 'getReadAt',
+        'sent_at' => 'getSentAt',
+        'delivery_error' => 'getDeliveryError'
     ];
 
     /**
@@ -313,6 +379,11 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     public const SENDER_VERIFIED_TYPE_NONE = 'none';
     public const DIRECTION_INCOMING = 'incoming';
     public const DIRECTION_OUTGOING = 'outgoing';
+    public const DELIVERY_STATUS_SENT = 'sent';
+    public const DELIVERY_STATUS_DELIVERED = 'delivered';
+    public const DELIVERY_STATUS_READ = 'read';
+    public const DELIVERY_STATUS_FAILED = 'failed';
+    public const DELIVERY_STATUS_DELETED = 'deleted';
 
     /**
      * Gets allowable values of the enum
@@ -339,6 +410,22 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         return [
             self::DIRECTION_INCOMING,
             self::DIRECTION_OUTGOING,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getDeliveryStatusAllowableValues()
+    {
+        return [
+            self::DELIVERY_STATUS_SENT,
+            self::DELIVERY_STATUS_DELIVERED,
+            self::DELIVERY_STATUS_READ,
+            self::DELIVERY_STATUS_FAILED,
+            self::DELIVERY_STATUS_DELETED,
         ];
     }
 
@@ -371,6 +458,17 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         $this->setIfExists('subject', $data ?? [], null);
         $this->setIfExists('story_reply', $data ?? [], null);
         $this->setIfExists('is_story_mention', $data ?? [], null);
+        $this->setIfExists('is_edited', $data ?? [], null);
+        $this->setIfExists('edited_at', $data ?? [], null);
+        $this->setIfExists('edit_count', $data ?? [], null);
+        $this->setIfExists('edit_history', $data ?? [], null);
+        $this->setIfExists('is_deleted', $data ?? [], null);
+        $this->setIfExists('deleted_at', $data ?? [], null);
+        $this->setIfExists('delivery_status', $data ?? [], null);
+        $this->setIfExists('delivered_at', $data ?? [], null);
+        $this->setIfExists('read_at', $data ?? [], null);
+        $this->setIfExists('sent_at', $data ?? [], null);
+        $this->setIfExists('delivery_error', $data ?? [], null);
     }
 
     /**
@@ -414,6 +512,15 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'direction', must be one of '%s'",
                 $this->container['direction'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getDeliveryStatusAllowableValues();
+        if (!is_null($this->container['delivery_status']) && !in_array($this->container['delivery_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'delivery_status', must be one of '%s'",
+                $this->container['delivery_status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -827,6 +934,313 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
             throw new \InvalidArgumentException('non-nullable is_story_mention cannot be null');
         }
         $this->container['is_story_mention'] = $is_story_mention;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_edited
+     *
+     * @return bool|null
+     */
+    public function getIsEdited()
+    {
+        return $this->container['is_edited'];
+    }
+
+    /**
+     * Sets is_edited
+     *
+     * @param bool|null $is_edited True if the sender has edited this message at least once.
+     *
+     * @return self
+     */
+    public function setIsEdited($is_edited)
+    {
+        if (is_null($is_edited)) {
+            throw new \InvalidArgumentException('non-nullable is_edited cannot be null');
+        }
+        $this->container['is_edited'] = $is_edited;
+
+        return $this;
+    }
+
+    /**
+     * Gets edited_at
+     *
+     * @return \DateTime|null
+     */
+    public function getEditedAt()
+    {
+        return $this->container['edited_at'];
+    }
+
+    /**
+     * Sets edited_at
+     *
+     * @param \DateTime|null $edited_at When the most recent edit happened.
+     *
+     * @return self
+     */
+    public function setEditedAt($edited_at)
+    {
+        if (is_null($edited_at)) {
+            throw new \InvalidArgumentException('non-nullable edited_at cannot be null');
+        }
+        $this->container['edited_at'] = $edited_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets edit_count
+     *
+     * @return int|null
+     */
+    public function getEditCount()
+    {
+        return $this->container['edit_count'];
+    }
+
+    /**
+     * Sets edit_count
+     *
+     * @param int|null $edit_count Total number of edits applied.
+     *
+     * @return self
+     */
+    public function setEditCount($edit_count)
+    {
+        if (is_null($edit_count)) {
+            throw new \InvalidArgumentException('non-nullable edit_count cannot be null');
+        }
+        $this->container['edit_count'] = $edit_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets edit_history
+     *
+     * @return \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]|null
+     */
+    public function getEditHistory()
+    {
+        return $this->container['edit_history'];
+    }
+
+    /**
+     * Sets edit_history
+     *
+     * @param \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]|null $edit_history Every prior version of the message, oldest first.
+     *
+     * @return self
+     */
+    public function setEditHistory($edit_history)
+    {
+        if (is_null($edit_history)) {
+            throw new \InvalidArgumentException('non-nullable edit_history cannot be null');
+        }
+        $this->container['edit_history'] = $edit_history;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_deleted
+     *
+     * @return bool|null
+     */
+    public function getIsDeleted()
+    {
+        return $this->container['is_deleted'];
+    }
+
+    /**
+     * Sets is_deleted
+     *
+     * @param bool|null $is_deleted True if the sender has deleted (unsent) this message. The original `message` and `attachments` fields remain populated.
+     *
+     * @return self
+     */
+    public function setIsDeleted($is_deleted)
+    {
+        if (is_null($is_deleted)) {
+            throw new \InvalidArgumentException('non-nullable is_deleted cannot be null');
+        }
+        $this->container['is_deleted'] = $is_deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_at
+     *
+     * @return \DateTime|null
+     */
+    public function getDeletedAt()
+    {
+        return $this->container['deleted_at'];
+    }
+
+    /**
+     * Sets deleted_at
+     *
+     * @param \DateTime|null $deleted_at deleted_at
+     *
+     * @return self
+     */
+    public function setDeletedAt($deleted_at)
+    {
+        if (is_null($deleted_at)) {
+            throw new \InvalidArgumentException('non-nullable deleted_at cannot be null');
+        }
+        $this->container['deleted_at'] = $deleted_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_status
+     *
+     * @return string|null
+     */
+    public function getDeliveryStatus()
+    {
+        return $this->container['delivery_status'];
+    }
+
+    /**
+     * Sets delivery_status
+     *
+     * @param string|null $delivery_status Lifecycle status for outgoing messages. Not all platforms emit every state (see webhook support matrix).
+     *
+     * @return self
+     */
+    public function setDeliveryStatus($delivery_status)
+    {
+        if (is_null($delivery_status)) {
+            throw new \InvalidArgumentException('non-nullable delivery_status cannot be null');
+        }
+        $allowedValues = $this->getDeliveryStatusAllowableValues();
+        if (!in_array($delivery_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'delivery_status', must be one of '%s'",
+                    $delivery_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['delivery_status'] = $delivery_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivered_at
+     *
+     * @return \DateTime|null
+     */
+    public function getDeliveredAt()
+    {
+        return $this->container['delivered_at'];
+    }
+
+    /**
+     * Sets delivered_at
+     *
+     * @param \DateTime|null $delivered_at delivered_at
+     *
+     * @return self
+     */
+    public function setDeliveredAt($delivered_at)
+    {
+        if (is_null($delivered_at)) {
+            throw new \InvalidArgumentException('non-nullable delivered_at cannot be null');
+        }
+        $this->container['delivered_at'] = $delivered_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets read_at
+     *
+     * @return \DateTime|null
+     */
+    public function getReadAt()
+    {
+        return $this->container['read_at'];
+    }
+
+    /**
+     * Sets read_at
+     *
+     * @param \DateTime|null $read_at read_at
+     *
+     * @return self
+     */
+    public function setReadAt($read_at)
+    {
+        if (is_null($read_at)) {
+            throw new \InvalidArgumentException('non-nullable read_at cannot be null');
+        }
+        $this->container['read_at'] = $read_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets sent_at
+     *
+     * @return \DateTime|null
+     */
+    public function getSentAt()
+    {
+        return $this->container['sent_at'];
+    }
+
+    /**
+     * Sets sent_at
+     *
+     * @param \DateTime|null $sent_at Original send time for outgoing messages (used for Messenger watermark queries).
+     *
+     * @return self
+     */
+    public function setSentAt($sent_at)
+    {
+        if (is_null($sent_at)) {
+            throw new \InvalidArgumentException('non-nullable sent_at cannot be null');
+        }
+        $this->container['sent_at'] = $sent_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivery_error
+     *
+     * @return \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError|null
+     */
+    public function getDeliveryError()
+    {
+        return $this->container['delivery_error'];
+    }
+
+    /**
+     * Sets delivery_error
+     *
+     * @param \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError|null $delivery_error delivery_error
+     *
+     * @return self
+     */
+    public function setDeliveryError($delivery_error)
+    {
+        if (is_null($delivery_error)) {
+            throw new \InvalidArgumentException('non-nullable delivery_error cannot be null');
+        }
+        $this->container['delivery_error'] = $delivery_error;
 
         return $this;
     }

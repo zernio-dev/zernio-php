@@ -138,6 +138,11 @@ x-documentation:
     - `account.disconnected` - Social account disconnected (token expired)
     - `message.received` - New DM received
     - `message.sent` - DM sent via the API
+    - `message.edited` - A sender edited a message (Instagram, Messenger, Telegram)
+    - `message.deleted` - A sender deleted ("unsent") a message (Instagram; WhatsApp when the business deletes a sent message)
+    - `message.delivered` - An outgoing message was delivered (WhatsApp, Messenger)
+    - `message.read` - An outgoing message was read by the recipient (WhatsApp, Messenger, Instagram)
+    - `message.failed` - An outgoing message failed delivery (WhatsApp)
     - `comment.received` - New comment received on a post
     - `webhook.test` - Test event sent when verifying a webhook endpoint
 
@@ -800,7 +805,7 @@ components:
           type: array
           items:
             type: string
-            enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, comment.received]
+            enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, comment.received]
           description: Events subscribed to
         isActive:
           type: boolean
@@ -831,7 +836,7 @@ components:
           description: Name of the webhook that was triggered
         event:
           type: string
-          enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, comment.received, webhook.test]
+          enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, comment.received, webhook.test]
         url:
           type: string
           format: uri
@@ -1289,6 +1294,117 @@ components:
         timestamp:
           type: string
           format: date-time
+    WebhookPayloadMessageEdited:
+      type: object
+      description: |
+        Webhook payload for `message.edited` events. Fires when the sender
+        edits a previously-sent message. Supported platforms: Instagram,
+        Facebook Messenger, Telegram. The `message` object reflects the
+        LATEST state; `editHistory` contains every prior version in order
+        (oldest first), so the last entry is the version immediately before
+        the current content.
+      required: [id, event, message, editHistory, editCount, editedAt, conversation, account, timestamp]
+      properties:
+        id: { type: string }
+        event: { type: string, enum: [message.edited] }
+        message:
+          $ref: '#/components/schemas/WebhookPayloadMessage/properties/message'
+        editHistory:
+          type: array
+          description: Prior versions of the message, oldest first.
+          items:
+            type: object
+            required: [text, attachments, editedAt]
+            properties:
+              text:
+                type: string
+                nullable: true
+              attachments:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type: { type: string }
+                    url: { type: string }
+                    payload: { type: object }
+              editedAt:
+                type: string
+                format: date-time
+        editCount:
+          type: integer
+          description: Total number of edits applied to this message.
+        editedAt:
+          type: string
+          format: date-time
+          description: When the most recent edit happened.
+        conversation:
+          $ref: '#/components/schemas/WebhookPayloadMessage/properties/conversation'
+        account:
+          $ref: '#/components/schemas/WebhookPayloadMessage/properties/account'
+        timestamp: { type: string, format: date-time }
+    WebhookPayloadMessageDeleted:
+      type: object
+      description: |
+        Webhook payload for `message.deleted` events. Fires when the sender
+        deletes (unsends) a message. Supported platforms: Instagram (incoming
+        unsend) and WhatsApp (when the business deletes an outgoing message
+        via the Cloud API).
+
+        The `message.text` and `message.attachments` fields retain the content
+        that existed before the delete. The Zernio dashboard UI does not show
+        this content, but authorized API consumers may access it for
+        moderation, compliance, or archival use cases.
+      required: [id, event, message, deletedAt, conversation, account, timestamp]
+      properties:
+        id: { type: string }
+        event: { type: string, enum: [message.deleted] }
+        message:
+          $ref: '#/components/schemas/WebhookPayloadMessage/properties/message'
+        deletedAt:
+          type: string
+          format: date-time
+        conversation:
+          $ref: '#/components/schemas/WebhookPayloadMessage/properties/conversation'
+        account:
+          $ref: '#/components/schemas/WebhookPayloadMessage/properties/account'
+        timestamp: { type: string, format: date-time }
+    WebhookPayloadMessageDeliveryStatus:
+      type: object
+      description: |
+        Shared payload for `message.delivered`, `message.read`, and
+        `message.failed` events. Fires when the platform reports a new
+        delivery state for an outgoing message.
+
+        Platform support:
+          * `message.delivered` — WhatsApp, Facebook Messenger.
+          * `message.read`      — WhatsApp, Facebook Messenger, Instagram.
+          * `message.failed`    — WhatsApp only (other platforms don't expose
+            per-message failure via webhook).
+      required: [id, event, message, statusAt, conversation, account, timestamp]
+      properties:
+        id: { type: string }
+        event:
+          type: string
+          enum: [message.delivered, message.read, message.failed]
+        message:
+          $ref: '#/components/schemas/WebhookPayloadMessage/properties/message'
+        statusAt:
+          type: string
+          format: date-time
+          description: When the platform reported this status.
+        error:
+          type: object
+          nullable: true
+          description: Populated only on `message.failed`.
+          properties:
+            code: { type: integer }
+            title: { type: string }
+            message: { type: string }
+        conversation:
+          $ref: '#/components/schemas/WebhookPayloadMessage/properties/conversation'
+        account:
+          $ref: '#/components/schemas/WebhookPayloadMessage/properties/account'
+        timestamp: { type: string, format: date-time }
     WebhookPayloadTest:
       type: object
       description: Webhook payload for test deliveries
@@ -11654,7 +11770,7 @@ paths:
           description: Filter by event type
           schema:
             type: string
-            enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, comment.received, webhook.test]
+            enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, comment.received, webhook.test]
         - name: webhookId
           in: query
           description: Filter by webhook ID
@@ -12419,6 +12535,72 @@ paths:
                         subject: { type: string, nullable: true, description: Reddit message subject }
                         storyReply: { type: boolean, nullable: true, description: Instagram story reply }
                         isStoryMention: { type: boolean, nullable: true, description: Instagram story mention }
+                        # ─── Lifecycle state (edits, deletes, delivery) ──────────────
+                        # Populated by webhook events from the platforms that support
+                        # them. See the support matrix in the Webhooks description
+                        # above. Deleted messages retain their original `message` and
+                        # `attachments` — the Zernio dashboard hides this content, but
+                        # it is available here for moderation/compliance use cases.
+                        isEdited:
+                          type: boolean
+                          description: True if the sender has edited this message at least once.
+                        editedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                          description: When the most recent edit happened.
+                        editCount:
+                          type: integer
+                          description: Total number of edits applied.
+                        editHistory:
+                          type: array
+                          description: Every prior version of the message, oldest first.
+                          items:
+                            type: object
+                            properties:
+                              text: { type: string, nullable: true }
+                              attachments:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    type: { type: string }
+                                    url: { type: string }
+                                    payload: { type: object }
+                              editedAt: { type: string, format: date-time }
+                        isDeleted:
+                          type: boolean
+                          description: True if the sender has deleted (unsent) this message. The original `message` and `attachments` fields remain populated.
+                        deletedAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        deliveryStatus:
+                          type: string
+                          enum: [sent, delivered, read, failed, deleted]
+                          nullable: true
+                          description: Lifecycle status for outgoing messages. Not all platforms emit every state (see webhook support matrix).
+                        deliveredAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        readAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                        sentAt:
+                          type: string
+                          format: date-time
+                          nullable: true
+                          description: Original send time for outgoing messages (used for Messenger watermark queries).
+                        deliveryError:
+                          type: object
+                          nullable: true
+                          description: Populated when `deliveryStatus === "failed"`.
+                          properties:
+                            code: { type: integer }
+                            title: { type: string }
+                            message: { type: string }
                   lastUpdated: { type: string, format: date-time }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403':

@@ -43,6 +43,7 @@ docs/Api/WebhooksApi.md
 docs/Api/WhatsAppApi.md
 docs/Api/WhatsAppFlowsApi.md
 docs/Api/WhatsAppPhoneNumbersApi.md
+docs/Model/Account.md
 docs/Model/AccountGetResponse.md
 docs/Model/AccountWithFollowerStats.md
 docs/Model/AccountWithFollowerStatsAllOfAccountStats.md
@@ -112,6 +113,7 @@ docs/Model/ConnectionLog.md
 docs/Model/ConnectionLogContext.md
 docs/Model/ConnectionLogError.md
 docs/Model/ConnectionLogSuccess.md
+docs/Model/Conversation.md
 docs/Model/CreateAccountGroup201Response.md
 docs/Model/CreateAccountGroupRequest.md
 docs/Model/CreateAdAudience201Response.md
@@ -297,6 +299,9 @@ docs/Model/GetInboxConversation200ResponseData.md
 docs/Model/GetInboxConversationMessages200Response.md
 docs/Model/GetInboxConversationMessages200ResponseMessagesInner.md
 docs/Model/GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner.md
+docs/Model/GetInboxConversationMessages200ResponseMessagesInnerDeliveryError.md
+docs/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner.md
+docs/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner.md
 docs/Model/GetInboxPostComments200Response.md
 docs/Model/GetInboxPostComments200ResponseCommentsInner.md
 docs/Model/GetInboxPostComments200ResponseCommentsInnerFrom.md
@@ -510,6 +515,7 @@ docs/Model/ListWhatsAppGroupJoinRequests200Response.md
 docs/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.md
 docs/Model/MediaItem.md
 docs/Model/MediaUploadResponse.md
+docs/Model/Message.md
 docs/Model/Money.md
 docs/Model/Pagination.md
 docs/Model/Pending.md
@@ -769,6 +775,11 @@ docs/Model/WebhookPayloadCommentPost.md
 docs/Model/WebhookPayloadMessage.md
 docs/Model/WebhookPayloadMessageAccount.md
 docs/Model/WebhookPayloadMessageConversation.md
+docs/Model/WebhookPayloadMessageDeleted.md
+docs/Model/WebhookPayloadMessageDeliveryStatus.md
+docs/Model/WebhookPayloadMessageDeliveryStatusError.md
+docs/Model/WebhookPayloadMessageEdited.md
+docs/Model/WebhookPayloadMessageEditedEditHistoryInner.md
 docs/Model/WebhookPayloadMessageMessage.md
 docs/Model/WebhookPayloadMessageMessageAttachmentsInner.md
 docs/Model/WebhookPayloadMessageMessageSender.md
@@ -844,6 +855,7 @@ lib/ApiException.php
 lib/Configuration.php
 lib/FormDataProcessor.php
 lib/HeaderSelector.php
+lib/Model/Account.php
 lib/Model/AccountGetResponse.php
 lib/Model/AccountWithFollowerStats.php
 lib/Model/AccountWithFollowerStatsAllOfAccountStats.php
@@ -913,6 +925,7 @@ lib/Model/ConnectionLog.php
 lib/Model/ConnectionLogContext.php
 lib/Model/ConnectionLogError.php
 lib/Model/ConnectionLogSuccess.php
+lib/Model/Conversation.php
 lib/Model/CreateAccountGroup201Response.php
 lib/Model/CreateAccountGroupRequest.php
 lib/Model/CreateAdAudience201Response.php
@@ -1098,6 +1111,9 @@ lib/Model/GetInboxConversation200ResponseData.php
 lib/Model/GetInboxConversationMessages200Response.php
 lib/Model/GetInboxConversationMessages200ResponseMessagesInner.php
 lib/Model/GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner.php
+lib/Model/GetInboxConversationMessages200ResponseMessagesInnerDeliveryError.php
+lib/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner.php
+lib/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner.php
 lib/Model/GetInboxPostComments200Response.php
 lib/Model/GetInboxPostComments200ResponseCommentsInner.php
 lib/Model/GetInboxPostComments200ResponseCommentsInnerFrom.php
@@ -1311,6 +1327,7 @@ lib/Model/ListWhatsAppGroupJoinRequests200Response.php
 lib/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.php
 lib/Model/MediaItem.php
 lib/Model/MediaUploadResponse.php
+lib/Model/Message.php
 lib/Model/ModelInterface.php
 lib/Model/Money.php
 lib/Model/Pagination.php
@@ -1571,6 +1588,11 @@ lib/Model/WebhookPayloadCommentPost.php
 lib/Model/WebhookPayloadMessage.php
 lib/Model/WebhookPayloadMessageAccount.php
 lib/Model/WebhookPayloadMessageConversation.php
+lib/Model/WebhookPayloadMessageDeleted.php
+lib/Model/WebhookPayloadMessageDeliveryStatus.php
+lib/Model/WebhookPayloadMessageDeliveryStatusError.php
+lib/Model/WebhookPayloadMessageEdited.php
+lib/Model/WebhookPayloadMessageEditedEditHistoryInner.php
 lib/Model/WebhookPayloadMessageMessage.php
 lib/Model/WebhookPayloadMessageMessageAttachmentsInner.php
 lib/Model/WebhookPayloadMessageMessageSender.php
@@ -1603,3 +1625,14 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AccountTest.php
+test/Model/ConversationTest.php
+test/Model/GetInboxConversationMessages200ResponseMessagesInnerDeliveryErrorTest.php
+test/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInnerTest.php
+test/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerTest.php
+test/Model/MessageTest.php
+test/Model/WebhookPayloadMessageDeletedTest.php
+test/Model/WebhookPayloadMessageDeliveryStatusErrorTest.php
+test/Model/WebhookPayloadMessageDeliveryStatusTest.php
+test/Model/WebhookPayloadMessageEditedEditHistoryInnerTest.php
+test/Model/WebhookPayloadMessageEditedTest.php
