@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookPayloadMessageDeleted
+ * InboxWebhookMessageAttachmentsInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * WebhookPayloadMessageDeleted Class Doc Comment
+ * InboxWebhookMessageAttachmentsInner Class Doc Comment
  *
  * @category Class
- * @description Webhook payload for &#x60;message.deleted&#x60; events. Fires when the sender deletes (unsends) a message. Supported platforms: Instagram (incoming unsend) and WhatsApp (when the business deletes an outgoing message via the Cloud API).  The &#x60;message.text&#x60; and &#x60;message.attachments&#x60; fields retain the content that existed before the delete. The Zernio dashboard UI does not show this content, but authorized API consumers may access it for moderation, compliance, or archival use cases.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \JsonSerializable
+class InboxWebhookMessageAttachmentsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WebhookPayloadMessageDeleted';
+    protected static $openAPIModelName = 'InboxWebhookMessage_attachments_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +58,9 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'event' => 'string',
-        'message' => '\Late\Model\InboxWebhookMessage',
-        'deleted_at' => '\DateTime',
-        'conversation' => '\Late\Model\InboxWebhookConversation',
-        'account' => '\Late\Model\InboxWebhookAccount',
-        'timestamp' => '\DateTime'
+        'type' => 'string',
+        'url' => 'string',
+        'payload' => 'object'
     ];
 
     /**
@@ -76,13 +71,9 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'event' => null,
-        'message' => null,
-        'deleted_at' => 'date-time',
-        'conversation' => null,
-        'account' => null,
-        'timestamp' => 'date-time'
+        'type' => null,
+        'url' => null,
+        'payload' => null
     ];
 
     /**
@@ -91,13 +82,9 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'event' => false,
-        'message' => false,
-        'deleted_at' => false,
-        'conversation' => false,
-        'account' => false,
-        'timestamp' => false
+        'type' => false,
+        'url' => false,
+        'payload' => false
     ];
 
     /**
@@ -186,13 +173,9 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'event' => 'event',
-        'message' => 'message',
-        'deleted_at' => 'deletedAt',
-        'conversation' => 'conversation',
-        'account' => 'account',
-        'timestamp' => 'timestamp'
+        'type' => 'type',
+        'url' => 'url',
+        'payload' => 'payload'
     ];
 
     /**
@@ -201,13 +184,9 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'event' => 'setEvent',
-        'message' => 'setMessage',
-        'deleted_at' => 'setDeletedAt',
-        'conversation' => 'setConversation',
-        'account' => 'setAccount',
-        'timestamp' => 'setTimestamp'
+        'type' => 'setType',
+        'url' => 'setUrl',
+        'payload' => 'setPayload'
     ];
 
     /**
@@ -216,13 +195,9 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'event' => 'getEvent',
-        'message' => 'getMessage',
-        'deleted_at' => 'getDeletedAt',
-        'conversation' => 'getConversation',
-        'account' => 'getAccount',
-        'timestamp' => 'getTimestamp'
+        'type' => 'getType',
+        'url' => 'getUrl',
+        'payload' => 'getPayload'
     ];
 
     /**
@@ -266,19 +241,6 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    public const EVENT_MESSAGE_DELETED = 'message.deleted';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEventAllowableValues()
-    {
-        return [
-            self::EVENT_MESSAGE_DELETED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -295,13 +257,9 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('deleted_at', $data ?? [], null);
-        $this->setIfExists('conversation', $data ?? [], null);
-        $this->setIfExists('account', $data ?? [], null);
-        $this->setIfExists('timestamp', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('payload', $data ?? [], null);
     }
 
     /**
@@ -331,35 +289,11 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['event'] === null) {
-            $invalidProperties[] = "'event' can't be null";
-        }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'event', must be one of '%s'",
-                $this->container['event'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['deleted_at'] === null) {
-            $invalidProperties[] = "'deleted_at' can't be null";
-        }
-        if ($this->container['conversation'] === null) {
-            $invalidProperties[] = "'conversation' can't be null";
-        }
-        if ($this->container['account'] === null) {
-            $invalidProperties[] = "'account' can't be null";
-        }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
         return $invalidProperties;
     }
@@ -377,200 +311,82 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets id
+     * Gets type
      *
      * @return string
      */
-    public function getId()
+    public function getType()
     {
-        return $this->container['id'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets id
+     * Sets type
      *
-     * @param string $id id
+     * @param string $type Attachment type (image, video, file, sticker, audio)
      *
      * @return self
      */
-    public function setId($id)
+    public function setType($type)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets event
+     * Gets url
      *
      * @return string
      */
-    public function getEvent()
+    public function getUrl()
     {
-        return $this->container['event'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets event
+     * Sets url
      *
-     * @param string $event event
+     * @param string $url Attachment URL (may expire for Meta platforms)
      *
      * @return self
      */
-    public function setEvent($event)
+    public function setUrl($url)
     {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!in_array($event, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'event', must be one of '%s'",
-                    $event,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['event'] = $event;
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets payload
      *
-     * @return \Late\Model\InboxWebhookMessage
+     * @return object|null
      */
-    public function getMessage()
+    public function getPayload()
     {
-        return $this->container['message'];
+        return $this->container['payload'];
     }
 
     /**
-     * Sets message
+     * Sets payload
      *
-     * @param \Late\Model\InboxWebhookMessage $message message
+     * @param object|null $payload Additional attachment metadata
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setPayload($payload)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($payload)) {
+            throw new \InvalidArgumentException('non-nullable payload cannot be null');
         }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted_at
-     *
-     * @return \DateTime
-     */
-    public function getDeletedAt()
-    {
-        return $this->container['deleted_at'];
-    }
-
-    /**
-     * Sets deleted_at
-     *
-     * @param \DateTime $deleted_at deleted_at
-     *
-     * @return self
-     */
-    public function setDeletedAt($deleted_at)
-    {
-        if (is_null($deleted_at)) {
-            throw new \InvalidArgumentException('non-nullable deleted_at cannot be null');
-        }
-        $this->container['deleted_at'] = $deleted_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets conversation
-     *
-     * @return \Late\Model\InboxWebhookConversation
-     */
-    public function getConversation()
-    {
-        return $this->container['conversation'];
-    }
-
-    /**
-     * Sets conversation
-     *
-     * @param \Late\Model\InboxWebhookConversation $conversation conversation
-     *
-     * @return self
-     */
-    public function setConversation($conversation)
-    {
-        if (is_null($conversation)) {
-            throw new \InvalidArgumentException('non-nullable conversation cannot be null');
-        }
-        $this->container['conversation'] = $conversation;
-
-        return $this;
-    }
-
-    /**
-     * Gets account
-     *
-     * @return \Late\Model\InboxWebhookAccount
-     */
-    public function getAccount()
-    {
-        return $this->container['account'];
-    }
-
-    /**
-     * Sets account
-     *
-     * @param \Late\Model\InboxWebhookAccount $account account
-     *
-     * @return self
-     */
-    public function setAccount($account)
-    {
-        if (is_null($account)) {
-            throw new \InvalidArgumentException('non-nullable account cannot be null');
-        }
-        $this->container['account'] = $account;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return \DateTime
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param \DateTime $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        if (is_null($timestamp)) {
-            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
-        }
-        $this->container['timestamp'] = $timestamp;
+        $this->container['payload'] = $payload;
 
         return $this;
     }

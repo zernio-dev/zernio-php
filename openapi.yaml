@@ -1055,6 +1055,102 @@ components:
         timestamp:
           type: string
           format: date-time
+    # ─── Shared sub-schemas for inbox lifecycle webhook payloads ────────────
+    # WebhookPayloadMessageEdited / Deleted / DeliveryStatus reference these
+    # as $refs. They were added as top-level named schemas (rather than nested
+    # refs into WebhookPayloadMessage.properties) because openapi-typescript
+    # and datamodel-code-generator can't resolve nested-property refs — the
+    # SDK regen fails with "Cannot find name 'WebhookPayloadMessage_properties_message'".
+    InboxWebhookMessage:
+      type: object
+      description: The `message` object included in inbox webhook payloads.
+      required: [id, conversationId, platform, platformMessageId, direction, text, attachments, sender, sentAt, isRead]
+      properties:
+        id:
+          type: string
+          description: Internal message ID
+        conversationId:
+          type: string
+          description: Internal conversation ID
+        platform:
+          type: string
+          enum: [instagram, facebook, telegram, whatsapp]
+        platformMessageId:
+          type: string
+          description: Platform's message ID
+        direction:
+          type: string
+          enum: [incoming, outgoing]
+        text:
+          type: string
+          nullable: true
+          description: Message text content (retained on deleted messages for API consumers; Zernio dashboard UI hides this)
+        attachments:
+          type: array
+          items:
+            type: object
+            required: [type, url]
+            properties:
+              type:
+                type: string
+                description: Attachment type (image, video, file, sticker, audio)
+              url:
+                type: string
+                description: Attachment URL (may expire for Meta platforms)
+              payload:
+                type: object
+                description: Additional attachment metadata
+        sender:
+          type: object
+          required: [id]
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            username:
+              type: string
+            picture:
+              type: string
+            instagramProfile:
+              type: object
+              description: Instagram profile data. Only present for Instagram conversations.
+              properties:
+                isFollower: { type: boolean, nullable: true }
+                isFollowing: { type: boolean, nullable: true }
+                followerCount: { type: integer, nullable: true }
+                isVerified: { type: boolean, nullable: true }
+        sentAt:
+          type: string
+          format: date-time
+        isRead:
+          type: boolean
+    InboxWebhookConversation:
+      type: object
+      description: The `conversation` context included in inbox webhook payloads.
+      required: [id, platformConversationId, status]
+      properties:
+        id: { type: string }
+        platformConversationId: { type: string }
+        participantId: { type: string }
+        participantName: { type: string }
+        participantUsername: { type: string }
+        participantPicture: { type: string }
+        status:
+          type: string
+          enum: [active, archived]
+    InboxWebhookAccount:
+      type: object
+      description: The `account` context included in inbox webhook payloads.
+      required: [id, platform, username]
+      properties:
+        id:
+          type: string
+          description: Social account ID
+        platform: { type: string }
+        username: { type: string }
+        displayName: { type: string }
+    # ────────────────────────────────────────────────────────────────────────
     WebhookPayloadMessage:
       type: object
       description: Webhook payload for message received events
@@ -1308,7 +1404,7 @@ components:
         id: { type: string }
         event: { type: string, enum: [message.edited] }
         message:
-          $ref: '#/components/schemas/WebhookPayloadMessage/properties/message'
+          $ref: '#/components/schemas/InboxWebhookMessage'
         editHistory:
           type: array
           description: Prior versions of the message, oldest first.
@@ -1338,9 +1434,9 @@ components:
           format: date-time
           description: When the most recent edit happened.
         conversation:
-          $ref: '#/components/schemas/WebhookPayloadMessage/properties/conversation'
+          $ref: '#/components/schemas/InboxWebhookConversation'
         account:
-          $ref: '#/components/schemas/WebhookPayloadMessage/properties/account'
+          $ref: '#/components/schemas/InboxWebhookAccount'
         timestamp: { type: string, format: date-time }
     WebhookPayloadMessageDeleted:
       type: object
@@ -1359,14 +1455,14 @@ components:
         id: { type: string }
         event: { type: string, enum: [message.deleted] }
         message:
-          $ref: '#/components/schemas/WebhookPayloadMessage/properties/message'
+          $ref: '#/components/schemas/InboxWebhookMessage'
         deletedAt:
           type: string
           format: date-time
         conversation:
-          $ref: '#/components/schemas/WebhookPayloadMessage/properties/conversation'
+          $ref: '#/components/schemas/InboxWebhookConversation'
         account:
-          $ref: '#/components/schemas/WebhookPayloadMessage/properties/account'
+          $ref: '#/components/schemas/InboxWebhookAccount'
         timestamp: { type: string, format: date-time }
     WebhookPayloadMessageDeliveryStatus:
       type: object
@@ -1387,7 +1483,7 @@ components:
           type: string
           enum: [message.delivered, message.read, message.failed]
         message:
-          $ref: '#/components/schemas/WebhookPayloadMessage/properties/message'
+          $ref: '#/components/schemas/InboxWebhookMessage'
         statusAt:
           type: string
           format: date-time
@@ -1401,9 +1497,9 @@ components:
             title: { type: string }
             message: { type: string }
         conversation:
-          $ref: '#/components/schemas/WebhookPayloadMessage/properties/conversation'
+          $ref: '#/components/schemas/InboxWebhookConversation'
         account:
-          $ref: '#/components/schemas/WebhookPayloadMessage/properties/account'
+          $ref: '#/components/schemas/InboxWebhookAccount'
         timestamp: { type: string, format: date-time }
     WebhookPayloadTest:
       type: object

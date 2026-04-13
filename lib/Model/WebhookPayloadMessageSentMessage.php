@@ -64,7 +64,7 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
         'platform_message_id' => 'string',
         'direction' => 'string',
         'text' => 'string',
-        'attachments' => '\Late\Model\WebhookPayloadMessageMessageAttachmentsInner[]',
+        'attachments' => '\Late\Model\InboxWebhookMessageAttachmentsInner[]',
         'sender' => '\Late\Model\WebhookPayloadMessageSentMessageSender',
         'sent_at' => '\DateTime',
         'is_read' => 'bool'
@@ -620,7 +620,7 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
     /**
      * Gets attachments
      *
-     * @return \Late\Model\WebhookPayloadMessageMessageAttachmentsInner[]
+     * @return \Late\Model\InboxWebhookMessageAttachmentsInner[]
      */
     public function getAttachments()
     {
@@ -630,7 +630,7 @@ class WebhookPayloadMessageSentMessage implements ModelInterface, ArrayAccess, \
     /**
      * Sets attachments
      *
-     * @param \Late\Model\WebhookPayloadMessageMessageAttachmentsInner[] $attachments attachments
+     * @param \Late\Model\InboxWebhookMessageAttachmentsInner[] $attachments attachments
      *
      * @return self
      */

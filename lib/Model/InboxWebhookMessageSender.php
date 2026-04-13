@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookPayloadMessageDeliveryStatus
+ * InboxWebhookMessageSender
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * WebhookPayloadMessageDeliveryStatus Class Doc Comment
+ * InboxWebhookMessageSender Class Doc Comment
  *
  * @category Class
- * @description Shared payload for &#x60;message.delivered&#x60;, &#x60;message.read&#x60;, and &#x60;message.failed&#x60; events. Fires when the platform reports a new delivery state for an outgoing message.  Platform support:   * &#x60;message.delivered&#x60; — WhatsApp, Facebook Messenger.   * &#x60;message.read&#x60;      — WhatsApp, Facebook Messenger, Instagram.   * &#x60;message.failed&#x60;    — WhatsApp only (other platforms don&#39;t expose     per-message failure via webhook).
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSerializable
+class InboxWebhookMessageSender implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WebhookPayloadMessageDeliveryStatus';
+    protected static $openAPIModelName = 'InboxWebhookMessage_sender';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,13 +59,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'event' => 'string',
-        'message' => '\Late\Model\InboxWebhookMessage',
-        'status_at' => '\DateTime',
-        'error' => '\Late\Model\WebhookPayloadMessageDeliveryStatusError',
-        'conversation' => '\Late\Model\InboxWebhookConversation',
-        'account' => '\Late\Model\InboxWebhookAccount',
-        'timestamp' => '\DateTime'
+        'name' => 'string',
+        'username' => 'string',
+        'picture' => 'string',
+        'instagram_profile' => '\Late\Model\InboxWebhookMessageSenderInstagramProfile'
     ];
 
     /**
@@ -78,13 +74,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'event' => null,
-        'message' => null,
-        'status_at' => 'date-time',
-        'error' => null,
-        'conversation' => null,
-        'account' => null,
-        'timestamp' => 'date-time'
+        'name' => null,
+        'username' => null,
+        'picture' => null,
+        'instagram_profile' => null
     ];
 
     /**
@@ -94,13 +87,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'event' => false,
-        'message' => false,
-        'status_at' => false,
-        'error' => false,
-        'conversation' => false,
-        'account' => false,
-        'timestamp' => false
+        'name' => false,
+        'username' => false,
+        'picture' => false,
+        'instagram_profile' => false
     ];
 
     /**
@@ -190,13 +180,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'event' => 'event',
-        'message' => 'message',
-        'status_at' => 'statusAt',
-        'error' => 'error',
-        'conversation' => 'conversation',
-        'account' => 'account',
-        'timestamp' => 'timestamp'
+        'name' => 'name',
+        'username' => 'username',
+        'picture' => 'picture',
+        'instagram_profile' => 'instagramProfile'
     ];
 
     /**
@@ -206,13 +193,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-        'event' => 'setEvent',
-        'message' => 'setMessage',
-        'status_at' => 'setStatusAt',
-        'error' => 'setError',
-        'conversation' => 'setConversation',
-        'account' => 'setAccount',
-        'timestamp' => 'setTimestamp'
+        'name' => 'setName',
+        'username' => 'setUsername',
+        'picture' => 'setPicture',
+        'instagram_profile' => 'setInstagramProfile'
     ];
 
     /**
@@ -222,13 +206,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-        'event' => 'getEvent',
-        'message' => 'getMessage',
-        'status_at' => 'getStatusAt',
-        'error' => 'getError',
-        'conversation' => 'getConversation',
-        'account' => 'getAccount',
-        'timestamp' => 'getTimestamp'
+        'name' => 'getName',
+        'username' => 'getUsername',
+        'picture' => 'getPicture',
+        'instagram_profile' => 'getInstagramProfile'
     ];
 
     /**
@@ -272,23 +253,6 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const EVENT_MESSAGE_DELIVERED = 'message.delivered';
-    public const EVENT_MESSAGE_READ = 'message.read';
-    public const EVENT_MESSAGE_FAILED = 'message.failed';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEventAllowableValues()
-    {
-        return [
-            self::EVENT_MESSAGE_DELIVERED,
-            self::EVENT_MESSAGE_READ,
-            self::EVENT_MESSAGE_FAILED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -306,13 +270,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('status_at', $data ?? [], null);
-        $this->setIfExists('error', $data ?? [], null);
-        $this->setIfExists('conversation', $data ?? [], null);
-        $this->setIfExists('account', $data ?? [], null);
-        $this->setIfExists('timestamp', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('username', $data ?? [], null);
+        $this->setIfExists('picture', $data ?? [], null);
+        $this->setIfExists('instagram_profile', $data ?? [], null);
     }
 
     /**
@@ -344,33 +305,6 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
 
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['event'] === null) {
-            $invalidProperties[] = "'event' can't be null";
-        }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'event', must be one of '%s'",
-                $this->container['event'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['status_at'] === null) {
-            $invalidProperties[] = "'status_at' can't be null";
-        }
-        if ($this->container['conversation'] === null) {
-            $invalidProperties[] = "'conversation' can't be null";
-        }
-        if ($this->container['account'] === null) {
-            $invalidProperties[] = "'account' can't be null";
-        }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
         }
         return $invalidProperties;
     }
@@ -415,200 +349,109 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets event
+     * Gets name
      *
-     * @return string
+     * @return string|null
      */
-    public function getEvent()
+    public function getName()
     {
-        return $this->container['event'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets event
+     * Sets name
      *
-     * @param string $event event
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setEvent($event)
+    public function setName($name)
     {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!in_array($event, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'event', must be one of '%s'",
-                    $event,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['event'] = $event;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets username
      *
-     * @return \Late\Model\InboxWebhookMessage
+     * @return string|null
      */
-    public function getMessage()
+    public function getUsername()
     {
-        return $this->container['message'];
+        return $this->container['username'];
     }
 
     /**
-     * Sets message
+     * Sets username
      *
-     * @param \Late\Model\InboxWebhookMessage $message message
+     * @param string|null $username username
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setUsername($username)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($username)) {
+            throw new \InvalidArgumentException('non-nullable username cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['username'] = $username;
 
         return $this;
     }
 
     /**
-     * Gets status_at
+     * Gets picture
      *
-     * @return \DateTime
+     * @return string|null
      */
-    public function getStatusAt()
+    public function getPicture()
     {
-        return $this->container['status_at'];
+        return $this->container['picture'];
     }
 
     /**
-     * Sets status_at
+     * Sets picture
      *
-     * @param \DateTime $status_at When the platform reported this status.
+     * @param string|null $picture picture
      *
      * @return self
      */
-    public function setStatusAt($status_at)
+    public function setPicture($picture)
     {
-        if (is_null($status_at)) {
-            throw new \InvalidArgumentException('non-nullable status_at cannot be null');
+        if (is_null($picture)) {
+            throw new \InvalidArgumentException('non-nullable picture cannot be null');
         }
-        $this->container['status_at'] = $status_at;
+        $this->container['picture'] = $picture;
 
         return $this;
     }
 
     /**
-     * Gets error
+     * Gets instagram_profile
      *
-     * @return \Late\Model\WebhookPayloadMessageDeliveryStatusError|null
+     * @return \Late\Model\InboxWebhookMessageSenderInstagramProfile|null
      */
-    public function getError()
+    public function getInstagramProfile()
     {
-        return $this->container['error'];
+        return $this->container['instagram_profile'];
     }
 
     /**
-     * Sets error
+     * Sets instagram_profile
      *
-     * @param \Late\Model\WebhookPayloadMessageDeliveryStatusError|null $error error
+     * @param \Late\Model\InboxWebhookMessageSenderInstagramProfile|null $instagram_profile instagram_profile
      *
      * @return self
      */
-    public function setError($error)
+    public function setInstagramProfile($instagram_profile)
     {
-        if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
+        if (is_null($instagram_profile)) {
+            throw new \InvalidArgumentException('non-nullable instagram_profile cannot be null');
         }
-        $this->container['error'] = $error;
-
-        return $this;
-    }
-
-    /**
-     * Gets conversation
-     *
-     * @return \Late\Model\InboxWebhookConversation
-     */
-    public function getConversation()
-    {
-        return $this->container['conversation'];
-    }
-
-    /**
-     * Sets conversation
-     *
-     * @param \Late\Model\InboxWebhookConversation $conversation conversation
-     *
-     * @return self
-     */
-    public function setConversation($conversation)
-    {
-        if (is_null($conversation)) {
-            throw new \InvalidArgumentException('non-nullable conversation cannot be null');
-        }
-        $this->container['conversation'] = $conversation;
-
-        return $this;
-    }
-
-    /**
-     * Gets account
-     *
-     * @return \Late\Model\InboxWebhookAccount
-     */
-    public function getAccount()
-    {
-        return $this->container['account'];
-    }
-
-    /**
-     * Sets account
-     *
-     * @param \Late\Model\InboxWebhookAccount $account account
-     *
-     * @return self
-     */
-    public function setAccount($account)
-    {
-        if (is_null($account)) {
-            throw new \InvalidArgumentException('non-nullable account cannot be null');
-        }
-        $this->container['account'] = $account;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return \DateTime
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param \DateTime $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        if (is_null($timestamp)) {
-            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
-        }
-        $this->container['timestamp'] = $timestamp;
+        $this->container['instagram_profile'] = $instagram_profile;
 
         return $this;
     }

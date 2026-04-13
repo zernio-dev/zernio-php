@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookPayloadMessageDeliveryStatus
+ * InboxWebhookMessageSenderInstagramProfile
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * WebhookPayloadMessageDeliveryStatus Class Doc Comment
+ * InboxWebhookMessageSenderInstagramProfile Class Doc Comment
  *
  * @category Class
- * @description Shared payload for &#x60;message.delivered&#x60;, &#x60;message.read&#x60;, and &#x60;message.failed&#x60; events. Fires when the platform reports a new delivery state for an outgoing message.  Platform support:   * &#x60;message.delivered&#x60; — WhatsApp, Facebook Messenger.   * &#x60;message.read&#x60;      — WhatsApp, Facebook Messenger, Instagram.   * &#x60;message.failed&#x60;    — WhatsApp only (other platforms don&#39;t expose     per-message failure via webhook).
+ * @description Instagram profile data. Only present for Instagram conversations.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSerializable
+class InboxWebhookMessageSenderInstagramProfile implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WebhookPayloadMessageDeliveryStatus';
+    protected static $openAPIModelName = 'InboxWebhookMessage_sender_instagramProfile';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +59,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'event' => 'string',
-        'message' => '\Late\Model\InboxWebhookMessage',
-        'status_at' => '\DateTime',
-        'error' => '\Late\Model\WebhookPayloadMessageDeliveryStatusError',
-        'conversation' => '\Late\Model\InboxWebhookConversation',
-        'account' => '\Late\Model\InboxWebhookAccount',
-        'timestamp' => '\DateTime'
+        'is_follower' => 'bool',
+        'is_following' => 'bool',
+        'follower_count' => 'int',
+        'is_verified' => 'bool'
     ];
 
     /**
@@ -77,14 +73,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'event' => null,
-        'message' => null,
-        'status_at' => 'date-time',
-        'error' => null,
-        'conversation' => null,
-        'account' => null,
-        'timestamp' => 'date-time'
+        'is_follower' => null,
+        'is_following' => null,
+        'follower_count' => null,
+        'is_verified' => null
     ];
 
     /**
@@ -93,14 +85,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'event' => false,
-        'message' => false,
-        'status_at' => false,
-        'error' => false,
-        'conversation' => false,
-        'account' => false,
-        'timestamp' => false
+        'is_follower' => false,
+        'is_following' => false,
+        'follower_count' => false,
+        'is_verified' => false
     ];
 
     /**
@@ -189,14 +177,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'event' => 'event',
-        'message' => 'message',
-        'status_at' => 'statusAt',
-        'error' => 'error',
-        'conversation' => 'conversation',
-        'account' => 'account',
-        'timestamp' => 'timestamp'
+        'is_follower' => 'isFollower',
+        'is_following' => 'isFollowing',
+        'follower_count' => 'followerCount',
+        'is_verified' => 'isVerified'
     ];
 
     /**
@@ -205,14 +189,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'event' => 'setEvent',
-        'message' => 'setMessage',
-        'status_at' => 'setStatusAt',
-        'error' => 'setError',
-        'conversation' => 'setConversation',
-        'account' => 'setAccount',
-        'timestamp' => 'setTimestamp'
+        'is_follower' => 'setIsFollower',
+        'is_following' => 'setIsFollowing',
+        'follower_count' => 'setFollowerCount',
+        'is_verified' => 'setIsVerified'
     ];
 
     /**
@@ -221,14 +201,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'event' => 'getEvent',
-        'message' => 'getMessage',
-        'status_at' => 'getStatusAt',
-        'error' => 'getError',
-        'conversation' => 'getConversation',
-        'account' => 'getAccount',
-        'timestamp' => 'getTimestamp'
+        'is_follower' => 'getIsFollower',
+        'is_following' => 'getIsFollowing',
+        'follower_count' => 'getFollowerCount',
+        'is_verified' => 'getIsVerified'
     ];
 
     /**
@@ -272,23 +248,6 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const EVENT_MESSAGE_DELIVERED = 'message.delivered';
-    public const EVENT_MESSAGE_READ = 'message.read';
-    public const EVENT_MESSAGE_FAILED = 'message.failed';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEventAllowableValues()
-    {
-        return [
-            self::EVENT_MESSAGE_DELIVERED,
-            self::EVENT_MESSAGE_READ,
-            self::EVENT_MESSAGE_FAILED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -305,14 +264,10 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('status_at', $data ?? [], null);
-        $this->setIfExists('error', $data ?? [], null);
-        $this->setIfExists('conversation', $data ?? [], null);
-        $this->setIfExists('account', $data ?? [], null);
-        $this->setIfExists('timestamp', $data ?? [], null);
+        $this->setIfExists('is_follower', $data ?? [], null);
+        $this->setIfExists('is_following', $data ?? [], null);
+        $this->setIfExists('follower_count', $data ?? [], null);
+        $this->setIfExists('is_verified', $data ?? [], null);
     }
 
     /**
@@ -342,36 +297,6 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['event'] === null) {
-            $invalidProperties[] = "'event' can't be null";
-        }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'event', must be one of '%s'",
-                $this->container['event'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['status_at'] === null) {
-            $invalidProperties[] = "'status_at' can't be null";
-        }
-        if ($this->container['conversation'] === null) {
-            $invalidProperties[] = "'conversation' can't be null";
-        }
-        if ($this->container['account'] === null) {
-            $invalidProperties[] = "'account' can't be null";
-        }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -388,227 +313,109 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets is_follower
      *
-     * @return string
+     * @return bool|null
      */
-    public function getId()
+    public function getIsFollower()
     {
-        return $this->container['id'];
+        return $this->container['is_follower'];
     }
 
     /**
-     * Sets id
+     * Sets is_follower
      *
-     * @param string $id id
+     * @param bool|null $is_follower is_follower
      *
      * @return self
      */
-    public function setId($id)
+    public function setIsFollower($is_follower)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($is_follower)) {
+            throw new \InvalidArgumentException('non-nullable is_follower cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['is_follower'] = $is_follower;
 
         return $this;
     }
 
     /**
-     * Gets event
+     * Gets is_following
      *
-     * @return string
+     * @return bool|null
      */
-    public function getEvent()
+    public function getIsFollowing()
     {
-        return $this->container['event'];
+        return $this->container['is_following'];
     }
 
     /**
-     * Sets event
+     * Sets is_following
      *
-     * @param string $event event
+     * @param bool|null $is_following is_following
      *
      * @return self
      */
-    public function setEvent($event)
+    public function setIsFollowing($is_following)
     {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        if (is_null($is_following)) {
+            throw new \InvalidArgumentException('non-nullable is_following cannot be null');
         }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!in_array($event, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'event', must be one of '%s'",
-                    $event,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['event'] = $event;
+        $this->container['is_following'] = $is_following;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets follower_count
      *
-     * @return \Late\Model\InboxWebhookMessage
+     * @return int|null
      */
-    public function getMessage()
+    public function getFollowerCount()
     {
-        return $this->container['message'];
+        return $this->container['follower_count'];
     }
 
     /**
-     * Sets message
+     * Sets follower_count
      *
-     * @param \Late\Model\InboxWebhookMessage $message message
+     * @param int|null $follower_count follower_count
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setFollowerCount($follower_count)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($follower_count)) {
+            throw new \InvalidArgumentException('non-nullable follower_count cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['follower_count'] = $follower_count;
 
         return $this;
     }
 
     /**
-     * Gets status_at
+     * Gets is_verified
      *
-     * @return \DateTime
+     * @return bool|null
      */
-    public function getStatusAt()
+    public function getIsVerified()
     {
-        return $this->container['status_at'];
+        return $this->container['is_verified'];
     }
 
     /**
-     * Sets status_at
+     * Sets is_verified
      *
-     * @param \DateTime $status_at When the platform reported this status.
+     * @param bool|null $is_verified is_verified
      *
      * @return self
      */
-    public function setStatusAt($status_at)
+    public function setIsVerified($is_verified)
     {
-        if (is_null($status_at)) {
-            throw new \InvalidArgumentException('non-nullable status_at cannot be null');
+        if (is_null($is_verified)) {
+            throw new \InvalidArgumentException('non-nullable is_verified cannot be null');
         }
-        $this->container['status_at'] = $status_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets error
-     *
-     * @return \Late\Model\WebhookPayloadMessageDeliveryStatusError|null
-     */
-    public function getError()
-    {
-        return $this->container['error'];
-    }
-
-    /**
-     * Sets error
-     *
-     * @param \Late\Model\WebhookPayloadMessageDeliveryStatusError|null $error error
-     *
-     * @return self
-     */
-    public function setError($error)
-    {
-        if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
-        }
-        $this->container['error'] = $error;
-
-        return $this;
-    }
-
-    /**
-     * Gets conversation
-     *
-     * @return \Late\Model\InboxWebhookConversation
-     */
-    public function getConversation()
-    {
-        return $this->container['conversation'];
-    }
-
-    /**
-     * Sets conversation
-     *
-     * @param \Late\Model\InboxWebhookConversation $conversation conversation
-     *
-     * @return self
-     */
-    public function setConversation($conversation)
-    {
-        if (is_null($conversation)) {
-            throw new \InvalidArgumentException('non-nullable conversation cannot be null');
-        }
-        $this->container['conversation'] = $conversation;
-
-        return $this;
-    }
-
-    /**
-     * Gets account
-     *
-     * @return \Late\Model\InboxWebhookAccount
-     */
-    public function getAccount()
-    {
-        return $this->container['account'];
-    }
-
-    /**
-     * Sets account
-     *
-     * @param \Late\Model\InboxWebhookAccount $account account
-     *
-     * @return self
-     */
-    public function setAccount($account)
-    {
-        if (is_null($account)) {
-            throw new \InvalidArgumentException('non-nullable account cannot be null');
-        }
-        $this->container['account'] = $account;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return \DateTime
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param \DateTime $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        if (is_null($timestamp)) {
-            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
-        }
-        $this->container['timestamp'] = $timestamp;
+        $this->container['is_verified'] = $is_verified;
 
         return $this;
     }

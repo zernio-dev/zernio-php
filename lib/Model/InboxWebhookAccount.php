@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookPayloadMessageDeliveryStatus
+ * InboxWebhookAccount
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * WebhookPayloadMessageDeliveryStatus Class Doc Comment
+ * InboxWebhookAccount Class Doc Comment
  *
  * @category Class
- * @description Shared payload for &#x60;message.delivered&#x60;, &#x60;message.read&#x60;, and &#x60;message.failed&#x60; events. Fires when the platform reports a new delivery state for an outgoing message.  Platform support:   * &#x60;message.delivered&#x60; — WhatsApp, Facebook Messenger.   * &#x60;message.read&#x60;      — WhatsApp, Facebook Messenger, Instagram.   * &#x60;message.failed&#x60;    — WhatsApp only (other platforms don&#39;t expose     per-message failure via webhook).
+ * @description The &#x60;account&#x60; context included in inbox webhook payloads.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess, \JsonSerializable
+class InboxWebhookAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WebhookPayloadMessageDeliveryStatus';
+    protected static $openAPIModelName = 'InboxWebhookAccount';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,13 +60,9 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'event' => 'string',
-        'message' => '\Late\Model\InboxWebhookMessage',
-        'status_at' => '\DateTime',
-        'error' => '\Late\Model\WebhookPayloadMessageDeliveryStatusError',
-        'conversation' => '\Late\Model\InboxWebhookConversation',
-        'account' => '\Late\Model\InboxWebhookAccount',
-        'timestamp' => '\DateTime'
+        'platform' => 'string',
+        'username' => 'string',
+        'display_name' => 'string'
     ];
 
     /**
@@ -78,13 +74,9 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'event' => null,
-        'message' => null,
-        'status_at' => 'date-time',
-        'error' => null,
-        'conversation' => null,
-        'account' => null,
-        'timestamp' => 'date-time'
+        'platform' => null,
+        'username' => null,
+        'display_name' => null
     ];
 
     /**
@@ -94,13 +86,9 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'event' => false,
-        'message' => false,
-        'status_at' => false,
-        'error' => false,
-        'conversation' => false,
-        'account' => false,
-        'timestamp' => false
+        'platform' => false,
+        'username' => false,
+        'display_name' => false
     ];
 
     /**
@@ -190,13 +178,9 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'event' => 'event',
-        'message' => 'message',
-        'status_at' => 'statusAt',
-        'error' => 'error',
-        'conversation' => 'conversation',
-        'account' => 'account',
-        'timestamp' => 'timestamp'
+        'platform' => 'platform',
+        'username' => 'username',
+        'display_name' => 'displayName'
     ];
 
     /**
@@ -206,13 +190,9 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-        'event' => 'setEvent',
-        'message' => 'setMessage',
-        'status_at' => 'setStatusAt',
-        'error' => 'setError',
-        'conversation' => 'setConversation',
-        'account' => 'setAccount',
-        'timestamp' => 'setTimestamp'
+        'platform' => 'setPlatform',
+        'username' => 'setUsername',
+        'display_name' => 'setDisplayName'
     ];
 
     /**
@@ -222,13 +202,9 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-        'event' => 'getEvent',
-        'message' => 'getMessage',
-        'status_at' => 'getStatusAt',
-        'error' => 'getError',
-        'conversation' => 'getConversation',
-        'account' => 'getAccount',
-        'timestamp' => 'getTimestamp'
+        'platform' => 'getPlatform',
+        'username' => 'getUsername',
+        'display_name' => 'getDisplayName'
     ];
 
     /**
@@ -272,23 +248,6 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
         return self::$openAPIModelName;
     }
 
-    public const EVENT_MESSAGE_DELIVERED = 'message.delivered';
-    public const EVENT_MESSAGE_READ = 'message.read';
-    public const EVENT_MESSAGE_FAILED = 'message.failed';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEventAllowableValues()
-    {
-        return [
-            self::EVENT_MESSAGE_DELIVERED,
-            self::EVENT_MESSAGE_READ,
-            self::EVENT_MESSAGE_FAILED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -306,13 +265,9 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('status_at', $data ?? [], null);
-        $this->setIfExists('error', $data ?? [], null);
-        $this->setIfExists('conversation', $data ?? [], null);
-        $this->setIfExists('account', $data ?? [], null);
-        $this->setIfExists('timestamp', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('username', $data ?? [], null);
+        $this->setIfExists('display_name', $data ?? [], null);
     }
 
     /**
@@ -345,32 +300,11 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['event'] === null) {
-            $invalidProperties[] = "'event' can't be null";
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
         }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'event', must be one of '%s'",
-                $this->container['event'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['status_at'] === null) {
-            $invalidProperties[] = "'status_at' can't be null";
-        }
-        if ($this->container['conversation'] === null) {
-            $invalidProperties[] = "'conversation' can't be null";
-        }
-        if ($this->container['account'] === null) {
-            $invalidProperties[] = "'account' can't be null";
-        }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
+        if ($this->container['username'] === null) {
+            $invalidProperties[] = "'username' can't be null";
         }
         return $invalidProperties;
     }
@@ -400,7 +334,7 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string $id Social account ID
      *
      * @return self
      */
@@ -415,200 +349,82 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets event
+     * Gets platform
      *
      * @return string
      */
-    public function getEvent()
+    public function getPlatform()
     {
-        return $this->container['event'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets event
+     * Sets platform
      *
-     * @param string $event event
+     * @param string $platform platform
      *
      * @return self
      */
-    public function setEvent($event)
+    public function setPlatform($platform)
     {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!in_array($event, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'event', must be one of '%s'",
-                    $event,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['event'] = $event;
+        $this->container['platform'] = $platform;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets username
      *
-     * @return \Late\Model\InboxWebhookMessage
+     * @return string
      */
-    public function getMessage()
+    public function getUsername()
     {
-        return $this->container['message'];
+        return $this->container['username'];
     }
 
     /**
-     * Sets message
+     * Sets username
      *
-     * @param \Late\Model\InboxWebhookMessage $message message
+     * @param string $username username
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setUsername($username)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($username)) {
+            throw new \InvalidArgumentException('non-nullable username cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['username'] = $username;
 
         return $this;
     }
 
     /**
-     * Gets status_at
+     * Gets display_name
      *
-     * @return \DateTime
+     * @return string|null
      */
-    public function getStatusAt()
+    public function getDisplayName()
     {
-        return $this->container['status_at'];
+        return $this->container['display_name'];
     }
 
     /**
-     * Sets status_at
+     * Sets display_name
      *
-     * @param \DateTime $status_at When the platform reported this status.
+     * @param string|null $display_name display_name
      *
      * @return self
      */
-    public function setStatusAt($status_at)
+    public function setDisplayName($display_name)
     {
-        if (is_null($status_at)) {
-            throw new \InvalidArgumentException('non-nullable status_at cannot be null');
+        if (is_null($display_name)) {
+            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
-        $this->container['status_at'] = $status_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets error
-     *
-     * @return \Late\Model\WebhookPayloadMessageDeliveryStatusError|null
-     */
-    public function getError()
-    {
-        return $this->container['error'];
-    }
-
-    /**
-     * Sets error
-     *
-     * @param \Late\Model\WebhookPayloadMessageDeliveryStatusError|null $error error
-     *
-     * @return self
-     */
-    public function setError($error)
-    {
-        if (is_null($error)) {
-            throw new \InvalidArgumentException('non-nullable error cannot be null');
-        }
-        $this->container['error'] = $error;
-
-        return $this;
-    }
-
-    /**
-     * Gets conversation
-     *
-     * @return \Late\Model\InboxWebhookConversation
-     */
-    public function getConversation()
-    {
-        return $this->container['conversation'];
-    }
-
-    /**
-     * Sets conversation
-     *
-     * @param \Late\Model\InboxWebhookConversation $conversation conversation
-     *
-     * @return self
-     */
-    public function setConversation($conversation)
-    {
-        if (is_null($conversation)) {
-            throw new \InvalidArgumentException('non-nullable conversation cannot be null');
-        }
-        $this->container['conversation'] = $conversation;
-
-        return $this;
-    }
-
-    /**
-     * Gets account
-     *
-     * @return \Late\Model\InboxWebhookAccount
-     */
-    public function getAccount()
-    {
-        return $this->container['account'];
-    }
-
-    /**
-     * Sets account
-     *
-     * @param \Late\Model\InboxWebhookAccount $account account
-     *
-     * @return self
-     */
-    public function setAccount($account)
-    {
-        if (is_null($account)) {
-            throw new \InvalidArgumentException('non-nullable account cannot be null');
-        }
-        $this->container['account'] = $account;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return \DateTime
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param \DateTime $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        if (is_null($timestamp)) {
-            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
-        }
-        $this->container['timestamp'] = $timestamp;
+        $this->container['display_name'] = $display_name;
 
         return $this;
     }

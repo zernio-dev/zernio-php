@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **platform_message_id** | **string** | Platform&#39;s message ID |
 **direction** | **string** |  |
 **text** | **string** | Message text content |
-**attachments** | [**\Late\Model\WebhookPayloadMessageMessageAttachmentsInner[]**](WebhookPayloadMessageMessageAttachmentsInner.md) |  |
+**attachments** | [**\Late\Model\InboxWebhookMessageAttachmentsInner[]**](InboxWebhookMessageAttachmentsInner.md) |  |
 **sender** | [**\Late\Model\WebhookPayloadMessageMessageSender**](WebhookPayloadMessageMessageSender.md) |  |
 **sent_at** | **\DateTime** |  |
 **is_read** | **bool** |  |

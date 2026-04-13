@@ -43,7 +43,6 @@ docs/Api/WebhooksApi.md
 docs/Api/WhatsAppApi.md
 docs/Api/WhatsAppFlowsApi.md
 docs/Api/WhatsAppPhoneNumbersApi.md
-docs/Model/Account.md
 docs/Model/AccountGetResponse.md
 docs/Model/AccountWithFollowerStats.md
 docs/Model/AccountWithFollowerStatsAllOfAccountStats.md
@@ -113,7 +112,6 @@ docs/Model/ConnectionLog.md
 docs/Model/ConnectionLogContext.md
 docs/Model/ConnectionLogError.md
 docs/Model/ConnectionLogSuccess.md
-docs/Model/Conversation.md
 docs/Model/CreateAccountGroup201Response.md
 docs/Model/CreateAccountGroupRequest.md
 docs/Model/CreateAdAudience201Response.md
@@ -415,6 +413,12 @@ docs/Model/ImportWhatsAppContacts200ResponseResultsInner.md
 docs/Model/ImportWhatsAppContacts200ResponseSummary.md
 docs/Model/ImportWhatsAppContactsRequest.md
 docs/Model/ImportWhatsAppContactsRequestContactsInner.md
+docs/Model/InboxWebhookAccount.md
+docs/Model/InboxWebhookConversation.md
+docs/Model/InboxWebhookMessage.md
+docs/Model/InboxWebhookMessageAttachmentsInner.md
+docs/Model/InboxWebhookMessageSender.md
+docs/Model/InboxWebhookMessageSenderInstagramProfile.md
 docs/Model/InitiateTelegramConnect200Response.md
 docs/Model/InitiateTelegramConnect200ResponseAccount.md
 docs/Model/InitiateTelegramConnectRequest.md
@@ -515,7 +519,6 @@ docs/Model/ListWhatsAppGroupJoinRequests200Response.md
 docs/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.md
 docs/Model/MediaItem.md
 docs/Model/MediaUploadResponse.md
-docs/Model/Message.md
 docs/Model/Money.md
 docs/Model/Pagination.md
 docs/Model/Pending.md
@@ -781,7 +784,6 @@ docs/Model/WebhookPayloadMessageDeliveryStatusError.md
 docs/Model/WebhookPayloadMessageEdited.md
 docs/Model/WebhookPayloadMessageEditedEditHistoryInner.md
 docs/Model/WebhookPayloadMessageMessage.md
-docs/Model/WebhookPayloadMessageMessageAttachmentsInner.md
 docs/Model/WebhookPayloadMessageMessageSender.md
 docs/Model/WebhookPayloadMessageMessageSenderInstagramProfile.md
 docs/Model/WebhookPayloadMessageMetadata.md
@@ -855,7 +857,6 @@ lib/ApiException.php
 lib/Configuration.php
 lib/FormDataProcessor.php
 lib/HeaderSelector.php
-lib/Model/Account.php
 lib/Model/AccountGetResponse.php
 lib/Model/AccountWithFollowerStats.php
 lib/Model/AccountWithFollowerStatsAllOfAccountStats.php
@@ -925,7 +926,6 @@ lib/Model/ConnectionLog.php
 lib/Model/ConnectionLogContext.php
 lib/Model/ConnectionLogError.php
 lib/Model/ConnectionLogSuccess.php
-lib/Model/Conversation.php
 lib/Model/CreateAccountGroup201Response.php
 lib/Model/CreateAccountGroupRequest.php
 lib/Model/CreateAdAudience201Response.php
@@ -1227,6 +1227,12 @@ lib/Model/ImportWhatsAppContacts200ResponseResultsInner.php
 lib/Model/ImportWhatsAppContacts200ResponseSummary.php
 lib/Model/ImportWhatsAppContactsRequest.php
 lib/Model/ImportWhatsAppContactsRequestContactsInner.php
+lib/Model/InboxWebhookAccount.php
+lib/Model/InboxWebhookConversation.php
+lib/Model/InboxWebhookMessage.php
+lib/Model/InboxWebhookMessageAttachmentsInner.php
+lib/Model/InboxWebhookMessageSender.php
+lib/Model/InboxWebhookMessageSenderInstagramProfile.php
 lib/Model/InitiateTelegramConnect200Response.php
 lib/Model/InitiateTelegramConnect200ResponseAccount.php
 lib/Model/InitiateTelegramConnectRequest.php
@@ -1327,7 +1333,6 @@ lib/Model/ListWhatsAppGroupJoinRequests200Response.php
 lib/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.php
 lib/Model/MediaItem.php
 lib/Model/MediaUploadResponse.php
-lib/Model/Message.php
 lib/Model/ModelInterface.php
 lib/Model/Money.php
 lib/Model/Pagination.php
@@ -1594,7 +1599,6 @@ lib/Model/WebhookPayloadMessageDeliveryStatusError.php
 lib/Model/WebhookPayloadMessageEdited.php
 lib/Model/WebhookPayloadMessageEditedEditHistoryInner.php
 lib/Model/WebhookPayloadMessageMessage.php
-lib/Model/WebhookPayloadMessageMessageAttachmentsInner.php
 lib/Model/WebhookPayloadMessageMessageSender.php
 lib/Model/WebhookPayloadMessageMessageSenderInstagramProfile.php
 lib/Model/WebhookPayloadMessageMetadata.php
@@ -1625,3 +1629,9 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/InboxWebhookAccountTest.php
+test/Model/InboxWebhookConversationTest.php
+test/Model/InboxWebhookMessageAttachmentsInnerTest.php
+test/Model/InboxWebhookMessageSenderInstagramProfileTest.php
+test/Model/InboxWebhookMessageSenderTest.php
+test/Model/InboxWebhookMessageTest.php

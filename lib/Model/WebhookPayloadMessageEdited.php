@@ -61,12 +61,12 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'id' => 'string',
         'event' => 'string',
-        'message' => '\Late\Model\WebhookPayloadMessageMessage',
+        'message' => '\Late\Model\InboxWebhookMessage',
         'edit_history' => '\Late\Model\WebhookPayloadMessageEditedEditHistoryInner[]',
         'edit_count' => 'int',
         'edited_at' => '\DateTime',
-        'conversation' => '\Late\Model\WebhookPayloadMessageConversation',
-        'account' => '\Late\Model\WebhookPayloadMessageAccount',
+        'conversation' => '\Late\Model\InboxWebhookConversation',
+        'account' => '\Late\Model\InboxWebhookAccount',
         'timestamp' => '\DateTime'
     ];
 
@@ -463,7 +463,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets message
      *
-     * @return \Late\Model\WebhookPayloadMessageMessage
+     * @return \Late\Model\InboxWebhookMessage
      */
     public function getMessage()
     {
@@ -473,7 +473,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets message
      *
-     * @param \Late\Model\WebhookPayloadMessageMessage $message message
+     * @param \Late\Model\InboxWebhookMessage $message message
      *
      * @return self
      */
@@ -571,7 +571,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets conversation
      *
-     * @return \Late\Model\WebhookPayloadMessageConversation
+     * @return \Late\Model\InboxWebhookConversation
      */
     public function getConversation()
     {
@@ -581,7 +581,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets conversation
      *
-     * @param \Late\Model\WebhookPayloadMessageConversation $conversation conversation
+     * @param \Late\Model\InboxWebhookConversation $conversation conversation
      *
      * @return self
      */
@@ -598,7 +598,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets account
      *
-     * @return \Late\Model\WebhookPayloadMessageAccount
+     * @return \Late\Model\InboxWebhookAccount
      */
     public function getAccount()
     {
@@ -608,7 +608,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets account
      *
-     * @param \Late\Model\WebhookPayloadMessageAccount $account account
+     * @param \Late\Model\InboxWebhookAccount $account account
      *
      * @return self
      */
