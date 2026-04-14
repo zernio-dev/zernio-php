@@ -1,6 +1,6 @@
 <?php
 /**
- * BoostPostRequestTargeting
+ * UpdateAdRequestTargetingInterestsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * BoostPostRequestTargeting Class Doc Comment
+ * UpdateAdRequestTargetingInterestsInner Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateAdRequestTargetingInterestsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'boostPost_request_targeting';
+    protected static $openAPIModelName = 'updateAd_request_targeting_interests_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'age_min' => 'int',
-        'age_max' => 'int',
-        'countries' => 'string[]',
-        'interests' => '\Late\Model\UpdateAdRequestTargetingInterestsInner[]'
+        'id' => 'string',
+        'name' => 'string'
     ];
 
     /**
@@ -72,10 +70,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'age_min' => null,
-        'age_max' => null,
-        'countries' => null,
-        'interests' => null
+        'id' => null,
+        'name' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'age_min' => false,
-        'age_max' => false,
-        'countries' => false,
-        'interests' => false
+        'id' => false,
+        'name' => false
     ];
 
     /**
@@ -176,10 +170,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'age_min' => 'ageMin',
-        'age_max' => 'ageMax',
-        'countries' => 'countries',
-        'interests' => 'interests'
+        'id' => 'id',
+        'name' => 'name'
     ];
 
     /**
@@ -188,10 +180,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'age_min' => 'setAgeMin',
-        'age_max' => 'setAgeMax',
-        'countries' => 'setCountries',
-        'interests' => 'setInterests'
+        'id' => 'setId',
+        'name' => 'setName'
     ];
 
     /**
@@ -200,10 +190,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'age_min' => 'getAgeMin',
-        'age_max' => 'getAgeMax',
-        'countries' => 'getCountries',
-        'interests' => 'getInterests'
+        'id' => 'getId',
+        'name' => 'getName'
     ];
 
     /**
@@ -263,10 +251,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('age_min', $data ?? [], null);
-        $this->setIfExists('age_max', $data ?? [], null);
-        $this->setIfExists('countries', $data ?? [], null);
-        $this->setIfExists('interests', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -296,22 +282,12 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['age_min']) && ($this->container['age_min'] > 65)) {
-            $invalidProperties[] = "invalid value for 'age_min', must be smaller than or equal to 65.";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-
-        if (!is_null($this->container['age_min']) && ($this->container['age_min'] < 13)) {
-            $invalidProperties[] = "invalid value for 'age_min', must be bigger than or equal to 13.";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
-
-        if (!is_null($this->container['age_max']) && ($this->container['age_max'] > 65)) {
-            $invalidProperties[] = "invalid value for 'age_max', must be smaller than or equal to 65.";
-        }
-
-        if (!is_null($this->container['age_max']) && ($this->container['age_max'] < 13)) {
-            $invalidProperties[] = "invalid value for 'age_max', must be bigger than or equal to 13.";
-        }
-
         return $invalidProperties;
     }
 
@@ -328,125 +304,55 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets age_min
+     * Gets id
      *
-     * @return int|null
+     * @return string
      */
-    public function getAgeMin()
+    public function getId()
     {
-        return $this->container['age_min'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets age_min
+     * Sets id
      *
-     * @param int|null $age_min age_min
+     * @param string $id id
      *
      * @return self
      */
-    public function setAgeMin($age_min)
+    public function setId($id)
     {
-        if (is_null($age_min)) {
-            throw new \InvalidArgumentException('non-nullable age_min cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-
-        if (($age_min > 65)) {
-            throw new \InvalidArgumentException('invalid value for $age_min when calling BoostPostRequestTargeting., must be smaller than or equal to 65.');
-        }
-        if (($age_min < 13)) {
-            throw new \InvalidArgumentException('invalid value for $age_min when calling BoostPostRequestTargeting., must be bigger than or equal to 13.');
-        }
-
-        $this->container['age_min'] = $age_min;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets age_max
+     * Gets name
      *
-     * @return int|null
+     * @return string
      */
-    public function getAgeMax()
+    public function getName()
     {
-        return $this->container['age_max'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets age_max
+     * Sets name
      *
-     * @param int|null $age_max age_max
+     * @param string $name name
      *
      * @return self
      */
-    public function setAgeMax($age_max)
+    public function setName($name)
     {
-        if (is_null($age_max)) {
-            throw new \InvalidArgumentException('non-nullable age_max cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-
-        if (($age_max > 65)) {
-            throw new \InvalidArgumentException('invalid value for $age_max when calling BoostPostRequestTargeting., must be smaller than or equal to 65.');
-        }
-        if (($age_max < 13)) {
-            throw new \InvalidArgumentException('invalid value for $age_max when calling BoostPostRequestTargeting., must be bigger than or equal to 13.');
-        }
-
-        $this->container['age_max'] = $age_max;
-
-        return $this;
-    }
-
-    /**
-     * Gets countries
-     *
-     * @return string[]|null
-     */
-    public function getCountries()
-    {
-        return $this->container['countries'];
-    }
-
-    /**
-     * Sets countries
-     *
-     * @param string[]|null $countries countries
-     *
-     * @return self
-     */
-    public function setCountries($countries)
-    {
-        if (is_null($countries)) {
-            throw new \InvalidArgumentException('non-nullable countries cannot be null');
-        }
-        $this->container['countries'] = $countries;
-
-        return $this;
-    }
-
-    /**
-     * Gets interests
-     *
-     * @return \Late\Model\UpdateAdRequestTargetingInterestsInner[]|null
-     */
-    public function getInterests()
-    {
-        return $this->container['interests'];
-    }
-
-    /**
-     * Sets interests
-     *
-     * @param \Late\Model\UpdateAdRequestTargetingInterestsInner[]|null $interests Interest objects from /v1/ads/interests. Each must include id and name.
-     *
-     * @return self
-     */
-    public function setInterests($interests)
-    {
-        if (is_null($interests)) {
-            throw new \InvalidArgumentException('non-nullable interests cannot be null');
-        }
-        $this->container['interests'] = $interests;
+        $this->container['name'] = $name;
 
         return $this;
     }

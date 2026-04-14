@@ -17168,7 +17168,15 @@ paths:
                     ageMin: { type: integer, minimum: 13, maximum: 65 }
                     ageMax: { type: integer, minimum: 13, maximum: 65 }
                     countries: { type: array, items: { type: string } }
-                    interests: { type: array, items: { type: string } }
+                    interests:
+                      type: array
+                      description: "Interest objects from /v1/ads/interests. Each must include id and name."
+                      items:
+                        type: object
+                        required: [id, name]
+                        properties:
+                          id: { type: string }
+                          name: { type: string }
                 name: { type: string }
       responses:
         '200':
@@ -17332,7 +17340,15 @@ paths:
                     ageMin: { type: integer, minimum: 13, maximum: 65 }
                     ageMax: { type: integer, minimum: 13, maximum: 65 }
                     countries: { type: array, items: { type: string } }
-                    interests: { type: array, items: { type: string } }
+                    interests:
+                      type: array
+                      description: "Interest objects from /v1/ads/interests. Each must include id and name."
+                      items:
+                        type: object
+                        required: [id, name]
+                        properties:
+                          id: { type: string }
+                          name: { type: string }
                 bidAmount: { type: number, description: "Max bid cap (Meta only)" }
                 tracking:
                   type: object
@@ -17396,7 +17412,15 @@ paths:
                 countries: { type: array, items: { type: string } }
                 ageMin: { type: integer, minimum: 13, maximum: 65 }
                 ageMax: { type: integer, minimum: 13, maximum: 65 }
-                interests: { type: array, items: { type: string } }
+                interests:
+                  type: array
+                  description: "Interest objects from /v1/ads/interests. Each must include id and name."
+                  items:
+                    type: object
+                    required: [id, name]
+                    properties:
+                      id: { type: string }
+                      name: { type: string }
                 endDate: { type: string, format: date-time, description: Required for lifetime budgets }
                 audienceId: { type: string, description: Custom audience ID for targeting }
                 campaignType: { type: string, enum: [display, search], default: display, description: Google only }

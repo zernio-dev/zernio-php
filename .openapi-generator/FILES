@@ -610,6 +610,7 @@ docs/Model/UpdateAdCampaignStatusRequest.md
 docs/Model/UpdateAdRequest.md
 docs/Model/UpdateAdRequestBudget.md
 docs/Model/UpdateAdRequestTargeting.md
+docs/Model/UpdateAdRequestTargetingInterestsInner.md
 docs/Model/UpdateBroadcast200Response.md
 docs/Model/UpdateBroadcast200ResponseBroadcast.md
 docs/Model/UpdateCommentAutomation200Response.md
@@ -1365,6 +1366,7 @@ lib/Model/UpdateAdCampaignStatusRequest.php
 lib/Model/UpdateAdRequest.php
 lib/Model/UpdateAdRequestBudget.php
 lib/Model/UpdateAdRequestTargeting.php
+lib/Model/UpdateAdRequestTargetingInterestsInner.php
 lib/Model/UpdateBroadcast200Response.php
 lib/Model/UpdateBroadcast200ResponseBroadcast.php
 lib/Model/UpdateCommentAutomation200Response.php
@@ -1509,7 +1511,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdPromotedObjectTest.php
-test/Model/AdTreeAdSetPromotedObjectTest.php
-test/Model/AdTreeCampaignOptimizationGoalTest.php
-test/Model/AdTreeCampaignPromotedObjectTest.php
+test/Model/UpdateAdRequestTargetingInterestsInnerTest.php

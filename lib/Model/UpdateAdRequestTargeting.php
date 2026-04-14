@@ -62,7 +62,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
         'age_min' => 'int',
         'age_max' => 'int',
         'countries' => 'string[]',
-        'interests' => 'string[]'
+        'interests' => '\Late\Model\UpdateAdRequestTargetingInterestsInner[]'
     ];
 
     /**
@@ -428,7 +428,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets interests
      *
-     * @return string[]|null
+     * @return \Late\Model\UpdateAdRequestTargetingInterestsInner[]|null
      */
     public function getInterests()
     {
@@ -438,7 +438,7 @@ class UpdateAdRequestTargeting implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets interests
      *
-     * @param string[]|null $interests interests
+     * @param \Late\Model\UpdateAdRequestTargetingInterestsInner[]|null $interests Interest objects from /v1/ads/interests. Each must include id and name.
      *
      * @return self
      */

@@ -76,7 +76,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'countries' => 'string[]',
         'age_min' => 'int',
         'age_max' => 'int',
-        'interests' => 'string[]',
+        'interests' => '\Late\Model\UpdateAdRequestTargetingInterestsInner[]',
         'end_date' => '\DateTime',
         'audience_id' => 'string',
         'campaign_type' => 'string',
@@ -1170,7 +1170,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets interests
      *
-     * @return string[]|null
+     * @return \Late\Model\UpdateAdRequestTargetingInterestsInner[]|null
      */
     public function getInterests()
     {
@@ -1180,7 +1180,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets interests
      *
-     * @param string[]|null $interests interests
+     * @param \Late\Model\UpdateAdRequestTargetingInterestsInner[]|null $interests Interest objects from /v1/ads/interests. Each must include id and name.
      *
      * @return self
      */

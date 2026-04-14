@@ -871,6 +871,7 @@ Class | Method | HTTP request | Description
 - [UpdateAdRequest](docs/Model/UpdateAdRequest.md)
 - [UpdateAdRequestBudget](docs/Model/UpdateAdRequestBudget.md)
 - [UpdateAdRequestTargeting](docs/Model/UpdateAdRequestTargeting.md)
+- [UpdateAdRequestTargetingInterestsInner](docs/Model/UpdateAdRequestTargetingInterestsInner.md)
 - [UpdateBroadcast200Response](docs/Model/UpdateBroadcast200Response.md)
 - [UpdateBroadcast200ResponseBroadcast](docs/Model/UpdateBroadcast200ResponseBroadcast.md)
 - [UpdateCommentAutomation200Response](docs/Model/UpdateCommentAutomation200Response.md)
