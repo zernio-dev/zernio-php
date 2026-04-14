@@ -8,7 +8,6 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**createWebhookSettings()**](WebhooksApi.md#createWebhookSettings) | **POST** /v1/webhooks/settings | Create webhook |
 | [**deleteWebhookSettings()**](WebhooksApi.md#deleteWebhookSettings) | **DELETE** /v1/webhooks/settings | Delete webhook |
-| [**getWebhookLogs()**](WebhooksApi.md#getWebhookLogs) | **GET** /v1/webhooks/logs | Get delivery logs |
 | [**getWebhookSettings()**](WebhooksApi.md#getWebhookSettings) | **GET** /v1/webhooks/settings | List webhooks |
 | [**testWebhook()**](WebhooksApi.md#testWebhook) | **POST** /v1/webhooks/test | Send test webhook |
 | [**updateWebhookSettings()**](WebhooksApi.md#updateWebhookSettings) | **PUT** /v1/webhooks/settings | Update webhook |
@@ -120,72 +119,6 @@ try {
 ### Return type
 
 [**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `getWebhookLogs()`
-
-```php
-getWebhookLogs($limit, $status, $event, $webhook_id): \Late\Model\GetWebhookLogs200Response
-```
-
-Get delivery logs
-
-**Deprecated.** Use `GET /v1/logs?type=webhooks` instead. Retrieve webhook delivery history. Logs are retained for 90 days.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Late\Api\WebhooksApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$limit = 50; // int | Maximum number of logs to return (max 100)
-$status = 'status_example'; // string | Filter by delivery status
-$event = 'event_example'; // string | Filter by event type
-$webhook_id = 'webhook_id_example'; // string | Filter by webhook ID
-
-try {
-    $result = $apiInstance->getWebhookLogs($limit, $status, $event, $webhook_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling WebhooksApi->getWebhookLogs: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **limit** | **int**| Maximum number of logs to return (max 100) | [optional] [default to 50] |
-| **status** | **string**| Filter by delivery status | [optional] |
-| **event** | **string**| Filter by event type | [optional] |
-| **webhook_id** | **string**| Filter by webhook ID | [optional] |
-
-### Return type
-
-[**\Late\Model\GetWebhookLogs200Response**](../Model/GetWebhookLogs200Response.md)
 
 ### Authorization
 

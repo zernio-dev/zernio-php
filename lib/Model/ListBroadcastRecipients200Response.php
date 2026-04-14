@@ -60,7 +60,7 @@ class ListBroadcastRecipients200Response implements ModelInterface, ArrayAccess,
     protected static $openAPITypes = [
         'success' => 'bool',
         'recipients' => '\Late\Model\ListBroadcastRecipients200ResponseRecipientsInner[]',
-        'pagination' => '\Late\Model\GetWhatsAppContacts200ResponsePagination'
+        'pagination' => '\Late\Model\ListContacts200ResponsePagination'
     ];
 
     /**
@@ -361,7 +361,7 @@ class ListBroadcastRecipients200Response implements ModelInterface, ArrayAccess,
     /**
      * Gets pagination
      *
-     * @return \Late\Model\GetWhatsAppContacts200ResponsePagination|null
+     * @return \Late\Model\ListContacts200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -371,7 +371,7 @@ class ListBroadcastRecipients200Response implements ModelInterface, ArrayAccess,
     /**
      * Sets pagination
      *
-     * @param \Late\Model\GetWhatsAppContacts200ResponsePagination|null $pagination pagination
+     * @param \Late\Model\ListContacts200ResponsePagination|null $pagination pagination
      *
      * @return self
      */

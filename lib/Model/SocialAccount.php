@@ -69,7 +69,6 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'followers_last_updated' => '\DateTime',
         'parent_account_id' => 'string',
         'enabled' => 'bool',
-        'ads_status' => 'string',
         'metadata' => 'object'
     ];
 
@@ -92,7 +91,6 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'followers_last_updated' => 'date-time',
         'parent_account_id' => null,
         'enabled' => null,
-        'ads_status' => null,
         'metadata' => null
     ];
 
@@ -113,7 +111,6 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'followers_last_updated' => false,
         'parent_account_id' => false,
         'enabled' => false,
-        'ads_status' => false,
         'metadata' => false
     ];
 
@@ -214,7 +211,6 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'followers_last_updated' => 'followersLastUpdated',
         'parent_account_id' => 'parentAccountId',
         'enabled' => 'enabled',
-        'ads_status' => 'adsStatus',
         'metadata' => 'metadata'
     ];
 
@@ -235,7 +231,6 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'followers_last_updated' => 'setFollowersLastUpdated',
         'parent_account_id' => 'setParentAccountId',
         'enabled' => 'setEnabled',
-        'ads_status' => 'setAdsStatus',
         'metadata' => 'setMetadata'
     ];
 
@@ -256,7 +251,6 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         'followers_last_updated' => 'getFollowersLastUpdated',
         'parent_account_id' => 'getParentAccountId',
         'enabled' => 'getEnabled',
-        'ads_status' => 'getAdsStatus',
         'metadata' => 'getMetadata'
     ];
 
@@ -322,9 +316,6 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PLATFORM_TIKTOKADS = 'tiktokads';
     public const PLATFORM_XADS = 'xads';
     public const PLATFORM_GOOGLEADS = 'googleads';
-    public const ADS_STATUS_CONNECTED = 'connected';
-    public const ADS_STATUS_NOT_CONNECTED = 'not_connected';
-    public const ADS_STATUS_NOT_AVAILABLE = 'not_available';
 
     /**
      * Gets allowable values of the enum
@@ -359,20 +350,6 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAdsStatusAllowableValues()
-    {
-        return [
-            self::ADS_STATUS_CONNECTED,
-            self::ADS_STATUS_NOT_CONNECTED,
-            self::ADS_STATUS_NOT_AVAILABLE,
-        ];
-    }
-
-    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -398,7 +375,6 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('followers_last_updated', $data ?? [], null);
         $this->setIfExists('parent_account_id', $data ?? [], null);
         $this->setIfExists('enabled', $data ?? [], null);
-        $this->setIfExists('ads_status', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
     }
 
@@ -434,15 +410,6 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'platform', must be one of '%s'",
                 $this->container['platform'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getAdsStatusAllowableValues();
-        if (!is_null($this->container['ads_status']) && !in_array($this->container['ads_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'ads_status', must be one of '%s'",
-                $this->container['ads_status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -765,45 +732,6 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable enabled cannot be null');
         }
         $this->container['enabled'] = $enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets ads_status
-     *
-     * @return string|null
-     * @deprecated
-     */
-    public function getAdsStatus()
-    {
-        return $this->container['ads_status'];
-    }
-
-    /**
-     * Sets ads_status
-     *
-     * @param string|null $ads_status **Deprecated.** With the new ads account model, ads accounts are separate SocialAccount documents. Check for accounts with ads platform values (metaads, linkedinads, pinterestads, tiktokads, xads, googleads) instead.  Legacy behavior: - `connected`: Ads are ready to use (same-token platforms like Meta/LinkedIn, or separate ads token is present). - `not_connected`: Platform supports ads but requires a separate ads OAuth. Use `GET /v1/connect/{platform}/ads` to connect. - `not_available`: Platform does not support ads (e.g., YouTube, Reddit, Bluesky).
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setAdsStatus($ads_status)
-    {
-        if (is_null($ads_status)) {
-            throw new \InvalidArgumentException('non-nullable ads_status cannot be null');
-        }
-        $allowedValues = $this->getAdsStatusAllowableValues();
-        if (!in_array($ads_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'ads_status', must be one of '%s'",
-                    $ads_status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['ads_status'] = $ads_status;
 
         return $this;
     }

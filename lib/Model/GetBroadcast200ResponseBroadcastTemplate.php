@@ -1,6 +1,6 @@
 <?php
 /**
- * ListContacts200Response
+ * GetBroadcast200ResponseBroadcastTemplate
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * ListContacts200Response Class Doc Comment
+ * GetBroadcast200ResponseBroadcastTemplate Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetBroadcast200ResponseBroadcastTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listContacts_200_response';
+    protected static $openAPIModelName = 'getBroadcast_200_response_broadcast_template';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool',
-        'contacts' => '\Late\Model\ListContacts200ResponseContactsInner[]',
-        'filters' => '\Late\Model\ListContacts200ResponseFilters',
-        'pagination' => '\Late\Model\ListContacts200ResponsePagination'
+        'name' => 'string',
+        'language' => 'string'
     ];
 
     /**
@@ -72,10 +70,8 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'success' => null,
-        'contacts' => null,
-        'filters' => null,
-        'pagination' => null
+        'name' => null,
+        'language' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'success' => false,
-        'contacts' => false,
-        'filters' => false,
-        'pagination' => false
+        'name' => false,
+        'language' => false
     ];
 
     /**
@@ -176,10 +170,8 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-        'contacts' => 'contacts',
-        'filters' => 'filters',
-        'pagination' => 'pagination'
+        'name' => 'name',
+        'language' => 'language'
     ];
 
     /**
@@ -188,10 +180,8 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-        'contacts' => 'setContacts',
-        'filters' => 'setFilters',
-        'pagination' => 'setPagination'
+        'name' => 'setName',
+        'language' => 'setLanguage'
     ];
 
     /**
@@ -200,10 +190,8 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-        'contacts' => 'getContacts',
-        'filters' => 'getFilters',
-        'pagination' => 'getPagination'
+        'name' => 'getName',
+        'language' => 'getLanguage'
     ];
 
     /**
@@ -263,10 +251,8 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('success', $data ?? [], null);
-        $this->setIfExists('contacts', $data ?? [], null);
-        $this->setIfExists('filters', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('language', $data ?? [], null);
     }
 
     /**
@@ -312,109 +298,55 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets success
+     * Gets name
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getSuccess()
+    public function getName()
     {
-        return $this->container['success'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets success
+     * Sets name
      *
-     * @param bool|null $success success
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setSuccess($success)
+    public function setName($name)
     {
-        if (is_null($success)) {
-            throw new \InvalidArgumentException('non-nullable success cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['success'] = $success;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets contacts
+     * Gets language
      *
-     * @return \Late\Model\ListContacts200ResponseContactsInner[]|null
+     * @return string|null
      */
-    public function getContacts()
+    public function getLanguage()
     {
-        return $this->container['contacts'];
+        return $this->container['language'];
     }
 
     /**
-     * Sets contacts
+     * Sets language
      *
-     * @param \Late\Model\ListContacts200ResponseContactsInner[]|null $contacts contacts
+     * @param string|null $language language
      *
      * @return self
      */
-    public function setContacts($contacts)
+    public function setLanguage($language)
     {
-        if (is_null($contacts)) {
-            throw new \InvalidArgumentException('non-nullable contacts cannot be null');
+        if (is_null($language)) {
+            throw new \InvalidArgumentException('non-nullable language cannot be null');
         }
-        $this->container['contacts'] = $contacts;
-
-        return $this;
-    }
-
-    /**
-     * Gets filters
-     *
-     * @return \Late\Model\ListContacts200ResponseFilters|null
-     */
-    public function getFilters()
-    {
-        return $this->container['filters'];
-    }
-
-    /**
-     * Sets filters
-     *
-     * @param \Late\Model\ListContacts200ResponseFilters|null $filters filters
-     *
-     * @return self
-     */
-    public function setFilters($filters)
-    {
-        if (is_null($filters)) {
-            throw new \InvalidArgumentException('non-nullable filters cannot be null');
-        }
-        $this->container['filters'] = $filters;
-
-        return $this;
-    }
-
-    /**
-     * Gets pagination
-     *
-     * @return \Late\Model\ListContacts200ResponsePagination|null
-     */
-    public function getPagination()
-    {
-        return $this->container['pagination'];
-    }
-
-    /**
-     * Sets pagination
-     *
-     * @param \Late\Model\ListContacts200ResponsePagination|null $pagination pagination
-     *
-     * @return self
-     */
-    public function setPagination($pagination)
-    {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
-        }
-        $this->container['pagination'] = $pagination;
+        $this->container['language'] = $language;
 
         return $this;
     }

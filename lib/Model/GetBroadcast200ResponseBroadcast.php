@@ -64,7 +64,7 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
         'platform' => 'string',
         'account_id' => 'string',
         'message' => '\Late\Model\GetBroadcast200ResponseBroadcastMessage',
-        'template' => '\Late\Model\GetWhatsAppBroadcasts200ResponseBroadcastsInnerTemplate',
+        'template' => '\Late\Model\GetBroadcast200ResponseBroadcastTemplate',
         'segment_filters' => '\Late\Model\ListContacts200ResponseFilters',
         'status' => 'string',
         'scheduled_at' => '\DateTime',
@@ -613,7 +613,7 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
     /**
      * Gets template
      *
-     * @return \Late\Model\GetWhatsAppBroadcasts200ResponseBroadcastsInnerTemplate|null
+     * @return \Late\Model\GetBroadcast200ResponseBroadcastTemplate|null
      */
     public function getTemplate()
     {
@@ -623,7 +623,7 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
     /**
      * Sets template
      *
-     * @param \Late\Model\GetWhatsAppBroadcasts200ResponseBroadcastsInnerTemplate|null $template template
+     * @param \Late\Model\GetBroadcast200ResponseBroadcastTemplate|null $template template
      *
      * @return self
      */

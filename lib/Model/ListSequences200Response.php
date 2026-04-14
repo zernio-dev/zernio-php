@@ -60,7 +60,7 @@ class ListSequences200Response implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPITypes = [
         'success' => 'bool',
         'sequences' => '\Late\Model\ListSequences200ResponseSequencesInner[]',
-        'pagination' => '\Late\Model\GetWhatsAppContacts200ResponsePagination'
+        'pagination' => '\Late\Model\ListContacts200ResponsePagination'
     ];
 
     /**
@@ -361,7 +361,7 @@ class ListSequences200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets pagination
      *
-     * @return \Late\Model\GetWhatsAppContacts200ResponsePagination|null
+     * @return \Late\Model\ListContacts200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -371,7 +371,7 @@ class ListSequences200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets pagination
      *
-     * @param \Late\Model\GetWhatsAppContacts200ResponsePagination|null $pagination pagination
+     * @param \Late\Model\ListContacts200ResponsePagination|null $pagination pagination
      *
      * @return self
      */
