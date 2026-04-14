@@ -2783,13 +2783,16 @@ components:
         cpm: { type: number, description: Cost per 1000 impressions }
         engagement: { type: integer }
         lastSyncedAt: { type: string, format: date-time, description: "Present on individual ads only, not on campaign aggregations" }
+    AdStatus:
+      type: string
+      enum: [active, paused, pending_review, rejected, completed, cancelled, error]
     Ad:
       type: object
       properties:
         _id: { type: string }
         name: { type: string }
         platform: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] }
-        status: { type: string, enum: [active, paused, pending_review, rejected, completed, cancelled, error] }
+        status: { $ref: '#/components/schemas/AdStatus' }
         adType: { type: string, enum: [boost, standalone] }
         goal: { type: string, enum: [engagement, traffic, awareness, video_views] }
         isExternal: { type: boolean, description: True for ads synced from platform ad managers }
@@ -2871,7 +2874,7 @@ components:
       properties:
         platformAdSetId: { type: string }
         adSetName: { type: string }
-        status: { type: string, enum: [active, paused, pending_review, rejected, completed, cancelled, error], description: Derived from child ad statuses }
+        status: { allOf: [{ $ref: '#/components/schemas/AdStatus' }], description: Derived from child ad statuses }
         adCount: { type: integer }
         budget:
           type: object
@@ -2901,7 +2904,7 @@ components:
         platformCampaignId: { type: string }
         platform: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] }
         campaignName: { type: string }
-        status: { type: string, enum: [active, paused, pending_review, rejected, completed, cancelled, error], description: Derived from child ad statuses }
+        status: { allOf: [{ $ref: '#/components/schemas/AdStatus' }], description: Derived from child ad statuses }
         adCount: { type: integer, description: Total ads across all ad sets }
         adSetCount: { type: integer }
         budget:
@@ -2916,11 +2919,9 @@ components:
         profileId: { type: string }
         platformObjective: { type: string, nullable: true, description: "Raw Meta campaign objective (e.g. OUTCOME_SALES, OUTCOME_LEADS, OUTCOME_TRAFFIC)" }
         optimizationGoal:
-          description: "Meta optimization goal. String if all ad sets share the same goal, array of distinct values if they differ."
+          type: string
           nullable: true
-          oneOf:
-            - { type: string }
-            - { type: array, items: { type: string } }
+          description: "Meta optimization goal shared across ad sets, or comma-separated values when ad sets differ (e.g. OFFSITE_CONVERSIONS, VALUE, LEAD_GENERATION)"
         bidStrategy: { type: string, nullable: true, description: "Campaign-level bid strategy (e.g. LOWEST_COST_WITHOUT_CAP, COST_CAP, LOWEST_COST_WITH_MIN_ROAS)" }
         promotedObject:
           type: object
@@ -2939,7 +2940,7 @@ components:
         platformCampaignId: { type: string }
         platform: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] }
         campaignName: { type: string }
-        status: { type: string, enum: [active, paused, pending_review, rejected, completed, cancelled, error], description: Derived from child ad statuses }
+        status: { allOf: [{ $ref: '#/components/schemas/AdStatus' }], description: Derived from child ad statuses }
         adCount: { type: integer }
         budget:
           type: object
@@ -2953,11 +2954,9 @@ components:
         profileId: { type: string }
         platformObjective: { type: string, nullable: true, description: "Raw Meta campaign objective (e.g. OUTCOME_SALES, OUTCOME_LEADS, OUTCOME_TRAFFIC)" }
         optimizationGoal:
-          description: "Meta optimization goal. String if all ad sets share the same goal, array of distinct values if they differ."
+          type: string
           nullable: true
-          oneOf:
-            - { type: string }
-            - { type: array, items: { type: string } }
+          description: "Meta optimization goal shared across ad sets, or comma-separated values when ad sets differ (e.g. OFFSITE_CONVERSIONS, VALUE, LEAD_GENERATION)"
         bidStrategy: { type: string, nullable: true, description: "Campaign-level bid strategy (e.g. LOWEST_COST_WITHOUT_CAP, COST_CAP, LOWEST_COST_WITH_MIN_ROAS)" }
         promotedObject:
           type: object
@@ -16846,7 +16845,7 @@ paths:
         - $ref: '#/components/parameters/PageParam'
         - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 500, default: 50 } }
         - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: zernio }, description: "zernio = Zernio-created only, all = include external ads" }
-        - { name: status, in: query, schema: { type: string, enum: [active, paused, pending_review, rejected, completed, cancelled, error] } }
+        - { name: status, in: query, schema: { $ref: '#/components/schemas/AdStatus' } }
         - { name: platform, in: query, schema: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] } }
         - { name: accountId, in: query, schema: { type: string }, description: Social account ID }
         - { name: adAccountId, in: query, schema: { type: string }, description: "Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree." }
@@ -16886,7 +16885,7 @@ paths:
         - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 100, default: 20 } }
         - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: zernio } }
         - { name: platform, in: query, schema: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] } }
-        - { name: status, in: query, schema: { type: string, enum: [active, paused, pending_review, rejected, completed, cancelled, error] }, description: Filter by derived campaign status (post-aggregation) }
+        - { name: status, in: query, schema: { $ref: '#/components/schemas/AdStatus' }, description: Filter by derived campaign status (post-aggregation) }
         - { name: adAccountId, in: query, schema: { type: string }, description: Platform ad account ID (e.g. act_123 for Meta) }
         - { name: accountId, in: query, schema: { type: string }, description: Social account ID }
         - { name: profileId, in: query, schema: { type: string }, description: Profile ID }
@@ -16965,7 +16964,7 @@ paths:
         - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 100, default: 20 }, description: Campaigns per page }
         - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: zernio } }
         - { name: platform, in: query, schema: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] } }
-        - { name: status, in: query, schema: { type: string, enum: [active, paused, pending_review, rejected, completed, cancelled, error] }, description: Filter by derived campaign status (post-aggregation) }
+        - { name: status, in: query, schema: { $ref: '#/components/schemas/AdStatus' }, description: Filter by derived campaign status (post-aggregation) }
         - { name: adAccountId, in: query, schema: { type: string }, description: Platform ad account ID }
         - { name: accountId, in: query, schema: { type: string }, description: Social account ID }
         - { name: profileId, in: query, schema: { type: string }, description: Profile ID }

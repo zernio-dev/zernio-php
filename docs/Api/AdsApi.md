@@ -413,7 +413,7 @@ $apiInstance = new Late\Api\AdsApi(
 $page = 1; // int | Page number (1-based)
 $limit = 50; // int
 $source = 'zernio'; // string | zernio = Zernio-created only, all = include external ads
-$status = 'status_example'; // string
+$status = new \Late\Model\\Late\Model\AdStatus(); // \Late\Model\AdStatus
 $platform = 'platform_example'; // string
 $account_id = 'account_id_example'; // string | Social account ID
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree.
@@ -437,7 +437,7 @@ try {
 | **page** | **int**| Page number (1-based) | [optional] [default to 1] |
 | **limit** | **int**|  | [optional] [default to 50] |
 | **source** | **string**| zernio &#x3D; Zernio-created only, all &#x3D; include external ads | [optional] [default to &#39;zernio&#39;] |
-| **status** | **string**|  | [optional] |
+| **status** | [**\Late\Model\AdStatus**](../Model/.md)|  | [optional] |
 | **platform** | **string**|  | [optional] |
 | **account_id** | **string**| Social account ID | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. | [optional] |

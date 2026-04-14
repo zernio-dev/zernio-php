@@ -42,7 +42,7 @@ $page = 1; // int | Page number (1-based)
 $limit = 20; // int | Campaigns per page
 $source = 'zernio'; // string
 $platform = 'platform_example'; // string
-$status = 'status_example'; // string | Filter by derived campaign status (post-aggregation)
+$status = new \Late\Model\\Late\Model\AdStatus(); // \Late\Model\AdStatus | Filter by derived campaign status (post-aggregation)
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID
 $account_id = 'account_id_example'; // string | Social account ID
 $profile_id = 'profile_id_example'; // string | Profile ID
@@ -65,7 +65,7 @@ try {
 | **limit** | **int**| Campaigns per page | [optional] [default to 20] |
 | **source** | **string**|  | [optional] [default to &#39;zernio&#39;] |
 | **platform** | **string**|  | [optional] |
-| **status** | **string**| Filter by derived campaign status (post-aggregation) | [optional] |
+| **status** | [**\Late\Model\AdStatus**](../Model/.md)| Filter by derived campaign status (post-aggregation) | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID | [optional] |
 | **account_id** | **string**| Social account ID | [optional] |
 | **profile_id** | **string**| Profile ID | [optional] |
@@ -120,7 +120,7 @@ $page = 1; // int | Page number (1-based)
 $limit = 20; // int
 $source = 'zernio'; // string
 $platform = 'platform_example'; // string
-$status = 'status_example'; // string | Filter by derived campaign status (post-aggregation)
+$status = new \Late\Model\\Late\Model\AdStatus(); // \Late\Model\AdStatus | Filter by derived campaign status (post-aggregation)
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (e.g. act_123 for Meta)
 $account_id = 'account_id_example'; // string | Social account ID
 $profile_id = 'profile_id_example'; // string | Profile ID
@@ -141,7 +141,7 @@ try {
 | **limit** | **int**|  | [optional] [default to 20] |
 | **source** | **string**|  | [optional] [default to &#39;zernio&#39;] |
 | **platform** | **string**|  | [optional] |
-| **status** | **string**| Filter by derived campaign status (post-aggregation) | [optional] |
+| **status** | [**\Late\Model\AdStatus**](../Model/.md)| Filter by derived campaign status (post-aggregation) | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID (e.g. act_123 for Meta) | [optional] |
 | **account_id** | **string**| Social account ID | [optional] |
 | **profile_id** | **string**| Profile ID | [optional] |

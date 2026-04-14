@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **_id** | **string** |  | [optional]
 **name** | **string** |  | [optional]
 **platform** | **string** |  | [optional]
-**status** | **string** |  | [optional]
+**status** | [**\Late\Model\AdStatus**](AdStatus.md) |  | [optional]
 **ad_type** | **string** |  | [optional]
 **goal** | **string** |  | [optional]
 **is_external** | **bool** | True for ads synced from platform ad managers | [optional]

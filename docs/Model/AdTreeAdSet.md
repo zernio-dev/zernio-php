@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **platform_ad_set_id** | **string** |  | [optional]
 **ad_set_name** | **string** |  | [optional]
-**status** | **string** | Derived from child ad statuses | [optional]
+**status** | [**\Late\Model\AdStatus**](AdStatus.md) | Derived from child ad statuses | [optional]
 **ad_count** | **int** |  | [optional]
 **budget** | [**\Late\Model\AdBudget**](AdBudget.md) |  | [optional]
 **metrics** | [**\Late\Model\AdMetrics**](AdMetrics.md) |  | [optional]

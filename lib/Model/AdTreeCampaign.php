@@ -62,7 +62,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_campaign_id' => 'string',
         'platform' => 'string',
         'campaign_name' => 'string',
-        'status' => 'string',
+        'status' => '\Late\Model\AdStatus',
         'ad_count' => 'int',
         'ad_set_count' => 'int',
         'budget' => '\Late\Model\AdBudget',
@@ -71,7 +71,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'account_id' => 'string',
         'profile_id' => 'string',
         'platform_objective' => 'string',
-        'optimization_goal' => '\Late\Model\AdTreeCampaignOptimizationGoal',
+        'optimization_goal' => 'string',
         'bid_strategy' => 'string',
         'promoted_object' => '\Late\Model\AdTreeCampaignPromotedObject',
         'ad_sets' => '\Late\Model\AdTreeAdSet[]'
@@ -327,13 +327,6 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PLATFORM_PINTEREST = 'pinterest';
     public const PLATFORM_GOOGLE = 'google';
     public const PLATFORM_TWITTER = 'twitter';
-    public const STATUS_ACTIVE = 'active';
-    public const STATUS_PAUSED = 'paused';
-    public const STATUS_PENDING_REVIEW = 'pending_review';
-    public const STATUS_REJECTED = 'rejected';
-    public const STATUS_COMPLETED = 'completed';
-    public const STATUS_CANCELLED = 'cancelled';
-    public const STATUS_ERROR = 'error';
 
     /**
      * Gets allowable values of the enum
@@ -350,24 +343,6 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PLATFORM_PINTEREST,
             self::PLATFORM_GOOGLE,
             self::PLATFORM_TWITTER,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_ACTIVE,
-            self::STATUS_PAUSED,
-            self::STATUS_PENDING_REVIEW,
-            self::STATUS_REJECTED,
-            self::STATUS_COMPLETED,
-            self::STATUS_CANCELLED,
-            self::STATUS_ERROR,
         ];
     }
 
@@ -436,15 +411,6 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'platform', must be one of '%s'",
                 $this->container['platform'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -558,7 +524,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return string|null
+     * @return \Late\Model\AdStatus|null
      */
     public function getStatus()
     {
@@ -568,7 +534,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status Derived from child ad statuses
+     * @param \Late\Model\AdStatus|null $status Derived from child ad statuses
      *
      * @return self
      */
@@ -576,16 +542,6 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['status'] = $status;
 
@@ -811,7 +767,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets optimization_goal
      *
-     * @return \Late\Model\AdTreeCampaignOptimizationGoal|null
+     * @return string|null
      */
     public function getOptimizationGoal()
     {
@@ -821,7 +777,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets optimization_goal
      *
-     * @param \Late\Model\AdTreeCampaignOptimizationGoal|null $optimization_goal optimization_goal
+     * @param string|null $optimization_goal Meta optimization goal shared across ad sets, or comma-separated values when ad sets differ (e.g. OFFSITE_CONVERSIONS, VALUE, LEAD_GENERATION)
      *
      * @return self
      */

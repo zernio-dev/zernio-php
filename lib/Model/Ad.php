@@ -61,7 +61,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         '_id' => 'string',
         'name' => 'string',
         'platform' => 'string',
-        'status' => 'string',
+        'status' => '\Late\Model\AdStatus',
         'ad_type' => 'string',
         'goal' => 'string',
         'is_external' => 'bool',
@@ -380,13 +380,6 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PLATFORM_PINTEREST = 'pinterest';
     public const PLATFORM_GOOGLE = 'google';
     public const PLATFORM_TWITTER = 'twitter';
-    public const STATUS_ACTIVE = 'active';
-    public const STATUS_PAUSED = 'paused';
-    public const STATUS_PENDING_REVIEW = 'pending_review';
-    public const STATUS_REJECTED = 'rejected';
-    public const STATUS_COMPLETED = 'completed';
-    public const STATUS_CANCELLED = 'cancelled';
-    public const STATUS_ERROR = 'error';
     public const AD_TYPE_BOOST = 'boost';
     public const AD_TYPE_STANDALONE = 'standalone';
     public const GOAL_ENGAGEMENT = 'engagement';
@@ -409,24 +402,6 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PLATFORM_PINTEREST,
             self::PLATFORM_GOOGLE,
             self::PLATFORM_TWITTER,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_ACTIVE,
-            self::STATUS_PAUSED,
-            self::STATUS_PENDING_REVIEW,
-            self::STATUS_REJECTED,
-            self::STATUS_COMPLETED,
-            self::STATUS_CANCELLED,
-            self::STATUS_ERROR,
         ];
     }
 
@@ -532,15 +507,6 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'platform', must be one of '%s'",
                 $this->container['platform'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -672,7 +638,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return string|null
+     * @return \Late\Model\AdStatus|null
      */
     public function getStatus()
     {
@@ -682,7 +648,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param \Late\Model\AdStatus|null $status status
      *
      * @return self
      */
@@ -690,16 +656,6 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['status'] = $status;
 

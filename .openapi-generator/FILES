@@ -55,10 +55,10 @@ docs/Model/AdCreative.md
 docs/Model/AdMetrics.md
 docs/Model/AdPromotedObject.md
 docs/Model/AdSchedule.md
+docs/Model/AdStatus.md
 docs/Model/AdTreeAdSet.md
 docs/Model/AdTreeAdSetPromotedObject.md
 docs/Model/AdTreeCampaign.md
-docs/Model/AdTreeCampaignOptimizationGoal.md
 docs/Model/AdTreeCampaignPromotedObject.md
 docs/Model/AddBroadcastRecipients200Response.md
 docs/Model/AddBroadcastRecipientsRequest.md
@@ -804,10 +804,10 @@ lib/Model/AdCreative.php
 lib/Model/AdMetrics.php
 lib/Model/AdPromotedObject.php
 lib/Model/AdSchedule.php
+lib/Model/AdStatus.php
 lib/Model/AdTreeAdSet.php
 lib/Model/AdTreeAdSetPromotedObject.php
 lib/Model/AdTreeCampaign.php
-lib/Model/AdTreeCampaignOptimizationGoal.php
 lib/Model/AdTreeCampaignPromotedObject.php
 lib/Model/AddBroadcastRecipients200Response.php
 lib/Model/AddBroadcastRecipientsRequest.php
@@ -1499,3 +1499,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/AdStatusTest.php

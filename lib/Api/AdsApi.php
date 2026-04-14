@@ -1960,7 +1960,7 @@ class AdsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit limit (optional, default to 50)
      * @param  string|null $source zernio &#x3D; Zernio-created only, all &#x3D; include external ads (optional, default to 'zernio')
-     * @param  string|null $status status (optional)
+     * @param  \Late\Model\AdStatus|null $status status (optional)
      * @param  string|null $platform platform (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
@@ -1988,7 +1988,7 @@ class AdsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $source zernio &#x3D; Zernio-created only, all &#x3D; include external ads (optional, default to 'zernio')
-     * @param  string|null $status (optional)
+     * @param  \Late\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
@@ -2097,7 +2097,7 @@ class AdsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $source zernio &#x3D; Zernio-created only, all &#x3D; include external ads (optional, default to 'zernio')
-     * @param  string|null $status (optional)
+     * @param  \Late\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
@@ -2128,7 +2128,7 @@ class AdsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $source zernio &#x3D; Zernio-created only, all &#x3D; include external ads (optional, default to 'zernio')
-     * @param  string|null $status (optional)
+     * @param  \Late\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
@@ -2188,7 +2188,7 @@ class AdsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $source zernio &#x3D; Zernio-created only, all &#x3D; include external ads (optional, default to 'zernio')
-     * @param  string|null $status (optional)
+     * @param  \Late\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
@@ -2263,7 +2263,7 @@ class AdsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $status,
             'status', // param base name
-            'string', // openApiType
+            'AdStatus', // openApiType
             'form', // style
             true, // explode
             false // required

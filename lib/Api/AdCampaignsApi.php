@@ -141,7 +141,7 @@ class AdCampaignsApi
      * @param  int|null $limit Campaigns per page (optional, default to 20)
      * @param  string|null $source source (optional, default to 'zernio')
      * @param  string|null $platform platform (optional)
-     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -168,7 +168,7 @@ class AdCampaignsApi
      * @param  int|null $limit Campaigns per page (optional, default to 20)
      * @param  string|null $source (optional, default to 'zernio')
      * @param  string|null $platform (optional)
-     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -276,7 +276,7 @@ class AdCampaignsApi
      * @param  int|null $limit Campaigns per page (optional, default to 20)
      * @param  string|null $source (optional, default to 'zernio')
      * @param  string|null $platform (optional)
-     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -306,7 +306,7 @@ class AdCampaignsApi
      * @param  int|null $limit Campaigns per page (optional, default to 20)
      * @param  string|null $source (optional, default to 'zernio')
      * @param  string|null $platform (optional)
-     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -365,7 +365,7 @@ class AdCampaignsApi
      * @param  int|null $limit Campaigns per page (optional, default to 20)
      * @param  string|null $source (optional, default to 'zernio')
      * @param  string|null $platform (optional)
-     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -446,7 +446,7 @@ class AdCampaignsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $status,
             'status', // param base name
-            'string', // openApiType
+            'AdStatus', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -566,7 +566,7 @@ class AdCampaignsApi
      * @param  int|null $limit limit (optional, default to 20)
      * @param  string|null $source source (optional, default to 'zernio')
      * @param  string|null $platform platform (optional)
-     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -591,7 +591,7 @@ class AdCampaignsApi
      * @param  int|null $limit (optional, default to 20)
      * @param  string|null $source (optional, default to 'zernio')
      * @param  string|null $platform (optional)
-     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -697,7 +697,7 @@ class AdCampaignsApi
      * @param  int|null $limit (optional, default to 20)
      * @param  string|null $source (optional, default to 'zernio')
      * @param  string|null $platform (optional)
-     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -725,7 +725,7 @@ class AdCampaignsApi
      * @param  int|null $limit (optional, default to 20)
      * @param  string|null $source (optional, default to 'zernio')
      * @param  string|null $platform (optional)
-     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -782,7 +782,7 @@ class AdCampaignsApi
      * @param  int|null $limit (optional, default to 20)
      * @param  string|null $source (optional, default to 'zernio')
      * @param  string|null $platform (optional)
-     * @param  string|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -859,7 +859,7 @@ class AdCampaignsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $status,
             'status', // param base name
-            'string', // openApiType
+            'AdStatus', // openApiType
             'form', // style
             true, // explode
             false // required

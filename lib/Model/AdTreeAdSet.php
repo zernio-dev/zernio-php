@@ -61,7 +61,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'platform_ad_set_id' => 'string',
         'ad_set_name' => 'string',
-        'status' => 'string',
+        'status' => '\Late\Model\AdStatus',
         'ad_count' => 'int',
         'budget' => '\Late\Model\AdBudget',
         'metrics' => '\Late\Model\AdMetrics',
@@ -284,31 +284,6 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const STATUS_ACTIVE = 'active';
-    public const STATUS_PAUSED = 'paused';
-    public const STATUS_PENDING_REVIEW = 'pending_review';
-    public const STATUS_REJECTED = 'rejected';
-    public const STATUS_COMPLETED = 'completed';
-    public const STATUS_CANCELLED = 'cancelled';
-    public const STATUS_ERROR = 'error';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_ACTIVE,
-            self::STATUS_PAUSED,
-            self::STATUS_PENDING_REVIEW,
-            self::STATUS_REJECTED,
-            self::STATUS_COMPLETED,
-            self::STATUS_CANCELLED,
-            self::STATUS_ERROR,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -363,15 +338,6 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -445,7 +411,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return string|null
+     * @return \Late\Model\AdStatus|null
      */
     public function getStatus()
     {
@@ -455,7 +421,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param string|null $status Derived from child ad statuses
+     * @param \Late\Model\AdStatus|null $status Derived from child ad statuses
      *
      * @return self
      */
@@ -463,16 +429,6 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         if (is_null($status)) {
             throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['status'] = $status;
 
