@@ -315,6 +315,7 @@ class ConnectionLog implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PLATFORM_GOOGLEBUSINESS = 'googlebusiness';
     public const PLATFORM_TELEGRAM = 'telegram';
     public const PLATFORM_SNAPCHAT = 'snapchat';
+    public const PLATFORM_DISCORD = 'discord';
     public const EVENT_TYPE_CONNECT_SUCCESS = 'connect_success';
     public const EVENT_TYPE_CONNECT_FAILED = 'connect_failed';
     public const EVENT_TYPE_DISCONNECT = 'disconnect';
@@ -345,6 +346,7 @@ class ConnectionLog implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PLATFORM_GOOGLEBUSINESS,
             self::PLATFORM_TELEGRAM,
             self::PLATFORM_SNAPCHAT,
+            self::PLATFORM_DISCORD,
         ];
     }
 

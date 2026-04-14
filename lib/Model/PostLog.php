@@ -333,6 +333,7 @@ class PostLog implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PLATFORM_GOOGLEBUSINESS = 'googlebusiness';
     public const PLATFORM_TELEGRAM = 'telegram';
     public const PLATFORM_SNAPCHAT = 'snapchat';
+    public const PLATFORM_DISCORD = 'discord';
     public const ACTION_PUBLISH = 'publish';
     public const ACTION_RETRY = 'retry';
     public const ACTION_MEDIA_UPLOAD = 'media_upload';
@@ -365,6 +366,7 @@ class PostLog implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PLATFORM_GOOGLEBUSINESS,
             self::PLATFORM_TELEGRAM,
             self::PLATFORM_SNAPCHAT,
+            self::PLATFORM_DISCORD,
         ];
     }
 

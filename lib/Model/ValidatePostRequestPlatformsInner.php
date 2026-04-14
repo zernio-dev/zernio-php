@@ -260,6 +260,7 @@ class ValidatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, 
     public const PLATFORM_TELEGRAM = 'telegram';
     public const PLATFORM_SNAPCHAT = 'snapchat';
     public const PLATFORM_GOOGLEBUSINESS = 'googlebusiness';
+    public const PLATFORM_DISCORD = 'discord';
 
     /**
      * Gets allowable values of the enum
@@ -282,6 +283,7 @@ class ValidatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, 
             self::PLATFORM_TELEGRAM,
             self::PLATFORM_SNAPCHAT,
             self::PLATFORM_GOOGLEBUSINESS,
+            self::PLATFORM_DISCORD,
         ];
     }
 
