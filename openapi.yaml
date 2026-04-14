@@ -2898,6 +2898,31 @@ components:
         platformAdSetId: { type: string }
         campaignName: { type: string }
         adSetName: { type: string }
+        platformObjective:
+          type: string
+          nullable: true
+          description: "Raw Meta campaign objective (e.g. OUTCOME_SALES, OUTCOME_LEADS, OUTCOME_TRAFFIC). Only present for Meta ads."
+          example: OUTCOME_SALES
+        optimizationGoal:
+          type: string
+          nullable: true
+          description: "Meta ad set optimization goal (e.g. OFFSITE_CONVERSIONS, VALUE, LEAD_GENERATION, LINK_CLICKS). Only present for Meta ads."
+          example: OFFSITE_CONVERSIONS
+        bidStrategy:
+          type: string
+          nullable: true
+          description: "Bid strategy (e.g. LOWEST_COST_WITHOUT_CAP, COST_CAP, LOWEST_COST_WITH_MIN_ROAS). Ad set level overrides campaign level. Only present for Meta ads."
+          example: LOWEST_COST_WITHOUT_CAP
+        promotedObject:
+          type: object
+          nullable: true
+          description: "Meta promoted object containing conversion event details. Structure varies by objective. Only present for Meta ads."
+          properties:
+            custom_event_type: { type: string, description: "Conversion event type (e.g. PURCHASE, LEAD, COMPLETE_REGISTRATION, ADD_TO_CART)", example: PURCHASE }
+            pixel_id: { type: string, description: Meta pixel ID }
+            page_id: { type: string, description: Facebook page ID }
+            application_id: { type: string, description: Facebook app ID }
+            product_set_id: { type: string, description: Product catalog set ID }
         creative:
           type: object
           nullable: true
@@ -2944,6 +2969,16 @@ components:
             amount: { type: number }
             type: { type: string, enum: [daily, lifetime] }
         metrics: { $ref: '#/components/schemas/AdMetrics' }
+        optimizationGoal: { type: string, nullable: true, description: "Meta ad set optimization goal (e.g. OFFSITE_CONVERSIONS, VALUE, LEAD_GENERATION)" }
+        bidStrategy: { type: string, nullable: true, description: "Bid strategy for this ad set (overrides campaign level when set)" }
+        promotedObject:
+          type: object
+          nullable: true
+          description: "Meta promoted object for this ad set (conversion event details)"
+          properties:
+            custom_event_type: { type: string }
+            pixel_id: { type: string }
+            page_id: { type: string }
         ads:
           type: array
           items: { $ref: '#/components/schemas/Ad' }
@@ -2968,6 +3003,22 @@ components:
         platformAdAccountId: { type: string }
         accountId: { type: string }
         profileId: { type: string }
+        platformObjective: { type: string, nullable: true, description: "Raw Meta campaign objective (e.g. OUTCOME_SALES, OUTCOME_LEADS, OUTCOME_TRAFFIC)" }
+        optimizationGoal:
+          description: "Meta optimization goal. String if all ad sets share the same goal, array of distinct values if they differ."
+          nullable: true
+          oneOf:
+            - { type: string }
+            - { type: array, items: { type: string } }
+        bidStrategy: { type: string, nullable: true, description: "Campaign-level bid strategy (e.g. LOWEST_COST_WITHOUT_CAP, COST_CAP, LOWEST_COST_WITH_MIN_ROAS)" }
+        promotedObject:
+          type: object
+          nullable: true
+          description: "Meta promoted object at campaign level (conversion event details)"
+          properties:
+            custom_event_type: { type: string }
+            pixel_id: { type: string }
+            page_id: { type: string }
         adSets:
           type: array
           items: { $ref: '#/components/schemas/AdTreeAdSet' }
@@ -2989,6 +3040,22 @@ components:
         platformAdAccountId: { type: string }
         accountId: { type: string }
         profileId: { type: string }
+        platformObjective: { type: string, nullable: true, description: "Raw Meta campaign objective (e.g. OUTCOME_SALES, OUTCOME_LEADS, OUTCOME_TRAFFIC)" }
+        optimizationGoal:
+          description: "Meta optimization goal. String if all ad sets share the same goal, array of distinct values if they differ."
+          nullable: true
+          oneOf:
+            - { type: string }
+            - { type: array, items: { type: string } }
+        bidStrategy: { type: string, nullable: true, description: "Campaign-level bid strategy (e.g. LOWEST_COST_WITHOUT_CAP, COST_CAP, LOWEST_COST_WITH_MIN_ROAS)" }
+        promotedObject:
+          type: object
+          nullable: true
+          description: "Meta promoted object at campaign level (conversion event details)"
+          properties:
+            custom_event_type: { type: string }
+            pixel_id: { type: string }
+            page_id: { type: string }
         earliestAd: { type: string, format: date-time }
         latestAd: { type: string, format: date-time }
 webhooks:

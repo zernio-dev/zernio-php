@@ -68,6 +68,10 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_account_id' => 'string',
         'account_id' => 'string',
         'profile_id' => 'string',
+        'platform_objective' => 'string',
+        'optimization_goal' => '\Late\Model\AdTreeCampaignOptimizationGoal',
+        'bid_strategy' => 'string',
+        'promoted_object' => '\Late\Model\AdTreeCampaignPromotedObject',
         'earliest_ad' => '\DateTime',
         'latest_ad' => '\DateTime'
     ];
@@ -90,6 +94,10 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_account_id' => null,
         'account_id' => null,
         'profile_id' => null,
+        'platform_objective' => null,
+        'optimization_goal' => null,
+        'bid_strategy' => null,
+        'promoted_object' => null,
         'earliest_ad' => 'date-time',
         'latest_ad' => 'date-time'
     ];
@@ -110,6 +118,10 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_account_id' => false,
         'account_id' => false,
         'profile_id' => false,
+        'platform_objective' => false,
+        'optimization_goal' => false,
+        'bid_strategy' => false,
+        'promoted_object' => false,
         'earliest_ad' => false,
         'latest_ad' => false
     ];
@@ -210,6 +222,10 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_account_id' => 'platformAdAccountId',
         'account_id' => 'accountId',
         'profile_id' => 'profileId',
+        'platform_objective' => 'platformObjective',
+        'optimization_goal' => 'optimizationGoal',
+        'bid_strategy' => 'bidStrategy',
+        'promoted_object' => 'promotedObject',
         'earliest_ad' => 'earliestAd',
         'latest_ad' => 'latestAd'
     ];
@@ -230,6 +246,10 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_account_id' => 'setPlatformAdAccountId',
         'account_id' => 'setAccountId',
         'profile_id' => 'setProfileId',
+        'platform_objective' => 'setPlatformObjective',
+        'optimization_goal' => 'setOptimizationGoal',
+        'bid_strategy' => 'setBidStrategy',
+        'promoted_object' => 'setPromotedObject',
         'earliest_ad' => 'setEarliestAd',
         'latest_ad' => 'setLatestAd'
     ];
@@ -250,6 +270,10 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_account_id' => 'getPlatformAdAccountId',
         'account_id' => 'getAccountId',
         'profile_id' => 'getProfileId',
+        'platform_objective' => 'getPlatformObjective',
+        'optimization_goal' => 'getOptimizationGoal',
+        'bid_strategy' => 'getBidStrategy',
+        'promoted_object' => 'getPromotedObject',
         'earliest_ad' => 'getEarliestAd',
         'latest_ad' => 'getLatestAd'
     ];
@@ -371,6 +395,10 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('platform_ad_account_id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('profile_id', $data ?? [], null);
+        $this->setIfExists('platform_objective', $data ?? [], null);
+        $this->setIfExists('optimization_goal', $data ?? [], null);
+        $this->setIfExists('bid_strategy', $data ?? [], null);
+        $this->setIfExists('promoted_object', $data ?? [], null);
         $this->setIfExists('earliest_ad', $data ?? [], null);
         $this->setIfExists('latest_ad', $data ?? [], null);
     }
@@ -721,6 +749,114 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
         }
         $this->container['profile_id'] = $profile_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_objective
+     *
+     * @return string|null
+     */
+    public function getPlatformObjective()
+    {
+        return $this->container['platform_objective'];
+    }
+
+    /**
+     * Sets platform_objective
+     *
+     * @param string|null $platform_objective Raw Meta campaign objective (e.g. OUTCOME_SALES, OUTCOME_LEADS, OUTCOME_TRAFFIC)
+     *
+     * @return self
+     */
+    public function setPlatformObjective($platform_objective)
+    {
+        if (is_null($platform_objective)) {
+            throw new \InvalidArgumentException('non-nullable platform_objective cannot be null');
+        }
+        $this->container['platform_objective'] = $platform_objective;
+
+        return $this;
+    }
+
+    /**
+     * Gets optimization_goal
+     *
+     * @return \Late\Model\AdTreeCampaignOptimizationGoal|null
+     */
+    public function getOptimizationGoal()
+    {
+        return $this->container['optimization_goal'];
+    }
+
+    /**
+     * Sets optimization_goal
+     *
+     * @param \Late\Model\AdTreeCampaignOptimizationGoal|null $optimization_goal optimization_goal
+     *
+     * @return self
+     */
+    public function setOptimizationGoal($optimization_goal)
+    {
+        if (is_null($optimization_goal)) {
+            throw new \InvalidArgumentException('non-nullable optimization_goal cannot be null');
+        }
+        $this->container['optimization_goal'] = $optimization_goal;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_strategy
+     *
+     * @return string|null
+     */
+    public function getBidStrategy()
+    {
+        return $this->container['bid_strategy'];
+    }
+
+    /**
+     * Sets bid_strategy
+     *
+     * @param string|null $bid_strategy Campaign-level bid strategy (e.g. LOWEST_COST_WITHOUT_CAP, COST_CAP, LOWEST_COST_WITH_MIN_ROAS)
+     *
+     * @return self
+     */
+    public function setBidStrategy($bid_strategy)
+    {
+        if (is_null($bid_strategy)) {
+            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+        }
+        $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets promoted_object
+     *
+     * @return \Late\Model\AdTreeCampaignPromotedObject|null
+     */
+    public function getPromotedObject()
+    {
+        return $this->container['promoted_object'];
+    }
+
+    /**
+     * Sets promoted_object
+     *
+     * @param \Late\Model\AdTreeCampaignPromotedObject|null $promoted_object promoted_object
+     *
+     * @return self
+     */
+    public function setPromotedObject($promoted_object)
+    {
+        if (is_null($promoted_object)) {
+            throw new \InvalidArgumentException('non-nullable promoted_object cannot be null');
+        }
+        $this->container['promoted_object'] = $promoted_object;
 
         return $this;
     }

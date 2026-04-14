@@ -53,9 +53,13 @@ docs/Model/AdBudget.md
 docs/Model/AdCampaign.md
 docs/Model/AdCreative.md
 docs/Model/AdMetrics.md
+docs/Model/AdPromotedObject.md
 docs/Model/AdSchedule.md
 docs/Model/AdTreeAdSet.md
+docs/Model/AdTreeAdSetPromotedObject.md
 docs/Model/AdTreeCampaign.md
+docs/Model/AdTreeCampaignOptimizationGoal.md
+docs/Model/AdTreeCampaignPromotedObject.md
 docs/Model/AddBroadcastRecipients200Response.md
 docs/Model/AddBroadcastRecipientsRequest.md
 docs/Model/AddMessageReactionRequest.md
@@ -803,9 +807,13 @@ lib/Model/AdBudget.php
 lib/Model/AdCampaign.php
 lib/Model/AdCreative.php
 lib/Model/AdMetrics.php
+lib/Model/AdPromotedObject.php
 lib/Model/AdSchedule.php
 lib/Model/AdTreeAdSet.php
+lib/Model/AdTreeAdSetPromotedObject.php
 lib/Model/AdTreeCampaign.php
+lib/Model/AdTreeCampaignOptimizationGoal.php
+lib/Model/AdTreeCampaignPromotedObject.php
 lib/Model/AddBroadcastRecipients200Response.php
 lib/Model/AddBroadcastRecipientsRequest.php
 lib/Model/AddMessageReactionRequest.php
@@ -1501,5 +1509,7 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetBroadcast200ResponseBroadcastTemplateTest.php
-test/Model/ListContacts200ResponsePaginationTest.php
+test/Model/AdPromotedObjectTest.php
+test/Model/AdTreeAdSetPromotedObjectTest.php
+test/Model/AdTreeCampaignOptimizationGoalTest.php
+test/Model/AdTreeCampaignPromotedObjectTest.php

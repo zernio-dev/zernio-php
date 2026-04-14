@@ -65,6 +65,9 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_count' => 'int',
         'budget' => '\Late\Model\AdBudget',
         'metrics' => '\Late\Model\AdMetrics',
+        'optimization_goal' => 'string',
+        'bid_strategy' => 'string',
+        'promoted_object' => '\Late\Model\AdTreeAdSetPromotedObject',
         'ads' => '\Late\Model\Ad[]'
     ];
 
@@ -82,6 +85,9 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_count' => null,
         'budget' => null,
         'metrics' => null,
+        'optimization_goal' => null,
+        'bid_strategy' => null,
+        'promoted_object' => null,
         'ads' => null
     ];
 
@@ -97,6 +103,9 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_count' => false,
         'budget' => false,
         'metrics' => false,
+        'optimization_goal' => false,
+        'bid_strategy' => false,
+        'promoted_object' => false,
         'ads' => false
     ];
 
@@ -192,6 +201,9 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_count' => 'adCount',
         'budget' => 'budget',
         'metrics' => 'metrics',
+        'optimization_goal' => 'optimizationGoal',
+        'bid_strategy' => 'bidStrategy',
+        'promoted_object' => 'promotedObject',
         'ads' => 'ads'
     ];
 
@@ -207,6 +219,9 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_count' => 'setAdCount',
         'budget' => 'setBudget',
         'metrics' => 'setMetrics',
+        'optimization_goal' => 'setOptimizationGoal',
+        'bid_strategy' => 'setBidStrategy',
+        'promoted_object' => 'setPromotedObject',
         'ads' => 'setAds'
     ];
 
@@ -222,6 +237,9 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_count' => 'getAdCount',
         'budget' => 'getBudget',
         'metrics' => 'getMetrics',
+        'optimization_goal' => 'getOptimizationGoal',
+        'bid_strategy' => 'getBidStrategy',
+        'promoted_object' => 'getPromotedObject',
         'ads' => 'getAds'
     ];
 
@@ -313,6 +331,9 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('ad_count', $data ?? [], null);
         $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
+        $this->setIfExists('optimization_goal', $data ?? [], null);
+        $this->setIfExists('bid_strategy', $data ?? [], null);
+        $this->setIfExists('promoted_object', $data ?? [], null);
         $this->setIfExists('ads', $data ?? [], null);
     }
 
@@ -535,6 +556,87 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable metrics cannot be null');
         }
         $this->container['metrics'] = $metrics;
+
+        return $this;
+    }
+
+    /**
+     * Gets optimization_goal
+     *
+     * @return string|null
+     */
+    public function getOptimizationGoal()
+    {
+        return $this->container['optimization_goal'];
+    }
+
+    /**
+     * Sets optimization_goal
+     *
+     * @param string|null $optimization_goal Meta ad set optimization goal (e.g. OFFSITE_CONVERSIONS, VALUE, LEAD_GENERATION)
+     *
+     * @return self
+     */
+    public function setOptimizationGoal($optimization_goal)
+    {
+        if (is_null($optimization_goal)) {
+            throw new \InvalidArgumentException('non-nullable optimization_goal cannot be null');
+        }
+        $this->container['optimization_goal'] = $optimization_goal;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_strategy
+     *
+     * @return string|null
+     */
+    public function getBidStrategy()
+    {
+        return $this->container['bid_strategy'];
+    }
+
+    /**
+     * Sets bid_strategy
+     *
+     * @param string|null $bid_strategy Bid strategy for this ad set (overrides campaign level when set)
+     *
+     * @return self
+     */
+    public function setBidStrategy($bid_strategy)
+    {
+        if (is_null($bid_strategy)) {
+            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+        }
+        $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets promoted_object
+     *
+     * @return \Late\Model\AdTreeAdSetPromotedObject|null
+     */
+    public function getPromotedObject()
+    {
+        return $this->container['promoted_object'];
+    }
+
+    /**
+     * Sets promoted_object
+     *
+     * @param \Late\Model\AdTreeAdSetPromotedObject|null $promoted_object promoted_object
+     *
+     * @return self
+     */
+    public function setPromotedObject($promoted_object)
+    {
+        if (is_null($promoted_object)) {
+            throw new \InvalidArgumentException('non-nullable promoted_object cannot be null');
+        }
+        $this->container['promoted_object'] = $promoted_object;
 
         return $this;
     }
