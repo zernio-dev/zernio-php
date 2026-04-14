@@ -1069,7 +1069,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets draft
      *
-     * @param bool|null $draft When true, sends the post to the TikTok Creator Inbox as a draft instead of publishing immediately. The creator receives an inbox notification to complete posting via TikTok's editing flow. Maps to TikTok API `post_mode: \"MEDIA_UPLOAD\"` (photos) or the dedicated inbox endpoint (videos). When false or omitted, publishes directly via `post_mode: \"DIRECT_POST\"`. Note: `publish_type` is not a supported field. Use this field instead.
+     * @param bool|null $draft When true, sends the post to the TikTok Creator Inbox as a draft instead of publishing immediately. The creator receives an inbox notification to complete posting via TikTok's editing flow. Maps to TikTok API post_mode: \"MEDIA_UPLOAD\" (photos) or the dedicated inbox endpoint (videos). When false or omitted, publishes directly via post_mode: \"DIRECT_POST\". Note: publish_type is not a supported field. Use this field instead.
      *
      * @return self
      */

@@ -553,7 +553,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets library_template_name
      *
-     * @param string|null $library_template_name Name of a pre-built template from Meta's template library (e.g., \"appointment_reminder\", \"auto_pay_reminder_1\", \"address_update\"). When provided, the template is pre-approved by Meta with no review wait. Omit `components` when using this field.
+     * @param string|null $library_template_name Name of a pre-built template from Meta's template library (e.g., \"appointment_reminder\", \"auto_pay_reminder_1\", \"address_update\"). When provided, the template is pre-approved by Meta with no review wait. Omit components when using this field.
      *
      * @return self
      */

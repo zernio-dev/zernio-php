@@ -82,6 +82,8 @@ deleteCommentAutomation($automation_id)
 
 Delete automation
 
+Permanently delete an automation and all its trigger logs.
+
 ### Example
 
 ```php
@@ -138,6 +140,8 @@ getCommentAutomation($automation_id): \Late\Model\GetCommentAutomation200Respons
 ```
 
 Get automation details
+
+Returns an automation with its configuration, stats, and recent trigger logs.
 
 ### Example
 
@@ -322,6 +326,8 @@ updateCommentAutomation($automation_id, $update_comment_automation_request): \La
 ```
 
 Update automation settings
+
+Update an automation's keywords, DM message, comment reply, or active status.
 
 ### Example
 

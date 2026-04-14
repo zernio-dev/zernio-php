@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * InboxWebhookMessage Class Doc Comment
  *
  * @category Class
- * @description The &#x60;message&#x60; object included in inbox webhook payloads.
+ * @description The message object included in inbox webhook payloads.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

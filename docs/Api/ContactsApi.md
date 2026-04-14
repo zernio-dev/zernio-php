@@ -143,6 +143,8 @@ deleteContact($contact_id)
 
 Delete contact
 
+Permanently deletes a contact and all associated channels.
+
 ### Example
 
 ```php
@@ -199,6 +201,8 @@ getContact($contact_id): \Late\Model\GetContact200Response
 ```
 
 Get contact
+
+Returns a contact with all associated messaging channels.
 
 ### Example
 
@@ -257,6 +261,8 @@ getContactChannels($contact_id): \Late\Model\GetContactChannels200Response
 ```
 
 List channels for a contact
+
+Returns all messaging channels linked to a contact (e.g. Instagram DM, Telegram, WhatsApp).
 
 ### Example
 
@@ -387,6 +393,8 @@ updateContact($contact_id, $update_contact_request): \Late\Model\UpdateContact20
 ```
 
 Update contact
+
+Update one or more fields on a contact. Only provided fields are changed.
 
 ### Example
 

@@ -80,7 +80,7 @@ validatePost($validate_post_request): \Late\Model\ValidatePost200Response
 
 Validate post content
 
-Dry-run the full post validation pipeline without publishing. Catches issues like missing media for Instagram/TikTok/YouTube, hashtag limits, invalid thread formats, Facebook Reel requirements, and character limit violations.  Accepts the same body as `POST /v1/posts`. Does NOT validate accounts, process media, or track usage. This is content-only validation.  Returns errors for failures and warnings for near-limit content (>90% of character limit).
+Dry-run the full post validation pipeline without publishing. Catches issues like missing media for Instagram/TikTok/YouTube, hashtag limits, invalid thread formats, Facebook Reel requirements, and character limit violations.  Accepts the same body as POST /v1/posts. Does NOT validate accounts, process media, or track usage. This is content-only validation.  Returns errors for failures and warnings for near-limit content (>90% of character limit).
 
 ### Example
 
@@ -200,7 +200,7 @@ validateSubreddit($name, $account_id): \Late\Model\ValidateSubreddit200Response
 
 Check subreddit existence
 
-Check if a subreddit exists and return basic info (title, subscriber count, NSFW status, post types allowed).  When accountId is provided, uses authenticated Reddit OAuth API with automatic token refresh (recommended). Falls back to Reddit's public JSON API, which may be unreliable from server IPs. Returns `exists: false` for private, banned, or nonexistent subreddits.
+Check if a subreddit exists and return basic info (title, subscriber count, NSFW status, post types allowed).  When accountId is provided, uses authenticated Reddit OAuth API with automatic token refresh (recommended). Falls back to Reddit's public JSON API, which may be unreliable from server IPs. Returns exists: false for private, banned, or nonexistent subreddits.
 
 ### Example
 

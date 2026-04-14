@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **edited_at** | **\DateTime** | When the most recent edit happened. | [optional]
 **edit_count** | **int** | Total number of edits applied. | [optional]
 **edit_history** | [**\Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]**](GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner.md) | Every prior version of the message, oldest first. | [optional]
-**is_deleted** | **bool** | True if the sender has deleted (unsent) this message. The original &#x60;message&#x60; and &#x60;attachments&#x60; fields remain populated. | [optional]
+**is_deleted** | **bool** | True if the sender has deleted (unsent) this message. The original message and attachments fields remain populated. | [optional]
 **deleted_at** | **\DateTime** |  | [optional]
 **delivery_status** | **string** | Lifecycle status for outgoing messages. Not all platforms emit every state (see webhook support matrix). | [optional]
 **delivered_at** | **\DateTime** |  | [optional]

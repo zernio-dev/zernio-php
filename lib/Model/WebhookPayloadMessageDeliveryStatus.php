@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * WebhookPayloadMessageDeliveryStatus Class Doc Comment
  *
  * @category Class
- * @description Shared payload for &#x60;message.delivered&#x60;, &#x60;message.read&#x60;, and &#x60;message.failed&#x60; events. Fires when the platform reports a new delivery state for an outgoing message.  Platform support:   * &#x60;message.delivered&#x60; — WhatsApp, Facebook Messenger.   * &#x60;message.read&#x60;      — WhatsApp, Facebook Messenger, Instagram.   * &#x60;message.failed&#x60;    — WhatsApp only (other platforms don&#39;t expose     per-message failure via webhook).
+ * @description Shared payload for message.delivered, message.read, and message.failed events. Fires when the platform reports a new delivery state for an outgoing message.  Platform support:   * message.delivered — WhatsApp, Facebook Messenger.   * message.read      — WhatsApp, Facebook Messenger, Instagram.   * message.failed    — WhatsApp only (other platforms don&#39;t expose     per-message failure via webhook).
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

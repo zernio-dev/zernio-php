@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * TikTokPlatformData Class Doc Comment
  *
  * @category Class
- * @description Photo carousels up to 35 images. Video titles up to 2200 chars, photo titles truncated to 90 chars. privacyLevel must match creator_info options. Both camelCase and snake_case accepted.  **Creator Inbox (draft mode):** Set &#x60;draft: true&#x60; to send content to the TikTok Creator Inbox instead of publishing immediately. The creator receives an inbox notification and completes the post using TikTok&#39;s editing flow. This maps to TikTok&#39;s &#x60;post_mode: \&quot;MEDIA_UPLOAD\&quot;&#x60; internally.  **Important:** The field &#x60;publish_type&#x60; is NOT supported. Use &#x60;draft: true&#x60; for Creator Inbox flow.  **Photo drafts** use the &#x60;/v2/post/publish/content/init/&#x60; endpoint with &#x60;post_mode: \&quot;MEDIA_UPLOAD\&quot;&#x60;. **Video drafts** use the dedicated &#x60;/v2/post/publish/inbox/video/init/&#x60; endpoint.  When &#x60;draft: true&#x60;, the &#x60;video.upload&#x60; scope is required. When &#x60;draft&#x60; is false or omitted (direct post), the &#x60;video.publish&#x60; scope is required. For Creator Inbox, TikTok app version must be 31.8 or higher.
+ * @description Photo carousels up to 35 images. Video titles up to 2200 chars, photo titles truncated to 90 chars. privacyLevel must match creator_info options. Both camelCase and snake_case accepted.  Creator Inbox (draft mode): Set draft: true to send content to the TikTok Creator Inbox instead of publishing immediately. The creator receives an inbox notification and completes the post using TikTok&#39;s editing flow. This maps to TikTok&#39;s post_mode: \&quot;MEDIA_UPLOAD\&quot; internally.  Important: The field publish_type is NOT supported. Use draft: true for Creator Inbox flow.  Photo drafts use the /v2/post/publish/content/init/ endpoint with post_mode: \&quot;MEDIA_UPLOAD\&quot;. Video drafts use the dedicated /v2/post/publish/inbox/video/init/ endpoint.  When draft: true, the video.upload scope is required. When draft is false or omitted (direct post), the video.publish scope is required. For Creator Inbox, TikTok app version must be 31.8 or higher.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -478,7 +478,7 @@ class TikTokPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets draft
      *
-     * @param bool|null $draft When true, sends the post to the TikTok Creator Inbox as a draft instead of publishing immediately. The creator receives an inbox notification to complete posting via TikTok's editing flow. Maps to TikTok API `post_mode: \"MEDIA_UPLOAD\"` (photos) or the dedicated inbox endpoint (videos). When false or omitted, publishes directly via `post_mode: \"DIRECT_POST\"`. Note: `publish_type` is not a supported field. Use this field instead.
+     * @param bool|null $draft When true, sends the post to the TikTok Creator Inbox as a draft instead of publishing immediately. The creator receives an inbox notification to complete posting via TikTok's editing flow. Maps to TikTok API post_mode: \"MEDIA_UPLOAD\" (photos) or the dedicated inbox endpoint (videos). When false or omitted, publishes directly via post_mode: \"DIRECT_POST\". Note: publish_type is not a supported field. Use this field instead.
      *
      * @return self
      */

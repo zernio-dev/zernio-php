@@ -26,6 +26,8 @@ activateSequence($sequence_id): \Late\Model\ActivateSequence200Response
 
 Activate sequence
 
+Start a draft or paused sequence. The sequence must have at least one step.
+
 ### Example
 
 ```php
@@ -83,6 +85,8 @@ createSequence($create_sequence_request): \Late\Model\CreateSequence200Response
 ```
 
 Create sequence
+
+Create a multi-step messaging sequence. Each step has a delay and a message or WhatsApp template.
 
 ### Example
 
@@ -142,6 +146,8 @@ deleteSequence($sequence_id)
 
 Delete sequence
 
+Permanently delete a sequence. Active enrollments are stopped.
+
 ### Example
 
 ```php
@@ -198,6 +204,8 @@ enrollContacts($sequence_id, $enroll_contacts_request): \Late\Model\EnrollContac
 ```
 
 Enroll contacts in a sequence
+
+Enroll one or more contacts into a sequence. Contacts already enrolled are skipped.
 
 ### Example
 
@@ -259,6 +267,8 @@ getSequence($sequence_id): \Late\Model\GetSequence200Response
 
 Get sequence with steps
 
+Returns a sequence with all its steps and enrollment stats.
+
 ### Example
 
 ```php
@@ -316,6 +326,8 @@ listSequenceEnrollments($sequence_id, $status, $limit, $skip): \Late\Model\ListS
 ```
 
 List enrollments for a sequence
+
+Returns enrolled contacts with their progress, status, and next scheduled step.
 
 ### Example
 
@@ -381,6 +393,8 @@ listSequences($profile_id, $status, $limit, $skip): \Late\Model\ListSequences200
 
 List sequences
 
+Returns sequences with enrollment stats. Filter by status, platform, or profile.
+
 ### Example
 
 ```php
@@ -445,6 +459,8 @@ pauseSequence($sequence_id): \Late\Model\ActivateSequence200Response
 
 Pause sequence
 
+Pause an active sequence. Enrolled contacts stop receiving messages until the sequence is reactivated.
+
 ### Example
 
 ```php
@@ -502,6 +518,8 @@ unenrollContact($sequence_id, $contact_id)
 ```
 
 Unenroll contact
+
+Remove a contact from a sequence. No further messages will be sent to this contact.
 
 ### Example
 
@@ -561,6 +579,8 @@ updateSequence($sequence_id): \Late\Model\UpdateSequence200Response
 ```
 
 Update sequence
+
+Update a sequence's name, steps, or exit conditions. Active sequences can be updated without pausing.
 
 ### Example
 

@@ -361,7 +361,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets participant_id
      *
-     * @param string|null $participant_id Twitter numeric user ID of the recipient. Provide either this or `participantUsername`.
+     * @param string|null $participant_id Twitter numeric user ID of the recipient. Provide either this or participantUsername.
      *
      * @return self
      */
@@ -388,7 +388,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets participant_username
      *
-     * @param string|null $participant_username Twitter username (with or without @) of the recipient. Resolved to a user ID via lookup. Provide either this or `participantId`.
+     * @param string|null $participant_username Twitter username (with or without @) of the recipient. Resolved to a user ID via lookup. Provide either this or participantId.
      *
      * @return self
      */
@@ -415,7 +415,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets message
      *
-     * @param string|null $message Text content of the message. At least one of `message` or attachment is required.
+     * @param string|null $message Text content of the message. At least one of message or attachment is required.
      *
      * @return self
      */
@@ -442,7 +442,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets skip_dm_check
      *
-     * @param bool|null $skip_dm_check Skip the `receives_your_dm` eligibility check before sending. Use if you have already verified the recipient accepts DMs.
+     * @param bool|null $skip_dm_check Skip the receives_your_dm eligibility check before sending. Use if you have already verified the recipient accepts DMs.
      *
      * @return self
      */

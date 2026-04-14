@@ -1059,7 +1059,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     /**
      * Sets is_deleted
      *
-     * @param bool|null $is_deleted True if the sender has deleted (unsent) this message. The original `message` and `attachments` fields remain populated.
+     * @param bool|null $is_deleted True if the sender has deleted (unsent) this message. The original message and attachments fields remain populated.
      *
      * @return self
      */

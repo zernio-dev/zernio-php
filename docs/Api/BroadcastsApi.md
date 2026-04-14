@@ -26,6 +26,8 @@ addBroadcastRecipients($broadcast_id, $add_broadcast_recipients_request): \Late\
 
 Add recipients to a broadcast
 
+Add recipients by contact IDs, raw phone numbers, or from the broadcast's segment filters.
+
 ### Example
 
 ```php
@@ -86,6 +88,8 @@ cancelBroadcast($broadcast_id): \Late\Model\CancelBroadcast200Response
 
 Cancel broadcast
 
+Cancel a scheduled or in-progress broadcast. Already-sent messages are not affected.
+
 ### Example
 
 ```php
@@ -143,6 +147,8 @@ createBroadcast($create_broadcast_request): \Late\Model\CreateBroadcast200Respon
 ```
 
 Create broadcast draft
+
+Create a broadcast in draft status. Add recipients and then send or schedule it.
 
 ### Example
 
@@ -202,6 +208,8 @@ deleteBroadcast($broadcast_id)
 
 Delete broadcast
 
+Permanently delete a broadcast. Only drafts can be deleted.
+
 ### Example
 
 ```php
@@ -258,6 +266,8 @@ getBroadcast($broadcast_id): \Late\Model\GetBroadcast200Response
 ```
 
 Get broadcast details
+
+Returns a broadcast with its full configuration and delivery stats.
 
 ### Example
 
@@ -316,6 +326,8 @@ listBroadcastRecipients($broadcast_id, $status, $limit, $skip): \Late\Model\List
 ```
 
 List broadcast recipients
+
+Returns recipients for a broadcast with individual delivery status. Filter by status.
 
 ### Example
 
@@ -380,6 +392,8 @@ listBroadcasts($profile_id, $status, $platform, $limit, $skip): \Late\Model\List
 ```
 
 List broadcasts
+
+Returns broadcasts with delivery stats. Filter by status, platform, or profile.
 
 ### Example
 
@@ -447,6 +461,8 @@ scheduleBroadcast($broadcast_id, $schedule_broadcast_request): \Late\Model\Sched
 
 Schedule broadcast for later
 
+Schedule a draft broadcast to be sent at a future date and time.
+
 ### Example
 
 ```php
@@ -507,6 +523,8 @@ sendBroadcast($broadcast_id): \Late\Model\SendBroadcast200Response
 
 Send broadcast now
 
+Immediately start sending a draft broadcast to its recipients.
+
 ### Example
 
 ```php
@@ -564,6 +582,8 @@ updateBroadcast($broadcast_id): \Late\Model\UpdateBroadcast200Response
 ```
 
 Update broadcast
+
+Update a broadcast's name, message, template, or segment filters. Only draft broadcasts can be updated.
 
 ### Example
 

@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * WebhookPayloadMessageEdited Class Doc Comment
  *
  * @category Class
- * @description Webhook payload for &#x60;message.edited&#x60; events. Fires when the sender edits a previously-sent message. Supported platforms: Instagram, Facebook Messenger, Telegram. The &#x60;message&#x60; object reflects the LATEST state; &#x60;editHistory&#x60; contains every prior version in order (oldest first), so the last entry is the version immediately before the current content.
+ * @description Webhook payload for message.edited events. Fires when the sender edits a previously-sent message. Supported platforms: Instagram, Facebook Messenger, Telegram. The message object reflects the LATEST state; editHistory contains every prior version in order (oldest first), so the last entry is the version immediately before the current content.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

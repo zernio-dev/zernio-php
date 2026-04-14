@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * InboxWebhookConversation Class Doc Comment
  *
  * @category Class
- * @description The &#x60;conversation&#x60; context included in inbox webhook payloads.
+ * @description The conversation context included in inbox webhook payloads.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

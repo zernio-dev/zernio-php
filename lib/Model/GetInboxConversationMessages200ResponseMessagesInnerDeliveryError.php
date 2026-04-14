@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * GetInboxConversationMessages200ResponseMessagesInnerDeliveryError Class Doc Comment
  *
  * @category Class
- * @description Populated when &#x60;deliveryStatus &#x3D;&#x3D;&#x3D; \&quot;failed\&quot;&#x60;.
+ * @description Populated when deliveryStatus &#x3D;&#x3D;&#x3D; \&quot;failed\&quot;.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

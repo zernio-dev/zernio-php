@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * WebhookPayloadMessageDeliveryStatusError Class Doc Comment
  *
  * @category Class
- * @description Populated only on &#x60;message.failed&#x60;.
+ * @description Populated only on message.failed.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

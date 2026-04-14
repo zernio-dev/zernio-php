@@ -108,7 +108,7 @@ connectAds($platform, $profile_id, $account_id, $redirect_url, $headless): \Late
 
 Connect ads for a platform
 
-Unified ads connection endpoint. Creates a dedicated ads SocialAccount for the specified platform.  **Same-token platforms** (facebook, instagram, linkedin, pinterest): Creates an ads SocialAccount (`metaads`, `linkedinads`, `pinterestads`) with a copied OAuth token from the parent posting account. If the ads account already exists, returns `alreadyConnected: true`. No extra OAuth needed.  **Separate-token platforms** (tiktok, twitter): Starts the platform-specific marketing API OAuth flow and creates an ads SocialAccount (`tiktokads`, `xads`) with its own token. Requires an existing posting account (`accountId` param). If the ads account already exists, returns `alreadyConnected: true`.  **Standalone platforms** (googleads): Starts the Google Ads OAuth flow and creates a standalone ads SocialAccount (`googleads`) with no parent. If the account already exists, returns `alreadyConnected: true`.  Ads accounts appear as regular SocialAccount documents with ads platform values (e.g., `metaads`, `tiktokads`) in `GET /v1/accounts`.
+Unified ads connection endpoint. Creates a dedicated ads SocialAccount for the specified platform.  Same-token platforms (facebook, instagram, linkedin, pinterest): Creates an ads SocialAccount (metaads, linkedinads, pinterestads) with a copied OAuth token from the parent posting account. If the ads account already exists, returns alreadyConnected: true. No extra OAuth needed.  Separate-token platforms (tiktok, twitter): Starts the platform-specific marketing API OAuth flow and creates an ads SocialAccount (tiktokads, xads) with its own token. Requires an existing posting account (accountId param). If the ads account already exists, returns alreadyConnected: true.  Standalone platforms (googleads): Starts the Google Ads OAuth flow and creates a standalone ads SocialAccount (googleads) with no parent. If the account already exists, returns alreadyConnected: true.  Ads accounts appear as regular SocialAccount documents with ads platform values (e.g., metaads, tiktokads) in GET /v1/accounts.
 
 ### Example
 
@@ -236,7 +236,7 @@ connectWhatsAppCredentials($connect_whats_app_credentials_request): \Late\Model\
 
 Connect WhatsApp via credentials
 
-Connect a WhatsApp Business Account by providing Meta credentials directly. This is the headless alternative to the Embedded Signup browser flow.  To get the required credentials: 1. Go to Meta Business Suite (business.facebook.com) 2. Create or select a WhatsApp Business Account 3. In Business Settings > System Users, create a System User 4. Assign it the `whatsapp_business_management` and `whatsapp_business_messaging` permissions 5. Generate a permanent access token 6. Get the WABA ID from WhatsApp Manager > Account Tools > Phone Numbers 7. Get the Phone Number ID from the same page (click on the number)
+Connect a WhatsApp Business Account by providing Meta credentials directly. This is the headless alternative to the Embedded Signup browser flow.  To get the required credentials: 1. Go to Meta Business Suite (business.facebook.com) 2. Create or select a WhatsApp Business Account 3. In Business Settings > System Users, create a System User 4. Assign it the whatsapp_business_management and whatsapp_business_messaging permissions 5. Generate a permanent access token 6. Get the WABA ID from WhatsApp Manager > Account Tools > Phone Numbers 7. Get the Phone Number ID from the same page (click on the number)
 
 ### Example
 
@@ -844,7 +844,7 @@ getYoutubePlaylists($account_id): \Late\Model\GetYoutubePlaylists200Response
 
 List YouTube playlists
 
-Returns the playlists available for a connected YouTube account. Use this to get a playlist ID when creating a YouTube post with the `playlistId` field.
+Returns the playlists available for a connected YouTube account. Use this to get a playlist ID when creating a YouTube post with the playlistId field.
 
 ### Example
 
@@ -1973,7 +1973,7 @@ updateYoutubeDefaultPlaylist($account_id, $update_youtube_default_playlist_reque
 
 Set default YouTube playlist
 
-Sets the default playlist used when publishing videos for this account. When a post does not specify a `playlistId`, the default playlist is not automatically used (it is stored for client-side convenience).
+Sets the default playlist used when publishing videos for this account. When a post does not specify a playlistId, the default playlist is not automatically used (it is stored for client-side convenience).
 
 ### Example
 
