@@ -6,71 +6,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getPostLogs()**](LogsApi.md#getPostLogs) | **GET** /v1/posts/{postId}/logs | Get post logs |
 | [**listLogs()**](LogsApi.md#listLogs) | **GET** /v1/logs | List activity logs |
 
-
-## `getPostLogs()`
-
-```php
-getPostLogs($post_id, $limit): \Late\Model\GetPostLogs200Response
-```
-
-Get post logs
-
-Retrieve all publishing logs for a specific post. Shows the complete history of publishing attempts for that post across all platforms.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
-
-
-$apiInstance = new Late\Api\LogsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$post_id = 'post_id_example'; // string | The post ID
-$limit = 50; // int | Maximum number of logs to return (max 100)
-
-try {
-    $result = $apiInstance->getPostLogs($post_id, $limit);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling LogsApi->getPostLogs: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-| Name | Type | Description  | Notes |
-| ------------- | ------------- | ------------- | ------------- |
-| **post_id** | **string**| The post ID | |
-| **limit** | **int**| Maximum number of logs to return (max 100) | [optional] [default to 50] |
-
-### Return type
-
-[**\Late\Model\GetPostLogs200Response**](../Model/GetPostLogs200Response.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `listLogs()`
 

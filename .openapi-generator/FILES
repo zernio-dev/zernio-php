@@ -313,7 +313,6 @@ docs/Model/GetPendingOAuthData200Response.md
 docs/Model/GetPendingOAuthData200ResponseOrganizationsInner.md
 docs/Model/GetPinterestBoards200Response.md
 docs/Model/GetPinterestBoards200ResponseBoardsInner.md
-docs/Model/GetPostLogs200Response.md
 docs/Model/GetPostTimeline200Response.md
 docs/Model/GetPostTimeline200ResponseTimelineInner.md
 docs/Model/GetPostTimeline400Response.md
@@ -490,11 +489,6 @@ docs/Model/PostAnalytics.md
 docs/Model/PostCreateResponse.md
 docs/Model/PostDeleteResponse.md
 docs/Model/PostGetResponse.md
-docs/Model/PostLog.md
-docs/Model/PostLogPostId.md
-docs/Model/PostLogPostIdOneOf.md
-docs/Model/PostLogRequest.md
-docs/Model/PostLogResponse.md
 docs/Model/PostRetryResponse.md
 docs/Model/PostUpdateResponse.md
 docs/Model/PostUserId.md
@@ -1068,7 +1062,6 @@ lib/Model/GetPendingOAuthData200Response.php
 lib/Model/GetPendingOAuthData200ResponseOrganizationsInner.php
 lib/Model/GetPinterestBoards200Response.php
 lib/Model/GetPinterestBoards200ResponseBoardsInner.php
-lib/Model/GetPostLogs200Response.php
 lib/Model/GetPostTimeline200Response.php
 lib/Model/GetPostTimeline200ResponseTimelineInner.php
 lib/Model/GetPostTimeline400Response.php
@@ -1246,11 +1239,6 @@ lib/Model/PostAnalytics.php
 lib/Model/PostCreateResponse.php
 lib/Model/PostDeleteResponse.php
 lib/Model/PostGetResponse.php
-lib/Model/PostLog.php
-lib/Model/PostLogPostId.php
-lib/Model/PostLogPostIdOneOf.php
-lib/Model/PostLogRequest.php
-lib/Model/PostLogResponse.php
 lib/Model/PostRetryResponse.php
 lib/Model/PostUpdateResponse.php
 lib/Model/PostUserId.php
@@ -1511,4 +1499,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UpdateAdRequestTargetingInterestsInnerTest.php
