@@ -156,7 +156,7 @@ class SequencesApi
     /**
      * Operation activateSequence
      *
-     * Activate a sequence
+     * Activate sequence
      *
      * @param  string $sequence_id sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['activateSequence'] to see the possible values for this operation
@@ -174,7 +174,7 @@ class SequencesApi
     /**
      * Operation activateSequenceWithHttpInfo
      *
-     * Activate a sequence
+     * Activate sequence
      *
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['activateSequence'] to see the possible values for this operation
@@ -287,7 +287,7 @@ class SequencesApi
     /**
      * Operation activateSequenceAsync
      *
-     * Activate a sequence
+     * Activate sequence
      *
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['activateSequence'] to see the possible values for this operation
@@ -308,7 +308,7 @@ class SequencesApi
     /**
      * Operation activateSequenceAsyncWithHttpInfo
      *
-     * Activate a sequence
+     * Activate sequence
      *
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['activateSequence'] to see the possible values for this operation
@@ -456,7 +456,7 @@ class SequencesApi
     /**
      * Operation createSequence
      *
-     * Create a sequence
+     * Create sequence
      *
      * @param  \Late\Model\CreateSequenceRequest $create_sequence_request create_sequence_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSequence'] to see the possible values for this operation
@@ -474,7 +474,7 @@ class SequencesApi
     /**
      * Operation createSequenceWithHttpInfo
      *
-     * Create a sequence
+     * Create sequence
      *
      * @param  \Late\Model\CreateSequenceRequest $create_sequence_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSequence'] to see the possible values for this operation
@@ -573,7 +573,7 @@ class SequencesApi
     /**
      * Operation createSequenceAsync
      *
-     * Create a sequence
+     * Create sequence
      *
      * @param  \Late\Model\CreateSequenceRequest $create_sequence_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSequence'] to see the possible values for this operation
@@ -594,7 +594,7 @@ class SequencesApi
     /**
      * Operation createSequenceAsyncWithHttpInfo
      *
-     * Create a sequence
+     * Create sequence
      *
      * @param  \Late\Model\CreateSequenceRequest $create_sequence_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSequence'] to see the possible values for this operation
@@ -741,7 +741,7 @@ class SequencesApi
     /**
      * Operation deleteSequence
      *
-     * Delete a sequence
+     * Delete sequence
      *
      * @param  string $sequence_id sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSequence'] to see the possible values for this operation
@@ -758,7 +758,7 @@ class SequencesApi
     /**
      * Operation deleteSequenceWithHttpInfo
      *
-     * Delete a sequence
+     * Delete sequence
      *
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSequence'] to see the possible values for this operation
@@ -823,7 +823,7 @@ class SequencesApi
     /**
      * Operation deleteSequenceAsync
      *
-     * Delete a sequence
+     * Delete sequence
      *
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSequence'] to see the possible values for this operation
@@ -844,7 +844,7 @@ class SequencesApi
     /**
      * Operation deleteSequenceAsyncWithHttpInfo
      *
-     * Delete a sequence
+     * Delete sequence
      *
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSequence'] to see the possible values for this operation
@@ -2269,7 +2269,7 @@ class SequencesApi
     /**
      * Operation pauseSequence
      *
-     * Pause a sequence
+     * Pause sequence
      *
      * @param  string $sequence_id sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pauseSequence'] to see the possible values for this operation
@@ -2287,7 +2287,7 @@ class SequencesApi
     /**
      * Operation pauseSequenceWithHttpInfo
      *
-     * Pause a sequence
+     * Pause sequence
      *
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pauseSequence'] to see the possible values for this operation
@@ -2400,7 +2400,7 @@ class SequencesApi
     /**
      * Operation pauseSequenceAsync
      *
-     * Pause a sequence
+     * Pause sequence
      *
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pauseSequence'] to see the possible values for this operation
@@ -2421,7 +2421,7 @@ class SequencesApi
     /**
      * Operation pauseSequenceAsyncWithHttpInfo
      *
-     * Pause a sequence
+     * Pause sequence
      *
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pauseSequence'] to see the possible values for this operation
@@ -2569,7 +2569,7 @@ class SequencesApi
     /**
      * Operation unenrollContact
      *
-     * Unenroll a contact from a sequence
+     * Unenroll contact
      *
      * @param  string $sequence_id sequence_id (required)
      * @param  string $contact_id contact_id (required)
@@ -2587,7 +2587,7 @@ class SequencesApi
     /**
      * Operation unenrollContactWithHttpInfo
      *
-     * Unenroll a contact from a sequence
+     * Unenroll contact
      *
      * @param  string $sequence_id (required)
      * @param  string $contact_id (required)
@@ -2653,7 +2653,7 @@ class SequencesApi
     /**
      * Operation unenrollContactAsync
      *
-     * Unenroll a contact from a sequence
+     * Unenroll contact
      *
      * @param  string $sequence_id (required)
      * @param  string $contact_id (required)
@@ -2675,7 +2675,7 @@ class SequencesApi
     /**
      * Operation unenrollContactAsyncWithHttpInfo
      *
-     * Unenroll a contact from a sequence
+     * Unenroll contact
      *
      * @param  string $sequence_id (required)
      * @param  string $contact_id (required)
@@ -2827,7 +2827,7 @@ class SequencesApi
     /**
      * Operation updateSequence
      *
-     * Update a sequence
+     * Update sequence
      *
      * @param  string $sequence_id sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSequence'] to see the possible values for this operation
@@ -2845,7 +2845,7 @@ class SequencesApi
     /**
      * Operation updateSequenceWithHttpInfo
      *
-     * Update a sequence
+     * Update sequence
      *
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSequence'] to see the possible values for this operation
@@ -2958,7 +2958,7 @@ class SequencesApi
     /**
      * Operation updateSequenceAsync
      *
-     * Update a sequence
+     * Update sequence
      *
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSequence'] to see the possible values for this operation
@@ -2979,7 +2979,7 @@ class SequencesApi
     /**
      * Operation updateSequenceAsyncWithHttpInfo
      *
-     * Update a sequence
+     * Update sequence
      *
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSequence'] to see the possible values for this operation

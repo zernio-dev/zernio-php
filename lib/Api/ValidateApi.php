@@ -680,7 +680,7 @@ class ValidateApi
     /**
      * Operation validatePostLength
      *
-     * Validate post character count
+     * Validate character count
      *
      * @param  \Late\Model\ValidatePostLengthRequest $validate_post_length_request validate_post_length_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePostLength'] to see the possible values for this operation
@@ -698,7 +698,7 @@ class ValidateApi
     /**
      * Operation validatePostLengthWithHttpInfo
      *
-     * Validate post character count
+     * Validate character count
      *
      * @param  \Late\Model\ValidatePostLengthRequest $validate_post_length_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePostLength'] to see the possible values for this operation
@@ -783,7 +783,7 @@ class ValidateApi
     /**
      * Operation validatePostLengthAsync
      *
-     * Validate post character count
+     * Validate character count
      *
      * @param  \Late\Model\ValidatePostLengthRequest $validate_post_length_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePostLength'] to see the possible values for this operation
@@ -804,7 +804,7 @@ class ValidateApi
     /**
      * Operation validatePostLengthAsyncWithHttpInfo
      *
-     * Validate post character count
+     * Validate character count
      *
      * @param  \Late\Model\ValidatePostLengthRequest $validate_post_length_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePostLength'] to see the possible values for this operation

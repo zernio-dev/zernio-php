@@ -2209,6 +2209,10 @@ components:
             - $ref: '#/components/schemas/Profile'
         username: { type: string }
         displayName: { type: string }
+        profilePicture:
+          type: string
+          nullable: true
+          description: URL to the account's profile picture on the platform. May be null if the platform does not provide one.
         profileUrl:
           type: string
           description: Full profile URL for the connected account on its platform.
@@ -2249,7 +2253,6 @@ components:
         - $ref: '#/components/schemas/SocialAccount'
         - type: object
           properties:
-            profilePicture: { type: string }
             currentFollowers: { type: number, description: Current follower count }
             lastUpdated: { type: string, format: date-time }
             growth: { type: number, description: Follower change over period }
@@ -3250,7 +3253,7 @@ paths:
     post:
       operationId: validatePostLength
       tags: [Validate]
-      summary: Validate post character count
+      summary: Validate character count
       description: |
         Check weighted character count per platform and whether the text is within each platform's limit.
 
@@ -3860,7 +3863,7 @@ paths:
     get:
       operationId: getInstagramAccountInsights
       tags: [Analytics]
-      summary: Get Instagram account-level insights
+      summary: Get Instagram insights
       description: |
         Returns account-level Instagram insights such as reach, views, accounts engaged, and total interactions.
         These metrics reflect the entire account's performance across all content surfaces (feed, stories, explore, profile),
@@ -4004,7 +4007,7 @@ paths:
     get:
       operationId: getInstagramDemographics
       tags: [Analytics]
-      summary: Get Instagram audience demographics
+      summary: Get Instagram demographics
       description: |
         Returns audience demographic insights for an Instagram account, broken down by age, city, country, and/or gender.
         Requires at least 100 followers. Returns top 45 entries per dimension.
@@ -4124,7 +4127,7 @@ paths:
     get:
       operationId: getYouTubeDemographics
       tags: [Analytics]
-      summary: Get YouTube audience demographics
+      summary: Get YouTube demographics
       description: |
         Returns audience demographic insights for a YouTube channel, broken down by age, gender, and/or country.
         Age and gender values are viewer percentages (0-100). Country values are view counts.
@@ -4515,7 +4518,7 @@ paths:
     get:
       operationId: getPostingFrequency
       tags: [Analytics]
-      summary: Get posting frequency vs engagement
+      summary: Get frequency vs engagement
       description: |
         Returns the correlation between posting frequency (posts per week) and engagement rate, broken down by platform.
         Helps find the optimal posting cadence for each platform. Each row represents a specific (platform, posts_per_week) combination
@@ -4703,7 +4706,7 @@ paths:
     get:
       operationId: getGoogleBusinessPerformance
       tags: [Analytics]
-      summary: Get Google Business Profile performance metrics
+      summary: Get GBP performance metrics
       description: |
         Returns daily performance metrics for a Google Business Profile location.
         Metrics include impressions (Maps/Search, desktop/mobile), website clicks,
@@ -4827,7 +4830,7 @@ paths:
     get:
       operationId: getGoogleBusinessSearchKeywords
       tags: [Analytics]
-      summary: Get Google Business Profile search keywords
+      summary: Get GBP search keywords
       description: |
         Returns search keywords that triggered impressions for a Google Business Profile location.
         Data is aggregated monthly. Keywords below a minimum impression threshold set by Google are excluded.
@@ -5081,7 +5084,7 @@ paths:
     post:
       operationId: getMediaPresignedUrl
       tags: [Media]
-      summary: Get presigned upload URL
+      summary: Get upload URL
       description: Get a presigned URL to upload files directly to cloud storage (up to 5GB). Returns an uploadUrl and publicUrl. PUT your file to the uploadUrl, then use the publicUrl in your posts.
       requestBody:
         required: true
@@ -14325,7 +14328,7 @@ paths:
     get:
       operationId: getWhatsAppDisplayName
       tags: [WhatsApp]
-      summary: Get display name and review status
+      summary: Get display name status
       description: |
         Fetch the current display name and its Meta review status for a WhatsApp Business account.
         Display name changes require Meta approval and can take 1-3 business days.
@@ -15480,7 +15483,7 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
     post:
       operationId: createContact
-      summary: Create a contact
+      summary: Create contact
       description: Create a new contact. Optionally create a platform channel in the same request by providing accountId, platform, and platformIdentifier.
       tags: [Contacts]
       requestBody:
@@ -15539,7 +15542,7 @@ paths:
   /v1/contacts/{contactId}:
     get:
       operationId: getContact
-      summary: Get contact with channels
+      summary: Get contact
       tags: [Contacts]
       parameters:
         - { name: contactId, in: path, required: true, schema: { type: string } }
@@ -15585,7 +15588,7 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
     patch:
       operationId: updateContact
-      summary: Update a contact
+      summary: Update contact
       tags: [Contacts]
       parameters:
         - { name: contactId, in: path, required: true, schema: { type: string } }
@@ -15629,7 +15632,7 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
     delete:
       operationId: deleteContact
-      summary: Delete a contact
+      summary: Delete contact
       tags: [Contacts]
       parameters:
         - { name: contactId, in: path, required: true, schema: { type: string } }
@@ -15719,7 +15722,7 @@ paths:
   /v1/contacts/{contactId}/fields/{slug}:
     put:
       operationId: setContactFieldValue
-      summary: Set a custom field value
+      summary: Set custom field value
       tags: [Custom Fields]
       parameters:
         - { name: contactId, in: path, required: true, schema: { type: string } }
@@ -15739,7 +15742,7 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
     delete:
       operationId: clearContactFieldValue
-      summary: Clear a custom field value
+      summary: Clear custom field value
       tags: [Custom Fields]
       parameters:
         - { name: contactId, in: path, required: true, schema: { type: string } }
@@ -15781,7 +15784,7 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
     post:
       operationId: createCustomField
-      summary: Create a custom field definition
+      summary: Create custom field
       tags: [Custom Fields]
       requestBody:
         required: true
@@ -15820,7 +15823,7 @@ paths:
   /v1/custom-fields/{fieldId}:
     patch:
       operationId: updateCustomField
-      summary: Update a custom field definition
+      summary: Update custom field
       tags: [Custom Fields]
       parameters:
         - { name: fieldId, in: path, required: true, schema: { type: string } }
@@ -15853,7 +15856,7 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
     delete:
       operationId: deleteCustomField
-      summary: Delete a custom field definition
+      summary: Delete custom field
       tags: [Custom Fields]
       parameters:
         - { name: fieldId, in: path, required: true, schema: { type: string } }
@@ -15916,7 +15919,7 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
     post:
       operationId: createBroadcast
-      summary: Create a broadcast draft
+      summary: Create broadcast draft
       tags: [Broadcasts]
       requestBody:
         required: true
@@ -16011,7 +16014,7 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
     patch:
       operationId: updateBroadcast
-      summary: Update a broadcast
+      summary: Update broadcast
       tags: [Broadcasts]
       parameters:
         - { name: broadcastId, in: path, required: true, schema: { type: string } }
@@ -16036,7 +16039,7 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
     delete:
       operationId: deleteBroadcast
-      summary: Delete a broadcast (draft only)
+      summary: Delete broadcast
       tags: [Broadcasts]
       parameters:
         - { name: broadcastId, in: path, required: true, schema: { type: string } }
@@ -16048,7 +16051,7 @@ paths:
   /v1/broadcasts/{broadcastId}/send:
     post:
       operationId: sendBroadcast
-      summary: Trigger immediate send
+      summary: Send broadcast now
       tags: [Broadcasts]
       parameters:
         - { name: broadcastId, in: path, required: true, schema: { type: string } }
@@ -16107,7 +16110,7 @@ paths:
   /v1/broadcasts/{broadcastId}/cancel:
     post:
       operationId: cancelBroadcast
-      summary: Cancel a broadcast
+      summary: Cancel broadcast
       tags: [Broadcasts]
       parameters:
         - { name: broadcastId, in: path, required: true, schema: { type: string } }
@@ -16254,7 +16257,7 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
     post:
       operationId: createSequence
-      summary: Create a sequence
+      summary: Create sequence
       tags: [Sequences]
       requestBody:
         required: true
@@ -16359,7 +16362,7 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
     patch:
       operationId: updateSequence
-      summary: Update a sequence
+      summary: Update sequence
       tags: [Sequences]
       parameters:
         - { name: sequenceId, in: path, required: true, schema: { type: string } }
@@ -16387,7 +16390,7 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
     delete:
       operationId: deleteSequence
-      summary: Delete a sequence
+      summary: Delete sequence
       tags: [Sequences]
       parameters:
         - { name: sequenceId, in: path, required: true, schema: { type: string } }
@@ -16399,7 +16402,7 @@ paths:
   /v1/sequences/{sequenceId}/activate:
     post:
       operationId: activateSequence
-      summary: Activate a sequence
+      summary: Activate sequence
       tags: [Sequences]
       parameters:
         - { name: sequenceId, in: path, required: true, schema: { type: string } }
@@ -16424,7 +16427,7 @@ paths:
   /v1/sequences/{sequenceId}/pause:
     post:
       operationId: pauseSequence
-      summary: Pause a sequence
+      summary: Pause sequence
       tags: [Sequences]
       parameters:
         - { name: sequenceId, in: path, required: true, schema: { type: string } }
@@ -16480,7 +16483,7 @@ paths:
   /v1/sequences/{sequenceId}/enroll/{contactId}:
     delete:
       operationId: unenrollContact
-      summary: Unenroll a contact from a sequence
+      summary: Unenroll contact
       tags: [Sequences]
       parameters:
         - { name: sequenceId, in: path, required: true, schema: { type: string } }
@@ -16587,7 +16590,7 @@ paths:
     post:
       operationId: createCommentAutomation
       tags: [Comment Automations]
-      summary: Create a comment-to-DM automation
+      summary: Create comment-to-DM automation
       description: |
         Create a keyword-triggered DM automation on an Instagram or Facebook post.
         When someone comments a matching keyword, they automatically receive a DM.
@@ -16646,7 +16649,7 @@ paths:
     get:
       operationId: getCommentAutomation
       tags: [Comment Automations]
-      summary: Get automation details with recent logs
+      summary: Get automation details
       security:
         - bearerAuth: []
       parameters:
@@ -16738,7 +16741,7 @@ paths:
     delete:
       operationId: deleteCommentAutomation
       tags: [Comment Automations]
-      summary: Delete automation and all logs
+      summary: Delete automation
       security:
         - bearerAuth: []
       parameters:
@@ -16752,7 +16755,7 @@ paths:
     get:
       operationId: listCommentAutomationLogs
       tags: [Comment Automations]
-      summary: List trigger logs for an automation
+      summary: List automation logs
       description: Paginated list of every comment that triggered this automation, with send status and commenter info.
       security:
         - bearerAuth: []
@@ -16838,7 +16841,7 @@ paths:
     get:
       operationId: listAdCampaigns
       tags: [Ad Campaigns]
-      summary: List campaigns with aggregate metrics
+      summary: List campaigns
       description: |
         Returns campaigns as virtual aggregations over ad documents grouped by platform campaign ID.
         Metrics (spend, impressions, clicks, etc.) are summed across all ads in each campaign.
@@ -16914,7 +16917,7 @@ paths:
     get:
       operationId: getAdTree
       tags: [Ad Campaigns]
-      summary: Get nested campaign/ad-set/ad tree
+      summary: Get campaign tree
       description: |
         Returns a nested Campaign > Ad Set > Ad hierarchy with rolled-up metrics at each level.
         Uses a two-stage aggregation: ads are grouped into ad sets, then ad sets into campaigns.
@@ -16974,7 +16977,7 @@ paths:
     put:
       operationId: updateAd
       tags: [Ads]
-      summary: Update ad (pause/resume, budget, targeting, name)
+      summary: Update ad
       description: Update one or more fields on an ad. Status changes and budget updates are propagated to the platform. Targeting updates are Meta-only.
       security:
         - bearerAuth: []
@@ -17049,7 +17052,7 @@ paths:
     get:
       operationId: getAdAnalytics
       tags: [Ads]
-      summary: Get ad analytics with daily breakdown
+      summary: Get ad analytics
       description: |
         Returns detailed performance analytics for an ad. Includes summary metrics, a daily timeline
         over the requested date range, and optional demographic breakdowns (Meta and TikTok only).
@@ -17105,7 +17108,7 @@ paths:
     get:
       operationId: listAdAccounts
       tags: [Ads]
-      summary: List ad accounts for a social account
+      summary: List ad accounts
       description: Returns the platform ad accounts available for the given social account (e.g. Meta ad accounts, TikTok advertiser IDs, Google Ads customer IDs).
       security:
         - bearerAuth: []
@@ -17136,7 +17139,7 @@ paths:
     post:
       operationId: boostPost
       tags: [Ads]
-      summary: Boost an existing post as a paid ad
+      summary: Boost post as ad
       description: Creates a paid ad campaign from an existing published post. Creates the full platform campaign hierarchy (campaign, ad set, ad).
       security:
         - bearerAuth: []
@@ -17214,7 +17217,7 @@ paths:
     post:
       operationId: createStandaloneAd
       tags: [Ads]
-      summary: Create a standalone ad with custom creative
+      summary: Create standalone ad
       description: Creates a paid ad with custom creative (headline, body, image/video, link). Creates the full platform campaign hierarchy.
       security:
         - bearerAuth: []
@@ -17347,7 +17350,7 @@ paths:
     post:
       operationId: createAdAudience
       tags: [Ad Audiences]
-      summary: Create a custom audience (Meta only)
+      summary: Create custom audience
       description: Create a customer list, website retargeting, or lookalike audience on Meta (Facebook/Instagram).
       security:
         - bearerAuth: []
@@ -17414,7 +17417,7 @@ paths:
     delete:
       operationId: deleteAdAudience
       tags: [Ad Audiences]
-      summary: Delete a custom audience
+      summary: Delete custom audience
       description: Deletes the audience from both Meta and the local database.
       security:
         - bearerAuth: []
@@ -17438,7 +17441,7 @@ paths:
     post:
       operationId: addUsersToAdAudience
       tags: [Ad Audiences]
-      summary: Add users to a customer list audience
+      summary: Add users to audience
       description: Upload user data (emails and/or phone numbers) to a customer_list audience. Data is SHA256-hashed server-side before sending to Meta. Max 10,000 users per request.
       security:
         - bearerAuth: []

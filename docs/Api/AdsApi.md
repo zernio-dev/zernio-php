@@ -6,15 +6,15 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**boostPost()**](AdsApi.md#boostPost) | **POST** /v1/ads/boost | Boost an existing post as a paid ad |
-| [**createStandaloneAd()**](AdsApi.md#createStandaloneAd) | **POST** /v1/ads/create | Create a standalone ad with custom creative |
+| [**boostPost()**](AdsApi.md#boostPost) | **POST** /v1/ads/boost | Boost post as ad |
+| [**createStandaloneAd()**](AdsApi.md#createStandaloneAd) | **POST** /v1/ads/create | Create standalone ad |
 | [**deleteAd()**](AdsApi.md#deleteAd) | **DELETE** /v1/ads/{adId} | Cancel an ad |
 | [**getAd()**](AdsApi.md#getAd) | **GET** /v1/ads/{adId} | Get ad details |
-| [**getAdAnalytics()**](AdsApi.md#getAdAnalytics) | **GET** /v1/ads/{adId}/analytics | Get ad analytics with daily breakdown |
-| [**listAdAccounts()**](AdsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts for a social account |
+| [**getAdAnalytics()**](AdsApi.md#getAdAnalytics) | **GET** /v1/ads/{adId}/analytics | Get ad analytics |
+| [**listAdAccounts()**](AdsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAds()**](AdsApi.md#listAds) | **GET** /v1/ads | List ads |
 | [**searchAdInterests()**](AdsApi.md#searchAdInterests) | **GET** /v1/ads/interests | Search targeting interests |
-| [**updateAd()**](AdsApi.md#updateAd) | **PUT** /v1/ads/{adId} | Update ad (pause/resume, budget, targeting, name) |
+| [**updateAd()**](AdsApi.md#updateAd) | **PUT** /v1/ads/{adId} | Update ad |
 
 
 ## `boostPost()`
@@ -23,7 +23,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 boostPost($boost_post_request): \Late\Model\UpdateAd200Response
 ```
 
-Boost an existing post as a paid ad
+Boost post as ad
 
 Creates a paid ad campaign from an existing published post. Creates the full platform campaign hierarchy (campaign, ad set, ad).
 
@@ -83,7 +83,7 @@ try {
 createStandaloneAd($create_standalone_ad_request): \Late\Model\UpdateAd200Response
 ```
 
-Create a standalone ad with custom creative
+Create standalone ad
 
 Creates a paid ad with custom creative (headline, body, image/video, link). Creates the full platform campaign hierarchy.
 
@@ -261,7 +261,7 @@ try {
 getAdAnalytics($ad_id, $from_date, $to_date, $breakdowns): \Late\Model\GetAdAnalytics200Response
 ```
 
-Get ad analytics with daily breakdown
+Get ad analytics
 
 Returns detailed performance analytics for an ad. Includes summary metrics, a daily timeline over the requested date range, and optional demographic breakdowns (Meta and TikTok only). If no date range is provided, defaults to the last 90 days. Date range is capped at 90 days max.
 
@@ -327,7 +327,7 @@ try {
 listAdAccounts($account_id): \Late\Model\ListAdAccounts200Response
 ```
 
-List ad accounts for a social account
+List ad accounts
 
 Returns the platform ad accounts available for the given social account (e.g. Meta ad accounts, TikTok advertiser IDs, Google Ads customer IDs).
 
@@ -529,7 +529,7 @@ try {
 updateAd($ad_id, $update_ad_request): \Late\Model\UpdateAd200Response
 ```
 
-Update ad (pause/resume, budget, targeting, name)
+Update ad
 
 Update one or more fields on an ad. Status changes and budget updates are propagated to the platform. Targeting updates are Meta-only.
 

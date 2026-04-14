@@ -153,7 +153,7 @@ class AdsApi
     /**
      * Operation boostPost
      *
-     * Boost an existing post as a paid ad
+     * Boost post as ad
      *
      * @param  \Late\Model\BoostPostRequest $boost_post_request boost_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['boostPost'] to see the possible values for this operation
@@ -171,7 +171,7 @@ class AdsApi
     /**
      * Operation boostPostWithHttpInfo
      *
-     * Boost an existing post as a paid ad
+     * Boost post as ad
      *
      * @param  \Late\Model\BoostPostRequest $boost_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['boostPost'] to see the possible values for this operation
@@ -270,7 +270,7 @@ class AdsApi
     /**
      * Operation boostPostAsync
      *
-     * Boost an existing post as a paid ad
+     * Boost post as ad
      *
      * @param  \Late\Model\BoostPostRequest $boost_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['boostPost'] to see the possible values for this operation
@@ -291,7 +291,7 @@ class AdsApi
     /**
      * Operation boostPostAsyncWithHttpInfo
      *
-     * Boost an existing post as a paid ad
+     * Boost post as ad
      *
      * @param  \Late\Model\BoostPostRequest $boost_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['boostPost'] to see the possible values for this operation
@@ -438,7 +438,7 @@ class AdsApi
     /**
      * Operation createStandaloneAd
      *
-     * Create a standalone ad with custom creative
+     * Create standalone ad
      *
      * @param  \Late\Model\CreateStandaloneAdRequest $create_standalone_ad_request create_standalone_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
@@ -456,7 +456,7 @@ class AdsApi
     /**
      * Operation createStandaloneAdWithHttpInfo
      *
-     * Create a standalone ad with custom creative
+     * Create standalone ad
      *
      * @param  \Late\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
@@ -555,7 +555,7 @@ class AdsApi
     /**
      * Operation createStandaloneAdAsync
      *
-     * Create a standalone ad with custom creative
+     * Create standalone ad
      *
      * @param  \Late\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
@@ -576,7 +576,7 @@ class AdsApi
     /**
      * Operation createStandaloneAdAsyncWithHttpInfo
      *
-     * Create a standalone ad with custom creative
+     * Create standalone ad
      *
      * @param  \Late\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
@@ -1323,7 +1323,7 @@ class AdsApi
     /**
      * Operation getAdAnalytics
      *
-     * Get ad analytics with daily breakdown
+     * Get ad analytics
      *
      * @param  string $ad_id ad_id (required)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
@@ -1344,7 +1344,7 @@ class AdsApi
     /**
      * Operation getAdAnalyticsWithHttpInfo
      *
-     * Get ad analytics with daily breakdown
+     * Get ad analytics
      *
      * @param  string $ad_id (required)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
@@ -1460,7 +1460,7 @@ class AdsApi
     /**
      * Operation getAdAnalyticsAsync
      *
-     * Get ad analytics with daily breakdown
+     * Get ad analytics
      *
      * @param  string $ad_id (required)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
@@ -1484,7 +1484,7 @@ class AdsApi
     /**
      * Operation getAdAnalyticsAsyncWithHttpInfo
      *
-     * Get ad analytics with daily breakdown
+     * Get ad analytics
      *
      * @param  string $ad_id (required)
      * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
@@ -1668,7 +1668,7 @@ class AdsApi
     /**
      * Operation listAdAccounts
      *
-     * List ad accounts for a social account
+     * List ad accounts
      *
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
@@ -1686,7 +1686,7 @@ class AdsApi
     /**
      * Operation listAdAccountsWithHttpInfo
      *
-     * List ad accounts for a social account
+     * List ad accounts
      *
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
@@ -1785,7 +1785,7 @@ class AdsApi
     /**
      * Operation listAdAccountsAsync
      *
-     * List ad accounts for a social account
+     * List ad accounts
      *
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
@@ -1806,7 +1806,7 @@ class AdsApi
     /**
      * Operation listAdAccountsAsyncWithHttpInfo
      *
-     * List ad accounts for a social account
+     * List ad accounts
      *
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
@@ -2703,7 +2703,7 @@ class AdsApi
     /**
      * Operation updateAd
      *
-     * Update ad (pause/resume, budget, targeting, name)
+     * Update ad
      *
      * @param  string $ad_id ad_id (required)
      * @param  \Late\Model\UpdateAdRequest $update_ad_request update_ad_request (required)
@@ -2722,7 +2722,7 @@ class AdsApi
     /**
      * Operation updateAdWithHttpInfo
      *
-     * Update ad (pause/resume, budget, targeting, name)
+     * Update ad
      *
      * @param  string $ad_id (required)
      * @param  \Late\Model\UpdateAdRequest $update_ad_request (required)
@@ -2836,7 +2836,7 @@ class AdsApi
     /**
      * Operation updateAdAsync
      *
-     * Update ad (pause/resume, budget, targeting, name)
+     * Update ad
      *
      * @param  string $ad_id (required)
      * @param  \Late\Model\UpdateAdRequest $update_ad_request (required)
@@ -2858,7 +2858,7 @@ class AdsApi
     /**
      * Operation updateAdAsyncWithHttpInfo
      *
-     * Update ad (pause/resume, budget, targeting, name)
+     * Update ad
      *
      * @param  string $ad_id (required)
      * @param  \Late\Model\UpdateAdRequest $update_ad_request (required)

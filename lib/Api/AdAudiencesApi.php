@@ -141,7 +141,7 @@ class AdAudiencesApi
     /**
      * Operation addUsersToAdAudience
      *
-     * Add users to a customer list audience
+     * Add users to audience
      *
      * @param  string $audience_id audience_id (required)
      * @param  \Late\Model\AddUsersToAdAudienceRequest $add_users_to_ad_audience_request add_users_to_ad_audience_request (required)
@@ -160,7 +160,7 @@ class AdAudiencesApi
     /**
      * Operation addUsersToAdAudienceWithHttpInfo
      *
-     * Add users to a customer list audience
+     * Add users to audience
      *
      * @param  string $audience_id (required)
      * @param  \Late\Model\AddUsersToAdAudienceRequest $add_users_to_ad_audience_request (required)
@@ -274,7 +274,7 @@ class AdAudiencesApi
     /**
      * Operation addUsersToAdAudienceAsync
      *
-     * Add users to a customer list audience
+     * Add users to audience
      *
      * @param  string $audience_id (required)
      * @param  \Late\Model\AddUsersToAdAudienceRequest $add_users_to_ad_audience_request (required)
@@ -296,7 +296,7 @@ class AdAudiencesApi
     /**
      * Operation addUsersToAdAudienceAsyncWithHttpInfo
      *
-     * Add users to a customer list audience
+     * Add users to audience
      *
      * @param  string $audience_id (required)
      * @param  \Late\Model\AddUsersToAdAudienceRequest $add_users_to_ad_audience_request (required)
@@ -460,7 +460,7 @@ class AdAudiencesApi
     /**
      * Operation createAdAudience
      *
-     * Create a custom audience (Meta only)
+     * Create custom audience
      *
      * @param  \Late\Model\CreateAdAudienceRequest $create_ad_audience_request create_ad_audience_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdAudience'] to see the possible values for this operation
@@ -478,7 +478,7 @@ class AdAudiencesApi
     /**
      * Operation createAdAudienceWithHttpInfo
      *
-     * Create a custom audience (Meta only)
+     * Create custom audience
      *
      * @param  \Late\Model\CreateAdAudienceRequest $create_ad_audience_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdAudience'] to see the possible values for this operation
@@ -577,7 +577,7 @@ class AdAudiencesApi
     /**
      * Operation createAdAudienceAsync
      *
-     * Create a custom audience (Meta only)
+     * Create custom audience
      *
      * @param  \Late\Model\CreateAdAudienceRequest $create_ad_audience_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdAudience'] to see the possible values for this operation
@@ -598,7 +598,7 @@ class AdAudiencesApi
     /**
      * Operation createAdAudienceAsyncWithHttpInfo
      *
-     * Create a custom audience (Meta only)
+     * Create custom audience
      *
      * @param  \Late\Model\CreateAdAudienceRequest $create_ad_audience_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAdAudience'] to see the possible values for this operation
@@ -745,7 +745,7 @@ class AdAudiencesApi
     /**
      * Operation deleteAdAudience
      *
-     * Delete a custom audience
+     * Delete custom audience
      *
      * @param  string $audience_id audience_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdAudience'] to see the possible values for this operation
@@ -763,7 +763,7 @@ class AdAudiencesApi
     /**
      * Operation deleteAdAudienceWithHttpInfo
      *
-     * Delete a custom audience
+     * Delete custom audience
      *
      * @param  string $audience_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdAudience'] to see the possible values for this operation
@@ -876,7 +876,7 @@ class AdAudiencesApi
     /**
      * Operation deleteAdAudienceAsync
      *
-     * Delete a custom audience
+     * Delete custom audience
      *
      * @param  string $audience_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdAudience'] to see the possible values for this operation
@@ -897,7 +897,7 @@ class AdAudiencesApi
     /**
      * Operation deleteAdAudienceAsyncWithHttpInfo
      *
-     * Delete a custom audience
+     * Delete custom audience
      *
      * @param  string $audience_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdAudience'] to see the possible values for this operation

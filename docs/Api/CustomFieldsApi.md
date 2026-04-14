@@ -6,12 +6,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**clearContactFieldValue()**](CustomFieldsApi.md#clearContactFieldValue) | **DELETE** /v1/contacts/{contactId}/fields/{slug} | Clear a custom field value |
-| [**createCustomField()**](CustomFieldsApi.md#createCustomField) | **POST** /v1/custom-fields | Create a custom field definition |
-| [**deleteCustomField()**](CustomFieldsApi.md#deleteCustomField) | **DELETE** /v1/custom-fields/{fieldId} | Delete a custom field definition |
+| [**clearContactFieldValue()**](CustomFieldsApi.md#clearContactFieldValue) | **DELETE** /v1/contacts/{contactId}/fields/{slug} | Clear custom field value |
+| [**createCustomField()**](CustomFieldsApi.md#createCustomField) | **POST** /v1/custom-fields | Create custom field |
+| [**deleteCustomField()**](CustomFieldsApi.md#deleteCustomField) | **DELETE** /v1/custom-fields/{fieldId} | Delete custom field |
 | [**listCustomFields()**](CustomFieldsApi.md#listCustomFields) | **GET** /v1/custom-fields | List custom field definitions |
-| [**setContactFieldValue()**](CustomFieldsApi.md#setContactFieldValue) | **PUT** /v1/contacts/{contactId}/fields/{slug} | Set a custom field value |
-| [**updateCustomField()**](CustomFieldsApi.md#updateCustomField) | **PATCH** /v1/custom-fields/{fieldId} | Update a custom field definition |
+| [**setContactFieldValue()**](CustomFieldsApi.md#setContactFieldValue) | **PUT** /v1/contacts/{contactId}/fields/{slug} | Set custom field value |
+| [**updateCustomField()**](CustomFieldsApi.md#updateCustomField) | **PATCH** /v1/custom-fields/{fieldId} | Update custom field |
 
 
 ## `clearContactFieldValue()`
@@ -20,7 +20,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 clearContactFieldValue($contact_id, $slug)
 ```
 
-Clear a custom field value
+Clear custom field value
 
 ### Example
 
@@ -79,7 +79,7 @@ void (empty response body)
 createCustomField($create_custom_field_request): \Late\Model\CreateCustomField200Response
 ```
 
-Create a custom field definition
+Create custom field
 
 ### Example
 
@@ -137,7 +137,7 @@ try {
 deleteCustomField($field_id)
 ```
 
-Delete a custom field definition
+Delete custom field
 
 ### Example
 
@@ -252,7 +252,7 @@ try {
 setContactFieldValue($contact_id, $slug, $set_contact_field_value_request)
 ```
 
-Set a custom field value
+Set custom field value
 
 ### Example
 
@@ -313,7 +313,7 @@ void (empty response body)
 updateCustomField($field_id, $update_custom_field_request): \Late\Model\UpdateCustomField200Response
 ```
 
-Update a custom field definition
+Update custom field
 
 ### Example
 

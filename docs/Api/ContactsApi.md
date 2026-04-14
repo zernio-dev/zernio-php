@@ -7,12 +7,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**bulkCreateContacts()**](ContactsApi.md#bulkCreateContacts) | **POST** /v1/contacts/bulk | Bulk create contacts |
-| [**createContact()**](ContactsApi.md#createContact) | **POST** /v1/contacts | Create a contact |
-| [**deleteContact()**](ContactsApi.md#deleteContact) | **DELETE** /v1/contacts/{contactId} | Delete a contact |
-| [**getContact()**](ContactsApi.md#getContact) | **GET** /v1/contacts/{contactId} | Get contact with channels |
+| [**createContact()**](ContactsApi.md#createContact) | **POST** /v1/contacts | Create contact |
+| [**deleteContact()**](ContactsApi.md#deleteContact) | **DELETE** /v1/contacts/{contactId} | Delete contact |
+| [**getContact()**](ContactsApi.md#getContact) | **GET** /v1/contacts/{contactId} | Get contact |
 | [**getContactChannels()**](ContactsApi.md#getContactChannels) | **GET** /v1/contacts/{contactId}/channels | List channels for a contact |
 | [**listContacts()**](ContactsApi.md#listContacts) | **GET** /v1/contacts | List contacts |
-| [**updateContact()**](ContactsApi.md#updateContact) | **PATCH** /v1/contacts/{contactId} | Update a contact |
+| [**updateContact()**](ContactsApi.md#updateContact) | **PATCH** /v1/contacts/{contactId} | Update contact |
 
 
 ## `bulkCreateContacts()`
@@ -81,7 +81,7 @@ try {
 createContact($create_contact_request): \Late\Model\CreateContact200Response
 ```
 
-Create a contact
+Create contact
 
 Create a new contact. Optionally create a platform channel in the same request by providing accountId, platform, and platformIdentifier.
 
@@ -141,7 +141,7 @@ try {
 deleteContact($contact_id)
 ```
 
-Delete a contact
+Delete contact
 
 ### Example
 
@@ -198,7 +198,7 @@ void (empty response body)
 getContact($contact_id): \Late\Model\GetContact200Response
 ```
 
-Get contact with channels
+Get contact
 
 ### Example
 
@@ -386,7 +386,7 @@ try {
 updateContact($contact_id, $update_contact_request): \Late\Model\UpdateContact200Response
 ```
 
-Update a contact
+Update contact
 
 ### Example
 

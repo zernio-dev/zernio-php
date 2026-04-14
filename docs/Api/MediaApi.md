@@ -6,7 +6,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**getMediaPresignedUrl()**](MediaApi.md#getMediaPresignedUrl) | **POST** /v1/media/presign | Get presigned upload URL |
+| [**getMediaPresignedUrl()**](MediaApi.md#getMediaPresignedUrl) | **POST** /v1/media/presign | Get upload URL |
 
 
 ## `getMediaPresignedUrl()`
@@ -15,7 +15,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 getMediaPresignedUrl($get_media_presigned_url_request): \Late\Model\GetMediaPresignedUrl200Response
 ```
 
-Get presigned upload URL
+Get upload URL
 
 Get a presigned URL to upload files directly to cloud storage (up to 5GB). Returns an uploadUrl and publicUrl. PUT your file to the uploadUrl, then use the publicUrl in your posts.
 

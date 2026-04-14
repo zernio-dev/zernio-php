@@ -135,7 +135,7 @@ class AdCampaignsApi
     /**
      * Operation getAdTree
      *
-     * Get nested campaign/ad-set/ad tree
+     * Get campaign tree
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
@@ -162,7 +162,7 @@ class AdCampaignsApi
     /**
      * Operation getAdTreeWithHttpInfo
      *
-     * Get nested campaign/ad-set/ad tree
+     * Get campaign tree
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
@@ -270,7 +270,7 @@ class AdCampaignsApi
     /**
      * Operation getAdTreeAsync
      *
-     * Get nested campaign/ad-set/ad tree
+     * Get campaign tree
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
@@ -300,7 +300,7 @@ class AdCampaignsApi
     /**
      * Operation getAdTreeAsyncWithHttpInfo
      *
-     * Get nested campaign/ad-set/ad tree
+     * Get campaign tree
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
@@ -560,7 +560,7 @@ class AdCampaignsApi
     /**
      * Operation listAdCampaigns
      *
-     * List campaigns with aggregate metrics
+     * List campaigns
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit limit (optional, default to 20)
@@ -585,7 +585,7 @@ class AdCampaignsApi
     /**
      * Operation listAdCampaignsWithHttpInfo
      *
-     * List campaigns with aggregate metrics
+     * List campaigns
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
@@ -691,7 +691,7 @@ class AdCampaignsApi
     /**
      * Operation listAdCampaignsAsync
      *
-     * List campaigns with aggregate metrics
+     * List campaigns
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
@@ -719,7 +719,7 @@ class AdCampaignsApi
     /**
      * Operation listAdCampaignsAsyncWithHttpInfo
      *
-     * List campaigns with aggregate metrics
+     * List campaigns
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)

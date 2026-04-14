@@ -11,17 +11,17 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getContentDecay()**](AnalyticsApi.md#getContentDecay) | **GET** /v1/analytics/content-decay | Get content performance decay |
 | [**getDailyMetrics()**](AnalyticsApi.md#getDailyMetrics) | **GET** /v1/analytics/daily-metrics | Get daily aggregated metrics |
 | [**getFollowerStats()**](AnalyticsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
-| [**getGoogleBusinessPerformance()**](AnalyticsApi.md#getGoogleBusinessPerformance) | **GET** /v1/analytics/googlebusiness/performance | Get Google Business Profile performance metrics |
-| [**getGoogleBusinessSearchKeywords()**](AnalyticsApi.md#getGoogleBusinessSearchKeywords) | **GET** /v1/analytics/googlebusiness/search-keywords | Get Google Business Profile search keywords |
-| [**getInstagramAccountInsights()**](AnalyticsApi.md#getInstagramAccountInsights) | **GET** /v1/analytics/instagram/account-insights | Get Instagram account-level insights |
-| [**getInstagramDemographics()**](AnalyticsApi.md#getInstagramDemographics) | **GET** /v1/analytics/instagram/demographics | Get Instagram audience demographics |
+| [**getGoogleBusinessPerformance()**](AnalyticsApi.md#getGoogleBusinessPerformance) | **GET** /v1/analytics/googlebusiness/performance | Get GBP performance metrics |
+| [**getGoogleBusinessSearchKeywords()**](AnalyticsApi.md#getGoogleBusinessSearchKeywords) | **GET** /v1/analytics/googlebusiness/search-keywords | Get GBP search keywords |
+| [**getInstagramAccountInsights()**](AnalyticsApi.md#getInstagramAccountInsights) | **GET** /v1/analytics/instagram/account-insights | Get Instagram insights |
+| [**getInstagramDemographics()**](AnalyticsApi.md#getInstagramDemographics) | **GET** /v1/analytics/instagram/demographics | Get Instagram demographics |
 | [**getLinkedInAggregateAnalytics()**](AnalyticsApi.md#getLinkedInAggregateAnalytics) | **GET** /v1/accounts/{accountId}/linkedin-aggregate-analytics | Get LinkedIn aggregate stats |
 | [**getLinkedInPostAnalytics()**](AnalyticsApi.md#getLinkedInPostAnalytics) | **GET** /v1/accounts/{accountId}/linkedin-post-analytics | Get LinkedIn post stats |
 | [**getLinkedInPostReactions()**](AnalyticsApi.md#getLinkedInPostReactions) | **GET** /v1/accounts/{accountId}/linkedin-post-reactions | Get LinkedIn post reactions |
 | [**getPostTimeline()**](AnalyticsApi.md#getPostTimeline) | **GET** /v1/analytics/post-timeline | Get post analytics timeline |
-| [**getPostingFrequency()**](AnalyticsApi.md#getPostingFrequency) | **GET** /v1/analytics/posting-frequency | Get posting frequency vs engagement |
+| [**getPostingFrequency()**](AnalyticsApi.md#getPostingFrequency) | **GET** /v1/analytics/posting-frequency | Get frequency vs engagement |
 | [**getYouTubeDailyViews()**](AnalyticsApi.md#getYouTubeDailyViews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views |
-| [**getYouTubeDemographics()**](AnalyticsApi.md#getYouTubeDemographics) | **GET** /v1/analytics/youtube/demographics | Get YouTube audience demographics |
+| [**getYouTubeDemographics()**](AnalyticsApi.md#getYouTubeDemographics) | **GET** /v1/analytics/youtube/demographics | Get YouTube demographics |
 
 
 ## `getAnalytics()`
@@ -376,7 +376,7 @@ try {
 getGoogleBusinessPerformance($account_id, $metrics, $start_date, $end_date): \Late\Model\GetGoogleBusinessPerformance200Response
 ```
 
-Get Google Business Profile performance metrics
+Get GBP performance metrics
 
 Returns daily performance metrics for a Google Business Profile location. Metrics include impressions (Maps/Search, desktop/mobile), website clicks, call clicks, direction requests, conversations, bookings, and food orders. Data may be delayed 2-3 days. Max 18 months of historical data. Requires the Analytics add-on.
 
@@ -442,7 +442,7 @@ try {
 getGoogleBusinessSearchKeywords($account_id, $start_month, $end_month): \Late\Model\GetGoogleBusinessSearchKeywords200Response
 ```
 
-Get Google Business Profile search keywords
+Get GBP search keywords
 
 Returns search keywords that triggered impressions for a Google Business Profile location. Data is aggregated monthly. Keywords below a minimum impression threshold set by Google are excluded. Max 18 months of historical data. Requires the Analytics add-on.
 
@@ -506,7 +506,7 @@ try {
 getInstagramAccountInsights($account_id, $metrics, $since, $until, $metric_type, $breakdown): \Late\Model\InstagramAccountInsightsResponse
 ```
 
-Get Instagram account-level insights
+Get Instagram insights
 
 Returns account-level Instagram insights such as reach, views, accounts engaged, and total interactions. These metrics reflect the entire account's performance across all content surfaces (feed, stories, explore, profile), and are fundamentally different from post-level metrics. Data may be delayed up to 48 hours. Max 90 days, defaults to last 30 days. Requires the Analytics add-on.
 
@@ -576,7 +576,7 @@ try {
 getInstagramDemographics($account_id, $metric, $breakdown, $timeframe): \Late\Model\InstagramDemographicsResponse
 ```
 
-Get Instagram audience demographics
+Get Instagram demographics
 
 Returns audience demographic insights for an Instagram account, broken down by age, city, country, and/or gender. Requires at least 100 followers. Returns top 45 entries per dimension. Data may be delayed up to 48 hours. Requires the Analytics add-on.
 
@@ -902,7 +902,7 @@ try {
 getPostingFrequency($platform, $profile_id, $source): \Late\Model\GetPostingFrequency200Response
 ```
 
-Get posting frequency vs engagement
+Get frequency vs engagement
 
 Returns the correlation between posting frequency (posts per week) and engagement rate, broken down by platform. Helps find the optimal posting cadence for each platform. Each row represents a specific (platform, posts_per_week) combination with the average engagement rate observed across all weeks matching that frequency. Requires the Analytics add-on.
 
@@ -1032,7 +1032,7 @@ try {
 getYouTubeDemographics($account_id, $breakdown, $start_date, $end_date): \Late\Model\YouTubeDemographicsResponse
 ```
 
-Get YouTube audience demographics
+Get YouTube demographics
 
 Returns audience demographic insights for a YouTube channel, broken down by age, gender, and/or country. Age and gender values are viewer percentages (0-100). Country values are view counts. Data is based on signed-in viewers only, with a 2-3 day delay. Requires the Analytics add-on.
 

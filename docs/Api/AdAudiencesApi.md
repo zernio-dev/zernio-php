@@ -6,9 +6,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**addUsersToAdAudience()**](AdAudiencesApi.md#addUsersToAdAudience) | **POST** /v1/ads/audiences/{audienceId}/users | Add users to a customer list audience |
-| [**createAdAudience()**](AdAudiencesApi.md#createAdAudience) | **POST** /v1/ads/audiences | Create a custom audience (Meta only) |
-| [**deleteAdAudience()**](AdAudiencesApi.md#deleteAdAudience) | **DELETE** /v1/ads/audiences/{audienceId} | Delete a custom audience |
+| [**addUsersToAdAudience()**](AdAudiencesApi.md#addUsersToAdAudience) | **POST** /v1/ads/audiences/{audienceId}/users | Add users to audience |
+| [**createAdAudience()**](AdAudiencesApi.md#createAdAudience) | **POST** /v1/ads/audiences | Create custom audience |
+| [**deleteAdAudience()**](AdAudiencesApi.md#deleteAdAudience) | **DELETE** /v1/ads/audiences/{audienceId} | Delete custom audience |
 | [**getAdAudience()**](AdAudiencesApi.md#getAdAudience) | **GET** /v1/ads/audiences/{audienceId} | Get audience details |
 | [**listAdAudiences()**](AdAudiencesApi.md#listAdAudiences) | **GET** /v1/ads/audiences | List custom audiences |
 
@@ -19,7 +19,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 addUsersToAdAudience($audience_id, $add_users_to_ad_audience_request): \Late\Model\AddUsersToAdAudience200Response
 ```
 
-Add users to a customer list audience
+Add users to audience
 
 Upload user data (emails and/or phone numbers) to a customer_list audience. Data is SHA256-hashed server-side before sending to Meta. Max 10,000 users per request.
 
@@ -81,7 +81,7 @@ try {
 createAdAudience($create_ad_audience_request): \Late\Model\CreateAdAudience201Response
 ```
 
-Create a custom audience (Meta only)
+Create custom audience
 
 Create a customer list, website retargeting, or lookalike audience on Meta (Facebook/Instagram).
 
@@ -141,7 +141,7 @@ try {
 deleteAdAudience($audience_id): \Late\Model\DeleteAccountGroup200Response
 ```
 
-Delete a custom audience
+Delete custom audience
 
 Deletes the audience from both Meta and the local database.
 

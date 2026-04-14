@@ -63,6 +63,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'profile_id' => '\Late\Model\SocialAccountProfileId',
         'username' => 'string',
         'display_name' => 'string',
+        'profile_picture' => 'string',
         'profile_url' => 'string',
         'is_active' => 'bool',
         'followers_count' => 'float',
@@ -70,7 +71,6 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'parent_account_id' => 'string',
         'enabled' => 'bool',
         'metadata' => 'object',
-        'profile_picture' => 'string',
         'current_followers' => 'float',
         'last_updated' => '\DateTime',
         'growth' => 'float',
@@ -92,6 +92,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'profile_id' => null,
         'username' => null,
         'display_name' => null,
+        'profile_picture' => null,
         'profile_url' => null,
         'is_active' => null,
         'followers_count' => null,
@@ -99,7 +100,6 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'parent_account_id' => null,
         'enabled' => null,
         'metadata' => null,
-        'profile_picture' => null,
         'current_followers' => null,
         'last_updated' => 'date-time',
         'growth' => null,
@@ -119,6 +119,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'profile_id' => false,
         'username' => false,
         'display_name' => false,
+        'profile_picture' => false,
         'profile_url' => false,
         'is_active' => false,
         'followers_count' => false,
@@ -126,7 +127,6 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'parent_account_id' => false,
         'enabled' => false,
         'metadata' => false,
-        'profile_picture' => false,
         'current_followers' => false,
         'last_updated' => false,
         'growth' => false,
@@ -226,6 +226,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'profile_id' => 'profileId',
         'username' => 'username',
         'display_name' => 'displayName',
+        'profile_picture' => 'profilePicture',
         'profile_url' => 'profileUrl',
         'is_active' => 'isActive',
         'followers_count' => 'followersCount',
@@ -233,7 +234,6 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'parent_account_id' => 'parentAccountId',
         'enabled' => 'enabled',
         'metadata' => 'metadata',
-        'profile_picture' => 'profilePicture',
         'current_followers' => 'currentFollowers',
         'last_updated' => 'lastUpdated',
         'growth' => 'growth',
@@ -253,6 +253,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'profile_id' => 'setProfileId',
         'username' => 'setUsername',
         'display_name' => 'setDisplayName',
+        'profile_picture' => 'setProfilePicture',
         'profile_url' => 'setProfileUrl',
         'is_active' => 'setIsActive',
         'followers_count' => 'setFollowersCount',
@@ -260,7 +261,6 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'parent_account_id' => 'setParentAccountId',
         'enabled' => 'setEnabled',
         'metadata' => 'setMetadata',
-        'profile_picture' => 'setProfilePicture',
         'current_followers' => 'setCurrentFollowers',
         'last_updated' => 'setLastUpdated',
         'growth' => 'setGrowth',
@@ -280,6 +280,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'profile_id' => 'getProfileId',
         'username' => 'getUsername',
         'display_name' => 'getDisplayName',
+        'profile_picture' => 'getProfilePicture',
         'profile_url' => 'getProfileUrl',
         'is_active' => 'getIsActive',
         'followers_count' => 'getFollowersCount',
@@ -287,7 +288,6 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'parent_account_id' => 'getParentAccountId',
         'enabled' => 'getEnabled',
         'metadata' => 'getMetadata',
-        'profile_picture' => 'getProfilePicture',
         'current_followers' => 'getCurrentFollowers',
         'last_updated' => 'getLastUpdated',
         'growth' => 'getGrowth',
@@ -411,6 +411,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('profile_picture', $data ?? [], null);
         $this->setIfExists('profile_url', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
         $this->setIfExists('followers_count', $data ?? [], null);
@@ -418,7 +419,6 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('parent_account_id', $data ?? [], null);
         $this->setIfExists('enabled', $data ?? [], null);
         $this->setIfExists('metadata', $data ?? [], null);
-        $this->setIfExists('profile_picture', $data ?? [], null);
         $this->setIfExists('current_followers', $data ?? [], null);
         $this->setIfExists('last_updated', $data ?? [], null);
         $this->setIfExists('growth', $data ?? [], null);
@@ -624,6 +624,33 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
+     * Gets profile_picture
+     *
+     * @return string|null
+     */
+    public function getProfilePicture()
+    {
+        return $this->container['profile_picture'];
+    }
+
+    /**
+     * Sets profile_picture
+     *
+     * @param string|null $profile_picture URL to the account's profile picture on the platform. May be null if the platform does not provide one.
+     *
+     * @return self
+     */
+    public function setProfilePicture($profile_picture)
+    {
+        if (is_null($profile_picture)) {
+            throw new \InvalidArgumentException('non-nullable profile_picture cannot be null');
+        }
+        $this->container['profile_picture'] = $profile_picture;
+
+        return $this;
+    }
+
+    /**
      * Gets profile_url
      *
      * @return string|null
@@ -808,33 +835,6 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable metadata cannot be null');
         }
         $this->container['metadata'] = $metadata;
-
-        return $this;
-    }
-
-    /**
-     * Gets profile_picture
-     *
-     * @return string|null
-     */
-    public function getProfilePicture()
-    {
-        return $this->container['profile_picture'];
-    }
-
-    /**
-     * Sets profile_picture
-     *
-     * @param string|null $profile_picture profile_picture
-     *
-     * @return self
-     */
-    public function setProfilePicture($profile_picture)
-    {
-        if (is_null($profile_picture)) {
-            throw new \InvalidArgumentException('non-nullable profile_picture cannot be null');
-        }
-        $this->container['profile_picture'] = $profile_picture;
 
         return $this;
     }

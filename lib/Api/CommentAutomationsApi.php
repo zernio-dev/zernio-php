@@ -144,7 +144,7 @@ class CommentAutomationsApi
     /**
      * Operation createCommentAutomation
      *
-     * Create a comment-to-DM automation
+     * Create comment-to-DM automation
      *
      * @param  \Late\Model\CreateCommentAutomationRequest $create_comment_automation_request create_comment_automation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCommentAutomation'] to see the possible values for this operation
@@ -162,7 +162,7 @@ class CommentAutomationsApi
     /**
      * Operation createCommentAutomationWithHttpInfo
      *
-     * Create a comment-to-DM automation
+     * Create comment-to-DM automation
      *
      * @param  \Late\Model\CreateCommentAutomationRequest $create_comment_automation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCommentAutomation'] to see the possible values for this operation
@@ -261,7 +261,7 @@ class CommentAutomationsApi
     /**
      * Operation createCommentAutomationAsync
      *
-     * Create a comment-to-DM automation
+     * Create comment-to-DM automation
      *
      * @param  \Late\Model\CreateCommentAutomationRequest $create_comment_automation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCommentAutomation'] to see the possible values for this operation
@@ -282,7 +282,7 @@ class CommentAutomationsApi
     /**
      * Operation createCommentAutomationAsyncWithHttpInfo
      *
-     * Create a comment-to-DM automation
+     * Create comment-to-DM automation
      *
      * @param  \Late\Model\CreateCommentAutomationRequest $create_comment_automation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCommentAutomation'] to see the possible values for this operation
@@ -429,7 +429,7 @@ class CommentAutomationsApi
     /**
      * Operation deleteCommentAutomation
      *
-     * Delete automation and all logs
+     * Delete automation
      *
      * @param  string $automation_id automation_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCommentAutomation'] to see the possible values for this operation
@@ -446,7 +446,7 @@ class CommentAutomationsApi
     /**
      * Operation deleteCommentAutomationWithHttpInfo
      *
-     * Delete automation and all logs
+     * Delete automation
      *
      * @param  string $automation_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCommentAutomation'] to see the possible values for this operation
@@ -511,7 +511,7 @@ class CommentAutomationsApi
     /**
      * Operation deleteCommentAutomationAsync
      *
-     * Delete automation and all logs
+     * Delete automation
      *
      * @param  string $automation_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCommentAutomation'] to see the possible values for this operation
@@ -532,7 +532,7 @@ class CommentAutomationsApi
     /**
      * Operation deleteCommentAutomationAsyncWithHttpInfo
      *
-     * Delete automation and all logs
+     * Delete automation
      *
      * @param  string $automation_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCommentAutomation'] to see the possible values for this operation
@@ -667,7 +667,7 @@ class CommentAutomationsApi
     /**
      * Operation getCommentAutomation
      *
-     * Get automation details with recent logs
+     * Get automation details
      *
      * @param  string $automation_id automation_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentAutomation'] to see the possible values for this operation
@@ -685,7 +685,7 @@ class CommentAutomationsApi
     /**
      * Operation getCommentAutomationWithHttpInfo
      *
-     * Get automation details with recent logs
+     * Get automation details
      *
      * @param  string $automation_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentAutomation'] to see the possible values for this operation
@@ -798,7 +798,7 @@ class CommentAutomationsApi
     /**
      * Operation getCommentAutomationAsync
      *
-     * Get automation details with recent logs
+     * Get automation details
      *
      * @param  string $automation_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentAutomation'] to see the possible values for this operation
@@ -819,7 +819,7 @@ class CommentAutomationsApi
     /**
      * Operation getCommentAutomationAsyncWithHttpInfo
      *
-     * Get automation details with recent logs
+     * Get automation details
      *
      * @param  string $automation_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentAutomation'] to see the possible values for this operation
@@ -967,7 +967,7 @@ class CommentAutomationsApi
     /**
      * Operation listCommentAutomationLogs
      *
-     * List trigger logs for an automation
+     * List automation logs
      *
      * @param  string $automation_id automation_id (required)
      * @param  string|null $status Filter by result status (optional)
@@ -988,7 +988,7 @@ class CommentAutomationsApi
     /**
      * Operation listCommentAutomationLogsWithHttpInfo
      *
-     * List trigger logs for an automation
+     * List automation logs
      *
      * @param  string $automation_id (required)
      * @param  string|null $status Filter by result status (optional)
@@ -1104,7 +1104,7 @@ class CommentAutomationsApi
     /**
      * Operation listCommentAutomationLogsAsync
      *
-     * List trigger logs for an automation
+     * List automation logs
      *
      * @param  string $automation_id (required)
      * @param  string|null $status Filter by result status (optional)
@@ -1128,7 +1128,7 @@ class CommentAutomationsApi
     /**
      * Operation listCommentAutomationLogsAsyncWithHttpInfo
      *
-     * List trigger logs for an automation
+     * List automation logs
      *
      * @param  string $automation_id (required)
      * @param  string|null $status Filter by result status (optional)

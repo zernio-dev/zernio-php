@@ -2647,7 +2647,7 @@ class WhatsAppApi
     /**
      * Operation getWhatsAppDisplayName
      *
-     * Get display name and review status
+     * Get display name status
      *
      * @param  string $account_id WhatsApp social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
@@ -2665,7 +2665,7 @@ class WhatsAppApi
     /**
      * Operation getWhatsAppDisplayNameWithHttpInfo
      *
-     * Get display name and review status
+     * Get display name status
      *
      * @param  string $account_id WhatsApp social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
@@ -2764,7 +2764,7 @@ class WhatsAppApi
     /**
      * Operation getWhatsAppDisplayNameAsync
      *
-     * Get display name and review status
+     * Get display name status
      *
      * @param  string $account_id WhatsApp social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation
@@ -2785,7 +2785,7 @@ class WhatsAppApi
     /**
      * Operation getWhatsAppDisplayNameAsyncWithHttpInfo
      *
-     * Get display name and review status
+     * Get display name status
      *
      * @param  string $account_id WhatsApp social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDisplayName'] to see the possible values for this operation

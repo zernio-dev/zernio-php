@@ -6,16 +6,16 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**activateSequence()**](SequencesApi.md#activateSequence) | **POST** /v1/sequences/{sequenceId}/activate | Activate a sequence |
-| [**createSequence()**](SequencesApi.md#createSequence) | **POST** /v1/sequences | Create a sequence |
-| [**deleteSequence()**](SequencesApi.md#deleteSequence) | **DELETE** /v1/sequences/{sequenceId} | Delete a sequence |
+| [**activateSequence()**](SequencesApi.md#activateSequence) | **POST** /v1/sequences/{sequenceId}/activate | Activate sequence |
+| [**createSequence()**](SequencesApi.md#createSequence) | **POST** /v1/sequences | Create sequence |
+| [**deleteSequence()**](SequencesApi.md#deleteSequence) | **DELETE** /v1/sequences/{sequenceId} | Delete sequence |
 | [**enrollContacts()**](SequencesApi.md#enrollContacts) | **POST** /v1/sequences/{sequenceId}/enroll | Enroll contacts in a sequence |
 | [**getSequence()**](SequencesApi.md#getSequence) | **GET** /v1/sequences/{sequenceId} | Get sequence with steps |
 | [**listSequenceEnrollments()**](SequencesApi.md#listSequenceEnrollments) | **GET** /v1/sequences/{sequenceId}/enrollments | List enrollments for a sequence |
 | [**listSequences()**](SequencesApi.md#listSequences) | **GET** /v1/sequences | List sequences |
-| [**pauseSequence()**](SequencesApi.md#pauseSequence) | **POST** /v1/sequences/{sequenceId}/pause | Pause a sequence |
-| [**unenrollContact()**](SequencesApi.md#unenrollContact) | **DELETE** /v1/sequences/{sequenceId}/enroll/{contactId} | Unenroll a contact from a sequence |
-| [**updateSequence()**](SequencesApi.md#updateSequence) | **PATCH** /v1/sequences/{sequenceId} | Update a sequence |
+| [**pauseSequence()**](SequencesApi.md#pauseSequence) | **POST** /v1/sequences/{sequenceId}/pause | Pause sequence |
+| [**unenrollContact()**](SequencesApi.md#unenrollContact) | **DELETE** /v1/sequences/{sequenceId}/enroll/{contactId} | Unenroll contact |
+| [**updateSequence()**](SequencesApi.md#updateSequence) | **PATCH** /v1/sequences/{sequenceId} | Update sequence |
 
 
 ## `activateSequence()`
@@ -24,7 +24,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 activateSequence($sequence_id): \Late\Model\ActivateSequence200Response
 ```
 
-Activate a sequence
+Activate sequence
 
 ### Example
 
@@ -82,7 +82,7 @@ try {
 createSequence($create_sequence_request): \Late\Model\CreateSequence200Response
 ```
 
-Create a sequence
+Create sequence
 
 ### Example
 
@@ -140,7 +140,7 @@ try {
 deleteSequence($sequence_id)
 ```
 
-Delete a sequence
+Delete sequence
 
 ### Example
 
@@ -443,7 +443,7 @@ try {
 pauseSequence($sequence_id): \Late\Model\ActivateSequence200Response
 ```
 
-Pause a sequence
+Pause sequence
 
 ### Example
 
@@ -501,7 +501,7 @@ try {
 unenrollContact($sequence_id, $contact_id)
 ```
 
-Unenroll a contact from a sequence
+Unenroll contact
 
 ### Example
 
@@ -560,7 +560,7 @@ void (empty response body)
 updateSequence($sequence_id): \Late\Model\UpdateSequence200Response
 ```
 
-Update a sequence
+Update sequence
 
 ### Example
 

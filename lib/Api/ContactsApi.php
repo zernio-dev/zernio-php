@@ -432,7 +432,7 @@ class ContactsApi
     /**
      * Operation createContact
      *
-     * Create a contact
+     * Create contact
      *
      * @param  \Late\Model\CreateContactRequest $create_contact_request create_contact_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
@@ -450,7 +450,7 @@ class ContactsApi
     /**
      * Operation createContactWithHttpInfo
      *
-     * Create a contact
+     * Create contact
      *
      * @param  \Late\Model\CreateContactRequest $create_contact_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
@@ -549,7 +549,7 @@ class ContactsApi
     /**
      * Operation createContactAsync
      *
-     * Create a contact
+     * Create contact
      *
      * @param  \Late\Model\CreateContactRequest $create_contact_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
@@ -570,7 +570,7 @@ class ContactsApi
     /**
      * Operation createContactAsyncWithHttpInfo
      *
-     * Create a contact
+     * Create contact
      *
      * @param  \Late\Model\CreateContactRequest $create_contact_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
@@ -717,7 +717,7 @@ class ContactsApi
     /**
      * Operation deleteContact
      *
-     * Delete a contact
+     * Delete contact
      *
      * @param  string $contact_id contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContact'] to see the possible values for this operation
@@ -734,7 +734,7 @@ class ContactsApi
     /**
      * Operation deleteContactWithHttpInfo
      *
-     * Delete a contact
+     * Delete contact
      *
      * @param  string $contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContact'] to see the possible values for this operation
@@ -799,7 +799,7 @@ class ContactsApi
     /**
      * Operation deleteContactAsync
      *
-     * Delete a contact
+     * Delete contact
      *
      * @param  string $contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContact'] to see the possible values for this operation
@@ -820,7 +820,7 @@ class ContactsApi
     /**
      * Operation deleteContactAsyncWithHttpInfo
      *
-     * Delete a contact
+     * Delete contact
      *
      * @param  string $contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContact'] to see the possible values for this operation
@@ -955,7 +955,7 @@ class ContactsApi
     /**
      * Operation getContact
      *
-     * Get contact with channels
+     * Get contact
      *
      * @param  string $contact_id contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
@@ -973,7 +973,7 @@ class ContactsApi
     /**
      * Operation getContactWithHttpInfo
      *
-     * Get contact with channels
+     * Get contact
      *
      * @param  string $contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
@@ -1086,7 +1086,7 @@ class ContactsApi
     /**
      * Operation getContactAsync
      *
-     * Get contact with channels
+     * Get contact
      *
      * @param  string $contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
@@ -1107,7 +1107,7 @@ class ContactsApi
     /**
      * Operation getContactAsyncWithHttpInfo
      *
-     * Get contact with channels
+     * Get contact
      *
      * @param  string $contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
@@ -1929,7 +1929,7 @@ class ContactsApi
     /**
      * Operation updateContact
      *
-     * Update a contact
+     * Update contact
      *
      * @param  string $contact_id contact_id (required)
      * @param  \Late\Model\UpdateContactRequest|null $update_contact_request update_contact_request (optional)
@@ -1948,7 +1948,7 @@ class ContactsApi
     /**
      * Operation updateContactWithHttpInfo
      *
-     * Update a contact
+     * Update contact
      *
      * @param  string $contact_id (required)
      * @param  \Late\Model\UpdateContactRequest|null $update_contact_request (optional)
@@ -2062,7 +2062,7 @@ class ContactsApi
     /**
      * Operation updateContactAsync
      *
-     * Update a contact
+     * Update contact
      *
      * @param  string $contact_id (required)
      * @param  \Late\Model\UpdateContactRequest|null $update_contact_request (optional)
@@ -2084,7 +2084,7 @@ class ContactsApi
     /**
      * Operation updateContactAsyncWithHttpInfo
      *
-     * Update a contact
+     * Update contact
      *
      * @param  string $contact_id (required)
      * @param  \Late\Model\UpdateContactRequest|null $update_contact_request (optional)

@@ -63,6 +63,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         'profile_id' => '\Late\Model\SocialAccountProfileId',
         'username' => 'string',
         'display_name' => 'string',
+        'profile_picture' => 'string',
         'profile_url' => 'string',
         'is_active' => 'bool',
         'followers_count' => 'float',
@@ -85,6 +86,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         'profile_id' => null,
         'username' => null,
         'display_name' => null,
+        'profile_picture' => null,
         'profile_url' => null,
         'is_active' => null,
         'followers_count' => null,
@@ -105,6 +107,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         'profile_id' => false,
         'username' => false,
         'display_name' => false,
+        'profile_picture' => false,
         'profile_url' => false,
         'is_active' => false,
         'followers_count' => false,
@@ -205,6 +208,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         'profile_id' => 'profileId',
         'username' => 'username',
         'display_name' => 'displayName',
+        'profile_picture' => 'profilePicture',
         'profile_url' => 'profileUrl',
         'is_active' => 'isActive',
         'followers_count' => 'followersCount',
@@ -225,6 +229,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         'profile_id' => 'setProfileId',
         'username' => 'setUsername',
         'display_name' => 'setDisplayName',
+        'profile_picture' => 'setProfilePicture',
         'profile_url' => 'setProfileUrl',
         'is_active' => 'setIsActive',
         'followers_count' => 'setFollowersCount',
@@ -245,6 +250,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         'profile_id' => 'getProfileId',
         'username' => 'getUsername',
         'display_name' => 'getDisplayName',
+        'profile_picture' => 'getProfilePicture',
         'profile_url' => 'getProfileUrl',
         'is_active' => 'getIsActive',
         'followers_count' => 'getFollowersCount',
@@ -369,6 +375,7 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('profile_picture', $data ?? [], null);
         $this->setIfExists('profile_url', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
         $this->setIfExists('followers_count', $data ?? [], null);
@@ -570,6 +577,33 @@ class PlatformTargetAccountId implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
         $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_picture
+     *
+     * @return string|null
+     */
+    public function getProfilePicture()
+    {
+        return $this->container['profile_picture'];
+    }
+
+    /**
+     * Sets profile_picture
+     *
+     * @param string|null $profile_picture URL to the account's profile picture on the platform. May be null if the platform does not provide one.
+     *
+     * @return self
+     */
+    public function setProfilePicture($profile_picture)
+    {
+        if (is_null($profile_picture)) {
+            throw new \InvalidArgumentException('non-nullable profile_picture cannot be null');
+        }
+        $this->container['profile_picture'] = $profile_picture;
 
         return $this;
     }

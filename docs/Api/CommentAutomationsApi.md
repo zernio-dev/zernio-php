@@ -6,10 +6,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**createCommentAutomation()**](CommentAutomationsApi.md#createCommentAutomation) | **POST** /v1/comment-automations | Create a comment-to-DM automation |
-| [**deleteCommentAutomation()**](CommentAutomationsApi.md#deleteCommentAutomation) | **DELETE** /v1/comment-automations/{automationId} | Delete automation and all logs |
-| [**getCommentAutomation()**](CommentAutomationsApi.md#getCommentAutomation) | **GET** /v1/comment-automations/{automationId} | Get automation details with recent logs |
-| [**listCommentAutomationLogs()**](CommentAutomationsApi.md#listCommentAutomationLogs) | **GET** /v1/comment-automations/{automationId}/logs | List trigger logs for an automation |
+| [**createCommentAutomation()**](CommentAutomationsApi.md#createCommentAutomation) | **POST** /v1/comment-automations | Create comment-to-DM automation |
+| [**deleteCommentAutomation()**](CommentAutomationsApi.md#deleteCommentAutomation) | **DELETE** /v1/comment-automations/{automationId} | Delete automation |
+| [**getCommentAutomation()**](CommentAutomationsApi.md#getCommentAutomation) | **GET** /v1/comment-automations/{automationId} | Get automation details |
+| [**listCommentAutomationLogs()**](CommentAutomationsApi.md#listCommentAutomationLogs) | **GET** /v1/comment-automations/{automationId}/logs | List automation logs |
 | [**listCommentAutomations()**](CommentAutomationsApi.md#listCommentAutomations) | **GET** /v1/comment-automations | List comment-to-DM automations |
 | [**updateCommentAutomation()**](CommentAutomationsApi.md#updateCommentAutomation) | **PATCH** /v1/comment-automations/{automationId} | Update automation settings |
 
@@ -20,7 +20,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 createCommentAutomation($create_comment_automation_request): \Late\Model\CreateCommentAutomation200Response
 ```
 
-Create a comment-to-DM automation
+Create comment-to-DM automation
 
 Create a keyword-triggered DM automation on an Instagram or Facebook post. When someone comments a matching keyword, they automatically receive a DM. Only one active automation per post is allowed.
 
@@ -80,7 +80,7 @@ try {
 deleteCommentAutomation($automation_id)
 ```
 
-Delete automation and all logs
+Delete automation
 
 ### Example
 
@@ -137,7 +137,7 @@ void (empty response body)
 getCommentAutomation($automation_id): \Late\Model\GetCommentAutomation200Response
 ```
 
-Get automation details with recent logs
+Get automation details
 
 ### Example
 
@@ -195,7 +195,7 @@ try {
 listCommentAutomationLogs($automation_id, $status, $limit, $skip): \Late\Model\ListCommentAutomationLogs200Response
 ```
 
-List trigger logs for an automation
+List automation logs
 
 Paginated list of every comment that triggered this automation, with send status and commenter info.
 

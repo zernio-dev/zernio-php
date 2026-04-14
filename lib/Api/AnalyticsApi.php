@@ -2073,7 +2073,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessPerformance
      *
-     * Get Google Business Profile performance metrics
+     * Get GBP performance metrics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
@@ -2094,7 +2094,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessPerformanceWithHttpInfo
      *
-     * Get Google Business Profile performance metrics
+     * Get GBP performance metrics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
@@ -2238,7 +2238,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessPerformanceAsync
      *
-     * Get Google Business Profile performance metrics
+     * Get GBP performance metrics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
@@ -2262,7 +2262,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessPerformanceAsyncWithHttpInfo
      *
-     * Get Google Business Profile performance metrics
+     * Get GBP performance metrics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $metrics Comma-separated metric names. Defaults to all available metrics. Valid values: BUSINESS_IMPRESSIONS_DESKTOP_MAPS, BUSINESS_IMPRESSIONS_DESKTOP_SEARCH, BUSINESS_IMPRESSIONS_MOBILE_MAPS, BUSINESS_IMPRESSIONS_MOBILE_SEARCH, BUSINESS_CONVERSATIONS, BUSINESS_DIRECTION_REQUESTS, CALL_CLICKS, WEBSITE_CLICKS, BUSINESS_BOOKINGS, BUSINESS_FOOD_ORDERS, BUSINESS_FOOD_MENU_CLICKS (optional)
@@ -2447,7 +2447,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessSearchKeywords
      *
-     * Get Google Business Profile search keywords
+     * Get GBP search keywords
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
@@ -2467,7 +2467,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessSearchKeywordsWithHttpInfo
      *
-     * Get Google Business Profile search keywords
+     * Get GBP search keywords
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
@@ -2610,7 +2610,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessSearchKeywordsAsync
      *
-     * Get Google Business Profile search keywords
+     * Get GBP search keywords
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
@@ -2633,7 +2633,7 @@ class AnalyticsApi
     /**
      * Operation getGoogleBusinessSearchKeywordsAsyncWithHttpInfo
      *
-     * Get Google Business Profile search keywords
+     * Get GBP search keywords
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Google Business Profile account. (required)
      * @param  string|null $start_month Start month (YYYY-MM). Defaults to 3 months ago. (optional)
@@ -2812,7 +2812,7 @@ class AnalyticsApi
     /**
      * Operation getInstagramAccountInsights
      *
-     * Get Instagram account-level insights
+     * Get Instagram insights
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
      * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
@@ -2835,7 +2835,7 @@ class AnalyticsApi
     /**
      * Operation getInstagramAccountInsightsWithHttpInfo
      *
-     * Get Instagram account-level insights
+     * Get Instagram insights
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
      * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
@@ -2995,7 +2995,7 @@ class AnalyticsApi
     /**
      * Operation getInstagramAccountInsightsAsync
      *
-     * Get Instagram account-level insights
+     * Get Instagram insights
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
      * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
@@ -3021,7 +3021,7 @@ class AnalyticsApi
     /**
      * Operation getInstagramAccountInsightsAsyncWithHttpInfo
      *
-     * Get Instagram account-level insights
+     * Get Instagram insights
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
      * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
@@ -3230,7 +3230,7 @@ class AnalyticsApi
     /**
      * Operation getInstagramDemographics
      *
-     * Get Instagram audience demographics
+     * Get Instagram demographics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
      * @param  string|null $metric \&quot;follower_demographics\&quot; for follower audience data, or \&quot;engaged_audience_demographics\&quot; for engaged viewers. (optional, default to 'follower_demographics')
@@ -3251,7 +3251,7 @@ class AnalyticsApi
     /**
      * Operation getInstagramDemographicsWithHttpInfo
      *
-     * Get Instagram audience demographics
+     * Get Instagram demographics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
      * @param  string|null $metric \&quot;follower_demographics\&quot; for follower audience data, or \&quot;engaged_audience_demographics\&quot; for engaged viewers. (optional, default to 'follower_demographics')
@@ -3409,7 +3409,7 @@ class AnalyticsApi
     /**
      * Operation getInstagramDemographicsAsync
      *
-     * Get Instagram audience demographics
+     * Get Instagram demographics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
      * @param  string|null $metric \&quot;follower_demographics\&quot; for follower audience data, or \&quot;engaged_audience_demographics\&quot; for engaged viewers. (optional, default to 'follower_demographics')
@@ -3433,7 +3433,7 @@ class AnalyticsApi
     /**
      * Operation getInstagramDemographicsAsyncWithHttpInfo
      *
-     * Get Instagram audience demographics
+     * Get Instagram demographics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
      * @param  string|null $metric \&quot;follower_demographics\&quot; for follower audience data, or \&quot;engaged_audience_demographics\&quot; for engaged viewers. (optional, default to 'follower_demographics')
@@ -5085,7 +5085,7 @@ class AnalyticsApi
     /**
      * Operation getPostingFrequency
      *
-     * Get posting frequency vs engagement
+     * Get frequency vs engagement
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
@@ -5105,7 +5105,7 @@ class AnalyticsApi
     /**
      * Operation getPostingFrequencyWithHttpInfo
      *
-     * Get posting frequency vs engagement
+     * Get frequency vs engagement
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
@@ -5220,7 +5220,7 @@ class AnalyticsApi
     /**
      * Operation getPostingFrequencyAsync
      *
-     * Get posting frequency vs engagement
+     * Get frequency vs engagement
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
@@ -5243,7 +5243,7 @@ class AnalyticsApi
     /**
      * Operation getPostingFrequencyAsyncWithHttpInfo
      *
-     * Get posting frequency vs engagement
+     * Get frequency vs engagement
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
@@ -5818,7 +5818,7 @@ class AnalyticsApi
     /**
      * Operation getYouTubeDemographics
      *
-     * Get YouTube audience demographics
+     * Get YouTube demographics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account (required)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
@@ -5839,7 +5839,7 @@ class AnalyticsApi
     /**
      * Operation getYouTubeDemographicsWithHttpInfo
      *
-     * Get YouTube audience demographics
+     * Get YouTube demographics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account (required)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
@@ -6011,7 +6011,7 @@ class AnalyticsApi
     /**
      * Operation getYouTubeDemographicsAsync
      *
-     * Get YouTube audience demographics
+     * Get YouTube demographics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account (required)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)
@@ -6035,7 +6035,7 @@ class AnalyticsApi
     /**
      * Operation getYouTubeDemographicsAsyncWithHttpInfo
      *
-     * Get YouTube audience demographics
+     * Get YouTube demographics
      *
      * @param  string $account_id The Zernio SocialAccount ID for the YouTube account (required)
      * @param  string|null $breakdown Comma-separated list of demographic dimensions: age, gender, country. Defaults to all three if omitted. (optional)

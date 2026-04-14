@@ -475,7 +475,7 @@ class BroadcastsApi
     /**
      * Operation cancelBroadcast
      *
-     * Cancel a broadcast
+     * Cancel broadcast
      *
      * @param  string $broadcast_id broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelBroadcast'] to see the possible values for this operation
@@ -493,7 +493,7 @@ class BroadcastsApi
     /**
      * Operation cancelBroadcastWithHttpInfo
      *
-     * Cancel a broadcast
+     * Cancel broadcast
      *
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelBroadcast'] to see the possible values for this operation
@@ -606,7 +606,7 @@ class BroadcastsApi
     /**
      * Operation cancelBroadcastAsync
      *
-     * Cancel a broadcast
+     * Cancel broadcast
      *
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelBroadcast'] to see the possible values for this operation
@@ -627,7 +627,7 @@ class BroadcastsApi
     /**
      * Operation cancelBroadcastAsyncWithHttpInfo
      *
-     * Cancel a broadcast
+     * Cancel broadcast
      *
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelBroadcast'] to see the possible values for this operation
@@ -775,7 +775,7 @@ class BroadcastsApi
     /**
      * Operation createBroadcast
      *
-     * Create a broadcast draft
+     * Create broadcast draft
      *
      * @param  \Late\Model\CreateBroadcastRequest $create_broadcast_request create_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBroadcast'] to see the possible values for this operation
@@ -793,7 +793,7 @@ class BroadcastsApi
     /**
      * Operation createBroadcastWithHttpInfo
      *
-     * Create a broadcast draft
+     * Create broadcast draft
      *
      * @param  \Late\Model\CreateBroadcastRequest $create_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBroadcast'] to see the possible values for this operation
@@ -892,7 +892,7 @@ class BroadcastsApi
     /**
      * Operation createBroadcastAsync
      *
-     * Create a broadcast draft
+     * Create broadcast draft
      *
      * @param  \Late\Model\CreateBroadcastRequest $create_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBroadcast'] to see the possible values for this operation
@@ -913,7 +913,7 @@ class BroadcastsApi
     /**
      * Operation createBroadcastAsyncWithHttpInfo
      *
-     * Create a broadcast draft
+     * Create broadcast draft
      *
      * @param  \Late\Model\CreateBroadcastRequest $create_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBroadcast'] to see the possible values for this operation
@@ -1060,7 +1060,7 @@ class BroadcastsApi
     /**
      * Operation deleteBroadcast
      *
-     * Delete a broadcast (draft only)
+     * Delete broadcast
      *
      * @param  string $broadcast_id broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBroadcast'] to see the possible values for this operation
@@ -1077,7 +1077,7 @@ class BroadcastsApi
     /**
      * Operation deleteBroadcastWithHttpInfo
      *
-     * Delete a broadcast (draft only)
+     * Delete broadcast
      *
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBroadcast'] to see the possible values for this operation
@@ -1142,7 +1142,7 @@ class BroadcastsApi
     /**
      * Operation deleteBroadcastAsync
      *
-     * Delete a broadcast (draft only)
+     * Delete broadcast
      *
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBroadcast'] to see the possible values for this operation
@@ -1163,7 +1163,7 @@ class BroadcastsApi
     /**
      * Operation deleteBroadcastAsyncWithHttpInfo
      *
-     * Delete a broadcast (draft only)
+     * Delete broadcast
      *
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBroadcast'] to see the possible values for this operation
@@ -2603,7 +2603,7 @@ class BroadcastsApi
     /**
      * Operation sendBroadcast
      *
-     * Trigger immediate send
+     * Send broadcast now
      *
      * @param  string $broadcast_id broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendBroadcast'] to see the possible values for this operation
@@ -2621,7 +2621,7 @@ class BroadcastsApi
     /**
      * Operation sendBroadcastWithHttpInfo
      *
-     * Trigger immediate send
+     * Send broadcast now
      *
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendBroadcast'] to see the possible values for this operation
@@ -2734,7 +2734,7 @@ class BroadcastsApi
     /**
      * Operation sendBroadcastAsync
      *
-     * Trigger immediate send
+     * Send broadcast now
      *
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendBroadcast'] to see the possible values for this operation
@@ -2755,7 +2755,7 @@ class BroadcastsApi
     /**
      * Operation sendBroadcastAsyncWithHttpInfo
      *
-     * Trigger immediate send
+     * Send broadcast now
      *
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendBroadcast'] to see the possible values for this operation
@@ -2903,7 +2903,7 @@ class BroadcastsApi
     /**
      * Operation updateBroadcast
      *
-     * Update a broadcast
+     * Update broadcast
      *
      * @param  string $broadcast_id broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBroadcast'] to see the possible values for this operation
@@ -2921,7 +2921,7 @@ class BroadcastsApi
     /**
      * Operation updateBroadcastWithHttpInfo
      *
-     * Update a broadcast
+     * Update broadcast
      *
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBroadcast'] to see the possible values for this operation
@@ -3034,7 +3034,7 @@ class BroadcastsApi
     /**
      * Operation updateBroadcastAsync
      *
-     * Update a broadcast
+     * Update broadcast
      *
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBroadcast'] to see the possible values for this operation
@@ -3055,7 +3055,7 @@ class BroadcastsApi
     /**
      * Operation updateBroadcastAsyncWithHttpInfo
      *
-     * Update a broadcast
+     * Update broadcast
      *
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBroadcast'] to see the possible values for this operation

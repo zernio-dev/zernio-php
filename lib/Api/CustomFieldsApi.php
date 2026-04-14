@@ -144,7 +144,7 @@ class CustomFieldsApi
     /**
      * Operation clearContactFieldValue
      *
-     * Clear a custom field value
+     * Clear custom field value
      *
      * @param  string $contact_id contact_id (required)
      * @param  string $slug slug (required)
@@ -162,7 +162,7 @@ class CustomFieldsApi
     /**
      * Operation clearContactFieldValueWithHttpInfo
      *
-     * Clear a custom field value
+     * Clear custom field value
      *
      * @param  string $contact_id (required)
      * @param  string $slug (required)
@@ -228,7 +228,7 @@ class CustomFieldsApi
     /**
      * Operation clearContactFieldValueAsync
      *
-     * Clear a custom field value
+     * Clear custom field value
      *
      * @param  string $contact_id (required)
      * @param  string $slug (required)
@@ -250,7 +250,7 @@ class CustomFieldsApi
     /**
      * Operation clearContactFieldValueAsyncWithHttpInfo
      *
-     * Clear a custom field value
+     * Clear custom field value
      *
      * @param  string $contact_id (required)
      * @param  string $slug (required)
@@ -402,7 +402,7 @@ class CustomFieldsApi
     /**
      * Operation createCustomField
      *
-     * Create a custom field definition
+     * Create custom field
      *
      * @param  \Late\Model\CreateCustomFieldRequest $create_custom_field_request create_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomField'] to see the possible values for this operation
@@ -420,7 +420,7 @@ class CustomFieldsApi
     /**
      * Operation createCustomFieldWithHttpInfo
      *
-     * Create a custom field definition
+     * Create custom field
      *
      * @param  \Late\Model\CreateCustomFieldRequest $create_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomField'] to see the possible values for this operation
@@ -519,7 +519,7 @@ class CustomFieldsApi
     /**
      * Operation createCustomFieldAsync
      *
-     * Create a custom field definition
+     * Create custom field
      *
      * @param  \Late\Model\CreateCustomFieldRequest $create_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomField'] to see the possible values for this operation
@@ -540,7 +540,7 @@ class CustomFieldsApi
     /**
      * Operation createCustomFieldAsyncWithHttpInfo
      *
-     * Create a custom field definition
+     * Create custom field
      *
      * @param  \Late\Model\CreateCustomFieldRequest $create_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomField'] to see the possible values for this operation
@@ -687,7 +687,7 @@ class CustomFieldsApi
     /**
      * Operation deleteCustomField
      *
-     * Delete a custom field definition
+     * Delete custom field
      *
      * @param  string $field_id field_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomField'] to see the possible values for this operation
@@ -704,7 +704,7 @@ class CustomFieldsApi
     /**
      * Operation deleteCustomFieldWithHttpInfo
      *
-     * Delete a custom field definition
+     * Delete custom field
      *
      * @param  string $field_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomField'] to see the possible values for this operation
@@ -769,7 +769,7 @@ class CustomFieldsApi
     /**
      * Operation deleteCustomFieldAsync
      *
-     * Delete a custom field definition
+     * Delete custom field
      *
      * @param  string $field_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomField'] to see the possible values for this operation
@@ -790,7 +790,7 @@ class CustomFieldsApi
     /**
      * Operation deleteCustomFieldAsyncWithHttpInfo
      *
-     * Delete a custom field definition
+     * Delete custom field
      *
      * @param  string $field_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomField'] to see the possible values for this operation
@@ -1206,7 +1206,7 @@ class CustomFieldsApi
     /**
      * Operation setContactFieldValue
      *
-     * Set a custom field value
+     * Set custom field value
      *
      * @param  string $contact_id contact_id (required)
      * @param  string $slug slug (required)
@@ -1225,7 +1225,7 @@ class CustomFieldsApi
     /**
      * Operation setContactFieldValueWithHttpInfo
      *
-     * Set a custom field value
+     * Set custom field value
      *
      * @param  string $contact_id (required)
      * @param  string $slug (required)
@@ -1292,7 +1292,7 @@ class CustomFieldsApi
     /**
      * Operation setContactFieldValueAsync
      *
-     * Set a custom field value
+     * Set custom field value
      *
      * @param  string $contact_id (required)
      * @param  string $slug (required)
@@ -1315,7 +1315,7 @@ class CustomFieldsApi
     /**
      * Operation setContactFieldValueAsyncWithHttpInfo
      *
-     * Set a custom field value
+     * Set custom field value
      *
      * @param  string $contact_id (required)
      * @param  string $slug (required)
@@ -1483,7 +1483,7 @@ class CustomFieldsApi
     /**
      * Operation updateCustomField
      *
-     * Update a custom field definition
+     * Update custom field
      *
      * @param  string $field_id field_id (required)
      * @param  \Late\Model\UpdateCustomFieldRequest|null $update_custom_field_request update_custom_field_request (optional)
@@ -1502,7 +1502,7 @@ class CustomFieldsApi
     /**
      * Operation updateCustomFieldWithHttpInfo
      *
-     * Update a custom field definition
+     * Update custom field
      *
      * @param  string $field_id (required)
      * @param  \Late\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
@@ -1616,7 +1616,7 @@ class CustomFieldsApi
     /**
      * Operation updateCustomFieldAsync
      *
-     * Update a custom field definition
+     * Update custom field
      *
      * @param  string $field_id (required)
      * @param  \Late\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
@@ -1638,7 +1638,7 @@ class CustomFieldsApi
     /**
      * Operation updateCustomFieldAsyncWithHttpInfo
      *
-     * Update a custom field definition
+     * Update custom field
      *
      * @param  string $field_id (required)
      * @param  \Late\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)

@@ -8,7 +8,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**validateMedia()**](ValidateApi.md#validateMedia) | **POST** /v1/tools/validate/media | Validate media URL |
 | [**validatePost()**](ValidateApi.md#validatePost) | **POST** /v1/tools/validate/post | Validate post content |
-| [**validatePostLength()**](ValidateApi.md#validatePostLength) | **POST** /v1/tools/validate/post-length | Validate post character count |
+| [**validatePostLength()**](ValidateApi.md#validatePostLength) | **POST** /v1/tools/validate/post-length | Validate character count |
 | [**validateSubreddit()**](ValidateApi.md#validateSubreddit) | **GET** /v1/tools/validate/subreddit | Check subreddit existence |
 
 
@@ -138,7 +138,7 @@ try {
 validatePostLength($validate_post_length_request): \Late\Model\ValidatePostLength200Response
 ```
 
-Validate post character count
+Validate character count
 
 Check weighted character count per platform and whether the text is within each platform's limit.  Twitter/X uses weighted counting (URLs = 23 chars via t.co, emojis = 2 chars). All other platforms use plain character length.  Returns counts and limits for all 15 supported platform variants.
 

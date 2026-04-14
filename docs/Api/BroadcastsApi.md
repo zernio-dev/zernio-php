@@ -7,15 +7,15 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**addBroadcastRecipients()**](BroadcastsApi.md#addBroadcastRecipients) | **POST** /v1/broadcasts/{broadcastId}/recipients | Add recipients to a broadcast |
-| [**cancelBroadcast()**](BroadcastsApi.md#cancelBroadcast) | **POST** /v1/broadcasts/{broadcastId}/cancel | Cancel a broadcast |
-| [**createBroadcast()**](BroadcastsApi.md#createBroadcast) | **POST** /v1/broadcasts | Create a broadcast draft |
-| [**deleteBroadcast()**](BroadcastsApi.md#deleteBroadcast) | **DELETE** /v1/broadcasts/{broadcastId} | Delete a broadcast (draft only) |
+| [**cancelBroadcast()**](BroadcastsApi.md#cancelBroadcast) | **POST** /v1/broadcasts/{broadcastId}/cancel | Cancel broadcast |
+| [**createBroadcast()**](BroadcastsApi.md#createBroadcast) | **POST** /v1/broadcasts | Create broadcast draft |
+| [**deleteBroadcast()**](BroadcastsApi.md#deleteBroadcast) | **DELETE** /v1/broadcasts/{broadcastId} | Delete broadcast |
 | [**getBroadcast()**](BroadcastsApi.md#getBroadcast) | **GET** /v1/broadcasts/{broadcastId} | Get broadcast details |
 | [**listBroadcastRecipients()**](BroadcastsApi.md#listBroadcastRecipients) | **GET** /v1/broadcasts/{broadcastId}/recipients | List broadcast recipients |
 | [**listBroadcasts()**](BroadcastsApi.md#listBroadcasts) | **GET** /v1/broadcasts | List broadcasts |
 | [**scheduleBroadcast()**](BroadcastsApi.md#scheduleBroadcast) | **POST** /v1/broadcasts/{broadcastId}/schedule | Schedule broadcast for later |
-| [**sendBroadcast()**](BroadcastsApi.md#sendBroadcast) | **POST** /v1/broadcasts/{broadcastId}/send | Trigger immediate send |
-| [**updateBroadcast()**](BroadcastsApi.md#updateBroadcast) | **PATCH** /v1/broadcasts/{broadcastId} | Update a broadcast |
+| [**sendBroadcast()**](BroadcastsApi.md#sendBroadcast) | **POST** /v1/broadcasts/{broadcastId}/send | Send broadcast now |
+| [**updateBroadcast()**](BroadcastsApi.md#updateBroadcast) | **PATCH** /v1/broadcasts/{broadcastId} | Update broadcast |
 
 
 ## `addBroadcastRecipients()`
@@ -84,7 +84,7 @@ try {
 cancelBroadcast($broadcast_id): \Late\Model\CancelBroadcast200Response
 ```
 
-Cancel a broadcast
+Cancel broadcast
 
 ### Example
 
@@ -142,7 +142,7 @@ try {
 createBroadcast($create_broadcast_request): \Late\Model\CreateBroadcast200Response
 ```
 
-Create a broadcast draft
+Create broadcast draft
 
 ### Example
 
@@ -200,7 +200,7 @@ try {
 deleteBroadcast($broadcast_id)
 ```
 
-Delete a broadcast (draft only)
+Delete broadcast
 
 ### Example
 
@@ -505,7 +505,7 @@ try {
 sendBroadcast($broadcast_id): \Late\Model\SendBroadcast200Response
 ```
 
-Trigger immediate send
+Send broadcast now
 
 ### Example
 
@@ -563,7 +563,7 @@ try {
 updateBroadcast($broadcast_id): \Late\Model\UpdateBroadcast200Response
 ```
 
-Update a broadcast
+Update broadcast
 
 ### Example
 
