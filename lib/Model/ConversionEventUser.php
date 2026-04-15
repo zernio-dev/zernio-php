@@ -78,7 +78,7 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'email' => 'email',
+        'email' => null,
         'phone' => null,
         'first_name' => null,
         'last_name' => null,

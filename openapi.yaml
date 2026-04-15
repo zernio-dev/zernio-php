@@ -3008,7 +3008,7 @@ components:
           type: object
           description: User identity fields. More signals mean higher match rates.
           properties:
-            email: { type: string, format: email, description: Plaintext email. Hashed server-side. }
+            email: { type: string, description: Plaintext email. Hashed server-side. }
             phone: { type: string, description: "Phone number, ideally E.164. Hashed server-side." }
             firstName: { type: string, description: Plaintext first name. Hashed server-side. }
             lastName: { type: string, description: Plaintext last name. Hashed server-side. }

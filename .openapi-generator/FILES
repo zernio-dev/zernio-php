@@ -1521,14 +1521,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConversionEventItemsInnerTest.php
-test/Model/ConversionEventTest.php
-test/Model/ConversionEventUserClickIdsTest.php
-test/Model/ConversionEventUserTest.php
-test/Model/ListConversionDestinations200ResponseDestinationsInnerTest.php
-test/Model/ListConversionDestinations200ResponseTest.php
-test/Model/SendConversions200ResponseFailuresInnerCodeTest.php
-test/Model/SendConversions200ResponseFailuresInnerTest.php
-test/Model/SendConversions200ResponseTest.php
-test/Model/SendConversionsRequestConsentTest.php
-test/Model/SendConversionsRequestTest.php
