@@ -94,7 +94,9 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**getAdAnalytics**](docs/Api/AdsApi.md#getadanalytics) | **GET** /v1/ads/{adId}/analytics | Get ad analytics
 *AdsApi* | [**listAdAccounts**](docs/Api/AdsApi.md#listadaccounts) | **GET** /v1/ads/accounts | List ad accounts
 *AdsApi* | [**listAds**](docs/Api/AdsApi.md#listads) | **GET** /v1/ads | List ads
+*AdsApi* | [**listConversionDestinations**](docs/Api/AdsApi.md#listconversiondestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List destinations for the Conversions API
 *AdsApi* | [**searchAdInterests**](docs/Api/AdsApi.md#searchadinterests) | **GET** /v1/ads/interests | Search targeting interests
+*AdsApi* | [**sendConversions**](docs/Api/AdsApi.md#sendconversions) | **POST** /v1/ads/conversions | Send conversion events to an ad platform
 *AdsApi* | [**updateAd**](docs/Api/AdsApi.md#updatead) | **PUT** /v1/ads/{adId} | Update ad
 *AnalyticsApi* | [**getAnalytics**](docs/Api/AnalyticsApi.md#getanalytics) | **GET** /v1/analytics | Get post analytics
 *AnalyticsApi* | [**getBestTimeToPost**](docs/Api/AnalyticsApi.md#getbesttimetopost) | **GET** /v1/analytics/best-time | Get best times to post
@@ -363,6 +365,10 @@ Class | Method | HTTP request | Description
 - [ConnectWhatsAppCredentialsRequest](docs/Model/ConnectWhatsAppCredentialsRequest.md)
 - [Connected](docs/Model/Connected.md)
 - [ConnectedAccount](docs/Model/ConnectedAccount.md)
+- [ConversionEvent](docs/Model/ConversionEvent.md)
+- [ConversionEventItemsInner](docs/Model/ConversionEventItemsInner.md)
+- [ConversionEventUser](docs/Model/ConversionEventUser.md)
+- [ConversionEventUserClickIds](docs/Model/ConversionEventUserClickIds.md)
 - [CreateAccountGroup201Response](docs/Model/CreateAccountGroup201Response.md)
 - [CreateAccountGroupRequest](docs/Model/CreateAccountGroupRequest.md)
 - [CreateAdAudience201Response](docs/Model/CreateAdAudience201Response.md)
@@ -684,6 +690,8 @@ Class | Method | HTTP request | Description
 - [ListContacts200ResponseContactsInner](docs/Model/ListContacts200ResponseContactsInner.md)
 - [ListContacts200ResponseFilters](docs/Model/ListContacts200ResponseFilters.md)
 - [ListContacts200ResponsePagination](docs/Model/ListContacts200ResponsePagination.md)
+- [ListConversionDestinations200Response](docs/Model/ListConversionDestinations200Response.md)
+- [ListConversionDestinations200ResponseDestinationsInner](docs/Model/ListConversionDestinations200ResponseDestinationsInner.md)
 - [ListCustomFields200Response](docs/Model/ListCustomFields200Response.md)
 - [ListCustomFields200ResponseFieldsInner](docs/Model/ListCustomFields200ResponseFieldsInner.md)
 - [ListFacebookPages200Response](docs/Model/ListFacebookPages200Response.md)
@@ -815,6 +823,11 @@ Class | Method | HTTP request | Description
 - [SelectSnapchatProfileRequest](docs/Model/SelectSnapchatProfileRequest.md)
 - [SelectSnapchatProfileRequestSelectedPublicProfile](docs/Model/SelectSnapchatProfileRequestSelectedPublicProfile.md)
 - [SendBroadcast200Response](docs/Model/SendBroadcast200Response.md)
+- [SendConversions200Response](docs/Model/SendConversions200Response.md)
+- [SendConversions200ResponseFailuresInner](docs/Model/SendConversions200ResponseFailuresInner.md)
+- [SendConversions200ResponseFailuresInnerCode](docs/Model/SendConversions200ResponseFailuresInnerCode.md)
+- [SendConversionsRequest](docs/Model/SendConversionsRequest.md)
+- [SendConversionsRequestConsent](docs/Model/SendConversionsRequestConsent.md)
 - [SendInboxMessage200Response](docs/Model/SendInboxMessage200Response.md)
 - [SendInboxMessage200ResponseData](docs/Model/SendInboxMessage200ResponseData.md)
 - [SendInboxMessage400Response](docs/Model/SendInboxMessage400Response.md)
