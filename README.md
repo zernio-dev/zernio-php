@@ -184,6 +184,9 @@ Class | Method | HTTP request | Description
 *CustomFieldsApi* | [**listCustomFields**](docs/Api/CustomFieldsApi.md#listcustomfields) | **GET** /v1/custom-fields | List custom field definitions
 *CustomFieldsApi* | [**setContactFieldValue**](docs/Api/CustomFieldsApi.md#setcontactfieldvalue) | **PUT** /v1/contacts/{contactId}/fields/{slug} | Set custom field value
 *CustomFieldsApi* | [**updateCustomField**](docs/Api/CustomFieldsApi.md#updatecustomfield) | **PATCH** /v1/custom-fields/{fieldId} | Update custom field
+*DiscordApi* | [**getDiscordChannels**](docs/Api/DiscordApi.md#getdiscordchannels) | **GET** /v1/accounts/{accountId}/discord-channels | List Discord guild channels
+*DiscordApi* | [**getDiscordSettings**](docs/Api/DiscordApi.md#getdiscordsettings) | **GET** /v1/accounts/{accountId}/discord-settings | Get Discord account settings
+*DiscordApi* | [**updateDiscordSettings**](docs/Api/DiscordApi.md#updatediscordsettings) | **PATCH** /v1/accounts/{accountId}/discord-settings | Update Discord settings
 *GMBAttributesApi* | [**getGoogleBusinessAttributes**](docs/Api/GMBAttributesApi.md#getgooglebusinessattributes) | **GET** /v1/accounts/{accountId}/gmb-attributes | Get attributes
 *GMBAttributesApi* | [**updateGoogleBusinessAttributes**](docs/Api/GMBAttributesApi.md#updategooglebusinessattributes) | **PUT** /v1/accounts/{accountId}/gmb-attributes | Update attributes
 *GMBFoodMenusApi* | [**getGoogleBusinessFoodMenus**](docs/Api/GMBFoodMenusApi.md#getgooglebusinessfoodmenus) | **GET** /v1/accounts/{accountId}/gmb-food-menus | Get food menus
@@ -440,6 +443,17 @@ Class | Method | HTTP request | Description
 - [DeleteInboxReviewReply200Response](docs/Model/DeleteInboxReviewReply200Response.md)
 - [DeleteInboxReviewReplyRequest](docs/Model/DeleteInboxReviewReplyRequest.md)
 - [DeleteQueueSlot200Response](docs/Model/DeleteQueueSlot200Response.md)
+- [DiscordPlatformData](docs/Model/DiscordPlatformData.md)
+- [DiscordPlatformDataEmbedsInner](docs/Model/DiscordPlatformDataEmbedsInner.md)
+- [DiscordPlatformDataEmbedsInnerAuthor](docs/Model/DiscordPlatformDataEmbedsInnerAuthor.md)
+- [DiscordPlatformDataEmbedsInnerFieldsInner](docs/Model/DiscordPlatformDataEmbedsInnerFieldsInner.md)
+- [DiscordPlatformDataEmbedsInnerFooter](docs/Model/DiscordPlatformDataEmbedsInnerFooter.md)
+- [DiscordPlatformDataEmbedsInnerImage](docs/Model/DiscordPlatformDataEmbedsInnerImage.md)
+- [DiscordPlatformDataPoll](docs/Model/DiscordPlatformDataPoll.md)
+- [DiscordPlatformDataPollAnswersInner](docs/Model/DiscordPlatformDataPollAnswersInner.md)
+- [DiscordPlatformDataPollAnswersInnerPollMedia](docs/Model/DiscordPlatformDataPollAnswersInnerPollMedia.md)
+- [DiscordPlatformDataPollQuestion](docs/Model/DiscordPlatformDataPollQuestion.md)
+- [DiscordPlatformDataThreadFromMessage](docs/Model/DiscordPlatformDataThreadFromMessage.md)
 - [EditInboxMessage200Response](docs/Model/EditInboxMessage200Response.md)
 - [EditInboxMessage200ResponseData](docs/Model/EditInboxMessage200ResponseData.md)
 - [EditInboxMessageRequest](docs/Model/EditInboxMessageRequest.md)
@@ -500,6 +514,10 @@ Class | Method | HTTP request | Description
 - [GetDailyMetrics200ResponseDailyDataInner](docs/Model/GetDailyMetrics200ResponseDailyDataInner.md)
 - [GetDailyMetrics200ResponseDailyDataInnerMetrics](docs/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.md)
 - [GetDailyMetrics200ResponsePlatformBreakdownInner](docs/Model/GetDailyMetrics200ResponsePlatformBreakdownInner.md)
+- [GetDiscordChannels200Response](docs/Model/GetDiscordChannels200Response.md)
+- [GetDiscordChannels200ResponseChannelsInner](docs/Model/GetDiscordChannels200ResponseChannelsInner.md)
+- [GetDiscordSettings200Response](docs/Model/GetDiscordSettings200Response.md)
+- [GetDiscordSettings200ResponseAccount](docs/Model/GetDiscordSettings200ResponseAccount.md)
 - [GetFacebookPages200Response](docs/Model/GetFacebookPages200Response.md)
 - [GetFacebookPages200ResponsePagesInner](docs/Model/GetFacebookPages200ResponsePagesInner.md)
 - [GetFollowerStats200Response](docs/Model/GetFollowerStats200Response.md)
@@ -889,6 +907,9 @@ Class | Method | HTTP request | Description
 - [UpdateCustomField200Response](docs/Model/UpdateCustomField200Response.md)
 - [UpdateCustomField200ResponseField](docs/Model/UpdateCustomField200ResponseField.md)
 - [UpdateCustomFieldRequest](docs/Model/UpdateCustomFieldRequest.md)
+- [UpdateDiscordSettings200Response](docs/Model/UpdateDiscordSettings200Response.md)
+- [UpdateDiscordSettings200ResponseAccount](docs/Model/UpdateDiscordSettings200ResponseAccount.md)
+- [UpdateDiscordSettingsRequest](docs/Model/UpdateDiscordSettingsRequest.md)
 - [UpdateFacebookPage200Response](docs/Model/UpdateFacebookPage200Response.md)
 - [UpdateFacebookPage200ResponseSelectedPage](docs/Model/UpdateFacebookPage200ResponseSelectedPage.md)
 - [UpdateFacebookPageRequest](docs/Model/UpdateFacebookPageRequest.md)

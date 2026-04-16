@@ -1,6 +1,6 @@
 <?php
 /**
- * PlatformAnalytics
+ * UpdateDiscordSettingsRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * PlatformAnalytics Class Doc Comment
+ * UpdateDiscordSettingsRequest Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateDiscordSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PlatformAnalytics';
+    protected static $openAPIModelName = 'updateDiscordSettings_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +58,10 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'platform' => 'string',
-        'status' => 'string',
-        'platform_post_id' => 'string',
         'account_id' => 'string',
-        'account_username' => 'string',
-        'analytics' => '\Late\Model\PostAnalytics',
-        'sync_status' => 'string',
-        'platform_post_url' => 'string',
-        'error_message' => 'string'
+        'webhook_username' => 'string',
+        'webhook_avatar_url' => 'string',
+        'channel_id' => 'string'
     ];
 
     /**
@@ -77,15 +72,10 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'platform' => null,
-        'status' => null,
-        'platform_post_id' => null,
         'account_id' => null,
-        'account_username' => null,
-        'analytics' => null,
-        'sync_status' => null,
-        'platform_post_url' => 'uri',
-        'error_message' => null
+        'webhook_username' => null,
+        'webhook_avatar_url' => null,
+        'channel_id' => null
     ];
 
     /**
@@ -94,15 +84,10 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'platform' => false,
-        'status' => false,
-        'platform_post_id' => false,
         'account_id' => false,
-        'account_username' => false,
-        'analytics' => false,
-        'sync_status' => false,
-        'platform_post_url' => false,
-        'error_message' => false
+        'webhook_username' => false,
+        'webhook_avatar_url' => false,
+        'channel_id' => false
     ];
 
     /**
@@ -191,15 +176,10 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'platform' => 'platform',
-        'status' => 'status',
-        'platform_post_id' => 'platformPostId',
         'account_id' => 'accountId',
-        'account_username' => 'accountUsername',
-        'analytics' => 'analytics',
-        'sync_status' => 'syncStatus',
-        'platform_post_url' => 'platformPostUrl',
-        'error_message' => 'errorMessage'
+        'webhook_username' => 'webhookUsername',
+        'webhook_avatar_url' => 'webhookAvatarUrl',
+        'channel_id' => 'channelId'
     ];
 
     /**
@@ -208,15 +188,10 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'platform' => 'setPlatform',
-        'status' => 'setStatus',
-        'platform_post_id' => 'setPlatformPostId',
         'account_id' => 'setAccountId',
-        'account_username' => 'setAccountUsername',
-        'analytics' => 'setAnalytics',
-        'sync_status' => 'setSyncStatus',
-        'platform_post_url' => 'setPlatformPostUrl',
-        'error_message' => 'setErrorMessage'
+        'webhook_username' => 'setWebhookUsername',
+        'webhook_avatar_url' => 'setWebhookAvatarUrl',
+        'channel_id' => 'setChannelId'
     ];
 
     /**
@@ -225,15 +200,10 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'platform' => 'getPlatform',
-        'status' => 'getStatus',
-        'platform_post_id' => 'getPlatformPostId',
         'account_id' => 'getAccountId',
-        'account_username' => 'getAccountUsername',
-        'analytics' => 'getAnalytics',
-        'sync_status' => 'getSyncStatus',
-        'platform_post_url' => 'getPlatformPostUrl',
-        'error_message' => 'getErrorMessage'
+        'webhook_username' => 'getWebhookUsername',
+        'webhook_avatar_url' => 'getWebhookAvatarUrl',
+        'channel_id' => 'getChannelId'
     ];
 
     /**
@@ -277,38 +247,6 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$openAPIModelName;
     }
 
-    public const STATUS_PUBLISHED = 'published';
-    public const STATUS_FAILED = 'failed';
-    public const SYNC_STATUS_SYNCED = 'synced';
-    public const SYNC_STATUS_PENDING = 'pending';
-    public const SYNC_STATUS_UNAVAILABLE = 'unavailable';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_PUBLISHED,
-            self::STATUS_FAILED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSyncStatusAllowableValues()
-    {
-        return [
-            self::SYNC_STATUS_SYNCED,
-            self::SYNC_STATUS_PENDING,
-            self::SYNC_STATUS_UNAVAILABLE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -325,15 +263,10 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('platform_post_id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('account_username', $data ?? [], null);
-        $this->setIfExists('analytics', $data ?? [], null);
-        $this->setIfExists('sync_status', $data ?? [], null);
-        $this->setIfExists('platform_post_url', $data ?? [], null);
-        $this->setIfExists('error_message', $data ?? [], null);
+        $this->setIfExists('webhook_username', $data ?? [], null);
+        $this->setIfExists('webhook_avatar_url', $data ?? [], null);
+        $this->setIfExists('channel_id', $data ?? [], null);
     }
 
     /**
@@ -363,24 +296,9 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
         }
-
-        $allowedValues = $this->getSyncStatusAllowableValues();
-        if (!is_null($this->container['sync_status']) && !in_array($this->container['sync_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'sync_status', must be one of '%s'",
-                $this->container['sync_status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -397,100 +315,9 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets platform
-     *
-     * @return string|null
-     */
-    public function getPlatform()
-    {
-        return $this->container['platform'];
-    }
-
-    /**
-     * Sets platform
-     *
-     * @param string|null $platform platform
-     *
-     * @return self
-     */
-    public function setPlatform($platform)
-    {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
-        }
-        $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform_post_id
-     *
-     * @return string|null
-     */
-    public function getPlatformPostId()
-    {
-        return $this->container['platform_post_id'];
-    }
-
-    /**
-     * Sets platform_post_id
-     *
-     * @param string|null $platform_post_id The native post ID on the platform (e.g. Instagram media ID, tweet ID)
-     *
-     * @return self
-     */
-    public function setPlatformPostId($platform_post_id)
-    {
-        if (is_null($platform_post_id)) {
-            throw new \InvalidArgumentException('non-nullable platform_post_id cannot be null');
-        }
-        $this->container['platform_post_id'] = $platform_post_id;
-
-        return $this;
-    }
-
-    /**
      * Gets account_id
      *
-     * @return string|null
+     * @return string
      */
     public function getAccountId()
     {
@@ -500,7 +327,7 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets account_id
      *
-     * @param string|null $account_id account_id
+     * @param string $account_id Discord account ID
      *
      * @return self
      */
@@ -515,146 +342,82 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
-     * Gets account_username
+     * Gets webhook_username
      *
      * @return string|null
      */
-    public function getAccountUsername()
+    public function getWebhookUsername()
     {
-        return $this->container['account_username'];
+        return $this->container['webhook_username'];
     }
 
     /**
-     * Sets account_username
+     * Sets webhook_username
      *
-     * @param string|null $account_username account_username
+     * @param string|null $webhook_username Custom display name for the webhook (1-80 chars). Empty string resets to default (\"Zernio\"). Cannot contain \"clyde\" or \"discord\".
      *
      * @return self
      */
-    public function setAccountUsername($account_username)
+    public function setWebhookUsername($webhook_username)
     {
-        if (is_null($account_username)) {
-            throw new \InvalidArgumentException('non-nullable account_username cannot be null');
+        if (is_null($webhook_username)) {
+            throw new \InvalidArgumentException('non-nullable webhook_username cannot be null');
         }
-        $this->container['account_username'] = $account_username;
+        $this->container['webhook_username'] = $webhook_username;
 
         return $this;
     }
 
     /**
-     * Gets analytics
+     * Gets webhook_avatar_url
      *
-     * @return \Late\Model\PostAnalytics|null
+     * @return string|null
      */
-    public function getAnalytics()
+    public function getWebhookAvatarUrl()
     {
-        return $this->container['analytics'];
+        return $this->container['webhook_avatar_url'];
     }
 
     /**
-     * Sets analytics
+     * Sets webhook_avatar_url
      *
-     * @param \Late\Model\PostAnalytics|null $analytics analytics
+     * @param string|null $webhook_avatar_url Custom avatar URL. Empty string resets to default bot avatar.
      *
      * @return self
      */
-    public function setAnalytics($analytics)
+    public function setWebhookAvatarUrl($webhook_avatar_url)
     {
-        if (is_null($analytics)) {
-            throw new \InvalidArgumentException('non-nullable analytics cannot be null');
+        if (is_null($webhook_avatar_url)) {
+            throw new \InvalidArgumentException('non-nullable webhook_avatar_url cannot be null');
         }
-        $this->container['analytics'] = $analytics;
+        $this->container['webhook_avatar_url'] = $webhook_avatar_url;
 
         return $this;
     }
 
     /**
-     * Gets sync_status
+     * Gets channel_id
      *
      * @return string|null
      */
-    public function getSyncStatus()
+    public function getChannelId()
     {
-        return $this->container['sync_status'];
+        return $this->container['channel_id'];
     }
 
     /**
-     * Sets sync_status
+     * Sets channel_id
      *
-     * @param string|null $sync_status Sync state of analytics for this platform
+     * @param string|null $channel_id Switch to a different channel in the same guild. Must be a text (0), announcement (5), or forum (15) channel.
      *
      * @return self
      */
-    public function setSyncStatus($sync_status)
+    public function setChannelId($channel_id)
     {
-        if (is_null($sync_status)) {
-            throw new \InvalidArgumentException('non-nullable sync_status cannot be null');
+        if (is_null($channel_id)) {
+            throw new \InvalidArgumentException('non-nullable channel_id cannot be null');
         }
-        $allowedValues = $this->getSyncStatusAllowableValues();
-        if (!in_array($sync_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sync_status', must be one of '%s'",
-                    $sync_status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['sync_status'] = $sync_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform_post_url
-     *
-     * @return string|null
-     */
-    public function getPlatformPostUrl()
-    {
-        return $this->container['platform_post_url'];
-    }
-
-    /**
-     * Sets platform_post_url
-     *
-     * @param string|null $platform_post_url platform_post_url
-     *
-     * @return self
-     */
-    public function setPlatformPostUrl($platform_post_url)
-    {
-        if (is_null($platform_post_url)) {
-            throw new \InvalidArgumentException('non-nullable platform_post_url cannot be null');
-        }
-        $this->container['platform_post_url'] = $platform_post_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets error_message
-     *
-     * @return string|null
-     */
-    public function getErrorMessage()
-    {
-        return $this->container['error_message'];
-    }
-
-    /**
-     * Sets error_message
-     *
-     * @param string|null $error_message Error details when status is failed
-     *
-     * @return self
-     */
-    public function setErrorMessage($error_message)
-    {
-        if (is_null($error_message)) {
-            throw new \InvalidArgumentException('non-nullable error_message cannot be null');
-        }
-        $this->container['error_message'] = $error_message;
+        $this->container['channel_id'] = $channel_id;
 
         return $this;
     }

@@ -62,7 +62,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'reply_to_tweet_id' => 'string',
         'reply_settings' => 'string',
         'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
-        'poll' => '\Late\Model\TwitterPlatformDataPoll',
+        'poll' => '\Late\Model\DiscordPlatformDataPoll',
         'long_video' => 'bool',
         'topic_tag' => 'string',
         'draft' => 'bool',
@@ -116,7 +116,16 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'subreddit' => 'string',
         'url' => 'string',
         'force_self' => 'bool',
-        'flair_id' => 'string'
+        'flair_id' => 'string',
+        'channel_id' => 'string',
+        'embeds' => '\Late\Model\DiscordPlatformDataEmbedsInner[]',
+        'crosspost' => 'bool',
+        'forum_thread_name' => 'string',
+        'forum_applied_tags' => 'string[]',
+        'thread_from_message' => '\Late\Model\DiscordPlatformDataThreadFromMessage',
+        'tts' => 'bool',
+        'webhook_username' => 'string',
+        'webhook_avatar_url' => 'string'
     ];
 
     /**
@@ -184,7 +193,16 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'subreddit' => null,
         'url' => 'uri',
         'force_self' => null,
-        'flair_id' => null
+        'flair_id' => null,
+        'channel_id' => null,
+        'embeds' => null,
+        'crosspost' => null,
+        'forum_thread_name' => null,
+        'forum_applied_tags' => null,
+        'thread_from_message' => null,
+        'tts' => null,
+        'webhook_username' => null,
+        'webhook_avatar_url' => null
     ];
 
     /**
@@ -250,7 +268,16 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'subreddit' => false,
         'url' => false,
         'force_self' => false,
-        'flair_id' => false
+        'flair_id' => false,
+        'channel_id' => false,
+        'embeds' => false,
+        'crosspost' => false,
+        'forum_thread_name' => false,
+        'forum_applied_tags' => false,
+        'thread_from_message' => false,
+        'tts' => false,
+        'webhook_username' => false,
+        'webhook_avatar_url' => false
     ];
 
     /**
@@ -396,7 +423,16 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'subreddit' => 'subreddit',
         'url' => 'url',
         'force_self' => 'forceSelf',
-        'flair_id' => 'flairId'
+        'flair_id' => 'flairId',
+        'channel_id' => 'channelId',
+        'embeds' => 'embeds',
+        'crosspost' => 'crosspost',
+        'forum_thread_name' => 'forumThreadName',
+        'forum_applied_tags' => 'forumAppliedTags',
+        'thread_from_message' => 'threadFromMessage',
+        'tts' => 'tts',
+        'webhook_username' => 'webhookUsername',
+        'webhook_avatar_url' => 'webhookAvatarUrl'
     ];
 
     /**
@@ -462,7 +498,16 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'subreddit' => 'setSubreddit',
         'url' => 'setUrl',
         'force_self' => 'setForceSelf',
-        'flair_id' => 'setFlairId'
+        'flair_id' => 'setFlairId',
+        'channel_id' => 'setChannelId',
+        'embeds' => 'setEmbeds',
+        'crosspost' => 'setCrosspost',
+        'forum_thread_name' => 'setForumThreadName',
+        'forum_applied_tags' => 'setForumAppliedTags',
+        'thread_from_message' => 'setThreadFromMessage',
+        'tts' => 'setTts',
+        'webhook_username' => 'setWebhookUsername',
+        'webhook_avatar_url' => 'setWebhookAvatarUrl'
     ];
 
     /**
@@ -528,7 +573,16 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'subreddit' => 'getSubreddit',
         'url' => 'getUrl',
         'force_self' => 'getForceSelf',
-        'flair_id' => 'getFlairId'
+        'flair_id' => 'getFlairId',
+        'channel_id' => 'getChannelId',
+        'embeds' => 'getEmbeds',
+        'crosspost' => 'getCrosspost',
+        'forum_thread_name' => 'getForumThreadName',
+        'forum_applied_tags' => 'getForumAppliedTags',
+        'thread_from_message' => 'getThreadFromMessage',
+        'tts' => 'getTts',
+        'webhook_username' => 'getWebhookUsername',
+        'webhook_avatar_url' => 'getWebhookAvatarUrl'
     ];
 
     /**
@@ -748,6 +802,15 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('force_self', $data ?? [], null);
         $this->setIfExists('flair_id', $data ?? [], null);
+        $this->setIfExists('channel_id', $data ?? [], null);
+        $this->setIfExists('embeds', $data ?? [], null);
+        $this->setIfExists('crosspost', $data ?? [], null);
+        $this->setIfExists('forum_thread_name', $data ?? [], null);
+        $this->setIfExists('forum_applied_tags', $data ?? [], null);
+        $this->setIfExists('thread_from_message', $data ?? [], null);
+        $this->setIfExists('tts', $data ?? [], null);
+        $this->setIfExists('webhook_username', $data ?? [], null);
+        $this->setIfExists('webhook_avatar_url', $data ?? [], null);
     }
 
     /**
@@ -863,6 +926,17 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
             );
         }
 
+        if ($this->container['channel_id'] === null) {
+            $invalidProperties[] = "'channel_id' can't be null";
+        }
+        if (!is_null($this->container['embeds']) && (count($this->container['embeds']) > 10)) {
+            $invalidProperties[] = "invalid value for 'embeds', number of items must be less than or equal to 10.";
+        }
+
+        if (!is_null($this->container['forum_applied_tags']) && (count($this->container['forum_applied_tags']) > 5)) {
+            $invalidProperties[] = "invalid value for 'forum_applied_tags', number of items must be less than or equal to 5.";
+        }
+
         return $invalidProperties;
     }
 
@@ -972,7 +1046,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     /**
      * Gets poll
      *
-     * @return \Late\Model\TwitterPlatformDataPoll|null
+     * @return \Late\Model\DiscordPlatformDataPoll|null
      */
     public function getPoll()
     {
@@ -982,7 +1056,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
     /**
      * Sets poll
      *
-     * @param \Late\Model\TwitterPlatformDataPoll|null $poll poll
+     * @param \Late\Model\DiscordPlatformDataPoll|null $poll poll
      *
      * @return self
      */
@@ -2534,6 +2608,257 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable flair_id cannot be null');
         }
         $this->container['flair_id'] = $flair_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets channel_id
+     *
+     * @return string
+     */
+    public function getChannelId()
+    {
+        return $this->container['channel_id'];
+    }
+
+    /**
+     * Sets channel_id
+     *
+     * @param string $channel_id Target channel snowflake ID. Determines which channel in the connected server receives the message.
+     *
+     * @return self
+     */
+    public function setChannelId($channel_id)
+    {
+        if (is_null($channel_id)) {
+            throw new \InvalidArgumentException('non-nullable channel_id cannot be null');
+        }
+        $this->container['channel_id'] = $channel_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets embeds
+     *
+     * @return \Late\Model\DiscordPlatformDataEmbedsInner[]|null
+     */
+    public function getEmbeds()
+    {
+        return $this->container['embeds'];
+    }
+
+    /**
+     * Sets embeds
+     *
+     * @param \Late\Model\DiscordPlatformDataEmbedsInner[]|null $embeds Up to 10 Discord embed objects (combined max 6,000 characters across all embeds). Sent alongside or instead of plain-text content.
+     *
+     * @return self
+     */
+    public function setEmbeds($embeds)
+    {
+        if (is_null($embeds)) {
+            throw new \InvalidArgumentException('non-nullable embeds cannot be null');
+        }
+
+        if ((count($embeds) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $embeds when calling PlatformTargetPlatformSpecificData., number of items must be less than or equal to 10.');
+        }
+        $this->container['embeds'] = $embeds;
+
+        return $this;
+    }
+
+    /**
+     * Gets crosspost
+     *
+     * @return bool|null
+     */
+    public function getCrosspost()
+    {
+        return $this->container['crosspost'];
+    }
+
+    /**
+     * Sets crosspost
+     *
+     * @param bool|null $crosspost Auto-crosspost to every server following this announcement channel (type 5). No-op for regular text channels.
+     *
+     * @return self
+     */
+    public function setCrosspost($crosspost)
+    {
+        if (is_null($crosspost)) {
+            throw new \InvalidArgumentException('non-nullable crosspost cannot be null');
+        }
+        $this->container['crosspost'] = $crosspost;
+
+        return $this;
+    }
+
+    /**
+     * Gets forum_thread_name
+     *
+     * @return string|null
+     */
+    public function getForumThreadName()
+    {
+        return $this->container['forum_thread_name'];
+    }
+
+    /**
+     * Sets forum_thread_name
+     *
+     * @param string|null $forum_thread_name Thread title for forum channel posts (type 15). Required when posting to a forum channel.
+     *
+     * @return self
+     */
+    public function setForumThreadName($forum_thread_name)
+    {
+        if (is_null($forum_thread_name)) {
+            throw new \InvalidArgumentException('non-nullable forum_thread_name cannot be null');
+        }
+        $this->container['forum_thread_name'] = $forum_thread_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets forum_applied_tags
+     *
+     * @return string[]|null
+     */
+    public function getForumAppliedTags()
+    {
+        return $this->container['forum_applied_tags'];
+    }
+
+    /**
+     * Sets forum_applied_tags
+     *
+     * @param string[]|null $forum_applied_tags Tag snowflake IDs to apply to forum posts. Max 5 tags.
+     *
+     * @return self
+     */
+    public function setForumAppliedTags($forum_applied_tags)
+    {
+        if (is_null($forum_applied_tags)) {
+            throw new \InvalidArgumentException('non-nullable forum_applied_tags cannot be null');
+        }
+
+        if ((count($forum_applied_tags) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $forum_applied_tags when calling PlatformTargetPlatformSpecificData., number of items must be less than or equal to 5.');
+        }
+        $this->container['forum_applied_tags'] = $forum_applied_tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets thread_from_message
+     *
+     * @return \Late\Model\DiscordPlatformDataThreadFromMessage|null
+     */
+    public function getThreadFromMessage()
+    {
+        return $this->container['thread_from_message'];
+    }
+
+    /**
+     * Sets thread_from_message
+     *
+     * @param \Late\Model\DiscordPlatformDataThreadFromMessage|null $thread_from_message thread_from_message
+     *
+     * @return self
+     */
+    public function setThreadFromMessage($thread_from_message)
+    {
+        if (is_null($thread_from_message)) {
+            throw new \InvalidArgumentException('non-nullable thread_from_message cannot be null');
+        }
+        $this->container['thread_from_message'] = $thread_from_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets tts
+     *
+     * @return bool|null
+     */
+    public function getTts()
+    {
+        return $this->container['tts'];
+    }
+
+    /**
+     * Sets tts
+     *
+     * @param bool|null $tts Send as text-to-speech message. Discord reads the message aloud in the channel.
+     *
+     * @return self
+     */
+    public function setTts($tts)
+    {
+        if (is_null($tts)) {
+            throw new \InvalidArgumentException('non-nullable tts cannot be null');
+        }
+        $this->container['tts'] = $tts;
+
+        return $this;
+    }
+
+    /**
+     * Gets webhook_username
+     *
+     * @return string|null
+     */
+    public function getWebhookUsername()
+    {
+        return $this->container['webhook_username'];
+    }
+
+    /**
+     * Sets webhook_username
+     *
+     * @param string|null $webhook_username Override the webhook display name for this post only (1-80 chars). Falls back to the account-level default set via PATCH /v1/connect/discord.
+     *
+     * @return self
+     */
+    public function setWebhookUsername($webhook_username)
+    {
+        if (is_null($webhook_username)) {
+            throw new \InvalidArgumentException('non-nullable webhook_username cannot be null');
+        }
+        $this->container['webhook_username'] = $webhook_username;
+
+        return $this;
+    }
+
+    /**
+     * Gets webhook_avatar_url
+     *
+     * @return string|null
+     */
+    public function getWebhookAvatarUrl()
+    {
+        return $this->container['webhook_avatar_url'];
+    }
+
+    /**
+     * Sets webhook_avatar_url
+     *
+     * @param string|null $webhook_avatar_url Override the webhook avatar URL for this post only. Falls back to the account-level default.
+     *
+     * @return self
+     */
+    public function setWebhookAvatarUrl($webhook_avatar_url)
+    {
+        if (is_null($webhook_avatar_url)) {
+            throw new \InvalidArgumentException('non-nullable webhook_avatar_url cannot be null');
+        }
+        $this->container['webhook_avatar_url'] = $webhook_avatar_url;
 
         return $this;
     }

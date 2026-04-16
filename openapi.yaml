@@ -181,6 +181,9 @@ tags:
   - name: GMB Media
   - name: GMB Attributes
   - name: GMB Place Actions
+  - name: Discord
+    description: |
+      Discord-specific endpoints for managing webhook identity (display name and avatar), switching channels, and listing guild channels.
   - name: LinkedIn Mentions
   - name: Pinterest
   - name: TikTok
@@ -1545,6 +1548,7 @@ components:
             - $ref: '#/components/schemas/SnapchatPlatformData'
             - $ref: '#/components/schemas/RedditPlatformData'
             - $ref: '#/components/schemas/BlueskyPlatformData'
+            - $ref: '#/components/schemas/DiscordPlatformData'
           additionalProperties: true
         status:
           type: string
@@ -2133,6 +2137,131 @@ components:
       description: |
         Bluesky post settings. Supports text posts with up to 4 images or a single video. threadItems creates a reply chain (Bluesky thread). Images exceeding 1MB are automatically compressed. Alt text supported via mediaItem properties.
 
+    DiscordPlatformData:
+      type: object
+      required: [channelId]
+      properties:
+        channelId:
+          type: string
+          description: Target channel snowflake ID. Determines which channel in the connected server receives the message.
+          example: "1234567890123456789"
+        embeds:
+          type: array
+          description: Up to 10 Discord embed objects (combined max 6,000 characters across all embeds). Sent alongside or instead of plain-text content.
+          maxItems: 10
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+                description: Embed title (max 256 chars)
+              description:
+                type: string
+                description: Embed body text (max 4,096 chars)
+              url:
+                type: string
+                description: URL the title links to
+              color:
+                type: integer
+                description: Embed accent color as decimal integer (e.g. 5814783 for blue). Convert hex to decimal.
+              image:
+                type: object
+                properties:
+                  url: { type: string }
+              thumbnail:
+                type: object
+                properties:
+                  url: { type: string }
+              footer:
+                type: object
+                properties:
+                  text: { type: string, description: Footer text (max 2,048 chars) }
+                  icon_url: { type: string }
+              author:
+                type: object
+                properties:
+                  name: { type: string, description: Author name (max 256 chars) }
+                  url: { type: string }
+                  icon_url: { type: string }
+              fields:
+                type: array
+                description: Up to 25 fields per embed
+                maxItems: 25
+                items:
+                  type: object
+                  required: [name, value]
+                  properties:
+                    name: { type: string, description: Field name (max 256 chars) }
+                    value: { type: string, description: Field value (max 1,024 chars) }
+                    inline: { type: boolean, description: Display fields side-by-side }
+        poll:
+          type: object
+          description: Native Discord poll. Cannot be combined with media attachments in the same message.
+          properties:
+            question:
+              type: object
+              required: [text]
+              properties:
+                text: { type: string, description: Poll question (max 300 chars) }
+            answers:
+              type: array
+              description: 1-10 answer options
+              maxItems: 10
+              items:
+                type: object
+                properties:
+                  poll_media:
+                    type: object
+                    properties:
+                      text: { type: string, description: Answer text }
+            duration:
+              type: integer
+              description: Poll duration in hours (1-768). Default 24.
+              minimum: 1
+              maximum: 768
+            allow_multiselect:
+              type: boolean
+              description: Allow users to select multiple answers. Default false.
+        crosspost:
+          type: boolean
+          description: Auto-crosspost to every server following this announcement channel (type 5). No-op for regular text channels.
+        forumThreadName:
+          type: string
+          description: Thread title for forum channel posts (type 15). Required when posting to a forum channel.
+        forumAppliedTags:
+          type: array
+          description: Tag snowflake IDs to apply to forum posts. Max 5 tags.
+          maxItems: 5
+          items:
+            type: string
+        threadFromMessage:
+          type: object
+          description: Create a follow-up thread under the published message.
+          properties:
+            name:
+              type: string
+              description: Thread name (1-100 chars)
+            autoArchiveDuration:
+              type: integer
+              description: Auto-archive after inactivity (minutes)
+              enum: [60, 1440, 4320, 10080]
+            rateLimitPerUser:
+              type: integer
+              description: Slow-mode duration in seconds (0-21600)
+              minimum: 0
+              maximum: 21600
+        tts:
+          type: boolean
+          description: Send as text-to-speech message. Discord reads the message aloud in the channel.
+        webhookUsername:
+          type: string
+          description: Override the webhook display name for this post only (1-80 chars). Falls back to the account-level default set via PATCH /v1/connect/discord.
+        webhookAvatarUrl:
+          type: string
+          description: Override the webhook avatar URL for this post only. Falls back to the account-level default.
+      description: |
+        Discord message settings. Supports plain text (2,000 chars), rich embeds (up to 10), native polls, forum posts, threads, and announcement crossposts. Media attachments support images (JPEG, PNG, GIF, WebP), videos (MP4), and documents (up to 10 files, 25 MB each). Webhook identity (username + avatar) can be customized per-account via PATCH /v1/connect/discord or per-post via webhookUsername/webhookAvatarUrl.
+
     QueueSlot:
       type: object
       properties:
@@ -2341,6 +2470,7 @@ components:
       properties:
         platform: { type: string }
         status: { type: string, enum: [published, failed] }
+        platformPostId: { type: string, nullable: true, description: 'The native post ID on the platform (e.g. Instagram media ID, tweet ID)' }
         accountId: { type: string }
         accountUsername: { type: string, nullable: true }
         analytics:
@@ -2794,7 +2924,7 @@ components:
         platform: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] }
         status: { $ref: '#/components/schemas/AdStatus' }
         adType: { type: string, enum: [boost, standalone] }
-        goal: { type: string, enum: [engagement, traffic, awareness, video_views] }
+        goal: { type: string, enum: [engagement, traffic, awareness, video_views, lead_generation, conversions, app_promotion], description: "Available goals vary by platform. Meta (Facebook/Instagram) and TikTok support all 7. LinkedIn supports all except app_promotion. Twitter/X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views." }
         isExternal: { type: boolean, description: True for ads synced from platform ad managers }
         budget:
           type: object
@@ -3669,6 +3799,7 @@ paths:
                     platformAnalytics:
                       - platform: "twitter"
                         status: "published"
+                        platformPostId: "123456789"
                         accountId: "64e1f0a9e2b5af0012ab34cd"
                         accountUsername: "@acmecorp"
                         analytics:
@@ -3732,6 +3863,7 @@ paths:
                         platforms:
                           - platform: "instagram"
                             status: "published"
+                            platformPostId: "17902345678901234"
                             accountId: "64e1f0a9e2b5af0012ab34cd"
                             accountUsername: "@acmecorp"
                             analytics:
@@ -5595,6 +5727,7 @@ paths:
                           - $ref: '#/components/schemas/SnapchatPlatformData'
                           - $ref: '#/components/schemas/RedditPlatformData'
                           - $ref: '#/components/schemas/BlueskyPlatformData'
+                          - $ref: '#/components/schemas/DiscordPlatformData'
                 scheduledFor: { type: string, format: date-time }
                 publishNow: { type: boolean, default: false }
                 isDraft:
@@ -11076,6 +11209,172 @@ paths:
                     textColor: "light"
                     backgroundColor: "#ff4500"
         '400': { description: Not a Reddit account or missing subreddit parameter }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { description: Account not found }
+
+  /v1/accounts/{accountId}/discord-settings:
+    get:
+      operationId: getDiscordSettings
+      tags: [Discord]
+      summary: Get Discord account settings
+      description: Returns the current Discord account settings including webhook identity (display name and avatar), connected channel, and guild information.
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Discord account settings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: object
+                    properties:
+                      _id: { type: string }
+                      platform: { type: string, example: discord }
+                      username: { type: string, description: Channel name }
+                      displayName: { type: string, description: "Guild - #channel display name" }
+                      profilePicture: { type: string, description: Guild icon URL }
+                      channelId: { type: string, description: Connected channel snowflake ID }
+                      channelName: { type: string, description: Channel name }
+                      channelType: { type: string, description: "Channel type (0 = text, 5 = announcement, 15 = forum)" }
+                      guildId: { type: string, description: Guild (server) snowflake ID }
+                      webhookUsername: { type: string, nullable: true, description: Custom webhook display name (null = default "Zernio") }
+                      webhookAvatarUrl: { type: string, nullable: true, description: Custom webhook avatar URL (null = default bot avatar) }
+              example:
+                account:
+                  _id: "abc123"
+                  platform: "discord"
+                  username: "announcements"
+                  displayName: "My Server - #announcements"
+                  profilePicture: "https://cdn.discordapp.com/icons/123/abc.png"
+                  channelId: "1234567890123456789"
+                  channelName: "announcements"
+                  channelType: "0"
+                  guildId: "9876543210987654321"
+                  webhookUsername: "My Brand"
+                  webhookAvatarUrl: "https://example.com/logo.png"
+        '400': { description: Not a Discord account }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { description: Account not found }
+
+    patch:
+      operationId: updateDiscordSettings
+      tags: [Discord]
+      summary: Update Discord settings
+      description: |
+        Update Discord account settings. Supports two operations (can be combined):
+
+        1. **Webhook identity** - Set the default display name and avatar that appear as the message author on every post. These are account-level defaults; individual posts can override them via platformSpecificData.webhookUsername / webhookAvatarUrl.
+
+        2. **Switch channel** - Move the connection to a different channel in the same guild. A new webhook is automatically created in the target channel.
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema: { type: string }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [accountId]
+              properties:
+                accountId:
+                  type: string
+                  description: Discord account ID
+                webhookUsername:
+                  type: string
+                  description: Custom display name for the webhook (1-80 chars). Empty string resets to default ("Zernio"). Cannot contain "clyde" or "discord".
+                webhookAvatarUrl:
+                  type: string
+                  description: Custom avatar URL. Empty string resets to default bot avatar.
+                channelId:
+                  type: string
+                  description: Switch to a different channel in the same guild. Must be a text (0), announcement (5), or forum (15) channel.
+            examples:
+              identity:
+                summary: Update webhook identity
+                value:
+                  accountId: "abc123"
+                  webhookUsername: "My Brand"
+                  webhookAvatarUrl: "https://example.com/logo.png"
+              channel:
+                summary: Switch channel
+                value:
+                  accountId: "abc123"
+                  channelId: "9999999999999999999"
+      responses:
+        '200':
+          description: Settings updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: { type: string, example: Discord settings updated }
+                  account:
+                    type: object
+                    properties:
+                      _id: { type: string }
+                      platform: { type: string }
+                      username: { type: string }
+                      displayName: { type: string }
+                      profilePicture: { type: string }
+                      channelId: { type: string }
+                      channelName: { type: string }
+                      channelType: { type: string }
+                      guildId: { type: string }
+                      webhookUsername: { type: string, nullable: true }
+                      webhookAvatarUrl: { type: string, nullable: true }
+        '400': { description: Invalid request (no changes, invalid channel type, or bot cannot access channel) }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { description: Discord account not found }
+
+  /v1/accounts/{accountId}/discord-channels:
+    get:
+      operationId: getDiscordChannels
+      tags: [Discord]
+      summary: List Discord guild channels
+      description: Returns the text, announcement, and forum channels in the connected Discord guild. Use this to discover available channels when switching the connected channel via PATCH /v1/accounts/{accountId}/discord-settings.
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Channel list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  channels:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string, description: Channel snowflake ID }
+                        name: { type: string, description: Channel name }
+                        type: { type: integer, description: "Channel type: 0 (text), 5 (announcement), 15 (forum)" }
+              example:
+                channels:
+                  - id: "1234567890123456789"
+                    name: "general"
+                    type: 0
+                  - id: "2345678901234567890"
+                    name: "announcements"
+                    type: 5
+                  - id: "3456789012345678901"
+                    name: "feedback"
+                    type: 15
+        '400': { description: Not a Discord account or missing guild info }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '404': { description: Account not found }
 
@@ -17269,7 +17568,7 @@ paths:
                 accountId: { type: string, description: Social account ID }
                 adAccountId: { type: string, description: Platform ad account ID }
                 name: { type: string, maxLength: 255 }
-                goal: { type: string, enum: [engagement, traffic, awareness, video_views] }
+                goal: { type: string, enum: [engagement, traffic, awareness, video_views, lead_generation, conversions, app_promotion], description: "Available goals vary by platform. Meta (Facebook/Instagram) and TikTok support all 7. LinkedIn supports all except app_promotion. Twitter/X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views." }
                 budget:
                   type: object
                   required: [amount, type]
@@ -17345,7 +17644,7 @@ paths:
                 accountId: { type: string }
                 adAccountId: { type: string }
                 name: { type: string, maxLength: 255 }
-                goal: { type: string, enum: [engagement, traffic, awareness, video_views] }
+                goal: { type: string, enum: [engagement, traffic, awareness, video_views, lead_generation, conversions, app_promotion], description: "Available goals vary by platform. Meta (Facebook/Instagram) and TikTok support all 7. LinkedIn supports all except app_promotion. Twitter/X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views." }
                 budgetAmount: { type: number }
                 budgetType: { type: string, enum: [daily, lifetime] }
                 currency: { type: string }

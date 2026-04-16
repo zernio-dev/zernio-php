@@ -377,6 +377,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const GOAL_TRAFFIC = 'traffic';
     public const GOAL_AWARENESS = 'awareness';
     public const GOAL_VIDEO_VIEWS = 'video_views';
+    public const GOAL_LEAD_GENERATION = 'lead_generation';
+    public const GOAL_CONVERSIONS = 'conversions';
+    public const GOAL_APP_PROMOTION = 'app_promotion';
     public const BUDGET_TYPE_DAILY = 'daily';
     public const BUDGET_TYPE_LIFETIME = 'lifetime';
     public const CALL_TO_ACTION_LEARN_MORE = 'LEARN_MORE';
@@ -404,6 +407,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             self::GOAL_TRAFFIC,
             self::GOAL_AWARENESS,
             self::GOAL_VIDEO_VIEWS,
+            self::GOAL_LEAD_GENERATION,
+            self::GOAL_CONVERSIONS,
+            self::GOAL_APP_PROMOTION,
         ];
     }
 
@@ -721,7 +727,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets goal
      *
-     * @param string $goal goal
+     * @param string $goal Available goals vary by platform. Meta (Facebook/Instagram) and TikTok support all 7. LinkedIn supports all except app_promotion. Twitter/X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views.
      *
      * @return self
      */

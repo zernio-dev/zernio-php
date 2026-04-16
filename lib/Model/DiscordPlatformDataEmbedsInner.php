@@ -1,6 +1,6 @@
 <?php
 /**
- * PlatformAnalytics
+ * DiscordPlatformDataEmbedsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * PlatformAnalytics Class Doc Comment
+ * DiscordPlatformDataEmbedsInner Class Doc Comment
  *
  * @category Class
  * @package  Late
@@ -41,7 +41,7 @@ use \Late\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
+class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'PlatformAnalytics';
+    protected static $openAPIModelName = 'DiscordPlatformData_embeds_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +58,15 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'platform' => 'string',
-        'status' => 'string',
-        'platform_post_id' => 'string',
-        'account_id' => 'string',
-        'account_username' => 'string',
-        'analytics' => '\Late\Model\PostAnalytics',
-        'sync_status' => 'string',
-        'platform_post_url' => 'string',
-        'error_message' => 'string'
+        'title' => 'string',
+        'description' => 'string',
+        'url' => 'string',
+        'color' => 'int',
+        'image' => '\Late\Model\DiscordPlatformDataEmbedsInnerImage',
+        'thumbnail' => '\Late\Model\DiscordPlatformDataEmbedsInnerImage',
+        'footer' => '\Late\Model\DiscordPlatformDataEmbedsInnerFooter',
+        'author' => '\Late\Model\DiscordPlatformDataEmbedsInnerAuthor',
+        'fields' => '\Late\Model\DiscordPlatformDataEmbedsInnerFieldsInner[]'
     ];
 
     /**
@@ -77,15 +77,15 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'platform' => null,
-        'status' => null,
-        'platform_post_id' => null,
-        'account_id' => null,
-        'account_username' => null,
-        'analytics' => null,
-        'sync_status' => null,
-        'platform_post_url' => 'uri',
-        'error_message' => null
+        'title' => null,
+        'description' => null,
+        'url' => null,
+        'color' => null,
+        'image' => null,
+        'thumbnail' => null,
+        'footer' => null,
+        'author' => null,
+        'fields' => null
     ];
 
     /**
@@ -94,15 +94,15 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'platform' => false,
-        'status' => false,
-        'platform_post_id' => false,
-        'account_id' => false,
-        'account_username' => false,
-        'analytics' => false,
-        'sync_status' => false,
-        'platform_post_url' => false,
-        'error_message' => false
+        'title' => false,
+        'description' => false,
+        'url' => false,
+        'color' => false,
+        'image' => false,
+        'thumbnail' => false,
+        'footer' => false,
+        'author' => false,
+        'fields' => false
     ];
 
     /**
@@ -191,15 +191,15 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'platform' => 'platform',
-        'status' => 'status',
-        'platform_post_id' => 'platformPostId',
-        'account_id' => 'accountId',
-        'account_username' => 'accountUsername',
-        'analytics' => 'analytics',
-        'sync_status' => 'syncStatus',
-        'platform_post_url' => 'platformPostUrl',
-        'error_message' => 'errorMessage'
+        'title' => 'title',
+        'description' => 'description',
+        'url' => 'url',
+        'color' => 'color',
+        'image' => 'image',
+        'thumbnail' => 'thumbnail',
+        'footer' => 'footer',
+        'author' => 'author',
+        'fields' => 'fields'
     ];
 
     /**
@@ -208,15 +208,15 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'platform' => 'setPlatform',
-        'status' => 'setStatus',
-        'platform_post_id' => 'setPlatformPostId',
-        'account_id' => 'setAccountId',
-        'account_username' => 'setAccountUsername',
-        'analytics' => 'setAnalytics',
-        'sync_status' => 'setSyncStatus',
-        'platform_post_url' => 'setPlatformPostUrl',
-        'error_message' => 'setErrorMessage'
+        'title' => 'setTitle',
+        'description' => 'setDescription',
+        'url' => 'setUrl',
+        'color' => 'setColor',
+        'image' => 'setImage',
+        'thumbnail' => 'setThumbnail',
+        'footer' => 'setFooter',
+        'author' => 'setAuthor',
+        'fields' => 'setFields'
     ];
 
     /**
@@ -225,15 +225,15 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'platform' => 'getPlatform',
-        'status' => 'getStatus',
-        'platform_post_id' => 'getPlatformPostId',
-        'account_id' => 'getAccountId',
-        'account_username' => 'getAccountUsername',
-        'analytics' => 'getAnalytics',
-        'sync_status' => 'getSyncStatus',
-        'platform_post_url' => 'getPlatformPostUrl',
-        'error_message' => 'getErrorMessage'
+        'title' => 'getTitle',
+        'description' => 'getDescription',
+        'url' => 'getUrl',
+        'color' => 'getColor',
+        'image' => 'getImage',
+        'thumbnail' => 'getThumbnail',
+        'footer' => 'getFooter',
+        'author' => 'getAuthor',
+        'fields' => 'getFields'
     ];
 
     /**
@@ -277,38 +277,6 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$openAPIModelName;
     }
 
-    public const STATUS_PUBLISHED = 'published';
-    public const STATUS_FAILED = 'failed';
-    public const SYNC_STATUS_SYNCED = 'synced';
-    public const SYNC_STATUS_PENDING = 'pending';
-    public const SYNC_STATUS_UNAVAILABLE = 'unavailable';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_PUBLISHED,
-            self::STATUS_FAILED,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSyncStatusAllowableValues()
-    {
-        return [
-            self::SYNC_STATUS_SYNCED,
-            self::SYNC_STATUS_PENDING,
-            self::SYNC_STATUS_UNAVAILABLE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -325,15 +293,15 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('platform_post_id', $data ?? [], null);
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('account_username', $data ?? [], null);
-        $this->setIfExists('analytics', $data ?? [], null);
-        $this->setIfExists('sync_status', $data ?? [], null);
-        $this->setIfExists('platform_post_url', $data ?? [], null);
-        $this->setIfExists('error_message', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('color', $data ?? [], null);
+        $this->setIfExists('image', $data ?? [], null);
+        $this->setIfExists('thumbnail', $data ?? [], null);
+        $this->setIfExists('footer', $data ?? [], null);
+        $this->setIfExists('author', $data ?? [], null);
+        $this->setIfExists('fields', $data ?? [], null);
     }
 
     /**
@@ -363,22 +331,8 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getSyncStatusAllowableValues();
-        if (!is_null($this->container['sync_status']) && !in_array($this->container['sync_status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'sync_status', must be one of '%s'",
-                $this->container['sync_status'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['fields']) && (count($this->container['fields']) > 25)) {
+            $invalidProperties[] = "invalid value for 'fields', number of items must be less than or equal to 25.";
         }
 
         return $invalidProperties;
@@ -397,264 +351,248 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets platform
+     * Gets title
      *
      * @return string|null
      */
-    public function getPlatform()
+    public function getTitle()
     {
-        return $this->container['platform'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets platform
+     * Sets title
      *
-     * @param string|null $platform platform
+     * @param string|null $title Embed title (max 256 chars)
      *
      * @return self
      */
-    public function setPlatform($platform)
+    public function setTitle($title)
     {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
-        $this->container['platform'] = $platform;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets description
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getDescription()
     {
-        return $this->container['status'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets status
+     * Sets description
      *
-     * @param string|null $status status
+     * @param string|null $description Embed body text (max 4,096 chars)
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setDescription($description)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets platform_post_id
+     * Gets url
      *
      * @return string|null
      */
-    public function getPlatformPostId()
+    public function getUrl()
     {
-        return $this->container['platform_post_id'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets platform_post_id
+     * Sets url
      *
-     * @param string|null $platform_post_id The native post ID on the platform (e.g. Instagram media ID, tweet ID)
+     * @param string|null $url URL the title links to
      *
      * @return self
      */
-    public function setPlatformPostId($platform_post_id)
+    public function setUrl($url)
     {
-        if (is_null($platform_post_id)) {
-            throw new \InvalidArgumentException('non-nullable platform_post_id cannot be null');
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
-        $this->container['platform_post_id'] = $platform_post_id;
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets account_id
+     * Gets color
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getAccountId()
+    public function getColor()
     {
-        return $this->container['account_id'];
+        return $this->container['color'];
     }
 
     /**
-     * Sets account_id
+     * Sets color
      *
-     * @param string|null $account_id account_id
+     * @param int|null $color Embed accent color as decimal integer (e.g. 5814783 for blue). Convert hex to decimal.
      *
      * @return self
      */
-    public function setAccountId($account_id)
+    public function setColor($color)
     {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        if (is_null($color)) {
+            throw new \InvalidArgumentException('non-nullable color cannot be null');
         }
-        $this->container['account_id'] = $account_id;
+        $this->container['color'] = $color;
 
         return $this;
     }
 
     /**
-     * Gets account_username
+     * Gets image
      *
-     * @return string|null
+     * @return \Late\Model\DiscordPlatformDataEmbedsInnerImage|null
      */
-    public function getAccountUsername()
+    public function getImage()
     {
-        return $this->container['account_username'];
+        return $this->container['image'];
     }
 
     /**
-     * Sets account_username
+     * Sets image
      *
-     * @param string|null $account_username account_username
+     * @param \Late\Model\DiscordPlatformDataEmbedsInnerImage|null $image image
      *
      * @return self
      */
-    public function setAccountUsername($account_username)
+    public function setImage($image)
     {
-        if (is_null($account_username)) {
-            throw new \InvalidArgumentException('non-nullable account_username cannot be null');
+        if (is_null($image)) {
+            throw new \InvalidArgumentException('non-nullable image cannot be null');
         }
-        $this->container['account_username'] = $account_username;
+        $this->container['image'] = $image;
 
         return $this;
     }
 
     /**
-     * Gets analytics
+     * Gets thumbnail
      *
-     * @return \Late\Model\PostAnalytics|null
+     * @return \Late\Model\DiscordPlatformDataEmbedsInnerImage|null
      */
-    public function getAnalytics()
+    public function getThumbnail()
     {
-        return $this->container['analytics'];
+        return $this->container['thumbnail'];
     }
 
     /**
-     * Sets analytics
+     * Sets thumbnail
      *
-     * @param \Late\Model\PostAnalytics|null $analytics analytics
+     * @param \Late\Model\DiscordPlatformDataEmbedsInnerImage|null $thumbnail thumbnail
      *
      * @return self
      */
-    public function setAnalytics($analytics)
+    public function setThumbnail($thumbnail)
     {
-        if (is_null($analytics)) {
-            throw new \InvalidArgumentException('non-nullable analytics cannot be null');
+        if (is_null($thumbnail)) {
+            throw new \InvalidArgumentException('non-nullable thumbnail cannot be null');
         }
-        $this->container['analytics'] = $analytics;
+        $this->container['thumbnail'] = $thumbnail;
 
         return $this;
     }
 
     /**
-     * Gets sync_status
+     * Gets footer
      *
-     * @return string|null
+     * @return \Late\Model\DiscordPlatformDataEmbedsInnerFooter|null
      */
-    public function getSyncStatus()
+    public function getFooter()
     {
-        return $this->container['sync_status'];
+        return $this->container['footer'];
     }
 
     /**
-     * Sets sync_status
+     * Sets footer
      *
-     * @param string|null $sync_status Sync state of analytics for this platform
+     * @param \Late\Model\DiscordPlatformDataEmbedsInnerFooter|null $footer footer
      *
      * @return self
      */
-    public function setSyncStatus($sync_status)
+    public function setFooter($footer)
     {
-        if (is_null($sync_status)) {
-            throw new \InvalidArgumentException('non-nullable sync_status cannot be null');
+        if (is_null($footer)) {
+            throw new \InvalidArgumentException('non-nullable footer cannot be null');
         }
-        $allowedValues = $this->getSyncStatusAllowableValues();
-        if (!in_array($sync_status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sync_status', must be one of '%s'",
-                    $sync_status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['sync_status'] = $sync_status;
+        $this->container['footer'] = $footer;
 
         return $this;
     }
 
     /**
-     * Gets platform_post_url
+     * Gets author
      *
-     * @return string|null
+     * @return \Late\Model\DiscordPlatformDataEmbedsInnerAuthor|null
      */
-    public function getPlatformPostUrl()
+    public function getAuthor()
     {
-        return $this->container['platform_post_url'];
+        return $this->container['author'];
     }
 
     /**
-     * Sets platform_post_url
+     * Sets author
      *
-     * @param string|null $platform_post_url platform_post_url
+     * @param \Late\Model\DiscordPlatformDataEmbedsInnerAuthor|null $author author
      *
      * @return self
      */
-    public function setPlatformPostUrl($platform_post_url)
+    public function setAuthor($author)
     {
-        if (is_null($platform_post_url)) {
-            throw new \InvalidArgumentException('non-nullable platform_post_url cannot be null');
+        if (is_null($author)) {
+            throw new \InvalidArgumentException('non-nullable author cannot be null');
         }
-        $this->container['platform_post_url'] = $platform_post_url;
+        $this->container['author'] = $author;
 
         return $this;
     }
 
     /**
-     * Gets error_message
+     * Gets fields
      *
-     * @return string|null
+     * @return \Late\Model\DiscordPlatformDataEmbedsInnerFieldsInner[]|null
      */
-    public function getErrorMessage()
+    public function getFields()
     {
-        return $this->container['error_message'];
+        return $this->container['fields'];
     }
 
     /**
-     * Sets error_message
+     * Sets fields
      *
-     * @param string|null $error_message Error details when status is failed
+     * @param \Late\Model\DiscordPlatformDataEmbedsInnerFieldsInner[]|null $fields Up to 25 fields per embed
      *
      * @return self
      */
-    public function setErrorMessage($error_message)
+    public function setFields($fields)
     {
-        if (is_null($error_message)) {
-            throw new \InvalidArgumentException('non-nullable error_message cannot be null');
+        if (is_null($fields)) {
+            throw new \InvalidArgumentException('non-nullable fields cannot be null');
         }
-        $this->container['error_message'] = $error_message;
+
+        if ((count($fields) > 25)) {
+            throw new \InvalidArgumentException('invalid value for $fields when calling DiscordPlatformDataEmbedsInner., number of items must be less than or equal to 25.');
+        }
+        $this->container['fields'] = $fields;
 
         return $this;
     }
