@@ -774,7 +774,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets reply_to
      *
-     * @param string|null $reply_to Platform message ID to reply to (Telegram only).
+     * @param string|null $reply_to Platform message ID to quote-reply to. For WhatsApp, pass the wamid (available in message.platformMessageId from webhooks). For Telegram, pass the Telegram message ID.
      *
      * @return self
      */

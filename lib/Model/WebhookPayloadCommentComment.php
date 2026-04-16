@@ -447,7 +447,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets post_id
      *
-     * @param string $post_id Internal post ID
+     * @param string $post_id Internal post ID (null for posts not published through Zernio)
      *
      * @return self
      */

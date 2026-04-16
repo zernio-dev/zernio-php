@@ -957,7 +957,8 @@ components:
               description: Platform comment ID
             postId:
               type: string
-              description: Internal post ID
+              nullable: true
+              description: Internal post ID (null for posts not published through Zernio)
             platformPostId:
               type: string
               description: Platform's post ID
@@ -997,7 +998,8 @@ components:
           properties:
             id:
               type: string
-              description: Internal post ID
+              nullable: true
+              description: Internal post ID (null for posts not published through Zernio)
             platformPostId:
               type: string
               description: Platform's post ID
@@ -12742,7 +12744,7 @@ paths:
                   description: Facebook message tag for messaging outside 24h window. Requires messagingType MESSAGE_TAG. Instagram only supports HUMAN_AGENT.
                 replyTo:
                   type: string
-                  description: Platform message ID to reply to (Telegram only).
+                  description: Platform message ID to quote-reply to. For WhatsApp, pass the wamid (available in message.platformMessageId from webhooks). For Telegram, pass the Telegram message ID.
           multipart/form-data:
             schema:
               type: object
@@ -12774,7 +12776,7 @@ paths:
                   description: Message tag (requires messagingType MESSAGE_TAG)
                 replyTo:
                   type: string
-                  description: Platform message ID to reply to (Telegram only)
+                  description: Platform message ID to quote-reply to. For WhatsApp, pass the wamid (available in message.platformMessageId from webhooks). For Telegram, pass the Telegram message ID.
       responses:
         '200':
           description: Message sent

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** | Platform comment ID |
-**post_id** | **string** | Internal post ID |
+**post_id** | **string** | Internal post ID (null for posts not published through Zernio) |
 **platform_post_id** | **string** | Platform&#39;s post ID |
 **platform** | **string** |  |
 **text** | **string** | Comment text content |
