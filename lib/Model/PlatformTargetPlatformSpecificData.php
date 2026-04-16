@@ -64,6 +64,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
         'poll' => '\Late\Model\DiscordPlatformDataPoll',
         'long_video' => 'bool',
+        'geo_restriction' => '\Late\Model\GeoRestriction',
         'topic_tag' => 'string',
         'draft' => 'bool',
         'content_type' => 'string',
@@ -141,6 +142,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'thread_items' => null,
         'poll' => null,
         'long_video' => null,
+        'geo_restriction' => null,
         'topic_tag' => null,
         'draft' => null,
         'content_type' => null,
@@ -216,6 +218,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'thread_items' => false,
         'poll' => false,
         'long_video' => false,
+        'geo_restriction' => false,
         'topic_tag' => false,
         'draft' => false,
         'content_type' => false,
@@ -371,6 +374,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'thread_items' => 'threadItems',
         'poll' => 'poll',
         'long_video' => 'longVideo',
+        'geo_restriction' => 'geoRestriction',
         'topic_tag' => 'topic_tag',
         'draft' => 'draft',
         'content_type' => 'contentType',
@@ -446,6 +450,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'thread_items' => 'setThreadItems',
         'poll' => 'setPoll',
         'long_video' => 'setLongVideo',
+        'geo_restriction' => 'setGeoRestriction',
         'topic_tag' => 'setTopicTag',
         'draft' => 'setDraft',
         'content_type' => 'setContentType',
@@ -521,6 +526,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         'thread_items' => 'getThreadItems',
         'poll' => 'getPoll',
         'long_video' => 'getLongVideo',
+        'geo_restriction' => 'getGeoRestriction',
         'topic_tag' => 'getTopicTag',
         'draft' => 'getDraft',
         'content_type' => 'getContentType',
@@ -749,6 +755,7 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
         $this->setIfExists('thread_items', $data ?? [], null);
         $this->setIfExists('poll', $data ?? [], null);
         $this->setIfExists('long_video', $data ?? [], false);
+        $this->setIfExists('geo_restriction', $data ?? [], null);
         $this->setIfExists('topic_tag', $data ?? [], null);
         $this->setIfExists('draft', $data ?? [], null);
         $this->setIfExists('content_type', $data ?? [], 'story');
@@ -1093,6 +1100,33 @@ class PlatformTargetPlatformSpecificData implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable long_video cannot be null');
         }
         $this->container['long_video'] = $long_video;
+
+        return $this;
+    }
+
+    /**
+     * Gets geo_restriction
+     *
+     * @return \Late\Model\GeoRestriction|null
+     */
+    public function getGeoRestriction()
+    {
+        return $this->container['geo_restriction'];
+    }
+
+    /**
+     * Sets geo_restriction
+     *
+     * @param \Late\Model\GeoRestriction|null $geo_restriction geo_restriction
+     *
+     * @return self
+     */
+    public function setGeoRestriction($geo_restriction)
+    {
+        if (is_null($geo_restriction)) {
+            throw new \InvalidArgumentException('non-nullable geo_restriction cannot be null');
+        }
+        $this->container['geo_restriction'] = $geo_restriction;
 
         return $this;
     }

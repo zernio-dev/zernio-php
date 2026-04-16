@@ -36,6 +36,7 @@ use \Late\ObjectSerializer;
  * TwitterPlatformData Class Doc Comment
  *
  * @category Class
+ * @description X (Twitter) geo-restriction applies at the media level. Media in geo-restricted tweets will be hidden for users outside the specified countries; the tweet text itself remains visible globally. Requires media to be attached (ignored for text-only tweets).
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -62,7 +63,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'reply_settings' => 'string',
         'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
         'poll' => '\Late\Model\TwitterPlatformDataPoll',
-        'long_video' => 'bool'
+        'long_video' => 'bool',
+        'geo_restriction' => '\Late\Model\GeoRestriction'
     ];
 
     /**
@@ -77,7 +79,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'reply_settings' => null,
         'thread_items' => null,
         'poll' => null,
-        'long_video' => null
+        'long_video' => null,
+        'geo_restriction' => null
     ];
 
     /**
@@ -90,7 +93,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'reply_settings' => false,
         'thread_items' => false,
         'poll' => false,
-        'long_video' => false
+        'long_video' => false,
+        'geo_restriction' => false
     ];
 
     /**
@@ -183,7 +187,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'reply_settings' => 'replySettings',
         'thread_items' => 'threadItems',
         'poll' => 'poll',
-        'long_video' => 'longVideo'
+        'long_video' => 'longVideo',
+        'geo_restriction' => 'geoRestriction'
     ];
 
     /**
@@ -196,7 +201,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'reply_settings' => 'setReplySettings',
         'thread_items' => 'setThreadItems',
         'poll' => 'setPoll',
-        'long_video' => 'setLongVideo'
+        'long_video' => 'setLongVideo',
+        'geo_restriction' => 'setGeoRestriction'
     ];
 
     /**
@@ -209,7 +215,8 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'reply_settings' => 'getReplySettings',
         'thread_items' => 'getThreadItems',
         'poll' => 'getPoll',
-        'long_video' => 'getLongVideo'
+        'long_video' => 'getLongVideo',
+        'geo_restriction' => 'getGeoRestriction'
     ];
 
     /**
@@ -293,6 +300,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('thread_items', $data ?? [], null);
         $this->setIfExists('poll', $data ?? [], null);
         $this->setIfExists('long_video', $data ?? [], false);
+        $this->setIfExists('geo_restriction', $data ?? [], null);
     }
 
     /**
@@ -487,6 +495,33 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable long_video cannot be null');
         }
         $this->container['long_video'] = $long_video;
+
+        return $this;
+    }
+
+    /**
+     * Gets geo_restriction
+     *
+     * @return \Late\Model\GeoRestriction|null
+     */
+    public function getGeoRestriction()
+    {
+        return $this->container['geo_restriction'];
+    }
+
+    /**
+     * Sets geo_restriction
+     *
+     * @param \Late\Model\GeoRestriction|null $geo_restriction geo_restriction
+     *
+     * @return self
+     */
+    public function setGeoRestriction($geo_restriction)
+    {
+        if (is_null($geo_restriction)) {
+            throw new \InvalidArgumentException('non-nullable geo_restriction cannot be null');
+        }
+        $this->container['geo_restriction'] = $geo_restriction;
 
         return $this;
     }

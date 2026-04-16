@@ -1478,6 +1478,29 @@ components:
         timestamp:
           type: string
           format: date-time
+    GeoRestriction:
+      type: object
+      description: >
+        Country-level geo-restriction (allowlist). When set, the post is only visible to users in the
+        specified countries. Supported on Facebook (feed posts, videos, reels), X/Twitter (media-level
+        restriction), and LinkedIn (organization pages only, min 300 targeted followers). Ignored on
+        unsupported platforms. Stories (Facebook, Instagram) do not support geo-restriction.
+      properties:
+        countries:
+          type: array
+          minItems: 1
+          maxItems: 25
+          items:
+            type: string
+            pattern: '^[A-Z]{2}$'
+            example: US
+          description: >
+            ISO 3166-1 alpha-2 country codes (uppercase). Only users in these countries can see the post.
+            Maximum 25 countries per post. Example: ["US", "CA", "GB", "ES"].
+          example: ["US", "CA", "GB"]
+      required:
+        - countries
+
     MediaItem:
       type: object
       description: Media referenced in posts. URLs must be publicly reachable over HTTPS. Use POST /v1/media/presign for uploads up to 5GB. Zernio auto-compresses images and videos that exceed platform limits (videos over 200 MB may not be compressed).
@@ -1764,6 +1787,12 @@ components:
           type: boolean
           default: false
           description: Enable long video uploads (over 140 seconds) using amplify_video media category. Requires the connected X account to have an active X Premium subscription. When true, videos are uploaded with the amplify_video category which supports longer durations (up to 10 minutes via API). When false or omitted, the standard tweet_video category is used (140 second limit). Note that not all Premium accounts have API long-video access, as X may require separate allowlisting.
+        geoRestriction:
+          $ref: '#/components/schemas/GeoRestriction'
+      description: >
+        X (Twitter) geo-restriction applies at the media level. Media in geo-restricted tweets will be
+        hidden for users outside the specified countries; the tweet text itself remains visible globally.
+        Requires media to be attached (ignored for text-only tweets).
 
     ThreadsPlatformData:
       type: object
@@ -1809,7 +1838,12 @@ components:
         pageId:
           type: string
           description: Target Facebook Page ID for multi-page posting. If omitted, uses the default page. Use GET /v1/accounts/{id}/facebook-page to list pages.
-      description: Feed posts support up to 10 images (no mixed video+image). Stories require single media (24h, no captions). Reels require single vertical video (9:16, 3-60s).
+        geoRestriction:
+          $ref: '#/components/schemas/GeoRestriction'
+      description: >
+        Feed posts support up to 10 images (no mixed video+image). Stories require single media (24h, no captions).
+        Reels require single vertical video (9:16, 3-60s). Geo-restriction is a hard visibility restriction:
+        users outside the specified countries cannot see the post. Not supported for stories.
 
     InstagramPlatformData:
       type: object
@@ -1899,7 +1933,12 @@ components:
         disableLinkPreview:
           type: boolean
           description: Set to true to disable automatic link previews for URLs in the post content (default is false)
-      description: Up to 20 images, no multi-video. Single PDF supported (max 100MB). Link previews auto-generated when no media attached. Use organizationUrn for multi-org posting.
+        geoRestriction:
+          $ref: '#/components/schemas/GeoRestriction'
+      description: >
+        Up to 20 images, no multi-video. Single PDF supported (max 100MB). Link previews auto-generated
+        when no media attached. Use organizationUrn for multi-org posting. Geo-restriction only works for
+        organization pages (not personal profiles) and requires the targeted audience to exceed 300 followers.
 
     PinterestPlatformData:
       type: object

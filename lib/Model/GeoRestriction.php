@@ -1,6 +1,6 @@
 <?php
 /**
- * LinkedInPlatformData
+ * GeoRestriction
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * LinkedInPlatformData Class Doc Comment
+ * GeoRestriction Class Doc Comment
  *
  * @category Class
- * @description Up to 20 images, no multi-video. Single PDF supported (max 100MB). Link previews auto-generated when no media attached. Use organizationUrn for multi-org posting. Geo-restriction only works for organization pages (not personal profiles) and requires the targeted audience to exceed 300 followers.
+ * @description Country-level geo-restriction (allowlist). When set, the post is only visible to users in the specified countries. Supported on Facebook (feed posts, videos, reels), X/Twitter (media-level restriction), and LinkedIn (organization pages only, min 300 targeted followers). Ignored on unsupported platforms. Stories (Facebook, Instagram) do not support geo-restriction.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializable
+class GeoRestriction implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'LinkedInPlatformData';
+    protected static $openAPIModelName = 'GeoRestriction';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,11 +59,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'document_title' => 'string',
-        'organization_urn' => 'string',
-        'first_comment' => 'string',
-        'disable_link_preview' => 'bool',
-        'geo_restriction' => '\Late\Model\GeoRestriction'
+        'countries' => 'string[]'
     ];
 
     /**
@@ -74,11 +70,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'document_title' => null,
-        'organization_urn' => null,
-        'first_comment' => null,
-        'disable_link_preview' => null,
-        'geo_restriction' => null
+        'countries' => null
     ];
 
     /**
@@ -87,11 +79,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'document_title' => false,
-        'organization_urn' => false,
-        'first_comment' => false,
-        'disable_link_preview' => false,
-        'geo_restriction' => false
+        'countries' => false
     ];
 
     /**
@@ -180,11 +168,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'document_title' => 'documentTitle',
-        'organization_urn' => 'organizationUrn',
-        'first_comment' => 'firstComment',
-        'disable_link_preview' => 'disableLinkPreview',
-        'geo_restriction' => 'geoRestriction'
+        'countries' => 'countries'
     ];
 
     /**
@@ -193,11 +177,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'document_title' => 'setDocumentTitle',
-        'organization_urn' => 'setOrganizationUrn',
-        'first_comment' => 'setFirstComment',
-        'disable_link_preview' => 'setDisableLinkPreview',
-        'geo_restriction' => 'setGeoRestriction'
+        'countries' => 'setCountries'
     ];
 
     /**
@@ -206,11 +186,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'document_title' => 'getDocumentTitle',
-        'organization_urn' => 'getOrganizationUrn',
-        'first_comment' => 'getFirstComment',
-        'disable_link_preview' => 'getDisableLinkPreview',
-        'geo_restriction' => 'getGeoRestriction'
+        'countries' => 'getCountries'
     ];
 
     /**
@@ -270,11 +246,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('document_title', $data ?? [], null);
-        $this->setIfExists('organization_urn', $data ?? [], null);
-        $this->setIfExists('first_comment', $data ?? [], null);
-        $this->setIfExists('disable_link_preview', $data ?? [], null);
-        $this->setIfExists('geo_restriction', $data ?? [], null);
+        $this->setIfExists('countries', $data ?? [], null);
     }
 
     /**
@@ -304,6 +276,17 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['countries'] === null) {
+            $invalidProperties[] = "'countries' can't be null";
+        }
+        if ((count($this->container['countries']) > 25)) {
+            $invalidProperties[] = "invalid value for 'countries', number of items must be less than or equal to 25.";
+        }
+
+        if ((count($this->container['countries']) < 1)) {
+            $invalidProperties[] = "invalid value for 'countries', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -320,136 +303,35 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets document_title
+     * Gets countries
      *
-     * @return string|null
+     * @return string[]
      */
-    public function getDocumentTitle()
+    public function getCountries()
     {
-        return $this->container['document_title'];
+        return $this->container['countries'];
     }
 
     /**
-     * Sets document_title
+     * Sets countries
      *
-     * @param string|null $document_title Title displayed on LinkedIn document (PDF/carousel) posts. Required by LinkedIn for document posts. If omitted, falls back to the media item title, then the filename.
+     * @param string[] $countries ISO 3166-1 alpha-2 country codes (uppercase). Only users in these countries can see the post. Maximum 25 countries per post. Example: [\"US\", \"CA\", \"GB\", \"ES\"].
      *
      * @return self
      */
-    public function setDocumentTitle($document_title)
+    public function setCountries($countries)
     {
-        if (is_null($document_title)) {
-            throw new \InvalidArgumentException('non-nullable document_title cannot be null');
+        if (is_null($countries)) {
+            throw new \InvalidArgumentException('non-nullable countries cannot be null');
         }
-        $this->container['document_title'] = $document_title;
 
-        return $this;
-    }
-
-    /**
-     * Gets organization_urn
-     *
-     * @return string|null
-     */
-    public function getOrganizationUrn()
-    {
-        return $this->container['organization_urn'];
-    }
-
-    /**
-     * Sets organization_urn
-     *
-     * @param string|null $organization_urn Target LinkedIn Organization URN (e.g. \"urn:li:organization:123456789\"). If omitted, uses the default org. Use GET /v1/accounts/{id}/linkedin-organizations to list orgs.
-     *
-     * @return self
-     */
-    public function setOrganizationUrn($organization_urn)
-    {
-        if (is_null($organization_urn)) {
-            throw new \InvalidArgumentException('non-nullable organization_urn cannot be null');
+        if ((count($countries) > 25)) {
+            throw new \InvalidArgumentException('invalid value for $countries when calling GeoRestriction., number of items must be less than or equal to 25.');
         }
-        $this->container['organization_urn'] = $organization_urn;
-
-        return $this;
-    }
-
-    /**
-     * Gets first_comment
-     *
-     * @return string|null
-     */
-    public function getFirstComment()
-    {
-        return $this->container['first_comment'];
-    }
-
-    /**
-     * Sets first_comment
-     *
-     * @param string|null $first_comment Optional first comment to add after the post is created
-     *
-     * @return self
-     */
-    public function setFirstComment($first_comment)
-    {
-        if (is_null($first_comment)) {
-            throw new \InvalidArgumentException('non-nullable first_comment cannot be null');
+        if ((count($countries) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $countries when calling GeoRestriction., number of items must be greater than or equal to 1.');
         }
-        $this->container['first_comment'] = $first_comment;
-
-        return $this;
-    }
-
-    /**
-     * Gets disable_link_preview
-     *
-     * @return bool|null
-     */
-    public function getDisableLinkPreview()
-    {
-        return $this->container['disable_link_preview'];
-    }
-
-    /**
-     * Sets disable_link_preview
-     *
-     * @param bool|null $disable_link_preview Set to true to disable automatic link previews for URLs in the post content (default is false)
-     *
-     * @return self
-     */
-    public function setDisableLinkPreview($disable_link_preview)
-    {
-        if (is_null($disable_link_preview)) {
-            throw new \InvalidArgumentException('non-nullable disable_link_preview cannot be null');
-        }
-        $this->container['disable_link_preview'] = $disable_link_preview;
-
-        return $this;
-    }
-
-    /**
-     * Gets geo_restriction
-     *
-     * @return \Late\Model\GeoRestriction|null
-     */
-    public function getGeoRestriction()
-    {
-        return $this->container['geo_restriction'];
-    }
-
-    /**
-     * Sets geo_restriction
-     *
-     * @param \Late\Model\GeoRestriction|null $geo_restriction geo_restriction
-     *
-     * @return self
-     */
-    public function setGeoRestriction($geo_restriction)
-    {
-        if (is_null($geo_restriction)) {
-            throw new \InvalidArgumentException('non-nullable geo_restriction cannot be null');
-        }
-        $this->container['geo_restriction'] = $geo_restriction;
+        $this->container['countries'] = $countries;
 
         return $this;
     }

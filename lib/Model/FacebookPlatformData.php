@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * FacebookPlatformData Class Doc Comment
  *
  * @category Class
- * @description Feed posts support up to 10 images (no mixed video+image). Stories require single media (24h, no captions). Reels require single vertical video (9:16, 3-60s).
+ * @description Feed posts support up to 10 images (no mixed video+image). Stories require single media (24h, no captions). Reels require single vertical video (9:16, 3-60s). Geo-restriction is a hard visibility restriction: users outside the specified countries cannot see the post. Not supported for stories.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -63,7 +63,8 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'content_type' => 'string',
         'title' => 'string',
         'first_comment' => 'string',
-        'page_id' => 'string'
+        'page_id' => 'string',
+        'geo_restriction' => '\Late\Model\GeoRestriction'
     ];
 
     /**
@@ -78,7 +79,8 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'content_type' => null,
         'title' => null,
         'first_comment' => null,
-        'page_id' => null
+        'page_id' => null,
+        'geo_restriction' => null
     ];
 
     /**
@@ -91,7 +93,8 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'content_type' => false,
         'title' => false,
         'first_comment' => false,
-        'page_id' => false
+        'page_id' => false,
+        'geo_restriction' => false
     ];
 
     /**
@@ -184,7 +187,8 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'content_type' => 'contentType',
         'title' => 'title',
         'first_comment' => 'firstComment',
-        'page_id' => 'pageId'
+        'page_id' => 'pageId',
+        'geo_restriction' => 'geoRestriction'
     ];
 
     /**
@@ -197,7 +201,8 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'content_type' => 'setContentType',
         'title' => 'setTitle',
         'first_comment' => 'setFirstComment',
-        'page_id' => 'setPageId'
+        'page_id' => 'setPageId',
+        'geo_restriction' => 'setGeoRestriction'
     ];
 
     /**
@@ -210,7 +215,8 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'content_type' => 'getContentType',
         'title' => 'getTitle',
         'first_comment' => 'getFirstComment',
-        'page_id' => 'getPageId'
+        'page_id' => 'getPageId',
+        'geo_restriction' => 'getGeoRestriction'
     ];
 
     /**
@@ -290,6 +296,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('first_comment', $data ?? [], null);
         $this->setIfExists('page_id', $data ?? [], null);
+        $this->setIfExists('geo_restriction', $data ?? [], null);
     }
 
     /**
@@ -484,6 +491,33 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable page_id cannot be null');
         }
         $this->container['page_id'] = $page_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets geo_restriction
+     *
+     * @return \Late\Model\GeoRestriction|null
+     */
+    public function getGeoRestriction()
+    {
+        return $this->container['geo_restriction'];
+    }
+
+    /**
+     * Sets geo_restriction
+     *
+     * @param \Late\Model\GeoRestriction|null $geo_restriction geo_restriction
+     *
+     * @return self
+     */
+    public function setGeoRestriction($geo_restriction)
+    {
+        if (is_null($geo_restriction)) {
+            throw new \InvalidArgumentException('non-nullable geo_restriction cannot be null');
+        }
+        $this->container['geo_restriction'] = $geo_restriction;
 
         return $this;
     }

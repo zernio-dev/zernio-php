@@ -475,6 +475,7 @@ Class | Method | HTTP request | Description
 - [FoodMenuItemOptionsInner](docs/Model/FoodMenuItemOptionsInner.md)
 - [FoodMenuLabel](docs/Model/FoodMenuLabel.md)
 - [FoodMenuSection](docs/Model/FoodMenuSection.md)
+- [GeoRestriction](docs/Model/GeoRestriction.md)
 - [GetAccountHealth200Response](docs/Model/GetAccountHealth200Response.md)
 - [GetAccountHealth200ResponsePermissions](docs/Model/GetAccountHealth200ResponsePermissions.md)
 - [GetAccountHealth200ResponsePermissionsPostingInner](docs/Model/GetAccountHealth200ResponsePermissionsPostingInner.md)
