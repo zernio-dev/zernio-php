@@ -1,6 +1,6 @@
 <?php
 /**
- * GMBReviewsApi
+ * GMBServicesApi
  * PHP version 8.1
  *
  * @category Class
@@ -44,14 +44,14 @@ use Late\HeaderSelector;
 use Late\ObjectSerializer;
 
 /**
- * GMBReviewsApi Class Doc Comment
+ * GMBServicesApi Class Doc Comment
  *
  * @category Class
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class GMBReviewsApi
+class GMBServicesApi
 {
     /**
      * @var ClientInterface
@@ -75,10 +75,10 @@ class GMBReviewsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'batchGetGoogleBusinessReviews' => [
+        'getGoogleBusinessServices' => [
             'application/json',
         ],
-        'getGoogleBusinessReviews' => [
+        'updateGoogleBusinessServices' => [
             'application/json',
         ],
     ];
@@ -130,40 +130,40 @@ class GMBReviewsApi
     }
 
     /**
-     * Operation batchGetGoogleBusinessReviews
+     * Operation getGoogleBusinessServices
      *
-     * Batch get reviews
+     * Get services
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request batch_get_google_business_reviews_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['batchGetGoogleBusinessReviews'] to see the possible values for this operation
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessServices'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\BatchGetGoogleBusinessReviews200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
+     * @return \Late\Model\GetGoogleBusinessServices200Response|\Late\Model\ErrorResponse
      */
-    public function batchGetGoogleBusinessReviews($account_id, $batch_get_google_business_reviews_request, string $contentType = self::contentTypes['batchGetGoogleBusinessReviews'][0])
+    public function getGoogleBusinessServices($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessServices'][0])
     {
-        list($response) = $this->batchGetGoogleBusinessReviewsWithHttpInfo($account_id, $batch_get_google_business_reviews_request, $contentType);
+        list($response) = $this->getGoogleBusinessServicesWithHttpInfo($account_id, $location_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation batchGetGoogleBusinessReviewsWithHttpInfo
+     * Operation getGoogleBusinessServicesWithHttpInfo
      *
-     * Batch get reviews
+     * Get services
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['batchGetGoogleBusinessReviews'] to see the possible values for this operation
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessServices'] to see the possible values for this operation
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\BatchGetGoogleBusinessReviews200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\GetGoogleBusinessServices200Response|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function batchGetGoogleBusinessReviewsWithHttpInfo($account_id, $batch_get_google_business_reviews_request, string $contentType = self::contentTypes['batchGetGoogleBusinessReviews'][0])
+    public function getGoogleBusinessServicesWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessServices'][0])
     {
-        $request = $this->batchGetGoogleBusinessReviewsRequest($account_id, $batch_get_google_business_reviews_request, $contentType);
+        $request = $this->getGoogleBusinessServicesRequest($account_id, $location_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -191,13 +191,7 @@ class GMBReviewsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\BatchGetGoogleBusinessReviews200Response',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Late\Model\GetGoogleBusinessServices200Response',
                         $request,
                         $response,
                     );
@@ -225,7 +219,7 @@ class GMBReviewsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\BatchGetGoogleBusinessReviews200Response',
+                '\Late\Model\GetGoogleBusinessServices200Response',
                 $request,
                 $response,
             );
@@ -234,15 +228,7 @@ class GMBReviewsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\BatchGetGoogleBusinessReviews200Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Late\Model\GetGoogleBusinessServices200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -263,20 +249,20 @@ class GMBReviewsApi
     }
 
     /**
-     * Operation batchGetGoogleBusinessReviewsAsync
+     * Operation getGoogleBusinessServicesAsync
      *
-     * Batch get reviews
+     * Get services
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['batchGetGoogleBusinessReviews'] to see the possible values for this operation
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessServices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchGetGoogleBusinessReviewsAsync($account_id, $batch_get_google_business_reviews_request, string $contentType = self::contentTypes['batchGetGoogleBusinessReviews'][0])
+    public function getGoogleBusinessServicesAsync($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessServices'][0])
     {
-        return $this->batchGetGoogleBusinessReviewsAsyncWithHttpInfo($account_id, $batch_get_google_business_reviews_request, $contentType)
+        return $this->getGoogleBusinessServicesAsyncWithHttpInfo($account_id, $location_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -285,21 +271,21 @@ class GMBReviewsApi
     }
 
     /**
-     * Operation batchGetGoogleBusinessReviewsAsyncWithHttpInfo
+     * Operation getGoogleBusinessServicesAsyncWithHttpInfo
      *
-     * Batch get reviews
+     * Get services
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['batchGetGoogleBusinessReviews'] to see the possible values for this operation
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessServices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function batchGetGoogleBusinessReviewsAsyncWithHttpInfo($account_id, $batch_get_google_business_reviews_request, string $contentType = self::contentTypes['batchGetGoogleBusinessReviews'][0])
+    public function getGoogleBusinessServicesAsyncWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessServices'][0])
     {
-        $returnType = '\Late\Model\BatchGetGoogleBusinessReviews200Response';
-        $request = $this->batchGetGoogleBusinessReviewsRequest($account_id, $batch_get_google_business_reviews_request, $contentType);
+        $returnType = '\Late\Model\GetGoogleBusinessServices200Response';
+        $request = $this->getGoogleBusinessServicesRequest($account_id, $location_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -338,407 +324,28 @@ class GMBReviewsApi
     }
 
     /**
-     * Create request for operation 'batchGetGoogleBusinessReviews'
+     * Create request for operation 'getGoogleBusinessServices'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['batchGetGoogleBusinessReviews'] to see the possible values for this operation
+     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessServices'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function batchGetGoogleBusinessReviewsRequest($account_id, $batch_get_google_business_reviews_request, string $contentType = self::contentTypes['batchGetGoogleBusinessReviews'][0])
+    public function getGoogleBusinessServicesRequest($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessServices'][0])
     {
 
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling batchGetGoogleBusinessReviews'
-            );
-        }
-
-        // verify the required parameter 'batch_get_google_business_reviews_request' is set
-        if ($batch_get_google_business_reviews_request === null || (is_array($batch_get_google_business_reviews_request) && count($batch_get_google_business_reviews_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_get_google_business_reviews_request when calling batchGetGoogleBusinessReviews'
+                'Missing the required parameter $account_id when calling getGoogleBusinessServices'
             );
         }
 
 
-        $resourcePath = '/v1/accounts/{accountId}/gmb-reviews/batch';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
 
-
-
-        // path params
-        if ($account_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'accountId' . '}',
-                ObjectSerializer::toPathValue($account_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($batch_get_google_business_reviews_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($batch_get_google_business_reviews_request));
-            } else {
-                $httpBody = $batch_get_google_business_reviews_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires Bearer (JWT) authentication (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getGoogleBusinessReviews
-     *
-     * Get reviews
-     *
-     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
-     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
-     * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
-     * @param  string|null $page_token Pagination token from previous response (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessReviews'] to see the possible values for this operation
-     *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Late\Model\GetGoogleBusinessReviews200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse
-     */
-    public function getGoogleBusinessReviews($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
-    {
-        list($response) = $this->getGoogleBusinessReviewsWithHttpInfo($account_id, $location_id, $page_size, $page_token, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getGoogleBusinessReviewsWithHttpInfo
-     *
-     * Get reviews
-     *
-     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
-     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
-     * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
-     * @param  string|null $page_token Pagination token from previous response (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessReviews'] to see the possible values for this operation
-     *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetGoogleBusinessReviews200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getGoogleBusinessReviewsWithHttpInfo($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
-    {
-        $request = $this->getGoogleBusinessReviewsRequest($account_id, $location_id, $page_size, $page_token, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Late\Model\GetGoogleBusinessReviews200Response',
-                        $request,
-                        $response,
-                    );
-                case 400:
-                    return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 401:
-                    return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-                case 404:
-                    return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
-                        $request,
-                        $response,
-                    );
-                case 500:
-                    return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Late\Model\GetGoogleBusinessReviews200Response',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Late\Model\GetGoogleBusinessReviews200Response',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 401:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getGoogleBusinessReviewsAsync
-     *
-     * Get reviews
-     *
-     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
-     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
-     * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
-     * @param  string|null $page_token Pagination token from previous response (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessReviews'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getGoogleBusinessReviewsAsync($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
-    {
-        return $this->getGoogleBusinessReviewsAsyncWithHttpInfo($account_id, $location_id, $page_size, $page_token, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getGoogleBusinessReviewsAsyncWithHttpInfo
-     *
-     * Get reviews
-     *
-     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
-     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
-     * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
-     * @param  string|null $page_token Pagination token from previous response (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessReviews'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getGoogleBusinessReviewsAsyncWithHttpInfo($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
-    {
-        $returnType = '\Late\Model\GetGoogleBusinessReviews200Response';
-        $request = $this->getGoogleBusinessReviewsRequest($account_id, $location_id, $page_size, $page_token, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getGoogleBusinessReviews'
-     *
-     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
-     * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
-     * @param  int|null $page_size Number of reviews to fetch per page (max 50) (optional, default to 50)
-     * @param  string|null $page_token Pagination token from previous response (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessReviews'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getGoogleBusinessReviewsRequest($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
-    {
-
-        // verify the required parameter 'account_id' is set
-        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling getGoogleBusinessReviews'
-            );
-        }
-
-
-        if ($page_size !== null && $page_size > 50) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling GMBReviewsApi.getGoogleBusinessReviews, must be smaller than or equal to 50.');
-        }
-        if ($page_size !== null && $page_size < 1) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling GMBReviewsApi.getGoogleBusinessReviews, must be bigger than or equal to 1.');
-        }
-        
-
-
-        $resourcePath = '/v1/accounts/{accountId}/gmb-reviews';
+        $resourcePath = '/v1/accounts/{accountId}/gmb-services';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -749,24 +356,6 @@ class GMBReviewsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $location_id,
             'locationId', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_size,
-            'pageSize', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_token,
-            'pageToken', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -835,6 +424,340 @@ class GMBReviewsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateGoogleBusinessServices
+     *
+     * Replace services
+     *
+     * @param  string $account_id account_id (required)
+     * @param  \Late\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request update_google_business_services_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessServices'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UpdateGoogleBusinessServices200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
+     */
+    public function updateGoogleBusinessServices($account_id, $update_google_business_services_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessServices'][0])
+    {
+        list($response) = $this->updateGoogleBusinessServicesWithHttpInfo($account_id, $update_google_business_services_request, $location_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateGoogleBusinessServicesWithHttpInfo
+     *
+     * Replace services
+     *
+     * @param  string $account_id (required)
+     * @param  \Late\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessServices'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UpdateGoogleBusinessServices200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateGoogleBusinessServicesWithHttpInfo($account_id, $update_google_business_services_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessServices'][0])
+    {
+        $request = $this->updateGoogleBusinessServicesRequest($account_id, $update_google_business_services_request, $location_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateGoogleBusinessServices200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateGoogleBusinessServices200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateGoogleBusinessServices200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateGoogleBusinessServicesAsync
+     *
+     * Replace services
+     *
+     * @param  string $account_id (required)
+     * @param  \Late\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessServices'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateGoogleBusinessServicesAsync($account_id, $update_google_business_services_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessServices'][0])
+    {
+        return $this->updateGoogleBusinessServicesAsyncWithHttpInfo($account_id, $update_google_business_services_request, $location_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateGoogleBusinessServicesAsyncWithHttpInfo
+     *
+     * Replace services
+     *
+     * @param  string $account_id (required)
+     * @param  \Late\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessServices'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateGoogleBusinessServicesAsyncWithHttpInfo($account_id, $update_google_business_services_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessServices'][0])
+    {
+        $returnType = '\Late\Model\UpdateGoogleBusinessServices200Response';
+        $request = $this->updateGoogleBusinessServicesRequest($account_id, $update_google_business_services_request, $location_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateGoogleBusinessServices'
+     *
+     * @param  string $account_id (required)
+     * @param  \Late\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request (required)
+     * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessServices'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateGoogleBusinessServicesRequest($account_id, $update_google_business_services_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessServices'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling updateGoogleBusinessServices'
+            );
+        }
+
+        // verify the required parameter 'update_google_business_services_request' is set
+        if ($update_google_business_services_request === null || (is_array($update_google_business_services_request) && count($update_google_business_services_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_google_business_services_request when calling updateGoogleBusinessServices'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/accounts/{accountId}/gmb-services';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_google_business_services_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_google_business_services_request));
+            } else {
+                $httpBody = $update_google_business_services_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

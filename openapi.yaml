@@ -145,6 +145,9 @@ x-documentation:
     - `message.read` - An outgoing message was read by the recipient (WhatsApp, Messenger, Instagram)
     - `message.failed` - An outgoing message failed delivery (WhatsApp)
     - `comment.received` - New comment received on a post
+    - `gbp.review.new` - New Google Business Profile review posted
+    - `gbp.review.updated` - Existing Google Business Profile review updated
+    - `gbp.media.new` - Customer uploaded media to a Google Business Profile location
     - `webhook.test` - Test event sent when verifying a webhook endpoint
 
     Webhook payloads are signed with HMAC-SHA256 via the `X-Zernio-Signature` header.
@@ -257,7 +260,7 @@ tags:
       Requires the Ads add-on.
   - name: Webhooks
     description: |
-      Configure webhooks for real-time notifications. Events: post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, comment.received, webhook.test.
+      Configure webhooks for real-time notifications. Events: post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, comment.received, gbp.review.new, gbp.review.updated, gbp.media.new, webhook.test.
       Security: optional HMAC-SHA256 signature in X-Zernio-Signature header. Configure a secret key to enable verification. Custom headers supported.
   - name: Webhook Events
     description: |
@@ -807,7 +810,7 @@ components:
           type: array
           items:
             type: string
-            enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, comment.received]
+            enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, comment.received, gbp.review.new, gbp.review.updated, gbp.media.new]
           description: Events subscribed to
         isActive:
           type: boolean
@@ -2122,7 +2125,7 @@ components:
               type: string
               description: Coupon code for the offer
               example: "SAVE20"
-      description: "Text and single image only (no videos). Supports STANDARD, EVENT, and OFFER post types. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting."
+      description: "Text and single image only (no videos). Supports STANDARD, EVENT, OFFER, and ALERT post types. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting. Schedule dates accept both ISO 8601 strings (e.g. '2026-04-15T09:00:00Z') and Google's native {year, month, day} objects."
 
     TikTokPlatformData:
       type: object
@@ -9291,6 +9294,276 @@ paths:
           content:
             application/json:
               schema: { $ref: '#/components/schemas/ErrorResponse' }
+    patch:
+      operationId: updateGoogleBusinessPlaceAction
+      tags: [GMB Place Actions]
+      summary: Update action link
+      description: |
+        Updates a place action link (change URL or action type).
+        Only the fields included in the request body will be updated.
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema: { type: string }
+        - name: locationId
+          in: query
+          schema: { type: string }
+          description: Override which location to target. If omitted, uses the account's selected location.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name:
+                  type: string
+                  description: "Resource name of the place action link (e.g. locations/123/placeActionLinks/456)"
+                uri:
+                  type: string
+                  description: New action URL
+                placeActionType:
+                  type: string
+                  enum: [APPOINTMENT, ONLINE_APPOINTMENT, DINING_RESERVATION, FOOD_ORDERING, FOOD_DELIVERY, FOOD_TAKEOUT, SHOP_ONLINE]
+                  description: New action type
+            example:
+              name: "locations/123/placeActionLinks/456"
+              uri: "https://order.doordash.com/joespizza"
+      responses:
+        '200':
+          description: Place action updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean }
+                  name: { type: string }
+                  uri: { type: string }
+                  placeActionType: { type: string }
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+
+  /v1/accounts/{accountId}/gmb-services:
+    get:
+      operationId: getGoogleBusinessServices
+      tags: [GMB Services]
+      summary: Get services
+      description: |
+        Gets the services offered by a Google Business Profile location.
+        Returns an array of service items (structured or free-form with optional price).
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema: { type: string }
+        - name: locationId
+          in: query
+          schema: { type: string }
+          description: Override which location to query. If omitted, uses the account's selected location.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Services fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean }
+                  accountId: { type: string }
+                  locationId: { type: string }
+                  services:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        structuredServiceItem:
+                          type: object
+                          properties:
+                            serviceTypeId: { type: string }
+                            description: { type: string }
+                        freeFormServiceItem:
+                          type: object
+                          properties:
+                            category: { type: string }
+                            label:
+                              type: object
+                              properties:
+                                displayName: { type: string }
+                                description: { type: string }
+                        price:
+                          type: object
+                          properties:
+                            currencyCode: { type: string, example: "USD" }
+                            units: { type: string, example: "50" }
+                            nanos: { type: integer }
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+    put:
+      operationId: updateGoogleBusinessServices
+      tags: [GMB Services]
+      summary: Replace services
+      description: |
+        Replaces the entire service list for a location.
+        Google's API requires full replacement; individual item updates are not supported.
+        Each service can be structured (using a predefined serviceTypeId) or free-form (custom label).
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema: { type: string }
+        - name: locationId
+          in: query
+          schema: { type: string }
+          description: Override which location to target. If omitted, uses the account's selected location.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [serviceItems]
+              properties:
+                serviceItems:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      structuredServiceItem:
+                        type: object
+                        properties:
+                          serviceTypeId: { type: string }
+                          description: { type: string }
+                      freeFormServiceItem:
+                        type: object
+                        properties:
+                          category: { type: string }
+                          label:
+                            type: object
+                            properties:
+                              displayName: { type: string }
+                              description: { type: string }
+                      price:
+                        type: object
+                        properties:
+                          currencyCode: { type: string }
+                          units: { type: string }
+                          nanos: { type: integer }
+            example:
+              serviceItems:
+                - freeFormServiceItem:
+                    category: "categories/gcid:plumber"
+                    label: { displayName: "Pipe Repair", description: "Emergency and scheduled pipe repair" }
+                  price: { currencyCode: "USD", units: "150" }
+      responses:
+        '200':
+          description: Services updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean }
+                  services: { type: array, items: { type: object } }
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+
+  /v1/accounts/{accountId}/gmb-reviews/batch:
+    post:
+      operationId: batchGetGoogleBusinessReviews
+      tags: [GMB Reviews]
+      summary: Batch get reviews
+      description: |
+        Fetches reviews across multiple locations in a single request.
+        More efficient than calling GET /gmb-reviews per location for multi-location businesses.
+        Reviews are grouped by location in the response.
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema: { type: string }
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [locationNames]
+              properties:
+                locationNames:
+                  type: array
+                  items: { type: string }
+                  description: "Array of full location resource names (e.g. ['accounts/123/locations/456'])"
+                pageSize:
+                  type: integer
+                  maximum: 50
+                  default: 50
+                  description: Number of reviews per page (max 50)
+                pageToken:
+                  type: string
+                  description: Pagination token from previous response
+            example:
+              locationNames: ["accounts/123/locations/456", "accounts/123/locations/789"]
+              pageSize: 50
+      responses:
+        '200':
+          description: Batch reviews fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success: { type: boolean }
+                  accountId: { type: string }
+                  locationReviews:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        locationName: { type: string }
+                        reviews: { type: array, items: { type: object } }
+                        averageRating: { type: number }
+                        totalReviewCount: { type: integer }
+                  nextPageToken: { type: string }
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ErrorResponse' }
 
   /v1/connect/pending-data:
     get:
@@ -11932,7 +12205,7 @@ paths:
                   type: array
                   items:
                     type: string
-                    enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, comment.received]
+                    enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, comment.received, gbp.review.new, gbp.review.updated, gbp.media.new]
                   description: Events to subscribe to
                 isActive:
                   type: boolean
@@ -11949,7 +12222,7 @@ paths:
                   name: "My Production Webhook"
                   url: "https://example.com/webhook"
                   secret: "your-secret-key"
-                  events: ["post.scheduled", "post.published", "post.failed", "post.partial", "post.cancelled", "post.recycled", "account.connected", "account.disconnected", "message.received", "comment.received"]
+                  events: ["post.scheduled", "post.published", "post.failed", "post.partial", "post.cancelled", "post.recycled", "account.connected", "account.disconnected", "message.received", "comment.received", "gbp.review.new", "gbp.review.updated", "gbp.media.new"]
                   isActive: true
       responses:
         '200':
@@ -12001,7 +12274,7 @@ paths:
                   type: array
                   items:
                     type: string
-                    enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, comment.received]
+                    enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, comment.received, gbp.review.new, gbp.review.updated, gbp.media.new]
                   description: Events to subscribe to
                 isActive:
                   type: boolean

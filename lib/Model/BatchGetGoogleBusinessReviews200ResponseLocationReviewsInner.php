@@ -1,6 +1,6 @@
 <?php
 /**
- * GoogleBusinessPlatformData
+ * BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * GoogleBusinessPlatformData Class Doc Comment
+ * BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner Class Doc Comment
  *
  * @category Class
- * @description Text and single image only (no videos). Supports STANDARD, EVENT, OFFER, and ALERT post types. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting. Schedule dates accept both ISO 8601 strings (e.g. &#39;2026-04-15T09:00:00Z&#39;) and Google&#39;s native {year, month, day} objects.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSerializable
+class BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'GoogleBusinessPlatformData';
+    protected static $openAPIModelName = 'batchGetGoogleBusinessReviews_200_response_locationReviews_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +58,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'location_id' => 'string',
-        'language_code' => 'string',
-        'topic_type' => 'string',
-        'call_to_action' => '\Late\Model\GoogleBusinessPlatformDataCallToAction',
-        'event' => '\Late\Model\GoogleBusinessPlatformDataEvent',
-        'offer' => '\Late\Model\GoogleBusinessPlatformDataOffer'
+        'location_name' => 'string',
+        'reviews' => 'object[]',
+        'average_rating' => 'float',
+        'total_review_count' => 'int'
     ];
 
     /**
@@ -75,12 +72,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'location_id' => null,
-        'language_code' => null,
-        'topic_type' => null,
-        'call_to_action' => null,
-        'event' => null,
-        'offer' => null
+        'location_name' => null,
+        'reviews' => null,
+        'average_rating' => null,
+        'total_review_count' => null
     ];
 
     /**
@@ -89,12 +84,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'location_id' => false,
-        'language_code' => false,
-        'topic_type' => false,
-        'call_to_action' => false,
-        'event' => false,
-        'offer' => false
+        'location_name' => false,
+        'reviews' => false,
+        'average_rating' => false,
+        'total_review_count' => false
     ];
 
     /**
@@ -183,12 +176,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'location_id' => 'locationId',
-        'language_code' => 'languageCode',
-        'topic_type' => 'topicType',
-        'call_to_action' => 'callToAction',
-        'event' => 'event',
-        'offer' => 'offer'
+        'location_name' => 'locationName',
+        'reviews' => 'reviews',
+        'average_rating' => 'averageRating',
+        'total_review_count' => 'totalReviewCount'
     ];
 
     /**
@@ -197,12 +188,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'location_id' => 'setLocationId',
-        'language_code' => 'setLanguageCode',
-        'topic_type' => 'setTopicType',
-        'call_to_action' => 'setCallToAction',
-        'event' => 'setEvent',
-        'offer' => 'setOffer'
+        'location_name' => 'setLocationName',
+        'reviews' => 'setReviews',
+        'average_rating' => 'setAverageRating',
+        'total_review_count' => 'setTotalReviewCount'
     ];
 
     /**
@@ -211,12 +200,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'location_id' => 'getLocationId',
-        'language_code' => 'getLanguageCode',
-        'topic_type' => 'getTopicType',
-        'call_to_action' => 'getCallToAction',
-        'event' => 'getEvent',
-        'offer' => 'getOffer'
+        'location_name' => 'getLocationName',
+        'reviews' => 'getReviews',
+        'average_rating' => 'getAverageRating',
+        'total_review_count' => 'getTotalReviewCount'
     ];
 
     /**
@@ -260,23 +247,6 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const TOPIC_TYPE_STANDARD = 'STANDARD';
-    public const TOPIC_TYPE_EVENT = 'EVENT';
-    public const TOPIC_TYPE_OFFER = 'OFFER';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTopicTypeAllowableValues()
-    {
-        return [
-            self::TOPIC_TYPE_STANDARD,
-            self::TOPIC_TYPE_EVENT,
-            self::TOPIC_TYPE_OFFER,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -293,12 +263,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('location_id', $data ?? [], null);
-        $this->setIfExists('language_code', $data ?? [], null);
-        $this->setIfExists('topic_type', $data ?? [], 'STANDARD');
-        $this->setIfExists('call_to_action', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('offer', $data ?? [], null);
+        $this->setIfExists('location_name', $data ?? [], null);
+        $this->setIfExists('reviews', $data ?? [], null);
+        $this->setIfExists('average_rating', $data ?? [], null);
+        $this->setIfExists('total_review_count', $data ?? [], null);
     }
 
     /**
@@ -328,15 +296,6 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTopicTypeAllowableValues();
-        if (!is_null($this->container['topic_type']) && !in_array($this->container['topic_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'topic_type', must be one of '%s'",
-                $this->container['topic_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -353,173 +312,109 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets location_id
+     * Gets location_name
      *
      * @return string|null
      */
-    public function getLocationId()
+    public function getLocationName()
     {
-        return $this->container['location_id'];
+        return $this->container['location_name'];
     }
 
     /**
-     * Sets location_id
+     * Sets location_name
      *
-     * @param string|null $location_id Target GBP location ID (e.g. \"locations/123456789\"). If omitted, uses the default location. Use GET /v1/accounts/{id}/gmb-locations to list locations.
+     * @param string|null $location_name location_name
      *
      * @return self
      */
-    public function setLocationId($location_id)
+    public function setLocationName($location_name)
     {
-        if (is_null($location_id)) {
-            throw new \InvalidArgumentException('non-nullable location_id cannot be null');
+        if (is_null($location_name)) {
+            throw new \InvalidArgumentException('non-nullable location_name cannot be null');
         }
-        $this->container['location_id'] = $location_id;
+        $this->container['location_name'] = $location_name;
 
         return $this;
     }
 
     /**
-     * Gets language_code
+     * Gets reviews
      *
-     * @return string|null
+     * @return object[]|null
      */
-    public function getLanguageCode()
+    public function getReviews()
     {
-        return $this->container['language_code'];
+        return $this->container['reviews'];
     }
 
     /**
-     * Sets language_code
+     * Sets reviews
      *
-     * @param string|null $language_code BCP 47 language code (e.g. \"en\", \"de\", \"es\"). Auto-detected if omitted. Set explicitly for short or mixed-language posts.
+     * @param object[]|null $reviews reviews
      *
      * @return self
      */
-    public function setLanguageCode($language_code)
+    public function setReviews($reviews)
     {
-        if (is_null($language_code)) {
-            throw new \InvalidArgumentException('non-nullable language_code cannot be null');
+        if (is_null($reviews)) {
+            throw new \InvalidArgumentException('non-nullable reviews cannot be null');
         }
-        $this->container['language_code'] = $language_code;
+        $this->container['reviews'] = $reviews;
 
         return $this;
     }
 
     /**
-     * Gets topic_type
+     * Gets average_rating
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getTopicType()
+    public function getAverageRating()
     {
-        return $this->container['topic_type'];
+        return $this->container['average_rating'];
     }
 
     /**
-     * Sets topic_type
+     * Sets average_rating
      *
-     * @param string|null $topic_type Post type. STANDARD is a regular update. EVENT requires the event object. OFFER requires the offer object. Defaults to STANDARD if omitted.
+     * @param float|null $average_rating average_rating
      *
      * @return self
      */
-    public function setTopicType($topic_type)
+    public function setAverageRating($average_rating)
     {
-        if (is_null($topic_type)) {
-            throw new \InvalidArgumentException('non-nullable topic_type cannot be null');
+        if (is_null($average_rating)) {
+            throw new \InvalidArgumentException('non-nullable average_rating cannot be null');
         }
-        $allowedValues = $this->getTopicTypeAllowableValues();
-        if (!in_array($topic_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'topic_type', must be one of '%s'",
-                    $topic_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['topic_type'] = $topic_type;
+        $this->container['average_rating'] = $average_rating;
 
         return $this;
     }
 
     /**
-     * Gets call_to_action
+     * Gets total_review_count
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataCallToAction|null
+     * @return int|null
      */
-    public function getCallToAction()
+    public function getTotalReviewCount()
     {
-        return $this->container['call_to_action'];
+        return $this->container['total_review_count'];
     }
 
     /**
-     * Sets call_to_action
+     * Sets total_review_count
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataCallToAction|null $call_to_action call_to_action
+     * @param int|null $total_review_count total_review_count
      *
      * @return self
      */
-    public function setCallToAction($call_to_action)
+    public function setTotalReviewCount($total_review_count)
     {
-        if (is_null($call_to_action)) {
-            throw new \InvalidArgumentException('non-nullable call_to_action cannot be null');
+        if (is_null($total_review_count)) {
+            throw new \InvalidArgumentException('non-nullable total_review_count cannot be null');
         }
-        $this->container['call_to_action'] = $call_to_action;
-
-        return $this;
-    }
-
-    /**
-     * Gets event
-     *
-     * @return \Late\Model\GoogleBusinessPlatformDataEvent|null
-     */
-    public function getEvent()
-    {
-        return $this->container['event'];
-    }
-
-    /**
-     * Sets event
-     *
-     * @param \Late\Model\GoogleBusinessPlatformDataEvent|null $event event
-     *
-     * @return self
-     */
-    public function setEvent($event)
-    {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
-        }
-        $this->container['event'] = $event;
-
-        return $this;
-    }
-
-    /**
-     * Gets offer
-     *
-     * @return \Late\Model\GoogleBusinessPlatformDataOffer|null
-     */
-    public function getOffer()
-    {
-        return $this->container['offer'];
-    }
-
-    /**
-     * Sets offer
-     *
-     * @param \Late\Model\GoogleBusinessPlatformDataOffer|null $offer offer
-     *
-     * @return self
-     */
-    public function setOffer($offer)
-    {
-        if (is_null($offer)) {
-            throw new \InvalidArgumentException('non-nullable offer cannot be null');
-        }
-        $this->container['offer'] = $offer;
+        $this->container['total_review_count'] = $total_review_count;
 
         return $this;
     }

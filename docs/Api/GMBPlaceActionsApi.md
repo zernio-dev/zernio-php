@@ -9,6 +9,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createGoogleBusinessPlaceAction()**](GMBPlaceActionsApi.md#createGoogleBusinessPlaceAction) | **POST** /v1/accounts/{accountId}/gmb-place-actions | Create action link |
 | [**deleteGoogleBusinessPlaceAction()**](GMBPlaceActionsApi.md#deleteGoogleBusinessPlaceAction) | **DELETE** /v1/accounts/{accountId}/gmb-place-actions | Delete action link |
 | [**listGoogleBusinessPlaceActions()**](GMBPlaceActionsApi.md#listGoogleBusinessPlaceActions) | **GET** /v1/accounts/{accountId}/gmb-place-actions | List action links |
+| [**updateGoogleBusinessPlaceAction()**](GMBPlaceActionsApi.md#updateGoogleBusinessPlaceAction) | **PATCH** /v1/accounts/{accountId}/gmb-place-actions | Update action link |
 
 
 ## `createGoogleBusinessPlaceAction()`
@@ -199,6 +200,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateGoogleBusinessPlaceAction()`
+
+```php
+updateGoogleBusinessPlaceAction($account_id, $update_google_business_place_action_request, $location_id): \Late\Model\UpdateGoogleBusinessPlaceAction200Response
+```
+
+Update action link
+
+Updates a place action link (change URL or action type). Only the fields included in the request body will be updated.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\GMBPlaceActionsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$update_google_business_place_action_request = {"name":"locations/123/placeActionLinks/456","uri":"https://order.doordash.com/joespizza"}; // \Late\Model\UpdateGoogleBusinessPlaceActionRequest
+$location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location.
+
+try {
+    $result = $apiInstance->updateGoogleBusinessPlaceAction($account_id, $update_google_business_place_action_request, $location_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling GMBPlaceActionsApi->updateGoogleBusinessPlaceAction: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **update_google_business_place_action_request** | [**\Late\Model\UpdateGoogleBusinessPlaceActionRequest**](../Model/UpdateGoogleBusinessPlaceActionRequest.md)|  | |
+| **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. | [optional] |
+
+### Return type
+
+[**\Late\Model\UpdateGoogleBusinessPlaceAction200Response**](../Model/UpdateGoogleBusinessPlaceAction200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

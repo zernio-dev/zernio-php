@@ -1,6 +1,6 @@
 <?php
 /**
- * GoogleBusinessPlatformData
+ * UpdateGoogleBusinessServicesRequestServiceItemsInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * GoogleBusinessPlatformData Class Doc Comment
+ * UpdateGoogleBusinessServicesRequestServiceItemsInner Class Doc Comment
  *
  * @category Class
- * @description Text and single image only (no videos). Supports STANDARD, EVENT, OFFER, and ALERT post types. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting. Schedule dates accept both ISO 8601 strings (e.g. &#39;2026-04-15T09:00:00Z&#39;) and Google&#39;s native {year, month, day} objects.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateGoogleBusinessServicesRequestServiceItemsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'GoogleBusinessPlatformData';
+    protected static $openAPIModelName = 'updateGoogleBusinessServices_request_serviceItems_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +58,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'location_id' => 'string',
-        'language_code' => 'string',
-        'topic_type' => 'string',
-        'call_to_action' => '\Late\Model\GoogleBusinessPlatformDataCallToAction',
-        'event' => '\Late\Model\GoogleBusinessPlatformDataEvent',
-        'offer' => '\Late\Model\GoogleBusinessPlatformDataOffer'
+        'structured_service_item' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerStructuredServiceItem',
+        'free_form_service_item' => '\Late\Model\GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItem',
+        'price' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerPrice'
     ];
 
     /**
@@ -75,12 +71,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'location_id' => null,
-        'language_code' => null,
-        'topic_type' => null,
-        'call_to_action' => null,
-        'event' => null,
-        'offer' => null
+        'structured_service_item' => null,
+        'free_form_service_item' => null,
+        'price' => null
     ];
 
     /**
@@ -89,12 +82,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'location_id' => false,
-        'language_code' => false,
-        'topic_type' => false,
-        'call_to_action' => false,
-        'event' => false,
-        'offer' => false
+        'structured_service_item' => false,
+        'free_form_service_item' => false,
+        'price' => false
     ];
 
     /**
@@ -183,12 +173,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'location_id' => 'locationId',
-        'language_code' => 'languageCode',
-        'topic_type' => 'topicType',
-        'call_to_action' => 'callToAction',
-        'event' => 'event',
-        'offer' => 'offer'
+        'structured_service_item' => 'structuredServiceItem',
+        'free_form_service_item' => 'freeFormServiceItem',
+        'price' => 'price'
     ];
 
     /**
@@ -197,12 +184,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'location_id' => 'setLocationId',
-        'language_code' => 'setLanguageCode',
-        'topic_type' => 'setTopicType',
-        'call_to_action' => 'setCallToAction',
-        'event' => 'setEvent',
-        'offer' => 'setOffer'
+        'structured_service_item' => 'setStructuredServiceItem',
+        'free_form_service_item' => 'setFreeFormServiceItem',
+        'price' => 'setPrice'
     ];
 
     /**
@@ -211,12 +195,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'location_id' => 'getLocationId',
-        'language_code' => 'getLanguageCode',
-        'topic_type' => 'getTopicType',
-        'call_to_action' => 'getCallToAction',
-        'event' => 'getEvent',
-        'offer' => 'getOffer'
+        'structured_service_item' => 'getStructuredServiceItem',
+        'free_form_service_item' => 'getFreeFormServiceItem',
+        'price' => 'getPrice'
     ];
 
     /**
@@ -260,23 +241,6 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const TOPIC_TYPE_STANDARD = 'STANDARD';
-    public const TOPIC_TYPE_EVENT = 'EVENT';
-    public const TOPIC_TYPE_OFFER = 'OFFER';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTopicTypeAllowableValues()
-    {
-        return [
-            self::TOPIC_TYPE_STANDARD,
-            self::TOPIC_TYPE_EVENT,
-            self::TOPIC_TYPE_OFFER,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -293,12 +257,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('location_id', $data ?? [], null);
-        $this->setIfExists('language_code', $data ?? [], null);
-        $this->setIfExists('topic_type', $data ?? [], 'STANDARD');
-        $this->setIfExists('call_to_action', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('offer', $data ?? [], null);
+        $this->setIfExists('structured_service_item', $data ?? [], null);
+        $this->setIfExists('free_form_service_item', $data ?? [], null);
+        $this->setIfExists('price', $data ?? [], null);
     }
 
     /**
@@ -328,15 +289,6 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTopicTypeAllowableValues();
-        if (!is_null($this->container['topic_type']) && !in_array($this->container['topic_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'topic_type', must be one of '%s'",
-                $this->container['topic_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -353,173 +305,82 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets location_id
+     * Gets structured_service_item
      *
-     * @return string|null
+     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerStructuredServiceItem|null
      */
-    public function getLocationId()
+    public function getStructuredServiceItem()
     {
-        return $this->container['location_id'];
+        return $this->container['structured_service_item'];
     }
 
     /**
-     * Sets location_id
+     * Sets structured_service_item
      *
-     * @param string|null $location_id Target GBP location ID (e.g. \"locations/123456789\"). If omitted, uses the default location. Use GET /v1/accounts/{id}/gmb-locations to list locations.
+     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerStructuredServiceItem|null $structured_service_item structured_service_item
      *
      * @return self
      */
-    public function setLocationId($location_id)
+    public function setStructuredServiceItem($structured_service_item)
     {
-        if (is_null($location_id)) {
-            throw new \InvalidArgumentException('non-nullable location_id cannot be null');
+        if (is_null($structured_service_item)) {
+            throw new \InvalidArgumentException('non-nullable structured_service_item cannot be null');
         }
-        $this->container['location_id'] = $location_id;
+        $this->container['structured_service_item'] = $structured_service_item;
 
         return $this;
     }
 
     /**
-     * Gets language_code
+     * Gets free_form_service_item
      *
-     * @return string|null
+     * @return \Late\Model\GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItem|null
      */
-    public function getLanguageCode()
+    public function getFreeFormServiceItem()
     {
-        return $this->container['language_code'];
+        return $this->container['free_form_service_item'];
     }
 
     /**
-     * Sets language_code
+     * Sets free_form_service_item
      *
-     * @param string|null $language_code BCP 47 language code (e.g. \"en\", \"de\", \"es\"). Auto-detected if omitted. Set explicitly for short or mixed-language posts.
+     * @param \Late\Model\GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItem|null $free_form_service_item free_form_service_item
      *
      * @return self
      */
-    public function setLanguageCode($language_code)
+    public function setFreeFormServiceItem($free_form_service_item)
     {
-        if (is_null($language_code)) {
-            throw new \InvalidArgumentException('non-nullable language_code cannot be null');
+        if (is_null($free_form_service_item)) {
+            throw new \InvalidArgumentException('non-nullable free_form_service_item cannot be null');
         }
-        $this->container['language_code'] = $language_code;
+        $this->container['free_form_service_item'] = $free_form_service_item;
 
         return $this;
     }
 
     /**
-     * Gets topic_type
+     * Gets price
      *
-     * @return string|null
+     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerPrice|null
      */
-    public function getTopicType()
+    public function getPrice()
     {
-        return $this->container['topic_type'];
+        return $this->container['price'];
     }
 
     /**
-     * Sets topic_type
+     * Sets price
      *
-     * @param string|null $topic_type Post type. STANDARD is a regular update. EVENT requires the event object. OFFER requires the offer object. Defaults to STANDARD if omitted.
+     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerPrice|null $price price
      *
      * @return self
      */
-    public function setTopicType($topic_type)
+    public function setPrice($price)
     {
-        if (is_null($topic_type)) {
-            throw new \InvalidArgumentException('non-nullable topic_type cannot be null');
+        if (is_null($price)) {
+            throw new \InvalidArgumentException('non-nullable price cannot be null');
         }
-        $allowedValues = $this->getTopicTypeAllowableValues();
-        if (!in_array($topic_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'topic_type', must be one of '%s'",
-                    $topic_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['topic_type'] = $topic_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets call_to_action
-     *
-     * @return \Late\Model\GoogleBusinessPlatformDataCallToAction|null
-     */
-    public function getCallToAction()
-    {
-        return $this->container['call_to_action'];
-    }
-
-    /**
-     * Sets call_to_action
-     *
-     * @param \Late\Model\GoogleBusinessPlatformDataCallToAction|null $call_to_action call_to_action
-     *
-     * @return self
-     */
-    public function setCallToAction($call_to_action)
-    {
-        if (is_null($call_to_action)) {
-            throw new \InvalidArgumentException('non-nullable call_to_action cannot be null');
-        }
-        $this->container['call_to_action'] = $call_to_action;
-
-        return $this;
-    }
-
-    /**
-     * Gets event
-     *
-     * @return \Late\Model\GoogleBusinessPlatformDataEvent|null
-     */
-    public function getEvent()
-    {
-        return $this->container['event'];
-    }
-
-    /**
-     * Sets event
-     *
-     * @param \Late\Model\GoogleBusinessPlatformDataEvent|null $event event
-     *
-     * @return self
-     */
-    public function setEvent($event)
-    {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
-        }
-        $this->container['event'] = $event;
-
-        return $this;
-    }
-
-    /**
-     * Gets offer
-     *
-     * @return \Late\Model\GoogleBusinessPlatformDataOffer|null
-     */
-    public function getOffer()
-    {
-        return $this->container['offer'];
-    }
-
-    /**
-     * Sets offer
-     *
-     * @param \Late\Model\GoogleBusinessPlatformDataOffer|null $offer offer
-     *
-     * @return self
-     */
-    public function setOffer($offer)
-    {
-        if (is_null($offer)) {
-            throw new \InvalidArgumentException('non-nullable offer cannot be null');
-        }
-        $this->container['offer'] = $offer;
+        $this->container['price'] = $price;
 
         return $this;
     }
