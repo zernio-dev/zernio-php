@@ -1,6 +1,6 @@
 <?php
 /**
- * GoogleBusinessPlatformData
+ * GoogleBusinessPlatformDataOffer
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * GoogleBusinessPlatformData Class Doc Comment
+ * GoogleBusinessPlatformDataOffer Class Doc Comment
  *
  * @category Class
- * @description Text and single image only (no videos). Supports STANDARD, EVENT, and OFFER post types. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting.
+ * @description Offer details. Required when topicType is OFFER. All fields are optional per Google&#39;s API, but at least one is recommended.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSerializable
+class GoogleBusinessPlatformDataOffer implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'GoogleBusinessPlatformData';
+    protected static $openAPIModelName = 'GoogleBusinessPlatformData_offer';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'location_id' => 'string',
-        'language_code' => 'string',
-        'topic_type' => 'string',
-        'call_to_action' => '\Late\Model\GoogleBusinessPlatformDataCallToAction',
-        'event' => '\Late\Model\GoogleBusinessPlatformDataEvent',
-        'offer' => '\Late\Model\GoogleBusinessPlatformDataOffer'
+        'offer_type' => 'string',
+        'redeem_online_url' => 'string',
+        'terms_conditions' => 'string',
+        'coupon_code' => 'string'
     ];
 
     /**
@@ -75,12 +73,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'location_id' => null,
-        'language_code' => null,
-        'topic_type' => null,
-        'call_to_action' => null,
-        'event' => null,
-        'offer' => null
+        'offer_type' => null,
+        'redeem_online_url' => 'uri',
+        'terms_conditions' => null,
+        'coupon_code' => null
     ];
 
     /**
@@ -89,12 +85,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'location_id' => false,
-        'language_code' => false,
-        'topic_type' => false,
-        'call_to_action' => false,
-        'event' => false,
-        'offer' => false
+        'offer_type' => false,
+        'redeem_online_url' => false,
+        'terms_conditions' => false,
+        'coupon_code' => false
     ];
 
     /**
@@ -183,12 +177,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'location_id' => 'locationId',
-        'language_code' => 'languageCode',
-        'topic_type' => 'topicType',
-        'call_to_action' => 'callToAction',
-        'event' => 'event',
-        'offer' => 'offer'
+        'offer_type' => 'offerType',
+        'redeem_online_url' => 'redeemOnlineUrl',
+        'terms_conditions' => 'termsConditions',
+        'coupon_code' => 'couponCode'
     ];
 
     /**
@@ -197,12 +189,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'location_id' => 'setLocationId',
-        'language_code' => 'setLanguageCode',
-        'topic_type' => 'setTopicType',
-        'call_to_action' => 'setCallToAction',
-        'event' => 'setEvent',
-        'offer' => 'setOffer'
+        'offer_type' => 'setOfferType',
+        'redeem_online_url' => 'setRedeemOnlineUrl',
+        'terms_conditions' => 'setTermsConditions',
+        'coupon_code' => 'setCouponCode'
     ];
 
     /**
@@ -211,12 +201,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'location_id' => 'getLocationId',
-        'language_code' => 'getLanguageCode',
-        'topic_type' => 'getTopicType',
-        'call_to_action' => 'getCallToAction',
-        'event' => 'getEvent',
-        'offer' => 'getOffer'
+        'offer_type' => 'getOfferType',
+        'redeem_online_url' => 'getRedeemOnlineUrl',
+        'terms_conditions' => 'getTermsConditions',
+        'coupon_code' => 'getCouponCode'
     ];
 
     /**
@@ -260,21 +248,19 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const TOPIC_TYPE_STANDARD = 'STANDARD';
-    public const TOPIC_TYPE_EVENT = 'EVENT';
-    public const TOPIC_TYPE_OFFER = 'OFFER';
+    public const OFFER_TYPE_OFFER = 'OFFER';
+    public const OFFER_TYPE_BUY_ONE_GET_ONE = 'BUY_ONE_GET_ONE';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getTopicTypeAllowableValues()
+    public function getOfferTypeAllowableValues()
     {
         return [
-            self::TOPIC_TYPE_STANDARD,
-            self::TOPIC_TYPE_EVENT,
-            self::TOPIC_TYPE_OFFER,
+            self::OFFER_TYPE_OFFER,
+            self::OFFER_TYPE_BUY_ONE_GET_ONE,
         ];
     }
 
@@ -293,12 +279,10 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('location_id', $data ?? [], null);
-        $this->setIfExists('language_code', $data ?? [], null);
-        $this->setIfExists('topic_type', $data ?? [], 'STANDARD');
-        $this->setIfExists('call_to_action', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('offer', $data ?? [], null);
+        $this->setIfExists('offer_type', $data ?? [], null);
+        $this->setIfExists('redeem_online_url', $data ?? [], null);
+        $this->setIfExists('terms_conditions', $data ?? [], null);
+        $this->setIfExists('coupon_code', $data ?? [], null);
     }
 
     /**
@@ -328,11 +312,11 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTopicTypeAllowableValues();
-        if (!is_null($this->container['topic_type']) && !in_array($this->container['topic_type'], $allowedValues, true)) {
+        $allowedValues = $this->getOfferTypeAllowableValues();
+        if (!is_null($this->container['offer_type']) && !in_array($this->container['offer_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'topic_type', must be one of '%s'",
-                $this->container['topic_type'],
+                "invalid value '%s' for 'offer_type', must be one of '%s'",
+                $this->container['offer_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -353,173 +337,119 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets location_id
+     * Gets offer_type
      *
      * @return string|null
      */
-    public function getLocationId()
+    public function getOfferType()
     {
-        return $this->container['location_id'];
+        return $this->container['offer_type'];
     }
 
     /**
-     * Sets location_id
+     * Sets offer_type
      *
-     * @param string|null $location_id Target GBP location ID (e.g. \"locations/123456789\"). If omitted, uses the default location. Use GET /v1/accounts/{id}/gmb-locations to list locations.
+     * @param string|null $offer_type Type of offer
      *
      * @return self
      */
-    public function setLocationId($location_id)
+    public function setOfferType($offer_type)
     {
-        if (is_null($location_id)) {
-            throw new \InvalidArgumentException('non-nullable location_id cannot be null');
+        if (is_null($offer_type)) {
+            throw new \InvalidArgumentException('non-nullable offer_type cannot be null');
         }
-        $this->container['location_id'] = $location_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets language_code
-     *
-     * @return string|null
-     */
-    public function getLanguageCode()
-    {
-        return $this->container['language_code'];
-    }
-
-    /**
-     * Sets language_code
-     *
-     * @param string|null $language_code BCP 47 language code (e.g. \"en\", \"de\", \"es\"). Auto-detected if omitted. Set explicitly for short or mixed-language posts.
-     *
-     * @return self
-     */
-    public function setLanguageCode($language_code)
-    {
-        if (is_null($language_code)) {
-            throw new \InvalidArgumentException('non-nullable language_code cannot be null');
-        }
-        $this->container['language_code'] = $language_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets topic_type
-     *
-     * @return string|null
-     */
-    public function getTopicType()
-    {
-        return $this->container['topic_type'];
-    }
-
-    /**
-     * Sets topic_type
-     *
-     * @param string|null $topic_type Post type. STANDARD is a regular update. EVENT requires the event object. OFFER requires the offer object. Defaults to STANDARD if omitted.
-     *
-     * @return self
-     */
-    public function setTopicType($topic_type)
-    {
-        if (is_null($topic_type)) {
-            throw new \InvalidArgumentException('non-nullable topic_type cannot be null');
-        }
-        $allowedValues = $this->getTopicTypeAllowableValues();
-        if (!in_array($topic_type, $allowedValues, true)) {
+        $allowedValues = $this->getOfferTypeAllowableValues();
+        if (!in_array($offer_type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'topic_type', must be one of '%s'",
-                    $topic_type,
+                    "Invalid value '%s' for 'offer_type', must be one of '%s'",
+                    $offer_type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['topic_type'] = $topic_type;
+        $this->container['offer_type'] = $offer_type;
 
         return $this;
     }
 
     /**
-     * Gets call_to_action
+     * Gets redeem_online_url
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataCallToAction|null
+     * @return string|null
      */
-    public function getCallToAction()
+    public function getRedeemOnlineUrl()
     {
-        return $this->container['call_to_action'];
+        return $this->container['redeem_online_url'];
     }
 
     /**
-     * Sets call_to_action
+     * Sets redeem_online_url
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataCallToAction|null $call_to_action call_to_action
+     * @param string|null $redeem_online_url URL where the offer can be redeemed online
      *
      * @return self
      */
-    public function setCallToAction($call_to_action)
+    public function setRedeemOnlineUrl($redeem_online_url)
     {
-        if (is_null($call_to_action)) {
-            throw new \InvalidArgumentException('non-nullable call_to_action cannot be null');
+        if (is_null($redeem_online_url)) {
+            throw new \InvalidArgumentException('non-nullable redeem_online_url cannot be null');
         }
-        $this->container['call_to_action'] = $call_to_action;
+        $this->container['redeem_online_url'] = $redeem_online_url;
 
         return $this;
     }
 
     /**
-     * Gets event
+     * Gets terms_conditions
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataEvent|null
+     * @return string|null
      */
-    public function getEvent()
+    public function getTermsConditions()
     {
-        return $this->container['event'];
+        return $this->container['terms_conditions'];
     }
 
     /**
-     * Sets event
+     * Sets terms_conditions
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataEvent|null $event event
+     * @param string|null $terms_conditions Terms and conditions for the offer
      *
      * @return self
      */
-    public function setEvent($event)
+    public function setTermsConditions($terms_conditions)
     {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        if (is_null($terms_conditions)) {
+            throw new \InvalidArgumentException('non-nullable terms_conditions cannot be null');
         }
-        $this->container['event'] = $event;
+        $this->container['terms_conditions'] = $terms_conditions;
 
         return $this;
     }
 
     /**
-     * Gets offer
+     * Gets coupon_code
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataOffer|null
+     * @return string|null
      */
-    public function getOffer()
+    public function getCouponCode()
     {
-        return $this->container['offer'];
+        return $this->container['coupon_code'];
     }
 
     /**
-     * Sets offer
+     * Sets coupon_code
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataOffer|null $offer offer
+     * @param string|null $coupon_code Coupon code for the offer
      *
      * @return self
      */
-    public function setOffer($offer)
+    public function setCouponCode($coupon_code)
     {
-        if (is_null($offer)) {
-            throw new \InvalidArgumentException('non-nullable offer cannot be null');
+        if (is_null($coupon_code)) {
+            throw new \InvalidArgumentException('non-nullable coupon_code cannot be null');
         }
-        $this->container['offer'] = $offer;
+        $this->container['coupon_code'] = $coupon_code;
 
         return $this;
     }

@@ -92,7 +92,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'playlist_id' => 'string',
         'location_id' => 'string',
         'language_code' => 'string',
+        'topic_type' => 'string',
         'call_to_action' => '\Late\Model\GoogleBusinessPlatformDataCallToAction',
+        'event' => '\Late\Model\GoogleBusinessPlatformDataEvent',
+        'offer' => '\Late\Model\GoogleBusinessPlatformDataOffer',
         'privacy_level' => 'string',
         'allow_comment' => 'bool',
         'allow_duet' => 'bool',
@@ -170,7 +173,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'playlist_id' => null,
         'location_id' => null,
         'language_code' => null,
+        'topic_type' => null,
         'call_to_action' => null,
+        'event' => null,
+        'offer' => null,
         'privacy_level' => null,
         'allow_comment' => null,
         'allow_duet' => null,
@@ -246,7 +252,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'playlist_id' => false,
         'location_id' => false,
         'language_code' => false,
+        'topic_type' => false,
         'call_to_action' => false,
+        'event' => false,
+        'offer' => false,
         'privacy_level' => false,
         'allow_comment' => false,
         'allow_duet' => false,
@@ -402,7 +411,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'playlist_id' => 'playlistId',
         'location_id' => 'locationId',
         'language_code' => 'languageCode',
+        'topic_type' => 'topicType',
         'call_to_action' => 'callToAction',
+        'event' => 'event',
+        'offer' => 'offer',
         'privacy_level' => 'privacyLevel',
         'allow_comment' => 'allowComment',
         'allow_duet' => 'allowDuet',
@@ -478,7 +490,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'playlist_id' => 'setPlaylistId',
         'location_id' => 'setLocationId',
         'language_code' => 'setLanguageCode',
+        'topic_type' => 'setTopicType',
         'call_to_action' => 'setCallToAction',
+        'event' => 'setEvent',
+        'offer' => 'setOffer',
         'privacy_level' => 'setPrivacyLevel',
         'allow_comment' => 'setAllowComment',
         'allow_duet' => 'setAllowDuet',
@@ -554,7 +569,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'playlist_id' => 'getPlaylistId',
         'location_id' => 'getLocationId',
         'language_code' => 'getLanguageCode',
+        'topic_type' => 'getTopicType',
         'call_to_action' => 'getCallToAction',
+        'event' => 'getEvent',
+        'offer' => 'getOffer',
         'privacy_level' => 'getPrivacyLevel',
         'allow_comment' => 'getAllowComment',
         'allow_duet' => 'getAllowDuet',
@@ -641,6 +659,9 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     public const VISIBILITY__PUBLIC = 'public';
     public const VISIBILITY__PRIVATE = 'private';
     public const VISIBILITY_UNLISTED = 'unlisted';
+    public const TOPIC_TYPE_STANDARD = 'STANDARD';
+    public const TOPIC_TYPE_EVENT = 'EVENT';
+    public const TOPIC_TYPE_OFFER = 'OFFER';
     public const COMMERCIAL_CONTENT_TYPE_NONE = 'none';
     public const COMMERCIAL_CONTENT_TYPE_BRAND_ORGANIC = 'brand_organic';
     public const COMMERCIAL_CONTENT_TYPE_BRAND_CONTENT = 'brand_content';
@@ -690,6 +711,20 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
             self::VISIBILITY__PUBLIC,
             self::VISIBILITY__PRIVATE,
             self::VISIBILITY_UNLISTED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTopicTypeAllowableValues()
+    {
+        return [
+            self::TOPIC_TYPE_STANDARD,
+            self::TOPIC_TYPE_EVENT,
+            self::TOPIC_TYPE_OFFER,
         ];
     }
 
@@ -783,7 +818,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         $this->setIfExists('playlist_id', $data ?? [], null);
         $this->setIfExists('location_id', $data ?? [], null);
         $this->setIfExists('language_code', $data ?? [], null);
+        $this->setIfExists('topic_type', $data ?? [], 'STANDARD');
         $this->setIfExists('call_to_action', $data ?? [], null);
+        $this->setIfExists('event', $data ?? [], null);
+        $this->setIfExists('offer', $data ?? [], null);
         $this->setIfExists('privacy_level', $data ?? [], null);
         $this->setIfExists('allow_comment', $data ?? [], null);
         $this->setIfExists('allow_duet', $data ?? [], null);
@@ -889,6 +927,15 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'visibility', must be one of '%s'",
                 $this->container['visibility'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTopicTypeAllowableValues();
+        if (!is_null($this->container['topic_type']) && !in_array($this->container['topic_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'topic_type', must be one of '%s'",
+                $this->container['topic_type'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1927,6 +1974,43 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     }
 
     /**
+     * Gets topic_type
+     *
+     * @return string|null
+     */
+    public function getTopicType()
+    {
+        return $this->container['topic_type'];
+    }
+
+    /**
+     * Sets topic_type
+     *
+     * @param string|null $topic_type Post type. STANDARD is a regular update. EVENT requires the event object. OFFER requires the offer object. Defaults to STANDARD if omitted.
+     *
+     * @return self
+     */
+    public function setTopicType($topic_type)
+    {
+        if (is_null($topic_type)) {
+            throw new \InvalidArgumentException('non-nullable topic_type cannot be null');
+        }
+        $allowedValues = $this->getTopicTypeAllowableValues();
+        if (!in_array($topic_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'topic_type', must be one of '%s'",
+                    $topic_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['topic_type'] = $topic_type;
+
+        return $this;
+    }
+
+    /**
      * Gets call_to_action
      *
      * @return \Late\Model\GoogleBusinessPlatformDataCallToAction|null
@@ -1949,6 +2033,60 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
             throw new \InvalidArgumentException('non-nullable call_to_action cannot be null');
         }
         $this->container['call_to_action'] = $call_to_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets event
+     *
+     * @return \Late\Model\GoogleBusinessPlatformDataEvent|null
+     */
+    public function getEvent()
+    {
+        return $this->container['event'];
+    }
+
+    /**
+     * Sets event
+     *
+     * @param \Late\Model\GoogleBusinessPlatformDataEvent|null $event event
+     *
+     * @return self
+     */
+    public function setEvent($event)
+    {
+        if (is_null($event)) {
+            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        }
+        $this->container['event'] = $event;
+
+        return $this;
+    }
+
+    /**
+     * Gets offer
+     *
+     * @return \Late\Model\GoogleBusinessPlatformDataOffer|null
+     */
+    public function getOffer()
+    {
+        return $this->container['offer'];
+    }
+
+    /**
+     * Sets offer
+     *
+     * @param \Late\Model\GoogleBusinessPlatformDataOffer|null $offer offer
+     *
+     * @return self
+     */
+    public function setOffer($offer)
+    {
+        if (is_null($offer)) {
+            throw new \InvalidArgumentException('non-nullable offer cannot be null');
+        }
+        $this->container['offer'] = $offer;
 
         return $this;
     }

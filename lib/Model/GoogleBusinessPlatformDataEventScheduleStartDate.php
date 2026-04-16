@@ -1,6 +1,6 @@
 <?php
 /**
- * GoogleBusinessPlatformData
+ * GoogleBusinessPlatformDataEventScheduleStartDate
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * GoogleBusinessPlatformData Class Doc Comment
+ * GoogleBusinessPlatformDataEventScheduleStartDate Class Doc Comment
  *
  * @category Class
- * @description Text and single image only (no videos). Supports STANDARD, EVENT, and OFFER post types. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting.
+ * @description Event start date as { year, month, day }
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSerializable
+class GoogleBusinessPlatformDataEventScheduleStartDate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'GoogleBusinessPlatformData';
+    protected static $openAPIModelName = 'GoogleBusinessPlatformData_event_schedule_startDate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'location_id' => 'string',
-        'language_code' => 'string',
-        'topic_type' => 'string',
-        'call_to_action' => '\Late\Model\GoogleBusinessPlatformDataCallToAction',
-        'event' => '\Late\Model\GoogleBusinessPlatformDataEvent',
-        'offer' => '\Late\Model\GoogleBusinessPlatformDataOffer'
+        'year' => 'int',
+        'month' => 'int',
+        'day' => 'int'
     ];
 
     /**
@@ -75,12 +72,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'location_id' => null,
-        'language_code' => null,
-        'topic_type' => null,
-        'call_to_action' => null,
-        'event' => null,
-        'offer' => null
+        'year' => null,
+        'month' => null,
+        'day' => null
     ];
 
     /**
@@ -89,12 +83,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'location_id' => false,
-        'language_code' => false,
-        'topic_type' => false,
-        'call_to_action' => false,
-        'event' => false,
-        'offer' => false
+        'year' => false,
+        'month' => false,
+        'day' => false
     ];
 
     /**
@@ -183,12 +174,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'location_id' => 'locationId',
-        'language_code' => 'languageCode',
-        'topic_type' => 'topicType',
-        'call_to_action' => 'callToAction',
-        'event' => 'event',
-        'offer' => 'offer'
+        'year' => 'year',
+        'month' => 'month',
+        'day' => 'day'
     ];
 
     /**
@@ -197,12 +185,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'location_id' => 'setLocationId',
-        'language_code' => 'setLanguageCode',
-        'topic_type' => 'setTopicType',
-        'call_to_action' => 'setCallToAction',
-        'event' => 'setEvent',
-        'offer' => 'setOffer'
+        'year' => 'setYear',
+        'month' => 'setMonth',
+        'day' => 'setDay'
     ];
 
     /**
@@ -211,12 +196,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'location_id' => 'getLocationId',
-        'language_code' => 'getLanguageCode',
-        'topic_type' => 'getTopicType',
-        'call_to_action' => 'getCallToAction',
-        'event' => 'getEvent',
-        'offer' => 'getOffer'
+        'year' => 'getYear',
+        'month' => 'getMonth',
+        'day' => 'getDay'
     ];
 
     /**
@@ -260,23 +242,6 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
         return self::$openAPIModelName;
     }
 
-    public const TOPIC_TYPE_STANDARD = 'STANDARD';
-    public const TOPIC_TYPE_EVENT = 'EVENT';
-    public const TOPIC_TYPE_OFFER = 'OFFER';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTopicTypeAllowableValues()
-    {
-        return [
-            self::TOPIC_TYPE_STANDARD,
-            self::TOPIC_TYPE_EVENT,
-            self::TOPIC_TYPE_OFFER,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -293,12 +258,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('location_id', $data ?? [], null);
-        $this->setIfExists('language_code', $data ?? [], null);
-        $this->setIfExists('topic_type', $data ?? [], 'STANDARD');
-        $this->setIfExists('call_to_action', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('offer', $data ?? [], null);
+        $this->setIfExists('year', $data ?? [], null);
+        $this->setIfExists('month', $data ?? [], null);
+        $this->setIfExists('day', $data ?? [], null);
     }
 
     /**
@@ -328,13 +290,29 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTopicTypeAllowableValues();
-        if (!is_null($this->container['topic_type']) && !in_array($this->container['topic_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'topic_type', must be one of '%s'",
-                $this->container['topic_type'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['year'] === null) {
+            $invalidProperties[] = "'year' can't be null";
+        }
+        if ($this->container['month'] === null) {
+            $invalidProperties[] = "'month' can't be null";
+        }
+        if (($this->container['month'] > 12)) {
+            $invalidProperties[] = "invalid value for 'month', must be smaller than or equal to 12.";
+        }
+
+        if (($this->container['month'] < 1)) {
+            $invalidProperties[] = "invalid value for 'month', must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['day'] === null) {
+            $invalidProperties[] = "'day' can't be null";
+        }
+        if (($this->container['day'] > 31)) {
+            $invalidProperties[] = "invalid value for 'day', must be smaller than or equal to 31.";
+        }
+
+        if (($this->container['day'] < 1)) {
+            $invalidProperties[] = "invalid value for 'day', must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -353,173 +331,98 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets location_id
+     * Gets year
      *
-     * @return string|null
+     * @return int
      */
-    public function getLocationId()
+    public function getYear()
     {
-        return $this->container['location_id'];
+        return $this->container['year'];
     }
 
     /**
-     * Sets location_id
+     * Sets year
      *
-     * @param string|null $location_id Target GBP location ID (e.g. \"locations/123456789\"). If omitted, uses the default location. Use GET /v1/accounts/{id}/gmb-locations to list locations.
+     * @param int $year year
      *
      * @return self
      */
-    public function setLocationId($location_id)
+    public function setYear($year)
     {
-        if (is_null($location_id)) {
-            throw new \InvalidArgumentException('non-nullable location_id cannot be null');
+        if (is_null($year)) {
+            throw new \InvalidArgumentException('non-nullable year cannot be null');
         }
-        $this->container['location_id'] = $location_id;
+        $this->container['year'] = $year;
 
         return $this;
     }
 
     /**
-     * Gets language_code
+     * Gets month
      *
-     * @return string|null
+     * @return int
      */
-    public function getLanguageCode()
+    public function getMonth()
     {
-        return $this->container['language_code'];
+        return $this->container['month'];
     }
 
     /**
-     * Sets language_code
+     * Sets month
      *
-     * @param string|null $language_code BCP 47 language code (e.g. \"en\", \"de\", \"es\"). Auto-detected if omitted. Set explicitly for short or mixed-language posts.
+     * @param int $month month
      *
      * @return self
      */
-    public function setLanguageCode($language_code)
+    public function setMonth($month)
     {
-        if (is_null($language_code)) {
-            throw new \InvalidArgumentException('non-nullable language_code cannot be null');
+        if (is_null($month)) {
+            throw new \InvalidArgumentException('non-nullable month cannot be null');
         }
-        $this->container['language_code'] = $language_code;
+
+        if (($month > 12)) {
+            throw new \InvalidArgumentException('invalid value for $month when calling GoogleBusinessPlatformDataEventScheduleStartDate., must be smaller than or equal to 12.');
+        }
+        if (($month < 1)) {
+            throw new \InvalidArgumentException('invalid value for $month when calling GoogleBusinessPlatformDataEventScheduleStartDate., must be bigger than or equal to 1.');
+        }
+
+        $this->container['month'] = $month;
 
         return $this;
     }
 
     /**
-     * Gets topic_type
+     * Gets day
      *
-     * @return string|null
+     * @return int
      */
-    public function getTopicType()
+    public function getDay()
     {
-        return $this->container['topic_type'];
+        return $this->container['day'];
     }
 
     /**
-     * Sets topic_type
+     * Sets day
      *
-     * @param string|null $topic_type Post type. STANDARD is a regular update. EVENT requires the event object. OFFER requires the offer object. Defaults to STANDARD if omitted.
+     * @param int $day day
      *
      * @return self
      */
-    public function setTopicType($topic_type)
+    public function setDay($day)
     {
-        if (is_null($topic_type)) {
-            throw new \InvalidArgumentException('non-nullable topic_type cannot be null');
+        if (is_null($day)) {
+            throw new \InvalidArgumentException('non-nullable day cannot be null');
         }
-        $allowedValues = $this->getTopicTypeAllowableValues();
-        if (!in_array($topic_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'topic_type', must be one of '%s'",
-                    $topic_type,
-                    implode("', '", $allowedValues)
-                )
-            );
+
+        if (($day > 31)) {
+            throw new \InvalidArgumentException('invalid value for $day when calling GoogleBusinessPlatformDataEventScheduleStartDate., must be smaller than or equal to 31.');
         }
-        $this->container['topic_type'] = $topic_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets call_to_action
-     *
-     * @return \Late\Model\GoogleBusinessPlatformDataCallToAction|null
-     */
-    public function getCallToAction()
-    {
-        return $this->container['call_to_action'];
-    }
-
-    /**
-     * Sets call_to_action
-     *
-     * @param \Late\Model\GoogleBusinessPlatformDataCallToAction|null $call_to_action call_to_action
-     *
-     * @return self
-     */
-    public function setCallToAction($call_to_action)
-    {
-        if (is_null($call_to_action)) {
-            throw new \InvalidArgumentException('non-nullable call_to_action cannot be null');
+        if (($day < 1)) {
+            throw new \InvalidArgumentException('invalid value for $day when calling GoogleBusinessPlatformDataEventScheduleStartDate., must be bigger than or equal to 1.');
         }
-        $this->container['call_to_action'] = $call_to_action;
 
-        return $this;
-    }
-
-    /**
-     * Gets event
-     *
-     * @return \Late\Model\GoogleBusinessPlatformDataEvent|null
-     */
-    public function getEvent()
-    {
-        return $this->container['event'];
-    }
-
-    /**
-     * Sets event
-     *
-     * @param \Late\Model\GoogleBusinessPlatformDataEvent|null $event event
-     *
-     * @return self
-     */
-    public function setEvent($event)
-    {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
-        }
-        $this->container['event'] = $event;
-
-        return $this;
-    }
-
-    /**
-     * Gets offer
-     *
-     * @return \Late\Model\GoogleBusinessPlatformDataOffer|null
-     */
-    public function getOffer()
-    {
-        return $this->container['offer'];
-    }
-
-    /**
-     * Sets offer
-     *
-     * @param \Late\Model\GoogleBusinessPlatformDataOffer|null $offer offer
-     *
-     * @return self
-     */
-    public function setOffer($offer)
-    {
-        if (is_null($offer)) {
-            throw new \InvalidArgumentException('non-nullable offer cannot be null');
-        }
-        $this->container['offer'] = $offer;
+        $this->container['day'] = $day;
 
         return $this;
     }

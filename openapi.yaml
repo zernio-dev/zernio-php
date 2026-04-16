@@ -2007,6 +2007,11 @@ components:
           type: string
           description: BCP 47 language code (e.g. "en", "de", "es"). Auto-detected if omitted. Set explicitly for short or mixed-language posts.
           example: "de"
+        topicType:
+          type: string
+          enum: [STANDARD, EVENT, OFFER]
+          default: STANDARD
+          description: "Post type. STANDARD is a regular update. EVENT requires the event object. OFFER requires the offer object. Defaults to STANDARD if omitted."
         callToAction:
           type: object
           description: Optional call-to-action button displayed on the post
@@ -2020,7 +2025,104 @@ components:
               format: uri
               description: Destination URL for the CTA button (required when callToAction is provided)
           required: [type, url]
-      description: Text and single image only (no videos). Optional call-to-action button. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting.
+        event:
+          type: object
+          description: "Event details. Required when topicType is EVENT. Google returns 400 if omitted for EVENT posts."
+          properties:
+            title:
+              type: string
+              description: Event name (displayed as the event heading on Google Search and Maps)
+              example: "Grand Opening Weekend"
+            schedule:
+              type: object
+              description: "Event date/time range. Uses Google's date format (NOT ISO 8601)."
+              properties:
+                startDate:
+                  type: object
+                  description: "Event start date as { year, month, day }"
+                  properties:
+                    year:
+                      type: integer
+                      example: 2026
+                    month:
+                      type: integer
+                      minimum: 1
+                      maximum: 12
+                      example: 5
+                    day:
+                      type: integer
+                      minimum: 1
+                      maximum: 31
+                      example: 15
+                  required: [year, month, day]
+                startTime:
+                  type: object
+                  description: "Optional start time as { hours, minutes } in 24h format"
+                  properties:
+                    hours:
+                      type: integer
+                      minimum: 0
+                      maximum: 23
+                      example: 9
+                    minutes:
+                      type: integer
+                      minimum: 0
+                      maximum: 59
+                      example: 0
+                endDate:
+                  type: object
+                  description: "Event end date as { year, month, day }"
+                  properties:
+                    year:
+                      type: integer
+                      example: 2026
+                    month:
+                      type: integer
+                      minimum: 1
+                      maximum: 12
+                      example: 5
+                    day:
+                      type: integer
+                      minimum: 1
+                      maximum: 31
+                      example: 16
+                  required: [year, month, day]
+                endTime:
+                  type: object
+                  description: "Optional end time as { hours, minutes } in 24h format"
+                  properties:
+                    hours:
+                      type: integer
+                      minimum: 0
+                      maximum: 23
+                      example: 17
+                    minutes:
+                      type: integer
+                      minimum: 0
+                      maximum: 59
+                      example: 0
+              required: [startDate, endDate]
+          required: [title, schedule]
+        offer:
+          type: object
+          description: "Offer details. Required when topicType is OFFER. All fields are optional per Google's API, but at least one is recommended."
+          properties:
+            offerType:
+              type: string
+              enum: [OFFER, BUY_ONE_GET_ONE]
+              description: Type of offer
+            redeemOnlineUrl:
+              type: string
+              format: uri
+              description: URL where the offer can be redeemed online
+            termsConditions:
+              type: string
+              description: Terms and conditions for the offer
+            couponCode:
+              type: string
+              description: Coupon code for the offer
+              example: "SAVE20"
+      description: "Text and single image only (no videos). Supports STANDARD, EVENT, and OFFER post types. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting."
 
     TikTokPlatformData:
       type: object
