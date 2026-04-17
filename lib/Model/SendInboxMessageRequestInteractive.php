@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateWebhookSettingsRequest
+ * SendInboxMessageRequestInteractive
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * UpdateWebhookSettingsRequest Class Doc Comment
+ * SendInboxMessageRequestInteractive Class Doc Comment
  *
  * @category Class
+ * @description WhatsApp-only. Rich interactive payload for list messages, CTA URL buttons, and Flow prompts. When set, takes priority over &#x60;buttons&#x60; and &#x60;quickReplies&#x60;. The shape mirrors Meta&#39;s Cloud API &#x60;interactive&#x60; object verbatim, so any payload that works against Meta directly will also work here.  Use &#x60;buttons&#x60; / &#x60;quickReplies&#x60; for simple button replies (WhatsApp&#39;s &#x60;interactive.type: \&quot;button\&quot;&#x60;) — the abstraction caps at 3 buttons and handles the auto-conversion for you. Use this field only for &#x60;list&#x60;, &#x60;cta_url&#x60;, or &#x60;flow&#x60; messages.  Tap events come back via the &#x60;message.received&#x60; webhook with &#x60;metadata.interactiveType&#x60; set to &#x60;list_reply&#x60; or &#x60;nfm_reply&#x60;.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateWebhookSettings_request';
+    protected static $openAPIModelName = 'sendInboxMessage_request_interactive';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +59,11 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
-        'name' => 'string',
-        'url' => 'string',
-        'secret' => 'string',
-        'events' => 'string[]',
-        'is_active' => 'bool',
-        'custom_headers' => 'array<string,string>'
+        'type' => 'string',
+        'header' => '\Late\Model\SendInboxMessageRequestInteractiveHeader',
+        'body' => '\Late\Model\SendInboxMessageRequestInteractiveBody',
+        'footer' => '\Late\Model\SendInboxMessageRequestInteractiveFooter',
+        'action' => '\Late\Model\SendInboxMessageRequestInteractiveAction'
     ];
 
     /**
@@ -75,13 +74,11 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
-        'name' => null,
-        'url' => 'uri',
-        'secret' => null,
-        'events' => null,
-        'is_active' => null,
-        'custom_headers' => null
+        'type' => null,
+        'header' => null,
+        'body' => null,
+        'footer' => null,
+        'action' => null
     ];
 
     /**
@@ -90,13 +87,11 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
-        'name' => false,
-        'url' => false,
-        'secret' => false,
-        'events' => false,
-        'is_active' => false,
-        'custom_headers' => false
+        'type' => false,
+        'header' => false,
+        'body' => false,
+        'footer' => false,
+        'action' => false
     ];
 
     /**
@@ -185,13 +180,11 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
-        'name' => 'name',
-        'url' => 'url',
-        'secret' => 'secret',
-        'events' => 'events',
-        'is_active' => 'isActive',
-        'custom_headers' => 'customHeaders'
+        'type' => 'type',
+        'header' => 'header',
+        'body' => 'body',
+        'footer' => 'footer',
+        'action' => 'action'
     ];
 
     /**
@@ -200,13 +193,11 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'secret' => 'setSecret',
-        'events' => 'setEvents',
-        'is_active' => 'setIsActive',
-        'custom_headers' => 'setCustomHeaders'
+        'type' => 'setType',
+        'header' => 'setHeader',
+        'body' => 'setBody',
+        'footer' => 'setFooter',
+        'action' => 'setAction'
     ];
 
     /**
@@ -215,13 +206,11 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'secret' => 'getSecret',
-        'events' => 'getEvents',
-        'is_active' => 'getIsActive',
-        'custom_headers' => 'getCustomHeaders'
+        'type' => 'getType',
+        'header' => 'getHeader',
+        'body' => 'getBody',
+        'footer' => 'getFooter',
+        'action' => 'getAction'
     ];
 
     /**
@@ -265,39 +254,21 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    public const EVENTS_POST_SCHEDULED = 'post.scheduled';
-    public const EVENTS_POST_PUBLISHED = 'post.published';
-    public const EVENTS_POST_FAILED = 'post.failed';
-    public const EVENTS_POST_PARTIAL = 'post.partial';
-    public const EVENTS_POST_CANCELLED = 'post.cancelled';
-    public const EVENTS_POST_RECYCLED = 'post.recycled';
-    public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
-    public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
-    public const EVENTS_MESSAGE_RECEIVED = 'message.received';
-    public const EVENTS_COMMENT_RECEIVED = 'comment.received';
-    public const EVENTS_REVIEW_NEW = 'review.new';
-    public const EVENTS_REVIEW_UPDATED = 'review.updated';
+    public const TYPE__LIST = 'list';
+    public const TYPE_CTA_URL = 'cta_url';
+    public const TYPE_FLOW = 'flow';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getEventsAllowableValues()
+    public function getTypeAllowableValues()
     {
         return [
-            self::EVENTS_POST_SCHEDULED,
-            self::EVENTS_POST_PUBLISHED,
-            self::EVENTS_POST_FAILED,
-            self::EVENTS_POST_PARTIAL,
-            self::EVENTS_POST_CANCELLED,
-            self::EVENTS_POST_RECYCLED,
-            self::EVENTS_ACCOUNT_CONNECTED,
-            self::EVENTS_ACCOUNT_DISCONNECTED,
-            self::EVENTS_MESSAGE_RECEIVED,
-            self::EVENTS_COMMENT_RECEIVED,
-            self::EVENTS_REVIEW_NEW,
-            self::EVENTS_REVIEW_UPDATED,
+            self::TYPE__LIST,
+            self::TYPE_CTA_URL,
+            self::TYPE_FLOW,
         ];
     }
 
@@ -316,13 +287,11 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('secret', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], null);
-        $this->setIfExists('custom_headers', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('header', $data ?? [], null);
+        $this->setIfExists('body', $data ?? [], null);
+        $this->setIfExists('footer', $data ?? [], null);
+        $this->setIfExists('action', $data ?? [], null);
     }
 
     /**
@@ -352,13 +321,24 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['_id'] === null) {
-            $invalidProperties[] = "'_id' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
         }
 
+        if ($this->container['body'] === null) {
+            $invalidProperties[] = "'body' can't be null";
+        }
+        if ($this->container['action'] === null) {
+            $invalidProperties[] = "'action' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -375,203 +355,146 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets _id
+     * Gets type
      *
      * @return string
      */
-    public function getId()
+    public function getType()
     {
-        return $this->container['_id'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets _id
+     * Sets type
      *
-     * @param string $_id Webhook ID to update (required)
+     * @param string $type Which interactive layout to render.
      *
      * @return self
      */
-    public function setId($_id)
+    public function setType($type)
     {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['_id'] = $_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Webhook name (max 50 characters)
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateWebhookSettingsRequest., must be smaller than or equal to 50.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string|null
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string|null $url Webhook endpoint URL (must be HTTPS in production)
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
-        }
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets secret
-     *
-     * @return string|null
-     */
-    public function getSecret()
-    {
-        return $this->container['secret'];
-    }
-
-    /**
-     * Sets secret
-     *
-     * @param string|null $secret Secret key for HMAC-SHA256 signature verification
-     *
-     * @return self
-     */
-    public function setSecret($secret)
-    {
-        if (is_null($secret)) {
-            throw new \InvalidArgumentException('non-nullable secret cannot be null');
-        }
-        $this->container['secret'] = $secret;
-
-        return $this;
-    }
-
-    /**
-     * Gets events
-     *
-     * @return string[]|null
-     */
-    public function getEvents()
-    {
-        return $this->container['events'];
-    }
-
-    /**
-     * Sets events
-     *
-     * @param string[]|null $events Events to subscribe to
-     *
-     * @return self
-     */
-    public function setEvents($events)
-    {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
-        }
-        $allowedValues = $this->getEventsAllowableValues();
-        if (array_diff($events, $allowedValues)) {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'events', must be one of '%s'",
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['events'] = $events;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets is_active
+     * Gets header
      *
-     * @return bool|null
+     * @return \Late\Model\SendInboxMessageRequestInteractiveHeader|null
      */
-    public function getIsActive()
+    public function getHeader()
     {
-        return $this->container['is_active'];
+        return $this->container['header'];
     }
 
     /**
-     * Sets is_active
+     * Sets header
      *
-     * @param bool|null $is_active Enable or disable webhook delivery
+     * @param \Late\Model\SendInboxMessageRequestInteractiveHeader|null $header header
      *
      * @return self
      */
-    public function setIsActive($is_active)
+    public function setHeader($header)
     {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
+        if (is_null($header)) {
+            throw new \InvalidArgumentException('non-nullable header cannot be null');
         }
-        $this->container['is_active'] = $is_active;
+        $this->container['header'] = $header;
 
         return $this;
     }
 
     /**
-     * Gets custom_headers
+     * Gets body
      *
-     * @return array<string,string>|null
+     * @return \Late\Model\SendInboxMessageRequestInteractiveBody
      */
-    public function getCustomHeaders()
+    public function getBody()
     {
-        return $this->container['custom_headers'];
+        return $this->container['body'];
     }
 
     /**
-     * Sets custom_headers
+     * Sets body
      *
-     * @param array<string,string>|null $custom_headers Custom headers to include in webhook requests
+     * @param \Late\Model\SendInboxMessageRequestInteractiveBody $body body
      *
      * @return self
      */
-    public function setCustomHeaders($custom_headers)
+    public function setBody($body)
     {
-        if (is_null($custom_headers)) {
-            throw new \InvalidArgumentException('non-nullable custom_headers cannot be null');
+        if (is_null($body)) {
+            throw new \InvalidArgumentException('non-nullable body cannot be null');
         }
-        $this->container['custom_headers'] = $custom_headers;
+        $this->container['body'] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Gets footer
+     *
+     * @return \Late\Model\SendInboxMessageRequestInteractiveFooter|null
+     */
+    public function getFooter()
+    {
+        return $this->container['footer'];
+    }
+
+    /**
+     * Sets footer
+     *
+     * @param \Late\Model\SendInboxMessageRequestInteractiveFooter|null $footer footer
+     *
+     * @return self
+     */
+    public function setFooter($footer)
+    {
+        if (is_null($footer)) {
+            throw new \InvalidArgumentException('non-nullable footer cannot be null');
+        }
+        $this->container['footer'] = $footer;
+
+        return $this;
+    }
+
+    /**
+     * Gets action
+     *
+     * @return \Late\Model\SendInboxMessageRequestInteractiveAction
+     */
+    public function getAction()
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param \Late\Model\SendInboxMessageRequestInteractiveAction $action action
+     *
+     * @return self
+     */
+    public function setAction($action)
+    {
+        if (is_null($action)) {
+            throw new \InvalidArgumentException('non-nullable action cannot be null');
+        }
+        $this->container['action'] = $action;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Webhook
+ * SendInboxMessageRequestInteractiveHeader
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * Webhook Class Doc Comment
+ * SendInboxMessageRequestInteractiveHeader Class Doc Comment
  *
  * @category Class
- * @description Individual webhook configuration for receiving real-time notifications
+ * @description Optional header shown above the body.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Webhook';
+    protected static $openAPIModelName = 'sendInboxMessage_request_interactive_header';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +59,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
-        'name' => 'string',
-        'url' => 'string',
-        'secret' => 'string',
-        'events' => 'string[]',
-        'is_active' => 'bool',
-        'last_fired_at' => '\DateTime',
-        'failure_count' => 'int',
-        'custom_headers' => 'array<string,string>'
+        'type' => 'string',
+        'text' => 'string',
+        'image' => '\Late\Model\SendInboxMessageRequestInteractiveHeaderImage',
+        'video' => '\Late\Model\SendInboxMessageRequestInteractiveHeaderImage',
+        'document' => '\Late\Model\SendInboxMessageRequestInteractiveHeaderImage'
     ];
 
     /**
@@ -78,15 +74,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
-        'name' => null,
-        'url' => 'uri',
-        'secret' => null,
-        'events' => null,
-        'is_active' => null,
-        'last_fired_at' => 'date-time',
-        'failure_count' => null,
-        'custom_headers' => null
+        'type' => null,
+        'text' => null,
+        'image' => null,
+        'video' => null,
+        'document' => null
     ];
 
     /**
@@ -95,15 +87,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
-        'name' => false,
-        'url' => false,
-        'secret' => false,
-        'events' => false,
-        'is_active' => false,
-        'last_fired_at' => false,
-        'failure_count' => false,
-        'custom_headers' => false
+        'type' => false,
+        'text' => false,
+        'image' => false,
+        'video' => false,
+        'document' => false
     ];
 
     /**
@@ -192,15 +180,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
-        'name' => 'name',
-        'url' => 'url',
-        'secret' => 'secret',
-        'events' => 'events',
-        'is_active' => 'isActive',
-        'last_fired_at' => 'lastFiredAt',
-        'failure_count' => 'failureCount',
-        'custom_headers' => 'customHeaders'
+        'type' => 'type',
+        'text' => 'text',
+        'image' => 'image',
+        'video' => 'video',
+        'document' => 'document'
     ];
 
     /**
@@ -209,15 +193,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'secret' => 'setSecret',
-        'events' => 'setEvents',
-        'is_active' => 'setIsActive',
-        'last_fired_at' => 'setLastFiredAt',
-        'failure_count' => 'setFailureCount',
-        'custom_headers' => 'setCustomHeaders'
+        'type' => 'setType',
+        'text' => 'setText',
+        'image' => 'setImage',
+        'video' => 'setVideo',
+        'document' => 'setDocument'
     ];
 
     /**
@@ -226,15 +206,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'secret' => 'getSecret',
-        'events' => 'getEvents',
-        'is_active' => 'getIsActive',
-        'last_fired_at' => 'getLastFiredAt',
-        'failure_count' => 'getFailureCount',
-        'custom_headers' => 'getCustomHeaders'
+        'type' => 'getType',
+        'text' => 'getText',
+        'image' => 'getImage',
+        'video' => 'getVideo',
+        'document' => 'getDocument'
     ];
 
     /**
@@ -278,51 +254,23 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const EVENTS_POST_SCHEDULED = 'post.scheduled';
-    public const EVENTS_POST_PUBLISHED = 'post.published';
-    public const EVENTS_POST_FAILED = 'post.failed';
-    public const EVENTS_POST_PARTIAL = 'post.partial';
-    public const EVENTS_POST_CANCELLED = 'post.cancelled';
-    public const EVENTS_POST_RECYCLED = 'post.recycled';
-    public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
-    public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
-    public const EVENTS_MESSAGE_RECEIVED = 'message.received';
-    public const EVENTS_MESSAGE_SENT = 'message.sent';
-    public const EVENTS_MESSAGE_EDITED = 'message.edited';
-    public const EVENTS_MESSAGE_DELETED = 'message.deleted';
-    public const EVENTS_MESSAGE_DELIVERED = 'message.delivered';
-    public const EVENTS_MESSAGE_READ = 'message.read';
-    public const EVENTS_MESSAGE_FAILED = 'message.failed';
-    public const EVENTS_COMMENT_RECEIVED = 'comment.received';
-    public const EVENTS_REVIEW_NEW = 'review.new';
-    public const EVENTS_REVIEW_UPDATED = 'review.updated';
+    public const TYPE_TEXT = 'text';
+    public const TYPE_IMAGE = 'image';
+    public const TYPE_VIDEO = 'video';
+    public const TYPE_DOCUMENT = 'document';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getEventsAllowableValues()
+    public function getTypeAllowableValues()
     {
         return [
-            self::EVENTS_POST_SCHEDULED,
-            self::EVENTS_POST_PUBLISHED,
-            self::EVENTS_POST_FAILED,
-            self::EVENTS_POST_PARTIAL,
-            self::EVENTS_POST_CANCELLED,
-            self::EVENTS_POST_RECYCLED,
-            self::EVENTS_ACCOUNT_CONNECTED,
-            self::EVENTS_ACCOUNT_DISCONNECTED,
-            self::EVENTS_MESSAGE_RECEIVED,
-            self::EVENTS_MESSAGE_SENT,
-            self::EVENTS_MESSAGE_EDITED,
-            self::EVENTS_MESSAGE_DELETED,
-            self::EVENTS_MESSAGE_DELIVERED,
-            self::EVENTS_MESSAGE_READ,
-            self::EVENTS_MESSAGE_FAILED,
-            self::EVENTS_COMMENT_RECEIVED,
-            self::EVENTS_REVIEW_NEW,
-            self::EVENTS_REVIEW_UPDATED,
+            self::TYPE_TEXT,
+            self::TYPE_IMAGE,
+            self::TYPE_VIDEO,
+            self::TYPE_DOCUMENT,
         ];
     }
 
@@ -341,15 +289,11 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('secret', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], null);
-        $this->setIfExists('last_fired_at', $data ?? [], null);
-        $this->setIfExists('failure_count', $data ?? [], null);
-        $this->setIfExists('custom_headers', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('text', $data ?? [], null);
+        $this->setIfExists('image', $data ?? [], null);
+        $this->setIfExists('video', $data ?? [], null);
+        $this->setIfExists('document', $data ?? [], null);
     }
 
     /**
@@ -379,8 +323,13 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -399,257 +348,146 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets _id
+     * Gets type
      *
      * @return string|null
      */
-    public function getId()
+    public function getType()
     {
-        return $this->container['_id'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets _id
+     * Sets type
      *
-     * @param string|null $_id Unique webhook identifier
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setId($_id)
+    public function setType($type)
     {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['_id'] = $_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Webhook name (for identification)
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Webhook., must be smaller than or equal to 50.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string|null
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string|null $url Webhook endpoint URL
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
-        }
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets secret
-     *
-     * @return string|null
-     */
-    public function getSecret()
-    {
-        return $this->container['secret'];
-    }
-
-    /**
-     * Sets secret
-     *
-     * @param string|null $secret Secret key for HMAC-SHA256 signature (not returned in responses for security)
-     *
-     * @return self
-     */
-    public function setSecret($secret)
-    {
-        if (is_null($secret)) {
-            throw new \InvalidArgumentException('non-nullable secret cannot be null');
-        }
-        $this->container['secret'] = $secret;
-
-        return $this;
-    }
-
-    /**
-     * Gets events
-     *
-     * @return string[]|null
-     */
-    public function getEvents()
-    {
-        return $this->container['events'];
-    }
-
-    /**
-     * Sets events
-     *
-     * @param string[]|null $events Events subscribed to
-     *
-     * @return self
-     */
-    public function setEvents($events)
-    {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
-        }
-        $allowedValues = $this->getEventsAllowableValues();
-        if (array_diff($events, $allowedValues)) {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'events', must be one of '%s'",
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['events'] = $events;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets is_active
+     * Gets text
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getIsActive()
+    public function getText()
     {
-        return $this->container['is_active'];
+        return $this->container['text'];
     }
 
     /**
-     * Sets is_active
+     * Sets text
      *
-     * @param bool|null $is_active Whether webhook delivery is enabled
+     * @param string|null $text Required when header type is text.
      *
      * @return self
      */
-    public function setIsActive($is_active)
+    public function setText($text)
     {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
+        if (is_null($text)) {
+            throw new \InvalidArgumentException('non-nullable text cannot be null');
         }
-        $this->container['is_active'] = $is_active;
+        $this->container['text'] = $text;
 
         return $this;
     }
 
     /**
-     * Gets last_fired_at
+     * Gets image
      *
-     * @return \DateTime|null
+     * @return \Late\Model\SendInboxMessageRequestInteractiveHeaderImage|null
      */
-    public function getLastFiredAt()
+    public function getImage()
     {
-        return $this->container['last_fired_at'];
+        return $this->container['image'];
     }
 
     /**
-     * Sets last_fired_at
+     * Sets image
      *
-     * @param \DateTime|null $last_fired_at Timestamp of last successful webhook delivery
+     * @param \Late\Model\SendInboxMessageRequestInteractiveHeaderImage|null $image image
      *
      * @return self
      */
-    public function setLastFiredAt($last_fired_at)
+    public function setImage($image)
     {
-        if (is_null($last_fired_at)) {
-            throw new \InvalidArgumentException('non-nullable last_fired_at cannot be null');
+        if (is_null($image)) {
+            throw new \InvalidArgumentException('non-nullable image cannot be null');
         }
-        $this->container['last_fired_at'] = $last_fired_at;
+        $this->container['image'] = $image;
 
         return $this;
     }
 
     /**
-     * Gets failure_count
+     * Gets video
      *
-     * @return int|null
+     * @return \Late\Model\SendInboxMessageRequestInteractiveHeaderImage|null
      */
-    public function getFailureCount()
+    public function getVideo()
     {
-        return $this->container['failure_count'];
+        return $this->container['video'];
     }
 
     /**
-     * Sets failure_count
+     * Sets video
      *
-     * @param int|null $failure_count Consecutive delivery failures (resets on success, webhook disabled at 10)
+     * @param \Late\Model\SendInboxMessageRequestInteractiveHeaderImage|null $video video
      *
      * @return self
      */
-    public function setFailureCount($failure_count)
+    public function setVideo($video)
     {
-        if (is_null($failure_count)) {
-            throw new \InvalidArgumentException('non-nullable failure_count cannot be null');
+        if (is_null($video)) {
+            throw new \InvalidArgumentException('non-nullable video cannot be null');
         }
-        $this->container['failure_count'] = $failure_count;
+        $this->container['video'] = $video;
 
         return $this;
     }
 
     /**
-     * Gets custom_headers
+     * Gets document
      *
-     * @return array<string,string>|null
+     * @return \Late\Model\SendInboxMessageRequestInteractiveHeaderImage|null
      */
-    public function getCustomHeaders()
+    public function getDocument()
     {
-        return $this->container['custom_headers'];
+        return $this->container['document'];
     }
 
     /**
-     * Sets custom_headers
+     * Sets document
      *
-     * @param array<string,string>|null $custom_headers Custom headers included in webhook requests
+     * @param \Late\Model\SendInboxMessageRequestInteractiveHeaderImage|null $document document
      *
      * @return self
      */
-    public function setCustomHeaders($custom_headers)
+    public function setDocument($document)
     {
-        if (is_null($custom_headers)) {
-            throw new \InvalidArgumentException('non-nullable custom_headers cannot be null');
+        if (is_null($document)) {
+            throw new \InvalidArgumentException('non-nullable document cannot be null');
         }
-        $this->container['custom_headers'] = $custom_headers;
+        $this->container['document'] = $document;
 
         return $this;
     }

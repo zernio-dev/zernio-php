@@ -1,6 +1,6 @@
 <?php
 /**
- * Webhook
+ * SendInboxMessageRequestInteractiveActionOneOf2Parameters
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * Webhook Class Doc Comment
+ * SendInboxMessageRequestInteractiveActionOneOf2Parameters Class Doc Comment
  *
  * @category Class
- * @description Individual webhook configuration for receiving real-time notifications
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Webhook';
+    protected static $openAPIModelName = 'sendInboxMessage_request_interactive_action_oneOf_2_parameters';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,15 +58,13 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
-        'name' => 'string',
-        'url' => 'string',
-        'secret' => 'string',
-        'events' => 'string[]',
-        'is_active' => 'bool',
-        'last_fired_at' => '\DateTime',
-        'failure_count' => 'int',
-        'custom_headers' => 'array<string,string>'
+        'flow_message_version' => 'string',
+        'flow_token' => 'string',
+        'flow_id' => 'string',
+        'flow_cta' => 'string',
+        'flow_action' => 'string',
+        'flow_action_payload' => '\Late\Model\SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload',
+        'mode' => 'string'
     ];
 
     /**
@@ -78,15 +75,13 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
-        'name' => null,
-        'url' => 'uri',
-        'secret' => null,
-        'events' => null,
-        'is_active' => null,
-        'last_fired_at' => 'date-time',
-        'failure_count' => null,
-        'custom_headers' => null
+        'flow_message_version' => null,
+        'flow_token' => null,
+        'flow_id' => null,
+        'flow_cta' => null,
+        'flow_action' => null,
+        'flow_action_payload' => null,
+        'mode' => null
     ];
 
     /**
@@ -95,15 +90,13 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
-        'name' => false,
-        'url' => false,
-        'secret' => false,
-        'events' => false,
-        'is_active' => false,
-        'last_fired_at' => false,
-        'failure_count' => false,
-        'custom_headers' => false
+        'flow_message_version' => false,
+        'flow_token' => false,
+        'flow_id' => false,
+        'flow_cta' => false,
+        'flow_action' => false,
+        'flow_action_payload' => false,
+        'mode' => false
     ];
 
     /**
@@ -192,15 +185,13 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
-        'name' => 'name',
-        'url' => 'url',
-        'secret' => 'secret',
-        'events' => 'events',
-        'is_active' => 'isActive',
-        'last_fired_at' => 'lastFiredAt',
-        'failure_count' => 'failureCount',
-        'custom_headers' => 'customHeaders'
+        'flow_message_version' => 'flow_message_version',
+        'flow_token' => 'flow_token',
+        'flow_id' => 'flow_id',
+        'flow_cta' => 'flow_cta',
+        'flow_action' => 'flow_action',
+        'flow_action_payload' => 'flow_action_payload',
+        'mode' => 'mode'
     ];
 
     /**
@@ -209,15 +200,13 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'secret' => 'setSecret',
-        'events' => 'setEvents',
-        'is_active' => 'setIsActive',
-        'last_fired_at' => 'setLastFiredAt',
-        'failure_count' => 'setFailureCount',
-        'custom_headers' => 'setCustomHeaders'
+        'flow_message_version' => 'setFlowMessageVersion',
+        'flow_token' => 'setFlowToken',
+        'flow_id' => 'setFlowId',
+        'flow_cta' => 'setFlowCta',
+        'flow_action' => 'setFlowAction',
+        'flow_action_payload' => 'setFlowActionPayload',
+        'mode' => 'setMode'
     ];
 
     /**
@@ -226,15 +215,13 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'secret' => 'getSecret',
-        'events' => 'getEvents',
-        'is_active' => 'getIsActive',
-        'last_fired_at' => 'getLastFiredAt',
-        'failure_count' => 'getFailureCount',
-        'custom_headers' => 'getCustomHeaders'
+        'flow_message_version' => 'getFlowMessageVersion',
+        'flow_token' => 'getFlowToken',
+        'flow_id' => 'getFlowId',
+        'flow_cta' => 'getFlowCta',
+        'flow_action' => 'getFlowAction',
+        'flow_action_payload' => 'getFlowActionPayload',
+        'mode' => 'getMode'
     ];
 
     /**
@@ -278,51 +265,45 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const EVENTS_POST_SCHEDULED = 'post.scheduled';
-    public const EVENTS_POST_PUBLISHED = 'post.published';
-    public const EVENTS_POST_FAILED = 'post.failed';
-    public const EVENTS_POST_PARTIAL = 'post.partial';
-    public const EVENTS_POST_CANCELLED = 'post.cancelled';
-    public const EVENTS_POST_RECYCLED = 'post.recycled';
-    public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
-    public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
-    public const EVENTS_MESSAGE_RECEIVED = 'message.received';
-    public const EVENTS_MESSAGE_SENT = 'message.sent';
-    public const EVENTS_MESSAGE_EDITED = 'message.edited';
-    public const EVENTS_MESSAGE_DELETED = 'message.deleted';
-    public const EVENTS_MESSAGE_DELIVERED = 'message.delivered';
-    public const EVENTS_MESSAGE_READ = 'message.read';
-    public const EVENTS_MESSAGE_FAILED = 'message.failed';
-    public const EVENTS_COMMENT_RECEIVED = 'comment.received';
-    public const EVENTS_REVIEW_NEW = 'review.new';
-    public const EVENTS_REVIEW_UPDATED = 'review.updated';
+    public const FLOW_MESSAGE_VERSION__3 = '3';
+    public const FLOW_ACTION_NAVIGATE = 'navigate';
+    public const FLOW_ACTION_DATA_EXCHANGE = 'data_exchange';
+    public const MODE_DRAFT = 'draft';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getEventsAllowableValues()
+    public function getFlowMessageVersionAllowableValues()
     {
         return [
-            self::EVENTS_POST_SCHEDULED,
-            self::EVENTS_POST_PUBLISHED,
-            self::EVENTS_POST_FAILED,
-            self::EVENTS_POST_PARTIAL,
-            self::EVENTS_POST_CANCELLED,
-            self::EVENTS_POST_RECYCLED,
-            self::EVENTS_ACCOUNT_CONNECTED,
-            self::EVENTS_ACCOUNT_DISCONNECTED,
-            self::EVENTS_MESSAGE_RECEIVED,
-            self::EVENTS_MESSAGE_SENT,
-            self::EVENTS_MESSAGE_EDITED,
-            self::EVENTS_MESSAGE_DELETED,
-            self::EVENTS_MESSAGE_DELIVERED,
-            self::EVENTS_MESSAGE_READ,
-            self::EVENTS_MESSAGE_FAILED,
-            self::EVENTS_COMMENT_RECEIVED,
-            self::EVENTS_REVIEW_NEW,
-            self::EVENTS_REVIEW_UPDATED,
+            self::FLOW_MESSAGE_VERSION__3,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFlowActionAllowableValues()
+    {
+        return [
+            self::FLOW_ACTION_NAVIGATE,
+            self::FLOW_ACTION_DATA_EXCHANGE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getModeAllowableValues()
+    {
+        return [
+            self::MODE_DRAFT,
         ];
     }
 
@@ -341,15 +322,13 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('secret', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], null);
-        $this->setIfExists('last_fired_at', $data ?? [], null);
-        $this->setIfExists('failure_count', $data ?? [], null);
-        $this->setIfExists('custom_headers', $data ?? [], null);
+        $this->setIfExists('flow_message_version', $data ?? [], null);
+        $this->setIfExists('flow_token', $data ?? [], null);
+        $this->setIfExists('flow_id', $data ?? [], null);
+        $this->setIfExists('flow_cta', $data ?? [], null);
+        $this->setIfExists('flow_action', $data ?? [], null);
+        $this->setIfExists('flow_action_payload', $data ?? [], null);
+        $this->setIfExists('mode', $data ?? [], null);
     }
 
     /**
@@ -379,8 +358,43 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
+        $allowedValues = $this->getFlowMessageVersionAllowableValues();
+        if (!is_null($this->container['flow_message_version']) && !in_array($this->container['flow_message_version'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'flow_message_version', must be one of '%s'",
+                $this->container['flow_message_version'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['flow_token'] === null) {
+            $invalidProperties[] = "'flow_token' can't be null";
+        }
+        if ($this->container['flow_id'] === null) {
+            $invalidProperties[] = "'flow_id' can't be null";
+        }
+        if ($this->container['flow_cta'] === null) {
+            $invalidProperties[] = "'flow_cta' can't be null";
+        }
+        if ($this->container['flow_action'] === null) {
+            $invalidProperties[] = "'flow_action' can't be null";
+        }
+        $allowedValues = $this->getFlowActionAllowableValues();
+        if (!is_null($this->container['flow_action']) && !in_array($this->container['flow_action'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'flow_action', must be one of '%s'",
+                $this->container['flow_action'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getModeAllowableValues();
+        if (!is_null($this->container['mode']) && !in_array($this->container['mode'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'mode', must be one of '%s'",
+                $this->container['mode'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -399,257 +413,220 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets _id
+     * Gets flow_message_version
      *
      * @return string|null
      */
-    public function getId()
+    public function getFlowMessageVersion()
     {
-        return $this->container['_id'];
+        return $this->container['flow_message_version'];
     }
 
     /**
-     * Sets _id
+     * Sets flow_message_version
      *
-     * @param string|null $_id Unique webhook identifier
+     * @param string|null $flow_message_version Defaults to \"3\" when omitted.
      *
      * @return self
      */
-    public function setId($_id)
+    public function setFlowMessageVersion($flow_message_version)
     {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
+        if (is_null($flow_message_version)) {
+            throw new \InvalidArgumentException('non-nullable flow_message_version cannot be null');
         }
-        $this->container['_id'] = $_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Webhook name (for identification)
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling Webhook., must be smaller than or equal to 50.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string|null
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string|null $url Webhook endpoint URL
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
-        }
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets secret
-     *
-     * @return string|null
-     */
-    public function getSecret()
-    {
-        return $this->container['secret'];
-    }
-
-    /**
-     * Sets secret
-     *
-     * @param string|null $secret Secret key for HMAC-SHA256 signature (not returned in responses for security)
-     *
-     * @return self
-     */
-    public function setSecret($secret)
-    {
-        if (is_null($secret)) {
-            throw new \InvalidArgumentException('non-nullable secret cannot be null');
-        }
-        $this->container['secret'] = $secret;
-
-        return $this;
-    }
-
-    /**
-     * Gets events
-     *
-     * @return string[]|null
-     */
-    public function getEvents()
-    {
-        return $this->container['events'];
-    }
-
-    /**
-     * Sets events
-     *
-     * @param string[]|null $events Events subscribed to
-     *
-     * @return self
-     */
-    public function setEvents($events)
-    {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
-        }
-        $allowedValues = $this->getEventsAllowableValues();
-        if (array_diff($events, $allowedValues)) {
+        $allowedValues = $this->getFlowMessageVersionAllowableValues();
+        if (!in_array($flow_message_version, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'events', must be one of '%s'",
+                    "Invalid value '%s' for 'flow_message_version', must be one of '%s'",
+                    $flow_message_version,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['events'] = $events;
+        $this->container['flow_message_version'] = $flow_message_version;
 
         return $this;
     }
 
     /**
-     * Gets is_active
+     * Gets flow_token
      *
-     * @return bool|null
+     * @return string
      */
-    public function getIsActive()
+    public function getFlowToken()
     {
-        return $this->container['is_active'];
+        return $this->container['flow_token'];
     }
 
     /**
-     * Sets is_active
+     * Sets flow_token
      *
-     * @param bool|null $is_active Whether webhook delivery is enabled
+     * @param string $flow_token Opaque token you choose to correlate Flow responses with your own state (max 200 chars).
      *
      * @return self
      */
-    public function setIsActive($is_active)
+    public function setFlowToken($flow_token)
     {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
+        if (is_null($flow_token)) {
+            throw new \InvalidArgumentException('non-nullable flow_token cannot be null');
         }
-        $this->container['is_active'] = $is_active;
+        $this->container['flow_token'] = $flow_token;
 
         return $this;
     }
 
     /**
-     * Gets last_fired_at
+     * Gets flow_id
      *
-     * @return \DateTime|null
+     * @return string
      */
-    public function getLastFiredAt()
+    public function getFlowId()
     {
-        return $this->container['last_fired_at'];
+        return $this->container['flow_id'];
     }
 
     /**
-     * Sets last_fired_at
+     * Sets flow_id
      *
-     * @param \DateTime|null $last_fired_at Timestamp of last successful webhook delivery
+     * @param string $flow_id Published Flow ID from Meta Business Manager.
      *
      * @return self
      */
-    public function setLastFiredAt($last_fired_at)
+    public function setFlowId($flow_id)
     {
-        if (is_null($last_fired_at)) {
-            throw new \InvalidArgumentException('non-nullable last_fired_at cannot be null');
+        if (is_null($flow_id)) {
+            throw new \InvalidArgumentException('non-nullable flow_id cannot be null');
         }
-        $this->container['last_fired_at'] = $last_fired_at;
+        $this->container['flow_id'] = $flow_id;
 
         return $this;
     }
 
     /**
-     * Gets failure_count
+     * Gets flow_cta
      *
-     * @return int|null
+     * @return string
      */
-    public function getFailureCount()
+    public function getFlowCta()
     {
-        return $this->container['failure_count'];
+        return $this->container['flow_cta'];
     }
 
     /**
-     * Sets failure_count
+     * Sets flow_cta
      *
-     * @param int|null $failure_count Consecutive delivery failures (resets on success, webhook disabled at 10)
+     * @param string $flow_cta Button label that opens the Flow (max 20 chars).
      *
      * @return self
      */
-    public function setFailureCount($failure_count)
+    public function setFlowCta($flow_cta)
     {
-        if (is_null($failure_count)) {
-            throw new \InvalidArgumentException('non-nullable failure_count cannot be null');
+        if (is_null($flow_cta)) {
+            throw new \InvalidArgumentException('non-nullable flow_cta cannot be null');
         }
-        $this->container['failure_count'] = $failure_count;
+        $this->container['flow_cta'] = $flow_cta;
 
         return $this;
     }
 
     /**
-     * Gets custom_headers
+     * Gets flow_action
      *
-     * @return array<string,string>|null
+     * @return string
      */
-    public function getCustomHeaders()
+    public function getFlowAction()
     {
-        return $this->container['custom_headers'];
+        return $this->container['flow_action'];
     }
 
     /**
-     * Sets custom_headers
+     * Sets flow_action
      *
-     * @param array<string,string>|null $custom_headers Custom headers included in webhook requests
+     * @param string $flow_action `navigate` sends the user to `flow_action_payload.screen`; `data_exchange` posts data to your Flow endpoint.
      *
      * @return self
      */
-    public function setCustomHeaders($custom_headers)
+    public function setFlowAction($flow_action)
     {
-        if (is_null($custom_headers)) {
-            throw new \InvalidArgumentException('non-nullable custom_headers cannot be null');
+        if (is_null($flow_action)) {
+            throw new \InvalidArgumentException('non-nullable flow_action cannot be null');
         }
-        $this->container['custom_headers'] = $custom_headers;
+        $allowedValues = $this->getFlowActionAllowableValues();
+        if (!in_array($flow_action, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'flow_action', must be one of '%s'",
+                    $flow_action,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['flow_action'] = $flow_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_action_payload
+     *
+     * @return \Late\Model\SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload|null
+     */
+    public function getFlowActionPayload()
+    {
+        return $this->container['flow_action_payload'];
+    }
+
+    /**
+     * Sets flow_action_payload
+     *
+     * @param \Late\Model\SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload|null $flow_action_payload flow_action_payload
+     *
+     * @return self
+     */
+    public function setFlowActionPayload($flow_action_payload)
+    {
+        if (is_null($flow_action_payload)) {
+            throw new \InvalidArgumentException('non-nullable flow_action_payload cannot be null');
+        }
+        $this->container['flow_action_payload'] = $flow_action_payload;
+
+        return $this;
+    }
+
+    /**
+     * Gets mode
+     *
+     * @return string|null
+     */
+    public function getMode()
+    {
+        return $this->container['mode'];
+    }
+
+    /**
+     * Sets mode
+     *
+     * @param string|null $mode Set to `draft` to test an unpublished Flow.
+     *
+     * @return self
+     */
+    public function setMode($mode)
+    {
+        if (is_null($mode)) {
+            throw new \InvalidArgumentException('non-nullable mode cannot be null');
+        }
+        $allowedValues = $this->getModeAllowableValues();
+        if (!in_array($mode, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'mode', must be one of '%s'",
+                    $mode,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['mode'] = $mode;
 
         return $this;
     }

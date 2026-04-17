@@ -65,6 +65,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'quick_replies' => '\Late\Model\SendInboxMessageRequestQuickRepliesInner[]',
         'buttons' => '\Late\Model\SendInboxMessageRequestButtonsInner[]',
         'template' => '\Late\Model\SendInboxMessageRequestTemplate',
+        'interactive' => '\Late\Model\SendInboxMessageRequestInteractive',
         'reply_markup' => '\Late\Model\SendInboxMessageRequestReplyMarkup',
         'messaging_type' => 'string',
         'message_tag' => 'string',
@@ -86,6 +87,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'quick_replies' => null,
         'buttons' => null,
         'template' => null,
+        'interactive' => null,
         'reply_markup' => null,
         'messaging_type' => null,
         'message_tag' => null,
@@ -105,6 +107,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'quick_replies' => false,
         'buttons' => false,
         'template' => false,
+        'interactive' => false,
         'reply_markup' => false,
         'messaging_type' => false,
         'message_tag' => false,
@@ -204,6 +207,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'quick_replies' => 'quickReplies',
         'buttons' => 'buttons',
         'template' => 'template',
+        'interactive' => 'interactive',
         'reply_markup' => 'replyMarkup',
         'messaging_type' => 'messagingType',
         'message_tag' => 'messageTag',
@@ -223,6 +227,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'quick_replies' => 'setQuickReplies',
         'buttons' => 'setButtons',
         'template' => 'setTemplate',
+        'interactive' => 'setInteractive',
         'reply_markup' => 'setReplyMarkup',
         'messaging_type' => 'setMessagingType',
         'message_tag' => 'setMessageTag',
@@ -242,6 +247,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'quick_replies' => 'getQuickReplies',
         'buttons' => 'getButtons',
         'template' => 'getTemplate',
+        'interactive' => 'getInteractive',
         'reply_markup' => 'getReplyMarkup',
         'messaging_type' => 'getMessagingType',
         'message_tag' => 'getMessageTag',
@@ -367,6 +373,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('quick_replies', $data ?? [], null);
         $this->setIfExists('buttons', $data ?? [], null);
         $this->setIfExists('template', $data ?? [], null);
+        $this->setIfExists('interactive', $data ?? [], null);
         $this->setIfExists('reply_markup', $data ?? [], null);
         $this->setIfExists('messaging_type', $data ?? [], null);
         $this->setIfExists('message_tag', $data ?? [], null);
@@ -656,6 +663,33 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable template cannot be null');
         }
         $this->container['template'] = $template;
+
+        return $this;
+    }
+
+    /**
+     * Gets interactive
+     *
+     * @return \Late\Model\SendInboxMessageRequestInteractive|null
+     */
+    public function getInteractive()
+    {
+        return $this->container['interactive'];
+    }
+
+    /**
+     * Sets interactive
+     *
+     * @param \Late\Model\SendInboxMessageRequestInteractive|null $interactive interactive
+     *
+     * @return self
+     */
+    public function setInteractive($interactive)
+    {
+        if (is_null($interactive)) {
+            throw new \InvalidArgumentException('non-nullable interactive cannot be null');
+        }
+        $this->container['interactive'] = $interactive;
 
         return $this;
     }

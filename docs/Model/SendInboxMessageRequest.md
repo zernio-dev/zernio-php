@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **quick_replies** | [**\Late\Model\SendInboxMessageRequestQuickRepliesInner[]**](SendInboxMessageRequestQuickRepliesInner.md) | Quick reply buttons. Mutually exclusive with buttons. Max 13 items. | [optional]
 **buttons** | [**\Late\Model\SendInboxMessageRequestButtonsInner[]**](SendInboxMessageRequestButtonsInner.md) | Action buttons. Mutually exclusive with quickReplies. Max 3 items. | [optional]
 **template** | [**\Late\Model\SendInboxMessageRequestTemplate**](SendInboxMessageRequestTemplate.md) |  | [optional]
+**interactive** | [**\Late\Model\SendInboxMessageRequestInteractive**](SendInboxMessageRequestInteractive.md) |  | [optional]
 **reply_markup** | [**\Late\Model\SendInboxMessageRequestReplyMarkup**](SendInboxMessageRequestReplyMarkup.md) |  | [optional]
 **messaging_type** | **string** | Facebook messaging type. Required when using messageTag. | [optional]
 **message_tag** | **string** | Facebook message tag for messaging outside 24h window. Requires messagingType MESSAGE_TAG. Instagram only supports HUMAN_AGENT. | [optional]

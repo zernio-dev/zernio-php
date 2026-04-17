@@ -145,6 +145,8 @@ x-documentation:
     - `message.read` - An outgoing message was read by the recipient (WhatsApp, Messenger, Instagram)
     - `message.failed` - An outgoing message failed delivery (WhatsApp)
     - `comment.received` - New comment received on a post
+    - `review.new` - New review posted on a connected account (Google Business Profile)
+    - `review.updated` - Review updated or reply added (Google Business Profile, or via reply API)
     - `webhook.test` - Test event sent when verifying a webhook endpoint
 
     Webhook payloads are signed with HMAC-SHA256 via the `X-Zernio-Signature` header.
@@ -257,7 +259,7 @@ tags:
       Requires the Ads add-on.
   - name: Webhooks
     description: |
-      Configure webhooks for real-time notifications. Events: post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, comment.received, webhook.test.
+      Configure webhooks for real-time notifications. Events: post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, comment.received, review.new, review.updated, webhook.test.
       Security: optional HMAC-SHA256 signature in X-Zernio-Signature header. Configure a secret key to enable verification. Custom headers supported.
   - name: Webhook Events
     description: |
@@ -807,7 +809,7 @@ components:
           type: array
           items:
             type: string
-            enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, comment.received]
+            enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, comment.received, review.new, review.updated]
           description: Events subscribed to
         isActive:
           type: boolean
@@ -1238,16 +1240,47 @@ components:
           properties:
             quickReplyPayload:
               type: string
-              description: Payload from a quick reply tap (Meta platforms)
+              description: Payload from a quick reply tap (Facebook/Instagram Messenger).
             postbackPayload:
               type: string
-              description: Payload from a postback button tap (Meta platforms)
+              description: Payload from a postback button tap (Facebook/Instagram Messenger).
             postbackTitle:
               type: string
-              description: Title of the tapped postback button (Meta platforms)
+              description: Title of the tapped postback button (Facebook/Instagram Messenger).
             callbackData:
               type: string
-              description: Callback data from an inline keyboard button tap (Telegram)
+              description: Callback data from an inline keyboard button tap (Telegram).
+            interactiveType:
+              type: string
+              enum: [button_reply, list_reply, nfm_reply]
+              description: |
+                WhatsApp only. Which kind of interactive reply the user sent:
+                `button_reply` (tap on an interactive button), `list_reply` (tap on a
+                list row), or `nfm_reply` (a WhatsApp Flow submission).
+            interactiveId:
+              type: string
+              description: |
+                WhatsApp only. The `id` of the tapped button or list row, matching the
+                `id` you supplied when the message was sent. Not set for Flow responses.
+            buttonPayload:
+              type: string
+              description: |
+                WhatsApp only. Payload attached to a tapped template button. Template
+                buttons emit a plain `button` webhook (not an interactive reply), so
+                `interactiveType` is empty while this field is populated.
+            flowResponseJson:
+              type: string
+              description: |
+                WhatsApp only. Raw `nfm_reply.response_json` string returned by a
+                Flow submission. Useful if you need the exact wire payload; for
+                typed access use `flowResponseData` instead.
+            flowResponseData:
+              type: object
+              additionalProperties: true
+              description: |
+                WhatsApp only. Parsed Flow response JSON. Populated when
+                `flowResponseJson` is valid JSON; otherwise omitted. Keys and
+                value types depend on the specific Flow that was submitted.
         timestamp:
           type: string
           format: date-time
@@ -12202,7 +12235,7 @@ paths:
                   type: array
                   items:
                     type: string
-                    enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, comment.received]
+                    enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, comment.received, review.new, review.updated]
                   description: Events to subscribe to
                 isActive:
                   type: boolean
@@ -12219,7 +12252,7 @@ paths:
                   name: "My Production Webhook"
                   url: "https://example.com/webhook"
                   secret: "your-secret-key"
-                  events: ["post.scheduled", "post.published", "post.failed", "post.partial", "post.cancelled", "post.recycled", "account.connected", "account.disconnected", "message.received", "comment.received"]
+                  events: ["post.scheduled", "post.published", "post.failed", "post.partial", "post.cancelled", "post.recycled", "account.connected", "account.disconnected", "message.received", "comment.received", "review.new", "review.updated"]
                   isActive: true
       responses:
         '200':
@@ -12271,7 +12304,7 @@ paths:
                   type: array
                   items:
                     type: string
-                    enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, comment.received]
+                    enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, comment.received, review.new, review.updated]
                   description: Events to subscribe to
                 isActive:
                   type: boolean
@@ -13016,7 +13049,15 @@ paths:
     post:
       operationId: sendInboxMessage
       summary: Send message
-      description: Send a message in a conversation. Supports text, attachments, quick replies, buttons, and message tags. Attachment and interactive message support varies by platform.
+      description: |
+        Send a message in a conversation. Supports text, attachments, quick replies,
+        buttons, templates, and message tags. Attachment and interactive message
+        support varies by platform.
+
+        WhatsApp rich interactive messages (list, CTA URL, Flow) are available via
+        the `interactive` field. Tap events are delivered through the
+        `message.received` webhook with WhatsApp-specific `metadata` fields
+        (`interactiveType`, `interactiveId`, `flowResponseJson`, `flowResponseData`).
       tags: [Messages]
       security: [{ bearerAuth: [] }]
       parameters:
@@ -13089,6 +13130,109 @@ paths:
                                 title: { type: string, maxLength: 20 }
                                 url: { type: string }
                                 payload: { type: string }
+                interactive:
+                  type: object
+                  description: |
+                    WhatsApp-only. Rich interactive payload for list messages, CTA URL
+                    buttons, and Flow prompts. When set, takes priority over `buttons`
+                    and `quickReplies`. The shape mirrors Meta's Cloud API `interactive`
+                    object verbatim, so any payload that works against Meta directly
+                    will also work here.
+
+                    Use `buttons` / `quickReplies` for simple button replies
+                    (WhatsApp's `interactive.type: "button"`) — the abstraction caps at
+                    3 buttons and handles the auto-conversion for you. Use this field
+                    only for `list`, `cta_url`, or `flow` messages.
+
+                    Tap events come back via the `message.received` webhook with
+                    `metadata.interactiveType` set to `list_reply` or `nfm_reply`.
+                  required: [type, body, action]
+                  properties:
+                    type:
+                      type: string
+                      enum: [list, cta_url, flow]
+                      description: Which interactive layout to render.
+                    header:
+                      type: object
+                      description: Optional header shown above the body.
+                      properties:
+                        type: { type: string, enum: [text, image, video, document] }
+                        text: { type: string, description: Required when header type is text. }
+                        image: { type: object, properties: { link: { type: string } } }
+                        video: { type: object, properties: { link: { type: string } } }
+                        document: { type: object, properties: { link: { type: string } } }
+                    body:
+                      type: object
+                      required: [text]
+                      properties:
+                        text: { type: string, description: Main body text. }
+                    footer:
+                      type: object
+                      description: Optional footer shown below the action.
+                      properties:
+                        text: { type: string }
+                    action:
+                      oneOf:
+                        - type: object
+                          description: List action. `type` on the parent must be `list`.
+                          required: [button, sections]
+                          properties:
+                            button:
+                              type: string
+                              description: CTA label that opens the list (max ~20 chars).
+                            sections:
+                              type: array
+                              minItems: 1
+                              maxItems: 10
+                              description: 1-10 sections. Total rows across all sections cannot exceed 10.
+                              items:
+                                type: object
+                                required: [rows]
+                                properties:
+                                  title: { type: string, description: Optional section header (max 24 chars). }
+                                  rows:
+                                    type: array
+                                    minItems: 1
+                                    maxItems: 10
+                                    items:
+                                      type: object
+                                      required: [id, title]
+                                      properties:
+                                        id: { type: string, description: Identifier returned in the webhook as metadata.interactiveId (max 200 chars). }
+                                        title: { type: string, description: Row label (max 24 chars). }
+                                        description: { type: string, description: Optional description below the title (max 72 chars). }
+                        - type: object
+                          description: CTA URL action. `type` on the parent must be `cta_url`.
+                          required: [name, parameters]
+                          properties:
+                            name: { type: string, enum: [cta_url] }
+                            parameters:
+                              type: object
+                              required: [display_text, url]
+                              properties:
+                                display_text: { type: string, description: Button label (max 20 chars). }
+                                url: { type: string, format: uri, description: Target URL opened when the user taps the button. }
+                        - type: object
+                          description: Flow action. `type` on the parent must be `flow`.
+                          required: [name, parameters]
+                          properties:
+                            name: { type: string, enum: [flow] }
+                            parameters:
+                              type: object
+                              required: [flow_token, flow_id, flow_cta, flow_action]
+                              properties:
+                                flow_message_version: { type: string, enum: ['3'], description: Defaults to "3" when omitted. }
+                                flow_token: { type: string, description: Opaque token you choose to correlate Flow responses with your own state (max 200 chars). }
+                                flow_id: { type: string, description: Published Flow ID from Meta Business Manager. }
+                                flow_cta: { type: string, description: Button label that opens the Flow (max 20 chars). }
+                                flow_action: { type: string, enum: [navigate, data_exchange], description: "`navigate` sends the user to `flow_action_payload.screen`; `data_exchange` posts data to your Flow endpoint." }
+                                flow_action_payload:
+                                  type: object
+                                  description: Required when flow_action is `navigate`.
+                                  properties:
+                                    screen: { type: string, description: First screen to show. }
+                                    data: { type: object, additionalProperties: true, description: Optional pre-filled data passed to the screen. }
+                                mode: { type: string, enum: [draft], description: Set to `draft` to test an unpublished Flow. }
                 replyMarkup:
                   type: object
                   description: Telegram-native keyboard markup. Ignored on other platforms.

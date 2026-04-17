@@ -62,7 +62,12 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'quick_reply_payload' => 'string',
         'postback_payload' => 'string',
         'postback_title' => 'string',
-        'callback_data' => 'string'
+        'callback_data' => 'string',
+        'interactive_type' => 'string',
+        'interactive_id' => 'string',
+        'button_payload' => 'string',
+        'flow_response_json' => 'string',
+        'flow_response_data' => 'array<string,mixed>'
     ];
 
     /**
@@ -76,7 +81,12 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'quick_reply_payload' => null,
         'postback_payload' => null,
         'postback_title' => null,
-        'callback_data' => null
+        'callback_data' => null,
+        'interactive_type' => null,
+        'interactive_id' => null,
+        'button_payload' => null,
+        'flow_response_json' => null,
+        'flow_response_data' => null
     ];
 
     /**
@@ -88,7 +98,12 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'quick_reply_payload' => false,
         'postback_payload' => false,
         'postback_title' => false,
-        'callback_data' => false
+        'callback_data' => false,
+        'interactive_type' => false,
+        'interactive_id' => false,
+        'button_payload' => false,
+        'flow_response_json' => false,
+        'flow_response_data' => false
     ];
 
     /**
@@ -180,7 +195,12 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'quick_reply_payload' => 'quickReplyPayload',
         'postback_payload' => 'postbackPayload',
         'postback_title' => 'postbackTitle',
-        'callback_data' => 'callbackData'
+        'callback_data' => 'callbackData',
+        'interactive_type' => 'interactiveType',
+        'interactive_id' => 'interactiveId',
+        'button_payload' => 'buttonPayload',
+        'flow_response_json' => 'flowResponseJson',
+        'flow_response_data' => 'flowResponseData'
     ];
 
     /**
@@ -192,7 +212,12 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'quick_reply_payload' => 'setQuickReplyPayload',
         'postback_payload' => 'setPostbackPayload',
         'postback_title' => 'setPostbackTitle',
-        'callback_data' => 'setCallbackData'
+        'callback_data' => 'setCallbackData',
+        'interactive_type' => 'setInteractiveType',
+        'interactive_id' => 'setInteractiveId',
+        'button_payload' => 'setButtonPayload',
+        'flow_response_json' => 'setFlowResponseJson',
+        'flow_response_data' => 'setFlowResponseData'
     ];
 
     /**
@@ -204,7 +229,12 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'quick_reply_payload' => 'getQuickReplyPayload',
         'postback_payload' => 'getPostbackPayload',
         'postback_title' => 'getPostbackTitle',
-        'callback_data' => 'getCallbackData'
+        'callback_data' => 'getCallbackData',
+        'interactive_type' => 'getInteractiveType',
+        'interactive_id' => 'getInteractiveId',
+        'button_payload' => 'getButtonPayload',
+        'flow_response_json' => 'getFlowResponseJson',
+        'flow_response_data' => 'getFlowResponseData'
     ];
 
     /**
@@ -248,6 +278,23 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
+    public const INTERACTIVE_TYPE_BUTTON_REPLY = 'button_reply';
+    public const INTERACTIVE_TYPE_LIST_REPLY = 'list_reply';
+    public const INTERACTIVE_TYPE_NFM_REPLY = 'nfm_reply';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getInteractiveTypeAllowableValues()
+    {
+        return [
+            self::INTERACTIVE_TYPE_BUTTON_REPLY,
+            self::INTERACTIVE_TYPE_LIST_REPLY,
+            self::INTERACTIVE_TYPE_NFM_REPLY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -268,6 +315,11 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('postback_payload', $data ?? [], null);
         $this->setIfExists('postback_title', $data ?? [], null);
         $this->setIfExists('callback_data', $data ?? [], null);
+        $this->setIfExists('interactive_type', $data ?? [], null);
+        $this->setIfExists('interactive_id', $data ?? [], null);
+        $this->setIfExists('button_payload', $data ?? [], null);
+        $this->setIfExists('flow_response_json', $data ?? [], null);
+        $this->setIfExists('flow_response_data', $data ?? [], null);
     }
 
     /**
@@ -297,6 +349,15 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getInteractiveTypeAllowableValues();
+        if (!is_null($this->container['interactive_type']) && !in_array($this->container['interactive_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'interactive_type', must be one of '%s'",
+                $this->container['interactive_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -325,7 +386,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets quick_reply_payload
      *
-     * @param string|null $quick_reply_payload Payload from a quick reply tap (Meta platforms)
+     * @param string|null $quick_reply_payload Payload from a quick reply tap (Facebook/Instagram Messenger).
      *
      * @return self
      */
@@ -352,7 +413,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets postback_payload
      *
-     * @param string|null $postback_payload Payload from a postback button tap (Meta platforms)
+     * @param string|null $postback_payload Payload from a postback button tap (Facebook/Instagram Messenger).
      *
      * @return self
      */
@@ -379,7 +440,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets postback_title
      *
-     * @param string|null $postback_title Title of the tapped postback button (Meta platforms)
+     * @param string|null $postback_title Title of the tapped postback button (Facebook/Instagram Messenger).
      *
      * @return self
      */
@@ -406,7 +467,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets callback_data
      *
-     * @param string|null $callback_data Callback data from an inline keyboard button tap (Telegram)
+     * @param string|null $callback_data Callback data from an inline keyboard button tap (Telegram).
      *
      * @return self
      */
@@ -416,6 +477,151 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable callback_data cannot be null');
         }
         $this->container['callback_data'] = $callback_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets interactive_type
+     *
+     * @return string|null
+     */
+    public function getInteractiveType()
+    {
+        return $this->container['interactive_type'];
+    }
+
+    /**
+     * Sets interactive_type
+     *
+     * @param string|null $interactive_type WhatsApp only. Which kind of interactive reply the user sent: `button_reply` (tap on an interactive button), `list_reply` (tap on a list row), or `nfm_reply` (a WhatsApp Flow submission).
+     *
+     * @return self
+     */
+    public function setInteractiveType($interactive_type)
+    {
+        if (is_null($interactive_type)) {
+            throw new \InvalidArgumentException('non-nullable interactive_type cannot be null');
+        }
+        $allowedValues = $this->getInteractiveTypeAllowableValues();
+        if (!in_array($interactive_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'interactive_type', must be one of '%s'",
+                    $interactive_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['interactive_type'] = $interactive_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets interactive_id
+     *
+     * @return string|null
+     */
+    public function getInteractiveId()
+    {
+        return $this->container['interactive_id'];
+    }
+
+    /**
+     * Sets interactive_id
+     *
+     * @param string|null $interactive_id WhatsApp only. The `id` of the tapped button or list row, matching the `id` you supplied when the message was sent. Not set for Flow responses.
+     *
+     * @return self
+     */
+    public function setInteractiveId($interactive_id)
+    {
+        if (is_null($interactive_id)) {
+            throw new \InvalidArgumentException('non-nullable interactive_id cannot be null');
+        }
+        $this->container['interactive_id'] = $interactive_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets button_payload
+     *
+     * @return string|null
+     */
+    public function getButtonPayload()
+    {
+        return $this->container['button_payload'];
+    }
+
+    /**
+     * Sets button_payload
+     *
+     * @param string|null $button_payload WhatsApp only. Payload attached to a tapped template button. Template buttons emit a plain `button` webhook (not an interactive reply), so `interactiveType` is empty while this field is populated.
+     *
+     * @return self
+     */
+    public function setButtonPayload($button_payload)
+    {
+        if (is_null($button_payload)) {
+            throw new \InvalidArgumentException('non-nullable button_payload cannot be null');
+        }
+        $this->container['button_payload'] = $button_payload;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_response_json
+     *
+     * @return string|null
+     */
+    public function getFlowResponseJson()
+    {
+        return $this->container['flow_response_json'];
+    }
+
+    /**
+     * Sets flow_response_json
+     *
+     * @param string|null $flow_response_json WhatsApp only. Raw `nfm_reply.response_json` string returned by a Flow submission. Useful if you need the exact wire payload; for typed access use `flowResponseData` instead.
+     *
+     * @return self
+     */
+    public function setFlowResponseJson($flow_response_json)
+    {
+        if (is_null($flow_response_json)) {
+            throw new \InvalidArgumentException('non-nullable flow_response_json cannot be null');
+        }
+        $this->container['flow_response_json'] = $flow_response_json;
+
+        return $this;
+    }
+
+    /**
+     * Gets flow_response_data
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getFlowResponseData()
+    {
+        return $this->container['flow_response_data'];
+    }
+
+    /**
+     * Sets flow_response_data
+     *
+     * @param array<string,mixed>|null $flow_response_data WhatsApp only. Parsed Flow response JSON. Populated when `flowResponseJson` is valid JSON; otherwise omitted. Keys and value types depend on the specific Flow that was submitted.
+     *
+     * @return self
+     */
+    public function setFlowResponseData($flow_response_data)
+    {
+        if (is_null($flow_response_data)) {
+            throw new \InvalidArgumentException('non-nullable flow_response_data cannot be null');
+        }
+        $this->container['flow_response_data'] = $flow_response_data;
 
         return $this;
     }

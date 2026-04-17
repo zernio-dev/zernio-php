@@ -269,6 +269,8 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
     public const EVENTS_MESSAGE_RECEIVED = 'message.received';
     public const EVENTS_COMMENT_RECEIVED = 'comment.received';
+    public const EVENTS_REVIEW_NEW = 'review.new';
+    public const EVENTS_REVIEW_UPDATED = 'review.updated';
 
     /**
      * Gets allowable values of the enum
@@ -288,6 +290,8 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
             self::EVENTS_ACCOUNT_DISCONNECTED,
             self::EVENTS_MESSAGE_RECEIVED,
             self::EVENTS_COMMENT_RECEIVED,
+            self::EVENTS_REVIEW_NEW,
+            self::EVENTS_REVIEW_UPDATED,
         ];
     }
 
