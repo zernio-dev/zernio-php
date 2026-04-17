@@ -359,6 +359,14 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
         }
 
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['events']) && (count($this->container['events']) < 1)) {
+            $invalidProperties[] = "invalid value for 'events', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -414,7 +422,7 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets name
      *
-     * @param string|null $name Webhook name (max 50 characters)
+     * @param string|null $name Webhook name (1-50 characters). Must be non-empty if provided.
      *
      * @return self
      */
@@ -425,6 +433,9 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         }
         if ((mb_strlen($name) > 50)) {
             throw new \InvalidArgumentException('invalid length for $name when calling UpdateWebhookSettingsRequest., must be smaller than or equal to 50.');
+        }
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UpdateWebhookSettingsRequest., must be bigger than or equal to 1.');
         }
 
         $this->container['name'] = $name;
@@ -445,7 +456,7 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets url
      *
-     * @param string|null $url Webhook endpoint URL (must be HTTPS in production)
+     * @param string|null $url Webhook endpoint URL (must be a valid URL, whitespace trimmed). Must be a valid URL if provided.
      *
      * @return self
      */
@@ -499,7 +510,7 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets events
      *
-     * @param string[]|null $events Events to subscribe to
+     * @param string[]|null $events Events to subscribe to. Must contain at least one event if provided.
      *
      * @return self
      */
@@ -516,6 +527,11 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
                     implode("', '", $allowedValues)
                 )
             );
+        }
+
+
+        if ((count($events) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $events when calling UpdateWebhookSettingsRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['events'] = $events;
 

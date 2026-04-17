@@ -314,7 +314,7 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('secret', $data ?? [], null);
         $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], null);
+        $this->setIfExists('is_active', $data ?? [], true);
         $this->setIfExists('custom_headers', $data ?? [], null);
     }
 
@@ -345,8 +345,25 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 50)) {
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ((mb_strlen($this->container['name']) > 50)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
+        }
+
+        if ((mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
+        if ($this->container['events'] === null) {
+            $invalidProperties[] = "'events' can't be null";
+        }
+        if ((count($this->container['events']) < 1)) {
+            $invalidProperties[] = "invalid value for 'events', number of items must be greater than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -367,7 +384,7 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -377,7 +394,7 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets name
      *
-     * @param string|null $name Webhook name (max 50 characters)
+     * @param string $name Webhook name (1-50 characters)
      *
      * @return self
      */
@@ -389,6 +406,9 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         if ((mb_strlen($name) > 50)) {
             throw new \InvalidArgumentException('invalid length for $name when calling CreateWebhookSettingsRequest., must be smaller than or equal to 50.');
         }
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling CreateWebhookSettingsRequest., must be bigger than or equal to 1.');
+        }
 
         $this->container['name'] = $name;
 
@@ -398,7 +418,7 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets url
      *
-     * @return string|null
+     * @return string
      */
     public function getUrl()
     {
@@ -408,7 +428,7 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets url
      *
-     * @param string|null $url Webhook endpoint URL (must be HTTPS in production)
+     * @param string $url Webhook endpoint URL (must be a valid URL, whitespace trimmed)
      *
      * @return self
      */
@@ -452,7 +472,7 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets events
      *
-     * @return string[]|null
+     * @return string[]
      */
     public function getEvents()
     {
@@ -462,7 +482,7 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets events
      *
-     * @param string[]|null $events Events to subscribe to
+     * @param string[] $events Events to subscribe to (at least one required)
      *
      * @return self
      */
@@ -479,6 +499,11 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
                     implode("', '", $allowedValues)
                 )
             );
+        }
+
+
+        if ((count($events) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $events when calling CreateWebhookSettingsRequest., number of items must be greater than or equal to 1.');
         }
         $this->container['events'] = $events;
 
@@ -498,7 +523,7 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets is_active
      *
-     * @param bool|null $is_active Enable or disable webhook delivery
+     * @param bool|null $is_active Enable or disable webhook delivery. Defaults to `true` when omitted.
      *
      * @return self
      */
