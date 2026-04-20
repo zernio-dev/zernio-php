@@ -18012,6 +18012,7 @@ paths:
                         properties:
                           id: { type: string }
                           name: { type: string }
+                    advantage_audience: { type: integer, enum: [0, 1], description: "Meta only. Omit to preserve the existing setting on update. 0 = disabled, 1 = enabled." }
                 name: { type: string }
       responses:
         '200':
@@ -18184,6 +18185,7 @@ paths:
                         properties:
                           id: { type: string }
                           name: { type: string }
+                    advantage_audience: { type: integer, enum: [0, 1], description: "Meta only. 0 = disabled (default), 1 = enabled." }
                 bidAmount: { type: number, description: "Max bid cap (Meta only)" }
                 tracking:
                   type: object
@@ -18262,6 +18264,7 @@ paths:
                 keywords: { type: array, items: { type: string }, description: Google Search only }
                 additionalHeadlines: { type: array, items: { type: string }, description: "Google Search RSA only. Extra headlines." }
                 additionalDescriptions: { type: array, items: { type: string }, description: "Google Search RSA only. Extra descriptions." }
+                advantageAudience: { type: integer, enum: [0, 1], description: "Meta only. Controls the Advantage audience feature (targeting_automation). 0 = disabled (default), 1 = enabled. Meta Marketing API requires this field on all ad set creation requests." }
       responses:
         '201':
           description: Ad created

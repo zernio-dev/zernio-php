@@ -29,5 +29,6 @@ Name | Type | Description | Notes
 **keywords** | **string[]** | Google Search only | [optional]
 **additional_headlines** | **string[]** | Google Search RSA only. Extra headlines. | [optional]
 **additional_descriptions** | **string[]** | Google Search RSA only. Extra descriptions. | [optional]
+**advantage_audience** | **int** | Meta only. Controls the Advantage audience feature (targeting_automation). 0 &#x3D; disabled (default), 1 &#x3D; enabled. Meta Marketing API requires this field on all ad set creation requests. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

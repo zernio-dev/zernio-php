@@ -61,7 +61,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => 'int',
         'age_max' => 'int',
         'countries' => 'string[]',
-        'interests' => '\Late\Model\UpdateAdRequestTargetingInterestsInner[]'
+        'interests' => '\Late\Model\UpdateAdRequestTargetingInterestsInner[]',
+        'advantage_audience' => 'int'
     ];
 
     /**
@@ -75,7 +76,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => null,
         'age_max' => null,
         'countries' => null,
-        'interests' => null
+        'interests' => null,
+        'advantage_audience' => null
     ];
 
     /**
@@ -87,7 +89,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => false,
         'age_max' => false,
         'countries' => false,
-        'interests' => false
+        'interests' => false,
+        'advantage_audience' => false
     ];
 
     /**
@@ -179,7 +182,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => 'ageMin',
         'age_max' => 'ageMax',
         'countries' => 'countries',
-        'interests' => 'interests'
+        'interests' => 'interests',
+        'advantage_audience' => 'advantage_audience'
     ];
 
     /**
@@ -191,7 +195,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => 'setAgeMin',
         'age_max' => 'setAgeMax',
         'countries' => 'setCountries',
-        'interests' => 'setInterests'
+        'interests' => 'setInterests',
+        'advantage_audience' => 'setAdvantageAudience'
     ];
 
     /**
@@ -203,7 +208,8 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => 'getAgeMin',
         'age_max' => 'getAgeMax',
         'countries' => 'getCountries',
-        'interests' => 'getInterests'
+        'interests' => 'getInterests',
+        'advantage_audience' => 'getAdvantageAudience'
     ];
 
     /**
@@ -247,6 +253,21 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
+    public const ADVANTAGE_AUDIENCE_NUMBER_0 = 0;
+    public const ADVANTAGE_AUDIENCE_NUMBER_1 = 1;
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAdvantageAudienceAllowableValues()
+    {
+        return [
+            self::ADVANTAGE_AUDIENCE_NUMBER_0,
+            self::ADVANTAGE_AUDIENCE_NUMBER_1,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -267,6 +288,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('age_max', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
         $this->setIfExists('interests', $data ?? [], null);
+        $this->setIfExists('advantage_audience', $data ?? [], null);
     }
 
     /**
@@ -310,6 +332,15 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
 
         if (!is_null($this->container['age_max']) && ($this->container['age_max'] < 13)) {
             $invalidProperties[] = "invalid value for 'age_max', must be bigger than or equal to 13.";
+        }
+
+        $allowedValues = $this->getAdvantageAudienceAllowableValues();
+        if (!is_null($this->container['advantage_audience']) && !in_array($this->container['advantage_audience'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'advantage_audience', must be one of '%s'",
+                $this->container['advantage_audience'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -447,6 +478,43 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable interests cannot be null');
         }
         $this->container['interests'] = $interests;
+
+        return $this;
+    }
+
+    /**
+     * Gets advantage_audience
+     *
+     * @return int|null
+     */
+    public function getAdvantageAudience()
+    {
+        return $this->container['advantage_audience'];
+    }
+
+    /**
+     * Sets advantage_audience
+     *
+     * @param int|null $advantage_audience Meta only. 0 = disabled (default), 1 = enabled.
+     *
+     * @return self
+     */
+    public function setAdvantageAudience($advantage_audience)
+    {
+        if (is_null($advantage_audience)) {
+            throw new \InvalidArgumentException('non-nullable advantage_audience cannot be null');
+        }
+        $allowedValues = $this->getAdvantageAudienceAllowableValues();
+        if (!in_array($advantage_audience, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'advantage_audience', must be one of '%s'",
+                    $advantage_audience,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['advantage_audience'] = $advantage_audience;
 
         return $this;
     }

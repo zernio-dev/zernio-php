@@ -82,7 +82,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_type' => 'string',
         'keywords' => 'string[]',
         'additional_headlines' => 'string[]',
-        'additional_descriptions' => 'string[]'
+        'additional_descriptions' => 'string[]',
+        'advantage_audience' => 'int'
     ];
 
     /**
@@ -117,7 +118,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_type' => null,
         'keywords' => null,
         'additional_headlines' => null,
-        'additional_descriptions' => null
+        'additional_descriptions' => null,
+        'advantage_audience' => null
     ];
 
     /**
@@ -150,7 +152,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_type' => false,
         'keywords' => false,
         'additional_headlines' => false,
-        'additional_descriptions' => false
+        'additional_descriptions' => false,
+        'advantage_audience' => false
     ];
 
     /**
@@ -263,7 +266,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_type' => 'campaignType',
         'keywords' => 'keywords',
         'additional_headlines' => 'additionalHeadlines',
-        'additional_descriptions' => 'additionalDescriptions'
+        'additional_descriptions' => 'additionalDescriptions',
+        'advantage_audience' => 'advantageAudience'
     ];
 
     /**
@@ -296,7 +300,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_type' => 'setCampaignType',
         'keywords' => 'setKeywords',
         'additional_headlines' => 'setAdditionalHeadlines',
-        'additional_descriptions' => 'setAdditionalDescriptions'
+        'additional_descriptions' => 'setAdditionalDescriptions',
+        'advantage_audience' => 'setAdvantageAudience'
     ];
 
     /**
@@ -329,7 +334,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'campaign_type' => 'getCampaignType',
         'keywords' => 'getKeywords',
         'additional_headlines' => 'getAdditionalHeadlines',
-        'additional_descriptions' => 'getAdditionalDescriptions'
+        'additional_descriptions' => 'getAdditionalDescriptions',
+        'advantage_audience' => 'getAdvantageAudience'
     ];
 
     /**
@@ -394,6 +400,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const CALL_TO_ACTION_WATCH_MORE = 'WATCH_MORE';
     public const CAMPAIGN_TYPE_DISPLAY = 'display';
     public const CAMPAIGN_TYPE_SEARCH = 'search';
+    public const ADVANTAGE_AUDIENCE_NUMBER_0 = 0;
+    public const ADVANTAGE_AUDIENCE_NUMBER_1 = 1;
 
     /**
      * Gets allowable values of the enum
@@ -461,6 +469,19 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAdvantageAudienceAllowableValues()
+    {
+        return [
+            self::ADVANTAGE_AUDIENCE_NUMBER_0,
+            self::ADVANTAGE_AUDIENCE_NUMBER_1,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -500,6 +521,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('keywords', $data ?? [], null);
         $this->setIfExists('additional_headlines', $data ?? [], null);
         $this->setIfExists('additional_descriptions', $data ?? [], null);
+        $this->setIfExists('advantage_audience', $data ?? [], null);
     }
 
     /**
@@ -610,6 +632,15 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'campaign_type', must be one of '%s'",
                 $this->container['campaign_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getAdvantageAudienceAllowableValues();
+        if (!is_null($this->container['advantage_audience']) && !in_array($this->container['advantage_audience'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'advantage_audience', must be one of '%s'",
+                $this->container['advantage_audience'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1368,6 +1399,43 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable additional_descriptions cannot be null');
         }
         $this->container['additional_descriptions'] = $additional_descriptions;
+
+        return $this;
+    }
+
+    /**
+     * Gets advantage_audience
+     *
+     * @return int|null
+     */
+    public function getAdvantageAudience()
+    {
+        return $this->container['advantage_audience'];
+    }
+
+    /**
+     * Sets advantage_audience
+     *
+     * @param int|null $advantage_audience Meta only. Controls the Advantage audience feature (targeting_automation). 0 = disabled (default), 1 = enabled. Meta Marketing API requires this field on all ad set creation requests.
+     *
+     * @return self
+     */
+    public function setAdvantageAudience($advantage_audience)
+    {
+        if (is_null($advantage_audience)) {
+            throw new \InvalidArgumentException('non-nullable advantage_audience cannot be null');
+        }
+        $allowedValues = $this->getAdvantageAudienceAllowableValues();
+        if (!in_array($advantage_audience, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'advantage_audience', must be one of '%s'",
+                    $advantage_audience,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['advantage_audience'] = $advantage_audience;
 
         return $this;
     }
