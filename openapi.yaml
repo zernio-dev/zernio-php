@@ -12942,6 +12942,8 @@ paths:
         '401': { $ref: '#/components/responses/Unauthorized' }
         '403':
           description: Inbox addon required
+        '404':
+          description: Conversation not found (WhatsApp only; other platforms upsert)
 
   /v1/inbox/conversations/{conversationId}/messages:
     get:
