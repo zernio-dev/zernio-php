@@ -36,7 +36,7 @@ use \Late\ObjectSerializer;
  * RedditPlatformData Class Doc Comment
  *
  * @category Class
- * @description Posts are either link (with URL/media) or self (text-only). Use forceSelf to override. Subreddit defaults to the account&#39;s configured one. Some subreddits require a flair.
+ * @description Posts are either link (with URL/media), native video (via nativeVideo), or self (text-only). Use forceSelf to override. Subreddit defaults to the account&#39;s configured one. Some subreddits require a flair.
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -63,7 +63,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'title' => 'string',
         'url' => 'string',
         'force_self' => 'bool',
-        'flair_id' => 'string'
+        'flair_id' => 'string',
+        'native_video' => 'bool',
+        'videogif' => 'bool',
+        'video_poster_url' => 'string'
     ];
 
     /**
@@ -78,7 +81,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'title' => null,
         'url' => 'uri',
         'force_self' => null,
-        'flair_id' => null
+        'flair_id' => null,
+        'native_video' => null,
+        'videogif' => null,
+        'video_poster_url' => 'uri'
     ];
 
     /**
@@ -91,7 +97,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'title' => false,
         'url' => false,
         'force_self' => false,
-        'flair_id' => false
+        'flair_id' => false,
+        'native_video' => false,
+        'videogif' => false,
+        'video_poster_url' => false
     ];
 
     /**
@@ -184,7 +193,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'title' => 'title',
         'url' => 'url',
         'force_self' => 'forceSelf',
-        'flair_id' => 'flairId'
+        'flair_id' => 'flairId',
+        'native_video' => 'nativeVideo',
+        'videogif' => 'videogif',
+        'video_poster_url' => 'videoPosterUrl'
     ];
 
     /**
@@ -197,7 +209,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'title' => 'setTitle',
         'url' => 'setUrl',
         'force_self' => 'setForceSelf',
-        'flair_id' => 'setFlairId'
+        'flair_id' => 'setFlairId',
+        'native_video' => 'setNativeVideo',
+        'videogif' => 'setVideogif',
+        'video_poster_url' => 'setVideoPosterUrl'
     ];
 
     /**
@@ -210,7 +225,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'title' => 'getTitle',
         'url' => 'getUrl',
         'force_self' => 'getForceSelf',
-        'flair_id' => 'getFlairId'
+        'flair_id' => 'getFlairId',
+        'native_video' => 'getNativeVideo',
+        'videogif' => 'getVideogif',
+        'video_poster_url' => 'getVideoPosterUrl'
     ];
 
     /**
@@ -275,6 +293,9 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('force_self', $data ?? [], null);
         $this->setIfExists('flair_id', $data ?? [], null);
+        $this->setIfExists('native_video', $data ?? [], true);
+        $this->setIfExists('videogif', $data ?? [], null);
+        $this->setIfExists('video_poster_url', $data ?? [], null);
     }
 
     /**
@@ -458,6 +479,87 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable flair_id cannot be null');
         }
         $this->container['flair_id'] = $flair_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets native_video
+     *
+     * @return bool|null
+     */
+    public function getNativeVideo()
+    {
+        return $this->container['native_video'];
+    }
+
+    /**
+     * Sets native_video
+     *
+     * @param bool|null $native_video Controls Reddit's native video upload flow. When true (default for video mediaItems), the video is uploaded to Reddit's CDN and submitted with kind=video so it renders as an embedded Reddit video player. Reddit transcodes server-side (1080p/30fps cap). Set to false to fall back to a legacy link post. If the subreddit blocks video posts, the upload falls back to a link post automatically.
+     *
+     * @return self
+     */
+    public function setNativeVideo($native_video)
+    {
+        if (is_null($native_video)) {
+            throw new \InvalidArgumentException('non-nullable native_video cannot be null');
+        }
+        $this->container['native_video'] = $native_video;
+
+        return $this;
+    }
+
+    /**
+     * Gets videogif
+     *
+     * @return bool|null
+     */
+    public function getVideogif()
+    {
+        return $this->container['videogif'];
+    }
+
+    /**
+     * Sets videogif
+     *
+     * @param bool|null $videogif When true (and nativeVideo is active), submits the video as a silent videogif (kind=videogif). Use for short looping clips without audio.
+     *
+     * @return self
+     */
+    public function setVideogif($videogif)
+    {
+        if (is_null($videogif)) {
+            throw new \InvalidArgumentException('non-nullable videogif cannot be null');
+        }
+        $this->container['videogif'] = $videogif;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_poster_url
+     *
+     * @return string|null
+     */
+    public function getVideoPosterUrl()
+    {
+        return $this->container['video_poster_url'];
+    }
+
+    /**
+     * Sets video_poster_url
+     *
+     * @param string|null $video_poster_url Optional poster/thumbnail image URL for native video posts. If omitted, the first frame of the video is extracted and used automatically.
+     *
+     * @return self
+     */
+    public function setVideoPosterUrl($video_poster_url)
+    {
+        if (is_null($video_poster_url)) {
+            throw new \InvalidArgumentException('non-nullable video_poster_url cannot be null');
+        }
+        $this->container['video_poster_url'] = $video_poster_url;
 
         return $this;
     }

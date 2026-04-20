@@ -2289,7 +2289,23 @@ components:
           type: string
           description: Flair ID for the post. Required by some subreddits. Use GET /v1/accounts/{id}/reddit-flairs?subreddit=name to list flairs.
           example: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
-      description: Posts are either link (with URL/media) or self (text-only). Use forceSelf to override. Subreddit defaults to the account's configured one. Some subreddits require a flair.
+        nativeVideo:
+          type: boolean
+          description: >
+            Controls Reddit's native video upload flow. When true (default for video mediaItems),
+            the video is uploaded to Reddit's CDN and submitted with kind=video so it renders as
+            an embedded Reddit video player. Reddit transcodes server-side (1080p/30fps cap). Set
+            to false to fall back to a legacy link post. If the subreddit blocks video posts, the
+            upload falls back to a link post automatically.
+          default: true
+        videogif:
+          type: boolean
+          description: When true (and nativeVideo is active), submits the video as a silent videogif (kind=videogif). Use for short looping clips without audio.
+        videoPosterUrl:
+          type: string
+          format: uri
+          description: Optional poster/thumbnail image URL for native video posts. If omitted, the first frame of the video is extracted and used automatically.
+      description: Posts are either link (with URL/media), native video (via nativeVideo), or self (text-only). Use forceSelf to override. Subreddit defaults to the account's configured one. Some subreddits require a flair.
 
     BlueskyPlatformData:
       type: object
