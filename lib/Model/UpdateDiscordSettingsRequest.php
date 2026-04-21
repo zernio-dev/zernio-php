@@ -58,7 +58,6 @@ class UpdateDiscordSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_id' => 'string',
         'webhook_username' => 'string',
         'webhook_avatar_url' => 'string',
         'channel_id' => 'string'
@@ -72,7 +71,6 @@ class UpdateDiscordSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_id' => null,
         'webhook_username' => null,
         'webhook_avatar_url' => null,
         'channel_id' => null
@@ -84,7 +82,6 @@ class UpdateDiscordSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_id' => false,
         'webhook_username' => false,
         'webhook_avatar_url' => false,
         'channel_id' => false
@@ -176,7 +173,6 @@ class UpdateDiscordSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_id' => 'accountId',
         'webhook_username' => 'webhookUsername',
         'webhook_avatar_url' => 'webhookAvatarUrl',
         'channel_id' => 'channelId'
@@ -188,7 +184,6 @@ class UpdateDiscordSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'account_id' => 'setAccountId',
         'webhook_username' => 'setWebhookUsername',
         'webhook_avatar_url' => 'setWebhookAvatarUrl',
         'channel_id' => 'setChannelId'
@@ -200,7 +195,6 @@ class UpdateDiscordSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'account_id' => 'getAccountId',
         'webhook_username' => 'getWebhookUsername',
         'webhook_avatar_url' => 'getWebhookAvatarUrl',
         'channel_id' => 'getChannelId'
@@ -263,7 +257,6 @@ class UpdateDiscordSettingsRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('webhook_username', $data ?? [], null);
         $this->setIfExists('webhook_avatar_url', $data ?? [], null);
         $this->setIfExists('channel_id', $data ?? [], null);
@@ -296,9 +289,6 @@ class UpdateDiscordSettingsRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['account_id'] === null) {
-            $invalidProperties[] = "'account_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -313,33 +303,6 @@ class UpdateDiscordSettingsRequest implements ModelInterface, ArrayAccess, \Json
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets account_id
-     *
-     * @return string
-     */
-    public function getAccountId()
-    {
-        return $this->container['account_id'];
-    }
-
-    /**
-     * Sets account_id
-     *
-     * @param string $account_id Discord account ID
-     *
-     * @return self
-     */
-    public function setAccountId($account_id)
-    {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
-        }
-        $this->container['account_id'] = $account_id;
-
-        return $this;
-    }
 
     /**
      * Gets webhook_username

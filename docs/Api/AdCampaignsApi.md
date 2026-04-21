@@ -230,7 +230,7 @@ $apiInstance = new Late\Api\AdCampaignsApi(
 );
 $page = 1; // int | Page number (1-based)
 $limit = 20; // int | Campaigns per page
-$source = 'zernio'; // string | `zernio` (default) returns only ads created via Zernio (isExternal=false). `all` additionally returns ads discovered from the platform's ad manager (isExternal=true). Status is NOT filtered by default — use the `status` param for that.
+$source = 'all'; // string | `all` (default) returns both Zernio-created ads and those discovered from the platform's ad manager — matches the web UI's default view. Pass `zernio` to restrict to isExternal=false only. Status is NOT filtered by default — use the `status` param for that.
 $platform = 'platform_example'; // string
 $status = new \Late\Model\\Late\Model\AdStatus(); // \Late\Model\AdStatus | Filter by derived campaign status (post-aggregation)
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID
@@ -253,7 +253,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **page** | **int**| Page number (1-based) | [optional] [default to 1] |
 | **limit** | **int**| Campaigns per page | [optional] [default to 20] |
-| **source** | **string**| &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. | [optional] [default to &#39;zernio&#39;] |
+| **source** | **string**| &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. | [optional] [default to &#39;all&#39;] |
 | **platform** | **string**|  | [optional] |
 | **status** | [**\Late\Model\AdStatus**](../Model/.md)| Filter by derived campaign status (post-aggregation) | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID | [optional] |
@@ -308,7 +308,7 @@ $apiInstance = new Late\Api\AdCampaignsApi(
 );
 $page = 1; // int | Page number (1-based)
 $limit = 20; // int
-$source = 'zernio'; // string | `zernio` (default) returns only ads created via Zernio (isExternal=false). `all` additionally returns ads discovered from the platform's ad manager (isExternal=true). Status is NOT filtered by default — use the `status` param for that.
+$source = 'all'; // string | `all` (default) returns both Zernio-created ads and those discovered from the platform's ad manager — matches the web UI's default view. Pass `zernio` to restrict to isExternal=false only. Status is NOT filtered by default — use the `status` param for that.
 $platform = 'platform_example'; // string
 $status = new \Late\Model\\Late\Model\AdStatus(); // \Late\Model\AdStatus | Filter by derived campaign status (post-aggregation)
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (e.g. act_123 for Meta)
@@ -329,7 +329,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **page** | **int**| Page number (1-based) | [optional] [default to 1] |
 | **limit** | **int**|  | [optional] [default to 20] |
-| **source** | **string**| &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. | [optional] [default to &#39;zernio&#39;] |
+| **source** | **string**| &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. | [optional] [default to &#39;all&#39;] |
 | **platform** | **string**|  | [optional] |
 | **status** | [**\Late\Model\AdStatus**](../Model/.md)| Filter by derived campaign status (post-aggregation) | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID (e.g. act_123 for Meta) | [optional] |

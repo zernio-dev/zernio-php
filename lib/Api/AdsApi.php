@@ -1965,7 +1965,7 @@ class AdsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit limit (optional, default to 50)
-     * @param  string|null $source zernio &#x3D; Zernio-created only, all &#x3D; include external ads (optional, default to 'zernio')
+     * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
      * @param  \Late\Model\AdStatus|null $status status (optional)
      * @param  string|null $platform platform (optional)
      * @param  string|null $account_id Social account ID (optional)
@@ -1980,7 +1980,7 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \Late\Model\ListAds200Response|\Late\Model\InlineObject
      */
-    public function listAds($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAds($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
         list($response) = $this->listAdsWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
         return $response;
@@ -1993,7 +1993,7 @@ class AdsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
-     * @param  string|null $source zernio &#x3D; Zernio-created only, all &#x3D; include external ads (optional, default to 'zernio')
+     * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
      * @param  \Late\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
@@ -2008,7 +2008,7 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ListAds200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdsWithHttpInfo($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsWithHttpInfo($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
         $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
 
@@ -2102,7 +2102,7 @@ class AdsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
-     * @param  string|null $source zernio &#x3D; Zernio-created only, all &#x3D; include external ads (optional, default to 'zernio')
+     * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
      * @param  \Late\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
@@ -2116,7 +2116,7 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdsAsync($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsAsync($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
         return $this->listAdsAsyncWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType)
             ->then(
@@ -2133,7 +2133,7 @@ class AdsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
-     * @param  string|null $source zernio &#x3D; Zernio-created only, all &#x3D; include external ads (optional, default to 'zernio')
+     * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
      * @param  \Late\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
@@ -2147,7 +2147,7 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdsAsyncWithHttpInfo($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsAsyncWithHttpInfo($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
         $returnType = '\Late\Model\ListAds200Response';
         $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
@@ -2193,7 +2193,7 @@ class AdsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
-     * @param  string|null $source zernio &#x3D; Zernio-created only, all &#x3D; include external ads (optional, default to 'zernio')
+     * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
      * @param  \Late\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
@@ -2207,7 +2207,7 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdsRequest($page = 1, $limit = 50, $source = 'zernio', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsRequest($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
 
         if ($page !== null && $page < 1) {

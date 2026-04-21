@@ -159,7 +159,7 @@ $apiInstance = new Late\Api\DiscordApi(
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_discord_settings_request = {"accountId":"abc123","webhookUsername":"My Brand","webhookAvatarUrl":"https://example.com/logo.png"}; // \Late\Model\UpdateDiscordSettingsRequest
+$update_discord_settings_request = {"webhookUsername":"My Brand","webhookAvatarUrl":"https://example.com/logo.png"}; // \Late\Model\UpdateDiscordSettingsRequest
 
 try {
     $result = $apiInstance->updateDiscordSettings($account_id, $update_discord_settings_request);

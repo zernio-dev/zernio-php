@@ -414,7 +414,7 @@ $apiInstance = new Late\Api\AdsApi(
 );
 $page = 1; // int | Page number (1-based)
 $limit = 50; // int
-$source = 'zernio'; // string | zernio = Zernio-created only, all = include external ads
+$source = 'all'; // string | all (default) = Zernio-created + platform-discovered ads. zernio = restrict to Zernio-created only.
 $status = new \Late\Model\\Late\Model\AdStatus(); // \Late\Model\AdStatus
 $platform = 'platform_example'; // string
 $account_id = 'account_id_example'; // string | Social account ID
@@ -438,7 +438,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **page** | **int**| Page number (1-based) | [optional] [default to 1] |
 | **limit** | **int**|  | [optional] [default to 50] |
-| **source** | **string**| zernio &#x3D; Zernio-created only, all &#x3D; include external ads | [optional] [default to &#39;zernio&#39;] |
+| **source** | **string**| all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. | [optional] [default to &#39;all&#39;] |
 | **status** | [**\Late\Model\AdStatus**](../Model/.md)|  | [optional] |
 | **platform** | **string**|  | [optional] |
 | **account_id** | **string**| Social account ID | [optional] |

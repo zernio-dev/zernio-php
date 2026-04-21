@@ -11921,11 +11921,7 @@ paths:
           application/json:
             schema:
               type: object
-              required: [accountId]
               properties:
-                accountId:
-                  type: string
-                  description: Discord account ID
                 webhookUsername:
                   type: string
                   description: Custom display name for the webhook (1-80 chars). Empty string resets to default ("Zernio"). Cannot contain "clyde" or "discord".
@@ -11939,13 +11935,11 @@ paths:
               identity:
                 summary: Update webhook identity
                 value:
-                  accountId: "abc123"
                   webhookUsername: "My Brand"
                   webhookAvatarUrl: "https://example.com/logo.png"
               channel:
                 summary: Switch channel
                 value:
-                  accountId: "abc123"
                   channelId: "9999999999999999999"
       responses:
         '200':
@@ -17987,7 +17981,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageParam'
         - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 500, default: 50 } }
-        - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: zernio }, description: "zernio = Zernio-created only, all = include external ads" }
+        - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: all }, description: "all (default) = Zernio-created + platform-discovered ads. zernio = restrict to Zernio-created only." }
         - { name: status, in: query, schema: { $ref: '#/components/schemas/AdStatus' } }
         - { name: platform, in: query, schema: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] } }
         - { name: accountId, in: query, schema: { type: string }, description: Social account ID }
@@ -18026,7 +18020,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageParam'
         - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 100, default: 20 } }
-        - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: zernio }, description: "`zernio` (default) returns only ads created via Zernio (isExternal=false). `all` additionally returns ads discovered from the platform's ad manager (isExternal=true). Status is NOT filtered by default — use the `status` param for that." }
+        - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: all }, description: "`all` (default) returns both Zernio-created ads and those discovered from the platform's ad manager — matches the web UI's default view. Pass `zernio` to restrict to isExternal=false only. Status is NOT filtered by default — use the `status` param for that." }
         - { name: platform, in: query, schema: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] } }
         - { name: status, in: query, schema: { $ref: '#/components/schemas/AdStatus' }, description: Filter by derived campaign status (post-aggregation) }
         - { name: adAccountId, in: query, schema: { type: string }, description: Platform ad account ID (e.g. act_123 for Meta) }
@@ -18395,7 +18389,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageParam'
         - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 100, default: 20 }, description: Campaigns per page }
-        - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: zernio }, description: "`zernio` (default) returns only ads created via Zernio (isExternal=false). `all` additionally returns ads discovered from the platform's ad manager (isExternal=true). Status is NOT filtered by default — use the `status` param for that." }
+        - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: all }, description: "`all` (default) returns both Zernio-created ads and those discovered from the platform's ad manager — matches the web UI's default view. Pass `zernio` to restrict to isExternal=false only. Status is NOT filtered by default — use the `status` param for that." }
         - { name: platform, in: query, schema: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] } }
         - { name: status, in: query, schema: { $ref: '#/components/schemas/AdStatus' }, description: Filter by derived campaign status (post-aggregation) }
         - { name: adAccountId, in: query, schema: { type: string }, description: Platform ad account ID }

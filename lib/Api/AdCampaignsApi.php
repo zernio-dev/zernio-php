@@ -1052,7 +1052,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
@@ -1066,7 +1066,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \Late\Model\GetAdTree200Response|\Late\Model\InlineObject
      */
-    public function getAdTree($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTree($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
     {
         list($response) = $this->getAdTreeWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType);
         return $response;
@@ -1079,7 +1079,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
@@ -1093,7 +1093,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\GetAdTree200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAdTreeWithHttpInfo($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
     {
         $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType);
 
@@ -1187,7 +1187,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
@@ -1200,7 +1200,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdTreeAsync($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeAsync($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
     {
         return $this->getAdTreeAsyncWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType)
             ->then(
@@ -1217,7 +1217,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
@@ -1230,7 +1230,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdTreeAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
     {
         $returnType = '\Late\Model\GetAdTree200Response';
         $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType);
@@ -1276,7 +1276,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
@@ -1289,7 +1289,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAdTreeRequest($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeRequest($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
     {
 
         if ($page !== null && $page < 1) {
@@ -1477,7 +1477,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit limit (optional, default to 20)
-     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
@@ -1489,7 +1489,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \Late\Model\ListAdCampaigns200Response|\Late\Model\InlineObject
      */
-    public function listAdCampaigns($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
+    public function listAdCampaigns($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
         list($response) = $this->listAdCampaignsWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType);
         return $response;
@@ -1502,7 +1502,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
-     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
@@ -1514,7 +1514,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return array of \Late\Model\ListAdCampaigns200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdCampaignsWithHttpInfo($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
+    public function listAdCampaignsWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
         $request = $this->listAdCampaignsRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType);
 
@@ -1608,7 +1608,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
-     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
@@ -1619,7 +1619,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdCampaignsAsync($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
+    public function listAdCampaignsAsync($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
         return $this->listAdCampaignsAsyncWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType)
             ->then(
@@ -1636,7 +1636,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
-     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
@@ -1647,7 +1647,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdCampaignsAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
+    public function listAdCampaignsAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
         $returnType = '\Late\Model\ListAdCampaigns200Response';
         $request = $this->listAdCampaignsRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType);
@@ -1693,7 +1693,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
-     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
+     * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
@@ -1704,7 +1704,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdCampaignsRequest($page = 1, $limit = 20, $source = 'zernio', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
+    public function listAdCampaignsRequest($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
 
         if ($page !== null && $page < 1) {
