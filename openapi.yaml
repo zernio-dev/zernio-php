@@ -3104,6 +3104,21 @@ components:
         cpc: { type: number, description: Cost per click }
         cpm: { type: number, description: Cost per 1000 impressions }
         engagement: { type: integer }
+        conversions:
+          type: integer
+          description: "Count of conversion events matching the campaign's promoted_object.custom_event_type (PURCHASE, LEAD, etc.) over the requested date range. 0 for non-conversion campaigns or when no events have fired. Meta-only at time of writing; other platforms return 0."
+        costPerConversion:
+          type: number
+          description: "Derived spend / conversions in the same currency as spend. 0 when conversions is 0."
+        actions:
+          type: object
+          additionalProperties:
+            type: integer
+          description: "Raw per-action-type counts from Meta's Insights actions[] array, summed over the date range. Keys are Meta action_type strings (e.g. link_click, offsite_conversion.fb_pixel_purchase, onsite_conversion.lead_grouped). Use this to extract any conversion event (purchases, leads, add_to_cart, etc.) without relying on the derived conversions field. Empty object when no actions are reported."
+          example:
+            link_click: 160
+            post_engagement: 300
+            offsite_conversion.fb_pixel_purchase: 42
         lastSyncedAt: { type: string, format: date-time, description: "Present on individual ads only, not on campaign aggregations" }
     AdStatus:
       type: string

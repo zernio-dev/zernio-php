@@ -66,6 +66,9 @@ class GetAdAnalytics200ResponseAnalyticsDailyInner implements ModelInterface, Ar
         'cpc' => 'float',
         'cpm' => 'float',
         'engagement' => 'int',
+        'conversions' => 'int',
+        'cost_per_conversion' => 'float',
+        'actions' => 'array<string,int>',
         'last_synced_at' => '\DateTime',
         'date' => '\DateTime'
     ];
@@ -86,6 +89,9 @@ class GetAdAnalytics200ResponseAnalyticsDailyInner implements ModelInterface, Ar
         'cpc' => null,
         'cpm' => null,
         'engagement' => null,
+        'conversions' => null,
+        'cost_per_conversion' => null,
+        'actions' => null,
         'last_synced_at' => 'date-time',
         'date' => 'date'
     ];
@@ -104,6 +110,9 @@ class GetAdAnalytics200ResponseAnalyticsDailyInner implements ModelInterface, Ar
         'cpc' => false,
         'cpm' => false,
         'engagement' => false,
+        'conversions' => false,
+        'cost_per_conversion' => false,
+        'actions' => false,
         'last_synced_at' => false,
         'date' => false
     ];
@@ -202,6 +211,9 @@ class GetAdAnalytics200ResponseAnalyticsDailyInner implements ModelInterface, Ar
         'cpc' => 'cpc',
         'cpm' => 'cpm',
         'engagement' => 'engagement',
+        'conversions' => 'conversions',
+        'cost_per_conversion' => 'costPerConversion',
+        'actions' => 'actions',
         'last_synced_at' => 'lastSyncedAt',
         'date' => 'date'
     ];
@@ -220,6 +232,9 @@ class GetAdAnalytics200ResponseAnalyticsDailyInner implements ModelInterface, Ar
         'cpc' => 'setCpc',
         'cpm' => 'setCpm',
         'engagement' => 'setEngagement',
+        'conversions' => 'setConversions',
+        'cost_per_conversion' => 'setCostPerConversion',
+        'actions' => 'setActions',
         'last_synced_at' => 'setLastSyncedAt',
         'date' => 'setDate'
     ];
@@ -238,6 +253,9 @@ class GetAdAnalytics200ResponseAnalyticsDailyInner implements ModelInterface, Ar
         'cpc' => 'getCpc',
         'cpm' => 'getCpm',
         'engagement' => 'getEngagement',
+        'conversions' => 'getConversions',
+        'cost_per_conversion' => 'getCostPerConversion',
+        'actions' => 'getActions',
         'last_synced_at' => 'getLastSyncedAt',
         'date' => 'getDate'
     ];
@@ -307,6 +325,9 @@ class GetAdAnalytics200ResponseAnalyticsDailyInner implements ModelInterface, Ar
         $this->setIfExists('cpc', $data ?? [], null);
         $this->setIfExists('cpm', $data ?? [], null);
         $this->setIfExists('engagement', $data ?? [], null);
+        $this->setIfExists('conversions', $data ?? [], null);
+        $this->setIfExists('cost_per_conversion', $data ?? [], null);
+        $this->setIfExists('actions', $data ?? [], null);
         $this->setIfExists('last_synced_at', $data ?? [], null);
         $this->setIfExists('date', $data ?? [], null);
     }
@@ -565,6 +586,87 @@ class GetAdAnalytics200ResponseAnalyticsDailyInner implements ModelInterface, Ar
             throw new \InvalidArgumentException('non-nullable engagement cannot be null');
         }
         $this->container['engagement'] = $engagement;
+
+        return $this;
+    }
+
+    /**
+     * Gets conversions
+     *
+     * @return int|null
+     */
+    public function getConversions()
+    {
+        return $this->container['conversions'];
+    }
+
+    /**
+     * Sets conversions
+     *
+     * @param int|null $conversions Count of conversion events matching the campaign's promoted_object.custom_event_type (PURCHASE, LEAD, etc.) over the requested date range. 0 for non-conversion campaigns or when no events have fired. Meta-only at time of writing; other platforms return 0.
+     *
+     * @return self
+     */
+    public function setConversions($conversions)
+    {
+        if (is_null($conversions)) {
+            throw new \InvalidArgumentException('non-nullable conversions cannot be null');
+        }
+        $this->container['conversions'] = $conversions;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_per_conversion
+     *
+     * @return float|null
+     */
+    public function getCostPerConversion()
+    {
+        return $this->container['cost_per_conversion'];
+    }
+
+    /**
+     * Sets cost_per_conversion
+     *
+     * @param float|null $cost_per_conversion Derived spend / conversions in the same currency as spend. 0 when conversions is 0.
+     *
+     * @return self
+     */
+    public function setCostPerConversion($cost_per_conversion)
+    {
+        if (is_null($cost_per_conversion)) {
+            throw new \InvalidArgumentException('non-nullable cost_per_conversion cannot be null');
+        }
+        $this->container['cost_per_conversion'] = $cost_per_conversion;
+
+        return $this;
+    }
+
+    /**
+     * Gets actions
+     *
+     * @return array<string,int>|null
+     */
+    public function getActions()
+    {
+        return $this->container['actions'];
+    }
+
+    /**
+     * Sets actions
+     *
+     * @param array<string,int>|null $actions Raw per-action-type counts from Meta's Insights actions[] array, summed over the date range. Keys are Meta action_type strings (e.g. link_click, offsite_conversion.fb_pixel_purchase, onsite_conversion.lead_grouped). Use this to extract any conversion event (purchases, leads, add_to_cart, etc.) without relying on the derived conversions field. Empty object when no actions are reported.
+     *
+     * @return self
+     */
+    public function setActions($actions)
+    {
+        if (is_null($actions)) {
+            throw new \InvalidArgumentException('non-nullable actions cannot be null');
+        }
+        $this->container['actions'] = $actions;
 
         return $this;
     }
