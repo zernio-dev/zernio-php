@@ -84,9 +84,15 @@ Class | Method | HTTP request | Description
 *AdAudiencesApi* | [**deleteAdAudience**](docs/Api/AdAudiencesApi.md#deleteadaudience) | **DELETE** /v1/ads/audiences/{audienceId} | Delete custom audience
 *AdAudiencesApi* | [**getAdAudience**](docs/Api/AdAudiencesApi.md#getadaudience) | **GET** /v1/ads/audiences/{audienceId} | Get audience details
 *AdAudiencesApi* | [**listAdAudiences**](docs/Api/AdAudiencesApi.md#listadaudiences) | **GET** /v1/ads/audiences | List custom audiences
+*AdCampaignsApi* | [**bulkUpdateAdCampaignStatus**](docs/Api/AdCampaignsApi.md#bulkupdateadcampaignstatus) | **POST** /v1/ads/campaigns/bulk-status | Pause or resume many campaigns
+*AdCampaignsApi* | [**deleteAdCampaign**](docs/Api/AdCampaignsApi.md#deleteadcampaign) | **DELETE** /v1/ads/campaigns/{campaignId} | Delete a campaign
+*AdCampaignsApi* | [**duplicateAdCampaign**](docs/Api/AdCampaignsApi.md#duplicateadcampaign) | **POST** /v1/ads/campaigns/{campaignId}/duplicate | Duplicate a campaign
 *AdCampaignsApi* | [**getAdTree**](docs/Api/AdCampaignsApi.md#getadtree) | **GET** /v1/ads/tree | Get campaign tree
 *AdCampaignsApi* | [**listAdCampaigns**](docs/Api/AdCampaignsApi.md#listadcampaigns) | **GET** /v1/ads/campaigns | List campaigns
+*AdCampaignsApi* | [**updateAdCampaign**](docs/Api/AdCampaignsApi.md#updateadcampaign) | **PUT** /v1/ads/campaigns/{campaignId} | Update a campaign (budget)
 *AdCampaignsApi* | [**updateAdCampaignStatus**](docs/Api/AdCampaignsApi.md#updateadcampaignstatus) | **PUT** /v1/ads/campaigns/{campaignId}/status | Pause or resume a campaign
+*AdCampaignsApi* | [**updateAdSet**](docs/Api/AdCampaignsApi.md#updateadset) | **PUT** /v1/ads/ad-sets/{adSetId} | Update an ad set (budget and/or status)
+*AdCampaignsApi* | [**updateAdSetStatus**](docs/Api/AdCampaignsApi.md#updateadsetstatus) | **PUT** /v1/ads/ad-sets/{adSetId}/status | Pause or resume a single ad set
 *AdsApi* | [**boostPost**](docs/Api/AdsApi.md#boostpost) | **POST** /v1/ads/boost | Boost post as ad
 *AdsApi* | [**createStandaloneAd**](docs/Api/AdsApi.md#createstandalonead) | **POST** /v1/ads/create | Create standalone ad
 *AdsApi* | [**deleteAd**](docs/Api/AdsApi.md#deletead) | **DELETE** /v1/ads/{adId} | Cancel an ad
@@ -320,14 +326,20 @@ Class | Method | HTTP request | Description
 - [Ad](docs/Model/Ad.md)
 - [AdBudget](docs/Model/AdBudget.md)
 - [AdCampaign](docs/Model/AdCampaign.md)
+- [AdCampaignBudget](docs/Model/AdCampaignBudget.md)
+- [AdCampaignCampaignBudget](docs/Model/AdCampaignCampaignBudget.md)
 - [AdCreative](docs/Model/AdCreative.md)
 - [AdMetrics](docs/Model/AdMetrics.md)
 - [AdPromotedObject](docs/Model/AdPromotedObject.md)
 - [AdSchedule](docs/Model/AdSchedule.md)
 - [AdStatus](docs/Model/AdStatus.md)
 - [AdTreeAdSet](docs/Model/AdTreeAdSet.md)
+- [AdTreeAdSetAdSetBudget](docs/Model/AdTreeAdSetAdSetBudget.md)
+- [AdTreeAdSetBudget](docs/Model/AdTreeAdSetBudget.md)
 - [AdTreeAdSetPromotedObject](docs/Model/AdTreeAdSetPromotedObject.md)
 - [AdTreeCampaign](docs/Model/AdTreeCampaign.md)
+- [AdTreeCampaignBudget](docs/Model/AdTreeCampaignBudget.md)
+- [AdTreeCampaignCampaignBudget](docs/Model/AdTreeCampaignCampaignBudget.md)
 - [AdTreeCampaignPromotedObject](docs/Model/AdTreeCampaignPromotedObject.md)
 - [AddBroadcastRecipients200Response](docs/Model/AddBroadcastRecipients200Response.md)
 - [AddBroadcastRecipientsRequest](docs/Model/AddBroadcastRecipientsRequest.md)
@@ -359,6 +371,11 @@ Class | Method | HTTP request | Description
 - [BulkCreateContacts200Response](docs/Model/BulkCreateContacts200Response.md)
 - [BulkCreateContactsRequest](docs/Model/BulkCreateContactsRequest.md)
 - [BulkCreateContactsRequestContactsInner](docs/Model/BulkCreateContactsRequestContactsInner.md)
+- [BulkUpdateAdCampaignStatus200Response](docs/Model/BulkUpdateAdCampaignStatus200Response.md)
+- [BulkUpdateAdCampaignStatus200ResponseResultsInner](docs/Model/BulkUpdateAdCampaignStatus200ResponseResultsInner.md)
+- [BulkUpdateAdCampaignStatus200ResponseTotals](docs/Model/BulkUpdateAdCampaignStatus200ResponseTotals.md)
+- [BulkUpdateAdCampaignStatusRequest](docs/Model/BulkUpdateAdCampaignStatusRequest.md)
+- [BulkUpdateAdCampaignStatusRequestCampaignsInner](docs/Model/BulkUpdateAdCampaignStatusRequestCampaignsInner.md)
 - [BulkUploadPosts200Response](docs/Model/BulkUploadPosts200Response.md)
 - [BulkUploadPosts200ResponseErrorsInner](docs/Model/BulkUploadPosts200ResponseErrorsInner.md)
 - [BulkUploadPosts429Response](docs/Model/BulkUploadPosts429Response.md)
@@ -444,6 +461,8 @@ Class | Method | HTTP request | Description
 - [CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner](docs/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner.md)
 - [CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl](docs/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl.md)
 - [DeleteAccountGroup200Response](docs/Model/DeleteAccountGroup200Response.md)
+- [DeleteAdCampaign200Response](docs/Model/DeleteAdCampaign200Response.md)
+- [DeleteAdCampaignRequest](docs/Model/DeleteAdCampaignRequest.md)
 - [DeleteGoogleBusinessMedia200Response](docs/Model/DeleteGoogleBusinessMedia200Response.md)
 - [DeleteGoogleBusinessPlaceAction200Response](docs/Model/DeleteGoogleBusinessPlaceAction200Response.md)
 - [DeleteInboxComment200Response](docs/Model/DeleteInboxComment200Response.md)
@@ -461,6 +480,8 @@ Class | Method | HTTP request | Description
 - [DiscordPlatformDataPollAnswersInnerPollMedia](docs/Model/DiscordPlatformDataPollAnswersInnerPollMedia.md)
 - [DiscordPlatformDataPollQuestion](docs/Model/DiscordPlatformDataPollQuestion.md)
 - [DiscordPlatformDataThreadFromMessage](docs/Model/DiscordPlatformDataThreadFromMessage.md)
+- [DuplicateAdCampaign200Response](docs/Model/DuplicateAdCampaign200Response.md)
+- [DuplicateAdCampaignRequest](docs/Model/DuplicateAdCampaignRequest.md)
 - [EditInboxMessage200Response](docs/Model/EditInboxMessage200Response.md)
 - [EditInboxMessage200ResponseData](docs/Model/EditInboxMessage200ResponseData.md)
 - [EditInboxMessageRequest](docs/Model/EditInboxMessageRequest.md)
@@ -924,12 +945,19 @@ Class | Method | HTTP request | Description
 - [UpdateAccountGroupRequest](docs/Model/UpdateAccountGroupRequest.md)
 - [UpdateAccountRequest](docs/Model/UpdateAccountRequest.md)
 - [UpdateAd200Response](docs/Model/UpdateAd200Response.md)
+- [UpdateAdCampaign200Response](docs/Model/UpdateAdCampaign200Response.md)
+- [UpdateAdCampaignRequest](docs/Model/UpdateAdCampaignRequest.md)
+- [UpdateAdCampaignRequestBudget](docs/Model/UpdateAdCampaignRequestBudget.md)
 - [UpdateAdCampaignStatus200Response](docs/Model/UpdateAdCampaignStatus200Response.md)
 - [UpdateAdCampaignStatusRequest](docs/Model/UpdateAdCampaignStatusRequest.md)
 - [UpdateAdRequest](docs/Model/UpdateAdRequest.md)
 - [UpdateAdRequestBudget](docs/Model/UpdateAdRequestBudget.md)
 - [UpdateAdRequestTargeting](docs/Model/UpdateAdRequestTargeting.md)
 - [UpdateAdRequestTargetingInterestsInner](docs/Model/UpdateAdRequestTargetingInterestsInner.md)
+- [UpdateAdSet200Response](docs/Model/UpdateAdSet200Response.md)
+- [UpdateAdSetRequest](docs/Model/UpdateAdSetRequest.md)
+- [UpdateAdSetRequestBudget](docs/Model/UpdateAdSetRequestBudget.md)
+- [UpdateAdSetStatus200Response](docs/Model/UpdateAdSetStatus200Response.md)
 - [UpdateBroadcast200Response](docs/Model/UpdateBroadcast200Response.md)
 - [UpdateBroadcast200ResponseBroadcast](docs/Model/UpdateBroadcast200ResponseBroadcast.md)
 - [UpdateCommentAutomation200Response](docs/Model/UpdateCommentAutomation200Response.md)

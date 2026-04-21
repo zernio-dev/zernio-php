@@ -75,13 +75,31 @@ class AdCampaignsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'bulkUpdateAdCampaignStatus' => [
+            'application/json',
+        ],
+        'deleteAdCampaign' => [
+            'application/json',
+        ],
+        'duplicateAdCampaign' => [
+            'application/json',
+        ],
         'getAdTree' => [
             'application/json',
         ],
         'listAdCampaigns' => [
             'application/json',
         ],
+        'updateAdCampaign' => [
+            'application/json',
+        ],
         'updateAdCampaignStatus' => [
+            'application/json',
+        ],
+        'updateAdSet' => [
+            'application/json',
+        ],
+        'updateAdSetStatus' => [
             'application/json',
         ],
     ];
@@ -133,13 +151,908 @@ class AdCampaignsApi
     }
 
     /**
+     * Operation bulkUpdateAdCampaignStatus
+     *
+     * Pause or resume many campaigns
+     *
+     * @param  \Late\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request bulk_update_ad_campaign_status_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAdCampaignStatus'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\BulkUpdateAdCampaignStatus200Response|\Late\Model\InlineObject
+     */
+    public function bulkUpdateAdCampaignStatus($bulk_update_ad_campaign_status_request, string $contentType = self::contentTypes['bulkUpdateAdCampaignStatus'][0])
+    {
+        list($response) = $this->bulkUpdateAdCampaignStatusWithHttpInfo($bulk_update_ad_campaign_status_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation bulkUpdateAdCampaignStatusWithHttpInfo
+     *
+     * Pause or resume many campaigns
+     *
+     * @param  \Late\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAdCampaignStatus'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\BulkUpdateAdCampaignStatus200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function bulkUpdateAdCampaignStatusWithHttpInfo($bulk_update_ad_campaign_status_request, string $contentType = self::contentTypes['bulkUpdateAdCampaignStatus'][0])
+    {
+        $request = $this->bulkUpdateAdCampaignStatusRequest($bulk_update_ad_campaign_status_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\BulkUpdateAdCampaignStatus200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\BulkUpdateAdCampaignStatus200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\BulkUpdateAdCampaignStatus200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation bulkUpdateAdCampaignStatusAsync
+     *
+     * Pause or resume many campaigns
+     *
+     * @param  \Late\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAdCampaignStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function bulkUpdateAdCampaignStatusAsync($bulk_update_ad_campaign_status_request, string $contentType = self::contentTypes['bulkUpdateAdCampaignStatus'][0])
+    {
+        return $this->bulkUpdateAdCampaignStatusAsyncWithHttpInfo($bulk_update_ad_campaign_status_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation bulkUpdateAdCampaignStatusAsyncWithHttpInfo
+     *
+     * Pause or resume many campaigns
+     *
+     * @param  \Late\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAdCampaignStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function bulkUpdateAdCampaignStatusAsyncWithHttpInfo($bulk_update_ad_campaign_status_request, string $contentType = self::contentTypes['bulkUpdateAdCampaignStatus'][0])
+    {
+        $returnType = '\Late\Model\BulkUpdateAdCampaignStatus200Response';
+        $request = $this->bulkUpdateAdCampaignStatusRequest($bulk_update_ad_campaign_status_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'bulkUpdateAdCampaignStatus'
+     *
+     * @param  \Late\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAdCampaignStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function bulkUpdateAdCampaignStatusRequest($bulk_update_ad_campaign_status_request, string $contentType = self::contentTypes['bulkUpdateAdCampaignStatus'][0])
+    {
+
+        // verify the required parameter 'bulk_update_ad_campaign_status_request' is set
+        if ($bulk_update_ad_campaign_status_request === null || (is_array($bulk_update_ad_campaign_status_request) && count($bulk_update_ad_campaign_status_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $bulk_update_ad_campaign_status_request when calling bulkUpdateAdCampaignStatus'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/campaigns/bulk-status';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($bulk_update_ad_campaign_status_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($bulk_update_ad_campaign_status_request));
+            } else {
+                $httpBody = $bulk_update_ad_campaign_status_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteAdCampaign
+     *
+     * Delete a campaign
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Late\Model\DeleteAdCampaignRequest $delete_ad_campaign_request delete_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\DeleteAdCampaign200Response|\Late\Model\InlineObject
+     */
+    public function deleteAdCampaign($campaign_id, $delete_ad_campaign_request, string $contentType = self::contentTypes['deleteAdCampaign'][0])
+    {
+        list($response) = $this->deleteAdCampaignWithHttpInfo($campaign_id, $delete_ad_campaign_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteAdCampaignWithHttpInfo
+     *
+     * Delete a campaign
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Late\Model\DeleteAdCampaignRequest $delete_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\DeleteAdCampaign200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteAdCampaignWithHttpInfo($campaign_id, $delete_ad_campaign_request, string $contentType = self::contentTypes['deleteAdCampaign'][0])
+    {
+        $request = $this->deleteAdCampaignRequest($campaign_id, $delete_ad_campaign_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\DeleteAdCampaign200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\DeleteAdCampaign200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\DeleteAdCampaign200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteAdCampaignAsync
+     *
+     * Delete a campaign
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Late\Model\DeleteAdCampaignRequest $delete_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteAdCampaignAsync($campaign_id, $delete_ad_campaign_request, string $contentType = self::contentTypes['deleteAdCampaign'][0])
+    {
+        return $this->deleteAdCampaignAsyncWithHttpInfo($campaign_id, $delete_ad_campaign_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteAdCampaignAsyncWithHttpInfo
+     *
+     * Delete a campaign
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Late\Model\DeleteAdCampaignRequest $delete_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteAdCampaignAsyncWithHttpInfo($campaign_id, $delete_ad_campaign_request, string $contentType = self::contentTypes['deleteAdCampaign'][0])
+    {
+        $returnType = '\Late\Model\DeleteAdCampaign200Response';
+        $request = $this->deleteAdCampaignRequest($campaign_id, $delete_ad_campaign_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteAdCampaign'
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Late\Model\DeleteAdCampaignRequest $delete_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteAdCampaignRequest($campaign_id, $delete_ad_campaign_request, string $contentType = self::contentTypes['deleteAdCampaign'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling deleteAdCampaign'
+            );
+        }
+
+        // verify the required parameter 'delete_ad_campaign_request' is set
+        if ($delete_ad_campaign_request === null || (is_array($delete_ad_campaign_request) && count($delete_ad_campaign_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $delete_ad_campaign_request when calling deleteAdCampaign'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($delete_ad_campaign_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_ad_campaign_request));
+            } else {
+                $httpBody = $delete_ad_campaign_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation duplicateAdCampaign
+     *
+     * Duplicate a campaign
+     *
+     * @param  string $campaign_id Source platform campaign ID (required)
+     * @param  \Late\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request duplicate_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\DuplicateAdCampaign200Response|\Late\Model\InlineObject
+     */
+    public function duplicateAdCampaign($campaign_id, $duplicate_ad_campaign_request, string $contentType = self::contentTypes['duplicateAdCampaign'][0])
+    {
+        list($response) = $this->duplicateAdCampaignWithHttpInfo($campaign_id, $duplicate_ad_campaign_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation duplicateAdCampaignWithHttpInfo
+     *
+     * Duplicate a campaign
+     *
+     * @param  string $campaign_id Source platform campaign ID (required)
+     * @param  \Late\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\DuplicateAdCampaign200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function duplicateAdCampaignWithHttpInfo($campaign_id, $duplicate_ad_campaign_request, string $contentType = self::contentTypes['duplicateAdCampaign'][0])
+    {
+        $request = $this->duplicateAdCampaignRequest($campaign_id, $duplicate_ad_campaign_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\DuplicateAdCampaign200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\DuplicateAdCampaign200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\DuplicateAdCampaign200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation duplicateAdCampaignAsync
+     *
+     * Duplicate a campaign
+     *
+     * @param  string $campaign_id Source platform campaign ID (required)
+     * @param  \Late\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function duplicateAdCampaignAsync($campaign_id, $duplicate_ad_campaign_request, string $contentType = self::contentTypes['duplicateAdCampaign'][0])
+    {
+        return $this->duplicateAdCampaignAsyncWithHttpInfo($campaign_id, $duplicate_ad_campaign_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation duplicateAdCampaignAsyncWithHttpInfo
+     *
+     * Duplicate a campaign
+     *
+     * @param  string $campaign_id Source platform campaign ID (required)
+     * @param  \Late\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function duplicateAdCampaignAsyncWithHttpInfo($campaign_id, $duplicate_ad_campaign_request, string $contentType = self::contentTypes['duplicateAdCampaign'][0])
+    {
+        $returnType = '\Late\Model\DuplicateAdCampaign200Response';
+        $request = $this->duplicateAdCampaignRequest($campaign_id, $duplicate_ad_campaign_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'duplicateAdCampaign'
+     *
+     * @param  string $campaign_id Source platform campaign ID (required)
+     * @param  \Late\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function duplicateAdCampaignRequest($campaign_id, $duplicate_ad_campaign_request, string $contentType = self::contentTypes['duplicateAdCampaign'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling duplicateAdCampaign'
+            );
+        }
+
+        // verify the required parameter 'duplicate_ad_campaign_request' is set
+        if ($duplicate_ad_campaign_request === null || (is_array($duplicate_ad_campaign_request) && count($duplicate_ad_campaign_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $duplicate_ad_campaign_request when calling duplicateAdCampaign'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}/duplicate';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($duplicate_ad_campaign_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($duplicate_ad_campaign_request));
+            } else {
+                $httpBody = $duplicate_ad_campaign_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getAdTree
      *
      * Get campaign tree
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source source (optional, default to 'zernio')
+     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
      * @param  string|null $platform platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
@@ -166,7 +1079,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source (optional, default to 'zernio')
+     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
@@ -274,7 +1187,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source (optional, default to 'zernio')
+     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
@@ -304,7 +1217,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source (optional, default to 'zernio')
+     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
@@ -363,7 +1276,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit Campaigns per page (optional, default to 20)
-     * @param  string|null $source (optional, default to 'zernio')
+     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
@@ -564,7 +1477,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit limit (optional, default to 20)
-     * @param  string|null $source source (optional, default to 'zernio')
+     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
      * @param  string|null $platform platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
@@ -589,7 +1502,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
-     * @param  string|null $source (optional, default to 'zernio')
+     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
@@ -695,7 +1608,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
-     * @param  string|null $source (optional, default to 'zernio')
+     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
@@ -723,7 +1636,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
-     * @param  string|null $source (optional, default to 'zernio')
+     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
@@ -780,7 +1693,7 @@ class AdCampaignsApi
      *
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 20)
-     * @param  string|null $source (optional, default to 'zernio')
+     * @param  string|null $source &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'zernio')
      * @param  string|null $platform (optional)
      * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
@@ -946,6 +1859,311 @@ class AdCampaignsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAdCampaign
+     *
+     * Update a campaign (budget)
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Late\Model\UpdateAdCampaignRequest $update_ad_campaign_request update_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UpdateAdCampaign200Response|\Late\Model\InlineObject
+     */
+    public function updateAdCampaign($campaign_id, $update_ad_campaign_request, string $contentType = self::contentTypes['updateAdCampaign'][0])
+    {
+        list($response) = $this->updateAdCampaignWithHttpInfo($campaign_id, $update_ad_campaign_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAdCampaignWithHttpInfo
+     *
+     * Update a campaign (budget)
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Late\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UpdateAdCampaign200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAdCampaignWithHttpInfo($campaign_id, $update_ad_campaign_request, string $contentType = self::contentTypes['updateAdCampaign'][0])
+    {
+        $request = $this->updateAdCampaignRequest($campaign_id, $update_ad_campaign_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateAdCampaign200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateAdCampaign200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateAdCampaign200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAdCampaignAsync
+     *
+     * Update a campaign (budget)
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Late\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdCampaignAsync($campaign_id, $update_ad_campaign_request, string $contentType = self::contentTypes['updateAdCampaign'][0])
+    {
+        return $this->updateAdCampaignAsyncWithHttpInfo($campaign_id, $update_ad_campaign_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAdCampaignAsyncWithHttpInfo
+     *
+     * Update a campaign (budget)
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Late\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdCampaignAsyncWithHttpInfo($campaign_id, $update_ad_campaign_request, string $contentType = self::contentTypes['updateAdCampaign'][0])
+    {
+        $returnType = '\Late\Model\UpdateAdCampaign200Response';
+        $request = $this->updateAdCampaignRequest($campaign_id, $update_ad_campaign_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAdCampaign'
+     *
+     * @param  string $campaign_id Platform campaign ID (required)
+     * @param  \Late\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaign'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAdCampaignRequest($campaign_id, $update_ad_campaign_request, string $contentType = self::contentTypes['updateAdCampaign'][0])
+    {
+
+        // verify the required parameter 'campaign_id' is set
+        if ($campaign_id === null || (is_array($campaign_id) && count($campaign_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_id when calling updateAdCampaign'
+            );
+        }
+
+        // verify the required parameter 'update_ad_campaign_request' is set
+        if ($update_ad_campaign_request === null || (is_array($update_ad_campaign_request) && count($update_ad_campaign_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_ad_campaign_request when calling updateAdCampaign'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/campaigns/{campaignId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($campaign_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'campaignId' . '}',
+                ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_ad_campaign_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_campaign_request));
+            } else {
+                $httpBody = $update_ad_campaign_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1188,6 +2406,616 @@ class AdCampaignsApi
             $resourcePath = str_replace(
                 '{' . 'campaignId' . '}',
                 ObjectSerializer::toPathValue($campaign_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_ad_campaign_status_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_campaign_status_request));
+            } else {
+                $httpBody = $update_ad_campaign_status_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAdSet
+     *
+     * Update an ad set (budget and/or status)
+     *
+     * @param  string $ad_set_id Platform ad set ID (required)
+     * @param  \Late\Model\UpdateAdSetRequest $update_ad_set_request update_ad_set_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSet'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UpdateAdSet200Response|\Late\Model\InlineObject
+     */
+    public function updateAdSet($ad_set_id, $update_ad_set_request, string $contentType = self::contentTypes['updateAdSet'][0])
+    {
+        list($response) = $this->updateAdSetWithHttpInfo($ad_set_id, $update_ad_set_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAdSetWithHttpInfo
+     *
+     * Update an ad set (budget and/or status)
+     *
+     * @param  string $ad_set_id Platform ad set ID (required)
+     * @param  \Late\Model\UpdateAdSetRequest $update_ad_set_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSet'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UpdateAdSet200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAdSetWithHttpInfo($ad_set_id, $update_ad_set_request, string $contentType = self::contentTypes['updateAdSet'][0])
+    {
+        $request = $this->updateAdSetRequest($ad_set_id, $update_ad_set_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateAdSet200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateAdSet200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateAdSet200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAdSetAsync
+     *
+     * Update an ad set (budget and/or status)
+     *
+     * @param  string $ad_set_id Platform ad set ID (required)
+     * @param  \Late\Model\UpdateAdSetRequest $update_ad_set_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdSetAsync($ad_set_id, $update_ad_set_request, string $contentType = self::contentTypes['updateAdSet'][0])
+    {
+        return $this->updateAdSetAsyncWithHttpInfo($ad_set_id, $update_ad_set_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAdSetAsyncWithHttpInfo
+     *
+     * Update an ad set (budget and/or status)
+     *
+     * @param  string $ad_set_id Platform ad set ID (required)
+     * @param  \Late\Model\UpdateAdSetRequest $update_ad_set_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdSetAsyncWithHttpInfo($ad_set_id, $update_ad_set_request, string $contentType = self::contentTypes['updateAdSet'][0])
+    {
+        $returnType = '\Late\Model\UpdateAdSet200Response';
+        $request = $this->updateAdSetRequest($ad_set_id, $update_ad_set_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAdSet'
+     *
+     * @param  string $ad_set_id Platform ad set ID (required)
+     * @param  \Late\Model\UpdateAdSetRequest $update_ad_set_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSet'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAdSetRequest($ad_set_id, $update_ad_set_request, string $contentType = self::contentTypes['updateAdSet'][0])
+    {
+
+        // verify the required parameter 'ad_set_id' is set
+        if ($ad_set_id === null || (is_array($ad_set_id) && count($ad_set_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_set_id when calling updateAdSet'
+            );
+        }
+
+        // verify the required parameter 'update_ad_set_request' is set
+        if ($update_ad_set_request === null || (is_array($update_ad_set_request) && count($update_ad_set_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_ad_set_request when calling updateAdSet'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/ad-sets/{adSetId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($ad_set_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'adSetId' . '}',
+                ObjectSerializer::toPathValue($ad_set_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_ad_set_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_set_request));
+            } else {
+                $httpBody = $update_ad_set_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAdSetStatus
+     *
+     * Pause or resume a single ad set
+     *
+     * @param  string $ad_set_id Platform ad set ID (required)
+     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request update_ad_campaign_status_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSetStatus'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Late\Model\UpdateAdSetStatus200Response|\Late\Model\InlineObject
+     */
+    public function updateAdSetStatus($ad_set_id, $update_ad_campaign_status_request, string $contentType = self::contentTypes['updateAdSetStatus'][0])
+    {
+        list($response) = $this->updateAdSetStatusWithHttpInfo($ad_set_id, $update_ad_campaign_status_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateAdSetStatusWithHttpInfo
+     *
+     * Pause or resume a single ad set
+     *
+     * @param  string $ad_set_id Platform ad set ID (required)
+     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSetStatus'] to see the possible values for this operation
+     *
+     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Late\Model\UpdateAdSetStatus200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAdSetStatusWithHttpInfo($ad_set_id, $update_ad_campaign_status_request, string $contentType = self::contentTypes['updateAdSetStatus'][0])
+    {
+        $request = $this->updateAdSetStatusRequest($ad_set_id, $update_ad_campaign_status_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\UpdateAdSetStatus200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Late\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Late\Model\UpdateAdSetStatus200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\UpdateAdSetStatus200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Late\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAdSetStatusAsync
+     *
+     * Pause or resume a single ad set
+     *
+     * @param  string $ad_set_id Platform ad set ID (required)
+     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSetStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdSetStatusAsync($ad_set_id, $update_ad_campaign_status_request, string $contentType = self::contentTypes['updateAdSetStatus'][0])
+    {
+        return $this->updateAdSetStatusAsyncWithHttpInfo($ad_set_id, $update_ad_campaign_status_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAdSetStatusAsyncWithHttpInfo
+     *
+     * Pause or resume a single ad set
+     *
+     * @param  string $ad_set_id Platform ad set ID (required)
+     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSetStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdSetStatusAsyncWithHttpInfo($ad_set_id, $update_ad_campaign_status_request, string $contentType = self::contentTypes['updateAdSetStatus'][0])
+    {
+        $returnType = '\Late\Model\UpdateAdSetStatus200Response';
+        $request = $this->updateAdSetStatusRequest($ad_set_id, $update_ad_campaign_status_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAdSetStatus'
+     *
+     * @param  string $ad_set_id Platform ad set ID (required)
+     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSetStatus'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAdSetStatusRequest($ad_set_id, $update_ad_campaign_status_request, string $contentType = self::contentTypes['updateAdSetStatus'][0])
+    {
+
+        // verify the required parameter 'ad_set_id' is set
+        if ($ad_set_id === null || (is_array($ad_set_id) && count($ad_set_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_set_id when calling updateAdSetStatus'
+            );
+        }
+
+        // verify the required parameter 'update_ad_campaign_status_request' is set
+        if ($update_ad_campaign_status_request === null || (is_array($update_ad_campaign_status_request) && count($update_ad_campaign_status_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_ad_campaign_status_request when calling updateAdSetStatus'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/ad-sets/{adSetId}/status';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($ad_set_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'adSetId' . '}',
+                ObjectSerializer::toPathValue($ad_set_id),
                 $resourcePath
             );
         }

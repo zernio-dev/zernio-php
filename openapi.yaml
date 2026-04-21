@@ -3191,6 +3191,13 @@ components:
     AdStatus:
       type: string
       enum: [active, paused, pending_review, rejected, completed, cancelled, error]
+    AdBudget:
+      type: object
+      description: Budget amount in the ad account's native currency (see the campaign's `currency` field for the code).
+      required: [amount, type]
+      properties:
+        amount: { type: number }
+        type: { type: string, enum: [daily, lifetime] }
     Ad:
       type: object
       properties:
@@ -3284,6 +3291,14 @@ components:
         budget:
           type: object
           nullable: true
+          description: Effective budget at this level (back-compat). For CBO campaigns this mirrors the parent campaign's budget; for ABO this is the ad-set-specific budget. Use `adSetBudget` / parent `campaignBudget` + `budgetLevel` to disambiguate.
+          properties:
+            amount: { type: number }
+            type: { type: string, enum: [daily, lifetime] }
+        adSetBudget:
+          type: object
+          nullable: true
+          description: Ad-set-level budget (ABO). Null for CBO campaigns where the budget is set on the campaign.
           properties:
             amount: { type: number }
             type: { type: string, enum: [daily, lifetime] }
@@ -3309,15 +3324,57 @@ components:
         platformCampaignId: { type: string }
         platform: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] }
         campaignName: { type: string }
-        status: { allOf: [{ $ref: '#/components/schemas/AdStatus' }], description: Derived from child ad statuses }
+        status: { allOf: [{ $ref: '#/components/schemas/AdStatus' }], description: "Delivery status derived from child ad statuses. Distinct from `reviewStatus`, which reflects the platform-side review state." }
+        reviewStatus:
+          type: string
+          nullable: true
+          enum: [in_review, approved, rejected, with_issues]
+          description: |
+            Platform-side review state of the campaign. Independent of the
+            children-derived delivery `status`: a campaign can have ads
+            already active (status=active) while the campaign itself is
+            still being reviewed by the platform (reviewStatus=in_review).
+            For Meta, derived from `effective_status` + `issues_info` on
+            the Campaign, plus ad-level PENDING_REVIEW rollup.
+        platformCampaignStatus:
+          type: string
+          nullable: true
+          description: "Raw platform-level campaign status (Meta `effective_status`: ACTIVE, PAUSED, DELETED, ARCHIVED, IN_PROCESS, WITH_ISSUES). Distinct from per-ad `platformStatus`."
+        campaignIssuesInfo:
+          type: array
+          nullable: true
+          description: "Platform-reported campaign issues (Meta `issues_info[]`). Populated only when the platform has delivery issues to report; contains the specific error codes and messages."
+          items:
+            type: object
         adCount: { type: integer, description: Total ads across all ad sets }
         adSetCount: { type: integer }
         budget:
           type: object
           nullable: true
+          description: Effective budget (back-compat). For CBO this mirrors `campaignBudget`, for ABO this mirrors the child ad-set budget. Use `budgetLevel` to disambiguate.
           properties:
             amount: { type: number }
             type: { type: string, enum: [daily, lifetime] }
+        campaignBudget:
+          type: object
+          nullable: true
+          description: Campaign-level budget (Campaign Budget Optimization / CBO). Populated only when the platform set the budget at the campaign level. For ABO campaigns this is null and the budget lives on the child ad set.
+          properties:
+            amount: { type: number }
+            type: { type: string, enum: [daily, lifetime] }
+        budgetLevel:
+          type: string
+          nullable: true
+          enum: [campaign, adset]
+          description: "Canonical CBO/ABO indicator. `campaign` = CBO (Advantage Campaign Budget, budget lives on the campaign). `adset` = ABO (budget lives on each ad set). Route budget updates to the matching Meta entity."
+        isBudgetScheduleEnabled:
+          type: boolean
+          default: false
+          description: "Meta-only. Mirrors Campaign.is_budget_schedule_enabled — true when the campaign uses budget scheduling (time-based budget changes). Independent of CBO/ABO."
+        currency:
+          type: string
+          nullable: true
+          description: "ISO 4217 currency code (e.g. USD, EUR, CLP, JPY) for all budget amounts in this campaign node. Budgets are NOT normalized to USD."
         metrics: { $ref: '#/components/schemas/AdMetrics' }
         platformAdAccountId: { type: string }
         accountId: { type: string }
@@ -3345,14 +3402,50 @@ components:
         platformCampaignId: { type: string }
         platform: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] }
         campaignName: { type: string }
-        status: { allOf: [{ $ref: '#/components/schemas/AdStatus' }], description: Derived from child ad statuses }
+        status: { allOf: [{ $ref: '#/components/schemas/AdStatus' }], description: "Delivery status derived from child ad statuses. Distinct from `reviewStatus`." }
+        reviewStatus:
+          type: string
+          nullable: true
+          enum: [in_review, approved, rejected, with_issues]
+          description: "Platform-side review state of the campaign. See AdTreeCampaign.reviewStatus for the full description."
+        platformCampaignStatus:
+          type: string
+          nullable: true
+          description: "Raw platform-level campaign status (Meta `effective_status`)."
+        campaignIssuesInfo:
+          type: array
+          nullable: true
+          description: "Platform-reported campaign issues (Meta `issues_info[]`)."
+          items:
+            type: object
         adCount: { type: integer }
         budget:
           type: object
           nullable: true
+          description: Effective budget (back-compat). Use `budgetLevel` to disambiguate CBO vs ABO.
           properties:
             amount: { type: number }
             type: { type: string, enum: [daily, lifetime] }
+        campaignBudget:
+          type: object
+          nullable: true
+          description: Campaign-level budget (CBO). Null for ABO campaigns.
+          properties:
+            amount: { type: number }
+            type: { type: string, enum: [daily, lifetime] }
+        budgetLevel:
+          type: string
+          nullable: true
+          enum: [campaign, adset]
+          description: "Canonical CBO/ABO indicator. See AdTreeCampaign.budgetLevel."
+        isBudgetScheduleEnabled:
+          type: boolean
+          default: false
+          description: "Meta-only. Mirrors Campaign.is_budget_schedule_enabled."
+        currency:
+          type: string
+          nullable: true
+          description: "ISO 4217 currency code for all budget amounts. Budgets are NOT normalized to USD."
         metrics: { $ref: '#/components/schemas/AdMetrics' }
         platformAdAccountId: { type: string }
         accountId: { type: string }
@@ -17933,7 +18026,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageParam'
         - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 100, default: 20 } }
-        - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: zernio } }
+        - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: zernio }, description: "`zernio` (default) returns only ads created via Zernio (isExternal=false). `all` additionally returns ads discovered from the platform's ad manager (isExternal=true). Status is NOT filtered by default — use the `status` param for that." }
         - { name: platform, in: query, schema: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] } }
         - { name: status, in: query, schema: { $ref: '#/components/schemas/AdStatus' }, description: Filter by derived campaign status (post-aggregation) }
         - { name: adAccountId, in: query, schema: { type: string }, description: Platform ad account ID (e.g. act_123 for Meta) }
@@ -17995,6 +18088,296 @@ paths:
         '404':
           description: No ads found for this campaign
 
+  /v1/ads/campaigns/{campaignId}:
+    put:
+      operationId: updateAdCampaign
+      tags: [Ad Campaigns]
+      summary: Update a campaign (budget)
+      description: |
+        Campaign-level edits. Currently supports updating the CBO (Campaign Budget Optimization) budget.
+        For ABO campaigns (where the budget lives on the ad set), use PUT /v1/ads/ad-sets/{adSetId} instead — this endpoint will return 409 with code BUDGET_LEVEL_MISMATCH.
+
+        Meta-only for now. Other platforms return 501 Not Implemented.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: campaignId, in: path, required: true, schema: { type: string }, description: Platform campaign ID }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [platform, budget]
+              properties:
+                platform: { type: string, enum: [facebook, instagram] }
+                budget:
+                  type: object
+                  required: [amount, type]
+                  properties:
+                    amount: { type: number, description: Budget amount in the ad account's currency }
+                    type: { type: string, enum: [daily, lifetime] }
+      responses:
+        '200':
+          description: Campaign budget updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updated: { type: integer }
+                  budget: { $ref: '#/components/schemas/AdBudget' }
+                  budgetLevel: { type: string, enum: [campaign] }
+        '400': { description: Invalid input }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { description: Campaign not found }
+        '409': { description: "Campaign is ABO — route to /v1/ads/ad-sets/{adSetId} instead" }
+        '501': { description: Operation not supported on this platform }
+
+    delete:
+      operationId: deleteAdCampaign
+      tags: [Ad Campaigns]
+      summary: Delete a campaign
+      description: |
+        Deletes the whole campaign on the platform, cascading to its ad sets
+        and ads. Locally, all Ad documents for this campaign are marked
+        `status: cancelled`.
+
+        Meta-only for now. Other platforms return 501 Not Implemented — fall
+        back to DELETE /v1/ads/{adId} per ad in the meantime.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: campaignId, in: path, required: true, schema: { type: string }, description: Platform campaign ID }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [platform]
+              properties:
+                platform: { type: string, enum: [facebook, instagram] }
+      responses:
+        '200':
+          description: Campaign deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deleted: { type: boolean }
+                  adCount: { type: integer, description: Number of local Ad docs marked cancelled }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { description: Campaign not found }
+        '501': { description: Operation not supported on this platform }
+
+  /v1/ads/campaigns/bulk-status:
+    post:
+      operationId: bulkUpdateAdCampaignStatus
+      tags: [Ad Campaigns]
+      summary: Pause or resume many campaigns
+      description: |
+        Process up to 50 campaigns in one call. Each campaign is updated
+        concurrently and the response contains a per-campaign result so a
+        single bad row does not fail the whole batch.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status, campaigns]
+              properties:
+                status: { type: string, enum: [active, paused] }
+                campaigns:
+                  type: array
+                  maxItems: 50
+                  items:
+                    type: object
+                    required: [platformCampaignId, platform]
+                    properties:
+                      platformCampaignId: { type: string }
+                      platform: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] }
+      responses:
+        '200':
+          description: Per-campaign results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, enum: [active, paused] }
+                  totals:
+                    type: object
+                    properties:
+                      updated: { type: integer }
+                      skipped: { type: integer }
+                      failed: { type: integer }
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        platformCampaignId: { type: string }
+                        platform: { type: string }
+                        updated: { type: integer }
+                        skipped: { type: integer }
+                        error: { type: string }
+        '400': { description: Invalid input }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /v1/ads/campaigns/{campaignId}/duplicate:
+    post:
+      operationId: duplicateAdCampaign
+      tags: [Ad Campaigns]
+      summary: Duplicate a campaign
+      description: |
+        Duplicates a campaign, including its ad sets, ads, creatives, and
+        targeting by default (`deepCopy: true`). On Meta, this uses
+        `POST /{campaign-id}/copies`. The copy is created paused by default so
+        callers can review before launching.
+
+        The platform's duplication is asynchronous from our side; once the
+        copy is created on the platform, we trigger a sync discovery so the
+        new hierarchy shows up in /v1/ads/tree. Set `syncAfter: false` to
+        skip the discovery trigger and poll on your own cadence.
+
+        Meta-only for now. Other platforms return 501 Not Implemented.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: campaignId, in: path, required: true, schema: { type: string }, description: Source platform campaign ID }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [platform]
+              properties:
+                platform: { type: string, enum: [facebook, instagram] }
+                deepCopy: { type: boolean, default: true, description: Copy child ad sets + ads + creatives + targeting }
+                statusOption:
+                  type: string
+                  enum: [ACTIVE, PAUSED, INHERITED_FROM_SOURCE]
+                  default: PAUSED
+                startTime: { type: string, format: date-time, description: Reschedule the copied hierarchy's start time }
+                endTime: { type: string, format: date-time }
+                renameStrategy:
+                  type: string
+                  enum: [DEEP_RENAME, ONLY_TOP_LEVEL_RENAME, NO_RENAME]
+                renamePrefix: { type: string }
+                renameSuffix: { type: string }
+                syncAfter: { type: boolean, default: true, description: Trigger ads discovery on the owning account after the copy succeeds }
+      responses:
+        '200':
+          description: Campaign duplicated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  copiedCampaignId: { type: string, description: Platform ID of the new campaign }
+                  discovery: { type: string, enum: [triggered, skipped, failed] }
+                  raw:
+                    type: object
+                    description: Platform-native response from the copy endpoint (Meta includes ad_object_ids for child copies)
+        '400': { description: Invalid input }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { description: Source campaign not found }
+        '501': { description: Operation not supported on this platform }
+
+  /v1/ads/ad-sets/{adSetId}:
+    put:
+      operationId: updateAdSet
+      tags: [Ad Campaigns]
+      summary: Update an ad set (budget and/or status)
+      description: |
+        Ad-set-level writes. Use this for ABO budget updates and ad-set-scoped
+        pause/resume. Provide `budget` and/or `status` in the body.
+
+        When updating `budget` on an ABO campaign: if the parent campaign is
+        CBO, the response is 409 with code BUDGET_LEVEL_MISMATCH — route to
+        PUT /v1/ads/campaigns/{campaignId} instead.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: adSetId, in: path, required: true, schema: { type: string }, description: Platform ad set ID }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [platform]
+              properties:
+                platform: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] }
+                budget:
+                  type: object
+                  description: Omit if only toggling status
+                  properties:
+                    amount: { type: number }
+                    type: { type: string, enum: [daily, lifetime] }
+                status: { type: string, enum: [active, paused], description: Omit if only updating budget }
+      responses:
+        '200':
+          description: Ad set updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  budget: { $ref: '#/components/schemas/AdBudget' }
+                  budgetLevel: { type: string, enum: [adset] }
+                  status: { type: string, enum: [active, paused] }
+                  statusUpdated: { type: integer }
+                  statusSkipped: { type: integer }
+        '400': { description: Invalid input }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { description: Ad set not found }
+        '409': { description: "Campaign is CBO — route to /v1/ads/campaigns/{campaignId} instead" }
+
+  /v1/ads/ad-sets/{adSetId}/status:
+    put:
+      operationId: updateAdSetStatus
+      tags: [Ad Campaigns]
+      summary: Pause or resume a single ad set
+      description: |
+        Ad-set-scoped pause/resume (doesn't touch sibling ad sets). Thin wrapper
+        over PUT /v1/ads/ad-sets/{adSetId} for callers that only want the
+        status toggle and prefer a symmetric URL to
+        /v1/ads/campaigns/{campaignId}/status.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: adSetId, in: path, required: true, schema: { type: string }, description: Platform ad set ID }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status, platform]
+              properties:
+                status: { type: string, enum: [active, paused] }
+                platform: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] }
+      responses:
+        '200':
+          description: Ad set status updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updated: { type: integer }
+                  skipped: { type: integer }
+        '400': { description: Invalid input }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { description: Ad set not found }
+
   /v1/ads/tree:
     get:
       operationId: getAdTree
@@ -18012,7 +18395,7 @@ paths:
       parameters:
         - $ref: '#/components/parameters/PageParam'
         - { name: limit, in: query, schema: { type: integer, minimum: 1, maximum: 100, default: 20 }, description: Campaigns per page }
-        - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: zernio } }
+        - { name: source, in: query, schema: { type: string, enum: [zernio, all], default: zernio }, description: "`zernio` (default) returns only ads created via Zernio (isExternal=false). `all` additionally returns ads discovered from the platform's ad manager (isExternal=true). Status is NOT filtered by default — use the `status` param for that." }
         - { name: platform, in: query, schema: { type: string, enum: [facebook, instagram, tiktok, linkedin, pinterest, google, twitter] } }
         - { name: status, in: query, schema: { $ref: '#/components/schemas/AdStatus' }, description: Filter by derived campaign status (post-aggregation) }
         - { name: adAccountId, in: query, schema: { type: string }, description: Platform ad account ID }

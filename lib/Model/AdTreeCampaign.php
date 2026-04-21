@@ -63,9 +63,16 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform' => 'string',
         'campaign_name' => 'string',
         'status' => '\Late\Model\AdStatus',
+        'review_status' => 'string',
+        'platform_campaign_status' => 'string',
+        'campaign_issues_info' => 'object[]',
         'ad_count' => 'int',
         'ad_set_count' => 'int',
-        'budget' => '\Late\Model\AdBudget',
+        'budget' => '\Late\Model\AdTreeCampaignBudget',
+        'campaign_budget' => '\Late\Model\AdTreeCampaignCampaignBudget',
+        'budget_level' => 'string',
+        'is_budget_schedule_enabled' => 'bool',
+        'currency' => 'string',
         'metrics' => '\Late\Model\AdMetrics',
         'platform_ad_account_id' => 'string',
         'account_id' => 'string',
@@ -89,9 +96,16 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform' => null,
         'campaign_name' => null,
         'status' => null,
+        'review_status' => null,
+        'platform_campaign_status' => null,
+        'campaign_issues_info' => null,
         'ad_count' => null,
         'ad_set_count' => null,
         'budget' => null,
+        'campaign_budget' => null,
+        'budget_level' => null,
+        'is_budget_schedule_enabled' => null,
+        'currency' => null,
         'metrics' => null,
         'platform_ad_account_id' => null,
         'account_id' => null,
@@ -113,9 +127,16 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform' => false,
         'campaign_name' => false,
         'status' => false,
+        'review_status' => false,
+        'platform_campaign_status' => false,
+        'campaign_issues_info' => false,
         'ad_count' => false,
         'ad_set_count' => false,
         'budget' => false,
+        'campaign_budget' => false,
+        'budget_level' => false,
+        'is_budget_schedule_enabled' => false,
+        'currency' => false,
         'metrics' => false,
         'platform_ad_account_id' => false,
         'account_id' => false,
@@ -217,9 +238,16 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform' => 'platform',
         'campaign_name' => 'campaignName',
         'status' => 'status',
+        'review_status' => 'reviewStatus',
+        'platform_campaign_status' => 'platformCampaignStatus',
+        'campaign_issues_info' => 'campaignIssuesInfo',
         'ad_count' => 'adCount',
         'ad_set_count' => 'adSetCount',
         'budget' => 'budget',
+        'campaign_budget' => 'campaignBudget',
+        'budget_level' => 'budgetLevel',
+        'is_budget_schedule_enabled' => 'isBudgetScheduleEnabled',
+        'currency' => 'currency',
         'metrics' => 'metrics',
         'platform_ad_account_id' => 'platformAdAccountId',
         'account_id' => 'accountId',
@@ -241,9 +269,16 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform' => 'setPlatform',
         'campaign_name' => 'setCampaignName',
         'status' => 'setStatus',
+        'review_status' => 'setReviewStatus',
+        'platform_campaign_status' => 'setPlatformCampaignStatus',
+        'campaign_issues_info' => 'setCampaignIssuesInfo',
         'ad_count' => 'setAdCount',
         'ad_set_count' => 'setAdSetCount',
         'budget' => 'setBudget',
+        'campaign_budget' => 'setCampaignBudget',
+        'budget_level' => 'setBudgetLevel',
+        'is_budget_schedule_enabled' => 'setIsBudgetScheduleEnabled',
+        'currency' => 'setCurrency',
         'metrics' => 'setMetrics',
         'platform_ad_account_id' => 'setPlatformAdAccountId',
         'account_id' => 'setAccountId',
@@ -265,9 +300,16 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform' => 'getPlatform',
         'campaign_name' => 'getCampaignName',
         'status' => 'getStatus',
+        'review_status' => 'getReviewStatus',
+        'platform_campaign_status' => 'getPlatformCampaignStatus',
+        'campaign_issues_info' => 'getCampaignIssuesInfo',
         'ad_count' => 'getAdCount',
         'ad_set_count' => 'getAdSetCount',
         'budget' => 'getBudget',
+        'campaign_budget' => 'getCampaignBudget',
+        'budget_level' => 'getBudgetLevel',
+        'is_budget_schedule_enabled' => 'getIsBudgetScheduleEnabled',
+        'currency' => 'getCurrency',
         'metrics' => 'getMetrics',
         'platform_ad_account_id' => 'getPlatformAdAccountId',
         'account_id' => 'getAccountId',
@@ -327,6 +369,12 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     public const PLATFORM_PINTEREST = 'pinterest';
     public const PLATFORM_GOOGLE = 'google';
     public const PLATFORM_TWITTER = 'twitter';
+    public const REVIEW_STATUS_IN_REVIEW = 'in_review';
+    public const REVIEW_STATUS_APPROVED = 'approved';
+    public const REVIEW_STATUS_REJECTED = 'rejected';
+    public const REVIEW_STATUS_WITH_ISSUES = 'with_issues';
+    public const BUDGET_LEVEL_CAMPAIGN = 'campaign';
+    public const BUDGET_LEVEL_ADSET = 'adset';
 
     /**
      * Gets allowable values of the enum
@@ -343,6 +391,34 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             self::PLATFORM_PINTEREST,
             self::PLATFORM_GOOGLE,
             self::PLATFORM_TWITTER,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getReviewStatusAllowableValues()
+    {
+        return [
+            self::REVIEW_STATUS_IN_REVIEW,
+            self::REVIEW_STATUS_APPROVED,
+            self::REVIEW_STATUS_REJECTED,
+            self::REVIEW_STATUS_WITH_ISSUES,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBudgetLevelAllowableValues()
+    {
+        return [
+            self::BUDGET_LEVEL_CAMPAIGN,
+            self::BUDGET_LEVEL_ADSET,
         ];
     }
 
@@ -365,9 +441,16 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('campaign_name', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('review_status', $data ?? [], null);
+        $this->setIfExists('platform_campaign_status', $data ?? [], null);
+        $this->setIfExists('campaign_issues_info', $data ?? [], null);
         $this->setIfExists('ad_count', $data ?? [], null);
         $this->setIfExists('ad_set_count', $data ?? [], null);
         $this->setIfExists('budget', $data ?? [], null);
+        $this->setIfExists('campaign_budget', $data ?? [], null);
+        $this->setIfExists('budget_level', $data ?? [], null);
+        $this->setIfExists('is_budget_schedule_enabled', $data ?? [], false);
+        $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('platform_ad_account_id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
@@ -411,6 +494,24 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'platform', must be one of '%s'",
                 $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getReviewStatusAllowableValues();
+        if (!is_null($this->container['review_status']) && !in_array($this->container['review_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'review_status', must be one of '%s'",
+                $this->container['review_status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getBudgetLevelAllowableValues();
+        if (!is_null($this->container['budget_level']) && !in_array($this->container['budget_level'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'budget_level', must be one of '%s'",
+                $this->container['budget_level'],
                 implode("', '", $allowedValues)
             );
         }
@@ -534,7 +635,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Late\Model\AdStatus|null $status Derived from child ad statuses
+     * @param \Late\Model\AdStatus|null $status Delivery status derived from child ad statuses. Distinct from `reviewStatus`, which reflects the platform-side review state.
      *
      * @return self
      */
@@ -544,6 +645,97 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets review_status
+     *
+     * @return string|null
+     */
+    public function getReviewStatus()
+    {
+        return $this->container['review_status'];
+    }
+
+    /**
+     * Sets review_status
+     *
+     * @param string|null $review_status Platform-side review state of the campaign. Independent of the children-derived delivery `status`: a campaign can have ads already active (status=active) while the campaign itself is still being reviewed by the platform (reviewStatus=in_review). For Meta, derived from `effective_status` + `issues_info` on the Campaign, plus ad-level PENDING_REVIEW rollup.
+     *
+     * @return self
+     */
+    public function setReviewStatus($review_status)
+    {
+        if (is_null($review_status)) {
+            throw new \InvalidArgumentException('non-nullable review_status cannot be null');
+        }
+        $allowedValues = $this->getReviewStatusAllowableValues();
+        if (!in_array($review_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'review_status', must be one of '%s'",
+                    $review_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['review_status'] = $review_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_campaign_status
+     *
+     * @return string|null
+     */
+    public function getPlatformCampaignStatus()
+    {
+        return $this->container['platform_campaign_status'];
+    }
+
+    /**
+     * Sets platform_campaign_status
+     *
+     * @param string|null $platform_campaign_status Raw platform-level campaign status (Meta `effective_status`: ACTIVE, PAUSED, DELETED, ARCHIVED, IN_PROCESS, WITH_ISSUES). Distinct from per-ad `platformStatus`.
+     *
+     * @return self
+     */
+    public function setPlatformCampaignStatus($platform_campaign_status)
+    {
+        if (is_null($platform_campaign_status)) {
+            throw new \InvalidArgumentException('non-nullable platform_campaign_status cannot be null');
+        }
+        $this->container['platform_campaign_status'] = $platform_campaign_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_issues_info
+     *
+     * @return object[]|null
+     */
+    public function getCampaignIssuesInfo()
+    {
+        return $this->container['campaign_issues_info'];
+    }
+
+    /**
+     * Sets campaign_issues_info
+     *
+     * @param object[]|null $campaign_issues_info Platform-reported campaign issues (Meta `issues_info[]`). Populated only when the platform has delivery issues to report; contains the specific error codes and messages.
+     *
+     * @return self
+     */
+    public function setCampaignIssuesInfo($campaign_issues_info)
+    {
+        if (is_null($campaign_issues_info)) {
+            throw new \InvalidArgumentException('non-nullable campaign_issues_info cannot be null');
+        }
+        $this->container['campaign_issues_info'] = $campaign_issues_info;
 
         return $this;
     }
@@ -605,7 +797,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets budget
      *
-     * @return \Late\Model\AdBudget|null
+     * @return \Late\Model\AdTreeCampaignBudget|null
      */
     public function getBudget()
     {
@@ -615,7 +807,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets budget
      *
-     * @param \Late\Model\AdBudget|null $budget budget
+     * @param \Late\Model\AdTreeCampaignBudget|null $budget budget
      *
      * @return self
      */
@@ -625,6 +817,124 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable budget cannot be null');
         }
         $this->container['budget'] = $budget;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_budget
+     *
+     * @return \Late\Model\AdTreeCampaignCampaignBudget|null
+     */
+    public function getCampaignBudget()
+    {
+        return $this->container['campaign_budget'];
+    }
+
+    /**
+     * Sets campaign_budget
+     *
+     * @param \Late\Model\AdTreeCampaignCampaignBudget|null $campaign_budget campaign_budget
+     *
+     * @return self
+     */
+    public function setCampaignBudget($campaign_budget)
+    {
+        if (is_null($campaign_budget)) {
+            throw new \InvalidArgumentException('non-nullable campaign_budget cannot be null');
+        }
+        $this->container['campaign_budget'] = $campaign_budget;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget_level
+     *
+     * @return string|null
+     */
+    public function getBudgetLevel()
+    {
+        return $this->container['budget_level'];
+    }
+
+    /**
+     * Sets budget_level
+     *
+     * @param string|null $budget_level Canonical CBO/ABO indicator. `campaign` = CBO (Advantage Campaign Budget, budget lives on the campaign). `adset` = ABO (budget lives on each ad set). Route budget updates to the matching Meta entity.
+     *
+     * @return self
+     */
+    public function setBudgetLevel($budget_level)
+    {
+        if (is_null($budget_level)) {
+            throw new \InvalidArgumentException('non-nullable budget_level cannot be null');
+        }
+        $allowedValues = $this->getBudgetLevelAllowableValues();
+        if (!in_array($budget_level, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'budget_level', must be one of '%s'",
+                    $budget_level,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['budget_level'] = $budget_level;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_budget_schedule_enabled
+     *
+     * @return bool|null
+     */
+    public function getIsBudgetScheduleEnabled()
+    {
+        return $this->container['is_budget_schedule_enabled'];
+    }
+
+    /**
+     * Sets is_budget_schedule_enabled
+     *
+     * @param bool|null $is_budget_schedule_enabled Meta-only. Mirrors Campaign.is_budget_schedule_enabled — true when the campaign uses budget scheduling (time-based budget changes). Independent of CBO/ABO.
+     *
+     * @return self
+     */
+    public function setIsBudgetScheduleEnabled($is_budget_schedule_enabled)
+    {
+        if (is_null($is_budget_schedule_enabled)) {
+            throw new \InvalidArgumentException('non-nullable is_budget_schedule_enabled cannot be null');
+        }
+        $this->container['is_budget_schedule_enabled'] = $is_budget_schedule_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string|null $currency ISO 4217 currency code (e.g. USD, EUR, CLP, JPY) for all budget amounts in this campaign node. Budgets are NOT normalized to USD.
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        }
+        $this->container['currency'] = $currency;
 
         return $this;
     }

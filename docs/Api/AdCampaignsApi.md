@@ -6,10 +6,200 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**bulkUpdateAdCampaignStatus()**](AdCampaignsApi.md#bulkUpdateAdCampaignStatus) | **POST** /v1/ads/campaigns/bulk-status | Pause or resume many campaigns |
+| [**deleteAdCampaign()**](AdCampaignsApi.md#deleteAdCampaign) | **DELETE** /v1/ads/campaigns/{campaignId} | Delete a campaign |
+| [**duplicateAdCampaign()**](AdCampaignsApi.md#duplicateAdCampaign) | **POST** /v1/ads/campaigns/{campaignId}/duplicate | Duplicate a campaign |
 | [**getAdTree()**](AdCampaignsApi.md#getAdTree) | **GET** /v1/ads/tree | Get campaign tree |
 | [**listAdCampaigns()**](AdCampaignsApi.md#listAdCampaigns) | **GET** /v1/ads/campaigns | List campaigns |
+| [**updateAdCampaign()**](AdCampaignsApi.md#updateAdCampaign) | **PUT** /v1/ads/campaigns/{campaignId} | Update a campaign (budget) |
 | [**updateAdCampaignStatus()**](AdCampaignsApi.md#updateAdCampaignStatus) | **PUT** /v1/ads/campaigns/{campaignId}/status | Pause or resume a campaign |
+| [**updateAdSet()**](AdCampaignsApi.md#updateAdSet) | **PUT** /v1/ads/ad-sets/{adSetId} | Update an ad set (budget and/or status) |
+| [**updateAdSetStatus()**](AdCampaignsApi.md#updateAdSetStatus) | **PUT** /v1/ads/ad-sets/{adSetId}/status | Pause or resume a single ad set |
 
+
+## `bulkUpdateAdCampaignStatus()`
+
+```php
+bulkUpdateAdCampaignStatus($bulk_update_ad_campaign_status_request): \Late\Model\BulkUpdateAdCampaignStatus200Response
+```
+
+Pause or resume many campaigns
+
+Process up to 50 campaigns in one call. Each campaign is updated concurrently and the response contains a per-campaign result so a single bad row does not fail the whole batch.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$bulk_update_ad_campaign_status_request = new \Late\Model\BulkUpdateAdCampaignStatusRequest(); // \Late\Model\BulkUpdateAdCampaignStatusRequest
+
+try {
+    $result = $apiInstance->bulkUpdateAdCampaignStatus($bulk_update_ad_campaign_status_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->bulkUpdateAdCampaignStatus: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **bulk_update_ad_campaign_status_request** | [**\Late\Model\BulkUpdateAdCampaignStatusRequest**](../Model/BulkUpdateAdCampaignStatusRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\BulkUpdateAdCampaignStatus200Response**](../Model/BulkUpdateAdCampaignStatus200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteAdCampaign()`
+
+```php
+deleteAdCampaign($campaign_id, $delete_ad_campaign_request): \Late\Model\DeleteAdCampaign200Response
+```
+
+Delete a campaign
+
+Deletes the whole campaign on the platform, cascading to its ad sets and ads. Locally, all Ad documents for this campaign are marked `status: cancelled`.  Meta-only for now. Other platforms return 501 Not Implemented — fall back to DELETE /v1/ads/{adId} per ad in the meantime.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Platform campaign ID
+$delete_ad_campaign_request = new \Late\Model\DeleteAdCampaignRequest(); // \Late\Model\DeleteAdCampaignRequest
+
+try {
+    $result = $apiInstance->deleteAdCampaign($campaign_id, $delete_ad_campaign_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->deleteAdCampaign: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Platform campaign ID | |
+| **delete_ad_campaign_request** | [**\Late\Model\DeleteAdCampaignRequest**](../Model/DeleteAdCampaignRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\DeleteAdCampaign200Response**](../Model/DeleteAdCampaign200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `duplicateAdCampaign()`
+
+```php
+duplicateAdCampaign($campaign_id, $duplicate_ad_campaign_request): \Late\Model\DuplicateAdCampaign200Response
+```
+
+Duplicate a campaign
+
+Duplicates a campaign, including its ad sets, ads, creatives, and targeting by default (`deepCopy: true`). On Meta, this uses `POST /{campaign-id}/copies`. The copy is created paused by default so callers can review before launching.  The platform's duplication is asynchronous from our side; once the copy is created on the platform, we trigger a sync discovery so the new hierarchy shows up in /v1/ads/tree. Set `syncAfter: false` to skip the discovery trigger and poll on your own cadence.  Meta-only for now. Other platforms return 501 Not Implemented.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Source platform campaign ID
+$duplicate_ad_campaign_request = new \Late\Model\DuplicateAdCampaignRequest(); // \Late\Model\DuplicateAdCampaignRequest
+
+try {
+    $result = $apiInstance->duplicateAdCampaign($campaign_id, $duplicate_ad_campaign_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->duplicateAdCampaign: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Source platform campaign ID | |
+| **duplicate_ad_campaign_request** | [**\Late\Model\DuplicateAdCampaignRequest**](../Model/DuplicateAdCampaignRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\DuplicateAdCampaign200Response**](../Model/DuplicateAdCampaign200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getAdTree()`
 
@@ -40,7 +230,7 @@ $apiInstance = new Late\Api\AdCampaignsApi(
 );
 $page = 1; // int | Page number (1-based)
 $limit = 20; // int | Campaigns per page
-$source = 'zernio'; // string
+$source = 'zernio'; // string | `zernio` (default) returns only ads created via Zernio (isExternal=false). `all` additionally returns ads discovered from the platform's ad manager (isExternal=true). Status is NOT filtered by default — use the `status` param for that.
 $platform = 'platform_example'; // string
 $status = new \Late\Model\\Late\Model\AdStatus(); // \Late\Model\AdStatus | Filter by derived campaign status (post-aggregation)
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID
@@ -63,7 +253,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **page** | **int**| Page number (1-based) | [optional] [default to 1] |
 | **limit** | **int**| Campaigns per page | [optional] [default to 20] |
-| **source** | **string**|  | [optional] [default to &#39;zernio&#39;] |
+| **source** | **string**| &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. | [optional] [default to &#39;zernio&#39;] |
 | **platform** | **string**|  | [optional] |
 | **status** | [**\Late\Model\AdStatus**](../Model/.md)| Filter by derived campaign status (post-aggregation) | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID | [optional] |
@@ -118,7 +308,7 @@ $apiInstance = new Late\Api\AdCampaignsApi(
 );
 $page = 1; // int | Page number (1-based)
 $limit = 20; // int
-$source = 'zernio'; // string
+$source = 'zernio'; // string | `zernio` (default) returns only ads created via Zernio (isExternal=false). `all` additionally returns ads discovered from the platform's ad manager (isExternal=true). Status is NOT filtered by default — use the `status` param for that.
 $platform = 'platform_example'; // string
 $status = new \Late\Model\\Late\Model\AdStatus(); // \Late\Model\AdStatus | Filter by derived campaign status (post-aggregation)
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID (e.g. act_123 for Meta)
@@ -139,7 +329,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **page** | **int**| Page number (1-based) | [optional] [default to 1] |
 | **limit** | **int**|  | [optional] [default to 20] |
-| **source** | **string**|  | [optional] [default to &#39;zernio&#39;] |
+| **source** | **string**| &#x60;zernio&#x60; (default) returns only ads created via Zernio (isExternal&#x3D;false). &#x60;all&#x60; additionally returns ads discovered from the platform&#39;s ad manager (isExternal&#x3D;true). Status is NOT filtered by default — use the &#x60;status&#x60; param for that. | [optional] [default to &#39;zernio&#39;] |
 | **platform** | **string**|  | [optional] |
 | **status** | [**\Late\Model\AdStatus**](../Model/.md)| Filter by derived campaign status (post-aggregation) | [optional] |
 | **ad_account_id** | **string**| Platform ad account ID (e.g. act_123 for Meta) | [optional] |
@@ -157,6 +347,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAdCampaign()`
+
+```php
+updateAdCampaign($campaign_id, $update_ad_campaign_request): \Late\Model\UpdateAdCampaign200Response
+```
+
+Update a campaign (budget)
+
+Campaign-level edits. Currently supports updating the CBO (Campaign Budget Optimization) budget. For ABO campaigns (where the budget lives on the ad set), use PUT /v1/ads/ad-sets/{adSetId} instead — this endpoint will return 409 with code BUDGET_LEVEL_MISMATCH.  Meta-only for now. Other platforms return 501 Not Implemented.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$campaign_id = 'campaign_id_example'; // string | Platform campaign ID
+$update_ad_campaign_request = new \Late\Model\UpdateAdCampaignRequest(); // \Late\Model\UpdateAdCampaignRequest
+
+try {
+    $result = $apiInstance->updateAdCampaign($campaign_id, $update_ad_campaign_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->updateAdCampaign: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **campaign_id** | **string**| Platform campaign ID | |
+| **update_ad_campaign_request** | [**\Late\Model\UpdateAdCampaignRequest**](../Model/UpdateAdCampaignRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UpdateAdCampaign200Response**](../Model/UpdateAdCampaign200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -211,6 +463,130 @@ try {
 ### Return type
 
 [**\Late\Model\UpdateAdCampaignStatus200Response**](../Model/UpdateAdCampaignStatus200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAdSet()`
+
+```php
+updateAdSet($ad_set_id, $update_ad_set_request): \Late\Model\UpdateAdSet200Response
+```
+
+Update an ad set (budget and/or status)
+
+Ad-set-level writes. Use this for ABO budget updates and ad-set-scoped pause/resume. Provide `budget` and/or `status` in the body.  When updating `budget` on an ABO campaign: if the parent campaign is CBO, the response is 409 with code BUDGET_LEVEL_MISMATCH — route to PUT /v1/ads/campaigns/{campaignId} instead.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ad_set_id = 'ad_set_id_example'; // string | Platform ad set ID
+$update_ad_set_request = new \Late\Model\UpdateAdSetRequest(); // \Late\Model\UpdateAdSetRequest
+
+try {
+    $result = $apiInstance->updateAdSet($ad_set_id, $update_ad_set_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->updateAdSet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_set_id** | **string**| Platform ad set ID | |
+| **update_ad_set_request** | [**\Late\Model\UpdateAdSetRequest**](../Model/UpdateAdSetRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UpdateAdSet200Response**](../Model/UpdateAdSet200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateAdSetStatus()`
+
+```php
+updateAdSetStatus($ad_set_id, $update_ad_campaign_status_request): \Late\Model\UpdateAdSetStatus200Response
+```
+
+Pause or resume a single ad set
+
+Ad-set-scoped pause/resume (doesn't touch sibling ad sets). Thin wrapper over PUT /v1/ads/ad-sets/{adSetId} for callers that only want the status toggle and prefer a symmetric URL to /v1/ads/campaigns/{campaignId}/status.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Late\Api\AdCampaignsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ad_set_id = 'ad_set_id_example'; // string | Platform ad set ID
+$update_ad_campaign_status_request = new \Late\Model\UpdateAdCampaignStatusRequest(); // \Late\Model\UpdateAdCampaignStatusRequest
+
+try {
+    $result = $apiInstance->updateAdSetStatus($ad_set_id, $update_ad_campaign_status_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdCampaignsApi->updateAdSetStatus: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_set_id** | **string**| Platform ad set ID | |
+| **update_ad_campaign_status_request** | [**\Late\Model\UpdateAdCampaignStatusRequest**](../Model/UpdateAdCampaignStatusRequest.md)|  | |
+
+### Return type
+
+[**\Late\Model\UpdateAdSetStatus200Response**](../Model/UpdateAdSetStatus200Response.md)
 
 ### Authorization
 

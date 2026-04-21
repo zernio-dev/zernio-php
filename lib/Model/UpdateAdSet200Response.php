@@ -1,6 +1,6 @@
 <?php
 /**
- * AdTreeAdSet
+ * UpdateAdSet200Response
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Late\ObjectSerializer;
 
 /**
- * AdTreeAdSet Class Doc Comment
+ * UpdateAdSet200Response Class Doc Comment
  *
  * @category Class
- * @description Ad set (or ad group/line item depending on platform) with rolled-up metrics and child ads
  * @package  Late
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AdTreeAdSet';
+    protected static $openAPIModelName = 'updateAdSet_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,17 +58,11 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'platform_ad_set_id' => 'string',
-        'ad_set_name' => 'string',
-        'status' => '\Late\Model\AdStatus',
-        'ad_count' => 'int',
-        'budget' => '\Late\Model\AdTreeAdSetBudget',
-        'ad_set_budget' => '\Late\Model\AdTreeAdSetAdSetBudget',
-        'metrics' => '\Late\Model\AdMetrics',
-        'optimization_goal' => 'string',
-        'bid_strategy' => 'string',
-        'promoted_object' => '\Late\Model\AdTreeAdSetPromotedObject',
-        'ads' => '\Late\Model\Ad[]'
+        'budget' => '\Late\Model\AdBudget',
+        'budget_level' => 'string',
+        'status' => 'string',
+        'status_updated' => 'int',
+        'status_skipped' => 'int'
     ];
 
     /**
@@ -80,17 +73,11 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'platform_ad_set_id' => null,
-        'ad_set_name' => null,
-        'status' => null,
-        'ad_count' => null,
         'budget' => null,
-        'ad_set_budget' => null,
-        'metrics' => null,
-        'optimization_goal' => null,
-        'bid_strategy' => null,
-        'promoted_object' => null,
-        'ads' => null
+        'budget_level' => null,
+        'status' => null,
+        'status_updated' => null,
+        'status_skipped' => null
     ];
 
     /**
@@ -99,17 +86,11 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'platform_ad_set_id' => false,
-        'ad_set_name' => false,
-        'status' => false,
-        'ad_count' => false,
         'budget' => false,
-        'ad_set_budget' => false,
-        'metrics' => false,
-        'optimization_goal' => false,
-        'bid_strategy' => false,
-        'promoted_object' => false,
-        'ads' => false
+        'budget_level' => false,
+        'status' => false,
+        'status_updated' => false,
+        'status_skipped' => false
     ];
 
     /**
@@ -198,17 +179,11 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'platform_ad_set_id' => 'platformAdSetId',
-        'ad_set_name' => 'adSetName',
-        'status' => 'status',
-        'ad_count' => 'adCount',
         'budget' => 'budget',
-        'ad_set_budget' => 'adSetBudget',
-        'metrics' => 'metrics',
-        'optimization_goal' => 'optimizationGoal',
-        'bid_strategy' => 'bidStrategy',
-        'promoted_object' => 'promotedObject',
-        'ads' => 'ads'
+        'budget_level' => 'budgetLevel',
+        'status' => 'status',
+        'status_updated' => 'statusUpdated',
+        'status_skipped' => 'statusSkipped'
     ];
 
     /**
@@ -217,17 +192,11 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'platform_ad_set_id' => 'setPlatformAdSetId',
-        'ad_set_name' => 'setAdSetName',
-        'status' => 'setStatus',
-        'ad_count' => 'setAdCount',
         'budget' => 'setBudget',
-        'ad_set_budget' => 'setAdSetBudget',
-        'metrics' => 'setMetrics',
-        'optimization_goal' => 'setOptimizationGoal',
-        'bid_strategy' => 'setBidStrategy',
-        'promoted_object' => 'setPromotedObject',
-        'ads' => 'setAds'
+        'budget_level' => 'setBudgetLevel',
+        'status' => 'setStatus',
+        'status_updated' => 'setStatusUpdated',
+        'status_skipped' => 'setStatusSkipped'
     ];
 
     /**
@@ -236,17 +205,11 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'platform_ad_set_id' => 'getPlatformAdSetId',
-        'ad_set_name' => 'getAdSetName',
-        'status' => 'getStatus',
-        'ad_count' => 'getAdCount',
         'budget' => 'getBudget',
-        'ad_set_budget' => 'getAdSetBudget',
-        'metrics' => 'getMetrics',
-        'optimization_goal' => 'getOptimizationGoal',
-        'bid_strategy' => 'getBidStrategy',
-        'promoted_object' => 'getPromotedObject',
-        'ads' => 'getAds'
+        'budget_level' => 'getBudgetLevel',
+        'status' => 'getStatus',
+        'status_updated' => 'getStatusUpdated',
+        'status_skipped' => 'getStatusSkipped'
     ];
 
     /**
@@ -290,6 +253,34 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const BUDGET_LEVEL_ADSET = 'adset';
+    public const STATUS_ACTIVE = 'active';
+    public const STATUS_PAUSED = 'paused';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBudgetLevelAllowableValues()
+    {
+        return [
+            self::BUDGET_LEVEL_ADSET,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_ACTIVE,
+            self::STATUS_PAUSED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -306,17 +297,11 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('platform_ad_set_id', $data ?? [], null);
-        $this->setIfExists('ad_set_name', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('ad_count', $data ?? [], null);
         $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('ad_set_budget', $data ?? [], null);
-        $this->setIfExists('metrics', $data ?? [], null);
-        $this->setIfExists('optimization_goal', $data ?? [], null);
-        $this->setIfExists('bid_strategy', $data ?? [], null);
-        $this->setIfExists('promoted_object', $data ?? [], null);
-        $this->setIfExists('ads', $data ?? [], null);
+        $this->setIfExists('budget_level', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('status_updated', $data ?? [], null);
+        $this->setIfExists('status_skipped', $data ?? [], null);
     }
 
     /**
@@ -346,6 +331,24 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getBudgetLevelAllowableValues();
+        if (!is_null($this->container['budget_level']) && !in_array($this->container['budget_level'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'budget_level', must be one of '%s'",
+                $this->container['budget_level'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -362,117 +365,9 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets platform_ad_set_id
-     *
-     * @return string|null
-     */
-    public function getPlatformAdSetId()
-    {
-        return $this->container['platform_ad_set_id'];
-    }
-
-    /**
-     * Sets platform_ad_set_id
-     *
-     * @param string|null $platform_ad_set_id platform_ad_set_id
-     *
-     * @return self
-     */
-    public function setPlatformAdSetId($platform_ad_set_id)
-    {
-        if (is_null($platform_ad_set_id)) {
-            throw new \InvalidArgumentException('non-nullable platform_ad_set_id cannot be null');
-        }
-        $this->container['platform_ad_set_id'] = $platform_ad_set_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets ad_set_name
-     *
-     * @return string|null
-     */
-    public function getAdSetName()
-    {
-        return $this->container['ad_set_name'];
-    }
-
-    /**
-     * Sets ad_set_name
-     *
-     * @param string|null $ad_set_name ad_set_name
-     *
-     * @return self
-     */
-    public function setAdSetName($ad_set_name)
-    {
-        if (is_null($ad_set_name)) {
-            throw new \InvalidArgumentException('non-nullable ad_set_name cannot be null');
-        }
-        $this->container['ad_set_name'] = $ad_set_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return \Late\Model\AdStatus|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param \Late\Model\AdStatus|null $status Derived from child ad statuses
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets ad_count
-     *
-     * @return int|null
-     */
-    public function getAdCount()
-    {
-        return $this->container['ad_count'];
-    }
-
-    /**
-     * Sets ad_count
-     *
-     * @param int|null $ad_count ad_count
-     *
-     * @return self
-     */
-    public function setAdCount($ad_count)
-    {
-        if (is_null($ad_count)) {
-            throw new \InvalidArgumentException('non-nullable ad_count cannot be null');
-        }
-        $this->container['ad_count'] = $ad_count;
-
-        return $this;
-    }
-
-    /**
      * Gets budget
      *
-     * @return \Late\Model\AdTreeAdSetBudget|null
+     * @return \Late\Model\AdBudget|null
      */
     public function getBudget()
     {
@@ -482,7 +377,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets budget
      *
-     * @param \Late\Model\AdTreeAdSetBudget|null $budget budget
+     * @param \Late\Model\AdBudget|null $budget budget
      *
      * @return self
      */
@@ -497,163 +392,129 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets ad_set_budget
-     *
-     * @return \Late\Model\AdTreeAdSetAdSetBudget|null
-     */
-    public function getAdSetBudget()
-    {
-        return $this->container['ad_set_budget'];
-    }
-
-    /**
-     * Sets ad_set_budget
-     *
-     * @param \Late\Model\AdTreeAdSetAdSetBudget|null $ad_set_budget ad_set_budget
-     *
-     * @return self
-     */
-    public function setAdSetBudget($ad_set_budget)
-    {
-        if (is_null($ad_set_budget)) {
-            throw new \InvalidArgumentException('non-nullable ad_set_budget cannot be null');
-        }
-        $this->container['ad_set_budget'] = $ad_set_budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets metrics
-     *
-     * @return \Late\Model\AdMetrics|null
-     */
-    public function getMetrics()
-    {
-        return $this->container['metrics'];
-    }
-
-    /**
-     * Sets metrics
-     *
-     * @param \Late\Model\AdMetrics|null $metrics metrics
-     *
-     * @return self
-     */
-    public function setMetrics($metrics)
-    {
-        if (is_null($metrics)) {
-            throw new \InvalidArgumentException('non-nullable metrics cannot be null');
-        }
-        $this->container['metrics'] = $metrics;
-
-        return $this;
-    }
-
-    /**
-     * Gets optimization_goal
+     * Gets budget_level
      *
      * @return string|null
      */
-    public function getOptimizationGoal()
+    public function getBudgetLevel()
     {
-        return $this->container['optimization_goal'];
+        return $this->container['budget_level'];
     }
 
     /**
-     * Sets optimization_goal
+     * Sets budget_level
      *
-     * @param string|null $optimization_goal Meta ad set optimization goal (e.g. OFFSITE_CONVERSIONS, VALUE, LEAD_GENERATION)
+     * @param string|null $budget_level budget_level
      *
      * @return self
      */
-    public function setOptimizationGoal($optimization_goal)
+    public function setBudgetLevel($budget_level)
     {
-        if (is_null($optimization_goal)) {
-            throw new \InvalidArgumentException('non-nullable optimization_goal cannot be null');
+        if (is_null($budget_level)) {
+            throw new \InvalidArgumentException('non-nullable budget_level cannot be null');
         }
-        $this->container['optimization_goal'] = $optimization_goal;
+        $allowedValues = $this->getBudgetLevelAllowableValues();
+        if (!in_array($budget_level, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'budget_level', must be one of '%s'",
+                    $budget_level,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['budget_level'] = $budget_level;
 
         return $this;
     }
 
     /**
-     * Gets bid_strategy
+     * Gets status
      *
      * @return string|null
      */
-    public function getBidStrategy()
+    public function getStatus()
     {
-        return $this->container['bid_strategy'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets bid_strategy
+     * Sets status
      *
-     * @param string|null $bid_strategy Bid strategy for this ad set (overrides campaign level when set)
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setBidStrategy($bid_strategy)
+    public function setStatus($status)
     {
-        if (is_null($bid_strategy)) {
-            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['bid_strategy'] = $bid_strategy;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets promoted_object
+     * Gets status_updated
      *
-     * @return \Late\Model\AdTreeAdSetPromotedObject|null
+     * @return int|null
      */
-    public function getPromotedObject()
+    public function getStatusUpdated()
     {
-        return $this->container['promoted_object'];
+        return $this->container['status_updated'];
     }
 
     /**
-     * Sets promoted_object
+     * Sets status_updated
      *
-     * @param \Late\Model\AdTreeAdSetPromotedObject|null $promoted_object promoted_object
+     * @param int|null $status_updated status_updated
      *
      * @return self
      */
-    public function setPromotedObject($promoted_object)
+    public function setStatusUpdated($status_updated)
     {
-        if (is_null($promoted_object)) {
-            throw new \InvalidArgumentException('non-nullable promoted_object cannot be null');
+        if (is_null($status_updated)) {
+            throw new \InvalidArgumentException('non-nullable status_updated cannot be null');
         }
-        $this->container['promoted_object'] = $promoted_object;
+        $this->container['status_updated'] = $status_updated;
 
         return $this;
     }
 
     /**
-     * Gets ads
+     * Gets status_skipped
      *
-     * @return \Late\Model\Ad[]|null
+     * @return int|null
      */
-    public function getAds()
+    public function getStatusSkipped()
     {
-        return $this->container['ads'];
+        return $this->container['status_skipped'];
     }
 
     /**
-     * Sets ads
+     * Sets status_skipped
      *
-     * @param \Late\Model\Ad[]|null $ads Individual ads within this ad set (capped at 100). Returns a subset of Ad fields from the aggregation (core fields like _id, name, platform, status, budget, metrics, creative, goal are included; targeting and schedule may be absent).
+     * @param int|null $status_skipped status_skipped
      *
      * @return self
      */
-    public function setAds($ads)
+    public function setStatusSkipped($status_skipped)
     {
-        if (is_null($ads)) {
-            throw new \InvalidArgumentException('non-nullable ads cannot be null');
+        if (is_null($status_skipped)) {
+            throw new \InvalidArgumentException('non-nullable status_skipped cannot be null');
         }
-        $this->container['ads'] = $ads;
+        $this->container['status_skipped'] = $status_skipped;
 
         return $this;
     }
