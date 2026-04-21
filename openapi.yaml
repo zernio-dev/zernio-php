@@ -1070,12 +1070,45 @@ components:
           properties:
             id:
               type: string
+              description: |
+                Sender's platform identifier. For WhatsApp this is the phone number
+                (without leading `+`) when available, otherwise the `businessScopedUserId`.
+                For other platforms, the platform's own user ID.
             name:
               type: string
             username:
               type: string
             picture:
               type: string
+            phoneNumber:
+              type: string
+              nullable: true
+              description: |
+                WhatsApp only. Sender's phone number in E.164 format (with leading `+`).
+
+                **Nullable during the BSUID rollout (April 2026+).** WhatsApp users
+                who adopt a username can message businesses without exposing a phone
+                number — this field is omitted for them. Match by `businessScopedUserId`
+                instead. See `docs/whatsapp-bsuid-migration.md`.
+            businessScopedUserId:
+              type: string
+              description: |
+                WhatsApp only. Business-scoped user ID (BSUID) — Meta's canonical
+                identifier for a WhatsApp user within your business. Present when
+                Meta includes it in the inbound payload (rollout in progress since
+                early April 2026). **Recommended primary identity anchor** going
+                forward; fall back to `phoneNumber` only when this field is absent.
+            parentBusinessScopedUserId:
+              type: string
+              description: |
+                WhatsApp only. Parent BSUID for businesses with linked business
+                portfolios. Omitted for standalone portfolios.
+            whatsappUsername:
+              type: string
+              description: |
+                WhatsApp only. User's WhatsApp username (e.g. `@jane`). Not a
+                stable identifier — users can change it. Useful for display, not
+                recommended as an identity anchor.
             instagramProfile:
               type: object
               description: Instagram profile data. Only present for Instagram conversations.
@@ -1170,12 +1203,47 @@ components:
               properties:
                 id:
                   type: string
+                  description: |
+                    Sender's platform identifier. For WhatsApp this is the phone
+                    number (without leading `+`) when available, otherwise the
+                    `businessScopedUserId`.
                 name:
                   type: string
                 username:
                   type: string
                 picture:
                   type: string
+                phoneNumber:
+                  type: string
+                  nullable: true
+                  description: |
+                    WhatsApp only. Sender's phone number in E.164 format (with leading `+`).
+
+                    **Nullable during the BSUID rollout (April 2026+).** WhatsApp
+                    users who adopt a username can message businesses without
+                    exposing a phone number — this field is omitted for them.
+                    Match by `businessScopedUserId` instead. See
+                    `docs/whatsapp-bsuid-migration.md`.
+                businessScopedUserId:
+                  type: string
+                  description: |
+                    WhatsApp only. Business-scoped user ID (BSUID) — Meta's canonical
+                    identifier for a WhatsApp user within your business. Present
+                    when Meta includes it in the inbound payload (rollout in
+                    progress since early April 2026). **Recommended primary identity
+                    anchor** going forward; fall back to `phoneNumber` only when
+                    this field is absent.
+                parentBusinessScopedUserId:
+                  type: string
+                  description: |
+                    WhatsApp only. Parent BSUID for businesses with linked business
+                    portfolios. Omitted for standalone portfolios.
+                whatsappUsername:
+                  type: string
+                  description: |
+                    WhatsApp only. User's WhatsApp username (e.g. `@jane`). Not a
+                    stable identifier — users can change it. Useful for display,
+                    not recommended as an identity anchor.
                 instagramProfile:
                   type: object
                   description: Instagram profile data for the sender. Only present for Instagram conversations.

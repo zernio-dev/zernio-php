@@ -62,6 +62,10 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
         'name' => 'string',
         'username' => 'string',
         'picture' => 'string',
+        'phone_number' => 'string',
+        'business_scoped_user_id' => 'string',
+        'parent_business_scoped_user_id' => 'string',
+        'whatsapp_username' => 'string',
         'instagram_profile' => '\Late\Model\WebhookPayloadMessageMessageSenderInstagramProfile'
     ];
 
@@ -77,6 +81,10 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
         'name' => null,
         'username' => null,
         'picture' => null,
+        'phone_number' => null,
+        'business_scoped_user_id' => null,
+        'parent_business_scoped_user_id' => null,
+        'whatsapp_username' => null,
         'instagram_profile' => null
     ];
 
@@ -90,6 +98,10 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
         'name' => false,
         'username' => false,
         'picture' => false,
+        'phone_number' => false,
+        'business_scoped_user_id' => false,
+        'parent_business_scoped_user_id' => false,
+        'whatsapp_username' => false,
         'instagram_profile' => false
     ];
 
@@ -183,6 +195,10 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
         'name' => 'name',
         'username' => 'username',
         'picture' => 'picture',
+        'phone_number' => 'phoneNumber',
+        'business_scoped_user_id' => 'businessScopedUserId',
+        'parent_business_scoped_user_id' => 'parentBusinessScopedUserId',
+        'whatsapp_username' => 'whatsappUsername',
         'instagram_profile' => 'instagramProfile'
     ];
 
@@ -196,6 +212,10 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
         'name' => 'setName',
         'username' => 'setUsername',
         'picture' => 'setPicture',
+        'phone_number' => 'setPhoneNumber',
+        'business_scoped_user_id' => 'setBusinessScopedUserId',
+        'parent_business_scoped_user_id' => 'setParentBusinessScopedUserId',
+        'whatsapp_username' => 'setWhatsappUsername',
         'instagram_profile' => 'setInstagramProfile'
     ];
 
@@ -209,6 +229,10 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
         'name' => 'getName',
         'username' => 'getUsername',
         'picture' => 'getPicture',
+        'phone_number' => 'getPhoneNumber',
+        'business_scoped_user_id' => 'getBusinessScopedUserId',
+        'parent_business_scoped_user_id' => 'getParentBusinessScopedUserId',
+        'whatsapp_username' => 'getWhatsappUsername',
         'instagram_profile' => 'getInstagramProfile'
     ];
 
@@ -273,6 +297,10 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('picture', $data ?? [], null);
+        $this->setIfExists('phone_number', $data ?? [], null);
+        $this->setIfExists('business_scoped_user_id', $data ?? [], null);
+        $this->setIfExists('parent_business_scoped_user_id', $data ?? [], null);
+        $this->setIfExists('whatsapp_username', $data ?? [], null);
         $this->setIfExists('instagram_profile', $data ?? [], null);
     }
 
@@ -334,7 +362,7 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
     /**
      * Sets id
      *
-     * @param string $id id
+     * @param string $id Sender's platform identifier. For WhatsApp this is the phone number (without leading `+`) when available, otherwise the `businessScopedUserId`.
      *
      * @return self
      */
@@ -425,6 +453,114 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable picture cannot be null');
         }
         $this->container['picture'] = $picture;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number
+     *
+     * @return string|null
+     */
+    public function getPhoneNumber()
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number
+     *
+     * @param string|null $phone_number WhatsApp only. Sender's phone number in E.164 format (with leading `+`).  **Nullable during the BSUID rollout (April 2026+).** WhatsApp users who adopt a username can message businesses without exposing a phone number — this field is omitted for them. Match by `businessScopedUserId` instead. See `docs/whatsapp-bsuid-migration.md`.
+     *
+     * @return self
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        if (is_null($phone_number)) {
+            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+        }
+        $this->container['phone_number'] = $phone_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_scoped_user_id
+     *
+     * @return string|null
+     */
+    public function getBusinessScopedUserId()
+    {
+        return $this->container['business_scoped_user_id'];
+    }
+
+    /**
+     * Sets business_scoped_user_id
+     *
+     * @param string|null $business_scoped_user_id WhatsApp only. Business-scoped user ID (BSUID) — Meta's canonical identifier for a WhatsApp user within your business. Present when Meta includes it in the inbound payload (rollout in progress since early April 2026). **Recommended primary identity anchor** going forward; fall back to `phoneNumber` only when this field is absent.
+     *
+     * @return self
+     */
+    public function setBusinessScopedUserId($business_scoped_user_id)
+    {
+        if (is_null($business_scoped_user_id)) {
+            throw new \InvalidArgumentException('non-nullable business_scoped_user_id cannot be null');
+        }
+        $this->container['business_scoped_user_id'] = $business_scoped_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_business_scoped_user_id
+     *
+     * @return string|null
+     */
+    public function getParentBusinessScopedUserId()
+    {
+        return $this->container['parent_business_scoped_user_id'];
+    }
+
+    /**
+     * Sets parent_business_scoped_user_id
+     *
+     * @param string|null $parent_business_scoped_user_id WhatsApp only. Parent BSUID for businesses with linked business portfolios. Omitted for standalone portfolios.
+     *
+     * @return self
+     */
+    public function setParentBusinessScopedUserId($parent_business_scoped_user_id)
+    {
+        if (is_null($parent_business_scoped_user_id)) {
+            throw new \InvalidArgumentException('non-nullable parent_business_scoped_user_id cannot be null');
+        }
+        $this->container['parent_business_scoped_user_id'] = $parent_business_scoped_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets whatsapp_username
+     *
+     * @return string|null
+     */
+    public function getWhatsappUsername()
+    {
+        return $this->container['whatsapp_username'];
+    }
+
+    /**
+     * Sets whatsapp_username
+     *
+     * @param string|null $whatsapp_username WhatsApp only. User's WhatsApp username (e.g. `@jane`). Not a stable identifier — users can change it. Useful for display, not recommended as an identity anchor.
+     *
+     * @return self
+     */
+    public function setWhatsappUsername($whatsapp_username)
+    {
+        if (is_null($whatsapp_username)) {
+            throw new \InvalidArgumentException('non-nullable whatsapp_username cannot be null');
+        }
+        $this->container['whatsapp_username'] = $whatsapp_username;
 
         return $this;
     }
