@@ -46,9 +46,47 @@ jobs:
             -g php \
             -o . \
             --skip-validate-spec \
-            --additional-properties=packageName=Late,invokerPackage=Late,apiPackage=Api,modelPackage=Model \
+            --additional-properties=packageName=Zernio,invokerPackage=Zernio,apiPackage=Api,modelPackage=Model \
             --git-user-id=zernio-dev \
             --git-repo-id=zernio-php
+
+      - name: Add Late namespace backwards-compat shim
+        run: |
+          # Register a lazy spl_autoloader that aliases any referenced
+          # Late\Foo to Zernio\Foo via class_alias() on first access. This
+          # keeps pre-rebrand users working without having to duplicate
+          # every class into a second namespace.
+          cat > lib/LateAliases.php <<'PHP'
+          <?php
+          /**
+           * Legacy "Late\" namespace support.
+           *
+           * The SDK was originally published under the Late\ namespace and
+           * later rebranded to Zernio\. This autoloader maps any Late\Foo
+           * reference to Zernio\Foo at resolution time via class_alias().
+           *
+           * Loaded automatically via composer.json "autoload.files".
+           */
+
+          spl_autoload_register(function (string $class): void {
+              if (strncmp($class, 'Late\\', 5) !== 0) {
+                  return;
+              }
+              $zernioClass = 'Zernio\\' . substr($class, 5);
+              if (class_exists($zernioClass, true)
+                  || interface_exists($zernioClass, true)
+                  || trait_exists($zernioClass, true)) {
+                  class_alias($zernioClass, $class);
+              }
+          }, true, true);
+          PHP
+
+      - name: Register Late shim in composer.json
+        run: |
+          # Add lib/LateAliases.php to composer autoload "files" so it's
+          # loaded automatically for any project that requires the SDK.
+          jq '.autoload.files = ((.autoload.files // []) + ["lib/LateAliases.php"] | unique)' \
+            composer.json > tmp.json && mv tmp.json composer.json
 
       - name: Patch README install instructions
         run: |
@@ -66,7 +104,9 @@ jobs:
 
           \`\`\`bash
           composer require zernio-dev/zernio-php
-          \`\`\`''')
+          \`\`\`
+
+          Use the \`Zernio\\\\\` namespace. The legacy \`Late\\\\\` namespace is auto-aliased on load for backwards compatibility.''')
           content = re.sub(r'## Installation & Usage.*?(?=\n## )', install_section + '\n\n', content, flags=re.DOTALL)
           with open('README.md', 'w') as f:
               f.write(content)
@@ -128,5 +168,8 @@ jobs:
             ```bash
             composer require zernio-dev/zernio-php
             ```
+
+            Use the `Zernio\` namespace. The legacy `Late\` namespace remains
+            available for backwards compatibility via runtime class aliasing.
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
