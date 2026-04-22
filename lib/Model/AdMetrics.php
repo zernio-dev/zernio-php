@@ -69,6 +69,9 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'conversions' => 'int',
         'cost_per_conversion' => 'float',
         'actions' => 'array<string,int>',
+        'action_values' => 'array<string,float>',
+        'purchase_value' => 'float',
+        'roas' => 'float',
         'last_synced_at' => '\DateTime'
     ];
 
@@ -91,6 +94,9 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'conversions' => null,
         'cost_per_conversion' => null,
         'actions' => null,
+        'action_values' => null,
+        'purchase_value' => null,
+        'roas' => null,
         'last_synced_at' => 'date-time'
     ];
 
@@ -111,6 +117,9 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'conversions' => false,
         'cost_per_conversion' => false,
         'actions' => false,
+        'action_values' => false,
+        'purchase_value' => false,
+        'roas' => false,
         'last_synced_at' => false
     ];
 
@@ -211,6 +220,9 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'conversions' => 'conversions',
         'cost_per_conversion' => 'costPerConversion',
         'actions' => 'actions',
+        'action_values' => 'actionValues',
+        'purchase_value' => 'purchaseValue',
+        'roas' => 'roas',
         'last_synced_at' => 'lastSyncedAt'
     ];
 
@@ -231,6 +243,9 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'conversions' => 'setConversions',
         'cost_per_conversion' => 'setCostPerConversion',
         'actions' => 'setActions',
+        'action_values' => 'setActionValues',
+        'purchase_value' => 'setPurchaseValue',
+        'roas' => 'setRoas',
         'last_synced_at' => 'setLastSyncedAt'
     ];
 
@@ -251,6 +266,9 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'conversions' => 'getConversions',
         'cost_per_conversion' => 'getCostPerConversion',
         'actions' => 'getActions',
+        'action_values' => 'getActionValues',
+        'purchase_value' => 'getPurchaseValue',
+        'roas' => 'getRoas',
         'last_synced_at' => 'getLastSyncedAt'
     ];
 
@@ -322,6 +340,9 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('conversions', $data ?? [], null);
         $this->setIfExists('cost_per_conversion', $data ?? [], null);
         $this->setIfExists('actions', $data ?? [], null);
+        $this->setIfExists('action_values', $data ?? [], null);
+        $this->setIfExists('purchase_value', $data ?? [], null);
+        $this->setIfExists('roas', $data ?? [], null);
         $this->setIfExists('last_synced_at', $data ?? [], null);
     }
 
@@ -660,6 +681,87 @@ class AdMetrics implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable actions cannot be null');
         }
         $this->container['actions'] = $actions;
+
+        return $this;
+    }
+
+    /**
+     * Gets action_values
+     *
+     * @return array<string,float>|null
+     */
+    public function getActionValues()
+    {
+        return $this->container['action_values'];
+    }
+
+    /**
+     * Sets action_values
+     *
+     * @param array<string,float>|null $action_values Monetary mirror of `actions`, from Meta's Insights `action_values[]` array. Same keying — values are the revenue attributed to each action_type, in ad-account native currency (same unit as `spend`; see the campaign node's `currency` field). Use this to compute revenue-per-event (e.g. avg purchase value). Meta-only; other platforms return {}.
+     *
+     * @return self
+     */
+    public function setActionValues($action_values)
+    {
+        if (is_null($action_values)) {
+            throw new \InvalidArgumentException('non-nullable action_values cannot be null');
+        }
+        $this->container['action_values'] = $action_values;
+
+        return $this;
+    }
+
+    /**
+     * Gets purchase_value
+     *
+     * @return float|null
+     */
+    public function getPurchaseValue()
+    {
+        return $this->container['purchase_value'];
+    }
+
+    /**
+     * Sets purchase_value
+     *
+     * @param float|null $purchase_value Convenience sum of purchase-type action values — picked from `actionValues` via the same priority list as `conversions` so both fields describe the same events. In ad-account native currency. 0 when the campaign has no purchase event configured. Meta-only.
+     *
+     * @return self
+     */
+    public function setPurchaseValue($purchase_value)
+    {
+        if (is_null($purchase_value)) {
+            throw new \InvalidArgumentException('non-nullable purchase_value cannot be null');
+        }
+        $this->container['purchase_value'] = $purchase_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets roas
+     *
+     * @return float|null
+     */
+    public function getRoas()
+    {
+        return $this->container['roas'];
+    }
+
+    /**
+     * Sets roas
+     *
+     * @param float|null $roas Return on ad spend — derived as `purchaseValue / spend`. 0 when `spend` is 0. Equivalent to Meta's `purchase_roas` under default attribution. At ad-set and campaign levels this is recomputed from summed purchaseValue + spend (NOT averaged across children) so it's mathematically correct at every rollup level.
+     *
+     * @return self
+     */
+    public function setRoas($roas)
+    {
+        if (is_null($roas)) {
+            throw new \InvalidArgumentException('non-nullable roas cannot be null');
+        }
+        $this->container['roas'] = $roas;
 
         return $this;
     }
