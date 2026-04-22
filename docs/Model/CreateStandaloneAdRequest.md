@@ -7,16 +7,18 @@ Name | Type | Description | Notes
 **account_id** | **string** |  |
 **ad_account_id** | **string** |  |
 **name** | **string** |  |
-**goal** | **string** | Available goals vary by platform. Meta (Facebook/Instagram) and TikTok support all 7. LinkedIn supports all except app_promotion. Twitter/X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views. |
-**budget_amount** | **float** |  |
-**budget_type** | **string** |  |
+**goal** | **string** | Required on legacy + multi-creative shapes. Inherited from the ad set on the attach shape. Available goals vary by platform. | [optional]
+**budget_amount** | **float** | Required on legacy + multi-creative shapes. Inherited on attach. | [optional]
+**budget_type** | **string** | Required on legacy + multi-creative shapes. Inherited on attach. | [optional]
 **currency** | **string** |  | [optional]
-**headline** | **string** | Required for most platforms. Max: Meta&#x3D;255, Google&#x3D;30, Pinterest&#x3D;100 | [optional]
+**headline** | **string** | Required on legacy + attach shapes (skip for multi-creative — use &#x60;creatives[].headline&#x60;). Max: Meta&#x3D;255, Google&#x3D;30, Pinterest&#x3D;100 | [optional]
 **long_headline** | **string** | Google Display only | [optional]
-**body** | **string** | Max: Google&#x3D;90, Pinterest&#x3D;500 |
-**call_to_action** | **string** | Meta only | [optional]
-**link_url** | **string** |  | [optional]
-**image_url** | **string** | Image URL (or video URL for TikTok). Not required for Google Search campaigns. | [optional]
+**body** | **string** | Required on legacy + attach shapes. Max: Google&#x3D;90, Pinterest&#x3D;500 | [optional]
+**call_to_action** | **string** | Required on legacy + attach shapes. Meta only. | [optional]
+**link_url** | **string** | Required on legacy + attach shapes. Skip for multi-creative. | [optional]
+**image_url** | **string** | Required on legacy + attach shapes. Not required for Google Search campaigns. | [optional]
+**creatives** | [**\Late\Model\CreateStandaloneAdRequestCreativesInner[]**](CreateStandaloneAdRequestCreativesInner.md) | Meta-only. When present, switches to the multi-creative shape: creates 1 campaign + 1 ad set + N ads (one per entry here). Top-level &#x60;headline&#x60; / &#x60;body&#x60; / &#x60;imageUrl&#x60; / &#x60;linkUrl&#x60; / &#x60;callToAction&#x60; are ignored in this mode. Mutually exclusive with &#x60;adSetId&#x60;. | [optional]
+**ad_set_id** | **string** | Meta-only. When present, switches to the attach shape: adds one new ad to this existing ad set without creating a new campaign. Budget, targeting, goal, and schedule are inherited from the ad set on Meta. Mutually exclusive with &#x60;creatives[]&#x60;. | [optional]
 **business_name** | **string** | Google Display only | [optional]
 **board_id** | **string** | Pinterest only. Board ID (auto-creates if not provided). | [optional]
 **countries** | **string[]** |  | [optional]

@@ -82,12 +82,12 @@ try {
 ## `createStandaloneAd()`
 
 ```php
-createStandaloneAd($create_standalone_ad_request): \Late\Model\UpdateAd200Response
+createStandaloneAd($create_standalone_ad_request): \Late\Model\CreateStandaloneAd201Response
 ```
 
 Create standalone ad
 
-Creates a paid ad with custom creative (headline, body, image/video, link). Creates the full platform campaign hierarchy.
+Creates a paid ad with custom creative. The request body supports three mutually-exclusive shapes:  1. **Legacy single-creative** (all platforms). Top-level `headline` + `body` + `imageUrl` + `linkUrl` + `callToAction` create 1 campaign + 1 ad set + 1 ad. 2. **Multi-creative** (Meta only — use `creatives[]` array). Creates 1 campaign + 1 ad set + N ads sharing the same budget / targeting / schedule. This is the standard performance-marketing creative-testing flow — Meta's delivery algorithm A/B tests the creatives inside a single ad set so budget isn't fragmented across N parallel campaigns. 3. **Attach to existing ad set** (Meta only — pass `adSetId` + a single creative). Adds one new ad to an existing ad set without creating a new campaign. Budget, targeting, goal are inherited from the ad set on Meta.  `creatives[]` and `adSetId` are mutually exclusive; specifying both returns 400.
 
 ### Example
 
@@ -124,7 +124,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateAd200Response**](../Model/UpdateAd200Response.md)
+[**\Late\Model\CreateStandaloneAd201Response**](../Model/CreateStandaloneAd201Response.md)
 
 ### Authorization
 

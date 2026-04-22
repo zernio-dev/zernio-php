@@ -451,7 +451,7 @@ class AdsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateAd200Response|\Late\Model\InlineObject
+     * @return \Late\Model\CreateStandaloneAd201Response|\Late\Model\InlineObject
      */
     public function createStandaloneAd($create_standalone_ad_request, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
@@ -469,7 +469,7 @@ class AdsApi
      *
      * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateAd200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Late\Model\CreateStandaloneAd201Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createStandaloneAdWithHttpInfo($create_standalone_ad_request, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
@@ -501,7 +501,7 @@ class AdsApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateAd200Response',
+                        '\Late\Model\CreateStandaloneAd201Response',
                         $request,
                         $response,
                     );
@@ -529,7 +529,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateAd200Response',
+                '\Late\Model\CreateStandaloneAd201Response',
                 $request,
                 $response,
             );
@@ -538,7 +538,7 @@ class AdsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateAd200Response',
+                        '\Late\Model\CreateStandaloneAd201Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -592,7 +592,7 @@ class AdsApi
      */
     public function createStandaloneAdAsyncWithHttpInfo($create_standalone_ad_request, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
-        $returnType = '\Late\Model\UpdateAd200Response';
+        $returnType = '\Late\Model\CreateStandaloneAd201Response';
         $request = $this->createStandaloneAdRequest($create_standalone_ad_request, $contentType);
 
         return $this->client

@@ -173,7 +173,11 @@ docs/Model/CreateSequenceRequest.md
 docs/Model/CreateSequenceRequestStepsInner.md
 docs/Model/CreateSequenceRequestStepsInnerTemplate.md
 docs/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.md
+docs/Model/CreateStandaloneAd201Response.md
+docs/Model/CreateStandaloneAd201ResponseOneOf.md
+docs/Model/CreateStandaloneAd201ResponseOneOf1.md
 docs/Model/CreateStandaloneAdRequest.md
+docs/Model/CreateStandaloneAdRequestCreativesInner.md
 docs/Model/CreateWebhookSettingsRequest.md
 docs/Model/CreateWhatsAppFlow200Response.md
 docs/Model/CreateWhatsAppFlow200ResponseFlow.md
@@ -1010,7 +1014,11 @@ lib/Model/CreateSequenceRequest.php
 lib/Model/CreateSequenceRequestStepsInner.php
 lib/Model/CreateSequenceRequestStepsInnerTemplate.php
 lib/Model/CreateSequenceRequestStepsInnerTemplateVariableMappingValue.php
+lib/Model/CreateStandaloneAd201Response.php
+lib/Model/CreateStandaloneAd201ResponseOneOf.php
+lib/Model/CreateStandaloneAd201ResponseOneOf1.php
 lib/Model/CreateStandaloneAdRequest.php
+lib/Model/CreateStandaloneAdRequestCreativesInner.php
 lib/Model/CreateWebhookSettingsRequest.php
 lib/Model/CreateWhatsAppFlow200Response.php
 lib/Model/CreateWhatsAppFlow200ResponseFlow.php
@@ -1675,3 +1683,7 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateStandaloneAd201ResponseOneOf1Test.php
+test/Model/CreateStandaloneAd201ResponseOneOfTest.php
+test/Model/CreateStandaloneAd201ResponseTest.php
+test/Model/CreateStandaloneAdRequestCreativesInnerTest.php

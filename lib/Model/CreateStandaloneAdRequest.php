@@ -71,6 +71,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'string',
         'link_url' => 'string',
         'image_url' => 'string',
+        'creatives' => '\Late\Model\CreateStandaloneAdRequestCreativesInner[]',
+        'ad_set_id' => 'string',
         'business_name' => 'string',
         'board_id' => 'string',
         'countries' => 'string[]',
@@ -107,6 +109,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => null,
         'link_url' => 'uri',
         'image_url' => 'uri',
+        'creatives' => null,
+        'ad_set_id' => null,
         'business_name' => null,
         'board_id' => null,
         'countries' => null,
@@ -141,6 +145,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => false,
         'link_url' => false,
         'image_url' => false,
+        'creatives' => false,
+        'ad_set_id' => false,
         'business_name' => false,
         'board_id' => false,
         'countries' => false,
@@ -255,6 +261,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'callToAction',
         'link_url' => 'linkUrl',
         'image_url' => 'imageUrl',
+        'creatives' => 'creatives',
+        'ad_set_id' => 'adSetId',
         'business_name' => 'businessName',
         'board_id' => 'boardId',
         'countries' => 'countries',
@@ -289,6 +297,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'setCallToAction',
         'link_url' => 'setLinkUrl',
         'image_url' => 'setImageUrl',
+        'creatives' => 'setCreatives',
+        'ad_set_id' => 'setAdSetId',
         'business_name' => 'setBusinessName',
         'board_id' => 'setBoardId',
         'countries' => 'setCountries',
@@ -323,6 +333,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'getCallToAction',
         'link_url' => 'getLinkUrl',
         'image_url' => 'getImageUrl',
+        'creatives' => 'getCreatives',
+        'ad_set_id' => 'getAdSetId',
         'business_name' => 'getBusinessName',
         'board_id' => 'getBoardId',
         'countries' => 'getCountries',
@@ -509,6 +521,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('call_to_action', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
+        $this->setIfExists('creatives', $data ?? [], null);
+        $this->setIfExists('ad_set_id', $data ?? [], null);
         $this->setIfExists('business_name', $data ?? [], null);
         $this->setIfExists('board_id', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
@@ -564,9 +578,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
 
-        if ($this->container['goal'] === null) {
-            $invalidProperties[] = "'goal' can't be null";
-        }
         $allowedValues = $this->getGoalAllowableValues();
         if (!is_null($this->container['goal']) && !in_array($this->container['goal'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -576,12 +587,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
 
-        if ($this->container['budget_amount'] === null) {
-            $invalidProperties[] = "'budget_amount' can't be null";
-        }
-        if ($this->container['budget_type'] === null) {
-            $invalidProperties[] = "'budget_type' can't be null";
-        }
         $allowedValues = $this->getBudgetTypeAllowableValues();
         if (!is_null($this->container['budget_type']) && !in_array($this->container['budget_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -595,9 +600,6 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = "invalid value for 'long_headline', the character length must be smaller than or equal to 90.";
         }
 
-        if ($this->container['body'] === null) {
-            $invalidProperties[] = "'body' can't be null";
-        }
         $allowedValues = $this->getCallToActionAllowableValues();
         if (!is_null($this->container['call_to_action']) && !in_array($this->container['call_to_action'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -605,6 +607,10 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
                 $this->container['call_to_action'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['creatives']) && (count($this->container['creatives']) < 1)) {
+            $invalidProperties[] = "invalid value for 'creatives', number of items must be greater than or equal to 1.";
         }
 
         if (!is_null($this->container['business_name']) && (mb_strlen($this->container['business_name']) > 25)) {
@@ -748,7 +754,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets goal
      *
-     * @return string
+     * @return string|null
      */
     public function getGoal()
     {
@@ -758,7 +764,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets goal
      *
-     * @param string $goal Available goals vary by platform. Meta (Facebook/Instagram) and TikTok support all 7. LinkedIn supports all except app_promotion. Twitter/X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views.
+     * @param string|null $goal Required on legacy + multi-creative shapes. Inherited from the ad set on the attach shape. Available goals vary by platform.
      *
      * @return self
      */
@@ -785,7 +791,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets budget_amount
      *
-     * @return float
+     * @return float|null
      */
     public function getBudgetAmount()
     {
@@ -795,7 +801,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets budget_amount
      *
-     * @param float $budget_amount budget_amount
+     * @param float|null $budget_amount Required on legacy + multi-creative shapes. Inherited on attach.
      *
      * @return self
      */
@@ -812,7 +818,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets budget_type
      *
-     * @return string
+     * @return string|null
      */
     public function getBudgetType()
     {
@@ -822,7 +828,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets budget_type
      *
-     * @param string $budget_type budget_type
+     * @param string|null $budget_type Required on legacy + multi-creative shapes. Inherited on attach.
      *
      * @return self
      */
@@ -886,7 +892,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets headline
      *
-     * @param string|null $headline Required for most platforms. Max: Meta=255, Google=30, Pinterest=100
+     * @param string|null $headline Required on legacy + attach shapes (skip for multi-creative — use `creatives[].headline`). Max: Meta=255, Google=30, Pinterest=100
      *
      * @return self
      */
@@ -934,7 +940,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets body
      *
-     * @return string
+     * @return string|null
      */
     public function getBody()
     {
@@ -944,7 +950,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets body
      *
-     * @param string $body Max: Google=90, Pinterest=500
+     * @param string|null $body Required on legacy + attach shapes. Max: Google=90, Pinterest=500
      *
      * @return self
      */
@@ -971,7 +977,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets call_to_action
      *
-     * @param string|null $call_to_action Meta only
+     * @param string|null $call_to_action Required on legacy + attach shapes. Meta only.
      *
      * @return self
      */
@@ -1008,7 +1014,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets link_url
      *
-     * @param string|null $link_url link_url
+     * @param string|null $link_url Required on legacy + attach shapes. Skip for multi-creative.
      *
      * @return self
      */
@@ -1035,7 +1041,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets image_url
      *
-     * @param string|null $image_url Image URL (or video URL for TikTok). Not required for Google Search campaigns.
+     * @param string|null $image_url Required on legacy + attach shapes. Not required for Google Search campaigns.
      *
      * @return self
      */
@@ -1045,6 +1051,65 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable image_url cannot be null');
         }
         $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets creatives
+     *
+     * @return \Late\Model\CreateStandaloneAdRequestCreativesInner[]|null
+     */
+    public function getCreatives()
+    {
+        return $this->container['creatives'];
+    }
+
+    /**
+     * Sets creatives
+     *
+     * @param \Late\Model\CreateStandaloneAdRequestCreativesInner[]|null $creatives Meta-only. When present, switches to the multi-creative shape: creates 1 campaign + 1 ad set + N ads (one per entry here). Top-level `headline` / `body` / `imageUrl` / `linkUrl` / `callToAction` are ignored in this mode. Mutually exclusive with `adSetId`.
+     *
+     * @return self
+     */
+    public function setCreatives($creatives)
+    {
+        if (is_null($creatives)) {
+            throw new \InvalidArgumentException('non-nullable creatives cannot be null');
+        }
+
+
+        if ((count($creatives) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $creatives when calling CreateStandaloneAdRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['creatives'] = $creatives;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_set_id
+     *
+     * @return string|null
+     */
+    public function getAdSetId()
+    {
+        return $this->container['ad_set_id'];
+    }
+
+    /**
+     * Sets ad_set_id
+     *
+     * @param string|null $ad_set_id Meta-only. When present, switches to the attach shape: adds one new ad to this existing ad set without creating a new campaign. Budget, targeting, goal, and schedule are inherited from the ad set on Meta. Mutually exclusive with `creatives[]`.
+     *
+     * @return self
+     */
+    public function setAdSetId($ad_set_id)
+    {
+        if (is_null($ad_set_id)) {
+            throw new \InvalidArgumentException('non-nullable ad_set_id cannot be null');
+        }
+        $this->container['ad_set_id'] = $ad_set_id;
 
         return $this;
     }
