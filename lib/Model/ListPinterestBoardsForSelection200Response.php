@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListPinterestBoardsForSelection200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ListPinterestBoardsForSelection200Response implements ModelInterface, Arra
       * @var string[]
       */
     protected static $openAPITypes = [
-        'boards' => '\Late\Model\ListPinterestBoardsForSelection200ResponseBoardsInner[]'
+        'boards' => '\Zernio\Model\ListPinterestBoardsForSelection200ResponseBoardsInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class ListPinterestBoardsForSelection200Response implements ModelInterface, Arra
     /**
      * Gets boards
      *
-     * @return \Late\Model\ListPinterestBoardsForSelection200ResponseBoardsInner[]|null
+     * @return \Zernio\Model\ListPinterestBoardsForSelection200ResponseBoardsInner[]|null
      */
     public function getBoards()
     {
@@ -303,7 +303,7 @@ class ListPinterestBoardsForSelection200Response implements ModelInterface, Arra
     /**
      * Sets boards
      *
-     * @param \Late\Model\ListPinterestBoardsForSelection200ResponseBoardsInner[]|null $boards boards
+     * @param \Zernio\Model\ListPinterestBoardsForSelection200ResponseBoardsInner[]|null $boards boards
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessAttributes200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class GetGoogleBusinessAttributes200Response implements ModelInterface, ArrayAcc
         'success' => 'bool',
         'account_id' => 'string',
         'location_id' => 'string',
-        'attributes' => '\Late\Model\GetGoogleBusinessAttributes200ResponseAttributesInner[]'
+        'attributes' => '\Zernio\Model\GetGoogleBusinessAttributes200ResponseAttributesInner[]'
     ];
 
     /**
@@ -395,7 +395,7 @@ class GetGoogleBusinessAttributes200Response implements ModelInterface, ArrayAcc
     /**
      * Gets attributes
      *
-     * @return \Late\Model\GetGoogleBusinessAttributes200ResponseAttributesInner[]|null
+     * @return \Zernio\Model\GetGoogleBusinessAttributes200ResponseAttributesInner[]|null
      */
     public function getAttributes()
     {
@@ -405,7 +405,7 @@ class GetGoogleBusinessAttributes200Response implements ModelInterface, ArrayAcc
     /**
      * Sets attributes
      *
-     * @param \Late\Model\GetGoogleBusinessAttributes200ResponseAttributesInner[]|null $attributes attributes
+     * @param \Zernio\Model\GetGoogleBusinessAttributes200ResponseAttributesInner[]|null $attributes attributes
      *
      * @return self
      */

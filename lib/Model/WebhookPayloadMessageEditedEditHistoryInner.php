@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadMessageEditedEditHistoryInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class WebhookPayloadMessageEditedEditHistoryInner implements ModelInterface, Arr
       */
     protected static $openAPITypes = [
         'text' => 'string',
-        'attachments' => '\Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner[]',
+        'attachments' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner[]',
         'edited_at' => '\DateTime'
     ];
 
@@ -343,7 +343,7 @@ class WebhookPayloadMessageEditedEditHistoryInner implements ModelInterface, Arr
     /**
      * Gets attachments
      *
-     * @return \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner[]
+     * @return \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner[]
      */
     public function getAttachments()
     {
@@ -353,7 +353,7 @@ class WebhookPayloadMessageEditedEditHistoryInner implements ModelInterface, Arr
     /**
      * Sets attachments
      *
-     * @param \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner[] $attachments attachments
+     * @param \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner[] $attachments attachments
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * BoostPostRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,12 +64,12 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_account_id' => 'string',
         'name' => 'string',
         'goal' => 'string',
-        'budget' => '\Late\Model\BoostPostRequestBudget',
+        'budget' => '\Zernio\Model\BoostPostRequestBudget',
         'currency' => 'string',
-        'schedule' => '\Late\Model\BoostPostRequestSchedule',
-        'targeting' => '\Late\Model\BoostPostRequestTargeting',
+        'schedule' => '\Zernio\Model\BoostPostRequestSchedule',
+        'targeting' => '\Zernio\Model\BoostPostRequestTargeting',
         'bid_amount' => 'float',
-        'tracking' => '\Late\Model\BoostPostRequestTracking',
+        'tracking' => '\Zernio\Model\BoostPostRequestTracking',
         'special_ad_categories' => 'string[]'
     ];
 
@@ -625,7 +625,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets budget
      *
-     * @return \Late\Model\BoostPostRequestBudget
+     * @return \Zernio\Model\BoostPostRequestBudget
      */
     public function getBudget()
     {
@@ -635,7 +635,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets budget
      *
-     * @param \Late\Model\BoostPostRequestBudget $budget budget
+     * @param \Zernio\Model\BoostPostRequestBudget $budget budget
      *
      * @return self
      */
@@ -679,7 +679,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets schedule
      *
-     * @return \Late\Model\BoostPostRequestSchedule|null
+     * @return \Zernio\Model\BoostPostRequestSchedule|null
      */
     public function getSchedule()
     {
@@ -689,7 +689,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets schedule
      *
-     * @param \Late\Model\BoostPostRequestSchedule|null $schedule schedule
+     * @param \Zernio\Model\BoostPostRequestSchedule|null $schedule schedule
      *
      * @return self
      */
@@ -706,7 +706,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets targeting
      *
-     * @return \Late\Model\BoostPostRequestTargeting|null
+     * @return \Zernio\Model\BoostPostRequestTargeting|null
      */
     public function getTargeting()
     {
@@ -716,7 +716,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets targeting
      *
-     * @param \Late\Model\BoostPostRequestTargeting|null $targeting targeting
+     * @param \Zernio\Model\BoostPostRequestTargeting|null $targeting targeting
      *
      * @return self
      */
@@ -760,7 +760,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets tracking
      *
-     * @return \Late\Model\BoostPostRequestTracking|null
+     * @return \Zernio\Model\BoostPostRequestTracking|null
      */
     public function getTracking()
     {
@@ -770,7 +770,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tracking
      *
-     * @param \Late\Model\BoostPostRequestTracking|null $tracking tracking
+     * @param \Zernio\Model\BoostPostRequestTracking|null $tracking tracking
      *
      * @return self
      */

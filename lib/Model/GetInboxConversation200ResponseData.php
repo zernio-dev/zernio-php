@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetInboxConversation200ResponseData Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -69,8 +69,8 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
         'last_message' => 'string',
         'last_message_at' => '\DateTime',
         'updated_time' => '\DateTime',
-        'participants' => '\Late\Model\UpdateFacebookPage200ResponseSelectedPage[]',
-        'instagram_profile' => '\Late\Model\ListInboxConversations200ResponseDataInnerInstagramProfile'
+        'participants' => '\Zernio\Model\UpdateFacebookPage200ResponseSelectedPage[]',
+        'instagram_profile' => '\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile'
     ];
 
     /**
@@ -746,7 +746,7 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
     /**
      * Gets participants
      *
-     * @return \Late\Model\UpdateFacebookPage200ResponseSelectedPage[]|null
+     * @return \Zernio\Model\UpdateFacebookPage200ResponseSelectedPage[]|null
      */
     public function getParticipants()
     {
@@ -756,7 +756,7 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
     /**
      * Sets participants
      *
-     * @param \Late\Model\UpdateFacebookPage200ResponseSelectedPage[]|null $participants participants
+     * @param \Zernio\Model\UpdateFacebookPage200ResponseSelectedPage[]|null $participants participants
      *
      * @return self
      */
@@ -773,7 +773,7 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
     /**
      * Gets instagram_profile
      *
-     * @return \Late\Model\ListInboxConversations200ResponseDataInnerInstagramProfile|null
+     * @return \Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile|null
      */
     public function getInstagramProfile()
     {
@@ -783,7 +783,7 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
     /**
      * Sets instagram_profile
      *
-     * @param \Late\Model\ListInboxConversations200ResponseDataInnerInstagramProfile|null $instagram_profile instagram_profile
+     * @param \Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile|null $instagram_profile instagram_profile
      *
      * @return self
      */

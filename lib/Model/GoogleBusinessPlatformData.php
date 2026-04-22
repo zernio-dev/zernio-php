@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GoogleBusinessPlatformData Class Doc Comment
  *
  * @category Class
  * @description Text and single image only (no videos). Supports STANDARD, EVENT, OFFER, and ALERT post types. Posts appear on GBP, Google Search, and Maps. Use locationId for multi-location posting. Schedule dates accept both ISO 8601 strings (e.g. &#39;2026-04-15T09:00:00Z&#39;) and Google&#39;s native {year, month, day} objects.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,9 +62,9 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
         'location_id' => 'string',
         'language_code' => 'string',
         'topic_type' => 'string',
-        'call_to_action' => '\Late\Model\GoogleBusinessPlatformDataCallToAction',
-        'event' => '\Late\Model\GoogleBusinessPlatformDataEvent',
-        'offer' => '\Late\Model\GoogleBusinessPlatformDataOffer'
+        'call_to_action' => '\Zernio\Model\GoogleBusinessPlatformDataCallToAction',
+        'event' => '\Zernio\Model\GoogleBusinessPlatformDataEvent',
+        'offer' => '\Zernio\Model\GoogleBusinessPlatformDataOffer'
     ];
 
     /**
@@ -446,7 +446,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets call_to_action
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataCallToAction|null
+     * @return \Zernio\Model\GoogleBusinessPlatformDataCallToAction|null
      */
     public function getCallToAction()
     {
@@ -456,7 +456,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets call_to_action
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataCallToAction|null $call_to_action call_to_action
+     * @param \Zernio\Model\GoogleBusinessPlatformDataCallToAction|null $call_to_action call_to_action
      *
      * @return self
      */
@@ -473,7 +473,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets event
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataEvent|null
+     * @return \Zernio\Model\GoogleBusinessPlatformDataEvent|null
      */
     public function getEvent()
     {
@@ -483,7 +483,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets event
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataEvent|null $event event
+     * @param \Zernio\Model\GoogleBusinessPlatformDataEvent|null $event event
      *
      * @return self
      */
@@ -500,7 +500,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets offer
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataOffer|null
+     * @return \Zernio\Model\GoogleBusinessPlatformDataOffer|null
      */
     public function getOffer()
     {
@@ -510,7 +510,7 @@ class GoogleBusinessPlatformData implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets offer
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataOffer|null $offer offer
+     * @param \Zernio\Model\GoogleBusinessPlatformDataOffer|null $offer offer
      *
      * @return self
      */

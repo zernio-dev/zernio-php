@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner implements M
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'url' => '\Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl',
+        'url' => '\Zernio\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl',
         'phone_number' => 'string'
     ];
 
@@ -370,7 +370,7 @@ class CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner implements M
     /**
      * Gets url
      *
-     * @return \Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl|null
+     * @return \Zernio\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl|null
      */
     public function getUrl()
     {
@@ -380,7 +380,7 @@ class CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner implements M
     /**
      * Sets url
      *
-     * @param \Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl|null $url url
+     * @param \Zernio\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl|null $url url
      *
      * @return self
      */

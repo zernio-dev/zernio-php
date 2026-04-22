@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * YouTubeDemographicsResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
         'success' => 'bool',
         'account_id' => 'string',
         'platform' => 'string',
-        'demographics' => 'array<string,\Late\Model\YouTubeDemographicsResponseDemographicsValueInner[]>',
-        'date_range' => '\Late\Model\YouTubeDemographicsResponseDateRange',
+        'demographics' => 'array<string,\Zernio\Model\YouTubeDemographicsResponseDemographicsValueInner[]>',
+        'date_range' => '\Zernio\Model\YouTubeDemographicsResponseDateRange',
         'note' => 'string'
     ];
 
@@ -409,7 +409,7 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets demographics
      *
-     * @return array<string,\Late\Model\YouTubeDemographicsResponseDemographicsValueInner[]>|null
+     * @return array<string,\Zernio\Model\YouTubeDemographicsResponseDemographicsValueInner[]>|null
      */
     public function getDemographics()
     {
@@ -419,7 +419,7 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets demographics
      *
-     * @param array<string,\Late\Model\YouTubeDemographicsResponseDemographicsValueInner[]>|null $demographics Object keyed by breakdown dimension (age, gender, country)
+     * @param array<string,\Zernio\Model\YouTubeDemographicsResponseDemographicsValueInner[]>|null $demographics Object keyed by breakdown dimension (age, gender, country)
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets date_range
      *
-     * @return \Late\Model\YouTubeDemographicsResponseDateRange|null
+     * @return \Zernio\Model\YouTubeDemographicsResponseDateRange|null
      */
     public function getDateRange()
     {
@@ -446,7 +446,7 @@ class YouTubeDemographicsResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets date_range
      *
-     * @param \Late\Model\YouTubeDemographicsResponseDateRange|null $date_range date_range
+     * @param \Zernio\Model\YouTubeDemographicsResponseDateRange|null $date_range date_range
      *
      * @return self
      */

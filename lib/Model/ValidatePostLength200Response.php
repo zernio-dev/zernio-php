@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ValidatePostLength200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class ValidatePostLength200Response implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'text' => 'string',
-        'platforms' => 'array<string,\Late\Model\ValidatePostLength200ResponsePlatformsValue>'
+        'platforms' => 'array<string,\Zernio\Model\ValidatePostLength200ResponsePlatformsValue>'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ValidatePostLength200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets platforms
      *
-     * @return array<string,\Late\Model\ValidatePostLength200ResponsePlatformsValue>|null
+     * @return array<string,\Zernio\Model\ValidatePostLength200ResponsePlatformsValue>|null
      */
     public function getPlatforms()
     {
@@ -337,7 +337,7 @@ class ValidatePostLength200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets platforms
      *
-     * @param array<string,\Late\Model\ValidatePostLength200ResponsePlatformsValue>|null $platforms platforms
+     * @param array<string,\Zernio\Model\ValidatePostLength200ResponsePlatformsValue>|null $platforms platforms
      *
      * @return self
      */

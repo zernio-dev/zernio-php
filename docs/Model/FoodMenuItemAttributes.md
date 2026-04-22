@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**price** | [**\Late\Model\Money**](Money.md) |  | [optional]
+**price** | [**\Zernio\Model\Money**](Money.md) |  | [optional]
 **spiciness** | **string** | Spiciness level (e.g. MILD, MEDIUM, HOT) | [optional]
 **allergen** | **string[]** | Allergens (e.g. DAIRY, GLUTEN, SHELLFISH) | [optional]
 **dietary_restriction** | **string[]** | Dietary labels (e.g. VEGETARIAN, VEGAN, GLUTEN_FREE) | [optional]

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WhatsAppBodyComponent Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class WhatsAppBodyComponent implements ModelInterface, ArrayAccess, \JsonSeriali
         'type' => 'string',
         'text' => 'string',
         'add_security_recommendation' => 'bool',
-        'example' => '\Late\Model\WhatsAppBodyComponentExample'
+        'example' => '\Zernio\Model\WhatsAppBodyComponentExample'
     ];
 
     /**
@@ -433,7 +433,7 @@ class WhatsAppBodyComponent implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets example
      *
-     * @return \Late\Model\WhatsAppBodyComponentExample|null
+     * @return \Zernio\Model\WhatsAppBodyComponentExample|null
      */
     public function getExample()
     {
@@ -443,7 +443,7 @@ class WhatsAppBodyComponent implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets example
      *
-     * @param \Late\Model\WhatsAppBodyComponentExample|null $example example
+     * @param \Zernio\Model\WhatsAppBodyComponentExample|null $example example
      *
      * @return self
      */

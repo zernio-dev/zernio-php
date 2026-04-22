@@ -1,4 +1,4 @@
-# Late\DiscordApi
+# Zernio\DiscordApi
 
 Discord-specific endpoints for managing webhook identity (display name and avatar), switching channels, and listing guild channels.
 
@@ -14,7 +14,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getDiscordChannels()`
 
 ```php
-getDiscordChannels($account_id): \Late\Model\GetDiscordChannels200Response
+getDiscordChannels($account_id): \Zernio\Model\GetDiscordChannels200Response
 ```
 
 List Discord guild channels
@@ -29,10 +29,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\DiscordApi(
+$apiInstance = new Zernio\Api\DiscordApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -56,7 +56,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetDiscordChannels200Response**](../Model/GetDiscordChannels200Response.md)
+[**\Zernio\Model\GetDiscordChannels200Response**](../Model/GetDiscordChannels200Response.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ try {
 ## `getDiscordSettings()`
 
 ```php
-getDiscordSettings($account_id): \Late\Model\GetDiscordSettings200Response
+getDiscordSettings($account_id): \Zernio\Model\GetDiscordSettings200Response
 ```
 
 Get Discord account settings
@@ -89,10 +89,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\DiscordApi(
+$apiInstance = new Zernio\Api\DiscordApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -116,7 +116,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetDiscordSettings200Response**](../Model/GetDiscordSettings200Response.md)
+[**\Zernio\Model\GetDiscordSettings200Response**](../Model/GetDiscordSettings200Response.md)
 
 ### Authorization
 
@@ -134,7 +134,7 @@ try {
 ## `updateDiscordSettings()`
 
 ```php
-updateDiscordSettings($account_id, $update_discord_settings_request): \Late\Model\UpdateDiscordSettings200Response
+updateDiscordSettings($account_id, $update_discord_settings_request): \Zernio\Model\UpdateDiscordSettings200Response
 ```
 
 Update Discord settings
@@ -149,17 +149,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\DiscordApi(
+$apiInstance = new Zernio\Api\DiscordApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_discord_settings_request = {"webhookUsername":"My Brand","webhookAvatarUrl":"https://example.com/logo.png"}; // \Late\Model\UpdateDiscordSettingsRequest
+$update_discord_settings_request = {"webhookUsername":"My Brand","webhookAvatarUrl":"https://example.com/logo.png"}; // \Zernio\Model\UpdateDiscordSettingsRequest
 
 try {
     $result = $apiInstance->updateDiscordSettings($account_id, $update_discord_settings_request);
@@ -174,11 +174,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **update_discord_settings_request** | [**\Late\Model\UpdateDiscordSettingsRequest**](../Model/UpdateDiscordSettingsRequest.md)|  | |
+| **update_discord_settings_request** | [**\Zernio\Model\UpdateDiscordSettingsRequest**](../Model/UpdateDiscordSettingsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateDiscordSettings200Response**](../Model/UpdateDiscordSettings200Response.md)
+[**\Zernio\Model\UpdateDiscordSettings200Response**](../Model/UpdateDiscordSettings200Response.md)
 
 ### Authorization
 

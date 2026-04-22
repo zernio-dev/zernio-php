@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **account_id** | **string** |  | [optional]
 **location_id** | **string** |  | [optional]
 **name** | **string** | Resource name of the food menus | [optional]
-**menus** | [**\Late\Model\FoodMenu[]**](FoodMenu.md) |  | [optional]
+**menus** | [**\Zernio\Model\FoodMenu[]**](FoodMenu.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

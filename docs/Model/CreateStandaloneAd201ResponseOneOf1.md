@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ads** | [**\Late\Model\Ad[]**](Ad.md) |  | [optional]
+**ads** | [**\Zernio\Model\Ad[]**](Ad.md) |  | [optional]
 **platform_campaign_id** | **string** |  | [optional]
 **platform_ad_set_id** | **string** |  | [optional]
 **message** | **string** |  | [optional]

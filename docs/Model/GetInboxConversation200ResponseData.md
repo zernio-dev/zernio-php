@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **last_message** | **string** |  | [optional]
 **last_message_at** | **\DateTime** |  | [optional]
 **updated_time** | **\DateTime** |  | [optional]
-**participants** | [**\Late\Model\UpdateFacebookPage200ResponseSelectedPage[]**](UpdateFacebookPage200ResponseSelectedPage.md) |  | [optional]
-**instagram_profile** | [**\Late\Model\ListInboxConversations200ResponseDataInnerInstagramProfile**](ListInboxConversations200ResponseDataInnerInstagramProfile.md) |  | [optional]
+**participants** | [**\Zernio\Model\UpdateFacebookPage200ResponseSelectedPage[]**](UpdateFacebookPage200ResponseSelectedPage.md) |  | [optional]
+**instagram_profile** | [**\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile**](ListInboxConversations200ResponseDataInnerInstagramProfile.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

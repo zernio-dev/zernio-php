@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * Ad Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,12 +61,12 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         '_id' => 'string',
         'name' => 'string',
         'platform' => 'string',
-        'status' => '\Late\Model\AdStatus',
+        'status' => '\Zernio\Model\AdStatus',
         'ad_type' => 'string',
         'goal' => 'string',
         'is_external' => 'bool',
-        'budget' => '\Late\Model\AdBudget',
-        'metrics' => '\Late\Model\AdMetrics',
+        'budget' => '\Zernio\Model\AdBudget',
+        'metrics' => '\Zernio\Model\AdMetrics',
         'platform_ad_id' => 'string',
         'platform_ad_account_id' => 'string',
         'platform_campaign_id' => 'string',
@@ -76,10 +76,10 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_objective' => 'string',
         'optimization_goal' => 'string',
         'bid_strategy' => 'string',
-        'promoted_object' => '\Late\Model\AdPromotedObject',
-        'creative' => '\Late\Model\AdCreative',
+        'promoted_object' => '\Zernio\Model\AdPromotedObject',
+        'creative' => '\Zernio\Model\AdCreative',
         'targeting' => 'object',
-        'schedule' => '\Late\Model\AdSchedule',
+        'schedule' => '\Zernio\Model\AdSchedule',
         'rejection_reason' => 'string',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime'
@@ -644,7 +644,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \Late\Model\AdStatus|null
+     * @return \Zernio\Model\AdStatus|null
      */
     public function getStatus()
     {
@@ -654,7 +654,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Late\Model\AdStatus|null $status status
+     * @param \Zernio\Model\AdStatus|null $status status
      *
      * @return self
      */
@@ -772,7 +772,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets budget
      *
-     * @return \Late\Model\AdBudget|null
+     * @return \Zernio\Model\AdBudget|null
      */
     public function getBudget()
     {
@@ -782,7 +782,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets budget
      *
-     * @param \Late\Model\AdBudget|null $budget budget
+     * @param \Zernio\Model\AdBudget|null $budget budget
      *
      * @return self
      */
@@ -799,7 +799,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets metrics
      *
-     * @return \Late\Model\AdMetrics|null
+     * @return \Zernio\Model\AdMetrics|null
      */
     public function getMetrics()
     {
@@ -809,7 +809,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets metrics
      *
-     * @param \Late\Model\AdMetrics|null $metrics metrics
+     * @param \Zernio\Model\AdMetrics|null $metrics metrics
      *
      * @return self
      */
@@ -1069,7 +1069,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promoted_object
      *
-     * @return \Late\Model\AdPromotedObject|null
+     * @return \Zernio\Model\AdPromotedObject|null
      */
     public function getPromotedObject()
     {
@@ -1079,7 +1079,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets promoted_object
      *
-     * @param \Late\Model\AdPromotedObject|null $promoted_object promoted_object
+     * @param \Zernio\Model\AdPromotedObject|null $promoted_object promoted_object
      *
      * @return self
      */
@@ -1096,7 +1096,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets creative
      *
-     * @return \Late\Model\AdCreative|null
+     * @return \Zernio\Model\AdCreative|null
      */
     public function getCreative()
     {
@@ -1106,7 +1106,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets creative
      *
-     * @param \Late\Model\AdCreative|null $creative creative
+     * @param \Zernio\Model\AdCreative|null $creative creative
      *
      * @return self
      */
@@ -1150,7 +1150,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets schedule
      *
-     * @return \Late\Model\AdSchedule|null
+     * @return \Zernio\Model\AdSchedule|null
      */
     public function getSchedule()
     {
@@ -1160,7 +1160,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets schedule
      *
-     * @param \Late\Model\AdSchedule|null $schedule schedule
+     * @param \Zernio\Model\AdSchedule|null $schedule schedule
      *
      * @return self
      */

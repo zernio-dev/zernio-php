@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * Post Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,11 +59,11 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         '_id' => 'string',
-        'user_id' => '\Late\Model\PostUserId',
+        'user_id' => '\Zernio\Model\PostUserId',
         'title' => 'string',
         'content' => 'string',
-        'media_items' => '\Late\Model\MediaItem[]',
-        'platforms' => '\Late\Model\PlatformTarget[]',
+        'media_items' => '\Zernio\Model\MediaItem[]',
+        'platforms' => '\Zernio\Model\PlatformTarget[]',
         'scheduled_for' => '\DateTime',
         'timezone' => 'string',
         'status' => 'string',
@@ -72,7 +72,7 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
         'mentions' => 'string[]',
         'visibility' => 'string',
         'metadata' => 'array<string,mixed>',
-        'recycling' => '\Late\Model\RecyclingState',
+        'recycling' => '\Zernio\Model\RecyclingState',
         'recycled_from_post_id' => 'string',
         'queued_from_profile' => 'string',
         'queue_id' => 'string',
@@ -511,7 +511,7 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets user_id
      *
-     * @return \Late\Model\PostUserId|null
+     * @return \Zernio\Model\PostUserId|null
      */
     public function getUserId()
     {
@@ -521,7 +521,7 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user_id
      *
-     * @param \Late\Model\PostUserId|null $user_id user_id
+     * @param \Zernio\Model\PostUserId|null $user_id user_id
      *
      * @return self
      */
@@ -592,7 +592,7 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets media_items
      *
-     * @return \Late\Model\MediaItem[]|null
+     * @return \Zernio\Model\MediaItem[]|null
      */
     public function getMediaItems()
     {
@@ -602,7 +602,7 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets media_items
      *
-     * @param \Late\Model\MediaItem[]|null $media_items media_items
+     * @param \Zernio\Model\MediaItem[]|null $media_items media_items
      *
      * @return self
      */
@@ -619,7 +619,7 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets platforms
      *
-     * @return \Late\Model\PlatformTarget[]|null
+     * @return \Zernio\Model\PlatformTarget[]|null
      */
     public function getPlatforms()
     {
@@ -629,7 +629,7 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets platforms
      *
-     * @param \Late\Model\PlatformTarget[]|null $platforms platforms
+     * @param \Zernio\Model\PlatformTarget[]|null $platforms platforms
      *
      * @return self
      */
@@ -882,7 +882,7 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets recycling
      *
-     * @return \Late\Model\RecyclingState|null
+     * @return \Zernio\Model\RecyclingState|null
      */
     public function getRecycling()
     {
@@ -892,7 +892,7 @@ class Post implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets recycling
      *
-     * @param \Late\Model\RecyclingState|null $recycling recycling
+     * @param \Zernio\Model\RecyclingState|null $recycling recycling
      *
      * @return self
      */

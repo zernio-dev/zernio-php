@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateWhatsAppDisplayName200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class UpdateWhatsAppDisplayName200Response implements ModelInterface, ArrayAcces
     protected static $openAPITypes = [
         'success' => 'bool',
         'message' => 'string',
-        'display_name' => '\Late\Model\UpdateWhatsAppDisplayName200ResponseDisplayName'
+        'display_name' => '\Zernio\Model\UpdateWhatsAppDisplayName200ResponseDisplayName'
     ];
 
     /**
@@ -361,7 +361,7 @@ class UpdateWhatsAppDisplayName200Response implements ModelInterface, ArrayAcces
     /**
      * Gets display_name
      *
-     * @return \Late\Model\UpdateWhatsAppDisplayName200ResponseDisplayName|null
+     * @return \Zernio\Model\UpdateWhatsAppDisplayName200ResponseDisplayName|null
      */
     public function getDisplayName()
     {
@@ -371,7 +371,7 @@ class UpdateWhatsAppDisplayName200Response implements ModelInterface, ArrayAcces
     /**
      * Sets display_name
      *
-     * @param \Late\Model\UpdateWhatsAppDisplayName200ResponseDisplayName|null $display_name display_name
+     * @param \Zernio\Model\UpdateWhatsAppDisplayName200ResponseDisplayName|null $display_name display_name
      *
      * @return self
      */

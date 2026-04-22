@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetRedditFlairs200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetRedditFlairs200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'flairs' => '\Late\Model\GetRedditFlairs200ResponseFlairsInner[]'
+        'flairs' => '\Zernio\Model\GetRedditFlairs200ResponseFlairsInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class GetRedditFlairs200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets flairs
      *
-     * @return \Late\Model\GetRedditFlairs200ResponseFlairsInner[]|null
+     * @return \Zernio\Model\GetRedditFlairs200ResponseFlairsInner[]|null
      */
     public function getFlairs()
     {
@@ -303,7 +303,7 @@ class GetRedditFlairs200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets flairs
      *
-     * @param \Late\Model\GetRedditFlairs200ResponseFlairsInner[]|null $flairs flairs
+     * @param \Zernio\Model\GetRedditFlairs200ResponseFlairsInner[]|null $flairs flairs
      *
      * @return self
      */

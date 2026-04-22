@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UploadWhatsAppFlowJson200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class UploadWhatsAppFlowJson200Response implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'validation_errors' => '\Late\Model\UploadWhatsAppFlowJson200ResponseValidationErrorsInner[]'
+        'validation_errors' => '\Zernio\Model\UploadWhatsAppFlowJson200ResponseValidationErrorsInner[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class UploadWhatsAppFlowJson200Response implements ModelInterface, ArrayAccess, 
     /**
      * Gets validation_errors
      *
-     * @return \Late\Model\UploadWhatsAppFlowJson200ResponseValidationErrorsInner[]|null
+     * @return \Zernio\Model\UploadWhatsAppFlowJson200ResponseValidationErrorsInner[]|null
      */
     public function getValidationErrors()
     {
@@ -337,7 +337,7 @@ class UploadWhatsAppFlowJson200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets validation_errors
      *
-     * @param \Late\Model\UploadWhatsAppFlowJson200ResponseValidationErrorsInner[]|null $validation_errors Empty array if valid; otherwise, contains validation error details from Meta
+     * @param \Zernio\Model\UploadWhatsAppFlowJson200ResponseValidationErrorsInner[]|null $validation_errors Empty array if valid; otherwise, contains validation error details from Meta
      *
      * @return self
      */

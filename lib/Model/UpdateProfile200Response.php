@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateProfile200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class UpdateProfile200Response implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'message' => 'string',
-        'profile' => '\Late\Model\Profile'
+        'profile' => '\Zernio\Model\Profile'
     ];
 
     /**
@@ -327,7 +327,7 @@ class UpdateProfile200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets profile
      *
-     * @return \Late\Model\Profile|null
+     * @return \Zernio\Model\Profile|null
      */
     public function getProfile()
     {
@@ -337,7 +337,7 @@ class UpdateProfile200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets profile
      *
-     * @param \Late\Model\Profile|null $profile profile
+     * @param \Zernio\Model\Profile|null $profile profile
      *
      * @return self
      */

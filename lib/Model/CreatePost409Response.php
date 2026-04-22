@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreatePost409Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreatePost409Response implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'error' => 'string',
-        'details' => '\Late\Model\CreatePost409ResponseDetails'
+        'details' => '\Zernio\Model\CreatePost409ResponseDetails'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CreatePost409Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets details
      *
-     * @return \Late\Model\CreatePost409ResponseDetails|null
+     * @return \Zernio\Model\CreatePost409ResponseDetails|null
      */
     public function getDetails()
     {
@@ -337,7 +337,7 @@ class CreatePost409Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets details
      *
-     * @param \Late\Model\CreatePost409ResponseDetails|null $details details
+     * @param \Zernio\Model\CreatePost409ResponseDetails|null $details details
      *
      * @return self
      */

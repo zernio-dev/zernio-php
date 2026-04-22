@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ActivateSequence200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class ActivateSequence200Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'sequence' => '\Late\Model\CancelBroadcast200ResponseBroadcast'
+        'sequence' => '\Zernio\Model\CancelBroadcast200ResponseBroadcast'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ActivateSequence200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets sequence
      *
-     * @return \Late\Model\CancelBroadcast200ResponseBroadcast|null
+     * @return \Zernio\Model\CancelBroadcast200ResponseBroadcast|null
      */
     public function getSequence()
     {
@@ -337,7 +337,7 @@ class ActivateSequence200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets sequence
      *
-     * @param \Late\Model\CancelBroadcast200ResponseBroadcast|null $sequence sequence
+     * @param \Zernio\Model\CancelBroadcast200ResponseBroadcast|null $sequence sequence
      *
      * @return self
      */

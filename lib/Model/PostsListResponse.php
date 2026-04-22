@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * PostsListResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class PostsListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'posts' => '\Late\Model\Post[]',
-        'pagination' => '\Late\Model\Pagination'
+        'posts' => '\Zernio\Model\Post[]',
+        'pagination' => '\Zernio\Model\Pagination'
     ];
 
     /**
@@ -300,7 +300,7 @@ class PostsListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets posts
      *
-     * @return \Late\Model\Post[]|null
+     * @return \Zernio\Model\Post[]|null
      */
     public function getPosts()
     {
@@ -310,7 +310,7 @@ class PostsListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets posts
      *
-     * @param \Late\Model\Post[]|null $posts posts
+     * @param \Zernio\Model\Post[]|null $posts posts
      *
      * @return self
      */
@@ -327,7 +327,7 @@ class PostsListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets pagination
      *
-     * @return \Late\Model\Pagination|null
+     * @return \Zernio\Model\Pagination|null
      */
     public function getPagination()
     {
@@ -337,7 +337,7 @@ class PostsListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets pagination
      *
-     * @param \Late\Model\Pagination|null $pagination pagination
+     * @param \Zernio\Model\Pagination|null $pagination pagination
      *
      * @return self
      */

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **profile_id** | **string** | Your Zernio profile ID |
-**selected_public_profile** | [**\Late\Model\SelectSnapchatProfileRequestSelectedPublicProfile**](SelectSnapchatProfileRequestSelectedPublicProfile.md) |  |
+**selected_public_profile** | [**\Zernio\Model\SelectSnapchatProfileRequestSelectedPublicProfile**](SelectSnapchatProfileRequestSelectedPublicProfile.md) |  |
 **temp_token** | **string** | Temporary Snapchat access token from OAuth |
 **user_profile** | **object** | User profile data from OAuth redirect |
 **refresh_token** | **string** | Snapchat refresh token (if available) | [optional]

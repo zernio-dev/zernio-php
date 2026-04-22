@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetUser200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetUser200Response implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'user' => '\Late\Model\GetUser200ResponseUser'
+        'user' => '\Zernio\Model\GetUser200ResponseUser'
     ];
 
     /**
@@ -293,7 +293,7 @@ class GetUser200Response implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets user
      *
-     * @return \Late\Model\GetUser200ResponseUser|null
+     * @return \Zernio\Model\GetUser200ResponseUser|null
      */
     public function getUser()
     {
@@ -303,7 +303,7 @@ class GetUser200Response implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets user
      *
-     * @param \Late\Model\GetUser200ResponseUser|null $user user
+     * @param \Zernio\Model\GetUser200ResponseUser|null $user user
      *
      * @return self
      */

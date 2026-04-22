@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreatePostRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPITypes = [
         'title' => 'string',
         'content' => 'string',
-        'media_items' => '\Late\Model\CreatePostRequestMediaItemsInner[]',
-        'platforms' => '\Late\Model\CreatePostRequestPlatformsInner[]',
+        'media_items' => '\Zernio\Model\CreatePostRequestMediaItemsInner[]',
+        'platforms' => '\Zernio\Model\CreatePostRequestPlatformsInner[]',
         'scheduled_for' => '\DateTime',
         'publish_now' => 'bool',
         'is_draft' => 'bool',
@@ -71,9 +71,9 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         'mentions' => 'string[]',
         'crossposting_enabled' => 'bool',
         'metadata' => 'array<string,mixed>',
-        'tiktok_settings' => '\Late\Model\TikTokPlatformData',
-        'facebook_settings' => '\Late\Model\FacebookPlatformData',
-        'recycling' => '\Late\Model\RecyclingConfig',
+        'tiktok_settings' => '\Zernio\Model\TikTokPlatformData',
+        'facebook_settings' => '\Zernio\Model\FacebookPlatformData',
+        'recycling' => '\Zernio\Model\RecyclingConfig',
         'queued_from_profile' => 'string',
         'queue_id' => 'string'
     ];
@@ -466,7 +466,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets media_items
      *
-     * @return \Late\Model\CreatePostRequestMediaItemsInner[]|null
+     * @return \Zernio\Model\CreatePostRequestMediaItemsInner[]|null
      */
     public function getMediaItems()
     {
@@ -476,7 +476,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets media_items
      *
-     * @param \Late\Model\CreatePostRequestMediaItemsInner[]|null $media_items media_items
+     * @param \Zernio\Model\CreatePostRequestMediaItemsInner[]|null $media_items media_items
      *
      * @return self
      */
@@ -493,7 +493,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets platforms
      *
-     * @return \Late\Model\CreatePostRequestPlatformsInner[]|null
+     * @return \Zernio\Model\CreatePostRequestPlatformsInner[]|null
      */
     public function getPlatforms()
     {
@@ -503,7 +503,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets platforms
      *
-     * @param \Late\Model\CreatePostRequestPlatformsInner[]|null $platforms Target platforms and accounts for this post. Required for non-draft posts (returns 400 if empty). Drafts can omit platforms.
+     * @param \Zernio\Model\CreatePostRequestPlatformsInner[]|null $platforms Target platforms and accounts for this post. Required for non-draft posts (returns 400 if empty). Drafts can omit platforms.
      *
      * @return self
      */
@@ -763,7 +763,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets tiktok_settings
      *
-     * @return \Late\Model\TikTokPlatformData|null
+     * @return \Zernio\Model\TikTokPlatformData|null
      */
     public function getTiktokSettings()
     {
@@ -773,7 +773,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets tiktok_settings
      *
-     * @param \Late\Model\TikTokPlatformData|null $tiktok_settings Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
+     * @param \Zernio\Model\TikTokPlatformData|null $tiktok_settings Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
      *
      * @return self
      */
@@ -790,7 +790,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets facebook_settings
      *
-     * @return \Late\Model\FacebookPlatformData|null
+     * @return \Zernio\Model\FacebookPlatformData|null
      */
     public function getFacebookSettings()
     {
@@ -800,7 +800,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets facebook_settings
      *
-     * @param \Late\Model\FacebookPlatformData|null $facebook_settings Root-level Facebook settings applied to all Facebook platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
+     * @param \Zernio\Model\FacebookPlatformData|null $facebook_settings Root-level Facebook settings applied to all Facebook platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
      *
      * @return self
      */
@@ -817,7 +817,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets recycling
      *
-     * @return \Late\Model\RecyclingConfig|null
+     * @return \Zernio\Model\RecyclingConfig|null
      */
     public function getRecycling()
     {
@@ -827,7 +827,7 @@ class CreatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets recycling
      *
-     * @param \Late\Model\RecyclingConfig|null $recycling recycling
+     * @param \Zernio\Model\RecyclingConfig|null $recycling recycling
      *
      * @return self
      */

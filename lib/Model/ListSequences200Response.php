@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListSequences200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class ListSequences200Response implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'sequences' => '\Late\Model\ListSequences200ResponseSequencesInner[]',
-        'pagination' => '\Late\Model\ListContacts200ResponsePagination'
+        'sequences' => '\Zernio\Model\ListSequences200ResponseSequencesInner[]',
+        'pagination' => '\Zernio\Model\ListContacts200ResponsePagination'
     ];
 
     /**
@@ -334,7 +334,7 @@ class ListSequences200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets sequences
      *
-     * @return \Late\Model\ListSequences200ResponseSequencesInner[]|null
+     * @return \Zernio\Model\ListSequences200ResponseSequencesInner[]|null
      */
     public function getSequences()
     {
@@ -344,7 +344,7 @@ class ListSequences200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets sequences
      *
-     * @param \Late\Model\ListSequences200ResponseSequencesInner[]|null $sequences sequences
+     * @param \Zernio\Model\ListSequences200ResponseSequencesInner[]|null $sequences sequences
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class ListSequences200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets pagination
      *
-     * @return \Late\Model\ListContacts200ResponsePagination|null
+     * @return \Zernio\Model\ListContacts200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -371,7 +371,7 @@ class ListSequences200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets pagination
      *
-     * @param \Late\Model\ListContacts200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\ListContacts200ResponsePagination|null $pagination pagination
      *
      * @return self
      */

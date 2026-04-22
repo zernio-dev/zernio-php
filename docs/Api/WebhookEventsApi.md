@@ -1,4 +1,4 @@
-# Late\WebhookEventsApi
+# Zernio\WebhookEventsApi
 
 
 
@@ -43,16 +43,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_account_connected = new \Late\Model\WebhookPayloadAccountConnected(); // \Late\Model\WebhookPayloadAccountConnected
+$webhook_payload_account_connected = new \Zernio\Model\WebhookPayloadAccountConnected(); // \Zernio\Model\WebhookPayloadAccountConnected
 
 try {
     $apiInstance->onAccountConnected($webhook_payload_account_connected);
@@ -65,7 +65,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_account_connected** | [**\Late\Model\WebhookPayloadAccountConnected**](../Model/WebhookPayloadAccountConnected.md)|  | |
+| **webhook_payload_account_connected** | [**\Zernio\Model\WebhookPayloadAccountConnected**](../Model/WebhookPayloadAccountConnected.md)|  | |
 
 ### Return type
 
@@ -102,16 +102,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_account_disconnected = new \Late\Model\WebhookPayloadAccountDisconnected(); // \Late\Model\WebhookPayloadAccountDisconnected
+$webhook_payload_account_disconnected = new \Zernio\Model\WebhookPayloadAccountDisconnected(); // \Zernio\Model\WebhookPayloadAccountDisconnected
 
 try {
     $apiInstance->onAccountDisconnected($webhook_payload_account_disconnected);
@@ -124,7 +124,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_account_disconnected** | [**\Late\Model\WebhookPayloadAccountDisconnected**](../Model/WebhookPayloadAccountDisconnected.md)|  | |
+| **webhook_payload_account_disconnected** | [**\Zernio\Model\WebhookPayloadAccountDisconnected**](../Model/WebhookPayloadAccountDisconnected.md)|  | |
 
 ### Return type
 
@@ -161,16 +161,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_comment = new \Late\Model\WebhookPayloadComment(); // \Late\Model\WebhookPayloadComment
+$webhook_payload_comment = new \Zernio\Model\WebhookPayloadComment(); // \Zernio\Model\WebhookPayloadComment
 
 try {
     $apiInstance->onCommentReceived($webhook_payload_comment);
@@ -183,7 +183,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_comment** | [**\Late\Model\WebhookPayloadComment**](../Model/WebhookPayloadComment.md)|  | |
+| **webhook_payload_comment** | [**\Zernio\Model\WebhookPayloadComment**](../Model/WebhookPayloadComment.md)|  | |
 
 ### Return type
 
@@ -220,16 +220,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_message_deleted = new \Late\Model\WebhookPayloadMessageDeleted(); // \Late\Model\WebhookPayloadMessageDeleted
+$webhook_payload_message_deleted = new \Zernio\Model\WebhookPayloadMessageDeleted(); // \Zernio\Model\WebhookPayloadMessageDeleted
 
 try {
     $apiInstance->onMessageDeleted($webhook_payload_message_deleted);
@@ -242,7 +242,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_message_deleted** | [**\Late\Model\WebhookPayloadMessageDeleted**](../Model/WebhookPayloadMessageDeleted.md)|  | |
+| **webhook_payload_message_deleted** | [**\Zernio\Model\WebhookPayloadMessageDeleted**](../Model/WebhookPayloadMessageDeleted.md)|  | |
 
 ### Return type
 
@@ -279,16 +279,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_message_delivery_status = new \Late\Model\WebhookPayloadMessageDeliveryStatus(); // \Late\Model\WebhookPayloadMessageDeliveryStatus
+$webhook_payload_message_delivery_status = new \Zernio\Model\WebhookPayloadMessageDeliveryStatus(); // \Zernio\Model\WebhookPayloadMessageDeliveryStatus
 
 try {
     $apiInstance->onMessageDelivered($webhook_payload_message_delivery_status);
@@ -301,7 +301,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_message_delivery_status** | [**\Late\Model\WebhookPayloadMessageDeliveryStatus**](../Model/WebhookPayloadMessageDeliveryStatus.md)|  | |
+| **webhook_payload_message_delivery_status** | [**\Zernio\Model\WebhookPayloadMessageDeliveryStatus**](../Model/WebhookPayloadMessageDeliveryStatus.md)|  | |
 
 ### Return type
 
@@ -338,16 +338,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_message_edited = new \Late\Model\WebhookPayloadMessageEdited(); // \Late\Model\WebhookPayloadMessageEdited
+$webhook_payload_message_edited = new \Zernio\Model\WebhookPayloadMessageEdited(); // \Zernio\Model\WebhookPayloadMessageEdited
 
 try {
     $apiInstance->onMessageEdited($webhook_payload_message_edited);
@@ -360,7 +360,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_message_edited** | [**\Late\Model\WebhookPayloadMessageEdited**](../Model/WebhookPayloadMessageEdited.md)|  | |
+| **webhook_payload_message_edited** | [**\Zernio\Model\WebhookPayloadMessageEdited**](../Model/WebhookPayloadMessageEdited.md)|  | |
 
 ### Return type
 
@@ -397,16 +397,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_message_delivery_status = new \Late\Model\WebhookPayloadMessageDeliveryStatus(); // \Late\Model\WebhookPayloadMessageDeliveryStatus
+$webhook_payload_message_delivery_status = new \Zernio\Model\WebhookPayloadMessageDeliveryStatus(); // \Zernio\Model\WebhookPayloadMessageDeliveryStatus
 
 try {
     $apiInstance->onMessageFailed($webhook_payload_message_delivery_status);
@@ -419,7 +419,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_message_delivery_status** | [**\Late\Model\WebhookPayloadMessageDeliveryStatus**](../Model/WebhookPayloadMessageDeliveryStatus.md)|  | |
+| **webhook_payload_message_delivery_status** | [**\Zernio\Model\WebhookPayloadMessageDeliveryStatus**](../Model/WebhookPayloadMessageDeliveryStatus.md)|  | |
 
 ### Return type
 
@@ -456,16 +456,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_message_delivery_status = new \Late\Model\WebhookPayloadMessageDeliveryStatus(); // \Late\Model\WebhookPayloadMessageDeliveryStatus
+$webhook_payload_message_delivery_status = new \Zernio\Model\WebhookPayloadMessageDeliveryStatus(); // \Zernio\Model\WebhookPayloadMessageDeliveryStatus
 
 try {
     $apiInstance->onMessageRead($webhook_payload_message_delivery_status);
@@ -478,7 +478,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_message_delivery_status** | [**\Late\Model\WebhookPayloadMessageDeliveryStatus**](../Model/WebhookPayloadMessageDeliveryStatus.md)|  | |
+| **webhook_payload_message_delivery_status** | [**\Zernio\Model\WebhookPayloadMessageDeliveryStatus**](../Model/WebhookPayloadMessageDeliveryStatus.md)|  | |
 
 ### Return type
 
@@ -515,16 +515,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_message = new \Late\Model\WebhookPayloadMessage(); // \Late\Model\WebhookPayloadMessage
+$webhook_payload_message = new \Zernio\Model\WebhookPayloadMessage(); // \Zernio\Model\WebhookPayloadMessage
 
 try {
     $apiInstance->onMessageReceived($webhook_payload_message);
@@ -537,7 +537,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_message** | [**\Late\Model\WebhookPayloadMessage**](../Model/WebhookPayloadMessage.md)|  | |
+| **webhook_payload_message** | [**\Zernio\Model\WebhookPayloadMessage**](../Model/WebhookPayloadMessage.md)|  | |
 
 ### Return type
 
@@ -574,16 +574,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_message_sent = new \Late\Model\WebhookPayloadMessageSent(); // \Late\Model\WebhookPayloadMessageSent
+$webhook_payload_message_sent = new \Zernio\Model\WebhookPayloadMessageSent(); // \Zernio\Model\WebhookPayloadMessageSent
 
 try {
     $apiInstance->onMessageSent($webhook_payload_message_sent);
@@ -596,7 +596,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_message_sent** | [**\Late\Model\WebhookPayloadMessageSent**](../Model/WebhookPayloadMessageSent.md)|  | |
+| **webhook_payload_message_sent** | [**\Zernio\Model\WebhookPayloadMessageSent**](../Model/WebhookPayloadMessageSent.md)|  | |
 
 ### Return type
 
@@ -633,16 +633,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_post = new \Late\Model\WebhookPayloadPost(); // \Late\Model\WebhookPayloadPost
+$webhook_payload_post = new \Zernio\Model\WebhookPayloadPost(); // \Zernio\Model\WebhookPayloadPost
 
 try {
     $apiInstance->onPostCancelled($webhook_payload_post);
@@ -655,7 +655,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_post** | [**\Late\Model\WebhookPayloadPost**](../Model/WebhookPayloadPost.md)|  | |
+| **webhook_payload_post** | [**\Zernio\Model\WebhookPayloadPost**](../Model/WebhookPayloadPost.md)|  | |
 
 ### Return type
 
@@ -692,16 +692,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_post = new \Late\Model\WebhookPayloadPost(); // \Late\Model\WebhookPayloadPost
+$webhook_payload_post = new \Zernio\Model\WebhookPayloadPost(); // \Zernio\Model\WebhookPayloadPost
 
 try {
     $apiInstance->onPostFailed($webhook_payload_post);
@@ -714,7 +714,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_post** | [**\Late\Model\WebhookPayloadPost**](../Model/WebhookPayloadPost.md)|  | |
+| **webhook_payload_post** | [**\Zernio\Model\WebhookPayloadPost**](../Model/WebhookPayloadPost.md)|  | |
 
 ### Return type
 
@@ -751,16 +751,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_post = new \Late\Model\WebhookPayloadPost(); // \Late\Model\WebhookPayloadPost
+$webhook_payload_post = new \Zernio\Model\WebhookPayloadPost(); // \Zernio\Model\WebhookPayloadPost
 
 try {
     $apiInstance->onPostPartial($webhook_payload_post);
@@ -773,7 +773,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_post** | [**\Late\Model\WebhookPayloadPost**](../Model/WebhookPayloadPost.md)|  | |
+| **webhook_payload_post** | [**\Zernio\Model\WebhookPayloadPost**](../Model/WebhookPayloadPost.md)|  | |
 
 ### Return type
 
@@ -810,16 +810,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_post = new \Late\Model\WebhookPayloadPost(); // \Late\Model\WebhookPayloadPost
+$webhook_payload_post = new \Zernio\Model\WebhookPayloadPost(); // \Zernio\Model\WebhookPayloadPost
 
 try {
     $apiInstance->onPostPublished($webhook_payload_post);
@@ -832,7 +832,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_post** | [**\Late\Model\WebhookPayloadPost**](../Model/WebhookPayloadPost.md)|  | |
+| **webhook_payload_post** | [**\Zernio\Model\WebhookPayloadPost**](../Model/WebhookPayloadPost.md)|  | |
 
 ### Return type
 
@@ -869,16 +869,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_post = new \Late\Model\WebhookPayloadPost(); // \Late\Model\WebhookPayloadPost
+$webhook_payload_post = new \Zernio\Model\WebhookPayloadPost(); // \Zernio\Model\WebhookPayloadPost
 
 try {
     $apiInstance->onPostRecycled($webhook_payload_post);
@@ -891,7 +891,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_post** | [**\Late\Model\WebhookPayloadPost**](../Model/WebhookPayloadPost.md)|  | |
+| **webhook_payload_post** | [**\Zernio\Model\WebhookPayloadPost**](../Model/WebhookPayloadPost.md)|  | |
 
 ### Return type
 
@@ -928,16 +928,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_post = new \Late\Model\WebhookPayloadPost(); // \Late\Model\WebhookPayloadPost
+$webhook_payload_post = new \Zernio\Model\WebhookPayloadPost(); // \Zernio\Model\WebhookPayloadPost
 
 try {
     $apiInstance->onPostScheduled($webhook_payload_post);
@@ -950,7 +950,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_post** | [**\Late\Model\WebhookPayloadPost**](../Model/WebhookPayloadPost.md)|  | |
+| **webhook_payload_post** | [**\Zernio\Model\WebhookPayloadPost**](../Model/WebhookPayloadPost.md)|  | |
 
 ### Return type
 
@@ -987,16 +987,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhookEventsApi(
+$apiInstance = new Zernio\Api\WebhookEventsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_payload_test = new \Late\Model\WebhookPayloadTest(); // \Late\Model\WebhookPayloadTest
+$webhook_payload_test = new \Zernio\Model\WebhookPayloadTest(); // \Zernio\Model\WebhookPayloadTest
 
 try {
     $apiInstance->onWebhookTest($webhook_payload_test);
@@ -1009,7 +1009,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **webhook_payload_test** | [**\Late\Model\WebhookPayloadTest**](../Model/WebhookPayloadTest.md)|  | |
+| **webhook_payload_test** | [**\Zernio\Model\WebhookPayloadTest**](../Model/WebhookPayloadTest.md)|  | |
 
 ### Return type
 

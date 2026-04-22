@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * DiscordPlatformDataEmbedsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,11 +62,11 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
         'description' => 'string',
         'url' => 'string',
         'color' => 'int',
-        'image' => '\Late\Model\DiscordPlatformDataEmbedsInnerImage',
-        'thumbnail' => '\Late\Model\DiscordPlatformDataEmbedsInnerImage',
-        'footer' => '\Late\Model\DiscordPlatformDataEmbedsInnerFooter',
-        'author' => '\Late\Model\DiscordPlatformDataEmbedsInnerAuthor',
-        'fields' => '\Late\Model\DiscordPlatformDataEmbedsInnerFieldsInner[]'
+        'image' => '\Zernio\Model\DiscordPlatformDataEmbedsInnerImage',
+        'thumbnail' => '\Zernio\Model\DiscordPlatformDataEmbedsInnerImage',
+        'footer' => '\Zernio\Model\DiscordPlatformDataEmbedsInnerFooter',
+        'author' => '\Zernio\Model\DiscordPlatformDataEmbedsInnerAuthor',
+        'fields' => '\Zernio\Model\DiscordPlatformDataEmbedsInnerFieldsInner[]'
     ];
 
     /**
@@ -461,7 +461,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets image
      *
-     * @return \Late\Model\DiscordPlatformDataEmbedsInnerImage|null
+     * @return \Zernio\Model\DiscordPlatformDataEmbedsInnerImage|null
      */
     public function getImage()
     {
@@ -471,7 +471,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets image
      *
-     * @param \Late\Model\DiscordPlatformDataEmbedsInnerImage|null $image image
+     * @param \Zernio\Model\DiscordPlatformDataEmbedsInnerImage|null $image image
      *
      * @return self
      */
@@ -488,7 +488,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets thumbnail
      *
-     * @return \Late\Model\DiscordPlatformDataEmbedsInnerImage|null
+     * @return \Zernio\Model\DiscordPlatformDataEmbedsInnerImage|null
      */
     public function getThumbnail()
     {
@@ -498,7 +498,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets thumbnail
      *
-     * @param \Late\Model\DiscordPlatformDataEmbedsInnerImage|null $thumbnail thumbnail
+     * @param \Zernio\Model\DiscordPlatformDataEmbedsInnerImage|null $thumbnail thumbnail
      *
      * @return self
      */
@@ -515,7 +515,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets footer
      *
-     * @return \Late\Model\DiscordPlatformDataEmbedsInnerFooter|null
+     * @return \Zernio\Model\DiscordPlatformDataEmbedsInnerFooter|null
      */
     public function getFooter()
     {
@@ -525,7 +525,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets footer
      *
-     * @param \Late\Model\DiscordPlatformDataEmbedsInnerFooter|null $footer footer
+     * @param \Zernio\Model\DiscordPlatformDataEmbedsInnerFooter|null $footer footer
      *
      * @return self
      */
@@ -542,7 +542,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets author
      *
-     * @return \Late\Model\DiscordPlatformDataEmbedsInnerAuthor|null
+     * @return \Zernio\Model\DiscordPlatformDataEmbedsInnerAuthor|null
      */
     public function getAuthor()
     {
@@ -552,7 +552,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets author
      *
-     * @param \Late\Model\DiscordPlatformDataEmbedsInnerAuthor|null $author author
+     * @param \Zernio\Model\DiscordPlatformDataEmbedsInnerAuthor|null $author author
      *
      * @return self
      */
@@ -569,7 +569,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets fields
      *
-     * @return \Late\Model\DiscordPlatformDataEmbedsInnerFieldsInner[]|null
+     * @return \Zernio\Model\DiscordPlatformDataEmbedsInnerFieldsInner[]|null
      */
     public function getFields()
     {
@@ -579,7 +579,7 @@ class DiscordPlatformDataEmbedsInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets fields
      *
-     * @param \Late\Model\DiscordPlatformDataEmbedsInnerFieldsInner[]|null $fields Up to 25 fields per embed
+     * @param \Zernio\Model\DiscordPlatformDataEmbedsInnerFieldsInner[]|null $fields Up to 25 fields per embed
      *
      * @return self
      */

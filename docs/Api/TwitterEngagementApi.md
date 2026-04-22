@@ -1,4 +1,4 @@
-# Late\TwitterEngagementApi
+# Zernio\TwitterEngagementApi
 
 
 
@@ -17,7 +17,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `bookmarkPost()`
 
 ```php
-bookmarkPost($bookmark_post_request): \Late\Model\BookmarkPost200Response
+bookmarkPost($bookmark_post_request): \Zernio\Model\BookmarkPost200Response
 ```
 
 Bookmark a tweet
@@ -32,16 +32,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\TwitterEngagementApi(
+$apiInstance = new Zernio\Api\TwitterEngagementApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$bookmark_post_request = new \Late\Model\BookmarkPostRequest(); // \Late\Model\BookmarkPostRequest
+$bookmark_post_request = new \Zernio\Model\BookmarkPostRequest(); // \Zernio\Model\BookmarkPostRequest
 
 try {
     $result = $apiInstance->bookmarkPost($bookmark_post_request);
@@ -55,11 +55,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bookmark_post_request** | [**\Late\Model\BookmarkPostRequest**](../Model/BookmarkPostRequest.md)|  | |
+| **bookmark_post_request** | [**\Zernio\Model\BookmarkPostRequest**](../Model/BookmarkPostRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\BookmarkPost200Response**](../Model/BookmarkPost200Response.md)
+[**\Zernio\Model\BookmarkPost200Response**](../Model/BookmarkPost200Response.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ try {
 ## `followUser()`
 
 ```php
-followUser($follow_user_request): \Late\Model\FollowUser200Response
+followUser($follow_user_request): \Zernio\Model\FollowUser200Response
 ```
 
 Follow a user
@@ -92,16 +92,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\TwitterEngagementApi(
+$apiInstance = new Zernio\Api\TwitterEngagementApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$follow_user_request = new \Late\Model\FollowUserRequest(); // \Late\Model\FollowUserRequest
+$follow_user_request = new \Zernio\Model\FollowUserRequest(); // \Zernio\Model\FollowUserRequest
 
 try {
     $result = $apiInstance->followUser($follow_user_request);
@@ -115,11 +115,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **follow_user_request** | [**\Late\Model\FollowUserRequest**](../Model/FollowUserRequest.md)|  | |
+| **follow_user_request** | [**\Zernio\Model\FollowUserRequest**](../Model/FollowUserRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\FollowUser200Response**](../Model/FollowUser200Response.md)
+[**\Zernio\Model\FollowUser200Response**](../Model/FollowUser200Response.md)
 
 ### Authorization
 
@@ -137,7 +137,7 @@ try {
 ## `removeBookmark()`
 
 ```php
-removeBookmark($account_id, $tweet_id): \Late\Model\RemoveBookmark200Response
+removeBookmark($account_id, $tweet_id): \Zernio\Model\RemoveBookmark200Response
 ```
 
 Remove bookmark
@@ -152,10 +152,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\TwitterEngagementApi(
+$apiInstance = new Zernio\Api\TwitterEngagementApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -181,7 +181,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\RemoveBookmark200Response**](../Model/RemoveBookmark200Response.md)
+[**\Zernio\Model\RemoveBookmark200Response**](../Model/RemoveBookmark200Response.md)
 
 ### Authorization
 
@@ -199,7 +199,7 @@ try {
 ## `retweetPost()`
 
 ```php
-retweetPost($retweet_post_request): \Late\Model\RetweetPost200Response
+retweetPost($retweet_post_request): \Zernio\Model\RetweetPost200Response
 ```
 
 Retweet a post
@@ -214,16 +214,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\TwitterEngagementApi(
+$apiInstance = new Zernio\Api\TwitterEngagementApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$retweet_post_request = new \Late\Model\RetweetPostRequest(); // \Late\Model\RetweetPostRequest
+$retweet_post_request = new \Zernio\Model\RetweetPostRequest(); // \Zernio\Model\RetweetPostRequest
 
 try {
     $result = $apiInstance->retweetPost($retweet_post_request);
@@ -237,11 +237,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **retweet_post_request** | [**\Late\Model\RetweetPostRequest**](../Model/RetweetPostRequest.md)|  | |
+| **retweet_post_request** | [**\Zernio\Model\RetweetPostRequest**](../Model/RetweetPostRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\RetweetPost200Response**](../Model/RetweetPost200Response.md)
+[**\Zernio\Model\RetweetPost200Response**](../Model/RetweetPost200Response.md)
 
 ### Authorization
 
@@ -259,7 +259,7 @@ try {
 ## `undoRetweet()`
 
 ```php
-undoRetweet($account_id, $tweet_id): \Late\Model\UndoRetweet200Response
+undoRetweet($account_id, $tweet_id): \Zernio\Model\UndoRetweet200Response
 ```
 
 Undo retweet
@@ -274,10 +274,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\TwitterEngagementApi(
+$apiInstance = new Zernio\Api\TwitterEngagementApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -303,7 +303,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UndoRetweet200Response**](../Model/UndoRetweet200Response.md)
+[**\Zernio\Model\UndoRetweet200Response**](../Model/UndoRetweet200Response.md)
 
 ### Authorization
 
@@ -321,7 +321,7 @@ try {
 ## `unfollowUser()`
 
 ```php
-unfollowUser($account_id, $target_user_id): \Late\Model\UnfollowUser200Response
+unfollowUser($account_id, $target_user_id): \Zernio\Model\UnfollowUser200Response
 ```
 
 Unfollow a user
@@ -336,10 +336,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\TwitterEngagementApi(
+$apiInstance = new Zernio\Api\TwitterEngagementApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -365,7 +365,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UnfollowUser200Response**](../Model/UnfollowUser200Response.md)
+[**\Zernio\Model\UnfollowUser200Response**](../Model/UnfollowUser200Response.md)
 
 ### Authorization
 

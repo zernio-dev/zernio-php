@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetRedditSubreddits200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetRedditSubreddits200Response implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'subreddits' => '\Late\Model\GetRedditSubreddits200ResponseSubredditsInner[]',
+        'subreddits' => '\Zernio\Model\GetRedditSubreddits200ResponseSubredditsInner[]',
         'default_subreddit' => 'string'
     ];
 
@@ -300,7 +300,7 @@ class GetRedditSubreddits200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets subreddits
      *
-     * @return \Late\Model\GetRedditSubreddits200ResponseSubredditsInner[]|null
+     * @return \Zernio\Model\GetRedditSubreddits200ResponseSubredditsInner[]|null
      */
     public function getSubreddits()
     {
@@ -310,7 +310,7 @@ class GetRedditSubreddits200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets subreddits
      *
-     * @param \Late\Model\GetRedditSubreddits200ResponseSubredditsInner[]|null $subreddits subreddits
+     * @param \Zernio\Model\GetRedditSubreddits200ResponseSubredditsInner[]|null $subreddits subreddits
      *
      * @return self
      */

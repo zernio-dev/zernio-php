@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListInboxConversations200ResponseMeta Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ListInboxConversations200ResponseMeta implements ModelInterface, ArrayAcce
     protected static $openAPITypes = [
         'accounts_queried' => 'int',
         'accounts_failed' => 'int',
-        'failed_accounts' => '\Late\Model\ListInboxConversations200ResponseMetaFailedAccountsInner[]',
+        'failed_accounts' => '\Zernio\Model\ListInboxConversations200ResponseMetaFailedAccountsInner[]',
         'last_updated' => '\DateTime'
     ];
 
@@ -368,7 +368,7 @@ class ListInboxConversations200ResponseMeta implements ModelInterface, ArrayAcce
     /**
      * Gets failed_accounts
      *
-     * @return \Late\Model\ListInboxConversations200ResponseMetaFailedAccountsInner[]|null
+     * @return \Zernio\Model\ListInboxConversations200ResponseMetaFailedAccountsInner[]|null
      */
     public function getFailedAccounts()
     {
@@ -378,7 +378,7 @@ class ListInboxConversations200ResponseMeta implements ModelInterface, ArrayAcce
     /**
      * Sets failed_accounts
      *
-     * @param \Late\Model\ListInboxConversations200ResponseMetaFailedAccountsInner[]|null $failed_accounts failed_accounts
+     * @param \Zernio\Model\ListInboxConversations200ResponseMetaFailedAccountsInner[]|null $failed_accounts failed_accounts
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendInboxMessageRequestInteractiveActionOneOf2Parameters Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
         'flow_id' => 'string',
         'flow_cta' => 'string',
         'flow_action' => 'string',
-        'flow_action_payload' => '\Late\Model\SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload',
+        'flow_action_payload' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload',
         'mode' => 'string'
     ];
 
@@ -570,7 +570,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
     /**
      * Gets flow_action_payload
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload|null
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload|null
      */
     public function getFlowActionPayload()
     {
@@ -580,7 +580,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
     /**
      * Sets flow_action_payload
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload|null $flow_action_payload flow_action_payload
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload|null $flow_action_payload flow_action_payload
      *
      * @return self
      */

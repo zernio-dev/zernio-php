@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**flairs** | [**\Late\Model\GetRedditFlairs200ResponseFlairsInner[]**](GetRedditFlairs200ResponseFlairsInner.md) |  | [optional]
+**flairs** | [**\Zernio\Model\GetRedditFlairs200ResponseFlairsInner[]**](GetRedditFlairs200ResponseFlairsInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

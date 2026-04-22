@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**locations** | [**\Late\Model\GetGmbLocations200ResponseLocationsInner[]**](GetGmbLocations200ResponseLocationsInner.md) |  | [optional]
+**locations** | [**\Zernio\Model\GetGmbLocations200ResponseLocationsInner[]**](GetGmbLocations200ResponseLocationsInner.md) |  | [optional]
 **selected_location_id** | **string** |  | [optional]
 **cached** | **bool** |  | [optional]
 

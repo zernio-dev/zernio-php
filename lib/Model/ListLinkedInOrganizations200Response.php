@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListLinkedInOrganizations200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ListLinkedInOrganizations200Response implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'organizations' => '\Late\Model\ListLinkedInOrganizations200ResponseOrganizationsInner[]'
+        'organizations' => '\Zernio\Model\ListLinkedInOrganizations200ResponseOrganizationsInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class ListLinkedInOrganizations200Response implements ModelInterface, ArrayAcces
     /**
      * Gets organizations
      *
-     * @return \Late\Model\ListLinkedInOrganizations200ResponseOrganizationsInner[]|null
+     * @return \Zernio\Model\ListLinkedInOrganizations200ResponseOrganizationsInner[]|null
      */
     public function getOrganizations()
     {
@@ -303,7 +303,7 @@ class ListLinkedInOrganizations200Response implements ModelInterface, ArrayAcces
     /**
      * Sets organizations
      *
-     * @param \Late\Model\ListLinkedInOrganizations200ResponseOrganizationsInner[]|null $organizations organizations
+     * @param \Zernio\Model\ListLinkedInOrganizations200ResponseOrganizationsInner[]|null $organizations organizations
      *
      * @return self
      */

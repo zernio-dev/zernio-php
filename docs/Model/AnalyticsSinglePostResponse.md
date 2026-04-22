@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **content** | **string** |  | [optional]
 **scheduled_for** | **\DateTime** |  | [optional]
 **published_at** | **\DateTime** |  | [optional]
-**analytics** | [**\Late\Model\PostAnalytics**](PostAnalytics.md) |  | [optional]
-**platform_analytics** | [**\Late\Model\PlatformAnalytics[]**](PlatformAnalytics.md) |  | [optional]
+**analytics** | [**\Zernio\Model\PostAnalytics**](PostAnalytics.md) |  | [optional]
+**platform_analytics** | [**\Zernio\Model\PlatformAnalytics[]**](PlatformAnalytics.md) |  | [optional]
 **platform** | **string** |  | [optional]
 **platform_post_url** | **string** |  | [optional]
 **is_external** | **bool** |  | [optional]
@@ -19,6 +19,6 @@ Name | Type | Description | Notes
 **message** | **string** | Human-readable status message for pending, partial, or failed states | [optional]
 **thumbnail_url** | **string** |  | [optional]
 **media_type** | **string** |  | [optional]
-**media_items** | [**\Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]**](AnalyticsSinglePostResponseMediaItemsInner.md) | All media items for this post. Carousel posts contain one entry per slide. | [optional]
+**media_items** | [**\Zernio\Model\AnalyticsSinglePostResponseMediaItemsInner[]**](AnalyticsSinglePostResponseMediaItemsInner.md) | All media items for this post. Carousel posts contain one entry per slide. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

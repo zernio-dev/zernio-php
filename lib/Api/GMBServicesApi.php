@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * GMBServicesApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -138,9 +138,9 @@ class GMBServicesApi
      * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessServices'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetGoogleBusinessServices200Response|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\GetGoogleBusinessServices200Response|\Zernio\Model\ErrorResponse
      */
     public function getGoogleBusinessServices($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessServices'][0])
     {
@@ -157,9 +157,9 @@ class GMBServicesApi
      * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessServices'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetGoogleBusinessServices200Response|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetGoogleBusinessServices200Response|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGoogleBusinessServicesWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessServices'][0])
     {
@@ -191,13 +191,13 @@ class GMBServicesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetGoogleBusinessServices200Response',
+                        '\Zernio\Model\GetGoogleBusinessServices200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -219,7 +219,7 @@ class GMBServicesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetGoogleBusinessServices200Response',
+                '\Zernio\Model\GetGoogleBusinessServices200Response',
                 $request,
                 $response,
             );
@@ -228,7 +228,7 @@ class GMBServicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetGoogleBusinessServices200Response',
+                        '\Zernio\Model\GetGoogleBusinessServices200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -236,7 +236,7 @@ class GMBServicesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -284,7 +284,7 @@ class GMBServicesApi
      */
     public function getGoogleBusinessServicesAsyncWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessServices'][0])
     {
-        $returnType = '\Late\Model\GetGoogleBusinessServices200Response';
+        $returnType = '\Zernio\Model\GetGoogleBusinessServices200Response';
         $request = $this->getGoogleBusinessServicesRequest($account_id, $location_id, $contentType);
 
         return $this->client
@@ -436,13 +436,13 @@ class GMBServicesApi
      * Replace services
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request update_google_business_services_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request update_google_business_services_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessServices'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateGoogleBusinessServices200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\UpdateGoogleBusinessServices200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function updateGoogleBusinessServices($account_id, $update_google_business_services_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessServices'][0])
     {
@@ -456,13 +456,13 @@ class GMBServicesApi
      * Replace services
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessServices'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateGoogleBusinessServices200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateGoogleBusinessServices200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateGoogleBusinessServicesWithHttpInfo($account_id, $update_google_business_services_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessServices'][0])
     {
@@ -494,19 +494,19 @@ class GMBServicesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateGoogleBusinessServices200Response',
+                        '\Zernio\Model\UpdateGoogleBusinessServices200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -528,7 +528,7 @@ class GMBServicesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateGoogleBusinessServices200Response',
+                '\Zernio\Model\UpdateGoogleBusinessServices200Response',
                 $request,
                 $response,
             );
@@ -537,7 +537,7 @@ class GMBServicesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateGoogleBusinessServices200Response',
+                        '\Zernio\Model\UpdateGoogleBusinessServices200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -545,7 +545,7 @@ class GMBServicesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -553,7 +553,7 @@ class GMBServicesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -571,7 +571,7 @@ class GMBServicesApi
      * Replace services
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessServices'] to see the possible values for this operation
      *
@@ -594,7 +594,7 @@ class GMBServicesApi
      * Replace services
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessServices'] to see the possible values for this operation
      *
@@ -603,7 +603,7 @@ class GMBServicesApi
      */
     public function updateGoogleBusinessServicesAsyncWithHttpInfo($account_id, $update_google_business_services_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessServices'][0])
     {
-        $returnType = '\Late\Model\UpdateGoogleBusinessServices200Response';
+        $returnType = '\Zernio\Model\UpdateGoogleBusinessServices200Response';
         $request = $this->updateGoogleBusinessServicesRequest($account_id, $update_google_business_services_request, $location_id, $contentType);
 
         return $this->client
@@ -646,7 +646,7 @@ class GMBServicesApi
      * Create request for operation 'updateGoogleBusinessServices'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessServicesRequest $update_google_business_services_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessServices'] to see the possible values for this operation
      *

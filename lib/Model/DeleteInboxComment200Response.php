@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * DeleteInboxComment200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class DeleteInboxComment200Response implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'data' => '\Late\Model\DeleteAccountGroup200Response'
+        'data' => '\Zernio\Model\DeleteAccountGroup200Response'
     ];
 
     /**
@@ -327,7 +327,7 @@ class DeleteInboxComment200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets data
      *
-     * @return \Late\Model\DeleteAccountGroup200Response|null
+     * @return \Zernio\Model\DeleteAccountGroup200Response|null
      */
     public function getData()
     {
@@ -337,7 +337,7 @@ class DeleteInboxComment200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets data
      *
-     * @param \Late\Model\DeleteAccountGroup200Response|null $data data
+     * @param \Zernio\Model\DeleteAccountGroup200Response|null $data data
      *
      * @return self
      */

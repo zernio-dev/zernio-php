@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * AddUsersToAdAudienceRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class AddUsersToAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'users' => '\Late\Model\AddUsersToAdAudienceRequestUsersInner[]'
+        'users' => '\Zernio\Model\AddUsersToAdAudienceRequestUsersInner[]'
     ];
 
     /**
@@ -300,7 +300,7 @@ class AddUsersToAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets users
      *
-     * @return \Late\Model\AddUsersToAdAudienceRequestUsersInner[]
+     * @return \Zernio\Model\AddUsersToAdAudienceRequestUsersInner[]
      */
     public function getUsers()
     {
@@ -310,7 +310,7 @@ class AddUsersToAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets users
      *
-     * @param \Late\Model\AddUsersToAdAudienceRequestUsersInner[] $users users
+     * @param \Zernio\Model\AddUsersToAdAudienceRequestUsersInner[] $users users
      *
      * @return self
      */

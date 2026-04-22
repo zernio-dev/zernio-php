@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItem Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItem imple
       */
     protected static $openAPITypes = [
         'category' => 'string',
-        'label' => '\Late\Model\GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItemLabel'
+        'label' => '\Zernio\Model\GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItemLabel'
     ];
 
     /**
@@ -327,7 +327,7 @@ class GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItem imple
     /**
      * Gets label
      *
-     * @return \Late\Model\GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItemLabel|null
+     * @return \Zernio\Model\GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItemLabel|null
      */
     public function getLabel()
     {
@@ -337,7 +337,7 @@ class GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItem imple
     /**
      * Sets label
      *
-     * @param \Late\Model\GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItemLabel|null $label label
+     * @param \Zernio\Model\GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItemLabel|null $label label
      *
      * @return self
      */

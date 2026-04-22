@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetDailyMetrics200ResponseDailyDataInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class GetDailyMetrics200ResponseDailyDataInner implements ModelInterface, ArrayA
         'date' => 'string',
         'post_count' => 'int',
         'platforms' => 'array<string,int>',
-        'metrics' => '\Late\Model\GetDailyMetrics200ResponseDailyDataInnerMetrics'
+        'metrics' => '\Zernio\Model\GetDailyMetrics200ResponseDailyDataInnerMetrics'
     ];
 
     /**
@@ -395,7 +395,7 @@ class GetDailyMetrics200ResponseDailyDataInner implements ModelInterface, ArrayA
     /**
      * Gets metrics
      *
-     * @return \Late\Model\GetDailyMetrics200ResponseDailyDataInnerMetrics|null
+     * @return \Zernio\Model\GetDailyMetrics200ResponseDailyDataInnerMetrics|null
      */
     public function getMetrics()
     {
@@ -405,7 +405,7 @@ class GetDailyMetrics200ResponseDailyDataInner implements ModelInterface, ArrayA
     /**
      * Sets metrics
      *
-     * @param \Late\Model\GetDailyMetrics200ResponseDailyDataInnerMetrics|null $metrics metrics
+     * @param \Zernio\Model\GetDailyMetrics200ResponseDailyDataInnerMetrics|null $metrics metrics
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetAnalytics200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,8 +64,8 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'content' => 'string',
         'scheduled_for' => '\DateTime',
         'published_at' => '\DateTime',
-        'analytics' => '\Late\Model\PostAnalytics',
-        'platform_analytics' => '\Late\Model\PlatformAnalytics[]',
+        'analytics' => '\Zernio\Model\PostAnalytics',
+        'platform_analytics' => '\Zernio\Model\PlatformAnalytics[]',
         'platform' => 'string',
         'platform_post_url' => 'string',
         'is_external' => 'bool',
@@ -73,11 +73,11 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => 'string',
         'thumbnail_url' => 'string',
         'media_type' => 'string',
-        'media_items' => '\Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]',
-        'overview' => '\Late\Model\AnalyticsOverview',
-        'posts' => '\Late\Model\AnalyticsListResponsePostsInner[]',
-        'pagination' => '\Late\Model\Pagination',
-        'accounts' => '\Late\Model\SocialAccount[]',
+        'media_items' => '\Zernio\Model\AnalyticsSinglePostResponseMediaItemsInner[]',
+        'overview' => '\Zernio\Model\AnalyticsOverview',
+        'posts' => '\Zernio\Model\AnalyticsListResponsePostsInner[]',
+        'pagination' => '\Zernio\Model\Pagination',
+        'accounts' => '\Zernio\Model\SocialAccount[]',
         'has_analytics_access' => 'bool'
     ];
 
@@ -687,7 +687,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets analytics
      *
-     * @return \Late\Model\PostAnalytics|null
+     * @return \Zernio\Model\PostAnalytics|null
      */
     public function getAnalytics()
     {
@@ -697,7 +697,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets analytics
      *
-     * @param \Late\Model\PostAnalytics|null $analytics analytics
+     * @param \Zernio\Model\PostAnalytics|null $analytics analytics
      *
      * @return self
      */
@@ -714,7 +714,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets platform_analytics
      *
-     * @return \Late\Model\PlatformAnalytics[]|null
+     * @return \Zernio\Model\PlatformAnalytics[]|null
      */
     public function getPlatformAnalytics()
     {
@@ -724,7 +724,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets platform_analytics
      *
-     * @param \Late\Model\PlatformAnalytics[]|null $platform_analytics platform_analytics
+     * @param \Zernio\Model\PlatformAnalytics[]|null $platform_analytics platform_analytics
      *
      * @return self
      */
@@ -950,7 +950,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets media_items
      *
-     * @return \Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]|null
+     * @return \Zernio\Model\AnalyticsSinglePostResponseMediaItemsInner[]|null
      */
     public function getMediaItems()
     {
@@ -960,7 +960,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets media_items
      *
-     * @param \Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]|null $media_items All media items for this post. Carousel posts contain one entry per slide.
+     * @param \Zernio\Model\AnalyticsSinglePostResponseMediaItemsInner[]|null $media_items All media items for this post. Carousel posts contain one entry per slide.
      *
      * @return self
      */
@@ -977,7 +977,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets overview
      *
-     * @return \Late\Model\AnalyticsOverview|null
+     * @return \Zernio\Model\AnalyticsOverview|null
      */
     public function getOverview()
     {
@@ -987,7 +987,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets overview
      *
-     * @param \Late\Model\AnalyticsOverview|null $overview overview
+     * @param \Zernio\Model\AnalyticsOverview|null $overview overview
      *
      * @return self
      */
@@ -1004,7 +1004,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets posts
      *
-     * @return \Late\Model\AnalyticsListResponsePostsInner[]|null
+     * @return \Zernio\Model\AnalyticsListResponsePostsInner[]|null
      */
     public function getPosts()
     {
@@ -1014,7 +1014,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets posts
      *
-     * @param \Late\Model\AnalyticsListResponsePostsInner[]|null $posts posts
+     * @param \Zernio\Model\AnalyticsListResponsePostsInner[]|null $posts posts
      *
      * @return self
      */
@@ -1031,7 +1031,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets pagination
      *
-     * @return \Late\Model\Pagination|null
+     * @return \Zernio\Model\Pagination|null
      */
     public function getPagination()
     {
@@ -1041,7 +1041,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets pagination
      *
-     * @param \Late\Model\Pagination|null $pagination pagination
+     * @param \Zernio\Model\Pagination|null $pagination pagination
      *
      * @return self
      */
@@ -1058,7 +1058,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets accounts
      *
-     * @return \Late\Model\SocialAccount[]|null
+     * @return \Zernio\Model\SocialAccount[]|null
      */
     public function getAccounts()
     {
@@ -1068,7 +1068,7 @@ class GetAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets accounts
      *
-     * @param \Late\Model\SocialAccount[]|null $accounts Connected social accounts (followerCount and followersLastUpdated only included if user has analytics add-on)
+     * @param \Zernio\Model\SocialAccount[]|null $accounts Connected social accounts (followerCount and followersLastUpdated only included if user has analytics add-on)
      *
      * @return self
      */

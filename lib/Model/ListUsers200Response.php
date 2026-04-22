@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListUsers200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class ListUsers200Response implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'current_user_id' => 'string',
-        'users' => '\Late\Model\ListUsers200ResponseUsersInner[]'
+        'users' => '\Zernio\Model\ListUsers200ResponseUsersInner[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ListUsers200Response implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets users
      *
-     * @return \Late\Model\ListUsers200ResponseUsersInner[]|null
+     * @return \Zernio\Model\ListUsers200ResponseUsersInner[]|null
      */
     public function getUsers()
     {
@@ -337,7 +337,7 @@ class ListUsers200Response implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets users
      *
-     * @param \Late\Model\ListUsers200ResponseUsersInner[]|null $users users
+     * @param \Zernio\Model\ListUsers200ResponseUsersInner[]|null $users users
      *
      * @return self
      */

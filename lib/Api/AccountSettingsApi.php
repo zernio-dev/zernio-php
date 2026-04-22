@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * AccountSettingsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -158,7 +158,7 @@ class AccountSettingsApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInstagramIceBreakers'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -175,7 +175,7 @@ class AccountSettingsApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInstagramIceBreakers'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -212,7 +212,7 @@ class AccountSettingsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -388,7 +388,7 @@ class AccountSettingsApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMessengerMenu'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -405,7 +405,7 @@ class AccountSettingsApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteMessengerMenu'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -442,7 +442,7 @@ class AccountSettingsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -618,7 +618,7 @@ class AccountSettingsApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTelegramCommands'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -635,7 +635,7 @@ class AccountSettingsApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteTelegramCommands'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -672,7 +672,7 @@ class AccountSettingsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -848,9 +848,9 @@ class AccountSettingsApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramIceBreakers'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetMessengerMenu200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetMessengerMenu200Response|\Zernio\Model\InlineObject
      */
     public function getInstagramIceBreakers($account_id, string $contentType = self::contentTypes['getInstagramIceBreakers'][0])
     {
@@ -866,9 +866,9 @@ class AccountSettingsApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramIceBreakers'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetMessengerMenu200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetMessengerMenu200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInstagramIceBreakersWithHttpInfo($account_id, string $contentType = self::contentTypes['getInstagramIceBreakers'][0])
     {
@@ -900,13 +900,13 @@ class AccountSettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetMessengerMenu200Response',
+                        '\Zernio\Model\GetMessengerMenu200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -928,7 +928,7 @@ class AccountSettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetMessengerMenu200Response',
+                '\Zernio\Model\GetMessengerMenu200Response',
                 $request,
                 $response,
             );
@@ -937,7 +937,7 @@ class AccountSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetMessengerMenu200Response',
+                        '\Zernio\Model\GetMessengerMenu200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -945,7 +945,7 @@ class AccountSettingsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -991,7 +991,7 @@ class AccountSettingsApi
      */
     public function getInstagramIceBreakersAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getInstagramIceBreakers'][0])
     {
-        $returnType = '\Late\Model\GetMessengerMenu200Response';
+        $returnType = '\Zernio\Model\GetMessengerMenu200Response';
         $request = $this->getInstagramIceBreakersRequest($account_id, $contentType);
 
         return $this->client
@@ -1134,9 +1134,9 @@ class AccountSettingsApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMessengerMenu'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetMessengerMenu200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetMessengerMenu200Response|\Zernio\Model\InlineObject
      */
     public function getMessengerMenu($account_id, string $contentType = self::contentTypes['getMessengerMenu'][0])
     {
@@ -1152,9 +1152,9 @@ class AccountSettingsApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMessengerMenu'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetMessengerMenu200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetMessengerMenu200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMessengerMenuWithHttpInfo($account_id, string $contentType = self::contentTypes['getMessengerMenu'][0])
     {
@@ -1186,13 +1186,13 @@ class AccountSettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetMessengerMenu200Response',
+                        '\Zernio\Model\GetMessengerMenu200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1214,7 +1214,7 @@ class AccountSettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetMessengerMenu200Response',
+                '\Zernio\Model\GetMessengerMenu200Response',
                 $request,
                 $response,
             );
@@ -1223,7 +1223,7 @@ class AccountSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetMessengerMenu200Response',
+                        '\Zernio\Model\GetMessengerMenu200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1231,7 +1231,7 @@ class AccountSettingsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1277,7 +1277,7 @@ class AccountSettingsApi
      */
     public function getMessengerMenuAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getMessengerMenu'][0])
     {
-        $returnType = '\Late\Model\GetMessengerMenu200Response';
+        $returnType = '\Zernio\Model\GetMessengerMenu200Response';
         $request = $this->getMessengerMenuRequest($account_id, $contentType);
 
         return $this->client
@@ -1420,9 +1420,9 @@ class AccountSettingsApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTelegramCommands'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetTelegramCommands200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetTelegramCommands200Response|\Zernio\Model\InlineObject
      */
     public function getTelegramCommands($account_id, string $contentType = self::contentTypes['getTelegramCommands'][0])
     {
@@ -1438,9 +1438,9 @@ class AccountSettingsApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTelegramCommands'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetTelegramCommands200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetTelegramCommands200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTelegramCommandsWithHttpInfo($account_id, string $contentType = self::contentTypes['getTelegramCommands'][0])
     {
@@ -1472,13 +1472,13 @@ class AccountSettingsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetTelegramCommands200Response',
+                        '\Zernio\Model\GetTelegramCommands200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1500,7 +1500,7 @@ class AccountSettingsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetTelegramCommands200Response',
+                '\Zernio\Model\GetTelegramCommands200Response',
                 $request,
                 $response,
             );
@@ -1509,7 +1509,7 @@ class AccountSettingsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetTelegramCommands200Response',
+                        '\Zernio\Model\GetTelegramCommands200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1517,7 +1517,7 @@ class AccountSettingsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1563,7 +1563,7 @@ class AccountSettingsApi
      */
     public function getTelegramCommandsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getTelegramCommands'][0])
     {
-        $returnType = '\Late\Model\GetTelegramCommands200Response';
+        $returnType = '\Zernio\Model\GetTelegramCommands200Response';
         $request = $this->getTelegramCommandsRequest($account_id, $contentType);
 
         return $this->client
@@ -1704,10 +1704,10 @@ class AccountSettingsApi
      * Set IG ice breakers
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request set_instagram_ice_breakers_request (required)
+     * @param  \Zernio\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request set_instagram_ice_breakers_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setInstagramIceBreakers'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1722,10 +1722,10 @@ class AccountSettingsApi
      * Set IG ice breakers
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request (required)
+     * @param  \Zernio\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setInstagramIceBreakers'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1762,7 +1762,7 @@ class AccountSettingsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1780,7 +1780,7 @@ class AccountSettingsApi
      * Set IG ice breakers
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request (required)
+     * @param  \Zernio\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setInstagramIceBreakers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1802,7 +1802,7 @@ class AccountSettingsApi
      * Set IG ice breakers
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request (required)
+     * @param  \Zernio\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setInstagramIceBreakers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1840,7 +1840,7 @@ class AccountSettingsApi
      * Create request for operation 'setInstagramIceBreakers'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request (required)
+     * @param  \Zernio\Model\SetInstagramIceBreakersRequest $set_instagram_ice_breakers_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setInstagramIceBreakers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1953,10 +1953,10 @@ class AccountSettingsApi
      * Set FB persistent menu
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\SetMessengerMenuRequest $set_messenger_menu_request set_messenger_menu_request (required)
+     * @param  \Zernio\Model\SetMessengerMenuRequest $set_messenger_menu_request set_messenger_menu_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setMessengerMenu'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1971,10 +1971,10 @@ class AccountSettingsApi
      * Set FB persistent menu
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\SetMessengerMenuRequest $set_messenger_menu_request (required)
+     * @param  \Zernio\Model\SetMessengerMenuRequest $set_messenger_menu_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setMessengerMenu'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -2011,7 +2011,7 @@ class AccountSettingsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2029,7 +2029,7 @@ class AccountSettingsApi
      * Set FB persistent menu
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\SetMessengerMenuRequest $set_messenger_menu_request (required)
+     * @param  \Zernio\Model\SetMessengerMenuRequest $set_messenger_menu_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setMessengerMenu'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2051,7 +2051,7 @@ class AccountSettingsApi
      * Set FB persistent menu
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\SetMessengerMenuRequest $set_messenger_menu_request (required)
+     * @param  \Zernio\Model\SetMessengerMenuRequest $set_messenger_menu_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setMessengerMenu'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2089,7 +2089,7 @@ class AccountSettingsApi
      * Create request for operation 'setMessengerMenu'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\SetMessengerMenuRequest $set_messenger_menu_request (required)
+     * @param  \Zernio\Model\SetMessengerMenuRequest $set_messenger_menu_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setMessengerMenu'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2202,10 +2202,10 @@ class AccountSettingsApi
      * Set TG bot commands
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\SetTelegramCommandsRequest $set_telegram_commands_request set_telegram_commands_request (required)
+     * @param  \Zernio\Model\SetTelegramCommandsRequest $set_telegram_commands_request set_telegram_commands_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTelegramCommands'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -2220,10 +2220,10 @@ class AccountSettingsApi
      * Set TG bot commands
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\SetTelegramCommandsRequest $set_telegram_commands_request (required)
+     * @param  \Zernio\Model\SetTelegramCommandsRequest $set_telegram_commands_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTelegramCommands'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -2260,7 +2260,7 @@ class AccountSettingsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2278,7 +2278,7 @@ class AccountSettingsApi
      * Set TG bot commands
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\SetTelegramCommandsRequest $set_telegram_commands_request (required)
+     * @param  \Zernio\Model\SetTelegramCommandsRequest $set_telegram_commands_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTelegramCommands'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2300,7 +2300,7 @@ class AccountSettingsApi
      * Set TG bot commands
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\SetTelegramCommandsRequest $set_telegram_commands_request (required)
+     * @param  \Zernio\Model\SetTelegramCommandsRequest $set_telegram_commands_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTelegramCommands'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2338,7 +2338,7 @@ class AccountSettingsApi
      * Create request for operation 'setTelegramCommands'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\SetTelegramCommandsRequest $set_telegram_commands_request (required)
+     * @param  \Zernio\Model\SetTelegramCommandsRequest $set_telegram_commands_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setTelegramCommands'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListWhatsAppGroupJoinRequests200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class ListWhatsAppGroupJoinRequests200Response implements ModelInterface, ArrayA
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'join_requests' => '\Late\Model\ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner[]'
+        'join_requests' => '\Zernio\Model\ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ListWhatsAppGroupJoinRequests200Response implements ModelInterface, ArrayA
     /**
      * Gets join_requests
      *
-     * @return \Late\Model\ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner[]|null
+     * @return \Zernio\Model\ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner[]|null
      */
     public function getJoinRequests()
     {
@@ -337,7 +337,7 @@ class ListWhatsAppGroupJoinRequests200Response implements ModelInterface, ArrayA
     /**
      * Sets join_requests
      *
-     * @param \Late\Model\ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner[]|null $join_requests join_requests
+     * @param \Zernio\Model\ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner[]|null $join_requests join_requests
      *
      * @return self
      */

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **platform** | **string** |  |
 **name** | **string** |  |
 **description** | **string** |  | [optional]
-**steps** | [**\Late\Model\CreateSequenceRequestStepsInner[]**](CreateSequenceRequestStepsInner.md) |  | [optional]
+**steps** | [**\Zernio\Model\CreateSequenceRequestStepsInner[]**](CreateSequenceRequestStepsInner.md) |  | [optional]
 **exit_on_reply** | **bool** |  | [optional] [default to true]
 **exit_on_unsubscribe** | **bool** |  | [optional] [default to true]
 

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateStandaloneAd201Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class CreateStandaloneAd201Response implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ad' => '\Late\Model\Ad',
+        'ad' => '\Zernio\Model\Ad',
         'message' => 'string',
-        'ads' => '\Late\Model\Ad[]',
+        'ads' => '\Zernio\Model\Ad[]',
         'platform_campaign_id' => 'string',
         'platform_ad_set_id' => 'string'
     ];
@@ -321,7 +321,7 @@ class CreateStandaloneAd201Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets ad
      *
-     * @return \Late\Model\Ad|null
+     * @return \Zernio\Model\Ad|null
      */
     public function getAd()
     {
@@ -331,7 +331,7 @@ class CreateStandaloneAd201Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets ad
      *
-     * @param \Late\Model\Ad|null $ad ad
+     * @param \Zernio\Model\Ad|null $ad ad
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class CreateStandaloneAd201Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets ads
      *
-     * @return \Late\Model\Ad[]|null
+     * @return \Zernio\Model\Ad[]|null
      */
     public function getAds()
     {
@@ -385,7 +385,7 @@ class CreateStandaloneAd201Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets ads
      *
-     * @param \Late\Model\Ad[]|null $ads ads
+     * @param \Zernio\Model\Ad[]|null $ads ads
      *
      * @return self
      */

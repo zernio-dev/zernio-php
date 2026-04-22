@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * LinkedInAggregateAnalyticsDailyResponseAnalytics Class Doc Comment
  *
  * @category Class
  * @description Daily breakdown of each metric as date/count pairs. Reach not available with DAILY aggregation.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,10 +59,10 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
       * @var string[]
       */
     protected static $openAPITypes = [
-        'impressions' => '\Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]',
-        'reactions' => '\Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]',
-        'comments' => '\Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]',
-        'shares' => '\Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]'
+        'impressions' => '\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]',
+        'reactions' => '\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]',
+        'comments' => '\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]',
+        'shares' => '\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]'
     ];
 
     /**
@@ -315,7 +315,7 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
     /**
      * Gets impressions
      *
-     * @return \Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null
+     * @return \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null
      */
     public function getImpressions()
     {
@@ -325,7 +325,7 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
     /**
      * Sets impressions
      *
-     * @param \Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null $impressions impressions
+     * @param \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null $impressions impressions
      *
      * @return self
      */
@@ -342,7 +342,7 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
     /**
      * Gets reactions
      *
-     * @return \Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null
+     * @return \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null
      */
     public function getReactions()
     {
@@ -352,7 +352,7 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
     /**
      * Sets reactions
      *
-     * @param \Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null $reactions reactions
+     * @param \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null $reactions reactions
      *
      * @return self
      */
@@ -369,7 +369,7 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
     /**
      * Gets comments
      *
-     * @return \Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null
+     * @return \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null
      */
     public function getComments()
     {
@@ -379,7 +379,7 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
     /**
      * Sets comments
      *
-     * @param \Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null $comments comments
+     * @param \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null $comments comments
      *
      * @return self
      */
@@ -396,7 +396,7 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
     /**
      * Gets shares
      *
-     * @return \Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null
+     * @return \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null
      */
     public function getShares()
     {
@@ -406,7 +406,7 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
     /**
      * Sets shares
      *
-     * @param \Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null $shares shares
+     * @param \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null $shares shares
      *
      * @return self
      */

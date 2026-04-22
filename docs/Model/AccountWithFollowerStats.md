@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **string** |  | [optional]
 **platform** | **string** |  | [optional]
-**profile_id** | [**\Late\Model\SocialAccountProfileId**](SocialAccountProfileId.md) |  | [optional]
+**profile_id** | [**\Zernio\Model\SocialAccountProfileId**](SocialAccountProfileId.md) |  | [optional]
 **username** | **string** |  | [optional]
 **display_name** | **string** |  | [optional]
 **profile_picture** | **string** | URL to the account&#39;s profile picture on the platform. May be null if the platform does not provide one. | [optional]
@@ -22,6 +22,6 @@ Name | Type | Description | Notes
 **growth** | **float** | Follower change over period | [optional]
 **growth_percentage** | **float** | Percentage growth | [optional]
 **data_points** | **float** | Number of historical snapshots | [optional]
-**account_stats** | [**\Late\Model\AccountWithFollowerStatsAllOfAccountStats**](AccountWithFollowerStatsAllOfAccountStats.md) |  | [optional]
+**account_stats** | [**\Zernio\Model\AccountWithFollowerStatsAllOfAccountStats**](AccountWithFollowerStatsAllOfAccountStats.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

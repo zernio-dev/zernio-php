@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendInboxMessageRequestInteractiveActionOneOfSectionsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class SendInboxMessageRequestInteractiveActionOneOfSectionsInner implements Mode
       */
     protected static $openAPITypes = [
         'title' => 'string',
-        'rows' => '\Late\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInnerRowsInner[]'
+        'rows' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInnerRowsInner[]'
     ];
 
     /**
@@ -338,7 +338,7 @@ class SendInboxMessageRequestInteractiveActionOneOfSectionsInner implements Mode
     /**
      * Gets rows
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInnerRowsInner[]
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInnerRowsInner[]
      */
     public function getRows()
     {
@@ -348,7 +348,7 @@ class SendInboxMessageRequestInteractiveActionOneOfSectionsInner implements Mode
     /**
      * Sets rows
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInnerRowsInner[] $rows rows
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInnerRowsInner[] $rows rows
      *
      * @return self
      */

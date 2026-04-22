@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ice_breakers** | [**\Late\Model\SetInstagramIceBreakersRequestIceBreakersInner[]**](SetInstagramIceBreakersRequestIceBreakersInner.md) |  |
+**ice_breakers** | [**\Zernio\Model\SetInstagramIceBreakersRequestIceBreakersInner[]**](SetInstagramIceBreakersRequestIceBreakersInner.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

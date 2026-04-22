@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * LinkedInPlatformData Class Doc Comment
  *
  * @category Class
  * @description Up to 20 images, no multi-video. Single PDF supported (max 100MB). Link previews auto-generated when no media attached. Use organizationUrn for multi-org posting. Geo-restriction only works for organization pages (not personal profiles) and requires the targeted audience to exceed 300 followers.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'organization_urn' => 'string',
         'first_comment' => 'string',
         'disable_link_preview' => 'bool',
-        'geo_restriction' => '\Late\Model\GeoRestriction'
+        'geo_restriction' => '\Zernio\Model\GeoRestriction'
     ];
 
     /**
@@ -430,7 +430,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets geo_restriction
      *
-     * @return \Late\Model\GeoRestriction|null
+     * @return \Zernio\Model\GeoRestriction|null
      */
     public function getGeoRestriction()
     {
@@ -440,7 +440,7 @@ class LinkedInPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets geo_restriction
      *
-     * @param \Late\Model\GeoRestriction|null $geo_restriction geo_restriction
+     * @param \Zernio\Model\GeoRestriction|null $geo_restriction geo_restriction
      *
      * @return self
      */

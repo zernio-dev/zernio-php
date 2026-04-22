@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListCommentAutomations200ResponseAutomationsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -69,7 +69,7 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
         'dm_message' => 'string',
         'comment_reply' => 'string',
         'is_active' => 'bool',
-        'stats' => '\Late\Model\ListCommentAutomations200ResponseAutomationsInnerStats',
+        'stats' => '\Zernio\Model\ListCommentAutomations200ResponseAutomationsInnerStats',
         'created_at' => '\DateTime'
     ];
 
@@ -742,7 +742,7 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
     /**
      * Gets stats
      *
-     * @return \Late\Model\ListCommentAutomations200ResponseAutomationsInnerStats|null
+     * @return \Zernio\Model\ListCommentAutomations200ResponseAutomationsInnerStats|null
      */
     public function getStats()
     {
@@ -752,7 +752,7 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
     /**
      * Sets stats
      *
-     * @param \Late\Model\ListCommentAutomations200ResponseAutomationsInnerStats|null $stats stats
+     * @param \Zernio\Model\ListCommentAutomations200ResponseAutomationsInnerStats|null $stats stats
      *
      * @return self
      */

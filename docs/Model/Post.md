@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **string** |  | [optional]
-**user_id** | [**\Late\Model\PostUserId**](PostUserId.md) |  | [optional]
+**user_id** | [**\Zernio\Model\PostUserId**](PostUserId.md) |  | [optional]
 **title** | **string** | YouTube: title must be ≤ 100 characters. | [optional]
 **content** | **string** |  | [optional]
-**media_items** | [**\Late\Model\MediaItem[]**](MediaItem.md) |  | [optional]
-**platforms** | [**\Late\Model\PlatformTarget[]**](PlatformTarget.md) |  | [optional]
+**media_items** | [**\Zernio\Model\MediaItem[]**](MediaItem.md) |  | [optional]
+**platforms** | [**\Zernio\Model\PlatformTarget[]**](PlatformTarget.md) |  | [optional]
 **scheduled_for** | **\DateTime** |  | [optional]
 **timezone** | **string** |  | [optional]
 **status** | **string** |  | [optional]
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **mentions** | **string[]** | Stored for reference only. This field does NOT automatically create @mentions when publishing. For LinkedIn @mentions, use the /v1/accounts/{accountId}/linkedin-mentions endpoint to resolve profile URLs to URNs, then embed the returned mentionFormat directly in the post content field. | [optional]
 **visibility** | **string** |  | [optional]
 **metadata** | **array<string,mixed>** |  | [optional]
-**recycling** | [**\Late\Model\RecyclingState**](RecyclingState.md) |  | [optional]
+**recycling** | [**\Zernio\Model\RecyclingState**](RecyclingState.md) |  | [optional]
 **recycled_from_post_id** | **string** | ID of the original post if this post was created via recycling | [optional]
 **queued_from_profile** | **string** | Profile ID if the post was scheduled via the queue | [optional]
 **queue_id** | **string** | Queue ID if the post was scheduled via a specific queue | [optional]

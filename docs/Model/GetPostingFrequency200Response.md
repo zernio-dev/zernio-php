@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**frequency** | [**\Late\Model\GetPostingFrequency200ResponseFrequencyInner[]**](GetPostingFrequency200ResponseFrequencyInner.md) |  | [optional]
+**frequency** | [**\Zernio\Model\GetPostingFrequency200ResponseFrequencyInner[]**](GetPostingFrequency200ResponseFrequencyInner.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

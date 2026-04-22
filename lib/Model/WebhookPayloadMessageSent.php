@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadMessageSent Class Doc Comment
  *
  * @category Class
  * @description Webhook payload for message sent events (fired when a message is sent via the API)
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'id' => 'string',
         'event' => 'string',
-        'message' => '\Late\Model\WebhookPayloadMessageSentMessage',
-        'conversation' => '\Late\Model\WebhookPayloadMessageConversation',
-        'account' => '\Late\Model\WebhookPayloadMessageAccount',
+        'message' => '\Zernio\Model\WebhookPayloadMessageSentMessage',
+        'conversation' => '\Zernio\Model\WebhookPayloadMessageConversation',
+        'account' => '\Zernio\Model\WebhookPayloadMessageAccount',
         'timestamp' => '\DateTime'
     ];
 
@@ -433,7 +433,7 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets message
      *
-     * @return \Late\Model\WebhookPayloadMessageSentMessage
+     * @return \Zernio\Model\WebhookPayloadMessageSentMessage
      */
     public function getMessage()
     {
@@ -443,7 +443,7 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets message
      *
-     * @param \Late\Model\WebhookPayloadMessageSentMessage $message message
+     * @param \Zernio\Model\WebhookPayloadMessageSentMessage $message message
      *
      * @return self
      */
@@ -460,7 +460,7 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets conversation
      *
-     * @return \Late\Model\WebhookPayloadMessageConversation
+     * @return \Zernio\Model\WebhookPayloadMessageConversation
      */
     public function getConversation()
     {
@@ -470,7 +470,7 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets conversation
      *
-     * @param \Late\Model\WebhookPayloadMessageConversation $conversation conversation
+     * @param \Zernio\Model\WebhookPayloadMessageConversation $conversation conversation
      *
      * @return self
      */
@@ -487,7 +487,7 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets account
      *
-     * @return \Late\Model\WebhookPayloadMessageAccount
+     * @return \Zernio\Model\WebhookPayloadMessageAccount
      */
     public function getAccount()
     {
@@ -497,7 +497,7 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets account
      *
-     * @param \Late\Model\WebhookPayloadMessageAccount $account account
+     * @param \Zernio\Model\WebhookPayloadMessageAccount $account account
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * PlatformTarget Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,11 +59,11 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'platform' => 'string',
-        'account_id' => '\Late\Model\PlatformTargetAccountId',
+        'account_id' => '\Zernio\Model\PlatformTargetAccountId',
         'custom_content' => 'string',
-        'custom_media' => '\Late\Model\MediaItem[]',
+        'custom_media' => '\Zernio\Model\MediaItem[]',
         'scheduled_for' => '\DateTime',
-        'platform_specific_data' => '\Late\Model\PlatformTargetPlatformSpecificData',
+        'platform_specific_data' => '\Zernio\Model\PlatformTargetPlatformSpecificData',
         'status' => 'string',
         'platform_post_id' => 'string',
         'platform_post_url' => 'string',
@@ -466,7 +466,7 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets account_id
      *
-     * @return \Late\Model\PlatformTargetAccountId|null
+     * @return \Zernio\Model\PlatformTargetAccountId|null
      */
     public function getAccountId()
     {
@@ -476,7 +476,7 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets account_id
      *
-     * @param \Late\Model\PlatformTargetAccountId|null $account_id account_id
+     * @param \Zernio\Model\PlatformTargetAccountId|null $account_id account_id
      *
      * @return self
      */
@@ -520,7 +520,7 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets custom_media
      *
-     * @return \Late\Model\MediaItem[]|null
+     * @return \Zernio\Model\MediaItem[]|null
      */
     public function getCustomMedia()
     {
@@ -530,7 +530,7 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets custom_media
      *
-     * @param \Late\Model\MediaItem[]|null $custom_media custom_media
+     * @param \Zernio\Model\MediaItem[]|null $custom_media custom_media
      *
      * @return self
      */
@@ -574,7 +574,7 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets platform_specific_data
      *
-     * @return \Late\Model\PlatformTargetPlatformSpecificData|null
+     * @return \Zernio\Model\PlatformTargetPlatformSpecificData|null
      */
     public function getPlatformSpecificData()
     {
@@ -584,7 +584,7 @@ class PlatformTarget implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets platform_specific_data
      *
-     * @param \Late\Model\PlatformTargetPlatformSpecificData|null $platform_specific_data platform_specific_data
+     * @param \Zernio\Model\PlatformTargetPlatformSpecificData|null $platform_specific_data platform_specific_data
      *
      * @return self
      */

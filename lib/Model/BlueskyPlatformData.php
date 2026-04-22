@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * BlueskyPlatformData Class Doc Comment
  *
  * @category Class
  * @description Bluesky post settings. Supports text posts with up to 4 images or a single video. threadItems creates a reply chain (Bluesky thread). Images exceeding 1MB are automatically compressed. Alt text supported via mediaItem properties.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class BlueskyPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]'
+        'thread_items' => '\Zernio\Model\TwitterPlatformDataThreadItemsInner[]'
     ];
 
     /**
@@ -294,7 +294,7 @@ class BlueskyPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets thread_items
      *
-     * @return \Late\Model\TwitterPlatformDataThreadItemsInner[]|null
+     * @return \Zernio\Model\TwitterPlatformDataThreadItemsInner[]|null
      */
     public function getThreadItems()
     {
@@ -304,7 +304,7 @@ class BlueskyPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets thread_items
      *
-     * @param \Late\Model\TwitterPlatformDataThreadItemsInner[]|null $thread_items Complete sequence of posts in a Bluesky thread. The first item becomes the root post, subsequent items are chained as replies. When threadItems is provided, the top-level content field is used only for display and search purposes, it is NOT published. You must include your first post as threadItems[0].
+     * @param \Zernio\Model\TwitterPlatformDataThreadItemsInner[]|null $thread_items Complete sequence of posts in a Bluesky thread. The first item becomes the root post, subsequent items are chained as replies. When threadItems is provided, the top-level content field is used only for display and search purposes, it is NOT published. You must include your first post as threadItems[0].
      *
      * @return self
      */

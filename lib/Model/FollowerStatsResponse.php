@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * FollowerStatsResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'accounts' => '\Late\Model\AccountWithFollowerStats[]',
-        'date_range' => '\Late\Model\GetFollowerStats200ResponseDateRange',
+        'accounts' => '\Zernio\Model\AccountWithFollowerStats[]',
+        'date_range' => '\Zernio\Model\GetFollowerStats200ResponseDateRange',
         'aggregation' => 'string'
     ];
 
@@ -333,7 +333,7 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets accounts
      *
-     * @return \Late\Model\AccountWithFollowerStats[]|null
+     * @return \Zernio\Model\AccountWithFollowerStats[]|null
      */
     public function getAccounts()
     {
@@ -343,7 +343,7 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets accounts
      *
-     * @param \Late\Model\AccountWithFollowerStats[]|null $accounts accounts
+     * @param \Zernio\Model\AccountWithFollowerStats[]|null $accounts accounts
      *
      * @return self
      */
@@ -360,7 +360,7 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets date_range
      *
-     * @return \Late\Model\GetFollowerStats200ResponseDateRange|null
+     * @return \Zernio\Model\GetFollowerStats200ResponseDateRange|null
      */
     public function getDateRange()
     {
@@ -370,7 +370,7 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets date_range
      *
-     * @param \Late\Model\GetFollowerStats200ResponseDateRange|null $date_range date_range
+     * @param \Zernio\Model\GetFollowerStats200ResponseDateRange|null $date_range date_range
      *
      * @return self
      */

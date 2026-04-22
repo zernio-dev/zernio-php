@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendInboxMessageRequestInteractive Class Doc Comment
  *
  * @category Class
  * @description WhatsApp-only. Rich interactive payload for list messages, CTA URL buttons, and Flow prompts. When set, takes priority over &#x60;buttons&#x60; and &#x60;quickReplies&#x60;. The shape mirrors Meta&#39;s Cloud API &#x60;interactive&#x60; object verbatim, so any payload that works against Meta directly will also work here.  Use &#x60;buttons&#x60; / &#x60;quickReplies&#x60; for simple button replies (WhatsApp&#39;s &#x60;interactive.type: \&quot;button\&quot;&#x60;) — the abstraction caps at 3 buttons and handles the auto-conversion for you. Use this field only for &#x60;list&#x60;, &#x60;cta_url&#x60;, or &#x60;flow&#x60; messages.  Tap events come back via the &#x60;message.received&#x60; webhook with &#x60;metadata.interactiveType&#x60; set to &#x60;list_reply&#x60; or &#x60;nfm_reply&#x60;.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'header' => '\Late\Model\SendInboxMessageRequestInteractiveHeader',
-        'body' => '\Late\Model\SendInboxMessageRequestInteractiveBody',
-        'footer' => '\Late\Model\SendInboxMessageRequestInteractiveFooter',
-        'action' => '\Late\Model\SendInboxMessageRequestInteractiveAction'
+        'header' => '\Zernio\Model\SendInboxMessageRequestInteractiveHeader',
+        'body' => '\Zernio\Model\SendInboxMessageRequestInteractiveBody',
+        'footer' => '\Zernio\Model\SendInboxMessageRequestInteractiveFooter',
+        'action' => '\Zernio\Model\SendInboxMessageRequestInteractiveAction'
     ];
 
     /**
@@ -394,7 +394,7 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
     /**
      * Gets header
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveHeader|null
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveHeader|null
      */
     public function getHeader()
     {
@@ -404,7 +404,7 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
     /**
      * Sets header
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveHeader|null $header header
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveHeader|null $header header
      *
      * @return self
      */
@@ -421,7 +421,7 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
     /**
      * Gets body
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveBody
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveBody
      */
     public function getBody()
     {
@@ -431,7 +431,7 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
     /**
      * Sets body
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveBody $body body
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveBody $body body
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
     /**
      * Gets footer
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveFooter|null
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveFooter|null
      */
     public function getFooter()
     {
@@ -458,7 +458,7 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
     /**
      * Sets footer
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveFooter|null $footer footer
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveFooter|null $footer footer
      *
      * @return self
      */
@@ -475,7 +475,7 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
     /**
      * Gets action
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveAction
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveAction
      */
     public function getAction()
     {
@@ -485,7 +485,7 @@ class SendInboxMessageRequestInteractive implements ModelInterface, ArrayAccess,
     /**
      * Sets action
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveAction $action action
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveAction $action action
      *
      * @return self
      */

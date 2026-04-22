@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetInboxConversationMessages200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'messages' => '\Late\Model\GetInboxConversationMessages200ResponseMessagesInner[]',
+        'messages' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInner[]',
         'last_updated' => '\DateTime'
     ];
 
@@ -334,7 +334,7 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
     /**
      * Gets messages
      *
-     * @return \Late\Model\GetInboxConversationMessages200ResponseMessagesInner[]|null
+     * @return \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInner[]|null
      */
     public function getMessages()
     {
@@ -344,7 +344,7 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
     /**
      * Sets messages
      *
-     * @param \Late\Model\GetInboxConversationMessages200ResponseMessagesInner[]|null $messages messages
+     * @param \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInner[]|null $messages messages
      *
      * @return self
      */

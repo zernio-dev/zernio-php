@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateApiKey201Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreateApiKey201Response implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'message' => 'string',
-        'api_key' => '\Late\Model\ApiKey'
+        'api_key' => '\Zernio\Model\ApiKey'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CreateApiKey201Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets api_key
      *
-     * @return \Late\Model\ApiKey|null
+     * @return \Zernio\Model\ApiKey|null
      */
     public function getApiKey()
     {
@@ -337,7 +337,7 @@ class CreateApiKey201Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets api_key
      *
-     * @param \Late\Model\ApiKey|null $api_key api_key
+     * @param \Zernio\Model\ApiKey|null $api_key api_key
      *
      * @return self
      */

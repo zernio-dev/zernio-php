@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListAds200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class ListAds200Response implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ads' => '\Late\Model\Ad[]',
-        'pagination' => '\Late\Model\Pagination'
+        'ads' => '\Zernio\Model\Ad[]',
+        'pagination' => '\Zernio\Model\Pagination'
     ];
 
     /**
@@ -300,7 +300,7 @@ class ListAds200Response implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets ads
      *
-     * @return \Late\Model\Ad[]|null
+     * @return \Zernio\Model\Ad[]|null
      */
     public function getAds()
     {
@@ -310,7 +310,7 @@ class ListAds200Response implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets ads
      *
-     * @param \Late\Model\Ad[]|null $ads ads
+     * @param \Zernio\Model\Ad[]|null $ads ads
      *
      * @return self
      */
@@ -327,7 +327,7 @@ class ListAds200Response implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets pagination
      *
-     * @return \Late\Model\Pagination|null
+     * @return \Zernio\Model\Pagination|null
      */
     public function getPagination()
     {
@@ -337,7 +337,7 @@ class ListAds200Response implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets pagination
      *
-     * @param \Late\Model\Pagination|null $pagination pagination
+     * @param \Zernio\Model\Pagination|null $pagination pagination
      *
      * @return self
      */

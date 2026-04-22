@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * AdsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -161,12 +161,12 @@ class AdsApi
      *
      * Boost post as ad
      *
-     * @param  \Late\Model\BoostPostRequest $boost_post_request boost_post_request (required)
+     * @param  \Zernio\Model\BoostPostRequest $boost_post_request boost_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['boostPost'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateAd200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateAd200Response|\Zernio\Model\InlineObject
      */
     public function boostPost($boost_post_request, string $contentType = self::contentTypes['boostPost'][0])
     {
@@ -179,12 +179,12 @@ class AdsApi
      *
      * Boost post as ad
      *
-     * @param  \Late\Model\BoostPostRequest $boost_post_request (required)
+     * @param  \Zernio\Model\BoostPostRequest $boost_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['boostPost'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateAd200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateAd200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function boostPostWithHttpInfo($boost_post_request, string $contentType = self::contentTypes['boostPost'][0])
     {
@@ -216,13 +216,13 @@ class AdsApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateAd200Response',
+                        '\Zernio\Model\UpdateAd200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -244,7 +244,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateAd200Response',
+                '\Zernio\Model\UpdateAd200Response',
                 $request,
                 $response,
             );
@@ -253,7 +253,7 @@ class AdsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateAd200Response',
+                        '\Zernio\Model\UpdateAd200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -261,7 +261,7 @@ class AdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -278,7 +278,7 @@ class AdsApi
      *
      * Boost post as ad
      *
-     * @param  \Late\Model\BoostPostRequest $boost_post_request (required)
+     * @param  \Zernio\Model\BoostPostRequest $boost_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['boostPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -299,7 +299,7 @@ class AdsApi
      *
      * Boost post as ad
      *
-     * @param  \Late\Model\BoostPostRequest $boost_post_request (required)
+     * @param  \Zernio\Model\BoostPostRequest $boost_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['boostPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -307,7 +307,7 @@ class AdsApi
      */
     public function boostPostAsyncWithHttpInfo($boost_post_request, string $contentType = self::contentTypes['boostPost'][0])
     {
-        $returnType = '\Late\Model\UpdateAd200Response';
+        $returnType = '\Zernio\Model\UpdateAd200Response';
         $request = $this->boostPostRequest($boost_post_request, $contentType);
 
         return $this->client
@@ -349,7 +349,7 @@ class AdsApi
     /**
      * Create request for operation 'boostPost'
      *
-     * @param  \Late\Model\BoostPostRequest $boost_post_request (required)
+     * @param  \Zernio\Model\BoostPostRequest $boost_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['boostPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -446,12 +446,12 @@ class AdsApi
      *
      * Create standalone ad
      *
-     * @param  \Late\Model\CreateStandaloneAdRequest $create_standalone_ad_request create_standalone_ad_request (required)
+     * @param  \Zernio\Model\CreateStandaloneAdRequest $create_standalone_ad_request create_standalone_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CreateStandaloneAd201Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\CreateStandaloneAd201Response|\Zernio\Model\InlineObject
      */
     public function createStandaloneAd($create_standalone_ad_request, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
@@ -464,12 +464,12 @@ class AdsApi
      *
      * Create standalone ad
      *
-     * @param  \Late\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
+     * @param  \Zernio\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CreateStandaloneAd201Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateStandaloneAd201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createStandaloneAdWithHttpInfo($create_standalone_ad_request, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
@@ -501,13 +501,13 @@ class AdsApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateStandaloneAd201Response',
+                        '\Zernio\Model\CreateStandaloneAd201Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -529,7 +529,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CreateStandaloneAd201Response',
+                '\Zernio\Model\CreateStandaloneAd201Response',
                 $request,
                 $response,
             );
@@ -538,7 +538,7 @@ class AdsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateStandaloneAd201Response',
+                        '\Zernio\Model\CreateStandaloneAd201Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -546,7 +546,7 @@ class AdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -563,7 +563,7 @@ class AdsApi
      *
      * Create standalone ad
      *
-     * @param  \Late\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
+     * @param  \Zernio\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -584,7 +584,7 @@ class AdsApi
      *
      * Create standalone ad
      *
-     * @param  \Late\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
+     * @param  \Zernio\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -592,7 +592,7 @@ class AdsApi
      */
     public function createStandaloneAdAsyncWithHttpInfo($create_standalone_ad_request, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
-        $returnType = '\Late\Model\CreateStandaloneAd201Response';
+        $returnType = '\Zernio\Model\CreateStandaloneAd201Response';
         $request = $this->createStandaloneAdRequest($create_standalone_ad_request, $contentType);
 
         return $this->client
@@ -634,7 +634,7 @@ class AdsApi
     /**
      * Create request for operation 'createStandaloneAd'
      *
-     * @param  \Late\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
+     * @param  \Zernio\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -734,9 +734,9 @@ class AdsApi
      * @param  string $ad_id ad_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAd'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\DeleteAccountGroup200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function deleteAd($ad_id, string $contentType = self::contentTypes['deleteAd'][0])
     {
@@ -752,9 +752,9 @@ class AdsApi
      * @param  string $ad_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAd'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\DeleteAccountGroup200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteAdWithHttpInfo($ad_id, string $contentType = self::contentTypes['deleteAd'][0])
     {
@@ -786,19 +786,19 @@ class AdsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\DeleteAccountGroup200Response',
+                        '\Zernio\Model\DeleteAccountGroup200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -820,7 +820,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\DeleteAccountGroup200Response',
+                '\Zernio\Model\DeleteAccountGroup200Response',
                 $request,
                 $response,
             );
@@ -829,7 +829,7 @@ class AdsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\DeleteAccountGroup200Response',
+                        '\Zernio\Model\DeleteAccountGroup200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -837,7 +837,7 @@ class AdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -845,7 +845,7 @@ class AdsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -891,7 +891,7 @@ class AdsApi
      */
     public function deleteAdAsyncWithHttpInfo($ad_id, string $contentType = self::contentTypes['deleteAd'][0])
     {
-        $returnType = '\Late\Model\DeleteAccountGroup200Response';
+        $returnType = '\Zernio\Model\DeleteAccountGroup200Response';
         $request = $this->deleteAdRequest($ad_id, $contentType);
 
         return $this->client
@@ -1034,9 +1034,9 @@ class AdsApi
      * @param  string $ad_id ad_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAd'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetAd200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\GetAd200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getAd($ad_id, string $contentType = self::contentTypes['getAd'][0])
     {
@@ -1052,9 +1052,9 @@ class AdsApi
      * @param  string $ad_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAd'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetAd200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAd200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAdWithHttpInfo($ad_id, string $contentType = self::contentTypes['getAd'][0])
     {
@@ -1086,19 +1086,19 @@ class AdsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAd200Response',
+                        '\Zernio\Model\GetAd200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1120,7 +1120,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetAd200Response',
+                '\Zernio\Model\GetAd200Response',
                 $request,
                 $response,
             );
@@ -1129,7 +1129,7 @@ class AdsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAd200Response',
+                        '\Zernio\Model\GetAd200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1137,7 +1137,7 @@ class AdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1145,7 +1145,7 @@ class AdsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1191,7 +1191,7 @@ class AdsApi
      */
     public function getAdAsyncWithHttpInfo($ad_id, string $contentType = self::contentTypes['getAd'][0])
     {
-        $returnType = '\Late\Model\GetAd200Response';
+        $returnType = '\Zernio\Model\GetAd200Response';
         $request = $this->getAdRequest($ad_id, $contentType);
 
         return $this->client
@@ -1337,9 +1337,9 @@ class AdsApi
      * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetAdAnalytics200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\GetAdAnalytics200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getAdAnalytics($ad_id, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
     {
@@ -1358,9 +1358,9 @@ class AdsApi
      * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetAdAnalytics200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAdAnalytics200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAdAnalyticsWithHttpInfo($ad_id, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
     {
@@ -1392,19 +1392,19 @@ class AdsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAdAnalytics200Response',
+                        '\Zernio\Model\GetAdAnalytics200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1426,7 +1426,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetAdAnalytics200Response',
+                '\Zernio\Model\GetAdAnalytics200Response',
                 $request,
                 $response,
             );
@@ -1435,7 +1435,7 @@ class AdsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAdAnalytics200Response',
+                        '\Zernio\Model\GetAdAnalytics200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1443,7 +1443,7 @@ class AdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1451,7 +1451,7 @@ class AdsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1503,7 +1503,7 @@ class AdsApi
      */
     public function getAdAnalyticsAsyncWithHttpInfo($ad_id, $from_date = null, $to_date = null, $breakdowns = null, string $contentType = self::contentTypes['getAdAnalytics'][0])
     {
-        $returnType = '\Late\Model\GetAdAnalytics200Response';
+        $returnType = '\Zernio\Model\GetAdAnalytics200Response';
         $request = $this->getAdAnalyticsRequest($ad_id, $from_date, $to_date, $breakdowns, $contentType);
 
         return $this->client
@@ -1679,9 +1679,9 @@ class AdsApi
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListAdAccounts200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListAdAccounts200Response|\Zernio\Model\InlineObject
      */
     public function listAdAccounts($account_id, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
@@ -1697,9 +1697,9 @@ class AdsApi
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListAdAccounts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListAdAccounts200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAdAccountsWithHttpInfo($account_id, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
@@ -1731,13 +1731,13 @@ class AdsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListAdAccounts200Response',
+                        '\Zernio\Model\ListAdAccounts200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1759,7 +1759,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListAdAccounts200Response',
+                '\Zernio\Model\ListAdAccounts200Response',
                 $request,
                 $response,
             );
@@ -1768,7 +1768,7 @@ class AdsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListAdAccounts200Response',
+                        '\Zernio\Model\ListAdAccounts200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1776,7 +1776,7 @@ class AdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1822,7 +1822,7 @@ class AdsApi
      */
     public function listAdAccountsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
-        $returnType = '\Late\Model\ListAdAccounts200Response';
+        $returnType = '\Zernio\Model\ListAdAccounts200Response';
         $request = $this->listAdAccountsRequest($account_id, $contentType);
 
         return $this->client
@@ -1966,7 +1966,7 @@ class AdsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit limit (optional, default to 50)
      * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
-     * @param  \Late\Model\AdStatus|null $status status (optional)
+     * @param  \Zernio\Model\AdStatus|null $status status (optional)
      * @param  string|null $platform platform (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
@@ -1976,9 +1976,9 @@ class AdsApi
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListAds200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListAds200Response|\Zernio\Model\InlineObject
      */
     public function listAds($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
@@ -1994,7 +1994,7 @@ class AdsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
-     * @param  \Late\Model\AdStatus|null $status (optional)
+     * @param  \Zernio\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
@@ -2004,9 +2004,9 @@ class AdsApi
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListAds200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListAds200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAdsWithHttpInfo($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
@@ -2038,13 +2038,13 @@ class AdsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListAds200Response',
+                        '\Zernio\Model\ListAds200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2066,7 +2066,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListAds200Response',
+                '\Zernio\Model\ListAds200Response',
                 $request,
                 $response,
             );
@@ -2075,7 +2075,7 @@ class AdsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListAds200Response',
+                        '\Zernio\Model\ListAds200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2083,7 +2083,7 @@ class AdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2103,7 +2103,7 @@ class AdsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
-     * @param  \Late\Model\AdStatus|null $status (optional)
+     * @param  \Zernio\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
@@ -2134,7 +2134,7 @@ class AdsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
-     * @param  \Late\Model\AdStatus|null $status (optional)
+     * @param  \Zernio\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
@@ -2149,7 +2149,7 @@ class AdsApi
      */
     public function listAdsAsyncWithHttpInfo($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
-        $returnType = '\Late\Model\ListAds200Response';
+        $returnType = '\Zernio\Model\ListAds200Response';
         $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
 
         return $this->client
@@ -2194,7 +2194,7 @@ class AdsApi
      * @param  int|null $page Page number (1-based) (optional, default to 1)
      * @param  int|null $limit (optional, default to 50)
      * @param  string|null $source all (default) &#x3D; Zernio-created + platform-discovered ads. zernio &#x3D; restrict to Zernio-created only. (optional, default to 'all')
-     * @param  \Late\Model\AdStatus|null $status (optional)
+     * @param  \Zernio\Model\AdStatus|null $status (optional)
      * @param  string|null $platform (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
@@ -2406,9 +2406,9 @@ class AdsApi
      * @param  string $account_id SocialAccount ID (metaads or googleads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListConversionDestinations200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListConversionDestinations200Response|\Zernio\Model\InlineObject
      */
     public function listConversionDestinations($account_id, string $contentType = self::contentTypes['listConversionDestinations'][0])
     {
@@ -2424,9 +2424,9 @@ class AdsApi
      * @param  string $account_id SocialAccount ID (metaads or googleads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListConversionDestinations200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListConversionDestinations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listConversionDestinationsWithHttpInfo($account_id, string $contentType = self::contentTypes['listConversionDestinations'][0])
     {
@@ -2458,13 +2458,13 @@ class AdsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListConversionDestinations200Response',
+                        '\Zernio\Model\ListConversionDestinations200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2486,7 +2486,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListConversionDestinations200Response',
+                '\Zernio\Model\ListConversionDestinations200Response',
                 $request,
                 $response,
             );
@@ -2495,7 +2495,7 @@ class AdsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListConversionDestinations200Response',
+                        '\Zernio\Model\ListConversionDestinations200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2503,7 +2503,7 @@ class AdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2549,7 +2549,7 @@ class AdsApi
      */
     public function listConversionDestinationsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['listConversionDestinations'][0])
     {
-        $returnType = '\Late\Model\ListConversionDestinations200Response';
+        $returnType = '\Zernio\Model\ListConversionDestinations200Response';
         $request = $this->listConversionDestinationsRequest($account_id, $contentType);
 
         return $this->client
@@ -2693,9 +2693,9 @@ class AdsApi
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdInterests'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\SearchAdInterests200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\SearchAdInterests200Response|\Zernio\Model\InlineObject
      */
     public function searchAdInterests($q, $account_id, string $contentType = self::contentTypes['searchAdInterests'][0])
     {
@@ -2712,9 +2712,9 @@ class AdsApi
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdInterests'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SearchAdInterests200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SearchAdInterests200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchAdInterestsWithHttpInfo($q, $account_id, string $contentType = self::contentTypes['searchAdInterests'][0])
     {
@@ -2746,13 +2746,13 @@ class AdsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SearchAdInterests200Response',
+                        '\Zernio\Model\SearchAdInterests200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2774,7 +2774,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\SearchAdInterests200Response',
+                '\Zernio\Model\SearchAdInterests200Response',
                 $request,
                 $response,
             );
@@ -2783,7 +2783,7 @@ class AdsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SearchAdInterests200Response',
+                        '\Zernio\Model\SearchAdInterests200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2791,7 +2791,7 @@ class AdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2839,7 +2839,7 @@ class AdsApi
      */
     public function searchAdInterestsAsyncWithHttpInfo($q, $account_id, string $contentType = self::contentTypes['searchAdInterests'][0])
     {
-        $returnType = '\Late\Model\SearchAdInterests200Response';
+        $returnType = '\Zernio\Model\SearchAdInterests200Response';
         $request = $this->searchAdInterestsRequest($q, $account_id, $contentType);
 
         return $this->client
@@ -2997,12 +2997,12 @@ class AdsApi
      *
      * Send conversion events to an ad platform
      *
-     * @param  \Late\Model\SendConversionsRequest $send_conversions_request send_conversions_request (required)
+     * @param  \Zernio\Model\SendConversionsRequest $send_conversions_request send_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendConversions'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\SendConversions200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\SendConversions200Response|\Zernio\Model\InlineObject
      */
     public function sendConversions($send_conversions_request, string $contentType = self::contentTypes['sendConversions'][0])
     {
@@ -3015,12 +3015,12 @@ class AdsApi
      *
      * Send conversion events to an ad platform
      *
-     * @param  \Late\Model\SendConversionsRequest $send_conversions_request (required)
+     * @param  \Zernio\Model\SendConversionsRequest $send_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendConversions'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SendConversions200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SendConversions200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendConversionsWithHttpInfo($send_conversions_request, string $contentType = self::contentTypes['sendConversions'][0])
     {
@@ -3052,13 +3052,13 @@ class AdsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SendConversions200Response',
+                        '\Zernio\Model\SendConversions200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -3080,7 +3080,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\SendConversions200Response',
+                '\Zernio\Model\SendConversions200Response',
                 $request,
                 $response,
             );
@@ -3089,7 +3089,7 @@ class AdsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SendConversions200Response',
+                        '\Zernio\Model\SendConversions200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3097,7 +3097,7 @@ class AdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3114,7 +3114,7 @@ class AdsApi
      *
      * Send conversion events to an ad platform
      *
-     * @param  \Late\Model\SendConversionsRequest $send_conversions_request (required)
+     * @param  \Zernio\Model\SendConversionsRequest $send_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendConversions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3135,7 +3135,7 @@ class AdsApi
      *
      * Send conversion events to an ad platform
      *
-     * @param  \Late\Model\SendConversionsRequest $send_conversions_request (required)
+     * @param  \Zernio\Model\SendConversionsRequest $send_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendConversions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3143,7 +3143,7 @@ class AdsApi
      */
     public function sendConversionsAsyncWithHttpInfo($send_conversions_request, string $contentType = self::contentTypes['sendConversions'][0])
     {
-        $returnType = '\Late\Model\SendConversions200Response';
+        $returnType = '\Zernio\Model\SendConversions200Response';
         $request = $this->sendConversionsRequest($send_conversions_request, $contentType);
 
         return $this->client
@@ -3185,7 +3185,7 @@ class AdsApi
     /**
      * Create request for operation 'sendConversions'
      *
-     * @param  \Late\Model\SendConversionsRequest $send_conversions_request (required)
+     * @param  \Zernio\Model\SendConversionsRequest $send_conversions_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendConversions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3283,12 +3283,12 @@ class AdsApi
      * Update ad
      *
      * @param  string $ad_id ad_id (required)
-     * @param  \Late\Model\UpdateAdRequest $update_ad_request update_ad_request (required)
+     * @param  \Zernio\Model\UpdateAdRequest $update_ad_request update_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAd'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateAd200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\UpdateAd200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function updateAd($ad_id, $update_ad_request, string $contentType = self::contentTypes['updateAd'][0])
     {
@@ -3302,12 +3302,12 @@ class AdsApi
      * Update ad
      *
      * @param  string $ad_id (required)
-     * @param  \Late\Model\UpdateAdRequest $update_ad_request (required)
+     * @param  \Zernio\Model\UpdateAdRequest $update_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAd'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateAd200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateAd200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAdWithHttpInfo($ad_id, $update_ad_request, string $contentType = self::contentTypes['updateAd'][0])
     {
@@ -3339,19 +3339,19 @@ class AdsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateAd200Response',
+                        '\Zernio\Model\UpdateAd200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -3373,7 +3373,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateAd200Response',
+                '\Zernio\Model\UpdateAd200Response',
                 $request,
                 $response,
             );
@@ -3382,7 +3382,7 @@ class AdsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateAd200Response',
+                        '\Zernio\Model\UpdateAd200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3390,7 +3390,7 @@ class AdsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3398,7 +3398,7 @@ class AdsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3416,7 +3416,7 @@ class AdsApi
      * Update ad
      *
      * @param  string $ad_id (required)
-     * @param  \Late\Model\UpdateAdRequest $update_ad_request (required)
+     * @param  \Zernio\Model\UpdateAdRequest $update_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3438,7 +3438,7 @@ class AdsApi
      * Update ad
      *
      * @param  string $ad_id (required)
-     * @param  \Late\Model\UpdateAdRequest $update_ad_request (required)
+     * @param  \Zernio\Model\UpdateAdRequest $update_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3446,7 +3446,7 @@ class AdsApi
      */
     public function updateAdAsyncWithHttpInfo($ad_id, $update_ad_request, string $contentType = self::contentTypes['updateAd'][0])
     {
-        $returnType = '\Late\Model\UpdateAd200Response';
+        $returnType = '\Zernio\Model\UpdateAd200Response';
         $request = $this->updateAdRequest($ad_id, $update_ad_request, $contentType);
 
         return $this->client
@@ -3489,7 +3489,7 @@ class AdsApi
      * Create request for operation 'updateAd'
      *
      * @param  string $ad_id (required)
-     * @param  \Late\Model\UpdateAdRequest $update_ad_request (required)
+     * @param  \Zernio\Model\UpdateAdRequest $update_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

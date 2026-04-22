@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListInboxConversations200ResponseDataInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -71,7 +71,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'status' => 'string',
         'unread_count' => 'int',
         'url' => 'string',
-        'instagram_profile' => '\Late\Model\ListInboxConversations200ResponseDataInnerInstagramProfile'
+        'instagram_profile' => '\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile'
     ];
 
     /**
@@ -807,7 +807,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
     /**
      * Gets instagram_profile
      *
-     * @return \Late\Model\ListInboxConversations200ResponseDataInnerInstagramProfile|null
+     * @return \Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile|null
      */
     public function getInstagramProfile()
     {
@@ -817,7 +817,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
     /**
      * Sets instagram_profile
      *
-     * @param \Late\Model\ListInboxConversations200ResponseDataInnerInstagramProfile|null $instagram_profile instagram_profile
+     * @param \Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile|null $instagram_profile instagram_profile
      *
      * @return self
      */

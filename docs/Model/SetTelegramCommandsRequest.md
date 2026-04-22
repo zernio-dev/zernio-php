@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**commands** | [**\Late\Model\SetTelegramCommandsRequestCommandsInner[]**](SetTelegramCommandsRequestCommandsInner.md) |  |
+**commands** | [**\Zernio\Model\SetTelegramCommandsRequestCommandsInner[]**](SetTelegramCommandsRequestCommandsInner.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

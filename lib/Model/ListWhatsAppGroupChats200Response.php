@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListWhatsAppGroupChats200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class ListWhatsAppGroupChats200Response implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'groups' => '\Late\Model\ListWhatsAppGroupChats200ResponseGroupsInner[]',
-        'paging' => '\Late\Model\ListWhatsAppGroupChats200ResponsePaging'
+        'groups' => '\Zernio\Model\ListWhatsAppGroupChats200ResponseGroupsInner[]',
+        'paging' => '\Zernio\Model\ListWhatsAppGroupChats200ResponsePaging'
     ];
 
     /**
@@ -300,7 +300,7 @@ class ListWhatsAppGroupChats200Response implements ModelInterface, ArrayAccess, 
     /**
      * Gets groups
      *
-     * @return \Late\Model\ListWhatsAppGroupChats200ResponseGroupsInner[]|null
+     * @return \Zernio\Model\ListWhatsAppGroupChats200ResponseGroupsInner[]|null
      */
     public function getGroups()
     {
@@ -310,7 +310,7 @@ class ListWhatsAppGroupChats200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets groups
      *
-     * @param \Late\Model\ListWhatsAppGroupChats200ResponseGroupsInner[]|null $groups groups
+     * @param \Zernio\Model\ListWhatsAppGroupChats200ResponseGroupsInner[]|null $groups groups
      *
      * @return self
      */
@@ -327,7 +327,7 @@ class ListWhatsAppGroupChats200Response implements ModelInterface, ArrayAccess, 
     /**
      * Gets paging
      *
-     * @return \Late\Model\ListWhatsAppGroupChats200ResponsePaging|null
+     * @return \Zernio\Model\ListWhatsAppGroupChats200ResponsePaging|null
      */
     public function getPaging()
     {
@@ -337,7 +337,7 @@ class ListWhatsAppGroupChats200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets paging
      *
-     * @param \Late\Model\ListWhatsAppGroupChats200ResponsePaging|null $paging paging
+     * @param \Zernio\Model\ListWhatsAppGroupChats200ResponsePaging|null $paging paging
      *
      * @return self
      */

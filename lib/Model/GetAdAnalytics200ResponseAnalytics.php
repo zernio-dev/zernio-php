@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetAdAnalytics200ResponseAnalytics Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class GetAdAnalytics200ResponseAnalytics implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'summary' => '\Late\Model\AdMetrics',
-        'daily' => '\Late\Model\GetAdAnalytics200ResponseAnalyticsDailyInner[]',
+        'summary' => '\Zernio\Model\AdMetrics',
+        'daily' => '\Zernio\Model\GetAdAnalytics200ResponseAnalyticsDailyInner[]',
         'breakdowns' => 'array<string,object[]>'
     ];
 
@@ -307,7 +307,7 @@ class GetAdAnalytics200ResponseAnalytics implements ModelInterface, ArrayAccess,
     /**
      * Gets summary
      *
-     * @return \Late\Model\AdMetrics|null
+     * @return \Zernio\Model\AdMetrics|null
      */
     public function getSummary()
     {
@@ -317,7 +317,7 @@ class GetAdAnalytics200ResponseAnalytics implements ModelInterface, ArrayAccess,
     /**
      * Sets summary
      *
-     * @param \Late\Model\AdMetrics|null $summary summary
+     * @param \Zernio\Model\AdMetrics|null $summary summary
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class GetAdAnalytics200ResponseAnalytics implements ModelInterface, ArrayAccess,
     /**
      * Gets daily
      *
-     * @return \Late\Model\GetAdAnalytics200ResponseAnalyticsDailyInner[]|null
+     * @return \Zernio\Model\GetAdAnalytics200ResponseAnalyticsDailyInner[]|null
      */
     public function getDaily()
     {
@@ -344,7 +344,7 @@ class GetAdAnalytics200ResponseAnalytics implements ModelInterface, ArrayAccess,
     /**
      * Sets daily
      *
-     * @param \Late\Model\GetAdAnalytics200ResponseAnalyticsDailyInner[]|null $daily daily
+     * @param \Zernio\Model\GetAdAnalytics200ResponseAnalyticsDailyInner[]|null $daily daily
      *
      * @return self
      */

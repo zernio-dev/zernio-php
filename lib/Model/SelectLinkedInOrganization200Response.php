@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SelectLinkedInOrganization200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class SelectLinkedInOrganization200Response implements ModelInterface, ArrayAcce
     protected static $openAPITypes = [
         'message' => 'string',
         'redirect_url' => 'string',
-        'account' => '\Late\Model\SelectLinkedInOrganization200ResponseAccount',
-        'bulk_refresh' => '\Late\Model\SelectLinkedInOrganization200ResponseBulkRefresh'
+        'account' => '\Zernio\Model\SelectLinkedInOrganization200ResponseAccount',
+        'bulk_refresh' => '\Zernio\Model\SelectLinkedInOrganization200ResponseBulkRefresh'
     ];
 
     /**
@@ -368,7 +368,7 @@ class SelectLinkedInOrganization200Response implements ModelInterface, ArrayAcce
     /**
      * Gets account
      *
-     * @return \Late\Model\SelectLinkedInOrganization200ResponseAccount|null
+     * @return \Zernio\Model\SelectLinkedInOrganization200ResponseAccount|null
      */
     public function getAccount()
     {
@@ -378,7 +378,7 @@ class SelectLinkedInOrganization200Response implements ModelInterface, ArrayAcce
     /**
      * Sets account
      *
-     * @param \Late\Model\SelectLinkedInOrganization200ResponseAccount|null $account account
+     * @param \Zernio\Model\SelectLinkedInOrganization200ResponseAccount|null $account account
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class SelectLinkedInOrganization200Response implements ModelInterface, ArrayAcce
     /**
      * Gets bulk_refresh
      *
-     * @return \Late\Model\SelectLinkedInOrganization200ResponseBulkRefresh|null
+     * @return \Zernio\Model\SelectLinkedInOrganization200ResponseBulkRefresh|null
      */
     public function getBulkRefresh()
     {
@@ -405,7 +405,7 @@ class SelectLinkedInOrganization200Response implements ModelInterface, ArrayAcce
     /**
      * Sets bulk_refresh
      *
-     * @param \Late\Model\SelectLinkedInOrganization200ResponseBulkRefresh|null $bulk_refresh bulk_refresh
+     * @param \Zernio\Model\SelectLinkedInOrganization200ResponseBulkRefresh|null $bulk_refresh bulk_refresh
      *
      * @return self
      */

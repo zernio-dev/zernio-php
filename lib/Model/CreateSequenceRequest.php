@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateSequenceRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class CreateSequenceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'platform' => 'string',
         'name' => 'string',
         'description' => 'string',
-        'steps' => '\Late\Model\CreateSequenceRequestStepsInner[]',
+        'steps' => '\Zernio\Model\CreateSequenceRequestStepsInner[]',
         'exit_on_reply' => 'bool',
         'exit_on_unsubscribe' => 'bool'
     ];
@@ -533,7 +533,7 @@ class CreateSequenceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets steps
      *
-     * @return \Late\Model\CreateSequenceRequestStepsInner[]|null
+     * @return \Zernio\Model\CreateSequenceRequestStepsInner[]|null
      */
     public function getSteps()
     {
@@ -543,7 +543,7 @@ class CreateSequenceRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets steps
      *
-     * @param \Late\Model\CreateSequenceRequestStepsInner[]|null $steps steps
+     * @param \Zernio\Model\CreateSequenceRequestStepsInner[]|null $steps steps
      *
      * @return self
      */

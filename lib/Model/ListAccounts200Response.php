@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListAccounts200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'accounts' => '\Late\Model\SocialAccount[]',
+        'accounts' => '\Zernio\Model\SocialAccount[]',
         'has_analytics_access' => 'bool',
-        'pagination' => '\Late\Model\Pagination'
+        'pagination' => '\Zernio\Model\Pagination'
     ];
 
     /**
@@ -307,7 +307,7 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets accounts
      *
-     * @return \Late\Model\SocialAccount[]|null
+     * @return \Zernio\Model\SocialAccount[]|null
      */
     public function getAccounts()
     {
@@ -317,7 +317,7 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets accounts
      *
-     * @param \Late\Model\SocialAccount[]|null $accounts accounts
+     * @param \Zernio\Model\SocialAccount[]|null $accounts accounts
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets pagination
      *
-     * @return \Late\Model\Pagination|null
+     * @return \Zernio\Model\Pagination|null
      */
     public function getPagination()
     {
@@ -371,7 +371,7 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets pagination
      *
-     * @param \Late\Model\Pagination|null $pagination Only present when page/limit params are provided
+     * @param \Zernio\Model\Pagination|null $pagination Only present when page/limit params are provided
      *
      * @return self
      */

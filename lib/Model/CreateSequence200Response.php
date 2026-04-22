@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateSequence200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreateSequence200Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'sequence' => '\Late\Model\CreateSequence200ResponseSequence'
+        'sequence' => '\Zernio\Model\CreateSequence200ResponseSequence'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CreateSequence200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets sequence
      *
-     * @return \Late\Model\CreateSequence200ResponseSequence|null
+     * @return \Zernio\Model\CreateSequence200ResponseSequence|null
      */
     public function getSequence()
     {
@@ -337,7 +337,7 @@ class CreateSequence200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets sequence
      *
-     * @param \Late\Model\CreateSequence200ResponseSequence|null $sequence sequence
+     * @param \Zernio\Model\CreateSequence200ResponseSequence|null $sequence sequence
      *
      * @return self
      */

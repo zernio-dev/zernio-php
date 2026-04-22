@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateBroadcastRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,9 +63,9 @@ class CreateBroadcastRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'platform' => 'string',
         'name' => 'string',
         'description' => 'string',
-        'message' => '\Late\Model\CreateBroadcastRequestMessage',
-        'template' => '\Late\Model\CreateBroadcastRequestTemplate',
-        'segment_filters' => '\Late\Model\CreateBroadcastRequestSegmentFilters'
+        'message' => '\Zernio\Model\CreateBroadcastRequestMessage',
+        'template' => '\Zernio\Model\CreateBroadcastRequestTemplate',
+        'segment_filters' => '\Zernio\Model\CreateBroadcastRequestSegmentFilters'
     ];
 
     /**
@@ -533,7 +533,7 @@ class CreateBroadcastRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets message
      *
-     * @return \Late\Model\CreateBroadcastRequestMessage|null
+     * @return \Zernio\Model\CreateBroadcastRequestMessage|null
      */
     public function getMessage()
     {
@@ -543,7 +543,7 @@ class CreateBroadcastRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets message
      *
-     * @param \Late\Model\CreateBroadcastRequestMessage|null $message message
+     * @param \Zernio\Model\CreateBroadcastRequestMessage|null $message message
      *
      * @return self
      */
@@ -560,7 +560,7 @@ class CreateBroadcastRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets template
      *
-     * @return \Late\Model\CreateBroadcastRequestTemplate|null
+     * @return \Zernio\Model\CreateBroadcastRequestTemplate|null
      */
     public function getTemplate()
     {
@@ -570,7 +570,7 @@ class CreateBroadcastRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets template
      *
-     * @param \Late\Model\CreateBroadcastRequestTemplate|null $template template
+     * @param \Zernio\Model\CreateBroadcastRequestTemplate|null $template template
      *
      * @return self
      */
@@ -587,7 +587,7 @@ class CreateBroadcastRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets segment_filters
      *
-     * @return \Late\Model\CreateBroadcastRequestSegmentFilters|null
+     * @return \Zernio\Model\CreateBroadcastRequestSegmentFilters|null
      */
     public function getSegmentFilters()
     {
@@ -597,7 +597,7 @@ class CreateBroadcastRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets segment_filters
      *
-     * @param \Late\Model\CreateBroadcastRequestSegmentFilters|null $segment_filters segment_filters
+     * @param \Zernio\Model\CreateBroadcastRequestSegmentFilters|null $segment_filters segment_filters
      *
      * @return self
      */

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**question** | [**\Late\Model\DiscordPlatformDataPollQuestion**](DiscordPlatformDataPollQuestion.md) |  | [optional]
-**answers** | [**\Late\Model\DiscordPlatformDataPollAnswersInner[]**](DiscordPlatformDataPollAnswersInner.md) | 1-10 answer options | [optional]
+**question** | [**\Zernio\Model\DiscordPlatformDataPollQuestion**](DiscordPlatformDataPollQuestion.md) |  | [optional]
+**answers** | [**\Zernio\Model\DiscordPlatformDataPollAnswersInner[]**](DiscordPlatformDataPollAnswersInner.md) | 1-10 answer options | [optional]
 **duration** | **int** | Poll duration in hours (1-768). Default 24. | [optional]
 **allow_multiselect** | **bool** | Allow users to select multiple answers. Default false. | [optional]
 

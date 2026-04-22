@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * CommentsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -160,9 +160,9 @@ class CommentsApi
      * @param  string $comment_id comment_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxComment'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\DeleteInboxComment200Response|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\DeleteInboxComment200Response|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject
      */
     public function deleteInboxComment($post_id, $account_id, $comment_id, string $contentType = self::contentTypes['deleteInboxComment'][0])
     {
@@ -180,9 +180,9 @@ class CommentsApi
      * @param  string $comment_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxComment'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\DeleteInboxComment200Response|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteInboxComment200Response|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteInboxCommentWithHttpInfo($post_id, $account_id, $comment_id, string $contentType = self::contentTypes['deleteInboxComment'][0])
     {
@@ -214,19 +214,19 @@ class CommentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\DeleteInboxComment200Response',
+                        '\Zernio\Model\DeleteInboxComment200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -248,7 +248,7 @@ class CommentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\DeleteInboxComment200Response',
+                '\Zernio\Model\DeleteInboxComment200Response',
                 $request,
                 $response,
             );
@@ -257,7 +257,7 @@ class CommentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\DeleteInboxComment200Response',
+                        '\Zernio\Model\DeleteInboxComment200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -265,7 +265,7 @@ class CommentsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -273,7 +273,7 @@ class CommentsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -323,7 +323,7 @@ class CommentsApi
      */
     public function deleteInboxCommentAsyncWithHttpInfo($post_id, $account_id, $comment_id, string $contentType = self::contentTypes['deleteInboxComment'][0])
     {
-        $returnType = '\Late\Model\DeleteInboxComment200Response';
+        $returnType = '\Zernio\Model\DeleteInboxComment200Response';
         $request = $this->deleteInboxCommentRequest($post_id, $account_id, $comment_id, $contentType);
 
         return $this->client
@@ -505,9 +505,9 @@ class CommentsApi
      * @param  string|null $comment_id (Reddit only) Get replies to a specific comment (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxPostComments'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetInboxPostComments200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetInboxPostComments200Response|\Zernio\Model\InlineObject
      */
     public function getInboxPostComments($post_id, $account_id, $subreddit = null, $limit = 25, $cursor = null, $comment_id = null, string $contentType = self::contentTypes['getInboxPostComments'][0])
     {
@@ -528,9 +528,9 @@ class CommentsApi
      * @param  string|null $comment_id (Reddit only) Get replies to a specific comment (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxPostComments'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetInboxPostComments200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetInboxPostComments200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboxPostCommentsWithHttpInfo($post_id, $account_id, $subreddit = null, $limit = 25, $cursor = null, $comment_id = null, string $contentType = self::contentTypes['getInboxPostComments'][0])
     {
@@ -562,13 +562,13 @@ class CommentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetInboxPostComments200Response',
+                        '\Zernio\Model\GetInboxPostComments200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -590,7 +590,7 @@ class CommentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetInboxPostComments200Response',
+                '\Zernio\Model\GetInboxPostComments200Response',
                 $request,
                 $response,
             );
@@ -599,7 +599,7 @@ class CommentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetInboxPostComments200Response',
+                        '\Zernio\Model\GetInboxPostComments200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -607,7 +607,7 @@ class CommentsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -663,7 +663,7 @@ class CommentsApi
      */
     public function getInboxPostCommentsAsyncWithHttpInfo($post_id, $account_id, $subreddit = null, $limit = 25, $cursor = null, $comment_id = null, string $contentType = self::contentTypes['getInboxPostComments'][0])
     {
-        $returnType = '\Late\Model\GetInboxPostComments200Response';
+        $returnType = '\Zernio\Model\GetInboxPostComments200Response';
         $request = $this->getInboxPostCommentsRequest($post_id, $account_id, $subreddit, $limit, $cursor, $comment_id, $contentType);
 
         return $this->client
@@ -872,12 +872,12 @@ class CommentsApi
      *
      * @param  string $post_id post_id (required)
      * @param  string $comment_id comment_id (required)
-     * @param  \Late\Model\HideInboxCommentRequest $hide_inbox_comment_request hide_inbox_comment_request (required)
+     * @param  \Zernio\Model\HideInboxCommentRequest $hide_inbox_comment_request hide_inbox_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideInboxComment'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\HideInboxComment200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\HideInboxComment200Response|\Zernio\Model\InlineObject
      */
     public function hideInboxComment($post_id, $comment_id, $hide_inbox_comment_request, string $contentType = self::contentTypes['hideInboxComment'][0])
     {
@@ -892,12 +892,12 @@ class CommentsApi
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
-     * @param  \Late\Model\HideInboxCommentRequest $hide_inbox_comment_request (required)
+     * @param  \Zernio\Model\HideInboxCommentRequest $hide_inbox_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideInboxComment'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\HideInboxComment200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\HideInboxComment200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function hideInboxCommentWithHttpInfo($post_id, $comment_id, $hide_inbox_comment_request, string $contentType = self::contentTypes['hideInboxComment'][0])
     {
@@ -929,13 +929,13 @@ class CommentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\HideInboxComment200Response',
+                        '\Zernio\Model\HideInboxComment200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -957,7 +957,7 @@ class CommentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\HideInboxComment200Response',
+                '\Zernio\Model\HideInboxComment200Response',
                 $request,
                 $response,
             );
@@ -966,7 +966,7 @@ class CommentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\HideInboxComment200Response',
+                        '\Zernio\Model\HideInboxComment200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -974,7 +974,7 @@ class CommentsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -993,7 +993,7 @@ class CommentsApi
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
-     * @param  \Late\Model\HideInboxCommentRequest $hide_inbox_comment_request (required)
+     * @param  \Zernio\Model\HideInboxCommentRequest $hide_inbox_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideInboxComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1016,7 +1016,7 @@ class CommentsApi
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
-     * @param  \Late\Model\HideInboxCommentRequest $hide_inbox_comment_request (required)
+     * @param  \Zernio\Model\HideInboxCommentRequest $hide_inbox_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideInboxComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1024,7 +1024,7 @@ class CommentsApi
      */
     public function hideInboxCommentAsyncWithHttpInfo($post_id, $comment_id, $hide_inbox_comment_request, string $contentType = self::contentTypes['hideInboxComment'][0])
     {
-        $returnType = '\Late\Model\HideInboxComment200Response';
+        $returnType = '\Zernio\Model\HideInboxComment200Response';
         $request = $this->hideInboxCommentRequest($post_id, $comment_id, $hide_inbox_comment_request, $contentType);
 
         return $this->client
@@ -1068,7 +1068,7 @@ class CommentsApi
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
-     * @param  \Late\Model\HideInboxCommentRequest $hide_inbox_comment_request (required)
+     * @param  \Zernio\Model\HideInboxCommentRequest $hide_inbox_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['hideInboxComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1197,12 +1197,12 @@ class CommentsApi
      *
      * @param  string $post_id post_id (required)
      * @param  string $comment_id comment_id (required)
-     * @param  \Late\Model\LikeInboxCommentRequest $like_inbox_comment_request like_inbox_comment_request (required)
+     * @param  \Zernio\Model\LikeInboxCommentRequest $like_inbox_comment_request like_inbox_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['likeInboxComment'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\LikeInboxComment200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\LikeInboxComment200Response|\Zernio\Model\InlineObject
      */
     public function likeInboxComment($post_id, $comment_id, $like_inbox_comment_request, string $contentType = self::contentTypes['likeInboxComment'][0])
     {
@@ -1217,12 +1217,12 @@ class CommentsApi
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
-     * @param  \Late\Model\LikeInboxCommentRequest $like_inbox_comment_request (required)
+     * @param  \Zernio\Model\LikeInboxCommentRequest $like_inbox_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['likeInboxComment'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\LikeInboxComment200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\LikeInboxComment200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function likeInboxCommentWithHttpInfo($post_id, $comment_id, $like_inbox_comment_request, string $contentType = self::contentTypes['likeInboxComment'][0])
     {
@@ -1254,13 +1254,13 @@ class CommentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\LikeInboxComment200Response',
+                        '\Zernio\Model\LikeInboxComment200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1282,7 +1282,7 @@ class CommentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\LikeInboxComment200Response',
+                '\Zernio\Model\LikeInboxComment200Response',
                 $request,
                 $response,
             );
@@ -1291,7 +1291,7 @@ class CommentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\LikeInboxComment200Response',
+                        '\Zernio\Model\LikeInboxComment200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1299,7 +1299,7 @@ class CommentsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1318,7 +1318,7 @@ class CommentsApi
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
-     * @param  \Late\Model\LikeInboxCommentRequest $like_inbox_comment_request (required)
+     * @param  \Zernio\Model\LikeInboxCommentRequest $like_inbox_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['likeInboxComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1341,7 +1341,7 @@ class CommentsApi
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
-     * @param  \Late\Model\LikeInboxCommentRequest $like_inbox_comment_request (required)
+     * @param  \Zernio\Model\LikeInboxCommentRequest $like_inbox_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['likeInboxComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1349,7 +1349,7 @@ class CommentsApi
      */
     public function likeInboxCommentAsyncWithHttpInfo($post_id, $comment_id, $like_inbox_comment_request, string $contentType = self::contentTypes['likeInboxComment'][0])
     {
-        $returnType = '\Late\Model\LikeInboxComment200Response';
+        $returnType = '\Zernio\Model\LikeInboxComment200Response';
         $request = $this->likeInboxCommentRequest($post_id, $comment_id, $like_inbox_comment_request, $contentType);
 
         return $this->client
@@ -1393,7 +1393,7 @@ class CommentsApi
      *
      * @param  string $post_id (required)
      * @param  string $comment_id (required)
-     * @param  \Late\Model\LikeInboxCommentRequest $like_inbox_comment_request (required)
+     * @param  \Zernio\Model\LikeInboxCommentRequest $like_inbox_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['likeInboxComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1531,9 +1531,9 @@ class CommentsApi
      * @param  string|null $account_id Filter by specific social account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxComments'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListInboxComments200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListInboxComments200Response|\Zernio\Model\InlineObject
      */
     public function listInboxComments($profile_id = null, $platform = null, $min_comments = null, $since = null, $sort_by = 'date', $sort_order = 'desc', $limit = 50, $cursor = null, $account_id = null, string $contentType = self::contentTypes['listInboxComments'][0])
     {
@@ -1557,9 +1557,9 @@ class CommentsApi
      * @param  string|null $account_id Filter by specific social account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxComments'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListInboxComments200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListInboxComments200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listInboxCommentsWithHttpInfo($profile_id = null, $platform = null, $min_comments = null, $since = null, $sort_by = 'date', $sort_order = 'desc', $limit = 50, $cursor = null, $account_id = null, string $contentType = self::contentTypes['listInboxComments'][0])
     {
@@ -1591,13 +1591,13 @@ class CommentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListInboxComments200Response',
+                        '\Zernio\Model\ListInboxComments200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1619,7 +1619,7 @@ class CommentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListInboxComments200Response',
+                '\Zernio\Model\ListInboxComments200Response',
                 $request,
                 $response,
             );
@@ -1628,7 +1628,7 @@ class CommentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListInboxComments200Response',
+                        '\Zernio\Model\ListInboxComments200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1636,7 +1636,7 @@ class CommentsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1698,7 +1698,7 @@ class CommentsApi
      */
     public function listInboxCommentsAsyncWithHttpInfo($profile_id = null, $platform = null, $min_comments = null, $since = null, $sort_by = 'date', $sort_order = 'desc', $limit = 50, $cursor = null, $account_id = null, string $contentType = self::contentTypes['listInboxComments'][0])
     {
-        $returnType = '\Late\Model\ListInboxComments200Response';
+        $returnType = '\Zernio\Model\ListInboxComments200Response';
         $request = $this->listInboxCommentsRequest($profile_id, $platform, $min_comments, $since, $sort_by, $sort_order, $limit, $cursor, $account_id, $contentType);
 
         return $this->client
@@ -1931,12 +1931,12 @@ class CommentsApi
      * Reply to comment
      *
      * @param  string $post_id Zernio post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
-     * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request reply_to_inbox_post_request (required)
+     * @param  \Zernio\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request reply_to_inbox_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxPost'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ReplyToInboxPost200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ReplyToInboxPost200Response|\Zernio\Model\InlineObject
      */
     public function replyToInboxPost($post_id, $reply_to_inbox_post_request, string $contentType = self::contentTypes['replyToInboxPost'][0])
     {
@@ -1950,12 +1950,12 @@ class CommentsApi
      * Reply to comment
      *
      * @param  string $post_id Zernio post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
-     * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
+     * @param  \Zernio\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxPost'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ReplyToInboxPost200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ReplyToInboxPost200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function replyToInboxPostWithHttpInfo($post_id, $reply_to_inbox_post_request, string $contentType = self::contentTypes['replyToInboxPost'][0])
     {
@@ -1987,13 +1987,13 @@ class CommentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ReplyToInboxPost200Response',
+                        '\Zernio\Model\ReplyToInboxPost200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2015,7 +2015,7 @@ class CommentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ReplyToInboxPost200Response',
+                '\Zernio\Model\ReplyToInboxPost200Response',
                 $request,
                 $response,
             );
@@ -2024,7 +2024,7 @@ class CommentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ReplyToInboxPost200Response',
+                        '\Zernio\Model\ReplyToInboxPost200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2032,7 +2032,7 @@ class CommentsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2050,7 +2050,7 @@ class CommentsApi
      * Reply to comment
      *
      * @param  string $post_id Zernio post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
-     * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
+     * @param  \Zernio\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2072,7 +2072,7 @@ class CommentsApi
      * Reply to comment
      *
      * @param  string $post_id Zernio post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
-     * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
+     * @param  \Zernio\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2080,7 +2080,7 @@ class CommentsApi
      */
     public function replyToInboxPostAsyncWithHttpInfo($post_id, $reply_to_inbox_post_request, string $contentType = self::contentTypes['replyToInboxPost'][0])
     {
-        $returnType = '\Late\Model\ReplyToInboxPost200Response';
+        $returnType = '\Zernio\Model\ReplyToInboxPost200Response';
         $request = $this->replyToInboxPostRequest($post_id, $reply_to_inbox_post_request, $contentType);
 
         return $this->client
@@ -2123,7 +2123,7 @@ class CommentsApi
      * Create request for operation 'replyToInboxPost'
      *
      * @param  string $post_id Zernio post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. (required)
-     * @param  \Late\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
+     * @param  \Zernio\Model\ReplyToInboxPostRequest $reply_to_inbox_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2237,12 +2237,12 @@ class CommentsApi
      *
      * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
-     * @param  \Late\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request send_private_reply_to_comment_request (required)
+     * @param  \Zernio\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request send_private_reply_to_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPrivateReplyToComment'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\SendPrivateReplyToComment200Response|\Late\Model\SendInboxMessage400Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\SendPrivateReplyToComment200Response|\Zernio\Model\SendInboxMessage400Response|\Zernio\Model\InlineObject
      */
     public function sendPrivateReplyToComment($post_id, $comment_id, $send_private_reply_to_comment_request, string $contentType = self::contentTypes['sendPrivateReplyToComment'][0])
     {
@@ -2257,12 +2257,12 @@ class CommentsApi
      *
      * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
-     * @param  \Late\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request (required)
+     * @param  \Zernio\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPrivateReplyToComment'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SendPrivateReplyToComment200Response|\Late\Model\SendInboxMessage400Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SendPrivateReplyToComment200Response|\Zernio\Model\SendInboxMessage400Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendPrivateReplyToCommentWithHttpInfo($post_id, $comment_id, $send_private_reply_to_comment_request, string $contentType = self::contentTypes['sendPrivateReplyToComment'][0])
     {
@@ -2294,19 +2294,19 @@ class CommentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SendPrivateReplyToComment200Response',
+                        '\Zernio\Model\SendPrivateReplyToComment200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SendInboxMessage400Response',
+                        '\Zernio\Model\SendInboxMessage400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2328,7 +2328,7 @@ class CommentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\SendPrivateReplyToComment200Response',
+                '\Zernio\Model\SendPrivateReplyToComment200Response',
                 $request,
                 $response,
             );
@@ -2337,7 +2337,7 @@ class CommentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SendPrivateReplyToComment200Response',
+                        '\Zernio\Model\SendPrivateReplyToComment200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2345,7 +2345,7 @@ class CommentsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SendInboxMessage400Response',
+                        '\Zernio\Model\SendInboxMessage400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2353,7 +2353,7 @@ class CommentsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2372,7 +2372,7 @@ class CommentsApi
      *
      * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
-     * @param  \Late\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request (required)
+     * @param  \Zernio\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPrivateReplyToComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2395,7 +2395,7 @@ class CommentsApi
      *
      * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
-     * @param  \Late\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request (required)
+     * @param  \Zernio\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPrivateReplyToComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2403,7 +2403,7 @@ class CommentsApi
      */
     public function sendPrivateReplyToCommentAsyncWithHttpInfo($post_id, $comment_id, $send_private_reply_to_comment_request, string $contentType = self::contentTypes['sendPrivateReplyToComment'][0])
     {
-        $returnType = '\Late\Model\SendPrivateReplyToComment200Response';
+        $returnType = '\Zernio\Model\SendPrivateReplyToComment200Response';
         $request = $this->sendPrivateReplyToCommentRequest($post_id, $comment_id, $send_private_reply_to_comment_request, $contentType);
 
         return $this->client
@@ -2447,7 +2447,7 @@ class CommentsApi
      *
      * @param  string $post_id The media/post ID (Instagram media ID or Facebook post ID) (required)
      * @param  string $comment_id The comment ID to send a private reply to (required)
-     * @param  \Late\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request (required)
+     * @param  \Zernio\Model\SendPrivateReplyToCommentRequest $send_private_reply_to_comment_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendPrivateReplyToComment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2579,9 +2579,9 @@ class CommentsApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unhideInboxComment'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\HideInboxComment200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\HideInboxComment200Response|\Zernio\Model\InlineObject
      */
     public function unhideInboxComment($post_id, $comment_id, $account_id, string $contentType = self::contentTypes['unhideInboxComment'][0])
     {
@@ -2599,9 +2599,9 @@ class CommentsApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unhideInboxComment'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\HideInboxComment200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\HideInboxComment200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function unhideInboxCommentWithHttpInfo($post_id, $comment_id, $account_id, string $contentType = self::contentTypes['unhideInboxComment'][0])
     {
@@ -2633,13 +2633,13 @@ class CommentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\HideInboxComment200Response',
+                        '\Zernio\Model\HideInboxComment200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2661,7 +2661,7 @@ class CommentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\HideInboxComment200Response',
+                '\Zernio\Model\HideInboxComment200Response',
                 $request,
                 $response,
             );
@@ -2670,7 +2670,7 @@ class CommentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\HideInboxComment200Response',
+                        '\Zernio\Model\HideInboxComment200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2678,7 +2678,7 @@ class CommentsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2728,7 +2728,7 @@ class CommentsApi
      */
     public function unhideInboxCommentAsyncWithHttpInfo($post_id, $comment_id, $account_id, string $contentType = self::contentTypes['unhideInboxComment'][0])
     {
-        $returnType = '\Late\Model\HideInboxComment200Response';
+        $returnType = '\Zernio\Model\HideInboxComment200Response';
         $request = $this->unhideInboxCommentRequest($post_id, $comment_id, $account_id, $contentType);
 
         return $this->client
@@ -2907,9 +2907,9 @@ class CommentsApi
      * @param  string|null $like_uri (Bluesky only) The like URI returned when liking (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unlikeInboxComment'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UnlikeInboxComment200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UnlikeInboxComment200Response|\Zernio\Model\InlineObject
      */
     public function unlikeInboxComment($post_id, $comment_id, $account_id, $like_uri = null, string $contentType = self::contentTypes['unlikeInboxComment'][0])
     {
@@ -2928,9 +2928,9 @@ class CommentsApi
      * @param  string|null $like_uri (Bluesky only) The like URI returned when liking (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unlikeInboxComment'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UnlikeInboxComment200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UnlikeInboxComment200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function unlikeInboxCommentWithHttpInfo($post_id, $comment_id, $account_id, $like_uri = null, string $contentType = self::contentTypes['unlikeInboxComment'][0])
     {
@@ -2962,13 +2962,13 @@ class CommentsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UnlikeInboxComment200Response',
+                        '\Zernio\Model\UnlikeInboxComment200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2990,7 +2990,7 @@ class CommentsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UnlikeInboxComment200Response',
+                '\Zernio\Model\UnlikeInboxComment200Response',
                 $request,
                 $response,
             );
@@ -2999,7 +2999,7 @@ class CommentsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UnlikeInboxComment200Response',
+                        '\Zernio\Model\UnlikeInboxComment200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3007,7 +3007,7 @@ class CommentsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3059,7 +3059,7 @@ class CommentsApi
      */
     public function unlikeInboxCommentAsyncWithHttpInfo($post_id, $comment_id, $account_id, $like_uri = null, string $contentType = self::contentTypes['unlikeInboxComment'][0])
     {
-        $returnType = '\Late\Model\UnlikeInboxComment200Response';
+        $returnType = '\Zernio\Model\UnlikeInboxComment200Response';
         $request = $this->unlikeInboxCommentRequest($post_id, $comment_id, $account_id, $like_uri, $contentType);
 
         return $this->client

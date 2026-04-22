@@ -1,4 +1,4 @@
-# Late\LinkedInMentionsApi
+# Zernio\LinkedInMentionsApi
 
 
 
@@ -12,7 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getLinkedInMentions()`
 
 ```php
-getLinkedInMentions($account_id, $url, $display_name): \Late\Model\GetLinkedInMentions200Response
+getLinkedInMentions($account_id, $url, $display_name): \Zernio\Model\GetLinkedInMentions200Response
 ```
 
 Resolve LinkedIn mention
@@ -27,10 +27,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\LinkedInMentionsApi(
+$apiInstance = new Zernio\Api\LinkedInMentionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -58,7 +58,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetLinkedInMentions200Response**](../Model/GetLinkedInMentions200Response.md)
+[**\Zernio\Model\GetLinkedInMentions200Response**](../Model/GetLinkedInMentions200Response.md)
 
 ### Authorization
 

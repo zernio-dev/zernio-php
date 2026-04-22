@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGmbLocations200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetGmbLocations200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'locations' => '\Late\Model\GetGmbLocations200ResponseLocationsInner[]',
+        'locations' => '\Zernio\Model\GetGmbLocations200ResponseLocationsInner[]',
         'selected_location_id' => 'string',
         'cached' => 'bool'
     ];
@@ -307,7 +307,7 @@ class GetGmbLocations200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets locations
      *
-     * @return \Late\Model\GetGmbLocations200ResponseLocationsInner[]|null
+     * @return \Zernio\Model\GetGmbLocations200ResponseLocationsInner[]|null
      */
     public function getLocations()
     {
@@ -317,7 +317,7 @@ class GetGmbLocations200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets locations
      *
-     * @param \Late\Model\GetGmbLocations200ResponseLocationsInner[]|null $locations locations
+     * @param \Zernio\Model\GetGmbLocations200ResponseLocationsInner[]|null $locations locations
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateWhatsAppFlow200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreateWhatsAppFlow200Response implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'flow' => '\Late\Model\CreateWhatsAppFlow200ResponseFlow'
+        'flow' => '\Zernio\Model\CreateWhatsAppFlow200ResponseFlow'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CreateWhatsAppFlow200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets flow
      *
-     * @return \Late\Model\CreateWhatsAppFlow200ResponseFlow|null
+     * @return \Zernio\Model\CreateWhatsAppFlow200ResponseFlow|null
      */
     public function getFlow()
     {
@@ -337,7 +337,7 @@ class CreateWhatsAppFlow200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets flow
      *
-     * @param \Late\Model\CreateWhatsAppFlow200ResponseFlow|null $flow flow
+     * @param \Zernio\Model\CreateWhatsAppFlow200ResponseFlow|null $flow flow
      *
      * @return self
      */

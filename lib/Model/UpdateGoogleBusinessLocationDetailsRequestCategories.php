@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateGoogleBusinessLocationDetailsRequestCategories Class Doc Comment
  *
  * @category Class
  * @description Primary and additional business categories. Use updateMask&#x3D;&#39;categories&#39; to update.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class UpdateGoogleBusinessLocationDetailsRequestCategories implements ModelInter
       * @var string[]
       */
     protected static $openAPITypes = [
-        'primary_category' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestCategoriesPrimaryCategory',
-        'additional_categories' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestCategoriesAdditionalCategoriesInner[]'
+        'primary_category' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestCategoriesPrimaryCategory',
+        'additional_categories' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestCategoriesAdditionalCategoriesInner[]'
     ];
 
     /**
@@ -301,7 +301,7 @@ class UpdateGoogleBusinessLocationDetailsRequestCategories implements ModelInter
     /**
      * Gets primary_category
      *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestCategoriesPrimaryCategory|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestCategoriesPrimaryCategory|null
      */
     public function getPrimaryCategory()
     {
@@ -311,7 +311,7 @@ class UpdateGoogleBusinessLocationDetailsRequestCategories implements ModelInter
     /**
      * Sets primary_category
      *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestCategoriesPrimaryCategory|null $primary_category primary_category
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestCategoriesPrimaryCategory|null $primary_category primary_category
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class UpdateGoogleBusinessLocationDetailsRequestCategories implements ModelInter
     /**
      * Gets additional_categories
      *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestCategoriesAdditionalCategoriesInner[]|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestCategoriesAdditionalCategoriesInner[]|null
      */
     public function getAdditionalCategories()
     {
@@ -338,7 +338,7 @@ class UpdateGoogleBusinessLocationDetailsRequestCategories implements ModelInter
     /**
      * Sets additional_categories
      *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestCategoriesAdditionalCategoriesInner[]|null $additional_categories additional_categories
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestCategoriesAdditionalCategoriesInner[]|null $additional_categories additional_categories
      *
      * @return self
      */

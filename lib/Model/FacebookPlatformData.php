@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * FacebookPlatformData Class Doc Comment
  *
  * @category Class
  * @description Feed posts support up to 10 images (no mixed video+image). Stories require single media (24h, no captions). Reels require single vertical video (9:16, 3-60s). Geo-restriction is a hard visibility restriction: users outside the specified countries cannot see the post. Not supported for stories.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'title' => 'string',
         'first_comment' => 'string',
         'page_id' => 'string',
-        'geo_restriction' => '\Late\Model\GeoRestriction'
+        'geo_restriction' => '\Zernio\Model\GeoRestriction'
     ];
 
     /**
@@ -498,7 +498,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets geo_restriction
      *
-     * @return \Late\Model\GeoRestriction|null
+     * @return \Zernio\Model\GeoRestriction|null
      */
     public function getGeoRestriction()
     {
@@ -508,7 +508,7 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets geo_restriction
      *
-     * @param \Late\Model\GeoRestriction|null $geo_restriction geo_restriction
+     * @param \Zernio\Model\GeoRestriction|null $geo_restriction geo_restriction
      *
      * @return self
      */

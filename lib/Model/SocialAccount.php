@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SocialAccount Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         '_id' => 'string',
         'platform' => 'string',
-        'profile_id' => '\Late\Model\SocialAccountProfileId',
+        'profile_id' => '\Zernio\Model\SocialAccountProfileId',
         'username' => 'string',
         'display_name' => 'string',
         'profile_picture' => 'string',
@@ -503,7 +503,7 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets profile_id
      *
-     * @return \Late\Model\SocialAccountProfileId|null
+     * @return \Zernio\Model\SocialAccountProfileId|null
      */
     public function getProfileId()
     {
@@ -513,7 +513,7 @@ class SocialAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets profile_id
      *
-     * @param \Late\Model\SocialAccountProfileId|null $profile_id profile_id
+     * @param \Zernio\Model\SocialAccountProfileId|null $profile_id profile_id
      *
      * @return self
      */

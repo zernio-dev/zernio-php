@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdatePostRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     protected static $openAPITypes = [
         'content' => 'string',
         'scheduled_for' => '\DateTime',
-        'tiktok_settings' => '\Late\Model\TikTokPlatformData',
-        'facebook_settings' => '\Late\Model\FacebookPlatformData',
-        'recycling' => '\Late\Model\RecyclingConfig'
+        'tiktok_settings' => '\Zernio\Model\TikTokPlatformData',
+        'facebook_settings' => '\Zernio\Model\FacebookPlatformData',
+        'recycling' => '\Zernio\Model\RecyclingConfig'
     ];
 
     /**
@@ -375,7 +375,7 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets tiktok_settings
      *
-     * @return \Late\Model\TikTokPlatformData|null
+     * @return \Zernio\Model\TikTokPlatformData|null
      */
     public function getTiktokSettings()
     {
@@ -385,7 +385,7 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets tiktok_settings
      *
-     * @param \Late\Model\TikTokPlatformData|null $tiktok_settings Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
+     * @param \Zernio\Model\TikTokPlatformData|null $tiktok_settings Root-level TikTok settings applied to all TikTok platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets facebook_settings
      *
-     * @return \Late\Model\FacebookPlatformData|null
+     * @return \Zernio\Model\FacebookPlatformData|null
      */
     public function getFacebookSettings()
     {
@@ -412,7 +412,7 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets facebook_settings
      *
-     * @param \Late\Model\FacebookPlatformData|null $facebook_settings Root-level Facebook settings applied to all Facebook platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
+     * @param \Zernio\Model\FacebookPlatformData|null $facebook_settings Root-level Facebook settings applied to all Facebook platforms. Merged into each platform's platformSpecificData, with platform-specific settings taking precedence.
      *
      * @return self
      */
@@ -429,7 +429,7 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets recycling
      *
-     * @return \Late\Model\RecyclingConfig|null
+     * @return \Zernio\Model\RecyclingConfig|null
      */
     public function getRecycling()
     {
@@ -439,7 +439,7 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets recycling
      *
-     * @param \Late\Model\RecyclingConfig|null $recycling recycling
+     * @param \Zernio\Model\RecyclingConfig|null $recycling recycling
      *
      * @return self
      */

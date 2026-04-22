@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SelectSnapchatProfileRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class SelectSnapchatProfileRequest implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'profile_id' => 'string',
-        'selected_public_profile' => '\Late\Model\SelectSnapchatProfileRequestSelectedPublicProfile',
+        'selected_public_profile' => '\Zernio\Model\SelectSnapchatProfileRequestSelectedPublicProfile',
         'temp_token' => 'string',
         'user_profile' => 'object',
         'refresh_token' => 'string',
@@ -374,7 +374,7 @@ class SelectSnapchatProfileRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets selected_public_profile
      *
-     * @return \Late\Model\SelectSnapchatProfileRequestSelectedPublicProfile
+     * @return \Zernio\Model\SelectSnapchatProfileRequestSelectedPublicProfile
      */
     public function getSelectedPublicProfile()
     {
@@ -384,7 +384,7 @@ class SelectSnapchatProfileRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets selected_public_profile
      *
-     * @param \Late\Model\SelectSnapchatProfileRequestSelectedPublicProfile $selected_public_profile selected_public_profile
+     * @param \Zernio\Model\SelectSnapchatProfileRequestSelectedPublicProfile $selected_public_profile selected_public_profile
      *
      * @return self
      */

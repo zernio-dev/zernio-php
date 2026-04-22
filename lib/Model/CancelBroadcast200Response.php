@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CancelBroadcast200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CancelBroadcast200Response implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'broadcast' => '\Late\Model\CancelBroadcast200ResponseBroadcast'
+        'broadcast' => '\Zernio\Model\CancelBroadcast200ResponseBroadcast'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CancelBroadcast200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets broadcast
      *
-     * @return \Late\Model\CancelBroadcast200ResponseBroadcast|null
+     * @return \Zernio\Model\CancelBroadcast200ResponseBroadcast|null
      */
     public function getBroadcast()
     {
@@ -337,7 +337,7 @@ class CancelBroadcast200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets broadcast
      *
-     * @param \Late\Model\CancelBroadcast200ResponseBroadcast|null $broadcast broadcast
+     * @param \Zernio\Model\CancelBroadcast200ResponseBroadcast|null $broadcast broadcast
      *
      * @return self
      */

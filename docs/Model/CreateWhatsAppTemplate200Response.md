@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **success** | **bool** |  | [optional]
-**template** | [**\Late\Model\CreateWhatsAppTemplate200ResponseTemplate**](CreateWhatsAppTemplate200ResponseTemplate.md) |  | [optional]
+**template** | [**\Zernio\Model\CreateWhatsAppTemplate200ResponseTemplate**](CreateWhatsAppTemplate200ResponseTemplate.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

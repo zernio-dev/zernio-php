@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * BulkCreateContactsRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class BulkCreateContactsRequest implements ModelInterface, ArrayAccess, \JsonSer
         'profile_id' => 'string',
         'account_id' => 'string',
         'platform' => 'string',
-        'contacts' => '\Late\Model\BulkCreateContactsRequestContactsInner[]'
+        'contacts' => '\Zernio\Model\BulkCreateContactsRequestContactsInner[]'
     ];
 
     /**
@@ -411,7 +411,7 @@ class BulkCreateContactsRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets contacts
      *
-     * @return \Late\Model\BulkCreateContactsRequestContactsInner[]
+     * @return \Zernio\Model\BulkCreateContactsRequestContactsInner[]
      */
     public function getContacts()
     {
@@ -421,7 +421,7 @@ class BulkCreateContactsRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets contacts
      *
-     * @param \Late\Model\BulkCreateContactsRequestContactsInner[] $contacts contacts
+     * @param \Zernio\Model\BulkCreateContactsRequestContactsInner[] $contacts contacts
      *
      * @return self
      */

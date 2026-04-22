@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ValidatePost200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ValidatePost200Response implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'valid' => 'bool',
         'message' => 'string',
-        'warnings' => '\Late\Model\ValidatePost200ResponseOneOfWarningsInner[]',
-        'errors' => '\Late\Model\ValidatePost200ResponseOneOf1ErrorsInner[]'
+        'warnings' => '\Zernio\Model\ValidatePost200ResponseOneOfWarningsInner[]',
+        'errors' => '\Zernio\Model\ValidatePost200ResponseOneOf1ErrorsInner[]'
     ];
 
     /**
@@ -368,7 +368,7 @@ class ValidatePost200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets warnings
      *
-     * @return \Late\Model\ValidatePost200ResponseOneOfWarningsInner[]|null
+     * @return \Zernio\Model\ValidatePost200ResponseOneOfWarningsInner[]|null
      */
     public function getWarnings()
     {
@@ -378,7 +378,7 @@ class ValidatePost200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets warnings
      *
-     * @param \Late\Model\ValidatePost200ResponseOneOfWarningsInner[]|null $warnings warnings
+     * @param \Zernio\Model\ValidatePost200ResponseOneOfWarningsInner[]|null $warnings warnings
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class ValidatePost200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets errors
      *
-     * @return \Late\Model\ValidatePost200ResponseOneOf1ErrorsInner[]|null
+     * @return \Zernio\Model\ValidatePost200ResponseOneOf1ErrorsInner[]|null
      */
     public function getErrors()
     {
@@ -405,7 +405,7 @@ class ValidatePost200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets errors
      *
-     * @param \Late\Model\ValidatePost200ResponseOneOf1ErrorsInner[]|null $errors errors
+     * @param \Zernio\Model\ValidatePost200ResponseOneOf1ErrorsInner[]|null $errors errors
      *
      * @return self
      */

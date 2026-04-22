@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadAccountConnected Class Doc Comment
  *
  * @category Class
  * @description Webhook payload for account connected events
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class WebhookPayloadAccountConnected implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'id' => 'string',
         'event' => 'string',
-        'account' => '\Late\Model\WebhookPayloadAccountConnectedAccount',
+        'account' => '\Zernio\Model\WebhookPayloadAccountConnectedAccount',
         'timestamp' => '\DateTime'
     ];
 
@@ -413,7 +413,7 @@ class WebhookPayloadAccountConnected implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets account
      *
-     * @return \Late\Model\WebhookPayloadAccountConnectedAccount
+     * @return \Zernio\Model\WebhookPayloadAccountConnectedAccount
      */
     public function getAccount()
     {
@@ -423,7 +423,7 @@ class WebhookPayloadAccountConnected implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets account
      *
-     * @param \Late\Model\WebhookPayloadAccountConnectedAccount $account account
+     * @param \Zernio\Model\WebhookPayloadAccountConnectedAccount $account account
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * BulkUploadPosts200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class BulkUploadPosts200Response implements ModelInterface, ArrayAccess, \JsonSe
         'total_rows' => 'int',
         'created' => 'int',
         'failed' => 'int',
-        'errors' => '\Late\Model\BulkUploadPosts200ResponseErrorsInner[]',
-        'posts' => '\Late\Model\Post[]'
+        'errors' => '\Zernio\Model\BulkUploadPosts200ResponseErrorsInner[]',
+        'posts' => '\Zernio\Model\Post[]'
     ];
 
     /**
@@ -436,7 +436,7 @@ class BulkUploadPosts200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets errors
      *
-     * @return \Late\Model\BulkUploadPosts200ResponseErrorsInner[]|null
+     * @return \Zernio\Model\BulkUploadPosts200ResponseErrorsInner[]|null
      */
     public function getErrors()
     {
@@ -446,7 +446,7 @@ class BulkUploadPosts200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets errors
      *
-     * @param \Late\Model\BulkUploadPosts200ResponseErrorsInner[]|null $errors errors
+     * @param \Zernio\Model\BulkUploadPosts200ResponseErrorsInner[]|null $errors errors
      *
      * @return self
      */
@@ -463,7 +463,7 @@ class BulkUploadPosts200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets posts
      *
-     * @return \Late\Model\Post[]|null
+     * @return \Zernio\Model\Post[]|null
      */
     public function getPosts()
     {
@@ -473,7 +473,7 @@ class BulkUploadPosts200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets posts
      *
-     * @param \Late\Model\Post[]|null $posts posts
+     * @param \Zernio\Model\Post[]|null $posts posts
      *
      * @return self
      */

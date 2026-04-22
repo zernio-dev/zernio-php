@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **thumbnail_url** | **string** |  | [optional]
 **description** | **string** |  | [optional]
 **create_time** | **\DateTime** |  | [optional]
-**location_association** | [**\Late\Model\ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation**](ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation.md) |  | [optional]
+**location_association** | [**\Zernio\Model\ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation**](ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

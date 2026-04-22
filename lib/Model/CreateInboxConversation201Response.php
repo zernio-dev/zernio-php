@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateInboxConversation201Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreateInboxConversation201Response implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'data' => '\Late\Model\CreateInboxConversation201ResponseData'
+        'data' => '\Zernio\Model\CreateInboxConversation201ResponseData'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CreateInboxConversation201Response implements ModelInterface, ArrayAccess,
     /**
      * Gets data
      *
-     * @return \Late\Model\CreateInboxConversation201ResponseData|null
+     * @return \Zernio\Model\CreateInboxConversation201ResponseData|null
      */
     public function getData()
     {
@@ -337,7 +337,7 @@ class CreateInboxConversation201Response implements ModelInterface, ArrayAccess,
     /**
      * Sets data
      *
-     * @param \Late\Model\CreateInboxConversation201ResponseData|null $data data
+     * @param \Zernio\Model\CreateInboxConversation201ResponseData|null $data data
      *
      * @return self
      */

@@ -1,4 +1,4 @@
-# Late\UsageApi
+# Zernio\UsageApi
 
 
 
@@ -12,7 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getUsageStats()`
 
 ```php
-getUsageStats(): \Late\Model\UsageStats
+getUsageStats(): \Zernio\Model\UsageStats
 ```
 
 Get plan and usage stats
@@ -27,10 +27,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\UsageApi(
+$apiInstance = new Zernio\Api\UsageApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -51,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Late\Model\UsageStats**](../Model/UsageStats.md)
+[**\Zernio\Model\UsageStats**](../Model/UsageStats.md)
 
 ### Authorization
 

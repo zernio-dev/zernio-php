@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetTelegramCommands200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetTelegramCommands200Response implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Late\Model\GetTelegramCommands200ResponseDataInner[]'
+        'data' => '\Zernio\Model\GetTelegramCommands200ResponseDataInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class GetTelegramCommands200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets data
      *
-     * @return \Late\Model\GetTelegramCommands200ResponseDataInner[]|null
+     * @return \Zernio\Model\GetTelegramCommands200ResponseDataInner[]|null
      */
     public function getData()
     {
@@ -303,7 +303,7 @@ class GetTelegramCommands200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets data
      *
-     * @param \Late\Model\GetTelegramCommands200ResponseDataInner[]|null $data data
+     * @param \Zernio\Model\GetTelegramCommands200ResponseDataInner[]|null $data data
      *
      * @return self
      */

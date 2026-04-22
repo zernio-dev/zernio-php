@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * TwitterPlatformData Class Doc Comment
  *
  * @category Class
  * @description X (Twitter) geo-restriction applies at the media level. Media in geo-restricted tweets will be hidden for users outside the specified countries; the tweet text itself remains visible globally. Requires media to be attached (ignored for text-only tweets).
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     protected static $openAPITypes = [
         'reply_to_tweet_id' => 'string',
         'reply_settings' => 'string',
-        'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
-        'poll' => '\Late\Model\TwitterPlatformDataPoll',
+        'thread_items' => '\Zernio\Model\TwitterPlatformDataThreadItemsInner[]',
+        'poll' => '\Zernio\Model\TwitterPlatformDataPoll',
         'long_video' => 'bool',
-        'geo_restriction' => '\Late\Model\GeoRestriction'
+        'geo_restriction' => '\Zernio\Model\GeoRestriction'
     ];
 
     /**
@@ -421,7 +421,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets thread_items
      *
-     * @return \Late\Model\TwitterPlatformDataThreadItemsInner[]|null
+     * @return \Zernio\Model\TwitterPlatformDataThreadItemsInner[]|null
      */
     public function getThreadItems()
     {
@@ -431,7 +431,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets thread_items
      *
-     * @param \Late\Model\TwitterPlatformDataThreadItemsInner[]|null $thread_items Complete sequence of tweets in a thread. The first item becomes the root tweet, subsequent items are chained as replies. When threadItems is provided, the top-level content field is used only for display and search purposes, it is NOT published. You must include your first tweet as threadItems[0].
+     * @param \Zernio\Model\TwitterPlatformDataThreadItemsInner[]|null $thread_items Complete sequence of tweets in a thread. The first item becomes the root tweet, subsequent items are chained as replies. When threadItems is provided, the top-level content field is used only for display and search purposes, it is NOT published. You must include your first tweet as threadItems[0].
      *
      * @return self
      */
@@ -448,7 +448,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets poll
      *
-     * @return \Late\Model\TwitterPlatformDataPoll|null
+     * @return \Zernio\Model\TwitterPlatformDataPoll|null
      */
     public function getPoll()
     {
@@ -458,7 +458,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets poll
      *
-     * @param \Late\Model\TwitterPlatformDataPoll|null $poll poll
+     * @param \Zernio\Model\TwitterPlatformDataPoll|null $poll poll
      *
      * @return self
      */
@@ -502,7 +502,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets geo_restriction
      *
-     * @return \Late\Model\GeoRestriction|null
+     * @return \Zernio\Model\GeoRestriction|null
      */
     public function getGeoRestriction()
     {
@@ -512,7 +512,7 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets geo_restriction
      *
-     * @param \Late\Model\GeoRestriction|null $geo_restriction geo_restriction
+     * @param \Zernio\Model\GeoRestriction|null $geo_restriction geo_restriction
      *
      * @return self
      */

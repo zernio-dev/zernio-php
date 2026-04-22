@@ -1,4 +1,4 @@
-# Late\GMBAttributesApi
+# Zernio\GMBAttributesApi
 
 
 
@@ -13,7 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getGoogleBusinessAttributes()`
 
 ```php
-getGoogleBusinessAttributes($account_id, $location_id): \Late\Model\GetGoogleBusinessAttributes200Response
+getGoogleBusinessAttributes($account_id, $location_id): \Zernio\Model\GetGoogleBusinessAttributes200Response
 ```
 
 Get attributes
@@ -28,10 +28,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBAttributesApi(
+$apiInstance = new Zernio\Api\GMBAttributesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -57,7 +57,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetGoogleBusinessAttributes200Response**](../Model/GetGoogleBusinessAttributes200Response.md)
+[**\Zernio\Model\GetGoogleBusinessAttributes200Response**](../Model/GetGoogleBusinessAttributes200Response.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ try {
 ## `updateGoogleBusinessAttributes()`
 
 ```php
-updateGoogleBusinessAttributes($account_id, $update_google_business_attributes_request, $location_id): \Late\Model\UpdateGoogleBusinessAttributes200Response
+updateGoogleBusinessAttributes($account_id, $update_google_business_attributes_request, $location_id): \Zernio\Model\UpdateGoogleBusinessAttributes200Response
 ```
 
 Update attributes
@@ -90,17 +90,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBAttributesApi(
+$apiInstance = new Zernio\Api\GMBAttributesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_google_business_attributes_request = {"attributes":[{"name":"has_delivery","values":[true]},{"name":"has_takeout","values":[true]},{"name":"has_outdoor_seating","values":[false]}],"attributeMask":"has_delivery,has_takeout,has_outdoor_seating"}; // \Late\Model\UpdateGoogleBusinessAttributesRequest
+$update_google_business_attributes_request = {"attributes":[{"name":"has_delivery","values":[true]},{"name":"has_takeout","values":[true]},{"name":"has_outdoor_seating","values":[false]}],"attributeMask":"has_delivery,has_takeout,has_outdoor_seating"}; // \Zernio\Model\UpdateGoogleBusinessAttributesRequest
 $location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
@@ -116,12 +116,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **update_google_business_attributes_request** | [**\Late\Model\UpdateGoogleBusinessAttributesRequest**](../Model/UpdateGoogleBusinessAttributesRequest.md)|  | |
+| **update_google_business_attributes_request** | [**\Zernio\Model\UpdateGoogleBusinessAttributesRequest**](../Model/UpdateGoogleBusinessAttributesRequest.md)|  | |
 | **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
 
-[**\Late\Model\UpdateGoogleBusinessAttributes200Response**](../Model/UpdateGoogleBusinessAttributes200Response.md)
+[**\Zernio\Model\UpdateGoogleBusinessAttributes200Response**](../Model/UpdateGoogleBusinessAttributes200Response.md)
 
 ### Authorization
 

@@ -1,4 +1,4 @@
-# Late\QueueApi
+# Zernio\QueueApi
 
 
 
@@ -17,7 +17,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createQueueSlot()`
 
 ```php
-createQueueSlot($create_queue_slot_request): \Late\Model\CreateQueueSlot201Response
+createQueueSlot($create_queue_slot_request): \Zernio\Model\CreateQueueSlot201Response
 ```
 
 Create schedule
@@ -32,16 +32,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\QueueApi(
+$apiInstance = new Zernio\Api\QueueApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_queue_slot_request = {"profileId":"64f0a1b2c3d4e5f6a7b8c9d0","name":"Evening Posts","timezone":"America/New_York","slots":[{"dayOfWeek":1,"time":"18:00"},{"dayOfWeek":3,"time":"18:00"},{"dayOfWeek":5,"time":"18:00"}],"active":true}; // \Late\Model\CreateQueueSlotRequest
+$create_queue_slot_request = {"profileId":"64f0a1b2c3d4e5f6a7b8c9d0","name":"Evening Posts","timezone":"America/New_York","slots":[{"dayOfWeek":1,"time":"18:00"},{"dayOfWeek":3,"time":"18:00"},{"dayOfWeek":5,"time":"18:00"}],"active":true}; // \Zernio\Model\CreateQueueSlotRequest
 
 try {
     $result = $apiInstance->createQueueSlot($create_queue_slot_request);
@@ -55,11 +55,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_queue_slot_request** | [**\Late\Model\CreateQueueSlotRequest**](../Model/CreateQueueSlotRequest.md)|  | |
+| **create_queue_slot_request** | [**\Zernio\Model\CreateQueueSlotRequest**](../Model/CreateQueueSlotRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateQueueSlot201Response**](../Model/CreateQueueSlot201Response.md)
+[**\Zernio\Model\CreateQueueSlot201Response**](../Model/CreateQueueSlot201Response.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ try {
 ## `deleteQueueSlot()`
 
 ```php
-deleteQueueSlot($profile_id, $queue_id): \Late\Model\DeleteQueueSlot200Response
+deleteQueueSlot($profile_id, $queue_id): \Zernio\Model\DeleteQueueSlot200Response
 ```
 
 Delete schedule
@@ -92,10 +92,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\QueueApi(
+$apiInstance = new Zernio\Api\QueueApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -121,7 +121,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\DeleteQueueSlot200Response**](../Model/DeleteQueueSlot200Response.md)
+[**\Zernio\Model\DeleteQueueSlot200Response**](../Model/DeleteQueueSlot200Response.md)
 
 ### Authorization
 
@@ -139,7 +139,7 @@ try {
 ## `getNextQueueSlot()`
 
 ```php
-getNextQueueSlot($profile_id, $queue_id): \Late\Model\GetNextQueueSlot200Response
+getNextQueueSlot($profile_id, $queue_id): \Zernio\Model\GetNextQueueSlot200Response
 ```
 
 Get next available slot
@@ -154,10 +154,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\QueueApi(
+$apiInstance = new Zernio\Api\QueueApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -183,7 +183,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetNextQueueSlot200Response**](../Model/GetNextQueueSlot200Response.md)
+[**\Zernio\Model\GetNextQueueSlot200Response**](../Model/GetNextQueueSlot200Response.md)
 
 ### Authorization
 
@@ -201,7 +201,7 @@ try {
 ## `listQueueSlots()`
 
 ```php
-listQueueSlots($profile_id, $queue_id, $all): \Late\Model\ListQueueSlots200Response
+listQueueSlots($profile_id, $queue_id, $all): \Zernio\Model\ListQueueSlots200Response
 ```
 
 List schedules
@@ -216,10 +216,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\QueueApi(
+$apiInstance = new Zernio\Api\QueueApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -247,7 +247,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListQueueSlots200Response**](../Model/ListQueueSlots200Response.md)
+[**\Zernio\Model\ListQueueSlots200Response**](../Model/ListQueueSlots200Response.md)
 
 ### Authorization
 
@@ -265,7 +265,7 @@ try {
 ## `previewQueue()`
 
 ```php
-previewQueue($profile_id, $queue_id, $count): \Late\Model\PreviewQueue200Response
+previewQueue($profile_id, $queue_id, $count): \Zernio\Model\PreviewQueue200Response
 ```
 
 Preview upcoming slots
@@ -280,10 +280,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\QueueApi(
+$apiInstance = new Zernio\Api\QueueApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -311,7 +311,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\PreviewQueue200Response**](../Model/PreviewQueue200Response.md)
+[**\Zernio\Model\PreviewQueue200Response**](../Model/PreviewQueue200Response.md)
 
 ### Authorization
 
@@ -329,7 +329,7 @@ try {
 ## `updateQueueSlot()`
 
 ```php
-updateQueueSlot($update_queue_slot_request): \Late\Model\UpdateQueueSlot200Response
+updateQueueSlot($update_queue_slot_request): \Zernio\Model\UpdateQueueSlot200Response
 ```
 
 Update schedule
@@ -344,16 +344,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\QueueApi(
+$apiInstance = new Zernio\Api\QueueApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$update_queue_slot_request = {"profileId":"64f0a1b2c3d4e5f6a7b8c9d0","queueId":"64f0a1b2c3d4e5f6a7b8c9d1","name":"Morning Posts","timezone":"America/New_York","slots":[{"dayOfWeek":1,"time":"09:00"},{"dayOfWeek":3,"time":"09:00"},{"dayOfWeek":5,"time":"10:00"}],"active":true,"setAsDefault":false}; // \Late\Model\UpdateQueueSlotRequest
+$update_queue_slot_request = {"profileId":"64f0a1b2c3d4e5f6a7b8c9d0","queueId":"64f0a1b2c3d4e5f6a7b8c9d1","name":"Morning Posts","timezone":"America/New_York","slots":[{"dayOfWeek":1,"time":"09:00"},{"dayOfWeek":3,"time":"09:00"},{"dayOfWeek":5,"time":"10:00"}],"active":true,"setAsDefault":false}; // \Zernio\Model\UpdateQueueSlotRequest
 
 try {
     $result = $apiInstance->updateQueueSlot($update_queue_slot_request);
@@ -367,11 +367,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **update_queue_slot_request** | [**\Late\Model\UpdateQueueSlotRequest**](../Model/UpdateQueueSlotRequest.md)|  | |
+| **update_queue_slot_request** | [**\Zernio\Model\UpdateQueueSlotRequest**](../Model/UpdateQueueSlotRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateQueueSlot200Response**](../Model/UpdateQueueSlot200Response.md)
+[**\Zernio\Model\UpdateQueueSlot200Response**](../Model/UpdateQueueSlot200Response.md)
 
 ### Authorization
 

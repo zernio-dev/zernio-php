@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListWhatsAppFlows200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class ListWhatsAppFlows200Response implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'flows' => '\Late\Model\ListWhatsAppFlows200ResponseFlowsInner[]'
+        'flows' => '\Zernio\Model\ListWhatsAppFlows200ResponseFlowsInner[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ListWhatsAppFlows200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets flows
      *
-     * @return \Late\Model\ListWhatsAppFlows200ResponseFlowsInner[]|null
+     * @return \Zernio\Model\ListWhatsAppFlows200ResponseFlowsInner[]|null
      */
     public function getFlows()
     {
@@ -337,7 +337,7 @@ class ListWhatsAppFlows200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets flows
      *
-     * @param \Late\Model\ListWhatsAppFlows200ResponseFlowsInner[]|null $flows flows
+     * @param \Zernio\Model\ListWhatsAppFlows200ResponseFlowsInner[]|null $flows flows
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SelectGoogleBusinessLocation200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SelectGoogleBusinessLocation200Response implements ModelInterface, ArrayAc
     protected static $openAPITypes = [
         'message' => 'string',
         'redirect_url' => 'string',
-        'account' => '\Late\Model\SelectGoogleBusinessLocation200ResponseAccount'
+        'account' => '\Zernio\Model\SelectGoogleBusinessLocation200ResponseAccount'
     ];
 
     /**
@@ -361,7 +361,7 @@ class SelectGoogleBusinessLocation200Response implements ModelInterface, ArrayAc
     /**
      * Gets account
      *
-     * @return \Late\Model\SelectGoogleBusinessLocation200ResponseAccount|null
+     * @return \Zernio\Model\SelectGoogleBusinessLocation200ResponseAccount|null
      */
     public function getAccount()
     {
@@ -371,7 +371,7 @@ class SelectGoogleBusinessLocation200Response implements ModelInterface, ArrayAc
     /**
      * Sets account
      *
-     * @param \Late\Model\SelectGoogleBusinessLocation200ResponseAccount|null $account account
+     * @param \Zernio\Model\SelectGoogleBusinessLocation200ResponseAccount|null $account account
      *
      * @return self
      */

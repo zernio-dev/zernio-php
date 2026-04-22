@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **string** |  | [optional]
 **platform** | **string** |  | [optional]
-**profile_id** | [**\Late\Model\SocialAccountProfileId**](SocialAccountProfileId.md) |  | [optional]
+**profile_id** | [**\Zernio\Model\SocialAccountProfileId**](SocialAccountProfileId.md) |  | [optional]
 **username** | **string** |  | [optional]
 **display_name** | **string** |  | [optional]
 **profile_picture** | **string** | URL to the account&#39;s profile picture on the platform. May be null if the platform does not provide one. | [optional]

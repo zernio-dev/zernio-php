@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessReviews200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class GetGoogleBusinessReviews200Response implements ModelInterface, ArrayAccess
         'success' => 'bool',
         'account_id' => 'string',
         'location_id' => 'string',
-        'reviews' => '\Late\Model\GetGoogleBusinessReviews200ResponseReviewsInner[]',
+        'reviews' => '\Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInner[]',
         'average_rating' => 'float',
         'total_review_count' => 'int',
         'next_page_token' => 'string'
@@ -416,7 +416,7 @@ class GetGoogleBusinessReviews200Response implements ModelInterface, ArrayAccess
     /**
      * Gets reviews
      *
-     * @return \Late\Model\GetGoogleBusinessReviews200ResponseReviewsInner[]|null
+     * @return \Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInner[]|null
      */
     public function getReviews()
     {
@@ -426,7 +426,7 @@ class GetGoogleBusinessReviews200Response implements ModelInterface, ArrayAccess
     /**
      * Sets reviews
      *
-     * @param \Late\Model\GetGoogleBusinessReviews200ResponseReviewsInner[]|null $reviews reviews
+     * @param \Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInner[]|null $reviews reviews
      *
      * @return self
      */

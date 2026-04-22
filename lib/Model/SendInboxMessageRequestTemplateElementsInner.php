@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendInboxMessageRequestTemplateElementsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
         'title' => 'string',
         'subtitle' => 'string',
         'image_url' => 'string',
-        'buttons' => '\Late\Model\SendInboxMessageRequestTemplateElementsInnerButtonsInner[]'
+        'buttons' => '\Zernio\Model\SendInboxMessageRequestTemplateElementsInnerButtonsInner[]'
     ];
 
     /**
@@ -410,7 +410,7 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
     /**
      * Gets buttons
      *
-     * @return \Late\Model\SendInboxMessageRequestTemplateElementsInnerButtonsInner[]|null
+     * @return \Zernio\Model\SendInboxMessageRequestTemplateElementsInnerButtonsInner[]|null
      */
     public function getButtons()
     {
@@ -420,7 +420,7 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
     /**
      * Sets buttons
      *
-     * @param \Late\Model\SendInboxMessageRequestTemplateElementsInnerButtonsInner[]|null $buttons buttons
+     * @param \Zernio\Model\SendInboxMessageRequestTemplateElementsInnerButtonsInner[]|null $buttons buttons
      *
      * @return self
      */

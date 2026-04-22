@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListInboxReviews200ResponseDataInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,12 +62,12 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
         'platform' => 'string',
         'account_id' => 'string',
         'account_username' => 'string',
-        'reviewer' => '\Late\Model\ListInboxReviews200ResponseDataInnerReviewer',
+        'reviewer' => '\Zernio\Model\ListInboxReviews200ResponseDataInnerReviewer',
         'rating' => 'int',
         'text' => 'string',
         'created' => '\DateTime',
         'has_reply' => 'bool',
-        'reply' => '\Late\Model\ListInboxReviews200ResponseDataInnerReply',
+        'reply' => '\Zernio\Model\ListInboxReviews200ResponseDataInnerReply',
         'review_url' => 'string'
     ];
 
@@ -471,7 +471,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
     /**
      * Gets reviewer
      *
-     * @return \Late\Model\ListInboxReviews200ResponseDataInnerReviewer|null
+     * @return \Zernio\Model\ListInboxReviews200ResponseDataInnerReviewer|null
      */
     public function getReviewer()
     {
@@ -481,7 +481,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
     /**
      * Sets reviewer
      *
-     * @param \Late\Model\ListInboxReviews200ResponseDataInnerReviewer|null $reviewer reviewer
+     * @param \Zernio\Model\ListInboxReviews200ResponseDataInnerReviewer|null $reviewer reviewer
      *
      * @return self
      */
@@ -606,7 +606,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
     /**
      * Gets reply
      *
-     * @return \Late\Model\ListInboxReviews200ResponseDataInnerReply|null
+     * @return \Zernio\Model\ListInboxReviews200ResponseDataInnerReply|null
      */
     public function getReply()
     {
@@ -616,7 +616,7 @@ class ListInboxReviews200ResponseDataInner implements ModelInterface, ArrayAcces
     /**
      * Sets reply
      *
-     * @param \Late\Model\ListInboxReviews200ResponseDataInnerReply|null $reply reply
+     * @param \Zernio\Model\ListInboxReviews200ResponseDataInnerReply|null $reply reply
      *
      * @return self
      */

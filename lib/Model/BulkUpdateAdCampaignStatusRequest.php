@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * BulkUpdateAdCampaignStatusRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class BulkUpdateAdCampaignStatusRequest implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'campaigns' => '\Late\Model\BulkUpdateAdCampaignStatusRequestCampaignsInner[]'
+        'campaigns' => '\Zernio\Model\BulkUpdateAdCampaignStatusRequestCampaignsInner[]'
     ];
 
     /**
@@ -371,7 +371,7 @@ class BulkUpdateAdCampaignStatusRequest implements ModelInterface, ArrayAccess, 
     /**
      * Gets campaigns
      *
-     * @return \Late\Model\BulkUpdateAdCampaignStatusRequestCampaignsInner[]
+     * @return \Zernio\Model\BulkUpdateAdCampaignStatusRequestCampaignsInner[]
      */
     public function getCampaigns()
     {
@@ -381,7 +381,7 @@ class BulkUpdateAdCampaignStatusRequest implements ModelInterface, ArrayAccess, 
     /**
      * Sets campaigns
      *
-     * @param \Late\Model\BulkUpdateAdCampaignStatusRequestCampaignsInner[] $campaigns campaigns
+     * @param \Zernio\Model\BulkUpdateAdCampaignStatusRequestCampaignsInner[] $campaigns campaigns
      *
      * @return self
      */

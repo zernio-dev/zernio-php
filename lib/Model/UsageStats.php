@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UsageStats Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,8 +62,8 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
         'billing_period' => 'string',
         'signup_date' => '\DateTime',
         'billing_anchor_day' => 'int',
-        'limits' => '\Late\Model\UsageStatsLimits',
-        'usage' => '\Late\Model\UsageStatsUsage'
+        'limits' => '\Zernio\Model\UsageStatsLimits',
+        'usage' => '\Zernio\Model\UsageStatsUsage'
     ];
 
     /**
@@ -470,7 +470,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets limits
      *
-     * @return \Late\Model\UsageStatsLimits|null
+     * @return \Zernio\Model\UsageStatsLimits|null
      */
     public function getLimits()
     {
@@ -480,7 +480,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets limits
      *
-     * @param \Late\Model\UsageStatsLimits|null $limits limits
+     * @param \Zernio\Model\UsageStatsLimits|null $limits limits
      *
      * @return self
      */
@@ -497,7 +497,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets usage
      *
-     * @return \Late\Model\UsageStatsUsage|null
+     * @return \Zernio\Model\UsageStatsUsage|null
      */
     public function getUsage()
     {
@@ -507,7 +507,7 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets usage
      *
-     * @param \Late\Model\UsageStatsUsage|null $usage usage
+     * @param \Zernio\Model\UsageStatsUsage|null $usage usage
      *
      * @return self
      */

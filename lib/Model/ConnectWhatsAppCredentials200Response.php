@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ConnectWhatsAppCredentials200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class ConnectWhatsAppCredentials200Response implements ModelInterface, ArrayAcce
       */
     protected static $openAPITypes = [
         'message' => 'string',
-        'account' => '\Late\Model\ConnectWhatsAppCredentials200ResponseAccount'
+        'account' => '\Zernio\Model\ConnectWhatsAppCredentials200ResponseAccount'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ConnectWhatsAppCredentials200Response implements ModelInterface, ArrayAcce
     /**
      * Gets account
      *
-     * @return \Late\Model\ConnectWhatsAppCredentials200ResponseAccount|null
+     * @return \Zernio\Model\ConnectWhatsAppCredentials200ResponseAccount|null
      */
     public function getAccount()
     {
@@ -337,7 +337,7 @@ class ConnectWhatsAppCredentials200Response implements ModelInterface, ArrayAcce
     /**
      * Sets account
      *
-     * @param \Late\Model\ConnectWhatsAppCredentials200ResponseAccount|null $account account
+     * @param \Zernio\Model\ConnectWhatsAppCredentials200ResponseAccount|null $account account
      *
      * @return self
      */

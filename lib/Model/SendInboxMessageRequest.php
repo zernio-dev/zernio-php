@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendInboxMessageRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,11 +62,11 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => 'string',
         'attachment_url' => 'string',
         'attachment_type' => 'string',
-        'quick_replies' => '\Late\Model\SendInboxMessageRequestQuickRepliesInner[]',
-        'buttons' => '\Late\Model\SendInboxMessageRequestButtonsInner[]',
-        'template' => '\Late\Model\SendInboxMessageRequestTemplate',
-        'interactive' => '\Late\Model\SendInboxMessageRequestInteractive',
-        'reply_markup' => '\Late\Model\SendInboxMessageRequestReplyMarkup',
+        'quick_replies' => '\Zernio\Model\SendInboxMessageRequestQuickRepliesInner[]',
+        'buttons' => '\Zernio\Model\SendInboxMessageRequestButtonsInner[]',
+        'template' => '\Zernio\Model\SendInboxMessageRequestTemplate',
+        'interactive' => '\Zernio\Model\SendInboxMessageRequestInteractive',
+        'reply_markup' => '\Zernio\Model\SendInboxMessageRequestReplyMarkup',
         'messaging_type' => 'string',
         'message_tag' => 'string',
         'reply_to' => 'string'
@@ -581,7 +581,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets quick_replies
      *
-     * @return \Late\Model\SendInboxMessageRequestQuickRepliesInner[]|null
+     * @return \Zernio\Model\SendInboxMessageRequestQuickRepliesInner[]|null
      */
     public function getQuickReplies()
     {
@@ -591,7 +591,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets quick_replies
      *
-     * @param \Late\Model\SendInboxMessageRequestQuickRepliesInner[]|null $quick_replies Quick reply buttons. Mutually exclusive with buttons. Max 13 items.
+     * @param \Zernio\Model\SendInboxMessageRequestQuickRepliesInner[]|null $quick_replies Quick reply buttons. Mutually exclusive with buttons. Max 13 items.
      *
      * @return self
      */
@@ -612,7 +612,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets buttons
      *
-     * @return \Late\Model\SendInboxMessageRequestButtonsInner[]|null
+     * @return \Zernio\Model\SendInboxMessageRequestButtonsInner[]|null
      */
     public function getButtons()
     {
@@ -622,7 +622,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets buttons
      *
-     * @param \Late\Model\SendInboxMessageRequestButtonsInner[]|null $buttons Action buttons. Mutually exclusive with quickReplies. Max 3 items.
+     * @param \Zernio\Model\SendInboxMessageRequestButtonsInner[]|null $buttons Action buttons. Mutually exclusive with quickReplies. Max 3 items.
      *
      * @return self
      */
@@ -643,7 +643,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets template
      *
-     * @return \Late\Model\SendInboxMessageRequestTemplate|null
+     * @return \Zernio\Model\SendInboxMessageRequestTemplate|null
      */
     public function getTemplate()
     {
@@ -653,7 +653,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets template
      *
-     * @param \Late\Model\SendInboxMessageRequestTemplate|null $template template
+     * @param \Zernio\Model\SendInboxMessageRequestTemplate|null $template template
      *
      * @return self
      */
@@ -670,7 +670,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets interactive
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractive|null
+     * @return \Zernio\Model\SendInboxMessageRequestInteractive|null
      */
     public function getInteractive()
     {
@@ -680,7 +680,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets interactive
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractive|null $interactive interactive
+     * @param \Zernio\Model\SendInboxMessageRequestInteractive|null $interactive interactive
      *
      * @return self
      */
@@ -697,7 +697,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets reply_markup
      *
-     * @return \Late\Model\SendInboxMessageRequestReplyMarkup|null
+     * @return \Zernio\Model\SendInboxMessageRequestReplyMarkup|null
      */
     public function getReplyMarkup()
     {
@@ -707,7 +707,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets reply_markup
      *
-     * @param \Late\Model\SendInboxMessageRequestReplyMarkup|null $reply_markup reply_markup
+     * @param \Zernio\Model\SendInboxMessageRequestReplyMarkup|null $reply_markup reply_markup
      *
      * @return self
      */

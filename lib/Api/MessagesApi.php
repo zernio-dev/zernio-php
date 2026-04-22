@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * MessagesApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -168,12 +168,12 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID to react to (required)
-     * @param  \Late\Model\AddMessageReactionRequest $add_message_reaction_request add_message_reaction_request (required)
+     * @param  \Zernio\Model\AddMessageReactionRequest $add_message_reaction_request add_message_reaction_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMessageReaction'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
      */
     public function addMessageReaction($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
     {
@@ -188,12 +188,12 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID to react to (required)
-     * @param  \Late\Model\AddMessageReactionRequest $add_message_reaction_request (required)
+     * @param  \Zernio\Model\AddMessageReactionRequest $add_message_reaction_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMessageReaction'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function addMessageReactionWithHttpInfo($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
     {
@@ -225,13 +225,13 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -253,7 +253,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -262,7 +262,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -270,7 +270,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -289,7 +289,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID to react to (required)
-     * @param  \Late\Model\AddMessageReactionRequest $add_message_reaction_request (required)
+     * @param  \Zernio\Model\AddMessageReactionRequest $add_message_reaction_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMessageReaction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -312,7 +312,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID to react to (required)
-     * @param  \Late\Model\AddMessageReactionRequest $add_message_reaction_request (required)
+     * @param  \Zernio\Model\AddMessageReactionRequest $add_message_reaction_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMessageReaction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -320,7 +320,7 @@ class MessagesApi
      */
     public function addMessageReactionAsyncWithHttpInfo($conversation_id, $message_id, $add_message_reaction_request, string $contentType = self::contentTypes['addMessageReaction'][0])
     {
-        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
+        $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->addMessageReactionRequest($conversation_id, $message_id, $add_message_reaction_request, $contentType);
 
         return $this->client
@@ -364,7 +364,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The platform message ID to react to (required)
-     * @param  \Late\Model\AddMessageReactionRequest $add_message_reaction_request (required)
+     * @param  \Zernio\Model\AddMessageReactionRequest $add_message_reaction_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addMessageReaction'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -491,12 +491,12 @@ class MessagesApi
      *
      * Create conversation
      *
-     * @param  \Late\Model\CreateInboxConversationRequest $create_inbox_conversation_request create_inbox_conversation_request (required)
+     * @param  \Zernio\Model\CreateInboxConversationRequest $create_inbox_conversation_request create_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboxConversation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CreateInboxConversation201Response|\Late\Model\CreateInboxConversation400Response|\Late\Model\InlineObject|\Late\Model\CreateInboxConversation422Response
+     * @return \Zernio\Model\CreateInboxConversation201Response|\Zernio\Model\CreateInboxConversation400Response|\Zernio\Model\InlineObject|\Zernio\Model\CreateInboxConversation422Response
      */
     public function createInboxConversation($create_inbox_conversation_request, string $contentType = self::contentTypes['createInboxConversation'][0])
     {
@@ -509,12 +509,12 @@ class MessagesApi
      *
      * Create conversation
      *
-     * @param  \Late\Model\CreateInboxConversationRequest $create_inbox_conversation_request (required)
+     * @param  \Zernio\Model\CreateInboxConversationRequest $create_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboxConversation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CreateInboxConversation201Response|\Late\Model\CreateInboxConversation400Response|\Late\Model\InlineObject|\Late\Model\CreateInboxConversation422Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateInboxConversation201Response|\Zernio\Model\CreateInboxConversation400Response|\Zernio\Model\InlineObject|\Zernio\Model\CreateInboxConversation422Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function createInboxConversationWithHttpInfo($create_inbox_conversation_request, string $contentType = self::contentTypes['createInboxConversation'][0])
     {
@@ -546,25 +546,25 @@ class MessagesApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateInboxConversation201Response',
+                        '\Zernio\Model\CreateInboxConversation201Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateInboxConversation400Response',
+                        '\Zernio\Model\CreateInboxConversation400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateInboxConversation422Response',
+                        '\Zernio\Model\CreateInboxConversation422Response',
                         $request,
                         $response,
                     );
@@ -586,7 +586,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CreateInboxConversation201Response',
+                '\Zernio\Model\CreateInboxConversation201Response',
                 $request,
                 $response,
             );
@@ -595,7 +595,7 @@ class MessagesApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateInboxConversation201Response',
+                        '\Zernio\Model\CreateInboxConversation201Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -603,7 +603,7 @@ class MessagesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateInboxConversation400Response',
+                        '\Zernio\Model\CreateInboxConversation400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -611,7 +611,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -619,7 +619,7 @@ class MessagesApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateInboxConversation422Response',
+                        '\Zernio\Model\CreateInboxConversation422Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -636,7 +636,7 @@ class MessagesApi
      *
      * Create conversation
      *
-     * @param  \Late\Model\CreateInboxConversationRequest $create_inbox_conversation_request (required)
+     * @param  \Zernio\Model\CreateInboxConversationRequest $create_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboxConversation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -657,7 +657,7 @@ class MessagesApi
      *
      * Create conversation
      *
-     * @param  \Late\Model\CreateInboxConversationRequest $create_inbox_conversation_request (required)
+     * @param  \Zernio\Model\CreateInboxConversationRequest $create_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboxConversation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -665,7 +665,7 @@ class MessagesApi
      */
     public function createInboxConversationAsyncWithHttpInfo($create_inbox_conversation_request, string $contentType = self::contentTypes['createInboxConversation'][0])
     {
-        $returnType = '\Late\Model\CreateInboxConversation201Response';
+        $returnType = '\Zernio\Model\CreateInboxConversation201Response';
         $request = $this->createInboxConversationRequest($create_inbox_conversation_request, $contentType);
 
         return $this->client
@@ -707,7 +707,7 @@ class MessagesApi
     /**
      * Create request for operation 'createInboxConversation'
      *
-     * @param  \Late\Model\CreateInboxConversationRequest $create_inbox_conversation_request (required)
+     * @param  \Zernio\Model\CreateInboxConversationRequest $create_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInboxConversation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -809,9 +809,9 @@ class MessagesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxMessage'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
      */
     public function deleteInboxMessage($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
     {
@@ -829,9 +829,9 @@ class MessagesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxMessage'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteInboxMessageWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
     {
@@ -863,13 +863,13 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -891,7 +891,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -900,7 +900,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -908,7 +908,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -958,7 +958,7 @@ class MessagesApi
      */
     public function deleteInboxMessageAsyncWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['deleteInboxMessage'][0])
     {
-        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
+        $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->deleteInboxMessageRequest($conversation_id, $message_id, $account_id, $contentType);
 
         return $this->client
@@ -1133,12 +1133,12 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The Telegram message ID to edit (required)
-     * @param  \Late\Model\EditInboxMessageRequest $edit_inbox_message_request edit_inbox_message_request (required)
+     * @param  \Zernio\Model\EditInboxMessageRequest $edit_inbox_message_request edit_inbox_message_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editInboxMessage'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\EditInboxMessage200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\EditInboxMessage200Response|\Zernio\Model\InlineObject
      */
     public function editInboxMessage($conversation_id, $message_id, $edit_inbox_message_request, string $contentType = self::contentTypes['editInboxMessage'][0])
     {
@@ -1153,12 +1153,12 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The Telegram message ID to edit (required)
-     * @param  \Late\Model\EditInboxMessageRequest $edit_inbox_message_request (required)
+     * @param  \Zernio\Model\EditInboxMessageRequest $edit_inbox_message_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editInboxMessage'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\EditInboxMessage200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\EditInboxMessage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function editInboxMessageWithHttpInfo($conversation_id, $message_id, $edit_inbox_message_request, string $contentType = self::contentTypes['editInboxMessage'][0])
     {
@@ -1190,13 +1190,13 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\EditInboxMessage200Response',
+                        '\Zernio\Model\EditInboxMessage200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1218,7 +1218,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\EditInboxMessage200Response',
+                '\Zernio\Model\EditInboxMessage200Response',
                 $request,
                 $response,
             );
@@ -1227,7 +1227,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\EditInboxMessage200Response',
+                        '\Zernio\Model\EditInboxMessage200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1235,7 +1235,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1254,7 +1254,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The Telegram message ID to edit (required)
-     * @param  \Late\Model\EditInboxMessageRequest $edit_inbox_message_request (required)
+     * @param  \Zernio\Model\EditInboxMessageRequest $edit_inbox_message_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editInboxMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1277,7 +1277,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The Telegram message ID to edit (required)
-     * @param  \Late\Model\EditInboxMessageRequest $edit_inbox_message_request (required)
+     * @param  \Zernio\Model\EditInboxMessageRequest $edit_inbox_message_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editInboxMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1285,7 +1285,7 @@ class MessagesApi
      */
     public function editInboxMessageAsyncWithHttpInfo($conversation_id, $message_id, $edit_inbox_message_request, string $contentType = self::contentTypes['editInboxMessage'][0])
     {
-        $returnType = '\Late\Model\EditInboxMessage200Response';
+        $returnType = '\Zernio\Model\EditInboxMessage200Response';
         $request = $this->editInboxMessageRequest($conversation_id, $message_id, $edit_inbox_message_request, $contentType);
 
         return $this->client
@@ -1329,7 +1329,7 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (required)
      * @param  string $message_id The Telegram message ID to edit (required)
-     * @param  \Late\Model\EditInboxMessageRequest $edit_inbox_message_request (required)
+     * @param  \Zernio\Model\EditInboxMessageRequest $edit_inbox_message_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['editInboxMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1460,9 +1460,9 @@ class MessagesApi
      * @param  string $account_id The social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetInboxConversation200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetInboxConversation200Response|\Zernio\Model\InlineObject
      */
     public function getInboxConversation($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversation'][0])
     {
@@ -1479,9 +1479,9 @@ class MessagesApi
      * @param  string $account_id The social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetInboxConversation200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetInboxConversation200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboxConversationWithHttpInfo($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversation'][0])
     {
@@ -1513,13 +1513,13 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetInboxConversation200Response',
+                        '\Zernio\Model\GetInboxConversation200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1541,7 +1541,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetInboxConversation200Response',
+                '\Zernio\Model\GetInboxConversation200Response',
                 $request,
                 $response,
             );
@@ -1550,7 +1550,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetInboxConversation200Response',
+                        '\Zernio\Model\GetInboxConversation200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1558,7 +1558,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1606,7 +1606,7 @@ class MessagesApi
      */
     public function getInboxConversationAsyncWithHttpInfo($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversation'][0])
     {
-        $returnType = '\Late\Model\GetInboxConversation200Response';
+        $returnType = '\Zernio\Model\GetInboxConversation200Response';
         $request = $this->getInboxConversationRequest($conversation_id, $account_id, $contentType);
 
         return $this->client
@@ -1767,9 +1767,9 @@ class MessagesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetInboxConversationMessages200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetInboxConversationMessages200Response|\Zernio\Model\InlineObject
      */
     public function getInboxConversationMessages($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversationMessages'][0])
     {
@@ -1786,9 +1786,9 @@ class MessagesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetInboxConversationMessages200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetInboxConversationMessages200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInboxConversationMessagesWithHttpInfo($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversationMessages'][0])
     {
@@ -1820,13 +1820,13 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetInboxConversationMessages200Response',
+                        '\Zernio\Model\GetInboxConversationMessages200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1848,7 +1848,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetInboxConversationMessages200Response',
+                '\Zernio\Model\GetInboxConversationMessages200Response',
                 $request,
                 $response,
             );
@@ -1857,7 +1857,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetInboxConversationMessages200Response',
+                        '\Zernio\Model\GetInboxConversationMessages200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1865,7 +1865,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1913,7 +1913,7 @@ class MessagesApi
      */
     public function getInboxConversationMessagesAsyncWithHttpInfo($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversationMessages'][0])
     {
-        $returnType = '\Late\Model\GetInboxConversationMessages200Response';
+        $returnType = '\Zernio\Model\GetInboxConversationMessages200Response';
         $request = $this->getInboxConversationMessagesRequest($conversation_id, $account_id, $contentType);
 
         return $this->client
@@ -2079,9 +2079,9 @@ class MessagesApi
      * @param  string|null $account_id Filter by specific social account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxConversations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListInboxConversations200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListInboxConversations200Response|\Zernio\Model\InlineObject
      */
     public function listInboxConversations($profile_id = null, $platform = null, $status = null, $sort_order = 'desc', $limit = 50, $cursor = null, $account_id = null, string $contentType = self::contentTypes['listInboxConversations'][0])
     {
@@ -2103,9 +2103,9 @@ class MessagesApi
      * @param  string|null $account_id Filter by specific social account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxConversations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListInboxConversations200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListInboxConversations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listInboxConversationsWithHttpInfo($profile_id = null, $platform = null, $status = null, $sort_order = 'desc', $limit = 50, $cursor = null, $account_id = null, string $contentType = self::contentTypes['listInboxConversations'][0])
     {
@@ -2137,13 +2137,13 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListInboxConversations200Response',
+                        '\Zernio\Model\ListInboxConversations200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2165,7 +2165,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListInboxConversations200Response',
+                '\Zernio\Model\ListInboxConversations200Response',
                 $request,
                 $response,
             );
@@ -2174,7 +2174,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListInboxConversations200Response',
+                        '\Zernio\Model\ListInboxConversations200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2182,7 +2182,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2240,7 +2240,7 @@ class MessagesApi
      */
     public function listInboxConversationsAsyncWithHttpInfo($profile_id = null, $platform = null, $status = null, $sort_order = 'desc', $limit = 50, $cursor = null, $account_id = null, string $contentType = self::contentTypes['listInboxConversations'][0])
     {
-        $returnType = '\Late\Model\ListInboxConversations200Response';
+        $returnType = '\Zernio\Model\ListInboxConversations200Response';
         $request = $this->listInboxConversationsRequest($profile_id, $platform, $status, $sort_order, $limit, $cursor, $account_id, $contentType);
 
         return $this->client
@@ -2452,9 +2452,9 @@ class MessagesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMessageReaction'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
      */
     public function removeMessageReaction($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
     {
@@ -2472,9 +2472,9 @@ class MessagesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeMessageReaction'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function removeMessageReactionWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
     {
@@ -2506,13 +2506,13 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2534,7 +2534,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -2543,7 +2543,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2551,7 +2551,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2601,7 +2601,7 @@ class MessagesApi
      */
     public function removeMessageReactionAsyncWithHttpInfo($conversation_id, $message_id, $account_id, string $contentType = self::contentTypes['removeMessageReaction'][0])
     {
-        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
+        $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->removeMessageReactionRequest($conversation_id, $message_id, $account_id, $contentType);
 
         return $this->client
@@ -2775,12 +2775,12 @@ class MessagesApi
      * Send message
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
-     * @param  \Late\Model\SendInboxMessageRequest $send_inbox_message_request send_inbox_message_request (required)
+     * @param  \Zernio\Model\SendInboxMessageRequest $send_inbox_message_request send_inbox_message_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendInboxMessage'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\SendInboxMessage200Response|\Late\Model\SendInboxMessage400Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\SendInboxMessage200Response|\Zernio\Model\SendInboxMessage400Response|\Zernio\Model\InlineObject
      */
     public function sendInboxMessage($conversation_id, $send_inbox_message_request, string $contentType = self::contentTypes['sendInboxMessage'][0])
     {
@@ -2794,12 +2794,12 @@ class MessagesApi
      * Send message
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
-     * @param  \Late\Model\SendInboxMessageRequest $send_inbox_message_request (required)
+     * @param  \Zernio\Model\SendInboxMessageRequest $send_inbox_message_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendInboxMessage'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SendInboxMessage200Response|\Late\Model\SendInboxMessage400Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SendInboxMessage200Response|\Zernio\Model\SendInboxMessage400Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendInboxMessageWithHttpInfo($conversation_id, $send_inbox_message_request, string $contentType = self::contentTypes['sendInboxMessage'][0])
     {
@@ -2831,19 +2831,19 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SendInboxMessage200Response',
+                        '\Zernio\Model\SendInboxMessage200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SendInboxMessage400Response',
+                        '\Zernio\Model\SendInboxMessage400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2865,7 +2865,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\SendInboxMessage200Response',
+                '\Zernio\Model\SendInboxMessage200Response',
                 $request,
                 $response,
             );
@@ -2874,7 +2874,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SendInboxMessage200Response',
+                        '\Zernio\Model\SendInboxMessage200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2882,7 +2882,7 @@ class MessagesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SendInboxMessage400Response',
+                        '\Zernio\Model\SendInboxMessage400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2890,7 +2890,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2908,7 +2908,7 @@ class MessagesApi
      * Send message
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
-     * @param  \Late\Model\SendInboxMessageRequest $send_inbox_message_request (required)
+     * @param  \Zernio\Model\SendInboxMessageRequest $send_inbox_message_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendInboxMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2930,7 +2930,7 @@ class MessagesApi
      * Send message
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
-     * @param  \Late\Model\SendInboxMessageRequest $send_inbox_message_request (required)
+     * @param  \Zernio\Model\SendInboxMessageRequest $send_inbox_message_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendInboxMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2938,7 +2938,7 @@ class MessagesApi
      */
     public function sendInboxMessageAsyncWithHttpInfo($conversation_id, $send_inbox_message_request, string $contentType = self::contentTypes['sendInboxMessage'][0])
     {
-        $returnType = '\Late\Model\SendInboxMessage200Response';
+        $returnType = '\Zernio\Model\SendInboxMessage200Response';
         $request = $this->sendInboxMessageRequest($conversation_id, $send_inbox_message_request, $contentType);
 
         return $this->client
@@ -2981,7 +2981,7 @@ class MessagesApi
      * Create request for operation 'sendInboxMessage'
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
-     * @param  \Late\Model\SendInboxMessageRequest $send_inbox_message_request (required)
+     * @param  \Zernio\Model\SendInboxMessageRequest $send_inbox_message_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendInboxMessage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3094,12 +3094,12 @@ class MessagesApi
      * Send typing indicator
      *
      * @param  string $conversation_id The conversation ID (required)
-     * @param  \Late\Model\SendTypingIndicatorRequest $send_typing_indicator_request send_typing_indicator_request (required)
+     * @param  \Zernio\Model\SendTypingIndicatorRequest $send_typing_indicator_request send_typing_indicator_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendTypingIndicator'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
      */
     public function sendTypingIndicator($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
     {
@@ -3113,12 +3113,12 @@ class MessagesApi
      * Send typing indicator
      *
      * @param  string $conversation_id The conversation ID (required)
-     * @param  \Late\Model\SendTypingIndicatorRequest $send_typing_indicator_request (required)
+     * @param  \Zernio\Model\SendTypingIndicatorRequest $send_typing_indicator_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendTypingIndicator'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendTypingIndicatorWithHttpInfo($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
     {
@@ -3150,13 +3150,13 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -3178,7 +3178,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -3187,7 +3187,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3195,7 +3195,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3213,7 +3213,7 @@ class MessagesApi
      * Send typing indicator
      *
      * @param  string $conversation_id The conversation ID (required)
-     * @param  \Late\Model\SendTypingIndicatorRequest $send_typing_indicator_request (required)
+     * @param  \Zernio\Model\SendTypingIndicatorRequest $send_typing_indicator_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendTypingIndicator'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3235,7 +3235,7 @@ class MessagesApi
      * Send typing indicator
      *
      * @param  string $conversation_id The conversation ID (required)
-     * @param  \Late\Model\SendTypingIndicatorRequest $send_typing_indicator_request (required)
+     * @param  \Zernio\Model\SendTypingIndicatorRequest $send_typing_indicator_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendTypingIndicator'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3243,7 +3243,7 @@ class MessagesApi
      */
     public function sendTypingIndicatorAsyncWithHttpInfo($conversation_id, $send_typing_indicator_request, string $contentType = self::contentTypes['sendTypingIndicator'][0])
     {
-        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
+        $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->sendTypingIndicatorRequest($conversation_id, $send_typing_indicator_request, $contentType);
 
         return $this->client
@@ -3286,7 +3286,7 @@ class MessagesApi
      * Create request for operation 'sendTypingIndicator'
      *
      * @param  string $conversation_id The conversation ID (required)
-     * @param  \Late\Model\SendTypingIndicatorRequest $send_typing_indicator_request (required)
+     * @param  \Zernio\Model\SendTypingIndicatorRequest $send_typing_indicator_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendTypingIndicator'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3399,12 +3399,12 @@ class MessagesApi
      * Update conversation status
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
-     * @param  \Late\Model\UpdateInboxConversationRequest $update_inbox_conversation_request update_inbox_conversation_request (required)
+     * @param  \Zernio\Model\UpdateInboxConversationRequest $update_inbox_conversation_request update_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateInboxConversation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateInboxConversation200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateInboxConversation200Response|\Zernio\Model\InlineObject
      */
     public function updateInboxConversation($conversation_id, $update_inbox_conversation_request, string $contentType = self::contentTypes['updateInboxConversation'][0])
     {
@@ -3418,12 +3418,12 @@ class MessagesApi
      * Update conversation status
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
-     * @param  \Late\Model\UpdateInboxConversationRequest $update_inbox_conversation_request (required)
+     * @param  \Zernio\Model\UpdateInboxConversationRequest $update_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateInboxConversation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateInboxConversation200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateInboxConversation200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateInboxConversationWithHttpInfo($conversation_id, $update_inbox_conversation_request, string $contentType = self::contentTypes['updateInboxConversation'][0])
     {
@@ -3455,13 +3455,13 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateInboxConversation200Response',
+                        '\Zernio\Model\UpdateInboxConversation200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -3483,7 +3483,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateInboxConversation200Response',
+                '\Zernio\Model\UpdateInboxConversation200Response',
                 $request,
                 $response,
             );
@@ -3492,7 +3492,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateInboxConversation200Response',
+                        '\Zernio\Model\UpdateInboxConversation200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3500,7 +3500,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3518,7 +3518,7 @@ class MessagesApi
      * Update conversation status
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
-     * @param  \Late\Model\UpdateInboxConversationRequest $update_inbox_conversation_request (required)
+     * @param  \Zernio\Model\UpdateInboxConversationRequest $update_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateInboxConversation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3540,7 +3540,7 @@ class MessagesApi
      * Update conversation status
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
-     * @param  \Late\Model\UpdateInboxConversationRequest $update_inbox_conversation_request (required)
+     * @param  \Zernio\Model\UpdateInboxConversationRequest $update_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateInboxConversation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3548,7 +3548,7 @@ class MessagesApi
      */
     public function updateInboxConversationAsyncWithHttpInfo($conversation_id, $update_inbox_conversation_request, string $contentType = self::contentTypes['updateInboxConversation'][0])
     {
-        $returnType = '\Late\Model\UpdateInboxConversation200Response';
+        $returnType = '\Zernio\Model\UpdateInboxConversation200Response';
         $request = $this->updateInboxConversationRequest($conversation_id, $update_inbox_conversation_request, $contentType);
 
         return $this->client
@@ -3591,7 +3591,7 @@ class MessagesApi
      * Create request for operation 'updateInboxConversation'
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
-     * @param  \Late\Model\UpdateInboxConversationRequest $update_inbox_conversation_request (required)
+     * @param  \Zernio\Model\UpdateInboxConversationRequest $update_inbox_conversation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateInboxConversation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3707,9 +3707,9 @@ class MessagesApi
      * @param  string|null $content_type Override MIME type (e.g. \\\&quot;image/jpeg\\\&quot;). Auto-detected from file if not provided. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadMediaDirect'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UploadMediaDirect200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UploadMediaDirect200Response|\Zernio\Model\InlineObject
      */
     public function uploadMediaDirect($file, $content_type = null, string $contentType = self::contentTypes['uploadMediaDirect'][0])
     {
@@ -3726,9 +3726,9 @@ class MessagesApi
      * @param  string|null $content_type Override MIME type (e.g. \\\&quot;image/jpeg\\\&quot;). Auto-detected from file if not provided. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadMediaDirect'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UploadMediaDirect200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UploadMediaDirect200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function uploadMediaDirectWithHttpInfo($file, $content_type = null, string $contentType = self::contentTypes['uploadMediaDirect'][0])
     {
@@ -3760,13 +3760,13 @@ class MessagesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UploadMediaDirect200Response',
+                        '\Zernio\Model\UploadMediaDirect200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -3788,7 +3788,7 @@ class MessagesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UploadMediaDirect200Response',
+                '\Zernio\Model\UploadMediaDirect200Response',
                 $request,
                 $response,
             );
@@ -3797,7 +3797,7 @@ class MessagesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UploadMediaDirect200Response',
+                        '\Zernio\Model\UploadMediaDirect200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3805,7 +3805,7 @@ class MessagesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3853,7 +3853,7 @@ class MessagesApi
      */
     public function uploadMediaDirectAsyncWithHttpInfo($file, $content_type = null, string $contentType = self::contentTypes['uploadMediaDirect'][0])
     {
-        $returnType = '\Late\Model\UploadMediaDirect200Response';
+        $returnType = '\Zernio\Model\UploadMediaDirect200Response';
         $request = $this->uploadMediaDirectRequest($file, $content_type, $contentType);
 
         return $this->client

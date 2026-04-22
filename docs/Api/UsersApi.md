@@ -1,4 +1,4 @@
-# Late\UsersApi
+# Zernio\UsersApi
 
 
 
@@ -13,7 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getUser()`
 
 ```php
-getUser($user_id): \Late\Model\GetUser200Response
+getUser($user_id): \Zernio\Model\GetUser200Response
 ```
 
 Get user
@@ -28,10 +28,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\UsersApi(
+$apiInstance = new Zernio\Api\UsersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -55,7 +55,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetUser200Response**](../Model/GetUser200Response.md)
+[**\Zernio\Model\GetUser200Response**](../Model/GetUser200Response.md)
 
 ### Authorization
 
@@ -73,7 +73,7 @@ try {
 ## `listUsers()`
 
 ```php
-listUsers(): \Late\Model\ListUsers200Response
+listUsers(): \Zernio\Model\ListUsers200Response
 ```
 
 List users
@@ -88,10 +88,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\UsersApi(
+$apiInstance = new Zernio\Api\UsersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -112,7 +112,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Late\Model\ListUsers200Response**](../Model/ListUsers200Response.md)
+[**\Zernio\Model\ListUsers200Response**](../Model/ListUsers200Response.md)
 
 ### Authorization
 

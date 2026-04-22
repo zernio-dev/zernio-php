@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendInboxMessageRequestInteractiveActionOneOf Class Doc Comment
  *
  * @category Class
  * @description List action. &#x60;type&#x60; on the parent must be &#x60;list&#x60;.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SendInboxMessageRequestInteractiveActionOneOf implements ModelInterface, A
       */
     protected static $openAPITypes = [
         'button' => 'string',
-        'sections' => '\Late\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[]'
+        'sections' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[]'
     ];
 
     /**
@@ -342,7 +342,7 @@ class SendInboxMessageRequestInteractiveActionOneOf implements ModelInterface, A
     /**
      * Gets sections
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[]
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[]
      */
     public function getSections()
     {
@@ -352,7 +352,7 @@ class SendInboxMessageRequestInteractiveActionOneOf implements ModelInterface, A
     /**
      * Sets sections
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[] $sections 1-10 sections. Total rows across all sections cannot exceed 10.
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[] $sections 1-10 sections. Total rows across all sections cannot exceed 10.
      *
      * @return self
      */

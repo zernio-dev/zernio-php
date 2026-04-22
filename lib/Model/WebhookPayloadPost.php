@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadPost Class Doc Comment
  *
  * @category Class
  * @description Webhook payload for post events
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPITypes = [
         'id' => 'string',
         'event' => 'string',
-        'post' => '\Late\Model\WebhookPayloadPostPost',
+        'post' => '\Zernio\Model\WebhookPayloadPostPost',
         'timestamp' => '\DateTime'
     ];
 
@@ -423,7 +423,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets post
      *
-     * @return \Late\Model\WebhookPayloadPostPost
+     * @return \Zernio\Model\WebhookPayloadPostPost
      */
     public function getPost()
     {
@@ -433,7 +433,7 @@ class WebhookPayloadPost implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets post
      *
-     * @param \Late\Model\WebhookPayloadPostPost $post post
+     * @param \Zernio\Model\WebhookPayloadPostPost $post post
      *
      * @return self
      */

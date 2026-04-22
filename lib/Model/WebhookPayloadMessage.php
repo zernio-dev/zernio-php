@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadMessage Class Doc Comment
  *
  * @category Class
  * @description Webhook payload for message received events
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPITypes = [
         'id' => 'string',
         'event' => 'string',
-        'message' => '\Late\Model\WebhookPayloadMessageMessage',
-        'conversation' => '\Late\Model\WebhookPayloadMessageConversation',
-        'account' => '\Late\Model\WebhookPayloadMessageAccount',
-        'metadata' => '\Late\Model\WebhookPayloadMessageMetadata',
+        'message' => '\Zernio\Model\WebhookPayloadMessageMessage',
+        'conversation' => '\Zernio\Model\WebhookPayloadMessageConversation',
+        'account' => '\Zernio\Model\WebhookPayloadMessageAccount',
+        'metadata' => '\Zernio\Model\WebhookPayloadMessageMetadata',
         'timestamp' => '\DateTime'
     ];
 
@@ -440,7 +440,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets message
      *
-     * @return \Late\Model\WebhookPayloadMessageMessage
+     * @return \Zernio\Model\WebhookPayloadMessageMessage
      */
     public function getMessage()
     {
@@ -450,7 +450,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets message
      *
-     * @param \Late\Model\WebhookPayloadMessageMessage $message message
+     * @param \Zernio\Model\WebhookPayloadMessageMessage $message message
      *
      * @return self
      */
@@ -467,7 +467,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets conversation
      *
-     * @return \Late\Model\WebhookPayloadMessageConversation
+     * @return \Zernio\Model\WebhookPayloadMessageConversation
      */
     public function getConversation()
     {
@@ -477,7 +477,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets conversation
      *
-     * @param \Late\Model\WebhookPayloadMessageConversation $conversation conversation
+     * @param \Zernio\Model\WebhookPayloadMessageConversation $conversation conversation
      *
      * @return self
      */
@@ -494,7 +494,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets account
      *
-     * @return \Late\Model\WebhookPayloadMessageAccount
+     * @return \Zernio\Model\WebhookPayloadMessageAccount
      */
     public function getAccount()
     {
@@ -504,7 +504,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets account
      *
-     * @param \Late\Model\WebhookPayloadMessageAccount $account account
+     * @param \Zernio\Model\WebhookPayloadMessageAccount $account account
      *
      * @return self
      */
@@ -521,7 +521,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets metadata
      *
-     * @return \Late\Model\WebhookPayloadMessageMetadata|null
+     * @return \Zernio\Model\WebhookPayloadMessageMetadata|null
      */
     public function getMetadata()
     {
@@ -531,7 +531,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets metadata
      *
-     * @param \Late\Model\WebhookPayloadMessageMetadata|null $metadata metadata
+     * @param \Zernio\Model\WebhookPayloadMessageMetadata|null $metadata metadata
      *
      * @return self
      */

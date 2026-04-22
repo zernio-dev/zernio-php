@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreatePostRequestPlatformsInnerPlatformSpecificData Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,10 +60,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     protected static $openAPITypes = [
         'reply_to_tweet_id' => 'string',
         'reply_settings' => 'string',
-        'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]',
-        'poll' => '\Late\Model\DiscordPlatformDataPoll',
+        'thread_items' => '\Zernio\Model\TwitterPlatformDataThreadItemsInner[]',
+        'poll' => '\Zernio\Model\DiscordPlatformDataPoll',
         'long_video' => 'bool',
-        'geo_restriction' => '\Late\Model\GeoRestriction',
+        'geo_restriction' => '\Zernio\Model\GeoRestriction',
         'topic_tag' => 'string',
         'draft' => 'bool',
         'content_type' => 'string',
@@ -72,8 +72,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'page_id' => 'string',
         'share_to_feed' => 'bool',
         'collaborators' => 'string[]',
-        'trial_params' => '\Late\Model\InstagramPlatformDataTrialParams',
-        'user_tags' => '\Late\Model\InstagramPlatformDataUserTagsInner[]',
+        'trial_params' => '\Zernio\Model\InstagramPlatformDataTrialParams',
+        'user_tags' => '\Zernio\Model\InstagramPlatformDataUserTagsInner[]',
         'audio_name' => 'string',
         'thumb_offset' => 'int',
         'instagram_thumbnail' => 'string',
@@ -93,9 +93,9 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'location_id' => 'string',
         'language_code' => 'string',
         'topic_type' => 'string',
-        'call_to_action' => '\Late\Model\GoogleBusinessPlatformDataCallToAction',
-        'event' => '\Late\Model\GoogleBusinessPlatformDataEvent',
-        'offer' => '\Late\Model\GoogleBusinessPlatformDataOffer',
+        'call_to_action' => '\Zernio\Model\GoogleBusinessPlatformDataCallToAction',
+        'event' => '\Zernio\Model\GoogleBusinessPlatformDataEvent',
+        'offer' => '\Zernio\Model\GoogleBusinessPlatformDataOffer',
         'privacy_level' => 'string',
         'allow_comment' => 'bool',
         'allow_duet' => 'bool',
@@ -124,11 +124,11 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'videogif' => 'bool',
         'video_poster_url' => 'string',
         'channel_id' => 'string',
-        'embeds' => '\Late\Model\DiscordPlatformDataEmbedsInner[]',
+        'embeds' => '\Zernio\Model\DiscordPlatformDataEmbedsInner[]',
         'crosspost' => 'bool',
         'forum_thread_name' => 'string',
         'forum_applied_tags' => 'string[]',
-        'thread_from_message' => '\Late\Model\DiscordPlatformDataThreadFromMessage',
+        'thread_from_message' => '\Zernio\Model\DiscordPlatformDataThreadFromMessage',
         'tts' => 'bool',
         'webhook_username' => 'string',
         'webhook_avatar_url' => 'string'
@@ -1093,7 +1093,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Gets thread_items
      *
-     * @return \Late\Model\TwitterPlatformDataThreadItemsInner[]|null
+     * @return \Zernio\Model\TwitterPlatformDataThreadItemsInner[]|null
      */
     public function getThreadItems()
     {
@@ -1103,7 +1103,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets thread_items
      *
-     * @param \Late\Model\TwitterPlatformDataThreadItemsInner[]|null $thread_items Complete sequence of posts in a Bluesky thread. The first item becomes the root post, subsequent items are chained as replies. When threadItems is provided, the top-level content field is used only for display and search purposes, it is NOT published. You must include your first post as threadItems[0].
+     * @param \Zernio\Model\TwitterPlatformDataThreadItemsInner[]|null $thread_items Complete sequence of posts in a Bluesky thread. The first item becomes the root post, subsequent items are chained as replies. When threadItems is provided, the top-level content field is used only for display and search purposes, it is NOT published. You must include your first post as threadItems[0].
      *
      * @return self
      */
@@ -1120,7 +1120,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Gets poll
      *
-     * @return \Late\Model\DiscordPlatformDataPoll|null
+     * @return \Zernio\Model\DiscordPlatformDataPoll|null
      */
     public function getPoll()
     {
@@ -1130,7 +1130,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets poll
      *
-     * @param \Late\Model\DiscordPlatformDataPoll|null $poll poll
+     * @param \Zernio\Model\DiscordPlatformDataPoll|null $poll poll
      *
      * @return self
      */
@@ -1174,7 +1174,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Gets geo_restriction
      *
-     * @return \Late\Model\GeoRestriction|null
+     * @return \Zernio\Model\GeoRestriction|null
      */
     public function getGeoRestriction()
     {
@@ -1184,7 +1184,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets geo_restriction
      *
-     * @param \Late\Model\GeoRestriction|null $geo_restriction geo_restriction
+     * @param \Zernio\Model\GeoRestriction|null $geo_restriction geo_restriction
      *
      * @return self
      */
@@ -1442,7 +1442,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Gets trial_params
      *
-     * @return \Late\Model\InstagramPlatformDataTrialParams|null
+     * @return \Zernio\Model\InstagramPlatformDataTrialParams|null
      */
     public function getTrialParams()
     {
@@ -1452,7 +1452,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets trial_params
      *
-     * @param \Late\Model\InstagramPlatformDataTrialParams|null $trial_params trial_params
+     * @param \Zernio\Model\InstagramPlatformDataTrialParams|null $trial_params trial_params
      *
      * @return self
      */
@@ -1469,7 +1469,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Gets user_tags
      *
-     * @return \Late\Model\InstagramPlatformDataUserTagsInner[]|null
+     * @return \Zernio\Model\InstagramPlatformDataUserTagsInner[]|null
      */
     public function getUserTags()
     {
@@ -1479,7 +1479,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets user_tags
      *
-     * @param \Late\Model\InstagramPlatformDataUserTagsInner[]|null $user_tags Tag Instagram users in photos by username and position. Not supported for stories or videos. For carousels, use mediaIndex to target specific slides (defaults to 0). Tags on video items are silently skipped.
+     * @param \Zernio\Model\InstagramPlatformDataUserTagsInner[]|null $user_tags Tag Instagram users in photos by username and position. Not supported for stories or videos. For carousels, use mediaIndex to target specific slides (defaults to 0). Tags on video items are silently skipped.
      *
      * @return self
      */
@@ -2034,7 +2034,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Gets call_to_action
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataCallToAction|null
+     * @return \Zernio\Model\GoogleBusinessPlatformDataCallToAction|null
      */
     public function getCallToAction()
     {
@@ -2044,7 +2044,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets call_to_action
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataCallToAction|null $call_to_action call_to_action
+     * @param \Zernio\Model\GoogleBusinessPlatformDataCallToAction|null $call_to_action call_to_action
      *
      * @return self
      */
@@ -2061,7 +2061,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Gets event
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataEvent|null
+     * @return \Zernio\Model\GoogleBusinessPlatformDataEvent|null
      */
     public function getEvent()
     {
@@ -2071,7 +2071,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets event
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataEvent|null $event event
+     * @param \Zernio\Model\GoogleBusinessPlatformDataEvent|null $event event
      *
      * @return self
      */
@@ -2088,7 +2088,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Gets offer
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataOffer|null
+     * @return \Zernio\Model\GoogleBusinessPlatformDataOffer|null
      */
     public function getOffer()
     {
@@ -2098,7 +2098,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets offer
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataOffer|null $offer offer
+     * @param \Zernio\Model\GoogleBusinessPlatformDataOffer|null $offer offer
      *
      * @return self
      */
@@ -2915,7 +2915,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Gets embeds
      *
-     * @return \Late\Model\DiscordPlatformDataEmbedsInner[]|null
+     * @return \Zernio\Model\DiscordPlatformDataEmbedsInner[]|null
      */
     public function getEmbeds()
     {
@@ -2925,7 +2925,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets embeds
      *
-     * @param \Late\Model\DiscordPlatformDataEmbedsInner[]|null $embeds Up to 10 Discord embed objects (combined max 6,000 characters across all embeds). Sent alongside or instead of plain-text content.
+     * @param \Zernio\Model\DiscordPlatformDataEmbedsInner[]|null $embeds Up to 10 Discord embed objects (combined max 6,000 characters across all embeds). Sent alongside or instead of plain-text content.
      *
      * @return self
      */
@@ -3031,7 +3031,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Gets thread_from_message
      *
-     * @return \Late\Model\DiscordPlatformDataThreadFromMessage|null
+     * @return \Zernio\Model\DiscordPlatformDataThreadFromMessage|null
      */
     public function getThreadFromMessage()
     {
@@ -3041,7 +3041,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     /**
      * Sets thread_from_message
      *
-     * @param \Late\Model\DiscordPlatformDataThreadFromMessage|null $thread_from_message thread_from_message
+     * @param \Zernio\Model\DiscordPlatformDataThreadFromMessage|null $thread_from_message thread_from_message
      *
      * @return self
      */

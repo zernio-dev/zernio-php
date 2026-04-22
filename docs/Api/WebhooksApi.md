@@ -1,4 +1,4 @@
-# Late\WebhooksApi
+# Zernio\WebhooksApi
 
 Configure webhooks for real-time notifications. Events: post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, comment.received, review.new, review.updated, webhook.test. Security: optional HMAC-SHA256 signature in X-Zernio-Signature header. Configure a secret key to enable verification. Custom headers supported.
 
@@ -16,7 +16,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createWebhookSettings()`
 
 ```php
-createWebhookSettings($create_webhook_settings_request): \Late\Model\UpdateWebhookSettings200Response
+createWebhookSettings($create_webhook_settings_request): \Zernio\Model\UpdateWebhookSettings200Response
 ```
 
 Create webhook
@@ -31,16 +31,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhooksApi(
+$apiInstance = new Zernio\Api\WebhooksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_webhook_settings_request = {"name":"My Production Webhook","url":"https://example.com/webhook","secret":"your-secret-key","events":["post.scheduled","post.published","post.failed","post.partial","post.cancelled","post.recycled","account.connected","account.disconnected","message.received","comment.received","review.new","review.updated"],"isActive":true}; // \Late\Model\CreateWebhookSettingsRequest
+$create_webhook_settings_request = {"name":"My Production Webhook","url":"https://example.com/webhook","secret":"your-secret-key","events":["post.scheduled","post.published","post.failed","post.partial","post.cancelled","post.recycled","account.connected","account.disconnected","message.received","comment.received","review.new","review.updated"],"isActive":true}; // \Zernio\Model\CreateWebhookSettingsRequest
 
 try {
     $result = $apiInstance->createWebhookSettings($create_webhook_settings_request);
@@ -54,11 +54,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_webhook_settings_request** | [**\Late\Model\CreateWebhookSettingsRequest**](../Model/CreateWebhookSettingsRequest.md)|  | |
+| **create_webhook_settings_request** | [**\Zernio\Model\CreateWebhookSettingsRequest**](../Model/CreateWebhookSettingsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateWebhookSettings200Response**](../Model/UpdateWebhookSettings200Response.md)
+[**\Zernio\Model\UpdateWebhookSettings200Response**](../Model/UpdateWebhookSettings200Response.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ try {
 ## `deleteWebhookSettings()`
 
 ```php
-deleteWebhookSettings($id): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
+deleteWebhookSettings($id): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Delete webhook
@@ -91,10 +91,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhooksApi(
+$apiInstance = new Zernio\Api\WebhooksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -118,7 +118,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -136,7 +136,7 @@ try {
 ## `getWebhookSettings()`
 
 ```php
-getWebhookSettings(): \Late\Model\GetWebhookSettings200Response
+getWebhookSettings(): \Zernio\Model\GetWebhookSettings200Response
 ```
 
 List webhooks
@@ -151,10 +151,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhooksApi(
+$apiInstance = new Zernio\Api\WebhooksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -175,7 +175,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Late\Model\GetWebhookSettings200Response**](../Model/GetWebhookSettings200Response.md)
+[**\Zernio\Model\GetWebhookSettings200Response**](../Model/GetWebhookSettings200Response.md)
 
 ### Authorization
 
@@ -193,7 +193,7 @@ This endpoint does not need any parameter.
 ## `testWebhook()`
 
 ```php
-testWebhook($test_webhook_request): \Late\Model\UnpublishPost200Response
+testWebhook($test_webhook_request): \Zernio\Model\UnpublishPost200Response
 ```
 
 Send test webhook
@@ -208,16 +208,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhooksApi(
+$apiInstance = new Zernio\Api\WebhooksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$test_webhook_request = {"webhookId":"507f1f77bcf86cd799439011"}; // \Late\Model\TestWebhookRequest
+$test_webhook_request = {"webhookId":"507f1f77bcf86cd799439011"}; // \Zernio\Model\TestWebhookRequest
 
 try {
     $result = $apiInstance->testWebhook($test_webhook_request);
@@ -231,11 +231,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **test_webhook_request** | [**\Late\Model\TestWebhookRequest**](../Model/TestWebhookRequest.md)|  | |
+| **test_webhook_request** | [**\Zernio\Model\TestWebhookRequest**](../Model/TestWebhookRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+[**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
@@ -253,7 +253,7 @@ try {
 ## `updateWebhookSettings()`
 
 ```php
-updateWebhookSettings($update_webhook_settings_request): \Late\Model\UpdateWebhookSettings200Response
+updateWebhookSettings($update_webhook_settings_request): \Zernio\Model\UpdateWebhookSettings200Response
 ```
 
 Update webhook
@@ -268,16 +268,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WebhooksApi(
+$apiInstance = new Zernio\Api\WebhooksApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$update_webhook_settings_request = {"_id":"507f1f77bcf86cd799439011","url":"https://new-example.com/webhook","events":["post.published","post.failed"]}; // \Late\Model\UpdateWebhookSettingsRequest
+$update_webhook_settings_request = {"_id":"507f1f77bcf86cd799439011","url":"https://new-example.com/webhook","events":["post.published","post.failed"]}; // \Zernio\Model\UpdateWebhookSettingsRequest
 
 try {
     $result = $apiInstance->updateWebhookSettings($update_webhook_settings_request);
@@ -291,11 +291,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **update_webhook_settings_request** | [**\Late\Model\UpdateWebhookSettingsRequest**](../Model/UpdateWebhookSettingsRequest.md)|  | |
+| **update_webhook_settings_request** | [**\Zernio\Model\UpdateWebhookSettingsRequest**](../Model/UpdateWebhookSettingsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateWebhookSettings200Response**](../Model/UpdateWebhookSettings200Response.md)
+[**\Zernio\Model\UpdateWebhookSettings200Response**](../Model/UpdateWebhookSettings200Response.md)
 
 ### Authorization
 

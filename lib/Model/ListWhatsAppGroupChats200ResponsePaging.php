@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListWhatsAppGroupChats200ResponsePaging Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ListWhatsAppGroupChats200ResponsePaging implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'cursors' => '\Late\Model\ListWhatsAppGroupChats200ResponsePagingCursors'
+        'cursors' => '\Zernio\Model\ListWhatsAppGroupChats200ResponsePagingCursors'
     ];
 
     /**
@@ -293,7 +293,7 @@ class ListWhatsAppGroupChats200ResponsePaging implements ModelInterface, ArrayAc
     /**
      * Gets cursors
      *
-     * @return \Late\Model\ListWhatsAppGroupChats200ResponsePagingCursors|null
+     * @return \Zernio\Model\ListWhatsAppGroupChats200ResponsePagingCursors|null
      */
     public function getCursors()
     {
@@ -303,7 +303,7 @@ class ListWhatsAppGroupChats200ResponsePaging implements ModelInterface, ArrayAc
     /**
      * Sets cursors
      *
-     * @param \Late\Model\ListWhatsAppGroupChats200ResponsePagingCursors|null $cursors cursors
+     * @param \Zernio\Model\ListWhatsAppGroupChats200ResponsePagingCursors|null $cursors cursors
      *
      * @return self
      */

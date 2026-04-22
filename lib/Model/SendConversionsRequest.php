@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendConversionsRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,9 +60,9 @@ class SendConversionsRequest implements ModelInterface, ArrayAccess, \JsonSerial
     protected static $openAPITypes = [
         'account_id' => 'string',
         'destination_id' => 'string',
-        'events' => '\Late\Model\ConversionEvent[]',
+        'events' => '\Zernio\Model\ConversionEvent[]',
         'test_code' => 'string',
-        'consent' => '\Late\Model\SendConversionsRequestConsent'
+        'consent' => '\Zernio\Model\SendConversionsRequestConsent'
     ];
 
     /**
@@ -388,7 +388,7 @@ class SendConversionsRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets events
      *
-     * @return \Late\Model\ConversionEvent[]
+     * @return \Zernio\Model\ConversionEvent[]
      */
     public function getEvents()
     {
@@ -398,7 +398,7 @@ class SendConversionsRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets events
      *
-     * @param \Late\Model\ConversionEvent[] $events events
+     * @param \Zernio\Model\ConversionEvent[] $events events
      *
      * @return self
      */
@@ -447,7 +447,7 @@ class SendConversionsRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets consent
      *
-     * @return \Late\Model\SendConversionsRequestConsent|null
+     * @return \Zernio\Model\SendConversionsRequestConsent|null
      */
     public function getConsent()
     {
@@ -457,7 +457,7 @@ class SendConversionsRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets consent
      *
-     * @param \Late\Model\SendConversionsRequestConsent|null $consent consent
+     * @param \Zernio\Model\SendConversionsRequestConsent|null $consent consent
      *
      * @return self
      */

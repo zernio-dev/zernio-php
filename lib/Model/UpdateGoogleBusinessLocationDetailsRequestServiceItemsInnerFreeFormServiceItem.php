@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItem Class Doc Comment
  *
  * @category Class
  * @description A custom service not in Google&#39;s catalog
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormService
       */
     protected static $openAPITypes = [
         'category' => 'string',
-        'label' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItemLabel'
+        'label' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItemLabel'
     ];
 
     /**
@@ -328,7 +328,7 @@ class UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormService
     /**
      * Gets label
      *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItemLabel|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItemLabel|null
      */
     public function getLabel()
     {
@@ -338,7 +338,7 @@ class UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormService
     /**
      * Sets label
      *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItemLabel|null $label label
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItemLabel|null $label label
      *
      * @return self
      */

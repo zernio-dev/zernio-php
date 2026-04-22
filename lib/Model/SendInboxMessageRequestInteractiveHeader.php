@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendInboxMessageRequestInteractiveHeader Class Doc Comment
  *
  * @category Class
  * @description Optional header shown above the body.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
     protected static $openAPITypes = [
         'type' => 'string',
         'text' => 'string',
-        'image' => '\Late\Model\SendInboxMessageRequestInteractiveHeaderImage',
-        'video' => '\Late\Model\SendInboxMessageRequestInteractiveHeaderImage',
-        'document' => '\Late\Model\SendInboxMessageRequestInteractiveHeaderImage'
+        'image' => '\Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage',
+        'video' => '\Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage',
+        'document' => '\Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage'
     ];
 
     /**
@@ -414,7 +414,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
     /**
      * Gets image
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveHeaderImage|null
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage|null
      */
     public function getImage()
     {
@@ -424,7 +424,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
     /**
      * Sets image
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveHeaderImage|null $image image
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage|null $image image
      *
      * @return self
      */
@@ -441,7 +441,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
     /**
      * Gets video
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveHeaderImage|null
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage|null
      */
     public function getVideo()
     {
@@ -451,7 +451,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
     /**
      * Sets video
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveHeaderImage|null $video video
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage|null $video video
      *
      * @return self
      */
@@ -468,7 +468,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
     /**
      * Gets document
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveHeaderImage|null
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage|null
      */
     public function getDocument()
     {
@@ -478,7 +478,7 @@ class SendInboxMessageRequestInteractiveHeader implements ModelInterface, ArrayA
     /**
      * Sets document
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveHeaderImage|null $document document
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveHeaderImage|null $document document
      *
      * @return self
      */

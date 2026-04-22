@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadAccountDisconnected Class Doc Comment
  *
  * @category Class
  * @description Webhook payload for account disconnected events
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
     protected static $openAPITypes = [
         'id' => 'string',
         'event' => 'string',
-        'account' => '\Late\Model\WebhookPayloadAccountDisconnectedAccount',
+        'account' => '\Zernio\Model\WebhookPayloadAccountDisconnectedAccount',
         'timestamp' => '\DateTime'
     ];
 
@@ -413,7 +413,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
     /**
      * Gets account
      *
-     * @return \Late\Model\WebhookPayloadAccountDisconnectedAccount
+     * @return \Zernio\Model\WebhookPayloadAccountDisconnectedAccount
      */
     public function getAccount()
     {
@@ -423,7 +423,7 @@ class WebhookPayloadAccountDisconnected implements ModelInterface, ArrayAccess, 
     /**
      * Sets account
      *
-     * @param \Late\Model\WebhookPayloadAccountDisconnectedAccount $account account
+     * @param \Zernio\Model\WebhookPayloadAccountDisconnectedAccount $account account
      *
      * @return self
      */

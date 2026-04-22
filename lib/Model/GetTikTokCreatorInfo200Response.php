@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetTikTokCreatorInfo200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,10 +58,10 @@ class GetTikTokCreatorInfo200Response implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'creator' => '\Late\Model\GetTikTokCreatorInfo200ResponseCreator',
-        'privacy_levels' => '\Late\Model\GetTikTokCreatorInfo200ResponsePrivacyLevelsInner[]',
-        'posting_limits' => '\Late\Model\GetTikTokCreatorInfo200ResponsePostingLimits',
-        'commercial_content_types' => '\Late\Model\GetTikTokCreatorInfo200ResponseCommercialContentTypesInner[]'
+        'creator' => '\Zernio\Model\GetTikTokCreatorInfo200ResponseCreator',
+        'privacy_levels' => '\Zernio\Model\GetTikTokCreatorInfo200ResponsePrivacyLevelsInner[]',
+        'posting_limits' => '\Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimits',
+        'commercial_content_types' => '\Zernio\Model\GetTikTokCreatorInfo200ResponseCommercialContentTypesInner[]'
     ];
 
     /**
@@ -314,7 +314,7 @@ class GetTikTokCreatorInfo200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets creator
      *
-     * @return \Late\Model\GetTikTokCreatorInfo200ResponseCreator|null
+     * @return \Zernio\Model\GetTikTokCreatorInfo200ResponseCreator|null
      */
     public function getCreator()
     {
@@ -324,7 +324,7 @@ class GetTikTokCreatorInfo200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets creator
      *
-     * @param \Late\Model\GetTikTokCreatorInfo200ResponseCreator|null $creator creator
+     * @param \Zernio\Model\GetTikTokCreatorInfo200ResponseCreator|null $creator creator
      *
      * @return self
      */
@@ -341,7 +341,7 @@ class GetTikTokCreatorInfo200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets privacy_levels
      *
-     * @return \Late\Model\GetTikTokCreatorInfo200ResponsePrivacyLevelsInner[]|null
+     * @return \Zernio\Model\GetTikTokCreatorInfo200ResponsePrivacyLevelsInner[]|null
      */
     public function getPrivacyLevels()
     {
@@ -351,7 +351,7 @@ class GetTikTokCreatorInfo200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets privacy_levels
      *
-     * @param \Late\Model\GetTikTokCreatorInfo200ResponsePrivacyLevelsInner[]|null $privacy_levels Available privacy level options for this creator
+     * @param \Zernio\Model\GetTikTokCreatorInfo200ResponsePrivacyLevelsInner[]|null $privacy_levels Available privacy level options for this creator
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class GetTikTokCreatorInfo200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets posting_limits
      *
-     * @return \Late\Model\GetTikTokCreatorInfo200ResponsePostingLimits|null
+     * @return \Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimits|null
      */
     public function getPostingLimits()
     {
@@ -378,7 +378,7 @@ class GetTikTokCreatorInfo200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets posting_limits
      *
-     * @param \Late\Model\GetTikTokCreatorInfo200ResponsePostingLimits|null $posting_limits posting_limits
+     * @param \Zernio\Model\GetTikTokCreatorInfo200ResponsePostingLimits|null $posting_limits posting_limits
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class GetTikTokCreatorInfo200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets commercial_content_types
      *
-     * @return \Late\Model\GetTikTokCreatorInfo200ResponseCommercialContentTypesInner[]|null
+     * @return \Zernio\Model\GetTikTokCreatorInfo200ResponseCommercialContentTypesInner[]|null
      */
     public function getCommercialContentTypes()
     {
@@ -405,7 +405,7 @@ class GetTikTokCreatorInfo200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets commercial_content_types
      *
-     * @param \Late\Model\GetTikTokCreatorInfo200ResponseCommercialContentTypesInner[]|null $commercial_content_types Available commercial content disclosure options
+     * @param \Zernio\Model\GetTikTokCreatorInfo200ResponseCommercialContentTypesInner[]|null $commercial_content_types Available commercial content disclosure options
      *
      * @return self
      */

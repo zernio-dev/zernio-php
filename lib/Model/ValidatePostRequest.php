@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ValidatePostRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class ValidatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'content' => 'string',
-        'platforms' => '\Late\Model\ValidatePostRequestPlatformsInner[]',
-        'media_items' => '\Late\Model\ValidatePostRequestMediaItemsInner[]'
+        'platforms' => '\Zernio\Model\ValidatePostRequestPlatformsInner[]',
+        'media_items' => '\Zernio\Model\ValidatePostRequestMediaItemsInner[]'
     ];
 
     /**
@@ -337,7 +337,7 @@ class ValidatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets platforms
      *
-     * @return \Late\Model\ValidatePostRequestPlatformsInner[]
+     * @return \Zernio\Model\ValidatePostRequestPlatformsInner[]
      */
     public function getPlatforms()
     {
@@ -347,7 +347,7 @@ class ValidatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets platforms
      *
-     * @param \Late\Model\ValidatePostRequestPlatformsInner[] $platforms Target platforms (same format as POST /v1/posts)
+     * @param \Zernio\Model\ValidatePostRequestPlatformsInner[] $platforms Target platforms (same format as POST /v1/posts)
      *
      * @return self
      */
@@ -364,7 +364,7 @@ class ValidatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets media_items
      *
-     * @return \Late\Model\ValidatePostRequestMediaItemsInner[]|null
+     * @return \Zernio\Model\ValidatePostRequestMediaItemsInner[]|null
      */
     public function getMediaItems()
     {
@@ -374,7 +374,7 @@ class ValidatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets media_items
      *
-     * @param \Late\Model\ValidatePostRequestMediaItemsInner[]|null $media_items Root media items shared across platforms
+     * @param \Zernio\Model\ValidatePostRequestMediaItemsInner[]|null $media_items Root media items shared across platforms
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetAccountHealth200ResponsePermissions Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class GetAccountHealth200ResponsePermissions implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'posting' => '\Late\Model\GetAccountHealth200ResponsePermissionsPostingInner[]',
-        'analytics' => '\Late\Model\GetAccountHealth200ResponsePermissionsPostingInner[]',
-        'optional' => '\Late\Model\GetAccountHealth200ResponsePermissionsPostingInner[]',
+        'posting' => '\Zernio\Model\GetAccountHealth200ResponsePermissionsPostingInner[]',
+        'analytics' => '\Zernio\Model\GetAccountHealth200ResponsePermissionsPostingInner[]',
+        'optional' => '\Zernio\Model\GetAccountHealth200ResponsePermissionsPostingInner[]',
         'can_post' => 'bool',
         'can_fetch_analytics' => 'bool',
         'missing_required' => 'string[]'
@@ -328,7 +328,7 @@ class GetAccountHealth200ResponsePermissions implements ModelInterface, ArrayAcc
     /**
      * Gets posting
      *
-     * @return \Late\Model\GetAccountHealth200ResponsePermissionsPostingInner[]|null
+     * @return \Zernio\Model\GetAccountHealth200ResponsePermissionsPostingInner[]|null
      */
     public function getPosting()
     {
@@ -338,7 +338,7 @@ class GetAccountHealth200ResponsePermissions implements ModelInterface, ArrayAcc
     /**
      * Sets posting
      *
-     * @param \Late\Model\GetAccountHealth200ResponsePermissionsPostingInner[]|null $posting posting
+     * @param \Zernio\Model\GetAccountHealth200ResponsePermissionsPostingInner[]|null $posting posting
      *
      * @return self
      */
@@ -355,7 +355,7 @@ class GetAccountHealth200ResponsePermissions implements ModelInterface, ArrayAcc
     /**
      * Gets analytics
      *
-     * @return \Late\Model\GetAccountHealth200ResponsePermissionsPostingInner[]|null
+     * @return \Zernio\Model\GetAccountHealth200ResponsePermissionsPostingInner[]|null
      */
     public function getAnalytics()
     {
@@ -365,7 +365,7 @@ class GetAccountHealth200ResponsePermissions implements ModelInterface, ArrayAcc
     /**
      * Sets analytics
      *
-     * @param \Late\Model\GetAccountHealth200ResponsePermissionsPostingInner[]|null $analytics analytics
+     * @param \Zernio\Model\GetAccountHealth200ResponsePermissionsPostingInner[]|null $analytics analytics
      *
      * @return self
      */
@@ -382,7 +382,7 @@ class GetAccountHealth200ResponsePermissions implements ModelInterface, ArrayAcc
     /**
      * Gets optional
      *
-     * @return \Late\Model\GetAccountHealth200ResponsePermissionsPostingInner[]|null
+     * @return \Zernio\Model\GetAccountHealth200ResponsePermissionsPostingInner[]|null
      */
     public function getOptional()
     {
@@ -392,7 +392,7 @@ class GetAccountHealth200ResponsePermissions implements ModelInterface, ArrayAcc
     /**
      * Sets optional
      *
-     * @param \Late\Model\GetAccountHealth200ResponsePermissionsPostingInner[]|null $optional optional
+     * @param \Zernio\Model\GetAccountHealth200ResponsePermissionsPostingInner[]|null $optional optional
      *
      * @return self
      */

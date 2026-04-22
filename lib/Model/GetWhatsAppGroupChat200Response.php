@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetWhatsAppGroupChat200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetWhatsAppGroupChat200Response implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'group' => '\Late\Model\GetWhatsAppGroupChat200ResponseGroup'
+        'group' => '\Zernio\Model\GetWhatsAppGroupChat200ResponseGroup'
     ];
 
     /**
@@ -327,7 +327,7 @@ class GetWhatsAppGroupChat200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets group
      *
-     * @return \Late\Model\GetWhatsAppGroupChat200ResponseGroup|null
+     * @return \Zernio\Model\GetWhatsAppGroupChat200ResponseGroup|null
      */
     public function getGroup()
     {
@@ -337,7 +337,7 @@ class GetWhatsAppGroupChat200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets group
      *
-     * @param \Late\Model\GetWhatsAppGroupChat200ResponseGroup|null $group group
+     * @param \Zernio\Model\GetWhatsAppGroupChat200ResponseGroup|null $group group
      *
      * @return self
      */

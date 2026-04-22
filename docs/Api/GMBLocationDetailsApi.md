@@ -1,4 +1,4 @@
-# Late\GMBLocationDetailsApi
+# Zernio\GMBLocationDetailsApi
 
 
 
@@ -13,7 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getGoogleBusinessLocationDetails()`
 
 ```php
-getGoogleBusinessLocationDetails($account_id, $location_id, $read_mask): \Late\Model\GetGoogleBusinessLocationDetails200Response
+getGoogleBusinessLocationDetails($account_id, $location_id, $read_mask): \Zernio\Model\GetGoogleBusinessLocationDetails200Response
 ```
 
 Get location details
@@ -28,10 +28,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBLocationDetailsApi(
+$apiInstance = new Zernio\Api\GMBLocationDetailsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -59,7 +59,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetGoogleBusinessLocationDetails200Response**](../Model/GetGoogleBusinessLocationDetails200Response.md)
+[**\Zernio\Model\GetGoogleBusinessLocationDetails200Response**](../Model/GetGoogleBusinessLocationDetails200Response.md)
 
 ### Authorization
 
@@ -77,7 +77,7 @@ try {
 ## `updateGoogleBusinessLocationDetails()`
 
 ```php
-updateGoogleBusinessLocationDetails($account_id, $update_google_business_location_details_request, $location_id): \Late\Model\UpdateGoogleBusinessLocationDetails200Response
+updateGoogleBusinessLocationDetails($account_id, $update_google_business_location_details_request, $location_id): \Zernio\Model\UpdateGoogleBusinessLocationDetails200Response
 ```
 
 Update location details
@@ -92,17 +92,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBLocationDetailsApi(
+$apiInstance = new Zernio\Api\GMBLocationDetailsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | The Zernio account ID (from /v1/accounts)
-$update_google_business_location_details_request = {"updateMask":"regularHours,specialHours","regularHours":{"periods":[{"openDay":"MONDAY","openTime":"09:00","closeDay":"MONDAY","closeTime":"17:00"},{"openDay":"SATURDAY","openTime":"10:00","closeDay":"SATURDAY","closeTime":"14:00"}]},"specialHours":{"specialHourPeriods":[{"startDate":{"year":2026,"month":12,"day":25},"closed":true},{"startDate":{"year":2026,"month":12,"day":31},"openTime":"09:00","closeTime":"15:00"}]}}; // \Late\Model\UpdateGoogleBusinessLocationDetailsRequest
+$update_google_business_location_details_request = {"updateMask":"regularHours,specialHours","regularHours":{"periods":[{"openDay":"MONDAY","openTime":"09:00","closeDay":"MONDAY","closeTime":"17:00"},{"openDay":"SATURDAY","openTime":"10:00","closeDay":"SATURDAY","closeTime":"14:00"}]},"specialHours":{"specialHourPeriods":[{"startDate":{"year":2026,"month":12,"day":25},"closed":true},{"startDate":{"year":2026,"month":12,"day":31},"openTime":"09:00","closeTime":"15:00"}]}}; // \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequest
 $location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
@@ -118,12 +118,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The Zernio account ID (from /v1/accounts) | |
-| **update_google_business_location_details_request** | [**\Late\Model\UpdateGoogleBusinessLocationDetailsRequest**](../Model/UpdateGoogleBusinessLocationDetailsRequest.md)|  | |
+| **update_google_business_location_details_request** | [**\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequest**](../Model/UpdateGoogleBusinessLocationDetailsRequest.md)|  | |
 | **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
 
-[**\Late\Model\UpdateGoogleBusinessLocationDetails200Response**](../Model/UpdateGoogleBusinessLocationDetails200Response.md)
+[**\Zernio\Model\UpdateGoogleBusinessLocationDetails200Response**](../Model/UpdateGoogleBusinessLocationDetails200Response.md)
 
 ### Authorization
 

@@ -1,4 +1,4 @@
-# Late
+# Zernio
 
 API reference for Zernio. Authenticate with a Bearer API key.
 Base URL: https://zernio.com/api
@@ -18,6 +18,8 @@ PHP 8.1 and later.
 composer require zernio-dev/zernio-php
 ```
 
+Use the `Zernio\` namespace. The legacy `Late\` namespace is auto-aliased on load for backwards compatibility.
+
 
 ## Getting Started
 
@@ -30,16 +32,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\APIKeysApi(
+$apiInstance = new Zernio\Api\APIKeysApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_api_key_request = {"name":"Analytics Read-Only Key","scope":"profiles","profileIds":["6507a1b2c3d4e5f6a7b8c9d0"],"permission":"read"}; // \Late\Model\CreateApiKeyRequest
+$create_api_key_request = {"name":"Analytics Read-Only Key","scope":"profiles","profileIds":["6507a1b2c3d4e5f6a7b8c9d0"],"permission":"read"}; // \Zernio\Model\CreateApiKeyRequest
 
 try {
     $result = $apiInstance->createApiKey($create_api_key_request);

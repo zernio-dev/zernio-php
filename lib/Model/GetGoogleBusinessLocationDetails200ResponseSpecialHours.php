@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessLocationDetails200ResponseSpecialHours Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetGoogleBusinessLocationDetails200ResponseSpecialHours implements ModelIn
       * @var string[]
       */
     protected static $openAPITypes = [
-        'special_hour_periods' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInner[]'
+        'special_hour_periods' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class GetGoogleBusinessLocationDetails200ResponseSpecialHours implements ModelIn
     /**
      * Gets special_hour_periods
      *
-     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInner[]|null
+     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInner[]|null
      */
     public function getSpecialHourPeriods()
     {
@@ -303,7 +303,7 @@ class GetGoogleBusinessLocationDetails200ResponseSpecialHours implements ModelIn
     /**
      * Sets special_hour_periods
      *
-     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInner[]|null $special_hour_periods special_hour_periods
+     * @param \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInner[]|null $special_hour_periods special_hour_periods
      *
      * @return self
      */

@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * QueueApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -146,12 +146,12 @@ class QueueApi
      *
      * Create schedule
      *
-     * @param  \Late\Model\CreateQueueSlotRequest $create_queue_slot_request create_queue_slot_request (required)
+     * @param  \Zernio\Model\CreateQueueSlotRequest $create_queue_slot_request create_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQueueSlot'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CreateQueueSlot201Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\CreateQueueSlot201Response|\Zernio\Model\InlineObject
      */
     public function createQueueSlot($create_queue_slot_request, string $contentType = self::contentTypes['createQueueSlot'][0])
     {
@@ -164,12 +164,12 @@ class QueueApi
      *
      * Create schedule
      *
-     * @param  \Late\Model\CreateQueueSlotRequest $create_queue_slot_request (required)
+     * @param  \Zernio\Model\CreateQueueSlotRequest $create_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQueueSlot'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CreateQueueSlot201Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateQueueSlot201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createQueueSlotWithHttpInfo($create_queue_slot_request, string $contentType = self::contentTypes['createQueueSlot'][0])
     {
@@ -201,13 +201,13 @@ class QueueApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateQueueSlot201Response',
+                        '\Zernio\Model\CreateQueueSlot201Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -229,7 +229,7 @@ class QueueApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CreateQueueSlot201Response',
+                '\Zernio\Model\CreateQueueSlot201Response',
                 $request,
                 $response,
             );
@@ -238,7 +238,7 @@ class QueueApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateQueueSlot201Response',
+                        '\Zernio\Model\CreateQueueSlot201Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -246,7 +246,7 @@ class QueueApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -263,7 +263,7 @@ class QueueApi
      *
      * Create schedule
      *
-     * @param  \Late\Model\CreateQueueSlotRequest $create_queue_slot_request (required)
+     * @param  \Zernio\Model\CreateQueueSlotRequest $create_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQueueSlot'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -284,7 +284,7 @@ class QueueApi
      *
      * Create schedule
      *
-     * @param  \Late\Model\CreateQueueSlotRequest $create_queue_slot_request (required)
+     * @param  \Zernio\Model\CreateQueueSlotRequest $create_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQueueSlot'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -292,7 +292,7 @@ class QueueApi
      */
     public function createQueueSlotAsyncWithHttpInfo($create_queue_slot_request, string $contentType = self::contentTypes['createQueueSlot'][0])
     {
-        $returnType = '\Late\Model\CreateQueueSlot201Response';
+        $returnType = '\Zernio\Model\CreateQueueSlot201Response';
         $request = $this->createQueueSlotRequest($create_queue_slot_request, $contentType);
 
         return $this->client
@@ -334,7 +334,7 @@ class QueueApi
     /**
      * Create request for operation 'createQueueSlot'
      *
-     * @param  \Late\Model\CreateQueueSlotRequest $create_queue_slot_request (required)
+     * @param  \Zernio\Model\CreateQueueSlotRequest $create_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createQueueSlot'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -435,9 +435,9 @@ class QueueApi
      * @param  string $queue_id Queue ID to delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQueueSlot'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\DeleteQueueSlot200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\DeleteQueueSlot200Response|\Zernio\Model\InlineObject
      */
     public function deleteQueueSlot($profile_id, $queue_id, string $contentType = self::contentTypes['deleteQueueSlot'][0])
     {
@@ -454,9 +454,9 @@ class QueueApi
      * @param  string $queue_id Queue ID to delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteQueueSlot'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\DeleteQueueSlot200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteQueueSlot200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteQueueSlotWithHttpInfo($profile_id, $queue_id, string $contentType = self::contentTypes['deleteQueueSlot'][0])
     {
@@ -488,13 +488,13 @@ class QueueApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\DeleteQueueSlot200Response',
+                        '\Zernio\Model\DeleteQueueSlot200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -516,7 +516,7 @@ class QueueApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\DeleteQueueSlot200Response',
+                '\Zernio\Model\DeleteQueueSlot200Response',
                 $request,
                 $response,
             );
@@ -525,7 +525,7 @@ class QueueApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\DeleteQueueSlot200Response',
+                        '\Zernio\Model\DeleteQueueSlot200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -533,7 +533,7 @@ class QueueApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -581,7 +581,7 @@ class QueueApi
      */
     public function deleteQueueSlotAsyncWithHttpInfo($profile_id, $queue_id, string $contentType = self::contentTypes['deleteQueueSlot'][0])
     {
-        $returnType = '\Late\Model\DeleteQueueSlot200Response';
+        $returnType = '\Zernio\Model\DeleteQueueSlot200Response';
         $request = $this->deleteQueueSlotRequest($profile_id, $queue_id, $contentType);
 
         return $this->client
@@ -743,9 +743,9 @@ class QueueApi
      * @param  string|null $queue_id Specific queue ID (optional, defaults to profile&#39;s default queue) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNextQueueSlot'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetNextQueueSlot200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetNextQueueSlot200Response|\Zernio\Model\InlineObject
      */
     public function getNextQueueSlot($profile_id, $queue_id = null, string $contentType = self::contentTypes['getNextQueueSlot'][0])
     {
@@ -762,9 +762,9 @@ class QueueApi
      * @param  string|null $queue_id Specific queue ID (optional, defaults to profile&#39;s default queue) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getNextQueueSlot'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetNextQueueSlot200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetNextQueueSlot200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getNextQueueSlotWithHttpInfo($profile_id, $queue_id = null, string $contentType = self::contentTypes['getNextQueueSlot'][0])
     {
@@ -796,13 +796,13 @@ class QueueApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetNextQueueSlot200Response',
+                        '\Zernio\Model\GetNextQueueSlot200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -824,7 +824,7 @@ class QueueApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetNextQueueSlot200Response',
+                '\Zernio\Model\GetNextQueueSlot200Response',
                 $request,
                 $response,
             );
@@ -833,7 +833,7 @@ class QueueApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetNextQueueSlot200Response',
+                        '\Zernio\Model\GetNextQueueSlot200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -841,7 +841,7 @@ class QueueApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -889,7 +889,7 @@ class QueueApi
      */
     public function getNextQueueSlotAsyncWithHttpInfo($profile_id, $queue_id = null, string $contentType = self::contentTypes['getNextQueueSlot'][0])
     {
-        $returnType = '\Late\Model\GetNextQueueSlot200Response';
+        $returnType = '\Zernio\Model\GetNextQueueSlot200Response';
         $request = $this->getNextQueueSlotRequest($profile_id, $queue_id, $contentType);
 
         return $this->client
@@ -1046,9 +1046,9 @@ class QueueApi
      * @param  string|null $all Set to &#39;true&#39; to list all queues for the profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listQueueSlots'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListQueueSlots200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListQueueSlots200Response|\Zernio\Model\InlineObject
      */
     public function listQueueSlots($profile_id, $queue_id = null, $all = null, string $contentType = self::contentTypes['listQueueSlots'][0])
     {
@@ -1066,9 +1066,9 @@ class QueueApi
      * @param  string|null $all Set to &#39;true&#39; to list all queues for the profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listQueueSlots'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListQueueSlots200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListQueueSlots200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listQueueSlotsWithHttpInfo($profile_id, $queue_id = null, $all = null, string $contentType = self::contentTypes['listQueueSlots'][0])
     {
@@ -1100,13 +1100,13 @@ class QueueApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListQueueSlots200Response',
+                        '\Zernio\Model\ListQueueSlots200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1128,7 +1128,7 @@ class QueueApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListQueueSlots200Response',
+                '\Zernio\Model\ListQueueSlots200Response',
                 $request,
                 $response,
             );
@@ -1137,7 +1137,7 @@ class QueueApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListQueueSlots200Response',
+                        '\Zernio\Model\ListQueueSlots200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1145,7 +1145,7 @@ class QueueApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1195,7 +1195,7 @@ class QueueApi
      */
     public function listQueueSlotsAsyncWithHttpInfo($profile_id, $queue_id = null, $all = null, string $contentType = self::contentTypes['listQueueSlots'][0])
     {
-        $returnType = '\Late\Model\ListQueueSlots200Response';
+        $returnType = '\Zernio\Model\ListQueueSlots200Response';
         $request = $this->listQueueSlotsRequest($profile_id, $queue_id, $all, $contentType);
 
         return $this->client
@@ -1363,9 +1363,9 @@ class QueueApi
      * @param  int|null $count count (optional, default to 20)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewQueue'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\PreviewQueue200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\PreviewQueue200Response|\Zernio\Model\InlineObject
      */
     public function previewQueue($profile_id, $queue_id = null, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
     {
@@ -1383,9 +1383,9 @@ class QueueApi
      * @param  int|null $count (optional, default to 20)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['previewQueue'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\PreviewQueue200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PreviewQueue200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function previewQueueWithHttpInfo($profile_id, $queue_id = null, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
     {
@@ -1417,13 +1417,13 @@ class QueueApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\PreviewQueue200Response',
+                        '\Zernio\Model\PreviewQueue200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1445,7 +1445,7 @@ class QueueApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\PreviewQueue200Response',
+                '\Zernio\Model\PreviewQueue200Response',
                 $request,
                 $response,
             );
@@ -1454,7 +1454,7 @@ class QueueApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\PreviewQueue200Response',
+                        '\Zernio\Model\PreviewQueue200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1462,7 +1462,7 @@ class QueueApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1512,7 +1512,7 @@ class QueueApi
      */
     public function previewQueueAsyncWithHttpInfo($profile_id, $queue_id = null, $count = 20, string $contentType = self::contentTypes['previewQueue'][0])
     {
-        $returnType = '\Late\Model\PreviewQueue200Response';
+        $returnType = '\Zernio\Model\PreviewQueue200Response';
         $request = $this->previewQueueRequest($profile_id, $queue_id, $count, $contentType);
 
         return $this->client
@@ -1681,12 +1681,12 @@ class QueueApi
      *
      * Update schedule
      *
-     * @param  \Late\Model\UpdateQueueSlotRequest $update_queue_slot_request update_queue_slot_request (required)
+     * @param  \Zernio\Model\UpdateQueueSlotRequest $update_queue_slot_request update_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateQueueSlot'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateQueueSlot200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateQueueSlot200Response|\Zernio\Model\InlineObject
      */
     public function updateQueueSlot($update_queue_slot_request, string $contentType = self::contentTypes['updateQueueSlot'][0])
     {
@@ -1699,12 +1699,12 @@ class QueueApi
      *
      * Update schedule
      *
-     * @param  \Late\Model\UpdateQueueSlotRequest $update_queue_slot_request (required)
+     * @param  \Zernio\Model\UpdateQueueSlotRequest $update_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateQueueSlot'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateQueueSlot200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateQueueSlot200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateQueueSlotWithHttpInfo($update_queue_slot_request, string $contentType = self::contentTypes['updateQueueSlot'][0])
     {
@@ -1736,13 +1736,13 @@ class QueueApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateQueueSlot200Response',
+                        '\Zernio\Model\UpdateQueueSlot200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1764,7 +1764,7 @@ class QueueApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateQueueSlot200Response',
+                '\Zernio\Model\UpdateQueueSlot200Response',
                 $request,
                 $response,
             );
@@ -1773,7 +1773,7 @@ class QueueApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateQueueSlot200Response',
+                        '\Zernio\Model\UpdateQueueSlot200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1781,7 +1781,7 @@ class QueueApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1798,7 +1798,7 @@ class QueueApi
      *
      * Update schedule
      *
-     * @param  \Late\Model\UpdateQueueSlotRequest $update_queue_slot_request (required)
+     * @param  \Zernio\Model\UpdateQueueSlotRequest $update_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateQueueSlot'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1819,7 +1819,7 @@ class QueueApi
      *
      * Update schedule
      *
-     * @param  \Late\Model\UpdateQueueSlotRequest $update_queue_slot_request (required)
+     * @param  \Zernio\Model\UpdateQueueSlotRequest $update_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateQueueSlot'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1827,7 +1827,7 @@ class QueueApi
      */
     public function updateQueueSlotAsyncWithHttpInfo($update_queue_slot_request, string $contentType = self::contentTypes['updateQueueSlot'][0])
     {
-        $returnType = '\Late\Model\UpdateQueueSlot200Response';
+        $returnType = '\Zernio\Model\UpdateQueueSlot200Response';
         $request = $this->updateQueueSlotRequest($update_queue_slot_request, $contentType);
 
         return $this->client
@@ -1869,7 +1869,7 @@ class QueueApi
     /**
      * Create request for operation 'updateQueueSlot'
      *
-     * @param  \Late\Model\UpdateQueueSlotRequest $update_queue_slot_request (required)
+     * @param  \Zernio\Model\UpdateQueueSlotRequest $update_queue_slot_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateQueueSlot'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

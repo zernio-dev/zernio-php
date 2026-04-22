@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListCommentAutomationLogs200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class ListCommentAutomationLogs200Response implements ModelInterface, ArrayAcces
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'logs' => '\Late\Model\GetCommentAutomation200ResponseLogsInner[]',
-        'pagination' => '\Late\Model\ListContacts200ResponsePagination'
+        'logs' => '\Zernio\Model\GetCommentAutomation200ResponseLogsInner[]',
+        'pagination' => '\Zernio\Model\ListContacts200ResponsePagination'
     ];
 
     /**
@@ -334,7 +334,7 @@ class ListCommentAutomationLogs200Response implements ModelInterface, ArrayAcces
     /**
      * Gets logs
      *
-     * @return \Late\Model\GetCommentAutomation200ResponseLogsInner[]|null
+     * @return \Zernio\Model\GetCommentAutomation200ResponseLogsInner[]|null
      */
     public function getLogs()
     {
@@ -344,7 +344,7 @@ class ListCommentAutomationLogs200Response implements ModelInterface, ArrayAcces
     /**
      * Sets logs
      *
-     * @param \Late\Model\GetCommentAutomation200ResponseLogsInner[]|null $logs logs
+     * @param \Zernio\Model\GetCommentAutomation200ResponseLogsInner[]|null $logs logs
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class ListCommentAutomationLogs200Response implements ModelInterface, ArrayAcces
     /**
      * Gets pagination
      *
-     * @return \Late\Model\ListContacts200ResponsePagination|null
+     * @return \Zernio\Model\ListContacts200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -371,7 +371,7 @@ class ListCommentAutomationLogs200Response implements ModelInterface, ArrayAcces
     /**
      * Sets pagination
      *
-     * @param \Late\Model\ListContacts200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\ListContacts200ResponsePagination|null $pagination pagination
      *
      * @return self
      */

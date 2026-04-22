@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetWhatsAppFlowJson200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetWhatsAppFlowJson200Response implements ModelInterface, ArrayAccess, \Js
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'assets' => '\Late\Model\GetWhatsAppFlowJson200ResponseAssetsInner[]'
+        'assets' => '\Zernio\Model\GetWhatsAppFlowJson200ResponseAssetsInner[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class GetWhatsAppFlowJson200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets assets
      *
-     * @return \Late\Model\GetWhatsAppFlowJson200ResponseAssetsInner[]|null
+     * @return \Zernio\Model\GetWhatsAppFlowJson200ResponseAssetsInner[]|null
      */
     public function getAssets()
     {
@@ -337,7 +337,7 @@ class GetWhatsAppFlowJson200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets assets
      *
-     * @param \Late\Model\GetWhatsAppFlowJson200ResponseAssetsInner[]|null $assets assets
+     * @param \Zernio\Model\GetWhatsAppFlowJson200ResponseAssetsInner[]|null $assets assets
      *
      * @return self
      */

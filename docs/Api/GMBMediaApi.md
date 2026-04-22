@@ -1,4 +1,4 @@
-# Late\GMBMediaApi
+# Zernio\GMBMediaApi
 
 
 
@@ -14,7 +14,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createGoogleBusinessMedia()`
 
 ```php
-createGoogleBusinessMedia($account_id, $create_google_business_media_request, $location_id): \Late\Model\CreateGoogleBusinessMedia200Response
+createGoogleBusinessMedia($account_id, $create_google_business_media_request, $location_id): \Zernio\Model\CreateGoogleBusinessMedia200Response
 ```
 
 Upload photo
@@ -29,17 +29,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBMediaApi(
+$apiInstance = new Zernio\Api\GMBMediaApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$create_google_business_media_request = {"sourceUrl":"https://example.com/photos/restaurant-interior.jpg","description":"Dining area with outdoor seating","category":"INTERIOR"}; // \Late\Model\CreateGoogleBusinessMediaRequest
+$create_google_business_media_request = {"sourceUrl":"https://example.com/photos/restaurant-interior.jpg","description":"Dining area with outdoor seating","category":"INTERIOR"}; // \Zernio\Model\CreateGoogleBusinessMediaRequest
 $location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
@@ -55,12 +55,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **create_google_business_media_request** | [**\Late\Model\CreateGoogleBusinessMediaRequest**](../Model/CreateGoogleBusinessMediaRequest.md)|  | |
+| **create_google_business_media_request** | [**\Zernio\Model\CreateGoogleBusinessMediaRequest**](../Model/CreateGoogleBusinessMediaRequest.md)|  | |
 | **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
 
-[**\Late\Model\CreateGoogleBusinessMedia200Response**](../Model/CreateGoogleBusinessMedia200Response.md)
+[**\Zernio\Model\CreateGoogleBusinessMedia200Response**](../Model/CreateGoogleBusinessMedia200Response.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ try {
 ## `deleteGoogleBusinessMedia()`
 
 ```php
-deleteGoogleBusinessMedia($account_id, $media_id, $location_id): \Late\Model\DeleteGoogleBusinessMedia200Response
+deleteGoogleBusinessMedia($account_id, $media_id, $location_id): \Zernio\Model\DeleteGoogleBusinessMedia200Response
 ```
 
 Delete photo
@@ -93,10 +93,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBMediaApi(
+$apiInstance = new Zernio\Api\GMBMediaApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -124,7 +124,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\DeleteGoogleBusinessMedia200Response**](../Model/DeleteGoogleBusinessMedia200Response.md)
+[**\Zernio\Model\DeleteGoogleBusinessMedia200Response**](../Model/DeleteGoogleBusinessMedia200Response.md)
 
 ### Authorization
 
@@ -142,7 +142,7 @@ try {
 ## `listGoogleBusinessMedia()`
 
 ```php
-listGoogleBusinessMedia($account_id, $location_id, $page_size, $page_token): \Late\Model\ListGoogleBusinessMedia200Response
+listGoogleBusinessMedia($account_id, $location_id, $page_size, $page_token): \Zernio\Model\ListGoogleBusinessMedia200Response
 ```
 
 List media
@@ -157,10 +157,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBMediaApi(
+$apiInstance = new Zernio\Api\GMBMediaApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -190,7 +190,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListGoogleBusinessMedia200Response**](../Model/ListGoogleBusinessMedia200Response.md)
+[**\Zernio\Model\ListGoogleBusinessMedia200Response**](../Model/ListGoogleBusinessMedia200Response.md)
 
 ### Authorization
 

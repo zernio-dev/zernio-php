@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateWhatsAppTemplate200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreateWhatsAppTemplate200Response implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'template' => '\Late\Model\CreateWhatsAppTemplate200ResponseTemplate'
+        'template' => '\Zernio\Model\CreateWhatsAppTemplate200ResponseTemplate'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CreateWhatsAppTemplate200Response implements ModelInterface, ArrayAccess, 
     /**
      * Gets template
      *
-     * @return \Late\Model\CreateWhatsAppTemplate200ResponseTemplate|null
+     * @return \Zernio\Model\CreateWhatsAppTemplate200ResponseTemplate|null
      */
     public function getTemplate()
     {
@@ -337,7 +337,7 @@ class CreateWhatsAppTemplate200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets template
      *
-     * @param \Late\Model\CreateWhatsAppTemplate200ResponseTemplate|null $template template
+     * @param \Zernio\Model\CreateWhatsAppTemplate200ResponseTemplate|null $template template
      *
      * @return self
      */

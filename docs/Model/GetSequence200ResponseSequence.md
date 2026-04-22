@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **platform** | **string** |  | [optional]
 **account_id** | **string** |  | [optional]
 **status** | **string** |  | [optional]
-**steps** | [**\Late\Model\GetSequence200ResponseSequenceStepsInner[]**](GetSequence200ResponseSequenceStepsInner.md) |  | [optional]
+**steps** | [**\Zernio\Model\GetSequence200ResponseSequenceStepsInner[]**](GetSequence200ResponseSequenceStepsInner.md) |  | [optional]
 **exit_on_reply** | **bool** |  | [optional]
 **exit_on_unsubscribe** | **bool** |  | [optional]
 **total_enrolled** | **int** |  | [optional]

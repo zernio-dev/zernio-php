@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UploadTokenStatusResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class UploadTokenStatusResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'token' => 'string',
         'status' => 'string',
-        'files' => '\Late\Model\UploadedFile[]',
+        'files' => '\Zernio\Model\UploadedFile[]',
         'created_at' => '\DateTime',
         'expires_at' => '\DateTime',
         'completed_at' => '\DateTime'
@@ -418,7 +418,7 @@ class UploadTokenStatusResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets files
      *
-     * @return \Late\Model\UploadedFile[]|null
+     * @return \Zernio\Model\UploadedFile[]|null
      */
     public function getFiles()
     {
@@ -428,7 +428,7 @@ class UploadTokenStatusResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets files
      *
-     * @param \Late\Model\UploadedFile[]|null $files files
+     * @param \Zernio\Model\UploadedFile[]|null $files files
      *
      * @return self
      */

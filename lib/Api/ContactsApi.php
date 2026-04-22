@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * ContactsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -149,12 +149,12 @@ class ContactsApi
      *
      * Bulk create contacts
      *
-     * @param  \Late\Model\BulkCreateContactsRequest $bulk_create_contacts_request bulk_create_contacts_request (required)
+     * @param  \Zernio\Model\BulkCreateContactsRequest $bulk_create_contacts_request bulk_create_contacts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateContacts'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\BulkCreateContacts200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\BulkCreateContacts200Response|\Zernio\Model\InlineObject
      */
     public function bulkCreateContacts($bulk_create_contacts_request, string $contentType = self::contentTypes['bulkCreateContacts'][0])
     {
@@ -167,12 +167,12 @@ class ContactsApi
      *
      * Bulk create contacts
      *
-     * @param  \Late\Model\BulkCreateContactsRequest $bulk_create_contacts_request (required)
+     * @param  \Zernio\Model\BulkCreateContactsRequest $bulk_create_contacts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateContacts'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\BulkCreateContacts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\BulkCreateContacts200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function bulkCreateContactsWithHttpInfo($bulk_create_contacts_request, string $contentType = self::contentTypes['bulkCreateContacts'][0])
     {
@@ -204,13 +204,13 @@ class ContactsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\BulkCreateContacts200Response',
+                        '\Zernio\Model\BulkCreateContacts200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -232,7 +232,7 @@ class ContactsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\BulkCreateContacts200Response',
+                '\Zernio\Model\BulkCreateContacts200Response',
                 $request,
                 $response,
             );
@@ -241,7 +241,7 @@ class ContactsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\BulkCreateContacts200Response',
+                        '\Zernio\Model\BulkCreateContacts200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -249,7 +249,7 @@ class ContactsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -266,7 +266,7 @@ class ContactsApi
      *
      * Bulk create contacts
      *
-     * @param  \Late\Model\BulkCreateContactsRequest $bulk_create_contacts_request (required)
+     * @param  \Zernio\Model\BulkCreateContactsRequest $bulk_create_contacts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateContacts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -287,7 +287,7 @@ class ContactsApi
      *
      * Bulk create contacts
      *
-     * @param  \Late\Model\BulkCreateContactsRequest $bulk_create_contacts_request (required)
+     * @param  \Zernio\Model\BulkCreateContactsRequest $bulk_create_contacts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateContacts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -295,7 +295,7 @@ class ContactsApi
      */
     public function bulkCreateContactsAsyncWithHttpInfo($bulk_create_contacts_request, string $contentType = self::contentTypes['bulkCreateContacts'][0])
     {
-        $returnType = '\Late\Model\BulkCreateContacts200Response';
+        $returnType = '\Zernio\Model\BulkCreateContacts200Response';
         $request = $this->bulkCreateContactsRequest($bulk_create_contacts_request, $contentType);
 
         return $this->client
@@ -337,7 +337,7 @@ class ContactsApi
     /**
      * Create request for operation 'bulkCreateContacts'
      *
-     * @param  \Late\Model\BulkCreateContactsRequest $bulk_create_contacts_request (required)
+     * @param  \Zernio\Model\BulkCreateContactsRequest $bulk_create_contacts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkCreateContacts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -434,12 +434,12 @@ class ContactsApi
      *
      * Create contact
      *
-     * @param  \Late\Model\CreateContactRequest $create_contact_request create_contact_request (required)
+     * @param  \Zernio\Model\CreateContactRequest $create_contact_request create_contact_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CreateContact200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\CreateContact200Response|\Zernio\Model\InlineObject
      */
     public function createContact($create_contact_request, string $contentType = self::contentTypes['createContact'][0])
     {
@@ -452,12 +452,12 @@ class ContactsApi
      *
      * Create contact
      *
-     * @param  \Late\Model\CreateContactRequest $create_contact_request (required)
+     * @param  \Zernio\Model\CreateContactRequest $create_contact_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CreateContact200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateContact200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createContactWithHttpInfo($create_contact_request, string $contentType = self::contentTypes['createContact'][0])
     {
@@ -489,13 +489,13 @@ class ContactsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateContact200Response',
+                        '\Zernio\Model\CreateContact200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -517,7 +517,7 @@ class ContactsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CreateContact200Response',
+                '\Zernio\Model\CreateContact200Response',
                 $request,
                 $response,
             );
@@ -526,7 +526,7 @@ class ContactsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateContact200Response',
+                        '\Zernio\Model\CreateContact200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -534,7 +534,7 @@ class ContactsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -551,7 +551,7 @@ class ContactsApi
      *
      * Create contact
      *
-     * @param  \Late\Model\CreateContactRequest $create_contact_request (required)
+     * @param  \Zernio\Model\CreateContactRequest $create_contact_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -572,7 +572,7 @@ class ContactsApi
      *
      * Create contact
      *
-     * @param  \Late\Model\CreateContactRequest $create_contact_request (required)
+     * @param  \Zernio\Model\CreateContactRequest $create_contact_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -580,7 +580,7 @@ class ContactsApi
      */
     public function createContactAsyncWithHttpInfo($create_contact_request, string $contentType = self::contentTypes['createContact'][0])
     {
-        $returnType = '\Late\Model\CreateContact200Response';
+        $returnType = '\Zernio\Model\CreateContact200Response';
         $request = $this->createContactRequest($create_contact_request, $contentType);
 
         return $this->client
@@ -622,7 +622,7 @@ class ContactsApi
     /**
      * Create request for operation 'createContact'
      *
-     * @param  \Late\Model\CreateContactRequest $create_contact_request (required)
+     * @param  \Zernio\Model\CreateContactRequest $create_contact_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -722,7 +722,7 @@ class ContactsApi
      * @param  string $contact_id contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContact'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -739,7 +739,7 @@ class ContactsApi
      * @param  string $contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteContact'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -776,7 +776,7 @@ class ContactsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -784,7 +784,7 @@ class ContactsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -960,9 +960,9 @@ class ContactsApi
      * @param  string $contact_id contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetContact200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\GetContact200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getContact($contact_id, string $contentType = self::contentTypes['getContact'][0])
     {
@@ -978,9 +978,9 @@ class ContactsApi
      * @param  string $contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContact'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetContact200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetContact200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getContactWithHttpInfo($contact_id, string $contentType = self::contentTypes['getContact'][0])
     {
@@ -1012,19 +1012,19 @@ class ContactsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetContact200Response',
+                        '\Zernio\Model\GetContact200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1046,7 +1046,7 @@ class ContactsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetContact200Response',
+                '\Zernio\Model\GetContact200Response',
                 $request,
                 $response,
             );
@@ -1055,7 +1055,7 @@ class ContactsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetContact200Response',
+                        '\Zernio\Model\GetContact200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1063,7 +1063,7 @@ class ContactsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1071,7 +1071,7 @@ class ContactsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1117,7 +1117,7 @@ class ContactsApi
      */
     public function getContactAsyncWithHttpInfo($contact_id, string $contentType = self::contentTypes['getContact'][0])
     {
-        $returnType = '\Late\Model\GetContact200Response';
+        $returnType = '\Zernio\Model\GetContact200Response';
         $request = $this->getContactRequest($contact_id, $contentType);
 
         return $this->client
@@ -1260,9 +1260,9 @@ class ContactsApi
      * @param  string $contact_id contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContactChannels'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetContactChannels200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\GetContactChannels200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getContactChannels($contact_id, string $contentType = self::contentTypes['getContactChannels'][0])
     {
@@ -1278,9 +1278,9 @@ class ContactsApi
      * @param  string $contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContactChannels'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetContactChannels200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetContactChannels200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getContactChannelsWithHttpInfo($contact_id, string $contentType = self::contentTypes['getContactChannels'][0])
     {
@@ -1312,19 +1312,19 @@ class ContactsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetContactChannels200Response',
+                        '\Zernio\Model\GetContactChannels200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1346,7 +1346,7 @@ class ContactsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetContactChannels200Response',
+                '\Zernio\Model\GetContactChannels200Response',
                 $request,
                 $response,
             );
@@ -1355,7 +1355,7 @@ class ContactsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetContactChannels200Response',
+                        '\Zernio\Model\GetContactChannels200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1363,7 +1363,7 @@ class ContactsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1371,7 +1371,7 @@ class ContactsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1417,7 +1417,7 @@ class ContactsApi
      */
     public function getContactChannelsAsyncWithHttpInfo($contact_id, string $contentType = self::contentTypes['getContactChannels'][0])
     {
-        $returnType = '\Late\Model\GetContactChannels200Response';
+        $returnType = '\Zernio\Model\GetContactChannels200Response';
         $request = $this->getContactChannelsRequest($contact_id, $contentType);
 
         return $this->client
@@ -1566,9 +1566,9 @@ class ContactsApi
      * @param  int|null $skip skip (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listContacts'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListContacts200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListContacts200Response|\Zernio\Model\InlineObject
      */
     public function listContacts($profile_id = null, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
     {
@@ -1590,9 +1590,9 @@ class ContactsApi
      * @param  int|null $skip (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listContacts'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListContacts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListContacts200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listContactsWithHttpInfo($profile_id = null, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
     {
@@ -1624,13 +1624,13 @@ class ContactsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListContacts200Response',
+                        '\Zernio\Model\ListContacts200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1652,7 +1652,7 @@ class ContactsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListContacts200Response',
+                '\Zernio\Model\ListContacts200Response',
                 $request,
                 $response,
             );
@@ -1661,7 +1661,7 @@ class ContactsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListContacts200Response',
+                        '\Zernio\Model\ListContacts200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1669,7 +1669,7 @@ class ContactsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1727,7 +1727,7 @@ class ContactsApi
      */
     public function listContactsAsyncWithHttpInfo($profile_id = null, $search = null, $tag = null, $platform = null, $is_subscribed = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listContacts'][0])
     {
-        $returnType = '\Late\Model\ListContacts200Response';
+        $returnType = '\Zernio\Model\ListContacts200Response';
         $request = $this->listContactsRequest($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip, $contentType);
 
         return $this->client
@@ -1932,12 +1932,12 @@ class ContactsApi
      * Update contact
      *
      * @param  string $contact_id contact_id (required)
-     * @param  \Late\Model\UpdateContactRequest|null $update_contact_request update_contact_request (optional)
+     * @param  \Zernio\Model\UpdateContactRequest|null $update_contact_request update_contact_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContact'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateContact200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\UpdateContact200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function updateContact($contact_id, $update_contact_request = null, string $contentType = self::contentTypes['updateContact'][0])
     {
@@ -1951,12 +1951,12 @@ class ContactsApi
      * Update contact
      *
      * @param  string $contact_id (required)
-     * @param  \Late\Model\UpdateContactRequest|null $update_contact_request (optional)
+     * @param  \Zernio\Model\UpdateContactRequest|null $update_contact_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContact'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateContact200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateContact200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateContactWithHttpInfo($contact_id, $update_contact_request = null, string $contentType = self::contentTypes['updateContact'][0])
     {
@@ -1988,19 +1988,19 @@ class ContactsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateContact200Response',
+                        '\Zernio\Model\UpdateContact200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2022,7 +2022,7 @@ class ContactsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateContact200Response',
+                '\Zernio\Model\UpdateContact200Response',
                 $request,
                 $response,
             );
@@ -2031,7 +2031,7 @@ class ContactsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateContact200Response',
+                        '\Zernio\Model\UpdateContact200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2039,7 +2039,7 @@ class ContactsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2047,7 +2047,7 @@ class ContactsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2065,7 +2065,7 @@ class ContactsApi
      * Update contact
      *
      * @param  string $contact_id (required)
-     * @param  \Late\Model\UpdateContactRequest|null $update_contact_request (optional)
+     * @param  \Zernio\Model\UpdateContactRequest|null $update_contact_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2087,7 +2087,7 @@ class ContactsApi
      * Update contact
      *
      * @param  string $contact_id (required)
-     * @param  \Late\Model\UpdateContactRequest|null $update_contact_request (optional)
+     * @param  \Zernio\Model\UpdateContactRequest|null $update_contact_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2095,7 +2095,7 @@ class ContactsApi
      */
     public function updateContactAsyncWithHttpInfo($contact_id, $update_contact_request = null, string $contentType = self::contentTypes['updateContact'][0])
     {
-        $returnType = '\Late\Model\UpdateContact200Response';
+        $returnType = '\Zernio\Model\UpdateContact200Response';
         $request = $this->updateContactRequest($contact_id, $update_contact_request, $contentType);
 
         return $this->client
@@ -2138,7 +2138,7 @@ class ContactsApi
      * Create request for operation 'updateContact'
      *
      * @param  string $contact_id (required)
-     * @param  \Late\Model\UpdateContactRequest|null $update_contact_request (optional)
+     * @param  \Zernio\Model\UpdateContactRequest|null $update_contact_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateContact'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

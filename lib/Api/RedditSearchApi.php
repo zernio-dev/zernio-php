@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * RedditSearchApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -142,9 +142,9 @@ class RedditSearchApi
      * @param  string|null $t t (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRedditFeed'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\SearchReddit200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\SearchReddit200Response|\Zernio\Model\InlineObject
      */
     public function getRedditFeed($account_id, $subreddit = null, $sort = 'hot', $limit = 25, $after = null, $t = null, string $contentType = self::contentTypes['getRedditFeed'][0])
     {
@@ -165,9 +165,9 @@ class RedditSearchApi
      * @param  string|null $t (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRedditFeed'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SearchReddit200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SearchReddit200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRedditFeedWithHttpInfo($account_id, $subreddit = null, $sort = 'hot', $limit = 25, $after = null, $t = null, string $contentType = self::contentTypes['getRedditFeed'][0])
     {
@@ -199,13 +199,13 @@ class RedditSearchApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SearchReddit200Response',
+                        '\Zernio\Model\SearchReddit200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -227,7 +227,7 @@ class RedditSearchApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\SearchReddit200Response',
+                '\Zernio\Model\SearchReddit200Response',
                 $request,
                 $response,
             );
@@ -236,7 +236,7 @@ class RedditSearchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SearchReddit200Response',
+                        '\Zernio\Model\SearchReddit200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -244,7 +244,7 @@ class RedditSearchApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -300,7 +300,7 @@ class RedditSearchApi
      */
     public function getRedditFeedAsyncWithHttpInfo($account_id, $subreddit = null, $sort = 'hot', $limit = 25, $after = null, $t = null, string $contentType = self::contentTypes['getRedditFeed'][0])
     {
-        $returnType = '\Late\Model\SearchReddit200Response';
+        $returnType = '\Zernio\Model\SearchReddit200Response';
         $request = $this->getRedditFeedRequest($account_id, $subreddit, $sort, $limit, $after, $t, $contentType);
 
         return $this->client
@@ -508,9 +508,9 @@ class RedditSearchApi
      * @param  string|null $after after (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchReddit'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\SearchReddit200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\SearchReddit200Response|\Zernio\Model\InlineObject
      */
     public function searchReddit($account_id, $q, $subreddit = null, $restrict_sr = null, $sort = 'new', $limit = 25, $after = null, string $contentType = self::contentTypes['searchReddit'][0])
     {
@@ -532,9 +532,9 @@ class RedditSearchApi
      * @param  string|null $after (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchReddit'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SearchReddit200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SearchReddit200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function searchRedditWithHttpInfo($account_id, $q, $subreddit = null, $restrict_sr = null, $sort = 'new', $limit = 25, $after = null, string $contentType = self::contentTypes['searchReddit'][0])
     {
@@ -566,13 +566,13 @@ class RedditSearchApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SearchReddit200Response',
+                        '\Zernio\Model\SearchReddit200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -594,7 +594,7 @@ class RedditSearchApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\SearchReddit200Response',
+                '\Zernio\Model\SearchReddit200Response',
                 $request,
                 $response,
             );
@@ -603,7 +603,7 @@ class RedditSearchApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SearchReddit200Response',
+                        '\Zernio\Model\SearchReddit200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -611,7 +611,7 @@ class RedditSearchApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -669,7 +669,7 @@ class RedditSearchApi
      */
     public function searchRedditAsyncWithHttpInfo($account_id, $q, $subreddit = null, $restrict_sr = null, $sort = 'new', $limit = 25, $after = null, string $contentType = self::contentTypes['searchReddit'][0])
     {
-        $returnType = '\Late\Model\SearchReddit200Response';
+        $returnType = '\Zernio\Model\SearchReddit200Response';
         $request = $this->searchRedditRequest($account_id, $q, $subreddit, $restrict_sr, $sort, $limit, $after, $contentType);
 
         return $this->client

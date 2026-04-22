@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * FoodMenu Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class FoodMenu implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'labels' => '\Late\Model\FoodMenuLabel[]',
-        'sections' => '\Late\Model\FoodMenuSection[]',
+        'labels' => '\Zernio\Model\FoodMenuLabel[]',
+        'sections' => '\Zernio\Model\FoodMenuSection[]',
         'cuisines' => 'string[]',
         'source_url' => 'string'
     ];
@@ -317,7 +317,7 @@ class FoodMenu implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets labels
      *
-     * @return \Late\Model\FoodMenuLabel[]
+     * @return \Zernio\Model\FoodMenuLabel[]
      */
     public function getLabels()
     {
@@ -327,7 +327,7 @@ class FoodMenu implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets labels
      *
-     * @param \Late\Model\FoodMenuLabel[] $labels labels
+     * @param \Zernio\Model\FoodMenuLabel[] $labels labels
      *
      * @return self
      */
@@ -344,7 +344,7 @@ class FoodMenu implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sections
      *
-     * @return \Late\Model\FoodMenuSection[]|null
+     * @return \Zernio\Model\FoodMenuSection[]|null
      */
     public function getSections()
     {
@@ -354,7 +354,7 @@ class FoodMenu implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sections
      *
-     * @param \Late\Model\FoodMenuSection[]|null $sections sections
+     * @param \Zernio\Model\FoodMenuSection[]|null $sections sections
      *
      * @return self
      */

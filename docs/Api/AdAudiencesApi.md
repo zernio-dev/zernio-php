@@ -1,4 +1,4 @@
-# Late\AdAudiencesApi
+# Zernio\AdAudiencesApi
 
 
 
@@ -16,7 +16,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `addUsersToAdAudience()`
 
 ```php
-addUsersToAdAudience($audience_id, $add_users_to_ad_audience_request): \Late\Model\AddUsersToAdAudience200Response
+addUsersToAdAudience($audience_id, $add_users_to_ad_audience_request): \Zernio\Model\AddUsersToAdAudience200Response
 ```
 
 Add users to audience
@@ -31,17 +31,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AdAudiencesApi(
+$apiInstance = new Zernio\Api\AdAudiencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $audience_id = 'audience_id_example'; // string
-$add_users_to_ad_audience_request = new \Late\Model\AddUsersToAdAudienceRequest(); // \Late\Model\AddUsersToAdAudienceRequest
+$add_users_to_ad_audience_request = new \Zernio\Model\AddUsersToAdAudienceRequest(); // \Zernio\Model\AddUsersToAdAudienceRequest
 
 try {
     $result = $apiInstance->addUsersToAdAudience($audience_id, $add_users_to_ad_audience_request);
@@ -56,11 +56,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **audience_id** | **string**|  | |
-| **add_users_to_ad_audience_request** | [**\Late\Model\AddUsersToAdAudienceRequest**](../Model/AddUsersToAdAudienceRequest.md)|  | |
+| **add_users_to_ad_audience_request** | [**\Zernio\Model\AddUsersToAdAudienceRequest**](../Model/AddUsersToAdAudienceRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\AddUsersToAdAudience200Response**](../Model/AddUsersToAdAudience200Response.md)
+[**\Zernio\Model\AddUsersToAdAudience200Response**](../Model/AddUsersToAdAudience200Response.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ try {
 ## `createAdAudience()`
 
 ```php
-createAdAudience($create_ad_audience_request): \Late\Model\CreateAdAudience201Response
+createAdAudience($create_ad_audience_request): \Zernio\Model\CreateAdAudience201Response
 ```
 
 Create custom audience
@@ -93,16 +93,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AdAudiencesApi(
+$apiInstance = new Zernio\Api\AdAudiencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_ad_audience_request = new \Late\Model\CreateAdAudienceRequest(); // \Late\Model\CreateAdAudienceRequest
+$create_ad_audience_request = new \Zernio\Model\CreateAdAudienceRequest(); // \Zernio\Model\CreateAdAudienceRequest
 
 try {
     $result = $apiInstance->createAdAudience($create_ad_audience_request);
@@ -116,11 +116,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_ad_audience_request** | [**\Late\Model\CreateAdAudienceRequest**](../Model/CreateAdAudienceRequest.md)|  | |
+| **create_ad_audience_request** | [**\Zernio\Model\CreateAdAudienceRequest**](../Model/CreateAdAudienceRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateAdAudience201Response**](../Model/CreateAdAudience201Response.md)
+[**\Zernio\Model\CreateAdAudience201Response**](../Model/CreateAdAudience201Response.md)
 
 ### Authorization
 
@@ -138,7 +138,7 @@ try {
 ## `deleteAdAudience()`
 
 ```php
-deleteAdAudience($audience_id): \Late\Model\DeleteAccountGroup200Response
+deleteAdAudience($audience_id): \Zernio\Model\DeleteAccountGroup200Response
 ```
 
 Delete custom audience
@@ -153,10 +153,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AdAudiencesApi(
+$apiInstance = new Zernio\Api\AdAudiencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -180,7 +180,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\DeleteAccountGroup200Response**](../Model/DeleteAccountGroup200Response.md)
+[**\Zernio\Model\DeleteAccountGroup200Response**](../Model/DeleteAccountGroup200Response.md)
 
 ### Authorization
 
@@ -198,7 +198,7 @@ try {
 ## `getAdAudience()`
 
 ```php
-getAdAudience($audience_id): \Late\Model\GetAdAudience200Response
+getAdAudience($audience_id): \Zernio\Model\GetAdAudience200Response
 ```
 
 Get audience details
@@ -213,10 +213,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AdAudiencesApi(
+$apiInstance = new Zernio\Api\AdAudiencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -240,7 +240,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetAdAudience200Response**](../Model/GetAdAudience200Response.md)
+[**\Zernio\Model\GetAdAudience200Response**](../Model/GetAdAudience200Response.md)
 
 ### Authorization
 
@@ -258,7 +258,7 @@ try {
 ## `listAdAudiences()`
 
 ```php
-listAdAudiences($account_id, $ad_account_id, $platform): \Late\Model\ListAdAudiences200Response
+listAdAudiences($account_id, $ad_account_id, $platform): \Zernio\Model\ListAdAudiences200Response
 ```
 
 List custom audiences
@@ -273,10 +273,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AdAudiencesApi(
+$apiInstance = new Zernio\Api\AdAudiencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -304,7 +304,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListAdAudiences200Response**](../Model/ListAdAudiences200Response.md)
+[**\Zernio\Model\ListAdAudiences200Response**](../Model/ListAdAudiences200Response.md)
 
 ### Authorization
 

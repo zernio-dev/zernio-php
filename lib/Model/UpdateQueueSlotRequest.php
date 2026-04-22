@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateQueueSlotRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class UpdateQueueSlotRequest implements ModelInterface, ArrayAccess, \JsonSerial
         'queue_id' => 'string',
         'name' => 'string',
         'timezone' => 'string',
-        'slots' => '\Late\Model\QueueSlot[]',
+        'slots' => '\Zernio\Model\QueueSlot[]',
         'active' => 'bool',
         'set_as_default' => 'bool',
         'reshuffle_existing' => 'bool'
@@ -459,7 +459,7 @@ class UpdateQueueSlotRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets slots
      *
-     * @return \Late\Model\QueueSlot[]
+     * @return \Zernio\Model\QueueSlot[]
      */
     public function getSlots()
     {
@@ -469,7 +469,7 @@ class UpdateQueueSlotRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets slots
      *
-     * @param \Late\Model\QueueSlot[] $slots slots
+     * @param \Zernio\Model\QueueSlot[] $slots slots
      *
      * @return self
      */

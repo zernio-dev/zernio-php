@@ -1,4 +1,4 @@
-# Late\ValidateApi
+# Zernio\ValidateApi
 
 Pre-flight validation endpoints. Check post content, character limits, media URLs, and subreddit existence before publishing.
 
@@ -15,7 +15,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `validateMedia()`
 
 ```php
-validateMedia($validate_media_request): \Late\Model\ValidateMedia200Response
+validateMedia($validate_media_request): \Zernio\Model\ValidateMedia200Response
 ```
 
 Validate media URL
@@ -30,16 +30,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ValidateApi(
+$apiInstance = new Zernio\Api\ValidateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$validate_media_request = new \Late\Model\ValidateMediaRequest(); // \Late\Model\ValidateMediaRequest
+$validate_media_request = new \Zernio\Model\ValidateMediaRequest(); // \Zernio\Model\ValidateMediaRequest
 
 try {
     $result = $apiInstance->validateMedia($validate_media_request);
@@ -53,11 +53,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **validate_media_request** | [**\Late\Model\ValidateMediaRequest**](../Model/ValidateMediaRequest.md)|  | |
+| **validate_media_request** | [**\Zernio\Model\ValidateMediaRequest**](../Model/ValidateMediaRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\ValidateMedia200Response**](../Model/ValidateMedia200Response.md)
+[**\Zernio\Model\ValidateMedia200Response**](../Model/ValidateMedia200Response.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ try {
 ## `validatePost()`
 
 ```php
-validatePost($validate_post_request): \Late\Model\ValidatePost200Response
+validatePost($validate_post_request): \Zernio\Model\ValidatePost200Response
 ```
 
 Validate post content
@@ -90,16 +90,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ValidateApi(
+$apiInstance = new Zernio\Api\ValidateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$validate_post_request = new \Late\Model\ValidatePostRequest(); // \Late\Model\ValidatePostRequest
+$validate_post_request = new \Zernio\Model\ValidatePostRequest(); // \Zernio\Model\ValidatePostRequest
 
 try {
     $result = $apiInstance->validatePost($validate_post_request);
@@ -113,11 +113,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **validate_post_request** | [**\Late\Model\ValidatePostRequest**](../Model/ValidatePostRequest.md)|  | |
+| **validate_post_request** | [**\Zernio\Model\ValidatePostRequest**](../Model/ValidatePostRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\ValidatePost200Response**](../Model/ValidatePost200Response.md)
+[**\Zernio\Model\ValidatePost200Response**](../Model/ValidatePost200Response.md)
 
 ### Authorization
 
@@ -135,7 +135,7 @@ try {
 ## `validatePostLength()`
 
 ```php
-validatePostLength($validate_post_length_request): \Late\Model\ValidatePostLength200Response
+validatePostLength($validate_post_length_request): \Zernio\Model\ValidatePostLength200Response
 ```
 
 Validate character count
@@ -150,16 +150,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ValidateApi(
+$apiInstance = new Zernio\Api\ValidateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$validate_post_length_request = new \Late\Model\ValidatePostLengthRequest(); // \Late\Model\ValidatePostLengthRequest
+$validate_post_length_request = new \Zernio\Model\ValidatePostLengthRequest(); // \Zernio\Model\ValidatePostLengthRequest
 
 try {
     $result = $apiInstance->validatePostLength($validate_post_length_request);
@@ -173,11 +173,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **validate_post_length_request** | [**\Late\Model\ValidatePostLengthRequest**](../Model/ValidatePostLengthRequest.md)|  | |
+| **validate_post_length_request** | [**\Zernio\Model\ValidatePostLengthRequest**](../Model/ValidatePostLengthRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\ValidatePostLength200Response**](../Model/ValidatePostLength200Response.md)
+[**\Zernio\Model\ValidatePostLength200Response**](../Model/ValidatePostLength200Response.md)
 
 ### Authorization
 
@@ -195,7 +195,7 @@ try {
 ## `validateSubreddit()`
 
 ```php
-validateSubreddit($name, $account_id): \Late\Model\ValidateSubreddit200Response
+validateSubreddit($name, $account_id): \Zernio\Model\ValidateSubreddit200Response
 ```
 
 Check subreddit existence
@@ -210,10 +210,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ValidateApi(
+$apiInstance = new Zernio\Api\ValidateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -239,7 +239,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ValidateSubreddit200Response**](../Model/ValidateSubreddit200Response.md)
+[**\Zernio\Model\ValidateSubreddit200Response**](../Model/ValidateSubreddit200Response.md)
 
 ### Authorization
 

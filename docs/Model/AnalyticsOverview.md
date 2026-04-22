@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **published_posts** | **int** |  | [optional]
 **scheduled_posts** | **int** |  | [optional]
 **last_sync** | **\DateTime** |  | [optional]
-**data_staleness** | [**\Late\Model\AnalyticsOverviewDataStaleness**](AnalyticsOverviewDataStaleness.md) |  | [optional]
+**data_staleness** | [**\Zernio\Model\AnalyticsOverviewDataStaleness**](AnalyticsOverviewDataStaleness.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

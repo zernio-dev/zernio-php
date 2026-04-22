@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * DiscordPlatformDataPoll Class Doc Comment
  *
  * @category Class
  * @description Native Discord poll. Cannot be combined with media attachments in the same message.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class DiscordPlatformDataPoll implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'question' => '\Late\Model\DiscordPlatformDataPollQuestion',
-        'answers' => '\Late\Model\DiscordPlatformDataPollAnswersInner[]',
+        'question' => '\Zernio\Model\DiscordPlatformDataPollQuestion',
+        'answers' => '\Zernio\Model\DiscordPlatformDataPollAnswersInner[]',
         'duration' => 'int',
         'allow_multiselect' => 'bool'
     ];
@@ -327,7 +327,7 @@ class DiscordPlatformDataPoll implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets question
      *
-     * @return \Late\Model\DiscordPlatformDataPollQuestion|null
+     * @return \Zernio\Model\DiscordPlatformDataPollQuestion|null
      */
     public function getQuestion()
     {
@@ -337,7 +337,7 @@ class DiscordPlatformDataPoll implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets question
      *
-     * @param \Late\Model\DiscordPlatformDataPollQuestion|null $question question
+     * @param \Zernio\Model\DiscordPlatformDataPollQuestion|null $question question
      *
      * @return self
      */
@@ -354,7 +354,7 @@ class DiscordPlatformDataPoll implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets answers
      *
-     * @return \Late\Model\DiscordPlatformDataPollAnswersInner[]|null
+     * @return \Zernio\Model\DiscordPlatformDataPollAnswersInner[]|null
      */
     public function getAnswers()
     {
@@ -364,7 +364,7 @@ class DiscordPlatformDataPoll implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets answers
      *
-     * @param \Late\Model\DiscordPlatformDataPollAnswersInner[]|null $answers 1-10 answer options
+     * @param \Zernio\Model\DiscordPlatformDataPollAnswersInner[]|null $answers 1-10 answer options
      *
      * @return self
      */

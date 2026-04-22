@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GeoRestriction Class Doc Comment
  *
  * @category Class
  * @description Country-level geo-restriction (allowlist). When set, the post is only visible to users in the specified countries. Supported on Facebook (feed posts, videos, reels), X/Twitter (media-level restriction), and LinkedIn (organization pages only, min 300 targeted followers). Ignored on unsupported platforms. Stories (Facebook, Instagram) do not support geo-restriction.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>

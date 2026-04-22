@@ -1,4 +1,4 @@
-# Late\CustomFieldsApi
+# Zernio\CustomFieldsApi
 
 
 
@@ -32,10 +32,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CustomFieldsApi(
+$apiInstance = new Zernio\Api\CustomFieldsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -78,7 +78,7 @@ void (empty response body)
 ## `createCustomField()`
 
 ```php
-createCustomField($create_custom_field_request): \Late\Model\CreateCustomField200Response
+createCustomField($create_custom_field_request): \Zernio\Model\CreateCustomField200Response
 ```
 
 Create custom field
@@ -93,16 +93,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CustomFieldsApi(
+$apiInstance = new Zernio\Api\CustomFieldsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_custom_field_request = new \Late\Model\CreateCustomFieldRequest(); // \Late\Model\CreateCustomFieldRequest
+$create_custom_field_request = new \Zernio\Model\CreateCustomFieldRequest(); // \Zernio\Model\CreateCustomFieldRequest
 
 try {
     $result = $apiInstance->createCustomField($create_custom_field_request);
@@ -116,11 +116,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_custom_field_request** | [**\Late\Model\CreateCustomFieldRequest**](../Model/CreateCustomFieldRequest.md)|  | |
+| **create_custom_field_request** | [**\Zernio\Model\CreateCustomFieldRequest**](../Model/CreateCustomFieldRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateCustomField200Response**](../Model/CreateCustomField200Response.md)
+[**\Zernio\Model\CreateCustomField200Response**](../Model/CreateCustomField200Response.md)
 
 ### Authorization
 
@@ -153,10 +153,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CustomFieldsApi(
+$apiInstance = new Zernio\Api\CustomFieldsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -197,7 +197,7 @@ void (empty response body)
 ## `listCustomFields()`
 
 ```php
-listCustomFields($profile_id): \Late\Model\ListCustomFields200Response
+listCustomFields($profile_id): \Zernio\Model\ListCustomFields200Response
 ```
 
 List custom field definitions
@@ -212,10 +212,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CustomFieldsApi(
+$apiInstance = new Zernio\Api\CustomFieldsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -239,7 +239,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListCustomFields200Response**](../Model/ListCustomFields200Response.md)
+[**\Zernio\Model\ListCustomFields200Response**](../Model/ListCustomFields200Response.md)
 
 ### Authorization
 
@@ -272,10 +272,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CustomFieldsApi(
+$apiInstance = new Zernio\Api\CustomFieldsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -283,7 +283,7 @@ $apiInstance = new Late\Api\CustomFieldsApi(
 );
 $contact_id = 'contact_id_example'; // string
 $slug = 'slug_example'; // string
-$set_contact_field_value_request = new \Late\Model\SetContactFieldValueRequest(); // \Late\Model\SetContactFieldValueRequest
+$set_contact_field_value_request = new \Zernio\Model\SetContactFieldValueRequest(); // \Zernio\Model\SetContactFieldValueRequest
 
 try {
     $apiInstance->setContactFieldValue($contact_id, $slug, $set_contact_field_value_request);
@@ -298,7 +298,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **contact_id** | **string**|  | |
 | **slug** | **string**|  | |
-| **set_contact_field_value_request** | [**\Late\Model\SetContactFieldValueRequest**](../Model/SetContactFieldValueRequest.md)|  | |
+| **set_contact_field_value_request** | [**\Zernio\Model\SetContactFieldValueRequest**](../Model/SetContactFieldValueRequest.md)|  | |
 
 ### Return type
 
@@ -320,7 +320,7 @@ void (empty response body)
 ## `updateCustomField()`
 
 ```php
-updateCustomField($field_id, $update_custom_field_request): \Late\Model\UpdateCustomField200Response
+updateCustomField($field_id, $update_custom_field_request): \Zernio\Model\UpdateCustomField200Response
 ```
 
 Update custom field
@@ -335,17 +335,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CustomFieldsApi(
+$apiInstance = new Zernio\Api\CustomFieldsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $field_id = 'field_id_example'; // string
-$update_custom_field_request = new \Late\Model\UpdateCustomFieldRequest(); // \Late\Model\UpdateCustomFieldRequest
+$update_custom_field_request = new \Zernio\Model\UpdateCustomFieldRequest(); // \Zernio\Model\UpdateCustomFieldRequest
 
 try {
     $result = $apiInstance->updateCustomField($field_id, $update_custom_field_request);
@@ -360,11 +360,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **field_id** | **string**|  | |
-| **update_custom_field_request** | [**\Late\Model\UpdateCustomFieldRequest**](../Model/UpdateCustomFieldRequest.md)|  | [optional] |
+| **update_custom_field_request** | [**\Zernio\Model\UpdateCustomFieldRequest**](../Model/UpdateCustomFieldRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\Late\Model\UpdateCustomField200Response**](../Model/UpdateCustomField200Response.md)
+[**\Zernio\Model\UpdateCustomField200Response**](../Model/UpdateCustomField200Response.md)
 
 ### Authorization
 

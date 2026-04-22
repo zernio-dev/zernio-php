@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetPinterestBoards200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetPinterestBoards200Response implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'boards' => '\Late\Model\GetPinterestBoards200ResponseBoardsInner[]'
+        'boards' => '\Zernio\Model\GetPinterestBoards200ResponseBoardsInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class GetPinterestBoards200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets boards
      *
-     * @return \Late\Model\GetPinterestBoards200ResponseBoardsInner[]|null
+     * @return \Zernio\Model\GetPinterestBoards200ResponseBoardsInner[]|null
      */
     public function getBoards()
     {
@@ -303,7 +303,7 @@ class GetPinterestBoards200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets boards
      *
-     * @param \Late\Model\GetPinterestBoards200ResponseBoardsInner[]|null $boards boards
+     * @param \Zernio\Model\GetPinterestBoards200ResponseBoardsInner[]|null $boards boards
      *
      * @return self
      */

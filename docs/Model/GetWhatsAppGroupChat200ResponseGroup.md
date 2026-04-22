@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **subject** | **string** |  | [optional]
 **description** | **string** |  | [optional]
 **join_approval_mode** | **string** |  | [optional]
-**participants** | [**\Late\Model\GetWhatsAppGroupChat200ResponseGroupParticipantsInner[]**](GetWhatsAppGroupChat200ResponseGroupParticipantsInner.md) |  | [optional]
+**participants** | [**\Zernio\Model\GetWhatsAppGroupChat200ResponseGroupParticipantsInner[]**](GetWhatsAppGroupChat200ResponseGroupParticipantsInner.md) |  | [optional]
 **participant_count** | **int** |  | [optional]
 **created_at** | **int** | UNIX timestamp | [optional]
 **is_suspended** | **bool** |  | [optional]

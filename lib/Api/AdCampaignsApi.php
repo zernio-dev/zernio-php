@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * AdCampaignsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -155,12 +155,12 @@ class AdCampaignsApi
      *
      * Pause or resume many campaigns
      *
-     * @param  \Late\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request bulk_update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request bulk_update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAdCampaignStatus'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\BulkUpdateAdCampaignStatus200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\BulkUpdateAdCampaignStatus200Response|\Zernio\Model\InlineObject
      */
     public function bulkUpdateAdCampaignStatus($bulk_update_ad_campaign_status_request, string $contentType = self::contentTypes['bulkUpdateAdCampaignStatus'][0])
     {
@@ -173,12 +173,12 @@ class AdCampaignsApi
      *
      * Pause or resume many campaigns
      *
-     * @param  \Late\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAdCampaignStatus'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\BulkUpdateAdCampaignStatus200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\BulkUpdateAdCampaignStatus200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function bulkUpdateAdCampaignStatusWithHttpInfo($bulk_update_ad_campaign_status_request, string $contentType = self::contentTypes['bulkUpdateAdCampaignStatus'][0])
     {
@@ -210,13 +210,13 @@ class AdCampaignsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\BulkUpdateAdCampaignStatus200Response',
+                        '\Zernio\Model\BulkUpdateAdCampaignStatus200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -238,7 +238,7 @@ class AdCampaignsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\BulkUpdateAdCampaignStatus200Response',
+                '\Zernio\Model\BulkUpdateAdCampaignStatus200Response',
                 $request,
                 $response,
             );
@@ -247,7 +247,7 @@ class AdCampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\BulkUpdateAdCampaignStatus200Response',
+                        '\Zernio\Model\BulkUpdateAdCampaignStatus200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -255,7 +255,7 @@ class AdCampaignsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -272,7 +272,7 @@ class AdCampaignsApi
      *
      * Pause or resume many campaigns
      *
-     * @param  \Late\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAdCampaignStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -293,7 +293,7 @@ class AdCampaignsApi
      *
      * Pause or resume many campaigns
      *
-     * @param  \Late\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAdCampaignStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -301,7 +301,7 @@ class AdCampaignsApi
      */
     public function bulkUpdateAdCampaignStatusAsyncWithHttpInfo($bulk_update_ad_campaign_status_request, string $contentType = self::contentTypes['bulkUpdateAdCampaignStatus'][0])
     {
-        $returnType = '\Late\Model\BulkUpdateAdCampaignStatus200Response';
+        $returnType = '\Zernio\Model\BulkUpdateAdCampaignStatus200Response';
         $request = $this->bulkUpdateAdCampaignStatusRequest($bulk_update_ad_campaign_status_request, $contentType);
 
         return $this->client
@@ -343,7 +343,7 @@ class AdCampaignsApi
     /**
      * Create request for operation 'bulkUpdateAdCampaignStatus'
      *
-     * @param  \Late\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\BulkUpdateAdCampaignStatusRequest $bulk_update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['bulkUpdateAdCampaignStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -441,12 +441,12 @@ class AdCampaignsApi
      * Delete a campaign
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\DeleteAdCampaignRequest $delete_ad_campaign_request delete_ad_campaign_request (required)
+     * @param  \Zernio\Model\DeleteAdCampaignRequest $delete_ad_campaign_request delete_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdCampaign'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\DeleteAdCampaign200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\DeleteAdCampaign200Response|\Zernio\Model\InlineObject
      */
     public function deleteAdCampaign($campaign_id, $delete_ad_campaign_request, string $contentType = self::contentTypes['deleteAdCampaign'][0])
     {
@@ -460,12 +460,12 @@ class AdCampaignsApi
      * Delete a campaign
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\DeleteAdCampaignRequest $delete_ad_campaign_request (required)
+     * @param  \Zernio\Model\DeleteAdCampaignRequest $delete_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdCampaign'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\DeleteAdCampaign200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteAdCampaign200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteAdCampaignWithHttpInfo($campaign_id, $delete_ad_campaign_request, string $contentType = self::contentTypes['deleteAdCampaign'][0])
     {
@@ -497,13 +497,13 @@ class AdCampaignsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\DeleteAdCampaign200Response',
+                        '\Zernio\Model\DeleteAdCampaign200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -525,7 +525,7 @@ class AdCampaignsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\DeleteAdCampaign200Response',
+                '\Zernio\Model\DeleteAdCampaign200Response',
                 $request,
                 $response,
             );
@@ -534,7 +534,7 @@ class AdCampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\DeleteAdCampaign200Response',
+                        '\Zernio\Model\DeleteAdCampaign200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -542,7 +542,7 @@ class AdCampaignsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -560,7 +560,7 @@ class AdCampaignsApi
      * Delete a campaign
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\DeleteAdCampaignRequest $delete_ad_campaign_request (required)
+     * @param  \Zernio\Model\DeleteAdCampaignRequest $delete_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -582,7 +582,7 @@ class AdCampaignsApi
      * Delete a campaign
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\DeleteAdCampaignRequest $delete_ad_campaign_request (required)
+     * @param  \Zernio\Model\DeleteAdCampaignRequest $delete_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -590,7 +590,7 @@ class AdCampaignsApi
      */
     public function deleteAdCampaignAsyncWithHttpInfo($campaign_id, $delete_ad_campaign_request, string $contentType = self::contentTypes['deleteAdCampaign'][0])
     {
-        $returnType = '\Late\Model\DeleteAdCampaign200Response';
+        $returnType = '\Zernio\Model\DeleteAdCampaign200Response';
         $request = $this->deleteAdCampaignRequest($campaign_id, $delete_ad_campaign_request, $contentType);
 
         return $this->client
@@ -633,7 +633,7 @@ class AdCampaignsApi
      * Create request for operation 'deleteAdCampaign'
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\DeleteAdCampaignRequest $delete_ad_campaign_request (required)
+     * @param  \Zernio\Model\DeleteAdCampaignRequest $delete_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAdCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -746,12 +746,12 @@ class AdCampaignsApi
      * Duplicate a campaign
      *
      * @param  string $campaign_id Source platform campaign ID (required)
-     * @param  \Late\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request duplicate_ad_campaign_request (required)
+     * @param  \Zernio\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request duplicate_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateAdCampaign'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\DuplicateAdCampaign200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\DuplicateAdCampaign200Response|\Zernio\Model\InlineObject
      */
     public function duplicateAdCampaign($campaign_id, $duplicate_ad_campaign_request, string $contentType = self::contentTypes['duplicateAdCampaign'][0])
     {
@@ -765,12 +765,12 @@ class AdCampaignsApi
      * Duplicate a campaign
      *
      * @param  string $campaign_id Source platform campaign ID (required)
-     * @param  \Late\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request (required)
+     * @param  \Zernio\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateAdCampaign'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\DuplicateAdCampaign200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DuplicateAdCampaign200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function duplicateAdCampaignWithHttpInfo($campaign_id, $duplicate_ad_campaign_request, string $contentType = self::contentTypes['duplicateAdCampaign'][0])
     {
@@ -802,13 +802,13 @@ class AdCampaignsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\DuplicateAdCampaign200Response',
+                        '\Zernio\Model\DuplicateAdCampaign200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -830,7 +830,7 @@ class AdCampaignsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\DuplicateAdCampaign200Response',
+                '\Zernio\Model\DuplicateAdCampaign200Response',
                 $request,
                 $response,
             );
@@ -839,7 +839,7 @@ class AdCampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\DuplicateAdCampaign200Response',
+                        '\Zernio\Model\DuplicateAdCampaign200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -847,7 +847,7 @@ class AdCampaignsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -865,7 +865,7 @@ class AdCampaignsApi
      * Duplicate a campaign
      *
      * @param  string $campaign_id Source platform campaign ID (required)
-     * @param  \Late\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request (required)
+     * @param  \Zernio\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateAdCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -887,7 +887,7 @@ class AdCampaignsApi
      * Duplicate a campaign
      *
      * @param  string $campaign_id Source platform campaign ID (required)
-     * @param  \Late\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request (required)
+     * @param  \Zernio\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateAdCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -895,7 +895,7 @@ class AdCampaignsApi
      */
     public function duplicateAdCampaignAsyncWithHttpInfo($campaign_id, $duplicate_ad_campaign_request, string $contentType = self::contentTypes['duplicateAdCampaign'][0])
     {
-        $returnType = '\Late\Model\DuplicateAdCampaign200Response';
+        $returnType = '\Zernio\Model\DuplicateAdCampaign200Response';
         $request = $this->duplicateAdCampaignRequest($campaign_id, $duplicate_ad_campaign_request, $contentType);
 
         return $this->client
@@ -938,7 +938,7 @@ class AdCampaignsApi
      * Create request for operation 'duplicateAdCampaign'
      *
      * @param  string $campaign_id Source platform campaign ID (required)
-     * @param  \Late\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request (required)
+     * @param  \Zernio\Model\DuplicateAdCampaignRequest $duplicate_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateAdCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1054,7 +1054,7 @@ class AdCampaignsApi
      * @param  int|null $limit Campaigns per page (optional, default to 20)
      * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform platform (optional)
-     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -1062,9 +1062,9 @@ class AdCampaignsApi
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetAdTree200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetAdTree200Response|\Zernio\Model\InlineObject
      */
     public function getAdTree($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
     {
@@ -1081,7 +1081,7 @@ class AdCampaignsApi
      * @param  int|null $limit Campaigns per page (optional, default to 20)
      * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
-     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -1089,9 +1089,9 @@ class AdCampaignsApi
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetAdTree200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAdTree200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAdTreeWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
     {
@@ -1123,13 +1123,13 @@ class AdCampaignsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAdTree200Response',
+                        '\Zernio\Model\GetAdTree200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1151,7 +1151,7 @@ class AdCampaignsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetAdTree200Response',
+                '\Zernio\Model\GetAdTree200Response',
                 $request,
                 $response,
             );
@@ -1160,7 +1160,7 @@ class AdCampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAdTree200Response',
+                        '\Zernio\Model\GetAdTree200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1168,7 +1168,7 @@ class AdCampaignsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1189,7 +1189,7 @@ class AdCampaignsApi
      * @param  int|null $limit Campaigns per page (optional, default to 20)
      * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
-     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -1219,7 +1219,7 @@ class AdCampaignsApi
      * @param  int|null $limit Campaigns per page (optional, default to 20)
      * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
-     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -1232,7 +1232,7 @@ class AdCampaignsApi
      */
     public function getAdTreeAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
     {
-        $returnType = '\Late\Model\GetAdTree200Response';
+        $returnType = '\Zernio\Model\GetAdTree200Response';
         $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType);
 
         return $this->client
@@ -1278,7 +1278,7 @@ class AdCampaignsApi
      * @param  int|null $limit Campaigns per page (optional, default to 20)
      * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
-     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -1479,15 +1479,15 @@ class AdCampaignsApi
      * @param  int|null $limit limit (optional, default to 20)
      * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform platform (optional)
-     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCampaigns'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListAdCampaigns200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListAdCampaigns200Response|\Zernio\Model\InlineObject
      */
     public function listAdCampaigns($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
@@ -1504,15 +1504,15 @@ class AdCampaignsApi
      * @param  int|null $limit (optional, default to 20)
      * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
-     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCampaigns'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListAdCampaigns200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListAdCampaigns200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAdCampaignsWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
@@ -1544,13 +1544,13 @@ class AdCampaignsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListAdCampaigns200Response',
+                        '\Zernio\Model\ListAdCampaigns200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1572,7 +1572,7 @@ class AdCampaignsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListAdCampaigns200Response',
+                '\Zernio\Model\ListAdCampaigns200Response',
                 $request,
                 $response,
             );
@@ -1581,7 +1581,7 @@ class AdCampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListAdCampaigns200Response',
+                        '\Zernio\Model\ListAdCampaigns200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1589,7 +1589,7 @@ class AdCampaignsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1610,7 +1610,7 @@ class AdCampaignsApi
      * @param  int|null $limit (optional, default to 20)
      * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
-     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -1638,7 +1638,7 @@ class AdCampaignsApi
      * @param  int|null $limit (optional, default to 20)
      * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
-     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -1649,7 +1649,7 @@ class AdCampaignsApi
      */
     public function listAdCampaignsAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
-        $returnType = '\Late\Model\ListAdCampaigns200Response';
+        $returnType = '\Zernio\Model\ListAdCampaigns200Response';
         $request = $this->listAdCampaignsRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType);
 
         return $this->client
@@ -1695,7 +1695,7 @@ class AdCampaignsApi
      * @param  int|null $limit (optional, default to 20)
      * @param  string|null $source &#x60;all&#x60; (default) returns both Zernio-created ads and those discovered from the platform&#39;s ad manager — matches the web UI&#39;s default view. Pass &#x60;zernio&#x60; to restrict to isExternal&#x3D;false only. Status is NOT filtered by default — use the &#x60;status&#x60; param for that. (optional, default to 'all')
      * @param  string|null $platform (optional)
-     * @param  \Late\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
+     * @param  \Zernio\Model\AdStatus|null $status Filter by derived campaign status (post-aggregation) (optional)
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
@@ -1871,12 +1871,12 @@ class AdCampaignsApi
      * Update a campaign (budget)
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\UpdateAdCampaignRequest $update_ad_campaign_request update_ad_campaign_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request update_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaign'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateAdCampaign200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateAdCampaign200Response|\Zernio\Model\InlineObject
      */
     public function updateAdCampaign($campaign_id, $update_ad_campaign_request, string $contentType = self::contentTypes['updateAdCampaign'][0])
     {
@@ -1890,12 +1890,12 @@ class AdCampaignsApi
      * Update a campaign (budget)
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaign'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateAdCampaign200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateAdCampaign200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAdCampaignWithHttpInfo($campaign_id, $update_ad_campaign_request, string $contentType = self::contentTypes['updateAdCampaign'][0])
     {
@@ -1927,13 +1927,13 @@ class AdCampaignsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateAdCampaign200Response',
+                        '\Zernio\Model\UpdateAdCampaign200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1955,7 +1955,7 @@ class AdCampaignsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateAdCampaign200Response',
+                '\Zernio\Model\UpdateAdCampaign200Response',
                 $request,
                 $response,
             );
@@ -1964,7 +1964,7 @@ class AdCampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateAdCampaign200Response',
+                        '\Zernio\Model\UpdateAdCampaign200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1972,7 +1972,7 @@ class AdCampaignsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1990,7 +1990,7 @@ class AdCampaignsApi
      * Update a campaign (budget)
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2012,7 +2012,7 @@ class AdCampaignsApi
      * Update a campaign (budget)
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2020,7 +2020,7 @@ class AdCampaignsApi
      */
     public function updateAdCampaignAsyncWithHttpInfo($campaign_id, $update_ad_campaign_request, string $contentType = self::contentTypes['updateAdCampaign'][0])
     {
-        $returnType = '\Late\Model\UpdateAdCampaign200Response';
+        $returnType = '\Zernio\Model\UpdateAdCampaign200Response';
         $request = $this->updateAdCampaignRequest($campaign_id, $update_ad_campaign_request, $contentType);
 
         return $this->client
@@ -2063,7 +2063,7 @@ class AdCampaignsApi
      * Create request for operation 'updateAdCampaign'
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaign'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2176,12 +2176,12 @@ class AdCampaignsApi
      * Pause or resume a campaign
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaignStatus'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateAdCampaignStatus200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateAdCampaignStatus200Response|\Zernio\Model\InlineObject
      */
     public function updateAdCampaignStatus($campaign_id, $update_ad_campaign_status_request, string $contentType = self::contentTypes['updateAdCampaignStatus'][0])
     {
@@ -2195,12 +2195,12 @@ class AdCampaignsApi
      * Pause or resume a campaign
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaignStatus'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateAdCampaignStatus200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateAdCampaignStatus200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAdCampaignStatusWithHttpInfo($campaign_id, $update_ad_campaign_status_request, string $contentType = self::contentTypes['updateAdCampaignStatus'][0])
     {
@@ -2232,13 +2232,13 @@ class AdCampaignsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateAdCampaignStatus200Response',
+                        '\Zernio\Model\UpdateAdCampaignStatus200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2260,7 +2260,7 @@ class AdCampaignsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateAdCampaignStatus200Response',
+                '\Zernio\Model\UpdateAdCampaignStatus200Response',
                 $request,
                 $response,
             );
@@ -2269,7 +2269,7 @@ class AdCampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateAdCampaignStatus200Response',
+                        '\Zernio\Model\UpdateAdCampaignStatus200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2277,7 +2277,7 @@ class AdCampaignsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2295,7 +2295,7 @@ class AdCampaignsApi
      * Pause or resume a campaign
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaignStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2317,7 +2317,7 @@ class AdCampaignsApi
      * Pause or resume a campaign
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaignStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2325,7 +2325,7 @@ class AdCampaignsApi
      */
     public function updateAdCampaignStatusAsyncWithHttpInfo($campaign_id, $update_ad_campaign_status_request, string $contentType = self::contentTypes['updateAdCampaignStatus'][0])
     {
-        $returnType = '\Late\Model\UpdateAdCampaignStatus200Response';
+        $returnType = '\Zernio\Model\UpdateAdCampaignStatus200Response';
         $request = $this->updateAdCampaignStatusRequest($campaign_id, $update_ad_campaign_status_request, $contentType);
 
         return $this->client
@@ -2368,7 +2368,7 @@ class AdCampaignsApi
      * Create request for operation 'updateAdCampaignStatus'
      *
      * @param  string $campaign_id Platform campaign ID (required)
-     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdCampaignStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2481,12 +2481,12 @@ class AdCampaignsApi
      * Update an ad set (budget and/or status)
      *
      * @param  string $ad_set_id Platform ad set ID (required)
-     * @param  \Late\Model\UpdateAdSetRequest $update_ad_set_request update_ad_set_request (required)
+     * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request update_ad_set_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSet'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateAdSet200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateAdSet200Response|\Zernio\Model\InlineObject
      */
     public function updateAdSet($ad_set_id, $update_ad_set_request, string $contentType = self::contentTypes['updateAdSet'][0])
     {
@@ -2500,12 +2500,12 @@ class AdCampaignsApi
      * Update an ad set (budget and/or status)
      *
      * @param  string $ad_set_id Platform ad set ID (required)
-     * @param  \Late\Model\UpdateAdSetRequest $update_ad_set_request (required)
+     * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSet'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateAdSet200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateAdSet200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAdSetWithHttpInfo($ad_set_id, $update_ad_set_request, string $contentType = self::contentTypes['updateAdSet'][0])
     {
@@ -2537,13 +2537,13 @@ class AdCampaignsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateAdSet200Response',
+                        '\Zernio\Model\UpdateAdSet200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2565,7 +2565,7 @@ class AdCampaignsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateAdSet200Response',
+                '\Zernio\Model\UpdateAdSet200Response',
                 $request,
                 $response,
             );
@@ -2574,7 +2574,7 @@ class AdCampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateAdSet200Response',
+                        '\Zernio\Model\UpdateAdSet200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2582,7 +2582,7 @@ class AdCampaignsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2600,7 +2600,7 @@ class AdCampaignsApi
      * Update an ad set (budget and/or status)
      *
      * @param  string $ad_set_id Platform ad set ID (required)
-     * @param  \Late\Model\UpdateAdSetRequest $update_ad_set_request (required)
+     * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2622,7 +2622,7 @@ class AdCampaignsApi
      * Update an ad set (budget and/or status)
      *
      * @param  string $ad_set_id Platform ad set ID (required)
-     * @param  \Late\Model\UpdateAdSetRequest $update_ad_set_request (required)
+     * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2630,7 +2630,7 @@ class AdCampaignsApi
      */
     public function updateAdSetAsyncWithHttpInfo($ad_set_id, $update_ad_set_request, string $contentType = self::contentTypes['updateAdSet'][0])
     {
-        $returnType = '\Late\Model\UpdateAdSet200Response';
+        $returnType = '\Zernio\Model\UpdateAdSet200Response';
         $request = $this->updateAdSetRequest($ad_set_id, $update_ad_set_request, $contentType);
 
         return $this->client
@@ -2673,7 +2673,7 @@ class AdCampaignsApi
      * Create request for operation 'updateAdSet'
      *
      * @param  string $ad_set_id Platform ad set ID (required)
-     * @param  \Late\Model\UpdateAdSetRequest $update_ad_set_request (required)
+     * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2786,12 +2786,12 @@ class AdCampaignsApi
      * Pause or resume a single ad set
      *
      * @param  string $ad_set_id Platform ad set ID (required)
-     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSetStatus'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateAdSetStatus200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateAdSetStatus200Response|\Zernio\Model\InlineObject
      */
     public function updateAdSetStatus($ad_set_id, $update_ad_campaign_status_request, string $contentType = self::contentTypes['updateAdSetStatus'][0])
     {
@@ -2805,12 +2805,12 @@ class AdCampaignsApi
      * Pause or resume a single ad set
      *
      * @param  string $ad_set_id Platform ad set ID (required)
-     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSetStatus'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateAdSetStatus200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateAdSetStatus200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAdSetStatusWithHttpInfo($ad_set_id, $update_ad_campaign_status_request, string $contentType = self::contentTypes['updateAdSetStatus'][0])
     {
@@ -2842,13 +2842,13 @@ class AdCampaignsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateAdSetStatus200Response',
+                        '\Zernio\Model\UpdateAdSetStatus200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2870,7 +2870,7 @@ class AdCampaignsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateAdSetStatus200Response',
+                '\Zernio\Model\UpdateAdSetStatus200Response',
                 $request,
                 $response,
             );
@@ -2879,7 +2879,7 @@ class AdCampaignsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateAdSetStatus200Response',
+                        '\Zernio\Model\UpdateAdSetStatus200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2887,7 +2887,7 @@ class AdCampaignsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2905,7 +2905,7 @@ class AdCampaignsApi
      * Pause or resume a single ad set
      *
      * @param  string $ad_set_id Platform ad set ID (required)
-     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSetStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2927,7 +2927,7 @@ class AdCampaignsApi
      * Pause or resume a single ad set
      *
      * @param  string $ad_set_id Platform ad set ID (required)
-     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSetStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2935,7 +2935,7 @@ class AdCampaignsApi
      */
     public function updateAdSetStatusAsyncWithHttpInfo($ad_set_id, $update_ad_campaign_status_request, string $contentType = self::contentTypes['updateAdSetStatus'][0])
     {
-        $returnType = '\Late\Model\UpdateAdSetStatus200Response';
+        $returnType = '\Zernio\Model\UpdateAdSetStatus200Response';
         $request = $this->updateAdSetStatusRequest($ad_set_id, $update_ad_campaign_status_request, $contentType);
 
         return $this->client
@@ -2978,7 +2978,7 @@ class AdCampaignsApi
      * Create request for operation 'updateAdSetStatus'
      *
      * @param  string $ad_set_id Platform ad set ID (required)
-     * @param  \Late\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
+     * @param  \Zernio\Model\UpdateAdCampaignStatusRequest $update_ad_campaign_status_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdSetStatus'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ValidatePostRequestPlatformsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ValidatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, 
         'platform' => 'string',
         'custom_content' => 'string',
         'platform_specific_data' => 'object',
-        'custom_media' => '\Late\Model\ValidatePostRequestPlatformsInnerCustomMediaInner[]'
+        'custom_media' => '\Zernio\Model\ValidatePostRequestPlatformsInnerCustomMediaInner[]'
     ];
 
     /**
@@ -456,7 +456,7 @@ class ValidatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, 
     /**
      * Gets custom_media
      *
-     * @return \Late\Model\ValidatePostRequestPlatformsInnerCustomMediaInner[]|null
+     * @return \Zernio\Model\ValidatePostRequestPlatformsInnerCustomMediaInner[]|null
      */
     public function getCustomMedia()
     {
@@ -466,7 +466,7 @@ class ValidatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, 
     /**
      * Sets custom_media
      *
-     * @param \Late\Model\ValidatePostRequestPlatformsInnerCustomMediaInner[]|null $custom_media custom_media
+     * @param \Zernio\Model\ValidatePostRequestPlatformsInnerCustomMediaInner[]|null $custom_media custom_media
      *
      * @return self
      */

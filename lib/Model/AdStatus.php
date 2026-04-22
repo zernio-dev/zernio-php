@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,14 +27,14 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
-use \Late\ObjectSerializer;
+namespace Zernio\Model;
+use \Zernio\ObjectSerializer;
 
 /**
  * AdStatus Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

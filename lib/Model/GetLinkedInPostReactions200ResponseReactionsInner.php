@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetLinkedInPostReactions200ResponseReactionsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class GetLinkedInPostReactions200ResponseReactionsInner implements ModelInterfac
         'reaction_type' => 'string',
         'reaction_label' => 'string',
         'reacted_at' => '\DateTime',
-        'from' => '\Late\Model\GetLinkedInPostReactions200ResponseReactionsInnerFrom'
+        'from' => '\Zernio\Model\GetLinkedInPostReactions200ResponseReactionsInnerFrom'
     ];
 
     /**
@@ -395,7 +395,7 @@ class GetLinkedInPostReactions200ResponseReactionsInner implements ModelInterfac
     /**
      * Gets from
      *
-     * @return \Late\Model\GetLinkedInPostReactions200ResponseReactionsInnerFrom|null
+     * @return \Zernio\Model\GetLinkedInPostReactions200ResponseReactionsInnerFrom|null
      */
     public function getFrom()
     {
@@ -405,7 +405,7 @@ class GetLinkedInPostReactions200ResponseReactionsInner implements ModelInterfac
     /**
      * Sets from
      *
-     * @param \Late\Model\GetLinkedInPostReactions200ResponseReactionsInnerFrom|null $from from
+     * @param \Zernio\Model\GetLinkedInPostReactions200ResponseReactionsInnerFrom|null $from from
      *
      * @return self
      */

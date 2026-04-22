@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * LogsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -141,9 +141,9 @@ class LogsApi
      * @param  int|null $skip Number of logs to skip (for pagination) (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLogs'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListLogs200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListLogs200Response|\Zernio\Model\InlineObject
      */
     public function listLogs($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listLogs'][0])
     {
@@ -166,9 +166,9 @@ class LogsApi
      * @param  int|null $skip Number of logs to skip (for pagination) (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLogs'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListLogs200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListLogs200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listLogsWithHttpInfo($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listLogs'][0])
     {
@@ -200,13 +200,13 @@ class LogsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListLogs200Response',
+                        '\Zernio\Model\ListLogs200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -228,7 +228,7 @@ class LogsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListLogs200Response',
+                '\Zernio\Model\ListLogs200Response',
                 $request,
                 $response,
             );
@@ -237,7 +237,7 @@ class LogsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListLogs200Response',
+                        '\Zernio\Model\ListLogs200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -245,7 +245,7 @@ class LogsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -305,7 +305,7 @@ class LogsApi
      */
     public function listLogsAsyncWithHttpInfo($type = 'publishing', $status = null, $platform = null, $action = null, $search = null, $days = 90, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listLogs'][0])
     {
-        $returnType = '\Late\Model\ListLogs200Response';
+        $returnType = '\Zernio\Model\ListLogs200Response';
         $request = $this->listLogsRequest($type, $status, $platform, $action, $search, $days, $limit, $skip, $contentType);
 
         return $this->client

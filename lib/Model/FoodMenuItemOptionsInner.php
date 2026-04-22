@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * FoodMenuItemOptionsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class FoodMenuItemOptionsInner implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'labels' => '\Late\Model\FoodMenuLabel[]',
-        'attributes' => '\Late\Model\FoodMenuItemAttributes'
+        'labels' => '\Zernio\Model\FoodMenuLabel[]',
+        'attributes' => '\Zernio\Model\FoodMenuItemAttributes'
     ];
 
     /**
@@ -300,7 +300,7 @@ class FoodMenuItemOptionsInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets labels
      *
-     * @return \Late\Model\FoodMenuLabel[]|null
+     * @return \Zernio\Model\FoodMenuLabel[]|null
      */
     public function getLabels()
     {
@@ -310,7 +310,7 @@ class FoodMenuItemOptionsInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets labels
      *
-     * @param \Late\Model\FoodMenuLabel[]|null $labels labels
+     * @param \Zernio\Model\FoodMenuLabel[]|null $labels labels
      *
      * @return self
      */
@@ -327,7 +327,7 @@ class FoodMenuItemOptionsInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets attributes
      *
-     * @return \Late\Model\FoodMenuItemAttributes|null
+     * @return \Zernio\Model\FoodMenuItemAttributes|null
      */
     public function getAttributes()
     {
@@ -337,7 +337,7 @@ class FoodMenuItemOptionsInner implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets attributes
      *
-     * @param \Late\Model\FoodMenuItemAttributes|null $attributes attributes
+     * @param \Zernio\Model\FoodMenuItemAttributes|null $attributes attributes
      *
      * @return self
      */

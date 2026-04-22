@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListCommentAutomations200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class ListCommentAutomations200Response implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'automations' => '\Late\Model\ListCommentAutomations200ResponseAutomationsInner[]'
+        'automations' => '\Zernio\Model\ListCommentAutomations200ResponseAutomationsInner[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ListCommentAutomations200Response implements ModelInterface, ArrayAccess, 
     /**
      * Gets automations
      *
-     * @return \Late\Model\ListCommentAutomations200ResponseAutomationsInner[]|null
+     * @return \Zernio\Model\ListCommentAutomations200ResponseAutomationsInner[]|null
      */
     public function getAutomations()
     {
@@ -337,7 +337,7 @@ class ListCommentAutomations200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets automations
      *
-     * @param \Late\Model\ListCommentAutomations200ResponseAutomationsInner[]|null $automations automations
+     * @param \Zernio\Model\ListCommentAutomations200ResponseAutomationsInner[]|null $automations automations
      *
      * @return self
      */

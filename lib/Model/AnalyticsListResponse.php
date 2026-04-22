@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * AnalyticsListResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,10 +58,10 @@ class AnalyticsListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'overview' => '\Late\Model\AnalyticsOverview',
-        'posts' => '\Late\Model\AnalyticsListResponsePostsInner[]',
-        'pagination' => '\Late\Model\Pagination',
-        'accounts' => '\Late\Model\SocialAccount[]',
+        'overview' => '\Zernio\Model\AnalyticsOverview',
+        'posts' => '\Zernio\Model\AnalyticsListResponsePostsInner[]',
+        'pagination' => '\Zernio\Model\Pagination',
+        'accounts' => '\Zernio\Model\SocialAccount[]',
         'has_analytics_access' => 'bool'
     ];
 
@@ -321,7 +321,7 @@ class AnalyticsListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets overview
      *
-     * @return \Late\Model\AnalyticsOverview|null
+     * @return \Zernio\Model\AnalyticsOverview|null
      */
     public function getOverview()
     {
@@ -331,7 +331,7 @@ class AnalyticsListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets overview
      *
-     * @param \Late\Model\AnalyticsOverview|null $overview overview
+     * @param \Zernio\Model\AnalyticsOverview|null $overview overview
      *
      * @return self
      */
@@ -348,7 +348,7 @@ class AnalyticsListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets posts
      *
-     * @return \Late\Model\AnalyticsListResponsePostsInner[]|null
+     * @return \Zernio\Model\AnalyticsListResponsePostsInner[]|null
      */
     public function getPosts()
     {
@@ -358,7 +358,7 @@ class AnalyticsListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets posts
      *
-     * @param \Late\Model\AnalyticsListResponsePostsInner[]|null $posts posts
+     * @param \Zernio\Model\AnalyticsListResponsePostsInner[]|null $posts posts
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class AnalyticsListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets pagination
      *
-     * @return \Late\Model\Pagination|null
+     * @return \Zernio\Model\Pagination|null
      */
     public function getPagination()
     {
@@ -385,7 +385,7 @@ class AnalyticsListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets pagination
      *
-     * @param \Late\Model\Pagination|null $pagination pagination
+     * @param \Zernio\Model\Pagination|null $pagination pagination
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class AnalyticsListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets accounts
      *
-     * @return \Late\Model\SocialAccount[]|null
+     * @return \Zernio\Model\SocialAccount[]|null
      */
     public function getAccounts()
     {
@@ -412,7 +412,7 @@ class AnalyticsListResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets accounts
      *
-     * @param \Late\Model\SocialAccount[]|null $accounts Connected social accounts (followerCount and followersLastUpdated only included if user has analytics add-on)
+     * @param \Zernio\Model\SocialAccount[]|null $accounts Connected social accounts (followerCount and followersLastUpdated only included if user has analytics add-on)
      *
      * @return self
      */

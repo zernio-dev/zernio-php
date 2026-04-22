@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendInboxMessageRequestTemplate Class Doc Comment
  *
  * @category Class
  * @description Generic template for carousels (Instagram/Facebook only, ignored on Telegram).
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'elements' => '\Late\Model\SendInboxMessageRequestTemplateElementsInner[]'
+        'elements' => '\Zernio\Model\SendInboxMessageRequestTemplateElementsInner[]'
     ];
 
     /**
@@ -364,7 +364,7 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
     /**
      * Gets elements
      *
-     * @return \Late\Model\SendInboxMessageRequestTemplateElementsInner[]|null
+     * @return \Zernio\Model\SendInboxMessageRequestTemplateElementsInner[]|null
      */
     public function getElements()
     {
@@ -374,7 +374,7 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
     /**
      * Sets elements
      *
-     * @param \Late\Model\SendInboxMessageRequestTemplateElementsInner[]|null $elements elements
+     * @param \Zernio\Model\SendInboxMessageRequestTemplateElementsInner[]|null $elements elements
      *
      * @return self
      */

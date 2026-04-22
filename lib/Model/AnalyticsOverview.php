@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * AnalyticsOverview Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
         'published_posts' => 'int',
         'scheduled_posts' => 'int',
         'last_sync' => '\DateTime',
-        'data_staleness' => '\Late\Model\AnalyticsOverviewDataStaleness'
+        'data_staleness' => '\Zernio\Model\AnalyticsOverviewDataStaleness'
     ];
 
     /**
@@ -429,7 +429,7 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets data_staleness
      *
-     * @return \Late\Model\AnalyticsOverviewDataStaleness|null
+     * @return \Zernio\Model\AnalyticsOverviewDataStaleness|null
      */
     public function getDataStaleness()
     {
@@ -439,7 +439,7 @@ class AnalyticsOverview implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets data_staleness
      *
-     * @param \Late\Model\AnalyticsOverviewDataStaleness|null $data_staleness data_staleness
+     * @param \Zernio\Model\AnalyticsOverviewDataStaleness|null $data_staleness data_staleness
      *
      * @return self
      */

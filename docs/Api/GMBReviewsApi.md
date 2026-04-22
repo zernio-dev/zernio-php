@@ -1,4 +1,4 @@
-# Late\GMBReviewsApi
+# Zernio\GMBReviewsApi
 
 
 
@@ -13,7 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `batchGetGoogleBusinessReviews()`
 
 ```php
-batchGetGoogleBusinessReviews($account_id, $batch_get_google_business_reviews_request): \Late\Model\BatchGetGoogleBusinessReviews200Response
+batchGetGoogleBusinessReviews($account_id, $batch_get_google_business_reviews_request): \Zernio\Model\BatchGetGoogleBusinessReviews200Response
 ```
 
 Batch get reviews
@@ -28,17 +28,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBReviewsApi(
+$apiInstance = new Zernio\Api\GMBReviewsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$batch_get_google_business_reviews_request = {"locationNames":["accounts/123/locations/456","accounts/123/locations/789"],"pageSize":50}; // \Late\Model\BatchGetGoogleBusinessReviewsRequest
+$batch_get_google_business_reviews_request = {"locationNames":["accounts/123/locations/456","accounts/123/locations/789"],"pageSize":50}; // \Zernio\Model\BatchGetGoogleBusinessReviewsRequest
 
 try {
     $result = $apiInstance->batchGetGoogleBusinessReviews($account_id, $batch_get_google_business_reviews_request);
@@ -53,11 +53,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **batch_get_google_business_reviews_request** | [**\Late\Model\BatchGetGoogleBusinessReviewsRequest**](../Model/BatchGetGoogleBusinessReviewsRequest.md)|  | |
+| **batch_get_google_business_reviews_request** | [**\Zernio\Model\BatchGetGoogleBusinessReviewsRequest**](../Model/BatchGetGoogleBusinessReviewsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\BatchGetGoogleBusinessReviews200Response**](../Model/BatchGetGoogleBusinessReviews200Response.md)
+[**\Zernio\Model\BatchGetGoogleBusinessReviews200Response**](../Model/BatchGetGoogleBusinessReviews200Response.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ try {
 ## `getGoogleBusinessReviews()`
 
 ```php
-getGoogleBusinessReviews($account_id, $location_id, $page_size, $page_token): \Late\Model\GetGoogleBusinessReviews200Response
+getGoogleBusinessReviews($account_id, $location_id, $page_size, $page_token): \Zernio\Model\GetGoogleBusinessReviews200Response
 ```
 
 Get reviews
@@ -90,10 +90,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBReviewsApi(
+$apiInstance = new Zernio\Api\GMBReviewsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -123,7 +123,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetGoogleBusinessReviews200Response**](../Model/GetGoogleBusinessReviews200Response.md)
+[**\Zernio\Model\GetGoogleBusinessReviews200Response**](../Model/GetGoogleBusinessReviews200Response.md)
 
 ### Authorization
 

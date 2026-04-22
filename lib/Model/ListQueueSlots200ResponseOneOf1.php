@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListQueueSlots200ResponseOneOf1 Class Doc Comment
  *
  * @category Class
  * @description All queues response (when all&#x3D;true)
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class ListQueueSlots200ResponseOneOf1 implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'queues' => '\Late\Model\QueueSchedule[]',
+        'queues' => '\Zernio\Model\QueueSchedule[]',
         'count' => 'int'
     ];
 
@@ -301,7 +301,7 @@ class ListQueueSlots200ResponseOneOf1 implements ModelInterface, ArrayAccess, \J
     /**
      * Gets queues
      *
-     * @return \Late\Model\QueueSchedule[]|null
+     * @return \Zernio\Model\QueueSchedule[]|null
      */
     public function getQueues()
     {
@@ -311,7 +311,7 @@ class ListQueueSlots200ResponseOneOf1 implements ModelInterface, ArrayAccess, \J
     /**
      * Sets queues
      *
-     * @param \Late\Model\QueueSchedule[]|null $queues queues
+     * @param \Zernio\Model\QueueSchedule[]|null $queues queues
      *
      * @return self
      */

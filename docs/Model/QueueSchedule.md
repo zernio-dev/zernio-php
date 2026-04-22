@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **profile_id** | **string** | Profile ID this queue belongs to | [optional]
 **name** | **string** | Queue name (e.g., \&quot;Morning Posts\&quot;, \&quot;Evening Content\&quot;) | [optional]
 **timezone** | **string** | IANA timezone (e.g., America/New_York) | [optional]
-**slots** | [**\Late\Model\QueueSlot[]**](QueueSlot.md) |  | [optional]
+**slots** | [**\Zernio\Model\QueueSlot[]**](QueueSlot.md) |  | [optional]
 **active** | **bool** | Whether the queue is active | [optional]
 **is_default** | **bool** | Whether this is the default queue for the profile (used when no queueId specified) | [optional]
 **created_at** | **\DateTime** |  | [optional]

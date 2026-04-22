@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **platform_post_id** | **string** | The native post ID on the platform (e.g. Instagram media ID, tweet ID) | [optional]
 **account_id** | **string** |  | [optional]
 **account_username** | **string** |  | [optional]
-**analytics** | [**\Late\Model\PostAnalytics**](PostAnalytics.md) |  | [optional]
+**analytics** | [**\Zernio\Model\PostAnalytics**](PostAnalytics.md) |  | [optional]
 **sync_status** | **string** | Sync state of analytics for this platform | [optional]
 **platform_post_url** | **string** |  | [optional]
 **error_message** | **string** | Error details when status is failed | [optional]

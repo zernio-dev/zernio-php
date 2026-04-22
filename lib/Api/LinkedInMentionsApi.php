@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * LinkedInMentionsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -136,9 +136,9 @@ class LinkedInMentionsApi
      * @param  string|null $display_name Exact display name as shown on LinkedIn. Required for person mentions to be clickable. Optional for org mentions. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInMentions'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetLinkedInMentions200Response|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetYouTubeDailyViews400Response
+     * @return \Zernio\Model\GetLinkedInMentions200Response|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response
      */
     public function getLinkedInMentions($account_id, $url, $display_name = null, string $contentType = self::contentTypes['getLinkedInMentions'][0])
     {
@@ -156,9 +156,9 @@ class LinkedInMentionsApi
      * @param  string|null $display_name Exact display name as shown on LinkedIn. Required for person mentions to be clickable. Optional for org mentions. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInMentions'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetLinkedInMentions200Response|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetLinkedInMentions200Response|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLinkedInMentionsWithHttpInfo($account_id, $url, $display_name = null, string $contentType = self::contentTypes['getLinkedInMentions'][0])
     {
@@ -190,25 +190,25 @@ class LinkedInMentionsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetLinkedInMentions200Response',
+                        '\Zernio\Model\GetLinkedInMentions200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
@@ -230,7 +230,7 @@ class LinkedInMentionsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetLinkedInMentions200Response',
+                '\Zernio\Model\GetLinkedInMentions200Response',
                 $request,
                 $response,
             );
@@ -239,7 +239,7 @@ class LinkedInMentionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetLinkedInMentions200Response',
+                        '\Zernio\Model\GetLinkedInMentions200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -247,7 +247,7 @@ class LinkedInMentionsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -255,7 +255,7 @@ class LinkedInMentionsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -263,7 +263,7 @@ class LinkedInMentionsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -313,7 +313,7 @@ class LinkedInMentionsApi
      */
     public function getLinkedInMentionsAsyncWithHttpInfo($account_id, $url, $display_name = null, string $contentType = self::contentTypes['getLinkedInMentions'][0])
     {
-        $returnType = '\Late\Model\GetLinkedInMentions200Response';
+        $returnType = '\Zernio\Model\GetLinkedInMentions200Response';
         $request = $this->getLinkedInMentionsRequest($account_id, $url, $display_name, $contentType);
 
         return $this->client

@@ -1,4 +1,4 @@
-# Late\GMBServicesApi
+# Zernio\GMBServicesApi
 
 
 
@@ -13,7 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getGoogleBusinessServices()`
 
 ```php
-getGoogleBusinessServices($account_id, $location_id): \Late\Model\GetGoogleBusinessServices200Response
+getGoogleBusinessServices($account_id, $location_id): \Zernio\Model\GetGoogleBusinessServices200Response
 ```
 
 Get services
@@ -28,10 +28,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBServicesApi(
+$apiInstance = new Zernio\Api\GMBServicesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -57,7 +57,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetGoogleBusinessServices200Response**](../Model/GetGoogleBusinessServices200Response.md)
+[**\Zernio\Model\GetGoogleBusinessServices200Response**](../Model/GetGoogleBusinessServices200Response.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ try {
 ## `updateGoogleBusinessServices()`
 
 ```php
-updateGoogleBusinessServices($account_id, $update_google_business_services_request, $location_id): \Late\Model\UpdateGoogleBusinessServices200Response
+updateGoogleBusinessServices($account_id, $update_google_business_services_request, $location_id): \Zernio\Model\UpdateGoogleBusinessServices200Response
 ```
 
 Replace services
@@ -90,17 +90,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBServicesApi(
+$apiInstance = new Zernio\Api\GMBServicesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_google_business_services_request = {"serviceItems":[{"freeFormServiceItem":{"category":"categories/gcid:plumber","label":{"displayName":"Pipe Repair","description":"Emergency and scheduled pipe repair"}},"price":{"currencyCode":"USD","units":"150"}}]}; // \Late\Model\UpdateGoogleBusinessServicesRequest
+$update_google_business_services_request = {"serviceItems":[{"freeFormServiceItem":{"category":"categories/gcid:plumber","label":{"displayName":"Pipe Repair","description":"Emergency and scheduled pipe repair"}},"price":{"currencyCode":"USD","units":"150"}}]}; // \Zernio\Model\UpdateGoogleBusinessServicesRequest
 $location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location.
 
 try {
@@ -116,12 +116,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **update_google_business_services_request** | [**\Late\Model\UpdateGoogleBusinessServicesRequest**](../Model/UpdateGoogleBusinessServicesRequest.md)|  | |
+| **update_google_business_services_request** | [**\Zernio\Model\UpdateGoogleBusinessServicesRequest**](../Model/UpdateGoogleBusinessServicesRequest.md)|  | |
 | **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. | [optional] |
 
 ### Return type
 
-[**\Late\Model\UpdateGoogleBusinessServices200Response**](../Model/UpdateGoogleBusinessServices200Response.md)
+[**\Zernio\Model\UpdateGoogleBusinessServices200Response**](../Model/UpdateGoogleBusinessServices200Response.md)
 
 ### Authorization
 

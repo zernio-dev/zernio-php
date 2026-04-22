@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **dm_message** | **string** |  | [optional]
 **comment_reply** | **string** |  | [optional]
 **is_active** | **bool** |  | [optional]
-**stats** | [**\Late\Model\CreateCommentAutomation200ResponseAutomationStats**](CreateCommentAutomation200ResponseAutomationStats.md) |  | [optional]
+**stats** | [**\Zernio\Model\CreateCommentAutomation200ResponseAutomationStats**](CreateCommentAutomation200ResponseAutomationStats.md) |  | [optional]
 **created_at** | **\DateTime** |  | [optional]
 **updated_at** | **\DateTime** |  | [optional]
 

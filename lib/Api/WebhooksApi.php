@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * WebhooksApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -143,12 +143,12 @@ class WebhooksApi
      *
      * Create webhook
      *
-     * @param  \Late\Model\CreateWebhookSettingsRequest $create_webhook_settings_request create_webhook_settings_request (required)
+     * @param  \Zernio\Model\CreateWebhookSettingsRequest $create_webhook_settings_request create_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookSettings'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateWebhookSettings200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateWebhookSettings200Response|\Zernio\Model\InlineObject
      */
     public function createWebhookSettings($create_webhook_settings_request, string $contentType = self::contentTypes['createWebhookSettings'][0])
     {
@@ -161,12 +161,12 @@ class WebhooksApi
      *
      * Create webhook
      *
-     * @param  \Late\Model\CreateWebhookSettingsRequest $create_webhook_settings_request (required)
+     * @param  \Zernio\Model\CreateWebhookSettingsRequest $create_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookSettings'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateWebhookSettings200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateWebhookSettings200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createWebhookSettingsWithHttpInfo($create_webhook_settings_request, string $contentType = self::contentTypes['createWebhookSettings'][0])
     {
@@ -198,13 +198,13 @@ class WebhooksApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateWebhookSettings200Response',
+                        '\Zernio\Model\UpdateWebhookSettings200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -226,7 +226,7 @@ class WebhooksApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateWebhookSettings200Response',
+                '\Zernio\Model\UpdateWebhookSettings200Response',
                 $request,
                 $response,
             );
@@ -235,7 +235,7 @@ class WebhooksApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateWebhookSettings200Response',
+                        '\Zernio\Model\UpdateWebhookSettings200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -243,7 +243,7 @@ class WebhooksApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -260,7 +260,7 @@ class WebhooksApi
      *
      * Create webhook
      *
-     * @param  \Late\Model\CreateWebhookSettingsRequest $create_webhook_settings_request (required)
+     * @param  \Zernio\Model\CreateWebhookSettingsRequest $create_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -281,7 +281,7 @@ class WebhooksApi
      *
      * Create webhook
      *
-     * @param  \Late\Model\CreateWebhookSettingsRequest $create_webhook_settings_request (required)
+     * @param  \Zernio\Model\CreateWebhookSettingsRequest $create_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -289,7 +289,7 @@ class WebhooksApi
      */
     public function createWebhookSettingsAsyncWithHttpInfo($create_webhook_settings_request, string $contentType = self::contentTypes['createWebhookSettings'][0])
     {
-        $returnType = '\Late\Model\UpdateWebhookSettings200Response';
+        $returnType = '\Zernio\Model\UpdateWebhookSettings200Response';
         $request = $this->createWebhookSettingsRequest($create_webhook_settings_request, $contentType);
 
         return $this->client
@@ -331,7 +331,7 @@ class WebhooksApi
     /**
      * Create request for operation 'createWebhookSettings'
      *
-     * @param  \Late\Model\CreateWebhookSettingsRequest $create_webhook_settings_request (required)
+     * @param  \Zernio\Model\CreateWebhookSettingsRequest $create_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWebhookSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -431,9 +431,9 @@ class WebhooksApi
      * @param  string $id Webhook ID to delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhookSettings'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
      */
     public function deleteWebhookSettings($id, string $contentType = self::contentTypes['deleteWebhookSettings'][0])
     {
@@ -449,9 +449,9 @@ class WebhooksApi
      * @param  string $id Webhook ID to delete (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteWebhookSettings'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteWebhookSettingsWithHttpInfo($id, string $contentType = self::contentTypes['deleteWebhookSettings'][0])
     {
@@ -483,13 +483,13 @@ class WebhooksApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -511,7 +511,7 @@ class WebhooksApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -520,7 +520,7 @@ class WebhooksApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -528,7 +528,7 @@ class WebhooksApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -574,7 +574,7 @@ class WebhooksApi
      */
     public function deleteWebhookSettingsAsyncWithHttpInfo($id, string $contentType = self::contentTypes['deleteWebhookSettings'][0])
     {
-        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
+        $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->deleteWebhookSettingsRequest($id, $contentType);
 
         return $this->client
@@ -717,9 +717,9 @@ class WebhooksApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookSettings'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetWebhookSettings200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetWebhookSettings200Response|\Zernio\Model\InlineObject
      */
     public function getWebhookSettings(string $contentType = self::contentTypes['getWebhookSettings'][0])
     {
@@ -734,9 +734,9 @@ class WebhooksApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookSettings'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetWebhookSettings200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetWebhookSettings200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWebhookSettingsWithHttpInfo(string $contentType = self::contentTypes['getWebhookSettings'][0])
     {
@@ -768,13 +768,13 @@ class WebhooksApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetWebhookSettings200Response',
+                        '\Zernio\Model\GetWebhookSettings200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -796,7 +796,7 @@ class WebhooksApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetWebhookSettings200Response',
+                '\Zernio\Model\GetWebhookSettings200Response',
                 $request,
                 $response,
             );
@@ -805,7 +805,7 @@ class WebhooksApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetWebhookSettings200Response',
+                        '\Zernio\Model\GetWebhookSettings200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -813,7 +813,7 @@ class WebhooksApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -857,7 +857,7 @@ class WebhooksApi
      */
     public function getWebhookSettingsAsyncWithHttpInfo(string $contentType = self::contentTypes['getWebhookSettings'][0])
     {
-        $returnType = '\Late\Model\GetWebhookSettings200Response';
+        $returnType = '\Zernio\Model\GetWebhookSettings200Response';
         $request = $this->getWebhookSettingsRequest($contentType);
 
         return $this->client
@@ -981,12 +981,12 @@ class WebhooksApi
      *
      * Send test webhook
      *
-     * @param  \Late\Model\TestWebhookRequest $test_webhook_request test_webhook_request (required)
+     * @param  \Zernio\Model\TestWebhookRequest $test_webhook_request test_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['testWebhook'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject|\Late\Model\UnpublishPost200Response
+     * @return \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\UnpublishPost200Response
      */
     public function testWebhook($test_webhook_request, string $contentType = self::contentTypes['testWebhook'][0])
     {
@@ -999,12 +999,12 @@ class WebhooksApi
      *
      * Send test webhook
      *
-     * @param  \Late\Model\TestWebhookRequest $test_webhook_request (required)
+     * @param  \Zernio\Model\TestWebhookRequest $test_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['testWebhook'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UnpublishPost200Response|\Late\Model\InlineObject|\Late\Model\UnpublishPost200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UnpublishPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\UnpublishPost200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function testWebhookWithHttpInfo($test_webhook_request, string $contentType = self::contentTypes['testWebhook'][0])
     {
@@ -1036,19 +1036,19 @@ class WebhooksApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UnpublishPost200Response',
+                        '\Zernio\Model\UnpublishPost200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 500:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UnpublishPost200Response',
+                        '\Zernio\Model\UnpublishPost200Response',
                         $request,
                         $response,
                     );
@@ -1070,7 +1070,7 @@ class WebhooksApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UnpublishPost200Response',
+                '\Zernio\Model\UnpublishPost200Response',
                 $request,
                 $response,
             );
@@ -1079,7 +1079,7 @@ class WebhooksApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UnpublishPost200Response',
+                        '\Zernio\Model\UnpublishPost200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1087,7 +1087,7 @@ class WebhooksApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1095,7 +1095,7 @@ class WebhooksApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UnpublishPost200Response',
+                        '\Zernio\Model\UnpublishPost200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1112,7 +1112,7 @@ class WebhooksApi
      *
      * Send test webhook
      *
-     * @param  \Late\Model\TestWebhookRequest $test_webhook_request (required)
+     * @param  \Zernio\Model\TestWebhookRequest $test_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['testWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1133,7 +1133,7 @@ class WebhooksApi
      *
      * Send test webhook
      *
-     * @param  \Late\Model\TestWebhookRequest $test_webhook_request (required)
+     * @param  \Zernio\Model\TestWebhookRequest $test_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['testWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1141,7 +1141,7 @@ class WebhooksApi
      */
     public function testWebhookAsyncWithHttpInfo($test_webhook_request, string $contentType = self::contentTypes['testWebhook'][0])
     {
-        $returnType = '\Late\Model\UnpublishPost200Response';
+        $returnType = '\Zernio\Model\UnpublishPost200Response';
         $request = $this->testWebhookRequest($test_webhook_request, $contentType);
 
         return $this->client
@@ -1183,7 +1183,7 @@ class WebhooksApi
     /**
      * Create request for operation 'testWebhook'
      *
-     * @param  \Late\Model\TestWebhookRequest $test_webhook_request (required)
+     * @param  \Zernio\Model\TestWebhookRequest $test_webhook_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['testWebhook'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1280,12 +1280,12 @@ class WebhooksApi
      *
      * Update webhook
      *
-     * @param  \Late\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request update_webhook_settings_request (required)
+     * @param  \Zernio\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request update_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookSettings'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateWebhookSettings200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateWebhookSettings200Response|\Zernio\Model\InlineObject
      */
     public function updateWebhookSettings($update_webhook_settings_request, string $contentType = self::contentTypes['updateWebhookSettings'][0])
     {
@@ -1298,12 +1298,12 @@ class WebhooksApi
      *
      * Update webhook
      *
-     * @param  \Late\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request (required)
+     * @param  \Zernio\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookSettings'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateWebhookSettings200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateWebhookSettings200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateWebhookSettingsWithHttpInfo($update_webhook_settings_request, string $contentType = self::contentTypes['updateWebhookSettings'][0])
     {
@@ -1335,13 +1335,13 @@ class WebhooksApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateWebhookSettings200Response',
+                        '\Zernio\Model\UpdateWebhookSettings200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1363,7 +1363,7 @@ class WebhooksApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateWebhookSettings200Response',
+                '\Zernio\Model\UpdateWebhookSettings200Response',
                 $request,
                 $response,
             );
@@ -1372,7 +1372,7 @@ class WebhooksApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateWebhookSettings200Response',
+                        '\Zernio\Model\UpdateWebhookSettings200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1380,7 +1380,7 @@ class WebhooksApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1397,7 +1397,7 @@ class WebhooksApi
      *
      * Update webhook
      *
-     * @param  \Late\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request (required)
+     * @param  \Zernio\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1418,7 +1418,7 @@ class WebhooksApi
      *
      * Update webhook
      *
-     * @param  \Late\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request (required)
+     * @param  \Zernio\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1426,7 +1426,7 @@ class WebhooksApi
      */
     public function updateWebhookSettingsAsyncWithHttpInfo($update_webhook_settings_request, string $contentType = self::contentTypes['updateWebhookSettings'][0])
     {
-        $returnType = '\Late\Model\UpdateWebhookSettings200Response';
+        $returnType = '\Zernio\Model\UpdateWebhookSettings200Response';
         $request = $this->updateWebhookSettingsRequest($update_webhook_settings_request, $contentType);
 
         return $this->client
@@ -1468,7 +1468,7 @@ class WebhooksApi
     /**
      * Create request for operation 'updateWebhookSettings'
      *
-     * @param  \Late\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request (required)
+     * @param  \Zernio\Model\UpdateWebhookSettingsRequest $update_webhook_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateWebhookSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

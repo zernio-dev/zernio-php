@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SelectFacebookPage200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
     protected static $openAPITypes = [
         'message' => 'string',
         'redirect_url' => 'string',
-        'account' => '\Late\Model\SelectFacebookPage200ResponseAccount'
+        'account' => '\Zernio\Model\SelectFacebookPage200ResponseAccount'
     ];
 
     /**
@@ -361,7 +361,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets account
      *
-     * @return \Late\Model\SelectFacebookPage200ResponseAccount|null
+     * @return \Zernio\Model\SelectFacebookPage200ResponseAccount|null
      */
     public function getAccount()
     {
@@ -371,7 +371,7 @@ class SelectFacebookPage200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets account
      *
-     * @param \Late\Model\SelectFacebookPage200ResponseAccount|null $account account
+     * @param \Zernio\Model\SelectFacebookPage200ResponseAccount|null $account account
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * BoostPostRequestTargeting Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => 'int',
         'age_max' => 'int',
         'countries' => 'string[]',
-        'interests' => '\Late\Model\UpdateAdRequestTargetingInterestsInner[]',
+        'interests' => '\Zernio\Model\UpdateAdRequestTargetingInterestsInner[]',
         'advantage_audience' => 'int'
     ];
 
@@ -458,7 +458,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets interests
      *
-     * @return \Late\Model\UpdateAdRequestTargetingInterestsInner[]|null
+     * @return \Zernio\Model\UpdateAdRequestTargetingInterestsInner[]|null
      */
     public function getInterests()
     {
@@ -468,7 +468,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets interests
      *
-     * @param \Late\Model\UpdateAdRequestTargetingInterestsInner[]|null $interests Interest objects from /v1/ads/interests. Each must include id and name.
+     * @param \Zernio\Model\UpdateAdRequestTargetingInterestsInner[]|null $interests Interest objects from /v1/ads/interests. Each must include id and name.
      *
      * @return self
      */

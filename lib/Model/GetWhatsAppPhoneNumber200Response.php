@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetWhatsAppPhoneNumber200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'phone_number' => '\Late\Model\GetWhatsAppPhoneNumber200ResponsePhoneNumber'
+        'phone_number' => '\Zernio\Model\GetWhatsAppPhoneNumber200ResponsePhoneNumber'
     ];
 
     /**
@@ -293,7 +293,7 @@ class GetWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAccess, 
     /**
      * Gets phone_number
      *
-     * @return \Late\Model\GetWhatsAppPhoneNumber200ResponsePhoneNumber|null
+     * @return \Zernio\Model\GetWhatsAppPhoneNumber200ResponsePhoneNumber|null
      */
     public function getPhoneNumber()
     {
@@ -303,7 +303,7 @@ class GetWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets phone_number
      *
-     * @param \Late\Model\GetWhatsAppPhoneNumber200ResponsePhoneNumber|null $phone_number phone_number
+     * @param \Zernio\Model\GetWhatsAppPhoneNumber200ResponsePhoneNumber|null $phone_number phone_number
      *
      * @return self
      */

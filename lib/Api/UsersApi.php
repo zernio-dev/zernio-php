@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * UsersApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -137,9 +137,9 @@ class UsersApi
      * @param  string $user_id user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetUser200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\GetUser200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getUser($user_id, string $contentType = self::contentTypes['getUser'][0])
     {
@@ -155,9 +155,9 @@ class UsersApi
      * @param  string $user_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUser'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetUser200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetUser200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserWithHttpInfo($user_id, string $contentType = self::contentTypes['getUser'][0])
     {
@@ -189,19 +189,19 @@ class UsersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetUser200Response',
+                        '\Zernio\Model\GetUser200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -223,7 +223,7 @@ class UsersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetUser200Response',
+                '\Zernio\Model\GetUser200Response',
                 $request,
                 $response,
             );
@@ -232,7 +232,7 @@ class UsersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetUser200Response',
+                        '\Zernio\Model\GetUser200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -240,7 +240,7 @@ class UsersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -248,7 +248,7 @@ class UsersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -294,7 +294,7 @@ class UsersApi
      */
     public function getUserAsyncWithHttpInfo($user_id, string $contentType = self::contentTypes['getUser'][0])
     {
-        $returnType = '\Late\Model\GetUser200Response';
+        $returnType = '\Zernio\Model\GetUser200Response';
         $request = $this->getUserRequest($user_id, $contentType);
 
         return $this->client
@@ -436,9 +436,9 @@ class UsersApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listUsers'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListUsers200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListUsers200Response|\Zernio\Model\InlineObject
      */
     public function listUsers(string $contentType = self::contentTypes['listUsers'][0])
     {
@@ -453,9 +453,9 @@ class UsersApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listUsers'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListUsers200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListUsers200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listUsersWithHttpInfo(string $contentType = self::contentTypes['listUsers'][0])
     {
@@ -487,13 +487,13 @@ class UsersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListUsers200Response',
+                        '\Zernio\Model\ListUsers200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -515,7 +515,7 @@ class UsersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListUsers200Response',
+                '\Zernio\Model\ListUsers200Response',
                 $request,
                 $response,
             );
@@ -524,7 +524,7 @@ class UsersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListUsers200Response',
+                        '\Zernio\Model\ListUsers200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -532,7 +532,7 @@ class UsersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -576,7 +576,7 @@ class UsersApi
      */
     public function listUsersAsyncWithHttpInfo(string $contentType = self::contentTypes['listUsers'][0])
     {
-        $returnType = '\Late\Model\ListUsers200Response';
+        $returnType = '\Zernio\Model\ListUsers200Response';
         $request = $this->listUsersRequest($contentType);
 
         return $this->client

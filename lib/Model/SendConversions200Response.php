@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendConversions200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class SendConversions200Response implements ModelInterface, ArrayAccess, \JsonSe
         'platform' => 'string',
         'events_received' => 'int',
         'events_failed' => 'int',
-        'failures' => '\Late\Model\SendConversions200ResponseFailuresInner[]',
+        'failures' => '\Zernio\Model\SendConversions200ResponseFailuresInner[]',
         'trace_id' => 'string'
     ];
 
@@ -436,7 +436,7 @@ class SendConversions200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets failures
      *
-     * @return \Late\Model\SendConversions200ResponseFailuresInner[]|null
+     * @return \Zernio\Model\SendConversions200ResponseFailuresInner[]|null
      */
     public function getFailures()
     {
@@ -446,7 +446,7 @@ class SendConversions200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets failures
      *
-     * @param \Late\Model\SendConversions200ResponseFailuresInner[]|null $failures failures
+     * @param \Zernio\Model\SendConversions200ResponseFailuresInner[]|null $failures failures
      *
      * @return self
      */

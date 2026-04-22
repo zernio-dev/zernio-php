@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * DiscordPlatformDataPollAnswersInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class DiscordPlatformDataPollAnswersInner implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'poll_media' => '\Late\Model\DiscordPlatformDataPollAnswersInnerPollMedia'
+        'poll_media' => '\Zernio\Model\DiscordPlatformDataPollAnswersInnerPollMedia'
     ];
 
     /**
@@ -293,7 +293,7 @@ class DiscordPlatformDataPollAnswersInner implements ModelInterface, ArrayAccess
     /**
      * Gets poll_media
      *
-     * @return \Late\Model\DiscordPlatformDataPollAnswersInnerPollMedia|null
+     * @return \Zernio\Model\DiscordPlatformDataPollAnswersInnerPollMedia|null
      */
     public function getPollMedia()
     {
@@ -303,7 +303,7 @@ class DiscordPlatformDataPollAnswersInner implements ModelInterface, ArrayAccess
     /**
      * Sets poll_media
      *
-     * @param \Late\Model\DiscordPlatformDataPollAnswersInnerPollMedia|null $poll_media poll_media
+     * @param \Zernio\Model\DiscordPlatformDataPollAnswersInnerPollMedia|null $poll_media poll_media
      *
      * @return self
      */

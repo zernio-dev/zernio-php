@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **chat_id** | **string** |  | [optional]
 **chat_title** | **string** |  | [optional]
 **chat_type** | **string** |  | [optional]
-**account** | [**\Late\Model\ConnectedAccount**](ConnectedAccount.md) |  | [optional]
+**account** | [**\Zernio\Model\ConnectedAccount**](ConnectedAccount.md) |  | [optional]
 **message** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateStandaloneAd201ResponseOneOf1 Class Doc Comment
  *
  * @category Class
  * @description Multi-creative shape — N ads returned sharing platformCampaignId / platformAdSetId.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreateStandaloneAd201ResponseOneOf1 implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ads' => '\Late\Model\Ad[]',
+        'ads' => '\Zernio\Model\Ad[]',
         'platform_campaign_id' => 'string',
         'platform_ad_set_id' => 'string',
         'message' => 'string'
@@ -315,7 +315,7 @@ class CreateStandaloneAd201ResponseOneOf1 implements ModelInterface, ArrayAccess
     /**
      * Gets ads
      *
-     * @return \Late\Model\Ad[]|null
+     * @return \Zernio\Model\Ad[]|null
      */
     public function getAds()
     {
@@ -325,7 +325,7 @@ class CreateStandaloneAd201ResponseOneOf1 implements ModelInterface, ArrayAccess
     /**
      * Sets ads
      *
-     * @param \Late\Model\Ad[]|null $ads ads
+     * @param \Zernio\Model\Ad[]|null $ads ads
      *
      * @return self
      */

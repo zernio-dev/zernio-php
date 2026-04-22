@@ -1,4 +1,4 @@
-# Late\AccountsApi
+# Zernio\AccountsApi
 
 
 
@@ -18,7 +18,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `deleteAccount()`
 
 ```php
-deleteAccount($account_id): \Late\Model\DeleteAccountGroup200Response
+deleteAccount($account_id): \Zernio\Model\DeleteAccountGroup200Response
 ```
 
 Disconnect account
@@ -33,10 +33,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountsApi(
+$apiInstance = new Zernio\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -60,7 +60,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\DeleteAccountGroup200Response**](../Model/DeleteAccountGroup200Response.md)
+[**\Zernio\Model\DeleteAccountGroup200Response**](../Model/DeleteAccountGroup200Response.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ try {
 ## `getAccountHealth()`
 
 ```php
-getAccountHealth($account_id): \Late\Model\GetAccountHealth200Response
+getAccountHealth($account_id): \Zernio\Model\GetAccountHealth200Response
 ```
 
 Check account health
@@ -93,10 +93,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountsApi(
+$apiInstance = new Zernio\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -120,7 +120,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetAccountHealth200Response**](../Model/GetAccountHealth200Response.md)
+[**\Zernio\Model\GetAccountHealth200Response**](../Model/GetAccountHealth200Response.md)
 
 ### Authorization
 
@@ -138,7 +138,7 @@ try {
 ## `getAllAccountsHealth()`
 
 ```php
-getAllAccountsHealth($profile_id, $platform, $status): \Late\Model\GetAllAccountsHealth200Response
+getAllAccountsHealth($profile_id, $platform, $status): \Zernio\Model\GetAllAccountsHealth200Response
 ```
 
 Check accounts health
@@ -153,10 +153,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountsApi(
+$apiInstance = new Zernio\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -184,7 +184,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetAllAccountsHealth200Response**](../Model/GetAllAccountsHealth200Response.md)
+[**\Zernio\Model\GetAllAccountsHealth200Response**](../Model/GetAllAccountsHealth200Response.md)
 
 ### Authorization
 
@@ -202,7 +202,7 @@ try {
 ## `getFollowerStats()`
 
 ```php
-getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity): \Late\Model\GetFollowerStats200Response
+getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity): \Zernio\Model\GetFollowerStats200Response
 ```
 
 Get follower stats
@@ -217,10 +217,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountsApi(
+$apiInstance = new Zernio\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -252,7 +252,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetFollowerStats200Response**](../Model/GetFollowerStats200Response.md)
+[**\Zernio\Model\GetFollowerStats200Response**](../Model/GetFollowerStats200Response.md)
 
 ### Authorization
 
@@ -270,7 +270,7 @@ try {
 ## `getTikTokCreatorInfo()`
 
 ```php
-getTikTokCreatorInfo($account_id, $media_type): \Late\Model\GetTikTokCreatorInfo200Response
+getTikTokCreatorInfo($account_id, $media_type): \Zernio\Model\GetTikTokCreatorInfo200Response
 ```
 
 Get TikTok creator info
@@ -285,10 +285,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountsApi(
+$apiInstance = new Zernio\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -314,7 +314,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetTikTokCreatorInfo200Response**](../Model/GetTikTokCreatorInfo200Response.md)
+[**\Zernio\Model\GetTikTokCreatorInfo200Response**](../Model/GetTikTokCreatorInfo200Response.md)
 
 ### Authorization
 
@@ -332,7 +332,7 @@ try {
 ## `listAccounts()`
 
 ```php
-listAccounts($profile_id, $platform, $include_over_limit, $page, $limit): \Late\Model\ListAccounts200Response
+listAccounts($profile_id, $platform, $include_over_limit, $page, $limit): \Zernio\Model\ListAccounts200Response
 ```
 
 List accounts
@@ -347,10 +347,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountsApi(
+$apiInstance = new Zernio\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -382,7 +382,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListAccounts200Response**](../Model/ListAccounts200Response.md)
+[**\Zernio\Model\ListAccounts200Response**](../Model/ListAccounts200Response.md)
 
 ### Authorization
 
@@ -400,7 +400,7 @@ try {
 ## `updateAccount()`
 
 ```php
-updateAccount($account_id, $update_account_request): \Late\Model\UpdateAccount200Response
+updateAccount($account_id, $update_account_request): \Zernio\Model\UpdateAccount200Response
 ```
 
 Update account
@@ -415,17 +415,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountsApi(
+$apiInstance = new Zernio\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_account_request = {"displayName":"Acme Corporation Official"}; // \Late\Model\UpdateAccountRequest
+$update_account_request = {"displayName":"Acme Corporation Official"}; // \Zernio\Model\UpdateAccountRequest
 
 try {
     $result = $apiInstance->updateAccount($account_id, $update_account_request);
@@ -440,11 +440,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **update_account_request** | [**\Late\Model\UpdateAccountRequest**](../Model/UpdateAccountRequest.md)|  | |
+| **update_account_request** | [**\Zernio\Model\UpdateAccountRequest**](../Model/UpdateAccountRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateAccount200Response**](../Model/UpdateAccount200Response.md)
+[**\Zernio\Model\UpdateAccount200Response**](../Model/UpdateAccount200Response.md)
 
 ### Authorization
 

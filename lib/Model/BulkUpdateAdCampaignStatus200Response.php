@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * BulkUpdateAdCampaignStatus200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class BulkUpdateAdCampaignStatus200Response implements ModelInterface, ArrayAcce
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'totals' => '\Late\Model\BulkUpdateAdCampaignStatus200ResponseTotals',
-        'results' => '\Late\Model\BulkUpdateAdCampaignStatus200ResponseResultsInner[]'
+        'totals' => '\Zernio\Model\BulkUpdateAdCampaignStatus200ResponseTotals',
+        'results' => '\Zernio\Model\BulkUpdateAdCampaignStatus200ResponseResultsInner[]'
     ];
 
     /**
@@ -368,7 +368,7 @@ class BulkUpdateAdCampaignStatus200Response implements ModelInterface, ArrayAcce
     /**
      * Gets totals
      *
-     * @return \Late\Model\BulkUpdateAdCampaignStatus200ResponseTotals|null
+     * @return \Zernio\Model\BulkUpdateAdCampaignStatus200ResponseTotals|null
      */
     public function getTotals()
     {
@@ -378,7 +378,7 @@ class BulkUpdateAdCampaignStatus200Response implements ModelInterface, ArrayAcce
     /**
      * Sets totals
      *
-     * @param \Late\Model\BulkUpdateAdCampaignStatus200ResponseTotals|null $totals totals
+     * @param \Zernio\Model\BulkUpdateAdCampaignStatus200ResponseTotals|null $totals totals
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class BulkUpdateAdCampaignStatus200Response implements ModelInterface, ArrayAcce
     /**
      * Gets results
      *
-     * @return \Late\Model\BulkUpdateAdCampaignStatus200ResponseResultsInner[]|null
+     * @return \Zernio\Model\BulkUpdateAdCampaignStatus200ResponseResultsInner[]|null
      */
     public function getResults()
     {
@@ -405,7 +405,7 @@ class BulkUpdateAdCampaignStatus200Response implements ModelInterface, ArrayAcce
     /**
      * Sets results
      *
-     * @param \Late\Model\BulkUpdateAdCampaignStatus200ResponseResultsInner[]|null $results results
+     * @param \Zernio\Model\BulkUpdateAdCampaignStatus200ResponseResultsInner[]|null $results results
      *
      * @return self
      */

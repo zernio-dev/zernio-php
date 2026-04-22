@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * AnalyticsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -189,9 +189,9 @@ class AnalyticsApi
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetAnalytics200Response|\Late\Model\AnalyticsSinglePostResponse|\Late\Model\GetAnalytics400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\InlineObject1|\Late\Model\AnalyticsSinglePostResponse|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\GetAnalytics200Response|\Zernio\Model\AnalyticsSinglePostResponse|\Zernio\Model\GetAnalytics400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\InlineObject1|\Zernio\Model\AnalyticsSinglePostResponse|\Zernio\Model\ErrorResponse
      */
     public function getAnalytics($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', string $contentType = self::contentTypes['getAnalytics'][0])
     {
@@ -217,9 +217,9 @@ class AnalyticsApi
      * @param  string|null $order Sort order (optional, default to 'desc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAnalytics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetAnalytics200Response|\Late\Model\AnalyticsSinglePostResponse|\Late\Model\GetAnalytics400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\InlineObject1|\Late\Model\AnalyticsSinglePostResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetAnalytics200Response|\Zernio\Model\AnalyticsSinglePostResponse|\Zernio\Model\GetAnalytics400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\InlineObject1|\Zernio\Model\AnalyticsSinglePostResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAnalyticsWithHttpInfo($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', string $contentType = self::contentTypes['getAnalytics'][0])
     {
@@ -251,49 +251,49 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAnalytics200Response',
+                        '\Zernio\Model\GetAnalytics200Response',
                         $request,
                         $response,
                     );
                 case 202:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\AnalyticsSinglePostResponse',
+                        '\Zernio\Model\AnalyticsSinglePostResponse',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAnalytics400Response',
+                        '\Zernio\Model\GetAnalytics400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 424:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\AnalyticsSinglePostResponse',
+                        '\Zernio\Model\AnalyticsSinglePostResponse',
                         $request,
                         $response,
                     );
                 case 500:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -315,7 +315,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetAnalytics200Response',
+                '\Zernio\Model\GetAnalytics200Response',
                 $request,
                 $response,
             );
@@ -324,7 +324,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAnalytics200Response',
+                        '\Zernio\Model\GetAnalytics200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -332,7 +332,7 @@ class AnalyticsApi
                 case 202:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\AnalyticsSinglePostResponse',
+                        '\Zernio\Model\AnalyticsSinglePostResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -340,7 +340,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAnalytics400Response',
+                        '\Zernio\Model\GetAnalytics400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -348,7 +348,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -356,7 +356,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -364,7 +364,7 @@ class AnalyticsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -372,7 +372,7 @@ class AnalyticsApi
                 case 424:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\AnalyticsSinglePostResponse',
+                        '\Zernio\Model\AnalyticsSinglePostResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -380,7 +380,7 @@ class AnalyticsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -446,7 +446,7 @@ class AnalyticsApi
      */
     public function getAnalyticsAsyncWithHttpInfo($post_id = null, $platform = null, $profile_id = null, $account_id = null, $source = 'all', $from_date = null, $to_date = null, $limit = 50, $page = 1, $sort_by = 'date', $order = 'desc', string $contentType = self::contentTypes['getAnalytics'][0])
     {
-        $returnType = '\Late\Model\GetAnalytics200Response';
+        $returnType = '\Zernio\Model\GetAnalytics200Response';
         $request = $this->getAnalyticsRequest($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order, $contentType);
 
         return $this->client
@@ -705,9 +705,9 @@ class AnalyticsApi
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetBestTimeToPost200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response
+     * @return \Zernio\Model\GetBestTimeToPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetBestTimeToPost403Response
      */
     public function getBestTimeToPost($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
@@ -725,9 +725,9 @@ class AnalyticsApi
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetBestTimeToPost200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetBestTimeToPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBestTimeToPostWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
@@ -759,19 +759,19 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetBestTimeToPost200Response',
+                        '\Zernio\Model\GetBestTimeToPost200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetBestTimeToPost403Response',
+                        '\Zernio\Model\GetBestTimeToPost403Response',
                         $request,
                         $response,
                     );
@@ -793,7 +793,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetBestTimeToPost200Response',
+                '\Zernio\Model\GetBestTimeToPost200Response',
                 $request,
                 $response,
             );
@@ -802,7 +802,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetBestTimeToPost200Response',
+                        '\Zernio\Model\GetBestTimeToPost200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -810,7 +810,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -818,7 +818,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetBestTimeToPost403Response',
+                        '\Zernio\Model\GetBestTimeToPost403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -868,7 +868,7 @@ class AnalyticsApi
      */
     public function getBestTimeToPostAsyncWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
-        $returnType = '\Late\Model\GetBestTimeToPost200Response';
+        $returnType = '\Zernio\Model\GetBestTimeToPost200Response';
         $request = $this->getBestTimeToPostRequest($platform, $profile_id, $source, $contentType);
 
         return $this->client
@@ -1030,9 +1030,9 @@ class AnalyticsApi
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetContentDecay200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response
+     * @return \Zernio\Model\GetContentDecay200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetBestTimeToPost403Response
      */
     public function getContentDecay($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
@@ -1050,9 +1050,9 @@ class AnalyticsApi
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetContentDecay200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetContentDecay200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getContentDecayWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
@@ -1084,19 +1084,19 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetContentDecay200Response',
+                        '\Zernio\Model\GetContentDecay200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetBestTimeToPost403Response',
+                        '\Zernio\Model\GetBestTimeToPost403Response',
                         $request,
                         $response,
                     );
@@ -1118,7 +1118,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetContentDecay200Response',
+                '\Zernio\Model\GetContentDecay200Response',
                 $request,
                 $response,
             );
@@ -1127,7 +1127,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetContentDecay200Response',
+                        '\Zernio\Model\GetContentDecay200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1135,7 +1135,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1143,7 +1143,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetBestTimeToPost403Response',
+                        '\Zernio\Model\GetBestTimeToPost403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1193,7 +1193,7 @@ class AnalyticsApi
      */
     public function getContentDecayAsyncWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
-        $returnType = '\Late\Model\GetContentDecay200Response';
+        $returnType = '\Zernio\Model\GetContentDecay200Response';
         $request = $this->getContentDecayRequest($platform, $profile_id, $source, $contentType);
 
         return $this->client
@@ -1358,9 +1358,9 @@ class AnalyticsApi
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetDailyMetrics200Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response
+     * @return \Zernio\Model\GetDailyMetrics200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response
      */
     public function getDailyMetrics($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
@@ -1381,9 +1381,9 @@ class AnalyticsApi
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetDailyMetrics200Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetDailyMetrics200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDailyMetricsWithHttpInfo($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
@@ -1415,19 +1415,19 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetDailyMetrics200Response',
+                        '\Zernio\Model\GetDailyMetrics200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $request,
                         $response,
                     );
@@ -1449,7 +1449,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetDailyMetrics200Response',
+                '\Zernio\Model\GetDailyMetrics200Response',
                 $request,
                 $response,
             );
@@ -1458,7 +1458,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetDailyMetrics200Response',
+                        '\Zernio\Model\GetDailyMetrics200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1466,7 +1466,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1474,7 +1474,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1530,7 +1530,7 @@ class AnalyticsApi
      */
     public function getDailyMetricsAsyncWithHttpInfo($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
-        $returnType = '\Late\Model\GetDailyMetrics200Response';
+        $returnType = '\Zernio\Model\GetDailyMetrics200Response';
         $request = $this->getDailyMetricsRequest($platform, $profile_id, $account_id, $from_date, $to_date, $source, $contentType);
 
         return $this->client
@@ -1727,9 +1727,9 @@ class AnalyticsApi
      * @param  string|null $granularity Data aggregation level (optional, default to 'daily')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFollowerStats'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetFollowerStats200Response|\Late\Model\InlineObject|\Late\Model\GetFollowerStats403Response
+     * @return \Zernio\Model\GetFollowerStats200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetFollowerStats403Response
      */
     public function getFollowerStats($account_ids = null, $profile_id = null, $from_date = null, $to_date = null, $granularity = 'daily', string $contentType = self::contentTypes['getFollowerStats'][0])
     {
@@ -1749,9 +1749,9 @@ class AnalyticsApi
      * @param  string|null $granularity Data aggregation level (optional, default to 'daily')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFollowerStats'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetFollowerStats200Response|\Late\Model\InlineObject|\Late\Model\GetFollowerStats403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetFollowerStats200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetFollowerStats403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFollowerStatsWithHttpInfo($account_ids = null, $profile_id = null, $from_date = null, $to_date = null, $granularity = 'daily', string $contentType = self::contentTypes['getFollowerStats'][0])
     {
@@ -1783,19 +1783,19 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetFollowerStats200Response',
+                        '\Zernio\Model\GetFollowerStats200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetFollowerStats403Response',
+                        '\Zernio\Model\GetFollowerStats403Response',
                         $request,
                         $response,
                     );
@@ -1817,7 +1817,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetFollowerStats200Response',
+                '\Zernio\Model\GetFollowerStats200Response',
                 $request,
                 $response,
             );
@@ -1826,7 +1826,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetFollowerStats200Response',
+                        '\Zernio\Model\GetFollowerStats200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1834,7 +1834,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1842,7 +1842,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetFollowerStats403Response',
+                        '\Zernio\Model\GetFollowerStats403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1896,7 +1896,7 @@ class AnalyticsApi
      */
     public function getFollowerStatsAsyncWithHttpInfo($account_ids = null, $profile_id = null, $from_date = null, $to_date = null, $granularity = 'daily', string $contentType = self::contentTypes['getFollowerStats'][0])
     {
-        $returnType = '\Late\Model\GetFollowerStats200Response';
+        $returnType = '\Zernio\Model\GetFollowerStats200Response';
         $request = $this->getFollowerStatsRequest($account_ids, $profile_id, $from_date, $to_date, $granularity, $contentType);
 
         return $this->client
@@ -2081,9 +2081,9 @@ class AnalyticsApi
      * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to today. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessPerformance'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetGoogleBusinessPerformance200Response|\Late\Model\GetGoogleBusinessPerformance400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response
+     * @return \Zernio\Model\GetGoogleBusinessPerformance200Response|\Zernio\Model\GetGoogleBusinessPerformance400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response
      */
     public function getGoogleBusinessPerformance($account_id, $metrics = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getGoogleBusinessPerformance'][0])
     {
@@ -2102,9 +2102,9 @@ class AnalyticsApi
      * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to today. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessPerformance'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetGoogleBusinessPerformance200Response|\Late\Model\GetGoogleBusinessPerformance400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetGoogleBusinessPerformance200Response|\Zernio\Model\GetGoogleBusinessPerformance400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGoogleBusinessPerformanceWithHttpInfo($account_id, $metrics = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getGoogleBusinessPerformance'][0])
     {
@@ -2136,31 +2136,31 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetGoogleBusinessPerformance200Response',
+                        '\Zernio\Model\GetGoogleBusinessPerformance200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetGoogleBusinessPerformance400Response',
+                        '\Zernio\Model\GetGoogleBusinessPerformance400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        '\Zernio\Model\GetYouTubeDailyViews403Response',
                         $request,
                         $response,
                     );
@@ -2182,7 +2182,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetGoogleBusinessPerformance200Response',
+                '\Zernio\Model\GetGoogleBusinessPerformance200Response',
                 $request,
                 $response,
             );
@@ -2191,7 +2191,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetGoogleBusinessPerformance200Response',
+                        '\Zernio\Model\GetGoogleBusinessPerformance200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2199,7 +2199,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetGoogleBusinessPerformance400Response',
+                        '\Zernio\Model\GetGoogleBusinessPerformance400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2207,7 +2207,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2215,7 +2215,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2223,7 +2223,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        '\Zernio\Model\GetYouTubeDailyViews403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2275,7 +2275,7 @@ class AnalyticsApi
      */
     public function getGoogleBusinessPerformanceAsyncWithHttpInfo($account_id, $metrics = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getGoogleBusinessPerformance'][0])
     {
-        $returnType = '\Late\Model\GetGoogleBusinessPerformance200Response';
+        $returnType = '\Zernio\Model\GetGoogleBusinessPerformance200Response';
         $request = $this->getGoogleBusinessPerformanceRequest($account_id, $metrics, $start_date, $end_date, $contentType);
 
         return $this->client
@@ -2454,9 +2454,9 @@ class AnalyticsApi
      * @param  string|null $end_month End month (YYYY-MM). Defaults to current month. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessSearchKeywords'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetGoogleBusinessSearchKeywords200Response|\Late\Model\GetGoogleBusinessSearchKeywords400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response
+     * @return \Zernio\Model\GetGoogleBusinessSearchKeywords200Response|\Zernio\Model\GetGoogleBusinessSearchKeywords400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response
      */
     public function getGoogleBusinessSearchKeywords($account_id, $start_month = null, $end_month = null, string $contentType = self::contentTypes['getGoogleBusinessSearchKeywords'][0])
     {
@@ -2474,9 +2474,9 @@ class AnalyticsApi
      * @param  string|null $end_month End month (YYYY-MM). Defaults to current month. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessSearchKeywords'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetGoogleBusinessSearchKeywords200Response|\Late\Model\GetGoogleBusinessSearchKeywords400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetGoogleBusinessSearchKeywords200Response|\Zernio\Model\GetGoogleBusinessSearchKeywords400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGoogleBusinessSearchKeywordsWithHttpInfo($account_id, $start_month = null, $end_month = null, string $contentType = self::contentTypes['getGoogleBusinessSearchKeywords'][0])
     {
@@ -2508,31 +2508,31 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetGoogleBusinessSearchKeywords200Response',
+                        '\Zernio\Model\GetGoogleBusinessSearchKeywords200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetGoogleBusinessSearchKeywords400Response',
+                        '\Zernio\Model\GetGoogleBusinessSearchKeywords400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        '\Zernio\Model\GetYouTubeDailyViews403Response',
                         $request,
                         $response,
                     );
@@ -2554,7 +2554,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetGoogleBusinessSearchKeywords200Response',
+                '\Zernio\Model\GetGoogleBusinessSearchKeywords200Response',
                 $request,
                 $response,
             );
@@ -2563,7 +2563,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetGoogleBusinessSearchKeywords200Response',
+                        '\Zernio\Model\GetGoogleBusinessSearchKeywords200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2571,7 +2571,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetGoogleBusinessSearchKeywords400Response',
+                        '\Zernio\Model\GetGoogleBusinessSearchKeywords400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2579,7 +2579,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2587,7 +2587,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2595,7 +2595,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        '\Zernio\Model\GetYouTubeDailyViews403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2645,7 +2645,7 @@ class AnalyticsApi
      */
     public function getGoogleBusinessSearchKeywordsAsyncWithHttpInfo($account_id, $start_month = null, $end_month = null, string $contentType = self::contentTypes['getGoogleBusinessSearchKeywords'][0])
     {
-        $returnType = '\Late\Model\GetGoogleBusinessSearchKeywords200Response';
+        $returnType = '\Zernio\Model\GetGoogleBusinessSearchKeywords200Response';
         $request = $this->getGoogleBusinessSearchKeywordsRequest($account_id, $start_month, $end_month, $contentType);
 
         return $this->client
@@ -2822,9 +2822,9 @@ class AnalyticsApi
      * @param  string|null $breakdown Breakdown dimension (only valid with metricType&#x3D;total_value). Valid values depend on the metric: media_product_type, follow_type, follower_type, contact_button_type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramAccountInsights'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\InstagramAccountInsightsResponse|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response|\Late\Model\GetInstagramAccountInsights404Response
+     * @return \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\GetInstagramAccountInsights404Response
      */
     public function getInstagramAccountInsights($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', $breakdown = null, string $contentType = self::contentTypes['getInstagramAccountInsights'][0])
     {
@@ -2845,9 +2845,9 @@ class AnalyticsApi
      * @param  string|null $breakdown Breakdown dimension (only valid with metricType&#x3D;total_value). Valid values depend on the metric: media_product_type, follow_type, follower_type, contact_button_type. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramAccountInsights'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\InstagramAccountInsightsResponse|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response|\Late\Model\GetInstagramAccountInsights404Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\GetInstagramAccountInsights404Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInstagramAccountInsightsWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', $breakdown = null, string $contentType = self::contentTypes['getInstagramAccountInsights'][0])
     {
@@ -2879,37 +2879,37 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InstagramAccountInsightsResponse',
+                        '\Zernio\Model\InstagramAccountInsightsResponse',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        '\Zernio\Model\GetYouTubeDailyViews403Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetInstagramAccountInsights404Response',
+                        '\Zernio\Model\GetInstagramAccountInsights404Response',
                         $request,
                         $response,
                     );
@@ -2931,7 +2931,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\InstagramAccountInsightsResponse',
+                '\Zernio\Model\InstagramAccountInsightsResponse',
                 $request,
                 $response,
             );
@@ -2940,7 +2940,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InstagramAccountInsightsResponse',
+                        '\Zernio\Model\InstagramAccountInsightsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2948,7 +2948,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2956,7 +2956,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2964,7 +2964,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2972,7 +2972,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        '\Zernio\Model\GetYouTubeDailyViews403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2980,7 +2980,7 @@ class AnalyticsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetInstagramAccountInsights404Response',
+                        '\Zernio\Model\GetInstagramAccountInsights404Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3036,7 +3036,7 @@ class AnalyticsApi
      */
     public function getInstagramAccountInsightsAsyncWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', $breakdown = null, string $contentType = self::contentTypes['getInstagramAccountInsights'][0])
     {
-        $returnType = '\Late\Model\InstagramAccountInsightsResponse';
+        $returnType = '\Zernio\Model\InstagramAccountInsightsResponse';
         $request = $this->getInstagramAccountInsightsRequest($account_id, $metrics, $since, $until, $metric_type, $breakdown, $contentType);
 
         return $this->client
@@ -3238,9 +3238,9 @@ class AnalyticsApi
      * @param  string|null $timeframe Time period for demographic data. Defaults to \&quot;this_month\&quot;. (optional, default to 'this_month')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramDemographics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\InstagramDemographicsResponse|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response|\Late\Model\GetInstagramAccountInsights404Response
+     * @return \Zernio\Model\InstagramDemographicsResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\GetInstagramAccountInsights404Response
      */
     public function getInstagramDemographics($account_id, $metric = 'follower_demographics', $breakdown = null, $timeframe = 'this_month', string $contentType = self::contentTypes['getInstagramDemographics'][0])
     {
@@ -3259,9 +3259,9 @@ class AnalyticsApi
      * @param  string|null $timeframe Time period for demographic data. Defaults to \&quot;this_month\&quot;. (optional, default to 'this_month')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramDemographics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\InstagramDemographicsResponse|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response|\Late\Model\GetInstagramAccountInsights404Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\InstagramDemographicsResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\GetInstagramAccountInsights404Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getInstagramDemographicsWithHttpInfo($account_id, $metric = 'follower_demographics', $breakdown = null, $timeframe = 'this_month', string $contentType = self::contentTypes['getInstagramDemographics'][0])
     {
@@ -3293,37 +3293,37 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InstagramDemographicsResponse',
+                        '\Zernio\Model\InstagramDemographicsResponse',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        '\Zernio\Model\GetYouTubeDailyViews403Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetInstagramAccountInsights404Response',
+                        '\Zernio\Model\GetInstagramAccountInsights404Response',
                         $request,
                         $response,
                     );
@@ -3345,7 +3345,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\InstagramDemographicsResponse',
+                '\Zernio\Model\InstagramDemographicsResponse',
                 $request,
                 $response,
             );
@@ -3354,7 +3354,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InstagramDemographicsResponse',
+                        '\Zernio\Model\InstagramDemographicsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3362,7 +3362,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3370,7 +3370,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3378,7 +3378,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3386,7 +3386,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        '\Zernio\Model\GetYouTubeDailyViews403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3394,7 +3394,7 @@ class AnalyticsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetInstagramAccountInsights404Response',
+                        '\Zernio\Model\GetInstagramAccountInsights404Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3446,7 +3446,7 @@ class AnalyticsApi
      */
     public function getInstagramDemographicsAsyncWithHttpInfo($account_id, $metric = 'follower_demographics', $breakdown = null, $timeframe = 'this_month', string $contentType = self::contentTypes['getInstagramDemographics'][0])
     {
-        $returnType = '\Late\Model\InstagramDemographicsResponse';
+        $returnType = '\Zernio\Model\InstagramDemographicsResponse';
         $request = $this->getInstagramDemographicsRequest($account_id, $metric, $breakdown, $timeframe, $contentType);
 
         return $this->client
@@ -3627,9 +3627,9 @@ class AnalyticsApi
      * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE. Omit for all. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInAggregateAnalytics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetLinkedInAggregateAnalytics200Response|\Late\Model\GetLinkedInAggregateAnalytics400Response|\Late\Model\InlineObject|\Late\Model\GetLinkedInAggregateAnalytics402Response|\Late\Model\GetLinkedInAggregateAnalytics403Response
+     * @return \Zernio\Model\GetLinkedInAggregateAnalytics200Response|\Zernio\Model\GetLinkedInAggregateAnalytics400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetLinkedInAggregateAnalytics402Response|\Zernio\Model\GetLinkedInAggregateAnalytics403Response
      */
     public function getLinkedInAggregateAnalytics($account_id, $aggregation = 'TOTAL', $start_date = null, $end_date = null, $metrics = null, string $contentType = self::contentTypes['getLinkedInAggregateAnalytics'][0])
     {
@@ -3649,9 +3649,9 @@ class AnalyticsApi
      * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE. Omit for all. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInAggregateAnalytics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetLinkedInAggregateAnalytics200Response|\Late\Model\GetLinkedInAggregateAnalytics400Response|\Late\Model\InlineObject|\Late\Model\GetLinkedInAggregateAnalytics402Response|\Late\Model\GetLinkedInAggregateAnalytics403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetLinkedInAggregateAnalytics200Response|\Zernio\Model\GetLinkedInAggregateAnalytics400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetLinkedInAggregateAnalytics402Response|\Zernio\Model\GetLinkedInAggregateAnalytics403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLinkedInAggregateAnalyticsWithHttpInfo($account_id, $aggregation = 'TOTAL', $start_date = null, $end_date = null, $metrics = null, string $contentType = self::contentTypes['getLinkedInAggregateAnalytics'][0])
     {
@@ -3683,31 +3683,31 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetLinkedInAggregateAnalytics200Response',
+                        '\Zernio\Model\GetLinkedInAggregateAnalytics200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetLinkedInAggregateAnalytics400Response',
+                        '\Zernio\Model\GetLinkedInAggregateAnalytics400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetLinkedInAggregateAnalytics402Response',
+                        '\Zernio\Model\GetLinkedInAggregateAnalytics402Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetLinkedInAggregateAnalytics403Response',
+                        '\Zernio\Model\GetLinkedInAggregateAnalytics403Response',
                         $request,
                         $response,
                     );
@@ -3729,7 +3729,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetLinkedInAggregateAnalytics200Response',
+                '\Zernio\Model\GetLinkedInAggregateAnalytics200Response',
                 $request,
                 $response,
             );
@@ -3738,7 +3738,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetLinkedInAggregateAnalytics200Response',
+                        '\Zernio\Model\GetLinkedInAggregateAnalytics200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3746,7 +3746,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetLinkedInAggregateAnalytics400Response',
+                        '\Zernio\Model\GetLinkedInAggregateAnalytics400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3754,7 +3754,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3762,7 +3762,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetLinkedInAggregateAnalytics402Response',
+                        '\Zernio\Model\GetLinkedInAggregateAnalytics402Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3770,7 +3770,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetLinkedInAggregateAnalytics403Response',
+                        '\Zernio\Model\GetLinkedInAggregateAnalytics403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3824,7 +3824,7 @@ class AnalyticsApi
      */
     public function getLinkedInAggregateAnalyticsAsyncWithHttpInfo($account_id, $aggregation = 'TOTAL', $start_date = null, $end_date = null, $metrics = null, string $contentType = self::contentTypes['getLinkedInAggregateAnalytics'][0])
     {
-        $returnType = '\Late\Model\GetLinkedInAggregateAnalytics200Response';
+        $returnType = '\Zernio\Model\GetLinkedInAggregateAnalytics200Response';
         $request = $this->getLinkedInAggregateAnalyticsRequest($account_id, $aggregation, $start_date, $end_date, $metrics, $contentType);
 
         return $this->client
@@ -4012,9 +4012,9 @@ class AnalyticsApi
      * @param  string $urn The LinkedIn post URN (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInPostAnalytics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetLinkedInPostAnalytics200Response|\Late\Model\GetLinkedInPostAnalytics400Response|\Late\Model\InlineObject|\Late\Model\GetLinkedInPostAnalytics403Response|\Late\Model\GetLinkedInAggregateAnalytics402Response
+     * @return \Zernio\Model\GetLinkedInPostAnalytics200Response|\Zernio\Model\GetLinkedInPostAnalytics400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetLinkedInPostAnalytics403Response|\Zernio\Model\GetLinkedInAggregateAnalytics402Response
      */
     public function getLinkedInPostAnalytics($account_id, $urn, string $contentType = self::contentTypes['getLinkedInPostAnalytics'][0])
     {
@@ -4031,9 +4031,9 @@ class AnalyticsApi
      * @param  string $urn The LinkedIn post URN (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInPostAnalytics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetLinkedInPostAnalytics200Response|\Late\Model\GetLinkedInPostAnalytics400Response|\Late\Model\InlineObject|\Late\Model\GetLinkedInPostAnalytics403Response|\Late\Model\GetLinkedInAggregateAnalytics402Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetLinkedInPostAnalytics200Response|\Zernio\Model\GetLinkedInPostAnalytics400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetLinkedInPostAnalytics403Response|\Zernio\Model\GetLinkedInAggregateAnalytics402Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLinkedInPostAnalyticsWithHttpInfo($account_id, $urn, string $contentType = self::contentTypes['getLinkedInPostAnalytics'][0])
     {
@@ -4065,31 +4065,31 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetLinkedInPostAnalytics200Response',
+                        '\Zernio\Model\GetLinkedInPostAnalytics200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetLinkedInPostAnalytics400Response',
+                        '\Zernio\Model\GetLinkedInPostAnalytics400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetLinkedInPostAnalytics403Response',
+                        '\Zernio\Model\GetLinkedInPostAnalytics403Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetLinkedInAggregateAnalytics402Response',
+                        '\Zernio\Model\GetLinkedInAggregateAnalytics402Response',
                         $request,
                         $response,
                     );
@@ -4111,7 +4111,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetLinkedInPostAnalytics200Response',
+                '\Zernio\Model\GetLinkedInPostAnalytics200Response',
                 $request,
                 $response,
             );
@@ -4120,7 +4120,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetLinkedInPostAnalytics200Response',
+                        '\Zernio\Model\GetLinkedInPostAnalytics200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4128,7 +4128,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetLinkedInPostAnalytics400Response',
+                        '\Zernio\Model\GetLinkedInPostAnalytics400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4136,7 +4136,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4144,7 +4144,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetLinkedInPostAnalytics403Response',
+                        '\Zernio\Model\GetLinkedInPostAnalytics403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4152,7 +4152,7 @@ class AnalyticsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetLinkedInAggregateAnalytics402Response',
+                        '\Zernio\Model\GetLinkedInAggregateAnalytics402Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4200,7 +4200,7 @@ class AnalyticsApi
      */
     public function getLinkedInPostAnalyticsAsyncWithHttpInfo($account_id, $urn, string $contentType = self::contentTypes['getLinkedInPostAnalytics'][0])
     {
-        $returnType = '\Late\Model\GetLinkedInPostAnalytics200Response';
+        $returnType = '\Zernio\Model\GetLinkedInPostAnalytics200Response';
         $request = $this->getLinkedInPostAnalyticsRequest($account_id, $urn, $contentType);
 
         return $this->client
@@ -4363,9 +4363,9 @@ class AnalyticsApi
      * @param  string|null $cursor Offset-based pagination start index (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInPostReactions'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetLinkedInPostReactions200Response|\Late\Model\GetLinkedInPostReactions400Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetLinkedInPostReactions200Response|\Zernio\Model\GetLinkedInPostReactions400Response|\Zernio\Model\InlineObject
      */
     public function getLinkedInPostReactions($account_id, $urn, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
     {
@@ -4384,9 +4384,9 @@ class AnalyticsApi
      * @param  string|null $cursor Offset-based pagination start index (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInPostReactions'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetLinkedInPostReactions200Response|\Late\Model\GetLinkedInPostReactions400Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetLinkedInPostReactions200Response|\Zernio\Model\GetLinkedInPostReactions400Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLinkedInPostReactionsWithHttpInfo($account_id, $urn, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
     {
@@ -4418,19 +4418,19 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetLinkedInPostReactions200Response',
+                        '\Zernio\Model\GetLinkedInPostReactions200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetLinkedInPostReactions400Response',
+                        '\Zernio\Model\GetLinkedInPostReactions400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -4452,7 +4452,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetLinkedInPostReactions200Response',
+                '\Zernio\Model\GetLinkedInPostReactions200Response',
                 $request,
                 $response,
             );
@@ -4461,7 +4461,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetLinkedInPostReactions200Response',
+                        '\Zernio\Model\GetLinkedInPostReactions200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4469,7 +4469,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetLinkedInPostReactions400Response',
+                        '\Zernio\Model\GetLinkedInPostReactions400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4477,7 +4477,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4529,7 +4529,7 @@ class AnalyticsApi
      */
     public function getLinkedInPostReactionsAsyncWithHttpInfo($account_id, $urn, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getLinkedInPostReactions'][0])
     {
-        $returnType = '\Late\Model\GetLinkedInPostReactions200Response';
+        $returnType = '\Zernio\Model\GetLinkedInPostReactions200Response';
         $request = $this->getLinkedInPostReactionsRequest($account_id, $urn, $limit, $cursor, $contentType);
 
         return $this->client
@@ -4719,9 +4719,9 @@ class AnalyticsApi
      * @param  \DateTime|null $to_date End of date range (ISO 8601). Defaults to now. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostTimeline'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetPostTimeline200Response|\Late\Model\GetPostTimeline400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetPostTimeline403Response|\Late\Model\GetPostTimeline404Response
+     * @return \Zernio\Model\GetPostTimeline200Response|\Zernio\Model\GetPostTimeline400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetPostTimeline403Response|\Zernio\Model\GetPostTimeline404Response
      */
     public function getPostTimeline($post_id, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getPostTimeline'][0])
     {
@@ -4739,9 +4739,9 @@ class AnalyticsApi
      * @param  \DateTime|null $to_date End of date range (ISO 8601). Defaults to now. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostTimeline'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetPostTimeline200Response|\Late\Model\GetPostTimeline400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetPostTimeline403Response|\Late\Model\GetPostTimeline404Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetPostTimeline200Response|\Zernio\Model\GetPostTimeline400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetPostTimeline403Response|\Zernio\Model\GetPostTimeline404Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPostTimelineWithHttpInfo($post_id, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getPostTimeline'][0])
     {
@@ -4773,37 +4773,37 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetPostTimeline200Response',
+                        '\Zernio\Model\GetPostTimeline200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetPostTimeline400Response',
+                        '\Zernio\Model\GetPostTimeline400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetPostTimeline403Response',
+                        '\Zernio\Model\GetPostTimeline403Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetPostTimeline404Response',
+                        '\Zernio\Model\GetPostTimeline404Response',
                         $request,
                         $response,
                     );
@@ -4825,7 +4825,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetPostTimeline200Response',
+                '\Zernio\Model\GetPostTimeline200Response',
                 $request,
                 $response,
             );
@@ -4834,7 +4834,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetPostTimeline200Response',
+                        '\Zernio\Model\GetPostTimeline200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4842,7 +4842,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetPostTimeline400Response',
+                        '\Zernio\Model\GetPostTimeline400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4850,7 +4850,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4858,7 +4858,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4866,7 +4866,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetPostTimeline403Response',
+                        '\Zernio\Model\GetPostTimeline403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4874,7 +4874,7 @@ class AnalyticsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetPostTimeline404Response',
+                        '\Zernio\Model\GetPostTimeline404Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4924,7 +4924,7 @@ class AnalyticsApi
      */
     public function getPostTimelineAsyncWithHttpInfo($post_id, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getPostTimeline'][0])
     {
-        $returnType = '\Late\Model\GetPostTimeline200Response';
+        $returnType = '\Zernio\Model\GetPostTimeline200Response';
         $request = $this->getPostTimelineRequest($post_id, $from_date, $to_date, $contentType);
 
         return $this->client
@@ -5092,9 +5092,9 @@ class AnalyticsApi
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetPostingFrequency200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response
+     * @return \Zernio\Model\GetPostingFrequency200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetBestTimeToPost403Response
      */
     public function getPostingFrequency($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
@@ -5112,9 +5112,9 @@ class AnalyticsApi
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetPostingFrequency200Response|\Late\Model\InlineObject|\Late\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetPostingFrequency200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPostingFrequencyWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
@@ -5146,19 +5146,19 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetPostingFrequency200Response',
+                        '\Zernio\Model\GetPostingFrequency200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetBestTimeToPost403Response',
+                        '\Zernio\Model\GetBestTimeToPost403Response',
                         $request,
                         $response,
                     );
@@ -5180,7 +5180,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetPostingFrequency200Response',
+                '\Zernio\Model\GetPostingFrequency200Response',
                 $request,
                 $response,
             );
@@ -5189,7 +5189,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetPostingFrequency200Response',
+                        '\Zernio\Model\GetPostingFrequency200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5197,7 +5197,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5205,7 +5205,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetBestTimeToPost403Response',
+                        '\Zernio\Model\GetBestTimeToPost403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5255,7 +5255,7 @@ class AnalyticsApi
      */
     public function getPostingFrequencyAsyncWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
-        $returnType = '\Late\Model\GetPostingFrequency200Response';
+        $returnType = '\Zernio\Model\GetPostingFrequency200Response';
         $request = $this->getPostingFrequencyRequest($platform, $profile_id, $source, $contentType);
 
         return $this->client
@@ -5418,9 +5418,9 @@ class AnalyticsApi
      * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDailyViews'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\YouTubeDailyViewsResponse|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response|\Late\Model\YouTubeScopeMissingResponse|\Late\Model\GetYouTubeDailyViews500Response
+     * @return \Zernio\Model\YouTubeDailyViewsResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\YouTubeScopeMissingResponse|\Zernio\Model\GetYouTubeDailyViews500Response
      */
     public function getYouTubeDailyViews($video_id, $account_id, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDailyViews'][0])
     {
@@ -5439,9 +5439,9 @@ class AnalyticsApi
      * @param  \DateTime|null $end_date End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDailyViews'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\YouTubeDailyViewsResponse|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response|\Late\Model\YouTubeScopeMissingResponse|\Late\Model\GetYouTubeDailyViews500Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\YouTubeDailyViewsResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\YouTubeScopeMissingResponse|\Zernio\Model\GetYouTubeDailyViews500Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getYouTubeDailyViewsWithHttpInfo($video_id, $account_id, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDailyViews'][0])
     {
@@ -5473,43 +5473,43 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\YouTubeDailyViewsResponse',
+                        '\Zernio\Model\YouTubeDailyViewsResponse',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        '\Zernio\Model\GetYouTubeDailyViews403Response',
                         $request,
                         $response,
                     );
                 case 412:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\YouTubeScopeMissingResponse',
+                        '\Zernio\Model\YouTubeScopeMissingResponse',
                         $request,
                         $response,
                     );
                 case 500:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews500Response',
+                        '\Zernio\Model\GetYouTubeDailyViews500Response',
                         $request,
                         $response,
                     );
@@ -5531,7 +5531,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\YouTubeDailyViewsResponse',
+                '\Zernio\Model\YouTubeDailyViewsResponse',
                 $request,
                 $response,
             );
@@ -5540,7 +5540,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\YouTubeDailyViewsResponse',
+                        '\Zernio\Model\YouTubeDailyViewsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5548,7 +5548,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5556,7 +5556,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5564,7 +5564,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5572,7 +5572,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        '\Zernio\Model\GetYouTubeDailyViews403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5580,7 +5580,7 @@ class AnalyticsApi
                 case 412:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\YouTubeScopeMissingResponse',
+                        '\Zernio\Model\YouTubeScopeMissingResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5588,7 +5588,7 @@ class AnalyticsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews500Response',
+                        '\Zernio\Model\GetYouTubeDailyViews500Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5640,7 +5640,7 @@ class AnalyticsApi
      */
     public function getYouTubeDailyViewsAsyncWithHttpInfo($video_id, $account_id, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDailyViews'][0])
     {
-        $returnType = '\Late\Model\YouTubeDailyViewsResponse';
+        $returnType = '\Zernio\Model\YouTubeDailyViewsResponse';
         $request = $this->getYouTubeDailyViewsRequest($video_id, $account_id, $start_date, $end_date, $contentType);
 
         return $this->client
@@ -5826,9 +5826,9 @@ class AnalyticsApi
      * @param  \DateTime|null $end_date End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDemographics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\YouTubeDemographicsResponse|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response|\Late\Model\GetInstagramAccountInsights404Response|\Late\Model\GetYouTubeDemographics412Response
+     * @return \Zernio\Model\YouTubeDemographicsResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\GetInstagramAccountInsights404Response|\Zernio\Model\GetYouTubeDemographics412Response
      */
     public function getYouTubeDemographics($account_id, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
     {
@@ -5847,9 +5847,9 @@ class AnalyticsApi
      * @param  \DateTime|null $end_date End date in YYYY-MM-DD format. Defaults to 3 days ago (YouTube data latency). (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeDemographics'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\YouTubeDemographicsResponse|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject|\Late\Model\GetAnalytics402Response|\Late\Model\GetYouTubeDailyViews403Response|\Late\Model\GetInstagramAccountInsights404Response|\Late\Model\GetYouTubeDemographics412Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\YouTubeDemographicsResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response|\Zernio\Model\GetYouTubeDailyViews403Response|\Zernio\Model\GetInstagramAccountInsights404Response|\Zernio\Model\GetYouTubeDemographics412Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getYouTubeDemographicsWithHttpInfo($account_id, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
     {
@@ -5881,43 +5881,43 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\YouTubeDemographicsResponse',
+                        '\Zernio\Model\YouTubeDemographicsResponse',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 402:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        '\Zernio\Model\GetYouTubeDailyViews403Response',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetInstagramAccountInsights404Response',
+                        '\Zernio\Model\GetInstagramAccountInsights404Response',
                         $request,
                         $response,
                     );
                 case 412:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDemographics412Response',
+                        '\Zernio\Model\GetYouTubeDemographics412Response',
                         $request,
                         $response,
                     );
@@ -5939,7 +5939,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\YouTubeDemographicsResponse',
+                '\Zernio\Model\YouTubeDemographicsResponse',
                 $request,
                 $response,
             );
@@ -5948,7 +5948,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\YouTubeDemographicsResponse',
+                        '\Zernio\Model\YouTubeDemographicsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5956,7 +5956,7 @@ class AnalyticsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5964,7 +5964,7 @@ class AnalyticsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5972,7 +5972,7 @@ class AnalyticsApi
                 case 402:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetAnalytics402Response',
+                        '\Zernio\Model\GetAnalytics402Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5980,7 +5980,7 @@ class AnalyticsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews403Response',
+                        '\Zernio\Model\GetYouTubeDailyViews403Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5988,7 +5988,7 @@ class AnalyticsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetInstagramAccountInsights404Response',
+                        '\Zernio\Model\GetInstagramAccountInsights404Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5996,7 +5996,7 @@ class AnalyticsApi
                 case 412:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDemographics412Response',
+                        '\Zernio\Model\GetYouTubeDemographics412Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6048,7 +6048,7 @@ class AnalyticsApi
      */
     public function getYouTubeDemographicsAsyncWithHttpInfo($account_id, $breakdown = null, $start_date = null, $end_date = null, string $contentType = self::contentTypes['getYouTubeDemographics'][0])
     {
-        $returnType = '\Late\Model\YouTubeDemographicsResponse';
+        $returnType = '\Zernio\Model\YouTubeDemographicsResponse';
         $request = $this->getYouTubeDemographicsRequest($account_id, $breakdown, $start_date, $end_date, $contentType);
 
         return $this->client

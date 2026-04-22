@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetCommentAutomation200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class GetCommentAutomation200Response implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'automation' => '\Late\Model\GetCommentAutomation200ResponseAutomation',
-        'logs' => '\Late\Model\GetCommentAutomation200ResponseLogsInner[]'
+        'automation' => '\Zernio\Model\GetCommentAutomation200ResponseAutomation',
+        'logs' => '\Zernio\Model\GetCommentAutomation200ResponseLogsInner[]'
     ];
 
     /**
@@ -334,7 +334,7 @@ class GetCommentAutomation200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets automation
      *
-     * @return \Late\Model\GetCommentAutomation200ResponseAutomation|null
+     * @return \Zernio\Model\GetCommentAutomation200ResponseAutomation|null
      */
     public function getAutomation()
     {
@@ -344,7 +344,7 @@ class GetCommentAutomation200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets automation
      *
-     * @param \Late\Model\GetCommentAutomation200ResponseAutomation|null $automation automation
+     * @param \Zernio\Model\GetCommentAutomation200ResponseAutomation|null $automation automation
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class GetCommentAutomation200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets logs
      *
-     * @return \Late\Model\GetCommentAutomation200ResponseLogsInner[]|null
+     * @return \Zernio\Model\GetCommentAutomation200ResponseLogsInner[]|null
      */
     public function getLogs()
     {
@@ -371,7 +371,7 @@ class GetCommentAutomation200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets logs
      *
-     * @param \Late\Model\GetCommentAutomation200ResponseLogsInner[]|null $logs logs
+     * @param \Zernio\Model\GetCommentAutomation200ResponseLogsInner[]|null $logs logs
      *
      * @return self
      */

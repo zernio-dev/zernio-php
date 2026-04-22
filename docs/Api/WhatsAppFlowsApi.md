@@ -1,4 +1,4 @@
-# Late\WhatsAppFlowsApi
+# Zernio\WhatsAppFlowsApi
 
 
 
@@ -21,7 +21,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createWhatsAppFlow()`
 
 ```php
-createWhatsAppFlow($create_whats_app_flow_request): \Late\Model\CreateWhatsAppFlow200Response
+createWhatsAppFlow($create_whats_app_flow_request): \Zernio\Model\CreateWhatsAppFlow200Response
 ```
 
 Create flow
@@ -36,16 +36,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppFlowsApi(
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_whats_app_flow_request = {"accountId":"507f1f77bcf86cd799439011","name":"lead_capture_form","categories":["LEAD_GENERATION"]}; // \Late\Model\CreateWhatsAppFlowRequest
+$create_whats_app_flow_request = {"accountId":"507f1f77bcf86cd799439011","name":"lead_capture_form","categories":["LEAD_GENERATION"]}; // \Zernio\Model\CreateWhatsAppFlowRequest
 
 try {
     $result = $apiInstance->createWhatsAppFlow($create_whats_app_flow_request);
@@ -59,11 +59,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_whats_app_flow_request** | [**\Late\Model\CreateWhatsAppFlowRequest**](../Model/CreateWhatsAppFlowRequest.md)|  | |
+| **create_whats_app_flow_request** | [**\Zernio\Model\CreateWhatsAppFlowRequest**](../Model/CreateWhatsAppFlowRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateWhatsAppFlow200Response**](../Model/CreateWhatsAppFlow200Response.md)
+[**\Zernio\Model\CreateWhatsAppFlow200Response**](../Model/CreateWhatsAppFlow200Response.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ try {
 ## `deleteWhatsAppFlow()`
 
 ```php
-deleteWhatsAppFlow($flow_id, $account_id): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
+deleteWhatsAppFlow($flow_id, $account_id): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Delete flow
@@ -96,10 +96,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppFlowsApi(
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -125,7 +125,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -143,7 +143,7 @@ try {
 ## `deprecateWhatsAppFlow()`
 
 ```php
-deprecateWhatsAppFlow($flow_id, $publish_whats_app_flow_request): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
+deprecateWhatsAppFlow($flow_id, $publish_whats_app_flow_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Deprecate flow
@@ -158,17 +158,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppFlowsApi(
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $flow_id = 'flow_id_example'; // string | Flow ID
-$publish_whats_app_flow_request = new \Late\Model\PublishWhatsAppFlowRequest(); // \Late\Model\PublishWhatsAppFlowRequest
+$publish_whats_app_flow_request = new \Zernio\Model\PublishWhatsAppFlowRequest(); // \Zernio\Model\PublishWhatsAppFlowRequest
 
 try {
     $result = $apiInstance->deprecateWhatsAppFlow($flow_id, $publish_whats_app_flow_request);
@@ -183,11 +183,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **flow_id** | **string**| Flow ID | |
-| **publish_whats_app_flow_request** | [**\Late\Model\PublishWhatsAppFlowRequest**](../Model/PublishWhatsAppFlowRequest.md)|  | |
+| **publish_whats_app_flow_request** | [**\Zernio\Model\PublishWhatsAppFlowRequest**](../Model/PublishWhatsAppFlowRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -205,7 +205,7 @@ try {
 ## `getWhatsAppFlow()`
 
 ```php
-getWhatsAppFlow($flow_id, $account_id, $fields): \Late\Model\GetWhatsAppFlow200Response
+getWhatsAppFlow($flow_id, $account_id, $fields): \Zernio\Model\GetWhatsAppFlow200Response
 ```
 
 Get flow
@@ -220,10 +220,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppFlowsApi(
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -251,7 +251,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetWhatsAppFlow200Response**](../Model/GetWhatsAppFlow200Response.md)
+[**\Zernio\Model\GetWhatsAppFlow200Response**](../Model/GetWhatsAppFlow200Response.md)
 
 ### Authorization
 
@@ -269,7 +269,7 @@ try {
 ## `getWhatsAppFlowJson()`
 
 ```php
-getWhatsAppFlowJson($flow_id, $account_id): \Late\Model\GetWhatsAppFlowJson200Response
+getWhatsAppFlowJson($flow_id, $account_id): \Zernio\Model\GetWhatsAppFlowJson200Response
 ```
 
 Get flow JSON asset
@@ -284,10 +284,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppFlowsApi(
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -313,7 +313,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetWhatsAppFlowJson200Response**](../Model/GetWhatsAppFlowJson200Response.md)
+[**\Zernio\Model\GetWhatsAppFlowJson200Response**](../Model/GetWhatsAppFlowJson200Response.md)
 
 ### Authorization
 
@@ -331,7 +331,7 @@ try {
 ## `listWhatsAppFlows()`
 
 ```php
-listWhatsAppFlows($account_id): \Late\Model\ListWhatsAppFlows200Response
+listWhatsAppFlows($account_id): \Zernio\Model\ListWhatsAppFlows200Response
 ```
 
 List flows
@@ -346,10 +346,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppFlowsApi(
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -373,7 +373,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListWhatsAppFlows200Response**](../Model/ListWhatsAppFlows200Response.md)
+[**\Zernio\Model\ListWhatsAppFlows200Response**](../Model/ListWhatsAppFlows200Response.md)
 
 ### Authorization
 
@@ -391,7 +391,7 @@ try {
 ## `publishWhatsAppFlow()`
 
 ```php
-publishWhatsAppFlow($flow_id, $publish_whats_app_flow_request): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
+publishWhatsAppFlow($flow_id, $publish_whats_app_flow_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Publish flow
@@ -406,17 +406,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppFlowsApi(
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $flow_id = 'flow_id_example'; // string | Flow ID
-$publish_whats_app_flow_request = new \Late\Model\PublishWhatsAppFlowRequest(); // \Late\Model\PublishWhatsAppFlowRequest
+$publish_whats_app_flow_request = new \Zernio\Model\PublishWhatsAppFlowRequest(); // \Zernio\Model\PublishWhatsAppFlowRequest
 
 try {
     $result = $apiInstance->publishWhatsAppFlow($flow_id, $publish_whats_app_flow_request);
@@ -431,11 +431,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **flow_id** | **string**| Flow ID | |
-| **publish_whats_app_flow_request** | [**\Late\Model\PublishWhatsAppFlowRequest**](../Model/PublishWhatsAppFlowRequest.md)|  | |
+| **publish_whats_app_flow_request** | [**\Zernio\Model\PublishWhatsAppFlowRequest**](../Model/PublishWhatsAppFlowRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -453,7 +453,7 @@ try {
 ## `sendWhatsAppFlowMessage()`
 
 ```php
-sendWhatsAppFlowMessage($send_whats_app_flow_message_request): \Late\Model\SendWhatsAppFlowMessage200Response
+sendWhatsAppFlowMessage($send_whats_app_flow_message_request): \Zernio\Model\SendWhatsAppFlowMessage200Response
 ```
 
 Send flow message
@@ -468,16 +468,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppFlowsApi(
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$send_whats_app_flow_message_request = {"accountId":"507f1f77bcf86cd799439011","to":"+1234567890","flow_id":"1234567890","flow_cta":"Get a Quote","flow_action":"navigate","flow_action_payload":{"screen":"LEAD_FORM"},"body":"Hi! Fill out this quick form to get a personalized quote."}; // \Late\Model\SendWhatsAppFlowMessageRequest
+$send_whats_app_flow_message_request = {"accountId":"507f1f77bcf86cd799439011","to":"+1234567890","flow_id":"1234567890","flow_cta":"Get a Quote","flow_action":"navigate","flow_action_payload":{"screen":"LEAD_FORM"},"body":"Hi! Fill out this quick form to get a personalized quote."}; // \Zernio\Model\SendWhatsAppFlowMessageRequest
 
 try {
     $result = $apiInstance->sendWhatsAppFlowMessage($send_whats_app_flow_message_request);
@@ -491,11 +491,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **send_whats_app_flow_message_request** | [**\Late\Model\SendWhatsAppFlowMessageRequest**](../Model/SendWhatsAppFlowMessageRequest.md)|  | |
+| **send_whats_app_flow_message_request** | [**\Zernio\Model\SendWhatsAppFlowMessageRequest**](../Model/SendWhatsAppFlowMessageRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\SendWhatsAppFlowMessage200Response**](../Model/SendWhatsAppFlowMessage200Response.md)
+[**\Zernio\Model\SendWhatsAppFlowMessage200Response**](../Model/SendWhatsAppFlowMessage200Response.md)
 
 ### Authorization
 
@@ -513,7 +513,7 @@ try {
 ## `updateWhatsAppFlow()`
 
 ```php
-updateWhatsAppFlow($flow_id, $update_whats_app_flow_request): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
+updateWhatsAppFlow($flow_id, $update_whats_app_flow_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Update flow
@@ -528,17 +528,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppFlowsApi(
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $flow_id = 'flow_id_example'; // string | Flow ID
-$update_whats_app_flow_request = new \Late\Model\UpdateWhatsAppFlowRequest(); // \Late\Model\UpdateWhatsAppFlowRequest
+$update_whats_app_flow_request = new \Zernio\Model\UpdateWhatsAppFlowRequest(); // \Zernio\Model\UpdateWhatsAppFlowRequest
 
 try {
     $result = $apiInstance->updateWhatsAppFlow($flow_id, $update_whats_app_flow_request);
@@ -553,11 +553,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **flow_id** | **string**| Flow ID | |
-| **update_whats_app_flow_request** | [**\Late\Model\UpdateWhatsAppFlowRequest**](../Model/UpdateWhatsAppFlowRequest.md)|  | |
+| **update_whats_app_flow_request** | [**\Zernio\Model\UpdateWhatsAppFlowRequest**](../Model/UpdateWhatsAppFlowRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -575,7 +575,7 @@ try {
 ## `uploadWhatsAppFlowJson()`
 
 ```php
-uploadWhatsAppFlowJson($flow_id, $upload_whats_app_flow_json_request): \Late\Model\UploadWhatsAppFlowJson200Response
+uploadWhatsAppFlowJson($flow_id, $upload_whats_app_flow_json_request): \Zernio\Model\UploadWhatsAppFlowJson200Response
 ```
 
 Upload flow JSON
@@ -590,17 +590,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppFlowsApi(
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $flow_id = 'flow_id_example'; // string | Flow ID
-$upload_whats_app_flow_json_request = {"accountId":"507f1f77bcf86cd799439011","flow_json":{"version":"6.0","screens":[{"id":"LEAD_FORM","title":"Get a Quote","terminal":true,"success":true,"layout":{"type":"SingleColumnLayout","children":[{"type":"TextInput","name":"full_name","label":"Full Name","required":true,"input-type":"text"},{"type":"TextInput","name":"email","label":"Email","required":true,"input-type":"email"},{"type":"Footer","label":"Submit","on-click-action":{"name":"complete","payload":{"full_name":"${form.full_name}","email":"${form.email}"}}}]}}]}}; // \Late\Model\UploadWhatsAppFlowJsonRequest
+$upload_whats_app_flow_json_request = {"accountId":"507f1f77bcf86cd799439011","flow_json":{"version":"6.0","screens":[{"id":"LEAD_FORM","title":"Get a Quote","terminal":true,"success":true,"layout":{"type":"SingleColumnLayout","children":[{"type":"TextInput","name":"full_name","label":"Full Name","required":true,"input-type":"text"},{"type":"TextInput","name":"email","label":"Email","required":true,"input-type":"email"},{"type":"Footer","label":"Submit","on-click-action":{"name":"complete","payload":{"full_name":"${form.full_name}","email":"${form.email}"}}}]}}]}}; // \Zernio\Model\UploadWhatsAppFlowJsonRequest
 
 try {
     $result = $apiInstance->uploadWhatsAppFlowJson($flow_id, $upload_whats_app_flow_json_request);
@@ -615,11 +615,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **flow_id** | **string**| Flow ID | |
-| **upload_whats_app_flow_json_request** | [**\Late\Model\UploadWhatsAppFlowJsonRequest**](../Model/UploadWhatsAppFlowJsonRequest.md)|  | |
+| **upload_whats_app_flow_json_request** | [**\Zernio\Model\UploadWhatsAppFlowJsonRequest**](../Model/UploadWhatsAppFlowJsonRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UploadWhatsAppFlowJson200Response**](../Model/UploadWhatsAppFlowJson200Response.md)
+[**\Zernio\Model\UploadWhatsAppFlowJson200Response**](../Model/UploadWhatsAppFlowJson200Response.md)
 
 ### Authorization
 

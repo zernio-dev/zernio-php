@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetSequence200ResponseSequenceStepsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class GetSequence200ResponseSequenceStepsInner implements ModelInterface, ArrayA
     protected static $openAPITypes = [
         'order' => 'int',
         'delay_minutes' => 'int',
-        'message' => '\Late\Model\GetBroadcast200ResponseBroadcastMessage',
-        'template' => '\Late\Model\GetSequence200ResponseSequenceStepsInnerTemplate'
+        'message' => '\Zernio\Model\GetBroadcast200ResponseBroadcastMessage',
+        'template' => '\Zernio\Model\GetSequence200ResponseSequenceStepsInnerTemplate'
     ];
 
     /**
@@ -368,7 +368,7 @@ class GetSequence200ResponseSequenceStepsInner implements ModelInterface, ArrayA
     /**
      * Gets message
      *
-     * @return \Late\Model\GetBroadcast200ResponseBroadcastMessage|null
+     * @return \Zernio\Model\GetBroadcast200ResponseBroadcastMessage|null
      */
     public function getMessage()
     {
@@ -378,7 +378,7 @@ class GetSequence200ResponseSequenceStepsInner implements ModelInterface, ArrayA
     /**
      * Sets message
      *
-     * @param \Late\Model\GetBroadcast200ResponseBroadcastMessage|null $message message
+     * @param \Zernio\Model\GetBroadcast200ResponseBroadcastMessage|null $message message
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class GetSequence200ResponseSequenceStepsInner implements ModelInterface, ArrayA
     /**
      * Gets template
      *
-     * @return \Late\Model\GetSequence200ResponseSequenceStepsInnerTemplate|null
+     * @return \Zernio\Model\GetSequence200ResponseSequenceStepsInnerTemplate|null
      */
     public function getTemplate()
     {
@@ -405,7 +405,7 @@ class GetSequence200ResponseSequenceStepsInner implements ModelInterface, ArrayA
     /**
      * Sets template
      *
-     * @param \Late\Model\GetSequence200ResponseSequenceStepsInnerTemplate|null $template template
+     * @param \Zernio\Model\GetSequence200ResponseSequenceStepsInnerTemplate|null $template template
      *
      * @return self
      */

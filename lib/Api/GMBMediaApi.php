@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * GMBMediaApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -138,13 +138,13 @@ class GMBMediaApi
      * Upload photo
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request create_google_business_media_request (required)
+     * @param  \Zernio\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request create_google_business_media_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessMedia'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CreateGoogleBusinessMedia200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\CreateGoogleBusinessMedia200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function createGoogleBusinessMedia($account_id, $create_google_business_media_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
     {
@@ -158,13 +158,13 @@ class GMBMediaApi
      * Upload photo
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
+     * @param  \Zernio\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessMedia'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CreateGoogleBusinessMedia200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateGoogleBusinessMedia200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createGoogleBusinessMediaWithHttpInfo($account_id, $create_google_business_media_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
     {
@@ -196,19 +196,19 @@ class GMBMediaApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateGoogleBusinessMedia200Response',
+                        '\Zernio\Model\CreateGoogleBusinessMedia200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -230,7 +230,7 @@ class GMBMediaApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CreateGoogleBusinessMedia200Response',
+                '\Zernio\Model\CreateGoogleBusinessMedia200Response',
                 $request,
                 $response,
             );
@@ -239,7 +239,7 @@ class GMBMediaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateGoogleBusinessMedia200Response',
+                        '\Zernio\Model\CreateGoogleBusinessMedia200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -247,7 +247,7 @@ class GMBMediaApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -255,7 +255,7 @@ class GMBMediaApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -273,7 +273,7 @@ class GMBMediaApi
      * Upload photo
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
+     * @param  \Zernio\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessMedia'] to see the possible values for this operation
      *
@@ -296,7 +296,7 @@ class GMBMediaApi
      * Upload photo
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
+     * @param  \Zernio\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessMedia'] to see the possible values for this operation
      *
@@ -305,7 +305,7 @@ class GMBMediaApi
      */
     public function createGoogleBusinessMediaAsyncWithHttpInfo($account_id, $create_google_business_media_request, $location_id = null, string $contentType = self::contentTypes['createGoogleBusinessMedia'][0])
     {
-        $returnType = '\Late\Model\CreateGoogleBusinessMedia200Response';
+        $returnType = '\Zernio\Model\CreateGoogleBusinessMedia200Response';
         $request = $this->createGoogleBusinessMediaRequest($account_id, $create_google_business_media_request, $location_id, $contentType);
 
         return $this->client
@@ -348,7 +348,7 @@ class GMBMediaApi
      * Create request for operation 'createGoogleBusinessMedia'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
+     * @param  \Zernio\Model\CreateGoogleBusinessMediaRequest $create_google_business_media_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGoogleBusinessMedia'] to see the possible values for this operation
      *
@@ -476,9 +476,9 @@ class GMBMediaApi
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessMedia'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\DeleteGoogleBusinessMedia200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\DeleteGoogleBusinessMedia200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function deleteGoogleBusinessMedia($account_id, $media_id, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
     {
@@ -496,9 +496,9 @@ class GMBMediaApi
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessMedia'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\DeleteGoogleBusinessMedia200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteGoogleBusinessMedia200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteGoogleBusinessMediaWithHttpInfo($account_id, $media_id, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
     {
@@ -530,19 +530,19 @@ class GMBMediaApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\DeleteGoogleBusinessMedia200Response',
+                        '\Zernio\Model\DeleteGoogleBusinessMedia200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -564,7 +564,7 @@ class GMBMediaApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\DeleteGoogleBusinessMedia200Response',
+                '\Zernio\Model\DeleteGoogleBusinessMedia200Response',
                 $request,
                 $response,
             );
@@ -573,7 +573,7 @@ class GMBMediaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\DeleteGoogleBusinessMedia200Response',
+                        '\Zernio\Model\DeleteGoogleBusinessMedia200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -581,7 +581,7 @@ class GMBMediaApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -589,7 +589,7 @@ class GMBMediaApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -639,7 +639,7 @@ class GMBMediaApi
      */
     public function deleteGoogleBusinessMediaAsyncWithHttpInfo($account_id, $media_id, $location_id = null, string $contentType = self::contentTypes['deleteGoogleBusinessMedia'][0])
     {
-        $returnType = '\Late\Model\DeleteGoogleBusinessMedia200Response';
+        $returnType = '\Zernio\Model\DeleteGoogleBusinessMedia200Response';
         $request = $this->deleteGoogleBusinessMediaRequest($account_id, $media_id, $location_id, $contentType);
 
         return $this->client
@@ -813,9 +813,9 @@ class GMBMediaApi
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessMedia'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListGoogleBusinessMedia200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\ListGoogleBusinessMedia200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function listGoogleBusinessMedia($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
     {
@@ -834,9 +834,9 @@ class GMBMediaApi
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessMedia'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListGoogleBusinessMedia200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListGoogleBusinessMedia200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function listGoogleBusinessMediaWithHttpInfo($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
     {
@@ -868,19 +868,19 @@ class GMBMediaApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListGoogleBusinessMedia200Response',
+                        '\Zernio\Model\ListGoogleBusinessMedia200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -902,7 +902,7 @@ class GMBMediaApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListGoogleBusinessMedia200Response',
+                '\Zernio\Model\ListGoogleBusinessMedia200Response',
                 $request,
                 $response,
             );
@@ -911,7 +911,7 @@ class GMBMediaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListGoogleBusinessMedia200Response',
+                        '\Zernio\Model\ListGoogleBusinessMedia200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -919,7 +919,7 @@ class GMBMediaApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -927,7 +927,7 @@ class GMBMediaApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -979,7 +979,7 @@ class GMBMediaApi
      */
     public function listGoogleBusinessMediaAsyncWithHttpInfo($account_id, $location_id = null, $page_size = 100, $page_token = null, string $contentType = self::contentTypes['listGoogleBusinessMedia'][0])
     {
-        $returnType = '\Late\Model\ListGoogleBusinessMedia200Response';
+        $returnType = '\Zernio\Model\ListGoogleBusinessMedia200Response';
         $request = $this->listGoogleBusinessMediaRequest($account_id, $location_id, $page_size, $page_token, $contentType);
 
         return $this->client

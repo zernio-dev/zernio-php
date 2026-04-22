@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetPostTimeline200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetPostTimeline200Response implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'post_id' => 'string',
-        'timeline' => '\Late\Model\GetPostTimeline200ResponseTimelineInner[]'
+        'timeline' => '\Zernio\Model\GetPostTimeline200ResponseTimelineInner[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class GetPostTimeline200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets timeline
      *
-     * @return \Late\Model\GetPostTimeline200ResponseTimelineInner[]|null
+     * @return \Zernio\Model\GetPostTimeline200ResponseTimelineInner[]|null
      */
     public function getTimeline()
     {
@@ -337,7 +337,7 @@ class GetPostTimeline200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets timeline
      *
-     * @param \Late\Model\GetPostTimeline200ResponseTimelineInner[]|null $timeline timeline
+     * @param \Zernio\Model\GetPostTimeline200ResponseTimelineInner[]|null $timeline timeline
      *
      * @return self
      */

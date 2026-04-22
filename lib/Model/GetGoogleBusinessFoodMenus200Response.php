@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessFoodMenus200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class GetGoogleBusinessFoodMenus200Response implements ModelInterface, ArrayAcce
         'account_id' => 'string',
         'location_id' => 'string',
         'name' => 'string',
-        'menus' => '\Late\Model\FoodMenu[]'
+        'menus' => '\Zernio\Model\FoodMenu[]'
     ];
 
     /**
@@ -429,7 +429,7 @@ class GetGoogleBusinessFoodMenus200Response implements ModelInterface, ArrayAcce
     /**
      * Gets menus
      *
-     * @return \Late\Model\FoodMenu[]|null
+     * @return \Zernio\Model\FoodMenu[]|null
      */
     public function getMenus()
     {
@@ -439,7 +439,7 @@ class GetGoogleBusinessFoodMenus200Response implements ModelInterface, ArrayAcce
     /**
      * Sets menus
      *
-     * @param \Late\Model\FoodMenu[]|null $menus menus
+     * @param \Zernio\Model\FoodMenu[]|null $menus menus
      *
      * @return self
      */

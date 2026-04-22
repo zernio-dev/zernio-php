@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * AdTreeAdSet Class Doc Comment
  *
  * @category Class
  * @description Ad set (or ad group/line item depending on platform) with rolled-up metrics and child ads
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,15 +61,15 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'platform_ad_set_id' => 'string',
         'ad_set_name' => 'string',
-        'status' => '\Late\Model\AdStatus',
+        'status' => '\Zernio\Model\AdStatus',
         'ad_count' => 'int',
-        'budget' => '\Late\Model\AdTreeAdSetBudget',
-        'ad_set_budget' => '\Late\Model\AdTreeAdSetAdSetBudget',
-        'metrics' => '\Late\Model\AdMetrics',
+        'budget' => '\Zernio\Model\AdTreeAdSetBudget',
+        'ad_set_budget' => '\Zernio\Model\AdTreeAdSetAdSetBudget',
+        'metrics' => '\Zernio\Model\AdMetrics',
         'optimization_goal' => 'string',
         'bid_strategy' => 'string',
-        'promoted_object' => '\Late\Model\AdTreeAdSetPromotedObject',
-        'ads' => '\Late\Model\Ad[]'
+        'promoted_object' => '\Zernio\Model\AdTreeAdSetPromotedObject',
+        'ads' => '\Zernio\Model\Ad[]'
     ];
 
     /**
@@ -418,7 +418,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \Late\Model\AdStatus|null
+     * @return \Zernio\Model\AdStatus|null
      */
     public function getStatus()
     {
@@ -428,7 +428,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Late\Model\AdStatus|null $status Derived from child ad statuses
+     * @param \Zernio\Model\AdStatus|null $status Derived from child ad statuses
      *
      * @return self
      */
@@ -472,7 +472,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets budget
      *
-     * @return \Late\Model\AdTreeAdSetBudget|null
+     * @return \Zernio\Model\AdTreeAdSetBudget|null
      */
     public function getBudget()
     {
@@ -482,7 +482,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets budget
      *
-     * @param \Late\Model\AdTreeAdSetBudget|null $budget budget
+     * @param \Zernio\Model\AdTreeAdSetBudget|null $budget budget
      *
      * @return self
      */
@@ -499,7 +499,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ad_set_budget
      *
-     * @return \Late\Model\AdTreeAdSetAdSetBudget|null
+     * @return \Zernio\Model\AdTreeAdSetAdSetBudget|null
      */
     public function getAdSetBudget()
     {
@@ -509,7 +509,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ad_set_budget
      *
-     * @param \Late\Model\AdTreeAdSetAdSetBudget|null $ad_set_budget ad_set_budget
+     * @param \Zernio\Model\AdTreeAdSetAdSetBudget|null $ad_set_budget ad_set_budget
      *
      * @return self
      */
@@ -526,7 +526,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets metrics
      *
-     * @return \Late\Model\AdMetrics|null
+     * @return \Zernio\Model\AdMetrics|null
      */
     public function getMetrics()
     {
@@ -536,7 +536,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets metrics
      *
-     * @param \Late\Model\AdMetrics|null $metrics metrics
+     * @param \Zernio\Model\AdMetrics|null $metrics metrics
      *
      * @return self
      */
@@ -607,7 +607,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promoted_object
      *
-     * @return \Late\Model\AdTreeAdSetPromotedObject|null
+     * @return \Zernio\Model\AdTreeAdSetPromotedObject|null
      */
     public function getPromotedObject()
     {
@@ -617,7 +617,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets promoted_object
      *
-     * @param \Late\Model\AdTreeAdSetPromotedObject|null $promoted_object promoted_object
+     * @param \Zernio\Model\AdTreeAdSetPromotedObject|null $promoted_object promoted_object
      *
      * @return self
      */
@@ -634,7 +634,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ads
      *
-     * @return \Late\Model\Ad[]|null
+     * @return \Zernio\Model\Ad[]|null
      */
     public function getAds()
     {
@@ -644,7 +644,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ads
      *
-     * @param \Late\Model\Ad[]|null $ads Individual ads within this ad set (capped at 100). Returns a subset of Ad fields from the aggregation (core fields like _id, name, platform, status, budget, metrics, creative, goal are included; targeting and schedule may be absent).
+     * @param \Zernio\Model\Ad[]|null $ads Individual ads within this ad set (capped at 100). Returns a subset of Ad fields from the aggregation (core fields like _id, name, platform, status, budget, metrics, creative, goal are included; targeting and schedule may be absent).
      *
      * @return self
      */

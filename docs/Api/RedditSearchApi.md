@@ -1,4 +1,4 @@
-# Late\RedditSearchApi
+# Zernio\RedditSearchApi
 
 
 
@@ -13,7 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getRedditFeed()`
 
 ```php
-getRedditFeed($account_id, $subreddit, $sort, $limit, $after, $t): \Late\Model\SearchReddit200Response
+getRedditFeed($account_id, $subreddit, $sort, $limit, $after, $t): \Zernio\Model\SearchReddit200Response
 ```
 
 Get subreddit feed
@@ -28,10 +28,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\RedditSearchApi(
+$apiInstance = new Zernio\Api\RedditSearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -65,7 +65,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\SearchReddit200Response**](../Model/SearchReddit200Response.md)
+[**\Zernio\Model\SearchReddit200Response**](../Model/SearchReddit200Response.md)
 
 ### Authorization
 
@@ -83,7 +83,7 @@ try {
 ## `searchReddit()`
 
 ```php
-searchReddit($account_id, $q, $subreddit, $restrict_sr, $sort, $limit, $after): \Late\Model\SearchReddit200Response
+searchReddit($account_id, $q, $subreddit, $restrict_sr, $sort, $limit, $after): \Zernio\Model\SearchReddit200Response
 ```
 
 Search posts
@@ -98,10 +98,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\RedditSearchApi(
+$apiInstance = new Zernio\Api\RedditSearchApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -137,7 +137,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\SearchReddit200Response**](../Model/SearchReddit200Response.md)
+[**\Zernio\Model\SearchReddit200Response**](../Model/SearchReddit200Response.md)
 
 ### Authorization
 

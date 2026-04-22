@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadPostPost Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
         'status' => 'string',
         'scheduled_for' => '\DateTime',
         'published_at' => '\DateTime',
-        'platforms' => '\Late\Model\WebhookPayloadPostPostPlatformsInner[]'
+        'platforms' => '\Zernio\Model\WebhookPayloadPostPostPlatformsInner[]'
     ];
 
     /**
@@ -478,7 +478,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets platforms
      *
-     * @return \Late\Model\WebhookPayloadPostPostPlatformsInner[]
+     * @return \Zernio\Model\WebhookPayloadPostPostPlatformsInner[]
      */
     public function getPlatforms()
     {
@@ -488,7 +488,7 @@ class WebhookPayloadPostPost implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets platforms
      *
-     * @param \Late\Model\WebhookPayloadPostPostPlatformsInner[] $platforms platforms
+     * @param \Zernio\Model\WebhookPayloadPostPostPlatformsInner[] $platforms platforms
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ConversionEventUser Class Doc Comment
  *
  * @category Class
  * @description User identity fields. More signals mean higher match rates.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -67,7 +67,7 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
         'ip_address' => 'string',
         'user_agent' => 'string',
         'country' => 'string',
-        'click_ids' => '\Late\Model\ConversionEventUserClickIds'
+        'click_ids' => '\Zernio\Model\ConversionEventUserClickIds'
     ];
 
     /**
@@ -566,7 +566,7 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets click_ids
      *
-     * @return \Late\Model\ConversionEventUserClickIds|null
+     * @return \Zernio\Model\ConversionEventUserClickIds|null
      */
     public function getClickIds()
     {
@@ -576,7 +576,7 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets click_ids
      *
-     * @param \Late\Model\ConversionEventUserClickIds|null $click_ids click_ids
+     * @param \Zernio\Model\ConversionEventUserClickIds|null $click_ids click_ids
      *
      * @return self
      */

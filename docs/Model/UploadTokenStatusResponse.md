@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **token** | **string** |  | [optional]
 **status** | **string** |  | [optional]
-**files** | [**\Late\Model\UploadedFile[]**](UploadedFile.md) |  | [optional]
+**files** | [**\Zernio\Model\UploadedFile[]**](UploadedFile.md) |  | [optional]
 **created_at** | **\DateTime** |  | [optional]
 **expires_at** | **\DateTime** |  | [optional]
 **completed_at** | **\DateTime** |  | [optional]

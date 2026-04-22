@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SearchReddit200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class SearchReddit200Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'items' => '\Late\Model\RedditPost[]',
+        'items' => '\Zernio\Model\RedditPost[]',
         'after' => 'string',
         'before' => 'string'
     ];
@@ -307,7 +307,7 @@ class SearchReddit200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets items
      *
-     * @return \Late\Model\RedditPost[]|null
+     * @return \Zernio\Model\RedditPost[]|null
      */
     public function getItems()
     {
@@ -317,7 +317,7 @@ class SearchReddit200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets items
      *
-     * @param \Late\Model\RedditPost[]|null $items items
+     * @param \Zernio\Model\RedditPost[]|null $items items
      *
      * @return self
      */

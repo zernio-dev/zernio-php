@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * FoodMenuItemAttributes Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class FoodMenuItemAttributes implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'price' => '\Late\Model\Money',
+        'price' => '\Zernio\Model\Money',
         'spiciness' => 'string',
         'allergen' => 'string[]',
         'dietary_restriction' => 'string[]',
@@ -335,7 +335,7 @@ class FoodMenuItemAttributes implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets price
      *
-     * @return \Late\Model\Money|null
+     * @return \Zernio\Model\Money|null
      */
     public function getPrice()
     {
@@ -345,7 +345,7 @@ class FoodMenuItemAttributes implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets price
      *
-     * @param \Late\Model\Money|null $price price
+     * @param \Zernio\Model\Money|null $price price
      *
      * @return self
      */

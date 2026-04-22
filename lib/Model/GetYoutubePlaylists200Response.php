@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetYoutubePlaylists200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetYoutubePlaylists200Response implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'playlists' => '\Late\Model\GetYoutubePlaylists200ResponsePlaylistsInner[]',
+        'playlists' => '\Zernio\Model\GetYoutubePlaylists200ResponsePlaylistsInner[]',
         'default_playlist_id' => 'string'
     ];
 
@@ -300,7 +300,7 @@ class GetYoutubePlaylists200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets playlists
      *
-     * @return \Late\Model\GetYoutubePlaylists200ResponsePlaylistsInner[]|null
+     * @return \Zernio\Model\GetYoutubePlaylists200ResponsePlaylistsInner[]|null
      */
     public function getPlaylists()
     {
@@ -310,7 +310,7 @@ class GetYoutubePlaylists200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets playlists
      *
-     * @param \Late\Model\GetYoutubePlaylists200ResponsePlaylistsInner[]|null $playlists playlists
+     * @param \Zernio\Model\GetYoutubePlaylists200ResponsePlaylistsInner[]|null $playlists playlists
      *
      * @return self
      */

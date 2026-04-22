@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * EditInboxMessageRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class EditInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'account_id' => 'string',
         'text' => 'string',
-        'reply_markup' => '\Late\Model\EditInboxMessageRequestReplyMarkup'
+        'reply_markup' => '\Zernio\Model\EditInboxMessageRequestReplyMarkup'
     ];
 
     /**
@@ -364,7 +364,7 @@ class EditInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets reply_markup
      *
-     * @return \Late\Model\EditInboxMessageRequestReplyMarkup|null
+     * @return \Zernio\Model\EditInboxMessageRequestReplyMarkup|null
      */
     public function getReplyMarkup()
     {
@@ -374,7 +374,7 @@ class EditInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets reply_markup
      *
-     * @param \Late\Model\EditInboxMessageRequestReplyMarkup|null $reply_markup reply_markup
+     * @param \Zernio\Model\EditInboxMessageRequestReplyMarkup|null $reply_markup reply_markup
      *
      * @return self
      */

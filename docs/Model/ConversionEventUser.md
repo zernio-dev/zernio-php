@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **ip_address** | **string** | Client IP address. Sent plaintext. | [optional]
 **user_agent** | **string** | Client user-agent string. Sent plaintext. | [optional]
 **country** | **string** | ISO 3166-1 alpha-2 country code, e.g. &#39;us&#39;. | [optional]
-**click_ids** | [**\Late\Model\ConversionEventUserClickIds**](ConversionEventUserClickIds.md) |  | [optional]
+**click_ids** | [**\Zernio\Model\ConversionEventUserClickIds**](ConversionEventUserClickIds.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetDailyMetrics200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class GetDailyMetrics200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'daily_data' => '\Late\Model\GetDailyMetrics200ResponseDailyDataInner[]',
-        'platform_breakdown' => '\Late\Model\GetDailyMetrics200ResponsePlatformBreakdownInner[]'
+        'daily_data' => '\Zernio\Model\GetDailyMetrics200ResponseDailyDataInner[]',
+        'platform_breakdown' => '\Zernio\Model\GetDailyMetrics200ResponsePlatformBreakdownInner[]'
     ];
 
     /**
@@ -300,7 +300,7 @@ class GetDailyMetrics200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets daily_data
      *
-     * @return \Late\Model\GetDailyMetrics200ResponseDailyDataInner[]|null
+     * @return \Zernio\Model\GetDailyMetrics200ResponseDailyDataInner[]|null
      */
     public function getDailyData()
     {
@@ -310,7 +310,7 @@ class GetDailyMetrics200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets daily_data
      *
-     * @param \Late\Model\GetDailyMetrics200ResponseDailyDataInner[]|null $daily_data daily_data
+     * @param \Zernio\Model\GetDailyMetrics200ResponseDailyDataInner[]|null $daily_data daily_data
      *
      * @return self
      */
@@ -327,7 +327,7 @@ class GetDailyMetrics200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets platform_breakdown
      *
-     * @return \Late\Model\GetDailyMetrics200ResponsePlatformBreakdownInner[]|null
+     * @return \Zernio\Model\GetDailyMetrics200ResponsePlatformBreakdownInner[]|null
      */
     public function getPlatformBreakdown()
     {
@@ -337,7 +337,7 @@ class GetDailyMetrics200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets platform_breakdown
      *
-     * @param \Late\Model\GetDailyMetrics200ResponsePlatformBreakdownInner[]|null $platform_breakdown platform_breakdown
+     * @param \Zernio\Model\GetDailyMetrics200ResponsePlatformBreakdownInner[]|null $platform_breakdown platform_breakdown
      *
      * @return self
      */

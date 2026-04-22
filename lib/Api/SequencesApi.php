@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * SequencesApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -161,9 +161,9 @@ class SequencesApi
      * @param  string $sequence_id sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['activateSequence'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ActivateSequence200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\ActivateSequence200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function activateSequence($sequence_id, string $contentType = self::contentTypes['activateSequence'][0])
     {
@@ -179,9 +179,9 @@ class SequencesApi
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['activateSequence'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ActivateSequence200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ActivateSequence200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function activateSequenceWithHttpInfo($sequence_id, string $contentType = self::contentTypes['activateSequence'][0])
     {
@@ -213,19 +213,19 @@ class SequencesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ActivateSequence200Response',
+                        '\Zernio\Model\ActivateSequence200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -247,7 +247,7 @@ class SequencesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ActivateSequence200Response',
+                '\Zernio\Model\ActivateSequence200Response',
                 $request,
                 $response,
             );
@@ -256,7 +256,7 @@ class SequencesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ActivateSequence200Response',
+                        '\Zernio\Model\ActivateSequence200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -264,7 +264,7 @@ class SequencesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -272,7 +272,7 @@ class SequencesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -318,7 +318,7 @@ class SequencesApi
      */
     public function activateSequenceAsyncWithHttpInfo($sequence_id, string $contentType = self::contentTypes['activateSequence'][0])
     {
-        $returnType = '\Late\Model\ActivateSequence200Response';
+        $returnType = '\Zernio\Model\ActivateSequence200Response';
         $request = $this->activateSequenceRequest($sequence_id, $contentType);
 
         return $this->client
@@ -458,12 +458,12 @@ class SequencesApi
      *
      * Create sequence
      *
-     * @param  \Late\Model\CreateSequenceRequest $create_sequence_request create_sequence_request (required)
+     * @param  \Zernio\Model\CreateSequenceRequest $create_sequence_request create_sequence_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSequence'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CreateSequence200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\CreateSequence200Response|\Zernio\Model\InlineObject
      */
     public function createSequence($create_sequence_request, string $contentType = self::contentTypes['createSequence'][0])
     {
@@ -476,12 +476,12 @@ class SequencesApi
      *
      * Create sequence
      *
-     * @param  \Late\Model\CreateSequenceRequest $create_sequence_request (required)
+     * @param  \Zernio\Model\CreateSequenceRequest $create_sequence_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSequence'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CreateSequence200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateSequence200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createSequenceWithHttpInfo($create_sequence_request, string $contentType = self::contentTypes['createSequence'][0])
     {
@@ -513,13 +513,13 @@ class SequencesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateSequence200Response',
+                        '\Zernio\Model\CreateSequence200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -541,7 +541,7 @@ class SequencesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CreateSequence200Response',
+                '\Zernio\Model\CreateSequence200Response',
                 $request,
                 $response,
             );
@@ -550,7 +550,7 @@ class SequencesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateSequence200Response',
+                        '\Zernio\Model\CreateSequence200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -558,7 +558,7 @@ class SequencesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -575,7 +575,7 @@ class SequencesApi
      *
      * Create sequence
      *
-     * @param  \Late\Model\CreateSequenceRequest $create_sequence_request (required)
+     * @param  \Zernio\Model\CreateSequenceRequest $create_sequence_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSequence'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -596,7 +596,7 @@ class SequencesApi
      *
      * Create sequence
      *
-     * @param  \Late\Model\CreateSequenceRequest $create_sequence_request (required)
+     * @param  \Zernio\Model\CreateSequenceRequest $create_sequence_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSequence'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -604,7 +604,7 @@ class SequencesApi
      */
     public function createSequenceAsyncWithHttpInfo($create_sequence_request, string $contentType = self::contentTypes['createSequence'][0])
     {
-        $returnType = '\Late\Model\CreateSequence200Response';
+        $returnType = '\Zernio\Model\CreateSequence200Response';
         $request = $this->createSequenceRequest($create_sequence_request, $contentType);
 
         return $this->client
@@ -646,7 +646,7 @@ class SequencesApi
     /**
      * Create request for operation 'createSequence'
      *
-     * @param  \Late\Model\CreateSequenceRequest $create_sequence_request (required)
+     * @param  \Zernio\Model\CreateSequenceRequest $create_sequence_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSequence'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -746,7 +746,7 @@ class SequencesApi
      * @param  string $sequence_id sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSequence'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -763,7 +763,7 @@ class SequencesApi
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSequence'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -800,7 +800,7 @@ class SequencesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -808,7 +808,7 @@ class SequencesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -982,12 +982,12 @@ class SequencesApi
      * Enroll contacts in a sequence
      *
      * @param  string $sequence_id sequence_id (required)
-     * @param  \Late\Model\EnrollContactsRequest $enroll_contacts_request enroll_contacts_request (required)
+     * @param  \Zernio\Model\EnrollContactsRequest $enroll_contacts_request enroll_contacts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enrollContacts'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\EnrollContacts200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\EnrollContacts200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function enrollContacts($sequence_id, $enroll_contacts_request, string $contentType = self::contentTypes['enrollContacts'][0])
     {
@@ -1001,12 +1001,12 @@ class SequencesApi
      * Enroll contacts in a sequence
      *
      * @param  string $sequence_id (required)
-     * @param  \Late\Model\EnrollContactsRequest $enroll_contacts_request (required)
+     * @param  \Zernio\Model\EnrollContactsRequest $enroll_contacts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enrollContacts'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\EnrollContacts200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\EnrollContacts200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function enrollContactsWithHttpInfo($sequence_id, $enroll_contacts_request, string $contentType = self::contentTypes['enrollContacts'][0])
     {
@@ -1038,19 +1038,19 @@ class SequencesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\EnrollContacts200Response',
+                        '\Zernio\Model\EnrollContacts200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1072,7 +1072,7 @@ class SequencesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\EnrollContacts200Response',
+                '\Zernio\Model\EnrollContacts200Response',
                 $request,
                 $response,
             );
@@ -1081,7 +1081,7 @@ class SequencesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\EnrollContacts200Response',
+                        '\Zernio\Model\EnrollContacts200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1089,7 +1089,7 @@ class SequencesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1097,7 +1097,7 @@ class SequencesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1115,7 +1115,7 @@ class SequencesApi
      * Enroll contacts in a sequence
      *
      * @param  string $sequence_id (required)
-     * @param  \Late\Model\EnrollContactsRequest $enroll_contacts_request (required)
+     * @param  \Zernio\Model\EnrollContactsRequest $enroll_contacts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enrollContacts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1137,7 +1137,7 @@ class SequencesApi
      * Enroll contacts in a sequence
      *
      * @param  string $sequence_id (required)
-     * @param  \Late\Model\EnrollContactsRequest $enroll_contacts_request (required)
+     * @param  \Zernio\Model\EnrollContactsRequest $enroll_contacts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enrollContacts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1145,7 +1145,7 @@ class SequencesApi
      */
     public function enrollContactsAsyncWithHttpInfo($sequence_id, $enroll_contacts_request, string $contentType = self::contentTypes['enrollContacts'][0])
     {
-        $returnType = '\Late\Model\EnrollContacts200Response';
+        $returnType = '\Zernio\Model\EnrollContacts200Response';
         $request = $this->enrollContactsRequest($sequence_id, $enroll_contacts_request, $contentType);
 
         return $this->client
@@ -1188,7 +1188,7 @@ class SequencesApi
      * Create request for operation 'enrollContacts'
      *
      * @param  string $sequence_id (required)
-     * @param  \Late\Model\EnrollContactsRequest $enroll_contacts_request (required)
+     * @param  \Zernio\Model\EnrollContactsRequest $enroll_contacts_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['enrollContacts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1303,9 +1303,9 @@ class SequencesApi
      * @param  string $sequence_id sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSequence'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetSequence200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\GetSequence200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getSequence($sequence_id, string $contentType = self::contentTypes['getSequence'][0])
     {
@@ -1321,9 +1321,9 @@ class SequencesApi
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSequence'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetSequence200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetSequence200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSequenceWithHttpInfo($sequence_id, string $contentType = self::contentTypes['getSequence'][0])
     {
@@ -1355,19 +1355,19 @@ class SequencesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetSequence200Response',
+                        '\Zernio\Model\GetSequence200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1389,7 +1389,7 @@ class SequencesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetSequence200Response',
+                '\Zernio\Model\GetSequence200Response',
                 $request,
                 $response,
             );
@@ -1398,7 +1398,7 @@ class SequencesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetSequence200Response',
+                        '\Zernio\Model\GetSequence200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1406,7 +1406,7 @@ class SequencesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1414,7 +1414,7 @@ class SequencesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1460,7 +1460,7 @@ class SequencesApi
      */
     public function getSequenceAsyncWithHttpInfo($sequence_id, string $contentType = self::contentTypes['getSequence'][0])
     {
-        $returnType = '\Late\Model\GetSequence200Response';
+        $returnType = '\Zernio\Model\GetSequence200Response';
         $request = $this->getSequenceRequest($sequence_id, $contentType);
 
         return $this->client
@@ -1606,9 +1606,9 @@ class SequencesApi
      * @param  int|null $skip skip (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSequenceEnrollments'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListSequenceEnrollments200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\ListSequenceEnrollments200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function listSequenceEnrollments($sequence_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequenceEnrollments'][0])
     {
@@ -1627,9 +1627,9 @@ class SequencesApi
      * @param  int|null $skip (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSequenceEnrollments'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListSequenceEnrollments200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListSequenceEnrollments200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSequenceEnrollmentsWithHttpInfo($sequence_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequenceEnrollments'][0])
     {
@@ -1661,19 +1661,19 @@ class SequencesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListSequenceEnrollments200Response',
+                        '\Zernio\Model\ListSequenceEnrollments200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1695,7 +1695,7 @@ class SequencesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListSequenceEnrollments200Response',
+                '\Zernio\Model\ListSequenceEnrollments200Response',
                 $request,
                 $response,
             );
@@ -1704,7 +1704,7 @@ class SequencesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListSequenceEnrollments200Response',
+                        '\Zernio\Model\ListSequenceEnrollments200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1712,7 +1712,7 @@ class SequencesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1720,7 +1720,7 @@ class SequencesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1772,7 +1772,7 @@ class SequencesApi
      */
     public function listSequenceEnrollmentsAsyncWithHttpInfo($sequence_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequenceEnrollments'][0])
     {
-        $returnType = '\Late\Model\ListSequenceEnrollments200Response';
+        $returnType = '\Zernio\Model\ListSequenceEnrollments200Response';
         $request = $this->listSequenceEnrollmentsRequest($sequence_id, $status, $limit, $skip, $contentType);
 
         return $this->client
@@ -1951,9 +1951,9 @@ class SequencesApi
      * @param  int|null $skip skip (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSequences'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListSequences200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListSequences200Response|\Zernio\Model\InlineObject
      */
     public function listSequences($profile_id = null, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
     {
@@ -1972,9 +1972,9 @@ class SequencesApi
      * @param  int|null $skip (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSequences'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListSequences200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListSequences200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSequencesWithHttpInfo($profile_id = null, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
     {
@@ -2006,13 +2006,13 @@ class SequencesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListSequences200Response',
+                        '\Zernio\Model\ListSequences200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2034,7 +2034,7 @@ class SequencesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListSequences200Response',
+                '\Zernio\Model\ListSequences200Response',
                 $request,
                 $response,
             );
@@ -2043,7 +2043,7 @@ class SequencesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListSequences200Response',
+                        '\Zernio\Model\ListSequences200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2051,7 +2051,7 @@ class SequencesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2103,7 +2103,7 @@ class SequencesApi
      */
     public function listSequencesAsyncWithHttpInfo($profile_id = null, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listSequences'][0])
     {
-        $returnType = '\Late\Model\ListSequences200Response';
+        $returnType = '\Zernio\Model\ListSequences200Response';
         $request = $this->listSequencesRequest($profile_id, $status, $limit, $skip, $contentType);
 
         return $this->client
@@ -2274,9 +2274,9 @@ class SequencesApi
      * @param  string $sequence_id sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pauseSequence'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ActivateSequence200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\ActivateSequence200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function pauseSequence($sequence_id, string $contentType = self::contentTypes['pauseSequence'][0])
     {
@@ -2292,9 +2292,9 @@ class SequencesApi
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pauseSequence'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ActivateSequence200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ActivateSequence200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function pauseSequenceWithHttpInfo($sequence_id, string $contentType = self::contentTypes['pauseSequence'][0])
     {
@@ -2326,19 +2326,19 @@ class SequencesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ActivateSequence200Response',
+                        '\Zernio\Model\ActivateSequence200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2360,7 +2360,7 @@ class SequencesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ActivateSequence200Response',
+                '\Zernio\Model\ActivateSequence200Response',
                 $request,
                 $response,
             );
@@ -2369,7 +2369,7 @@ class SequencesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ActivateSequence200Response',
+                        '\Zernio\Model\ActivateSequence200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2377,7 +2377,7 @@ class SequencesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2385,7 +2385,7 @@ class SequencesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2431,7 +2431,7 @@ class SequencesApi
      */
     public function pauseSequenceAsyncWithHttpInfo($sequence_id, string $contentType = self::contentTypes['pauseSequence'][0])
     {
-        $returnType = '\Late\Model\ActivateSequence200Response';
+        $returnType = '\Zernio\Model\ActivateSequence200Response';
         $request = $this->pauseSequenceRequest($sequence_id, $contentType);
 
         return $this->client
@@ -2575,7 +2575,7 @@ class SequencesApi
      * @param  string $contact_id contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unenrollContact'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -2593,7 +2593,7 @@ class SequencesApi
      * @param  string $contact_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unenrollContact'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -2630,7 +2630,7 @@ class SequencesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2638,7 +2638,7 @@ class SequencesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2832,9 +2832,9 @@ class SequencesApi
      * @param  string $sequence_id sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSequence'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateSequence200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\UpdateSequence200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function updateSequence($sequence_id, string $contentType = self::contentTypes['updateSequence'][0])
     {
@@ -2850,9 +2850,9 @@ class SequencesApi
      * @param  string $sequence_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSequence'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateSequence200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateSequence200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateSequenceWithHttpInfo($sequence_id, string $contentType = self::contentTypes['updateSequence'][0])
     {
@@ -2884,19 +2884,19 @@ class SequencesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateSequence200Response',
+                        '\Zernio\Model\UpdateSequence200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2918,7 +2918,7 @@ class SequencesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateSequence200Response',
+                '\Zernio\Model\UpdateSequence200Response',
                 $request,
                 $response,
             );
@@ -2927,7 +2927,7 @@ class SequencesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateSequence200Response',
+                        '\Zernio\Model\UpdateSequence200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2935,7 +2935,7 @@ class SequencesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2943,7 +2943,7 @@ class SequencesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2989,7 +2989,7 @@ class SequencesApi
      */
     public function updateSequenceAsyncWithHttpInfo($sequence_id, string $contentType = self::contentTypes['updateSequence'][0])
     {
-        $returnType = '\Late\Model\UpdateSequence200Response';
+        $returnType = '\Zernio\Model\UpdateSequence200Response';
         $request = $this->updateSequenceRequest($sequence_id, $contentType);
 
         return $this->client

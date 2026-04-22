@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListAdAudiences200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ListAdAudiences200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'audiences' => '\Late\Model\ListAdAudiences200ResponseAudiencesInner[]'
+        'audiences' => '\Zernio\Model\ListAdAudiences200ResponseAudiencesInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class ListAdAudiences200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets audiences
      *
-     * @return \Late\Model\ListAdAudiences200ResponseAudiencesInner[]|null
+     * @return \Zernio\Model\ListAdAudiences200ResponseAudiencesInner[]|null
      */
     public function getAudiences()
     {
@@ -303,7 +303,7 @@ class ListAdAudiences200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets audiences
      *
-     * @param \Late\Model\ListAdAudiences200ResponseAudiencesInner[]|null $audiences audiences
+     * @param \Zernio\Model\ListAdAudiences200ResponseAudiencesInner[]|null $audiences audiences
      *
      * @return self
      */

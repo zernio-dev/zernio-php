@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetContentDecay200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetContentDecay200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'buckets' => '\Late\Model\GetContentDecay200ResponseBucketsInner[]'
+        'buckets' => '\Zernio\Model\GetContentDecay200ResponseBucketsInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class GetContentDecay200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets buckets
      *
-     * @return \Late\Model\GetContentDecay200ResponseBucketsInner[]|null
+     * @return \Zernio\Model\GetContentDecay200ResponseBucketsInner[]|null
      */
     public function getBuckets()
     {
@@ -303,7 +303,7 @@ class GetContentDecay200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets buckets
      *
-     * @param \Late\Model\GetContentDecay200ResponseBucketsInner[]|null $buckets buckets
+     * @param \Zernio\Model\GetContentDecay200ResponseBucketsInner[]|null $buckets buckets
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * PlatformAnalytics Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
         'platform_post_id' => 'string',
         'account_id' => 'string',
         'account_username' => 'string',
-        'analytics' => '\Late\Model\PostAnalytics',
+        'analytics' => '\Zernio\Model\PostAnalytics',
         'sync_status' => 'string',
         'platform_post_url' => 'string',
         'error_message' => 'string'
@@ -544,7 +544,7 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets analytics
      *
-     * @return \Late\Model\PostAnalytics|null
+     * @return \Zernio\Model\PostAnalytics|null
      */
     public function getAnalytics()
     {
@@ -554,7 +554,7 @@ class PlatformAnalytics implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets analytics
      *
-     * @param \Late\Model\PostAnalytics|null $analytics analytics
+     * @param \Zernio\Model\PostAnalytics|null $analytics analytics
      *
      * @return self
      */

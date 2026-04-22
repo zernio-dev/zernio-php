@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetFollowerStats200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class GetFollowerStats200Response implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'accounts' => '\Late\Model\AccountWithFollowerStats[]',
-        'stats' => 'array<string,\Late\Model\GetFollowerStats200ResponseStatsValueInner[]>',
-        'date_range' => '\Late\Model\GetFollowerStats200ResponseDateRange',
+        'accounts' => '\Zernio\Model\AccountWithFollowerStats[]',
+        'stats' => 'array<string,\Zernio\Model\GetFollowerStats200ResponseStatsValueInner[]>',
+        'date_range' => '\Zernio\Model\GetFollowerStats200ResponseDateRange',
         'granularity' => 'string'
     ];
 
@@ -314,7 +314,7 @@ class GetFollowerStats200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets accounts
      *
-     * @return \Late\Model\AccountWithFollowerStats[]|null
+     * @return \Zernio\Model\AccountWithFollowerStats[]|null
      */
     public function getAccounts()
     {
@@ -324,7 +324,7 @@ class GetFollowerStats200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets accounts
      *
-     * @param \Late\Model\AccountWithFollowerStats[]|null $accounts accounts
+     * @param \Zernio\Model\AccountWithFollowerStats[]|null $accounts accounts
      *
      * @return self
      */
@@ -341,7 +341,7 @@ class GetFollowerStats200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets stats
      *
-     * @return array<string,\Late\Model\GetFollowerStats200ResponseStatsValueInner[]>|null
+     * @return array<string,\Zernio\Model\GetFollowerStats200ResponseStatsValueInner[]>|null
      */
     public function getStats()
     {
@@ -351,7 +351,7 @@ class GetFollowerStats200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets stats
      *
-     * @param array<string,\Late\Model\GetFollowerStats200ResponseStatsValueInner[]>|null $stats stats
+     * @param array<string,\Zernio\Model\GetFollowerStats200ResponseStatsValueInner[]>|null $stats stats
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class GetFollowerStats200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets date_range
      *
-     * @return \Late\Model\GetFollowerStats200ResponseDateRange|null
+     * @return \Zernio\Model\GetFollowerStats200ResponseDateRange|null
      */
     public function getDateRange()
     {
@@ -378,7 +378,7 @@ class GetFollowerStats200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets date_range
      *
-     * @param \Late\Model\GetFollowerStats200ResponseDateRange|null $date_range date_range
+     * @param \Zernio\Model\GetFollowerStats200ResponseDateRange|null $date_range date_range
      *
      * @return self
      */

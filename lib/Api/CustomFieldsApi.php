@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * CustomFieldsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -150,7 +150,7 @@ class CustomFieldsApi
      * @param  string $slug slug (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clearContactFieldValue'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -168,7 +168,7 @@ class CustomFieldsApi
      * @param  string $slug (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['clearContactFieldValue'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -205,7 +205,7 @@ class CustomFieldsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -213,7 +213,7 @@ class CustomFieldsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -404,12 +404,12 @@ class CustomFieldsApi
      *
      * Create custom field
      *
-     * @param  \Late\Model\CreateCustomFieldRequest $create_custom_field_request create_custom_field_request (required)
+     * @param  \Zernio\Model\CreateCustomFieldRequest $create_custom_field_request create_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomField'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CreateCustomField200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\CreateCustomField200Response|\Zernio\Model\InlineObject
      */
     public function createCustomField($create_custom_field_request, string $contentType = self::contentTypes['createCustomField'][0])
     {
@@ -422,12 +422,12 @@ class CustomFieldsApi
      *
      * Create custom field
      *
-     * @param  \Late\Model\CreateCustomFieldRequest $create_custom_field_request (required)
+     * @param  \Zernio\Model\CreateCustomFieldRequest $create_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomField'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CreateCustomField200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateCustomField200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCustomFieldWithHttpInfo($create_custom_field_request, string $contentType = self::contentTypes['createCustomField'][0])
     {
@@ -459,13 +459,13 @@ class CustomFieldsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateCustomField200Response',
+                        '\Zernio\Model\CreateCustomField200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -487,7 +487,7 @@ class CustomFieldsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CreateCustomField200Response',
+                '\Zernio\Model\CreateCustomField200Response',
                 $request,
                 $response,
             );
@@ -496,7 +496,7 @@ class CustomFieldsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateCustomField200Response',
+                        '\Zernio\Model\CreateCustomField200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -504,7 +504,7 @@ class CustomFieldsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -521,7 +521,7 @@ class CustomFieldsApi
      *
      * Create custom field
      *
-     * @param  \Late\Model\CreateCustomFieldRequest $create_custom_field_request (required)
+     * @param  \Zernio\Model\CreateCustomFieldRequest $create_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -542,7 +542,7 @@ class CustomFieldsApi
      *
      * Create custom field
      *
-     * @param  \Late\Model\CreateCustomFieldRequest $create_custom_field_request (required)
+     * @param  \Zernio\Model\CreateCustomFieldRequest $create_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -550,7 +550,7 @@ class CustomFieldsApi
      */
     public function createCustomFieldAsyncWithHttpInfo($create_custom_field_request, string $contentType = self::contentTypes['createCustomField'][0])
     {
-        $returnType = '\Late\Model\CreateCustomField200Response';
+        $returnType = '\Zernio\Model\CreateCustomField200Response';
         $request = $this->createCustomFieldRequest($create_custom_field_request, $contentType);
 
         return $this->client
@@ -592,7 +592,7 @@ class CustomFieldsApi
     /**
      * Create request for operation 'createCustomField'
      *
-     * @param  \Late\Model\CreateCustomFieldRequest $create_custom_field_request (required)
+     * @param  \Zernio\Model\CreateCustomFieldRequest $create_custom_field_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -692,7 +692,7 @@ class CustomFieldsApi
      * @param  string $field_id field_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomField'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -709,7 +709,7 @@ class CustomFieldsApi
      * @param  string $field_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCustomField'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -746,7 +746,7 @@ class CustomFieldsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -754,7 +754,7 @@ class CustomFieldsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -930,9 +930,9 @@ class CustomFieldsApi
      * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCustomFields'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListCustomFields200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListCustomFields200Response|\Zernio\Model\InlineObject
      */
     public function listCustomFields($profile_id = null, string $contentType = self::contentTypes['listCustomFields'][0])
     {
@@ -948,9 +948,9 @@ class CustomFieldsApi
      * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCustomFields'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListCustomFields200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListCustomFields200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCustomFieldsWithHttpInfo($profile_id = null, string $contentType = self::contentTypes['listCustomFields'][0])
     {
@@ -982,13 +982,13 @@ class CustomFieldsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListCustomFields200Response',
+                        '\Zernio\Model\ListCustomFields200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1010,7 +1010,7 @@ class CustomFieldsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListCustomFields200Response',
+                '\Zernio\Model\ListCustomFields200Response',
                 $request,
                 $response,
             );
@@ -1019,7 +1019,7 @@ class CustomFieldsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListCustomFields200Response',
+                        '\Zernio\Model\ListCustomFields200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1027,7 +1027,7 @@ class CustomFieldsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1073,7 +1073,7 @@ class CustomFieldsApi
      */
     public function listCustomFieldsAsyncWithHttpInfo($profile_id = null, string $contentType = self::contentTypes['listCustomFields'][0])
     {
-        $returnType = '\Late\Model\ListCustomFields200Response';
+        $returnType = '\Zernio\Model\ListCustomFields200Response';
         $request = $this->listCustomFieldsRequest($profile_id, $contentType);
 
         return $this->client
@@ -1210,10 +1210,10 @@ class CustomFieldsApi
      *
      * @param  string $contact_id contact_id (required)
      * @param  string $slug slug (required)
-     * @param  \Late\Model\SetContactFieldValueRequest $set_contact_field_value_request set_contact_field_value_request (required)
+     * @param  \Zernio\Model\SetContactFieldValueRequest $set_contact_field_value_request set_contact_field_value_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setContactFieldValue'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1229,10 +1229,10 @@ class CustomFieldsApi
      *
      * @param  string $contact_id (required)
      * @param  string $slug (required)
-     * @param  \Late\Model\SetContactFieldValueRequest $set_contact_field_value_request (required)
+     * @param  \Zernio\Model\SetContactFieldValueRequest $set_contact_field_value_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setContactFieldValue'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1269,7 +1269,7 @@ class CustomFieldsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1277,7 +1277,7 @@ class CustomFieldsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1296,7 +1296,7 @@ class CustomFieldsApi
      *
      * @param  string $contact_id (required)
      * @param  string $slug (required)
-     * @param  \Late\Model\SetContactFieldValueRequest $set_contact_field_value_request (required)
+     * @param  \Zernio\Model\SetContactFieldValueRequest $set_contact_field_value_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setContactFieldValue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1319,7 +1319,7 @@ class CustomFieldsApi
      *
      * @param  string $contact_id (required)
      * @param  string $slug (required)
-     * @param  \Late\Model\SetContactFieldValueRequest $set_contact_field_value_request (required)
+     * @param  \Zernio\Model\SetContactFieldValueRequest $set_contact_field_value_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setContactFieldValue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1358,7 +1358,7 @@ class CustomFieldsApi
      *
      * @param  string $contact_id (required)
      * @param  string $slug (required)
-     * @param  \Late\Model\SetContactFieldValueRequest $set_contact_field_value_request (required)
+     * @param  \Zernio\Model\SetContactFieldValueRequest $set_contact_field_value_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setContactFieldValue'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1486,12 +1486,12 @@ class CustomFieldsApi
      * Update custom field
      *
      * @param  string $field_id field_id (required)
-     * @param  \Late\Model\UpdateCustomFieldRequest|null $update_custom_field_request update_custom_field_request (optional)
+     * @param  \Zernio\Model\UpdateCustomFieldRequest|null $update_custom_field_request update_custom_field_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateCustomField200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\UpdateCustomField200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function updateCustomField($field_id, $update_custom_field_request = null, string $contentType = self::contentTypes['updateCustomField'][0])
     {
@@ -1505,12 +1505,12 @@ class CustomFieldsApi
      * Update custom field
      *
      * @param  string $field_id (required)
-     * @param  \Late\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
+     * @param  \Zernio\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateCustomField200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateCustomField200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateCustomFieldWithHttpInfo($field_id, $update_custom_field_request = null, string $contentType = self::contentTypes['updateCustomField'][0])
     {
@@ -1542,19 +1542,19 @@ class CustomFieldsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateCustomField200Response',
+                        '\Zernio\Model\UpdateCustomField200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1576,7 +1576,7 @@ class CustomFieldsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateCustomField200Response',
+                '\Zernio\Model\UpdateCustomField200Response',
                 $request,
                 $response,
             );
@@ -1585,7 +1585,7 @@ class CustomFieldsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateCustomField200Response',
+                        '\Zernio\Model\UpdateCustomField200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1593,7 +1593,7 @@ class CustomFieldsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1601,7 +1601,7 @@ class CustomFieldsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1619,7 +1619,7 @@ class CustomFieldsApi
      * Update custom field
      *
      * @param  string $field_id (required)
-     * @param  \Late\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
+     * @param  \Zernio\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1641,7 +1641,7 @@ class CustomFieldsApi
      * Update custom field
      *
      * @param  string $field_id (required)
-     * @param  \Late\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
+     * @param  \Zernio\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1649,7 +1649,7 @@ class CustomFieldsApi
      */
     public function updateCustomFieldAsyncWithHttpInfo($field_id, $update_custom_field_request = null, string $contentType = self::contentTypes['updateCustomField'][0])
     {
-        $returnType = '\Late\Model\UpdateCustomField200Response';
+        $returnType = '\Zernio\Model\UpdateCustomField200Response';
         $request = $this->updateCustomFieldRequest($field_id, $update_custom_field_request, $contentType);
 
         return $this->client
@@ -1692,7 +1692,7 @@ class CustomFieldsApi
      * Create request for operation 'updateCustomField'
      *
      * @param  string $field_id (required)
-     * @param  \Late\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
+     * @param  \Zernio\Model\UpdateCustomFieldRequest|null $update_custom_field_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCustomField'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

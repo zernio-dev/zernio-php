@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetLinkedInPostReactions200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,8 +63,8 @@ class GetLinkedInPostReactions200Response implements ModelInterface, ArrayAccess
         'account_type' => 'string',
         'username' => 'string',
         'post_urn' => 'string',
-        'reactions' => '\Late\Model\GetLinkedInPostReactions200ResponseReactionsInner[]',
-        'pagination' => '\Late\Model\GetLinkedInPostReactions200ResponsePagination',
+        'reactions' => '\Zernio\Model\GetLinkedInPostReactions200ResponseReactionsInner[]',
+        'pagination' => '\Zernio\Model\GetLinkedInPostReactions200ResponsePagination',
         'last_updated' => '\DateTime'
     ];
 
@@ -477,7 +477,7 @@ class GetLinkedInPostReactions200Response implements ModelInterface, ArrayAccess
     /**
      * Gets reactions
      *
-     * @return \Late\Model\GetLinkedInPostReactions200ResponseReactionsInner[]|null
+     * @return \Zernio\Model\GetLinkedInPostReactions200ResponseReactionsInner[]|null
      */
     public function getReactions()
     {
@@ -487,7 +487,7 @@ class GetLinkedInPostReactions200Response implements ModelInterface, ArrayAccess
     /**
      * Sets reactions
      *
-     * @param \Late\Model\GetLinkedInPostReactions200ResponseReactionsInner[]|null $reactions reactions
+     * @param \Zernio\Model\GetLinkedInPostReactions200ResponseReactionsInner[]|null $reactions reactions
      *
      * @return self
      */
@@ -504,7 +504,7 @@ class GetLinkedInPostReactions200Response implements ModelInterface, ArrayAccess
     /**
      * Gets pagination
      *
-     * @return \Late\Model\GetLinkedInPostReactions200ResponsePagination|null
+     * @return \Zernio\Model\GetLinkedInPostReactions200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -514,7 +514,7 @@ class GetLinkedInPostReactions200Response implements ModelInterface, ArrayAccess
     /**
      * Sets pagination
      *
-     * @param \Late\Model\GetLinkedInPostReactions200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\GetLinkedInPostReactions200ResponsePagination|null $pagination pagination
      *
      * @return self
      */

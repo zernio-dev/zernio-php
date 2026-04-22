@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * AccountWithFollowerStats Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPITypes = [
         '_id' => 'string',
         'platform' => 'string',
-        'profile_id' => '\Late\Model\SocialAccountProfileId',
+        'profile_id' => '\Zernio\Model\SocialAccountProfileId',
         'username' => 'string',
         'display_name' => 'string',
         'profile_picture' => 'string',
@@ -76,7 +76,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
         'growth' => 'float',
         'growth_percentage' => 'float',
         'data_points' => 'float',
-        'account_stats' => '\Late\Model\AccountWithFollowerStatsAllOfAccountStats'
+        'account_stats' => '\Zernio\Model\AccountWithFollowerStatsAllOfAccountStats'
     ];
 
     /**
@@ -545,7 +545,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets profile_id
      *
-     * @return \Late\Model\SocialAccountProfileId|null
+     * @return \Zernio\Model\SocialAccountProfileId|null
      */
     public function getProfileId()
     {
@@ -555,7 +555,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets profile_id
      *
-     * @param \Late\Model\SocialAccountProfileId|null $profile_id profile_id
+     * @param \Zernio\Model\SocialAccountProfileId|null $profile_id profile_id
      *
      * @return self
      */
@@ -977,7 +977,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets account_stats
      *
-     * @return \Late\Model\AccountWithFollowerStatsAllOfAccountStats|null
+     * @return \Zernio\Model\AccountWithFollowerStatsAllOfAccountStats|null
      */
     public function getAccountStats()
     {
@@ -987,7 +987,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets account_stats
      *
-     * @param \Late\Model\AccountWithFollowerStatsAllOfAccountStats|null $account_stats account_stats
+     * @param \Zernio\Model\AccountWithFollowerStatsAllOfAccountStats|null $account_stats account_stats
      *
      * @return self
      */

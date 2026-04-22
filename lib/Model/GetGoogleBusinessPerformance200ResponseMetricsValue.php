@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessPerformance200ResponseMetricsValue Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetGoogleBusinessPerformance200ResponseMetricsValue implements ModelInterf
       */
     protected static $openAPITypes = [
         'total' => 'int',
-        'values' => '\Late\Model\GetGoogleBusinessPerformance200ResponseMetricsValueValuesInner[]'
+        'values' => '\Zernio\Model\GetGoogleBusinessPerformance200ResponseMetricsValueValuesInner[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class GetGoogleBusinessPerformance200ResponseMetricsValue implements ModelInterf
     /**
      * Gets values
      *
-     * @return \Late\Model\GetGoogleBusinessPerformance200ResponseMetricsValueValuesInner[]|null
+     * @return \Zernio\Model\GetGoogleBusinessPerformance200ResponseMetricsValueValuesInner[]|null
      */
     public function getValues()
     {
@@ -337,7 +337,7 @@ class GetGoogleBusinessPerformance200ResponseMetricsValue implements ModelInterf
     /**
      * Sets values
      *
-     * @param \Late\Model\GetGoogleBusinessPerformance200ResponseMetricsValueValuesInner[]|null $values values
+     * @param \Zernio\Model\GetGoogleBusinessPerformance200ResponseMetricsValueValuesInner[]|null $values values
      *
      * @return self
      */

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **dm_message** | **string** |  | [optional]
 **comment_reply** | **string** |  | [optional]
 **is_active** | **bool** |  | [optional]
-**stats** | [**\Late\Model\CreateCommentAutomation200ResponseAutomationStats**](CreateCommentAutomation200ResponseAutomationStats.md) |  | [optional]
+**stats** | [**\Zernio\Model\CreateCommentAutomation200ResponseAutomationStats**](CreateCommentAutomation200ResponseAutomationStats.md) |  | [optional]
 **created_at** | **\DateTime** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

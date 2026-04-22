@@ -1683,7 +1683,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateStandaloneAd201ResponseOneOf1Test.php
-test/Model/CreateStandaloneAd201ResponseOneOfTest.php
-test/Model/CreateStandaloneAd201ResponseTest.php
-test/Model/CreateStandaloneAdRequestCreativesInnerTest.php

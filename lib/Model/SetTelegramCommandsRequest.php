@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SetTelegramCommandsRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class SetTelegramCommandsRequest implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'commands' => '\Late\Model\SetTelegramCommandsRequestCommandsInner[]'
+        'commands' => '\Zernio\Model\SetTelegramCommandsRequestCommandsInner[]'
     ];
 
     /**
@@ -296,7 +296,7 @@ class SetTelegramCommandsRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets commands
      *
-     * @return \Late\Model\SetTelegramCommandsRequestCommandsInner[]
+     * @return \Zernio\Model\SetTelegramCommandsRequestCommandsInner[]
      */
     public function getCommands()
     {
@@ -306,7 +306,7 @@ class SetTelegramCommandsRequest implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets commands
      *
-     * @param \Late\Model\SetTelegramCommandsRequestCommandsInner[] $commands commands
+     * @param \Zernio\Model\SetTelegramCommandsRequestCommandsInner[] $commands commands
      *
      * @return self
      */

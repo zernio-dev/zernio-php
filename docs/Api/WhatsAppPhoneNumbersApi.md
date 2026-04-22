@@ -1,4 +1,4 @@
-# Late\WhatsAppPhoneNumbersApi
+# Zernio\WhatsAppPhoneNumbersApi
 
 
 
@@ -15,7 +15,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getWhatsAppPhoneNumber()`
 
 ```php
-getWhatsAppPhoneNumber($phone_number_id): \Late\Model\GetWhatsAppPhoneNumber200Response
+getWhatsAppPhoneNumber($phone_number_id): \Zernio\Model\GetWhatsAppPhoneNumber200Response
 ```
 
 Get phone number
@@ -30,10 +30,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppPhoneNumbersApi(
+$apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -57,7 +57,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetWhatsAppPhoneNumber200Response**](../Model/GetWhatsAppPhoneNumber200Response.md)
+[**\Zernio\Model\GetWhatsAppPhoneNumber200Response**](../Model/GetWhatsAppPhoneNumber200Response.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ try {
 ## `getWhatsAppPhoneNumbers()`
 
 ```php
-getWhatsAppPhoneNumbers($status, $profile_id): \Late\Model\GetWhatsAppPhoneNumbers200Response
+getWhatsAppPhoneNumbers($status, $profile_id): \Zernio\Model\GetWhatsAppPhoneNumbers200Response
 ```
 
 List phone numbers
@@ -90,10 +90,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppPhoneNumbersApi(
+$apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -119,7 +119,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetWhatsAppPhoneNumbers200Response**](../Model/GetWhatsAppPhoneNumbers200Response.md)
+[**\Zernio\Model\GetWhatsAppPhoneNumbers200Response**](../Model/GetWhatsAppPhoneNumbers200Response.md)
 
 ### Authorization
 
@@ -137,7 +137,7 @@ try {
 ## `purchaseWhatsAppPhoneNumber()`
 
 ```php
-purchaseWhatsAppPhoneNumber($purchase_whats_app_phone_number_request): \Late\Model\PurchaseWhatsAppPhoneNumber200Response
+purchaseWhatsAppPhoneNumber($purchase_whats_app_phone_number_request): \Zernio\Model\PurchaseWhatsAppPhoneNumber200Response
 ```
 
 Purchase phone number
@@ -152,16 +152,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppPhoneNumbersApi(
+$apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_whats_app_phone_number_request = {"profileId":"507f1f77bcf86cd799439011"}; // \Late\Model\PurchaseWhatsAppPhoneNumberRequest
+$purchase_whats_app_phone_number_request = {"profileId":"507f1f77bcf86cd799439011"}; // \Zernio\Model\PurchaseWhatsAppPhoneNumberRequest
 
 try {
     $result = $apiInstance->purchaseWhatsAppPhoneNumber($purchase_whats_app_phone_number_request);
@@ -175,11 +175,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **purchase_whats_app_phone_number_request** | [**\Late\Model\PurchaseWhatsAppPhoneNumberRequest**](../Model/PurchaseWhatsAppPhoneNumberRequest.md)|  | |
+| **purchase_whats_app_phone_number_request** | [**\Zernio\Model\PurchaseWhatsAppPhoneNumberRequest**](../Model/PurchaseWhatsAppPhoneNumberRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\PurchaseWhatsAppPhoneNumber200Response**](../Model/PurchaseWhatsAppPhoneNumber200Response.md)
+[**\Zernio\Model\PurchaseWhatsAppPhoneNumber200Response**](../Model/PurchaseWhatsAppPhoneNumber200Response.md)
 
 ### Authorization
 
@@ -197,7 +197,7 @@ try {
 ## `releaseWhatsAppPhoneNumber()`
 
 ```php
-releaseWhatsAppPhoneNumber($phone_number_id): \Late\Model\ReleaseWhatsAppPhoneNumber200Response
+releaseWhatsAppPhoneNumber($phone_number_id): \Zernio\Model\ReleaseWhatsAppPhoneNumber200Response
 ```
 
 Release phone number
@@ -212,10 +212,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppPhoneNumbersApi(
+$apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -239,7 +239,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ReleaseWhatsAppPhoneNumber200Response**](../Model/ReleaseWhatsAppPhoneNumber200Response.md)
+[**\Zernio\Model\ReleaseWhatsAppPhoneNumber200Response**](../Model/ReleaseWhatsAppPhoneNumber200Response.md)
 
 ### Authorization
 

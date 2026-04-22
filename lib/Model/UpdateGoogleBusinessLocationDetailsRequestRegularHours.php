@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateGoogleBusinessLocationDetailsRequestRegularHours Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class UpdateGoogleBusinessLocationDetailsRequestRegularHours implements ModelInt
       * @var string[]
       */
     protected static $openAPITypes = [
-        'periods' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHoursPeriodsInner[]'
+        'periods' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHoursPeriodsInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class UpdateGoogleBusinessLocationDetailsRequestRegularHours implements ModelInt
     /**
      * Gets periods
      *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHoursPeriodsInner[]|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHoursPeriodsInner[]|null
      */
     public function getPeriods()
     {
@@ -303,7 +303,7 @@ class UpdateGoogleBusinessLocationDetailsRequestRegularHours implements ModelInt
     /**
      * Sets periods
      *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHoursPeriodsInner[]|null $periods periods
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHoursPeriodsInner[]|null $periods periods
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * Connected Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class Connected implements ModelInterface, ArrayAccess, \JsonSerializable
         'chat_id' => 'string',
         'chat_title' => 'string',
         'chat_type' => 'string',
-        'account' => '\Late\Model\ConnectedAccount'
+        'account' => '\Zernio\Model\ConnectedAccount'
     ];
 
     /**
@@ -497,7 +497,7 @@ class Connected implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets account
      *
-     * @return \Late\Model\ConnectedAccount|null
+     * @return \Zernio\Model\ConnectedAccount|null
      */
     public function getAccount()
     {
@@ -507,7 +507,7 @@ class Connected implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets account
      *
-     * @param \Late\Model\ConnectedAccount|null $account account
+     * @param \Zernio\Model\ConnectedAccount|null $account account
      *
      * @return self
      */

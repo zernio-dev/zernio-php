@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SetInstagramIceBreakersRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class SetInstagramIceBreakersRequest implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ice_breakers' => '\Late\Model\SetInstagramIceBreakersRequestIceBreakersInner[]'
+        'ice_breakers' => '\Zernio\Model\SetInstagramIceBreakersRequestIceBreakersInner[]'
     ];
 
     /**
@@ -300,7 +300,7 @@ class SetInstagramIceBreakersRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets ice_breakers
      *
-     * @return \Late\Model\SetInstagramIceBreakersRequestIceBreakersInner[]
+     * @return \Zernio\Model\SetInstagramIceBreakersRequestIceBreakersInner[]
      */
     public function getIceBreakers()
     {
@@ -310,7 +310,7 @@ class SetInstagramIceBreakersRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets ice_breakers
      *
-     * @param \Late\Model\SetInstagramIceBreakersRequestIceBreakersInner[] $ice_breakers ice_breakers
+     * @param \Zernio\Model\SetInstagramIceBreakersRequestIceBreakersInner[] $ice_breakers ice_breakers
      *
      * @return self
      */

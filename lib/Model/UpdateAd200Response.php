@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateAd200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class UpdateAd200Response implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ad' => '\Late\Model\Ad',
+        'ad' => '\Zernio\Model\Ad',
         'message' => 'string'
     ];
 
@@ -300,7 +300,7 @@ class UpdateAd200Response implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets ad
      *
-     * @return \Late\Model\Ad|null
+     * @return \Zernio\Model\Ad|null
      */
     public function getAd()
     {
@@ -310,7 +310,7 @@ class UpdateAd200Response implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets ad
      *
-     * @param \Late\Model\Ad|null $ad ad
+     * @param \Zernio\Model\Ad|null $ad ad
      *
      * @return self
      */

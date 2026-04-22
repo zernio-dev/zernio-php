@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetWhatsAppFlow200ResponseFlow Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class GetWhatsAppFlow200ResponseFlow implements ModelInterface, ArrayAccess, \Js
         'categories' => 'string[]',
         'validation_errors' => 'object[]',
         'json_version' => 'string',
-        'preview' => '\Late\Model\GetWhatsAppFlow200ResponseFlowPreview'
+        'preview' => '\Zernio\Model\GetWhatsAppFlow200ResponseFlowPreview'
     ];
 
     /**
@@ -497,7 +497,7 @@ class GetWhatsAppFlow200ResponseFlow implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets preview
      *
-     * @return \Late\Model\GetWhatsAppFlow200ResponseFlowPreview|null
+     * @return \Zernio\Model\GetWhatsAppFlow200ResponseFlowPreview|null
      */
     public function getPreview()
     {
@@ -507,7 +507,7 @@ class GetWhatsAppFlow200ResponseFlow implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets preview
      *
-     * @param \Late\Model\GetWhatsAppFlow200ResponseFlowPreview|null $preview preview
+     * @param \Zernio\Model\GetWhatsAppFlow200ResponseFlowPreview|null $preview preview
      *
      * @return self
      */

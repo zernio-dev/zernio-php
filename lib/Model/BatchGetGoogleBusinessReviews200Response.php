@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * BatchGetGoogleBusinessReviews200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class BatchGetGoogleBusinessReviews200Response implements ModelInterface, ArrayA
     protected static $openAPITypes = [
         'success' => 'bool',
         'account_id' => 'string',
-        'location_reviews' => '\Late\Model\BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner[]',
+        'location_reviews' => '\Zernio\Model\BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner[]',
         'next_page_token' => 'string'
     ];
 
@@ -368,7 +368,7 @@ class BatchGetGoogleBusinessReviews200Response implements ModelInterface, ArrayA
     /**
      * Gets location_reviews
      *
-     * @return \Late\Model\BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner[]|null
+     * @return \Zernio\Model\BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner[]|null
      */
     public function getLocationReviews()
     {
@@ -378,7 +378,7 @@ class BatchGetGoogleBusinessReviews200Response implements ModelInterface, ArrayA
     /**
      * Sets location_reviews
      *
-     * @param \Late\Model\BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner[]|null $location_reviews location_reviews
+     * @param \Zernio\Model\BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner[]|null $location_reviews location_reviews
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendInboxMessageRequestInteractiveActionOneOf1 Class Doc Comment
  *
  * @category Class
  * @description CTA URL action. &#x60;type&#x60; on the parent must be &#x60;cta_url&#x60;.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SendInboxMessageRequestInteractiveActionOneOf1 implements ModelInterface, 
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'parameters' => '\Late\Model\SendInboxMessageRequestInteractiveActionOneOf1Parameters'
+        'parameters' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf1Parameters'
     ];
 
     /**
@@ -366,7 +366,7 @@ class SendInboxMessageRequestInteractiveActionOneOf1 implements ModelInterface, 
     /**
      * Gets parameters
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveActionOneOf1Parameters
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf1Parameters
      */
     public function getParameters()
     {
@@ -376,7 +376,7 @@ class SendInboxMessageRequestInteractiveActionOneOf1 implements ModelInterface, 
     /**
      * Sets parameters
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveActionOneOf1Parameters $parameters parameters
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf1Parameters $parameters parameters
      *
      * @return self
      */

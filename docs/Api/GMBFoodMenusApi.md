@@ -1,4 +1,4 @@
-# Late\GMBFoodMenusApi
+# Zernio\GMBFoodMenusApi
 
 
 
@@ -13,7 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getGoogleBusinessFoodMenus()`
 
 ```php
-getGoogleBusinessFoodMenus($account_id, $location_id): \Late\Model\GetGoogleBusinessFoodMenus200Response
+getGoogleBusinessFoodMenus($account_id, $location_id): \Zernio\Model\GetGoogleBusinessFoodMenus200Response
 ```
 
 Get food menus
@@ -28,10 +28,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBFoodMenusApi(
+$apiInstance = new Zernio\Api\GMBFoodMenusApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -57,7 +57,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetGoogleBusinessFoodMenus200Response**](../Model/GetGoogleBusinessFoodMenus200Response.md)
+[**\Zernio\Model\GetGoogleBusinessFoodMenus200Response**](../Model/GetGoogleBusinessFoodMenus200Response.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ try {
 ## `updateGoogleBusinessFoodMenus()`
 
 ```php
-updateGoogleBusinessFoodMenus($account_id, $update_google_business_food_menus_request, $location_id): \Late\Model\UpdateGoogleBusinessFoodMenus200Response
+updateGoogleBusinessFoodMenus($account_id, $update_google_business_food_menus_request, $location_id): \Zernio\Model\UpdateGoogleBusinessFoodMenus200Response
 ```
 
 Update food menus
@@ -90,17 +90,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBFoodMenusApi(
+$apiInstance = new Zernio\Api\GMBFoodMenusApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | The Zernio account ID (from /v1/accounts)
-$update_google_business_food_menus_request = {"menus":[{"labels":[{"displayName":"Dinner Menu","languageCode":"en"}],"sections":[{"labels":[{"displayName":"Mains"}],"items":[{"labels":[{"displayName":"Grilled Salmon","description":"With seasonal vegetables"}],"attributes":{"price":{"currencyCode":"USD","units":"24"},"allergen":["FISH"]}}]}]}],"updateMask":"menus"}; // \Late\Model\UpdateGoogleBusinessFoodMenusRequest
+$update_google_business_food_menus_request = {"menus":[{"labels":[{"displayName":"Dinner Menu","languageCode":"en"}],"sections":[{"labels":[{"displayName":"Mains"}],"items":[{"labels":[{"displayName":"Grilled Salmon","description":"With seasonal vegetables"}],"attributes":{"price":{"currencyCode":"USD","units":"24"},"allergen":["FISH"]}}]}]}],"updateMask":"menus"}; // \Zernio\Model\UpdateGoogleBusinessFoodMenusRequest
 $location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
@@ -116,12 +116,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The Zernio account ID (from /v1/accounts) | |
-| **update_google_business_food_menus_request** | [**\Late\Model\UpdateGoogleBusinessFoodMenusRequest**](../Model/UpdateGoogleBusinessFoodMenusRequest.md)|  | |
+| **update_google_business_food_menus_request** | [**\Zernio\Model\UpdateGoogleBusinessFoodMenusRequest**](../Model/UpdateGoogleBusinessFoodMenusRequest.md)|  | |
 | **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
 
-[**\Late\Model\UpdateGoogleBusinessFoodMenus200Response**](../Model/UpdateGoogleBusinessFoodMenus200Response.md)
+[**\Zernio\Model\UpdateGoogleBusinessFoodMenus200Response**](../Model/UpdateGoogleBusinessFoodMenus200Response.md)
 
 ### Authorization
 

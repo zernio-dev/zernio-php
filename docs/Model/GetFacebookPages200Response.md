@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pages** | [**\Late\Model\GetFacebookPages200ResponsePagesInner[]**](GetFacebookPages200ResponsePagesInner.md) |  | [optional]
+**pages** | [**\Zernio\Model\GetFacebookPages200ResponsePagesInner[]**](GetFacebookPages200ResponsePagesInner.md) |  | [optional]
 **selected_page_id** | **string** |  | [optional]
 **cached** | **bool** |  | [optional]
 

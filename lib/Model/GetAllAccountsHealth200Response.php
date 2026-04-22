@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetAllAccountsHealth200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class GetAllAccountsHealth200Response implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'summary' => '\Late\Model\GetAllAccountsHealth200ResponseSummary',
-        'accounts' => '\Late\Model\GetAllAccountsHealth200ResponseAccountsInner[]'
+        'summary' => '\Zernio\Model\GetAllAccountsHealth200ResponseSummary',
+        'accounts' => '\Zernio\Model\GetAllAccountsHealth200ResponseAccountsInner[]'
     ];
 
     /**
@@ -300,7 +300,7 @@ class GetAllAccountsHealth200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets summary
      *
-     * @return \Late\Model\GetAllAccountsHealth200ResponseSummary|null
+     * @return \Zernio\Model\GetAllAccountsHealth200ResponseSummary|null
      */
     public function getSummary()
     {
@@ -310,7 +310,7 @@ class GetAllAccountsHealth200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets summary
      *
-     * @param \Late\Model\GetAllAccountsHealth200ResponseSummary|null $summary summary
+     * @param \Zernio\Model\GetAllAccountsHealth200ResponseSummary|null $summary summary
      *
      * @return self
      */
@@ -327,7 +327,7 @@ class GetAllAccountsHealth200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets accounts
      *
-     * @return \Late\Model\GetAllAccountsHealth200ResponseAccountsInner[]|null
+     * @return \Zernio\Model\GetAllAccountsHealth200ResponseAccountsInner[]|null
      */
     public function getAccounts()
     {
@@ -337,7 +337,7 @@ class GetAllAccountsHealth200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets accounts
      *
-     * @param \Late\Model\GetAllAccountsHealth200ResponseAccountsInner[]|null $accounts accounts
+     * @param \Zernio\Model\GetAllAccountsHealth200ResponseAccountsInner[]|null $accounts accounts
      *
      * @return self
      */

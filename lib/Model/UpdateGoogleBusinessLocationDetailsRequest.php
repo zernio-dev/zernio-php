@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateGoogleBusinessLocationDetailsRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,13 +59,13 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
       */
     protected static $openAPITypes = [
         'update_mask' => 'string',
-        'regular_hours' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHours',
-        'special_hours' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHours',
-        'profile' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestProfile',
+        'regular_hours' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHours',
+        'special_hours' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHours',
+        'profile' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestProfile',
         'website_uri' => 'string',
-        'phone_numbers' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponsePhoneNumbers',
-        'categories' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestCategories',
-        'service_items' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner[]'
+        'phone_numbers' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponsePhoneNumbers',
+        'categories' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestCategories',
+        'service_items' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner[]'
     ];
 
     /**
@@ -372,7 +372,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     /**
      * Gets regular_hours
      *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHours|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHours|null
      */
     public function getRegularHours()
     {
@@ -382,7 +382,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     /**
      * Sets regular_hours
      *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHours|null $regular_hours regular_hours
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestRegularHours|null $regular_hours regular_hours
      *
      * @return self
      */
@@ -399,7 +399,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     /**
      * Gets special_hours
      *
-     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHours|null
+     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHours|null
      */
     public function getSpecialHours()
     {
@@ -409,7 +409,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     /**
      * Sets special_hours
      *
-     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHours|null $special_hours special_hours
+     * @param \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHours|null $special_hours special_hours
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     /**
      * Gets profile
      *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestProfile|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestProfile|null
      */
     public function getProfile()
     {
@@ -436,7 +436,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     /**
      * Sets profile
      *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestProfile|null $profile profile
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestProfile|null $profile profile
      *
      * @return self
      */
@@ -480,7 +480,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     /**
      * Gets phone_numbers
      *
-     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponsePhoneNumbers|null
+     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200ResponsePhoneNumbers|null
      */
     public function getPhoneNumbers()
     {
@@ -490,7 +490,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     /**
      * Sets phone_numbers
      *
-     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponsePhoneNumbers|null $phone_numbers phone_numbers
+     * @param \Zernio\Model\GetGoogleBusinessLocationDetails200ResponsePhoneNumbers|null $phone_numbers phone_numbers
      *
      * @return self
      */
@@ -507,7 +507,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     /**
      * Gets categories
      *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestCategories|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestCategories|null
      */
     public function getCategories()
     {
@@ -517,7 +517,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     /**
      * Sets categories
      *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestCategories|null $categories categories
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestCategories|null $categories categories
      *
      * @return self
      */
@@ -534,7 +534,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     /**
      * Gets service_items
      *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner[]|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner[]|null
      */
     public function getServiceItems()
     {
@@ -544,7 +544,7 @@ class UpdateGoogleBusinessLocationDetailsRequest implements ModelInterface, Arra
     /**
      * Sets service_items
      *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner[]|null $service_items Services offered by the business. Use updateMask='serviceItems' to update.
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner[]|null $service_items Services offered by the business. Use updateMask='serviceItems' to update.
      *
      * @return self
      */

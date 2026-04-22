@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateStandaloneAdRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -71,14 +71,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'string',
         'link_url' => 'string',
         'image_url' => 'string',
-        'creatives' => '\Late\Model\CreateStandaloneAdRequestCreativesInner[]',
+        'creatives' => '\Zernio\Model\CreateStandaloneAdRequestCreativesInner[]',
         'ad_set_id' => 'string',
         'business_name' => 'string',
         'board_id' => 'string',
         'countries' => 'string[]',
         'age_min' => 'int',
         'age_max' => 'int',
-        'interests' => '\Late\Model\UpdateAdRequestTargetingInterestsInner[]',
+        'interests' => '\Zernio\Model\UpdateAdRequestTargetingInterestsInner[]',
         'end_date' => '\DateTime',
         'audience_id' => 'string',
         'campaign_type' => 'string',
@@ -1058,7 +1058,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets creatives
      *
-     * @return \Late\Model\CreateStandaloneAdRequestCreativesInner[]|null
+     * @return \Zernio\Model\CreateStandaloneAdRequestCreativesInner[]|null
      */
     public function getCreatives()
     {
@@ -1068,7 +1068,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets creatives
      *
-     * @param \Late\Model\CreateStandaloneAdRequestCreativesInner[]|null $creatives Meta-only. When present, switches to the multi-creative shape: creates 1 campaign + 1 ad set + N ads (one per entry here). Top-level `headline` / `body` / `imageUrl` / `linkUrl` / `callToAction` are ignored in this mode. Mutually exclusive with `adSetId`.
+     * @param \Zernio\Model\CreateStandaloneAdRequestCreativesInner[]|null $creatives Meta-only. When present, switches to the multi-creative shape: creates 1 campaign + 1 ad set + N ads (one per entry here). Top-level `headline` / `body` / `imageUrl` / `linkUrl` / `callToAction` are ignored in this mode. Mutually exclusive with `adSetId`.
      *
      * @return self
      */
@@ -1272,7 +1272,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets interests
      *
-     * @return \Late\Model\UpdateAdRequestTargetingInterestsInner[]|null
+     * @return \Zernio\Model\UpdateAdRequestTargetingInterestsInner[]|null
      */
     public function getInterests()
     {
@@ -1282,7 +1282,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets interests
      *
-     * @param \Late\Model\UpdateAdRequestTargetingInterestsInner[]|null $interests Interest objects from /v1/ads/interests. Each must include id and name.
+     * @param \Zernio\Model\UpdateAdRequestTargetingInterestsInner[]|null $interests Interest objects from /v1/ads/interests. Each must include id and name.
      *
      * @return self
      */

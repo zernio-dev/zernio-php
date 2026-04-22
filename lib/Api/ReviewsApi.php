@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * ReviewsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -138,12 +138,12 @@ class ReviewsApi
      * Delete review reply
      *
      * @param  string $review_id review_id (required)
-     * @param  \Late\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request delete_inbox_review_reply_request (required)
+     * @param  \Zernio\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request delete_inbox_review_reply_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxReviewReply'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\DeleteInboxReviewReply200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\DeleteInboxReviewReply200Response|\Zernio\Model\InlineObject
      */
     public function deleteInboxReviewReply($review_id, $delete_inbox_review_reply_request, string $contentType = self::contentTypes['deleteInboxReviewReply'][0])
     {
@@ -157,12 +157,12 @@ class ReviewsApi
      * Delete review reply
      *
      * @param  string $review_id (required)
-     * @param  \Late\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request (required)
+     * @param  \Zernio\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxReviewReply'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\DeleteInboxReviewReply200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteInboxReviewReply200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteInboxReviewReplyWithHttpInfo($review_id, $delete_inbox_review_reply_request, string $contentType = self::contentTypes['deleteInboxReviewReply'][0])
     {
@@ -194,13 +194,13 @@ class ReviewsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\DeleteInboxReviewReply200Response',
+                        '\Zernio\Model\DeleteInboxReviewReply200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -222,7 +222,7 @@ class ReviewsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\DeleteInboxReviewReply200Response',
+                '\Zernio\Model\DeleteInboxReviewReply200Response',
                 $request,
                 $response,
             );
@@ -231,7 +231,7 @@ class ReviewsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\DeleteInboxReviewReply200Response',
+                        '\Zernio\Model\DeleteInboxReviewReply200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -239,7 +239,7 @@ class ReviewsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -257,7 +257,7 @@ class ReviewsApi
      * Delete review reply
      *
      * @param  string $review_id (required)
-     * @param  \Late\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request (required)
+     * @param  \Zernio\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxReviewReply'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -279,7 +279,7 @@ class ReviewsApi
      * Delete review reply
      *
      * @param  string $review_id (required)
-     * @param  \Late\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request (required)
+     * @param  \Zernio\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxReviewReply'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -287,7 +287,7 @@ class ReviewsApi
      */
     public function deleteInboxReviewReplyAsyncWithHttpInfo($review_id, $delete_inbox_review_reply_request, string $contentType = self::contentTypes['deleteInboxReviewReply'][0])
     {
-        $returnType = '\Late\Model\DeleteInboxReviewReply200Response';
+        $returnType = '\Zernio\Model\DeleteInboxReviewReply200Response';
         $request = $this->deleteInboxReviewReplyRequest($review_id, $delete_inbox_review_reply_request, $contentType);
 
         return $this->client
@@ -330,7 +330,7 @@ class ReviewsApi
      * Create request for operation 'deleteInboxReviewReply'
      *
      * @param  string $review_id (required)
-     * @param  \Late\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request (required)
+     * @param  \Zernio\Model\DeleteInboxReviewReplyRequest $delete_inbox_review_reply_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteInboxReviewReply'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -454,9 +454,9 @@ class ReviewsApi
      * @param  string|null $account_id Filter by specific social account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxReviews'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListInboxReviews200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListInboxReviews200Response|\Zernio\Model\InlineObject
      */
     public function listInboxReviews($profile_id = null, $platform = null, $min_rating = null, $max_rating = null, $has_reply = null, $sort_by = 'date', $sort_order = 'desc', $limit = 25, $cursor = null, $account_id = null, string $contentType = self::contentTypes['listInboxReviews'][0])
     {
@@ -481,9 +481,9 @@ class ReviewsApi
      * @param  string|null $account_id Filter by specific social account ID (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listInboxReviews'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListInboxReviews200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListInboxReviews200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listInboxReviewsWithHttpInfo($profile_id = null, $platform = null, $min_rating = null, $max_rating = null, $has_reply = null, $sort_by = 'date', $sort_order = 'desc', $limit = 25, $cursor = null, $account_id = null, string $contentType = self::contentTypes['listInboxReviews'][0])
     {
@@ -515,13 +515,13 @@ class ReviewsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListInboxReviews200Response',
+                        '\Zernio\Model\ListInboxReviews200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -543,7 +543,7 @@ class ReviewsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListInboxReviews200Response',
+                '\Zernio\Model\ListInboxReviews200Response',
                 $request,
                 $response,
             );
@@ -552,7 +552,7 @@ class ReviewsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListInboxReviews200Response',
+                        '\Zernio\Model\ListInboxReviews200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -560,7 +560,7 @@ class ReviewsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -624,7 +624,7 @@ class ReviewsApi
      */
     public function listInboxReviewsAsyncWithHttpInfo($profile_id = null, $platform = null, $min_rating = null, $max_rating = null, $has_reply = null, $sort_by = 'date', $sort_order = 'desc', $limit = 25, $cursor = null, $account_id = null, string $contentType = self::contentTypes['listInboxReviews'][0])
     {
-        $returnType = '\Late\Model\ListInboxReviews200Response';
+        $returnType = '\Zernio\Model\ListInboxReviews200Response';
         $request = $this->listInboxReviewsRequest($profile_id, $platform, $min_rating, $max_rating, $has_reply, $sort_by, $sort_order, $limit, $cursor, $account_id, $contentType);
 
         return $this->client
@@ -877,12 +877,12 @@ class ReviewsApi
      * Reply to review
      *
      * @param  string $review_id Review ID (URL-encoded for Google Business) (required)
-     * @param  \Late\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request reply_to_inbox_review_request (required)
+     * @param  \Zernio\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request reply_to_inbox_review_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxReview'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ReplyToInboxReview200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ReplyToInboxReview200Response|\Zernio\Model\InlineObject
      */
     public function replyToInboxReview($review_id, $reply_to_inbox_review_request, string $contentType = self::contentTypes['replyToInboxReview'][0])
     {
@@ -896,12 +896,12 @@ class ReviewsApi
      * Reply to review
      *
      * @param  string $review_id Review ID (URL-encoded for Google Business) (required)
-     * @param  \Late\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request (required)
+     * @param  \Zernio\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxReview'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ReplyToInboxReview200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ReplyToInboxReview200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function replyToInboxReviewWithHttpInfo($review_id, $reply_to_inbox_review_request, string $contentType = self::contentTypes['replyToInboxReview'][0])
     {
@@ -933,13 +933,13 @@ class ReviewsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ReplyToInboxReview200Response',
+                        '\Zernio\Model\ReplyToInboxReview200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -961,7 +961,7 @@ class ReviewsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ReplyToInboxReview200Response',
+                '\Zernio\Model\ReplyToInboxReview200Response',
                 $request,
                 $response,
             );
@@ -970,7 +970,7 @@ class ReviewsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ReplyToInboxReview200Response',
+                        '\Zernio\Model\ReplyToInboxReview200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -978,7 +978,7 @@ class ReviewsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -996,7 +996,7 @@ class ReviewsApi
      * Reply to review
      *
      * @param  string $review_id Review ID (URL-encoded for Google Business) (required)
-     * @param  \Late\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request (required)
+     * @param  \Zernio\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxReview'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1018,7 +1018,7 @@ class ReviewsApi
      * Reply to review
      *
      * @param  string $review_id Review ID (URL-encoded for Google Business) (required)
-     * @param  \Late\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request (required)
+     * @param  \Zernio\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxReview'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1026,7 +1026,7 @@ class ReviewsApi
      */
     public function replyToInboxReviewAsyncWithHttpInfo($review_id, $reply_to_inbox_review_request, string $contentType = self::contentTypes['replyToInboxReview'][0])
     {
-        $returnType = '\Late\Model\ReplyToInboxReview200Response';
+        $returnType = '\Zernio\Model\ReplyToInboxReview200Response';
         $request = $this->replyToInboxReviewRequest($review_id, $reply_to_inbox_review_request, $contentType);
 
         return $this->client
@@ -1069,7 +1069,7 @@ class ReviewsApi
      * Create request for operation 'replyToInboxReview'
      *
      * @param  string $review_id Review ID (URL-encoded for Google Business) (required)
-     * @param  \Late\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request (required)
+     * @param  \Zernio\Model\ReplyToInboxReviewRequest $reply_to_inbox_review_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToInboxReview'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

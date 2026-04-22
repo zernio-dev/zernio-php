@@ -1,4 +1,4 @@
-# Late\PostsApi
+# Zernio\PostsApi
 
 
 
@@ -21,7 +21,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `bulkUploadPosts()`
 
 ```php
-bulkUploadPosts($dry_run, $file): \Late\Model\BulkUploadPosts200Response
+bulkUploadPosts($dry_run, $file): \Zernio\Model\BulkUploadPosts200Response
 ```
 
 Bulk upload from CSV
@@ -36,10 +36,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\PostsApi(
+$apiInstance = new Zernio\Api\PostsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -65,7 +65,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\BulkUploadPosts200Response**](../Model/BulkUploadPosts200Response.md)
+[**\Zernio\Model\BulkUploadPosts200Response**](../Model/BulkUploadPosts200Response.md)
 
 ### Authorization
 
@@ -83,7 +83,7 @@ try {
 ## `createPost()`
 
 ```php
-createPost($create_post_request): \Late\Model\PostCreateResponse
+createPost($create_post_request): \Zernio\Model\PostCreateResponse
 ```
 
 Create post
@@ -98,16 +98,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\PostsApi(
+$apiInstance = new Zernio\Api\PostsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_post_request = {"content":"Draft post for review before publishing","platforms":[{"platform":"facebook","accountId":"64e1f0a9e2b5af0012ab34cd"}],"publishNow":true,"facebookSettings":{"draft":true}}; // \Late\Model\CreatePostRequest
+$create_post_request = {"content":"Draft post for review before publishing","platforms":[{"platform":"facebook","accountId":"64e1f0a9e2b5af0012ab34cd"}],"publishNow":true,"facebookSettings":{"draft":true}}; // \Zernio\Model\CreatePostRequest
 
 try {
     $result = $apiInstance->createPost($create_post_request);
@@ -121,11 +121,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_post_request** | [**\Late\Model\CreatePostRequest**](../Model/CreatePostRequest.md)|  | |
+| **create_post_request** | [**\Zernio\Model\CreatePostRequest**](../Model/CreatePostRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\PostCreateResponse**](../Model/PostCreateResponse.md)
+[**\Zernio\Model\PostCreateResponse**](../Model/PostCreateResponse.md)
 
 ### Authorization
 
@@ -143,7 +143,7 @@ try {
 ## `deletePost()`
 
 ```php
-deletePost($post_id): \Late\Model\PostDeleteResponse
+deletePost($post_id): \Zernio\Model\PostDeleteResponse
 ```
 
 Delete post
@@ -158,10 +158,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\PostsApi(
+$apiInstance = new Zernio\Api\PostsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -185,7 +185,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\PostDeleteResponse**](../Model/PostDeleteResponse.md)
+[**\Zernio\Model\PostDeleteResponse**](../Model/PostDeleteResponse.md)
 
 ### Authorization
 
@@ -203,7 +203,7 @@ try {
 ## `editPost()`
 
 ```php
-editPost($post_id, $edit_post_request): \Late\Model\EditPost200Response
+editPost($post_id, $edit_post_request): \Zernio\Model\EditPost200Response
 ```
 
 Edit published post
@@ -218,17 +218,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\PostsApi(
+$apiInstance = new Zernio\Api\PostsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $post_id = 'post_id_example'; // string
-$edit_post_request = {"platform":"twitter","content":"Updated tweet text with corrected information"}; // \Late\Model\EditPostRequest
+$edit_post_request = {"platform":"twitter","content":"Updated tweet text with corrected information"}; // \Zernio\Model\EditPostRequest
 
 try {
     $result = $apiInstance->editPost($post_id, $edit_post_request);
@@ -243,11 +243,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **post_id** | **string**|  | |
-| **edit_post_request** | [**\Late\Model\EditPostRequest**](../Model/EditPostRequest.md)|  | |
+| **edit_post_request** | [**\Zernio\Model\EditPostRequest**](../Model/EditPostRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\EditPost200Response**](../Model/EditPost200Response.md)
+[**\Zernio\Model\EditPost200Response**](../Model/EditPost200Response.md)
 
 ### Authorization
 
@@ -265,7 +265,7 @@ try {
 ## `getPost()`
 
 ```php
-getPost($post_id): \Late\Model\PostGetResponse
+getPost($post_id): \Zernio\Model\PostGetResponse
 ```
 
 Get post
@@ -280,10 +280,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\PostsApi(
+$apiInstance = new Zernio\Api\PostsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -307,7 +307,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\PostGetResponse**](../Model/PostGetResponse.md)
+[**\Zernio\Model\PostGetResponse**](../Model/PostGetResponse.md)
 
 ### Authorization
 
@@ -325,7 +325,7 @@ try {
 ## `listPosts()`
 
 ```php
-listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by): \Late\Model\PostsListResponse
+listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by): \Zernio\Model\PostsListResponse
 ```
 
 List posts
@@ -340,10 +340,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\PostsApi(
+$apiInstance = new Zernio\Api\PostsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -387,7 +387,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\PostsListResponse**](../Model/PostsListResponse.md)
+[**\Zernio\Model\PostsListResponse**](../Model/PostsListResponse.md)
 
 ### Authorization
 
@@ -405,7 +405,7 @@ try {
 ## `retryPost()`
 
 ```php
-retryPost($post_id): \Late\Model\PostRetryResponse
+retryPost($post_id): \Zernio\Model\PostRetryResponse
 ```
 
 Retry failed post
@@ -420,10 +420,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\PostsApi(
+$apiInstance = new Zernio\Api\PostsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -447,7 +447,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\PostRetryResponse**](../Model/PostRetryResponse.md)
+[**\Zernio\Model\PostRetryResponse**](../Model/PostRetryResponse.md)
 
 ### Authorization
 
@@ -465,7 +465,7 @@ try {
 ## `unpublishPost()`
 
 ```php
-unpublishPost($post_id, $unpublish_post_request): \Late\Model\UnpublishPost200Response
+unpublishPost($post_id, $unpublish_post_request): \Zernio\Model\UnpublishPost200Response
 ```
 
 Unpublish post
@@ -480,17 +480,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\PostsApi(
+$apiInstance = new Zernio\Api\PostsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $post_id = 'post_id_example'; // string
-$unpublish_post_request = {"platform":"threads"}; // \Late\Model\UnpublishPostRequest
+$unpublish_post_request = {"platform":"threads"}; // \Zernio\Model\UnpublishPostRequest
 
 try {
     $result = $apiInstance->unpublishPost($post_id, $unpublish_post_request);
@@ -505,11 +505,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **post_id** | **string**|  | |
-| **unpublish_post_request** | [**\Late\Model\UnpublishPostRequest**](../Model/UnpublishPostRequest.md)|  | |
+| **unpublish_post_request** | [**\Zernio\Model\UnpublishPostRequest**](../Model/UnpublishPostRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+[**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
@@ -527,7 +527,7 @@ try {
 ## `updatePost()`
 
 ```php
-updatePost($post_id, $update_post_request): \Late\Model\PostUpdateResponse
+updatePost($post_id, $update_post_request): \Zernio\Model\PostUpdateResponse
 ```
 
 Update post
@@ -542,17 +542,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\PostsApi(
+$apiInstance = new Zernio\Api\PostsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $post_id = 'post_id_example'; // string
-$update_post_request = {"content":"Updated content for our launch post!","scheduledFor":"2024-11-02T14:00:00Z"}; // \Late\Model\UpdatePostRequest
+$update_post_request = {"content":"Updated content for our launch post!","scheduledFor":"2024-11-02T14:00:00Z"}; // \Zernio\Model\UpdatePostRequest
 
 try {
     $result = $apiInstance->updatePost($post_id, $update_post_request);
@@ -567,11 +567,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **post_id** | **string**|  | |
-| **update_post_request** | [**\Late\Model\UpdatePostRequest**](../Model/UpdatePostRequest.md)|  | |
+| **update_post_request** | [**\Zernio\Model\UpdatePostRequest**](../Model/UpdatePostRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\PostUpdateResponse**](../Model/PostUpdateResponse.md)
+[**\Zernio\Model\PostUpdateResponse**](../Model/PostUpdateResponse.md)
 
 ### Authorization
 
@@ -589,7 +589,7 @@ try {
 ## `updatePostMetadata()`
 
 ```php
-updatePostMetadata($post_id, $update_post_metadata_request): \Late\Model\UpdatePostMetadata200Response
+updatePostMetadata($post_id, $update_post_metadata_request): \Zernio\Model\UpdatePostMetadata200Response
 ```
 
 Update post metadata
@@ -604,17 +604,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\PostsApi(
+$apiInstance = new Zernio\Api\PostsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $post_id = 'post_id_example'; // string | Zernio post ID, or \"_\" when using direct video ID mode
-$update_post_metadata_request = {"platform":"youtube","title":"Updated Video Title","description":"New SEO-optimized description","tags":["seo","marketing","tutorial"]}; // \Late\Model\UpdatePostMetadataRequest
+$update_post_metadata_request = {"platform":"youtube","title":"Updated Video Title","description":"New SEO-optimized description","tags":["seo","marketing","tutorial"]}; // \Zernio\Model\UpdatePostMetadataRequest
 
 try {
     $result = $apiInstance->updatePostMetadata($post_id, $update_post_metadata_request);
@@ -629,11 +629,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **post_id** | **string**| Zernio post ID, or \&quot;_\&quot; when using direct video ID mode | |
-| **update_post_metadata_request** | [**\Late\Model\UpdatePostMetadataRequest**](../Model/UpdatePostMetadataRequest.md)|  | |
+| **update_post_metadata_request** | [**\Zernio\Model\UpdatePostMetadataRequest**](../Model/UpdatePostMetadataRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdatePostMetadata200Response**](../Model/UpdatePostMetadata200Response.md)
+[**\Zernio\Model\UpdatePostMetadata200Response**](../Model/UpdatePostMetadata200Response.md)
 
 ### Authorization
 

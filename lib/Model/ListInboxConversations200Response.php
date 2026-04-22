@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListInboxConversations200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class ListInboxConversations200Response implements ModelInterface, ArrayAccess, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\Late\Model\ListInboxConversations200ResponseDataInner[]',
-        'pagination' => '\Late\Model\ListInboxConversations200ResponsePagination',
-        'meta' => '\Late\Model\ListInboxConversations200ResponseMeta'
+        'data' => '\Zernio\Model\ListInboxConversations200ResponseDataInner[]',
+        'pagination' => '\Zernio\Model\ListInboxConversations200ResponsePagination',
+        'meta' => '\Zernio\Model\ListInboxConversations200ResponseMeta'
     ];
 
     /**
@@ -307,7 +307,7 @@ class ListInboxConversations200Response implements ModelInterface, ArrayAccess, 
     /**
      * Gets data
      *
-     * @return \Late\Model\ListInboxConversations200ResponseDataInner[]|null
+     * @return \Zernio\Model\ListInboxConversations200ResponseDataInner[]|null
      */
     public function getData()
     {
@@ -317,7 +317,7 @@ class ListInboxConversations200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets data
      *
-     * @param \Late\Model\ListInboxConversations200ResponseDataInner[]|null $data data
+     * @param \Zernio\Model\ListInboxConversations200ResponseDataInner[]|null $data data
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class ListInboxConversations200Response implements ModelInterface, ArrayAccess, 
     /**
      * Gets pagination
      *
-     * @return \Late\Model\ListInboxConversations200ResponsePagination|null
+     * @return \Zernio\Model\ListInboxConversations200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -344,7 +344,7 @@ class ListInboxConversations200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets pagination
      *
-     * @param \Late\Model\ListInboxConversations200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\ListInboxConversations200ResponsePagination|null $pagination pagination
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class ListInboxConversations200Response implements ModelInterface, ArrayAccess, 
     /**
      * Gets meta
      *
-     * @return \Late\Model\ListInboxConversations200ResponseMeta|null
+     * @return \Zernio\Model\ListInboxConversations200ResponseMeta|null
      */
     public function getMeta()
     {
@@ -371,7 +371,7 @@ class ListInboxConversations200Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets meta
      *
-     * @param \Late\Model\ListInboxConversations200ResponseMeta|null $meta meta
+     * @param \Zernio\Model\ListInboxConversations200ResponseMeta|null $meta meta
      *
      * @return self
      */

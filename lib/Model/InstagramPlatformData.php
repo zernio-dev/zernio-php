@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * InstagramPlatformData Class Doc Comment
  *
  * @category Class
  * @description Feed aspect ratio 0.8-1.91, carousels up to 10 items, stories require media (no captions). User tag coordinates 0.0-1.0 from top-left. Images over 8 MB and videos over platform limits are auto-compressed.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,8 +63,8 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
         'share_to_feed' => 'bool',
         'collaborators' => 'string[]',
         'first_comment' => 'string',
-        'trial_params' => '\Late\Model\InstagramPlatformDataTrialParams',
-        'user_tags' => '\Late\Model\InstagramPlatformDataUserTagsInner[]',
+        'trial_params' => '\Zernio\Model\InstagramPlatformDataTrialParams',
+        'user_tags' => '\Zernio\Model\InstagramPlatformDataUserTagsInner[]',
         'audio_name' => 'string',
         'thumb_offset' => 'int',
         'instagram_thumbnail' => 'string',
@@ -501,7 +501,7 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets trial_params
      *
-     * @return \Late\Model\InstagramPlatformDataTrialParams|null
+     * @return \Zernio\Model\InstagramPlatformDataTrialParams|null
      */
     public function getTrialParams()
     {
@@ -511,7 +511,7 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets trial_params
      *
-     * @param \Late\Model\InstagramPlatformDataTrialParams|null $trial_params trial_params
+     * @param \Zernio\Model\InstagramPlatformDataTrialParams|null $trial_params trial_params
      *
      * @return self
      */
@@ -528,7 +528,7 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets user_tags
      *
-     * @return \Late\Model\InstagramPlatformDataUserTagsInner[]|null
+     * @return \Zernio\Model\InstagramPlatformDataUserTagsInner[]|null
      */
     public function getUserTags()
     {
@@ -538,7 +538,7 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets user_tags
      *
-     * @param \Late\Model\InstagramPlatformDataUserTagsInner[]|null $user_tags Tag Instagram users in photos by username and position. Not supported for stories or videos. For carousels, use mediaIndex to target specific slides (defaults to 0). Tags on video items are silently skipped.
+     * @param \Zernio\Model\InstagramPlatformDataUserTagsInner[]|null $user_tags Tag Instagram users in photos by username and position. Not supported for stories or videos. For carousels, use mediaIndex to target specific slides (defaults to 0). Tags on video items are silently skipped.
      *
      * @return self
      */

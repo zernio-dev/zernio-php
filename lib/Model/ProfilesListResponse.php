@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ProfilesListResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ProfilesListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'profiles' => '\Late\Model\Profile[]'
+        'profiles' => '\Zernio\Model\Profile[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class ProfilesListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets profiles
      *
-     * @return \Late\Model\Profile[]|null
+     * @return \Zernio\Model\Profile[]|null
      */
     public function getProfiles()
     {
@@ -303,7 +303,7 @@ class ProfilesListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets profiles
      *
-     * @param \Late\Model\Profile[]|null $profiles profiles
+     * @param \Zernio\Model\Profile[]|null $profiles profiles
      *
      * @return self
      */

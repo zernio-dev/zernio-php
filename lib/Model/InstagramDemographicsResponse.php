@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * InstagramDemographicsResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class InstagramDemographicsResponse implements ModelInterface, ArrayAccess, \Jso
         'platform' => 'string',
         'metric' => 'string',
         'timeframe' => 'string',
-        'demographics' => 'array<string,\Late\Model\InstagramDemographicsResponseDemographicsValueInner[]>',
+        'demographics' => 'array<string,\Zernio\Model\InstagramDemographicsResponseDemographicsValueInner[]>',
         'note' => 'string'
     ];
 
@@ -538,7 +538,7 @@ class InstagramDemographicsResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets demographics
      *
-     * @return array<string,\Late\Model\InstagramDemographicsResponseDemographicsValueInner[]>|null
+     * @return array<string,\Zernio\Model\InstagramDemographicsResponseDemographicsValueInner[]>|null
      */
     public function getDemographics()
     {
@@ -548,7 +548,7 @@ class InstagramDemographicsResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets demographics
      *
-     * @param array<string,\Late\Model\InstagramDemographicsResponseDemographicsValueInner[]>|null $demographics Object keyed by breakdown dimension (age, city, country, gender)
+     * @param array<string,\Zernio\Model\InstagramDemographicsResponseDemographicsValueInner[]>|null $demographics Object keyed by breakdown dimension (age, city, country, gender)
      *
      * @return self
      */

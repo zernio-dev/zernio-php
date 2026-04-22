@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SearchAdInterests200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class SearchAdInterests200Response implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'interests' => '\Late\Model\SearchAdInterests200ResponseInterestsInner[]'
+        'interests' => '\Zernio\Model\SearchAdInterests200ResponseInterestsInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class SearchAdInterests200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets interests
      *
-     * @return \Late\Model\SearchAdInterests200ResponseInterestsInner[]|null
+     * @return \Zernio\Model\SearchAdInterests200ResponseInterestsInner[]|null
      */
     public function getInterests()
     {
@@ -303,7 +303,7 @@ class SearchAdInterests200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets interests
      *
-     * @param \Late\Model\SearchAdInterests200ResponseInterestsInner[]|null $interests interests
+     * @param \Zernio\Model\SearchAdInterests200ResponseInterestsInner[]|null $interests interests
      *
      * @return self
      */

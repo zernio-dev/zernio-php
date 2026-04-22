@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **success** | **bool** |  | [optional]
 **account_id** | **string** |  | [optional]
 **location_id** | **string** |  | [optional]
-**reviews** | [**\Late\Model\GetGoogleBusinessReviews200ResponseReviewsInner[]**](GetGoogleBusinessReviews200ResponseReviewsInner.md) |  | [optional]
+**reviews** | [**\Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInner[]**](GetGoogleBusinessReviews200ResponseReviewsInner.md) |  | [optional]
 **average_rating** | **float** | Overall average rating | [optional]
 **total_review_count** | **int** | Total number of reviews | [optional]
 **next_page_token** | **string** | Token for next page | [optional]

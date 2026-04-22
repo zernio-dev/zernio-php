@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreatePostRequestPlatformsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class CreatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, \J
         'platform' => 'string',
         'account_id' => 'string',
         'custom_content' => 'string',
-        'custom_media' => '\Late\Model\CreatePostRequestMediaItemsInner[]',
+        'custom_media' => '\Zernio\Model\CreatePostRequestMediaItemsInner[]',
         'scheduled_for' => '\DateTime',
-        'platform_specific_data' => '\Late\Model\CreatePostRequestPlatformsInnerPlatformSpecificData'
+        'platform_specific_data' => '\Zernio\Model\CreatePostRequestPlatformsInnerPlatformSpecificData'
     ];
 
     /**
@@ -409,7 +409,7 @@ class CreatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Gets custom_media
      *
-     * @return \Late\Model\CreatePostRequestMediaItemsInner[]|null
+     * @return \Zernio\Model\CreatePostRequestMediaItemsInner[]|null
      */
     public function getCustomMedia()
     {
@@ -419,7 +419,7 @@ class CreatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets custom_media
      *
-     * @param \Late\Model\CreatePostRequestMediaItemsInner[]|null $custom_media custom_media
+     * @param \Zernio\Model\CreatePostRequestMediaItemsInner[]|null $custom_media custom_media
      *
      * @return self
      */
@@ -463,7 +463,7 @@ class CreatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Gets platform_specific_data
      *
-     * @return \Late\Model\CreatePostRequestPlatformsInnerPlatformSpecificData|null
+     * @return \Zernio\Model\CreatePostRequestPlatformsInnerPlatformSpecificData|null
      */
     public function getPlatformSpecificData()
     {
@@ -473,7 +473,7 @@ class CreatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets platform_specific_data
      *
-     * @param \Late\Model\CreatePostRequestPlatformsInnerPlatformSpecificData|null $platform_specific_data platform_specific_data
+     * @param \Zernio\Model\CreatePostRequestPlatformsInnerPlatformSpecificData|null $platform_specific_data platform_specific_data
      *
      * @return self
      */

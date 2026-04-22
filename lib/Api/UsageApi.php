@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * UsageApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -133,9 +133,9 @@ class UsageApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UsageStats|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\UsageStats|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getUsageStats(string $contentType = self::contentTypes['getUsageStats'][0])
     {
@@ -150,9 +150,9 @@ class UsageApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UsageStats|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UsageStats|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsageStatsWithHttpInfo(string $contentType = self::contentTypes['getUsageStats'][0])
     {
@@ -184,19 +184,19 @@ class UsageApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UsageStats',
+                        '\Zernio\Model\UsageStats',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -218,7 +218,7 @@ class UsageApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UsageStats',
+                '\Zernio\Model\UsageStats',
                 $request,
                 $response,
             );
@@ -227,7 +227,7 @@ class UsageApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UsageStats',
+                        '\Zernio\Model\UsageStats',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -235,7 +235,7 @@ class UsageApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -243,7 +243,7 @@ class UsageApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -287,7 +287,7 @@ class UsageApi
      */
     public function getUsageStatsAsyncWithHttpInfo(string $contentType = self::contentTypes['getUsageStats'][0])
     {
-        $returnType = '\Late\Model\UsageStats';
+        $returnType = '\Zernio\Model\UsageStats';
         $request = $this->getUsageStatsRequest($contentType);
 
         return $this->client

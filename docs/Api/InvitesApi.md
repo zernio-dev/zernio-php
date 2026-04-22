@@ -1,4 +1,4 @@
-# Late\InvitesApi
+# Zernio\InvitesApi
 
 
 
@@ -12,7 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createInviteToken()`
 
 ```php
-createInviteToken($create_invite_token_request): \Late\Model\CreateInviteToken201Response
+createInviteToken($create_invite_token_request): \Zernio\Model\CreateInviteToken201Response
 ```
 
 Create invite token
@@ -27,16 +27,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\InvitesApi(
+$apiInstance = new Zernio\Api\InvitesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_invite_token_request = {"scope":"profiles","profileIds":["64f0a1b2c3d4e5f6a7b8c9d0","64f0a1b2c3d4e5f6a7b8c9d1"]}; // \Late\Model\CreateInviteTokenRequest
+$create_invite_token_request = {"scope":"profiles","profileIds":["64f0a1b2c3d4e5f6a7b8c9d0","64f0a1b2c3d4e5f6a7b8c9d1"]}; // \Zernio\Model\CreateInviteTokenRequest
 
 try {
     $result = $apiInstance->createInviteToken($create_invite_token_request);
@@ -50,11 +50,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_invite_token_request** | [**\Late\Model\CreateInviteTokenRequest**](../Model/CreateInviteTokenRequest.md)|  | |
+| **create_invite_token_request** | [**\Zernio\Model\CreateInviteTokenRequest**](../Model/CreateInviteTokenRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateInviteToken201Response**](../Model/CreateInviteToken201Response.md)
+[**\Zernio\Model\CreateInviteToken201Response**](../Model/CreateInviteToken201Response.md)
 
 ### Authorization
 

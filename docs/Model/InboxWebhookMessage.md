@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **platform_message_id** | **string** | Platform&#39;s message ID |
 **direction** | **string** |  |
 **text** | **string** | Message text content (retained on deleted messages for API consumers; Zernio dashboard UI hides this) |
-**attachments** | [**\Late\Model\InboxWebhookMessageAttachmentsInner[]**](InboxWebhookMessageAttachmentsInner.md) |  |
-**sender** | [**\Late\Model\InboxWebhookMessageSender**](InboxWebhookMessageSender.md) |  |
+**attachments** | [**\Zernio\Model\InboxWebhookMessageAttachmentsInner[]**](InboxWebhookMessageAttachmentsInner.md) |  |
+**sender** | [**\Zernio\Model\InboxWebhookMessageSender**](InboxWebhookMessageSender.md) |  |
 **sent_at** | **\DateTime** |  |
 **is_read** | **bool** |  |
 

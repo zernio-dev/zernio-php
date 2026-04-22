@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * TikTokPlatformData Class Doc Comment
  *
  * @category Class
  * @description Photo carousels up to 35 images. Video titles up to 2200 chars, photo titles truncated to 90 chars. privacyLevel must match creator_info options. Both camelCase and snake_case accepted.  Creator Inbox (draft mode): Set draft: true to send content to the TikTok Creator Inbox instead of publishing immediately. The creator receives an inbox notification and completes the post using TikTok&#39;s editing flow. This maps to TikTok&#39;s post_mode: \&quot;MEDIA_UPLOAD\&quot; internally.  Important: The field publish_type is NOT supported. Use draft: true for Creator Inbox flow.  Photo drafts use the /v2/post/publish/content/init/ endpoint with post_mode: \&quot;MEDIA_UPLOAD\&quot;. Video drafts use the dedicated /v2/post/publish/inbox/video/init/ endpoint.  When draft: true, the video.upload scope is required. When draft is false or omitted (direct post), the video.publish scope is required. For Creator Inbox, TikTok app version must be 31.8 or higher.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>

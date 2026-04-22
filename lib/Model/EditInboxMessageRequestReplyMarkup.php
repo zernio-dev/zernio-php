@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * EditInboxMessageRequestReplyMarkup Class Doc Comment
  *
  * @category Class
  * @description New inline keyboard markup
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class EditInboxMessageRequestReplyMarkup implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'keyboard' => '\Late\Model\EditInboxMessageRequestReplyMarkupKeyboardInnerInner[][]'
+        'keyboard' => '\Zernio\Model\EditInboxMessageRequestReplyMarkupKeyboardInnerInner[][]'
     ];
 
     /**
@@ -360,7 +360,7 @@ class EditInboxMessageRequestReplyMarkup implements ModelInterface, ArrayAccess,
     /**
      * Gets keyboard
      *
-     * @return \Late\Model\EditInboxMessageRequestReplyMarkupKeyboardInnerInner[][]|null
+     * @return \Zernio\Model\EditInboxMessageRequestReplyMarkupKeyboardInnerInner[][]|null
      */
     public function getKeyboard()
     {
@@ -370,7 +370,7 @@ class EditInboxMessageRequestReplyMarkup implements ModelInterface, ArrayAccess,
     /**
      * Sets keyboard
      *
-     * @param \Late\Model\EditInboxMessageRequestReplyMarkupKeyboardInnerInner[][]|null $keyboard keyboard
+     * @param \Zernio\Model\EditInboxMessageRequestReplyMarkupKeyboardInnerInner[][]|null $keyboard keyboard
      *
      * @return self
      */

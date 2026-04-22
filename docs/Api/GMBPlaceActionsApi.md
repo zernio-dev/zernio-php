@@ -1,4 +1,4 @@
-# Late\GMBPlaceActionsApi
+# Zernio\GMBPlaceActionsApi
 
 
 
@@ -15,7 +15,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createGoogleBusinessPlaceAction()`
 
 ```php
-createGoogleBusinessPlaceAction($account_id, $create_google_business_place_action_request, $location_id): \Late\Model\CreateGoogleBusinessPlaceAction200Response
+createGoogleBusinessPlaceAction($account_id, $create_google_business_place_action_request, $location_id): \Zernio\Model\CreateGoogleBusinessPlaceAction200Response
 ```
 
 Create action link
@@ -30,17 +30,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBPlaceActionsApi(
+$apiInstance = new Zernio\Api\GMBPlaceActionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$create_google_business_place_action_request = {"uri":"https://order.ubereats.com/joespizza","placeActionType":"FOOD_ORDERING"}; // \Late\Model\CreateGoogleBusinessPlaceActionRequest
+$create_google_business_place_action_request = {"uri":"https://order.ubereats.com/joespizza","placeActionType":"FOOD_ORDERING"}; // \Zernio\Model\CreateGoogleBusinessPlaceActionRequest
 $location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
 
 try {
@@ -56,12 +56,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **create_google_business_place_action_request** | [**\Late\Model\CreateGoogleBusinessPlaceActionRequest**](../Model/CreateGoogleBusinessPlaceActionRequest.md)|  | |
+| **create_google_business_place_action_request** | [**\Zernio\Model\CreateGoogleBusinessPlaceActionRequest**](../Model/CreateGoogleBusinessPlaceActionRequest.md)|  | |
 | **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
 
 ### Return type
 
-[**\Late\Model\CreateGoogleBusinessPlaceAction200Response**](../Model/CreateGoogleBusinessPlaceAction200Response.md)
+[**\Zernio\Model\CreateGoogleBusinessPlaceAction200Response**](../Model/CreateGoogleBusinessPlaceAction200Response.md)
 
 ### Authorization
 
@@ -79,7 +79,7 @@ try {
 ## `deleteGoogleBusinessPlaceAction()`
 
 ```php
-deleteGoogleBusinessPlaceAction($account_id, $name, $location_id): \Late\Model\DeleteGoogleBusinessPlaceAction200Response
+deleteGoogleBusinessPlaceAction($account_id, $name, $location_id): \Zernio\Model\DeleteGoogleBusinessPlaceAction200Response
 ```
 
 Delete action link
@@ -94,10 +94,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBPlaceActionsApi(
+$apiInstance = new Zernio\Api\GMBPlaceActionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -125,7 +125,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\DeleteGoogleBusinessPlaceAction200Response**](../Model/DeleteGoogleBusinessPlaceAction200Response.md)
+[**\Zernio\Model\DeleteGoogleBusinessPlaceAction200Response**](../Model/DeleteGoogleBusinessPlaceAction200Response.md)
 
 ### Authorization
 
@@ -143,7 +143,7 @@ try {
 ## `listGoogleBusinessPlaceActions()`
 
 ```php
-listGoogleBusinessPlaceActions($account_id, $location_id, $page_size, $page_token): \Late\Model\ListGoogleBusinessPlaceActions200Response
+listGoogleBusinessPlaceActions($account_id, $location_id, $page_size, $page_token): \Zernio\Model\ListGoogleBusinessPlaceActions200Response
 ```
 
 List action links
@@ -158,10 +158,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBPlaceActionsApi(
+$apiInstance = new Zernio\Api\GMBPlaceActionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -191,7 +191,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListGoogleBusinessPlaceActions200Response**](../Model/ListGoogleBusinessPlaceActions200Response.md)
+[**\Zernio\Model\ListGoogleBusinessPlaceActions200Response**](../Model/ListGoogleBusinessPlaceActions200Response.md)
 
 ### Authorization
 
@@ -209,7 +209,7 @@ try {
 ## `updateGoogleBusinessPlaceAction()`
 
 ```php
-updateGoogleBusinessPlaceAction($account_id, $update_google_business_place_action_request, $location_id): \Late\Model\UpdateGoogleBusinessPlaceAction200Response
+updateGoogleBusinessPlaceAction($account_id, $update_google_business_place_action_request, $location_id): \Zernio\Model\UpdateGoogleBusinessPlaceAction200Response
 ```
 
 Update action link
@@ -224,17 +224,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\GMBPlaceActionsApi(
+$apiInstance = new Zernio\Api\GMBPlaceActionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_google_business_place_action_request = {"name":"locations/123/placeActionLinks/456","uri":"https://order.doordash.com/joespizza"}; // \Late\Model\UpdateGoogleBusinessPlaceActionRequest
+$update_google_business_place_action_request = {"name":"locations/123/placeActionLinks/456","uri":"https://order.doordash.com/joespizza"}; // \Zernio\Model\UpdateGoogleBusinessPlaceActionRequest
 $location_id = 'location_id_example'; // string | Override which location to target. If omitted, uses the account's selected location.
 
 try {
@@ -250,12 +250,12 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **update_google_business_place_action_request** | [**\Late\Model\UpdateGoogleBusinessPlaceActionRequest**](../Model/UpdateGoogleBusinessPlaceActionRequest.md)|  | |
+| **update_google_business_place_action_request** | [**\Zernio\Model\UpdateGoogleBusinessPlaceActionRequest**](../Model/UpdateGoogleBusinessPlaceActionRequest.md)|  | |
 | **location_id** | **string**| Override which location to target. If omitted, uses the account&#39;s selected location. | [optional] |
 
 ### Return type
 
-[**\Late\Model\UpdateGoogleBusinessPlaceAction200Response**](../Model/UpdateGoogleBusinessPlaceAction200Response.md)
+[**\Zernio\Model\UpdateGoogleBusinessPlaceAction200Response**](../Model/UpdateGoogleBusinessPlaceAction200Response.md)
 
 ### Authorization
 

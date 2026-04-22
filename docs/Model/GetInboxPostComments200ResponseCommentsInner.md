@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | [optional]
 **message** | **string** |  | [optional]
 **created_time** | **\DateTime** |  | [optional]
-**from** | [**\Late\Model\GetInboxPostComments200ResponseCommentsInnerFrom**](GetInboxPostComments200ResponseCommentsInnerFrom.md) |  | [optional]
+**from** | [**\Zernio\Model\GetInboxPostComments200ResponseCommentsInnerFrom**](GetInboxPostComments200ResponseCommentsInnerFrom.md) |  | [optional]
 **like_count** | **int** |  | [optional]
 **reply_count** | **int** |  | [optional]
 **platform** | **string** | The platform this comment is from | [optional]

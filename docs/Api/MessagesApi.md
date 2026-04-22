@@ -1,4 +1,4 @@
-# Late\MessagesApi
+# Zernio\MessagesApi
 
 Unified inbox API for managing conversations and direct messages across all connected accounts. All endpoints aggregate data from multiple social accounts in a single API call. Requires Inbox addon.
 
@@ -23,7 +23,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `addMessageReaction()`
 
 ```php
-addMessageReaction($conversation_id, $message_id, $add_message_reaction_request): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
+addMessageReaction($conversation_id, $message_id, $add_message_reaction_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Add reaction
@@ -38,10 +38,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MessagesApi(
+$apiInstance = new Zernio\Api\MessagesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -49,7 +49,7 @@ $apiInstance = new Late\Api\MessagesApi(
 );
 $conversation_id = 'conversation_id_example'; // string | The conversation ID
 $message_id = 'message_id_example'; // string | The platform message ID to react to
-$add_message_reaction_request = new \Late\Model\AddMessageReactionRequest(); // \Late\Model\AddMessageReactionRequest
+$add_message_reaction_request = new \Zernio\Model\AddMessageReactionRequest(); // \Zernio\Model\AddMessageReactionRequest
 
 try {
     $result = $apiInstance->addMessageReaction($conversation_id, $message_id, $add_message_reaction_request);
@@ -65,11 +65,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **conversation_id** | **string**| The conversation ID | |
 | **message_id** | **string**| The platform message ID to react to | |
-| **add_message_reaction_request** | [**\Late\Model\AddMessageReactionRequest**](../Model/AddMessageReactionRequest.md)|  | |
+| **add_message_reaction_request** | [**\Zernio\Model\AddMessageReactionRequest**](../Model/AddMessageReactionRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -87,7 +87,7 @@ try {
 ## `createInboxConversation()`
 
 ```php
-createInboxConversation($create_inbox_conversation_request): \Late\Model\CreateInboxConversation201Response
+createInboxConversation($create_inbox_conversation_request): \Zernio\Model\CreateInboxConversation201Response
 ```
 
 Create conversation
@@ -102,16 +102,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MessagesApi(
+$apiInstance = new Zernio\Api\MessagesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_inbox_conversation_request = new \Late\Model\CreateInboxConversationRequest(); // \Late\Model\CreateInboxConversationRequest
+$create_inbox_conversation_request = new \Zernio\Model\CreateInboxConversationRequest(); // \Zernio\Model\CreateInboxConversationRequest
 
 try {
     $result = $apiInstance->createInboxConversation($create_inbox_conversation_request);
@@ -125,11 +125,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_inbox_conversation_request** | [**\Late\Model\CreateInboxConversationRequest**](../Model/CreateInboxConversationRequest.md)|  | |
+| **create_inbox_conversation_request** | [**\Zernio\Model\CreateInboxConversationRequest**](../Model/CreateInboxConversationRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateInboxConversation201Response**](../Model/CreateInboxConversation201Response.md)
+[**\Zernio\Model\CreateInboxConversation201Response**](../Model/CreateInboxConversation201Response.md)
 
 ### Authorization
 
@@ -147,7 +147,7 @@ try {
 ## `deleteInboxMessage()`
 
 ```php
-deleteInboxMessage($conversation_id, $message_id, $account_id): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
+deleteInboxMessage($conversation_id, $message_id, $account_id): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Delete message
@@ -162,10 +162,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MessagesApi(
+$apiInstance = new Zernio\Api\MessagesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -193,7 +193,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -211,7 +211,7 @@ try {
 ## `editInboxMessage()`
 
 ```php
-editInboxMessage($conversation_id, $message_id, $edit_inbox_message_request): \Late\Model\EditInboxMessage200Response
+editInboxMessage($conversation_id, $message_id, $edit_inbox_message_request): \Zernio\Model\EditInboxMessage200Response
 ```
 
 Edit message
@@ -226,10 +226,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MessagesApi(
+$apiInstance = new Zernio\Api\MessagesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -237,7 +237,7 @@ $apiInstance = new Late\Api\MessagesApi(
 );
 $conversation_id = 'conversation_id_example'; // string | The conversation ID
 $message_id = 'message_id_example'; // string | The Telegram message ID to edit
-$edit_inbox_message_request = new \Late\Model\EditInboxMessageRequest(); // \Late\Model\EditInboxMessageRequest
+$edit_inbox_message_request = new \Zernio\Model\EditInboxMessageRequest(); // \Zernio\Model\EditInboxMessageRequest
 
 try {
     $result = $apiInstance->editInboxMessage($conversation_id, $message_id, $edit_inbox_message_request);
@@ -253,11 +253,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **conversation_id** | **string**| The conversation ID | |
 | **message_id** | **string**| The Telegram message ID to edit | |
-| **edit_inbox_message_request** | [**\Late\Model\EditInboxMessageRequest**](../Model/EditInboxMessageRequest.md)|  | |
+| **edit_inbox_message_request** | [**\Zernio\Model\EditInboxMessageRequest**](../Model/EditInboxMessageRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\EditInboxMessage200Response**](../Model/EditInboxMessage200Response.md)
+[**\Zernio\Model\EditInboxMessage200Response**](../Model/EditInboxMessage200Response.md)
 
 ### Authorization
 
@@ -275,7 +275,7 @@ try {
 ## `getInboxConversation()`
 
 ```php
-getInboxConversation($conversation_id, $account_id): \Late\Model\GetInboxConversation200Response
+getInboxConversation($conversation_id, $account_id): \Zernio\Model\GetInboxConversation200Response
 ```
 
 Get conversation
@@ -290,10 +290,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MessagesApi(
+$apiInstance = new Zernio\Api\MessagesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -319,7 +319,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetInboxConversation200Response**](../Model/GetInboxConversation200Response.md)
+[**\Zernio\Model\GetInboxConversation200Response**](../Model/GetInboxConversation200Response.md)
 
 ### Authorization
 
@@ -337,7 +337,7 @@ try {
 ## `getInboxConversationMessages()`
 
 ```php
-getInboxConversationMessages($conversation_id, $account_id): \Late\Model\GetInboxConversationMessages200Response
+getInboxConversationMessages($conversation_id, $account_id): \Zernio\Model\GetInboxConversationMessages200Response
 ```
 
 List messages
@@ -352,10 +352,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MessagesApi(
+$apiInstance = new Zernio\Api\MessagesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -381,7 +381,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetInboxConversationMessages200Response**](../Model/GetInboxConversationMessages200Response.md)
+[**\Zernio\Model\GetInboxConversationMessages200Response**](../Model/GetInboxConversationMessages200Response.md)
 
 ### Authorization
 
@@ -399,7 +399,7 @@ try {
 ## `listInboxConversations()`
 
 ```php
-listInboxConversations($profile_id, $platform, $status, $sort_order, $limit, $cursor, $account_id): \Late\Model\ListInboxConversations200Response
+listInboxConversations($profile_id, $platform, $status, $sort_order, $limit, $cursor, $account_id): \Zernio\Model\ListInboxConversations200Response
 ```
 
 List conversations
@@ -414,10 +414,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MessagesApi(
+$apiInstance = new Zernio\Api\MessagesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -453,7 +453,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListInboxConversations200Response**](../Model/ListInboxConversations200Response.md)
+[**\Zernio\Model\ListInboxConversations200Response**](../Model/ListInboxConversations200Response.md)
 
 ### Authorization
 
@@ -471,7 +471,7 @@ try {
 ## `removeMessageReaction()`
 
 ```php
-removeMessageReaction($conversation_id, $message_id, $account_id): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
+removeMessageReaction($conversation_id, $message_id, $account_id): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Remove reaction
@@ -486,10 +486,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MessagesApi(
+$apiInstance = new Zernio\Api\MessagesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -517,7 +517,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -535,7 +535,7 @@ try {
 ## `sendInboxMessage()`
 
 ```php
-sendInboxMessage($conversation_id, $send_inbox_message_request): \Late\Model\SendInboxMessage200Response
+sendInboxMessage($conversation_id, $send_inbox_message_request): \Zernio\Model\SendInboxMessage200Response
 ```
 
 Send message
@@ -550,17 +550,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MessagesApi(
+$apiInstance = new Zernio\Api\MessagesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $conversation_id = 'conversation_id_example'; // string | The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID.
-$send_inbox_message_request = new \Late\Model\SendInboxMessageRequest(); // \Late\Model\SendInboxMessageRequest
+$send_inbox_message_request = new \Zernio\Model\SendInboxMessageRequest(); // \Zernio\Model\SendInboxMessageRequest
 
 try {
     $result = $apiInstance->sendInboxMessage($conversation_id, $send_inbox_message_request);
@@ -575,11 +575,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **conversation_id** | **string**| The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. | |
-| **send_inbox_message_request** | [**\Late\Model\SendInboxMessageRequest**](../Model/SendInboxMessageRequest.md)|  | |
+| **send_inbox_message_request** | [**\Zernio\Model\SendInboxMessageRequest**](../Model/SendInboxMessageRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\SendInboxMessage200Response**](../Model/SendInboxMessage200Response.md)
+[**\Zernio\Model\SendInboxMessage200Response**](../Model/SendInboxMessage200Response.md)
 
 ### Authorization
 
@@ -597,7 +597,7 @@ try {
 ## `sendTypingIndicator()`
 
 ```php
-sendTypingIndicator($conversation_id, $send_typing_indicator_request): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
+sendTypingIndicator($conversation_id, $send_typing_indicator_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Send typing indicator
@@ -612,17 +612,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MessagesApi(
+$apiInstance = new Zernio\Api\MessagesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $conversation_id = 'conversation_id_example'; // string | The conversation ID
-$send_typing_indicator_request = new \Late\Model\SendTypingIndicatorRequest(); // \Late\Model\SendTypingIndicatorRequest
+$send_typing_indicator_request = new \Zernio\Model\SendTypingIndicatorRequest(); // \Zernio\Model\SendTypingIndicatorRequest
 
 try {
     $result = $apiInstance->sendTypingIndicator($conversation_id, $send_typing_indicator_request);
@@ -637,11 +637,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **conversation_id** | **string**| The conversation ID | |
-| **send_typing_indicator_request** | [**\Late\Model\SendTypingIndicatorRequest**](../Model/SendTypingIndicatorRequest.md)|  | |
+| **send_typing_indicator_request** | [**\Zernio\Model\SendTypingIndicatorRequest**](../Model/SendTypingIndicatorRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -659,7 +659,7 @@ try {
 ## `updateInboxConversation()`
 
 ```php
-updateInboxConversation($conversation_id, $update_inbox_conversation_request): \Late\Model\UpdateInboxConversation200Response
+updateInboxConversation($conversation_id, $update_inbox_conversation_request): \Zernio\Model\UpdateInboxConversation200Response
 ```
 
 Update conversation status
@@ -674,17 +674,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MessagesApi(
+$apiInstance = new Zernio\Api\MessagesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $conversation_id = 'conversation_id_example'; // string | The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID.
-$update_inbox_conversation_request = new \Late\Model\UpdateInboxConversationRequest(); // \Late\Model\UpdateInboxConversationRequest
+$update_inbox_conversation_request = new \Zernio\Model\UpdateInboxConversationRequest(); // \Zernio\Model\UpdateInboxConversationRequest
 
 try {
     $result = $apiInstance->updateInboxConversation($conversation_id, $update_inbox_conversation_request);
@@ -699,11 +699,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **conversation_id** | **string**| The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. | |
-| **update_inbox_conversation_request** | [**\Late\Model\UpdateInboxConversationRequest**](../Model/UpdateInboxConversationRequest.md)|  | |
+| **update_inbox_conversation_request** | [**\Zernio\Model\UpdateInboxConversationRequest**](../Model/UpdateInboxConversationRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateInboxConversation200Response**](../Model/UpdateInboxConversation200Response.md)
+[**\Zernio\Model\UpdateInboxConversation200Response**](../Model/UpdateInboxConversation200Response.md)
 
 ### Authorization
 
@@ -721,7 +721,7 @@ try {
 ## `uploadMediaDirect()`
 
 ```php
-uploadMediaDirect($file, $content_type): \Late\Model\UploadMediaDirect200Response
+uploadMediaDirect($file, $content_type): \Zernio\Model\UploadMediaDirect200Response
 ```
 
 Upload media file
@@ -736,10 +736,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MessagesApi(
+$apiInstance = new Zernio\Api\MessagesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -765,7 +765,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UploadMediaDirect200Response**](../Model/UploadMediaDirect200Response.md)
+[**\Zernio\Model\UploadMediaDirect200Response**](../Model/UploadMediaDirect200Response.md)
 
 ### Authorization
 

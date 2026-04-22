@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * RecyclingConfig Class Doc Comment
  *
  * @category Class
  * @description Configure automatic post recycling (reposting at regular intervals). After the post is published, the system creates new scheduled copies at the specified interval until expiration conditions are met. Supports weekly or monthly intervals. Maximum 10 active recycling posts per account. YouTube and TikTok platforms are excluded from recycling. Content variations are recommended for Twitter and Pinterest to avoid duplicate flags.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>

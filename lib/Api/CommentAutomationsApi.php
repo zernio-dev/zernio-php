@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * CommentAutomationsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -146,12 +146,12 @@ class CommentAutomationsApi
      *
      * Create comment-to-DM automation
      *
-     * @param  \Late\Model\CreateCommentAutomationRequest $create_comment_automation_request create_comment_automation_request (required)
+     * @param  \Zernio\Model\CreateCommentAutomationRequest $create_comment_automation_request create_comment_automation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCommentAutomation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CreateCommentAutomation200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\CreateCommentAutomation200Response|\Zernio\Model\InlineObject
      */
     public function createCommentAutomation($create_comment_automation_request, string $contentType = self::contentTypes['createCommentAutomation'][0])
     {
@@ -164,12 +164,12 @@ class CommentAutomationsApi
      *
      * Create comment-to-DM automation
      *
-     * @param  \Late\Model\CreateCommentAutomationRequest $create_comment_automation_request (required)
+     * @param  \Zernio\Model\CreateCommentAutomationRequest $create_comment_automation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCommentAutomation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CreateCommentAutomation200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateCommentAutomation200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createCommentAutomationWithHttpInfo($create_comment_automation_request, string $contentType = self::contentTypes['createCommentAutomation'][0])
     {
@@ -201,13 +201,13 @@ class CommentAutomationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateCommentAutomation200Response',
+                        '\Zernio\Model\CreateCommentAutomation200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -229,7 +229,7 @@ class CommentAutomationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CreateCommentAutomation200Response',
+                '\Zernio\Model\CreateCommentAutomation200Response',
                 $request,
                 $response,
             );
@@ -238,7 +238,7 @@ class CommentAutomationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateCommentAutomation200Response',
+                        '\Zernio\Model\CreateCommentAutomation200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -246,7 +246,7 @@ class CommentAutomationsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -263,7 +263,7 @@ class CommentAutomationsApi
      *
      * Create comment-to-DM automation
      *
-     * @param  \Late\Model\CreateCommentAutomationRequest $create_comment_automation_request (required)
+     * @param  \Zernio\Model\CreateCommentAutomationRequest $create_comment_automation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCommentAutomation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -284,7 +284,7 @@ class CommentAutomationsApi
      *
      * Create comment-to-DM automation
      *
-     * @param  \Late\Model\CreateCommentAutomationRequest $create_comment_automation_request (required)
+     * @param  \Zernio\Model\CreateCommentAutomationRequest $create_comment_automation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCommentAutomation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -292,7 +292,7 @@ class CommentAutomationsApi
      */
     public function createCommentAutomationAsyncWithHttpInfo($create_comment_automation_request, string $contentType = self::contentTypes['createCommentAutomation'][0])
     {
-        $returnType = '\Late\Model\CreateCommentAutomation200Response';
+        $returnType = '\Zernio\Model\CreateCommentAutomation200Response';
         $request = $this->createCommentAutomationRequest($create_comment_automation_request, $contentType);
 
         return $this->client
@@ -334,7 +334,7 @@ class CommentAutomationsApi
     /**
      * Create request for operation 'createCommentAutomation'
      *
-     * @param  \Late\Model\CreateCommentAutomationRequest $create_comment_automation_request (required)
+     * @param  \Zernio\Model\CreateCommentAutomationRequest $create_comment_automation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCommentAutomation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -434,7 +434,7 @@ class CommentAutomationsApi
      * @param  string $automation_id automation_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCommentAutomation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -451,7 +451,7 @@ class CommentAutomationsApi
      * @param  string $automation_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteCommentAutomation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -488,7 +488,7 @@ class CommentAutomationsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -496,7 +496,7 @@ class CommentAutomationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -672,9 +672,9 @@ class CommentAutomationsApi
      * @param  string $automation_id automation_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentAutomation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetCommentAutomation200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\GetCommentAutomation200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getCommentAutomation($automation_id, string $contentType = self::contentTypes['getCommentAutomation'][0])
     {
@@ -690,9 +690,9 @@ class CommentAutomationsApi
      * @param  string $automation_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getCommentAutomation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetCommentAutomation200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetCommentAutomation200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCommentAutomationWithHttpInfo($automation_id, string $contentType = self::contentTypes['getCommentAutomation'][0])
     {
@@ -724,19 +724,19 @@ class CommentAutomationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetCommentAutomation200Response',
+                        '\Zernio\Model\GetCommentAutomation200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -758,7 +758,7 @@ class CommentAutomationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetCommentAutomation200Response',
+                '\Zernio\Model\GetCommentAutomation200Response',
                 $request,
                 $response,
             );
@@ -767,7 +767,7 @@ class CommentAutomationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetCommentAutomation200Response',
+                        '\Zernio\Model\GetCommentAutomation200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -775,7 +775,7 @@ class CommentAutomationsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -783,7 +783,7 @@ class CommentAutomationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -829,7 +829,7 @@ class CommentAutomationsApi
      */
     public function getCommentAutomationAsyncWithHttpInfo($automation_id, string $contentType = self::contentTypes['getCommentAutomation'][0])
     {
-        $returnType = '\Late\Model\GetCommentAutomation200Response';
+        $returnType = '\Zernio\Model\GetCommentAutomation200Response';
         $request = $this->getCommentAutomationRequest($automation_id, $contentType);
 
         return $this->client
@@ -975,9 +975,9 @@ class CommentAutomationsApi
      * @param  int|null $skip skip (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommentAutomationLogs'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListCommentAutomationLogs200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\ListCommentAutomationLogs200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function listCommentAutomationLogs($automation_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listCommentAutomationLogs'][0])
     {
@@ -996,9 +996,9 @@ class CommentAutomationsApi
      * @param  int|null $skip (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommentAutomationLogs'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListCommentAutomationLogs200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListCommentAutomationLogs200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCommentAutomationLogsWithHttpInfo($automation_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listCommentAutomationLogs'][0])
     {
@@ -1030,19 +1030,19 @@ class CommentAutomationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListCommentAutomationLogs200Response',
+                        '\Zernio\Model\ListCommentAutomationLogs200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1064,7 +1064,7 @@ class CommentAutomationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListCommentAutomationLogs200Response',
+                '\Zernio\Model\ListCommentAutomationLogs200Response',
                 $request,
                 $response,
             );
@@ -1073,7 +1073,7 @@ class CommentAutomationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListCommentAutomationLogs200Response',
+                        '\Zernio\Model\ListCommentAutomationLogs200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1081,7 +1081,7 @@ class CommentAutomationsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1089,7 +1089,7 @@ class CommentAutomationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1141,7 +1141,7 @@ class CommentAutomationsApi
      */
     public function listCommentAutomationLogsAsyncWithHttpInfo($automation_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listCommentAutomationLogs'][0])
     {
-        $returnType = '\Late\Model\ListCommentAutomationLogs200Response';
+        $returnType = '\Zernio\Model\ListCommentAutomationLogs200Response';
         $request = $this->listCommentAutomationLogsRequest($automation_id, $status, $limit, $skip, $contentType);
 
         return $this->client
@@ -1317,9 +1317,9 @@ class CommentAutomationsApi
      * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommentAutomations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListCommentAutomations200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListCommentAutomations200Response|\Zernio\Model\InlineObject
      */
     public function listCommentAutomations($profile_id = null, string $contentType = self::contentTypes['listCommentAutomations'][0])
     {
@@ -1335,9 +1335,9 @@ class CommentAutomationsApi
      * @param  string|null $profile_id Filter by profile. Omit to list across all profiles (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listCommentAutomations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListCommentAutomations200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListCommentAutomations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listCommentAutomationsWithHttpInfo($profile_id = null, string $contentType = self::contentTypes['listCommentAutomations'][0])
     {
@@ -1369,13 +1369,13 @@ class CommentAutomationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListCommentAutomations200Response',
+                        '\Zernio\Model\ListCommentAutomations200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1397,7 +1397,7 @@ class CommentAutomationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListCommentAutomations200Response',
+                '\Zernio\Model\ListCommentAutomations200Response',
                 $request,
                 $response,
             );
@@ -1406,7 +1406,7 @@ class CommentAutomationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListCommentAutomations200Response',
+                        '\Zernio\Model\ListCommentAutomations200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1414,7 +1414,7 @@ class CommentAutomationsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1460,7 +1460,7 @@ class CommentAutomationsApi
      */
     public function listCommentAutomationsAsyncWithHttpInfo($profile_id = null, string $contentType = self::contentTypes['listCommentAutomations'][0])
     {
-        $returnType = '\Late\Model\ListCommentAutomations200Response';
+        $returnType = '\Zernio\Model\ListCommentAutomations200Response';
         $request = $this->listCommentAutomationsRequest($profile_id, $contentType);
 
         return $this->client
@@ -1596,12 +1596,12 @@ class CommentAutomationsApi
      * Update automation settings
      *
      * @param  string $automation_id automation_id (required)
-     * @param  \Late\Model\UpdateCommentAutomationRequest|null $update_comment_automation_request update_comment_automation_request (optional)
+     * @param  \Zernio\Model\UpdateCommentAutomationRequest|null $update_comment_automation_request update_comment_automation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommentAutomation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateCommentAutomation200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\UpdateCommentAutomation200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function updateCommentAutomation($automation_id, $update_comment_automation_request = null, string $contentType = self::contentTypes['updateCommentAutomation'][0])
     {
@@ -1615,12 +1615,12 @@ class CommentAutomationsApi
      * Update automation settings
      *
      * @param  string $automation_id (required)
-     * @param  \Late\Model\UpdateCommentAutomationRequest|null $update_comment_automation_request (optional)
+     * @param  \Zernio\Model\UpdateCommentAutomationRequest|null $update_comment_automation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommentAutomation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateCommentAutomation200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateCommentAutomation200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateCommentAutomationWithHttpInfo($automation_id, $update_comment_automation_request = null, string $contentType = self::contentTypes['updateCommentAutomation'][0])
     {
@@ -1652,19 +1652,19 @@ class CommentAutomationsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateCommentAutomation200Response',
+                        '\Zernio\Model\UpdateCommentAutomation200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1686,7 +1686,7 @@ class CommentAutomationsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateCommentAutomation200Response',
+                '\Zernio\Model\UpdateCommentAutomation200Response',
                 $request,
                 $response,
             );
@@ -1695,7 +1695,7 @@ class CommentAutomationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateCommentAutomation200Response',
+                        '\Zernio\Model\UpdateCommentAutomation200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1703,7 +1703,7 @@ class CommentAutomationsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1711,7 +1711,7 @@ class CommentAutomationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1729,7 +1729,7 @@ class CommentAutomationsApi
      * Update automation settings
      *
      * @param  string $automation_id (required)
-     * @param  \Late\Model\UpdateCommentAutomationRequest|null $update_comment_automation_request (optional)
+     * @param  \Zernio\Model\UpdateCommentAutomationRequest|null $update_comment_automation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommentAutomation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1751,7 +1751,7 @@ class CommentAutomationsApi
      * Update automation settings
      *
      * @param  string $automation_id (required)
-     * @param  \Late\Model\UpdateCommentAutomationRequest|null $update_comment_automation_request (optional)
+     * @param  \Zernio\Model\UpdateCommentAutomationRequest|null $update_comment_automation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommentAutomation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1759,7 +1759,7 @@ class CommentAutomationsApi
      */
     public function updateCommentAutomationAsyncWithHttpInfo($automation_id, $update_comment_automation_request = null, string $contentType = self::contentTypes['updateCommentAutomation'][0])
     {
-        $returnType = '\Late\Model\UpdateCommentAutomation200Response';
+        $returnType = '\Zernio\Model\UpdateCommentAutomation200Response';
         $request = $this->updateCommentAutomationRequest($automation_id, $update_comment_automation_request, $contentType);
 
         return $this->client
@@ -1802,7 +1802,7 @@ class CommentAutomationsApi
      * Create request for operation 'updateCommentAutomation'
      *
      * @param  string $automation_id (required)
-     * @param  \Late\Model\UpdateCommentAutomationRequest|null $update_comment_automation_request (optional)
+     * @param  \Zernio\Model\UpdateCommentAutomationRequest|null $update_comment_automation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCommentAutomation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

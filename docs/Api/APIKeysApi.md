@@ -1,4 +1,4 @@
-# Late\APIKeysApi
+# Zernio\APIKeysApi
 
 
 
@@ -14,7 +14,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createApiKey()`
 
 ```php
-createApiKey($create_api_key_request): \Late\Model\CreateApiKey201Response
+createApiKey($create_api_key_request): \Zernio\Model\CreateApiKey201Response
 ```
 
 Create key
@@ -29,16 +29,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\APIKeysApi(
+$apiInstance = new Zernio\Api\APIKeysApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_api_key_request = {"name":"Analytics Read-Only Key","scope":"profiles","profileIds":["6507a1b2c3d4e5f6a7b8c9d0"],"permission":"read"}; // \Late\Model\CreateApiKeyRequest
+$create_api_key_request = {"name":"Analytics Read-Only Key","scope":"profiles","profileIds":["6507a1b2c3d4e5f6a7b8c9d0"],"permission":"read"}; // \Zernio\Model\CreateApiKeyRequest
 
 try {
     $result = $apiInstance->createApiKey($create_api_key_request);
@@ -52,11 +52,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_api_key_request** | [**\Late\Model\CreateApiKeyRequest**](../Model/CreateApiKeyRequest.md)|  | |
+| **create_api_key_request** | [**\Zernio\Model\CreateApiKeyRequest**](../Model/CreateApiKeyRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateApiKey201Response**](../Model/CreateApiKey201Response.md)
+[**\Zernio\Model\CreateApiKey201Response**](../Model/CreateApiKey201Response.md)
 
 ### Authorization
 
@@ -74,7 +74,7 @@ try {
 ## `deleteApiKey()`
 
 ```php
-deleteApiKey($key_id): \Late\Model\DeleteAccountGroup200Response
+deleteApiKey($key_id): \Zernio\Model\DeleteAccountGroup200Response
 ```
 
 Delete key
@@ -89,10 +89,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\APIKeysApi(
+$apiInstance = new Zernio\Api\APIKeysApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -116,7 +116,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\DeleteAccountGroup200Response**](../Model/DeleteAccountGroup200Response.md)
+[**\Zernio\Model\DeleteAccountGroup200Response**](../Model/DeleteAccountGroup200Response.md)
 
 ### Authorization
 
@@ -134,7 +134,7 @@ try {
 ## `listApiKeys()`
 
 ```php
-listApiKeys(): \Late\Model\ListApiKeys200Response
+listApiKeys(): \Zernio\Model\ListApiKeys200Response
 ```
 
 List keys
@@ -149,10 +149,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\APIKeysApi(
+$apiInstance = new Zernio\Api\APIKeysApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -173,7 +173,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Late\Model\ListApiKeys200Response**](../Model/ListApiKeys200Response.md)
+[**\Zernio\Model\ListApiKeys200Response**](../Model/ListApiKeys200Response.md)
 
 ### Authorization
 

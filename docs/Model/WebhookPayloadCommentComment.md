@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **platform_post_id** | **string** | Platform&#39;s post ID |
 **platform** | **string** |  |
 **text** | **string** | Comment text content |
-**author** | [**\Late\Model\WebhookPayloadCommentCommentAuthor**](WebhookPayloadCommentCommentAuthor.md) |  |
+**author** | [**\Zernio\Model\WebhookPayloadCommentCommentAuthor**](WebhookPayloadCommentCommentAuthor.md) |  |
 **created_at** | **\DateTime** |  |
 **is_reply** | **bool** | Whether this is a reply to another comment |
 **parent_comment_id** | **string** | Parent comment ID if this is a reply |

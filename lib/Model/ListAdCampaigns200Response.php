@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListAdCampaigns200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class ListAdCampaigns200Response implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'campaigns' => '\Late\Model\AdCampaign[]',
-        'pagination' => '\Late\Model\Pagination'
+        'campaigns' => '\Zernio\Model\AdCampaign[]',
+        'pagination' => '\Zernio\Model\Pagination'
     ];
 
     /**
@@ -300,7 +300,7 @@ class ListAdCampaigns200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets campaigns
      *
-     * @return \Late\Model\AdCampaign[]|null
+     * @return \Zernio\Model\AdCampaign[]|null
      */
     public function getCampaigns()
     {
@@ -310,7 +310,7 @@ class ListAdCampaigns200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets campaigns
      *
-     * @param \Late\Model\AdCampaign[]|null $campaigns campaigns
+     * @param \Zernio\Model\AdCampaign[]|null $campaigns campaigns
      *
      * @return self
      */
@@ -327,7 +327,7 @@ class ListAdCampaigns200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets pagination
      *
-     * @return \Late\Model\Pagination|null
+     * @return \Zernio\Model\Pagination|null
      */
     public function getPagination()
     {
@@ -337,7 +337,7 @@ class ListAdCampaigns200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets pagination
      *
-     * @param \Late\Model\Pagination|null $pagination pagination
+     * @param \Zernio\Model\Pagination|null $pagination pagination
      *
      * @return self
      */

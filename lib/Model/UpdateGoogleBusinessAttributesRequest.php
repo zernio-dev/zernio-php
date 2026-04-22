@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateGoogleBusinessAttributesRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class UpdateGoogleBusinessAttributesRequest implements ModelInterface, ArrayAcce
       * @var string[]
       */
     protected static $openAPITypes = [
-        'attributes' => '\Late\Model\UpdateGoogleBusinessAttributesRequestAttributesInner[]',
+        'attributes' => '\Zernio\Model\UpdateGoogleBusinessAttributesRequestAttributesInner[]',
         'attribute_mask' => 'string'
     ];
 
@@ -306,7 +306,7 @@ class UpdateGoogleBusinessAttributesRequest implements ModelInterface, ArrayAcce
     /**
      * Gets attributes
      *
-     * @return \Late\Model\UpdateGoogleBusinessAttributesRequestAttributesInner[]
+     * @return \Zernio\Model\UpdateGoogleBusinessAttributesRequestAttributesInner[]
      */
     public function getAttributes()
     {
@@ -316,7 +316,7 @@ class UpdateGoogleBusinessAttributesRequest implements ModelInterface, ArrayAcce
     /**
      * Sets attributes
      *
-     * @param \Late\Model\UpdateGoogleBusinessAttributesRequestAttributesInner[] $attributes attributes
+     * @param \Zernio\Model\UpdateGoogleBusinessAttributesRequestAttributesInner[] $attributes attributes
      *
      * @return self
      */

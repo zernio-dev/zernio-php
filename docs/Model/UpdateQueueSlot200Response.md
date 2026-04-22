@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **success** | **bool** |  | [optional]
-**schedule** | [**\Late\Model\QueueSchedule**](QueueSchedule.md) |  | [optional]
+**schedule** | [**\Zernio\Model\QueueSchedule**](QueueSchedule.md) |  | [optional]
 **next_slots** | **\DateTime[]** |  | [optional]
 **reshuffled_count** | **int** |  | [optional]
 

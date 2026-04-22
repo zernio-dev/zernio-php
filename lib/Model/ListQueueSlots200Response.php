@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListQueueSlots200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,9 +59,9 @@ class ListQueueSlots200Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'exists' => 'bool',
-        'schedule' => '\Late\Model\QueueSchedule',
+        'schedule' => '\Zernio\Model\QueueSchedule',
         'next_slots' => '\DateTime[]',
-        'queues' => '\Late\Model\QueueSchedule[]',
+        'queues' => '\Zernio\Model\QueueSchedule[]',
         'count' => 'int'
     ];
 
@@ -348,7 +348,7 @@ class ListQueueSlots200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets schedule
      *
-     * @return \Late\Model\QueueSchedule|null
+     * @return \Zernio\Model\QueueSchedule|null
      */
     public function getSchedule()
     {
@@ -358,7 +358,7 @@ class ListQueueSlots200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets schedule
      *
-     * @param \Late\Model\QueueSchedule|null $schedule schedule
+     * @param \Zernio\Model\QueueSchedule|null $schedule schedule
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class ListQueueSlots200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets queues
      *
-     * @return \Late\Model\QueueSchedule[]|null
+     * @return \Zernio\Model\QueueSchedule[]|null
      */
     public function getQueues()
     {
@@ -412,7 +412,7 @@ class ListQueueSlots200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets queues
      *
-     * @param \Late\Model\QueueSchedule[]|null $queues queues
+     * @param \Zernio\Model\QueueSchedule[]|null $queues queues
      *
      * @return self
      */

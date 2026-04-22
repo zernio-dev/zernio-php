@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * FoodMenuSection Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class FoodMenuSection implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'labels' => '\Late\Model\FoodMenuLabel[]',
-        'items' => '\Late\Model\FoodMenuItem[]'
+        'labels' => '\Zernio\Model\FoodMenuLabel[]',
+        'items' => '\Zernio\Model\FoodMenuItem[]'
     ];
 
     /**
@@ -303,7 +303,7 @@ class FoodMenuSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets labels
      *
-     * @return \Late\Model\FoodMenuLabel[]
+     * @return \Zernio\Model\FoodMenuLabel[]
      */
     public function getLabels()
     {
@@ -313,7 +313,7 @@ class FoodMenuSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets labels
      *
-     * @param \Late\Model\FoodMenuLabel[] $labels labels
+     * @param \Zernio\Model\FoodMenuLabel[] $labels labels
      *
      * @return self
      */
@@ -330,7 +330,7 @@ class FoodMenuSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return \Late\Model\FoodMenuItem[]|null
+     * @return \Zernio\Model\FoodMenuItem[]|null
      */
     public function getItems()
     {
@@ -340,7 +340,7 @@ class FoodMenuSection implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets items
      *
-     * @param \Late\Model\FoodMenuItem[]|null $items items
+     * @param \Zernio\Model\FoodMenuItem[]|null $items items
      *
      * @return self
      */

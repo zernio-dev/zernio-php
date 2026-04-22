@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessPerformance200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class GetGoogleBusinessPerformance200Response implements ModelInterface, ArrayAc
         'success' => 'bool',
         'account_id' => 'string',
         'platform' => 'string',
-        'date_range' => '\Late\Model\GetGoogleBusinessPerformance200ResponseDateRange',
-        'metrics' => 'array<string,\Late\Model\GetGoogleBusinessPerformance200ResponseMetricsValue>',
+        'date_range' => '\Zernio\Model\GetGoogleBusinessPerformance200ResponseDateRange',
+        'metrics' => 'array<string,\Zernio\Model\GetGoogleBusinessPerformance200ResponseMetricsValue>',
         'data_delay' => 'string'
     ];
 
@@ -409,7 +409,7 @@ class GetGoogleBusinessPerformance200Response implements ModelInterface, ArrayAc
     /**
      * Gets date_range
      *
-     * @return \Late\Model\GetGoogleBusinessPerformance200ResponseDateRange|null
+     * @return \Zernio\Model\GetGoogleBusinessPerformance200ResponseDateRange|null
      */
     public function getDateRange()
     {
@@ -419,7 +419,7 @@ class GetGoogleBusinessPerformance200Response implements ModelInterface, ArrayAc
     /**
      * Sets date_range
      *
-     * @param \Late\Model\GetGoogleBusinessPerformance200ResponseDateRange|null $date_range date_range
+     * @param \Zernio\Model\GetGoogleBusinessPerformance200ResponseDateRange|null $date_range date_range
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class GetGoogleBusinessPerformance200Response implements ModelInterface, ArrayAc
     /**
      * Gets metrics
      *
-     * @return array<string,\Late\Model\GetGoogleBusinessPerformance200ResponseMetricsValue>|null
+     * @return array<string,\Zernio\Model\GetGoogleBusinessPerformance200ResponseMetricsValue>|null
      */
     public function getMetrics()
     {
@@ -446,7 +446,7 @@ class GetGoogleBusinessPerformance200Response implements ModelInterface, ArrayAc
     /**
      * Sets metrics
      *
-     * @param array<string,\Late\Model\GetGoogleBusinessPerformance200ResponseMetricsValue>|null $metrics Each key is a metric name containing total and daily values.
+     * @param array<string,\Zernio\Model\GetGoogleBusinessPerformance200ResponseMetricsValue>|null $metrics Each key is a metric name containing total and daily values.
      *
      * @return self
      */

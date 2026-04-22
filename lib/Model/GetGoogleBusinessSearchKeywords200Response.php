@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessSearchKeywords200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,8 +61,8 @@ class GetGoogleBusinessSearchKeywords200Response implements ModelInterface, Arra
         'success' => 'bool',
         'account_id' => 'string',
         'platform' => 'string',
-        'month_range' => '\Late\Model\GetGoogleBusinessSearchKeywords200ResponseMonthRange',
-        'keywords' => '\Late\Model\GetGoogleBusinessSearchKeywords200ResponseKeywordsInner[]',
+        'month_range' => '\Zernio\Model\GetGoogleBusinessSearchKeywords200ResponseMonthRange',
+        'keywords' => '\Zernio\Model\GetGoogleBusinessSearchKeywords200ResponseKeywordsInner[]',
         'note' => 'string'
     ];
 
@@ -409,7 +409,7 @@ class GetGoogleBusinessSearchKeywords200Response implements ModelInterface, Arra
     /**
      * Gets month_range
      *
-     * @return \Late\Model\GetGoogleBusinessSearchKeywords200ResponseMonthRange|null
+     * @return \Zernio\Model\GetGoogleBusinessSearchKeywords200ResponseMonthRange|null
      */
     public function getMonthRange()
     {
@@ -419,7 +419,7 @@ class GetGoogleBusinessSearchKeywords200Response implements ModelInterface, Arra
     /**
      * Sets month_range
      *
-     * @param \Late\Model\GetGoogleBusinessSearchKeywords200ResponseMonthRange|null $month_range month_range
+     * @param \Zernio\Model\GetGoogleBusinessSearchKeywords200ResponseMonthRange|null $month_range month_range
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class GetGoogleBusinessSearchKeywords200Response implements ModelInterface, Arra
     /**
      * Gets keywords
      *
-     * @return \Late\Model\GetGoogleBusinessSearchKeywords200ResponseKeywordsInner[]|null
+     * @return \Zernio\Model\GetGoogleBusinessSearchKeywords200ResponseKeywordsInner[]|null
      */
     public function getKeywords()
     {
@@ -446,7 +446,7 @@ class GetGoogleBusinessSearchKeywords200Response implements ModelInterface, Arra
     /**
      * Sets keywords
      *
-     * @param \Late\Model\GetGoogleBusinessSearchKeywords200ResponseKeywordsInner[]|null $keywords keywords
+     * @param \Zernio\Model\GetGoogleBusinessSearchKeywords200ResponseKeywordsInner[]|null $keywords keywords
      *
      * @return self
      */

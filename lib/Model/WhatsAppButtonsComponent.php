@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WhatsAppButtonsComponent Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class WhatsAppButtonsComponent implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'buttons' => '\Late\Model\WhatsAppTemplateButton[]'
+        'buttons' => '\Zernio\Model\WhatsAppTemplateButton[]'
     ];
 
     /**
@@ -369,7 +369,7 @@ class WhatsAppButtonsComponent implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets buttons
      *
-     * @return \Late\Model\WhatsAppTemplateButton[]
+     * @return \Zernio\Model\WhatsAppTemplateButton[]
      */
     public function getButtons()
     {
@@ -379,7 +379,7 @@ class WhatsAppButtonsComponent implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets buttons
      *
-     * @param \Late\Model\WhatsAppTemplateButton[] $buttons buttons
+     * @param \Zernio\Model\WhatsAppTemplateButton[] $buttons buttons
      *
      * @return self
      */

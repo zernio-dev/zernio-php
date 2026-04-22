@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **business_scoped_user_id** | **string** | WhatsApp only. Business-scoped user ID (BSUID) — Meta&#39;s canonical identifier for a WhatsApp user within your business. Present when Meta includes it in the inbound payload (rollout in progress since early April 2026). **Recommended primary identity anchor** going forward; fall back to &#x60;phoneNumber&#x60; only when this field is absent. | [optional]
 **parent_business_scoped_user_id** | **string** | WhatsApp only. Parent BSUID for businesses with linked business portfolios. Omitted for standalone portfolios. | [optional]
 **whatsapp_username** | **string** | WhatsApp only. User&#39;s WhatsApp username (e.g. &#x60;@jane&#x60;). Not a stable identifier — users can change it. Useful for display, not recommended as an identity anchor. | [optional]
-**instagram_profile** | [**\Late\Model\InboxWebhookMessageSenderInstagramProfile**](InboxWebhookMessageSenderInstagramProfile.md) |  | [optional]
+**instagram_profile** | [**\Zernio\Model\InboxWebhookMessageSenderInstagramProfile**](InboxWebhookMessageSenderInstagramProfile.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

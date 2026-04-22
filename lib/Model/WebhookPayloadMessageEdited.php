@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadMessageEdited Class Doc Comment
  *
  * @category Class
  * @description Webhook payload for message.edited events. Fires when the sender edits a previously-sent message. Supported platforms: Instagram, Facebook Messenger, Telegram. The message object reflects the LATEST state; editHistory contains every prior version in order (oldest first), so the last entry is the version immediately before the current content.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,12 +61,12 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'id' => 'string',
         'event' => 'string',
-        'message' => '\Late\Model\InboxWebhookMessage',
-        'edit_history' => '\Late\Model\WebhookPayloadMessageEditedEditHistoryInner[]',
+        'message' => '\Zernio\Model\InboxWebhookMessage',
+        'edit_history' => '\Zernio\Model\WebhookPayloadMessageEditedEditHistoryInner[]',
         'edit_count' => 'int',
         'edited_at' => '\DateTime',
-        'conversation' => '\Late\Model\InboxWebhookConversation',
-        'account' => '\Late\Model\InboxWebhookAccount',
+        'conversation' => '\Zernio\Model\InboxWebhookConversation',
+        'account' => '\Zernio\Model\InboxWebhookAccount',
         'timestamp' => '\DateTime'
     ];
 
@@ -463,7 +463,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets message
      *
-     * @return \Late\Model\InboxWebhookMessage
+     * @return \Zernio\Model\InboxWebhookMessage
      */
     public function getMessage()
     {
@@ -473,7 +473,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets message
      *
-     * @param \Late\Model\InboxWebhookMessage $message message
+     * @param \Zernio\Model\InboxWebhookMessage $message message
      *
      * @return self
      */
@@ -490,7 +490,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets edit_history
      *
-     * @return \Late\Model\WebhookPayloadMessageEditedEditHistoryInner[]
+     * @return \Zernio\Model\WebhookPayloadMessageEditedEditHistoryInner[]
      */
     public function getEditHistory()
     {
@@ -500,7 +500,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets edit_history
      *
-     * @param \Late\Model\WebhookPayloadMessageEditedEditHistoryInner[] $edit_history Prior versions of the message, oldest first.
+     * @param \Zernio\Model\WebhookPayloadMessageEditedEditHistoryInner[] $edit_history Prior versions of the message, oldest first.
      *
      * @return self
      */
@@ -571,7 +571,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets conversation
      *
-     * @return \Late\Model\InboxWebhookConversation
+     * @return \Zernio\Model\InboxWebhookConversation
      */
     public function getConversation()
     {
@@ -581,7 +581,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets conversation
      *
-     * @param \Late\Model\InboxWebhookConversation $conversation conversation
+     * @param \Zernio\Model\InboxWebhookConversation $conversation conversation
      *
      * @return self
      */
@@ -598,7 +598,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets account
      *
-     * @return \Late\Model\InboxWebhookAccount
+     * @return \Zernio\Model\InboxWebhookAccount
      */
     public function getAccount()
     {
@@ -608,7 +608,7 @@ class WebhookPayloadMessageEdited implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets account
      *
-     * @param \Late\Model\InboxWebhookAccount $account account
+     * @param \Zernio\Model\InboxWebhookAccount $account account
      *
      * @return self
      */

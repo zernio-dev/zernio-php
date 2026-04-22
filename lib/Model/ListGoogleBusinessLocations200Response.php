@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListGoogleBusinessLocations200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ListGoogleBusinessLocations200Response implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'locations' => '\Late\Model\ListGoogleBusinessLocations200ResponseLocationsInner[]'
+        'locations' => '\Zernio\Model\ListGoogleBusinessLocations200ResponseLocationsInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class ListGoogleBusinessLocations200Response implements ModelInterface, ArrayAcc
     /**
      * Gets locations
      *
-     * @return \Late\Model\ListGoogleBusinessLocations200ResponseLocationsInner[]|null
+     * @return \Zernio\Model\ListGoogleBusinessLocations200ResponseLocationsInner[]|null
      */
     public function getLocations()
     {
@@ -303,7 +303,7 @@ class ListGoogleBusinessLocations200Response implements ModelInterface, ArrayAcc
     /**
      * Sets locations
      *
-     * @param \Late\Model\ListGoogleBusinessLocations200ResponseLocationsInner[]|null $locations locations
+     * @param \Zernio\Model\ListGoogleBusinessLocations200ResponseLocationsInner[]|null $locations locations
      *
      * @return self
      */

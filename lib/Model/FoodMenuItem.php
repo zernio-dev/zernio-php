@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * FoodMenuItem Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class FoodMenuItem implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'labels' => '\Late\Model\FoodMenuLabel[]',
-        'attributes' => '\Late\Model\FoodMenuItemAttributes',
-        'options' => '\Late\Model\FoodMenuItemOptionsInner[]'
+        'labels' => '\Zernio\Model\FoodMenuLabel[]',
+        'attributes' => '\Zernio\Model\FoodMenuItemAttributes',
+        'options' => '\Zernio\Model\FoodMenuItemOptionsInner[]'
     ];
 
     /**
@@ -310,7 +310,7 @@ class FoodMenuItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets labels
      *
-     * @return \Late\Model\FoodMenuLabel[]
+     * @return \Zernio\Model\FoodMenuLabel[]
      */
     public function getLabels()
     {
@@ -320,7 +320,7 @@ class FoodMenuItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets labels
      *
-     * @param \Late\Model\FoodMenuLabel[] $labels labels
+     * @param \Zernio\Model\FoodMenuLabel[] $labels labels
      *
      * @return self
      */
@@ -337,7 +337,7 @@ class FoodMenuItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets attributes
      *
-     * @return \Late\Model\FoodMenuItemAttributes|null
+     * @return \Zernio\Model\FoodMenuItemAttributes|null
      */
     public function getAttributes()
     {
@@ -347,7 +347,7 @@ class FoodMenuItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attributes
      *
-     * @param \Late\Model\FoodMenuItemAttributes|null $attributes attributes
+     * @param \Zernio\Model\FoodMenuItemAttributes|null $attributes attributes
      *
      * @return self
      */
@@ -364,7 +364,7 @@ class FoodMenuItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets options
      *
-     * @return \Late\Model\FoodMenuItemOptionsInner[]|null
+     * @return \Zernio\Model\FoodMenuItemOptionsInner[]|null
      */
     public function getOptions()
     {
@@ -374,7 +374,7 @@ class FoodMenuItem implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets options
      *
-     * @param \Late\Model\FoodMenuItemOptionsInner[]|null $options Item variants/options (e.g. sizes, preparations)
+     * @param \Zernio\Model\FoodMenuItemOptionsInner[]|null $options Item variants/options (e.g. sizes, preparations)
      *
      * @return self
      */

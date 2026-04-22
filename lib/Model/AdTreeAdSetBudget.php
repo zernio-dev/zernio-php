@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * AdTreeAdSetBudget Class Doc Comment
  *
  * @category Class
  * @description Effective budget at this level (back-compat). For CBO campaigns this mirrors the parent campaign&#39;s budget; for ABO this is the ad-set-specific budget. Use &#x60;adSetBudget&#x60; / parent &#x60;campaignBudget&#x60; + &#x60;budgetLevel&#x60; to disambiguate.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>

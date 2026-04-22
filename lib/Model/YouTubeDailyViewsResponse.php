@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * YouTubeDailyViewsResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,11 +60,11 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'success' => 'bool',
         'video_id' => 'string',
-        'date_range' => '\Late\Model\YouTubeDailyViewsResponseDateRange',
+        'date_range' => '\Zernio\Model\YouTubeDailyViewsResponseDateRange',
         'total_views' => 'int',
-        'daily_views' => '\Late\Model\YouTubeDailyViewsResponseDailyViewsInner[]',
+        'daily_views' => '\Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]',
         'last_synced_at' => '\DateTime',
-        'scope_status' => '\Late\Model\YouTubeDailyViewsResponseScopeStatus'
+        'scope_status' => '\Zernio\Model\YouTubeDailyViewsResponseScopeStatus'
     ];
 
     /**
@@ -389,7 +389,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets date_range
      *
-     * @return \Late\Model\YouTubeDailyViewsResponseDateRange|null
+     * @return \Zernio\Model\YouTubeDailyViewsResponseDateRange|null
      */
     public function getDateRange()
     {
@@ -399,7 +399,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets date_range
      *
-     * @param \Late\Model\YouTubeDailyViewsResponseDateRange|null $date_range date_range
+     * @param \Zernio\Model\YouTubeDailyViewsResponseDateRange|null $date_range date_range
      *
      * @return self
      */
@@ -443,7 +443,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets daily_views
      *
-     * @return \Late\Model\YouTubeDailyViewsResponseDailyViewsInner[]|null
+     * @return \Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]|null
      */
     public function getDailyViews()
     {
@@ -453,7 +453,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets daily_views
      *
-     * @param \Late\Model\YouTubeDailyViewsResponseDailyViewsInner[]|null $daily_views daily_views
+     * @param \Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]|null $daily_views daily_views
      *
      * @return self
      */
@@ -497,7 +497,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets scope_status
      *
-     * @return \Late\Model\YouTubeDailyViewsResponseScopeStatus|null
+     * @return \Zernio\Model\YouTubeDailyViewsResponseScopeStatus|null
      */
     public function getScopeStatus()
     {
@@ -507,7 +507,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets scope_status
      *
-     * @param \Late\Model\YouTubeDailyViewsResponseScopeStatus|null $scope_status scope_status
+     * @param \Zernio\Model\YouTubeDailyViewsResponseScopeStatus|null $scope_status scope_status
      *
      * @return self
      */

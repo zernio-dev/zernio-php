@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ReplyToInboxReview200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class ReplyToInboxReview200Response implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'reply' => '\Late\Model\ReplyToInboxReview200ResponseReply',
+        'reply' => '\Zernio\Model\ReplyToInboxReview200ResponseReply',
         'platform' => 'string'
     ];
 
@@ -334,7 +334,7 @@ class ReplyToInboxReview200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets reply
      *
-     * @return \Late\Model\ReplyToInboxReview200ResponseReply|null
+     * @return \Zernio\Model\ReplyToInboxReview200ResponseReply|null
      */
     public function getReply()
     {
@@ -344,7 +344,7 @@ class ReplyToInboxReview200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets reply
      *
-     * @param \Late\Model\ReplyToInboxReview200ResponseReply|null $reply reply
+     * @param \Zernio\Model\ReplyToInboxReview200ResponseReply|null $reply reply
      *
      * @return self
      */

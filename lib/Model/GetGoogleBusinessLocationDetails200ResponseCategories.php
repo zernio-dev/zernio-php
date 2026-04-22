@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessLocationDetails200ResponseCategories Class Doc Comment
  *
  * @category Class
  * @description Business categories (returned when readMask includes &#39;categories&#39;)
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class GetGoogleBusinessLocationDetails200ResponseCategories implements ModelInte
       * @var string[]
       */
     protected static $openAPITypes = [
-        'primary_category' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseCategoriesPrimaryCategory',
-        'additional_categories' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseCategoriesAdditionalCategoriesInner[]'
+        'primary_category' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseCategoriesPrimaryCategory',
+        'additional_categories' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseCategoriesAdditionalCategoriesInner[]'
     ];
 
     /**
@@ -301,7 +301,7 @@ class GetGoogleBusinessLocationDetails200ResponseCategories implements ModelInte
     /**
      * Gets primary_category
      *
-     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseCategoriesPrimaryCategory|null
+     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseCategoriesPrimaryCategory|null
      */
     public function getPrimaryCategory()
     {
@@ -311,7 +311,7 @@ class GetGoogleBusinessLocationDetails200ResponseCategories implements ModelInte
     /**
      * Sets primary_category
      *
-     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseCategoriesPrimaryCategory|null $primary_category primary_category
+     * @param \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseCategoriesPrimaryCategory|null $primary_category primary_category
      *
      * @return self
      */
@@ -328,7 +328,7 @@ class GetGoogleBusinessLocationDetails200ResponseCategories implements ModelInte
     /**
      * Gets additional_categories
      *
-     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseCategoriesAdditionalCategoriesInner[]|null
+     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseCategoriesAdditionalCategoriesInner[]|null
      */
     public function getAdditionalCategories()
     {
@@ -338,7 +338,7 @@ class GetGoogleBusinessLocationDetails200ResponseCategories implements ModelInte
     /**
      * Sets additional_categories
      *
-     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseCategoriesAdditionalCategoriesInner[]|null $additional_categories additional_categories
+     * @param \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseCategoriesAdditionalCategoriesInner[]|null $additional_categories additional_categories
      *
      * @return self
      */

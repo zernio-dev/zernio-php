@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetLinkedInPostAnalytics200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class GetLinkedInPostAnalytics200Response implements ModelInterface, ArrayAccess
         'account_type' => 'string',
         'username' => 'string',
         'post_urn' => 'string',
-        'analytics' => '\Late\Model\GetLinkedInPostAnalytics200ResponseAnalytics',
+        'analytics' => '\Zernio\Model\GetLinkedInPostAnalytics200ResponseAnalytics',
         'last_updated' => '\DateTime'
     ];
 
@@ -504,7 +504,7 @@ class GetLinkedInPostAnalytics200Response implements ModelInterface, ArrayAccess
     /**
      * Gets analytics
      *
-     * @return \Late\Model\GetLinkedInPostAnalytics200ResponseAnalytics|null
+     * @return \Zernio\Model\GetLinkedInPostAnalytics200ResponseAnalytics|null
      */
     public function getAnalytics()
     {
@@ -514,7 +514,7 @@ class GetLinkedInPostAnalytics200Response implements ModelInterface, ArrayAccess
     /**
      * Sets analytics
      *
-     * @param \Late\Model\GetLinkedInPostAnalytics200ResponseAnalytics|null $analytics analytics
+     * @param \Zernio\Model\GetLinkedInPostAnalytics200ResponseAnalytics|null $analytics analytics
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateGoogleBusinessServicesRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class UpdateGoogleBusinessServicesRequest implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'service_items' => '\Late\Model\UpdateGoogleBusinessServicesRequestServiceItemsInner[]'
+        'service_items' => '\Zernio\Model\UpdateGoogleBusinessServicesRequestServiceItemsInner[]'
     ];
 
     /**
@@ -296,7 +296,7 @@ class UpdateGoogleBusinessServicesRequest implements ModelInterface, ArrayAccess
     /**
      * Gets service_items
      *
-     * @return \Late\Model\UpdateGoogleBusinessServicesRequestServiceItemsInner[]
+     * @return \Zernio\Model\UpdateGoogleBusinessServicesRequestServiceItemsInner[]
      */
     public function getServiceItems()
     {
@@ -306,7 +306,7 @@ class UpdateGoogleBusinessServicesRequest implements ModelInterface, ArrayAccess
     /**
      * Sets service_items
      *
-     * @param \Late\Model\UpdateGoogleBusinessServicesRequestServiceItemsInner[] $service_items service_items
+     * @param \Zernio\Model\UpdateGoogleBusinessServicesRequestServiceItemsInner[] $service_items service_items
      *
      * @return self
      */

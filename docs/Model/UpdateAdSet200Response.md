@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**budget** | [**\Late\Model\AdBudget**](AdBudget.md) |  | [optional]
+**budget** | [**\Zernio\Model\AdBudget**](AdBudget.md) |  | [optional]
 **budget_level** | **string** |  | [optional]
 **status** | **string** |  | [optional]
 **status_updated** | **int** |  | [optional]

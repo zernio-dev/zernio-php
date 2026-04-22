@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UsersListResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class UsersListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'users' => '\Late\Model\User[]'
+        'users' => '\Zernio\Model\User[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class UsersListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets users
      *
-     * @return \Late\Model\User[]|null
+     * @return \Zernio\Model\User[]|null
      */
     public function getUsers()
     {
@@ -303,7 +303,7 @@ class UsersListResponse implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets users
      *
-     * @param \Late\Model\User[]|null $users users
+     * @param \Zernio\Model\User[]|null $users users
      *
      * @return self
      */

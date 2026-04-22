@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * YouTubeScopeMissingResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class YouTubeScopeMissingResponse implements ModelInterface, ArrayAccess, \JsonS
         'success' => 'bool',
         'error' => 'string',
         'code' => 'string',
-        'scope_status' => '\Late\Model\YouTubeScopeMissingResponseScopeStatus'
+        'scope_status' => '\Zernio\Model\YouTubeScopeMissingResponseScopeStatus'
     ];
 
     /**
@@ -395,7 +395,7 @@ class YouTubeScopeMissingResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets scope_status
      *
-     * @return \Late\Model\YouTubeScopeMissingResponseScopeStatus|null
+     * @return \Zernio\Model\YouTubeScopeMissingResponseScopeStatus|null
      */
     public function getScopeStatus()
     {
@@ -405,7 +405,7 @@ class YouTubeScopeMissingResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets scope_status
      *
-     * @param \Late\Model\YouTubeScopeMissingResponseScopeStatus|null $scope_status scope_status
+     * @param \Zernio\Model\YouTubeScopeMissingResponseScopeStatus|null $scope_status scope_status
      *
      * @return self
      */

@@ -10,9 +10,9 @@ Name | Type | Description | Notes
 **flow_cta** | **string** | CTA button text (e.g. &#39;Book Now&#39;, &#39;Sign Up&#39;) |
 **flow_action** | **string** | Action type: navigate opens a screen directly, data_exchange hits your endpoint first | [optional] [default to 'navigate']
 **flow_token** | **string** | Unique token to correlate responses. Auto-generated UUID if omitted. | [optional]
-**flow_action_payload** | [**\Late\Model\SendWhatsAppFlowMessageRequestFlowActionPayload**](SendWhatsAppFlowMessageRequestFlowActionPayload.md) |  | [optional]
+**flow_action_payload** | [**\Zernio\Model\SendWhatsAppFlowMessageRequestFlowActionPayload**](SendWhatsAppFlowMessageRequestFlowActionPayload.md) |  | [optional]
 **body** | **string** | Message body text |
-**header** | [**\Late\Model\SendWhatsAppFlowMessageRequestHeader**](SendWhatsAppFlowMessageRequestHeader.md) |  | [optional]
+**header** | [**\Zernio\Model\SendWhatsAppFlowMessageRequestHeader**](SendWhatsAppFlowMessageRequestHeader.md) |  | [optional]
 **footer** | **string** | Optional footer text | [optional]
 **draft** | **bool** | Set true to test an unpublished (DRAFT) flow | [optional]
 

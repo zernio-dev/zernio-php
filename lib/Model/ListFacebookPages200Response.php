@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListFacebookPages200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ListFacebookPages200Response implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'pages' => '\Late\Model\ListFacebookPages200ResponsePagesInner[]'
+        'pages' => '\Zernio\Model\ListFacebookPages200ResponsePagesInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class ListFacebookPages200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets pages
      *
-     * @return \Late\Model\ListFacebookPages200ResponsePagesInner[]|null
+     * @return \Zernio\Model\ListFacebookPages200ResponsePagesInner[]|null
      */
     public function getPages()
     {
@@ -303,7 +303,7 @@ class ListFacebookPages200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets pages
      *
-     * @param \Late\Model\ListFacebookPages200ResponsePagesInner[]|null $pages pages
+     * @param \Zernio\Model\ListFacebookPages200ResponsePagesInner[]|null $pages pages
      *
      * @return self
      */

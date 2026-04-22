@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateGmbLocation200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class UpdateGmbLocation200Response implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'message' => 'string',
-        'selected_location' => '\Late\Model\UpdateFacebookPage200ResponseSelectedPage'
+        'selected_location' => '\Zernio\Model\UpdateFacebookPage200ResponseSelectedPage'
     ];
 
     /**
@@ -327,7 +327,7 @@ class UpdateGmbLocation200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets selected_location
      *
-     * @return \Late\Model\UpdateFacebookPage200ResponseSelectedPage|null
+     * @return \Zernio\Model\UpdateFacebookPage200ResponseSelectedPage|null
      */
     public function getSelectedLocation()
     {
@@ -337,7 +337,7 @@ class UpdateGmbLocation200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets selected_location
      *
-     * @param \Late\Model\UpdateFacebookPage200ResponseSelectedPage|null $selected_location selected_location
+     * @param \Zernio\Model\UpdateFacebookPage200ResponseSelectedPage|null $selected_location selected_location
      *
      * @return self
      */

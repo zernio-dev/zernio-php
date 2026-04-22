@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * AccountGetResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class AccountGetResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account' => '\Late\Model\SocialAccount'
+        'account' => '\Zernio\Model\SocialAccount'
     ];
 
     /**
@@ -293,7 +293,7 @@ class AccountGetResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets account
      *
-     * @return \Late\Model\SocialAccount|null
+     * @return \Zernio\Model\SocialAccount|null
      */
     public function getAccount()
     {
@@ -303,7 +303,7 @@ class AccountGetResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets account
      *
-     * @param \Late\Model\SocialAccount|null $account account
+     * @param \Zernio\Model\SocialAccount|null $account account
      *
      * @return self
      */

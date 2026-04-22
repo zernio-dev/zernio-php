@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ValidateMedia200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class ValidateMedia200Response implements ModelInterface, ArrayAccess, \JsonSeri
         'size' => 'int',
         'size_formatted' => 'string',
         'type' => 'string',
-        'platform_limits' => 'array<string,\Late\Model\ValidateMedia200ResponsePlatformLimitsValue>'
+        'platform_limits' => 'array<string,\Zernio\Model\ValidateMedia200ResponsePlatformLimitsValue>'
     ];
 
     /**
@@ -567,7 +567,7 @@ class ValidateMedia200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets platform_limits
      *
-     * @return array<string,\Late\Model\ValidateMedia200ResponsePlatformLimitsValue>|null
+     * @return array<string,\Zernio\Model\ValidateMedia200ResponsePlatformLimitsValue>|null
      */
     public function getPlatformLimits()
     {
@@ -577,7 +577,7 @@ class ValidateMedia200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets platform_limits
      *
-     * @param array<string,\Late\Model\ValidateMedia200ResponsePlatformLimitsValue>|null $platform_limits Per-platform size limit comparison (only present when size and type are known)
+     * @param array<string,\Zernio\Model\ValidateMedia200ResponsePlatformLimitsValue>|null $platform_limits Per-platform size limit comparison (only present when size and type are known)
      *
      * @return self
      */

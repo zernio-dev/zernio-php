@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ThreadsPlatformData Class Doc Comment
  *
  * @category Class
  * @description Up to 10 images per carousel (no videos). Videos must be H.264/AAC MP4, max 5 min. Images JPEG/PNG, max 8 MB. Use threadItems for reply chains.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ThreadsPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'topic_tag' => 'string',
-        'thread_items' => '\Late\Model\TwitterPlatformDataThreadItemsInner[]'
+        'thread_items' => '\Zernio\Model\TwitterPlatformDataThreadItemsInner[]'
     ];
 
     /**
@@ -343,7 +343,7 @@ class ThreadsPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets thread_items
      *
-     * @return \Late\Model\TwitterPlatformDataThreadItemsInner[]|null
+     * @return \Zernio\Model\TwitterPlatformDataThreadItemsInner[]|null
      */
     public function getThreadItems()
     {
@@ -353,7 +353,7 @@ class ThreadsPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets thread_items
      *
-     * @param \Late\Model\TwitterPlatformDataThreadItemsInner[]|null $thread_items Complete sequence of posts in a Threads thread. The first item becomes the root post, subsequent items are chained as replies. When threadItems is provided, the top-level content field is used only for display and search purposes, it is NOT published. You must include your first post as threadItems[0].
+     * @param \Zernio\Model\TwitterPlatformDataThreadItemsInner[]|null $thread_items Complete sequence of posts in a Threads thread. The first item becomes the root post, subsequent items are chained as replies. When threadItems is provided, the top-level content field is used only for display and search purposes, it is NOT published. You must include your first post as threadItems[0].
      *
      * @return self
      */

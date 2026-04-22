@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateCommentAutomation200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreateCommentAutomation200Response implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'automation' => '\Late\Model\CreateCommentAutomation200ResponseAutomation'
+        'automation' => '\Zernio\Model\CreateCommentAutomation200ResponseAutomation'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CreateCommentAutomation200Response implements ModelInterface, ArrayAccess,
     /**
      * Gets automation
      *
-     * @return \Late\Model\CreateCommentAutomation200ResponseAutomation|null
+     * @return \Zernio\Model\CreateCommentAutomation200ResponseAutomation|null
      */
     public function getAutomation()
     {
@@ -337,7 +337,7 @@ class CreateCommentAutomation200Response implements ModelInterface, ArrayAccess,
     /**
      * Sets automation
      *
-     * @param \Late\Model\CreateCommentAutomation200ResponseAutomation|null $automation automation
+     * @param \Zernio\Model\CreateCommentAutomation200ResponseAutomation|null $automation automation
      *
      * @return self
      */

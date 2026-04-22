@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessServices200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class GetGoogleBusinessServices200Response implements ModelInterface, ArrayAcces
         'success' => 'bool',
         'account_id' => 'string',
         'location_id' => 'string',
-        'services' => '\Late\Model\GetGoogleBusinessServices200ResponseServicesInner[]'
+        'services' => '\Zernio\Model\GetGoogleBusinessServices200ResponseServicesInner[]'
     ];
 
     /**
@@ -395,7 +395,7 @@ class GetGoogleBusinessServices200Response implements ModelInterface, ArrayAcces
     /**
      * Gets services
      *
-     * @return \Late\Model\GetGoogleBusinessServices200ResponseServicesInner[]|null
+     * @return \Zernio\Model\GetGoogleBusinessServices200ResponseServicesInner[]|null
      */
     public function getServices()
     {
@@ -405,7 +405,7 @@ class GetGoogleBusinessServices200Response implements ModelInterface, ArrayAcces
     /**
      * Sets services
      *
-     * @param \Late\Model\GetGoogleBusinessServices200ResponseServicesInner[]|null $services services
+     * @param \Zernio\Model\GetGoogleBusinessServices200ResponseServicesInner[]|null $services services
      *
      * @return self
      */

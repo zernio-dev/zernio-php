@@ -1,4 +1,4 @@
-# Late\LogsApi
+# Zernio\LogsApi
 
 Publishing logs for transparency and debugging. Each log includes the platform API endpoint, HTTP status code, request/response bodies, duration, and retry attempts. Logs are automatically deleted after 7 days.
 
@@ -12,7 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `listLogs()`
 
 ```php
-listLogs($type, $status, $platform, $action, $search, $days, $limit, $skip): \Late\Model\ListLogs200Response
+listLogs($type, $status, $platform, $action, $search, $days, $limit, $skip): \Zernio\Model\ListLogs200Response
 ```
 
 List activity logs
@@ -27,10 +27,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\LogsApi(
+$apiInstance = new Zernio\Api\LogsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -68,7 +68,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListLogs200Response**](../Model/ListLogs200Response.md)
+[**\Zernio\Model\ListLogs200Response**](../Model/ListLogs200Response.md)
 
 ### Authorization
 

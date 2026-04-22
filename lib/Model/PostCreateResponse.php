@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * PostCreateResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class PostCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       */
     protected static $openAPITypes = [
         'message' => 'string',
-        'post' => '\Late\Model\Post'
+        'post' => '\Zernio\Model\Post'
     ];
 
     /**
@@ -327,7 +327,7 @@ class PostCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets post
      *
-     * @return \Late\Model\Post|null
+     * @return \Zernio\Model\Post|null
      */
     public function getPost()
     {
@@ -337,7 +337,7 @@ class PostCreateResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets post
      *
-     * @param \Late\Model\Post|null $post post
+     * @param \Zernio\Model\Post|null $post post
      *
      * @return self
      */

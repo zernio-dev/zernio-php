@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**\Late\Model\RedditPost[]**](RedditPost.md) |  | [optional]
+**items** | [**\Zernio\Model\RedditPost[]**](RedditPost.md) |  | [optional]
 **after** | **string** |  | [optional]
 **before** | **string** |  | [optional]
 

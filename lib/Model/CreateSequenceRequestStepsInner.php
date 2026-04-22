@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateSequenceRequestStepsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     protected static $openAPITypes = [
         'order' => 'int',
         'delay_minutes' => 'int',
-        'message' => '\Late\Model\GetBroadcast200ResponseBroadcastMessage',
-        'template' => '\Late\Model\CreateSequenceRequestStepsInnerTemplate'
+        'message' => '\Zernio\Model\GetBroadcast200ResponseBroadcastMessage',
+        'template' => '\Zernio\Model\CreateSequenceRequestStepsInnerTemplate'
     ];
 
     /**
@@ -374,7 +374,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Gets message
      *
-     * @return \Late\Model\GetBroadcast200ResponseBroadcastMessage|null
+     * @return \Zernio\Model\GetBroadcast200ResponseBroadcastMessage|null
      */
     public function getMessage()
     {
@@ -384,7 +384,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets message
      *
-     * @param \Late\Model\GetBroadcast200ResponseBroadcastMessage|null $message message
+     * @param \Zernio\Model\GetBroadcast200ResponseBroadcastMessage|null $message message
      *
      * @return self
      */
@@ -401,7 +401,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Gets template
      *
-     * @return \Late\Model\CreateSequenceRequestStepsInnerTemplate|null
+     * @return \Zernio\Model\CreateSequenceRequestStepsInnerTemplate|null
      */
     public function getTemplate()
     {
@@ -411,7 +411,7 @@ class CreateSequenceRequestStepsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets template
      *
-     * @param \Late\Model\CreateSequenceRequestStepsInnerTemplate|null $template template
+     * @param \Zernio\Model\CreateSequenceRequestStepsInnerTemplate|null $template template
      *
      * @return self
      */

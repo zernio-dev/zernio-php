@@ -1,4 +1,4 @@
-# Late\ReviewsApi
+# Zernio\ReviewsApi
 
 Unified inbox API for managing reviews on Facebook Pages and Google Business accounts. All endpoints aggregate data from multiple social accounts in a single API call. Requires Inbox addon.
 
@@ -14,7 +14,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `deleteInboxReviewReply()`
 
 ```php
-deleteInboxReviewReply($review_id, $delete_inbox_review_reply_request): \Late\Model\DeleteInboxReviewReply200Response
+deleteInboxReviewReply($review_id, $delete_inbox_review_reply_request): \Zernio\Model\DeleteInboxReviewReply200Response
 ```
 
 Delete review reply
@@ -29,17 +29,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ReviewsApi(
+$apiInstance = new Zernio\Api\ReviewsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $review_id = 'review_id_example'; // string
-$delete_inbox_review_reply_request = new \Late\Model\DeleteInboxReviewReplyRequest(); // \Late\Model\DeleteInboxReviewReplyRequest
+$delete_inbox_review_reply_request = new \Zernio\Model\DeleteInboxReviewReplyRequest(); // \Zernio\Model\DeleteInboxReviewReplyRequest
 
 try {
     $result = $apiInstance->deleteInboxReviewReply($review_id, $delete_inbox_review_reply_request);
@@ -54,11 +54,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **review_id** | **string**|  | |
-| **delete_inbox_review_reply_request** | [**\Late\Model\DeleteInboxReviewReplyRequest**](../Model/DeleteInboxReviewReplyRequest.md)|  | |
+| **delete_inbox_review_reply_request** | [**\Zernio\Model\DeleteInboxReviewReplyRequest**](../Model/DeleteInboxReviewReplyRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\DeleteInboxReviewReply200Response**](../Model/DeleteInboxReviewReply200Response.md)
+[**\Zernio\Model\DeleteInboxReviewReply200Response**](../Model/DeleteInboxReviewReply200Response.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ try {
 ## `listInboxReviews()`
 
 ```php
-listInboxReviews($profile_id, $platform, $min_rating, $max_rating, $has_reply, $sort_by, $sort_order, $limit, $cursor, $account_id): \Late\Model\ListInboxReviews200Response
+listInboxReviews($profile_id, $platform, $min_rating, $max_rating, $has_reply, $sort_by, $sort_order, $limit, $cursor, $account_id): \Zernio\Model\ListInboxReviews200Response
 ```
 
 List reviews
@@ -91,10 +91,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ReviewsApi(
+$apiInstance = new Zernio\Api\ReviewsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -136,7 +136,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListInboxReviews200Response**](../Model/ListInboxReviews200Response.md)
+[**\Zernio\Model\ListInboxReviews200Response**](../Model/ListInboxReviews200Response.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ try {
 ## `replyToInboxReview()`
 
 ```php
-replyToInboxReview($review_id, $reply_to_inbox_review_request): \Late\Model\ReplyToInboxReview200Response
+replyToInboxReview($review_id, $reply_to_inbox_review_request): \Zernio\Model\ReplyToInboxReview200Response
 ```
 
 Reply to review
@@ -169,17 +169,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ReviewsApi(
+$apiInstance = new Zernio\Api\ReviewsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $review_id = 'review_id_example'; // string | Review ID (URL-encoded for Google Business)
-$reply_to_inbox_review_request = new \Late\Model\ReplyToInboxReviewRequest(); // \Late\Model\ReplyToInboxReviewRequest
+$reply_to_inbox_review_request = new \Zernio\Model\ReplyToInboxReviewRequest(); // \Zernio\Model\ReplyToInboxReviewRequest
 
 try {
     $result = $apiInstance->replyToInboxReview($review_id, $reply_to_inbox_review_request);
@@ -194,11 +194,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **review_id** | **string**| Review ID (URL-encoded for Google Business) | |
-| **reply_to_inbox_review_request** | [**\Late\Model\ReplyToInboxReviewRequest**](../Model/ReplyToInboxReviewRequest.md)|  | |
+| **reply_to_inbox_review_request** | [**\Zernio\Model\ReplyToInboxReviewRequest**](../Model/ReplyToInboxReviewRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\ReplyToInboxReview200Response**](../Model/ReplyToInboxReview200Response.md)
+[**\Zernio\Model\ReplyToInboxReview200Response**](../Model/ReplyToInboxReview200Response.md)
 
 ### Authorization
 

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadMessageDeliveryStatus Class Doc Comment
  *
  * @category Class
  * @description Shared payload for message.delivered, message.read, and message.failed events. Fires when the platform reports a new delivery state for an outgoing message.  Platform support:   * message.delivered — WhatsApp, Facebook Messenger.   * message.read      — WhatsApp, Facebook Messenger, Instagram.   * message.failed    — WhatsApp only (other platforms don&#39;t expose     per-message failure via webhook).
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,11 +61,11 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'id' => 'string',
         'event' => 'string',
-        'message' => '\Late\Model\InboxWebhookMessage',
+        'message' => '\Zernio\Model\InboxWebhookMessage',
         'status_at' => '\DateTime',
-        'error' => '\Late\Model\WebhookPayloadMessageDeliveryStatusError',
-        'conversation' => '\Late\Model\InboxWebhookConversation',
-        'account' => '\Late\Model\InboxWebhookAccount',
+        'error' => '\Zernio\Model\WebhookPayloadMessageDeliveryStatusError',
+        'conversation' => '\Zernio\Model\InboxWebhookConversation',
+        'account' => '\Zernio\Model\InboxWebhookAccount',
         'timestamp' => '\DateTime'
     ];
 
@@ -454,7 +454,7 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     /**
      * Gets message
      *
-     * @return \Late\Model\InboxWebhookMessage
+     * @return \Zernio\Model\InboxWebhookMessage
      */
     public function getMessage()
     {
@@ -464,7 +464,7 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     /**
      * Sets message
      *
-     * @param \Late\Model\InboxWebhookMessage $message message
+     * @param \Zernio\Model\InboxWebhookMessage $message message
      *
      * @return self
      */
@@ -508,7 +508,7 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     /**
      * Gets error
      *
-     * @return \Late\Model\WebhookPayloadMessageDeliveryStatusError|null
+     * @return \Zernio\Model\WebhookPayloadMessageDeliveryStatusError|null
      */
     public function getError()
     {
@@ -518,7 +518,7 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     /**
      * Sets error
      *
-     * @param \Late\Model\WebhookPayloadMessageDeliveryStatusError|null $error error
+     * @param \Zernio\Model\WebhookPayloadMessageDeliveryStatusError|null $error error
      *
      * @return self
      */
@@ -535,7 +535,7 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     /**
      * Gets conversation
      *
-     * @return \Late\Model\InboxWebhookConversation
+     * @return \Zernio\Model\InboxWebhookConversation
      */
     public function getConversation()
     {
@@ -545,7 +545,7 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     /**
      * Sets conversation
      *
-     * @param \Late\Model\InboxWebhookConversation $conversation conversation
+     * @param \Zernio\Model\InboxWebhookConversation $conversation conversation
      *
      * @return self
      */
@@ -562,7 +562,7 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     /**
      * Gets account
      *
-     * @return \Late\Model\InboxWebhookAccount
+     * @return \Zernio\Model\InboxWebhookAccount
      */
     public function getAccount()
     {
@@ -572,7 +572,7 @@ class WebhookPayloadMessageDeliveryStatus implements ModelInterface, ArrayAccess
     /**
      * Sets account
      *
-     * @param \Late\Model\InboxWebhookAccount $account account
+     * @param \Zernio\Model\InboxWebhookAccount $account account
      *
      * @return self
      */

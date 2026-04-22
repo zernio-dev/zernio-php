@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetLinkedInAggregateAnalytics200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,8 +63,8 @@ class GetLinkedInAggregateAnalytics200Response implements ModelInterface, ArrayA
         'account_type' => 'string',
         'username' => 'string',
         'aggregation' => 'string',
-        'date_range' => '\Late\Model\LinkedInAggregateAnalyticsTotalResponseDateRange',
-        'analytics' => '\Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalytics',
+        'date_range' => '\Zernio\Model\LinkedInAggregateAnalyticsTotalResponseDateRange',
+        'analytics' => '\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalytics',
         'note' => 'string',
         'last_updated' => '\DateTime',
         'skipped_metrics' => 'string[]'
@@ -523,7 +523,7 @@ class GetLinkedInAggregateAnalytics200Response implements ModelInterface, ArrayA
     /**
      * Gets date_range
      *
-     * @return \Late\Model\LinkedInAggregateAnalyticsTotalResponseDateRange|null
+     * @return \Zernio\Model\LinkedInAggregateAnalyticsTotalResponseDateRange|null
      */
     public function getDateRange()
     {
@@ -533,7 +533,7 @@ class GetLinkedInAggregateAnalytics200Response implements ModelInterface, ArrayA
     /**
      * Sets date_range
      *
-     * @param \Late\Model\LinkedInAggregateAnalyticsTotalResponseDateRange|null $date_range date_range
+     * @param \Zernio\Model\LinkedInAggregateAnalyticsTotalResponseDateRange|null $date_range date_range
      *
      * @return self
      */
@@ -550,7 +550,7 @@ class GetLinkedInAggregateAnalytics200Response implements ModelInterface, ArrayA
     /**
      * Gets analytics
      *
-     * @return \Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalytics|null
+     * @return \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalytics|null
      */
     public function getAnalytics()
     {
@@ -560,7 +560,7 @@ class GetLinkedInAggregateAnalytics200Response implements ModelInterface, ArrayA
     /**
      * Sets analytics
      *
-     * @param \Late\Model\LinkedInAggregateAnalyticsDailyResponseAnalytics|null $analytics analytics
+     * @param \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalytics|null $analytics analytics
      *
      * @return self
      */

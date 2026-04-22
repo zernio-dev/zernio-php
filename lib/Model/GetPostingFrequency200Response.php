@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetPostingFrequency200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetPostingFrequency200Response implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'frequency' => '\Late\Model\GetPostingFrequency200ResponseFrequencyInner[]'
+        'frequency' => '\Zernio\Model\GetPostingFrequency200ResponseFrequencyInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class GetPostingFrequency200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets frequency
      *
-     * @return \Late\Model\GetPostingFrequency200ResponseFrequencyInner[]|null
+     * @return \Zernio\Model\GetPostingFrequency200ResponseFrequencyInner[]|null
      */
     public function getFrequency()
     {
@@ -303,7 +303,7 @@ class GetPostingFrequency200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets frequency
      *
-     * @param \Late\Model\GetPostingFrequency200ResponseFrequencyInner[]|null $frequency frequency
+     * @param \Zernio\Model\GetPostingFrequency200ResponseFrequencyInner[]|null $frequency frequency
      *
      * @return self
      */

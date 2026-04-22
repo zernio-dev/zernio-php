@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetInboxPostComments200ResponseCommentsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
         'id' => 'string',
         'message' => 'string',
         'created_time' => '\DateTime',
-        'from' => '\Late\Model\GetInboxPostComments200ResponseCommentsInnerFrom',
+        'from' => '\Zernio\Model\GetInboxPostComments200ResponseCommentsInnerFrom',
         'like_count' => 'int',
         'reply_count' => 'int',
         'platform' => 'string',
@@ -507,7 +507,7 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     /**
      * Gets from
      *
-     * @return \Late\Model\GetInboxPostComments200ResponseCommentsInnerFrom|null
+     * @return \Zernio\Model\GetInboxPostComments200ResponseCommentsInnerFrom|null
      */
     public function getFrom()
     {
@@ -517,7 +517,7 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     /**
      * Sets from
      *
-     * @param \Late\Model\GetInboxPostComments200ResponseCommentsInnerFrom|null $from from
+     * @param \Zernio\Model\GetInboxPostComments200ResponseCommentsInnerFrom|null $from from
      *
      * @return self
      */

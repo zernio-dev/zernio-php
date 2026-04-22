@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessLocationDetails200ResponseServiceItemsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class GetGoogleBusinessLocationDetails200ResponseServiceItemsInner implements Mo
       * @var string[]
       */
     protected static $openAPITypes = [
-        'structured_service_item' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerStructuredServiceItem',
-        'free_form_service_item' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerFreeFormServiceItem',
-        'price' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerPrice'
+        'structured_service_item' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerStructuredServiceItem',
+        'free_form_service_item' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerFreeFormServiceItem',
+        'price' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerPrice'
     ];
 
     /**
@@ -307,7 +307,7 @@ class GetGoogleBusinessLocationDetails200ResponseServiceItemsInner implements Mo
     /**
      * Gets structured_service_item
      *
-     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerStructuredServiceItem|null
+     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerStructuredServiceItem|null
      */
     public function getStructuredServiceItem()
     {
@@ -317,7 +317,7 @@ class GetGoogleBusinessLocationDetails200ResponseServiceItemsInner implements Mo
     /**
      * Sets structured_service_item
      *
-     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerStructuredServiceItem|null $structured_service_item structured_service_item
+     * @param \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerStructuredServiceItem|null $structured_service_item structured_service_item
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class GetGoogleBusinessLocationDetails200ResponseServiceItemsInner implements Mo
     /**
      * Gets free_form_service_item
      *
-     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerFreeFormServiceItem|null
+     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerFreeFormServiceItem|null
      */
     public function getFreeFormServiceItem()
     {
@@ -344,7 +344,7 @@ class GetGoogleBusinessLocationDetails200ResponseServiceItemsInner implements Mo
     /**
      * Sets free_form_service_item
      *
-     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerFreeFormServiceItem|null $free_form_service_item free_form_service_item
+     * @param \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerFreeFormServiceItem|null $free_form_service_item free_form_service_item
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class GetGoogleBusinessLocationDetails200ResponseServiceItemsInner implements Mo
     /**
      * Gets price
      *
-     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerPrice|null
+     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerPrice|null
      */
     public function getPrice()
     {
@@ -371,7 +371,7 @@ class GetGoogleBusinessLocationDetails200ResponseServiceItemsInner implements Mo
     /**
      * Sets price
      *
-     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerPrice|null $price price
+     * @param \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseServiceItemsInnerPrice|null $price price
      *
      * @return self
      */

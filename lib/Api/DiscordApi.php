@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * DiscordApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -140,9 +140,9 @@ class DiscordApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordChannels'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetDiscordChannels200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetDiscordChannels200Response|\Zernio\Model\InlineObject
      */
     public function getDiscordChannels($account_id, string $contentType = self::contentTypes['getDiscordChannels'][0])
     {
@@ -158,9 +158,9 @@ class DiscordApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordChannels'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetDiscordChannels200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetDiscordChannels200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDiscordChannelsWithHttpInfo($account_id, string $contentType = self::contentTypes['getDiscordChannels'][0])
     {
@@ -192,13 +192,13 @@ class DiscordApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetDiscordChannels200Response',
+                        '\Zernio\Model\GetDiscordChannels200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -220,7 +220,7 @@ class DiscordApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetDiscordChannels200Response',
+                '\Zernio\Model\GetDiscordChannels200Response',
                 $request,
                 $response,
             );
@@ -229,7 +229,7 @@ class DiscordApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetDiscordChannels200Response',
+                        '\Zernio\Model\GetDiscordChannels200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -237,7 +237,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -283,7 +283,7 @@ class DiscordApi
      */
     public function getDiscordChannelsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getDiscordChannels'][0])
     {
-        $returnType = '\Late\Model\GetDiscordChannels200Response';
+        $returnType = '\Zernio\Model\GetDiscordChannels200Response';
         $request = $this->getDiscordChannelsRequest($account_id, $contentType);
 
         return $this->client
@@ -426,9 +426,9 @@ class DiscordApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordSettings'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetDiscordSettings200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetDiscordSettings200Response|\Zernio\Model\InlineObject
      */
     public function getDiscordSettings($account_id, string $contentType = self::contentTypes['getDiscordSettings'][0])
     {
@@ -444,9 +444,9 @@ class DiscordApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordSettings'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetDiscordSettings200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetDiscordSettings200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getDiscordSettingsWithHttpInfo($account_id, string $contentType = self::contentTypes['getDiscordSettings'][0])
     {
@@ -478,13 +478,13 @@ class DiscordApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetDiscordSettings200Response',
+                        '\Zernio\Model\GetDiscordSettings200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -506,7 +506,7 @@ class DiscordApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetDiscordSettings200Response',
+                '\Zernio\Model\GetDiscordSettings200Response',
                 $request,
                 $response,
             );
@@ -515,7 +515,7 @@ class DiscordApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetDiscordSettings200Response',
+                        '\Zernio\Model\GetDiscordSettings200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -523,7 +523,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -569,7 +569,7 @@ class DiscordApi
      */
     public function getDiscordSettingsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getDiscordSettings'][0])
     {
-        $returnType = '\Late\Model\GetDiscordSettings200Response';
+        $returnType = '\Zernio\Model\GetDiscordSettings200Response';
         $request = $this->getDiscordSettingsRequest($account_id, $contentType);
 
         return $this->client
@@ -710,12 +710,12 @@ class DiscordApi
      * Update Discord settings
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\UpdateDiscordSettingsRequest $update_discord_settings_request update_discord_settings_request (required)
+     * @param  \Zernio\Model\UpdateDiscordSettingsRequest $update_discord_settings_request update_discord_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDiscordSettings'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateDiscordSettings200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateDiscordSettings200Response|\Zernio\Model\InlineObject
      */
     public function updateDiscordSettings($account_id, $update_discord_settings_request, string $contentType = self::contentTypes['updateDiscordSettings'][0])
     {
@@ -729,12 +729,12 @@ class DiscordApi
      * Update Discord settings
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateDiscordSettingsRequest $update_discord_settings_request (required)
+     * @param  \Zernio\Model\UpdateDiscordSettingsRequest $update_discord_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDiscordSettings'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateDiscordSettings200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateDiscordSettings200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateDiscordSettingsWithHttpInfo($account_id, $update_discord_settings_request, string $contentType = self::contentTypes['updateDiscordSettings'][0])
     {
@@ -766,13 +766,13 @@ class DiscordApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateDiscordSettings200Response',
+                        '\Zernio\Model\UpdateDiscordSettings200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -794,7 +794,7 @@ class DiscordApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateDiscordSettings200Response',
+                '\Zernio\Model\UpdateDiscordSettings200Response',
                 $request,
                 $response,
             );
@@ -803,7 +803,7 @@ class DiscordApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateDiscordSettings200Response',
+                        '\Zernio\Model\UpdateDiscordSettings200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -811,7 +811,7 @@ class DiscordApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -829,7 +829,7 @@ class DiscordApi
      * Update Discord settings
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateDiscordSettingsRequest $update_discord_settings_request (required)
+     * @param  \Zernio\Model\UpdateDiscordSettingsRequest $update_discord_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDiscordSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -851,7 +851,7 @@ class DiscordApi
      * Update Discord settings
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateDiscordSettingsRequest $update_discord_settings_request (required)
+     * @param  \Zernio\Model\UpdateDiscordSettingsRequest $update_discord_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDiscordSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -859,7 +859,7 @@ class DiscordApi
      */
     public function updateDiscordSettingsAsyncWithHttpInfo($account_id, $update_discord_settings_request, string $contentType = self::contentTypes['updateDiscordSettings'][0])
     {
-        $returnType = '\Late\Model\UpdateDiscordSettings200Response';
+        $returnType = '\Zernio\Model\UpdateDiscordSettings200Response';
         $request = $this->updateDiscordSettingsRequest($account_id, $update_discord_settings_request, $contentType);
 
         return $this->client
@@ -902,7 +902,7 @@ class DiscordApi
      * Create request for operation 'updateDiscordSettings'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateDiscordSettingsRequest $update_discord_settings_request (required)
+     * @param  \Zernio\Model\UpdateDiscordSettingsRequest $update_discord_settings_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDiscordSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

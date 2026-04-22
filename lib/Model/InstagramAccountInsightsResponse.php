@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * InstagramAccountInsightsResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class InstagramAccountInsightsResponse implements ModelInterface, ArrayAccess, \
         'success' => 'bool',
         'account_id' => 'string',
         'platform' => 'string',
-        'date_range' => '\Late\Model\InstagramAccountInsightsResponseDateRange',
+        'date_range' => '\Zernio\Model\InstagramAccountInsightsResponseDateRange',
         'metric_type' => 'string',
         'breakdown' => 'string',
-        'metrics' => 'array<string,\Late\Model\InstagramAccountInsightsResponseMetricsValue>',
+        'metrics' => 'array<string,\Zernio\Model\InstagramAccountInsightsResponseMetricsValue>',
         'data_delay' => 'string'
     ];
 
@@ -447,7 +447,7 @@ class InstagramAccountInsightsResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets date_range
      *
-     * @return \Late\Model\InstagramAccountInsightsResponseDateRange|null
+     * @return \Zernio\Model\InstagramAccountInsightsResponseDateRange|null
      */
     public function getDateRange()
     {
@@ -457,7 +457,7 @@ class InstagramAccountInsightsResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets date_range
      *
-     * @param \Late\Model\InstagramAccountInsightsResponseDateRange|null $date_range date_range
+     * @param \Zernio\Model\InstagramAccountInsightsResponseDateRange|null $date_range date_range
      *
      * @return self
      */
@@ -538,7 +538,7 @@ class InstagramAccountInsightsResponse implements ModelInterface, ArrayAccess, \
     /**
      * Gets metrics
      *
-     * @return array<string,\Late\Model\InstagramAccountInsightsResponseMetricsValue>|null
+     * @return array<string,\Zernio\Model\InstagramAccountInsightsResponseMetricsValue>|null
      */
     public function getMetrics()
     {
@@ -548,7 +548,7 @@ class InstagramAccountInsightsResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets metrics
      *
-     * @param array<string,\Late\Model\InstagramAccountInsightsResponseMetricsValue>|null $metrics Object keyed by metric name. For time_series: each metric has \"total\" (number) and \"values\" (array of {date, value}). For total_value: each metric has \"total\" (number) and optionally \"breakdowns\" (array of {dimension, value}).
+     * @param array<string,\Zernio\Model\InstagramAccountInsightsResponseMetricsValue>|null $metrics Object keyed by metric name. For time_series: each metric has \"total\" (number) and \"values\" (array of {date, value}). For total_value: each metric has \"total\" (number) and optionally \"breakdowns\" (array of {dimension, value}).
      *
      * @return self
      */

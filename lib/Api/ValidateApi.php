@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * ValidateApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -140,12 +140,12 @@ class ValidateApi
      *
      * Validate media URL
      *
-     * @param  \Late\Model\ValidateMediaRequest $validate_media_request validate_media_request (required)
+     * @param  \Zernio\Model\ValidateMediaRequest $validate_media_request validate_media_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateMedia'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ValidateMedia200Response
+     * @return \Zernio\Model\ValidateMedia200Response
      */
     public function validateMedia($validate_media_request, string $contentType = self::contentTypes['validateMedia'][0])
     {
@@ -158,12 +158,12 @@ class ValidateApi
      *
      * Validate media URL
      *
-     * @param  \Late\Model\ValidateMediaRequest $validate_media_request (required)
+     * @param  \Zernio\Model\ValidateMediaRequest $validate_media_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateMedia'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ValidateMedia200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ValidateMedia200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function validateMediaWithHttpInfo($validate_media_request, string $contentType = self::contentTypes['validateMedia'][0])
     {
@@ -195,7 +195,7 @@ class ValidateApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ValidateMedia200Response',
+                        '\Zernio\Model\ValidateMedia200Response',
                         $request,
                         $response,
                     );
@@ -217,7 +217,7 @@ class ValidateApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ValidateMedia200Response',
+                '\Zernio\Model\ValidateMedia200Response',
                 $request,
                 $response,
             );
@@ -226,7 +226,7 @@ class ValidateApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ValidateMedia200Response',
+                        '\Zernio\Model\ValidateMedia200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -243,7 +243,7 @@ class ValidateApi
      *
      * Validate media URL
      *
-     * @param  \Late\Model\ValidateMediaRequest $validate_media_request (required)
+     * @param  \Zernio\Model\ValidateMediaRequest $validate_media_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateMedia'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -264,7 +264,7 @@ class ValidateApi
      *
      * Validate media URL
      *
-     * @param  \Late\Model\ValidateMediaRequest $validate_media_request (required)
+     * @param  \Zernio\Model\ValidateMediaRequest $validate_media_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateMedia'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -272,7 +272,7 @@ class ValidateApi
      */
     public function validateMediaAsyncWithHttpInfo($validate_media_request, string $contentType = self::contentTypes['validateMedia'][0])
     {
-        $returnType = '\Late\Model\ValidateMedia200Response';
+        $returnType = '\Zernio\Model\ValidateMedia200Response';
         $request = $this->validateMediaRequest($validate_media_request, $contentType);
 
         return $this->client
@@ -314,7 +314,7 @@ class ValidateApi
     /**
      * Create request for operation 'validateMedia'
      *
-     * @param  \Late\Model\ValidateMediaRequest $validate_media_request (required)
+     * @param  \Zernio\Model\ValidateMediaRequest $validate_media_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateMedia'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -411,12 +411,12 @@ class ValidateApi
      *
      * Validate post content
      *
-     * @param  \Late\Model\ValidatePostRequest $validate_post_request validate_post_request (required)
+     * @param  \Zernio\Model\ValidatePostRequest $validate_post_request validate_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePost'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ValidatePost200Response
+     * @return \Zernio\Model\ValidatePost200Response
      */
     public function validatePost($validate_post_request, string $contentType = self::contentTypes['validatePost'][0])
     {
@@ -429,12 +429,12 @@ class ValidateApi
      *
      * Validate post content
      *
-     * @param  \Late\Model\ValidatePostRequest $validate_post_request (required)
+     * @param  \Zernio\Model\ValidatePostRequest $validate_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePost'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ValidatePost200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ValidatePost200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function validatePostWithHttpInfo($validate_post_request, string $contentType = self::contentTypes['validatePost'][0])
     {
@@ -466,7 +466,7 @@ class ValidateApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ValidatePost200Response',
+                        '\Zernio\Model\ValidatePost200Response',
                         $request,
                         $response,
                     );
@@ -488,7 +488,7 @@ class ValidateApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ValidatePost200Response',
+                '\Zernio\Model\ValidatePost200Response',
                 $request,
                 $response,
             );
@@ -497,7 +497,7 @@ class ValidateApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ValidatePost200Response',
+                        '\Zernio\Model\ValidatePost200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -514,7 +514,7 @@ class ValidateApi
      *
      * Validate post content
      *
-     * @param  \Late\Model\ValidatePostRequest $validate_post_request (required)
+     * @param  \Zernio\Model\ValidatePostRequest $validate_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -535,7 +535,7 @@ class ValidateApi
      *
      * Validate post content
      *
-     * @param  \Late\Model\ValidatePostRequest $validate_post_request (required)
+     * @param  \Zernio\Model\ValidatePostRequest $validate_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -543,7 +543,7 @@ class ValidateApi
      */
     public function validatePostAsyncWithHttpInfo($validate_post_request, string $contentType = self::contentTypes['validatePost'][0])
     {
-        $returnType = '\Late\Model\ValidatePost200Response';
+        $returnType = '\Zernio\Model\ValidatePost200Response';
         $request = $this->validatePostRequest($validate_post_request, $contentType);
 
         return $this->client
@@ -585,7 +585,7 @@ class ValidateApi
     /**
      * Create request for operation 'validatePost'
      *
-     * @param  \Late\Model\ValidatePostRequest $validate_post_request (required)
+     * @param  \Zernio\Model\ValidatePostRequest $validate_post_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -682,12 +682,12 @@ class ValidateApi
      *
      * Validate character count
      *
-     * @param  \Late\Model\ValidatePostLengthRequest $validate_post_length_request validate_post_length_request (required)
+     * @param  \Zernio\Model\ValidatePostLengthRequest $validate_post_length_request validate_post_length_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePostLength'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ValidatePostLength200Response
+     * @return \Zernio\Model\ValidatePostLength200Response
      */
     public function validatePostLength($validate_post_length_request, string $contentType = self::contentTypes['validatePostLength'][0])
     {
@@ -700,12 +700,12 @@ class ValidateApi
      *
      * Validate character count
      *
-     * @param  \Late\Model\ValidatePostLengthRequest $validate_post_length_request (required)
+     * @param  \Zernio\Model\ValidatePostLengthRequest $validate_post_length_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePostLength'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ValidatePostLength200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ValidatePostLength200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function validatePostLengthWithHttpInfo($validate_post_length_request, string $contentType = self::contentTypes['validatePostLength'][0])
     {
@@ -737,7 +737,7 @@ class ValidateApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ValidatePostLength200Response',
+                        '\Zernio\Model\ValidatePostLength200Response',
                         $request,
                         $response,
                     );
@@ -759,7 +759,7 @@ class ValidateApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ValidatePostLength200Response',
+                '\Zernio\Model\ValidatePostLength200Response',
                 $request,
                 $response,
             );
@@ -768,7 +768,7 @@ class ValidateApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ValidatePostLength200Response',
+                        '\Zernio\Model\ValidatePostLength200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -785,7 +785,7 @@ class ValidateApi
      *
      * Validate character count
      *
-     * @param  \Late\Model\ValidatePostLengthRequest $validate_post_length_request (required)
+     * @param  \Zernio\Model\ValidatePostLengthRequest $validate_post_length_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePostLength'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -806,7 +806,7 @@ class ValidateApi
      *
      * Validate character count
      *
-     * @param  \Late\Model\ValidatePostLengthRequest $validate_post_length_request (required)
+     * @param  \Zernio\Model\ValidatePostLengthRequest $validate_post_length_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePostLength'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -814,7 +814,7 @@ class ValidateApi
      */
     public function validatePostLengthAsyncWithHttpInfo($validate_post_length_request, string $contentType = self::contentTypes['validatePostLength'][0])
     {
-        $returnType = '\Late\Model\ValidatePostLength200Response';
+        $returnType = '\Zernio\Model\ValidatePostLength200Response';
         $request = $this->validatePostLengthRequest($validate_post_length_request, $contentType);
 
         return $this->client
@@ -856,7 +856,7 @@ class ValidateApi
     /**
      * Create request for operation 'validatePostLength'
      *
-     * @param  \Late\Model\ValidatePostLengthRequest $validate_post_length_request (required)
+     * @param  \Zernio\Model\ValidatePostLengthRequest $validate_post_length_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validatePostLength'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -957,9 +957,9 @@ class ValidateApi
      * @param  string|null $account_id Reddit social account ID for authenticated lookup (recommended for reliable results) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateSubreddit'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ValidateSubreddit200Response
+     * @return \Zernio\Model\ValidateSubreddit200Response
      */
     public function validateSubreddit($name, $account_id = null, string $contentType = self::contentTypes['validateSubreddit'][0])
     {
@@ -976,9 +976,9 @@ class ValidateApi
      * @param  string|null $account_id Reddit social account ID for authenticated lookup (recommended for reliable results) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['validateSubreddit'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ValidateSubreddit200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ValidateSubreddit200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function validateSubredditWithHttpInfo($name, $account_id = null, string $contentType = self::contentTypes['validateSubreddit'][0])
     {
@@ -1010,7 +1010,7 @@ class ValidateApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ValidateSubreddit200Response',
+                        '\Zernio\Model\ValidateSubreddit200Response',
                         $request,
                         $response,
                     );
@@ -1032,7 +1032,7 @@ class ValidateApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ValidateSubreddit200Response',
+                '\Zernio\Model\ValidateSubreddit200Response',
                 $request,
                 $response,
             );
@@ -1041,7 +1041,7 @@ class ValidateApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ValidateSubreddit200Response',
+                        '\Zernio\Model\ValidateSubreddit200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1089,7 +1089,7 @@ class ValidateApi
      */
     public function validateSubredditAsyncWithHttpInfo($name, $account_id = null, string $contentType = self::contentTypes['validateSubreddit'][0])
     {
-        $returnType = '\Late\Model\ValidateSubreddit200Response';
+        $returnType = '\Zernio\Model\ValidateSubreddit200Response';
         $request = $this->validateSubredditRequest($name, $account_id, $contentType);
 
         return $this->client

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * MediaUploadResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class MediaUploadResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'files' => '\Late\Model\UploadedFile[]'
+        'files' => '\Zernio\Model\UploadedFile[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class MediaUploadResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets files
      *
-     * @return \Late\Model\UploadedFile[]|null
+     * @return \Zernio\Model\UploadedFile[]|null
      */
     public function getFiles()
     {
@@ -303,7 +303,7 @@ class MediaUploadResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets files
      *
-     * @param \Late\Model\UploadedFile[]|null $files files
+     * @param \Zernio\Model\UploadedFile[]|null $files files
      *
      * @return self
      */

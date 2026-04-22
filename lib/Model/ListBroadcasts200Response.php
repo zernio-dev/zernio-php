@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListBroadcasts200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class ListBroadcasts200Response implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'broadcasts' => '\Late\Model\ListBroadcasts200ResponseBroadcastsInner[]',
-        'pagination' => '\Late\Model\ListContacts200ResponsePagination'
+        'broadcasts' => '\Zernio\Model\ListBroadcasts200ResponseBroadcastsInner[]',
+        'pagination' => '\Zernio\Model\ListContacts200ResponsePagination'
     ];
 
     /**
@@ -334,7 +334,7 @@ class ListBroadcasts200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets broadcasts
      *
-     * @return \Late\Model\ListBroadcasts200ResponseBroadcastsInner[]|null
+     * @return \Zernio\Model\ListBroadcasts200ResponseBroadcastsInner[]|null
      */
     public function getBroadcasts()
     {
@@ -344,7 +344,7 @@ class ListBroadcasts200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets broadcasts
      *
-     * @param \Late\Model\ListBroadcasts200ResponseBroadcastsInner[]|null $broadcasts broadcasts
+     * @param \Zernio\Model\ListBroadcasts200ResponseBroadcastsInner[]|null $broadcasts broadcasts
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class ListBroadcasts200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets pagination
      *
-     * @return \Late\Model\ListContacts200ResponsePagination|null
+     * @return \Zernio\Model\ListContacts200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -371,7 +371,7 @@ class ListBroadcasts200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets pagination
      *
-     * @param \Late\Model\ListContacts200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\ListContacts200ResponsePagination|null $pagination pagination
      *
      * @return self
      */

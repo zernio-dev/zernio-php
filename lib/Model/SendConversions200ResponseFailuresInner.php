@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendConversions200ResponseFailuresInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class SendConversions200ResponseFailuresInner implements ModelInterface, ArrayAc
         'event_index' => 'int',
         'event_id' => 'string',
         'message' => 'string',
-        'code' => '\Late\Model\SendConversions200ResponseFailuresInnerCode'
+        'code' => '\Zernio\Model\SendConversions200ResponseFailuresInnerCode'
     ];
 
     /**
@@ -395,7 +395,7 @@ class SendConversions200ResponseFailuresInner implements ModelInterface, ArrayAc
     /**
      * Gets code
      *
-     * @return \Late\Model\SendConversions200ResponseFailuresInnerCode|null
+     * @return \Zernio\Model\SendConversions200ResponseFailuresInnerCode|null
      */
     public function getCode()
     {
@@ -405,7 +405,7 @@ class SendConversions200ResponseFailuresInner implements ModelInterface, ArrayAc
     /**
      * Sets code
      *
-     * @param \Late\Model\SendConversions200ResponseFailuresInnerCode|null $code code
+     * @param \Zernio\Model\SendConversions200ResponseFailuresInnerCode|null $code code
      *
      * @return self
      */

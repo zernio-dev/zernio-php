@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * ConnectApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -227,9 +227,9 @@ class ConnectApi
      * @param  string $code The access code to check status for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeTelegramConnect'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CompleteTelegramConnect200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\CompleteTelegramConnect200Response|\Zernio\Model\InlineObject
      */
     public function completeTelegramConnect($code, string $contentType = self::contentTypes['completeTelegramConnect'][0])
     {
@@ -245,9 +245,9 @@ class ConnectApi
      * @param  string $code The access code to check status for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeTelegramConnect'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CompleteTelegramConnect200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CompleteTelegramConnect200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function completeTelegramConnectWithHttpInfo($code, string $contentType = self::contentTypes['completeTelegramConnect'][0])
     {
@@ -279,13 +279,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CompleteTelegramConnect200Response',
+                        '\Zernio\Model\CompleteTelegramConnect200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -307,7 +307,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CompleteTelegramConnect200Response',
+                '\Zernio\Model\CompleteTelegramConnect200Response',
                 $request,
                 $response,
             );
@@ -316,7 +316,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CompleteTelegramConnect200Response',
+                        '\Zernio\Model\CompleteTelegramConnect200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -324,7 +324,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -370,7 +370,7 @@ class ConnectApi
      */
     public function completeTelegramConnectAsyncWithHttpInfo($code, string $contentType = self::contentTypes['completeTelegramConnect'][0])
     {
-        $returnType = '\Late\Model\CompleteTelegramConnect200Response';
+        $returnType = '\Zernio\Model\CompleteTelegramConnect200Response';
         $request = $this->completeTelegramConnectRequest($code, $contentType);
 
         return $this->client
@@ -518,9 +518,9 @@ class ConnectApi
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ConnectAds200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ConnectAds200Response|\Zernio\Model\InlineObject
      */
     public function connectAds($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
     {
@@ -540,9 +540,9 @@ class ConnectApi
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ConnectAds200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ConnectAds200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function connectAdsWithHttpInfo($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
     {
@@ -574,13 +574,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ConnectAds200Response',
+                        '\Zernio\Model\ConnectAds200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -602,7 +602,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ConnectAds200Response',
+                '\Zernio\Model\ConnectAds200Response',
                 $request,
                 $response,
             );
@@ -611,7 +611,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ConnectAds200Response',
+                        '\Zernio\Model\ConnectAds200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -619,7 +619,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -673,7 +673,7 @@ class ConnectApi
      */
     public function connectAdsAsyncWithHttpInfo($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
     {
-        $returnType = '\Late\Model\ConnectAds200Response';
+        $returnType = '\Zernio\Model\ConnectAds200Response';
         $request = $this->connectAdsRequest($platform, $profile_id, $account_id, $redirect_url, $headless, $contentType);
 
         return $this->client
@@ -863,12 +863,12 @@ class ConnectApi
      *
      * Connect Bluesky account
      *
-     * @param  \Late\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request connect_bluesky_credentials_request (required)
+     * @param  \Zernio\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request connect_bluesky_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectBlueskyCredentials'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ConnectBlueskyCredentials200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ConnectBlueskyCredentials200Response|\Zernio\Model\InlineObject
      */
     public function connectBlueskyCredentials($connect_bluesky_credentials_request, string $contentType = self::contentTypes['connectBlueskyCredentials'][0])
     {
@@ -881,12 +881,12 @@ class ConnectApi
      *
      * Connect Bluesky account
      *
-     * @param  \Late\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request (required)
+     * @param  \Zernio\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectBlueskyCredentials'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ConnectBlueskyCredentials200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ConnectBlueskyCredentials200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function connectBlueskyCredentialsWithHttpInfo($connect_bluesky_credentials_request, string $contentType = self::contentTypes['connectBlueskyCredentials'][0])
     {
@@ -918,13 +918,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ConnectBlueskyCredentials200Response',
+                        '\Zernio\Model\ConnectBlueskyCredentials200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -946,7 +946,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ConnectBlueskyCredentials200Response',
+                '\Zernio\Model\ConnectBlueskyCredentials200Response',
                 $request,
                 $response,
             );
@@ -955,7 +955,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ConnectBlueskyCredentials200Response',
+                        '\Zernio\Model\ConnectBlueskyCredentials200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -963,7 +963,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -980,7 +980,7 @@ class ConnectApi
      *
      * Connect Bluesky account
      *
-     * @param  \Late\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request (required)
+     * @param  \Zernio\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectBlueskyCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1001,7 +1001,7 @@ class ConnectApi
      *
      * Connect Bluesky account
      *
-     * @param  \Late\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request (required)
+     * @param  \Zernio\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectBlueskyCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1009,7 +1009,7 @@ class ConnectApi
      */
     public function connectBlueskyCredentialsAsyncWithHttpInfo($connect_bluesky_credentials_request, string $contentType = self::contentTypes['connectBlueskyCredentials'][0])
     {
-        $returnType = '\Late\Model\ConnectBlueskyCredentials200Response';
+        $returnType = '\Zernio\Model\ConnectBlueskyCredentials200Response';
         $request = $this->connectBlueskyCredentialsRequest($connect_bluesky_credentials_request, $contentType);
 
         return $this->client
@@ -1051,7 +1051,7 @@ class ConnectApi
     /**
      * Create request for operation 'connectBlueskyCredentials'
      *
-     * @param  \Late\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request (required)
+     * @param  \Zernio\Model\ConnectBlueskyCredentialsRequest $connect_bluesky_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectBlueskyCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1148,12 +1148,12 @@ class ConnectApi
      *
      * Connect WhatsApp via credentials
      *
-     * @param  \Late\Model\ConnectWhatsAppCredentialsRequest $connect_whats_app_credentials_request connect_whats_app_credentials_request (required)
+     * @param  \Zernio\Model\ConnectWhatsAppCredentialsRequest $connect_whats_app_credentials_request connect_whats_app_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectWhatsAppCredentials'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ConnectWhatsAppCredentials200Response
+     * @return \Zernio\Model\ConnectWhatsAppCredentials200Response
      */
     public function connectWhatsAppCredentials($connect_whats_app_credentials_request, string $contentType = self::contentTypes['connectWhatsAppCredentials'][0])
     {
@@ -1166,12 +1166,12 @@ class ConnectApi
      *
      * Connect WhatsApp via credentials
      *
-     * @param  \Late\Model\ConnectWhatsAppCredentialsRequest $connect_whats_app_credentials_request (required)
+     * @param  \Zernio\Model\ConnectWhatsAppCredentialsRequest $connect_whats_app_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectWhatsAppCredentials'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ConnectWhatsAppCredentials200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ConnectWhatsAppCredentials200Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function connectWhatsAppCredentialsWithHttpInfo($connect_whats_app_credentials_request, string $contentType = self::contentTypes['connectWhatsAppCredentials'][0])
     {
@@ -1203,7 +1203,7 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ConnectWhatsAppCredentials200Response',
+                        '\Zernio\Model\ConnectWhatsAppCredentials200Response',
                         $request,
                         $response,
                     );
@@ -1225,7 +1225,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ConnectWhatsAppCredentials200Response',
+                '\Zernio\Model\ConnectWhatsAppCredentials200Response',
                 $request,
                 $response,
             );
@@ -1234,7 +1234,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ConnectWhatsAppCredentials200Response',
+                        '\Zernio\Model\ConnectWhatsAppCredentials200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1251,7 +1251,7 @@ class ConnectApi
      *
      * Connect WhatsApp via credentials
      *
-     * @param  \Late\Model\ConnectWhatsAppCredentialsRequest $connect_whats_app_credentials_request (required)
+     * @param  \Zernio\Model\ConnectWhatsAppCredentialsRequest $connect_whats_app_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectWhatsAppCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1272,7 +1272,7 @@ class ConnectApi
      *
      * Connect WhatsApp via credentials
      *
-     * @param  \Late\Model\ConnectWhatsAppCredentialsRequest $connect_whats_app_credentials_request (required)
+     * @param  \Zernio\Model\ConnectWhatsAppCredentialsRequest $connect_whats_app_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectWhatsAppCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1280,7 +1280,7 @@ class ConnectApi
      */
     public function connectWhatsAppCredentialsAsyncWithHttpInfo($connect_whats_app_credentials_request, string $contentType = self::contentTypes['connectWhatsAppCredentials'][0])
     {
-        $returnType = '\Late\Model\ConnectWhatsAppCredentials200Response';
+        $returnType = '\Zernio\Model\ConnectWhatsAppCredentials200Response';
         $request = $this->connectWhatsAppCredentialsRequest($connect_whats_app_credentials_request, $contentType);
 
         return $this->client
@@ -1322,7 +1322,7 @@ class ConnectApi
     /**
      * Create request for operation 'connectWhatsAppCredentials'
      *
-     * @param  \Late\Model\ConnectWhatsAppCredentialsRequest $connect_whats_app_credentials_request (required)
+     * @param  \Zernio\Model\ConnectWhatsAppCredentialsRequest $connect_whats_app_credentials_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectWhatsAppCredentials'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1425,9 +1425,9 @@ class ConnectApi
      * @param  bool|null $headless When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Zernio&#39;s default account selection UI. Use this to build a custom connect experience. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetConnectUrl200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetConnectUrl200Response|\Zernio\Model\InlineObject
      */
     public function getConnectUrl($platform, $profile_id, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
@@ -1446,9 +1446,9 @@ class ConnectApi
      * @param  bool|null $headless When true, the user is redirected to your redirect_url with raw OAuth data (code, state) instead of Zernio&#39;s default account selection UI. Use this to build a custom connect experience. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConnectUrl'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetConnectUrl200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetConnectUrl200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getConnectUrlWithHttpInfo($platform, $profile_id, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
@@ -1480,13 +1480,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetConnectUrl200Response',
+                        '\Zernio\Model\GetConnectUrl200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1508,7 +1508,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetConnectUrl200Response',
+                '\Zernio\Model\GetConnectUrl200Response',
                 $request,
                 $response,
             );
@@ -1517,7 +1517,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetConnectUrl200Response',
+                        '\Zernio\Model\GetConnectUrl200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1525,7 +1525,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1577,7 +1577,7 @@ class ConnectApi
      */
     public function getConnectUrlAsyncWithHttpInfo($platform, $profile_id, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['getConnectUrl'][0])
     {
-        $returnType = '\Late\Model\GetConnectUrl200Response';
+        $returnType = '\Zernio\Model\GetConnectUrl200Response';
         $request = $this->getConnectUrlRequest($platform, $profile_id, $redirect_url, $headless, $contentType);
 
         return $this->client
@@ -1759,9 +1759,9 @@ class ConnectApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPages'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetFacebookPages200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetFacebookPages200Response|\Zernio\Model\InlineObject
      */
     public function getFacebookPages($account_id, string $contentType = self::contentTypes['getFacebookPages'][0])
     {
@@ -1777,9 +1777,9 @@ class ConnectApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPages'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetFacebookPages200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetFacebookPages200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFacebookPagesWithHttpInfo($account_id, string $contentType = self::contentTypes['getFacebookPages'][0])
     {
@@ -1811,13 +1811,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetFacebookPages200Response',
+                        '\Zernio\Model\GetFacebookPages200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1839,7 +1839,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetFacebookPages200Response',
+                '\Zernio\Model\GetFacebookPages200Response',
                 $request,
                 $response,
             );
@@ -1848,7 +1848,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetFacebookPages200Response',
+                        '\Zernio\Model\GetFacebookPages200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1856,7 +1856,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1902,7 +1902,7 @@ class ConnectApi
      */
     public function getFacebookPagesAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getFacebookPages'][0])
     {
-        $returnType = '\Late\Model\GetFacebookPages200Response';
+        $returnType = '\Zernio\Model\GetFacebookPages200Response';
         $request = $this->getFacebookPagesRequest($account_id, $contentType);
 
         return $this->client
@@ -2045,9 +2045,9 @@ class ConnectApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetGmbLocations200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetGmbLocations200Response|\Zernio\Model\InlineObject
      */
     public function getGmbLocations($account_id, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
@@ -2063,9 +2063,9 @@ class ConnectApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetGmbLocations200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetGmbLocations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGmbLocationsWithHttpInfo($account_id, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
@@ -2097,13 +2097,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetGmbLocations200Response',
+                        '\Zernio\Model\GetGmbLocations200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2125,7 +2125,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetGmbLocations200Response',
+                '\Zernio\Model\GetGmbLocations200Response',
                 $request,
                 $response,
             );
@@ -2134,7 +2134,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetGmbLocations200Response',
+                        '\Zernio\Model\GetGmbLocations200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2142,7 +2142,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2188,7 +2188,7 @@ class ConnectApi
      */
     public function getGmbLocationsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
-        $returnType = '\Late\Model\GetGmbLocations200Response';
+        $returnType = '\Zernio\Model\GetGmbLocations200Response';
         $request = $this->getGmbLocationsRequest($account_id, $contentType);
 
         return $this->client
@@ -2331,9 +2331,9 @@ class ConnectApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInOrganizations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetLinkedInOrganizations200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetLinkedInOrganizations200Response|\Zernio\Model\InlineObject
      */
     public function getLinkedInOrganizations($account_id, string $contentType = self::contentTypes['getLinkedInOrganizations'][0])
     {
@@ -2349,9 +2349,9 @@ class ConnectApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInOrganizations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetLinkedInOrganizations200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetLinkedInOrganizations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getLinkedInOrganizationsWithHttpInfo($account_id, string $contentType = self::contentTypes['getLinkedInOrganizations'][0])
     {
@@ -2383,13 +2383,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetLinkedInOrganizations200Response',
+                        '\Zernio\Model\GetLinkedInOrganizations200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2411,7 +2411,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetLinkedInOrganizations200Response',
+                '\Zernio\Model\GetLinkedInOrganizations200Response',
                 $request,
                 $response,
             );
@@ -2420,7 +2420,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetLinkedInOrganizations200Response',
+                        '\Zernio\Model\GetLinkedInOrganizations200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2428,7 +2428,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2474,7 +2474,7 @@ class ConnectApi
      */
     public function getLinkedInOrganizationsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getLinkedInOrganizations'][0])
     {
-        $returnType = '\Late\Model\GetLinkedInOrganizations200Response';
+        $returnType = '\Zernio\Model\GetLinkedInOrganizations200Response';
         $request = $this->getLinkedInOrganizationsRequest($account_id, $contentType);
 
         return $this->client
@@ -2617,9 +2617,9 @@ class ConnectApi
      * @param  string $token The pending data token from the OAuth redirect URL (pendingDataToken parameter) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPendingOAuthData'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetPendingOAuthData200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\GetPendingOAuthData200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function getPendingOAuthData($token, string $contentType = self::contentTypes['getPendingOAuthData'][0])
     {
@@ -2635,9 +2635,9 @@ class ConnectApi
      * @param  string $token The pending data token from the OAuth redirect URL (pendingDataToken parameter) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPendingOAuthData'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetPendingOAuthData200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetPendingOAuthData200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPendingOAuthDataWithHttpInfo($token, string $contentType = self::contentTypes['getPendingOAuthData'][0])
     {
@@ -2669,19 +2669,19 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetPendingOAuthData200Response',
+                        '\Zernio\Model\GetPendingOAuthData200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -2703,7 +2703,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetPendingOAuthData200Response',
+                '\Zernio\Model\GetPendingOAuthData200Response',
                 $request,
                 $response,
             );
@@ -2712,7 +2712,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetPendingOAuthData200Response',
+                        '\Zernio\Model\GetPendingOAuthData200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2720,7 +2720,7 @@ class ConnectApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2728,7 +2728,7 @@ class ConnectApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2774,7 +2774,7 @@ class ConnectApi
      */
     public function getPendingOAuthDataAsyncWithHttpInfo($token, string $contentType = self::contentTypes['getPendingOAuthData'][0])
     {
-        $returnType = '\Late\Model\GetPendingOAuthData200Response';
+        $returnType = '\Zernio\Model\GetPendingOAuthData200Response';
         $request = $this->getPendingOAuthDataRequest($token, $contentType);
 
         return $this->client
@@ -2918,9 +2918,9 @@ class ConnectApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPinterestBoards'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetPinterestBoards200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetPinterestBoards200Response|\Zernio\Model\InlineObject
      */
     public function getPinterestBoards($account_id, string $contentType = self::contentTypes['getPinterestBoards'][0])
     {
@@ -2936,9 +2936,9 @@ class ConnectApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPinterestBoards'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetPinterestBoards200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetPinterestBoards200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPinterestBoardsWithHttpInfo($account_id, string $contentType = self::contentTypes['getPinterestBoards'][0])
     {
@@ -2970,13 +2970,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetPinterestBoards200Response',
+                        '\Zernio\Model\GetPinterestBoards200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2998,7 +2998,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetPinterestBoards200Response',
+                '\Zernio\Model\GetPinterestBoards200Response',
                 $request,
                 $response,
             );
@@ -3007,7 +3007,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetPinterestBoards200Response',
+                        '\Zernio\Model\GetPinterestBoards200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3015,7 +3015,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3061,7 +3061,7 @@ class ConnectApi
      */
     public function getPinterestBoardsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getPinterestBoards'][0])
     {
-        $returnType = '\Late\Model\GetPinterestBoards200Response';
+        $returnType = '\Zernio\Model\GetPinterestBoards200Response';
         $request = $this->getPinterestBoardsRequest($account_id, $contentType);
 
         return $this->client
@@ -3205,9 +3205,9 @@ class ConnectApi
      * @param  string $subreddit Subreddit name (without \&quot;r/\&quot; prefix) to fetch flairs for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRedditFlairs'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetRedditFlairs200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetRedditFlairs200Response|\Zernio\Model\InlineObject
      */
     public function getRedditFlairs($account_id, $subreddit, string $contentType = self::contentTypes['getRedditFlairs'][0])
     {
@@ -3224,9 +3224,9 @@ class ConnectApi
      * @param  string $subreddit Subreddit name (without \&quot;r/\&quot; prefix) to fetch flairs for (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRedditFlairs'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetRedditFlairs200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetRedditFlairs200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRedditFlairsWithHttpInfo($account_id, $subreddit, string $contentType = self::contentTypes['getRedditFlairs'][0])
     {
@@ -3258,13 +3258,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetRedditFlairs200Response',
+                        '\Zernio\Model\GetRedditFlairs200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -3286,7 +3286,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetRedditFlairs200Response',
+                '\Zernio\Model\GetRedditFlairs200Response',
                 $request,
                 $response,
             );
@@ -3295,7 +3295,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetRedditFlairs200Response',
+                        '\Zernio\Model\GetRedditFlairs200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3303,7 +3303,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3351,7 +3351,7 @@ class ConnectApi
      */
     public function getRedditFlairsAsyncWithHttpInfo($account_id, $subreddit, string $contentType = self::contentTypes['getRedditFlairs'][0])
     {
-        $returnType = '\Late\Model\GetRedditFlairs200Response';
+        $returnType = '\Zernio\Model\GetRedditFlairs200Response';
         $request = $this->getRedditFlairsRequest($account_id, $subreddit, $contentType);
 
         return $this->client
@@ -3511,9 +3511,9 @@ class ConnectApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRedditSubreddits'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetRedditSubreddits200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetRedditSubreddits200Response|\Zernio\Model\InlineObject
      */
     public function getRedditSubreddits($account_id, string $contentType = self::contentTypes['getRedditSubreddits'][0])
     {
@@ -3529,9 +3529,9 @@ class ConnectApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRedditSubreddits'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetRedditSubreddits200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetRedditSubreddits200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRedditSubredditsWithHttpInfo($account_id, string $contentType = self::contentTypes['getRedditSubreddits'][0])
     {
@@ -3563,13 +3563,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetRedditSubreddits200Response',
+                        '\Zernio\Model\GetRedditSubreddits200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -3591,7 +3591,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetRedditSubreddits200Response',
+                '\Zernio\Model\GetRedditSubreddits200Response',
                 $request,
                 $response,
             );
@@ -3600,7 +3600,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetRedditSubreddits200Response',
+                        '\Zernio\Model\GetRedditSubreddits200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3608,7 +3608,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3654,7 +3654,7 @@ class ConnectApi
      */
     public function getRedditSubredditsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getRedditSubreddits'][0])
     {
-        $returnType = '\Late\Model\GetRedditSubreddits200Response';
+        $returnType = '\Zernio\Model\GetRedditSubreddits200Response';
         $request = $this->getRedditSubredditsRequest($account_id, $contentType);
 
         return $this->client
@@ -3797,9 +3797,9 @@ class ConnectApi
      * @param  string $profile_id The profile ID to connect the Telegram account to (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTelegramConnectStatus'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetTelegramConnectStatus200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetTelegramConnectStatus200Response|\Zernio\Model\InlineObject
      */
     public function getTelegramConnectStatus($profile_id, string $contentType = self::contentTypes['getTelegramConnectStatus'][0])
     {
@@ -3815,9 +3815,9 @@ class ConnectApi
      * @param  string $profile_id The profile ID to connect the Telegram account to (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTelegramConnectStatus'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetTelegramConnectStatus200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetTelegramConnectStatus200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTelegramConnectStatusWithHttpInfo($profile_id, string $contentType = self::contentTypes['getTelegramConnectStatus'][0])
     {
@@ -3849,13 +3849,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetTelegramConnectStatus200Response',
+                        '\Zernio\Model\GetTelegramConnectStatus200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -3877,7 +3877,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetTelegramConnectStatus200Response',
+                '\Zernio\Model\GetTelegramConnectStatus200Response',
                 $request,
                 $response,
             );
@@ -3886,7 +3886,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetTelegramConnectStatus200Response',
+                        '\Zernio\Model\GetTelegramConnectStatus200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3894,7 +3894,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3940,7 +3940,7 @@ class ConnectApi
      */
     public function getTelegramConnectStatusAsyncWithHttpInfo($profile_id, string $contentType = self::contentTypes['getTelegramConnectStatus'][0])
     {
-        $returnType = '\Late\Model\GetTelegramConnectStatus200Response';
+        $returnType = '\Zernio\Model\GetTelegramConnectStatus200Response';
         $request = $this->getTelegramConnectStatusRequest($profile_id, $contentType);
 
         return $this->client
@@ -4084,9 +4084,9 @@ class ConnectApi
      * @param  string $account_id account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYoutubePlaylists'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetYoutubePlaylists200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetYoutubePlaylists200Response|\Zernio\Model\InlineObject
      */
     public function getYoutubePlaylists($account_id, string $contentType = self::contentTypes['getYoutubePlaylists'][0])
     {
@@ -4102,9 +4102,9 @@ class ConnectApi
      * @param  string $account_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYoutubePlaylists'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetYoutubePlaylists200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetYoutubePlaylists200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getYoutubePlaylistsWithHttpInfo($account_id, string $contentType = self::contentTypes['getYoutubePlaylists'][0])
     {
@@ -4136,13 +4136,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYoutubePlaylists200Response',
+                        '\Zernio\Model\GetYoutubePlaylists200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -4164,7 +4164,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetYoutubePlaylists200Response',
+                '\Zernio\Model\GetYoutubePlaylists200Response',
                 $request,
                 $response,
             );
@@ -4173,7 +4173,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYoutubePlaylists200Response',
+                        '\Zernio\Model\GetYoutubePlaylists200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4181,7 +4181,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4227,7 +4227,7 @@ class ConnectApi
      */
     public function getYoutubePlaylistsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getYoutubePlaylists'][0])
     {
-        $returnType = '\Late\Model\GetYoutubePlaylists200Response';
+        $returnType = '\Zernio\Model\GetYoutubePlaylists200Response';
         $request = $this->getYoutubePlaylistsRequest($account_id, $contentType);
 
         return $this->client
@@ -4368,10 +4368,10 @@ class ConnectApi
      * Complete OAuth callback
      *
      * @param  string $platform platform (required)
-     * @param  \Late\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request handle_o_auth_callback_request (required)
+     * @param  \Zernio\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request handle_o_auth_callback_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['handleOAuthCallback'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -4386,10 +4386,10 @@ class ConnectApi
      * Complete OAuth callback
      *
      * @param  string $platform (required)
-     * @param  \Late\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request (required)
+     * @param  \Zernio\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['handleOAuthCallback'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -4426,7 +4426,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4444,7 +4444,7 @@ class ConnectApi
      * Complete OAuth callback
      *
      * @param  string $platform (required)
-     * @param  \Late\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request (required)
+     * @param  \Zernio\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['handleOAuthCallback'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4466,7 +4466,7 @@ class ConnectApi
      * Complete OAuth callback
      *
      * @param  string $platform (required)
-     * @param  \Late\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request (required)
+     * @param  \Zernio\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['handleOAuthCallback'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4504,7 +4504,7 @@ class ConnectApi
      * Create request for operation 'handleOAuthCallback'
      *
      * @param  string $platform (required)
-     * @param  \Late\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request (required)
+     * @param  \Zernio\Model\HandleOAuthCallbackRequest $handle_o_auth_callback_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['handleOAuthCallback'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4616,12 +4616,12 @@ class ConnectApi
      *
      * Connect Telegram directly
      *
-     * @param  \Late\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request initiate_telegram_connect_request (required)
+     * @param  \Zernio\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request initiate_telegram_connect_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateTelegramConnect'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\InitiateTelegramConnect200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\InitiateTelegramConnect200Response|\Zernio\Model\InlineObject
      */
     public function initiateTelegramConnect($initiate_telegram_connect_request, string $contentType = self::contentTypes['initiateTelegramConnect'][0])
     {
@@ -4634,12 +4634,12 @@ class ConnectApi
      *
      * Connect Telegram directly
      *
-     * @param  \Late\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request (required)
+     * @param  \Zernio\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateTelegramConnect'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\InitiateTelegramConnect200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\InitiateTelegramConnect200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function initiateTelegramConnectWithHttpInfo($initiate_telegram_connect_request, string $contentType = self::contentTypes['initiateTelegramConnect'][0])
     {
@@ -4671,13 +4671,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InitiateTelegramConnect200Response',
+                        '\Zernio\Model\InitiateTelegramConnect200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -4699,7 +4699,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\InitiateTelegramConnect200Response',
+                '\Zernio\Model\InitiateTelegramConnect200Response',
                 $request,
                 $response,
             );
@@ -4708,7 +4708,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InitiateTelegramConnect200Response',
+                        '\Zernio\Model\InitiateTelegramConnect200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4716,7 +4716,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -4733,7 +4733,7 @@ class ConnectApi
      *
      * Connect Telegram directly
      *
-     * @param  \Late\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request (required)
+     * @param  \Zernio\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateTelegramConnect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4754,7 +4754,7 @@ class ConnectApi
      *
      * Connect Telegram directly
      *
-     * @param  \Late\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request (required)
+     * @param  \Zernio\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateTelegramConnect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4762,7 +4762,7 @@ class ConnectApi
      */
     public function initiateTelegramConnectAsyncWithHttpInfo($initiate_telegram_connect_request, string $contentType = self::contentTypes['initiateTelegramConnect'][0])
     {
-        $returnType = '\Late\Model\InitiateTelegramConnect200Response';
+        $returnType = '\Zernio\Model\InitiateTelegramConnect200Response';
         $request = $this->initiateTelegramConnectRequest($initiate_telegram_connect_request, $contentType);
 
         return $this->client
@@ -4804,7 +4804,7 @@ class ConnectApi
     /**
      * Create request for operation 'initiateTelegramConnect'
      *
-     * @param  \Late\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request (required)
+     * @param  \Zernio\Model\InitiateTelegramConnectRequest $initiate_telegram_connect_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['initiateTelegramConnect'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -4905,9 +4905,9 @@ class ConnectApi
      * @param  string $temp_token Temporary Facebook access token from the OAuth callback redirect (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listFacebookPages'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListFacebookPages200Response|\Late\Model\InlineObject|\Late\Model\GetYouTubeDailyViews400Response
+     * @return \Zernio\Model\ListFacebookPages200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response
      */
     public function listFacebookPages($profile_id, $temp_token, string $contentType = self::contentTypes['listFacebookPages'][0])
     {
@@ -4924,9 +4924,9 @@ class ConnectApi
      * @param  string $temp_token Temporary Facebook access token from the OAuth callback redirect (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listFacebookPages'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListFacebookPages200Response|\Late\Model\InlineObject|\Late\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListFacebookPages200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function listFacebookPagesWithHttpInfo($profile_id, $temp_token, string $contentType = self::contentTypes['listFacebookPages'][0])
     {
@@ -4958,19 +4958,19 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListFacebookPages200Response',
+                        '\Zernio\Model\ListFacebookPages200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 500:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
@@ -4992,7 +4992,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListFacebookPages200Response',
+                '\Zernio\Model\ListFacebookPages200Response',
                 $request,
                 $response,
             );
@@ -5001,7 +5001,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListFacebookPages200Response',
+                        '\Zernio\Model\ListFacebookPages200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5009,7 +5009,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5017,7 +5017,7 @@ class ConnectApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5065,7 +5065,7 @@ class ConnectApi
      */
     public function listFacebookPagesAsyncWithHttpInfo($profile_id, $temp_token, string $contentType = self::contentTypes['listFacebookPages'][0])
     {
-        $returnType = '\Late\Model\ListFacebookPages200Response';
+        $returnType = '\Zernio\Model\ListFacebookPages200Response';
         $request = $this->listFacebookPagesRequest($profile_id, $temp_token, $contentType);
 
         return $this->client
@@ -5233,9 +5233,9 @@ class ConnectApi
      * @param  string|null $temp_token Legacy. Direct Google access token. Use pendingDataToken instead when available. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessLocations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListGoogleBusinessLocations200Response|\Late\Model\InlineObject|\Late\Model\GetYouTubeDailyViews400Response
+     * @return \Zernio\Model\ListGoogleBusinessLocations200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response
      */
     public function listGoogleBusinessLocations($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
@@ -5253,9 +5253,9 @@ class ConnectApi
      * @param  string|null $temp_token Legacy. Direct Google access token. Use pendingDataToken instead when available. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessLocations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListGoogleBusinessLocations200Response|\Late\Model\InlineObject|\Late\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListGoogleBusinessLocations200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function listGoogleBusinessLocationsWithHttpInfo($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
@@ -5287,19 +5287,19 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListGoogleBusinessLocations200Response',
+                        '\Zernio\Model\ListGoogleBusinessLocations200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 500:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
@@ -5321,7 +5321,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListGoogleBusinessLocations200Response',
+                '\Zernio\Model\ListGoogleBusinessLocations200Response',
                 $request,
                 $response,
             );
@@ -5330,7 +5330,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListGoogleBusinessLocations200Response',
+                        '\Zernio\Model\ListGoogleBusinessLocations200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5338,7 +5338,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5346,7 +5346,7 @@ class ConnectApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5396,7 +5396,7 @@ class ConnectApi
      */
     public function listGoogleBusinessLocationsAsyncWithHttpInfo($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
-        $returnType = '\Late\Model\ListGoogleBusinessLocations200Response';
+        $returnType = '\Zernio\Model\ListGoogleBusinessLocations200Response';
         $request = $this->listGoogleBusinessLocationsRequest($profile_id, $pending_data_token, $temp_token, $contentType);
 
         return $this->client
@@ -5562,9 +5562,9 @@ class ConnectApi
      * @param  string $org_ids Comma-separated list of organization IDs to fetch details for (max 100) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLinkedInOrganizations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListLinkedInOrganizations200Response|\Late\Model\GetYouTubeDailyViews400Response
+     * @return \Zernio\Model\ListLinkedInOrganizations200Response|\Zernio\Model\GetYouTubeDailyViews400Response
      */
     public function listLinkedInOrganizations($temp_token, $org_ids, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
     {
@@ -5581,9 +5581,9 @@ class ConnectApi
      * @param  string $org_ids Comma-separated list of organization IDs to fetch details for (max 100) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLinkedInOrganizations'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListLinkedInOrganizations200Response|\Late\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListLinkedInOrganizations200Response|\Zernio\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function listLinkedInOrganizationsWithHttpInfo($temp_token, $org_ids, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
     {
@@ -5615,13 +5615,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListLinkedInOrganizations200Response',
+                        '\Zernio\Model\ListLinkedInOrganizations200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
@@ -5643,7 +5643,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListLinkedInOrganizations200Response',
+                '\Zernio\Model\ListLinkedInOrganizations200Response',
                 $request,
                 $response,
             );
@@ -5652,7 +5652,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListLinkedInOrganizations200Response',
+                        '\Zernio\Model\ListLinkedInOrganizations200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5660,7 +5660,7 @@ class ConnectApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5708,7 +5708,7 @@ class ConnectApi
      */
     public function listLinkedInOrganizationsAsyncWithHttpInfo($temp_token, $org_ids, string $contentType = self::contentTypes['listLinkedInOrganizations'][0])
     {
-        $returnType = '\Late\Model\ListLinkedInOrganizations200Response';
+        $returnType = '\Zernio\Model\ListLinkedInOrganizations200Response';
         $request = $this->listLinkedInOrganizationsRequest($temp_token, $org_ids, $contentType);
 
         return $this->client
@@ -5871,9 +5871,9 @@ class ConnectApi
      * @param  string $temp_token Temporary Pinterest access token from the OAuth callback redirect (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPinterestBoardsForSelection'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListPinterestBoardsForSelection200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListPinterestBoardsForSelection200Response|\Zernio\Model\InlineObject
      */
     public function listPinterestBoardsForSelection($x_connect_token, $profile_id, $temp_token, string $contentType = self::contentTypes['listPinterestBoardsForSelection'][0])
     {
@@ -5891,9 +5891,9 @@ class ConnectApi
      * @param  string $temp_token Temporary Pinterest access token from the OAuth callback redirect (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listPinterestBoardsForSelection'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListPinterestBoardsForSelection200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListPinterestBoardsForSelection200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listPinterestBoardsForSelectionWithHttpInfo($x_connect_token, $profile_id, $temp_token, string $contentType = self::contentTypes['listPinterestBoardsForSelection'][0])
     {
@@ -5925,13 +5925,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListPinterestBoardsForSelection200Response',
+                        '\Zernio\Model\ListPinterestBoardsForSelection200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -5953,7 +5953,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListPinterestBoardsForSelection200Response',
+                '\Zernio\Model\ListPinterestBoardsForSelection200Response',
                 $request,
                 $response,
             );
@@ -5962,7 +5962,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListPinterestBoardsForSelection200Response',
+                        '\Zernio\Model\ListPinterestBoardsForSelection200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5970,7 +5970,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6020,7 +6020,7 @@ class ConnectApi
      */
     public function listPinterestBoardsForSelectionAsyncWithHttpInfo($x_connect_token, $profile_id, $temp_token, string $contentType = self::contentTypes['listPinterestBoardsForSelection'][0])
     {
-        $returnType = '\Late\Model\ListPinterestBoardsForSelection200Response';
+        $returnType = '\Zernio\Model\ListPinterestBoardsForSelection200Response';
         $request = $this->listPinterestBoardsForSelectionRequest($x_connect_token, $profile_id, $temp_token, $contentType);
 
         return $this->client
@@ -6195,9 +6195,9 @@ class ConnectApi
      * @param  string $temp_token Temporary Snapchat access token from the OAuth callback redirect (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSnapchatProfiles'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListSnapchatProfiles200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListSnapchatProfiles200Response|\Zernio\Model\InlineObject
      */
     public function listSnapchatProfiles($x_connect_token, $profile_id, $temp_token, string $contentType = self::contentTypes['listSnapchatProfiles'][0])
     {
@@ -6215,9 +6215,9 @@ class ConnectApi
      * @param  string $temp_token Temporary Snapchat access token from the OAuth callback redirect (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSnapchatProfiles'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListSnapchatProfiles200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListSnapchatProfiles200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listSnapchatProfilesWithHttpInfo($x_connect_token, $profile_id, $temp_token, string $contentType = self::contentTypes['listSnapchatProfiles'][0])
     {
@@ -6249,13 +6249,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListSnapchatProfiles200Response',
+                        '\Zernio\Model\ListSnapchatProfiles200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -6277,7 +6277,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListSnapchatProfiles200Response',
+                '\Zernio\Model\ListSnapchatProfiles200Response',
                 $request,
                 $response,
             );
@@ -6286,7 +6286,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListSnapchatProfiles200Response',
+                        '\Zernio\Model\ListSnapchatProfiles200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6294,7 +6294,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6344,7 +6344,7 @@ class ConnectApi
      */
     public function listSnapchatProfilesAsyncWithHttpInfo($x_connect_token, $profile_id, $temp_token, string $contentType = self::contentTypes['listSnapchatProfiles'][0])
     {
-        $returnType = '\Late\Model\ListSnapchatProfiles200Response';
+        $returnType = '\Zernio\Model\ListSnapchatProfiles200Response';
         $request = $this->listSnapchatProfilesRequest($x_connect_token, $profile_id, $temp_token, $contentType);
 
         return $this->client
@@ -6514,12 +6514,12 @@ class ConnectApi
      *
      * Select Facebook page
      *
-     * @param  \Late\Model\SelectFacebookPageRequest $select_facebook_page_request select_facebook_page_request (required)
+     * @param  \Zernio\Model\SelectFacebookPageRequest $select_facebook_page_request select_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectFacebookPage'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\SelectFacebookPage200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\SelectFacebookPage200Response|\Zernio\Model\InlineObject
      */
     public function selectFacebookPage($select_facebook_page_request, string $contentType = self::contentTypes['selectFacebookPage'][0])
     {
@@ -6532,12 +6532,12 @@ class ConnectApi
      *
      * Select Facebook page
      *
-     * @param  \Late\Model\SelectFacebookPageRequest $select_facebook_page_request (required)
+     * @param  \Zernio\Model\SelectFacebookPageRequest $select_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectFacebookPage'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SelectFacebookPage200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SelectFacebookPage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function selectFacebookPageWithHttpInfo($select_facebook_page_request, string $contentType = self::contentTypes['selectFacebookPage'][0])
     {
@@ -6569,13 +6569,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SelectFacebookPage200Response',
+                        '\Zernio\Model\SelectFacebookPage200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -6597,7 +6597,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\SelectFacebookPage200Response',
+                '\Zernio\Model\SelectFacebookPage200Response',
                 $request,
                 $response,
             );
@@ -6606,7 +6606,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SelectFacebookPage200Response',
+                        '\Zernio\Model\SelectFacebookPage200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6614,7 +6614,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6631,7 +6631,7 @@ class ConnectApi
      *
      * Select Facebook page
      *
-     * @param  \Late\Model\SelectFacebookPageRequest $select_facebook_page_request (required)
+     * @param  \Zernio\Model\SelectFacebookPageRequest $select_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectFacebookPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6652,7 +6652,7 @@ class ConnectApi
      *
      * Select Facebook page
      *
-     * @param  \Late\Model\SelectFacebookPageRequest $select_facebook_page_request (required)
+     * @param  \Zernio\Model\SelectFacebookPageRequest $select_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectFacebookPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6660,7 +6660,7 @@ class ConnectApi
      */
     public function selectFacebookPageAsyncWithHttpInfo($select_facebook_page_request, string $contentType = self::contentTypes['selectFacebookPage'][0])
     {
-        $returnType = '\Late\Model\SelectFacebookPage200Response';
+        $returnType = '\Zernio\Model\SelectFacebookPage200Response';
         $request = $this->selectFacebookPageRequest($select_facebook_page_request, $contentType);
 
         return $this->client
@@ -6702,7 +6702,7 @@ class ConnectApi
     /**
      * Create request for operation 'selectFacebookPage'
      *
-     * @param  \Late\Model\SelectFacebookPageRequest $select_facebook_page_request (required)
+     * @param  \Zernio\Model\SelectFacebookPageRequest $select_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectFacebookPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6804,12 +6804,12 @@ class ConnectApi
      *
      * Select GBP location
      *
-     * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request select_google_business_location_request (required)
+     * @param  \Zernio\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\SelectGoogleBusinessLocation200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\SelectGoogleBusinessLocation200Response|\Zernio\Model\InlineObject
      */
     public function selectGoogleBusinessLocation($select_google_business_location_request, string $contentType = self::contentTypes['selectGoogleBusinessLocation'][0])
     {
@@ -6822,12 +6822,12 @@ class ConnectApi
      *
      * Select GBP location
      *
-     * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
+     * @param  \Zernio\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SelectGoogleBusinessLocation200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SelectGoogleBusinessLocation200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function selectGoogleBusinessLocationWithHttpInfo($select_google_business_location_request, string $contentType = self::contentTypes['selectGoogleBusinessLocation'][0])
     {
@@ -6859,13 +6859,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SelectGoogleBusinessLocation200Response',
+                        '\Zernio\Model\SelectGoogleBusinessLocation200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -6887,7 +6887,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\SelectGoogleBusinessLocation200Response',
+                '\Zernio\Model\SelectGoogleBusinessLocation200Response',
                 $request,
                 $response,
             );
@@ -6896,7 +6896,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SelectGoogleBusinessLocation200Response',
+                        '\Zernio\Model\SelectGoogleBusinessLocation200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6904,7 +6904,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6921,7 +6921,7 @@ class ConnectApi
      *
      * Select GBP location
      *
-     * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
+     * @param  \Zernio\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6942,7 +6942,7 @@ class ConnectApi
      *
      * Select GBP location
      *
-     * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
+     * @param  \Zernio\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -6950,7 +6950,7 @@ class ConnectApi
      */
     public function selectGoogleBusinessLocationAsyncWithHttpInfo($select_google_business_location_request, string $contentType = self::contentTypes['selectGoogleBusinessLocation'][0])
     {
-        $returnType = '\Late\Model\SelectGoogleBusinessLocation200Response';
+        $returnType = '\Zernio\Model\SelectGoogleBusinessLocation200Response';
         $request = $this->selectGoogleBusinessLocationRequest($select_google_business_location_request, $contentType);
 
         return $this->client
@@ -6992,7 +6992,7 @@ class ConnectApi
     /**
      * Create request for operation 'selectGoogleBusinessLocation'
      *
-     * @param  \Late\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
+     * @param  \Zernio\Model\SelectGoogleBusinessLocationRequest $select_google_business_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectGoogleBusinessLocation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7094,12 +7094,12 @@ class ConnectApi
      *
      * Select LinkedIn org
      *
-     * @param  \Late\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request select_linked_in_organization_request (required)
+     * @param  \Zernio\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request select_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectLinkedInOrganization'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\SelectLinkedInOrganization200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\SelectLinkedInOrganization200Response|\Zernio\Model\InlineObject
      */
     public function selectLinkedInOrganization($select_linked_in_organization_request, string $contentType = self::contentTypes['selectLinkedInOrganization'][0])
     {
@@ -7112,12 +7112,12 @@ class ConnectApi
      *
      * Select LinkedIn org
      *
-     * @param  \Late\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request (required)
+     * @param  \Zernio\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectLinkedInOrganization'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SelectLinkedInOrganization200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SelectLinkedInOrganization200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function selectLinkedInOrganizationWithHttpInfo($select_linked_in_organization_request, string $contentType = self::contentTypes['selectLinkedInOrganization'][0])
     {
@@ -7149,13 +7149,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SelectLinkedInOrganization200Response',
+                        '\Zernio\Model\SelectLinkedInOrganization200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -7177,7 +7177,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\SelectLinkedInOrganization200Response',
+                '\Zernio\Model\SelectLinkedInOrganization200Response',
                 $request,
                 $response,
             );
@@ -7186,7 +7186,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SelectLinkedInOrganization200Response',
+                        '\Zernio\Model\SelectLinkedInOrganization200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7194,7 +7194,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7211,7 +7211,7 @@ class ConnectApi
      *
      * Select LinkedIn org
      *
-     * @param  \Late\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request (required)
+     * @param  \Zernio\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectLinkedInOrganization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7232,7 +7232,7 @@ class ConnectApi
      *
      * Select LinkedIn org
      *
-     * @param  \Late\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request (required)
+     * @param  \Zernio\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectLinkedInOrganization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7240,7 +7240,7 @@ class ConnectApi
      */
     public function selectLinkedInOrganizationAsyncWithHttpInfo($select_linked_in_organization_request, string $contentType = self::contentTypes['selectLinkedInOrganization'][0])
     {
-        $returnType = '\Late\Model\SelectLinkedInOrganization200Response';
+        $returnType = '\Zernio\Model\SelectLinkedInOrganization200Response';
         $request = $this->selectLinkedInOrganizationRequest($select_linked_in_organization_request, $contentType);
 
         return $this->client
@@ -7282,7 +7282,7 @@ class ConnectApi
     /**
      * Create request for operation 'selectLinkedInOrganization'
      *
-     * @param  \Late\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request (required)
+     * @param  \Zernio\Model\SelectLinkedInOrganizationRequest $select_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectLinkedInOrganization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7379,12 +7379,12 @@ class ConnectApi
      *
      * Select Pinterest board
      *
-     * @param  \Late\Model\SelectPinterestBoardRequest $select_pinterest_board_request select_pinterest_board_request (required)
+     * @param  \Zernio\Model\SelectPinterestBoardRequest $select_pinterest_board_request select_pinterest_board_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectPinterestBoard'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\SelectPinterestBoard200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\SelectPinterestBoard200Response|\Zernio\Model\InlineObject
      */
     public function selectPinterestBoard($select_pinterest_board_request, string $contentType = self::contentTypes['selectPinterestBoard'][0])
     {
@@ -7397,12 +7397,12 @@ class ConnectApi
      *
      * Select Pinterest board
      *
-     * @param  \Late\Model\SelectPinterestBoardRequest $select_pinterest_board_request (required)
+     * @param  \Zernio\Model\SelectPinterestBoardRequest $select_pinterest_board_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectPinterestBoard'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SelectPinterestBoard200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SelectPinterestBoard200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function selectPinterestBoardWithHttpInfo($select_pinterest_board_request, string $contentType = self::contentTypes['selectPinterestBoard'][0])
     {
@@ -7434,13 +7434,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SelectPinterestBoard200Response',
+                        '\Zernio\Model\SelectPinterestBoard200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -7462,7 +7462,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\SelectPinterestBoard200Response',
+                '\Zernio\Model\SelectPinterestBoard200Response',
                 $request,
                 $response,
             );
@@ -7471,7 +7471,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SelectPinterestBoard200Response',
+                        '\Zernio\Model\SelectPinterestBoard200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7479,7 +7479,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7496,7 +7496,7 @@ class ConnectApi
      *
      * Select Pinterest board
      *
-     * @param  \Late\Model\SelectPinterestBoardRequest $select_pinterest_board_request (required)
+     * @param  \Zernio\Model\SelectPinterestBoardRequest $select_pinterest_board_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectPinterestBoard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7517,7 +7517,7 @@ class ConnectApi
      *
      * Select Pinterest board
      *
-     * @param  \Late\Model\SelectPinterestBoardRequest $select_pinterest_board_request (required)
+     * @param  \Zernio\Model\SelectPinterestBoardRequest $select_pinterest_board_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectPinterestBoard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7525,7 +7525,7 @@ class ConnectApi
      */
     public function selectPinterestBoardAsyncWithHttpInfo($select_pinterest_board_request, string $contentType = self::contentTypes['selectPinterestBoard'][0])
     {
-        $returnType = '\Late\Model\SelectPinterestBoard200Response';
+        $returnType = '\Zernio\Model\SelectPinterestBoard200Response';
         $request = $this->selectPinterestBoardRequest($select_pinterest_board_request, $contentType);
 
         return $this->client
@@ -7567,7 +7567,7 @@ class ConnectApi
     /**
      * Create request for operation 'selectPinterestBoard'
      *
-     * @param  \Late\Model\SelectPinterestBoardRequest $select_pinterest_board_request (required)
+     * @param  \Zernio\Model\SelectPinterestBoardRequest $select_pinterest_board_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectPinterestBoard'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -7664,13 +7664,13 @@ class ConnectApi
      *
      * Select Snapchat profile
      *
-     * @param  \Late\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request select_snapchat_profile_request (required)
+     * @param  \Zernio\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request select_snapchat_profile_request (required)
      * @param  string|null $x_connect_token Short-lived connect token from the OAuth redirect (for API users) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectSnapchatProfile'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\SelectSnapchatProfile200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\SelectSnapchatProfile200Response|\Zernio\Model\InlineObject
      */
     public function selectSnapchatProfile($select_snapchat_profile_request, $x_connect_token = null, string $contentType = self::contentTypes['selectSnapchatProfile'][0])
     {
@@ -7683,13 +7683,13 @@ class ConnectApi
      *
      * Select Snapchat profile
      *
-     * @param  \Late\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request (required)
+     * @param  \Zernio\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request (required)
      * @param  string|null $x_connect_token Short-lived connect token from the OAuth redirect (for API users) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectSnapchatProfile'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SelectSnapchatProfile200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SelectSnapchatProfile200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function selectSnapchatProfileWithHttpInfo($select_snapchat_profile_request, $x_connect_token = null, string $contentType = self::contentTypes['selectSnapchatProfile'][0])
     {
@@ -7721,13 +7721,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SelectSnapchatProfile200Response',
+                        '\Zernio\Model\SelectSnapchatProfile200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -7749,7 +7749,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\SelectSnapchatProfile200Response',
+                '\Zernio\Model\SelectSnapchatProfile200Response',
                 $request,
                 $response,
             );
@@ -7758,7 +7758,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SelectSnapchatProfile200Response',
+                        '\Zernio\Model\SelectSnapchatProfile200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7766,7 +7766,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7783,7 +7783,7 @@ class ConnectApi
      *
      * Select Snapchat profile
      *
-     * @param  \Late\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request (required)
+     * @param  \Zernio\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request (required)
      * @param  string|null $x_connect_token Short-lived connect token from the OAuth redirect (for API users) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectSnapchatProfile'] to see the possible values for this operation
      *
@@ -7805,7 +7805,7 @@ class ConnectApi
      *
      * Select Snapchat profile
      *
-     * @param  \Late\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request (required)
+     * @param  \Zernio\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request (required)
      * @param  string|null $x_connect_token Short-lived connect token from the OAuth redirect (for API users) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectSnapchatProfile'] to see the possible values for this operation
      *
@@ -7814,7 +7814,7 @@ class ConnectApi
      */
     public function selectSnapchatProfileAsyncWithHttpInfo($select_snapchat_profile_request, $x_connect_token = null, string $contentType = self::contentTypes['selectSnapchatProfile'][0])
     {
-        $returnType = '\Late\Model\SelectSnapchatProfile200Response';
+        $returnType = '\Zernio\Model\SelectSnapchatProfile200Response';
         $request = $this->selectSnapchatProfileRequest($select_snapchat_profile_request, $x_connect_token, $contentType);
 
         return $this->client
@@ -7856,7 +7856,7 @@ class ConnectApi
     /**
      * Create request for operation 'selectSnapchatProfile'
      *
-     * @param  \Late\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request (required)
+     * @param  \Zernio\Model\SelectSnapchatProfileRequest $select_snapchat_profile_request (required)
      * @param  string|null $x_connect_token Short-lived connect token from the OAuth redirect (for API users) (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['selectSnapchatProfile'] to see the possible values for this operation
      *
@@ -7960,12 +7960,12 @@ class ConnectApi
      * Update Facebook page
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\UpdateFacebookPageRequest $update_facebook_page_request update_facebook_page_request (required)
+     * @param  \Zernio\Model\UpdateFacebookPageRequest $update_facebook_page_request update_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFacebookPage'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateFacebookPage200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateFacebookPage200Response|\Zernio\Model\InlineObject
      */
     public function updateFacebookPage($account_id, $update_facebook_page_request, string $contentType = self::contentTypes['updateFacebookPage'][0])
     {
@@ -7979,12 +7979,12 @@ class ConnectApi
      * Update Facebook page
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateFacebookPageRequest $update_facebook_page_request (required)
+     * @param  \Zernio\Model\UpdateFacebookPageRequest $update_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFacebookPage'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateFacebookPage200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateFacebookPage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateFacebookPageWithHttpInfo($account_id, $update_facebook_page_request, string $contentType = self::contentTypes['updateFacebookPage'][0])
     {
@@ -8016,13 +8016,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateFacebookPage200Response',
+                        '\Zernio\Model\UpdateFacebookPage200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -8044,7 +8044,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateFacebookPage200Response',
+                '\Zernio\Model\UpdateFacebookPage200Response',
                 $request,
                 $response,
             );
@@ -8053,7 +8053,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateFacebookPage200Response',
+                        '\Zernio\Model\UpdateFacebookPage200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8061,7 +8061,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8079,7 +8079,7 @@ class ConnectApi
      * Update Facebook page
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateFacebookPageRequest $update_facebook_page_request (required)
+     * @param  \Zernio\Model\UpdateFacebookPageRequest $update_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFacebookPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8101,7 +8101,7 @@ class ConnectApi
      * Update Facebook page
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateFacebookPageRequest $update_facebook_page_request (required)
+     * @param  \Zernio\Model\UpdateFacebookPageRequest $update_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFacebookPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8109,7 +8109,7 @@ class ConnectApi
      */
     public function updateFacebookPageAsyncWithHttpInfo($account_id, $update_facebook_page_request, string $contentType = self::contentTypes['updateFacebookPage'][0])
     {
-        $returnType = '\Late\Model\UpdateFacebookPage200Response';
+        $returnType = '\Zernio\Model\UpdateFacebookPage200Response';
         $request = $this->updateFacebookPageRequest($account_id, $update_facebook_page_request, $contentType);
 
         return $this->client
@@ -8152,7 +8152,7 @@ class ConnectApi
      * Create request for operation 'updateFacebookPage'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateFacebookPageRequest $update_facebook_page_request (required)
+     * @param  \Zernio\Model\UpdateFacebookPageRequest $update_facebook_page_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateFacebookPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8265,12 +8265,12 @@ class ConnectApi
      * Update GBP location
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request update_gmb_location_request (required)
+     * @param  \Zernio\Model\UpdateGmbLocationRequest $update_gmb_location_request update_gmb_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGmbLocation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateGmbLocation200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateGmbLocation200Response|\Zernio\Model\InlineObject
      */
     public function updateGmbLocation($account_id, $update_gmb_location_request, string $contentType = self::contentTypes['updateGmbLocation'][0])
     {
@@ -8284,12 +8284,12 @@ class ConnectApi
      * Update GBP location
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
+     * @param  \Zernio\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGmbLocation'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateGmbLocation200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateGmbLocation200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateGmbLocationWithHttpInfo($account_id, $update_gmb_location_request, string $contentType = self::contentTypes['updateGmbLocation'][0])
     {
@@ -8321,13 +8321,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateGmbLocation200Response',
+                        '\Zernio\Model\UpdateGmbLocation200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -8349,7 +8349,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateGmbLocation200Response',
+                '\Zernio\Model\UpdateGmbLocation200Response',
                 $request,
                 $response,
             );
@@ -8358,7 +8358,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateGmbLocation200Response',
+                        '\Zernio\Model\UpdateGmbLocation200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8366,7 +8366,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8384,7 +8384,7 @@ class ConnectApi
      * Update GBP location
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
+     * @param  \Zernio\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGmbLocation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8406,7 +8406,7 @@ class ConnectApi
      * Update GBP location
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
+     * @param  \Zernio\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGmbLocation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8414,7 +8414,7 @@ class ConnectApi
      */
     public function updateGmbLocationAsyncWithHttpInfo($account_id, $update_gmb_location_request, string $contentType = self::contentTypes['updateGmbLocation'][0])
     {
-        $returnType = '\Late\Model\UpdateGmbLocation200Response';
+        $returnType = '\Zernio\Model\UpdateGmbLocation200Response';
         $request = $this->updateGmbLocationRequest($account_id, $update_gmb_location_request, $contentType);
 
         return $this->client
@@ -8457,7 +8457,7 @@ class ConnectApi
      * Create request for operation 'updateGmbLocation'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
+     * @param  \Zernio\Model\UpdateGmbLocationRequest $update_gmb_location_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGmbLocation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8570,12 +8570,12 @@ class ConnectApi
      * Switch LinkedIn account type
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request update_linked_in_organization_request (required)
+     * @param  \Zernio\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request update_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLinkedInOrganization'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ConnectBlueskyCredentials200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ConnectBlueskyCredentials200Response|\Zernio\Model\InlineObject
      */
     public function updateLinkedInOrganization($account_id, $update_linked_in_organization_request, string $contentType = self::contentTypes['updateLinkedInOrganization'][0])
     {
@@ -8589,12 +8589,12 @@ class ConnectApi
      * Switch LinkedIn account type
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request (required)
+     * @param  \Zernio\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLinkedInOrganization'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ConnectBlueskyCredentials200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ConnectBlueskyCredentials200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateLinkedInOrganizationWithHttpInfo($account_id, $update_linked_in_organization_request, string $contentType = self::contentTypes['updateLinkedInOrganization'][0])
     {
@@ -8626,13 +8626,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ConnectBlueskyCredentials200Response',
+                        '\Zernio\Model\ConnectBlueskyCredentials200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -8654,7 +8654,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ConnectBlueskyCredentials200Response',
+                '\Zernio\Model\ConnectBlueskyCredentials200Response',
                 $request,
                 $response,
             );
@@ -8663,7 +8663,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ConnectBlueskyCredentials200Response',
+                        '\Zernio\Model\ConnectBlueskyCredentials200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8671,7 +8671,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8689,7 +8689,7 @@ class ConnectApi
      * Switch LinkedIn account type
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request (required)
+     * @param  \Zernio\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLinkedInOrganization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8711,7 +8711,7 @@ class ConnectApi
      * Switch LinkedIn account type
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request (required)
+     * @param  \Zernio\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLinkedInOrganization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8719,7 +8719,7 @@ class ConnectApi
      */
     public function updateLinkedInOrganizationAsyncWithHttpInfo($account_id, $update_linked_in_organization_request, string $contentType = self::contentTypes['updateLinkedInOrganization'][0])
     {
-        $returnType = '\Late\Model\ConnectBlueskyCredentials200Response';
+        $returnType = '\Zernio\Model\ConnectBlueskyCredentials200Response';
         $request = $this->updateLinkedInOrganizationRequest($account_id, $update_linked_in_organization_request, $contentType);
 
         return $this->client
@@ -8762,7 +8762,7 @@ class ConnectApi
      * Create request for operation 'updateLinkedInOrganization'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request (required)
+     * @param  \Zernio\Model\UpdateLinkedInOrganizationRequest $update_linked_in_organization_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLinkedInOrganization'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -8875,12 +8875,12 @@ class ConnectApi
      * Set default Pinterest board
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request update_pinterest_boards_request (required)
+     * @param  \Zernio\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request update_pinterest_boards_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePinterestBoards'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ConnectBlueskyCredentials200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ConnectBlueskyCredentials200Response|\Zernio\Model\InlineObject
      */
     public function updatePinterestBoards($account_id, $update_pinterest_boards_request, string $contentType = self::contentTypes['updatePinterestBoards'][0])
     {
@@ -8894,12 +8894,12 @@ class ConnectApi
      * Set default Pinterest board
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request (required)
+     * @param  \Zernio\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePinterestBoards'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ConnectBlueskyCredentials200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ConnectBlueskyCredentials200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updatePinterestBoardsWithHttpInfo($account_id, $update_pinterest_boards_request, string $contentType = self::contentTypes['updatePinterestBoards'][0])
     {
@@ -8931,13 +8931,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ConnectBlueskyCredentials200Response',
+                        '\Zernio\Model\ConnectBlueskyCredentials200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -8959,7 +8959,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ConnectBlueskyCredentials200Response',
+                '\Zernio\Model\ConnectBlueskyCredentials200Response',
                 $request,
                 $response,
             );
@@ -8968,7 +8968,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ConnectBlueskyCredentials200Response',
+                        '\Zernio\Model\ConnectBlueskyCredentials200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8976,7 +8976,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -8994,7 +8994,7 @@ class ConnectApi
      * Set default Pinterest board
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request (required)
+     * @param  \Zernio\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePinterestBoards'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9016,7 +9016,7 @@ class ConnectApi
      * Set default Pinterest board
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request (required)
+     * @param  \Zernio\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePinterestBoards'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9024,7 +9024,7 @@ class ConnectApi
      */
     public function updatePinterestBoardsAsyncWithHttpInfo($account_id, $update_pinterest_boards_request, string $contentType = self::contentTypes['updatePinterestBoards'][0])
     {
-        $returnType = '\Late\Model\ConnectBlueskyCredentials200Response';
+        $returnType = '\Zernio\Model\ConnectBlueskyCredentials200Response';
         $request = $this->updatePinterestBoardsRequest($account_id, $update_pinterest_boards_request, $contentType);
 
         return $this->client
@@ -9067,7 +9067,7 @@ class ConnectApi
      * Create request for operation 'updatePinterestBoards'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request (required)
+     * @param  \Zernio\Model\UpdatePinterestBoardsRequest $update_pinterest_boards_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePinterestBoards'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9180,12 +9180,12 @@ class ConnectApi
      * Set default subreddit
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request update_reddit_subreddits_request (required)
+     * @param  \Zernio\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request update_reddit_subreddits_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRedditSubreddits'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
      */
     public function updateRedditSubreddits($account_id, $update_reddit_subreddits_request, string $contentType = self::contentTypes['updateRedditSubreddits'][0])
     {
@@ -9199,12 +9199,12 @@ class ConnectApi
      * Set default subreddit
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request (required)
+     * @param  \Zernio\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRedditSubreddits'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateRedditSubredditsWithHttpInfo($account_id, $update_reddit_subreddits_request, string $contentType = self::contentTypes['updateRedditSubreddits'][0])
     {
@@ -9236,13 +9236,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -9264,7 +9264,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -9273,7 +9273,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9281,7 +9281,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9299,7 +9299,7 @@ class ConnectApi
      * Set default subreddit
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request (required)
+     * @param  \Zernio\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRedditSubreddits'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9321,7 +9321,7 @@ class ConnectApi
      * Set default subreddit
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request (required)
+     * @param  \Zernio\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRedditSubreddits'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9329,7 +9329,7 @@ class ConnectApi
      */
     public function updateRedditSubredditsAsyncWithHttpInfo($account_id, $update_reddit_subreddits_request, string $contentType = self::contentTypes['updateRedditSubreddits'][0])
     {
-        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
+        $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->updateRedditSubredditsRequest($account_id, $update_reddit_subreddits_request, $contentType);
 
         return $this->client
@@ -9372,7 +9372,7 @@ class ConnectApi
      * Create request for operation 'updateRedditSubreddits'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request (required)
+     * @param  \Zernio\Model\UpdateRedditSubredditsRequest $update_reddit_subreddits_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRedditSubreddits'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9485,12 +9485,12 @@ class ConnectApi
      * Set default YouTube playlist
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request update_youtube_default_playlist_request (required)
+     * @param  \Zernio\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request update_youtube_default_playlist_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateYoutubeDefaultPlaylist'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
      */
     public function updateYoutubeDefaultPlaylist($account_id, $update_youtube_default_playlist_request, string $contentType = self::contentTypes['updateYoutubeDefaultPlaylist'][0])
     {
@@ -9504,12 +9504,12 @@ class ConnectApi
      * Set default YouTube playlist
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request (required)
+     * @param  \Zernio\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateYoutubeDefaultPlaylist'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateYoutubeDefaultPlaylist200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateYoutubeDefaultPlaylistWithHttpInfo($account_id, $update_youtube_default_playlist_request, string $contentType = self::contentTypes['updateYoutubeDefaultPlaylist'][0])
     {
@@ -9541,13 +9541,13 @@ class ConnectApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -9569,7 +9569,7 @@ class ConnectApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -9578,7 +9578,7 @@ class ConnectApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateYoutubeDefaultPlaylist200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9586,7 +9586,7 @@ class ConnectApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -9604,7 +9604,7 @@ class ConnectApi
      * Set default YouTube playlist
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request (required)
+     * @param  \Zernio\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateYoutubeDefaultPlaylist'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9626,7 +9626,7 @@ class ConnectApi
      * Set default YouTube playlist
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request (required)
+     * @param  \Zernio\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateYoutubeDefaultPlaylist'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -9634,7 +9634,7 @@ class ConnectApi
      */
     public function updateYoutubeDefaultPlaylistAsyncWithHttpInfo($account_id, $update_youtube_default_playlist_request, string $contentType = self::contentTypes['updateYoutubeDefaultPlaylist'][0])
     {
-        $returnType = '\Late\Model\UpdateYoutubeDefaultPlaylist200Response';
+        $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->updateYoutubeDefaultPlaylistRequest($account_id, $update_youtube_default_playlist_request, $contentType);
 
         return $this->client
@@ -9677,7 +9677,7 @@ class ConnectApi
      * Create request for operation 'updateYoutubeDefaultPlaylist'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request (required)
+     * @param  \Zernio\Model\UpdateYoutubeDefaultPlaylistRequest $update_youtube_default_playlist_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateYoutubeDefaultPlaylist'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

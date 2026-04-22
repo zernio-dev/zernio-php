@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WhatsAppTemplateComponent Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
         'type' => 'string',
         'format' => 'string',
         'text' => 'string',
-        'example' => '\Late\Model\WhatsAppBodyComponentExample',
+        'example' => '\Zernio\Model\WhatsAppBodyComponentExample',
         'add_security_recommendation' => 'bool',
         'code_expiration_minutes' => 'int',
-        'buttons' => '\Late\Model\WhatsAppTemplateButton[]'
+        'buttons' => '\Zernio\Model\WhatsAppTemplateButton[]'
     ];
 
     /**
@@ -519,7 +519,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets example
      *
-     * @return \Late\Model\WhatsAppBodyComponentExample|null
+     * @return \Zernio\Model\WhatsAppBodyComponentExample|null
      */
     public function getExample()
     {
@@ -529,7 +529,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets example
      *
-     * @param \Late\Model\WhatsAppBodyComponentExample|null $example example
+     * @param \Zernio\Model\WhatsAppBodyComponentExample|null $example example
      *
      * @return self
      */
@@ -605,7 +605,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets buttons
      *
-     * @return \Late\Model\WhatsAppTemplateButton[]
+     * @return \Zernio\Model\WhatsAppTemplateButton[]
      */
     public function getButtons()
     {
@@ -615,7 +615,7 @@ class WhatsAppTemplateComponent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets buttons
      *
-     * @param \Late\Model\WhatsAppTemplateButton[] $buttons buttons
+     * @param \Zernio\Model\WhatsAppTemplateButton[] $buttons buttons
      *
      * @return self
      */

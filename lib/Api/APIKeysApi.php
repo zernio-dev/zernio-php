@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * APIKeysApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -137,12 +137,12 @@ class APIKeysApi
      *
      * Create key
      *
-     * @param  \Late\Model\CreateApiKeyRequest $create_api_key_request create_api_key_request (required)
+     * @param  \Zernio\Model\CreateApiKeyRequest $create_api_key_request create_api_key_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createApiKey'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CreateApiKey201Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\CreateApiKey201Response|\Zernio\Model\InlineObject
      */
     public function createApiKey($create_api_key_request, string $contentType = self::contentTypes['createApiKey'][0])
     {
@@ -155,12 +155,12 @@ class APIKeysApi
      *
      * Create key
      *
-     * @param  \Late\Model\CreateApiKeyRequest $create_api_key_request (required)
+     * @param  \Zernio\Model\CreateApiKeyRequest $create_api_key_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createApiKey'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CreateApiKey201Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateApiKey201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createApiKeyWithHttpInfo($create_api_key_request, string $contentType = self::contentTypes['createApiKey'][0])
     {
@@ -192,13 +192,13 @@ class APIKeysApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateApiKey201Response',
+                        '\Zernio\Model\CreateApiKey201Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -220,7 +220,7 @@ class APIKeysApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CreateApiKey201Response',
+                '\Zernio\Model\CreateApiKey201Response',
                 $request,
                 $response,
             );
@@ -229,7 +229,7 @@ class APIKeysApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateApiKey201Response',
+                        '\Zernio\Model\CreateApiKey201Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -237,7 +237,7 @@ class APIKeysApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -254,7 +254,7 @@ class APIKeysApi
      *
      * Create key
      *
-     * @param  \Late\Model\CreateApiKeyRequest $create_api_key_request (required)
+     * @param  \Zernio\Model\CreateApiKeyRequest $create_api_key_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createApiKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -275,7 +275,7 @@ class APIKeysApi
      *
      * Create key
      *
-     * @param  \Late\Model\CreateApiKeyRequest $create_api_key_request (required)
+     * @param  \Zernio\Model\CreateApiKeyRequest $create_api_key_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createApiKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -283,7 +283,7 @@ class APIKeysApi
      */
     public function createApiKeyAsyncWithHttpInfo($create_api_key_request, string $contentType = self::contentTypes['createApiKey'][0])
     {
-        $returnType = '\Late\Model\CreateApiKey201Response';
+        $returnType = '\Zernio\Model\CreateApiKey201Response';
         $request = $this->createApiKeyRequest($create_api_key_request, $contentType);
 
         return $this->client
@@ -325,7 +325,7 @@ class APIKeysApi
     /**
      * Create request for operation 'createApiKey'
      *
-     * @param  \Late\Model\CreateApiKeyRequest $create_api_key_request (required)
+     * @param  \Zernio\Model\CreateApiKeyRequest $create_api_key_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createApiKey'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -425,9 +425,9 @@ class APIKeysApi
      * @param  string $key_id key_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiKey'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\DeleteAccountGroup200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function deleteApiKey($key_id, string $contentType = self::contentTypes['deleteApiKey'][0])
     {
@@ -443,9 +443,9 @@ class APIKeysApi
      * @param  string $key_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteApiKey'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\DeleteAccountGroup200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteApiKeyWithHttpInfo($key_id, string $contentType = self::contentTypes['deleteApiKey'][0])
     {
@@ -477,19 +477,19 @@ class APIKeysApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\DeleteAccountGroup200Response',
+                        '\Zernio\Model\DeleteAccountGroup200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -511,7 +511,7 @@ class APIKeysApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\DeleteAccountGroup200Response',
+                '\Zernio\Model\DeleteAccountGroup200Response',
                 $request,
                 $response,
             );
@@ -520,7 +520,7 @@ class APIKeysApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\DeleteAccountGroup200Response',
+                        '\Zernio\Model\DeleteAccountGroup200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -528,7 +528,7 @@ class APIKeysApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -536,7 +536,7 @@ class APIKeysApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -582,7 +582,7 @@ class APIKeysApi
      */
     public function deleteApiKeyAsyncWithHttpInfo($key_id, string $contentType = self::contentTypes['deleteApiKey'][0])
     {
-        $returnType = '\Late\Model\DeleteAccountGroup200Response';
+        $returnType = '\Zernio\Model\DeleteAccountGroup200Response';
         $request = $this->deleteApiKeyRequest($key_id, $contentType);
 
         return $this->client
@@ -724,9 +724,9 @@ class APIKeysApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listApiKeys'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListApiKeys200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListApiKeys200Response|\Zernio\Model\InlineObject
      */
     public function listApiKeys(string $contentType = self::contentTypes['listApiKeys'][0])
     {
@@ -741,9 +741,9 @@ class APIKeysApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listApiKeys'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListApiKeys200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListApiKeys200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listApiKeysWithHttpInfo(string $contentType = self::contentTypes['listApiKeys'][0])
     {
@@ -775,13 +775,13 @@ class APIKeysApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListApiKeys200Response',
+                        '\Zernio\Model\ListApiKeys200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -803,7 +803,7 @@ class APIKeysApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListApiKeys200Response',
+                '\Zernio\Model\ListApiKeys200Response',
                 $request,
                 $response,
             );
@@ -812,7 +812,7 @@ class APIKeysApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListApiKeys200Response',
+                        '\Zernio\Model\ListApiKeys200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -820,7 +820,7 @@ class APIKeysApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -864,7 +864,7 @@ class APIKeysApi
      */
     public function listApiKeysAsyncWithHttpInfo(string $contentType = self::contentTypes['listApiKeys'][0])
     {
-        $returnType = '\Late\Model\ListApiKeys200Response';
+        $returnType = '\Zernio\Model\ListApiKeys200Response';
         $request = $this->listApiKeysRequest($contentType);
 
         return $this->client

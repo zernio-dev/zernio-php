@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ApiKey Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
         'created_at' => '\DateTime',
         'key' => 'string',
         'scope' => 'string',
-        'profile_ids' => '\Late\Model\ApiKeyProfileIdsInner[]',
+        'profile_ids' => '\Zernio\Model\ApiKeyProfileIdsInner[]',
         'permission' => 'string'
     ];
 
@@ -596,7 +596,7 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets profile_ids
      *
-     * @return \Late\Model\ApiKeyProfileIdsInner[]|null
+     * @return \Zernio\Model\ApiKeyProfileIdsInner[]|null
      */
     public function getProfileIds()
     {
@@ -606,7 +606,7 @@ class ApiKey implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets profile_ids
      *
-     * @param \Late\Model\ApiKeyProfileIdsInner[]|null $profile_ids Profiles this key can access (populated with name and color). Only present when scope is 'profiles'.
+     * @param \Zernio\Model\ApiKeyProfileIdsInner[]|null $profile_ids Profiles this key can access (populated with name and color). Only present when scope is 'profiles'.
      *
      * @return self
      */

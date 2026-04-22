@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * GMBFoodMenusApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -138,9 +138,9 @@ class GMBFoodMenusApi
      * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetGoogleBusinessFoodMenus200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\GetGoogleBusinessFoodMenus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function getGoogleBusinessFoodMenus($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
     {
@@ -157,9 +157,9 @@ class GMBFoodMenusApi
      * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetGoogleBusinessFoodMenus200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetGoogleBusinessFoodMenus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGoogleBusinessFoodMenusWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
     {
@@ -191,37 +191,37 @@ class GMBFoodMenusApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetGoogleBusinessFoodMenus200Response',
+                        '\Zernio\Model\GetGoogleBusinessFoodMenus200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 500:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -243,7 +243,7 @@ class GMBFoodMenusApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetGoogleBusinessFoodMenus200Response',
+                '\Zernio\Model\GetGoogleBusinessFoodMenus200Response',
                 $request,
                 $response,
             );
@@ -252,7 +252,7 @@ class GMBFoodMenusApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetGoogleBusinessFoodMenus200Response',
+                        '\Zernio\Model\GetGoogleBusinessFoodMenus200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -260,7 +260,7 @@ class GMBFoodMenusApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -268,7 +268,7 @@ class GMBFoodMenusApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -276,7 +276,7 @@ class GMBFoodMenusApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -284,7 +284,7 @@ class GMBFoodMenusApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -292,7 +292,7 @@ class GMBFoodMenusApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -340,7 +340,7 @@ class GMBFoodMenusApi
      */
     public function getGoogleBusinessFoodMenusAsyncWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessFoodMenus'][0])
     {
-        $returnType = '\Late\Model\GetGoogleBusinessFoodMenus200Response';
+        $returnType = '\Zernio\Model\GetGoogleBusinessFoodMenus200Response';
         $request = $this->getGoogleBusinessFoodMenusRequest($account_id, $location_id, $contentType);
 
         return $this->client
@@ -492,13 +492,13 @@ class GMBFoodMenusApi
      * Update food menus
      *
      * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
-     * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request update_google_business_food_menus_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request update_google_business_food_menus_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateGoogleBusinessFoodMenus200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\UpdateGoogleBusinessFoodMenus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function updateGoogleBusinessFoodMenus($account_id, $update_google_business_food_menus_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
     {
@@ -512,13 +512,13 @@ class GMBFoodMenusApi
      * Update food menus
      *
      * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
-     * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateGoogleBusinessFoodMenus200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateGoogleBusinessFoodMenus200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateGoogleBusinessFoodMenusWithHttpInfo($account_id, $update_google_business_food_menus_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
     {
@@ -550,37 +550,37 @@ class GMBFoodMenusApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateGoogleBusinessFoodMenus200Response',
+                        '\Zernio\Model\UpdateGoogleBusinessFoodMenus200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 500:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -602,7 +602,7 @@ class GMBFoodMenusApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateGoogleBusinessFoodMenus200Response',
+                '\Zernio\Model\UpdateGoogleBusinessFoodMenus200Response',
                 $request,
                 $response,
             );
@@ -611,7 +611,7 @@ class GMBFoodMenusApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateGoogleBusinessFoodMenus200Response',
+                        '\Zernio\Model\UpdateGoogleBusinessFoodMenus200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -619,7 +619,7 @@ class GMBFoodMenusApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -627,7 +627,7 @@ class GMBFoodMenusApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -635,7 +635,7 @@ class GMBFoodMenusApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -643,7 +643,7 @@ class GMBFoodMenusApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -651,7 +651,7 @@ class GMBFoodMenusApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -669,7 +669,7 @@ class GMBFoodMenusApi
      * Update food menus
      *
      * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
-     * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
@@ -692,7 +692,7 @@ class GMBFoodMenusApi
      * Update food menus
      *
      * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
-     * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessFoodMenus'] to see the possible values for this operation
      *
@@ -701,7 +701,7 @@ class GMBFoodMenusApi
      */
     public function updateGoogleBusinessFoodMenusAsyncWithHttpInfo($account_id, $update_google_business_food_menus_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessFoodMenus'][0])
     {
-        $returnType = '\Late\Model\UpdateGoogleBusinessFoodMenus200Response';
+        $returnType = '\Zernio\Model\UpdateGoogleBusinessFoodMenus200Response';
         $request = $this->updateGoogleBusinessFoodMenusRequest($account_id, $update_google_business_food_menus_request, $location_id, $contentType);
 
         return $this->client
@@ -744,7 +744,7 @@ class GMBFoodMenusApi
      * Create request for operation 'updateGoogleBusinessFoodMenus'
      *
      * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
-     * @param  \Late\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessFoodMenusRequest $update_google_business_food_menus_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessFoodMenus'] to see the possible values for this operation
      *

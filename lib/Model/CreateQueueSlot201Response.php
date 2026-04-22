@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateQueueSlot201Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreateQueueSlot201Response implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'schedule' => '\Late\Model\QueueSchedule',
+        'schedule' => '\Zernio\Model\QueueSchedule',
         'next_slots' => '\DateTime[]'
     ];
 
@@ -334,7 +334,7 @@ class CreateQueueSlot201Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets schedule
      *
-     * @return \Late\Model\QueueSchedule|null
+     * @return \Zernio\Model\QueueSchedule|null
      */
     public function getSchedule()
     {
@@ -344,7 +344,7 @@ class CreateQueueSlot201Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets schedule
      *
-     * @param \Late\Model\QueueSchedule|null $schedule schedule
+     * @param \Zernio\Model\QueueSchedule|null $schedule schedule
      *
      * @return self
      */

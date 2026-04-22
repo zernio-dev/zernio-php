@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * DiscordPlatformData Class Doc Comment
  *
  * @category Class
  * @description Discord message settings. Supports plain text (2,000 chars), rich embeds (up to 10), native polls, forum posts, threads, and announcement crossposts. Media attachments support images (JPEG, PNG, GIF, WebP), videos (MP4), and documents (up to 10 files, 25 MB each). Webhook identity (username + avatar) can be customized per-account via PATCH /v1/connect/discord or per-post via webhookUsername/webhookAvatarUrl.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,12 +60,12 @@ class DiscordPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'channel_id' => 'string',
-        'embeds' => '\Late\Model\DiscordPlatformDataEmbedsInner[]',
-        'poll' => '\Late\Model\DiscordPlatformDataPoll',
+        'embeds' => '\Zernio\Model\DiscordPlatformDataEmbedsInner[]',
+        'poll' => '\Zernio\Model\DiscordPlatformDataPoll',
         'crosspost' => 'bool',
         'forum_thread_name' => 'string',
         'forum_applied_tags' => 'string[]',
-        'thread_from_message' => '\Late\Model\DiscordPlatformDataThreadFromMessage',
+        'thread_from_message' => '\Zernio\Model\DiscordPlatformDataThreadFromMessage',
         'tts' => 'bool',
         'webhook_username' => 'string',
         'webhook_avatar_url' => 'string'
@@ -395,7 +395,7 @@ class DiscordPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets embeds
      *
-     * @return \Late\Model\DiscordPlatformDataEmbedsInner[]|null
+     * @return \Zernio\Model\DiscordPlatformDataEmbedsInner[]|null
      */
     public function getEmbeds()
     {
@@ -405,7 +405,7 @@ class DiscordPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets embeds
      *
-     * @param \Late\Model\DiscordPlatformDataEmbedsInner[]|null $embeds Up to 10 Discord embed objects (combined max 6,000 characters across all embeds). Sent alongside or instead of plain-text content.
+     * @param \Zernio\Model\DiscordPlatformDataEmbedsInner[]|null $embeds Up to 10 Discord embed objects (combined max 6,000 characters across all embeds). Sent alongside or instead of plain-text content.
      *
      * @return self
      */
@@ -426,7 +426,7 @@ class DiscordPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets poll
      *
-     * @return \Late\Model\DiscordPlatformDataPoll|null
+     * @return \Zernio\Model\DiscordPlatformDataPoll|null
      */
     public function getPoll()
     {
@@ -436,7 +436,7 @@ class DiscordPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets poll
      *
-     * @param \Late\Model\DiscordPlatformDataPoll|null $poll poll
+     * @param \Zernio\Model\DiscordPlatformDataPoll|null $poll poll
      *
      * @return self
      */
@@ -538,7 +538,7 @@ class DiscordPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets thread_from_message
      *
-     * @return \Late\Model\DiscordPlatformDataThreadFromMessage|null
+     * @return \Zernio\Model\DiscordPlatformDataThreadFromMessage|null
      */
     public function getThreadFromMessage()
     {
@@ -548,7 +548,7 @@ class DiscordPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets thread_from_message
      *
-     * @param \Late\Model\DiscordPlatformDataThreadFromMessage|null $thread_from_message thread_from_message
+     * @param \Zernio\Model\DiscordPlatformDataThreadFromMessage|null $thread_from_message thread_from_message
      *
      * @return self
      */

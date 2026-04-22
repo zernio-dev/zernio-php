@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateGoogleBusinessFoodMenusRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class UpdateGoogleBusinessFoodMenusRequest implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'menus' => '\Late\Model\FoodMenu[]',
+        'menus' => '\Zernio\Model\FoodMenu[]',
         'update_mask' => 'string'
     ];
 
@@ -303,7 +303,7 @@ class UpdateGoogleBusinessFoodMenusRequest implements ModelInterface, ArrayAcces
     /**
      * Gets menus
      *
-     * @return \Late\Model\FoodMenu[]
+     * @return \Zernio\Model\FoodMenu[]
      */
     public function getMenus()
     {
@@ -313,7 +313,7 @@ class UpdateGoogleBusinessFoodMenusRequest implements ModelInterface, ArrayAcces
     /**
      * Sets menus
      *
-     * @param \Late\Model\FoodMenu[] $menus Array of food menus to set
+     * @param \Zernio\Model\FoodMenu[] $menus Array of food menus to set
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * AnalyticsSinglePostResponse Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,8 +64,8 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
         'content' => 'string',
         'scheduled_for' => '\DateTime',
         'published_at' => '\DateTime',
-        'analytics' => '\Late\Model\PostAnalytics',
-        'platform_analytics' => '\Late\Model\PlatformAnalytics[]',
+        'analytics' => '\Zernio\Model\PostAnalytics',
+        'platform_analytics' => '\Zernio\Model\PlatformAnalytics[]',
         'platform' => 'string',
         'platform_post_url' => 'string',
         'is_external' => 'bool',
@@ -73,7 +73,7 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
         'message' => 'string',
         'thumbnail_url' => 'string',
         'media_type' => 'string',
-        'media_items' => '\Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]'
+        'media_items' => '\Zernio\Model\AnalyticsSinglePostResponseMediaItemsInner[]'
     ];
 
     /**
@@ -652,7 +652,7 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets analytics
      *
-     * @return \Late\Model\PostAnalytics|null
+     * @return \Zernio\Model\PostAnalytics|null
      */
     public function getAnalytics()
     {
@@ -662,7 +662,7 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets analytics
      *
-     * @param \Late\Model\PostAnalytics|null $analytics analytics
+     * @param \Zernio\Model\PostAnalytics|null $analytics analytics
      *
      * @return self
      */
@@ -679,7 +679,7 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets platform_analytics
      *
-     * @return \Late\Model\PlatformAnalytics[]|null
+     * @return \Zernio\Model\PlatformAnalytics[]|null
      */
     public function getPlatformAnalytics()
     {
@@ -689,7 +689,7 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets platform_analytics
      *
-     * @param \Late\Model\PlatformAnalytics[]|null $platform_analytics platform_analytics
+     * @param \Zernio\Model\PlatformAnalytics[]|null $platform_analytics platform_analytics
      *
      * @return self
      */
@@ -915,7 +915,7 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets media_items
      *
-     * @return \Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]|null
+     * @return \Zernio\Model\AnalyticsSinglePostResponseMediaItemsInner[]|null
      */
     public function getMediaItems()
     {
@@ -925,7 +925,7 @@ class AnalyticsSinglePostResponse implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets media_items
      *
-     * @param \Late\Model\AnalyticsSinglePostResponseMediaItemsInner[]|null $media_items All media items for this post. Carousel posts contain one entry per slide.
+     * @param \Zernio\Model\AnalyticsSinglePostResponseMediaItemsInner[]|null $media_items All media items for this post. Carousel posts contain one entry per slide.
      *
      * @return self
      */

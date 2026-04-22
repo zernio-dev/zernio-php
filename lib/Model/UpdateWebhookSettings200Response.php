@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateWebhookSettings200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class UpdateWebhookSettings200Response implements ModelInterface, ArrayAccess, \
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'webhook' => '\Late\Model\Webhook'
+        'webhook' => '\Zernio\Model\Webhook'
     ];
 
     /**
@@ -327,7 +327,7 @@ class UpdateWebhookSettings200Response implements ModelInterface, ArrayAccess, \
     /**
      * Gets webhook
      *
-     * @return \Late\Model\Webhook|null
+     * @return \Zernio\Model\Webhook|null
      */
     public function getWebhook()
     {
@@ -337,7 +337,7 @@ class UpdateWebhookSettings200Response implements ModelInterface, ArrayAccess, \
     /**
      * Sets webhook
      *
-     * @param \Late\Model\Webhook|null $webhook webhook
+     * @param \Zernio\Model\Webhook|null $webhook webhook
      *
      * @return self
      */

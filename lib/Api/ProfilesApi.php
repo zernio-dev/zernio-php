@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * ProfilesApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -143,12 +143,12 @@ class ProfilesApi
      *
      * Create profile
      *
-     * @param  \Late\Model\CreateProfileRequest $create_profile_request create_profile_request (required)
+     * @param  \Zernio\Model\CreateProfileRequest $create_profile_request create_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ProfileCreateResponse|\Late\Model\InlineObject
+     * @return \Zernio\Model\ProfileCreateResponse|\Zernio\Model\InlineObject
      */
     public function createProfile($create_profile_request, string $contentType = self::contentTypes['createProfile'][0])
     {
@@ -161,12 +161,12 @@ class ProfilesApi
      *
      * Create profile
      *
-     * @param  \Late\Model\CreateProfileRequest $create_profile_request (required)
+     * @param  \Zernio\Model\CreateProfileRequest $create_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ProfileCreateResponse|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ProfileCreateResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createProfileWithHttpInfo($create_profile_request, string $contentType = self::contentTypes['createProfile'][0])
     {
@@ -198,13 +198,13 @@ class ProfilesApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ProfileCreateResponse',
+                        '\Zernio\Model\ProfileCreateResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -226,7 +226,7 @@ class ProfilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ProfileCreateResponse',
+                '\Zernio\Model\ProfileCreateResponse',
                 $request,
                 $response,
             );
@@ -235,7 +235,7 @@ class ProfilesApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ProfileCreateResponse',
+                        '\Zernio\Model\ProfileCreateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -243,7 +243,7 @@ class ProfilesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -260,7 +260,7 @@ class ProfilesApi
      *
      * Create profile
      *
-     * @param  \Late\Model\CreateProfileRequest $create_profile_request (required)
+     * @param  \Zernio\Model\CreateProfileRequest $create_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -281,7 +281,7 @@ class ProfilesApi
      *
      * Create profile
      *
-     * @param  \Late\Model\CreateProfileRequest $create_profile_request (required)
+     * @param  \Zernio\Model\CreateProfileRequest $create_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -289,7 +289,7 @@ class ProfilesApi
      */
     public function createProfileAsyncWithHttpInfo($create_profile_request, string $contentType = self::contentTypes['createProfile'][0])
     {
-        $returnType = '\Late\Model\ProfileCreateResponse';
+        $returnType = '\Zernio\Model\ProfileCreateResponse';
         $request = $this->createProfileRequest($create_profile_request, $contentType);
 
         return $this->client
@@ -331,7 +331,7 @@ class ProfilesApi
     /**
      * Create request for operation 'createProfile'
      *
-     * @param  \Late\Model\CreateProfileRequest $create_profile_request (required)
+     * @param  \Zernio\Model\CreateProfileRequest $create_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -431,9 +431,9 @@ class ProfilesApi
      * @param  string $profile_id profile_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProfile'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\DeleteAccountGroup200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function deleteProfile($profile_id, string $contentType = self::contentTypes['deleteProfile'][0])
     {
@@ -449,9 +449,9 @@ class ProfilesApi
      * @param  string $profile_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteProfile'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\DeleteAccountGroup200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteProfileWithHttpInfo($profile_id, string $contentType = self::contentTypes['deleteProfile'][0])
     {
@@ -483,19 +483,19 @@ class ProfilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\DeleteAccountGroup200Response',
+                        '\Zernio\Model\DeleteAccountGroup200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -517,7 +517,7 @@ class ProfilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\DeleteAccountGroup200Response',
+                '\Zernio\Model\DeleteAccountGroup200Response',
                 $request,
                 $response,
             );
@@ -526,7 +526,7 @@ class ProfilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\DeleteAccountGroup200Response',
+                        '\Zernio\Model\DeleteAccountGroup200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -534,7 +534,7 @@ class ProfilesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -542,7 +542,7 @@ class ProfilesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -588,7 +588,7 @@ class ProfilesApi
      */
     public function deleteProfileAsyncWithHttpInfo($profile_id, string $contentType = self::contentTypes['deleteProfile'][0])
     {
-        $returnType = '\Late\Model\DeleteAccountGroup200Response';
+        $returnType = '\Zernio\Model\DeleteAccountGroup200Response';
         $request = $this->deleteProfileRequest($profile_id, $contentType);
 
         return $this->client
@@ -731,9 +731,9 @@ class ProfilesApi
      * @param  string $profile_id profile_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProfile'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetProfile200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\GetProfile200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getProfile($profile_id, string $contentType = self::contentTypes['getProfile'][0])
     {
@@ -749,9 +749,9 @@ class ProfilesApi
      * @param  string $profile_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getProfile'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetProfile200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetProfile200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getProfileWithHttpInfo($profile_id, string $contentType = self::contentTypes['getProfile'][0])
     {
@@ -783,19 +783,19 @@ class ProfilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetProfile200Response',
+                        '\Zernio\Model\GetProfile200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -817,7 +817,7 @@ class ProfilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetProfile200Response',
+                '\Zernio\Model\GetProfile200Response',
                 $request,
                 $response,
             );
@@ -826,7 +826,7 @@ class ProfilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetProfile200Response',
+                        '\Zernio\Model\GetProfile200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -834,7 +834,7 @@ class ProfilesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -842,7 +842,7 @@ class ProfilesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -888,7 +888,7 @@ class ProfilesApi
      */
     public function getProfileAsyncWithHttpInfo($profile_id, string $contentType = self::contentTypes['getProfile'][0])
     {
-        $returnType = '\Late\Model\GetProfile200Response';
+        $returnType = '\Zernio\Model\GetProfile200Response';
         $request = $this->getProfileRequest($profile_id, $contentType);
 
         return $this->client
@@ -1031,9 +1031,9 @@ class ProfilesApi
      * @param  bool|null $include_over_limit When true, includes over-limit profiles (marked with isOverLimit: true). (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ProfilesListResponse|\Late\Model\InlineObject
+     * @return \Zernio\Model\ProfilesListResponse|\Zernio\Model\InlineObject
      */
     public function listProfiles($include_over_limit = false, string $contentType = self::contentTypes['listProfiles'][0])
     {
@@ -1049,9 +1049,9 @@ class ProfilesApi
      * @param  bool|null $include_over_limit When true, includes over-limit profiles (marked with isOverLimit: true). (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listProfiles'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ProfilesListResponse|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ProfilesListResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listProfilesWithHttpInfo($include_over_limit = false, string $contentType = self::contentTypes['listProfiles'][0])
     {
@@ -1083,13 +1083,13 @@ class ProfilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ProfilesListResponse',
+                        '\Zernio\Model\ProfilesListResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -1111,7 +1111,7 @@ class ProfilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ProfilesListResponse',
+                '\Zernio\Model\ProfilesListResponse',
                 $request,
                 $response,
             );
@@ -1120,7 +1120,7 @@ class ProfilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ProfilesListResponse',
+                        '\Zernio\Model\ProfilesListResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1128,7 +1128,7 @@ class ProfilesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1174,7 +1174,7 @@ class ProfilesApi
      */
     public function listProfilesAsyncWithHttpInfo($include_over_limit = false, string $contentType = self::contentTypes['listProfiles'][0])
     {
-        $returnType = '\Late\Model\ProfilesListResponse';
+        $returnType = '\Zernio\Model\ProfilesListResponse';
         $request = $this->listProfilesRequest($include_over_limit, $contentType);
 
         return $this->client
@@ -1310,12 +1310,12 @@ class ProfilesApi
      * Update profile
      *
      * @param  string $profile_id profile_id (required)
-     * @param  \Late\Model\UpdateProfileRequest $update_profile_request update_profile_request (required)
+     * @param  \Zernio\Model\UpdateProfileRequest $update_profile_request update_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProfile'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateProfile200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\UpdateProfile200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function updateProfile($profile_id, $update_profile_request, string $contentType = self::contentTypes['updateProfile'][0])
     {
@@ -1329,12 +1329,12 @@ class ProfilesApi
      * Update profile
      *
      * @param  string $profile_id (required)
-     * @param  \Late\Model\UpdateProfileRequest $update_profile_request (required)
+     * @param  \Zernio\Model\UpdateProfileRequest $update_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProfile'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateProfile200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateProfile200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateProfileWithHttpInfo($profile_id, $update_profile_request, string $contentType = self::contentTypes['updateProfile'][0])
     {
@@ -1366,19 +1366,19 @@ class ProfilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateProfile200Response',
+                        '\Zernio\Model\UpdateProfile200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1400,7 +1400,7 @@ class ProfilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateProfile200Response',
+                '\Zernio\Model\UpdateProfile200Response',
                 $request,
                 $response,
             );
@@ -1409,7 +1409,7 @@ class ProfilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateProfile200Response',
+                        '\Zernio\Model\UpdateProfile200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1417,7 +1417,7 @@ class ProfilesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1425,7 +1425,7 @@ class ProfilesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1443,7 +1443,7 @@ class ProfilesApi
      * Update profile
      *
      * @param  string $profile_id (required)
-     * @param  \Late\Model\UpdateProfileRequest $update_profile_request (required)
+     * @param  \Zernio\Model\UpdateProfileRequest $update_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1465,7 +1465,7 @@ class ProfilesApi
      * Update profile
      *
      * @param  string $profile_id (required)
-     * @param  \Late\Model\UpdateProfileRequest $update_profile_request (required)
+     * @param  \Zernio\Model\UpdateProfileRequest $update_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1473,7 +1473,7 @@ class ProfilesApi
      */
     public function updateProfileAsyncWithHttpInfo($profile_id, $update_profile_request, string $contentType = self::contentTypes['updateProfile'][0])
     {
-        $returnType = '\Late\Model\UpdateProfile200Response';
+        $returnType = '\Zernio\Model\UpdateProfile200Response';
         $request = $this->updateProfileRequest($profile_id, $update_profile_request, $contentType);
 
         return $this->client
@@ -1516,7 +1516,7 @@ class ProfilesApi
      * Create request for operation 'updateProfile'
      *
      * @param  string $profile_id (required)
-     * @param  \Late\Model\UpdateProfileRequest $update_profile_request (required)
+     * @param  \Zernio\Model\UpdateProfileRequest $update_profile_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateProfile'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

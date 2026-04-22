@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendWhatsAppFlowMessageRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,9 +64,9 @@ class SendWhatsAppFlowMessageRequest implements ModelInterface, ArrayAccess, \Js
         'flow_cta' => 'string',
         'flow_action' => 'string',
         'flow_token' => 'string',
-        'flow_action_payload' => '\Late\Model\SendWhatsAppFlowMessageRequestFlowActionPayload',
+        'flow_action_payload' => '\Zernio\Model\SendWhatsAppFlowMessageRequestFlowActionPayload',
         'body' => 'string',
-        'header' => '\Late\Model\SendWhatsAppFlowMessageRequestHeader',
+        'header' => '\Zernio\Model\SendWhatsAppFlowMessageRequestHeader',
         'footer' => 'string',
         'draft' => 'bool'
     ];
@@ -590,7 +590,7 @@ class SendWhatsAppFlowMessageRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets flow_action_payload
      *
-     * @return \Late\Model\SendWhatsAppFlowMessageRequestFlowActionPayload|null
+     * @return \Zernio\Model\SendWhatsAppFlowMessageRequestFlowActionPayload|null
      */
     public function getFlowActionPayload()
     {
@@ -600,7 +600,7 @@ class SendWhatsAppFlowMessageRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets flow_action_payload
      *
-     * @param \Late\Model\SendWhatsAppFlowMessageRequestFlowActionPayload|null $flow_action_payload flow_action_payload
+     * @param \Zernio\Model\SendWhatsAppFlowMessageRequestFlowActionPayload|null $flow_action_payload flow_action_payload
      *
      * @return self
      */
@@ -644,7 +644,7 @@ class SendWhatsAppFlowMessageRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets header
      *
-     * @return \Late\Model\SendWhatsAppFlowMessageRequestHeader|null
+     * @return \Zernio\Model\SendWhatsAppFlowMessageRequestHeader|null
      */
     public function getHeader()
     {
@@ -654,7 +654,7 @@ class SendWhatsAppFlowMessageRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets header
      *
-     * @param \Late\Model\SendWhatsAppFlowMessageRequestHeader|null $header header
+     * @param \Zernio\Model\SendWhatsAppFlowMessageRequestHeader|null $header header
      *
      * @return self
      */

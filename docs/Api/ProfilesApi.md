@@ -1,4 +1,4 @@
-# Late\ProfilesApi
+# Zernio\ProfilesApi
 
 
 
@@ -16,7 +16,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createProfile()`
 
 ```php
-createProfile($create_profile_request): \Late\Model\ProfileCreateResponse
+createProfile($create_profile_request): \Zernio\Model\ProfileCreateResponse
 ```
 
 Create profile
@@ -31,16 +31,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ProfilesApi(
+$apiInstance = new Zernio\Api\ProfilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_profile_request = {"name":"Marketing Team","description":"Profile for marketing campaigns","color":"#4CAF50"}; // \Late\Model\CreateProfileRequest
+$create_profile_request = {"name":"Marketing Team","description":"Profile for marketing campaigns","color":"#4CAF50"}; // \Zernio\Model\CreateProfileRequest
 
 try {
     $result = $apiInstance->createProfile($create_profile_request);
@@ -54,11 +54,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_profile_request** | [**\Late\Model\CreateProfileRequest**](../Model/CreateProfileRequest.md)|  | |
+| **create_profile_request** | [**\Zernio\Model\CreateProfileRequest**](../Model/CreateProfileRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\ProfileCreateResponse**](../Model/ProfileCreateResponse.md)
+[**\Zernio\Model\ProfileCreateResponse**](../Model/ProfileCreateResponse.md)
 
 ### Authorization
 
@@ -76,7 +76,7 @@ try {
 ## `deleteProfile()`
 
 ```php
-deleteProfile($profile_id): \Late\Model\DeleteAccountGroup200Response
+deleteProfile($profile_id): \Zernio\Model\DeleteAccountGroup200Response
 ```
 
 Delete profile
@@ -91,10 +91,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ProfilesApi(
+$apiInstance = new Zernio\Api\ProfilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -118,7 +118,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\DeleteAccountGroup200Response**](../Model/DeleteAccountGroup200Response.md)
+[**\Zernio\Model\DeleteAccountGroup200Response**](../Model/DeleteAccountGroup200Response.md)
 
 ### Authorization
 
@@ -136,7 +136,7 @@ try {
 ## `getProfile()`
 
 ```php
-getProfile($profile_id): \Late\Model\GetProfile200Response
+getProfile($profile_id): \Zernio\Model\GetProfile200Response
 ```
 
 Get profile
@@ -151,10 +151,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ProfilesApi(
+$apiInstance = new Zernio\Api\ProfilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -178,7 +178,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetProfile200Response**](../Model/GetProfile200Response.md)
+[**\Zernio\Model\GetProfile200Response**](../Model/GetProfile200Response.md)
 
 ### Authorization
 
@@ -196,7 +196,7 @@ try {
 ## `listProfiles()`
 
 ```php
-listProfiles($include_over_limit): \Late\Model\ProfilesListResponse
+listProfiles($include_over_limit): \Zernio\Model\ProfilesListResponse
 ```
 
 List profiles
@@ -211,10 +211,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ProfilesApi(
+$apiInstance = new Zernio\Api\ProfilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -238,7 +238,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ProfilesListResponse**](../Model/ProfilesListResponse.md)
+[**\Zernio\Model\ProfilesListResponse**](../Model/ProfilesListResponse.md)
 
 ### Authorization
 
@@ -256,7 +256,7 @@ try {
 ## `updateProfile()`
 
 ```php
-updateProfile($profile_id, $update_profile_request): \Late\Model\UpdateProfile200Response
+updateProfile($profile_id, $update_profile_request): \Zernio\Model\UpdateProfile200Response
 ```
 
 Update profile
@@ -271,17 +271,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ProfilesApi(
+$apiInstance = new Zernio\Api\ProfilesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $profile_id = 'profile_id_example'; // string
-$update_profile_request = {"name":"Marketing Team (Updated)","color":"#2196F3","isDefault":true}; // \Late\Model\UpdateProfileRequest
+$update_profile_request = {"name":"Marketing Team (Updated)","color":"#2196F3","isDefault":true}; // \Zernio\Model\UpdateProfileRequest
 
 try {
     $result = $apiInstance->updateProfile($profile_id, $update_profile_request);
@@ -296,11 +296,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**|  | |
-| **update_profile_request** | [**\Late\Model\UpdateProfileRequest**](../Model/UpdateProfileRequest.md)|  | |
+| **update_profile_request** | [**\Zernio\Model\UpdateProfileRequest**](../Model/UpdateProfileRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateProfile200Response**](../Model/UpdateProfile200Response.md)
+[**\Zernio\Model\UpdateProfile200Response**](../Model/UpdateProfile200Response.md)
 
 ### Authorization
 

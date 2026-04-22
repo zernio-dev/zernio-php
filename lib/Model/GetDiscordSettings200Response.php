@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetDiscordSettings200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetDiscordSettings200Response implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account' => '\Late\Model\GetDiscordSettings200ResponseAccount'
+        'account' => '\Zernio\Model\GetDiscordSettings200ResponseAccount'
     ];
 
     /**
@@ -293,7 +293,7 @@ class GetDiscordSettings200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets account
      *
-     * @return \Late\Model\GetDiscordSettings200ResponseAccount|null
+     * @return \Zernio\Model\GetDiscordSettings200ResponseAccount|null
      */
     public function getAccount()
     {
@@ -303,7 +303,7 @@ class GetDiscordSettings200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets account
      *
-     * @param \Late\Model\GetDiscordSettings200ResponseAccount|null $account account
+     * @param \Zernio\Model\GetDiscordSettings200ResponseAccount|null $account account
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetAdAnalytics200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'ad' => '\Late\Model\GetAdAnalytics200ResponseAd',
-        'analytics' => '\Late\Model\GetAdAnalytics200ResponseAnalytics'
+        'ad' => '\Zernio\Model\GetAdAnalytics200ResponseAd',
+        'analytics' => '\Zernio\Model\GetAdAnalytics200ResponseAnalytics'
     ];
 
     /**
@@ -300,7 +300,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets ad
      *
-     * @return \Late\Model\GetAdAnalytics200ResponseAd|null
+     * @return \Zernio\Model\GetAdAnalytics200ResponseAd|null
      */
     public function getAd()
     {
@@ -310,7 +310,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets ad
      *
-     * @param \Late\Model\GetAdAnalytics200ResponseAd|null $ad ad
+     * @param \Zernio\Model\GetAdAnalytics200ResponseAd|null $ad ad
      *
      * @return self
      */
@@ -327,7 +327,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets analytics
      *
-     * @return \Late\Model\GetAdAnalytics200ResponseAnalytics|null
+     * @return \Zernio\Model\GetAdAnalytics200ResponseAnalytics|null
      */
     public function getAnalytics()
     {
@@ -337,7 +337,7 @@ class GetAdAnalytics200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets analytics
      *
-     * @param \Late\Model\GetAdAnalytics200ResponseAnalytics|null $analytics analytics
+     * @param \Zernio\Model\GetAdAnalytics200ResponseAnalytics|null $analytics analytics
      *
      * @return self
      */

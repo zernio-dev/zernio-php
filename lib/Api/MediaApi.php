@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * MediaApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -131,12 +131,12 @@ class MediaApi
      *
      * Get upload URL
      *
-     * @param  \Late\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request get_media_presigned_url_request (required)
+     * @param  \Zernio\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request get_media_presigned_url_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetMediaPresignedUrl200Response|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetMediaPresignedUrl200Response|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject
      */
     public function getMediaPresignedUrl($get_media_presigned_url_request, string $contentType = self::contentTypes['getMediaPresignedUrl'][0])
     {
@@ -149,12 +149,12 @@ class MediaApi
      *
      * Get upload URL
      *
-     * @param  \Late\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
+     * @param  \Zernio\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetMediaPresignedUrl200Response|\Late\Model\GetYouTubeDailyViews400Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetMediaPresignedUrl200Response|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMediaPresignedUrlWithHttpInfo($get_media_presigned_url_request, string $contentType = self::contentTypes['getMediaPresignedUrl'][0])
     {
@@ -186,19 +186,19 @@ class MediaApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetMediaPresignedUrl200Response',
+                        '\Zernio\Model\GetMediaPresignedUrl200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -220,7 +220,7 @@ class MediaApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetMediaPresignedUrl200Response',
+                '\Zernio\Model\GetMediaPresignedUrl200Response',
                 $request,
                 $response,
             );
@@ -229,7 +229,7 @@ class MediaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetMediaPresignedUrl200Response',
+                        '\Zernio\Model\GetMediaPresignedUrl200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -237,7 +237,7 @@ class MediaApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetYouTubeDailyViews400Response',
+                        '\Zernio\Model\GetYouTubeDailyViews400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -245,7 +245,7 @@ class MediaApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -262,7 +262,7 @@ class MediaApi
      *
      * Get upload URL
      *
-     * @param  \Late\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
+     * @param  \Zernio\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -283,7 +283,7 @@ class MediaApi
      *
      * Get upload URL
      *
-     * @param  \Late\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
+     * @param  \Zernio\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -291,7 +291,7 @@ class MediaApi
      */
     public function getMediaPresignedUrlAsyncWithHttpInfo($get_media_presigned_url_request, string $contentType = self::contentTypes['getMediaPresignedUrl'][0])
     {
-        $returnType = '\Late\Model\GetMediaPresignedUrl200Response';
+        $returnType = '\Zernio\Model\GetMediaPresignedUrl200Response';
         $request = $this->getMediaPresignedUrlRequest($get_media_presigned_url_request, $contentType);
 
         return $this->client
@@ -333,7 +333,7 @@ class MediaApi
     /**
      * Create request for operation 'getMediaPresignedUrl'
      *
-     * @param  \Late\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
+     * @param  \Zernio\Model\GetMediaPresignedUrlRequest $get_media_presigned_url_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMediaPresignedUrl'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * WhatsAppPhoneNumbersApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -143,9 +143,9 @@ class WhatsAppPhoneNumbersApi
      * @param  string $phone_number_id Phone number record ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppPhoneNumber'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetWhatsAppPhoneNumber200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\GetWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getWhatsAppPhoneNumber($phone_number_id, string $contentType = self::contentTypes['getWhatsAppPhoneNumber'][0])
     {
@@ -161,9 +161,9 @@ class WhatsAppPhoneNumbersApi
      * @param  string $phone_number_id Phone number record ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppPhoneNumber'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetWhatsAppPhoneNumber200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWhatsAppPhoneNumberWithHttpInfo($phone_number_id, string $contentType = self::contentTypes['getWhatsAppPhoneNumber'][0])
     {
@@ -195,19 +195,19 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetWhatsAppPhoneNumber200Response',
+                        '\Zernio\Model\GetWhatsAppPhoneNumber200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -229,7 +229,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetWhatsAppPhoneNumber200Response',
+                '\Zernio\Model\GetWhatsAppPhoneNumber200Response',
                 $request,
                 $response,
             );
@@ -238,7 +238,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetWhatsAppPhoneNumber200Response',
+                        '\Zernio\Model\GetWhatsAppPhoneNumber200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -246,7 +246,7 @@ class WhatsAppPhoneNumbersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -254,7 +254,7 @@ class WhatsAppPhoneNumbersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -300,7 +300,7 @@ class WhatsAppPhoneNumbersApi
      */
     public function getWhatsAppPhoneNumberAsyncWithHttpInfo($phone_number_id, string $contentType = self::contentTypes['getWhatsAppPhoneNumber'][0])
     {
-        $returnType = '\Late\Model\GetWhatsAppPhoneNumber200Response';
+        $returnType = '\Zernio\Model\GetWhatsAppPhoneNumber200Response';
         $request = $this->getWhatsAppPhoneNumberRequest($phone_number_id, $contentType);
 
         return $this->client
@@ -444,9 +444,9 @@ class WhatsAppPhoneNumbersApi
      * @param  string|null $profile_id Filter by profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppPhoneNumbers'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetWhatsAppPhoneNumbers200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200Response|\Zernio\Model\InlineObject
      */
     public function getWhatsAppPhoneNumbers($status = null, $profile_id = null, string $contentType = self::contentTypes['getWhatsAppPhoneNumbers'][0])
     {
@@ -463,9 +463,9 @@ class WhatsAppPhoneNumbersApi
      * @param  string|null $profile_id Filter by profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppPhoneNumbers'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetWhatsAppPhoneNumbers200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetWhatsAppPhoneNumbers200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getWhatsAppPhoneNumbersWithHttpInfo($status = null, $profile_id = null, string $contentType = self::contentTypes['getWhatsAppPhoneNumbers'][0])
     {
@@ -497,13 +497,13 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetWhatsAppPhoneNumbers200Response',
+                        '\Zernio\Model\GetWhatsAppPhoneNumbers200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -525,7 +525,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetWhatsAppPhoneNumbers200Response',
+                '\Zernio\Model\GetWhatsAppPhoneNumbers200Response',
                 $request,
                 $response,
             );
@@ -534,7 +534,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetWhatsAppPhoneNumbers200Response',
+                        '\Zernio\Model\GetWhatsAppPhoneNumbers200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -542,7 +542,7 @@ class WhatsAppPhoneNumbersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -590,7 +590,7 @@ class WhatsAppPhoneNumbersApi
      */
     public function getWhatsAppPhoneNumbersAsyncWithHttpInfo($status = null, $profile_id = null, string $contentType = self::contentTypes['getWhatsAppPhoneNumbers'][0])
     {
-        $returnType = '\Late\Model\GetWhatsAppPhoneNumbers200Response';
+        $returnType = '\Zernio\Model\GetWhatsAppPhoneNumbers200Response';
         $request = $this->getWhatsAppPhoneNumbersRequest($status, $profile_id, $contentType);
 
         return $this->client
@@ -736,12 +736,12 @@ class WhatsAppPhoneNumbersApi
      *
      * Purchase phone number
      *
-     * @param  \Late\Model\PurchaseWhatsAppPhoneNumberRequest $purchase_whats_app_phone_number_request purchase_whats_app_phone_number_request (required)
+     * @param  \Zernio\Model\PurchaseWhatsAppPhoneNumberRequest $purchase_whats_app_phone_number_request purchase_whats_app_phone_number_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purchaseWhatsAppPhoneNumber'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\PurchaseWhatsAppPhoneNumber200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\PurchaseWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject
      */
     public function purchaseWhatsAppPhoneNumber($purchase_whats_app_phone_number_request, string $contentType = self::contentTypes['purchaseWhatsAppPhoneNumber'][0])
     {
@@ -754,12 +754,12 @@ class WhatsAppPhoneNumbersApi
      *
      * Purchase phone number
      *
-     * @param  \Late\Model\PurchaseWhatsAppPhoneNumberRequest $purchase_whats_app_phone_number_request (required)
+     * @param  \Zernio\Model\PurchaseWhatsAppPhoneNumberRequest $purchase_whats_app_phone_number_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purchaseWhatsAppPhoneNumber'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\PurchaseWhatsAppPhoneNumber200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PurchaseWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function purchaseWhatsAppPhoneNumberWithHttpInfo($purchase_whats_app_phone_number_request, string $contentType = self::contentTypes['purchaseWhatsAppPhoneNumber'][0])
     {
@@ -791,13 +791,13 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\PurchaseWhatsAppPhoneNumber200Response',
+                        '\Zernio\Model\PurchaseWhatsAppPhoneNumber200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -819,7 +819,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\PurchaseWhatsAppPhoneNumber200Response',
+                '\Zernio\Model\PurchaseWhatsAppPhoneNumber200Response',
                 $request,
                 $response,
             );
@@ -828,7 +828,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\PurchaseWhatsAppPhoneNumber200Response',
+                        '\Zernio\Model\PurchaseWhatsAppPhoneNumber200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -836,7 +836,7 @@ class WhatsAppPhoneNumbersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -853,7 +853,7 @@ class WhatsAppPhoneNumbersApi
      *
      * Purchase phone number
      *
-     * @param  \Late\Model\PurchaseWhatsAppPhoneNumberRequest $purchase_whats_app_phone_number_request (required)
+     * @param  \Zernio\Model\PurchaseWhatsAppPhoneNumberRequest $purchase_whats_app_phone_number_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purchaseWhatsAppPhoneNumber'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -874,7 +874,7 @@ class WhatsAppPhoneNumbersApi
      *
      * Purchase phone number
      *
-     * @param  \Late\Model\PurchaseWhatsAppPhoneNumberRequest $purchase_whats_app_phone_number_request (required)
+     * @param  \Zernio\Model\PurchaseWhatsAppPhoneNumberRequest $purchase_whats_app_phone_number_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purchaseWhatsAppPhoneNumber'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -882,7 +882,7 @@ class WhatsAppPhoneNumbersApi
      */
     public function purchaseWhatsAppPhoneNumberAsyncWithHttpInfo($purchase_whats_app_phone_number_request, string $contentType = self::contentTypes['purchaseWhatsAppPhoneNumber'][0])
     {
-        $returnType = '\Late\Model\PurchaseWhatsAppPhoneNumber200Response';
+        $returnType = '\Zernio\Model\PurchaseWhatsAppPhoneNumber200Response';
         $request = $this->purchaseWhatsAppPhoneNumberRequest($purchase_whats_app_phone_number_request, $contentType);
 
         return $this->client
@@ -924,7 +924,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Create request for operation 'purchaseWhatsAppPhoneNumber'
      *
-     * @param  \Late\Model\PurchaseWhatsAppPhoneNumberRequest $purchase_whats_app_phone_number_request (required)
+     * @param  \Zernio\Model\PurchaseWhatsAppPhoneNumberRequest $purchase_whats_app_phone_number_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purchaseWhatsAppPhoneNumber'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1024,9 +1024,9 @@ class WhatsAppPhoneNumbersApi
      * @param  string $phone_number_id Phone number record ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['releaseWhatsAppPhoneNumber'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ReleaseWhatsAppPhoneNumber200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\ReleaseWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function releaseWhatsAppPhoneNumber($phone_number_id, string $contentType = self::contentTypes['releaseWhatsAppPhoneNumber'][0])
     {
@@ -1042,9 +1042,9 @@ class WhatsAppPhoneNumbersApi
      * @param  string $phone_number_id Phone number record ID (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['releaseWhatsAppPhoneNumber'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ReleaseWhatsAppPhoneNumber200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ReleaseWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function releaseWhatsAppPhoneNumberWithHttpInfo($phone_number_id, string $contentType = self::contentTypes['releaseWhatsAppPhoneNumber'][0])
     {
@@ -1076,19 +1076,19 @@ class WhatsAppPhoneNumbersApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ReleaseWhatsAppPhoneNumber200Response',
+                        '\Zernio\Model\ReleaseWhatsAppPhoneNumber200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1110,7 +1110,7 @@ class WhatsAppPhoneNumbersApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ReleaseWhatsAppPhoneNumber200Response',
+                '\Zernio\Model\ReleaseWhatsAppPhoneNumber200Response',
                 $request,
                 $response,
             );
@@ -1119,7 +1119,7 @@ class WhatsAppPhoneNumbersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ReleaseWhatsAppPhoneNumber200Response',
+                        '\Zernio\Model\ReleaseWhatsAppPhoneNumber200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1127,7 +1127,7 @@ class WhatsAppPhoneNumbersApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1135,7 +1135,7 @@ class WhatsAppPhoneNumbersApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1181,7 +1181,7 @@ class WhatsAppPhoneNumbersApi
      */
     public function releaseWhatsAppPhoneNumberAsyncWithHttpInfo($phone_number_id, string $contentType = self::contentTypes['releaseWhatsAppPhoneNumber'][0])
     {
-        $returnType = '\Late\Model\ReleaseWhatsAppPhoneNumber200Response';
+        $returnType = '\Zernio\Model\ReleaseWhatsAppPhoneNumber200Response';
         $request = $this->releaseWhatsAppPhoneNumberRequest($phone_number_id, $contentType);
 
         return $this->client

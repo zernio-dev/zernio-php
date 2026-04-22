@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **account_type** | **string** |  | [optional]
 **username** | **string** |  | [optional]
 **aggregation** | **string** |  | [optional]
-**date_range** | [**\Late\Model\LinkedInAggregateAnalyticsTotalResponseDateRange**](LinkedInAggregateAnalyticsTotalResponseDateRange.md) |  | [optional]
-**analytics** | [**\Late\Model\LinkedInAggregateAnalyticsTotalResponseAnalytics**](LinkedInAggregateAnalyticsTotalResponseAnalytics.md) |  | [optional]
+**date_range** | [**\Zernio\Model\LinkedInAggregateAnalyticsTotalResponseDateRange**](LinkedInAggregateAnalyticsTotalResponseDateRange.md) |  | [optional]
+**analytics** | [**\Zernio\Model\LinkedInAggregateAnalyticsTotalResponseAnalytics**](LinkedInAggregateAnalyticsTotalResponseAnalytics.md) |  | [optional]
 **note** | **string** |  | [optional]
 **last_updated** | **\DateTime** |  | [optional]
 

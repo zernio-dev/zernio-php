@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetInboxConversationMessages200ResponseMessagesInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -68,21 +68,21 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'sender_verified_type' => 'string',
         'direction' => 'string',
         'created_at' => '\DateTime',
-        'attachments' => '\Late\Model\GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner[]',
+        'attachments' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner[]',
         'subject' => 'string',
         'story_reply' => 'bool',
         'is_story_mention' => 'bool',
         'is_edited' => 'bool',
         'edited_at' => '\DateTime',
         'edit_count' => 'int',
-        'edit_history' => '\Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]',
+        'edit_history' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]',
         'is_deleted' => 'bool',
         'deleted_at' => '\DateTime',
         'delivery_status' => 'string',
         'delivered_at' => '\DateTime',
         'read_at' => '\DateTime',
         'sent_at' => '\DateTime',
-        'delivery_error' => '\Late\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError'
+        'delivery_error' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError'
     ];
 
     /**
@@ -833,7 +833,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     /**
      * Gets attachments
      *
-     * @return \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner[]|null
+     * @return \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner[]|null
      */
     public function getAttachments()
     {
@@ -843,7 +843,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     /**
      * Sets attachments
      *
-     * @param \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner[]|null $attachments attachments
+     * @param \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner[]|null $attachments attachments
      *
      * @return self
      */
@@ -1022,7 +1022,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     /**
      * Gets edit_history
      *
-     * @return \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]|null
+     * @return \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]|null
      */
     public function getEditHistory()
     {
@@ -1032,7 +1032,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     /**
      * Sets edit_history
      *
-     * @param \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]|null $edit_history Every prior version of the message, oldest first.
+     * @param \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner[]|null $edit_history Every prior version of the message, oldest first.
      *
      * @return self
      */
@@ -1221,7 +1221,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     /**
      * Gets delivery_error
      *
-     * @return \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError|null
+     * @return \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError|null
      */
     public function getDeliveryError()
     {
@@ -1231,7 +1231,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     /**
      * Sets delivery_error
      *
-     * @param \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError|null $delivery_error delivery_error
+     * @param \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError|null $delivery_error delivery_error
      *
      * @return self
      */

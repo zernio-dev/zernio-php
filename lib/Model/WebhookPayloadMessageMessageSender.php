@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadMessageMessageSender Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -66,7 +66,7 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
         'business_scoped_user_id' => 'string',
         'parent_business_scoped_user_id' => 'string',
         'whatsapp_username' => 'string',
-        'instagram_profile' => '\Late\Model\WebhookPayloadMessageMessageSenderInstagramProfile'
+        'instagram_profile' => '\Zernio\Model\WebhookPayloadMessageMessageSenderInstagramProfile'
     ];
 
     /**
@@ -568,7 +568,7 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
     /**
      * Gets instagram_profile
      *
-     * @return \Late\Model\WebhookPayloadMessageMessageSenderInstagramProfile|null
+     * @return \Zernio\Model\WebhookPayloadMessageMessageSenderInstagramProfile|null
      */
     public function getInstagramProfile()
     {
@@ -578,7 +578,7 @@ class WebhookPayloadMessageMessageSender implements ModelInterface, ArrayAccess,
     /**
      * Sets instagram_profile
      *
-     * @param \Late\Model\WebhookPayloadMessageMessageSenderInstagramProfile|null $instagram_profile instagram_profile
+     * @param \Zernio\Model\WebhookPayloadMessageMessageSenderInstagramProfile|null $instagram_profile instagram_profile
      *
      * @return self
      */

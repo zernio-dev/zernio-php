@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WhatsAppHeaderComponent Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class WhatsAppHeaderComponent implements ModelInterface, ArrayAccess, \JsonSeria
         'type' => 'string',
         'format' => 'string',
         'text' => 'string',
-        'example' => '\Late\Model\WhatsAppHeaderComponentExample'
+        'example' => '\Zernio\Model\WhatsAppHeaderComponentExample'
     ];
 
     /**
@@ -475,7 +475,7 @@ class WhatsAppHeaderComponent implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets example
      *
-     * @return \Late\Model\WhatsAppHeaderComponentExample|null
+     * @return \Zernio\Model\WhatsAppHeaderComponentExample|null
      */
     public function getExample()
     {
@@ -485,7 +485,7 @@ class WhatsAppHeaderComponent implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets example
      *
-     * @param \Late\Model\WhatsAppHeaderComponentExample|null $example example
+     * @param \Zernio\Model\WhatsAppHeaderComponentExample|null $example example
      *
      * @return self
      */

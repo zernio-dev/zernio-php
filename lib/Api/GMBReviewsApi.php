@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * GMBReviewsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -135,12 +135,12 @@ class GMBReviewsApi
      * Batch get reviews
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request batch_get_google_business_reviews_request (required)
+     * @param  \Zernio\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request batch_get_google_business_reviews_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['batchGetGoogleBusinessReviews'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\BatchGetGoogleBusinessReviews200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\BatchGetGoogleBusinessReviews200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function batchGetGoogleBusinessReviews($account_id, $batch_get_google_business_reviews_request, string $contentType = self::contentTypes['batchGetGoogleBusinessReviews'][0])
     {
@@ -154,12 +154,12 @@ class GMBReviewsApi
      * Batch get reviews
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request (required)
+     * @param  \Zernio\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['batchGetGoogleBusinessReviews'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\BatchGetGoogleBusinessReviews200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\BatchGetGoogleBusinessReviews200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function batchGetGoogleBusinessReviewsWithHttpInfo($account_id, $batch_get_google_business_reviews_request, string $contentType = self::contentTypes['batchGetGoogleBusinessReviews'][0])
     {
@@ -191,19 +191,19 @@ class GMBReviewsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\BatchGetGoogleBusinessReviews200Response',
+                        '\Zernio\Model\BatchGetGoogleBusinessReviews200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -225,7 +225,7 @@ class GMBReviewsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\BatchGetGoogleBusinessReviews200Response',
+                '\Zernio\Model\BatchGetGoogleBusinessReviews200Response',
                 $request,
                 $response,
             );
@@ -234,7 +234,7 @@ class GMBReviewsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\BatchGetGoogleBusinessReviews200Response',
+                        '\Zernio\Model\BatchGetGoogleBusinessReviews200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -242,7 +242,7 @@ class GMBReviewsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -250,7 +250,7 @@ class GMBReviewsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -268,7 +268,7 @@ class GMBReviewsApi
      * Batch get reviews
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request (required)
+     * @param  \Zernio\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['batchGetGoogleBusinessReviews'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -290,7 +290,7 @@ class GMBReviewsApi
      * Batch get reviews
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request (required)
+     * @param  \Zernio\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['batchGetGoogleBusinessReviews'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -298,7 +298,7 @@ class GMBReviewsApi
      */
     public function batchGetGoogleBusinessReviewsAsyncWithHttpInfo($account_id, $batch_get_google_business_reviews_request, string $contentType = self::contentTypes['batchGetGoogleBusinessReviews'][0])
     {
-        $returnType = '\Late\Model\BatchGetGoogleBusinessReviews200Response';
+        $returnType = '\Zernio\Model\BatchGetGoogleBusinessReviews200Response';
         $request = $this->batchGetGoogleBusinessReviewsRequest($account_id, $batch_get_google_business_reviews_request, $contentType);
 
         return $this->client
@@ -341,7 +341,7 @@ class GMBReviewsApi
      * Create request for operation 'batchGetGoogleBusinessReviews'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request (required)
+     * @param  \Zernio\Model\BatchGetGoogleBusinessReviewsRequest $batch_get_google_business_reviews_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['batchGetGoogleBusinessReviews'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -459,9 +459,9 @@ class GMBReviewsApi
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessReviews'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetGoogleBusinessReviews200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\GetGoogleBusinessReviews200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
      */
     public function getGoogleBusinessReviews($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
     {
@@ -480,9 +480,9 @@ class GMBReviewsApi
      * @param  string|null $page_token Pagination token from previous response (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessReviews'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetGoogleBusinessReviews200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse|\Late\Model\InlineObject1|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetGoogleBusinessReviews200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGoogleBusinessReviewsWithHttpInfo($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
     {
@@ -514,37 +514,37 @@ class GMBReviewsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetGoogleBusinessReviews200Response',
+                        '\Zernio\Model\GetGoogleBusinessReviews200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 403:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
                 case 500:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -566,7 +566,7 @@ class GMBReviewsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetGoogleBusinessReviews200Response',
+                '\Zernio\Model\GetGoogleBusinessReviews200Response',
                 $request,
                 $response,
             );
@@ -575,7 +575,7 @@ class GMBReviewsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetGoogleBusinessReviews200Response',
+                        '\Zernio\Model\GetGoogleBusinessReviews200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -583,7 +583,7 @@ class GMBReviewsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -591,7 +591,7 @@ class GMBReviewsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -599,7 +599,7 @@ class GMBReviewsApi
                 case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -607,7 +607,7 @@ class GMBReviewsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -615,7 +615,7 @@ class GMBReviewsApi
                 case 500:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -667,7 +667,7 @@ class GMBReviewsApi
      */
     public function getGoogleBusinessReviewsAsyncWithHttpInfo($account_id, $location_id = null, $page_size = 50, $page_token = null, string $contentType = self::contentTypes['getGoogleBusinessReviews'][0])
     {
-        $returnType = '\Late\Model\GetGoogleBusinessReviews200Response';
+        $returnType = '\Zernio\Model\GetGoogleBusinessReviews200Response';
         $request = $this->getGoogleBusinessReviewsRequest($account_id, $location_id, $page_size, $page_token, $contentType);
 
         return $this->client

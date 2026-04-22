@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**start_date** | [**\Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate**](GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate.md) |  | [optional]
-**end_date** | [**\Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate**](GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate.md) |  | [optional]
+**start_date** | [**\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate**](GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate.md) |  | [optional]
+**end_date** | [**\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate**](GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate.md) |  | [optional]
 **open_time** | **string** |  | [optional]
 **close_time** | **string** |  | [optional]
 **closed** | **bool** |  | [optional]

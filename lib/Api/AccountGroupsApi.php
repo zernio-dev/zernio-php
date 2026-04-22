@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * AccountGroupsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -140,12 +140,12 @@ class AccountGroupsApi
      *
      * Create group
      *
-     * @param  \Late\Model\CreateAccountGroupRequest $create_account_group_request create_account_group_request (required)
+     * @param  \Zernio\Model\CreateAccountGroupRequest $create_account_group_request create_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAccountGroup'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CreateAccountGroup201Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\CreateAccountGroup201Response|\Zernio\Model\InlineObject
      */
     public function createAccountGroup($create_account_group_request, string $contentType = self::contentTypes['createAccountGroup'][0])
     {
@@ -158,12 +158,12 @@ class AccountGroupsApi
      *
      * Create group
      *
-     * @param  \Late\Model\CreateAccountGroupRequest $create_account_group_request (required)
+     * @param  \Zernio\Model\CreateAccountGroupRequest $create_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAccountGroup'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CreateAccountGroup201Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateAccountGroup201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createAccountGroupWithHttpInfo($create_account_group_request, string $contentType = self::contentTypes['createAccountGroup'][0])
     {
@@ -195,13 +195,13 @@ class AccountGroupsApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateAccountGroup201Response',
+                        '\Zernio\Model\CreateAccountGroup201Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -223,7 +223,7 @@ class AccountGroupsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CreateAccountGroup201Response',
+                '\Zernio\Model\CreateAccountGroup201Response',
                 $request,
                 $response,
             );
@@ -232,7 +232,7 @@ class AccountGroupsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateAccountGroup201Response',
+                        '\Zernio\Model\CreateAccountGroup201Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -240,7 +240,7 @@ class AccountGroupsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -257,7 +257,7 @@ class AccountGroupsApi
      *
      * Create group
      *
-     * @param  \Late\Model\CreateAccountGroupRequest $create_account_group_request (required)
+     * @param  \Zernio\Model\CreateAccountGroupRequest $create_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAccountGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -278,7 +278,7 @@ class AccountGroupsApi
      *
      * Create group
      *
-     * @param  \Late\Model\CreateAccountGroupRequest $create_account_group_request (required)
+     * @param  \Zernio\Model\CreateAccountGroupRequest $create_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAccountGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -286,7 +286,7 @@ class AccountGroupsApi
      */
     public function createAccountGroupAsyncWithHttpInfo($create_account_group_request, string $contentType = self::contentTypes['createAccountGroup'][0])
     {
-        $returnType = '\Late\Model\CreateAccountGroup201Response';
+        $returnType = '\Zernio\Model\CreateAccountGroup201Response';
         $request = $this->createAccountGroupRequest($create_account_group_request, $contentType);
 
         return $this->client
@@ -328,7 +328,7 @@ class AccountGroupsApi
     /**
      * Create request for operation 'createAccountGroup'
      *
-     * @param  \Late\Model\CreateAccountGroupRequest $create_account_group_request (required)
+     * @param  \Zernio\Model\CreateAccountGroupRequest $create_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createAccountGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -428,9 +428,9 @@ class AccountGroupsApi
      * @param  string $group_id group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAccountGroup'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\DeleteAccountGroup200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function deleteAccountGroup($group_id, string $contentType = self::contentTypes['deleteAccountGroup'][0])
     {
@@ -446,9 +446,9 @@ class AccountGroupsApi
      * @param  string $group_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteAccountGroup'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\DeleteAccountGroup200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteAccountGroupWithHttpInfo($group_id, string $contentType = self::contentTypes['deleteAccountGroup'][0])
     {
@@ -480,19 +480,19 @@ class AccountGroupsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\DeleteAccountGroup200Response',
+                        '\Zernio\Model\DeleteAccountGroup200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -514,7 +514,7 @@ class AccountGroupsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\DeleteAccountGroup200Response',
+                '\Zernio\Model\DeleteAccountGroup200Response',
                 $request,
                 $response,
             );
@@ -523,7 +523,7 @@ class AccountGroupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\DeleteAccountGroup200Response',
+                        '\Zernio\Model\DeleteAccountGroup200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -531,7 +531,7 @@ class AccountGroupsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -539,7 +539,7 @@ class AccountGroupsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -585,7 +585,7 @@ class AccountGroupsApi
      */
     public function deleteAccountGroupAsyncWithHttpInfo($group_id, string $contentType = self::contentTypes['deleteAccountGroup'][0])
     {
-        $returnType = '\Late\Model\DeleteAccountGroup200Response';
+        $returnType = '\Zernio\Model\DeleteAccountGroup200Response';
         $request = $this->deleteAccountGroupRequest($group_id, $contentType);
 
         return $this->client
@@ -727,9 +727,9 @@ class AccountGroupsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountGroups'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListAccountGroups200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListAccountGroups200Response|\Zernio\Model\InlineObject
      */
     public function listAccountGroups(string $contentType = self::contentTypes['listAccountGroups'][0])
     {
@@ -744,9 +744,9 @@ class AccountGroupsApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAccountGroups'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListAccountGroups200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListAccountGroups200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listAccountGroupsWithHttpInfo(string $contentType = self::contentTypes['listAccountGroups'][0])
     {
@@ -778,13 +778,13 @@ class AccountGroupsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListAccountGroups200Response',
+                        '\Zernio\Model\ListAccountGroups200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -806,7 +806,7 @@ class AccountGroupsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListAccountGroups200Response',
+                '\Zernio\Model\ListAccountGroups200Response',
                 $request,
                 $response,
             );
@@ -815,7 +815,7 @@ class AccountGroupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListAccountGroups200Response',
+                        '\Zernio\Model\ListAccountGroups200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -823,7 +823,7 @@ class AccountGroupsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -867,7 +867,7 @@ class AccountGroupsApi
      */
     public function listAccountGroupsAsyncWithHttpInfo(string $contentType = self::contentTypes['listAccountGroups'][0])
     {
-        $returnType = '\Late\Model\ListAccountGroups200Response';
+        $returnType = '\Zernio\Model\ListAccountGroups200Response';
         $request = $this->listAccountGroupsRequest($contentType);
 
         return $this->client
@@ -992,12 +992,12 @@ class AccountGroupsApi
      * Update group
      *
      * @param  string $group_id group_id (required)
-     * @param  \Late\Model\UpdateAccountGroupRequest $update_account_group_request update_account_group_request (required)
+     * @param  \Zernio\Model\UpdateAccountGroupRequest $update_account_group_request update_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountGroup'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateAccountGroup200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\UpdateAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function updateAccountGroup($group_id, $update_account_group_request, string $contentType = self::contentTypes['updateAccountGroup'][0])
     {
@@ -1011,12 +1011,12 @@ class AccountGroupsApi
      * Update group
      *
      * @param  string $group_id (required)
-     * @param  \Late\Model\UpdateAccountGroupRequest $update_account_group_request (required)
+     * @param  \Zernio\Model\UpdateAccountGroupRequest $update_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountGroup'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateAccountGroup200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateAccountGroupWithHttpInfo($group_id, $update_account_group_request, string $contentType = self::contentTypes['updateAccountGroup'][0])
     {
@@ -1048,19 +1048,19 @@ class AccountGroupsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateAccountGroup200Response',
+                        '\Zernio\Model\UpdateAccountGroup200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1082,7 +1082,7 @@ class AccountGroupsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateAccountGroup200Response',
+                '\Zernio\Model\UpdateAccountGroup200Response',
                 $request,
                 $response,
             );
@@ -1091,7 +1091,7 @@ class AccountGroupsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateAccountGroup200Response',
+                        '\Zernio\Model\UpdateAccountGroup200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1099,7 +1099,7 @@ class AccountGroupsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1107,7 +1107,7 @@ class AccountGroupsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1125,7 +1125,7 @@ class AccountGroupsApi
      * Update group
      *
      * @param  string $group_id (required)
-     * @param  \Late\Model\UpdateAccountGroupRequest $update_account_group_request (required)
+     * @param  \Zernio\Model\UpdateAccountGroupRequest $update_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1147,7 +1147,7 @@ class AccountGroupsApi
      * Update group
      *
      * @param  string $group_id (required)
-     * @param  \Late\Model\UpdateAccountGroupRequest $update_account_group_request (required)
+     * @param  \Zernio\Model\UpdateAccountGroupRequest $update_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1155,7 +1155,7 @@ class AccountGroupsApi
      */
     public function updateAccountGroupAsyncWithHttpInfo($group_id, $update_account_group_request, string $contentType = self::contentTypes['updateAccountGroup'][0])
     {
-        $returnType = '\Late\Model\UpdateAccountGroup200Response';
+        $returnType = '\Zernio\Model\UpdateAccountGroup200Response';
         $request = $this->updateAccountGroupRequest($group_id, $update_account_group_request, $contentType);
 
         return $this->client
@@ -1198,7 +1198,7 @@ class AccountGroupsApi
      * Create request for operation 'updateAccountGroup'
      *
      * @param  string $group_id (required)
-     * @param  \Late\Model\UpdateAccountGroupRequest $update_account_group_request (required)
+     * @param  \Zernio\Model\UpdateAccountGroupRequest $update_account_group_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAccountGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

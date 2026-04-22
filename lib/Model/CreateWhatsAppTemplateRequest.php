@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateWhatsAppTemplateRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,10 +62,10 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
         'name' => 'string',
         'category' => 'string',
         'language' => 'string',
-        'components' => '\Late\Model\WhatsAppTemplateComponent[]',
+        'components' => '\Zernio\Model\WhatsAppTemplateComponent[]',
         'library_template_name' => 'string',
         'library_template_body_inputs' => 'object',
-        'library_template_button_inputs' => '\Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner[]'
+        'library_template_button_inputs' => '\Zernio\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner[]'
     ];
 
     /**
@@ -511,7 +511,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets components
      *
-     * @return \Late\Model\WhatsAppTemplateComponent[]|null
+     * @return \Zernio\Model\WhatsAppTemplateComponent[]|null
      */
     public function getComponents()
     {
@@ -521,7 +521,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets components
      *
-     * @param \Late\Model\WhatsAppTemplateComponent[]|null $components Template components (header, body, footer, buttons). Required for custom templates, omit when using library_template_name.
+     * @param \Zernio\Model\WhatsAppTemplateComponent[]|null $components Template components (header, body, footer, buttons). Required for custom templates, omit when using library_template_name.
      *
      * @return self
      */
@@ -597,7 +597,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets library_template_button_inputs
      *
-     * @return \Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner[]|null
+     * @return \Zernio\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner[]|null
      */
     public function getLibraryTemplateButtonInputs()
     {
@@ -607,7 +607,7 @@ class CreateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets library_template_button_inputs
      *
-     * @param \Late\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner[]|null $library_template_button_inputs Optional button customizations for library templates. Each item specifies button type and configuration (e.g., URL, phone number, quick reply).
+     * @param \Zernio\Model\CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner[]|null $library_template_button_inputs Optional button customizations for library templates. Each item specifies button type and configuration (e.g., URL, phone number, quick reply).
      *
      * @return self
      */

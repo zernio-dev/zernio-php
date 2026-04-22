@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsI
       * @var string[]
       */
     protected static $openAPITypes = [
-        'start_date' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate',
-        'end_date' => '\Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate',
+        'start_date' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate',
+        'end_date' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate',
         'open_time' => 'string',
         'close_time' => 'string',
         'closed' => 'bool'
@@ -321,7 +321,7 @@ class GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsI
     /**
      * Gets start_date
      *
-     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate|null
+     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate|null
      */
     public function getStartDate()
     {
@@ -331,7 +331,7 @@ class GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsI
     /**
      * Sets start_date
      *
-     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate|null $start_date start_date
+     * @param \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate|null $start_date start_date
      *
      * @return self
      */
@@ -348,7 +348,7 @@ class GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsI
     /**
      * Gets end_date
      *
-     * @return \Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate|null
+     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate|null
      */
     public function getEndDate()
     {
@@ -358,7 +358,7 @@ class GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsI
     /**
      * Sets end_date
      *
-     * @param \Late\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate|null $end_date end_date
+     * @param \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHoursSpecialHourPeriodsInnerStartDate|null $end_date end_date
      *
      * @return self
      */

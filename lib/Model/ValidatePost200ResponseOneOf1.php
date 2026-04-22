@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ValidatePost200ResponseOneOf1 Class Doc Comment
  *
  * @category Class
  * @description Invalid post
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,8 +60,8 @@ class ValidatePost200ResponseOneOf1 implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'valid' => 'bool',
-        'errors' => '\Late\Model\ValidatePost200ResponseOneOf1ErrorsInner[]',
-        'warnings' => '\Late\Model\ValidatePost200ResponseOneOfWarningsInner[]'
+        'errors' => '\Zernio\Model\ValidatePost200ResponseOneOf1ErrorsInner[]',
+        'warnings' => '\Zernio\Model\ValidatePost200ResponseOneOfWarningsInner[]'
     ];
 
     /**
@@ -335,7 +335,7 @@ class ValidatePost200ResponseOneOf1 implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets errors
      *
-     * @return \Late\Model\ValidatePost200ResponseOneOf1ErrorsInner[]|null
+     * @return \Zernio\Model\ValidatePost200ResponseOneOf1ErrorsInner[]|null
      */
     public function getErrors()
     {
@@ -345,7 +345,7 @@ class ValidatePost200ResponseOneOf1 implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets errors
      *
-     * @param \Late\Model\ValidatePost200ResponseOneOf1ErrorsInner[]|null $errors errors
+     * @param \Zernio\Model\ValidatePost200ResponseOneOf1ErrorsInner[]|null $errors errors
      *
      * @return self
      */
@@ -362,7 +362,7 @@ class ValidatePost200ResponseOneOf1 implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets warnings
      *
-     * @return \Late\Model\ValidatePost200ResponseOneOfWarningsInner[]|null
+     * @return \Zernio\Model\ValidatePost200ResponseOneOfWarningsInner[]|null
      */
     public function getWarnings()
     {
@@ -372,7 +372,7 @@ class ValidatePost200ResponseOneOf1 implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets warnings
      *
-     * @param \Late\Model\ValidatePost200ResponseOneOfWarningsInner[]|null $warnings warnings
+     * @param \Zernio\Model\ValidatePost200ResponseOneOfWarningsInner[]|null $warnings warnings
      *
      * @return self
      */

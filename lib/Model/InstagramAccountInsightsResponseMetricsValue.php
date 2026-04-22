@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * InstagramAccountInsightsResponseMetricsValue Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class InstagramAccountInsightsResponseMetricsValue implements ModelInterface, Ar
       */
     protected static $openAPITypes = [
         'total' => 'float',
-        'values' => '\Late\Model\InstagramAccountInsightsResponseMetricsValueValuesInner[]',
-        'breakdowns' => '\Late\Model\InstagramAccountInsightsResponseMetricsValueBreakdownsInner[]'
+        'values' => '\Zernio\Model\InstagramAccountInsightsResponseMetricsValueValuesInner[]',
+        'breakdowns' => '\Zernio\Model\InstagramAccountInsightsResponseMetricsValueBreakdownsInner[]'
     ];
 
     /**
@@ -334,7 +334,7 @@ class InstagramAccountInsightsResponseMetricsValue implements ModelInterface, Ar
     /**
      * Gets values
      *
-     * @return \Late\Model\InstagramAccountInsightsResponseMetricsValueValuesInner[]|null
+     * @return \Zernio\Model\InstagramAccountInsightsResponseMetricsValueValuesInner[]|null
      */
     public function getValues()
     {
@@ -344,7 +344,7 @@ class InstagramAccountInsightsResponseMetricsValue implements ModelInterface, Ar
     /**
      * Sets values
      *
-     * @param \Late\Model\InstagramAccountInsightsResponseMetricsValueValuesInner[]|null $values Daily values (only for time_series)
+     * @param \Zernio\Model\InstagramAccountInsightsResponseMetricsValueValuesInner[]|null $values Daily values (only for time_series)
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class InstagramAccountInsightsResponseMetricsValue implements ModelInterface, Ar
     /**
      * Gets breakdowns
      *
-     * @return \Late\Model\InstagramAccountInsightsResponseMetricsValueBreakdownsInner[]|null
+     * @return \Zernio\Model\InstagramAccountInsightsResponseMetricsValueBreakdownsInner[]|null
      */
     public function getBreakdowns()
     {
@@ -371,7 +371,7 @@ class InstagramAccountInsightsResponseMetricsValue implements ModelInterface, Ar
     /**
      * Sets breakdowns
      *
-     * @param \Late\Model\InstagramAccountInsightsResponseMetricsValueBreakdownsInner[]|null $breakdowns Breakdown values (only for total_value with breakdown)
+     * @param \Zernio\Model\InstagramAccountInsightsResponseMetricsValueBreakdownsInner[]|null $breakdowns Breakdown values (only for total_value with breakdown)
      *
      * @return self
      */

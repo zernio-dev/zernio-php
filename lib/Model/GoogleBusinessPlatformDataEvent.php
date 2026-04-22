@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GoogleBusinessPlatformDataEvent Class Doc Comment
  *
  * @category Class
  * @description Event details. Required when topicType is EVENT. Google returns 400 if omitted for EVENT posts.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class GoogleBusinessPlatformDataEvent implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'title' => 'string',
-        'schedule' => '\Late\Model\GoogleBusinessPlatformDataEventSchedule'
+        'schedule' => '\Zernio\Model\GoogleBusinessPlatformDataEventSchedule'
     ];
 
     /**
@@ -334,7 +334,7 @@ class GoogleBusinessPlatformDataEvent implements ModelInterface, ArrayAccess, \J
     /**
      * Gets schedule
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataEventSchedule
+     * @return \Zernio\Model\GoogleBusinessPlatformDataEventSchedule
      */
     public function getSchedule()
     {
@@ -344,7 +344,7 @@ class GoogleBusinessPlatformDataEvent implements ModelInterface, ArrayAccess, \J
     /**
      * Sets schedule
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataEventSchedule $schedule schedule
+     * @param \Zernio\Model\GoogleBusinessPlatformDataEventSchedule $schedule schedule
      *
      * @return self
      */

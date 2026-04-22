@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * GMBAttributesApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -138,9 +138,9 @@ class GMBAttributesApi
      * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessAttributes'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetGoogleBusinessAttributes200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\GetGoogleBusinessAttributes200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function getGoogleBusinessAttributes($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessAttributes'][0])
     {
@@ -157,9 +157,9 @@ class GMBAttributesApi
      * @param  string|null $location_id Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGoogleBusinessAttributes'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetGoogleBusinessAttributes200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetGoogleBusinessAttributes200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getGoogleBusinessAttributesWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessAttributes'][0])
     {
@@ -191,19 +191,19 @@ class GMBAttributesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetGoogleBusinessAttributes200Response',
+                        '\Zernio\Model\GetGoogleBusinessAttributes200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -225,7 +225,7 @@ class GMBAttributesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetGoogleBusinessAttributes200Response',
+                '\Zernio\Model\GetGoogleBusinessAttributes200Response',
                 $request,
                 $response,
             );
@@ -234,7 +234,7 @@ class GMBAttributesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetGoogleBusinessAttributes200Response',
+                        '\Zernio\Model\GetGoogleBusinessAttributes200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -242,7 +242,7 @@ class GMBAttributesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -250,7 +250,7 @@ class GMBAttributesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -298,7 +298,7 @@ class GMBAttributesApi
      */
     public function getGoogleBusinessAttributesAsyncWithHttpInfo($account_id, $location_id = null, string $contentType = self::contentTypes['getGoogleBusinessAttributes'][0])
     {
-        $returnType = '\Late\Model\GetGoogleBusinessAttributes200Response';
+        $returnType = '\Zernio\Model\GetGoogleBusinessAttributes200Response';
         $request = $this->getGoogleBusinessAttributesRequest($account_id, $location_id, $contentType);
 
         return $this->client
@@ -450,13 +450,13 @@ class GMBAttributesApi
      * Update attributes
      *
      * @param  string $account_id account_id (required)
-     * @param  \Late\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request update_google_business_attributes_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request update_google_business_attributes_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessAttributes'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateGoogleBusinessAttributes200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse
+     * @return \Zernio\Model\UpdateGoogleBusinessAttributes200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
      */
     public function updateGoogleBusinessAttributes($account_id, $update_google_business_attributes_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessAttributes'][0])
     {
@@ -470,13 +470,13 @@ class GMBAttributesApi
      * Update attributes
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessAttributes'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateGoogleBusinessAttributes200Response|\Late\Model\ErrorResponse|\Late\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateGoogleBusinessAttributes200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateGoogleBusinessAttributesWithHttpInfo($account_id, $update_google_business_attributes_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessAttributes'][0])
     {
@@ -508,19 +508,19 @@ class GMBAttributesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateGoogleBusinessAttributes200Response',
+                        '\Zernio\Model\UpdateGoogleBusinessAttributes200Response',
                         $request,
                         $response,
                     );
                 case 400:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $request,
                         $response,
                     );
@@ -542,7 +542,7 @@ class GMBAttributesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateGoogleBusinessAttributes200Response',
+                '\Zernio\Model\UpdateGoogleBusinessAttributes200Response',
                 $request,
                 $response,
             );
@@ -551,7 +551,7 @@ class GMBAttributesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateGoogleBusinessAttributes200Response',
+                        '\Zernio\Model\UpdateGoogleBusinessAttributes200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -559,7 +559,7 @@ class GMBAttributesApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -567,7 +567,7 @@ class GMBAttributesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ErrorResponse',
+                        '\Zernio\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -585,7 +585,7 @@ class GMBAttributesApi
      * Update attributes
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessAttributes'] to see the possible values for this operation
      *
@@ -608,7 +608,7 @@ class GMBAttributesApi
      * Update attributes
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessAttributes'] to see the possible values for this operation
      *
@@ -617,7 +617,7 @@ class GMBAttributesApi
      */
     public function updateGoogleBusinessAttributesAsyncWithHttpInfo($account_id, $update_google_business_attributes_request, $location_id = null, string $contentType = self::contentTypes['updateGoogleBusinessAttributes'][0])
     {
-        $returnType = '\Late\Model\UpdateGoogleBusinessAttributes200Response';
+        $returnType = '\Zernio\Model\UpdateGoogleBusinessAttributes200Response';
         $request = $this->updateGoogleBusinessAttributesRequest($account_id, $update_google_business_attributes_request, $location_id, $contentType);
 
         return $this->client
@@ -660,7 +660,7 @@ class GMBAttributesApi
      * Create request for operation 'updateGoogleBusinessAttributes'
      *
      * @param  string $account_id (required)
-     * @param  \Late\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request (required)
+     * @param  \Zernio\Model\UpdateGoogleBusinessAttributesRequest $update_google_business_attributes_request (required)
      * @param  string|null $location_id Override which location to target. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGoogleBusinessAttributes'] to see the possible values for this operation
      *

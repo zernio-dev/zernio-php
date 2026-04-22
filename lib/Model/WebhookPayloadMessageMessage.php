@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadMessageMessage Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,8 +64,8 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
         'platform_message_id' => 'string',
         'direction' => 'string',
         'text' => 'string',
-        'attachments' => '\Late\Model\InboxWebhookMessageAttachmentsInner[]',
-        'sender' => '\Late\Model\WebhookPayloadMessageMessageSender',
+        'attachments' => '\Zernio\Model\InboxWebhookMessageAttachmentsInner[]',
+        'sender' => '\Zernio\Model\WebhookPayloadMessageMessageSender',
         'sent_at' => '\DateTime',
         'is_read' => 'bool'
     ];
@@ -620,7 +620,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets attachments
      *
-     * @return \Late\Model\InboxWebhookMessageAttachmentsInner[]
+     * @return \Zernio\Model\InboxWebhookMessageAttachmentsInner[]
      */
     public function getAttachments()
     {
@@ -630,7 +630,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets attachments
      *
-     * @param \Late\Model\InboxWebhookMessageAttachmentsInner[] $attachments attachments
+     * @param \Zernio\Model\InboxWebhookMessageAttachmentsInner[] $attachments attachments
      *
      * @return self
      */
@@ -647,7 +647,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets sender
      *
-     * @return \Late\Model\WebhookPayloadMessageMessageSender
+     * @return \Zernio\Model\WebhookPayloadMessageMessageSender
      */
     public function getSender()
     {
@@ -657,7 +657,7 @@ class WebhookPayloadMessageMessage implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets sender
      *
-     * @param \Late\Model\WebhookPayloadMessageMessageSender $sender sender
+     * @param \Zernio\Model\WebhookPayloadMessageMessageSender $sender sender
      *
      * @return self
      */

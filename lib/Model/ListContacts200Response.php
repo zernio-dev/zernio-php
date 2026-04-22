@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListContacts200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,9 +59,9 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'contacts' => '\Late\Model\ListContacts200ResponseContactsInner[]',
-        'filters' => '\Late\Model\ListContacts200ResponseFilters',
-        'pagination' => '\Late\Model\ListContacts200ResponsePagination'
+        'contacts' => '\Zernio\Model\ListContacts200ResponseContactsInner[]',
+        'filters' => '\Zernio\Model\ListContacts200ResponseFilters',
+        'pagination' => '\Zernio\Model\ListContacts200ResponsePagination'
     ];
 
     /**
@@ -341,7 +341,7 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets contacts
      *
-     * @return \Late\Model\ListContacts200ResponseContactsInner[]|null
+     * @return \Zernio\Model\ListContacts200ResponseContactsInner[]|null
      */
     public function getContacts()
     {
@@ -351,7 +351,7 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets contacts
      *
-     * @param \Late\Model\ListContacts200ResponseContactsInner[]|null $contacts contacts
+     * @param \Zernio\Model\ListContacts200ResponseContactsInner[]|null $contacts contacts
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets filters
      *
-     * @return \Late\Model\ListContacts200ResponseFilters|null
+     * @return \Zernio\Model\ListContacts200ResponseFilters|null
      */
     public function getFilters()
     {
@@ -378,7 +378,7 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets filters
      *
-     * @param \Late\Model\ListContacts200ResponseFilters|null $filters filters
+     * @param \Zernio\Model\ListContacts200ResponseFilters|null $filters filters
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets pagination
      *
-     * @return \Late\Model\ListContacts200ResponsePagination|null
+     * @return \Zernio\Model\ListContacts200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -405,7 +405,7 @@ class ListContacts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets pagination
      *
-     * @param \Late\Model\ListContacts200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\ListContacts200ResponsePagination|null $pagination pagination
      *
      * @return self
      */

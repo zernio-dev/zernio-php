@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ConversionEvent Class Doc Comment
  *
  * @category Class
  * @description A single conversion event to relay to the ad platform. All PII fields (email, phone, names) are hashed with SHA-256 server-side using each platform&#39;s normalization rules before they leave Zernio. Callers send plaintext.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,8 +64,8 @@ class ConversionEvent implements ModelInterface, ArrayAccess, \JsonSerializable
         'event_id' => 'string',
         'value' => 'float',
         'currency' => 'string',
-        'user' => '\Late\Model\ConversionEventUser',
-        'items' => '\Late\Model\ConversionEventItemsInner[]',
+        'user' => '\Zernio\Model\ConversionEventUser',
+        'items' => '\Zernio\Model\ConversionEventItemsInner[]',
         'source_url' => 'string',
         'action_source' => 'string',
         'platform_data' => 'array<string,mixed>'
@@ -536,7 +536,7 @@ class ConversionEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets user
      *
-     * @return \Late\Model\ConversionEventUser
+     * @return \Zernio\Model\ConversionEventUser
      */
     public function getUser()
     {
@@ -546,7 +546,7 @@ class ConversionEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets user
      *
-     * @param \Late\Model\ConversionEventUser $user user
+     * @param \Zernio\Model\ConversionEventUser $user user
      *
      * @return self
      */
@@ -563,7 +563,7 @@ class ConversionEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets items
      *
-     * @return \Late\Model\ConversionEventItemsInner[]|null
+     * @return \Zernio\Model\ConversionEventItemsInner[]|null
      */
     public function getItems()
     {
@@ -573,7 +573,7 @@ class ConversionEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets items
      *
-     * @param \Late\Model\ConversionEventItemsInner[]|null $items Item-level detail for ecommerce events.
+     * @param \Zernio\Model\ConversionEventItemsInner[]|null $items Item-level detail for ecommerce events.
      *
      * @return self
      */

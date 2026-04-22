@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendInboxMessageRequestInteractiveAction Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,9 +59,9 @@ class SendInboxMessageRequestInteractiveAction implements ModelInterface, ArrayA
       */
     protected static $openAPITypes = [
         'button' => 'string',
-        'sections' => '\Late\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[]',
+        'sections' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[]',
         'name' => 'string',
-        'parameters' => '\Late\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters'
+        'parameters' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters'
     ];
 
     /**
@@ -383,7 +383,7 @@ class SendInboxMessageRequestInteractiveAction implements ModelInterface, ArrayA
     /**
      * Gets sections
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[]
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[]
      */
     public function getSections()
     {
@@ -393,7 +393,7 @@ class SendInboxMessageRequestInteractiveAction implements ModelInterface, ArrayA
     /**
      * Sets sections
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[] $sections 1-10 sections. Total rows across all sections cannot exceed 10.
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[] $sections 1-10 sections. Total rows across all sections cannot exceed 10.
      *
      * @return self
      */
@@ -454,7 +454,7 @@ class SendInboxMessageRequestInteractiveAction implements ModelInterface, ArrayA
     /**
      * Gets parameters
      *
-     * @return \Late\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters
      */
     public function getParameters()
     {
@@ -464,7 +464,7 @@ class SendInboxMessageRequestInteractiveAction implements ModelInterface, ArrayA
     /**
      * Sets parameters
      *
-     * @param \Late\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters $parameters parameters
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters $parameters parameters
      *
      * @return self
      */

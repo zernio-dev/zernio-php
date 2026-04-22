@@ -1,4 +1,4 @@
-# Late\AnalyticsApi
+# Zernio\AnalyticsApi
 
 
 
@@ -27,7 +27,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getAnalytics()`
 
 ```php
-getAnalytics($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order): \Late\Model\GetAnalytics200Response
+getAnalytics($post_id, $platform, $profile_id, $account_id, $source, $from_date, $to_date, $limit, $page, $sort_by, $order): \Zernio\Model\GetAnalytics200Response
 ```
 
 Get post analytics
@@ -42,10 +42,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -89,7 +89,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetAnalytics200Response**](../Model/GetAnalytics200Response.md)
+[**\Zernio\Model\GetAnalytics200Response**](../Model/GetAnalytics200Response.md)
 
 ### Authorization
 
@@ -107,7 +107,7 @@ try {
 ## `getBestTimeToPost()`
 
 ```php
-getBestTimeToPost($platform, $profile_id, $source): \Late\Model\GetBestTimeToPost200Response
+getBestTimeToPost($platform, $profile_id, $source): \Zernio\Model\GetBestTimeToPost200Response
 ```
 
 Get best times to post
@@ -122,10 +122,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -153,7 +153,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetBestTimeToPost200Response**](../Model/GetBestTimeToPost200Response.md)
+[**\Zernio\Model\GetBestTimeToPost200Response**](../Model/GetBestTimeToPost200Response.md)
 
 ### Authorization
 
@@ -171,7 +171,7 @@ try {
 ## `getContentDecay()`
 
 ```php
-getContentDecay($platform, $profile_id, $source): \Late\Model\GetContentDecay200Response
+getContentDecay($platform, $profile_id, $source): \Zernio\Model\GetContentDecay200Response
 ```
 
 Get content performance decay
@@ -186,10 +186,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -217,7 +217,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetContentDecay200Response**](../Model/GetContentDecay200Response.md)
+[**\Zernio\Model\GetContentDecay200Response**](../Model/GetContentDecay200Response.md)
 
 ### Authorization
 
@@ -235,7 +235,7 @@ try {
 ## `getDailyMetrics()`
 
 ```php
-getDailyMetrics($platform, $profile_id, $account_id, $from_date, $to_date, $source): \Late\Model\GetDailyMetrics200Response
+getDailyMetrics($platform, $profile_id, $account_id, $from_date, $to_date, $source): \Zernio\Model\GetDailyMetrics200Response
 ```
 
 Get daily aggregated metrics
@@ -250,10 +250,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -287,7 +287,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetDailyMetrics200Response**](../Model/GetDailyMetrics200Response.md)
+[**\Zernio\Model\GetDailyMetrics200Response**](../Model/GetDailyMetrics200Response.md)
 
 ### Authorization
 
@@ -305,7 +305,7 @@ try {
 ## `getFollowerStats()`
 
 ```php
-getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity): \Late\Model\GetFollowerStats200Response
+getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity): \Zernio\Model\GetFollowerStats200Response
 ```
 
 Get follower stats
@@ -320,10 +320,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -355,7 +355,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetFollowerStats200Response**](../Model/GetFollowerStats200Response.md)
+[**\Zernio\Model\GetFollowerStats200Response**](../Model/GetFollowerStats200Response.md)
 
 ### Authorization
 
@@ -373,7 +373,7 @@ try {
 ## `getGoogleBusinessPerformance()`
 
 ```php
-getGoogleBusinessPerformance($account_id, $metrics, $start_date, $end_date): \Late\Model\GetGoogleBusinessPerformance200Response
+getGoogleBusinessPerformance($account_id, $metrics, $start_date, $end_date): \Zernio\Model\GetGoogleBusinessPerformance200Response
 ```
 
 Get GBP performance metrics
@@ -388,10 +388,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -421,7 +421,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetGoogleBusinessPerformance200Response**](../Model/GetGoogleBusinessPerformance200Response.md)
+[**\Zernio\Model\GetGoogleBusinessPerformance200Response**](../Model/GetGoogleBusinessPerformance200Response.md)
 
 ### Authorization
 
@@ -439,7 +439,7 @@ try {
 ## `getGoogleBusinessSearchKeywords()`
 
 ```php
-getGoogleBusinessSearchKeywords($account_id, $start_month, $end_month): \Late\Model\GetGoogleBusinessSearchKeywords200Response
+getGoogleBusinessSearchKeywords($account_id, $start_month, $end_month): \Zernio\Model\GetGoogleBusinessSearchKeywords200Response
 ```
 
 Get GBP search keywords
@@ -454,10 +454,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -485,7 +485,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetGoogleBusinessSearchKeywords200Response**](../Model/GetGoogleBusinessSearchKeywords200Response.md)
+[**\Zernio\Model\GetGoogleBusinessSearchKeywords200Response**](../Model/GetGoogleBusinessSearchKeywords200Response.md)
 
 ### Authorization
 
@@ -503,7 +503,7 @@ try {
 ## `getInstagramAccountInsights()`
 
 ```php
-getInstagramAccountInsights($account_id, $metrics, $since, $until, $metric_type, $breakdown): \Late\Model\InstagramAccountInsightsResponse
+getInstagramAccountInsights($account_id, $metrics, $since, $until, $metric_type, $breakdown): \Zernio\Model\InstagramAccountInsightsResponse
 ```
 
 Get Instagram insights
@@ -518,10 +518,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -555,7 +555,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\InstagramAccountInsightsResponse**](../Model/InstagramAccountInsightsResponse.md)
+[**\Zernio\Model\InstagramAccountInsightsResponse**](../Model/InstagramAccountInsightsResponse.md)
 
 ### Authorization
 
@@ -573,7 +573,7 @@ try {
 ## `getInstagramDemographics()`
 
 ```php
-getInstagramDemographics($account_id, $metric, $breakdown, $timeframe): \Late\Model\InstagramDemographicsResponse
+getInstagramDemographics($account_id, $metric, $breakdown, $timeframe): \Zernio\Model\InstagramDemographicsResponse
 ```
 
 Get Instagram demographics
@@ -588,10 +588,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -621,7 +621,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\InstagramDemographicsResponse**](../Model/InstagramDemographicsResponse.md)
+[**\Zernio\Model\InstagramDemographicsResponse**](../Model/InstagramDemographicsResponse.md)
 
 ### Authorization
 
@@ -639,7 +639,7 @@ try {
 ## `getLinkedInAggregateAnalytics()`
 
 ```php
-getLinkedInAggregateAnalytics($account_id, $aggregation, $start_date, $end_date, $metrics): \Late\Model\GetLinkedInAggregateAnalytics200Response
+getLinkedInAggregateAnalytics($account_id, $aggregation, $start_date, $end_date, $metrics): \Zernio\Model\GetLinkedInAggregateAnalytics200Response
 ```
 
 Get LinkedIn aggregate stats
@@ -654,10 +654,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -689,7 +689,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetLinkedInAggregateAnalytics200Response**](../Model/GetLinkedInAggregateAnalytics200Response.md)
+[**\Zernio\Model\GetLinkedInAggregateAnalytics200Response**](../Model/GetLinkedInAggregateAnalytics200Response.md)
 
 ### Authorization
 
@@ -707,7 +707,7 @@ try {
 ## `getLinkedInPostAnalytics()`
 
 ```php
-getLinkedInPostAnalytics($account_id, $urn): \Late\Model\GetLinkedInPostAnalytics200Response
+getLinkedInPostAnalytics($account_id, $urn): \Zernio\Model\GetLinkedInPostAnalytics200Response
 ```
 
 Get LinkedIn post stats
@@ -722,10 +722,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -751,7 +751,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetLinkedInPostAnalytics200Response**](../Model/GetLinkedInPostAnalytics200Response.md)
+[**\Zernio\Model\GetLinkedInPostAnalytics200Response**](../Model/GetLinkedInPostAnalytics200Response.md)
 
 ### Authorization
 
@@ -769,7 +769,7 @@ try {
 ## `getLinkedInPostReactions()`
 
 ```php
-getLinkedInPostReactions($account_id, $urn, $limit, $cursor): \Late\Model\GetLinkedInPostReactions200Response
+getLinkedInPostReactions($account_id, $urn, $limit, $cursor): \Zernio\Model\GetLinkedInPostReactions200Response
 ```
 
 Get LinkedIn post reactions
@@ -784,10 +784,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -817,7 +817,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetLinkedInPostReactions200Response**](../Model/GetLinkedInPostReactions200Response.md)
+[**\Zernio\Model\GetLinkedInPostReactions200Response**](../Model/GetLinkedInPostReactions200Response.md)
 
 ### Authorization
 
@@ -835,7 +835,7 @@ try {
 ## `getPostTimeline()`
 
 ```php
-getPostTimeline($post_id, $from_date, $to_date): \Late\Model\GetPostTimeline200Response
+getPostTimeline($post_id, $from_date, $to_date): \Zernio\Model\GetPostTimeline200Response
 ```
 
 Get post analytics timeline
@@ -850,10 +850,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -881,7 +881,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetPostTimeline200Response**](../Model/GetPostTimeline200Response.md)
+[**\Zernio\Model\GetPostTimeline200Response**](../Model/GetPostTimeline200Response.md)
 
 ### Authorization
 
@@ -899,7 +899,7 @@ try {
 ## `getPostingFrequency()`
 
 ```php
-getPostingFrequency($platform, $profile_id, $source): \Late\Model\GetPostingFrequency200Response
+getPostingFrequency($platform, $profile_id, $source): \Zernio\Model\GetPostingFrequency200Response
 ```
 
 Get frequency vs engagement
@@ -914,10 +914,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -945,7 +945,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetPostingFrequency200Response**](../Model/GetPostingFrequency200Response.md)
+[**\Zernio\Model\GetPostingFrequency200Response**](../Model/GetPostingFrequency200Response.md)
 
 ### Authorization
 
@@ -963,7 +963,7 @@ try {
 ## `getYouTubeDailyViews()`
 
 ```php
-getYouTubeDailyViews($video_id, $account_id, $start_date, $end_date): \Late\Model\YouTubeDailyViewsResponse
+getYouTubeDailyViews($video_id, $account_id, $start_date, $end_date): \Zernio\Model\YouTubeDailyViewsResponse
 ```
 
 Get YouTube daily views
@@ -978,10 +978,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1011,7 +1011,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\YouTubeDailyViewsResponse**](../Model/YouTubeDailyViewsResponse.md)
+[**\Zernio\Model\YouTubeDailyViewsResponse**](../Model/YouTubeDailyViewsResponse.md)
 
 ### Authorization
 
@@ -1029,7 +1029,7 @@ try {
 ## `getYouTubeDemographics()`
 
 ```php
-getYouTubeDemographics($account_id, $breakdown, $start_date, $end_date): \Late\Model\YouTubeDemographicsResponse
+getYouTubeDemographics($account_id, $breakdown, $start_date, $end_date): \Zernio\Model\YouTubeDemographicsResponse
 ```
 
 Get YouTube demographics
@@ -1044,10 +1044,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AnalyticsApi(
+$apiInstance = new Zernio\Api\AnalyticsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1077,7 +1077,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\YouTubeDemographicsResponse**](../Model/YouTubeDemographicsResponse.md)
+[**\Zernio\Model\YouTubeDemographicsResponse**](../Model/YouTubeDemographicsResponse.md)
 
 ### Authorization
 

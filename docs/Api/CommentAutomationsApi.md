@@ -1,4 +1,4 @@
-# Late\CommentAutomationsApi
+# Zernio\CommentAutomationsApi
 
 
 
@@ -17,7 +17,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `createCommentAutomation()`
 
 ```php
-createCommentAutomation($create_comment_automation_request): \Late\Model\CreateCommentAutomation200Response
+createCommentAutomation($create_comment_automation_request): \Zernio\Model\CreateCommentAutomation200Response
 ```
 
 Create comment-to-DM automation
@@ -32,16 +32,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentAutomationsApi(
+$apiInstance = new Zernio\Api\CommentAutomationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_comment_automation_request = new \Late\Model\CreateCommentAutomationRequest(); // \Late\Model\CreateCommentAutomationRequest
+$create_comment_automation_request = new \Zernio\Model\CreateCommentAutomationRequest(); // \Zernio\Model\CreateCommentAutomationRequest
 
 try {
     $result = $apiInstance->createCommentAutomation($create_comment_automation_request);
@@ -55,11 +55,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_comment_automation_request** | [**\Late\Model\CreateCommentAutomationRequest**](../Model/CreateCommentAutomationRequest.md)|  | |
+| **create_comment_automation_request** | [**\Zernio\Model\CreateCommentAutomationRequest**](../Model/CreateCommentAutomationRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateCommentAutomation200Response**](../Model/CreateCommentAutomation200Response.md)
+[**\Zernio\Model\CreateCommentAutomation200Response**](../Model/CreateCommentAutomation200Response.md)
 
 ### Authorization
 
@@ -92,10 +92,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentAutomationsApi(
+$apiInstance = new Zernio\Api\CommentAutomationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -136,7 +136,7 @@ void (empty response body)
 ## `getCommentAutomation()`
 
 ```php
-getCommentAutomation($automation_id): \Late\Model\GetCommentAutomation200Response
+getCommentAutomation($automation_id): \Zernio\Model\GetCommentAutomation200Response
 ```
 
 Get automation details
@@ -151,10 +151,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentAutomationsApi(
+$apiInstance = new Zernio\Api\CommentAutomationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -178,7 +178,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetCommentAutomation200Response**](../Model/GetCommentAutomation200Response.md)
+[**\Zernio\Model\GetCommentAutomation200Response**](../Model/GetCommentAutomation200Response.md)
 
 ### Authorization
 
@@ -196,7 +196,7 @@ try {
 ## `listCommentAutomationLogs()`
 
 ```php
-listCommentAutomationLogs($automation_id, $status, $limit, $skip): \Late\Model\ListCommentAutomationLogs200Response
+listCommentAutomationLogs($automation_id, $status, $limit, $skip): \Zernio\Model\ListCommentAutomationLogs200Response
 ```
 
 List automation logs
@@ -211,10 +211,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentAutomationsApi(
+$apiInstance = new Zernio\Api\CommentAutomationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -244,7 +244,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListCommentAutomationLogs200Response**](../Model/ListCommentAutomationLogs200Response.md)
+[**\Zernio\Model\ListCommentAutomationLogs200Response**](../Model/ListCommentAutomationLogs200Response.md)
 
 ### Authorization
 
@@ -262,7 +262,7 @@ try {
 ## `listCommentAutomations()`
 
 ```php
-listCommentAutomations($profile_id): \Late\Model\ListCommentAutomations200Response
+listCommentAutomations($profile_id): \Zernio\Model\ListCommentAutomations200Response
 ```
 
 List comment-to-DM automations
@@ -277,10 +277,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentAutomationsApi(
+$apiInstance = new Zernio\Api\CommentAutomationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -304,7 +304,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListCommentAutomations200Response**](../Model/ListCommentAutomations200Response.md)
+[**\Zernio\Model\ListCommentAutomations200Response**](../Model/ListCommentAutomations200Response.md)
 
 ### Authorization
 
@@ -322,7 +322,7 @@ try {
 ## `updateCommentAutomation()`
 
 ```php
-updateCommentAutomation($automation_id, $update_comment_automation_request): \Late\Model\UpdateCommentAutomation200Response
+updateCommentAutomation($automation_id, $update_comment_automation_request): \Zernio\Model\UpdateCommentAutomation200Response
 ```
 
 Update automation settings
@@ -337,17 +337,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentAutomationsApi(
+$apiInstance = new Zernio\Api\CommentAutomationsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $automation_id = 'automation_id_example'; // string
-$update_comment_automation_request = new \Late\Model\UpdateCommentAutomationRequest(); // \Late\Model\UpdateCommentAutomationRequest
+$update_comment_automation_request = new \Zernio\Model\UpdateCommentAutomationRequest(); // \Zernio\Model\UpdateCommentAutomationRequest
 
 try {
     $result = $apiInstance->updateCommentAutomation($automation_id, $update_comment_automation_request);
@@ -362,11 +362,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **automation_id** | **string**|  | |
-| **update_comment_automation_request** | [**\Late\Model\UpdateCommentAutomationRequest**](../Model/UpdateCommentAutomationRequest.md)|  | [optional] |
+| **update_comment_automation_request** | [**\Zernio\Model\UpdateCommentAutomationRequest**](../Model/UpdateCommentAutomationRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\Late\Model\UpdateCommentAutomation200Response**](../Model/UpdateCommentAutomation200Response.md)
+[**\Zernio\Model\UpdateCommentAutomation200Response**](../Model/UpdateCommentAutomation200Response.md)
 
 ### Authorization
 

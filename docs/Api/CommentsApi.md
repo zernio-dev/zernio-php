@@ -1,4 +1,4 @@
-# Late\CommentsApi
+# Zernio\CommentsApi
 
 Unified inbox API for managing comments on posts across all connected accounts. Supports commenting on third-party posts for platforms that allow it (YouTube, Twitter, Reddit, Bluesky, Threads). All endpoints aggregate data from multiple social accounts in a single API call. Requires Inbox addon.
 
@@ -20,7 +20,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `deleteInboxComment()`
 
 ```php
-deleteInboxComment($post_id, $account_id, $comment_id): \Late\Model\DeleteInboxComment200Response
+deleteInboxComment($post_id, $account_id, $comment_id): \Zernio\Model\DeleteInboxComment200Response
 ```
 
 Delete comment
@@ -35,10 +35,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentsApi(
+$apiInstance = new Zernio\Api\CommentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -66,7 +66,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\DeleteInboxComment200Response**](../Model/DeleteInboxComment200Response.md)
+[**\Zernio\Model\DeleteInboxComment200Response**](../Model/DeleteInboxComment200Response.md)
 
 ### Authorization
 
@@ -84,7 +84,7 @@ try {
 ## `getInboxPostComments()`
 
 ```php
-getInboxPostComments($post_id, $account_id, $subreddit, $limit, $cursor, $comment_id): \Late\Model\GetInboxPostComments200Response
+getInboxPostComments($post_id, $account_id, $subreddit, $limit, $cursor, $comment_id): \Zernio\Model\GetInboxPostComments200Response
 ```
 
 Get post comments
@@ -99,10 +99,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentsApi(
+$apiInstance = new Zernio\Api\CommentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -136,7 +136,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetInboxPostComments200Response**](../Model/GetInboxPostComments200Response.md)
+[**\Zernio\Model\GetInboxPostComments200Response**](../Model/GetInboxPostComments200Response.md)
 
 ### Authorization
 
@@ -154,7 +154,7 @@ try {
 ## `hideInboxComment()`
 
 ```php
-hideInboxComment($post_id, $comment_id, $hide_inbox_comment_request): \Late\Model\HideInboxComment200Response
+hideInboxComment($post_id, $comment_id, $hide_inbox_comment_request): \Zernio\Model\HideInboxComment200Response
 ```
 
 Hide comment
@@ -169,10 +169,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentsApi(
+$apiInstance = new Zernio\Api\CommentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -180,7 +180,7 @@ $apiInstance = new Late\Api\CommentsApi(
 );
 $post_id = 'post_id_example'; // string
 $comment_id = 'comment_id_example'; // string
-$hide_inbox_comment_request = new \Late\Model\HideInboxCommentRequest(); // \Late\Model\HideInboxCommentRequest
+$hide_inbox_comment_request = new \Zernio\Model\HideInboxCommentRequest(); // \Zernio\Model\HideInboxCommentRequest
 
 try {
     $result = $apiInstance->hideInboxComment($post_id, $comment_id, $hide_inbox_comment_request);
@@ -196,11 +196,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **post_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **hide_inbox_comment_request** | [**\Late\Model\HideInboxCommentRequest**](../Model/HideInboxCommentRequest.md)|  | |
+| **hide_inbox_comment_request** | [**\Zernio\Model\HideInboxCommentRequest**](../Model/HideInboxCommentRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\HideInboxComment200Response**](../Model/HideInboxComment200Response.md)
+[**\Zernio\Model\HideInboxComment200Response**](../Model/HideInboxComment200Response.md)
 
 ### Authorization
 
@@ -218,7 +218,7 @@ try {
 ## `likeInboxComment()`
 
 ```php
-likeInboxComment($post_id, $comment_id, $like_inbox_comment_request): \Late\Model\LikeInboxComment200Response
+likeInboxComment($post_id, $comment_id, $like_inbox_comment_request): \Zernio\Model\LikeInboxComment200Response
 ```
 
 Like comment
@@ -233,10 +233,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentsApi(
+$apiInstance = new Zernio\Api\CommentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -244,7 +244,7 @@ $apiInstance = new Late\Api\CommentsApi(
 );
 $post_id = 'post_id_example'; // string
 $comment_id = 'comment_id_example'; // string
-$like_inbox_comment_request = new \Late\Model\LikeInboxCommentRequest(); // \Late\Model\LikeInboxCommentRequest
+$like_inbox_comment_request = new \Zernio\Model\LikeInboxCommentRequest(); // \Zernio\Model\LikeInboxCommentRequest
 
 try {
     $result = $apiInstance->likeInboxComment($post_id, $comment_id, $like_inbox_comment_request);
@@ -260,11 +260,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **post_id** | **string**|  | |
 | **comment_id** | **string**|  | |
-| **like_inbox_comment_request** | [**\Late\Model\LikeInboxCommentRequest**](../Model/LikeInboxCommentRequest.md)|  | |
+| **like_inbox_comment_request** | [**\Zernio\Model\LikeInboxCommentRequest**](../Model/LikeInboxCommentRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\LikeInboxComment200Response**](../Model/LikeInboxComment200Response.md)
+[**\Zernio\Model\LikeInboxComment200Response**](../Model/LikeInboxComment200Response.md)
 
 ### Authorization
 
@@ -282,7 +282,7 @@ try {
 ## `listInboxComments()`
 
 ```php
-listInboxComments($profile_id, $platform, $min_comments, $since, $sort_by, $sort_order, $limit, $cursor, $account_id): \Late\Model\ListInboxComments200Response
+listInboxComments($profile_id, $platform, $min_comments, $since, $sort_by, $sort_order, $limit, $cursor, $account_id): \Zernio\Model\ListInboxComments200Response
 ```
 
 List commented posts
@@ -297,10 +297,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentsApi(
+$apiInstance = new Zernio\Api\CommentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -340,7 +340,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListInboxComments200Response**](../Model/ListInboxComments200Response.md)
+[**\Zernio\Model\ListInboxComments200Response**](../Model/ListInboxComments200Response.md)
 
 ### Authorization
 
@@ -358,7 +358,7 @@ try {
 ## `replyToInboxPost()`
 
 ```php
-replyToInboxPost($post_id, $reply_to_inbox_post_request): \Late\Model\ReplyToInboxPost200Response
+replyToInboxPost($post_id, $reply_to_inbox_post_request): \Zernio\Model\ReplyToInboxPost200Response
 ```
 
 Reply to comment
@@ -373,17 +373,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentsApi(
+$apiInstance = new Zernio\Api\CommentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $post_id = 'post_id_example'; // string | Zernio post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID.
-$reply_to_inbox_post_request = new \Late\Model\ReplyToInboxPostRequest(); // \Late\Model\ReplyToInboxPostRequest
+$reply_to_inbox_post_request = new \Zernio\Model\ReplyToInboxPostRequest(); // \Zernio\Model\ReplyToInboxPostRequest
 
 try {
     $result = $apiInstance->replyToInboxPost($post_id, $reply_to_inbox_post_request);
@@ -398,11 +398,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **post_id** | **string**| Zernio post ID or platform-specific post ID. LinkedIn third-party posts accept full activity URN or numeric ID. | |
-| **reply_to_inbox_post_request** | [**\Late\Model\ReplyToInboxPostRequest**](../Model/ReplyToInboxPostRequest.md)|  | |
+| **reply_to_inbox_post_request** | [**\Zernio\Model\ReplyToInboxPostRequest**](../Model/ReplyToInboxPostRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\ReplyToInboxPost200Response**](../Model/ReplyToInboxPost200Response.md)
+[**\Zernio\Model\ReplyToInboxPost200Response**](../Model/ReplyToInboxPost200Response.md)
 
 ### Authorization
 
@@ -420,7 +420,7 @@ try {
 ## `sendPrivateReplyToComment()`
 
 ```php
-sendPrivateReplyToComment($post_id, $comment_id, $send_private_reply_to_comment_request): \Late\Model\SendPrivateReplyToComment200Response
+sendPrivateReplyToComment($post_id, $comment_id, $send_private_reply_to_comment_request): \Zernio\Model\SendPrivateReplyToComment200Response
 ```
 
 Send private reply
@@ -435,10 +435,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentsApi(
+$apiInstance = new Zernio\Api\CommentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -446,7 +446,7 @@ $apiInstance = new Late\Api\CommentsApi(
 );
 $post_id = 'post_id_example'; // string | The media/post ID (Instagram media ID or Facebook post ID)
 $comment_id = 'comment_id_example'; // string | The comment ID to send a private reply to
-$send_private_reply_to_comment_request = {"accountId":"507f1f77bcf86cd799439011","message":"Hi! Thanks for your comment. I wanted to reach out privately to help with your question."}; // \Late\Model\SendPrivateReplyToCommentRequest
+$send_private_reply_to_comment_request = {"accountId":"507f1f77bcf86cd799439011","message":"Hi! Thanks for your comment. I wanted to reach out privately to help with your question."}; // \Zernio\Model\SendPrivateReplyToCommentRequest
 
 try {
     $result = $apiInstance->sendPrivateReplyToComment($post_id, $comment_id, $send_private_reply_to_comment_request);
@@ -462,11 +462,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **post_id** | **string**| The media/post ID (Instagram media ID or Facebook post ID) | |
 | **comment_id** | **string**| The comment ID to send a private reply to | |
-| **send_private_reply_to_comment_request** | [**\Late\Model\SendPrivateReplyToCommentRequest**](../Model/SendPrivateReplyToCommentRequest.md)|  | |
+| **send_private_reply_to_comment_request** | [**\Zernio\Model\SendPrivateReplyToCommentRequest**](../Model/SendPrivateReplyToCommentRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\SendPrivateReplyToComment200Response**](../Model/SendPrivateReplyToComment200Response.md)
+[**\Zernio\Model\SendPrivateReplyToComment200Response**](../Model/SendPrivateReplyToComment200Response.md)
 
 ### Authorization
 
@@ -484,7 +484,7 @@ try {
 ## `unhideInboxComment()`
 
 ```php
-unhideInboxComment($post_id, $comment_id, $account_id): \Late\Model\HideInboxComment200Response
+unhideInboxComment($post_id, $comment_id, $account_id): \Zernio\Model\HideInboxComment200Response
 ```
 
 Unhide comment
@@ -499,10 +499,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentsApi(
+$apiInstance = new Zernio\Api\CommentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -530,7 +530,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\HideInboxComment200Response**](../Model/HideInboxComment200Response.md)
+[**\Zernio\Model\HideInboxComment200Response**](../Model/HideInboxComment200Response.md)
 
 ### Authorization
 
@@ -548,7 +548,7 @@ try {
 ## `unlikeInboxComment()`
 
 ```php
-unlikeInboxComment($post_id, $comment_id, $account_id, $like_uri): \Late\Model\UnlikeInboxComment200Response
+unlikeInboxComment($post_id, $comment_id, $account_id, $like_uri): \Zernio\Model\UnlikeInboxComment200Response
 ```
 
 Unlike comment
@@ -563,10 +563,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\CommentsApi(
+$apiInstance = new Zernio\Api\CommentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -596,7 +596,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UnlikeInboxComment200Response**](../Model/UnlikeInboxComment200Response.md)
+[**\Zernio\Model\UnlikeInboxComment200Response**](../Model/UnlikeInboxComment200Response.md)
 
 ### Authorization
 

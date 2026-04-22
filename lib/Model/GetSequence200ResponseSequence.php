@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetSequence200ResponseSequence Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -64,7 +64,7 @@ class GetSequence200ResponseSequence implements ModelInterface, ArrayAccess, \Js
         'platform' => 'string',
         'account_id' => 'string',
         'status' => 'string',
-        'steps' => '\Late\Model\GetSequence200ResponseSequenceStepsInner[]',
+        'steps' => '\Zernio\Model\GetSequence200ResponseSequenceStepsInner[]',
         'exit_on_reply' => 'bool',
         'exit_on_unsubscribe' => 'bool',
         'total_enrolled' => 'int',
@@ -582,7 +582,7 @@ class GetSequence200ResponseSequence implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets steps
      *
-     * @return \Late\Model\GetSequence200ResponseSequenceStepsInner[]|null
+     * @return \Zernio\Model\GetSequence200ResponseSequenceStepsInner[]|null
      */
     public function getSteps()
     {
@@ -592,7 +592,7 @@ class GetSequence200ResponseSequence implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets steps
      *
-     * @param \Late\Model\GetSequence200ResponseSequenceStepsInner[]|null $steps steps
+     * @param \Zernio\Model\GetSequence200ResponseSequenceStepsInner[]|null $steps steps
      *
      * @return self
      */

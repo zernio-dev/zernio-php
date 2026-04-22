@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadCommentComment Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,7 +63,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
         'platform_post_id' => 'string',
         'platform' => 'string',
         'text' => 'string',
-        'author' => '\Late\Model\WebhookPayloadCommentCommentAuthor',
+        'author' => '\Zernio\Model\WebhookPayloadCommentCommentAuthor',
         'created_at' => '\DateTime',
         'is_reply' => 'bool',
         'parent_comment_id' => 'string'
@@ -555,7 +555,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets author
      *
-     * @return \Late\Model\WebhookPayloadCommentCommentAuthor
+     * @return \Zernio\Model\WebhookPayloadCommentCommentAuthor
      */
     public function getAuthor()
     {
@@ -565,7 +565,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets author
      *
-     * @param \Late\Model\WebhookPayloadCommentCommentAuthor $author author
+     * @param \Zernio\Model\WebhookPayloadCommentCommentAuthor $author author
      *
      * @return self
      */

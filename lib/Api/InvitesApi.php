@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * InvitesApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -131,12 +131,12 @@ class InvitesApi
      *
      * Create invite token
      *
-     * @param  \Late\Model\CreateInviteTokenRequest $create_invite_token_request create_invite_token_request (required)
+     * @param  \Zernio\Model\CreateInviteTokenRequest $create_invite_token_request create_invite_token_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInviteToken'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CreateInviteToken201Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\CreateInviteToken201Response|\Zernio\Model\InlineObject
      */
     public function createInviteToken($create_invite_token_request, string $contentType = self::contentTypes['createInviteToken'][0])
     {
@@ -149,12 +149,12 @@ class InvitesApi
      *
      * Create invite token
      *
-     * @param  \Late\Model\CreateInviteTokenRequest $create_invite_token_request (required)
+     * @param  \Zernio\Model\CreateInviteTokenRequest $create_invite_token_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInviteToken'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CreateInviteToken201Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateInviteToken201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createInviteTokenWithHttpInfo($create_invite_token_request, string $contentType = self::contentTypes['createInviteToken'][0])
     {
@@ -186,13 +186,13 @@ class InvitesApi
             switch($statusCode) {
                 case 201:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateInviteToken201Response',
+                        '\Zernio\Model\CreateInviteToken201Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -214,7 +214,7 @@ class InvitesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CreateInviteToken201Response',
+                '\Zernio\Model\CreateInviteToken201Response',
                 $request,
                 $response,
             );
@@ -223,7 +223,7 @@ class InvitesApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateInviteToken201Response',
+                        '\Zernio\Model\CreateInviteToken201Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -231,7 +231,7 @@ class InvitesApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -248,7 +248,7 @@ class InvitesApi
      *
      * Create invite token
      *
-     * @param  \Late\Model\CreateInviteTokenRequest $create_invite_token_request (required)
+     * @param  \Zernio\Model\CreateInviteTokenRequest $create_invite_token_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInviteToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -269,7 +269,7 @@ class InvitesApi
      *
      * Create invite token
      *
-     * @param  \Late\Model\CreateInviteTokenRequest $create_invite_token_request (required)
+     * @param  \Zernio\Model\CreateInviteTokenRequest $create_invite_token_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInviteToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -277,7 +277,7 @@ class InvitesApi
      */
     public function createInviteTokenAsyncWithHttpInfo($create_invite_token_request, string $contentType = self::contentTypes['createInviteToken'][0])
     {
-        $returnType = '\Late\Model\CreateInviteToken201Response';
+        $returnType = '\Zernio\Model\CreateInviteToken201Response';
         $request = $this->createInviteTokenRequest($create_invite_token_request, $contentType);
 
         return $this->client
@@ -319,7 +319,7 @@ class InvitesApi
     /**
      * Create request for operation 'createInviteToken'
      *
-     * @param  \Late\Model\CreateInviteTokenRequest $create_invite_token_request (required)
+     * @param  \Zernio\Model\CreateInviteTokenRequest $create_invite_token_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createInviteToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

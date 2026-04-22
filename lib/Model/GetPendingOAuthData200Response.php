@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetPendingOAuthData200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class GetPendingOAuthData200Response implements ModelInterface, ArrayAccess, \Js
         'expires_in' => 'float',
         'user_profile' => 'object',
         'selection_type' => 'string',
-        'organizations' => '\Late\Model\GetPendingOAuthData200ResponseOrganizationsInner[]'
+        'organizations' => '\Zernio\Model\GetPendingOAuthData200ResponseOrganizationsInner[]'
     ];
 
     /**
@@ -571,7 +571,7 @@ class GetPendingOAuthData200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets organizations
      *
-     * @return \Late\Model\GetPendingOAuthData200ResponseOrganizationsInner[]|null
+     * @return \Zernio\Model\GetPendingOAuthData200ResponseOrganizationsInner[]|null
      */
     public function getOrganizations()
     {
@@ -581,7 +581,7 @@ class GetPendingOAuthData200Response implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets organizations
      *
-     * @param \Late\Model\GetPendingOAuthData200ResponseOrganizationsInner[]|null $organizations LinkedIn organizations (when selectionType is \"organizations\")
+     * @param \Zernio\Model\GetPendingOAuthData200ResponseOrganizationsInner[]|null $organizations LinkedIn organizations (when selectionType is \"organizations\")
      *
      * @return self
      */

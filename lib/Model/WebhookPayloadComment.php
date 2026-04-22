@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadComment Class Doc Comment
  *
  * @category Class
  * @description Webhook payload for comment received events (Instagram, Facebook, Twitter/X, YouTube, LinkedIn, Bluesky, Reddit)
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,9 +61,9 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPITypes = [
         'id' => 'string',
         'event' => 'string',
-        'comment' => '\Late\Model\WebhookPayloadCommentComment',
-        'post' => '\Late\Model\WebhookPayloadCommentPost',
-        'account' => '\Late\Model\WebhookPayloadCommentAccount',
+        'comment' => '\Zernio\Model\WebhookPayloadCommentComment',
+        'post' => '\Zernio\Model\WebhookPayloadCommentPost',
+        'account' => '\Zernio\Model\WebhookPayloadCommentAccount',
         'timestamp' => '\DateTime'
     ];
 
@@ -433,7 +433,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets comment
      *
-     * @return \Late\Model\WebhookPayloadCommentComment
+     * @return \Zernio\Model\WebhookPayloadCommentComment
      */
     public function getComment()
     {
@@ -443,7 +443,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets comment
      *
-     * @param \Late\Model\WebhookPayloadCommentComment $comment comment
+     * @param \Zernio\Model\WebhookPayloadCommentComment $comment comment
      *
      * @return self
      */
@@ -460,7 +460,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets post
      *
-     * @return \Late\Model\WebhookPayloadCommentPost
+     * @return \Zernio\Model\WebhookPayloadCommentPost
      */
     public function getPost()
     {
@@ -470,7 +470,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets post
      *
-     * @param \Late\Model\WebhookPayloadCommentPost $post post
+     * @param \Zernio\Model\WebhookPayloadCommentPost $post post
      *
      * @return self
      */
@@ -487,7 +487,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets account
      *
-     * @return \Late\Model\WebhookPayloadCommentAccount
+     * @return \Zernio\Model\WebhookPayloadCommentAccount
      */
     public function getAccount()
     {
@@ -497,7 +497,7 @@ class WebhookPayloadComment implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets account
      *
-     * @param \Late\Model\WebhookPayloadCommentAccount $account account
+     * @param \Zernio\Model\WebhookPayloadCommentAccount $account account
      *
      * @return self
      */

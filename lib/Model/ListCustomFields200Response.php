@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListCustomFields200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class ListCustomFields200Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'fields' => '\Late\Model\ListCustomFields200ResponseFieldsInner[]'
+        'fields' => '\Zernio\Model\ListCustomFields200ResponseFieldsInner[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class ListCustomFields200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets fields
      *
-     * @return \Late\Model\ListCustomFields200ResponseFieldsInner[]|null
+     * @return \Zernio\Model\ListCustomFields200ResponseFieldsInner[]|null
      */
     public function getFields()
     {
@@ -337,7 +337,7 @@ class ListCustomFields200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets fields
      *
-     * @param \Late\Model\ListCustomFields200ResponseFieldsInner[]|null $fields fields
+     * @param \Zernio\Model\ListCustomFields200ResponseFieldsInner[]|null $fields fields
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListGoogleBusinessMedia200ResponseMediaItemsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -65,7 +65,7 @@ class ListGoogleBusinessMedia200ResponseMediaItemsInner implements ModelInterfac
         'thumbnail_url' => 'string',
         'description' => 'string',
         'create_time' => '\DateTime',
-        'location_association' => '\Late\Model\ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation'
+        'location_association' => '\Zernio\Model\ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation'
     ];
 
     /**
@@ -565,7 +565,7 @@ class ListGoogleBusinessMedia200ResponseMediaItemsInner implements ModelInterfac
     /**
      * Gets location_association
      *
-     * @return \Late\Model\ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation|null
+     * @return \Zernio\Model\ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation|null
      */
     public function getLocationAssociation()
     {
@@ -575,7 +575,7 @@ class ListGoogleBusinessMedia200ResponseMediaItemsInner implements ModelInterfac
     /**
      * Sets location_association
      *
-     * @param \Late\Model\ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation|null $location_association location_association
+     * @param \Zernio\Model\ListGoogleBusinessMedia200ResponseMediaItemsInnerLocationAssociation|null $location_association location_association
      *
      * @return self
      */

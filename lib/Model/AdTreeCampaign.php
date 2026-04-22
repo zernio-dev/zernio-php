@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * AdTreeCampaign Class Doc Comment
  *
  * @category Class
  * @description Campaign with nested ad sets and rolled-up metrics
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,26 +62,26 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_campaign_id' => 'string',
         'platform' => 'string',
         'campaign_name' => 'string',
-        'status' => '\Late\Model\AdStatus',
+        'status' => '\Zernio\Model\AdStatus',
         'review_status' => 'string',
         'platform_campaign_status' => 'string',
         'campaign_issues_info' => 'object[]',
         'ad_count' => 'int',
         'ad_set_count' => 'int',
-        'budget' => '\Late\Model\AdTreeCampaignBudget',
-        'campaign_budget' => '\Late\Model\AdTreeCampaignCampaignBudget',
+        'budget' => '\Zernio\Model\AdTreeCampaignBudget',
+        'campaign_budget' => '\Zernio\Model\AdTreeCampaignCampaignBudget',
         'budget_level' => 'string',
         'is_budget_schedule_enabled' => 'bool',
         'currency' => 'string',
-        'metrics' => '\Late\Model\AdMetrics',
+        'metrics' => '\Zernio\Model\AdMetrics',
         'platform_ad_account_id' => 'string',
         'account_id' => 'string',
         'profile_id' => 'string',
         'platform_objective' => 'string',
         'optimization_goal' => 'string',
         'bid_strategy' => 'string',
-        'promoted_object' => '\Late\Model\AdTreeCampaignPromotedObject',
-        'ad_sets' => '\Late\Model\AdTreeAdSet[]'
+        'promoted_object' => '\Zernio\Model\AdTreeCampaignPromotedObject',
+        'ad_sets' => '\Zernio\Model\AdTreeAdSet[]'
     ];
 
     /**
@@ -625,7 +625,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets status
      *
-     * @return \Late\Model\AdStatus|null
+     * @return \Zernio\Model\AdStatus|null
      */
     public function getStatus()
     {
@@ -635,7 +635,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets status
      *
-     * @param \Late\Model\AdStatus|null $status Delivery status derived from child ad statuses. Distinct from `reviewStatus`, which reflects the platform-side review state.
+     * @param \Zernio\Model\AdStatus|null $status Delivery status derived from child ad statuses. Distinct from `reviewStatus`, which reflects the platform-side review state.
      *
      * @return self
      */
@@ -797,7 +797,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets budget
      *
-     * @return \Late\Model\AdTreeCampaignBudget|null
+     * @return \Zernio\Model\AdTreeCampaignBudget|null
      */
     public function getBudget()
     {
@@ -807,7 +807,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets budget
      *
-     * @param \Late\Model\AdTreeCampaignBudget|null $budget budget
+     * @param \Zernio\Model\AdTreeCampaignBudget|null $budget budget
      *
      * @return self
      */
@@ -824,7 +824,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets campaign_budget
      *
-     * @return \Late\Model\AdTreeCampaignCampaignBudget|null
+     * @return \Zernio\Model\AdTreeCampaignCampaignBudget|null
      */
     public function getCampaignBudget()
     {
@@ -834,7 +834,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets campaign_budget
      *
-     * @param \Late\Model\AdTreeCampaignCampaignBudget|null $campaign_budget campaign_budget
+     * @param \Zernio\Model\AdTreeCampaignCampaignBudget|null $campaign_budget campaign_budget
      *
      * @return self
      */
@@ -942,7 +942,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets metrics
      *
-     * @return \Late\Model\AdMetrics|null
+     * @return \Zernio\Model\AdMetrics|null
      */
     public function getMetrics()
     {
@@ -952,7 +952,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets metrics
      *
-     * @param \Late\Model\AdMetrics|null $metrics metrics
+     * @param \Zernio\Model\AdMetrics|null $metrics metrics
      *
      * @return self
      */
@@ -1131,7 +1131,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets promoted_object
      *
-     * @return \Late\Model\AdTreeCampaignPromotedObject|null
+     * @return \Zernio\Model\AdTreeCampaignPromotedObject|null
      */
     public function getPromotedObject()
     {
@@ -1141,7 +1141,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets promoted_object
      *
-     * @param \Late\Model\AdTreeCampaignPromotedObject|null $promoted_object promoted_object
+     * @param \Zernio\Model\AdTreeCampaignPromotedObject|null $promoted_object promoted_object
      *
      * @return self
      */
@@ -1158,7 +1158,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets ad_sets
      *
-     * @return \Late\Model\AdTreeAdSet[]|null
+     * @return \Zernio\Model\AdTreeAdSet[]|null
      */
     public function getAdSets()
     {
@@ -1168,7 +1168,7 @@ class AdTreeCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets ad_sets
      *
-     * @param \Late\Model\AdTreeAdSet[]|null $ad_sets ad_sets
+     * @param \Zernio\Model\AdTreeAdSet[]|null $ad_sets ad_sets
      *
      * @return self
      */

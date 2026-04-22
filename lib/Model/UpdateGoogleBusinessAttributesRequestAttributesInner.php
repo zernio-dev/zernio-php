@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateGoogleBusinessAttributesRequestAttributesInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
     protected static $openAPITypes = [
         'name' => 'string',
         'values' => 'mixed[]',
-        'repeated_enum_value' => '\Late\Model\GetGoogleBusinessAttributes200ResponseAttributesInnerRepeatedEnumValue'
+        'repeated_enum_value' => '\Zernio\Model\GetGoogleBusinessAttributes200ResponseAttributesInnerRepeatedEnumValue'
     ];
 
     /**
@@ -361,7 +361,7 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
     /**
      * Gets repeated_enum_value
      *
-     * @return \Late\Model\GetGoogleBusinessAttributes200ResponseAttributesInnerRepeatedEnumValue|null
+     * @return \Zernio\Model\GetGoogleBusinessAttributes200ResponseAttributesInnerRepeatedEnumValue|null
      */
     public function getRepeatedEnumValue()
     {
@@ -371,7 +371,7 @@ class UpdateGoogleBusinessAttributesRequestAttributesInner implements ModelInter
     /**
      * Sets repeated_enum_value
      *
-     * @param \Late\Model\GetGoogleBusinessAttributes200ResponseAttributesInnerRepeatedEnumValue|null $repeated_enum_value repeated_enum_value
+     * @param \Zernio\Model\GetGoogleBusinessAttributes200ResponseAttributesInnerRepeatedEnumValue|null $repeated_enum_value repeated_enum_value
      *
      * @return self
      */

@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * WebhookEventsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -179,10 +179,10 @@ class WebhookEventsApi
      *
      * Account connected event
      *
-     * @param  \Late\Model\WebhookPayloadAccountConnected $webhook_payload_account_connected webhook_payload_account_connected (required)
+     * @param  \Zernio\Model\WebhookPayloadAccountConnected $webhook_payload_account_connected webhook_payload_account_connected (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountConnected'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -196,10 +196,10 @@ class WebhookEventsApi
      *
      * Account connected event
      *
-     * @param  \Late\Model\WebhookPayloadAccountConnected $webhook_payload_account_connected (required)
+     * @param  \Zernio\Model\WebhookPayloadAccountConnected $webhook_payload_account_connected (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountConnected'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -245,7 +245,7 @@ class WebhookEventsApi
      *
      * Account connected event
      *
-     * @param  \Late\Model\WebhookPayloadAccountConnected $webhook_payload_account_connected (required)
+     * @param  \Zernio\Model\WebhookPayloadAccountConnected $webhook_payload_account_connected (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountConnected'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -266,7 +266,7 @@ class WebhookEventsApi
      *
      * Account connected event
      *
-     * @param  \Late\Model\WebhookPayloadAccountConnected $webhook_payload_account_connected (required)
+     * @param  \Zernio\Model\WebhookPayloadAccountConnected $webhook_payload_account_connected (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountConnected'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -303,7 +303,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onAccountConnected'
      *
-     * @param  \Late\Model\WebhookPayloadAccountConnected $webhook_payload_account_connected (required)
+     * @param  \Zernio\Model\WebhookPayloadAccountConnected $webhook_payload_account_connected (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountConnected'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -400,10 +400,10 @@ class WebhookEventsApi
      *
      * Account disconnected event
      *
-     * @param  \Late\Model\WebhookPayloadAccountDisconnected $webhook_payload_account_disconnected webhook_payload_account_disconnected (required)
+     * @param  \Zernio\Model\WebhookPayloadAccountDisconnected $webhook_payload_account_disconnected webhook_payload_account_disconnected (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountDisconnected'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -417,10 +417,10 @@ class WebhookEventsApi
      *
      * Account disconnected event
      *
-     * @param  \Late\Model\WebhookPayloadAccountDisconnected $webhook_payload_account_disconnected (required)
+     * @param  \Zernio\Model\WebhookPayloadAccountDisconnected $webhook_payload_account_disconnected (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountDisconnected'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -466,7 +466,7 @@ class WebhookEventsApi
      *
      * Account disconnected event
      *
-     * @param  \Late\Model\WebhookPayloadAccountDisconnected $webhook_payload_account_disconnected (required)
+     * @param  \Zernio\Model\WebhookPayloadAccountDisconnected $webhook_payload_account_disconnected (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountDisconnected'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -487,7 +487,7 @@ class WebhookEventsApi
      *
      * Account disconnected event
      *
-     * @param  \Late\Model\WebhookPayloadAccountDisconnected $webhook_payload_account_disconnected (required)
+     * @param  \Zernio\Model\WebhookPayloadAccountDisconnected $webhook_payload_account_disconnected (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountDisconnected'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -524,7 +524,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onAccountDisconnected'
      *
-     * @param  \Late\Model\WebhookPayloadAccountDisconnected $webhook_payload_account_disconnected (required)
+     * @param  \Zernio\Model\WebhookPayloadAccountDisconnected $webhook_payload_account_disconnected (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountDisconnected'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -621,10 +621,10 @@ class WebhookEventsApi
      *
      * Comment received event
      *
-     * @param  \Late\Model\WebhookPayloadComment $webhook_payload_comment webhook_payload_comment (required)
+     * @param  \Zernio\Model\WebhookPayloadComment $webhook_payload_comment webhook_payload_comment (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCommentReceived'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -638,10 +638,10 @@ class WebhookEventsApi
      *
      * Comment received event
      *
-     * @param  \Late\Model\WebhookPayloadComment $webhook_payload_comment (required)
+     * @param  \Zernio\Model\WebhookPayloadComment $webhook_payload_comment (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCommentReceived'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -687,7 +687,7 @@ class WebhookEventsApi
      *
      * Comment received event
      *
-     * @param  \Late\Model\WebhookPayloadComment $webhook_payload_comment (required)
+     * @param  \Zernio\Model\WebhookPayloadComment $webhook_payload_comment (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCommentReceived'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -708,7 +708,7 @@ class WebhookEventsApi
      *
      * Comment received event
      *
-     * @param  \Late\Model\WebhookPayloadComment $webhook_payload_comment (required)
+     * @param  \Zernio\Model\WebhookPayloadComment $webhook_payload_comment (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCommentReceived'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -745,7 +745,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onCommentReceived'
      *
-     * @param  \Late\Model\WebhookPayloadComment $webhook_payload_comment (required)
+     * @param  \Zernio\Model\WebhookPayloadComment $webhook_payload_comment (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCommentReceived'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -842,10 +842,10 @@ class WebhookEventsApi
      *
      * Message deleted event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted webhook_payload_message_deleted (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted webhook_payload_message_deleted (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDeleted'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -859,10 +859,10 @@ class WebhookEventsApi
      *
      * Message deleted event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDeleted'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -908,7 +908,7 @@ class WebhookEventsApi
      *
      * Message deleted event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDeleted'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -929,7 +929,7 @@ class WebhookEventsApi
      *
      * Message deleted event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDeleted'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -966,7 +966,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onMessageDeleted'
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeleted $webhook_payload_message_deleted (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDeleted'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1063,10 +1063,10 @@ class WebhookEventsApi
      *
      * Message delivered event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDelivered'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1080,10 +1080,10 @@ class WebhookEventsApi
      *
      * Message delivered event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDelivered'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1129,7 +1129,7 @@ class WebhookEventsApi
      *
      * Message delivered event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDelivered'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1150,7 +1150,7 @@ class WebhookEventsApi
      *
      * Message delivered event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDelivered'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1187,7 +1187,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onMessageDelivered'
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageDelivered'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1284,10 +1284,10 @@ class WebhookEventsApi
      *
      * Message edited event
      *
-     * @param  \Late\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited webhook_payload_message_edited (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited webhook_payload_message_edited (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageEdited'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1301,10 +1301,10 @@ class WebhookEventsApi
      *
      * Message edited event
      *
-     * @param  \Late\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageEdited'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1350,7 +1350,7 @@ class WebhookEventsApi
      *
      * Message edited event
      *
-     * @param  \Late\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageEdited'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1371,7 +1371,7 @@ class WebhookEventsApi
      *
      * Message edited event
      *
-     * @param  \Late\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageEdited'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1408,7 +1408,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onMessageEdited'
      *
-     * @param  \Late\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageEdited $webhook_payload_message_edited (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageEdited'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1505,10 +1505,10 @@ class WebhookEventsApi
      *
      * Message delivery failed event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageFailed'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1522,10 +1522,10 @@ class WebhookEventsApi
      *
      * Message delivery failed event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageFailed'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1571,7 +1571,7 @@ class WebhookEventsApi
      *
      * Message delivery failed event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageFailed'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1592,7 +1592,7 @@ class WebhookEventsApi
      *
      * Message delivery failed event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageFailed'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1629,7 +1629,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onMessageFailed'
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageFailed'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1726,10 +1726,10 @@ class WebhookEventsApi
      *
      * Message read event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageRead'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1743,10 +1743,10 @@ class WebhookEventsApi
      *
      * Message read event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageRead'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1792,7 +1792,7 @@ class WebhookEventsApi
      *
      * Message read event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageRead'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1813,7 +1813,7 @@ class WebhookEventsApi
      *
      * Message read event
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageRead'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1850,7 +1850,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onMessageRead'
      *
-     * @param  \Late\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageDeliveryStatus $webhook_payload_message_delivery_status (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageRead'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1947,10 +1947,10 @@ class WebhookEventsApi
      *
      * Message received event
      *
-     * @param  \Late\Model\WebhookPayloadMessage $webhook_payload_message webhook_payload_message (required)
+     * @param  \Zernio\Model\WebhookPayloadMessage $webhook_payload_message webhook_payload_message (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageReceived'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1964,10 +1964,10 @@ class WebhookEventsApi
      *
      * Message received event
      *
-     * @param  \Late\Model\WebhookPayloadMessage $webhook_payload_message (required)
+     * @param  \Zernio\Model\WebhookPayloadMessage $webhook_payload_message (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageReceived'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -2013,7 +2013,7 @@ class WebhookEventsApi
      *
      * Message received event
      *
-     * @param  \Late\Model\WebhookPayloadMessage $webhook_payload_message (required)
+     * @param  \Zernio\Model\WebhookPayloadMessage $webhook_payload_message (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageReceived'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2034,7 +2034,7 @@ class WebhookEventsApi
      *
      * Message received event
      *
-     * @param  \Late\Model\WebhookPayloadMessage $webhook_payload_message (required)
+     * @param  \Zernio\Model\WebhookPayloadMessage $webhook_payload_message (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageReceived'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2071,7 +2071,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onMessageReceived'
      *
-     * @param  \Late\Model\WebhookPayloadMessage $webhook_payload_message (required)
+     * @param  \Zernio\Model\WebhookPayloadMessage $webhook_payload_message (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageReceived'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2168,10 +2168,10 @@ class WebhookEventsApi
      *
      * Message sent event
      *
-     * @param  \Late\Model\WebhookPayloadMessageSent $webhook_payload_message_sent webhook_payload_message_sent (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageSent $webhook_payload_message_sent webhook_payload_message_sent (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageSent'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -2185,10 +2185,10 @@ class WebhookEventsApi
      *
      * Message sent event
      *
-     * @param  \Late\Model\WebhookPayloadMessageSent $webhook_payload_message_sent (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageSent $webhook_payload_message_sent (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageSent'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -2234,7 +2234,7 @@ class WebhookEventsApi
      *
      * Message sent event
      *
-     * @param  \Late\Model\WebhookPayloadMessageSent $webhook_payload_message_sent (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageSent $webhook_payload_message_sent (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageSent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2255,7 +2255,7 @@ class WebhookEventsApi
      *
      * Message sent event
      *
-     * @param  \Late\Model\WebhookPayloadMessageSent $webhook_payload_message_sent (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageSent $webhook_payload_message_sent (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageSent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2292,7 +2292,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onMessageSent'
      *
-     * @param  \Late\Model\WebhookPayloadMessageSent $webhook_payload_message_sent (required)
+     * @param  \Zernio\Model\WebhookPayloadMessageSent $webhook_payload_message_sent (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onMessageSent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2389,10 +2389,10 @@ class WebhookEventsApi
      *
      * Post cancelled event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostCancelled'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -2406,10 +2406,10 @@ class WebhookEventsApi
      *
      * Post cancelled event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostCancelled'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -2455,7 +2455,7 @@ class WebhookEventsApi
      *
      * Post cancelled event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostCancelled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2476,7 +2476,7 @@ class WebhookEventsApi
      *
      * Post cancelled event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostCancelled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2513,7 +2513,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onPostCancelled'
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostCancelled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2610,10 +2610,10 @@ class WebhookEventsApi
      *
      * Post failed event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostFailed'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -2627,10 +2627,10 @@ class WebhookEventsApi
      *
      * Post failed event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostFailed'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -2676,7 +2676,7 @@ class WebhookEventsApi
      *
      * Post failed event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostFailed'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2697,7 +2697,7 @@ class WebhookEventsApi
      *
      * Post failed event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostFailed'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2734,7 +2734,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onPostFailed'
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostFailed'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2831,10 +2831,10 @@ class WebhookEventsApi
      *
      * Post partial event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPartial'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -2848,10 +2848,10 @@ class WebhookEventsApi
      *
      * Post partial event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPartial'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -2897,7 +2897,7 @@ class WebhookEventsApi
      *
      * Post partial event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPartial'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2918,7 +2918,7 @@ class WebhookEventsApi
      *
      * Post partial event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPartial'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2955,7 +2955,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onPostPartial'
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPartial'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3052,10 +3052,10 @@ class WebhookEventsApi
      *
      * Post published event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPublished'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -3069,10 +3069,10 @@ class WebhookEventsApi
      *
      * Post published event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPublished'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -3118,7 +3118,7 @@ class WebhookEventsApi
      *
      * Post published event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPublished'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3139,7 +3139,7 @@ class WebhookEventsApi
      *
      * Post published event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPublished'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3176,7 +3176,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onPostPublished'
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPublished'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3273,10 +3273,10 @@ class WebhookEventsApi
      *
      * Post recycled event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostRecycled'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -3290,10 +3290,10 @@ class WebhookEventsApi
      *
      * Post recycled event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostRecycled'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -3339,7 +3339,7 @@ class WebhookEventsApi
      *
      * Post recycled event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostRecycled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3360,7 +3360,7 @@ class WebhookEventsApi
      *
      * Post recycled event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostRecycled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3397,7 +3397,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onPostRecycled'
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostRecycled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3494,10 +3494,10 @@ class WebhookEventsApi
      *
      * Post scheduled event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostScheduled'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -3511,10 +3511,10 @@ class WebhookEventsApi
      *
      * Post scheduled event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostScheduled'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -3560,7 +3560,7 @@ class WebhookEventsApi
      *
      * Post scheduled event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostScheduled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3581,7 +3581,7 @@ class WebhookEventsApi
      *
      * Post scheduled event
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostScheduled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3618,7 +3618,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onPostScheduled'
      *
-     * @param  \Late\Model\WebhookPayloadPost $webhook_payload_post (required)
+     * @param  \Zernio\Model\WebhookPayloadPost $webhook_payload_post (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostScheduled'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3715,10 +3715,10 @@ class WebhookEventsApi
      *
      * Webhook test event
      *
-     * @param  \Late\Model\WebhookPayloadTest $webhook_payload_test webhook_payload_test (required)
+     * @param  \Zernio\Model\WebhookPayloadTest $webhook_payload_test webhook_payload_test (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWebhookTest'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -3732,10 +3732,10 @@ class WebhookEventsApi
      *
      * Webhook test event
      *
-     * @param  \Late\Model\WebhookPayloadTest $webhook_payload_test (required)
+     * @param  \Zernio\Model\WebhookPayloadTest $webhook_payload_test (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWebhookTest'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -3781,7 +3781,7 @@ class WebhookEventsApi
      *
      * Webhook test event
      *
-     * @param  \Late\Model\WebhookPayloadTest $webhook_payload_test (required)
+     * @param  \Zernio\Model\WebhookPayloadTest $webhook_payload_test (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWebhookTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3802,7 +3802,7 @@ class WebhookEventsApi
      *
      * Webhook test event
      *
-     * @param  \Late\Model\WebhookPayloadTest $webhook_payload_test (required)
+     * @param  \Zernio\Model\WebhookPayloadTest $webhook_payload_test (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWebhookTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3839,7 +3839,7 @@ class WebhookEventsApi
     /**
      * Create request for operation 'onWebhookTest'
      *
-     * @param  \Late\Model\WebhookPayloadTest $webhook_payload_test (required)
+     * @param  \Zernio\Model\WebhookPayloadTest $webhook_payload_test (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWebhookTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

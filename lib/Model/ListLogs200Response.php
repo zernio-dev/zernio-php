@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListLogs200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'logs' => '\Late\Model\ListLogs200ResponseLogsInner[]',
-        'pagination' => '\Late\Model\ListLogs200ResponsePagination'
+        'logs' => '\Zernio\Model\ListLogs200ResponseLogsInner[]',
+        'pagination' => '\Zernio\Model\ListLogs200ResponsePagination'
     ];
 
     /**
@@ -300,7 +300,7 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets logs
      *
-     * @return \Late\Model\ListLogs200ResponseLogsInner[]|null
+     * @return \Zernio\Model\ListLogs200ResponseLogsInner[]|null
      */
     public function getLogs()
     {
@@ -310,7 +310,7 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets logs
      *
-     * @param \Late\Model\ListLogs200ResponseLogsInner[]|null $logs logs
+     * @param \Zernio\Model\ListLogs200ResponseLogsInner[]|null $logs logs
      *
      * @return self
      */
@@ -327,7 +327,7 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets pagination
      *
-     * @return \Late\Model\ListLogs200ResponsePagination|null
+     * @return \Zernio\Model\ListLogs200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -337,7 +337,7 @@ class ListLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets pagination
      *
-     * @param \Late\Model\ListLogs200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\ListLogs200ResponsePagination|null $pagination pagination
      *
      * @return self
      */

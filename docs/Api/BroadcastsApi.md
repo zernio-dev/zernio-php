@@ -1,4 +1,4 @@
-# Late\BroadcastsApi
+# Zernio\BroadcastsApi
 
 Platform-agnostic broadcast campaigns. Send bulk messages to contacts via any inbox platform. WhatsApp broadcasts use templates; other platforms use generic messages.
 
@@ -21,7 +21,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `addBroadcastRecipients()`
 
 ```php
-addBroadcastRecipients($broadcast_id, $add_broadcast_recipients_request): \Late\Model\AddBroadcastRecipients200Response
+addBroadcastRecipients($broadcast_id, $add_broadcast_recipients_request): \Zernio\Model\AddBroadcastRecipients200Response
 ```
 
 Add recipients to a broadcast
@@ -36,17 +36,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\BroadcastsApi(
+$apiInstance = new Zernio\Api\BroadcastsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $broadcast_id = 'broadcast_id_example'; // string
-$add_broadcast_recipients_request = new \Late\Model\AddBroadcastRecipientsRequest(); // \Late\Model\AddBroadcastRecipientsRequest
+$add_broadcast_recipients_request = new \Zernio\Model\AddBroadcastRecipientsRequest(); // \Zernio\Model\AddBroadcastRecipientsRequest
 
 try {
     $result = $apiInstance->addBroadcastRecipients($broadcast_id, $add_broadcast_recipients_request);
@@ -61,11 +61,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **broadcast_id** | **string**|  | |
-| **add_broadcast_recipients_request** | [**\Late\Model\AddBroadcastRecipientsRequest**](../Model/AddBroadcastRecipientsRequest.md)|  | |
+| **add_broadcast_recipients_request** | [**\Zernio\Model\AddBroadcastRecipientsRequest**](../Model/AddBroadcastRecipientsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\AddBroadcastRecipients200Response**](../Model/AddBroadcastRecipients200Response.md)
+[**\Zernio\Model\AddBroadcastRecipients200Response**](../Model/AddBroadcastRecipients200Response.md)
 
 ### Authorization
 
@@ -83,7 +83,7 @@ try {
 ## `cancelBroadcast()`
 
 ```php
-cancelBroadcast($broadcast_id): \Late\Model\CancelBroadcast200Response
+cancelBroadcast($broadcast_id): \Zernio\Model\CancelBroadcast200Response
 ```
 
 Cancel broadcast
@@ -98,10 +98,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\BroadcastsApi(
+$apiInstance = new Zernio\Api\BroadcastsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -125,7 +125,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\CancelBroadcast200Response**](../Model/CancelBroadcast200Response.md)
+[**\Zernio\Model\CancelBroadcast200Response**](../Model/CancelBroadcast200Response.md)
 
 ### Authorization
 
@@ -143,7 +143,7 @@ try {
 ## `createBroadcast()`
 
 ```php
-createBroadcast($create_broadcast_request): \Late\Model\CreateBroadcast200Response
+createBroadcast($create_broadcast_request): \Zernio\Model\CreateBroadcast200Response
 ```
 
 Create broadcast draft
@@ -158,16 +158,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\BroadcastsApi(
+$apiInstance = new Zernio\Api\BroadcastsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_broadcast_request = new \Late\Model\CreateBroadcastRequest(); // \Late\Model\CreateBroadcastRequest
+$create_broadcast_request = new \Zernio\Model\CreateBroadcastRequest(); // \Zernio\Model\CreateBroadcastRequest
 
 try {
     $result = $apiInstance->createBroadcast($create_broadcast_request);
@@ -181,11 +181,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_broadcast_request** | [**\Late\Model\CreateBroadcastRequest**](../Model/CreateBroadcastRequest.md)|  | |
+| **create_broadcast_request** | [**\Zernio\Model\CreateBroadcastRequest**](../Model/CreateBroadcastRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateBroadcast200Response**](../Model/CreateBroadcast200Response.md)
+[**\Zernio\Model\CreateBroadcast200Response**](../Model/CreateBroadcast200Response.md)
 
 ### Authorization
 
@@ -218,10 +218,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\BroadcastsApi(
+$apiInstance = new Zernio\Api\BroadcastsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -262,7 +262,7 @@ void (empty response body)
 ## `getBroadcast()`
 
 ```php
-getBroadcast($broadcast_id): \Late\Model\GetBroadcast200Response
+getBroadcast($broadcast_id): \Zernio\Model\GetBroadcast200Response
 ```
 
 Get broadcast details
@@ -277,10 +277,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\BroadcastsApi(
+$apiInstance = new Zernio\Api\BroadcastsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -304,7 +304,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetBroadcast200Response**](../Model/GetBroadcast200Response.md)
+[**\Zernio\Model\GetBroadcast200Response**](../Model/GetBroadcast200Response.md)
 
 ### Authorization
 
@@ -322,7 +322,7 @@ try {
 ## `listBroadcastRecipients()`
 
 ```php
-listBroadcastRecipients($broadcast_id, $status, $limit, $skip): \Late\Model\ListBroadcastRecipients200Response
+listBroadcastRecipients($broadcast_id, $status, $limit, $skip): \Zernio\Model\ListBroadcastRecipients200Response
 ```
 
 List broadcast recipients
@@ -337,10 +337,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\BroadcastsApi(
+$apiInstance = new Zernio\Api\BroadcastsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -370,7 +370,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListBroadcastRecipients200Response**](../Model/ListBroadcastRecipients200Response.md)
+[**\Zernio\Model\ListBroadcastRecipients200Response**](../Model/ListBroadcastRecipients200Response.md)
 
 ### Authorization
 
@@ -388,7 +388,7 @@ try {
 ## `listBroadcasts()`
 
 ```php
-listBroadcasts($profile_id, $status, $platform, $limit, $skip): \Late\Model\ListBroadcasts200Response
+listBroadcasts($profile_id, $status, $platform, $limit, $skip): \Zernio\Model\ListBroadcasts200Response
 ```
 
 List broadcasts
@@ -403,10 +403,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\BroadcastsApi(
+$apiInstance = new Zernio\Api\BroadcastsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -438,7 +438,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListBroadcasts200Response**](../Model/ListBroadcasts200Response.md)
+[**\Zernio\Model\ListBroadcasts200Response**](../Model/ListBroadcasts200Response.md)
 
 ### Authorization
 
@@ -456,7 +456,7 @@ try {
 ## `scheduleBroadcast()`
 
 ```php
-scheduleBroadcast($broadcast_id, $schedule_broadcast_request): \Late\Model\ScheduleBroadcast200Response
+scheduleBroadcast($broadcast_id, $schedule_broadcast_request): \Zernio\Model\ScheduleBroadcast200Response
 ```
 
 Schedule broadcast for later
@@ -471,17 +471,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\BroadcastsApi(
+$apiInstance = new Zernio\Api\BroadcastsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $broadcast_id = 'broadcast_id_example'; // string
-$schedule_broadcast_request = new \Late\Model\ScheduleBroadcastRequest(); // \Late\Model\ScheduleBroadcastRequest
+$schedule_broadcast_request = new \Zernio\Model\ScheduleBroadcastRequest(); // \Zernio\Model\ScheduleBroadcastRequest
 
 try {
     $result = $apiInstance->scheduleBroadcast($broadcast_id, $schedule_broadcast_request);
@@ -496,11 +496,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **broadcast_id** | **string**|  | |
-| **schedule_broadcast_request** | [**\Late\Model\ScheduleBroadcastRequest**](../Model/ScheduleBroadcastRequest.md)|  | |
+| **schedule_broadcast_request** | [**\Zernio\Model\ScheduleBroadcastRequest**](../Model/ScheduleBroadcastRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\ScheduleBroadcast200Response**](../Model/ScheduleBroadcast200Response.md)
+[**\Zernio\Model\ScheduleBroadcast200Response**](../Model/ScheduleBroadcast200Response.md)
 
 ### Authorization
 
@@ -518,7 +518,7 @@ try {
 ## `sendBroadcast()`
 
 ```php
-sendBroadcast($broadcast_id): \Late\Model\SendBroadcast200Response
+sendBroadcast($broadcast_id): \Zernio\Model\SendBroadcast200Response
 ```
 
 Send broadcast now
@@ -533,10 +533,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\BroadcastsApi(
+$apiInstance = new Zernio\Api\BroadcastsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -560,7 +560,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\SendBroadcast200Response**](../Model/SendBroadcast200Response.md)
+[**\Zernio\Model\SendBroadcast200Response**](../Model/SendBroadcast200Response.md)
 
 ### Authorization
 
@@ -578,7 +578,7 @@ try {
 ## `updateBroadcast()`
 
 ```php
-updateBroadcast($broadcast_id): \Late\Model\UpdateBroadcast200Response
+updateBroadcast($broadcast_id): \Zernio\Model\UpdateBroadcast200Response
 ```
 
 Update broadcast
@@ -593,10 +593,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\BroadcastsApi(
+$apiInstance = new Zernio\Api\BroadcastsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -620,7 +620,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateBroadcast200Response**](../Model/UpdateBroadcast200Response.md)
+[**\Zernio\Model\UpdateBroadcast200Response**](../Model/UpdateBroadcast200Response.md)
 
 ### Authorization
 

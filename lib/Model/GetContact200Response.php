@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetContact200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class GetContact200Response implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'contact' => '\Late\Model\GetContact200ResponseContact',
-        'channels' => '\Late\Model\GetContact200ResponseChannelsInner[]'
+        'contact' => '\Zernio\Model\GetContact200ResponseContact',
+        'channels' => '\Zernio\Model\GetContact200ResponseChannelsInner[]'
     ];
 
     /**
@@ -334,7 +334,7 @@ class GetContact200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets contact
      *
-     * @return \Late\Model\GetContact200ResponseContact|null
+     * @return \Zernio\Model\GetContact200ResponseContact|null
      */
     public function getContact()
     {
@@ -344,7 +344,7 @@ class GetContact200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets contact
      *
-     * @param \Late\Model\GetContact200ResponseContact|null $contact contact
+     * @param \Zernio\Model\GetContact200ResponseContact|null $contact contact
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class GetContact200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets channels
      *
-     * @return \Late\Model\GetContact200ResponseChannelsInner[]|null
+     * @return \Zernio\Model\GetContact200ResponseChannelsInner[]|null
      */
     public function getChannels()
     {
@@ -371,7 +371,7 @@ class GetContact200Response implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets channels
      *
-     * @param \Late\Model\GetContact200ResponseChannelsInner[]|null $channels channels
+     * @param \Zernio\Model\GetContact200ResponseChannelsInner[]|null $channels channels
      *
      * @return self
      */

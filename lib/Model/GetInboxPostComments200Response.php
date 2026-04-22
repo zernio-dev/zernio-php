@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetInboxPostComments200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,9 +59,9 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'comments' => '\Late\Model\GetInboxPostComments200ResponseCommentsInner[]',
-        'pagination' => '\Late\Model\GetInboxPostComments200ResponsePagination',
-        'meta' => '\Late\Model\GetInboxPostComments200ResponseMeta'
+        'comments' => '\Zernio\Model\GetInboxPostComments200ResponseCommentsInner[]',
+        'pagination' => '\Zernio\Model\GetInboxPostComments200ResponsePagination',
+        'meta' => '\Zernio\Model\GetInboxPostComments200ResponseMeta'
     ];
 
     /**
@@ -341,7 +341,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets comments
      *
-     * @return \Late\Model\GetInboxPostComments200ResponseCommentsInner[]|null
+     * @return \Zernio\Model\GetInboxPostComments200ResponseCommentsInner[]|null
      */
     public function getComments()
     {
@@ -351,7 +351,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets comments
      *
-     * @param \Late\Model\GetInboxPostComments200ResponseCommentsInner[]|null $comments comments
+     * @param \Zernio\Model\GetInboxPostComments200ResponseCommentsInner[]|null $comments comments
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets pagination
      *
-     * @return \Late\Model\GetInboxPostComments200ResponsePagination|null
+     * @return \Zernio\Model\GetInboxPostComments200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -378,7 +378,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets pagination
      *
-     * @param \Late\Model\GetInboxPostComments200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\GetInboxPostComments200ResponsePagination|null $pagination pagination
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets meta
      *
-     * @return \Late\Model\GetInboxPostComments200ResponseMeta|null
+     * @return \Zernio\Model\GetInboxPostComments200ResponseMeta|null
      */
     public function getMeta()
     {
@@ -405,7 +405,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets meta
      *
-     * @param \Late\Model\GetInboxPostComments200ResponseMeta|null $meta meta
+     * @param \Zernio\Model\GetInboxPostComments200ResponseMeta|null $meta meta
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetYouTubeDemographics412Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class GetYouTubeDemographics412Response implements ModelInterface, ArrayAccess, 
         'success' => 'bool',
         'error' => 'string',
         'code' => 'string',
-        'scope_status' => '\Late\Model\GetYouTubeDemographics412ResponseScopeStatus'
+        'scope_status' => '\Zernio\Model\GetYouTubeDemographics412ResponseScopeStatus'
     ];
 
     /**
@@ -395,7 +395,7 @@ class GetYouTubeDemographics412Response implements ModelInterface, ArrayAccess, 
     /**
      * Gets scope_status
      *
-     * @return \Late\Model\GetYouTubeDemographics412ResponseScopeStatus|null
+     * @return \Zernio\Model\GetYouTubeDemographics412ResponseScopeStatus|null
      */
     public function getScopeStatus()
     {
@@ -405,7 +405,7 @@ class GetYouTubeDemographics412Response implements ModelInterface, ArrayAccess, 
     /**
      * Sets scope_status
      *
-     * @param \Late\Model\GetYouTubeDemographics412ResponseScopeStatus|null $scope_status scope_status
+     * @param \Zernio\Model\GetYouTubeDemographics412ResponseScopeStatus|null $scope_status scope_status
      *
      * @return self
      */

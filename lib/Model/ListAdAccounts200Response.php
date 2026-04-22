@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListAdAccounts200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ListAdAccounts200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'accounts' => '\Late\Model\ListAdAccounts200ResponseAccountsInner[]'
+        'accounts' => '\Zernio\Model\ListAdAccounts200ResponseAccountsInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class ListAdAccounts200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets accounts
      *
-     * @return \Late\Model\ListAdAccounts200ResponseAccountsInner[]|null
+     * @return \Zernio\Model\ListAdAccounts200ResponseAccountsInner[]|null
      */
     public function getAccounts()
     {
@@ -303,7 +303,7 @@ class ListAdAccounts200Response implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets accounts
      *
-     * @param \Late\Model\ListAdAccounts200ResponseAccountsInner[]|null $accounts accounts
+     * @param \Zernio\Model\ListAdAccounts200ResponseAccountsInner[]|null $accounts accounts
      *
      * @return self
      */

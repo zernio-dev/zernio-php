@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner imple
       */
     protected static $openAPITypes = [
         'text' => 'string',
-        'attachments' => '\Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner[]',
+        'attachments' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner[]',
         'edited_at' => '\DateTime'
     ];
 
@@ -334,7 +334,7 @@ class GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner imple
     /**
      * Gets attachments
      *
-     * @return \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner[]|null
+     * @return \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner[]|null
      */
     public function getAttachments()
     {
@@ -344,7 +344,7 @@ class GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner imple
     /**
      * Sets attachments
      *
-     * @param \Late\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner[]|null $attachments attachments
+     * @param \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner[]|null $attachments attachments
      *
      * @return self
      */

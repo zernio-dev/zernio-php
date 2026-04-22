@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**labels** | [**\Late\Model\FoodMenuLabel[]**](FoodMenuLabel.md) |  |
-**sections** | [**\Late\Model\FoodMenuSection[]**](FoodMenuSection.md) |  | [optional]
+**labels** | [**\Zernio\Model\FoodMenuLabel[]**](FoodMenuLabel.md) |  |
+**sections** | [**\Zernio\Model\FoodMenuSection[]**](FoodMenuSection.md) |  | [optional]
 **cuisines** | **string[]** | Cuisine types (e.g. AMERICAN, ITALIAN, JAPANESE) | [optional]
 **source_url** | **string** | URL of the original menu source | [optional]
 

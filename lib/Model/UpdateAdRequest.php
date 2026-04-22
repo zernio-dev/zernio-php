@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateAdRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'budget' => '\Late\Model\UpdateAdRequestBudget',
-        'targeting' => '\Late\Model\UpdateAdRequestTargeting',
+        'budget' => '\Zernio\Model\UpdateAdRequestBudget',
+        'targeting' => '\Zernio\Model\UpdateAdRequestTargeting',
         'name' => 'string'
     ];
 
@@ -375,7 +375,7 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets budget
      *
-     * @return \Late\Model\UpdateAdRequestBudget|null
+     * @return \Zernio\Model\UpdateAdRequestBudget|null
      */
     public function getBudget()
     {
@@ -385,7 +385,7 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets budget
      *
-     * @param \Late\Model\UpdateAdRequestBudget|null $budget budget
+     * @param \Zernio\Model\UpdateAdRequestBudget|null $budget budget
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets targeting
      *
-     * @return \Late\Model\UpdateAdRequestTargeting|null
+     * @return \Zernio\Model\UpdateAdRequestTargeting|null
      */
     public function getTargeting()
     {
@@ -412,7 +412,7 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets targeting
      *
-     * @param \Late\Model\UpdateAdRequestTargeting|null $targeting targeting
+     * @param \Zernio\Model\UpdateAdRequestTargeting|null $targeting targeting
      *
      * @return self
      */

@@ -1,4 +1,4 @@
-# Late\SequencesApi
+# Zernio\SequencesApi
 
 Drip campaign sequences. Send a series of messages to enrolled contacts with configurable delays between steps. Supports auto-exit on reply or unsubscribe.
 
@@ -21,7 +21,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `activateSequence()`
 
 ```php
-activateSequence($sequence_id): \Late\Model\ActivateSequence200Response
+activateSequence($sequence_id): \Zernio\Model\ActivateSequence200Response
 ```
 
 Activate sequence
@@ -36,10 +36,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\SequencesApi(
+$apiInstance = new Zernio\Api\SequencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -63,7 +63,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ActivateSequence200Response**](../Model/ActivateSequence200Response.md)
+[**\Zernio\Model\ActivateSequence200Response**](../Model/ActivateSequence200Response.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ try {
 ## `createSequence()`
 
 ```php
-createSequence($create_sequence_request): \Late\Model\CreateSequence200Response
+createSequence($create_sequence_request): \Zernio\Model\CreateSequence200Response
 ```
 
 Create sequence
@@ -96,16 +96,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\SequencesApi(
+$apiInstance = new Zernio\Api\SequencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_sequence_request = new \Late\Model\CreateSequenceRequest(); // \Late\Model\CreateSequenceRequest
+$create_sequence_request = new \Zernio\Model\CreateSequenceRequest(); // \Zernio\Model\CreateSequenceRequest
 
 try {
     $result = $apiInstance->createSequence($create_sequence_request);
@@ -119,11 +119,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_sequence_request** | [**\Late\Model\CreateSequenceRequest**](../Model/CreateSequenceRequest.md)|  | |
+| **create_sequence_request** | [**\Zernio\Model\CreateSequenceRequest**](../Model/CreateSequenceRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateSequence200Response**](../Model/CreateSequence200Response.md)
+[**\Zernio\Model\CreateSequence200Response**](../Model/CreateSequence200Response.md)
 
 ### Authorization
 
@@ -156,10 +156,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\SequencesApi(
+$apiInstance = new Zernio\Api\SequencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -200,7 +200,7 @@ void (empty response body)
 ## `enrollContacts()`
 
 ```php
-enrollContacts($sequence_id, $enroll_contacts_request): \Late\Model\EnrollContacts200Response
+enrollContacts($sequence_id, $enroll_contacts_request): \Zernio\Model\EnrollContacts200Response
 ```
 
 Enroll contacts in a sequence
@@ -215,17 +215,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\SequencesApi(
+$apiInstance = new Zernio\Api\SequencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $sequence_id = 'sequence_id_example'; // string
-$enroll_contacts_request = new \Late\Model\EnrollContactsRequest(); // \Late\Model\EnrollContactsRequest
+$enroll_contacts_request = new \Zernio\Model\EnrollContactsRequest(); // \Zernio\Model\EnrollContactsRequest
 
 try {
     $result = $apiInstance->enrollContacts($sequence_id, $enroll_contacts_request);
@@ -240,11 +240,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **sequence_id** | **string**|  | |
-| **enroll_contacts_request** | [**\Late\Model\EnrollContactsRequest**](../Model/EnrollContactsRequest.md)|  | |
+| **enroll_contacts_request** | [**\Zernio\Model\EnrollContactsRequest**](../Model/EnrollContactsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\EnrollContacts200Response**](../Model/EnrollContacts200Response.md)
+[**\Zernio\Model\EnrollContacts200Response**](../Model/EnrollContacts200Response.md)
 
 ### Authorization
 
@@ -262,7 +262,7 @@ try {
 ## `getSequence()`
 
 ```php
-getSequence($sequence_id): \Late\Model\GetSequence200Response
+getSequence($sequence_id): \Zernio\Model\GetSequence200Response
 ```
 
 Get sequence with steps
@@ -277,10 +277,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\SequencesApi(
+$apiInstance = new Zernio\Api\SequencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -304,7 +304,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetSequence200Response**](../Model/GetSequence200Response.md)
+[**\Zernio\Model\GetSequence200Response**](../Model/GetSequence200Response.md)
 
 ### Authorization
 
@@ -322,7 +322,7 @@ try {
 ## `listSequenceEnrollments()`
 
 ```php
-listSequenceEnrollments($sequence_id, $status, $limit, $skip): \Late\Model\ListSequenceEnrollments200Response
+listSequenceEnrollments($sequence_id, $status, $limit, $skip): \Zernio\Model\ListSequenceEnrollments200Response
 ```
 
 List enrollments for a sequence
@@ -337,10 +337,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\SequencesApi(
+$apiInstance = new Zernio\Api\SequencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -370,7 +370,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListSequenceEnrollments200Response**](../Model/ListSequenceEnrollments200Response.md)
+[**\Zernio\Model\ListSequenceEnrollments200Response**](../Model/ListSequenceEnrollments200Response.md)
 
 ### Authorization
 
@@ -388,7 +388,7 @@ try {
 ## `listSequences()`
 
 ```php
-listSequences($profile_id, $status, $limit, $skip): \Late\Model\ListSequences200Response
+listSequences($profile_id, $status, $limit, $skip): \Zernio\Model\ListSequences200Response
 ```
 
 List sequences
@@ -403,10 +403,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\SequencesApi(
+$apiInstance = new Zernio\Api\SequencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -436,7 +436,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListSequences200Response**](../Model/ListSequences200Response.md)
+[**\Zernio\Model\ListSequences200Response**](../Model/ListSequences200Response.md)
 
 ### Authorization
 
@@ -454,7 +454,7 @@ try {
 ## `pauseSequence()`
 
 ```php
-pauseSequence($sequence_id): \Late\Model\ActivateSequence200Response
+pauseSequence($sequence_id): \Zernio\Model\ActivateSequence200Response
 ```
 
 Pause sequence
@@ -469,10 +469,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\SequencesApi(
+$apiInstance = new Zernio\Api\SequencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -496,7 +496,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ActivateSequence200Response**](../Model/ActivateSequence200Response.md)
+[**\Zernio\Model\ActivateSequence200Response**](../Model/ActivateSequence200Response.md)
 
 ### Authorization
 
@@ -529,10 +529,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\SequencesApi(
+$apiInstance = new Zernio\Api\SequencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -575,7 +575,7 @@ void (empty response body)
 ## `updateSequence()`
 
 ```php
-updateSequence($sequence_id): \Late\Model\UpdateSequence200Response
+updateSequence($sequence_id): \Zernio\Model\UpdateSequence200Response
 ```
 
 Update sequence
@@ -590,10 +590,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\SequencesApi(
+$apiInstance = new Zernio\Api\SequencesApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -617,7 +617,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UpdateSequence200Response**](../Model/UpdateSequence200Response.md)
+[**\Zernio\Model\UpdateSequence200Response**](../Model/UpdateSequence200Response.md)
 
 ### Authorization
 

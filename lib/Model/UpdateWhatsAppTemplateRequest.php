@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateWhatsAppTemplateRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'account_id' => 'string',
-        'components' => '\Late\Model\WhatsAppTemplateComponent[]'
+        'components' => '\Zernio\Model\WhatsAppTemplateComponent[]'
     ];
 
     /**
@@ -337,7 +337,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets components
      *
-     * @return \Late\Model\WhatsAppTemplateComponent[]
+     * @return \Zernio\Model\WhatsAppTemplateComponent[]
      */
     public function getComponents()
     {
@@ -347,7 +347,7 @@ class UpdateWhatsAppTemplateRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets components
      *
-     * @param \Late\Model\WhatsAppTemplateComponent[] $components Updated template components
+     * @param \Zernio\Model\WhatsAppTemplateComponent[] $components Updated template components
      *
      * @return self
      */

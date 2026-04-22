@@ -1,4 +1,4 @@
-# Late\ContactsApi
+# Zernio\ContactsApi
 
 Cross-platform contact management (CRM). Contacts are unified identities linked to platform-specific channels (phone, IGSID, etc.). Created automatically when messages arrive, or manually via API.
 
@@ -18,7 +18,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `bulkCreateContacts()`
 
 ```php
-bulkCreateContacts($bulk_create_contacts_request): \Late\Model\BulkCreateContacts200Response
+bulkCreateContacts($bulk_create_contacts_request): \Zernio\Model\BulkCreateContacts200Response
 ```
 
 Bulk create contacts
@@ -33,16 +33,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ContactsApi(
+$apiInstance = new Zernio\Api\ContactsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$bulk_create_contacts_request = new \Late\Model\BulkCreateContactsRequest(); // \Late\Model\BulkCreateContactsRequest
+$bulk_create_contacts_request = new \Zernio\Model\BulkCreateContactsRequest(); // \Zernio\Model\BulkCreateContactsRequest
 
 try {
     $result = $apiInstance->bulkCreateContacts($bulk_create_contacts_request);
@@ -56,11 +56,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **bulk_create_contacts_request** | [**\Late\Model\BulkCreateContactsRequest**](../Model/BulkCreateContactsRequest.md)|  | |
+| **bulk_create_contacts_request** | [**\Zernio\Model\BulkCreateContactsRequest**](../Model/BulkCreateContactsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\BulkCreateContacts200Response**](../Model/BulkCreateContacts200Response.md)
+[**\Zernio\Model\BulkCreateContacts200Response**](../Model/BulkCreateContacts200Response.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ try {
 ## `createContact()`
 
 ```php
-createContact($create_contact_request): \Late\Model\CreateContact200Response
+createContact($create_contact_request): \Zernio\Model\CreateContact200Response
 ```
 
 Create contact
@@ -93,16 +93,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ContactsApi(
+$apiInstance = new Zernio\Api\ContactsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_contact_request = new \Late\Model\CreateContactRequest(); // \Late\Model\CreateContactRequest
+$create_contact_request = new \Zernio\Model\CreateContactRequest(); // \Zernio\Model\CreateContactRequest
 
 try {
     $result = $apiInstance->createContact($create_contact_request);
@@ -116,11 +116,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_contact_request** | [**\Late\Model\CreateContactRequest**](../Model/CreateContactRequest.md)|  | |
+| **create_contact_request** | [**\Zernio\Model\CreateContactRequest**](../Model/CreateContactRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateContact200Response**](../Model/CreateContact200Response.md)
+[**\Zernio\Model\CreateContact200Response**](../Model/CreateContact200Response.md)
 
 ### Authorization
 
@@ -153,10 +153,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ContactsApi(
+$apiInstance = new Zernio\Api\ContactsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -197,7 +197,7 @@ void (empty response body)
 ## `getContact()`
 
 ```php
-getContact($contact_id): \Late\Model\GetContact200Response
+getContact($contact_id): \Zernio\Model\GetContact200Response
 ```
 
 Get contact
@@ -212,10 +212,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ContactsApi(
+$apiInstance = new Zernio\Api\ContactsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -239,7 +239,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetContact200Response**](../Model/GetContact200Response.md)
+[**\Zernio\Model\GetContact200Response**](../Model/GetContact200Response.md)
 
 ### Authorization
 
@@ -257,7 +257,7 @@ try {
 ## `getContactChannels()`
 
 ```php
-getContactChannels($contact_id): \Late\Model\GetContactChannels200Response
+getContactChannels($contact_id): \Zernio\Model\GetContactChannels200Response
 ```
 
 List channels for a contact
@@ -272,10 +272,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ContactsApi(
+$apiInstance = new Zernio\Api\ContactsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -299,7 +299,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetContactChannels200Response**](../Model/GetContactChannels200Response.md)
+[**\Zernio\Model\GetContactChannels200Response**](../Model/GetContactChannels200Response.md)
 
 ### Authorization
 
@@ -317,7 +317,7 @@ try {
 ## `listContacts()`
 
 ```php
-listContacts($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip): \Late\Model\ListContacts200Response
+listContacts($profile_id, $search, $tag, $platform, $is_subscribed, $limit, $skip): \Zernio\Model\ListContacts200Response
 ```
 
 List contacts
@@ -332,10 +332,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ContactsApi(
+$apiInstance = new Zernio\Api\ContactsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -371,7 +371,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListContacts200Response**](../Model/ListContacts200Response.md)
+[**\Zernio\Model\ListContacts200Response**](../Model/ListContacts200Response.md)
 
 ### Authorization
 
@@ -389,7 +389,7 @@ try {
 ## `updateContact()`
 
 ```php
-updateContact($contact_id, $update_contact_request): \Late\Model\UpdateContact200Response
+updateContact($contact_id, $update_contact_request): \Zernio\Model\UpdateContact200Response
 ```
 
 Update contact
@@ -404,17 +404,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ContactsApi(
+$apiInstance = new Zernio\Api\ContactsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $contact_id = 'contact_id_example'; // string
-$update_contact_request = new \Late\Model\UpdateContactRequest(); // \Late\Model\UpdateContactRequest
+$update_contact_request = new \Zernio\Model\UpdateContactRequest(); // \Zernio\Model\UpdateContactRequest
 
 try {
     $result = $apiInstance->updateContact($contact_id, $update_contact_request);
@@ -429,11 +429,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **contact_id** | **string**|  | |
-| **update_contact_request** | [**\Late\Model\UpdateContactRequest**](../Model/UpdateContactRequest.md)|  | [optional] |
+| **update_contact_request** | [**\Zernio\Model\UpdateContactRequest**](../Model/UpdateContactRequest.md)|  | [optional] |
 
 ### Return type
 
-[**\Late\Model\UpdateContact200Response**](../Model/UpdateContact200Response.md)
+[**\Zernio\Model\UpdateContact200Response**](../Model/UpdateContact200Response.md)
 
 ### Authorization
 

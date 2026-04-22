@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateContact200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class UpdateContact200Response implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'contact' => '\Late\Model\UpdateContact200ResponseContact'
+        'contact' => '\Zernio\Model\UpdateContact200ResponseContact'
     ];
 
     /**
@@ -327,7 +327,7 @@ class UpdateContact200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets contact
      *
-     * @return \Late\Model\UpdateContact200ResponseContact|null
+     * @return \Zernio\Model\UpdateContact200ResponseContact|null
      */
     public function getContact()
     {
@@ -337,7 +337,7 @@ class UpdateContact200Response implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets contact
      *
-     * @param \Late\Model\UpdateContact200ResponseContact|null $contact contact
+     * @param \Zernio\Model\UpdateContact200ResponseContact|null $contact contact
      *
      * @return self
      */

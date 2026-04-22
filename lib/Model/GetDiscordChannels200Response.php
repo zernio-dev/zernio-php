@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetDiscordChannels200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetDiscordChannels200Response implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'channels' => '\Late\Model\GetDiscordChannels200ResponseChannelsInner[]'
+        'channels' => '\Zernio\Model\GetDiscordChannels200ResponseChannelsInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class GetDiscordChannels200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets channels
      *
-     * @return \Late\Model\GetDiscordChannels200ResponseChannelsInner[]|null
+     * @return \Zernio\Model\GetDiscordChannels200ResponseChannelsInner[]|null
      */
     public function getChannels()
     {
@@ -303,7 +303,7 @@ class GetDiscordChannels200Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets channels
      *
-     * @param \Late\Model\GetDiscordChannels200ResponseChannelsInner[]|null $channels channels
+     * @param \Zernio\Model\GetDiscordChannels200ResponseChannelsInner[]|null $channels channels
      *
      * @return self
      */

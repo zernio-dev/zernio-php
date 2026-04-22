@@ -1,4 +1,4 @@
-# Late\WhatsAppApi
+# Zernio\WhatsAppApi
 
 WhatsApp Business API. Template, business profile, and phone number endpoints. All endpoints require an accountId parameter identifying the WhatsApp-connected social account.
 
@@ -32,7 +32,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `addWhatsAppGroupParticipants()`
 
 ```php
-addWhatsAppGroupParticipants($group_id, $account_id, $add_whats_app_group_participants_request): \Late\Model\UnpublishPost200Response
+addWhatsAppGroupParticipants($group_id, $account_id, $add_whats_app_group_participants_request): \Zernio\Model\UnpublishPost200Response
 ```
 
 Add participants
@@ -47,10 +47,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -58,7 +58,7 @@ $apiInstance = new Late\Api\WhatsAppApi(
 );
 $group_id = 'group_id_example'; // string | Group ID
 $account_id = 'account_id_example'; // string | WhatsApp social account ID
-$add_whats_app_group_participants_request = new \Late\Model\AddWhatsAppGroupParticipantsRequest(); // \Late\Model\AddWhatsAppGroupParticipantsRequest
+$add_whats_app_group_participants_request = new \Zernio\Model\AddWhatsAppGroupParticipantsRequest(); // \Zernio\Model\AddWhatsAppGroupParticipantsRequest
 
 try {
     $result = $apiInstance->addWhatsAppGroupParticipants($group_id, $account_id, $add_whats_app_group_participants_request);
@@ -74,11 +74,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **group_id** | **string**| Group ID | |
 | **account_id** | **string**| WhatsApp social account ID | |
-| **add_whats_app_group_participants_request** | [**\Late\Model\AddWhatsAppGroupParticipantsRequest**](../Model/AddWhatsAppGroupParticipantsRequest.md)|  | |
+| **add_whats_app_group_participants_request** | [**\Zernio\Model\AddWhatsAppGroupParticipantsRequest**](../Model/AddWhatsAppGroupParticipantsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+[**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
@@ -96,7 +96,7 @@ try {
 ## `approveWhatsAppGroupJoinRequests()`
 
 ```php
-approveWhatsAppGroupJoinRequests($group_id, $account_id, $approve_whats_app_group_join_requests_request): \Late\Model\UnpublishPost200Response
+approveWhatsAppGroupJoinRequests($group_id, $account_id, $approve_whats_app_group_join_requests_request): \Zernio\Model\UnpublishPost200Response
 ```
 
 Approve join requests
@@ -111,10 +111,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -122,7 +122,7 @@ $apiInstance = new Late\Api\WhatsAppApi(
 );
 $group_id = 'group_id_example'; // string | Group ID
 $account_id = 'account_id_example'; // string | WhatsApp social account ID
-$approve_whats_app_group_join_requests_request = new \Late\Model\ApproveWhatsAppGroupJoinRequestsRequest(); // \Late\Model\ApproveWhatsAppGroupJoinRequestsRequest
+$approve_whats_app_group_join_requests_request = new \Zernio\Model\ApproveWhatsAppGroupJoinRequestsRequest(); // \Zernio\Model\ApproveWhatsAppGroupJoinRequestsRequest
 
 try {
     $result = $apiInstance->approveWhatsAppGroupJoinRequests($group_id, $account_id, $approve_whats_app_group_join_requests_request);
@@ -138,11 +138,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **group_id** | **string**| Group ID | |
 | **account_id** | **string**| WhatsApp social account ID | |
-| **approve_whats_app_group_join_requests_request** | [**\Late\Model\ApproveWhatsAppGroupJoinRequestsRequest**](../Model/ApproveWhatsAppGroupJoinRequestsRequest.md)|  | |
+| **approve_whats_app_group_join_requests_request** | [**\Zernio\Model\ApproveWhatsAppGroupJoinRequestsRequest**](../Model/ApproveWhatsAppGroupJoinRequestsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+[**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
@@ -160,7 +160,7 @@ try {
 ## `createWhatsAppGroupChat()`
 
 ```php
-createWhatsAppGroupChat($create_whats_app_group_chat_request): \Late\Model\CreateWhatsAppGroupChat201Response
+createWhatsAppGroupChat($create_whats_app_group_chat_request): \Zernio\Model\CreateWhatsAppGroupChat201Response
 ```
 
 Create group
@@ -175,16 +175,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_whats_app_group_chat_request = new \Late\Model\CreateWhatsAppGroupChatRequest(); // \Late\Model\CreateWhatsAppGroupChatRequest
+$create_whats_app_group_chat_request = new \Zernio\Model\CreateWhatsAppGroupChatRequest(); // \Zernio\Model\CreateWhatsAppGroupChatRequest
 
 try {
     $result = $apiInstance->createWhatsAppGroupChat($create_whats_app_group_chat_request);
@@ -198,11 +198,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_whats_app_group_chat_request** | [**\Late\Model\CreateWhatsAppGroupChatRequest**](../Model/CreateWhatsAppGroupChatRequest.md)|  | |
+| **create_whats_app_group_chat_request** | [**\Zernio\Model\CreateWhatsAppGroupChatRequest**](../Model/CreateWhatsAppGroupChatRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateWhatsAppGroupChat201Response**](../Model/CreateWhatsAppGroupChat201Response.md)
+[**\Zernio\Model\CreateWhatsAppGroupChat201Response**](../Model/CreateWhatsAppGroupChat201Response.md)
 
 ### Authorization
 
@@ -220,7 +220,7 @@ try {
 ## `createWhatsAppGroupInviteLink()`
 
 ```php
-createWhatsAppGroupInviteLink($group_id, $account_id): \Late\Model\CreateWhatsAppGroupInviteLink200Response
+createWhatsAppGroupInviteLink($group_id, $account_id): \Zernio\Model\CreateWhatsAppGroupInviteLink200Response
 ```
 
 Create invite link
@@ -235,10 +235,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -264,7 +264,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\CreateWhatsAppGroupInviteLink200Response**](../Model/CreateWhatsAppGroupInviteLink200Response.md)
+[**\Zernio\Model\CreateWhatsAppGroupInviteLink200Response**](../Model/CreateWhatsAppGroupInviteLink200Response.md)
 
 ### Authorization
 
@@ -282,7 +282,7 @@ try {
 ## `createWhatsAppTemplate()`
 
 ```php
-createWhatsAppTemplate($create_whats_app_template_request): \Late\Model\CreateWhatsAppTemplate200Response
+createWhatsAppTemplate($create_whats_app_template_request): \Zernio\Model\CreateWhatsAppTemplate200Response
 ```
 
 Create template
@@ -297,16 +297,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$create_whats_app_template_request = {"accountId":"507f1f77bcf86cd799439011","name":"order_confirmation","category":"UTILITY","language":"en_US","components":[{"type":"header","format":"image","example":{"header_handle":["https://example.com/header.jpg"]}},{"type":"body","text":"Your order {{1}} has been confirmed. Expected delivery: {{2}}","example":{"body_text":[["ORD-12345","March 31"]]}},{"type":"footer","text":"Thank you for your purchase"},{"type":"buttons","buttons":[{"type":"quick_reply","text":"Track Order"}]}]}; // \Late\Model\CreateWhatsAppTemplateRequest
+$create_whats_app_template_request = {"accountId":"507f1f77bcf86cd799439011","name":"order_confirmation","category":"UTILITY","language":"en_US","components":[{"type":"header","format":"image","example":{"header_handle":["https://example.com/header.jpg"]}},{"type":"body","text":"Your order {{1}} has been confirmed. Expected delivery: {{2}}","example":{"body_text":[["ORD-12345","March 31"]]}},{"type":"footer","text":"Thank you for your purchase"},{"type":"buttons","buttons":[{"type":"quick_reply","text":"Track Order"}]}]}; // \Zernio\Model\CreateWhatsAppTemplateRequest
 
 try {
     $result = $apiInstance->createWhatsAppTemplate($create_whats_app_template_request);
@@ -320,11 +320,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **create_whats_app_template_request** | [**\Late\Model\CreateWhatsAppTemplateRequest**](../Model/CreateWhatsAppTemplateRequest.md)|  | |
+| **create_whats_app_template_request** | [**\Zernio\Model\CreateWhatsAppTemplateRequest**](../Model/CreateWhatsAppTemplateRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\CreateWhatsAppTemplate200Response**](../Model/CreateWhatsAppTemplate200Response.md)
+[**\Zernio\Model\CreateWhatsAppTemplate200Response**](../Model/CreateWhatsAppTemplate200Response.md)
 
 ### Authorization
 
@@ -342,7 +342,7 @@ try {
 ## `deleteWhatsAppGroupChat()`
 
 ```php
-deleteWhatsAppGroupChat($group_id, $account_id): \Late\Model\UnpublishPost200Response
+deleteWhatsAppGroupChat($group_id, $account_id): \Zernio\Model\UnpublishPost200Response
 ```
 
 Delete group
@@ -357,10 +357,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -386,7 +386,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+[**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
@@ -404,7 +404,7 @@ try {
 ## `deleteWhatsAppTemplate()`
 
 ```php
-deleteWhatsAppTemplate($template_name, $account_id): \Late\Model\UnpublishPost200Response
+deleteWhatsAppTemplate($template_name, $account_id): \Zernio\Model\UnpublishPost200Response
 ```
 
 Delete template
@@ -419,10 +419,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -448,7 +448,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+[**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
@@ -466,7 +466,7 @@ try {
 ## `getWhatsAppBusinessProfile()`
 
 ```php
-getWhatsAppBusinessProfile($account_id): \Late\Model\GetWhatsAppBusinessProfile200Response
+getWhatsAppBusinessProfile($account_id): \Zernio\Model\GetWhatsAppBusinessProfile200Response
 ```
 
 Get business profile
@@ -481,10 +481,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -508,7 +508,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetWhatsAppBusinessProfile200Response**](../Model/GetWhatsAppBusinessProfile200Response.md)
+[**\Zernio\Model\GetWhatsAppBusinessProfile200Response**](../Model/GetWhatsAppBusinessProfile200Response.md)
 
 ### Authorization
 
@@ -526,7 +526,7 @@ try {
 ## `getWhatsAppDisplayName()`
 
 ```php
-getWhatsAppDisplayName($account_id): \Late\Model\GetWhatsAppDisplayName200Response
+getWhatsAppDisplayName($account_id): \Zernio\Model\GetWhatsAppDisplayName200Response
 ```
 
 Get display name status
@@ -541,10 +541,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -568,7 +568,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetWhatsAppDisplayName200Response**](../Model/GetWhatsAppDisplayName200Response.md)
+[**\Zernio\Model\GetWhatsAppDisplayName200Response**](../Model/GetWhatsAppDisplayName200Response.md)
 
 ### Authorization
 
@@ -586,7 +586,7 @@ try {
 ## `getWhatsAppGroupChat()`
 
 ```php
-getWhatsAppGroupChat($group_id, $account_id): \Late\Model\GetWhatsAppGroupChat200Response
+getWhatsAppGroupChat($group_id, $account_id): \Zernio\Model\GetWhatsAppGroupChat200Response
 ```
 
 Get group info
@@ -601,10 +601,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -630,7 +630,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetWhatsAppGroupChat200Response**](../Model/GetWhatsAppGroupChat200Response.md)
+[**\Zernio\Model\GetWhatsAppGroupChat200Response**](../Model/GetWhatsAppGroupChat200Response.md)
 
 ### Authorization
 
@@ -648,7 +648,7 @@ try {
 ## `getWhatsAppTemplate()`
 
 ```php
-getWhatsAppTemplate($template_name, $account_id): \Late\Model\GetWhatsAppTemplate200Response
+getWhatsAppTemplate($template_name, $account_id): \Zernio\Model\GetWhatsAppTemplate200Response
 ```
 
 Get template
@@ -663,10 +663,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -692,7 +692,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetWhatsAppTemplate200Response**](../Model/GetWhatsAppTemplate200Response.md)
+[**\Zernio\Model\GetWhatsAppTemplate200Response**](../Model/GetWhatsAppTemplate200Response.md)
 
 ### Authorization
 
@@ -710,7 +710,7 @@ try {
 ## `getWhatsAppTemplates()`
 
 ```php
-getWhatsAppTemplates($account_id): \Late\Model\GetWhatsAppTemplates200Response
+getWhatsAppTemplates($account_id): \Zernio\Model\GetWhatsAppTemplates200Response
 ```
 
 List templates
@@ -725,10 +725,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -752,7 +752,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetWhatsAppTemplates200Response**](../Model/GetWhatsAppTemplates200Response.md)
+[**\Zernio\Model\GetWhatsAppTemplates200Response**](../Model/GetWhatsAppTemplates200Response.md)
 
 ### Authorization
 
@@ -770,7 +770,7 @@ try {
 ## `listWhatsAppGroupChats()`
 
 ```php
-listWhatsAppGroupChats($account_id, $limit, $after): \Late\Model\ListWhatsAppGroupChats200Response
+listWhatsAppGroupChats($account_id, $limit, $after): \Zernio\Model\ListWhatsAppGroupChats200Response
 ```
 
 List active groups
@@ -785,10 +785,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -816,7 +816,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListWhatsAppGroupChats200Response**](../Model/ListWhatsAppGroupChats200Response.md)
+[**\Zernio\Model\ListWhatsAppGroupChats200Response**](../Model/ListWhatsAppGroupChats200Response.md)
 
 ### Authorization
 
@@ -834,7 +834,7 @@ try {
 ## `listWhatsAppGroupJoinRequests()`
 
 ```php
-listWhatsAppGroupJoinRequests($group_id, $account_id): \Late\Model\ListWhatsAppGroupJoinRequests200Response
+listWhatsAppGroupJoinRequests($group_id, $account_id): \Zernio\Model\ListWhatsAppGroupJoinRequests200Response
 ```
 
 List join requests
@@ -849,10 +849,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -878,7 +878,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListWhatsAppGroupJoinRequests200Response**](../Model/ListWhatsAppGroupJoinRequests200Response.md)
+[**\Zernio\Model\ListWhatsAppGroupJoinRequests200Response**](../Model/ListWhatsAppGroupJoinRequests200Response.md)
 
 ### Authorization
 
@@ -896,7 +896,7 @@ try {
 ## `rejectWhatsAppGroupJoinRequests()`
 
 ```php
-rejectWhatsAppGroupJoinRequests($group_id, $account_id, $reject_whats_app_group_join_requests_request): \Late\Model\UnpublishPost200Response
+rejectWhatsAppGroupJoinRequests($group_id, $account_id, $reject_whats_app_group_join_requests_request): \Zernio\Model\UnpublishPost200Response
 ```
 
 Reject join requests
@@ -911,10 +911,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -922,7 +922,7 @@ $apiInstance = new Late\Api\WhatsAppApi(
 );
 $group_id = 'group_id_example'; // string | Group ID
 $account_id = 'account_id_example'; // string | WhatsApp social account ID
-$reject_whats_app_group_join_requests_request = new \Late\Model\RejectWhatsAppGroupJoinRequestsRequest(); // \Late\Model\RejectWhatsAppGroupJoinRequestsRequest
+$reject_whats_app_group_join_requests_request = new \Zernio\Model\RejectWhatsAppGroupJoinRequestsRequest(); // \Zernio\Model\RejectWhatsAppGroupJoinRequestsRequest
 
 try {
     $result = $apiInstance->rejectWhatsAppGroupJoinRequests($group_id, $account_id, $reject_whats_app_group_join_requests_request);
@@ -938,11 +938,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **group_id** | **string**| Group ID | |
 | **account_id** | **string**| WhatsApp social account ID | |
-| **reject_whats_app_group_join_requests_request** | [**\Late\Model\RejectWhatsAppGroupJoinRequestsRequest**](../Model/RejectWhatsAppGroupJoinRequestsRequest.md)|  | |
+| **reject_whats_app_group_join_requests_request** | [**\Zernio\Model\RejectWhatsAppGroupJoinRequestsRequest**](../Model/RejectWhatsAppGroupJoinRequestsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+[**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
@@ -960,7 +960,7 @@ try {
 ## `removeWhatsAppGroupParticipants()`
 
 ```php
-removeWhatsAppGroupParticipants($group_id, $account_id, $remove_whats_app_group_participants_request): \Late\Model\UnpublishPost200Response
+removeWhatsAppGroupParticipants($group_id, $account_id, $remove_whats_app_group_participants_request): \Zernio\Model\UnpublishPost200Response
 ```
 
 Remove participants
@@ -975,10 +975,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -986,7 +986,7 @@ $apiInstance = new Late\Api\WhatsAppApi(
 );
 $group_id = 'group_id_example'; // string | Group ID
 $account_id = 'account_id_example'; // string | WhatsApp social account ID
-$remove_whats_app_group_participants_request = new \Late\Model\RemoveWhatsAppGroupParticipantsRequest(); // \Late\Model\RemoveWhatsAppGroupParticipantsRequest
+$remove_whats_app_group_participants_request = new \Zernio\Model\RemoveWhatsAppGroupParticipantsRequest(); // \Zernio\Model\RemoveWhatsAppGroupParticipantsRequest
 
 try {
     $result = $apiInstance->removeWhatsAppGroupParticipants($group_id, $account_id, $remove_whats_app_group_participants_request);
@@ -1002,11 +1002,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **group_id** | **string**| Group ID | |
 | **account_id** | **string**| WhatsApp social account ID | |
-| **remove_whats_app_group_participants_request** | [**\Late\Model\RemoveWhatsAppGroupParticipantsRequest**](../Model/RemoveWhatsAppGroupParticipantsRequest.md)|  | |
+| **remove_whats_app_group_participants_request** | [**\Zernio\Model\RemoveWhatsAppGroupParticipantsRequest**](../Model/RemoveWhatsAppGroupParticipantsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+[**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
@@ -1024,7 +1024,7 @@ try {
 ## `updateWhatsAppBusinessProfile()`
 
 ```php
-updateWhatsAppBusinessProfile($update_whats_app_business_profile_request): \Late\Model\UnpublishPost200Response
+updateWhatsAppBusinessProfile($update_whats_app_business_profile_request): \Zernio\Model\UnpublishPost200Response
 ```
 
 Update business profile
@@ -1039,16 +1039,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$update_whats_app_business_profile_request = {"accountId":"507f1f77bcf86cd799439011","about":"We help businesses grow","description":"Premium business solutions for startups and enterprises","email":"hello@example.com","websites":["https://example.com"]}; // \Late\Model\UpdateWhatsAppBusinessProfileRequest
+$update_whats_app_business_profile_request = {"accountId":"507f1f77bcf86cd799439011","about":"We help businesses grow","description":"Premium business solutions for startups and enterprises","email":"hello@example.com","websites":["https://example.com"]}; // \Zernio\Model\UpdateWhatsAppBusinessProfileRequest
 
 try {
     $result = $apiInstance->updateWhatsAppBusinessProfile($update_whats_app_business_profile_request);
@@ -1062,11 +1062,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **update_whats_app_business_profile_request** | [**\Late\Model\UpdateWhatsAppBusinessProfileRequest**](../Model/UpdateWhatsAppBusinessProfileRequest.md)|  | |
+| **update_whats_app_business_profile_request** | [**\Zernio\Model\UpdateWhatsAppBusinessProfileRequest**](../Model/UpdateWhatsAppBusinessProfileRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+[**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
@@ -1084,7 +1084,7 @@ try {
 ## `updateWhatsAppDisplayName()`
 
 ```php
-updateWhatsAppDisplayName($update_whats_app_display_name_request): \Late\Model\UpdateWhatsAppDisplayName200Response
+updateWhatsAppDisplayName($update_whats_app_display_name_request): \Zernio\Model\UpdateWhatsAppDisplayName200Response
 ```
 
 Request display name change
@@ -1099,16 +1099,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$update_whats_app_display_name_request = {"accountId":"507f1f77bcf86cd799439011","displayName":"My Business Name"}; // \Late\Model\UpdateWhatsAppDisplayNameRequest
+$update_whats_app_display_name_request = {"accountId":"507f1f77bcf86cd799439011","displayName":"My Business Name"}; // \Zernio\Model\UpdateWhatsAppDisplayNameRequest
 
 try {
     $result = $apiInstance->updateWhatsAppDisplayName($update_whats_app_display_name_request);
@@ -1122,11 +1122,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **update_whats_app_display_name_request** | [**\Late\Model\UpdateWhatsAppDisplayNameRequest**](../Model/UpdateWhatsAppDisplayNameRequest.md)|  | |
+| **update_whats_app_display_name_request** | [**\Zernio\Model\UpdateWhatsAppDisplayNameRequest**](../Model/UpdateWhatsAppDisplayNameRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateWhatsAppDisplayName200Response**](../Model/UpdateWhatsAppDisplayName200Response.md)
+[**\Zernio\Model\UpdateWhatsAppDisplayName200Response**](../Model/UpdateWhatsAppDisplayName200Response.md)
 
 ### Authorization
 
@@ -1144,7 +1144,7 @@ try {
 ## `updateWhatsAppGroupChat()`
 
 ```php
-updateWhatsAppGroupChat($group_id, $account_id, $update_whats_app_group_chat_request): \Late\Model\UnpublishPost200Response
+updateWhatsAppGroupChat($group_id, $account_id, $update_whats_app_group_chat_request): \Zernio\Model\UnpublishPost200Response
 ```
 
 Update group settings
@@ -1159,10 +1159,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1170,7 +1170,7 @@ $apiInstance = new Late\Api\WhatsAppApi(
 );
 $group_id = 'group_id_example'; // string | Group ID
 $account_id = 'account_id_example'; // string | WhatsApp social account ID
-$update_whats_app_group_chat_request = new \Late\Model\UpdateWhatsAppGroupChatRequest(); // \Late\Model\UpdateWhatsAppGroupChatRequest
+$update_whats_app_group_chat_request = new \Zernio\Model\UpdateWhatsAppGroupChatRequest(); // \Zernio\Model\UpdateWhatsAppGroupChatRequest
 
 try {
     $result = $apiInstance->updateWhatsAppGroupChat($group_id, $account_id, $update_whats_app_group_chat_request);
@@ -1186,11 +1186,11 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **group_id** | **string**| Group ID | |
 | **account_id** | **string**| WhatsApp social account ID | |
-| **update_whats_app_group_chat_request** | [**\Late\Model\UpdateWhatsAppGroupChatRequest**](../Model/UpdateWhatsAppGroupChatRequest.md)|  | |
+| **update_whats_app_group_chat_request** | [**\Zernio\Model\UpdateWhatsAppGroupChatRequest**](../Model/UpdateWhatsAppGroupChatRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+[**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 
@@ -1208,7 +1208,7 @@ try {
 ## `updateWhatsAppTemplate()`
 
 ```php
-updateWhatsAppTemplate($template_name, $update_whats_app_template_request): \Late\Model\UpdateWhatsAppTemplate200Response
+updateWhatsAppTemplate($template_name, $update_whats_app_template_request): \Zernio\Model\UpdateWhatsAppTemplate200Response
 ```
 
 Update template
@@ -1223,17 +1223,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $template_name = 'template_name_example'; // string | Template name
-$update_whats_app_template_request = {"accountId":"507f1f77bcf86cd799439011","components":[{"type":"body","text":"Updated: Your order {{1}} is confirmed. Delivery by {{2}}","example":{"body_text":[["ORD-12345","April 1"]]}},{"type":"buttons","buttons":[{"type":"quick_reply","text":"Track Order"}]}]}; // \Late\Model\UpdateWhatsAppTemplateRequest
+$update_whats_app_template_request = {"accountId":"507f1f77bcf86cd799439011","components":[{"type":"body","text":"Updated: Your order {{1}} is confirmed. Delivery by {{2}}","example":{"body_text":[["ORD-12345","April 1"]]}},{"type":"buttons","buttons":[{"type":"quick_reply","text":"Track Order"}]}]}; // \Zernio\Model\UpdateWhatsAppTemplateRequest
 
 try {
     $result = $apiInstance->updateWhatsAppTemplate($template_name, $update_whats_app_template_request);
@@ -1248,11 +1248,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **template_name** | **string**| Template name | |
-| **update_whats_app_template_request** | [**\Late\Model\UpdateWhatsAppTemplateRequest**](../Model/UpdateWhatsAppTemplateRequest.md)|  | |
+| **update_whats_app_template_request** | [**\Zernio\Model\UpdateWhatsAppTemplateRequest**](../Model/UpdateWhatsAppTemplateRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateWhatsAppTemplate200Response**](../Model/UpdateWhatsAppTemplate200Response.md)
+[**\Zernio\Model\UpdateWhatsAppTemplate200Response**](../Model/UpdateWhatsAppTemplate200Response.md)
 
 ### Authorization
 
@@ -1270,7 +1270,7 @@ try {
 ## `uploadWhatsAppProfilePhoto()`
 
 ```php
-uploadWhatsAppProfilePhoto($account_id, $file): \Late\Model\UnpublishPost200Response
+uploadWhatsAppProfilePhoto($account_id, $file): \Zernio\Model\UnpublishPost200Response
 ```
 
 Upload profile picture
@@ -1285,10 +1285,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\WhatsAppApi(
+$apiInstance = new Zernio\Api\WhatsAppApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1314,7 +1314,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+[**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
 
 ### Authorization
 

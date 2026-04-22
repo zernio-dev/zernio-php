@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListInboxReviews200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,10 +59,10 @@ class ListInboxReviews200Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'data' => '\Late\Model\ListInboxReviews200ResponseDataInner[]',
-        'pagination' => '\Late\Model\ListInboxConversations200ResponsePagination',
-        'meta' => '\Late\Model\ListInboxConversations200ResponseMeta',
-        'summary' => '\Late\Model\ListInboxReviews200ResponseSummary'
+        'data' => '\Zernio\Model\ListInboxReviews200ResponseDataInner[]',
+        'pagination' => '\Zernio\Model\ListInboxConversations200ResponsePagination',
+        'meta' => '\Zernio\Model\ListInboxConversations200ResponseMeta',
+        'summary' => '\Zernio\Model\ListInboxReviews200ResponseSummary'
     ];
 
     /**
@@ -348,7 +348,7 @@ class ListInboxReviews200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets data
      *
-     * @return \Late\Model\ListInboxReviews200ResponseDataInner[]|null
+     * @return \Zernio\Model\ListInboxReviews200ResponseDataInner[]|null
      */
     public function getData()
     {
@@ -358,7 +358,7 @@ class ListInboxReviews200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets data
      *
-     * @param \Late\Model\ListInboxReviews200ResponseDataInner[]|null $data data
+     * @param \Zernio\Model\ListInboxReviews200ResponseDataInner[]|null $data data
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class ListInboxReviews200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets pagination
      *
-     * @return \Late\Model\ListInboxConversations200ResponsePagination|null
+     * @return \Zernio\Model\ListInboxConversations200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -385,7 +385,7 @@ class ListInboxReviews200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets pagination
      *
-     * @param \Late\Model\ListInboxConversations200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\ListInboxConversations200ResponsePagination|null $pagination pagination
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class ListInboxReviews200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets meta
      *
-     * @return \Late\Model\ListInboxConversations200ResponseMeta|null
+     * @return \Zernio\Model\ListInboxConversations200ResponseMeta|null
      */
     public function getMeta()
     {
@@ -412,7 +412,7 @@ class ListInboxReviews200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets meta
      *
-     * @param \Late\Model\ListInboxConversations200ResponseMeta|null $meta meta
+     * @param \Zernio\Model\ListInboxConversations200ResponseMeta|null $meta meta
      *
      * @return self
      */
@@ -429,7 +429,7 @@ class ListInboxReviews200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets summary
      *
-     * @return \Late\Model\ListInboxReviews200ResponseSummary|null
+     * @return \Zernio\Model\ListInboxReviews200ResponseSummary|null
      */
     public function getSummary()
     {
@@ -439,7 +439,7 @@ class ListInboxReviews200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets summary
      *
-     * @param \Late\Model\ListInboxReviews200ResponseSummary|null $summary summary
+     * @param \Zernio\Model\ListInboxReviews200ResponseSummary|null $summary summary
      *
      * @return self
      */

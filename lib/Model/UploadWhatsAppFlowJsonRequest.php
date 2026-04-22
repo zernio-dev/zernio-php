@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UploadWhatsAppFlowJsonRequest Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class UploadWhatsAppFlowJsonRequest implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'account_id' => 'string',
-        'flow_json' => '\Late\Model\UploadWhatsAppFlowJsonRequestFlowJson'
+        'flow_json' => '\Zernio\Model\UploadWhatsAppFlowJsonRequestFlowJson'
     ];
 
     /**
@@ -333,7 +333,7 @@ class UploadWhatsAppFlowJsonRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets flow_json
      *
-     * @return \Late\Model\UploadWhatsAppFlowJsonRequestFlowJson
+     * @return \Zernio\Model\UploadWhatsAppFlowJsonRequestFlowJson
      */
     public function getFlowJson()
     {
@@ -343,7 +343,7 @@ class UploadWhatsAppFlowJsonRequest implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets flow_json
      *
-     * @param \Late\Model\UploadWhatsAppFlowJsonRequestFlowJson $flow_json flow_json
+     * @param \Zernio\Model\UploadWhatsAppFlowJsonRequestFlowJson $flow_json flow_json
      *
      * @return self
      */

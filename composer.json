@@ -32,13 +32,16 @@
   },
   "autoload": {
     "psr-4": {
-      "Late\\": "lib/"
-    }
+      "Zernio\\": "lib/"
+    },
+    "files": [
+      "lib/LateAliases.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
-      "Late\\Test\\": "test/"
+      "Zernio\\Test\\": "test/"
     }
   },
-  "version": "0.0.177"
+  "version": "0.0.178"
 }

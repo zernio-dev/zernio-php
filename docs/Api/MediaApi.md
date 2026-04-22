@@ -1,4 +1,4 @@
-# Late\MediaApi
+# Zernio\MediaApi
 
 
 
@@ -12,7 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getMediaPresignedUrl()`
 
 ```php
-getMediaPresignedUrl($get_media_presigned_url_request): \Late\Model\GetMediaPresignedUrl200Response
+getMediaPresignedUrl($get_media_presigned_url_request): \Zernio\Model\GetMediaPresignedUrl200Response
 ```
 
 Get upload URL
@@ -27,16 +27,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\MediaApi(
+$apiInstance = new Zernio\Api\MediaApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$get_media_presigned_url_request = new \Late\Model\GetMediaPresignedUrlRequest(); // \Late\Model\GetMediaPresignedUrlRequest
+$get_media_presigned_url_request = new \Zernio\Model\GetMediaPresignedUrlRequest(); // \Zernio\Model\GetMediaPresignedUrlRequest
 
 try {
     $result = $apiInstance->getMediaPresignedUrl($get_media_presigned_url_request);
@@ -50,11 +50,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **get_media_presigned_url_request** | [**\Late\Model\GetMediaPresignedUrlRequest**](../Model/GetMediaPresignedUrlRequest.md)|  | |
+| **get_media_presigned_url_request** | [**\Zernio\Model\GetMediaPresignedUrlRequest**](../Model/GetMediaPresignedUrlRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\GetMediaPresignedUrl200Response**](../Model/GetMediaPresignedUrl200Response.md)
+[**\Zernio\Model\GetMediaPresignedUrl200Response**](../Model/GetMediaPresignedUrl200Response.md)
 
 ### Authorization
 

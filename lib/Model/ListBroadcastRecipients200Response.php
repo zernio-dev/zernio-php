@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListBroadcastRecipients200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class ListBroadcastRecipients200Response implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'recipients' => '\Late\Model\ListBroadcastRecipients200ResponseRecipientsInner[]',
-        'pagination' => '\Late\Model\ListContacts200ResponsePagination'
+        'recipients' => '\Zernio\Model\ListBroadcastRecipients200ResponseRecipientsInner[]',
+        'pagination' => '\Zernio\Model\ListContacts200ResponsePagination'
     ];
 
     /**
@@ -334,7 +334,7 @@ class ListBroadcastRecipients200Response implements ModelInterface, ArrayAccess,
     /**
      * Gets recipients
      *
-     * @return \Late\Model\ListBroadcastRecipients200ResponseRecipientsInner[]|null
+     * @return \Zernio\Model\ListBroadcastRecipients200ResponseRecipientsInner[]|null
      */
     public function getRecipients()
     {
@@ -344,7 +344,7 @@ class ListBroadcastRecipients200Response implements ModelInterface, ArrayAccess,
     /**
      * Sets recipients
      *
-     * @param \Late\Model\ListBroadcastRecipients200ResponseRecipientsInner[]|null $recipients recipients
+     * @param \Zernio\Model\ListBroadcastRecipients200ResponseRecipientsInner[]|null $recipients recipients
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class ListBroadcastRecipients200Response implements ModelInterface, ArrayAccess,
     /**
      * Gets pagination
      *
-     * @return \Late\Model\ListContacts200ResponsePagination|null
+     * @return \Zernio\Model\ListContacts200ResponsePagination|null
      */
     public function getPagination()
     {
@@ -371,7 +371,7 @@ class ListBroadcastRecipients200Response implements ModelInterface, ArrayAccess,
     /**
      * Sets pagination
      *
-     * @param \Late\Model\ListContacts200ResponsePagination|null $pagination pagination
+     * @param \Zernio\Model\ListContacts200ResponsePagination|null $pagination pagination
      *
      * @return self
      */

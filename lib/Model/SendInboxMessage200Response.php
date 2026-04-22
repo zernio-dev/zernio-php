@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendInboxMessage200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'data' => '\Late\Model\SendInboxMessage200ResponseData'
+        'data' => '\Zernio\Model\SendInboxMessage200ResponseData'
     ];
 
     /**
@@ -327,7 +327,7 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets data
      *
-     * @return \Late\Model\SendInboxMessage200ResponseData|null
+     * @return \Zernio\Model\SendInboxMessage200ResponseData|null
      */
     public function getData()
     {
@@ -337,7 +337,7 @@ class SendInboxMessage200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets data
      *
-     * @param \Late\Model\SendInboxMessage200ResponseData|null $data data
+     * @param \Zernio\Model\SendInboxMessage200ResponseData|null $data data
      *
      * @return self
      */

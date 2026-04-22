@@ -1,4 +1,4 @@
-# Late\AccountSettingsApi
+# Zernio\AccountSettingsApi
 
 
 
@@ -35,10 +35,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountSettingsApi(
+$apiInstance = new Zernio\Api\AccountSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -94,10 +94,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountSettingsApi(
+$apiInstance = new Zernio\Api\AccountSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -153,10 +153,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountSettingsApi(
+$apiInstance = new Zernio\Api\AccountSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -197,7 +197,7 @@ void (empty response body)
 ## `getInstagramIceBreakers()`
 
 ```php
-getInstagramIceBreakers($account_id): \Late\Model\GetMessengerMenu200Response
+getInstagramIceBreakers($account_id): \Zernio\Model\GetMessengerMenu200Response
 ```
 
 Get IG ice breakers
@@ -212,10 +212,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountSettingsApi(
+$apiInstance = new Zernio\Api\AccountSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -239,7 +239,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetMessengerMenu200Response**](../Model/GetMessengerMenu200Response.md)
+[**\Zernio\Model\GetMessengerMenu200Response**](../Model/GetMessengerMenu200Response.md)
 
 ### Authorization
 
@@ -257,7 +257,7 @@ try {
 ## `getMessengerMenu()`
 
 ```php
-getMessengerMenu($account_id): \Late\Model\GetMessengerMenu200Response
+getMessengerMenu($account_id): \Zernio\Model\GetMessengerMenu200Response
 ```
 
 Get FB persistent menu
@@ -272,10 +272,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountSettingsApi(
+$apiInstance = new Zernio\Api\AccountSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -299,7 +299,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetMessengerMenu200Response**](../Model/GetMessengerMenu200Response.md)
+[**\Zernio\Model\GetMessengerMenu200Response**](../Model/GetMessengerMenu200Response.md)
 
 ### Authorization
 
@@ -317,7 +317,7 @@ try {
 ## `getTelegramCommands()`
 
 ```php
-getTelegramCommands($account_id): \Late\Model\GetTelegramCommands200Response
+getTelegramCommands($account_id): \Zernio\Model\GetTelegramCommands200Response
 ```
 
 Get TG bot commands
@@ -332,10 +332,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountSettingsApi(
+$apiInstance = new Zernio\Api\AccountSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -359,7 +359,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetTelegramCommands200Response**](../Model/GetTelegramCommands200Response.md)
+[**\Zernio\Model\GetTelegramCommands200Response**](../Model/GetTelegramCommands200Response.md)
 
 ### Authorization
 
@@ -392,17 +392,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountSettingsApi(
+$apiInstance = new Zernio\Api\AccountSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$set_instagram_ice_breakers_request = new \Late\Model\SetInstagramIceBreakersRequest(); // \Late\Model\SetInstagramIceBreakersRequest
+$set_instagram_ice_breakers_request = new \Zernio\Model\SetInstagramIceBreakersRequest(); // \Zernio\Model\SetInstagramIceBreakersRequest
 
 try {
     $apiInstance->setInstagramIceBreakers($account_id, $set_instagram_ice_breakers_request);
@@ -416,7 +416,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **set_instagram_ice_breakers_request** | [**\Late\Model\SetInstagramIceBreakersRequest**](../Model/SetInstagramIceBreakersRequest.md)|  | |
+| **set_instagram_ice_breakers_request** | [**\Zernio\Model\SetInstagramIceBreakersRequest**](../Model/SetInstagramIceBreakersRequest.md)|  | |
 
 ### Return type
 
@@ -453,17 +453,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountSettingsApi(
+$apiInstance = new Zernio\Api\AccountSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$set_messenger_menu_request = new \Late\Model\SetMessengerMenuRequest(); // \Late\Model\SetMessengerMenuRequest
+$set_messenger_menu_request = new \Zernio\Model\SetMessengerMenuRequest(); // \Zernio\Model\SetMessengerMenuRequest
 
 try {
     $apiInstance->setMessengerMenu($account_id, $set_messenger_menu_request);
@@ -477,7 +477,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **set_messenger_menu_request** | [**\Late\Model\SetMessengerMenuRequest**](../Model/SetMessengerMenuRequest.md)|  | |
+| **set_messenger_menu_request** | [**\Zernio\Model\SetMessengerMenuRequest**](../Model/SetMessengerMenuRequest.md)|  | |
 
 ### Return type
 
@@ -514,17 +514,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\AccountSettingsApi(
+$apiInstance = new Zernio\Api\AccountSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$set_telegram_commands_request = new \Late\Model\SetTelegramCommandsRequest(); // \Late\Model\SetTelegramCommandsRequest
+$set_telegram_commands_request = new \Zernio\Model\SetTelegramCommandsRequest(); // \Zernio\Model\SetTelegramCommandsRequest
 
 try {
     $apiInstance->setTelegramCommands($account_id, $set_telegram_commands_request);
@@ -538,7 +538,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **set_telegram_commands_request** | [**\Late\Model\SetTelegramCommandsRequest**](../Model/SetTelegramCommandsRequest.md)|  | |
+| **set_telegram_commands_request** | [**\Zernio\Model\SetTelegramCommandsRequest**](../Model/SetTelegramCommandsRequest.md)|  | |
 
 ### Return type
 

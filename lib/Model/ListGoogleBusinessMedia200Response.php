@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListGoogleBusinessMedia200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ListGoogleBusinessMedia200Response implements ModelInterface, ArrayAccess,
         'success' => 'bool',
         'account_id' => 'string',
         'location_id' => 'string',
-        'media_items' => '\Late\Model\ListGoogleBusinessMedia200ResponseMediaItemsInner[]',
+        'media_items' => '\Zernio\Model\ListGoogleBusinessMedia200ResponseMediaItemsInner[]',
         'next_page_token' => 'string',
         'total_media_items_count' => 'int'
     ];
@@ -409,7 +409,7 @@ class ListGoogleBusinessMedia200Response implements ModelInterface, ArrayAccess,
     /**
      * Gets media_items
      *
-     * @return \Late\Model\ListGoogleBusinessMedia200ResponseMediaItemsInner[]|null
+     * @return \Zernio\Model\ListGoogleBusinessMedia200ResponseMediaItemsInner[]|null
      */
     public function getMediaItems()
     {
@@ -419,7 +419,7 @@ class ListGoogleBusinessMedia200Response implements ModelInterface, ArrayAccess,
     /**
      * Sets media_items
      *
-     * @param \Late\Model\ListGoogleBusinessMedia200ResponseMediaItemsInner[]|null $media_items media_items
+     * @param \Zernio\Model\ListGoogleBusinessMedia200ResponseMediaItemsInner[]|null $media_items media_items
      *
      * @return self
      */

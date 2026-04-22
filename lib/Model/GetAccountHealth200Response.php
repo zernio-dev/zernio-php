@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetAccountHealth200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,8 +63,8 @@ class GetAccountHealth200Response implements ModelInterface, ArrayAccess, \JsonS
         'username' => 'string',
         'display_name' => 'string',
         'status' => 'string',
-        'token_status' => '\Late\Model\GetAccountHealth200ResponseTokenStatus',
-        'permissions' => '\Late\Model\GetAccountHealth200ResponsePermissions',
+        'token_status' => '\Zernio\Model\GetAccountHealth200ResponseTokenStatus',
+        'permissions' => '\Zernio\Model\GetAccountHealth200ResponsePermissions',
         'issues' => 'string[]',
         'recommendations' => 'string[]'
     ];
@@ -520,7 +520,7 @@ class GetAccountHealth200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets token_status
      *
-     * @return \Late\Model\GetAccountHealth200ResponseTokenStatus|null
+     * @return \Zernio\Model\GetAccountHealth200ResponseTokenStatus|null
      */
     public function getTokenStatus()
     {
@@ -530,7 +530,7 @@ class GetAccountHealth200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets token_status
      *
-     * @param \Late\Model\GetAccountHealth200ResponseTokenStatus|null $token_status token_status
+     * @param \Zernio\Model\GetAccountHealth200ResponseTokenStatus|null $token_status token_status
      *
      * @return self
      */
@@ -547,7 +547,7 @@ class GetAccountHealth200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets permissions
      *
-     * @return \Late\Model\GetAccountHealth200ResponsePermissions|null
+     * @return \Zernio\Model\GetAccountHealth200ResponsePermissions|null
      */
     public function getPermissions()
     {
@@ -557,7 +557,7 @@ class GetAccountHealth200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets permissions
      *
-     * @param \Late\Model\GetAccountHealth200ResponsePermissions|null $permissions permissions
+     * @param \Zernio\Model\GetAccountHealth200ResponsePermissions|null $permissions permissions
      *
      * @return self
      */

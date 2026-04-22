@@ -4,6 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\Late\Model\GetInboxConversation200ResponseData**](GetInboxConversation200ResponseData.md) |  | [optional]
+**data** | [**\Zernio\Model\GetInboxConversation200ResponseData**](GetInboxConversation200ResponseData.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

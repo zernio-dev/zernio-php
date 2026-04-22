@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * TwitterPlatformDataThreadItemsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class TwitterPlatformDataThreadItemsInner implements ModelInterface, ArrayAccess
       */
     protected static $openAPITypes = [
         'content' => 'string',
-        'media_items' => '\Late\Model\MediaItem[]'
+        'media_items' => '\Zernio\Model\MediaItem[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class TwitterPlatformDataThreadItemsInner implements ModelInterface, ArrayAccess
     /**
      * Gets media_items
      *
-     * @return \Late\Model\MediaItem[]|null
+     * @return \Zernio\Model\MediaItem[]|null
      */
     public function getMediaItems()
     {
@@ -337,7 +337,7 @@ class TwitterPlatformDataThreadItemsInner implements ModelInterface, ArrayAccess
     /**
      * Sets media_items
      *
-     * @param \Late\Model\MediaItem[]|null $media_items media_items
+     * @param \Zernio\Model\MediaItem[]|null $media_items media_items
      *
      * @return self
      */

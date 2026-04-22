@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetBestTimeToPost200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class GetBestTimeToPost200Response implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'slots' => '\Late\Model\GetBestTimeToPost200ResponseSlotsInner[]'
+        'slots' => '\Zernio\Model\GetBestTimeToPost200ResponseSlotsInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class GetBestTimeToPost200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets slots
      *
-     * @return \Late\Model\GetBestTimeToPost200ResponseSlotsInner[]|null
+     * @return \Zernio\Model\GetBestTimeToPost200ResponseSlotsInner[]|null
      */
     public function getSlots()
     {
@@ -303,7 +303,7 @@ class GetBestTimeToPost200Response implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets slots
      *
-     * @param \Late\Model\GetBestTimeToPost200ResponseSlotsInner[]|null $slots slots
+     * @param \Zernio\Model\GetBestTimeToPost200ResponseSlotsInner[]|null $slots slots
      *
      * @return self
      */

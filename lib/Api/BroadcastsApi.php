@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Api;
+namespace Zernio\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -37,17 +37,17 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use Late\ApiException;
-use Late\Configuration;
-use Late\FormDataProcessor;
-use Late\HeaderSelector;
-use Late\ObjectSerializer;
+use Zernio\ApiException;
+use Zernio\Configuration;
+use Zernio\FormDataProcessor;
+use Zernio\HeaderSelector;
+use Zernio\ObjectSerializer;
 
 /**
  * BroadcastsApi Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -159,12 +159,12 @@ class BroadcastsApi
      * Add recipients to a broadcast
      *
      * @param  string $broadcast_id broadcast_id (required)
-     * @param  \Late\Model\AddBroadcastRecipientsRequest $add_broadcast_recipients_request add_broadcast_recipients_request (required)
+     * @param  \Zernio\Model\AddBroadcastRecipientsRequest $add_broadcast_recipients_request add_broadcast_recipients_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addBroadcastRecipients'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\AddBroadcastRecipients200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\AddBroadcastRecipients200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function addBroadcastRecipients($broadcast_id, $add_broadcast_recipients_request, string $contentType = self::contentTypes['addBroadcastRecipients'][0])
     {
@@ -178,12 +178,12 @@ class BroadcastsApi
      * Add recipients to a broadcast
      *
      * @param  string $broadcast_id (required)
-     * @param  \Late\Model\AddBroadcastRecipientsRequest $add_broadcast_recipients_request (required)
+     * @param  \Zernio\Model\AddBroadcastRecipientsRequest $add_broadcast_recipients_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addBroadcastRecipients'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\AddBroadcastRecipients200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\AddBroadcastRecipients200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function addBroadcastRecipientsWithHttpInfo($broadcast_id, $add_broadcast_recipients_request, string $contentType = self::contentTypes['addBroadcastRecipients'][0])
     {
@@ -215,19 +215,19 @@ class BroadcastsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\AddBroadcastRecipients200Response',
+                        '\Zernio\Model\AddBroadcastRecipients200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -249,7 +249,7 @@ class BroadcastsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\AddBroadcastRecipients200Response',
+                '\Zernio\Model\AddBroadcastRecipients200Response',
                 $request,
                 $response,
             );
@@ -258,7 +258,7 @@ class BroadcastsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\AddBroadcastRecipients200Response',
+                        '\Zernio\Model\AddBroadcastRecipients200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -266,7 +266,7 @@ class BroadcastsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -274,7 +274,7 @@ class BroadcastsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -292,7 +292,7 @@ class BroadcastsApi
      * Add recipients to a broadcast
      *
      * @param  string $broadcast_id (required)
-     * @param  \Late\Model\AddBroadcastRecipientsRequest $add_broadcast_recipients_request (required)
+     * @param  \Zernio\Model\AddBroadcastRecipientsRequest $add_broadcast_recipients_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addBroadcastRecipients'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -314,7 +314,7 @@ class BroadcastsApi
      * Add recipients to a broadcast
      *
      * @param  string $broadcast_id (required)
-     * @param  \Late\Model\AddBroadcastRecipientsRequest $add_broadcast_recipients_request (required)
+     * @param  \Zernio\Model\AddBroadcastRecipientsRequest $add_broadcast_recipients_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addBroadcastRecipients'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -322,7 +322,7 @@ class BroadcastsApi
      */
     public function addBroadcastRecipientsAsyncWithHttpInfo($broadcast_id, $add_broadcast_recipients_request, string $contentType = self::contentTypes['addBroadcastRecipients'][0])
     {
-        $returnType = '\Late\Model\AddBroadcastRecipients200Response';
+        $returnType = '\Zernio\Model\AddBroadcastRecipients200Response';
         $request = $this->addBroadcastRecipientsRequest($broadcast_id, $add_broadcast_recipients_request, $contentType);
 
         return $this->client
@@ -365,7 +365,7 @@ class BroadcastsApi
      * Create request for operation 'addBroadcastRecipients'
      *
      * @param  string $broadcast_id (required)
-     * @param  \Late\Model\AddBroadcastRecipientsRequest $add_broadcast_recipients_request (required)
+     * @param  \Zernio\Model\AddBroadcastRecipientsRequest $add_broadcast_recipients_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addBroadcastRecipients'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -480,9 +480,9 @@ class BroadcastsApi
      * @param  string $broadcast_id broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CancelBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\CancelBroadcast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function cancelBroadcast($broadcast_id, string $contentType = self::contentTypes['cancelBroadcast'][0])
     {
@@ -498,9 +498,9 @@ class BroadcastsApi
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancelBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CancelBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CancelBroadcast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function cancelBroadcastWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['cancelBroadcast'][0])
     {
@@ -532,19 +532,19 @@ class BroadcastsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CancelBroadcast200Response',
+                        '\Zernio\Model\CancelBroadcast200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -566,7 +566,7 @@ class BroadcastsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CancelBroadcast200Response',
+                '\Zernio\Model\CancelBroadcast200Response',
                 $request,
                 $response,
             );
@@ -575,7 +575,7 @@ class BroadcastsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CancelBroadcast200Response',
+                        '\Zernio\Model\CancelBroadcast200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -583,7 +583,7 @@ class BroadcastsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -591,7 +591,7 @@ class BroadcastsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -637,7 +637,7 @@ class BroadcastsApi
      */
     public function cancelBroadcastAsyncWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['cancelBroadcast'][0])
     {
-        $returnType = '\Late\Model\CancelBroadcast200Response';
+        $returnType = '\Zernio\Model\CancelBroadcast200Response';
         $request = $this->cancelBroadcastRequest($broadcast_id, $contentType);
 
         return $this->client
@@ -777,12 +777,12 @@ class BroadcastsApi
      *
      * Create broadcast draft
      *
-     * @param  \Late\Model\CreateBroadcastRequest $create_broadcast_request create_broadcast_request (required)
+     * @param  \Zernio\Model\CreateBroadcastRequest $create_broadcast_request create_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\CreateBroadcast200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\CreateBroadcast200Response|\Zernio\Model\InlineObject
      */
     public function createBroadcast($create_broadcast_request, string $contentType = self::contentTypes['createBroadcast'][0])
     {
@@ -795,12 +795,12 @@ class BroadcastsApi
      *
      * Create broadcast draft
      *
-     * @param  \Late\Model\CreateBroadcastRequest $create_broadcast_request (required)
+     * @param  \Zernio\Model\CreateBroadcastRequest $create_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\CreateBroadcast200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\CreateBroadcast200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function createBroadcastWithHttpInfo($create_broadcast_request, string $contentType = self::contentTypes['createBroadcast'][0])
     {
@@ -832,13 +832,13 @@ class BroadcastsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\CreateBroadcast200Response',
+                        '\Zernio\Model\CreateBroadcast200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -860,7 +860,7 @@ class BroadcastsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\CreateBroadcast200Response',
+                '\Zernio\Model\CreateBroadcast200Response',
                 $request,
                 $response,
             );
@@ -869,7 +869,7 @@ class BroadcastsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\CreateBroadcast200Response',
+                        '\Zernio\Model\CreateBroadcast200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -877,7 +877,7 @@ class BroadcastsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -894,7 +894,7 @@ class BroadcastsApi
      *
      * Create broadcast draft
      *
-     * @param  \Late\Model\CreateBroadcastRequest $create_broadcast_request (required)
+     * @param  \Zernio\Model\CreateBroadcastRequest $create_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBroadcast'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -915,7 +915,7 @@ class BroadcastsApi
      *
      * Create broadcast draft
      *
-     * @param  \Late\Model\CreateBroadcastRequest $create_broadcast_request (required)
+     * @param  \Zernio\Model\CreateBroadcastRequest $create_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBroadcast'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -923,7 +923,7 @@ class BroadcastsApi
      */
     public function createBroadcastAsyncWithHttpInfo($create_broadcast_request, string $contentType = self::contentTypes['createBroadcast'][0])
     {
-        $returnType = '\Late\Model\CreateBroadcast200Response';
+        $returnType = '\Zernio\Model\CreateBroadcast200Response';
         $request = $this->createBroadcastRequest($create_broadcast_request, $contentType);
 
         return $this->client
@@ -965,7 +965,7 @@ class BroadcastsApi
     /**
      * Create request for operation 'createBroadcast'
      *
-     * @param  \Late\Model\CreateBroadcastRequest $create_broadcast_request (required)
+     * @param  \Zernio\Model\CreateBroadcastRequest $create_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBroadcast'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1065,7 +1065,7 @@ class BroadcastsApi
      * @param  string $broadcast_id broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
@@ -1082,7 +1082,7 @@ class BroadcastsApi
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
@@ -1119,7 +1119,7 @@ class BroadcastsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1127,7 +1127,7 @@ class BroadcastsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1303,9 +1303,9 @@ class BroadcastsApi
      * @param  string $broadcast_id broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\GetBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\GetBroadcast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getBroadcast($broadcast_id, string $contentType = self::contentTypes['getBroadcast'][0])
     {
@@ -1321,9 +1321,9 @@ class BroadcastsApi
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\GetBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetBroadcast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBroadcastWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['getBroadcast'][0])
     {
@@ -1355,19 +1355,19 @@ class BroadcastsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\GetBroadcast200Response',
+                        '\Zernio\Model\GetBroadcast200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1389,7 +1389,7 @@ class BroadcastsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\GetBroadcast200Response',
+                '\Zernio\Model\GetBroadcast200Response',
                 $request,
                 $response,
             );
@@ -1398,7 +1398,7 @@ class BroadcastsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\GetBroadcast200Response',
+                        '\Zernio\Model\GetBroadcast200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1406,7 +1406,7 @@ class BroadcastsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1414,7 +1414,7 @@ class BroadcastsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1460,7 +1460,7 @@ class BroadcastsApi
      */
     public function getBroadcastAsyncWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['getBroadcast'][0])
     {
-        $returnType = '\Late\Model\GetBroadcast200Response';
+        $returnType = '\Zernio\Model\GetBroadcast200Response';
         $request = $this->getBroadcastRequest($broadcast_id, $contentType);
 
         return $this->client
@@ -1606,9 +1606,9 @@ class BroadcastsApi
      * @param  int|null $skip skip (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBroadcastRecipients'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListBroadcastRecipients200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\ListBroadcastRecipients200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function listBroadcastRecipients($broadcast_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcastRecipients'][0])
     {
@@ -1627,9 +1627,9 @@ class BroadcastsApi
      * @param  int|null $skip (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBroadcastRecipients'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListBroadcastRecipients200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListBroadcastRecipients200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function listBroadcastRecipientsWithHttpInfo($broadcast_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcastRecipients'][0])
     {
@@ -1661,19 +1661,19 @@ class BroadcastsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListBroadcastRecipients200Response',
+                        '\Zernio\Model\ListBroadcastRecipients200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -1695,7 +1695,7 @@ class BroadcastsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListBroadcastRecipients200Response',
+                '\Zernio\Model\ListBroadcastRecipients200Response',
                 $request,
                 $response,
             );
@@ -1704,7 +1704,7 @@ class BroadcastsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListBroadcastRecipients200Response',
+                        '\Zernio\Model\ListBroadcastRecipients200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1712,7 +1712,7 @@ class BroadcastsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1720,7 +1720,7 @@ class BroadcastsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1772,7 +1772,7 @@ class BroadcastsApi
      */
     public function listBroadcastRecipientsAsyncWithHttpInfo($broadcast_id, $status = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcastRecipients'][0])
     {
-        $returnType = '\Late\Model\ListBroadcastRecipients200Response';
+        $returnType = '\Zernio\Model\ListBroadcastRecipients200Response';
         $request = $this->listBroadcastRecipientsRequest($broadcast_id, $status, $limit, $skip, $contentType);
 
         return $this->client
@@ -1952,9 +1952,9 @@ class BroadcastsApi
      * @param  int|null $skip skip (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBroadcasts'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ListBroadcasts200Response|\Late\Model\InlineObject
+     * @return \Zernio\Model\ListBroadcasts200Response|\Zernio\Model\InlineObject
      */
     public function listBroadcasts($profile_id = null, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
     {
@@ -1974,9 +1974,9 @@ class BroadcastsApi
      * @param  int|null $skip (optional, default to 0)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listBroadcasts'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ListBroadcasts200Response|\Late\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ListBroadcasts200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function listBroadcastsWithHttpInfo($profile_id = null, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
     {
@@ -2008,13 +2008,13 @@ class BroadcastsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ListBroadcasts200Response',
+                        '\Zernio\Model\ListBroadcasts200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
@@ -2036,7 +2036,7 @@ class BroadcastsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ListBroadcasts200Response',
+                '\Zernio\Model\ListBroadcasts200Response',
                 $request,
                 $response,
             );
@@ -2045,7 +2045,7 @@ class BroadcastsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ListBroadcasts200Response',
+                        '\Zernio\Model\ListBroadcasts200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2053,7 +2053,7 @@ class BroadcastsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2107,7 +2107,7 @@ class BroadcastsApi
      */
     public function listBroadcastsAsyncWithHttpInfo($profile_id = null, $status = null, $platform = null, $limit = 50, $skip = 0, string $contentType = self::contentTypes['listBroadcasts'][0])
     {
-        $returnType = '\Late\Model\ListBroadcasts200Response';
+        $returnType = '\Zernio\Model\ListBroadcasts200Response';
         $request = $this->listBroadcastsRequest($profile_id, $status, $platform, $limit, $skip, $contentType);
 
         return $this->client
@@ -2287,12 +2287,12 @@ class BroadcastsApi
      * Schedule broadcast for later
      *
      * @param  string $broadcast_id broadcast_id (required)
-     * @param  \Late\Model\ScheduleBroadcastRequest $schedule_broadcast_request schedule_broadcast_request (required)
+     * @param  \Zernio\Model\ScheduleBroadcastRequest $schedule_broadcast_request schedule_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['scheduleBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\ScheduleBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\ScheduleBroadcast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function scheduleBroadcast($broadcast_id, $schedule_broadcast_request, string $contentType = self::contentTypes['scheduleBroadcast'][0])
     {
@@ -2306,12 +2306,12 @@ class BroadcastsApi
      * Schedule broadcast for later
      *
      * @param  string $broadcast_id (required)
-     * @param  \Late\Model\ScheduleBroadcastRequest $schedule_broadcast_request (required)
+     * @param  \Zernio\Model\ScheduleBroadcastRequest $schedule_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['scheduleBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\ScheduleBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ScheduleBroadcast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function scheduleBroadcastWithHttpInfo($broadcast_id, $schedule_broadcast_request, string $contentType = self::contentTypes['scheduleBroadcast'][0])
     {
@@ -2343,19 +2343,19 @@ class BroadcastsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\ScheduleBroadcast200Response',
+                        '\Zernio\Model\ScheduleBroadcast200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2377,7 +2377,7 @@ class BroadcastsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\ScheduleBroadcast200Response',
+                '\Zernio\Model\ScheduleBroadcast200Response',
                 $request,
                 $response,
             );
@@ -2386,7 +2386,7 @@ class BroadcastsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\ScheduleBroadcast200Response',
+                        '\Zernio\Model\ScheduleBroadcast200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2394,7 +2394,7 @@ class BroadcastsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2402,7 +2402,7 @@ class BroadcastsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2420,7 +2420,7 @@ class BroadcastsApi
      * Schedule broadcast for later
      *
      * @param  string $broadcast_id (required)
-     * @param  \Late\Model\ScheduleBroadcastRequest $schedule_broadcast_request (required)
+     * @param  \Zernio\Model\ScheduleBroadcastRequest $schedule_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['scheduleBroadcast'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2442,7 +2442,7 @@ class BroadcastsApi
      * Schedule broadcast for later
      *
      * @param  string $broadcast_id (required)
-     * @param  \Late\Model\ScheduleBroadcastRequest $schedule_broadcast_request (required)
+     * @param  \Zernio\Model\ScheduleBroadcastRequest $schedule_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['scheduleBroadcast'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2450,7 +2450,7 @@ class BroadcastsApi
      */
     public function scheduleBroadcastAsyncWithHttpInfo($broadcast_id, $schedule_broadcast_request, string $contentType = self::contentTypes['scheduleBroadcast'][0])
     {
-        $returnType = '\Late\Model\ScheduleBroadcast200Response';
+        $returnType = '\Zernio\Model\ScheduleBroadcast200Response';
         $request = $this->scheduleBroadcastRequest($broadcast_id, $schedule_broadcast_request, $contentType);
 
         return $this->client
@@ -2493,7 +2493,7 @@ class BroadcastsApi
      * Create request for operation 'scheduleBroadcast'
      *
      * @param  string $broadcast_id (required)
-     * @param  \Late\Model\ScheduleBroadcastRequest $schedule_broadcast_request (required)
+     * @param  \Zernio\Model\ScheduleBroadcastRequest $schedule_broadcast_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['scheduleBroadcast'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2608,9 +2608,9 @@ class BroadcastsApi
      * @param  string $broadcast_id broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\SendBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\SendBroadcast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function sendBroadcast($broadcast_id, string $contentType = self::contentTypes['sendBroadcast'][0])
     {
@@ -2626,9 +2626,9 @@ class BroadcastsApi
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\SendBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SendBroadcast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function sendBroadcastWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['sendBroadcast'][0])
     {
@@ -2660,19 +2660,19 @@ class BroadcastsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\SendBroadcast200Response',
+                        '\Zernio\Model\SendBroadcast200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2694,7 +2694,7 @@ class BroadcastsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\SendBroadcast200Response',
+                '\Zernio\Model\SendBroadcast200Response',
                 $request,
                 $response,
             );
@@ -2703,7 +2703,7 @@ class BroadcastsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\SendBroadcast200Response',
+                        '\Zernio\Model\SendBroadcast200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2711,7 +2711,7 @@ class BroadcastsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2719,7 +2719,7 @@ class BroadcastsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2765,7 +2765,7 @@ class BroadcastsApi
      */
     public function sendBroadcastAsyncWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['sendBroadcast'][0])
     {
-        $returnType = '\Late\Model\SendBroadcast200Response';
+        $returnType = '\Zernio\Model\SendBroadcast200Response';
         $request = $this->sendBroadcastRequest($broadcast_id, $contentType);
 
         return $this->client
@@ -2908,9 +2908,9 @@ class BroadcastsApi
      * @param  string $broadcast_id broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Late\Model\UpdateBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1
+     * @return \Zernio\Model\UpdateBroadcast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function updateBroadcast($broadcast_id, string $contentType = self::contentTypes['updateBroadcast'][0])
     {
@@ -2926,9 +2926,9 @@ class BroadcastsApi
      * @param  string $broadcast_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBroadcast'] to see the possible values for this operation
      *
-     * @throws \Late\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Late\Model\UpdateBroadcast200Response|\Late\Model\InlineObject|\Late\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateBroadcast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateBroadcastWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['updateBroadcast'][0])
     {
@@ -2960,19 +2960,19 @@ class BroadcastsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\UpdateBroadcast200Response',
+                        '\Zernio\Model\UpdateBroadcast200Response',
                         $request,
                         $response,
                     );
                 case 401:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $request,
                         $response,
                     );
                 case 404:
                     return $this->handleResponseWithDataType(
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $request,
                         $response,
                     );
@@ -2994,7 +2994,7 @@ class BroadcastsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Late\Model\UpdateBroadcast200Response',
+                '\Zernio\Model\UpdateBroadcast200Response',
                 $request,
                 $response,
             );
@@ -3003,7 +3003,7 @@ class BroadcastsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\UpdateBroadcast200Response',
+                        '\Zernio\Model\UpdateBroadcast200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3011,7 +3011,7 @@ class BroadcastsApi
                 case 401:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject',
+                        '\Zernio\Model\InlineObject',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3019,7 +3019,7 @@ class BroadcastsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Late\Model\InlineObject1',
+                        '\Zernio\Model\InlineObject1',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3065,7 +3065,7 @@ class BroadcastsApi
      */
     public function updateBroadcastAsyncWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['updateBroadcast'][0])
     {
-        $returnType = '\Late\Model\UpdateBroadcast200Response';
+        $returnType = '\Zernio\Model\UpdateBroadcast200Response';
         $request = $this->updateBroadcastRequest($broadcast_id, $contentType);
 
         return $this->client

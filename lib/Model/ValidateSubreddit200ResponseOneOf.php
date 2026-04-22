@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ValidateSubreddit200ResponseOneOf Class Doc Comment
  *
  * @category Class
  * @description Subreddit exists
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class ValidateSubreddit200ResponseOneOf implements ModelInterface, ArrayAccess, 
       */
     protected static $openAPITypes = [
         'exists' => 'bool',
-        'subreddit' => '\Late\Model\ValidateSubreddit200ResponseOneOfSubreddit'
+        'subreddit' => '\Zernio\Model\ValidateSubreddit200ResponseOneOfSubreddit'
     ];
 
     /**
@@ -328,7 +328,7 @@ class ValidateSubreddit200ResponseOneOf implements ModelInterface, ArrayAccess, 
     /**
      * Gets subreddit
      *
-     * @return \Late\Model\ValidateSubreddit200ResponseOneOfSubreddit|null
+     * @return \Zernio\Model\ValidateSubreddit200ResponseOneOfSubreddit|null
      */
     public function getSubreddit()
     {
@@ -338,7 +338,7 @@ class ValidateSubreddit200ResponseOneOf implements ModelInterface, ArrayAccess, 
     /**
      * Sets subreddit
      *
-     * @param \Late\Model\ValidateSubreddit200ResponseOneOfSubreddit|null $subreddit subreddit
+     * @param \Zernio\Model\ValidateSubreddit200ResponseOneOfSubreddit|null $subreddit subreddit
      *
      * @return self
      */

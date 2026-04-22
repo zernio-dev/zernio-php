@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * CreateBroadcastRequestMessage Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class CreateBroadcastRequestMessage implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'text' => 'string',
-        'attachments' => '\Late\Model\CreateBroadcastRequestMessageAttachmentsInner[]'
+        'attachments' => '\Zernio\Model\CreateBroadcastRequestMessageAttachmentsInner[]'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CreateBroadcastRequestMessage implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets attachments
      *
-     * @return \Late\Model\CreateBroadcastRequestMessageAttachmentsInner[]|null
+     * @return \Zernio\Model\CreateBroadcastRequestMessageAttachmentsInner[]|null
      */
     public function getAttachments()
     {
@@ -337,7 +337,7 @@ class CreateBroadcastRequestMessage implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets attachments
      *
-     * @param \Late\Model\CreateBroadcastRequestMessageAttachmentsInner[]|null $attachments attachments
+     * @param \Zernio\Model\CreateBroadcastRequestMessageAttachmentsInner[]|null $attachments attachments
      *
      * @return self
      */

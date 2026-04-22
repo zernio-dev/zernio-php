@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListSnapchatProfiles200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class ListSnapchatProfiles200Response implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'public_profiles' => '\Late\Model\ListSnapchatProfiles200ResponsePublicProfilesInner[]'
+        'public_profiles' => '\Zernio\Model\ListSnapchatProfiles200ResponsePublicProfilesInner[]'
     ];
 
     /**
@@ -293,7 +293,7 @@ class ListSnapchatProfiles200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Gets public_profiles
      *
-     * @return \Late\Model\ListSnapchatProfiles200ResponsePublicProfilesInner[]|null
+     * @return \Zernio\Model\ListSnapchatProfiles200ResponsePublicProfilesInner[]|null
      */
     public function getPublicProfiles()
     {
@@ -303,7 +303,7 @@ class ListSnapchatProfiles200Response implements ModelInterface, ArrayAccess, \J
     /**
      * Sets public_profiles
      *
-     * @param \Late\Model\ListSnapchatProfiles200ResponsePublicProfilesInner[]|null $public_profiles public_profiles
+     * @param \Zernio\Model\ListSnapchatProfiles200ResponsePublicProfilesInner[]|null $public_profiles public_profiles
      *
      * @return self
      */

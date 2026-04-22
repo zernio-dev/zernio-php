@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetBroadcast200ResponseBroadcast Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -63,9 +63,9 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
         'description' => 'string',
         'platform' => 'string',
         'account_id' => 'string',
-        'message' => '\Late\Model\GetBroadcast200ResponseBroadcastMessage',
-        'template' => '\Late\Model\GetBroadcast200ResponseBroadcastTemplate',
-        'segment_filters' => '\Late\Model\ListContacts200ResponseFilters',
+        'message' => '\Zernio\Model\GetBroadcast200ResponseBroadcastMessage',
+        'template' => '\Zernio\Model\GetBroadcast200ResponseBroadcastTemplate',
+        'segment_filters' => '\Zernio\Model\ListContacts200ResponseFilters',
         'status' => 'string',
         'scheduled_at' => '\DateTime',
         'started_at' => '\DateTime',
@@ -586,7 +586,7 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
     /**
      * Gets message
      *
-     * @return \Late\Model\GetBroadcast200ResponseBroadcastMessage|null
+     * @return \Zernio\Model\GetBroadcast200ResponseBroadcastMessage|null
      */
     public function getMessage()
     {
@@ -596,7 +596,7 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
     /**
      * Sets message
      *
-     * @param \Late\Model\GetBroadcast200ResponseBroadcastMessage|null $message message
+     * @param \Zernio\Model\GetBroadcast200ResponseBroadcastMessage|null $message message
      *
      * @return self
      */
@@ -613,7 +613,7 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
     /**
      * Gets template
      *
-     * @return \Late\Model\GetBroadcast200ResponseBroadcastTemplate|null
+     * @return \Zernio\Model\GetBroadcast200ResponseBroadcastTemplate|null
      */
     public function getTemplate()
     {
@@ -623,7 +623,7 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
     /**
      * Sets template
      *
-     * @param \Late\Model\GetBroadcast200ResponseBroadcastTemplate|null $template template
+     * @param \Zernio\Model\GetBroadcast200ResponseBroadcastTemplate|null $template template
      *
      * @return self
      */
@@ -640,7 +640,7 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
     /**
      * Gets segment_filters
      *
-     * @return \Late\Model\ListContacts200ResponseFilters|null
+     * @return \Zernio\Model\ListContacts200ResponseFilters|null
      */
     public function getSegmentFilters()
     {
@@ -650,7 +650,7 @@ class GetBroadcast200ResponseBroadcast implements ModelInterface, ArrayAccess, \
     /**
      * Sets segment_filters
      *
-     * @param \Late\Model\ListContacts200ResponseFilters|null $segment_filters segment_filters
+     * @param \Zernio\Model\ListContacts200ResponseFilters|null $segment_filters segment_filters
      *
      * @return self
      */

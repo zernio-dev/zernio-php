@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * SendInboxMessageRequestReplyMarkup Class Doc Comment
  *
  * @category Class
  * @description Telegram-native keyboard markup. Ignored on other platforms.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,7 +60,7 @@ class SendInboxMessageRequestReplyMarkup implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'type' => 'string',
-        'keyboard' => '\Late\Model\SendInboxMessageRequestReplyMarkupKeyboardInnerInner[][]',
+        'keyboard' => '\Zernio\Model\SendInboxMessageRequestReplyMarkupKeyboardInnerInner[][]',
         'one_time' => 'bool'
     ];
 
@@ -369,7 +369,7 @@ class SendInboxMessageRequestReplyMarkup implements ModelInterface, ArrayAccess,
     /**
      * Gets keyboard
      *
-     * @return \Late\Model\SendInboxMessageRequestReplyMarkupKeyboardInnerInner[][]|null
+     * @return \Zernio\Model\SendInboxMessageRequestReplyMarkupKeyboardInnerInner[][]|null
      */
     public function getKeyboard()
     {
@@ -379,7 +379,7 @@ class SendInboxMessageRequestReplyMarkup implements ModelInterface, ArrayAccess,
     /**
      * Sets keyboard
      *
-     * @param \Late\Model\SendInboxMessageRequestReplyMarkupKeyboardInnerInner[][]|null $keyboard Array of rows, each row is an array of buttons
+     * @param \Zernio\Model\SendInboxMessageRequestReplyMarkupKeyboardInnerInner[][]|null $keyboard Array of rows, each row is an array of buttons
      *
      * @return self
      */

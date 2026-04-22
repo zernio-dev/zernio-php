@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * WebhookPayloadMessageDeleted Class Doc Comment
  *
  * @category Class
  * @description Webhook payload for message.deleted events. Fires when the sender deletes (unsends) a message. Supported platforms: Instagram (incoming unsend) and WhatsApp (when the business deletes an outgoing message via the Cloud API).  The message.text and message.attachments fields retain the content that existed before the delete. The Zernio dashboard UI does not show this content, but authorized API consumers may access it for moderation, compliance, or archival use cases.
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,10 +61,10 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     protected static $openAPITypes = [
         'id' => 'string',
         'event' => 'string',
-        'message' => '\Late\Model\InboxWebhookMessage',
+        'message' => '\Zernio\Model\InboxWebhookMessage',
         'deleted_at' => '\DateTime',
-        'conversation' => '\Late\Model\InboxWebhookConversation',
-        'account' => '\Late\Model\InboxWebhookAccount',
+        'conversation' => '\Zernio\Model\InboxWebhookConversation',
+        'account' => '\Zernio\Model\InboxWebhookAccount',
         'timestamp' => '\DateTime'
     ];
 
@@ -443,7 +443,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets message
      *
-     * @return \Late\Model\InboxWebhookMessage
+     * @return \Zernio\Model\InboxWebhookMessage
      */
     public function getMessage()
     {
@@ -453,7 +453,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets message
      *
-     * @param \Late\Model\InboxWebhookMessage $message message
+     * @param \Zernio\Model\InboxWebhookMessage $message message
      *
      * @return self
      */
@@ -497,7 +497,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets conversation
      *
-     * @return \Late\Model\InboxWebhookConversation
+     * @return \Zernio\Model\InboxWebhookConversation
      */
     public function getConversation()
     {
@@ -507,7 +507,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets conversation
      *
-     * @param \Late\Model\InboxWebhookConversation $conversation conversation
+     * @param \Zernio\Model\InboxWebhookConversation $conversation conversation
      *
      * @return self
      */
@@ -524,7 +524,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     /**
      * Gets account
      *
-     * @return \Late\Model\InboxWebhookAccount
+     * @return \Zernio\Model\InboxWebhookAccount
      */
     public function getAccount()
     {
@@ -534,7 +534,7 @@ class WebhookPayloadMessageDeleted implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets account
      *
-     * @param \Late\Model\InboxWebhookAccount $account account
+     * @param \Zernio\Model\InboxWebhookAccount $account account
      *
      * @return self
      */

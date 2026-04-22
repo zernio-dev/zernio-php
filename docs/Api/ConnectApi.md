@@ -1,4 +1,4 @@
-# Late\ConnectApi
+# Zernio\ConnectApi
 
 
 
@@ -43,7 +43,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `completeTelegramConnect()`
 
 ```php
-completeTelegramConnect($code): \Late\Model\CompleteTelegramConnect200Response
+completeTelegramConnect($code): \Zernio\Model\CompleteTelegramConnect200Response
 ```
 
 Check Telegram status
@@ -58,10 +58,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -85,7 +85,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\CompleteTelegramConnect200Response**](../Model/CompleteTelegramConnect200Response.md)
+[**\Zernio\Model\CompleteTelegramConnect200Response**](../Model/CompleteTelegramConnect200Response.md)
 
 ### Authorization
 
@@ -103,7 +103,7 @@ try {
 ## `connectAds()`
 
 ```php
-connectAds($platform, $profile_id, $account_id, $redirect_url, $headless): \Late\Model\ConnectAds200Response
+connectAds($platform, $profile_id, $account_id, $redirect_url, $headless): \Zernio\Model\ConnectAds200Response
 ```
 
 Connect ads for a platform
@@ -118,10 +118,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -153,7 +153,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ConnectAds200Response**](../Model/ConnectAds200Response.md)
+[**\Zernio\Model\ConnectAds200Response**](../Model/ConnectAds200Response.md)
 
 ### Authorization
 
@@ -171,7 +171,7 @@ try {
 ## `connectBlueskyCredentials()`
 
 ```php
-connectBlueskyCredentials($connect_bluesky_credentials_request): \Late\Model\ConnectBlueskyCredentials200Response
+connectBlueskyCredentials($connect_bluesky_credentials_request): \Zernio\Model\ConnectBlueskyCredentials200Response
 ```
 
 Connect Bluesky account
@@ -186,16 +186,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$connect_bluesky_credentials_request = {"identifier":"yourhandle.bsky.social","appPassword":"xxxx-xxxx-xxxx-xxxx","state":"6507a1b2c3d4e5f6a7b8c9d0-6507a1b2c3d4e5f6a7b8c9d1","redirectUri":"https://yourapp.com/connected"}; // \Late\Model\ConnectBlueskyCredentialsRequest
+$connect_bluesky_credentials_request = {"identifier":"yourhandle.bsky.social","appPassword":"xxxx-xxxx-xxxx-xxxx","state":"6507a1b2c3d4e5f6a7b8c9d0-6507a1b2c3d4e5f6a7b8c9d1","redirectUri":"https://yourapp.com/connected"}; // \Zernio\Model\ConnectBlueskyCredentialsRequest
 
 try {
     $result = $apiInstance->connectBlueskyCredentials($connect_bluesky_credentials_request);
@@ -209,11 +209,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **connect_bluesky_credentials_request** | [**\Late\Model\ConnectBlueskyCredentialsRequest**](../Model/ConnectBlueskyCredentialsRequest.md)|  | |
+| **connect_bluesky_credentials_request** | [**\Zernio\Model\ConnectBlueskyCredentialsRequest**](../Model/ConnectBlueskyCredentialsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\ConnectBlueskyCredentials200Response**](../Model/ConnectBlueskyCredentials200Response.md)
+[**\Zernio\Model\ConnectBlueskyCredentials200Response**](../Model/ConnectBlueskyCredentials200Response.md)
 
 ### Authorization
 
@@ -231,7 +231,7 @@ try {
 ## `connectWhatsAppCredentials()`
 
 ```php
-connectWhatsAppCredentials($connect_whats_app_credentials_request): \Late\Model\ConnectWhatsAppCredentials200Response
+connectWhatsAppCredentials($connect_whats_app_credentials_request): \Zernio\Model\ConnectWhatsAppCredentials200Response
 ```
 
 Connect WhatsApp via credentials
@@ -246,16 +246,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$connect_whats_app_credentials_request = {"profileId":"6507a1b2c3d4e5f6a7b8c9d0","accessToken":"EAABsbCS...your-system-user-token","wabaId":"123456789012345","phoneNumberId":"987654321098765"}; // \Late\Model\ConnectWhatsAppCredentialsRequest
+$connect_whats_app_credentials_request = {"profileId":"6507a1b2c3d4e5f6a7b8c9d0","accessToken":"EAABsbCS...your-system-user-token","wabaId":"123456789012345","phoneNumberId":"987654321098765"}; // \Zernio\Model\ConnectWhatsAppCredentialsRequest
 
 try {
     $result = $apiInstance->connectWhatsAppCredentials($connect_whats_app_credentials_request);
@@ -269,11 +269,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **connect_whats_app_credentials_request** | [**\Late\Model\ConnectWhatsAppCredentialsRequest**](../Model/ConnectWhatsAppCredentialsRequest.md)|  | |
+| **connect_whats_app_credentials_request** | [**\Zernio\Model\ConnectWhatsAppCredentialsRequest**](../Model/ConnectWhatsAppCredentialsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\ConnectWhatsAppCredentials200Response**](../Model/ConnectWhatsAppCredentials200Response.md)
+[**\Zernio\Model\ConnectWhatsAppCredentials200Response**](../Model/ConnectWhatsAppCredentials200Response.md)
 
 ### Authorization
 
@@ -291,7 +291,7 @@ try {
 ## `getConnectUrl()`
 
 ```php
-getConnectUrl($platform, $profile_id, $redirect_url, $headless): \Late\Model\GetConnectUrl200Response
+getConnectUrl($platform, $profile_id, $redirect_url, $headless): \Zernio\Model\GetConnectUrl200Response
 ```
 
 Get OAuth connect URL
@@ -306,10 +306,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -339,7 +339,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetConnectUrl200Response**](../Model/GetConnectUrl200Response.md)
+[**\Zernio\Model\GetConnectUrl200Response**](../Model/GetConnectUrl200Response.md)
 
 ### Authorization
 
@@ -357,7 +357,7 @@ try {
 ## `getFacebookPages()`
 
 ```php
-getFacebookPages($account_id): \Late\Model\GetFacebookPages200Response
+getFacebookPages($account_id): \Zernio\Model\GetFacebookPages200Response
 ```
 
 List Facebook pages
@@ -372,10 +372,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -399,7 +399,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetFacebookPages200Response**](../Model/GetFacebookPages200Response.md)
+[**\Zernio\Model\GetFacebookPages200Response**](../Model/GetFacebookPages200Response.md)
 
 ### Authorization
 
@@ -417,7 +417,7 @@ try {
 ## `getGmbLocations()`
 
 ```php
-getGmbLocations($account_id): \Late\Model\GetGmbLocations200Response
+getGmbLocations($account_id): \Zernio\Model\GetGmbLocations200Response
 ```
 
 List GBP locations
@@ -432,10 +432,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -459,7 +459,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetGmbLocations200Response**](../Model/GetGmbLocations200Response.md)
+[**\Zernio\Model\GetGmbLocations200Response**](../Model/GetGmbLocations200Response.md)
 
 ### Authorization
 
@@ -477,7 +477,7 @@ try {
 ## `getLinkedInOrganizations()`
 
 ```php
-getLinkedInOrganizations($account_id): \Late\Model\GetLinkedInOrganizations200Response
+getLinkedInOrganizations($account_id): \Zernio\Model\GetLinkedInOrganizations200Response
 ```
 
 List LinkedIn orgs
@@ -492,10 +492,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -519,7 +519,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetLinkedInOrganizations200Response**](../Model/GetLinkedInOrganizations200Response.md)
+[**\Zernio\Model\GetLinkedInOrganizations200Response**](../Model/GetLinkedInOrganizations200Response.md)
 
 ### Authorization
 
@@ -537,7 +537,7 @@ try {
 ## `getPendingOAuthData()`
 
 ```php
-getPendingOAuthData($token): \Late\Model\GetPendingOAuthData200Response
+getPendingOAuthData($token): \Zernio\Model\GetPendingOAuthData200Response
 ```
 
 Get pending OAuth data
@@ -552,10 +552,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -579,7 +579,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetPendingOAuthData200Response**](../Model/GetPendingOAuthData200Response.md)
+[**\Zernio\Model\GetPendingOAuthData200Response**](../Model/GetPendingOAuthData200Response.md)
 
 ### Authorization
 
@@ -597,7 +597,7 @@ try {
 ## `getPinterestBoards()`
 
 ```php
-getPinterestBoards($account_id): \Late\Model\GetPinterestBoards200Response
+getPinterestBoards($account_id): \Zernio\Model\GetPinterestBoards200Response
 ```
 
 List Pinterest boards
@@ -612,10 +612,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -639,7 +639,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetPinterestBoards200Response**](../Model/GetPinterestBoards200Response.md)
+[**\Zernio\Model\GetPinterestBoards200Response**](../Model/GetPinterestBoards200Response.md)
 
 ### Authorization
 
@@ -657,7 +657,7 @@ try {
 ## `getRedditFlairs()`
 
 ```php
-getRedditFlairs($account_id, $subreddit): \Late\Model\GetRedditFlairs200Response
+getRedditFlairs($account_id, $subreddit): \Zernio\Model\GetRedditFlairs200Response
 ```
 
 List subreddit flairs
@@ -672,10 +672,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -701,7 +701,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetRedditFlairs200Response**](../Model/GetRedditFlairs200Response.md)
+[**\Zernio\Model\GetRedditFlairs200Response**](../Model/GetRedditFlairs200Response.md)
 
 ### Authorization
 
@@ -719,7 +719,7 @@ try {
 ## `getRedditSubreddits()`
 
 ```php
-getRedditSubreddits($account_id): \Late\Model\GetRedditSubreddits200Response
+getRedditSubreddits($account_id): \Zernio\Model\GetRedditSubreddits200Response
 ```
 
 List Reddit subreddits
@@ -734,10 +734,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -761,7 +761,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetRedditSubreddits200Response**](../Model/GetRedditSubreddits200Response.md)
+[**\Zernio\Model\GetRedditSubreddits200Response**](../Model/GetRedditSubreddits200Response.md)
 
 ### Authorization
 
@@ -779,7 +779,7 @@ try {
 ## `getTelegramConnectStatus()`
 
 ```php
-getTelegramConnectStatus($profile_id): \Late\Model\GetTelegramConnectStatus200Response
+getTelegramConnectStatus($profile_id): \Zernio\Model\GetTelegramConnectStatus200Response
 ```
 
 Generate Telegram code
@@ -794,10 +794,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -821,7 +821,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetTelegramConnectStatus200Response**](../Model/GetTelegramConnectStatus200Response.md)
+[**\Zernio\Model\GetTelegramConnectStatus200Response**](../Model/GetTelegramConnectStatus200Response.md)
 
 ### Authorization
 
@@ -839,7 +839,7 @@ try {
 ## `getYoutubePlaylists()`
 
 ```php
-getYoutubePlaylists($account_id): \Late\Model\GetYoutubePlaylists200Response
+getYoutubePlaylists($account_id): \Zernio\Model\GetYoutubePlaylists200Response
 ```
 
 List YouTube playlists
@@ -854,10 +854,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -881,7 +881,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\GetYoutubePlaylists200Response**](../Model/GetYoutubePlaylists200Response.md)
+[**\Zernio\Model\GetYoutubePlaylists200Response**](../Model/GetYoutubePlaylists200Response.md)
 
 ### Authorization
 
@@ -914,17 +914,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $platform = 'platform_example'; // string
-$handle_o_auth_callback_request = new \Late\Model\HandleOAuthCallbackRequest(); // \Late\Model\HandleOAuthCallbackRequest
+$handle_o_auth_callback_request = new \Zernio\Model\HandleOAuthCallbackRequest(); // \Zernio\Model\HandleOAuthCallbackRequest
 
 try {
     $apiInstance->handleOAuthCallback($platform, $handle_o_auth_callback_request);
@@ -938,7 +938,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**|  | |
-| **handle_o_auth_callback_request** | [**\Late\Model\HandleOAuthCallbackRequest**](../Model/HandleOAuthCallbackRequest.md)|  | |
+| **handle_o_auth_callback_request** | [**\Zernio\Model\HandleOAuthCallbackRequest**](../Model/HandleOAuthCallbackRequest.md)|  | |
 
 ### Return type
 
@@ -960,7 +960,7 @@ void (empty response body)
 ## `initiateTelegramConnect()`
 
 ```php
-initiateTelegramConnect($initiate_telegram_connect_request): \Late\Model\InitiateTelegramConnect200Response
+initiateTelegramConnect($initiate_telegram_connect_request): \Zernio\Model\InitiateTelegramConnect200Response
 ```
 
 Connect Telegram directly
@@ -975,16 +975,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$initiate_telegram_connect_request = {"chatId":"-1001234567890","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Late\Model\InitiateTelegramConnectRequest
+$initiate_telegram_connect_request = {"chatId":"-1001234567890","profileId":"6507a1b2c3d4e5f6a7b8c9d0"}; // \Zernio\Model\InitiateTelegramConnectRequest
 
 try {
     $result = $apiInstance->initiateTelegramConnect($initiate_telegram_connect_request);
@@ -998,11 +998,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **initiate_telegram_connect_request** | [**\Late\Model\InitiateTelegramConnectRequest**](../Model/InitiateTelegramConnectRequest.md)|  | |
+| **initiate_telegram_connect_request** | [**\Zernio\Model\InitiateTelegramConnectRequest**](../Model/InitiateTelegramConnectRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\InitiateTelegramConnect200Response**](../Model/InitiateTelegramConnect200Response.md)
+[**\Zernio\Model\InitiateTelegramConnect200Response**](../Model/InitiateTelegramConnect200Response.md)
 
 ### Authorization
 
@@ -1020,7 +1020,7 @@ try {
 ## `listFacebookPages()`
 
 ```php
-listFacebookPages($profile_id, $temp_token): \Late\Model\ListFacebookPages200Response
+listFacebookPages($profile_id, $temp_token): \Zernio\Model\ListFacebookPages200Response
 ```
 
 List Facebook pages
@@ -1035,15 +1035,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: connectToken
-$config = Late\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Late\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1069,7 +1069,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListFacebookPages200Response**](../Model/ListFacebookPages200Response.md)
+[**\Zernio\Model\ListFacebookPages200Response**](../Model/ListFacebookPages200Response.md)
 
 ### Authorization
 
@@ -1087,7 +1087,7 @@ try {
 ## `listGoogleBusinessLocations()`
 
 ```php
-listGoogleBusinessLocations($profile_id, $pending_data_token, $temp_token): \Late\Model\ListGoogleBusinessLocations200Response
+listGoogleBusinessLocations($profile_id, $pending_data_token, $temp_token): \Zernio\Model\ListGoogleBusinessLocations200Response
 ```
 
 List GBP locations
@@ -1102,15 +1102,15 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: connectToken
-$config = Late\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Late\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1138,7 +1138,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListGoogleBusinessLocations200Response**](../Model/ListGoogleBusinessLocations200Response.md)
+[**\Zernio\Model\ListGoogleBusinessLocations200Response**](../Model/ListGoogleBusinessLocations200Response.md)
 
 ### Authorization
 
@@ -1156,7 +1156,7 @@ try {
 ## `listLinkedInOrganizations()`
 
 ```php
-listLinkedInOrganizations($temp_token, $org_ids): \Late\Model\ListLinkedInOrganizations200Response
+listLinkedInOrganizations($temp_token, $org_ids): \Zernio\Model\ListLinkedInOrganizations200Response
 ```
 
 List LinkedIn orgs
@@ -1171,10 +1171,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1200,7 +1200,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListLinkedInOrganizations200Response**](../Model/ListLinkedInOrganizations200Response.md)
+[**\Zernio\Model\ListLinkedInOrganizations200Response**](../Model/ListLinkedInOrganizations200Response.md)
 
 ### Authorization
 
@@ -1218,7 +1218,7 @@ try {
 ## `listPinterestBoardsForSelection()`
 
 ```php
-listPinterestBoardsForSelection($x_connect_token, $profile_id, $temp_token): \Late\Model\ListPinterestBoardsForSelection200Response
+listPinterestBoardsForSelection($x_connect_token, $profile_id, $temp_token): \Zernio\Model\ListPinterestBoardsForSelection200Response
 ```
 
 List Pinterest boards
@@ -1233,10 +1233,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1264,7 +1264,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListPinterestBoardsForSelection200Response**](../Model/ListPinterestBoardsForSelection200Response.md)
+[**\Zernio\Model\ListPinterestBoardsForSelection200Response**](../Model/ListPinterestBoardsForSelection200Response.md)
 
 ### Authorization
 
@@ -1282,7 +1282,7 @@ try {
 ## `listSnapchatProfiles()`
 
 ```php
-listSnapchatProfiles($x_connect_token, $profile_id, $temp_token): \Late\Model\ListSnapchatProfiles200Response
+listSnapchatProfiles($x_connect_token, $profile_id, $temp_token): \Zernio\Model\ListSnapchatProfiles200Response
 ```
 
 List Snapchat profiles
@@ -1297,10 +1297,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1328,7 +1328,7 @@ try {
 
 ### Return type
 
-[**\Late\Model\ListSnapchatProfiles200Response**](../Model/ListSnapchatProfiles200Response.md)
+[**\Zernio\Model\ListSnapchatProfiles200Response**](../Model/ListSnapchatProfiles200Response.md)
 
 ### Authorization
 
@@ -1346,7 +1346,7 @@ try {
 ## `selectFacebookPage()`
 
 ```php
-selectFacebookPage($select_facebook_page_request): \Late\Model\SelectFacebookPage200Response
+selectFacebookPage($select_facebook_page_request): \Zernio\Model\SelectFacebookPage200Response
 ```
 
 Select Facebook page
@@ -1361,21 +1361,21 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: connectToken
-$config = Late\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Late\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$select_facebook_page_request = {"profileId":"507f1f77bcf86cd799439011","pageId":"123456789","tempToken":"EAAxxxxx...","userProfile":{"id":"987654321","name":"John Doe","profilePicture":"https://..."},"redirect_url":"https://yourdomain.com/integrations/callback"}; // \Late\Model\SelectFacebookPageRequest
+$select_facebook_page_request = {"profileId":"507f1f77bcf86cd799439011","pageId":"123456789","tempToken":"EAAxxxxx...","userProfile":{"id":"987654321","name":"John Doe","profilePicture":"https://..."},"redirect_url":"https://yourdomain.com/integrations/callback"}; // \Zernio\Model\SelectFacebookPageRequest
 
 try {
     $result = $apiInstance->selectFacebookPage($select_facebook_page_request);
@@ -1389,11 +1389,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **select_facebook_page_request** | [**\Late\Model\SelectFacebookPageRequest**](../Model/SelectFacebookPageRequest.md)|  | |
+| **select_facebook_page_request** | [**\Zernio\Model\SelectFacebookPageRequest**](../Model/SelectFacebookPageRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\SelectFacebookPage200Response**](../Model/SelectFacebookPage200Response.md)
+[**\Zernio\Model\SelectFacebookPage200Response**](../Model/SelectFacebookPage200Response.md)
 
 ### Authorization
 
@@ -1411,7 +1411,7 @@ try {
 ## `selectGoogleBusinessLocation()`
 
 ```php
-selectGoogleBusinessLocation($select_google_business_location_request): \Late\Model\SelectGoogleBusinessLocation200Response
+selectGoogleBusinessLocation($select_google_business_location_request): \Zernio\Model\SelectGoogleBusinessLocation200Response
 ```
 
 Select GBP location
@@ -1426,21 +1426,21 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure API key authorization: connectToken
-$config = Late\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
+$config = Zernio\Configuration::getDefaultConfiguration()->setApiKey('X-Connect-Token', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Late\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
+// $config = Zernio\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-Connect-Token', 'Bearer');
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$select_google_business_location_request = {"profileId":"507f1f77bcf86cd799439011","locationId":"9281089117903930794","pendingDataToken":"a1b2c3d4e5f6...","redirect_url":"https://yourdomain.com/integrations/callback"}; // \Late\Model\SelectGoogleBusinessLocationRequest
+$select_google_business_location_request = {"profileId":"507f1f77bcf86cd799439011","locationId":"9281089117903930794","pendingDataToken":"a1b2c3d4e5f6...","redirect_url":"https://yourdomain.com/integrations/callback"}; // \Zernio\Model\SelectGoogleBusinessLocationRequest
 
 try {
     $result = $apiInstance->selectGoogleBusinessLocation($select_google_business_location_request);
@@ -1454,11 +1454,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **select_google_business_location_request** | [**\Late\Model\SelectGoogleBusinessLocationRequest**](../Model/SelectGoogleBusinessLocationRequest.md)|  | |
+| **select_google_business_location_request** | [**\Zernio\Model\SelectGoogleBusinessLocationRequest**](../Model/SelectGoogleBusinessLocationRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\SelectGoogleBusinessLocation200Response**](../Model/SelectGoogleBusinessLocation200Response.md)
+[**\Zernio\Model\SelectGoogleBusinessLocation200Response**](../Model/SelectGoogleBusinessLocation200Response.md)
 
 ### Authorization
 
@@ -1476,7 +1476,7 @@ try {
 ## `selectLinkedInOrganization()`
 
 ```php
-selectLinkedInOrganization($select_linked_in_organization_request): \Late\Model\SelectLinkedInOrganization200Response
+selectLinkedInOrganization($select_linked_in_organization_request): \Zernio\Model\SelectLinkedInOrganization200Response
 ```
 
 Select LinkedIn org
@@ -1491,16 +1491,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$select_linked_in_organization_request = {"profileId":"64f0a1b2c3d4e5f6a7b8c9d0","tempToken":"AQX...","userProfile":{"id":"abc123","username":"johndoe","displayName":"John Doe","profilePicture":"https://media.licdn.com/dms/image/v2/..."},"accountType":"personal"}; // \Late\Model\SelectLinkedInOrganizationRequest
+$select_linked_in_organization_request = {"profileId":"64f0a1b2c3d4e5f6a7b8c9d0","tempToken":"AQX...","userProfile":{"id":"abc123","username":"johndoe","displayName":"John Doe","profilePicture":"https://media.licdn.com/dms/image/v2/..."},"accountType":"personal"}; // \Zernio\Model\SelectLinkedInOrganizationRequest
 
 try {
     $result = $apiInstance->selectLinkedInOrganization($select_linked_in_organization_request);
@@ -1514,11 +1514,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **select_linked_in_organization_request** | [**\Late\Model\SelectLinkedInOrganizationRequest**](../Model/SelectLinkedInOrganizationRequest.md)|  | |
+| **select_linked_in_organization_request** | [**\Zernio\Model\SelectLinkedInOrganizationRequest**](../Model/SelectLinkedInOrganizationRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\SelectLinkedInOrganization200Response**](../Model/SelectLinkedInOrganization200Response.md)
+[**\Zernio\Model\SelectLinkedInOrganization200Response**](../Model/SelectLinkedInOrganization200Response.md)
 
 ### Authorization
 
@@ -1536,7 +1536,7 @@ try {
 ## `selectPinterestBoard()`
 
 ```php
-selectPinterestBoard($select_pinterest_board_request): \Late\Model\SelectPinterestBoard200Response
+selectPinterestBoard($select_pinterest_board_request): \Zernio\Model\SelectPinterestBoard200Response
 ```
 
 Select Pinterest board
@@ -1551,16 +1551,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$select_pinterest_board_request = {"profileId":"64f0a1b2c3d4e5f6a7b8c9d0","boardId":"123456789012345678","boardName":"Marketing Ideas","tempToken":"pina_...","userProfile":{"id":"user123","username":"mybrand","displayName":"My Brand","profilePicture":"https://i.pinimg.com/..."},"redirect_url":"https://yourapp.com/callback"}; // \Late\Model\SelectPinterestBoardRequest
+$select_pinterest_board_request = {"profileId":"64f0a1b2c3d4e5f6a7b8c9d0","boardId":"123456789012345678","boardName":"Marketing Ideas","tempToken":"pina_...","userProfile":{"id":"user123","username":"mybrand","displayName":"My Brand","profilePicture":"https://i.pinimg.com/..."},"redirect_url":"https://yourapp.com/callback"}; // \Zernio\Model\SelectPinterestBoardRequest
 
 try {
     $result = $apiInstance->selectPinterestBoard($select_pinterest_board_request);
@@ -1574,11 +1574,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **select_pinterest_board_request** | [**\Late\Model\SelectPinterestBoardRequest**](../Model/SelectPinterestBoardRequest.md)|  | |
+| **select_pinterest_board_request** | [**\Zernio\Model\SelectPinterestBoardRequest**](../Model/SelectPinterestBoardRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\SelectPinterestBoard200Response**](../Model/SelectPinterestBoard200Response.md)
+[**\Zernio\Model\SelectPinterestBoard200Response**](../Model/SelectPinterestBoard200Response.md)
 
 ### Authorization
 
@@ -1596,7 +1596,7 @@ try {
 ## `selectSnapchatProfile()`
 
 ```php
-selectSnapchatProfile($select_snapchat_profile_request, $x_connect_token): \Late\Model\SelectSnapchatProfile200Response
+selectSnapchatProfile($select_snapchat_profile_request, $x_connect_token): \Zernio\Model\SelectSnapchatProfile200Response
 ```
 
 Select Snapchat profile
@@ -1611,16 +1611,16 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$select_snapchat_profile_request = {"profileId":"64f0a1b2c3d4e5f6a7b8c9d0","selectedPublicProfile":{"id":"abc123-def456","display_name":"My Brand","username":"mybrand","profile_image_url":"https://cf-st.sc-cdn.net/...","subscriber_count":15000},"tempToken":"eyJ...","userProfile":{"id":"user123","username":"mybrand","displayName":"My Brand","profilePicture":"https://cf-st.sc-cdn.net/..."},"redirect_url":"https://yourapp.com/callback"}; // \Late\Model\SelectSnapchatProfileRequest
+$select_snapchat_profile_request = {"profileId":"64f0a1b2c3d4e5f6a7b8c9d0","selectedPublicProfile":{"id":"abc123-def456","display_name":"My Brand","username":"mybrand","profile_image_url":"https://cf-st.sc-cdn.net/...","subscriber_count":15000},"tempToken":"eyJ...","userProfile":{"id":"user123","username":"mybrand","displayName":"My Brand","profilePicture":"https://cf-st.sc-cdn.net/..."},"redirect_url":"https://yourapp.com/callback"}; // \Zernio\Model\SelectSnapchatProfileRequest
 $x_connect_token = 'x_connect_token_example'; // string | Short-lived connect token from the OAuth redirect (for API users)
 
 try {
@@ -1635,12 +1635,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **select_snapchat_profile_request** | [**\Late\Model\SelectSnapchatProfileRequest**](../Model/SelectSnapchatProfileRequest.md)|  | |
+| **select_snapchat_profile_request** | [**\Zernio\Model\SelectSnapchatProfileRequest**](../Model/SelectSnapchatProfileRequest.md)|  | |
 | **x_connect_token** | **string**| Short-lived connect token from the OAuth redirect (for API users) | [optional] |
 
 ### Return type
 
-[**\Late\Model\SelectSnapchatProfile200Response**](../Model/SelectSnapchatProfile200Response.md)
+[**\Zernio\Model\SelectSnapchatProfile200Response**](../Model/SelectSnapchatProfile200Response.md)
 
 ### Authorization
 
@@ -1658,7 +1658,7 @@ try {
 ## `updateFacebookPage()`
 
 ```php
-updateFacebookPage($account_id, $update_facebook_page_request): \Late\Model\UpdateFacebookPage200Response
+updateFacebookPage($account_id, $update_facebook_page_request): \Zernio\Model\UpdateFacebookPage200Response
 ```
 
 Update Facebook page
@@ -1673,17 +1673,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_facebook_page_request = {"selectedPageId":"123456789012345"}; // \Late\Model\UpdateFacebookPageRequest
+$update_facebook_page_request = {"selectedPageId":"123456789012345"}; // \Zernio\Model\UpdateFacebookPageRequest
 
 try {
     $result = $apiInstance->updateFacebookPage($account_id, $update_facebook_page_request);
@@ -1698,11 +1698,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **update_facebook_page_request** | [**\Late\Model\UpdateFacebookPageRequest**](../Model/UpdateFacebookPageRequest.md)|  | |
+| **update_facebook_page_request** | [**\Zernio\Model\UpdateFacebookPageRequest**](../Model/UpdateFacebookPageRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateFacebookPage200Response**](../Model/UpdateFacebookPage200Response.md)
+[**\Zernio\Model\UpdateFacebookPage200Response**](../Model/UpdateFacebookPage200Response.md)
 
 ### Authorization
 
@@ -1720,7 +1720,7 @@ try {
 ## `updateGmbLocation()`
 
 ```php
-updateGmbLocation($account_id, $update_gmb_location_request): \Late\Model\UpdateGmbLocation200Response
+updateGmbLocation($account_id, $update_gmb_location_request): \Zernio\Model\UpdateGmbLocation200Response
 ```
 
 Update GBP location
@@ -1735,17 +1735,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_gmb_location_request = {"selectedLocationId":"12345678901234567890"}; // \Late\Model\UpdateGmbLocationRequest
+$update_gmb_location_request = {"selectedLocationId":"12345678901234567890"}; // \Zernio\Model\UpdateGmbLocationRequest
 
 try {
     $result = $apiInstance->updateGmbLocation($account_id, $update_gmb_location_request);
@@ -1760,11 +1760,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **update_gmb_location_request** | [**\Late\Model\UpdateGmbLocationRequest**](../Model/UpdateGmbLocationRequest.md)|  | |
+| **update_gmb_location_request** | [**\Zernio\Model\UpdateGmbLocationRequest**](../Model/UpdateGmbLocationRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateGmbLocation200Response**](../Model/UpdateGmbLocation200Response.md)
+[**\Zernio\Model\UpdateGmbLocation200Response**](../Model/UpdateGmbLocation200Response.md)
 
 ### Authorization
 
@@ -1782,7 +1782,7 @@ try {
 ## `updateLinkedInOrganization()`
 
 ```php
-updateLinkedInOrganization($account_id, $update_linked_in_organization_request): \Late\Model\ConnectBlueskyCredentials200Response
+updateLinkedInOrganization($account_id, $update_linked_in_organization_request): \Zernio\Model\ConnectBlueskyCredentials200Response
 ```
 
 Switch LinkedIn account type
@@ -1797,17 +1797,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_linked_in_organization_request = {"accountType":"organization","selectedOrganization":{"id":"12345678","name":"Acme Corporation","vanityName":"acme-corp"}}; // \Late\Model\UpdateLinkedInOrganizationRequest
+$update_linked_in_organization_request = {"accountType":"organization","selectedOrganization":{"id":"12345678","name":"Acme Corporation","vanityName":"acme-corp"}}; // \Zernio\Model\UpdateLinkedInOrganizationRequest
 
 try {
     $result = $apiInstance->updateLinkedInOrganization($account_id, $update_linked_in_organization_request);
@@ -1822,11 +1822,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **update_linked_in_organization_request** | [**\Late\Model\UpdateLinkedInOrganizationRequest**](../Model/UpdateLinkedInOrganizationRequest.md)|  | |
+| **update_linked_in_organization_request** | [**\Zernio\Model\UpdateLinkedInOrganizationRequest**](../Model/UpdateLinkedInOrganizationRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\ConnectBlueskyCredentials200Response**](../Model/ConnectBlueskyCredentials200Response.md)
+[**\Zernio\Model\ConnectBlueskyCredentials200Response**](../Model/ConnectBlueskyCredentials200Response.md)
 
 ### Authorization
 
@@ -1844,7 +1844,7 @@ try {
 ## `updatePinterestBoards()`
 
 ```php
-updatePinterestBoards($account_id, $update_pinterest_boards_request): \Late\Model\ConnectBlueskyCredentials200Response
+updatePinterestBoards($account_id, $update_pinterest_boards_request): \Zernio\Model\ConnectBlueskyCredentials200Response
 ```
 
 Set default Pinterest board
@@ -1859,17 +1859,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_pinterest_boards_request = {"defaultBoardId":"123456789012345678","defaultBoardName":"Marketing Ideas"}; // \Late\Model\UpdatePinterestBoardsRequest
+$update_pinterest_boards_request = {"defaultBoardId":"123456789012345678","defaultBoardName":"Marketing Ideas"}; // \Zernio\Model\UpdatePinterestBoardsRequest
 
 try {
     $result = $apiInstance->updatePinterestBoards($account_id, $update_pinterest_boards_request);
@@ -1884,11 +1884,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **update_pinterest_boards_request** | [**\Late\Model\UpdatePinterestBoardsRequest**](../Model/UpdatePinterestBoardsRequest.md)|  | |
+| **update_pinterest_boards_request** | [**\Zernio\Model\UpdatePinterestBoardsRequest**](../Model/UpdatePinterestBoardsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\ConnectBlueskyCredentials200Response**](../Model/ConnectBlueskyCredentials200Response.md)
+[**\Zernio\Model\ConnectBlueskyCredentials200Response**](../Model/ConnectBlueskyCredentials200Response.md)
 
 ### Authorization
 
@@ -1906,7 +1906,7 @@ try {
 ## `updateRedditSubreddits()`
 
 ```php
-updateRedditSubreddits($account_id, $update_reddit_subreddits_request): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
+updateRedditSubreddits($account_id, $update_reddit_subreddits_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Set default subreddit
@@ -1921,17 +1921,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_reddit_subreddits_request = {"defaultSubreddit":"marketing"}; // \Late\Model\UpdateRedditSubredditsRequest
+$update_reddit_subreddits_request = {"defaultSubreddit":"marketing"}; // \Zernio\Model\UpdateRedditSubredditsRequest
 
 try {
     $result = $apiInstance->updateRedditSubreddits($account_id, $update_reddit_subreddits_request);
@@ -1946,11 +1946,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **update_reddit_subreddits_request** | [**\Late\Model\UpdateRedditSubredditsRequest**](../Model/UpdateRedditSubredditsRequest.md)|  | |
+| **update_reddit_subreddits_request** | [**\Zernio\Model\UpdateRedditSubredditsRequest**](../Model/UpdateRedditSubredditsRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 
@@ -1968,7 +1968,7 @@ try {
 ## `updateYoutubeDefaultPlaylist()`
 
 ```php
-updateYoutubeDefaultPlaylist($account_id, $update_youtube_default_playlist_request): \Late\Model\UpdateYoutubeDefaultPlaylist200Response
+updateYoutubeDefaultPlaylist($account_id, $update_youtube_default_playlist_request): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Set default YouTube playlist
@@ -1983,17 +1983,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure Bearer (JWT) authorization: bearerAuth
-$config = Late\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 
-$apiInstance = new Late\Api\ConnectApi(
+$apiInstance = new Zernio\Api\ConnectApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_youtube_default_playlist_request = {"defaultPlaylistId":"PLxxxxxxxxxxxxx","defaultPlaylistName":"Tutorials"}; // \Late\Model\UpdateYoutubeDefaultPlaylistRequest
+$update_youtube_default_playlist_request = {"defaultPlaylistId":"PLxxxxxxxxxxxxx","defaultPlaylistName":"Tutorials"}; // \Zernio\Model\UpdateYoutubeDefaultPlaylistRequest
 
 try {
     $result = $apiInstance->updateYoutubeDefaultPlaylist($account_id, $update_youtube_default_playlist_request);
@@ -2008,11 +2008,11 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **update_youtube_default_playlist_request** | [**\Late\Model\UpdateYoutubeDefaultPlaylistRequest**](../Model/UpdateYoutubeDefaultPlaylistRequest.md)|  | |
+| **update_youtube_default_playlist_request** | [**\Zernio\Model\UpdateYoutubeDefaultPlaylistRequest**](../Model/UpdateYoutubeDefaultPlaylistRequest.md)|  | |
 
 ### Return type
 
-[**\Late\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 

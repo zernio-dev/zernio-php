@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetGoogleBusinessReviews200ResponseReviewsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,13 +60,13 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
     protected static $openAPITypes = [
         'id' => 'string',
         'name' => 'string',
-        'reviewer' => '\Late\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewer',
+        'reviewer' => '\Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewer',
         'rating' => 'int',
         'star_rating' => 'string',
         'comment' => 'string',
         'create_time' => '\DateTime',
         'update_time' => '\DateTime',
-        'review_reply' => '\Late\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewReply'
+        'review_reply' => '\Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewReply'
     ];
 
     /**
@@ -441,7 +441,7 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
     /**
      * Gets reviewer
      *
-     * @return \Late\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewer|null
+     * @return \Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewer|null
      */
     public function getReviewer()
     {
@@ -451,7 +451,7 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
     /**
      * Sets reviewer
      *
-     * @param \Late\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewer|null $reviewer reviewer
+     * @param \Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewer|null $reviewer reviewer
      *
      * @return self
      */
@@ -621,7 +621,7 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
     /**
      * Gets review_reply
      *
-     * @return \Late\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewReply|null
+     * @return \Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewReply|null
      */
     public function getReviewReply()
     {
@@ -631,7 +631,7 @@ class GetGoogleBusinessReviews200ResponseReviewsInner implements ModelInterface,
     /**
      * Sets review_reply
      *
-     * @param \Late\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewReply|null $review_reply review_reply
+     * @param \Zernio\Model\GetGoogleBusinessReviews200ResponseReviewsInnerReviewReply|null $review_reply review_reply
      *
      * @return self
      */

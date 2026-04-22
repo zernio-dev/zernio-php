@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateAdCampaign200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
       */
     protected static $openAPITypes = [
         'updated' => 'int',
-        'budget' => '\Late\Model\AdBudget',
+        'budget' => '\Zernio\Model\AdBudget',
         'budget_level' => 'string'
     ];
 
@@ -356,7 +356,7 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Gets budget
      *
-     * @return \Late\Model\AdBudget|null
+     * @return \Zernio\Model\AdBudget|null
      */
     public function getBudget()
     {
@@ -366,7 +366,7 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets budget
      *
-     * @param \Late\Model\AdBudget|null $budget budget
+     * @param \Zernio\Model\AdBudget|null $budget budget
      *
      * @return self
      */

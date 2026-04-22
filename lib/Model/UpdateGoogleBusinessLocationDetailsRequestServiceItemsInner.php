@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner implements Mod
       * @var string[]
       */
     protected static $openAPITypes = [
-        'structured_service_item' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerStructuredServiceItem',
-        'free_form_service_item' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItem',
-        'price' => '\Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerPrice'
+        'structured_service_item' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerStructuredServiceItem',
+        'free_form_service_item' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItem',
+        'price' => '\Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerPrice'
     ];
 
     /**
@@ -307,7 +307,7 @@ class UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner implements Mod
     /**
      * Gets structured_service_item
      *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerStructuredServiceItem|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerStructuredServiceItem|null
      */
     public function getStructuredServiceItem()
     {
@@ -317,7 +317,7 @@ class UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner implements Mod
     /**
      * Sets structured_service_item
      *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerStructuredServiceItem|null $structured_service_item structured_service_item
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerStructuredServiceItem|null $structured_service_item structured_service_item
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner implements Mod
     /**
      * Gets free_form_service_item
      *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItem|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItem|null
      */
     public function getFreeFormServiceItem()
     {
@@ -344,7 +344,7 @@ class UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner implements Mod
     /**
      * Sets free_form_service_item
      *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItem|null $free_form_service_item free_form_service_item
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerFreeFormServiceItem|null $free_form_service_item free_form_service_item
      *
      * @return self
      */
@@ -361,7 +361,7 @@ class UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner implements Mod
     /**
      * Gets price
      *
-     * @return \Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerPrice|null
+     * @return \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerPrice|null
      */
     public function getPrice()
     {
@@ -371,7 +371,7 @@ class UpdateGoogleBusinessLocationDetailsRequestServiceItemsInner implements Mod
     /**
      * Sets price
      *
-     * @param \Late\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerPrice|null $price price
+     * @param \Zernio\Model\UpdateGoogleBusinessLocationDetailsRequestServiceItemsInnerPrice|null $price price
      *
      * @return self
      */

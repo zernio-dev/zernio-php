@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,17 +27,17 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GoogleBusinessPlatformDataEventSchedule Class Doc Comment
  *
  * @category Class
  * @description Event date/time range. Uses Google&#39;s date format (NOT ISO 8601).
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,10 +59,10 @@ class GoogleBusinessPlatformDataEventSchedule implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'start_date' => '\Late\Model\GoogleBusinessPlatformDataEventScheduleStartDate',
-        'start_time' => '\Late\Model\GoogleBusinessPlatformDataEventScheduleStartTime',
-        'end_date' => '\Late\Model\GoogleBusinessPlatformDataEventScheduleEndDate',
-        'end_time' => '\Late\Model\GoogleBusinessPlatformDataEventScheduleEndTime'
+        'start_date' => '\Zernio\Model\GoogleBusinessPlatformDataEventScheduleStartDate',
+        'start_time' => '\Zernio\Model\GoogleBusinessPlatformDataEventScheduleStartTime',
+        'end_date' => '\Zernio\Model\GoogleBusinessPlatformDataEventScheduleEndDate',
+        'end_time' => '\Zernio\Model\GoogleBusinessPlatformDataEventScheduleEndTime'
     ];
 
     /**
@@ -321,7 +321,7 @@ class GoogleBusinessPlatformDataEventSchedule implements ModelInterface, ArrayAc
     /**
      * Gets start_date
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataEventScheduleStartDate
+     * @return \Zernio\Model\GoogleBusinessPlatformDataEventScheduleStartDate
      */
     public function getStartDate()
     {
@@ -331,7 +331,7 @@ class GoogleBusinessPlatformDataEventSchedule implements ModelInterface, ArrayAc
     /**
      * Sets start_date
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataEventScheduleStartDate $start_date start_date
+     * @param \Zernio\Model\GoogleBusinessPlatformDataEventScheduleStartDate $start_date start_date
      *
      * @return self
      */
@@ -348,7 +348,7 @@ class GoogleBusinessPlatformDataEventSchedule implements ModelInterface, ArrayAc
     /**
      * Gets start_time
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataEventScheduleStartTime|null
+     * @return \Zernio\Model\GoogleBusinessPlatformDataEventScheduleStartTime|null
      */
     public function getStartTime()
     {
@@ -358,7 +358,7 @@ class GoogleBusinessPlatformDataEventSchedule implements ModelInterface, ArrayAc
     /**
      * Sets start_time
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataEventScheduleStartTime|null $start_time start_time
+     * @param \Zernio\Model\GoogleBusinessPlatformDataEventScheduleStartTime|null $start_time start_time
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class GoogleBusinessPlatformDataEventSchedule implements ModelInterface, ArrayAc
     /**
      * Gets end_date
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataEventScheduleEndDate
+     * @return \Zernio\Model\GoogleBusinessPlatformDataEventScheduleEndDate
      */
     public function getEndDate()
     {
@@ -385,7 +385,7 @@ class GoogleBusinessPlatformDataEventSchedule implements ModelInterface, ArrayAc
     /**
      * Sets end_date
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataEventScheduleEndDate $end_date end_date
+     * @param \Zernio\Model\GoogleBusinessPlatformDataEventScheduleEndDate $end_date end_date
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class GoogleBusinessPlatformDataEventSchedule implements ModelInterface, ArrayAc
     /**
      * Gets end_time
      *
-     * @return \Late\Model\GoogleBusinessPlatformDataEventScheduleEndTime|null
+     * @return \Zernio\Model\GoogleBusinessPlatformDataEventScheduleEndTime|null
      */
     public function getEndTime()
     {
@@ -412,7 +412,7 @@ class GoogleBusinessPlatformDataEventSchedule implements ModelInterface, ArrayAc
     /**
      * Sets end_time
      *
-     * @param \Late\Model\GoogleBusinessPlatformDataEventScheduleEndTime|null $end_time end_time
+     * @param \Zernio\Model\GoogleBusinessPlatformDataEventScheduleEndTime|null $end_time end_time
      *
      * @return self
      */

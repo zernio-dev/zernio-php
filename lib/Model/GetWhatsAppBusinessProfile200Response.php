@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetWhatsAppBusinessProfile200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class GetWhatsAppBusinessProfile200Response implements ModelInterface, ArrayAcce
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'business_profile' => '\Late\Model\GetWhatsAppBusinessProfile200ResponseBusinessProfile'
+        'business_profile' => '\Zernio\Model\GetWhatsAppBusinessProfile200ResponseBusinessProfile'
     ];
 
     /**
@@ -327,7 +327,7 @@ class GetWhatsAppBusinessProfile200Response implements ModelInterface, ArrayAcce
     /**
      * Gets business_profile
      *
-     * @return \Late\Model\GetWhatsAppBusinessProfile200ResponseBusinessProfile|null
+     * @return \Zernio\Model\GetWhatsAppBusinessProfile200ResponseBusinessProfile|null
      */
     public function getBusinessProfile()
     {
@@ -337,7 +337,7 @@ class GetWhatsAppBusinessProfile200Response implements ModelInterface, ArrayAcce
     /**
      * Sets business_profile
      *
-     * @param \Late\Model\GetWhatsAppBusinessProfile200ResponseBusinessProfile|null $business_profile business_profile
+     * @param \Zernio\Model\GetWhatsAppBusinessProfile200ResponseBusinessProfile|null $business_profile business_profile
      *
      * @return self
      */

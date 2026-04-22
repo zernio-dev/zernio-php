@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * ListGoogleBusinessPlaceActions200Response Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class ListGoogleBusinessPlaceActions200Response implements ModelInterface, Array
         'success' => 'bool',
         'account_id' => 'string',
         'location_id' => 'string',
-        'place_action_links' => '\Late\Model\ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner[]',
+        'place_action_links' => '\Zernio\Model\ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner[]',
         'next_page_token' => 'string'
     ];
 
@@ -402,7 +402,7 @@ class ListGoogleBusinessPlaceActions200Response implements ModelInterface, Array
     /**
      * Gets place_action_links
      *
-     * @return \Late\Model\ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner[]|null
+     * @return \Zernio\Model\ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner[]|null
      */
     public function getPlaceActionLinks()
     {
@@ -412,7 +412,7 @@ class ListGoogleBusinessPlaceActions200Response implements ModelInterface, Array
     /**
      * Sets place_action_links
      *
-     * @param \Late\Model\ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner[]|null $place_action_links place_action_links
+     * @param \Zernio\Model\ListGoogleBusinessPlaceActions200ResponsePlaceActionLinksInner[]|null $place_action_links place_action_links
      *
      * @return self
      */

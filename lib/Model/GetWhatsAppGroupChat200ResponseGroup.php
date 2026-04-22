@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace Late\Model;
+namespace Zernio\Model;
 
 use \ArrayAccess;
-use \Late\ObjectSerializer;
+use \Zernio\ObjectSerializer;
 
 /**
  * GetWhatsAppGroupChat200ResponseGroup Class Doc Comment
  *
  * @category Class
- * @package  Late
+ * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,7 +62,7 @@ class GetWhatsAppGroupChat200ResponseGroup implements ModelInterface, ArrayAcces
         'subject' => 'string',
         'description' => 'string',
         'join_approval_mode' => 'string',
-        'participants' => '\Late\Model\GetWhatsAppGroupChat200ResponseGroupParticipantsInner[]',
+        'participants' => '\Zernio\Model\GetWhatsAppGroupChat200ResponseGroupParticipantsInner[]',
         'participant_count' => 'int',
         'created_at' => 'int',
         'is_suspended' => 'bool'
@@ -450,7 +450,7 @@ class GetWhatsAppGroupChat200ResponseGroup implements ModelInterface, ArrayAcces
     /**
      * Gets participants
      *
-     * @return \Late\Model\GetWhatsAppGroupChat200ResponseGroupParticipantsInner[]|null
+     * @return \Zernio\Model\GetWhatsAppGroupChat200ResponseGroupParticipantsInner[]|null
      */
     public function getParticipants()
     {
@@ -460,7 +460,7 @@ class GetWhatsAppGroupChat200ResponseGroup implements ModelInterface, ArrayAcces
     /**
      * Sets participants
      *
-     * @param \Late\Model\GetWhatsAppGroupChat200ResponseGroupParticipantsInner[]|null $participants participants
+     * @param \Zernio\Model\GetWhatsAppGroupChat200ResponseGroupParticipantsInner[]|null $participants participants
      *
      * @return self
      */
