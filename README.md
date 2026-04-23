@@ -453,6 +453,8 @@ Class | Method | HTTP request | Description
 - [CreateStandaloneAd201ResponseOneOf1](docs/Model/CreateStandaloneAd201ResponseOneOf1.md)
 - [CreateStandaloneAdRequest](docs/Model/CreateStandaloneAdRequest.md)
 - [CreateStandaloneAdRequestCreativesInner](docs/Model/CreateStandaloneAdRequestCreativesInner.md)
+- [CreateStandaloneAdRequestCreativesInnerVideo](docs/Model/CreateStandaloneAdRequestCreativesInnerVideo.md)
+- [CreateStandaloneAdRequestVideo](docs/Model/CreateStandaloneAdRequestVideo.md)
 - [CreateWebhookSettingsRequest](docs/Model/CreateWebhookSettingsRequest.md)
 - [CreateWhatsAppFlow200Response](docs/Model/CreateWhatsAppFlow200Response.md)
 - [CreateWhatsAppFlow200ResponseFlow](docs/Model/CreateWhatsAppFlow200ResponseFlow.md)

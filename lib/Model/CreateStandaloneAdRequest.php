@@ -71,6 +71,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'string',
         'link_url' => 'string',
         'image_url' => 'string',
+        'video' => '\Zernio\Model\CreateStandaloneAdRequestVideo',
         'creatives' => '\Zernio\Model\CreateStandaloneAdRequestCreativesInner[]',
         'ad_set_id' => 'string',
         'business_name' => 'string',
@@ -109,6 +110,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => null,
         'link_url' => 'uri',
         'image_url' => 'uri',
+        'video' => null,
         'creatives' => null,
         'ad_set_id' => null,
         'business_name' => null,
@@ -145,6 +147,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => false,
         'link_url' => false,
         'image_url' => false,
+        'video' => false,
         'creatives' => false,
         'ad_set_id' => false,
         'business_name' => false,
@@ -261,6 +264,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'callToAction',
         'link_url' => 'linkUrl',
         'image_url' => 'imageUrl',
+        'video' => 'video',
         'creatives' => 'creatives',
         'ad_set_id' => 'adSetId',
         'business_name' => 'businessName',
@@ -297,6 +301,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'setCallToAction',
         'link_url' => 'setLinkUrl',
         'image_url' => 'setImageUrl',
+        'video' => 'setVideo',
         'creatives' => 'setCreatives',
         'ad_set_id' => 'setAdSetId',
         'business_name' => 'setBusinessName',
@@ -333,6 +338,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'getCallToAction',
         'link_url' => 'getLinkUrl',
         'image_url' => 'getImageUrl',
+        'video' => 'getVideo',
         'creatives' => 'getCreatives',
         'ad_set_id' => 'getAdSetId',
         'business_name' => 'getBusinessName',
@@ -521,6 +527,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('call_to_action', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
+        $this->setIfExists('video', $data ?? [], null);
         $this->setIfExists('creatives', $data ?? [], null);
         $this->setIfExists('ad_set_id', $data ?? [], null);
         $this->setIfExists('business_name', $data ?? [], null);
@@ -892,7 +899,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets headline
      *
-     * @param string|null $headline Required on legacy + attach shapes (skip for multi-creative — use `creatives[].headline`). Max: Meta=255, Google=30, Pinterest=100
+     * @param string|null $headline Required for Meta, Google, and Pinterest on legacy + attach shapes (skip for multi-creative — use `creatives[].headline`). Ignored for TikTok and X/Twitter. Max: Meta=255, Google=30, Pinterest=100.
      *
      * @return self
      */
@@ -919,7 +926,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets long_headline
      *
-     * @param string|null $long_headline Google Display only
+     * @param string|null $long_headline Google Display only. Defaults to `headline` if omitted.
      *
      * @return self
      */
@@ -950,7 +957,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets body
      *
-     * @param string|null $body Required on legacy + attach shapes. Max: Google=90, Pinterest=500
+     * @param string|null $body Required on legacy + attach shapes. For X/Twitter this is the tweet text (max 280 chars including a ~24-char URL when `linkUrl` is set). Max: Google=90, Pinterest=500.
      *
      * @return self
      */
@@ -1041,7 +1048,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets image_url
      *
-     * @param string|null $image_url Required on legacy + attach shapes. Not required for Google Search campaigns.
+     * @param string|null $image_url Image creative for Meta/Google/Pinterest on legacy + attach shapes (mutually exclusive with `video`). Not required for Google Search campaigns. For TikTok, this field carries the VIDEO URL (the TikTok ads endpoint is video-only; the field retains the `imageUrl` name for cross-platform consistency). Ignored for X/Twitter.
      *
      * @return self
      */
@@ -1051,6 +1058,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable image_url cannot be null');
         }
         $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets video
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestVideo|null
+     */
+    public function getVideo()
+    {
+        return $this->container['video'];
+    }
+
+    /**
+     * Sets video
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestVideo|null $video video
+     *
+     * @return self
+     */
+    public function setVideo($video)
+    {
+        if (is_null($video)) {
+            throw new \InvalidArgumentException('non-nullable video cannot be null');
+        }
+        $this->container['video'] = $video;
 
         return $this;
     }

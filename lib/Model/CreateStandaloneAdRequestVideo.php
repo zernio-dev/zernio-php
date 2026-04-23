@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateStandaloneAdRequestCreativesInner
+ * CreateStandaloneAdRequestVideo
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateStandaloneAdRequestCreativesInner Class Doc Comment
+ * CreateStandaloneAdRequestVideo Class Doc Comment
  *
  * @category Class
- * @description Each creative must supply EXACTLY ONE of &#x60;imageUrl&#x60; (image creative) or &#x60;video&#x60; (video creative).
+ * @description Meta only (facebook, instagram). When set, creates a VIDEO ad on the legacy or attach shape. Mutually exclusive with &#x60;imageUrl&#x60;. For multi-creative, set &#x60;video&#x60; per entry inside &#x60;creatives[]&#x60; instead.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateStandaloneAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createStandaloneAd_request_creatives_inner';
+    protected static $openAPIModelName = 'createStandaloneAd_request_video';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'headline' => 'string',
-        'body' => 'string',
-        'image_url' => 'string',
-        'video' => '\Zernio\Model\CreateStandaloneAdRequestCreativesInnerVideo',
-        'link_url' => 'string',
-        'call_to_action' => 'string'
+        'url' => 'string',
+        'thumbnail_url' => 'string'
     ];
 
     /**
@@ -75,12 +71,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'headline' => null,
-        'body' => null,
-        'image_url' => 'uri',
-        'video' => null,
-        'link_url' => 'uri',
-        'call_to_action' => null
+        'url' => 'uri',
+        'thumbnail_url' => 'uri'
     ];
 
     /**
@@ -89,12 +81,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'headline' => false,
-        'body' => false,
-        'image_url' => false,
-        'video' => false,
-        'link_url' => false,
-        'call_to_action' => false
+        'url' => false,
+        'thumbnail_url' => false
     ];
 
     /**
@@ -183,12 +171,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'headline' => 'headline',
-        'body' => 'body',
-        'image_url' => 'imageUrl',
-        'video' => 'video',
-        'link_url' => 'linkUrl',
-        'call_to_action' => 'callToAction'
+        'url' => 'url',
+        'thumbnail_url' => 'thumbnailUrl'
     ];
 
     /**
@@ -197,12 +181,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'headline' => 'setHeadline',
-        'body' => 'setBody',
-        'image_url' => 'setImageUrl',
-        'video' => 'setVideo',
-        'link_url' => 'setLinkUrl',
-        'call_to_action' => 'setCallToAction'
+        'url' => 'setUrl',
+        'thumbnail_url' => 'setThumbnailUrl'
     ];
 
     /**
@@ -211,12 +191,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'headline' => 'getHeadline',
-        'body' => 'getBody',
-        'image_url' => 'getImageUrl',
-        'video' => 'getVideo',
-        'link_url' => 'getLinkUrl',
-        'call_to_action' => 'getCallToAction'
+        'url' => 'getUrl',
+        'thumbnail_url' => 'getThumbnailUrl'
     ];
 
     /**
@@ -260,37 +236,6 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         return self::$openAPIModelName;
     }
 
-    public const CALL_TO_ACTION_LEARN_MORE = 'LEARN_MORE';
-    public const CALL_TO_ACTION_SHOP_NOW = 'SHOP_NOW';
-    public const CALL_TO_ACTION_SIGN_UP = 'SIGN_UP';
-    public const CALL_TO_ACTION_BOOK_TRAVEL = 'BOOK_TRAVEL';
-    public const CALL_TO_ACTION_CONTACT_US = 'CONTACT_US';
-    public const CALL_TO_ACTION_DOWNLOAD = 'DOWNLOAD';
-    public const CALL_TO_ACTION_GET_OFFER = 'GET_OFFER';
-    public const CALL_TO_ACTION_GET_QUOTE = 'GET_QUOTE';
-    public const CALL_TO_ACTION_SUBSCRIBE = 'SUBSCRIBE';
-    public const CALL_TO_ACTION_WATCH_MORE = 'WATCH_MORE';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCallToActionAllowableValues()
-    {
-        return [
-            self::CALL_TO_ACTION_LEARN_MORE,
-            self::CALL_TO_ACTION_SHOP_NOW,
-            self::CALL_TO_ACTION_SIGN_UP,
-            self::CALL_TO_ACTION_BOOK_TRAVEL,
-            self::CALL_TO_ACTION_CONTACT_US,
-            self::CALL_TO_ACTION_DOWNLOAD,
-            self::CALL_TO_ACTION_GET_OFFER,
-            self::CALL_TO_ACTION_GET_QUOTE,
-            self::CALL_TO_ACTION_SUBSCRIBE,
-            self::CALL_TO_ACTION_WATCH_MORE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -307,12 +252,8 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('headline', $data ?? [], null);
-        $this->setIfExists('body', $data ?? [], null);
-        $this->setIfExists('image_url', $data ?? [], null);
-        $this->setIfExists('video', $data ?? [], null);
-        $this->setIfExists('link_url', $data ?? [], null);
-        $this->setIfExists('call_to_action', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('thumbnail_url', $data ?? [], null);
     }
 
     /**
@@ -342,31 +283,12 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['headline'] === null) {
-            $invalidProperties[] = "'headline' can't be null";
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
         }
-        if ((mb_strlen($this->container['headline']) > 255)) {
-            $invalidProperties[] = "invalid value for 'headline', the character length must be smaller than or equal to 255.";
+        if ($this->container['thumbnail_url'] === null) {
+            $invalidProperties[] = "'thumbnail_url' can't be null";
         }
-
-        if ($this->container['body'] === null) {
-            $invalidProperties[] = "'body' can't be null";
-        }
-        if ($this->container['link_url'] === null) {
-            $invalidProperties[] = "'link_url' can't be null";
-        }
-        if ($this->container['call_to_action'] === null) {
-            $invalidProperties[] = "'call_to_action' can't be null";
-        }
-        $allowedValues = $this->getCallToActionAllowableValues();
-        if (!is_null($this->container['call_to_action']) && !in_array($this->container['call_to_action'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'call_to_action', must be one of '%s'",
-                $this->container['call_to_action'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -383,177 +305,55 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets headline
+     * Gets url
      *
      * @return string
      */
-    public function getHeadline()
+    public function getUrl()
     {
-        return $this->container['headline'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets headline
+     * Sets url
      *
-     * @param string $headline headline
+     * @param string $url Public URL of the video. Uploaded to Meta via chunked transfer on /act_X/advideos; then the request blocks on Meta's transcoding until status.video_status === 'ready'.
      *
      * @return self
      */
-    public function setHeadline($headline)
+    public function setUrl($url)
     {
-        if (is_null($headline)) {
-            throw new \InvalidArgumentException('non-nullable headline cannot be null');
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
-        if ((mb_strlen($headline) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $headline when calling CreateStandaloneAdRequestCreativesInner., must be smaller than or equal to 255.');
-        }
-
-        $this->container['headline'] = $headline;
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets body
+     * Gets thumbnail_url
      *
      * @return string
      */
-    public function getBody()
+    public function getThumbnailUrl()
     {
-        return $this->container['body'];
+        return $this->container['thumbnail_url'];
     }
 
     /**
-     * Sets body
+     * Sets thumbnail_url
      *
-     * @param string $body body
+     * @param string $thumbnail_url Public URL of a still-image thumbnail for the video. Required by Meta on every video creative. Uploaded to Meta as an ad image and referenced as the thumbnail in object_story_spec.video_data.
      *
      * @return self
      */
-    public function setBody($body)
+    public function setThumbnailUrl($thumbnail_url)
     {
-        if (is_null($body)) {
-            throw new \InvalidArgumentException('non-nullable body cannot be null');
+        if (is_null($thumbnail_url)) {
+            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
         }
-        $this->container['body'] = $body;
-
-        return $this;
-    }
-
-    /**
-     * Gets image_url
-     *
-     * @return string|null
-     */
-    public function getImageUrl()
-    {
-        return $this->container['image_url'];
-    }
-
-    /**
-     * Sets image_url
-     *
-     * @param string|null $image_url Image creative. Mutually exclusive with `video`.
-     *
-     * @return self
-     */
-    public function setImageUrl($image_url)
-    {
-        if (is_null($image_url)) {
-            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
-        }
-        $this->container['image_url'] = $image_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets video
-     *
-     * @return \Zernio\Model\CreateStandaloneAdRequestCreativesInnerVideo|null
-     */
-    public function getVideo()
-    {
-        return $this->container['video'];
-    }
-
-    /**
-     * Sets video
-     *
-     * @param \Zernio\Model\CreateStandaloneAdRequestCreativesInnerVideo|null $video video
-     *
-     * @return self
-     */
-    public function setVideo($video)
-    {
-        if (is_null($video)) {
-            throw new \InvalidArgumentException('non-nullable video cannot be null');
-        }
-        $this->container['video'] = $video;
-
-        return $this;
-    }
-
-    /**
-     * Gets link_url
-     *
-     * @return string
-     */
-    public function getLinkUrl()
-    {
-        return $this->container['link_url'];
-    }
-
-    /**
-     * Sets link_url
-     *
-     * @param string $link_url link_url
-     *
-     * @return self
-     */
-    public function setLinkUrl($link_url)
-    {
-        if (is_null($link_url)) {
-            throw new \InvalidArgumentException('non-nullable link_url cannot be null');
-        }
-        $this->container['link_url'] = $link_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets call_to_action
-     *
-     * @return string
-     */
-    public function getCallToAction()
-    {
-        return $this->container['call_to_action'];
-    }
-
-    /**
-     * Sets call_to_action
-     *
-     * @param string $call_to_action call_to_action
-     *
-     * @return self
-     */
-    public function setCallToAction($call_to_action)
-    {
-        if (is_null($call_to_action)) {
-            throw new \InvalidArgumentException('non-nullable call_to_action cannot be null');
-        }
-        $allowedValues = $this->getCallToActionAllowableValues();
-        if (!in_array($call_to_action, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'call_to_action', must be one of '%s'",
-                    $call_to_action,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['call_to_action'] = $call_to_action;
+        $this->container['thumbnail_url'] = $thumbnail_url;
 
         return $this;
     }
