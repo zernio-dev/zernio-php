@@ -591,6 +591,9 @@ docs/Model/ReplyToInboxReview200ResponseReply.md
 docs/Model/ReplyToInboxReviewRequest.md
 docs/Model/RetweetPost200Response.md
 docs/Model/RetweetPostRequest.md
+docs/Model/ReviewWebhookReview.md
+docs/Model/ReviewWebhookReviewReply.md
+docs/Model/ReviewWebhookReviewReviewer.md
 docs/Model/ScheduleBroadcast200Response.md
 docs/Model/ScheduleBroadcast200ResponseBroadcast.md
 docs/Model/ScheduleBroadcastRequest.md
@@ -824,6 +827,9 @@ docs/Model/WebhookPayloadMessageSentMessageSender.md
 docs/Model/WebhookPayloadPost.md
 docs/Model/WebhookPayloadPostPost.md
 docs/Model/WebhookPayloadPostPostPlatformsInner.md
+docs/Model/WebhookPayloadReviewNew.md
+docs/Model/WebhookPayloadReviewNewAccount.md
+docs/Model/WebhookPayloadReviewUpdated.md
 docs/Model/WebhookPayloadTest.md
 docs/Model/WhatsAppBodyComponent.md
 docs/Model/WhatsAppBodyComponentExample.md
@@ -1437,6 +1443,9 @@ lib/Model/ReplyToInboxReview200ResponseReply.php
 lib/Model/ReplyToInboxReviewRequest.php
 lib/Model/RetweetPost200Response.php
 lib/Model/RetweetPostRequest.php
+lib/Model/ReviewWebhookReview.php
+lib/Model/ReviewWebhookReviewReply.php
+lib/Model/ReviewWebhookReviewReviewer.php
 lib/Model/ScheduleBroadcast200Response.php
 lib/Model/ScheduleBroadcast200ResponseBroadcast.php
 lib/Model/ScheduleBroadcastRequest.php
@@ -1670,6 +1679,9 @@ lib/Model/WebhookPayloadMessageSentMessageSender.php
 lib/Model/WebhookPayloadPost.php
 lib/Model/WebhookPayloadPostPost.php
 lib/Model/WebhookPayloadPostPostPlatformsInner.php
+lib/Model/WebhookPayloadReviewNew.php
+lib/Model/WebhookPayloadReviewNewAccount.php
+lib/Model/WebhookPayloadReviewUpdated.php
 lib/Model/WebhookPayloadTest.php
 lib/Model/WhatsAppBodyComponent.php
 lib/Model/WhatsAppBodyComponentExample.php
@@ -1691,3 +1703,9 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ReviewWebhookReviewReplyTest.php
+test/Model/ReviewWebhookReviewReviewerTest.php
+test/Model/ReviewWebhookReviewTest.php
+test/Model/WebhookPayloadReviewNewAccountTest.php
+test/Model/WebhookPayloadReviewNewTest.php
+test/Model/WebhookPayloadReviewUpdatedTest.php
