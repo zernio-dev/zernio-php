@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadCommentCommentAd Class Doc Comment
  *
  * @category Class
- * @description Ad context. Present only when the comment was made on paid content. Instagram: populated from the webhook payload&#39;s &#x60;value.media.ad_id&#x60;/&#x60;ad_title&#x60;. Facebook: populated via a Graph API lookup of the parent post&#39;s &#x60;promotion_status&#x60;. Absent for comments on organic posts that are not currently promoted.
+ * @description Ad context. Present only when the comment was made on paid content. Instagram: populated from the webhook payload&#39;s value.media.ad_id and value.media.ad_title. Facebook: populated via a Graph API lookup of the parent post&#39;s promotion_status. Absent for comments on organic posts that are not currently promoted.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -372,7 +372,7 @@ class WebhookPayloadCommentCommentAd implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets promotion_status
      *
-     * @param string|null $promotion_status Facebook promotion status returned by Graph API. Common values: \"active\" (organic post currently boosted), \"ineligible\" (dark post / ad creative — not promotable because it already is an ad).
+     * @param string|null $promotion_status Facebook promotion status returned by Graph API. Common values: \"active\" (organic post currently boosted), \"ineligible\" (dark post or ad creative, not promotable because it already is an ad).
      *
      * @return self
      */

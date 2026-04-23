@@ -1709,6 +1709,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetAdComments200ResponseMetaTest.php
-test/Model/GetAdComments200ResponsePaginationTest.php
-test/Model/GetAdComments200ResponseTest.php

@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadReviewNew Class Doc Comment
  *
  * @category Class
- * @description Webhook payload for the &#x60;review.new&#x60; event (new review posted on a connected account).
+ * @description Webhook payload for the review.new event (new review posted on a connected account).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

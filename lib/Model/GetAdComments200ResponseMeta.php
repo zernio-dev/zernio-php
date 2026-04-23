@@ -471,7 +471,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets effective_story_id
      *
-     * @param string $effective_story_id Underlying post ID the comments belong to (effective_object_story_id for FB, effective_instagram_media_id for IG).
+     * @param string $effective_story_id Underlying post ID the comments belong to. effective_object_story_id for Facebook, effective_instagram_media_id for Instagram.
      *
      * @return self
      */

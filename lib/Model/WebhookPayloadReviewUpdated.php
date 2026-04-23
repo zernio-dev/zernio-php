@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * WebhookPayloadReviewUpdated Class Doc Comment
  *
  * @category Class
- * @description Webhook payload for the &#x60;review.updated&#x60; event. Fired when the reviewer edits their text or rating, or when a reply is added (via the API or directly on the platform). Same shape as &#x60;review.new&#x60;; when a reply is present &#x60;review.hasReply&#x60; is &#x60;true&#x60; and &#x60;review.reply&#x60; is populated.
+ * @description Webhook payload for the review.updated event. Fired when the reviewer edits their text or rating, or when a reply is added (via the API or directly on the platform). Same shape as review.new. When a reply is present, review.hasReply is true and review.reply is populated.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

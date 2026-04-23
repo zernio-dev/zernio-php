@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * ReviewWebhookReviewReply Class Doc Comment
  *
  * @category Class
- * @description Present when &#x60;hasReply&#x60; is true.
+ * @description Present when hasReply is true.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
