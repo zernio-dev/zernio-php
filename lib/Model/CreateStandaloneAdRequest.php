@@ -71,6 +71,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'string',
         'link_url' => 'string',
         'image_url' => 'string',
+        'images' => '\Zernio\Model\CreateStandaloneAdRequestImages',
         'video' => '\Zernio\Model\CreateStandaloneAdRequestVideo',
         'creatives' => '\Zernio\Model\CreateStandaloneAdRequestCreativesInner[]',
         'ad_set_id' => 'string',
@@ -110,6 +111,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => null,
         'link_url' => 'uri',
         'image_url' => 'uri',
+        'images' => null,
         'video' => null,
         'creatives' => null,
         'ad_set_id' => null,
@@ -147,6 +149,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => false,
         'link_url' => false,
         'image_url' => false,
+        'images' => false,
         'video' => false,
         'creatives' => false,
         'ad_set_id' => false,
@@ -264,6 +267,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'callToAction',
         'link_url' => 'linkUrl',
         'image_url' => 'imageUrl',
+        'images' => 'images',
         'video' => 'video',
         'creatives' => 'creatives',
         'ad_set_id' => 'adSetId',
@@ -301,6 +305,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'setCallToAction',
         'link_url' => 'setLinkUrl',
         'image_url' => 'setImageUrl',
+        'images' => 'setImages',
         'video' => 'setVideo',
         'creatives' => 'setCreatives',
         'ad_set_id' => 'setAdSetId',
@@ -338,6 +343,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'call_to_action' => 'getCallToAction',
         'link_url' => 'getLinkUrl',
         'image_url' => 'getImageUrl',
+        'images' => 'getImages',
         'video' => 'getVideo',
         'creatives' => 'getCreatives',
         'ad_set_id' => 'getAdSetId',
@@ -527,6 +533,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('call_to_action', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
+        $this->setIfExists('images', $data ?? [], null);
         $this->setIfExists('video', $data ?? [], null);
         $this->setIfExists('creatives', $data ?? [], null);
         $this->setIfExists('ad_set_id', $data ?? [], null);
@@ -1048,7 +1055,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets image_url
      *
-     * @param string|null $image_url Image creative for Meta/Google/Pinterest on legacy + attach shapes (mutually exclusive with `video`). Not required for Google Search campaigns. For TikTok, this field carries the VIDEO URL (the TikTok ads endpoint is video-only; the field retains the `imageUrl` name for cross-platform consistency). Ignored for X/Twitter.
+     * @param string|null $image_url Image creative for Meta/Google/Pinterest on legacy + attach shapes (mutually exclusive with `video`). Not required for Google Search campaigns. For TikTok, this field carries the VIDEO URL (the TikTok ads endpoint is video-only; the field retains the `imageUrl` name for cross-platform consistency). Ignored for X/Twitter. For Google Display, treated as the landscape image (alias of `images.landscape`); supply `images.square` alongside or the request is rejected.
      *
      * @return self
      */
@@ -1058,6 +1065,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable image_url cannot be null');
         }
         $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets images
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestImages|null
+     */
+    public function getImages()
+    {
+        return $this->container['images'];
+    }
+
+    /**
+     * Sets images
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestImages|null $images images
+     *
+     * @return self
+     */
+    public function setImages($images)
+    {
+        if (is_null($images)) {
+            throw new \InvalidArgumentException('non-nullable images cannot be null');
+        }
+        $this->container['images'] = $images;
 
         return $this;
     }
