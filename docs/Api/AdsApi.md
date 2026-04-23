@@ -11,6 +11,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deleteAd()**](AdsApi.md#deleteAd) | **DELETE** /v1/ads/{adId} | Cancel an ad |
 | [**getAd()**](AdsApi.md#getAd) | **GET** /v1/ads/{adId} | Get ad details |
 | [**getAdAnalytics()**](AdsApi.md#getAdAnalytics) | **GET** /v1/ads/{adId}/analytics | Get ad analytics |
+| [**getAdComments()**](AdsApi.md#getAdComments) | **GET** /v1/ads/{adId}/comments | List comments on an ad |
 | [**listAdAccounts()**](AdsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAds()**](AdsApi.md#listAds) | **GET** /v1/ads | List ads |
 | [**listConversionDestinations()**](AdsApi.md#listConversionDestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List destinations for the Conversions API |
@@ -311,6 +312,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetAdAnalytics200Response**](../Model/GetAdAnalytics200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getAdComments()`
+
+```php
+getAdComments($ad_id, $limit, $cursor): \Zernio\Model\GetAdComments200Response
+```
+
+List comments on an ad
+
+Returns comments on an ad's underlying creative post. Useful for moderating or analyzing engagement on dark posts (ad creatives that never went live organically), which the regular `/v1/inbox/comments/{postId}` endpoint cannot serve because dark posts aren't in Zernio's post database.  Resolves the ad's creative `effective_object_story_id` (Facebook) or `effective_instagram_media_id` (Instagram) via the Marketing API on each call (cached in-process by the platform client), then fetches comments from the Graph API.  **Meta-only**: other ad platforms (TikTok, LinkedIn, Pinterest, Google, X) do not expose a public per-ad comments API and return `feature_not_available`.  Requires the Ads add-on. Response shape matches `/v1/inbox/comments/{postId}`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ad_id = 'ad_id_example'; // string | Internal Zernio ad ID (ObjectId).
+$limit = 25; // int
+$cursor = 'cursor_example'; // string | Pagination cursor from a previous response.
+
+try {
+    $result = $apiInstance->getAdComments($ad_id, $limit, $cursor);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->getAdComments: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ad_id** | **string**| Internal Zernio ad ID (ObjectId). | |
+| **limit** | **int**|  | [optional] [default to 25] |
+| **cursor** | **string**| Pagination cursor from a previous response. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetAdComments200Response**](../Model/GetAdComments200Response.md)
 
 ### Authorization
 

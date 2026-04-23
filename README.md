@@ -100,6 +100,7 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**deleteAd**](docs/Api/AdsApi.md#deletead) | **DELETE** /v1/ads/{adId} | Cancel an ad
 *AdsApi* | [**getAd**](docs/Api/AdsApi.md#getad) | **GET** /v1/ads/{adId} | Get ad details
 *AdsApi* | [**getAdAnalytics**](docs/Api/AdsApi.md#getadanalytics) | **GET** /v1/ads/{adId}/analytics | Get ad analytics
+*AdsApi* | [**getAdComments**](docs/Api/AdsApi.md#getadcomments) | **GET** /v1/ads/{adId}/comments | List comments on an ad
 *AdsApi* | [**listAdAccounts**](docs/Api/AdsApi.md#listadaccounts) | **GET** /v1/ads/accounts | List ad accounts
 *AdsApi* | [**listAds**](docs/Api/AdsApi.md#listads) | **GET** /v1/ads | List ads
 *AdsApi* | [**listConversionDestinations**](docs/Api/AdsApi.md#listconversiondestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List destinations for the Conversions API
@@ -523,6 +524,9 @@ Class | Method | HTTP request | Description
 - [GetAdAnalytics200ResponseAnalytics](docs/Model/GetAdAnalytics200ResponseAnalytics.md)
 - [GetAdAnalytics200ResponseAnalyticsDailyInner](docs/Model/GetAdAnalytics200ResponseAnalyticsDailyInner.md)
 - [GetAdAudience200Response](docs/Model/GetAdAudience200Response.md)
+- [GetAdComments200Response](docs/Model/GetAdComments200Response.md)
+- [GetAdComments200ResponseMeta](docs/Model/GetAdComments200ResponseMeta.md)
+- [GetAdComments200ResponsePagination](docs/Model/GetAdComments200ResponsePagination.md)
 - [GetAdTree200Response](docs/Model/GetAdTree200Response.md)
 - [GetAllAccountsHealth200Response](docs/Model/GetAllAccountsHealth200Response.md)
 - [GetAllAccountsHealth200ResponseAccountsInner](docs/Model/GetAllAccountsHealth200ResponseAccountsInner.md)

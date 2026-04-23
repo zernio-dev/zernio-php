@@ -248,6 +248,9 @@ docs/Model/GetAdAnalytics200ResponseAd.md
 docs/Model/GetAdAnalytics200ResponseAnalytics.md
 docs/Model/GetAdAnalytics200ResponseAnalyticsDailyInner.md
 docs/Model/GetAdAudience200Response.md
+docs/Model/GetAdComments200Response.md
+docs/Model/GetAdComments200ResponseMeta.md
+docs/Model/GetAdComments200ResponsePagination.md
 docs/Model/GetAdTree200Response.md
 docs/Model/GetAllAccountsHealth200Response.md
 docs/Model/GetAllAccountsHealth200ResponseAccountsInner.md
@@ -1099,6 +1102,9 @@ lib/Model/GetAdAnalytics200ResponseAd.php
 lib/Model/GetAdAnalytics200ResponseAnalytics.php
 lib/Model/GetAdAnalytics200ResponseAnalyticsDailyInner.php
 lib/Model/GetAdAudience200Response.php
+lib/Model/GetAdComments200Response.php
+lib/Model/GetAdComments200ResponseMeta.php
+lib/Model/GetAdComments200ResponsePagination.php
 lib/Model/GetAdTree200Response.php
 lib/Model/GetAllAccountsHealth200Response.php
 lib/Model/GetAllAccountsHealth200ResponseAccountsInner.php
@@ -1703,9 +1709,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ReviewWebhookReviewReplyTest.php
-test/Model/ReviewWebhookReviewReviewerTest.php
-test/Model/ReviewWebhookReviewTest.php
-test/Model/WebhookPayloadReviewNewAccountTest.php
-test/Model/WebhookPayloadReviewNewTest.php
-test/Model/WebhookPayloadReviewUpdatedTest.php
+test/Model/GetAdComments200ResponseMetaTest.php
+test/Model/GetAdComments200ResponsePaginationTest.php
+test/Model/GetAdComments200ResponseTest.php
