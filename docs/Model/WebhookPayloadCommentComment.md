@@ -13,5 +13,6 @@ Name | Type | Description | Notes
 **created_at** | **\DateTime** |  |
 **is_reply** | **bool** | Whether this is a reply to another comment |
 **parent_comment_id** | **string** | Parent comment ID if this is a reply |
+**ad** | [**\Zernio\Model\WebhookPayloadCommentCommentAd**](WebhookPayloadCommentCommentAd.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

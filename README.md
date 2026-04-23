@@ -1078,6 +1078,7 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadComment](docs/Model/WebhookPayloadComment.md)
 - [WebhookPayloadCommentAccount](docs/Model/WebhookPayloadCommentAccount.md)
 - [WebhookPayloadCommentComment](docs/Model/WebhookPayloadCommentComment.md)
+- [WebhookPayloadCommentCommentAd](docs/Model/WebhookPayloadCommentCommentAd.md)
 - [WebhookPayloadCommentCommentAuthor](docs/Model/WebhookPayloadCommentCommentAuthor.md)
 - [WebhookPayloadCommentPost](docs/Model/WebhookPayloadCommentPost.md)
 - [WebhookPayloadMessage](docs/Model/WebhookPayloadMessage.md)

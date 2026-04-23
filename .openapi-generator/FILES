@@ -803,6 +803,7 @@ docs/Model/WebhookPayloadAccountDisconnectedAccount.md
 docs/Model/WebhookPayloadComment.md
 docs/Model/WebhookPayloadCommentAccount.md
 docs/Model/WebhookPayloadCommentComment.md
+docs/Model/WebhookPayloadCommentCommentAd.md
 docs/Model/WebhookPayloadCommentCommentAuthor.md
 docs/Model/WebhookPayloadCommentPost.md
 docs/Model/WebhookPayloadMessage.md
@@ -1648,6 +1649,7 @@ lib/Model/WebhookPayloadAccountDisconnectedAccount.php
 lib/Model/WebhookPayloadComment.php
 lib/Model/WebhookPayloadCommentAccount.php
 lib/Model/WebhookPayloadCommentComment.php
+lib/Model/WebhookPayloadCommentCommentAd.php
 lib/Model/WebhookPayloadCommentCommentAuthor.php
 lib/Model/WebhookPayloadCommentPost.php
 lib/Model/WebhookPayloadMessage.php
@@ -1689,3 +1691,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadCommentCommentAdTest.php
