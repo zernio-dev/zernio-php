@@ -87,6 +87,9 @@ class AnalyticsApi
         'getDailyMetrics' => [
             'application/json',
         ],
+        'getFacebookPageInsights' => [
+            'application/json',
+        ],
         'getFollowerStats' => [
             'application/json',
         ],
@@ -102,7 +105,13 @@ class AnalyticsApi
         'getInstagramDemographics' => [
             'application/json',
         ],
+        'getInstagramFollowerHistory' => [
+            'application/json',
+        ],
         'getLinkedInAggregateAnalytics' => [
+            'application/json',
+        ],
+        'getLinkedInOrgAggregateAnalytics' => [
             'application/json',
         ],
         'getLinkedInPostAnalytics' => [
@@ -115,6 +124,12 @@ class AnalyticsApi
             'application/json',
         ],
         'getPostingFrequency' => [
+            'application/json',
+        ],
+        'getTikTokAccountInsights' => [
+            'application/json',
+        ],
+        'getYouTubeChannelInsights' => [
             'application/json',
         ],
         'getYouTubeDailyViews' => [
@@ -1716,6 +1731,353 @@ class AnalyticsApi
     }
 
     /**
+     * Operation getFacebookPageInsights
+     *
+     * Get Facebook Page insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the connected Facebook Page. (required)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;page_media_view,page_post_engagements,page_follows,followers_gained,followers_lost\&quot;.  Live Meta metrics (current names, post-Nov-2025):   - page_media_view       (replaces deprecated page_impressions)   - page_views_total   - page_post_engagements   - page_video_views   - page_video_view_time   - page_follows          (replaces deprecated page_fans)  Zernio-synthesized from daily follower snapshots (filling the Nov-2025 gap left by the page_fan_adds / page_fan_removes deprecation):   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals only. \&quot;time_series\&quot; returns daily values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPageInsights'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\InlineObject
+     */
+    public function getFacebookPageInsights($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getFacebookPageInsights'][0])
+    {
+        list($response) = $this->getFacebookPageInsightsWithHttpInfo($account_id, $metrics, $since, $until, $metric_type, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getFacebookPageInsightsWithHttpInfo
+     *
+     * Get Facebook Page insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the connected Facebook Page. (required)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;page_media_view,page_post_engagements,page_follows,followers_gained,followers_lost\&quot;.  Live Meta metrics (current names, post-Nov-2025):   - page_media_view       (replaces deprecated page_impressions)   - page_views_total   - page_post_engagements   - page_video_views   - page_video_view_time   - page_follows          (replaces deprecated page_fans)  Zernio-synthesized from daily follower snapshots (filling the Nov-2025 gap left by the page_fan_adds / page_fan_removes deprecation):   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals only. \&quot;time_series\&quot; returns daily values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPageInsights'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getFacebookPageInsightsWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getFacebookPageInsights'][0])
+    {
+        $request = $this->getFacebookPageInsightsRequest($account_id, $metrics, $since, $until, $metric_type, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InstagramAccountInsightsResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\InstagramAccountInsightsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InstagramAccountInsightsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getFacebookPageInsightsAsync
+     *
+     * Get Facebook Page insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the connected Facebook Page. (required)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;page_media_view,page_post_engagements,page_follows,followers_gained,followers_lost\&quot;.  Live Meta metrics (current names, post-Nov-2025):   - page_media_view       (replaces deprecated page_impressions)   - page_views_total   - page_post_engagements   - page_video_views   - page_video_view_time   - page_follows          (replaces deprecated page_fans)  Zernio-synthesized from daily follower snapshots (filling the Nov-2025 gap left by the page_fan_adds / page_fan_removes deprecation):   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals only. \&quot;time_series\&quot; returns daily values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPageInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getFacebookPageInsightsAsync($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getFacebookPageInsights'][0])
+    {
+        return $this->getFacebookPageInsightsAsyncWithHttpInfo($account_id, $metrics, $since, $until, $metric_type, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getFacebookPageInsightsAsyncWithHttpInfo
+     *
+     * Get Facebook Page insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the connected Facebook Page. (required)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;page_media_view,page_post_engagements,page_follows,followers_gained,followers_lost\&quot;.  Live Meta metrics (current names, post-Nov-2025):   - page_media_view       (replaces deprecated page_impressions)   - page_views_total   - page_post_engagements   - page_video_views   - page_video_view_time   - page_follows          (replaces deprecated page_fans)  Zernio-synthesized from daily follower snapshots (filling the Nov-2025 gap left by the page_fan_adds / page_fan_removes deprecation):   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals only. \&quot;time_series\&quot; returns daily values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPageInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getFacebookPageInsightsAsyncWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getFacebookPageInsights'][0])
+    {
+        $returnType = '\Zernio\Model\InstagramAccountInsightsResponse';
+        $request = $this->getFacebookPageInsightsRequest($account_id, $metrics, $since, $until, $metric_type, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getFacebookPageInsights'
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the connected Facebook Page. (required)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;page_media_view,page_post_engagements,page_follows,followers_gained,followers_lost\&quot;.  Live Meta metrics (current names, post-Nov-2025):   - page_media_view       (replaces deprecated page_impressions)   - page_views_total   - page_post_engagements   - page_video_views   - page_video_view_time   - page_follows          (replaces deprecated page_fans)  Zernio-synthesized from daily follower snapshots (filling the Nov-2025 gap left by the page_fan_adds / page_fan_removes deprecation):   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals only. \&quot;time_series\&quot; returns daily values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPageInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getFacebookPageInsightsRequest($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getFacebookPageInsights'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getFacebookPageInsights'
+            );
+        }
+
+
+
+
+
+
+        $resourcePath = '/v1/analytics/facebook/page-insights';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metrics,
+            'metrics', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $since,
+            'since', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $until,
+            'until', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metric_type,
+            'metricType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getFollowerStats
      *
      * Get follower stats
@@ -2815,7 +3177,7 @@ class AnalyticsApi
      * Get Instagram insights
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
-     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics (including follows_and_unfollows) are total_value only. This is an Instagram Graph API limitation, not a Zernio limitation - the IG API does not return time-series data for these metrics. For a daily running follower count, use /v1/analytics/instagram/follower-history instead. (optional)
      * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
      * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals and supports breakdowns. \&quot;time_series\&quot; returns daily values but only works with the \&quot;reach\&quot; metric. (optional, default to 'total_value')
@@ -2838,7 +3200,7 @@ class AnalyticsApi
      * Get Instagram insights
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
-     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics (including follows_and_unfollows) are total_value only. This is an Instagram Graph API limitation, not a Zernio limitation - the IG API does not return time-series data for these metrics. For a daily running follower count, use /v1/analytics/instagram/follower-history instead. (optional)
      * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
      * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals and supports breakdowns. \&quot;time_series\&quot; returns daily values but only works with the \&quot;reach\&quot; metric. (optional, default to 'total_value')
@@ -2998,7 +3360,7 @@ class AnalyticsApi
      * Get Instagram insights
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
-     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics (including follows_and_unfollows) are total_value only. This is an Instagram Graph API limitation, not a Zernio limitation - the IG API does not return time-series data for these metrics. For a daily running follower count, use /v1/analytics/instagram/follower-history instead. (optional)
      * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
      * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals and supports breakdowns. \&quot;time_series\&quot; returns daily values but only works with the \&quot;reach\&quot; metric. (optional, default to 'total_value')
@@ -3024,7 +3386,7 @@ class AnalyticsApi
      * Get Instagram insights
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
-     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics (including follows_and_unfollows) are total_value only. This is an Instagram Graph API limitation, not a Zernio limitation - the IG API does not return time-series data for these metrics. For a daily running follower count, use /v1/analytics/instagram/follower-history instead. (optional)
      * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
      * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals and supports breakdowns. \&quot;time_series\&quot; returns daily values but only works with the \&quot;reach\&quot; metric. (optional, default to 'total_value')
@@ -3079,7 +3441,7 @@ class AnalyticsApi
      * Create request for operation 'getInstagramAccountInsights'
      *
      * @param  string $account_id The Zernio SocialAccount ID for the Instagram account (required)
-     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics are total_value only. (optional)
+     * @param  string|null $metrics Comma-separated list of metrics. Defaults to \&quot;reach,views,accounts_engaged,total_interactions\&quot;. Valid metrics: reach, views, accounts_engaged, total_interactions, comments, likes, saves, shares, replies, reposts, follows_and_unfollows, profile_links_taps. Note: only \&quot;reach\&quot; supports metricType&#x3D;time_series. All other metrics (including follows_and_unfollows) are total_value only. This is an Instagram Graph API limitation, not a Zernio limitation - the IG API does not return time-series data for these metrics. For a daily running follower count, use /v1/analytics/instagram/follower-history instead. (optional)
      * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
      * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
      * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals and supports breakdowns. \&quot;time_series\&quot; returns daily values but only works with the \&quot;reach\&quot; metric. (optional, default to 'total_value')
@@ -3616,6 +3978,353 @@ class AnalyticsApi
     }
 
     /**
+     * Operation getInstagramFollowerHistory
+     *
+     * Get Instagram follower history
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;follower_count,followers_gained,followers_lost\&quot;.   - follower_count   : per-day raw follower count   - followers_gained : sum of positive daily deltas   - followers_lost   : sum of absolute negative daily deltas (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; returns aggregated totals (latest for follower_count, sum for gained/lost). \&quot;time_series\&quot; returns per-day values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramFollowerHistory'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\InlineObject
+     */
+    public function getInstagramFollowerHistory($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getInstagramFollowerHistory'][0])
+    {
+        list($response) = $this->getInstagramFollowerHistoryWithHttpInfo($account_id, $metrics, $since, $until, $metric_type, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getInstagramFollowerHistoryWithHttpInfo
+     *
+     * Get Instagram follower history
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;follower_count,followers_gained,followers_lost\&quot;.   - follower_count   : per-day raw follower count   - followers_gained : sum of positive daily deltas   - followers_lost   : sum of absolute negative daily deltas (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; returns aggregated totals (latest for follower_count, sum for gained/lost). \&quot;time_series\&quot; returns per-day values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramFollowerHistory'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getInstagramFollowerHistoryWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getInstagramFollowerHistory'][0])
+    {
+        $request = $this->getInstagramFollowerHistoryRequest($account_id, $metrics, $since, $until, $metric_type, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InstagramAccountInsightsResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\InstagramAccountInsightsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InstagramAccountInsightsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getInstagramFollowerHistoryAsync
+     *
+     * Get Instagram follower history
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;follower_count,followers_gained,followers_lost\&quot;.   - follower_count   : per-day raw follower count   - followers_gained : sum of positive daily deltas   - followers_lost   : sum of absolute negative daily deltas (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; returns aggregated totals (latest for follower_count, sum for gained/lost). \&quot;time_series\&quot; returns per-day values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramFollowerHistory'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getInstagramFollowerHistoryAsync($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getInstagramFollowerHistory'][0])
+    {
+        return $this->getInstagramFollowerHistoryAsyncWithHttpInfo($account_id, $metrics, $since, $until, $metric_type, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getInstagramFollowerHistoryAsyncWithHttpInfo
+     *
+     * Get Instagram follower history
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;follower_count,followers_gained,followers_lost\&quot;.   - follower_count   : per-day raw follower count   - followers_gained : sum of positive daily deltas   - followers_lost   : sum of absolute negative daily deltas (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; returns aggregated totals (latest for follower_count, sum for gained/lost). \&quot;time_series\&quot; returns per-day values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramFollowerHistory'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getInstagramFollowerHistoryAsyncWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getInstagramFollowerHistory'][0])
+    {
+        $returnType = '\Zernio\Model\InstagramAccountInsightsResponse';
+        $request = $this->getInstagramFollowerHistoryRequest($account_id, $metrics, $since, $until, $metric_type, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getInstagramFollowerHistory'
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the Instagram account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;follower_count,followers_gained,followers_lost\&quot;.   - follower_count   : per-day raw follower count   - followers_gained : sum of positive daily deltas   - followers_lost   : sum of absolute negative daily deltas (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; returns aggregated totals (latest for follower_count, sum for gained/lost). \&quot;time_series\&quot; returns per-day values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInstagramFollowerHistory'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getInstagramFollowerHistoryRequest($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getInstagramFollowerHistory'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getInstagramFollowerHistory'
+            );
+        }
+
+
+
+
+
+
+        $resourcePath = '/v1/analytics/instagram/follower-history';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metrics,
+            'metrics', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $since,
+            'since', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $until,
+            'until', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metric_type,
+            'metricType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getLinkedInAggregateAnalytics
      *
      * Get LinkedIn aggregate stats
@@ -3624,7 +4333,7 @@ class AnalyticsApi
      * @param  string|null $aggregation TOTAL (default, lifetime totals) or DAILY (time series). MEMBERS_REACHED not available with DAILY. (optional, default to 'TOTAL')
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). If omitted, returns lifetime analytics. (optional)
      * @param  \DateTime|null $end_date End date (YYYY-MM-DD, exclusive). Defaults to today if omitted. (optional)
-     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE. Omit for all. (optional)
+     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE, POST_SAVE, POST_SEND. Omit for all. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInAggregateAnalytics'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3646,7 +4355,7 @@ class AnalyticsApi
      * @param  string|null $aggregation TOTAL (default, lifetime totals) or DAILY (time series). MEMBERS_REACHED not available with DAILY. (optional, default to 'TOTAL')
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). If omitted, returns lifetime analytics. (optional)
      * @param  \DateTime|null $end_date End date (YYYY-MM-DD, exclusive). Defaults to today if omitted. (optional)
-     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE. Omit for all. (optional)
+     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE, POST_SAVE, POST_SEND. Omit for all. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInAggregateAnalytics'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3791,7 +4500,7 @@ class AnalyticsApi
      * @param  string|null $aggregation TOTAL (default, lifetime totals) or DAILY (time series). MEMBERS_REACHED not available with DAILY. (optional, default to 'TOTAL')
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). If omitted, returns lifetime analytics. (optional)
      * @param  \DateTime|null $end_date End date (YYYY-MM-DD, exclusive). Defaults to today if omitted. (optional)
-     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE. Omit for all. (optional)
+     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE, POST_SAVE, POST_SEND. Omit for all. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInAggregateAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3816,7 +4525,7 @@ class AnalyticsApi
      * @param  string|null $aggregation TOTAL (default, lifetime totals) or DAILY (time series). MEMBERS_REACHED not available with DAILY. (optional, default to 'TOTAL')
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). If omitted, returns lifetime analytics. (optional)
      * @param  \DateTime|null $end_date End date (YYYY-MM-DD, exclusive). Defaults to today if omitted. (optional)
-     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE. Omit for all. (optional)
+     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE, POST_SAVE, POST_SEND. Omit for all. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInAggregateAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3870,7 +4579,7 @@ class AnalyticsApi
      * @param  string|null $aggregation TOTAL (default, lifetime totals) or DAILY (time series). MEMBERS_REACHED not available with DAILY. (optional, default to 'TOTAL')
      * @param  \DateTime|null $start_date Start date (YYYY-MM-DD). If omitted, returns lifetime analytics. (optional)
      * @param  \DateTime|null $end_date End date (YYYY-MM-DD, exclusive). Defaults to today if omitted. (optional)
-     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE. Omit for all. (optional)
+     * @param  string|null $metrics Comma-separated metrics: IMPRESSION, MEMBERS_REACHED, REACTION, COMMENT, RESHARE, POST_SAVE, POST_SEND. Omit for all. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInAggregateAnalytics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3944,6 +4653,353 @@ class AnalyticsApi
                 $resourcePath
             );
         }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getLinkedInOrgAggregateAnalytics
+     *
+     * Get LinkedIn organization page aggregate analytics
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the LinkedIn organization account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;impressions,clicks,engagement_rate,organic_followers_gained,followers_gained,followers_lost\&quot;.  Share statistics (support both total_value and time_series):   - impressions   - unique_impressions   - clicks   - likes   - comments   - shares   - engagement_rate       (0..1, LinkedIn-computed)  Follower-gain statistics (support total_value and time_series):   - organic_followers_gained   (per-day organic gains for time_series; sum of organic gains over the range for total_value)   - paid_followers_gained      (per-day paid gains for time_series; sum of paid gains over the range for total_value)  Page-view statistics (total_value ONLY - LinkedIn platform limit):   - page_views_total   - page_views_overview   - page_views_careers   - page_views_jobs   - page_views_life  Zernio-synthesized from daily follower snapshots:   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type metric_type (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInOrgAggregateAnalytics'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\InlineObject
+     */
+    public function getLinkedInOrgAggregateAnalytics($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getLinkedInOrgAggregateAnalytics'][0])
+    {
+        list($response) = $this->getLinkedInOrgAggregateAnalyticsWithHttpInfo($account_id, $metrics, $since, $until, $metric_type, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getLinkedInOrgAggregateAnalyticsWithHttpInfo
+     *
+     * Get LinkedIn organization page aggregate analytics
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the LinkedIn organization account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;impressions,clicks,engagement_rate,organic_followers_gained,followers_gained,followers_lost\&quot;.  Share statistics (support both total_value and time_series):   - impressions   - unique_impressions   - clicks   - likes   - comments   - shares   - engagement_rate       (0..1, LinkedIn-computed)  Follower-gain statistics (support total_value and time_series):   - organic_followers_gained   (per-day organic gains for time_series; sum of organic gains over the range for total_value)   - paid_followers_gained      (per-day paid gains for time_series; sum of paid gains over the range for total_value)  Page-view statistics (total_value ONLY - LinkedIn platform limit):   - page_views_total   - page_views_overview   - page_views_careers   - page_views_jobs   - page_views_life  Zernio-synthesized from daily follower snapshots:   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInOrgAggregateAnalytics'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getLinkedInOrgAggregateAnalyticsWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getLinkedInOrgAggregateAnalytics'][0])
+    {
+        $request = $this->getLinkedInOrgAggregateAnalyticsRequest($account_id, $metrics, $since, $until, $metric_type, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InstagramAccountInsightsResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\InstagramAccountInsightsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InstagramAccountInsightsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getLinkedInOrgAggregateAnalyticsAsync
+     *
+     * Get LinkedIn organization page aggregate analytics
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the LinkedIn organization account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;impressions,clicks,engagement_rate,organic_followers_gained,followers_gained,followers_lost\&quot;.  Share statistics (support both total_value and time_series):   - impressions   - unique_impressions   - clicks   - likes   - comments   - shares   - engagement_rate       (0..1, LinkedIn-computed)  Follower-gain statistics (support total_value and time_series):   - organic_followers_gained   (per-day organic gains for time_series; sum of organic gains over the range for total_value)   - paid_followers_gained      (per-day paid gains for time_series; sum of paid gains over the range for total_value)  Page-view statistics (total_value ONLY - LinkedIn platform limit):   - page_views_total   - page_views_overview   - page_views_careers   - page_views_jobs   - page_views_life  Zernio-synthesized from daily follower snapshots:   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInOrgAggregateAnalytics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getLinkedInOrgAggregateAnalyticsAsync($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getLinkedInOrgAggregateAnalytics'][0])
+    {
+        return $this->getLinkedInOrgAggregateAnalyticsAsyncWithHttpInfo($account_id, $metrics, $since, $until, $metric_type, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getLinkedInOrgAggregateAnalyticsAsyncWithHttpInfo
+     *
+     * Get LinkedIn organization page aggregate analytics
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the LinkedIn organization account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;impressions,clicks,engagement_rate,organic_followers_gained,followers_gained,followers_lost\&quot;.  Share statistics (support both total_value and time_series):   - impressions   - unique_impressions   - clicks   - likes   - comments   - shares   - engagement_rate       (0..1, LinkedIn-computed)  Follower-gain statistics (support total_value and time_series):   - organic_followers_gained   (per-day organic gains for time_series; sum of organic gains over the range for total_value)   - paid_followers_gained      (per-day paid gains for time_series; sum of paid gains over the range for total_value)  Page-view statistics (total_value ONLY - LinkedIn platform limit):   - page_views_total   - page_views_overview   - page_views_careers   - page_views_jobs   - page_views_life  Zernio-synthesized from daily follower snapshots:   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInOrgAggregateAnalytics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getLinkedInOrgAggregateAnalyticsAsyncWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getLinkedInOrgAggregateAnalytics'][0])
+    {
+        $returnType = '\Zernio\Model\InstagramAccountInsightsResponse';
+        $request = $this->getLinkedInOrgAggregateAnalyticsRequest($account_id, $metrics, $since, $until, $metric_type, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getLinkedInOrgAggregateAnalytics'
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the LinkedIn organization account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;impressions,clicks,engagement_rate,organic_followers_gained,followers_gained,followers_lost\&quot;.  Share statistics (support both total_value and time_series):   - impressions   - unique_impressions   - clicks   - likes   - comments   - shares   - engagement_rate       (0..1, LinkedIn-computed)  Follower-gain statistics (support total_value and time_series):   - organic_followers_gained   (per-day organic gains for time_series; sum of organic gains over the range for total_value)   - paid_followers_gained      (per-day paid gains for time_series; sum of paid gains over the range for total_value)  Page-view statistics (total_value ONLY - LinkedIn platform limit):   - page_views_total   - page_views_overview   - page_views_careers   - page_views_jobs   - page_views_life  Zernio-synthesized from daily follower snapshots:   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLinkedInOrgAggregateAnalytics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getLinkedInOrgAggregateAnalyticsRequest($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getLinkedInOrgAggregateAnalytics'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getLinkedInOrgAggregateAnalytics'
+            );
+        }
+
+
+
+
+
+
+        $resourcePath = '/v1/analytics/linkedin/org-aggregate-analytics';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metrics,
+            'metrics', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $since,
+            'since', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $until,
+            'until', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metric_type,
+            'metricType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -5341,6 +6397,714 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $source,
             'source', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getTikTokAccountInsights
+     *
+     * Get TikTok account-level insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the TikTok account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;follower_count,likes_count,video_count,followers_gained,followers_lost\&quot;.  Live from /v2/user/info/ (requires user.info.stats scope):   - follower_count  (cumulative; time series joined from AccountStats)   - following_count (cumulative; time series joined from AccountStats.metadata)   - likes_count     (cumulative; time series joined from AccountStats.metadata)   - video_count     (cumulative; time series joined from AccountStats.metadata)  Zernio-synthesized:   - followers_gained  (sum of positive daily follower deltas)   - followers_lost    (sum of absolute negative daily deltas) (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; returns the latest cumulative counter value. \&quot;time_series\&quot; returns daily values joined from AccountStats snapshots. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTikTokAccountInsights'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\InlineObject
+     */
+    public function getTikTokAccountInsights($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getTikTokAccountInsights'][0])
+    {
+        list($response) = $this->getTikTokAccountInsightsWithHttpInfo($account_id, $metrics, $since, $until, $metric_type, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getTikTokAccountInsightsWithHttpInfo
+     *
+     * Get TikTok account-level insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the TikTok account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;follower_count,likes_count,video_count,followers_gained,followers_lost\&quot;.  Live from /v2/user/info/ (requires user.info.stats scope):   - follower_count  (cumulative; time series joined from AccountStats)   - following_count (cumulative; time series joined from AccountStats.metadata)   - likes_count     (cumulative; time series joined from AccountStats.metadata)   - video_count     (cumulative; time series joined from AccountStats.metadata)  Zernio-synthesized:   - followers_gained  (sum of positive daily follower deltas)   - followers_lost    (sum of absolute negative daily deltas) (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; returns the latest cumulative counter value. \&quot;time_series\&quot; returns daily values joined from AccountStats snapshots. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTikTokAccountInsights'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getTikTokAccountInsightsWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getTikTokAccountInsights'][0])
+    {
+        $request = $this->getTikTokAccountInsightsRequest($account_id, $metrics, $since, $until, $metric_type, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InstagramAccountInsightsResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\InstagramAccountInsightsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InstagramAccountInsightsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getTikTokAccountInsightsAsync
+     *
+     * Get TikTok account-level insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the TikTok account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;follower_count,likes_count,video_count,followers_gained,followers_lost\&quot;.  Live from /v2/user/info/ (requires user.info.stats scope):   - follower_count  (cumulative; time series joined from AccountStats)   - following_count (cumulative; time series joined from AccountStats.metadata)   - likes_count     (cumulative; time series joined from AccountStats.metadata)   - video_count     (cumulative; time series joined from AccountStats.metadata)  Zernio-synthesized:   - followers_gained  (sum of positive daily follower deltas)   - followers_lost    (sum of absolute negative daily deltas) (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; returns the latest cumulative counter value. \&quot;time_series\&quot; returns daily values joined from AccountStats snapshots. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTikTokAccountInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTikTokAccountInsightsAsync($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getTikTokAccountInsights'][0])
+    {
+        return $this->getTikTokAccountInsightsAsyncWithHttpInfo($account_id, $metrics, $since, $until, $metric_type, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getTikTokAccountInsightsAsyncWithHttpInfo
+     *
+     * Get TikTok account-level insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the TikTok account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;follower_count,likes_count,video_count,followers_gained,followers_lost\&quot;.  Live from /v2/user/info/ (requires user.info.stats scope):   - follower_count  (cumulative; time series joined from AccountStats)   - following_count (cumulative; time series joined from AccountStats.metadata)   - likes_count     (cumulative; time series joined from AccountStats.metadata)   - video_count     (cumulative; time series joined from AccountStats.metadata)  Zernio-synthesized:   - followers_gained  (sum of positive daily follower deltas)   - followers_lost    (sum of absolute negative daily deltas) (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; returns the latest cumulative counter value. \&quot;time_series\&quot; returns daily values joined from AccountStats snapshots. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTikTokAccountInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTikTokAccountInsightsAsyncWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getTikTokAccountInsights'][0])
+    {
+        $returnType = '\Zernio\Model\InstagramAccountInsightsResponse';
+        $request = $this->getTikTokAccountInsightsRequest($account_id, $metrics, $since, $until, $metric_type, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getTikTokAccountInsights'
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the TikTok account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;follower_count,likes_count,video_count,followers_gained,followers_lost\&quot;.  Live from /v2/user/info/ (requires user.info.stats scope):   - follower_count  (cumulative; time series joined from AccountStats)   - following_count (cumulative; time series joined from AccountStats.metadata)   - likes_count     (cumulative; time series joined from AccountStats.metadata)   - video_count     (cumulative; time series joined from AccountStats.metadata)  Zernio-synthesized:   - followers_gained  (sum of positive daily follower deltas)   - followers_lost    (sum of absolute negative daily deltas) (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; returns the latest cumulative counter value. \&quot;time_series\&quot; returns daily values joined from AccountStats snapshots. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTikTokAccountInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getTikTokAccountInsightsRequest($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getTikTokAccountInsights'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getTikTokAccountInsights'
+            );
+        }
+
+
+
+
+
+
+        $resourcePath = '/v1/analytics/tiktok/account-insights';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metrics,
+            'metrics', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $since,
+            'since', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $until,
+            'until', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metric_type,
+            'metricType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getYouTubeChannelInsights
+     *
+     * Get YouTube channel-level insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the YouTube account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;views,estimatedMinutesWatched,subscribersGained,subscribersLost\&quot;.  Live YouTube Analytics v2 metrics:   - views   - estimatedMinutesWatched   - averageViewDuration          (ratio - weighted mean computed across days)   - subscribersGained   - subscribersLost  Zernio-synthesized from daily follower snapshots (cross-platform parity):   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. YouTube Analytics has a 2-3 day delay, so the fetch is internally clamped to 3 days ago; any requested range extending beyond that returns zero values for the tail days. The response&#39;s dateRange.until field reflects your requested value. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals. \&quot;time_series\&quot; returns per-day values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeChannelInsights'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\InlineObject|\Zernio\Model\YouTubeScopeMissingResponse
+     */
+    public function getYouTubeChannelInsights($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getYouTubeChannelInsights'][0])
+    {
+        list($response) = $this->getYouTubeChannelInsightsWithHttpInfo($account_id, $metrics, $since, $until, $metric_type, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getYouTubeChannelInsightsWithHttpInfo
+     *
+     * Get YouTube channel-level insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the YouTube account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;views,estimatedMinutesWatched,subscribersGained,subscribersLost\&quot;.  Live YouTube Analytics v2 metrics:   - views   - estimatedMinutesWatched   - averageViewDuration          (ratio - weighted mean computed across days)   - subscribersGained   - subscribersLost  Zernio-synthesized from daily follower snapshots (cross-platform parity):   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. YouTube Analytics has a 2-3 day delay, so the fetch is internally clamped to 3 days ago; any requested range extending beyond that returns zero values for the tail days. The response&#39;s dateRange.until field reflects your requested value. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals. \&quot;time_series\&quot; returns per-day values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeChannelInsights'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\InstagramAccountInsightsResponse|\Zernio\Model\InlineObject|\Zernio\Model\YouTubeScopeMissingResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getYouTubeChannelInsightsWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getYouTubeChannelInsights'][0])
+    {
+        $request = $this->getYouTubeChannelInsightsRequest($account_id, $metrics, $since, $until, $metric_type, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InstagramAccountInsightsResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 412:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\YouTubeScopeMissingResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\InstagramAccountInsightsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InstagramAccountInsightsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 412:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\YouTubeScopeMissingResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getYouTubeChannelInsightsAsync
+     *
+     * Get YouTube channel-level insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the YouTube account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;views,estimatedMinutesWatched,subscribersGained,subscribersLost\&quot;.  Live YouTube Analytics v2 metrics:   - views   - estimatedMinutesWatched   - averageViewDuration          (ratio - weighted mean computed across days)   - subscribersGained   - subscribersLost  Zernio-synthesized from daily follower snapshots (cross-platform parity):   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. YouTube Analytics has a 2-3 day delay, so the fetch is internally clamped to 3 days ago; any requested range extending beyond that returns zero values for the tail days. The response&#39;s dateRange.until field reflects your requested value. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals. \&quot;time_series\&quot; returns per-day values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeChannelInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getYouTubeChannelInsightsAsync($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getYouTubeChannelInsights'][0])
+    {
+        return $this->getYouTubeChannelInsightsAsyncWithHttpInfo($account_id, $metrics, $since, $until, $metric_type, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getYouTubeChannelInsightsAsyncWithHttpInfo
+     *
+     * Get YouTube channel-level insights
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the YouTube account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;views,estimatedMinutesWatched,subscribersGained,subscribersLost\&quot;.  Live YouTube Analytics v2 metrics:   - views   - estimatedMinutesWatched   - averageViewDuration          (ratio - weighted mean computed across days)   - subscribersGained   - subscribersLost  Zernio-synthesized from daily follower snapshots (cross-platform parity):   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. YouTube Analytics has a 2-3 day delay, so the fetch is internally clamped to 3 days ago; any requested range extending beyond that returns zero values for the tail days. The response&#39;s dateRange.until field reflects your requested value. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals. \&quot;time_series\&quot; returns per-day values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeChannelInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getYouTubeChannelInsightsAsyncWithHttpInfo($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getYouTubeChannelInsights'][0])
+    {
+        $returnType = '\Zernio\Model\InstagramAccountInsightsResponse';
+        $request = $this->getYouTubeChannelInsightsRequest($account_id, $metrics, $since, $until, $metric_type, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getYouTubeChannelInsights'
+     *
+     * @param  string $account_id The Zernio SocialAccount ID for the YouTube account. (required)
+     * @param  string|null $metrics Comma-separated list. Defaults to \&quot;views,estimatedMinutesWatched,subscribersGained,subscribersLost\&quot;.  Live YouTube Analytics v2 metrics:   - views   - estimatedMinutesWatched   - averageViewDuration          (ratio - weighted mean computed across days)   - subscribersGained   - subscribersLost  Zernio-synthesized from daily follower snapshots (cross-platform parity):   - followers_gained   - followers_lost (optional)
+     * @param  \DateTime|null $since Start date (YYYY-MM-DD). Defaults to 30 days ago. (optional)
+     * @param  \DateTime|null $until End date (YYYY-MM-DD). Defaults to today. YouTube Analytics has a 2-3 day delay, so the fetch is internally clamped to 3 days ago; any requested range extending beyond that returns zero values for the tail days. The response&#39;s dateRange.until field reflects your requested value. (optional)
+     * @param  string|null $metric_type \&quot;total_value\&quot; (default) returns aggregated totals. \&quot;time_series\&quot; returns per-day values in the \&quot;values\&quot; array. (optional, default to 'total_value')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getYouTubeChannelInsights'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getYouTubeChannelInsightsRequest($account_id, $metrics = null, $since = null, $until = null, $metric_type = 'total_value', string $contentType = self::contentTypes['getYouTubeChannelInsights'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getYouTubeChannelInsights'
+            );
+        }
+
+
+
+
+
+
+        $resourcePath = '/v1/analytics/youtube/channel-insights';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metrics,
+            'metrics', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $since,
+            'since', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $until,
+            'until', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $metric_type,
+            'metricType', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

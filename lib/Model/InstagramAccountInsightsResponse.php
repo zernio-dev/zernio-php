@@ -36,6 +36,7 @@ use \Zernio\ObjectSerializer;
  * InstagramAccountInsightsResponse Class Doc Comment
  *
  * @category Class
+ * @description Shared account-insights response envelope used by every platform-level analytics endpoint (/v1/analytics/{facebook|instagram|youtube|linkedin|tiktok}/_*). The name is historical - the shape was first shipped for Instagram and every new platform endpoint reuses it for response-shape consistency. The platform field echoes back which platform served the response.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -271,8 +272,29 @@ class InstagramAccountInsightsResponse implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
+    public const PLATFORM_FACEBOOK = 'facebook';
+    public const PLATFORM_INSTAGRAM = 'instagram';
+    public const PLATFORM_YOUTUBE = 'youtube';
+    public const PLATFORM_LINKEDIN = 'linkedin';
+    public const PLATFORM_TIKTOK = 'tiktok';
     public const METRIC_TYPE_TIME_SERIES = 'time_series';
     public const METRIC_TYPE_TOTAL_VALUE = 'total_value';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlatformAllowableValues()
+    {
+        return [
+            self::PLATFORM_FACEBOOK,
+            self::PLATFORM_INSTAGRAM,
+            self::PLATFORM_YOUTUBE,
+            self::PLATFORM_LINKEDIN,
+            self::PLATFORM_TIKTOK,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -338,6 +360,15 @@ class InstagramAccountInsightsResponse implements ModelInterface, ArrayAccess, \
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getMetricTypeAllowableValues();
         if (!is_null($this->container['metric_type']) && !in_array($this->container['metric_type'], $allowedValues, true)) {
@@ -430,7 +461,7 @@ class InstagramAccountInsightsResponse implements ModelInterface, ArrayAccess, \
     /**
      * Sets platform
      *
-     * @param string|null $platform platform
+     * @param string|null $platform Platform that served this response.
      *
      * @return self
      */
@@ -438,6 +469,16 @@ class InstagramAccountInsightsResponse implements ModelInterface, ArrayAccess, \
     {
         if (is_null($platform)) {
             throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
         $this->container['platform'] = $platform;
 

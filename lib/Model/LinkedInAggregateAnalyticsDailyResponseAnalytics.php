@@ -62,7 +62,9 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
         'impressions' => '\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]',
         'reactions' => '\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]',
         'comments' => '\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]',
-        'shares' => '\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]'
+        'shares' => '\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]',
+        'saves' => '\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]',
+        'sends' => '\Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]'
     ];
 
     /**
@@ -76,7 +78,9 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
         'impressions' => null,
         'reactions' => null,
         'comments' => null,
-        'shares' => null
+        'shares' => null,
+        'saves' => null,
+        'sends' => null
     ];
 
     /**
@@ -88,7 +92,9 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
         'impressions' => false,
         'reactions' => false,
         'comments' => false,
-        'shares' => false
+        'shares' => false,
+        'saves' => false,
+        'sends' => false
     ];
 
     /**
@@ -180,7 +186,9 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
         'impressions' => 'impressions',
         'reactions' => 'reactions',
         'comments' => 'comments',
-        'shares' => 'shares'
+        'shares' => 'shares',
+        'saves' => 'saves',
+        'sends' => 'sends'
     ];
 
     /**
@@ -192,7 +200,9 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
         'impressions' => 'setImpressions',
         'reactions' => 'setReactions',
         'comments' => 'setComments',
-        'shares' => 'setShares'
+        'shares' => 'setShares',
+        'saves' => 'setSaves',
+        'sends' => 'setSends'
     ];
 
     /**
@@ -204,7 +214,9 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
         'impressions' => 'getImpressions',
         'reactions' => 'getReactions',
         'comments' => 'getComments',
-        'shares' => 'getShares'
+        'shares' => 'getShares',
+        'saves' => 'getSaves',
+        'sends' => 'getSends'
     ];
 
     /**
@@ -268,6 +280,8 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
         $this->setIfExists('reactions', $data ?? [], null);
         $this->setIfExists('comments', $data ?? [], null);
         $this->setIfExists('shares', $data ?? [], null);
+        $this->setIfExists('saves', $data ?? [], null);
+        $this->setIfExists('sends', $data ?? [], null);
     }
 
     /**
@@ -416,6 +430,60 @@ class LinkedInAggregateAnalyticsDailyResponseAnalytics implements ModelInterface
             throw new \InvalidArgumentException('non-nullable shares cannot be null');
         }
         $this->container['shares'] = $shares;
+
+        return $this;
+    }
+
+    /**
+     * Gets saves
+     *
+     * @return \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null
+     */
+    public function getSaves()
+    {
+        return $this->container['saves'];
+    }
+
+    /**
+     * Sets saves
+     *
+     * @param \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null $saves Daily saves (personal accounts only)
+     *
+     * @return self
+     */
+    public function setSaves($saves)
+    {
+        if (is_null($saves)) {
+            throw new \InvalidArgumentException('non-nullable saves cannot be null');
+        }
+        $this->container['saves'] = $saves;
+
+        return $this;
+    }
+
+    /**
+     * Gets sends
+     *
+     * @return \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null
+     */
+    public function getSends()
+    {
+        return $this->container['sends'];
+    }
+
+    /**
+     * Sets sends
+     *
+     * @param \Zernio\Model\LinkedInAggregateAnalyticsDailyResponseAnalyticsImpressionsInner[]|null $sends Daily sends via LinkedIn messaging (personal accounts only)
+     *
+     * @return self
+     */
+    public function setSends($sends)
+    {
+        if (is_null($sends)) {
+            throw new \InvalidArgumentException('non-nullable sends cannot be null');
+        }
+        $this->container['sends'] = $sends;
 
         return $this;
     }

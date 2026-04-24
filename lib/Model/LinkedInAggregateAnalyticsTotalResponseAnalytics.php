@@ -63,6 +63,8 @@ class LinkedInAggregateAnalyticsTotalResponseAnalytics implements ModelInterface
         'reactions' => 'int',
         'comments' => 'int',
         'shares' => 'int',
+        'saves' => 'int',
+        'sends' => 'int',
         'engagement_rate' => 'float'
     ];
 
@@ -79,6 +81,8 @@ class LinkedInAggregateAnalyticsTotalResponseAnalytics implements ModelInterface
         'reactions' => null,
         'comments' => null,
         'shares' => null,
+        'saves' => null,
+        'sends' => null,
         'engagement_rate' => null
     ];
 
@@ -93,6 +97,8 @@ class LinkedInAggregateAnalyticsTotalResponseAnalytics implements ModelInterface
         'reactions' => false,
         'comments' => false,
         'shares' => false,
+        'saves' => false,
+        'sends' => false,
         'engagement_rate' => false
     ];
 
@@ -187,6 +193,8 @@ class LinkedInAggregateAnalyticsTotalResponseAnalytics implements ModelInterface
         'reactions' => 'reactions',
         'comments' => 'comments',
         'shares' => 'shares',
+        'saves' => 'saves',
+        'sends' => 'sends',
         'engagement_rate' => 'engagementRate'
     ];
 
@@ -201,6 +209,8 @@ class LinkedInAggregateAnalyticsTotalResponseAnalytics implements ModelInterface
         'reactions' => 'setReactions',
         'comments' => 'setComments',
         'shares' => 'setShares',
+        'saves' => 'setSaves',
+        'sends' => 'setSends',
         'engagement_rate' => 'setEngagementRate'
     ];
 
@@ -215,6 +225,8 @@ class LinkedInAggregateAnalyticsTotalResponseAnalytics implements ModelInterface
         'reactions' => 'getReactions',
         'comments' => 'getComments',
         'shares' => 'getShares',
+        'saves' => 'getSaves',
+        'sends' => 'getSends',
         'engagement_rate' => 'getEngagementRate'
     ];
 
@@ -280,6 +292,8 @@ class LinkedInAggregateAnalyticsTotalResponseAnalytics implements ModelInterface
         $this->setIfExists('reactions', $data ?? [], null);
         $this->setIfExists('comments', $data ?? [], null);
         $this->setIfExists('shares', $data ?? [], null);
+        $this->setIfExists('saves', $data ?? [], null);
+        $this->setIfExists('sends', $data ?? [], null);
         $this->setIfExists('engagement_rate', $data ?? [], null);
     }
 
@@ -456,6 +470,60 @@ class LinkedInAggregateAnalyticsTotalResponseAnalytics implements ModelInterface
             throw new \InvalidArgumentException('non-nullable shares cannot be null');
         }
         $this->container['shares'] = $shares;
+
+        return $this;
+    }
+
+    /**
+     * Gets saves
+     *
+     * @return int|null
+     */
+    public function getSaves()
+    {
+        return $this->container['saves'];
+    }
+
+    /**
+     * Sets saves
+     *
+     * @param int|null $saves Total times posts were saved (personal accounts only)
+     *
+     * @return self
+     */
+    public function setSaves($saves)
+    {
+        if (is_null($saves)) {
+            throw new \InvalidArgumentException('non-nullable saves cannot be null');
+        }
+        $this->container['saves'] = $saves;
+
+        return $this;
+    }
+
+    /**
+     * Gets sends
+     *
+     * @return int|null
+     */
+    public function getSends()
+    {
+        return $this->container['sends'];
+    }
+
+    /**
+     * Sets sends
+     *
+     * @param int|null $sends Total times posts were sent via LinkedIn messaging (personal accounts only)
+     *
+     * @return self
+     */
+    public function setSends($sends)
+    {
+        if (is_null($sends)) {
+            throw new \InvalidArgumentException('non-nullable sends cannot be null');
+        }
+        $this->container['sends'] = $sends;
 
         return $this;
     }

@@ -63,6 +63,8 @@ class GetLinkedInPostAnalytics200ResponseAnalytics implements ModelInterface, Ar
         'likes' => 'int',
         'comments' => 'int',
         'shares' => 'int',
+        'saves' => 'int',
+        'sends' => 'int',
         'clicks' => 'int',
         'views' => 'int',
         'engagement_rate' => 'float'
@@ -81,6 +83,8 @@ class GetLinkedInPostAnalytics200ResponseAnalytics implements ModelInterface, Ar
         'likes' => null,
         'comments' => null,
         'shares' => null,
+        'saves' => null,
+        'sends' => null,
         'clicks' => null,
         'views' => null,
         'engagement_rate' => null
@@ -97,6 +101,8 @@ class GetLinkedInPostAnalytics200ResponseAnalytics implements ModelInterface, Ar
         'likes' => false,
         'comments' => false,
         'shares' => false,
+        'saves' => false,
+        'sends' => false,
         'clicks' => false,
         'views' => false,
         'engagement_rate' => false
@@ -193,6 +199,8 @@ class GetLinkedInPostAnalytics200ResponseAnalytics implements ModelInterface, Ar
         'likes' => 'likes',
         'comments' => 'comments',
         'shares' => 'shares',
+        'saves' => 'saves',
+        'sends' => 'sends',
         'clicks' => 'clicks',
         'views' => 'views',
         'engagement_rate' => 'engagementRate'
@@ -209,6 +217,8 @@ class GetLinkedInPostAnalytics200ResponseAnalytics implements ModelInterface, Ar
         'likes' => 'setLikes',
         'comments' => 'setComments',
         'shares' => 'setShares',
+        'saves' => 'setSaves',
+        'sends' => 'setSends',
         'clicks' => 'setClicks',
         'views' => 'setViews',
         'engagement_rate' => 'setEngagementRate'
@@ -225,6 +235,8 @@ class GetLinkedInPostAnalytics200ResponseAnalytics implements ModelInterface, Ar
         'likes' => 'getLikes',
         'comments' => 'getComments',
         'shares' => 'getShares',
+        'saves' => 'getSaves',
+        'sends' => 'getSends',
         'clicks' => 'getClicks',
         'views' => 'getViews',
         'engagement_rate' => 'getEngagementRate'
@@ -292,6 +304,8 @@ class GetLinkedInPostAnalytics200ResponseAnalytics implements ModelInterface, Ar
         $this->setIfExists('likes', $data ?? [], null);
         $this->setIfExists('comments', $data ?? [], null);
         $this->setIfExists('shares', $data ?? [], null);
+        $this->setIfExists('saves', $data ?? [], null);
+        $this->setIfExists('sends', $data ?? [], null);
         $this->setIfExists('clicks', $data ?? [], null);
         $this->setIfExists('views', $data ?? [], null);
         $this->setIfExists('engagement_rate', $data ?? [], null);
@@ -470,6 +484,60 @@ class GetLinkedInPostAnalytics200ResponseAnalytics implements ModelInterface, Ar
             throw new \InvalidArgumentException('non-nullable shares cannot be null');
         }
         $this->container['shares'] = $shares;
+
+        return $this;
+    }
+
+    /**
+     * Gets saves
+     *
+     * @return int|null
+     */
+    public function getSaves()
+    {
+        return $this->container['saves'];
+    }
+
+    /**
+     * Sets saves
+     *
+     * @param int|null $saves Times the post was saved (personal accounts only; 0 for organization accounts)
+     *
+     * @return self
+     */
+    public function setSaves($saves)
+    {
+        if (is_null($saves)) {
+            throw new \InvalidArgumentException('non-nullable saves cannot be null');
+        }
+        $this->container['saves'] = $saves;
+
+        return $this;
+    }
+
+    /**
+     * Gets sends
+     *
+     * @return int|null
+     */
+    public function getSends()
+    {
+        return $this->container['sends'];
+    }
+
+    /**
+     * Sets sends
+     *
+     * @param int|null $sends Times the post was sent via LinkedIn messaging (personal accounts only; 0 for organization accounts)
+     *
+     * @return self
+     */
+    public function setSends($sends)
+    {
+        if (is_null($sends)) {
+            throw new \InvalidArgumentException('non-nullable sends cannot be null');
+        }
+        $this->container['sends'] = $sends;
 
         return $this;
     }

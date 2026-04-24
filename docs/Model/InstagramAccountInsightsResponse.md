@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **success** | **bool** |  | [optional]
 **account_id** | **string** | The Zernio SocialAccount ID | [optional]
-**platform** | **string** |  | [optional]
+**platform** | **string** | Platform that served this response. | [optional]
 **date_range** | [**\Zernio\Model\InstagramAccountInsightsResponseDateRange**](InstagramAccountInsightsResponseDateRange.md) |  | [optional]
 **metric_type** | **string** |  | [optional]
 **breakdown** | **string** | Breakdown dimension used (only present when breakdown was requested) | [optional]
