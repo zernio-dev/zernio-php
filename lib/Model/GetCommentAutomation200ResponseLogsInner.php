@@ -65,6 +65,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         'comment_text' => 'string',
         'status' => 'string',
         'error' => 'string',
+        'comment_reply_status' => 'string',
+        'comment_reply_error' => 'string',
         'created_at' => '\DateTime'
     ];
 
@@ -83,6 +85,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         'comment_text' => null,
         'status' => null,
         'error' => null,
+        'comment_reply_status' => null,
+        'comment_reply_error' => null,
         'created_at' => 'date-time'
     ];
 
@@ -99,6 +103,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         'comment_text' => false,
         'status' => false,
         'error' => false,
+        'comment_reply_status' => false,
+        'comment_reply_error' => false,
         'created_at' => false
     ];
 
@@ -195,6 +201,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         'comment_text' => 'commentText',
         'status' => 'status',
         'error' => 'error',
+        'comment_reply_status' => 'commentReplyStatus',
+        'comment_reply_error' => 'commentReplyError',
         'created_at' => 'createdAt'
     ];
 
@@ -211,6 +219,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         'comment_text' => 'setCommentText',
         'status' => 'setStatus',
         'error' => 'setError',
+        'comment_reply_status' => 'setCommentReplyStatus',
+        'comment_reply_error' => 'setCommentReplyError',
         'created_at' => 'setCreatedAt'
     ];
 
@@ -227,6 +237,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         'comment_text' => 'getCommentText',
         'status' => 'getStatus',
         'error' => 'getError',
+        'comment_reply_status' => 'getCommentReplyStatus',
+        'comment_reply_error' => 'getCommentReplyError',
         'created_at' => 'getCreatedAt'
     ];
 
@@ -274,6 +286,9 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
     public const STATUS_SENT = 'sent';
     public const STATUS_FAILED = 'failed';
     public const STATUS_SKIPPED = 'skipped';
+    public const COMMENT_REPLY_STATUS_SENT = 'sent';
+    public const COMMENT_REPLY_STATUS_FAILED = 'failed';
+    public const COMMENT_REPLY_STATUS_SKIPPED = 'skipped';
 
     /**
      * Gets allowable values of the enum
@@ -286,6 +301,20 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
             self::STATUS_SENT,
             self::STATUS_FAILED,
             self::STATUS_SKIPPED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCommentReplyStatusAllowableValues()
+    {
+        return [
+            self::COMMENT_REPLY_STATUS_SENT,
+            self::COMMENT_REPLY_STATUS_FAILED,
+            self::COMMENT_REPLY_STATUS_SKIPPED,
         ];
     }
 
@@ -311,6 +340,8 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
         $this->setIfExists('comment_text', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('comment_reply_status', $data ?? [], null);
+        $this->setIfExists('comment_reply_error', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
     }
 
@@ -346,6 +377,15 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'status', must be one of '%s'",
                 $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCommentReplyStatusAllowableValues();
+        if (!is_null($this->container['comment_reply_status']) && !in_array($this->container['comment_reply_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'comment_reply_status', must be one of '%s'",
+                $this->container['comment_reply_status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -513,7 +553,7 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
     /**
      * Sets status
      *
-     * @param string|null $status status
+     * @param string|null $status DM outcome
      *
      * @return self
      */
@@ -550,7 +590,7 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
     /**
      * Sets error
      *
-     * @param string|null $error error
+     * @param string|null $error DM error message if status is failed
      *
      * @return self
      */
@@ -560,6 +600,70 @@ class GetCommentAutomation200ResponseLogsInner implements ModelInterface, ArrayA
             throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
         $this->container['error'] = $error;
+
+        return $this;
+    }
+
+    /**
+     * Gets comment_reply_status
+     *
+     * @return string|null
+     */
+    public function getCommentReplyStatus()
+    {
+        return $this->container['comment_reply_status'];
+    }
+
+    /**
+     * Sets comment_reply_status
+     *
+     * @param string|null $comment_reply_status Outcome of the optional public reply on the triggering comment. 'skipped' if no commentReply was configured or if the DM failed (the public reply is not attempted in that case).
+     *
+     * @return self
+     */
+    public function setCommentReplyStatus($comment_reply_status)
+    {
+        if (is_null($comment_reply_status)) {
+            throw new \InvalidArgumentException('non-nullable comment_reply_status cannot be null');
+        }
+        $allowedValues = $this->getCommentReplyStatusAllowableValues();
+        if (!in_array($comment_reply_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'comment_reply_status', must be one of '%s'",
+                    $comment_reply_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['comment_reply_status'] = $comment_reply_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets comment_reply_error
+     *
+     * @return string|null
+     */
+    public function getCommentReplyError()
+    {
+        return $this->container['comment_reply_error'];
+    }
+
+    /**
+     * Sets comment_reply_error
+     *
+     * @param string|null $comment_reply_error Public-reply error message if commentReplyStatus is failed
+     *
+     * @return self
+     */
+    public function setCommentReplyError($comment_reply_error)
+    {
+        if (is_null($comment_reply_error)) {
+            throw new \InvalidArgumentException('non-nullable comment_reply_error cannot be null');
+        }
+        $this->container['comment_reply_error'] = $comment_reply_error;
 
         return $this;
     }
