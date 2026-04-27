@@ -34,5 +34,6 @@ Name | Type | Description | Notes
 **additional_headlines** | **string[]** | Google Search RSA only. Extra headlines. | [optional]
 **additional_descriptions** | **string[]** | Google Search RSA only. Extra descriptions. | [optional]
 **advantage_audience** | **int** | Meta only. Controls the Advantage audience feature (targeting_automation). 0 &#x3D; disabled (default), 1 &#x3D; enabled. Meta Marketing API requires this field on all ad set creation requests. | [optional]
+**gender** | **string** | Meta only. Restrict the audience by gender. &#39;male&#39; targets men only, &#39;female&#39; targets women only, &#39;all&#39; (default) targets everyone. Ignored by non-Meta platforms. | [optional] [default to 'all']
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

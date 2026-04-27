@@ -87,7 +87,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'keywords' => 'string[]',
         'additional_headlines' => 'string[]',
         'additional_descriptions' => 'string[]',
-        'advantage_audience' => 'int'
+        'advantage_audience' => 'int',
+        'gender' => 'string'
     ];
 
     /**
@@ -127,7 +128,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'keywords' => null,
         'additional_headlines' => null,
         'additional_descriptions' => null,
-        'advantage_audience' => null
+        'advantage_audience' => null,
+        'gender' => null
     ];
 
     /**
@@ -165,7 +167,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'keywords' => false,
         'additional_headlines' => false,
         'additional_descriptions' => false,
-        'advantage_audience' => false
+        'advantage_audience' => false,
+        'gender' => false
     ];
 
     /**
@@ -283,7 +286,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'keywords' => 'keywords',
         'additional_headlines' => 'additionalHeadlines',
         'additional_descriptions' => 'additionalDescriptions',
-        'advantage_audience' => 'advantageAudience'
+        'advantage_audience' => 'advantageAudience',
+        'gender' => 'gender'
     ];
 
     /**
@@ -321,7 +325,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'keywords' => 'setKeywords',
         'additional_headlines' => 'setAdditionalHeadlines',
         'additional_descriptions' => 'setAdditionalDescriptions',
-        'advantage_audience' => 'setAdvantageAudience'
+        'advantage_audience' => 'setAdvantageAudience',
+        'gender' => 'setGender'
     ];
 
     /**
@@ -359,7 +364,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'keywords' => 'getKeywords',
         'additional_headlines' => 'getAdditionalHeadlines',
         'additional_descriptions' => 'getAdditionalDescriptions',
-        'advantage_audience' => 'getAdvantageAudience'
+        'advantage_audience' => 'getAdvantageAudience',
+        'gender' => 'getGender'
     ];
 
     /**
@@ -426,6 +432,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const CAMPAIGN_TYPE_SEARCH = 'search';
     public const ADVANTAGE_AUDIENCE_NUMBER_0 = 0;
     public const ADVANTAGE_AUDIENCE_NUMBER_1 = 1;
+    public const GENDER_ALL = 'all';
+    public const GENDER_MALE = 'male';
+    public const GENDER_FEMALE = 'female';
 
     /**
      * Gets allowable values of the enum
@@ -506,6 +515,20 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getGenderAllowableValues()
+    {
+        return [
+            self::GENDER_ALL,
+            self::GENDER_MALE,
+            self::GENDER_FEMALE,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -550,6 +573,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('additional_headlines', $data ?? [], null);
         $this->setIfExists('additional_descriptions', $data ?? [], null);
         $this->setIfExists('advantage_audience', $data ?? [], null);
+        $this->setIfExists('gender', $data ?? [], 'all');
     }
 
     /**
@@ -661,6 +685,15 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'advantage_audience', must be one of '%s'",
                 $this->container['advantage_audience'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getGenderAllowableValues();
+        if (!is_null($this->container['gender']) && !in_array($this->container['gender'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'gender', must be one of '%s'",
+                $this->container['gender'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1569,6 +1602,43 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['advantage_audience'] = $advantage_audience;
+
+        return $this;
+    }
+
+    /**
+     * Gets gender
+     *
+     * @return string|null
+     */
+    public function getGender()
+    {
+        return $this->container['gender'];
+    }
+
+    /**
+     * Sets gender
+     *
+     * @param string|null $gender Meta only. Restrict the audience by gender. 'male' targets men only, 'female' targets women only, 'all' (default) targets everyone. Ignored by non-Meta platforms.
+     *
+     * @return self
+     */
+    public function setGender($gender)
+    {
+        if (is_null($gender)) {
+            throw new \InvalidArgumentException('non-nullable gender cannot be null');
+        }
+        $allowedValues = $this->getGenderAllowableValues();
+        if (!in_array($gender, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'gender', must be one of '%s'",
+                    $gender,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['gender'] = $gender;
 
         return $this;
     }
