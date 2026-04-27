@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **video** | [**\Zernio\Model\CreateCtwaAdRequestVideo**](CreateCtwaAdRequestVideo.md) |  | [optional]
 **budget_amount** | **float** | Budget amount in the ad account&#39;s currency major units (e.g. dollars for USD, not cents). Must be &gt; 0. |
 **budget_type** | **string** |  |
-**currency** | **string** | ISO 4217 currency code matching the ad account&#39;s currency (e.g. &#x60;USD&#x60;). Optional — Meta infers from the ad account when omitted. | [optional]
+**currency** | **string** | ISO 4217 currency code matching the ad account&#39;s currency (e.g. &#x60;USD&#x60;). Optional; Meta infers from the ad account when omitted. | [optional]
 **end_date** | **\DateTime** | ISO 8601 datetime. Required when &#x60;budgetType&#x60; is &#x60;lifetime&#x60;. | [optional]
 **countries** | **string[]** | ISO 3166-1 alpha-2 country codes. Defaults to &#x60;[\&quot;US\&quot;]&#x60;. | [optional]
 **age_min** | **int** |  | [optional]

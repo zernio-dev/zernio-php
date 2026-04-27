@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * SendWhatsAppConversionRequest Class Doc Comment
  *
  * @category Class
- * @description In addition to the &#x60;required&#x60; list, **at least one of &#x60;conversationId&#x60; or &#x60;phoneE164&#x60; must be supplied** (used to resolve the originating CTWA conversation). The route enforces this at the Zod boundary; OpenAPI&#39;s &#x60;required&#x60; cannot express OR-required cleanly.
+ * @description In addition to the &#x60;required&#x60; list, at least one of &#x60;conversationId&#x60; or &#x60;phoneE164&#x60; must be supplied (used to resolve the originating CTWA conversation). The route enforces this at the Zod boundary; OpenAPI&#39;s &#x60;required&#x60; cannot express OR-required cleanly.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

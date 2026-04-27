@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateCtwaAdRequest Class Doc Comment
  *
  * @category Class
- * @description In addition to the &#x60;required&#x60; list, **exactly one of &#x60;imageUrl&#x60; or &#x60;video&#x60; must be supplied** (mutually exclusive). The route enforces this at the Zod boundary; OpenAPI&#39;s &#x60;required&#x60; cannot express OR-required cleanly.
+ * @description In addition to the &#x60;required&#x60; list, exactly one of &#x60;imageUrl&#x60; or &#x60;video&#x60; must be supplied (they are mutually exclusive). The route enforces this at the Zod boundary; OpenAPI&#39;s &#x60;required&#x60; cannot express OR-required cleanly.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -855,7 +855,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets currency
      *
-     * @param string|null $currency ISO 4217 currency code matching the ad account's currency (e.g. `USD`). Optional — Meta infers from the ad account when omitted.
+     * @param string|null $currency ISO 4217 currency code matching the ad account's currency (e.g. `USD`). Optional; Meta infers from the ad account when omitted.
      *
      * @return self
      */

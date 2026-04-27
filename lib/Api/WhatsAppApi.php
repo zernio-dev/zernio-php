@@ -5145,7 +5145,7 @@ class WhatsAppApi
     /**
      * Operation sendWhatsAppConversion
      *
-     * Send a WhatsApp conversation event to Meta CAPI for Business Messaging
+     * Send WhatsApp conversion event
      *
      * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request send_whats_app_conversion_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation
@@ -5163,7 +5163,7 @@ class WhatsAppApi
     /**
      * Operation sendWhatsAppConversionWithHttpInfo
      *
-     * Send a WhatsApp conversation event to Meta CAPI for Business Messaging
+     * Send WhatsApp conversion event
      *
      * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation
@@ -5262,7 +5262,7 @@ class WhatsAppApi
     /**
      * Operation sendWhatsAppConversionAsync
      *
-     * Send a WhatsApp conversation event to Meta CAPI for Business Messaging
+     * Send WhatsApp conversion event
      *
      * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation
@@ -5283,7 +5283,7 @@ class WhatsAppApi
     /**
      * Operation sendWhatsAppConversionAsyncWithHttpInfo
      *
-     * Send a WhatsApp conversation event to Meta CAPI for Business Messaging
+     * Send WhatsApp conversion event
      *
      * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation

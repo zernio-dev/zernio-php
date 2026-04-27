@@ -453,7 +453,7 @@ class AdsApi
     /**
      * Operation createCtwaAd
      *
-     * Create a Click-to-WhatsApp (CTWA) ad
+     * Create Click-to-WhatsApp ad
      *
      * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request create_ctwa_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -471,7 +471,7 @@ class AdsApi
     /**
      * Operation createCtwaAdWithHttpInfo
      *
-     * Create a Click-to-WhatsApp (CTWA) ad
+     * Create Click-to-WhatsApp ad
      *
      * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -570,7 +570,7 @@ class AdsApi
     /**
      * Operation createCtwaAdAsync
      *
-     * Create a Click-to-WhatsApp (CTWA) ad
+     * Create Click-to-WhatsApp ad
      *
      * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -591,7 +591,7 @@ class AdsApi
     /**
      * Operation createCtwaAdAsyncWithHttpInfo
      *
-     * Create a Click-to-WhatsApp (CTWA) ad
+     * Create Click-to-WhatsApp ad
      *
      * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -3910,7 +3910,7 @@ class AdsApi
     /**
      * Operation sendWhatsAppConversion
      *
-     * Send a WhatsApp conversation event to Meta CAPI for Business Messaging
+     * Send WhatsApp conversion event
      *
      * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request send_whats_app_conversion_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation
@@ -3928,7 +3928,7 @@ class AdsApi
     /**
      * Operation sendWhatsAppConversionWithHttpInfo
      *
-     * Send a WhatsApp conversation event to Meta CAPI for Business Messaging
+     * Send WhatsApp conversion event
      *
      * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation
@@ -4027,7 +4027,7 @@ class AdsApi
     /**
      * Operation sendWhatsAppConversionAsync
      *
-     * Send a WhatsApp conversation event to Meta CAPI for Business Messaging
+     * Send WhatsApp conversion event
      *
      * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation
@@ -4048,7 +4048,7 @@ class AdsApi
     /**
      * Operation sendWhatsAppConversionAsyncWithHttpInfo
      *
-     * Send a WhatsApp conversation event to Meta CAPI for Business Messaging
+     * Send WhatsApp conversion event
      *
      * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation
