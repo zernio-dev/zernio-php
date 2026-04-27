@@ -6,6 +6,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
+| [**onAccountAdsInitialSyncCompleted()**](WebhookEventsApi.md#onAccountAdsInitialSyncCompleted) | **POST** /account.ads.initial_sync_completed | Ads initial sync completed event |
 | [**onAccountConnected()**](WebhookEventsApi.md#onAccountConnected) | **POST** /account.connected | Account connected event |
 | [**onAccountDisconnected()**](WebhookEventsApi.md#onAccountDisconnected) | **POST** /account.disconnected | Account disconnected event |
 | [**onCommentReceived()**](WebhookEventsApi.md#onCommentReceived) | **POST** /comment.received | Comment received event |
@@ -26,6 +27,65 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onReviewUpdated()**](WebhookEventsApi.md#onReviewUpdated) | **POST** /review.updated | Review updated event |
 | [**onWebhookTest()**](WebhookEventsApi.md#onWebhookTest) | **POST** /webhook.test | Webhook test event |
 
+
+## `onAccountAdsInitialSyncCompleted()`
+
+```php
+onAccountAdsInitialSyncCompleted($webhook_payload_account_ads_initial_sync_completed)
+```
+
+Ads initial sync completed event
+
+Fired once per ads-enabled account when the initial sync (ad-account discovery + 90-day historical ad backfill) completes. The `sync` block reports whether the backfill succeeded and how many ads were synced.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_account_ads_initial_sync_completed = new \Zernio\Model\WebhookPayloadAccountAdsInitialSyncCompleted(); // \Zernio\Model\WebhookPayloadAccountAdsInitialSyncCompleted
+
+try {
+    $apiInstance->onAccountAdsInitialSyncCompleted($webhook_payload_account_ads_initial_sync_completed);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onAccountAdsInitialSyncCompleted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_account_ads_initial_sync_completed** | [**\Zernio\Model\WebhookPayloadAccountAdsInitialSyncCompleted**](../Model/WebhookPayloadAccountAdsInitialSyncCompleted.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `onAccountConnected()`
 

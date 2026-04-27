@@ -75,6 +75,9 @@ class WebhookEventsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'onAccountAdsInitialSyncCompleted' => [
+            'application/json',
+        ],
         'onAccountConnected' => [
             'application/json',
         ],
@@ -178,6 +181,227 @@ class WebhookEventsApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation onAccountAdsInitialSyncCompleted
+     *
+     * Ads initial sync completed event
+     *
+     * @param  \Zernio\Model\WebhookPayloadAccountAdsInitialSyncCompleted $webhook_payload_account_ads_initial_sync_completed webhook_payload_account_ads_initial_sync_completed (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountAdsInitialSyncCompleted'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onAccountAdsInitialSyncCompleted($webhook_payload_account_ads_initial_sync_completed, string $contentType = self::contentTypes['onAccountAdsInitialSyncCompleted'][0])
+    {
+        $this->onAccountAdsInitialSyncCompletedWithHttpInfo($webhook_payload_account_ads_initial_sync_completed, $contentType);
+    }
+
+    /**
+     * Operation onAccountAdsInitialSyncCompletedWithHttpInfo
+     *
+     * Ads initial sync completed event
+     *
+     * @param  \Zernio\Model\WebhookPayloadAccountAdsInitialSyncCompleted $webhook_payload_account_ads_initial_sync_completed (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountAdsInitialSyncCompleted'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onAccountAdsInitialSyncCompletedWithHttpInfo($webhook_payload_account_ads_initial_sync_completed, string $contentType = self::contentTypes['onAccountAdsInitialSyncCompleted'][0])
+    {
+        $request = $this->onAccountAdsInitialSyncCompletedRequest($webhook_payload_account_ads_initial_sync_completed, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onAccountAdsInitialSyncCompletedAsync
+     *
+     * Ads initial sync completed event
+     *
+     * @param  \Zernio\Model\WebhookPayloadAccountAdsInitialSyncCompleted $webhook_payload_account_ads_initial_sync_completed (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountAdsInitialSyncCompleted'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onAccountAdsInitialSyncCompletedAsync($webhook_payload_account_ads_initial_sync_completed, string $contentType = self::contentTypes['onAccountAdsInitialSyncCompleted'][0])
+    {
+        return $this->onAccountAdsInitialSyncCompletedAsyncWithHttpInfo($webhook_payload_account_ads_initial_sync_completed, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onAccountAdsInitialSyncCompletedAsyncWithHttpInfo
+     *
+     * Ads initial sync completed event
+     *
+     * @param  \Zernio\Model\WebhookPayloadAccountAdsInitialSyncCompleted $webhook_payload_account_ads_initial_sync_completed (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountAdsInitialSyncCompleted'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onAccountAdsInitialSyncCompletedAsyncWithHttpInfo($webhook_payload_account_ads_initial_sync_completed, string $contentType = self::contentTypes['onAccountAdsInitialSyncCompleted'][0])
+    {
+        $returnType = '';
+        $request = $this->onAccountAdsInitialSyncCompletedRequest($webhook_payload_account_ads_initial_sync_completed, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onAccountAdsInitialSyncCompleted'
+     *
+     * @param  \Zernio\Model\WebhookPayloadAccountAdsInitialSyncCompleted $webhook_payload_account_ads_initial_sync_completed (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onAccountAdsInitialSyncCompleted'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onAccountAdsInitialSyncCompletedRequest($webhook_payload_account_ads_initial_sync_completed, string $contentType = self::contentTypes['onAccountAdsInitialSyncCompleted'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_account_ads_initial_sync_completed' is set
+        if ($webhook_payload_account_ads_initial_sync_completed === null || (is_array($webhook_payload_account_ads_initial_sync_completed) && count($webhook_payload_account_ads_initial_sync_completed) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_account_ads_initial_sync_completed when calling onAccountAdsInitialSyncCompleted'
+            );
+        }
+
+
+        $resourcePath = '/account.ads.initial_sync_completed';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_account_ads_initial_sync_completed)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_account_ads_initial_sync_completed));
+            } else {
+                $httpBody = $webhook_payload_account_ads_initial_sync_completed;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**

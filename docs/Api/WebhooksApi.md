@@ -1,6 +1,6 @@
 # Zernio\WebhooksApi
 
-Configure webhooks for real-time notifications. Events: post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, message.received, message.sent, comment.received, review.new, review.updated, webhook.test. Security: optional HMAC-SHA256 signature in X-Zernio-Signature header. Configure a secret key to enable verification. Custom headers supported.
+Configure webhooks for real-time notifications. Events: post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, account.connected, account.disconnected, account.ads.initial_sync_completed, message.received, message.sent, comment.received, review.new, review.updated, webhook.test. Security: optional HMAC-SHA256 signature in X-Zernio-Signature header. Configure a secret key to enable verification. Custom headers supported.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 
@@ -40,7 +40,7 @@ $apiInstance = new Zernio\Api\WebhooksApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_webhook_settings_request = {"name":"My Production Webhook","url":"https://example.com/webhook","secret":"your-secret-key","events":["post.scheduled","post.published","post.failed","post.partial","post.cancelled","post.recycled","account.connected","account.disconnected","message.received","comment.received","review.new","review.updated"],"isActive":true}; // \Zernio\Model\CreateWebhookSettingsRequest
+$create_webhook_settings_request = {"name":"My Production Webhook","url":"https://example.com/webhook","secret":"your-secret-key","events":["post.scheduled","post.published","post.failed","post.partial","post.cancelled","post.recycled","account.connected","account.disconnected","account.ads.initial_sync_completed","message.received","comment.received","review.new","review.updated"],"isActive":true}; // \Zernio\Model\CreateWebhookSettingsRequest
 
 try {
     $result = $apiInstance->createWebhookSettings($create_webhook_settings_request);

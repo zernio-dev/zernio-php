@@ -802,6 +802,9 @@ docs/Model/ValidateSubreddit200ResponseOneOf.md
 docs/Model/ValidateSubreddit200ResponseOneOf1.md
 docs/Model/ValidateSubreddit200ResponseOneOfSubreddit.md
 docs/Model/Webhook.md
+docs/Model/WebhookPayloadAccountAdsInitialSyncCompleted.md
+docs/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccount.md
+docs/Model/WebhookPayloadAccountAdsInitialSyncCompletedSync.md
 docs/Model/WebhookPayloadAccountConnected.md
 docs/Model/WebhookPayloadAccountConnectedAccount.md
 docs/Model/WebhookPayloadAccountDisconnected.md
@@ -1657,6 +1660,9 @@ lib/Model/ValidateSubreddit200ResponseOneOf.php
 lib/Model/ValidateSubreddit200ResponseOneOf1.php
 lib/Model/ValidateSubreddit200ResponseOneOfSubreddit.php
 lib/Model/Webhook.php
+lib/Model/WebhookPayloadAccountAdsInitialSyncCompleted.php
+lib/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccount.php
+lib/Model/WebhookPayloadAccountAdsInitialSyncCompletedSync.php
 lib/Model/WebhookPayloadAccountConnected.php
 lib/Model/WebhookPayloadAccountConnectedAccount.php
 lib/Model/WebhookPayloadAccountDisconnected.php
@@ -1709,3 +1715,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccountTest.php
+test/Model/WebhookPayloadAccountAdsInitialSyncCompletedSyncTest.php
+test/Model/WebhookPayloadAccountAdsInitialSyncCompletedTest.php

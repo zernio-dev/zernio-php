@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateWebhookSettingsRequest
+ * WebhookPayloadAccountAdsInitialSyncCompletedAccount
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateWebhookSettingsRequest Class Doc Comment
+ * WebhookPayloadAccountAdsInitialSyncCompletedAccount Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookPayloadAccountAdsInitialSyncCompletedAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createWebhookSettings_request';
+    protected static $openAPIModelName = 'WebhookPayloadAccountAdsInitialSyncCompleted_account';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,13 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'url' => 'string',
-        'secret' => 'string',
-        'events' => 'string[]',
-        'is_active' => 'bool',
-        'custom_headers' => 'array<string,string>'
+        'account_id' => 'string',
+        'profile_id' => 'string',
+        'platform' => 'string',
+        'username' => 'string',
+        'display_name' => 'string',
+        'platform_user_id' => 'string',
+        'profile_picture' => 'string'
     ];
 
     /**
@@ -74,12 +75,13 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'url' => 'uri',
-        'secret' => null,
-        'events' => null,
-        'is_active' => null,
-        'custom_headers' => null
+        'account_id' => null,
+        'profile_id' => null,
+        'platform' => null,
+        'username' => null,
+        'display_name' => null,
+        'platform_user_id' => null,
+        'profile_picture' => 'uri'
     ];
 
     /**
@@ -88,12 +90,13 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'url' => false,
-        'secret' => false,
-        'events' => false,
-        'is_active' => false,
-        'custom_headers' => false
+        'account_id' => false,
+        'profile_id' => false,
+        'platform' => false,
+        'username' => false,
+        'display_name' => false,
+        'platform_user_id' => false,
+        'profile_picture' => false
     ];
 
     /**
@@ -182,12 +185,13 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'url' => 'url',
-        'secret' => 'secret',
-        'events' => 'events',
-        'is_active' => 'isActive',
-        'custom_headers' => 'customHeaders'
+        'account_id' => 'accountId',
+        'profile_id' => 'profileId',
+        'platform' => 'platform',
+        'username' => 'username',
+        'display_name' => 'displayName',
+        'platform_user_id' => 'platformUserId',
+        'profile_picture' => 'profilePicture'
     ];
 
     /**
@@ -196,12 +200,13 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'secret' => 'setSecret',
-        'events' => 'setEvents',
-        'is_active' => 'setIsActive',
-        'custom_headers' => 'setCustomHeaders'
+        'account_id' => 'setAccountId',
+        'profile_id' => 'setProfileId',
+        'platform' => 'setPlatform',
+        'username' => 'setUsername',
+        'display_name' => 'setDisplayName',
+        'platform_user_id' => 'setPlatformUserId',
+        'profile_picture' => 'setProfilePicture'
     ];
 
     /**
@@ -210,12 +215,13 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'secret' => 'getSecret',
-        'events' => 'getEvents',
-        'is_active' => 'getIsActive',
-        'custom_headers' => 'getCustomHeaders'
+        'account_id' => 'getAccountId',
+        'profile_id' => 'getProfileId',
+        'platform' => 'getPlatform',
+        'username' => 'getUsername',
+        'display_name' => 'getDisplayName',
+        'platform_user_id' => 'getPlatformUserId',
+        'profile_picture' => 'getProfilePicture'
     ];
 
     /**
@@ -259,43 +265,6 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    public const EVENTS_POST_SCHEDULED = 'post.scheduled';
-    public const EVENTS_POST_PUBLISHED = 'post.published';
-    public const EVENTS_POST_FAILED = 'post.failed';
-    public const EVENTS_POST_PARTIAL = 'post.partial';
-    public const EVENTS_POST_CANCELLED = 'post.cancelled';
-    public const EVENTS_POST_RECYCLED = 'post.recycled';
-    public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
-    public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
-    public const EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED = 'account.ads.initial_sync_completed';
-    public const EVENTS_MESSAGE_RECEIVED = 'message.received';
-    public const EVENTS_COMMENT_RECEIVED = 'comment.received';
-    public const EVENTS_REVIEW_NEW = 'review.new';
-    public const EVENTS_REVIEW_UPDATED = 'review.updated';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEventsAllowableValues()
-    {
-        return [
-            self::EVENTS_POST_SCHEDULED,
-            self::EVENTS_POST_PUBLISHED,
-            self::EVENTS_POST_FAILED,
-            self::EVENTS_POST_PARTIAL,
-            self::EVENTS_POST_CANCELLED,
-            self::EVENTS_POST_RECYCLED,
-            self::EVENTS_ACCOUNT_CONNECTED,
-            self::EVENTS_ACCOUNT_DISCONNECTED,
-            self::EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED,
-            self::EVENTS_MESSAGE_RECEIVED,
-            self::EVENTS_COMMENT_RECEIVED,
-            self::EVENTS_REVIEW_NEW,
-            self::EVENTS_REVIEW_UPDATED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -312,12 +281,13 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('secret', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], true);
-        $this->setIfExists('custom_headers', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('username', $data ?? [], null);
+        $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('platform_user_id', $data ?? [], null);
+        $this->setIfExists('profile_picture', $data ?? [], null);
     }
 
     /**
@@ -347,27 +317,18 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
         }
-        if ((mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
+        if ($this->container['profile_id'] === null) {
+            $invalidProperties[] = "'profile_id' can't be null";
         }
-
-        if ((mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
         }
-
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
+        if ($this->container['username'] === null) {
+            $invalidProperties[] = "'username' can't be null";
         }
-        if ($this->container['events'] === null) {
-            $invalidProperties[] = "'events' can't be null";
-        }
-        if ((count($this->container['events']) < 1)) {
-            $invalidProperties[] = "invalid value for 'events', number of items must be greater than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -384,184 +345,190 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets name
+     * Gets account_id
      *
      * @return string
      */
-    public function getName()
+    public function getAccountId()
     {
-        return $this->container['name'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets name
+     * Sets account_id
      *
-     * @param string $name Webhook name (1-50 characters)
+     * @param string $account_id The account's unique identifier (same as used in /v1/accounts/{accountId})
      *
      * @return self
      */
-    public function setName($name)
+    public function setAccountId($account_id)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        if ((mb_strlen($name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateWebhookSettingsRequest., must be smaller than or equal to 50.');
-        }
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateWebhookSettingsRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['name'] = $name;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets url
+     * Gets profile_id
      *
      * @return string
      */
-    public function getUrl()
+    public function getProfileId()
     {
-        return $this->container['url'];
+        return $this->container['profile_id'];
     }
 
     /**
-     * Sets url
+     * Sets profile_id
      *
-     * @param string $url Webhook endpoint URL (must be a valid URL, whitespace trimmed)
+     * @param string $profile_id The profile's unique identifier this account belongs to
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setProfileId($profile_id)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
         }
-        $this->container['url'] = $url;
+        $this->container['profile_id'] = $profile_id;
 
         return $this;
     }
 
     /**
-     * Gets secret
+     * Gets platform
+     *
+     * @return string
+     */
+    public function getPlatform()
+    {
+        return $this->container['platform'];
+    }
+
+    /**
+     * Sets platform
+     *
+     * @param string $platform platform
+     *
+     * @return self
+     */
+    public function setPlatform($platform)
+    {
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->container['username'];
+    }
+
+    /**
+     * Sets username
+     *
+     * @param string $username username
+     *
+     * @return self
+     */
+    public function setUsername($username)
+    {
+        if (is_null($username)) {
+            throw new \InvalidArgumentException('non-nullable username cannot be null');
+        }
+        $this->container['username'] = $username;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_name
      *
      * @return string|null
      */
-    public function getSecret()
+    public function getDisplayName()
     {
-        return $this->container['secret'];
+        return $this->container['display_name'];
     }
 
     /**
-     * Sets secret
+     * Sets display_name
      *
-     * @param string|null $secret Secret key for HMAC-SHA256 signature verification
+     * @param string|null $display_name display_name
      *
      * @return self
      */
-    public function setSecret($secret)
+    public function setDisplayName($display_name)
     {
-        if (is_null($secret)) {
-            throw new \InvalidArgumentException('non-nullable secret cannot be null');
+        if (is_null($display_name)) {
+            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
-        $this->container['secret'] = $secret;
+        $this->container['display_name'] = $display_name;
 
         return $this;
     }
 
     /**
-     * Gets events
+     * Gets platform_user_id
      *
-     * @return string[]
+     * @return string|null
      */
-    public function getEvents()
+    public function getPlatformUserId()
     {
-        return $this->container['events'];
+        return $this->container['platform_user_id'];
     }
 
     /**
-     * Sets events
+     * Sets platform_user_id
      *
-     * @param string[] $events Events to subscribe to (at least one required)
+     * @param string|null $platform_user_id The platform-side account/ad-account ID (e.g. Meta ad account ID).
      *
      * @return self
      */
-    public function setEvents($events)
+    public function setPlatformUserId($platform_user_id)
     {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
+        if (is_null($platform_user_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_user_id cannot be null');
         }
-        $allowedValues = $this->getEventsAllowableValues();
-        if (array_diff($events, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'events', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-
-
-        if ((count($events) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $events when calling CreateWebhookSettingsRequest., number of items must be greater than or equal to 1.');
-        }
-        $this->container['events'] = $events;
+        $this->container['platform_user_id'] = $platform_user_id;
 
         return $this;
     }
 
     /**
-     * Gets is_active
+     * Gets profile_picture
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getIsActive()
+    public function getProfilePicture()
     {
-        return $this->container['is_active'];
+        return $this->container['profile_picture'];
     }
 
     /**
-     * Sets is_active
+     * Sets profile_picture
      *
-     * @param bool|null $is_active Enable or disable webhook delivery. Defaults to `true` when omitted.
+     * @param string|null $profile_picture URL of the account's profile picture, when available.
      *
      * @return self
      */
-    public function setIsActive($is_active)
+    public function setProfilePicture($profile_picture)
     {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
+        if (is_null($profile_picture)) {
+            throw new \InvalidArgumentException('non-nullable profile_picture cannot be null');
         }
-        $this->container['is_active'] = $is_active;
-
-        return $this;
-    }
-
-    /**
-     * Gets custom_headers
-     *
-     * @return array<string,string>|null
-     */
-    public function getCustomHeaders()
-    {
-        return $this->container['custom_headers'];
-    }
-
-    /**
-     * Sets custom_headers
-     *
-     * @param array<string,string>|null $custom_headers Custom headers to include in webhook requests
-     *
-     * @return self
-     */
-    public function setCustomHeaders($custom_headers)
-    {
-        if (is_null($custom_headers)) {
-            throw new \InvalidArgumentException('non-nullable custom_headers cannot be null');
-        }
-        $this->container['custom_headers'] = $custom_headers;
+        $this->container['profile_picture'] = $profile_picture;
 
         return $this;
     }
