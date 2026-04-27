@@ -1715,6 +1715,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccountTest.php
-test/Model/WebhookPayloadAccountAdsInitialSyncCompletedSyncTest.php
-test/Model/WebhookPayloadAccountAdsInitialSyncCompletedTest.php

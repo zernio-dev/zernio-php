@@ -325,7 +325,7 @@ try {
 ## `listPosts()`
 
 ```php
-listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by): \Zernio\Model\PostsListResponse
+listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id): \Zernio\Model\PostsListResponse
 ```
 
 List posts
@@ -360,9 +360,10 @@ $date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime
 $include_hidden = false; // bool
 $search = 'search_example'; // string | Search posts by text content.
 $sort_by = 'scheduled-desc'; // string | Sort order for results.
+$account_id = 'account_id_example'; // string | Filter posts to those published via a specific social account (24-char hex ObjectId).
 
 try {
-    $result = $apiInstance->listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by);
+    $result = $apiInstance->listPosts($page, $limit, $status, $platform, $profile_id, $created_by, $date_from, $date_to, $include_hidden, $search, $sort_by, $account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PostsApi->listPosts: ', $e->getMessage(), PHP_EOL;
@@ -384,6 +385,7 @@ try {
 | **include_hidden** | **bool**|  | [optional] [default to false] |
 | **search** | **string**| Search posts by text content. | [optional] |
 | **sort_by** | **string**| Sort order for results. | [optional] [default to &#39;scheduled-desc&#39;] |
+| **account_id** | **string**| Filter posts to those published via a specific social account (24-char hex ObjectId). | [optional] |
 
 ### Return type
 
