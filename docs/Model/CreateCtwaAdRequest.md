@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **body** | **string** | Primary text shown above the image / video. |
 **image_url** | **string** | Image asset for image creatives. Mutually exclusive with &#x60;video&#x60;. Required if &#x60;video&#x60; is not supplied. | [optional]
 **video** | [**\Zernio\Model\CreateCtwaAdRequestVideo**](CreateCtwaAdRequestVideo.md) |  | [optional]
-**budget_amount** | **float** | Budget amount in the ad account&#39;s currency major units (e.g. dollars for USD, not cents). Must be positive. |
+**budget_amount** | **float** | Budget amount in the ad account&#39;s currency major units (e.g. dollars for USD, not cents). Must be &gt; 0. |
 **budget_type** | **string** |  |
 **currency** | **string** | ISO 4217 currency code matching the ad account&#39;s currency (e.g. &#x60;USD&#x60;). Optional — Meta infers from the ad account when omitted. | [optional]
 **end_date** | **\DateTime** | ISO 8601 datetime. Required when &#x60;budgetType&#x60; is &#x60;lifetime&#x60;. | [optional]

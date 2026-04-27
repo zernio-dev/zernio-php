@@ -484,6 +484,10 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         if ($this->container['budget_amount'] === null) {
             $invalidProperties[] = "'budget_amount' can't be null";
         }
+        if (($this->container['budget_amount'] < 0)) {
+            $invalidProperties[] = "invalid value for 'budget_amount', must be bigger than or equal to 0.";
+        }
+
         if ($this->container['budget_type'] === null) {
             $invalidProperties[] = "'budget_type' can't be null";
         }
@@ -782,7 +786,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets budget_amount
      *
-     * @param float $budget_amount Budget amount in the ad account's currency major units (e.g. dollars for USD, not cents). Must be positive.
+     * @param float $budget_amount Budget amount in the ad account's currency major units (e.g. dollars for USD, not cents). Must be > 0.
      *
      * @return self
      */
@@ -791,6 +795,11 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         if (is_null($budget_amount)) {
             throw new \InvalidArgumentException('non-nullable budget_amount cannot be null');
         }
+
+        if (($budget_amount < 0)) {
+            throw new \InvalidArgumentException('invalid value for $budget_amount when calling CreateCtwaAdRequest., must be bigger than or equal to 0.');
+        }
+
         $this->container['budget_amount'] = $budget_amount;
 
         return $this;

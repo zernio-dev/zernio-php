@@ -1727,9 +1727,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateCtwaAd201ResponseTest.php
-test/Model/CreateCtwaAdRequestInterestsInnerTest.php
-test/Model/CreateCtwaAdRequestTest.php
-test/Model/CreateCtwaAdRequestVideoTest.php
-test/Model/SendWhatsAppConversion200ResponseTest.php
-test/Model/SendWhatsAppConversionRequestTest.php
