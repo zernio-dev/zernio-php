@@ -67,7 +67,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'interactive_id' => 'string',
         'button_payload' => 'string',
         'flow_response_json' => 'string',
-        'flow_response_data' => 'array<string,mixed>'
+        'flow_response_data' => 'array<string,mixed>',
+        'referral' => '\Zernio\Model\WebhookPayloadMessageMetadataReferral'
     ];
 
     /**
@@ -86,7 +87,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'interactive_id' => null,
         'button_payload' => null,
         'flow_response_json' => null,
-        'flow_response_data' => null
+        'flow_response_data' => null,
+        'referral' => null
     ];
 
     /**
@@ -103,7 +105,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'interactive_id' => false,
         'button_payload' => false,
         'flow_response_json' => false,
-        'flow_response_data' => false
+        'flow_response_data' => false,
+        'referral' => false
     ];
 
     /**
@@ -200,7 +203,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'interactive_id' => 'interactiveId',
         'button_payload' => 'buttonPayload',
         'flow_response_json' => 'flowResponseJson',
-        'flow_response_data' => 'flowResponseData'
+        'flow_response_data' => 'flowResponseData',
+        'referral' => 'referral'
     ];
 
     /**
@@ -217,7 +221,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'interactive_id' => 'setInteractiveId',
         'button_payload' => 'setButtonPayload',
         'flow_response_json' => 'setFlowResponseJson',
-        'flow_response_data' => 'setFlowResponseData'
+        'flow_response_data' => 'setFlowResponseData',
+        'referral' => 'setReferral'
     ];
 
     /**
@@ -234,7 +239,8 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         'interactive_id' => 'getInteractiveId',
         'button_payload' => 'getButtonPayload',
         'flow_response_json' => 'getFlowResponseJson',
-        'flow_response_data' => 'getFlowResponseData'
+        'flow_response_data' => 'getFlowResponseData',
+        'referral' => 'getReferral'
     ];
 
     /**
@@ -320,6 +326,7 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
         $this->setIfExists('button_payload', $data ?? [], null);
         $this->setIfExists('flow_response_json', $data ?? [], null);
         $this->setIfExists('flow_response_data', $data ?? [], null);
+        $this->setIfExists('referral', $data ?? [], null);
     }
 
     /**
@@ -622,6 +629,33 @@ class WebhookPayloadMessageMetadata implements ModelInterface, ArrayAccess, \Jso
             throw new \InvalidArgumentException('non-nullable flow_response_data cannot be null');
         }
         $this->container['flow_response_data'] = $flow_response_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets referral
+     *
+     * @return \Zernio\Model\WebhookPayloadMessageMetadataReferral|null
+     */
+    public function getReferral()
+    {
+        return $this->container['referral'];
+    }
+
+    /**
+     * Sets referral
+     *
+     * @param \Zernio\Model\WebhookPayloadMessageMetadataReferral|null $referral referral
+     *
+     * @return self
+     */
+    public function setReferral($referral)
+    {
+        if (is_null($referral)) {
+            throw new \InvalidArgumentException('non-nullable referral cannot be null');
+        }
+        $this->container['referral'] = $referral;
 
         return $this;
     }

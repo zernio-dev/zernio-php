@@ -1,6 +1,6 @@
 <?php
 /**
- * GetInboxConversationMessages200Response
+ * GetInboxConversationMessages200ResponsePagination
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetInboxConversationMessages200Response Class Doc Comment
+ * GetInboxConversationMessages200ResponsePagination Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetInboxConversationMessages200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetInboxConversationMessages200ResponsePagination implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getInboxConversationMessages_200_response';
+    protected static $openAPIModelName = 'getInboxConversationMessages_200_response_pagination';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,8 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'pagination' => '\Zernio\Model\GetInboxConversationMessages200ResponsePagination',
-        'sort_order_applied' => 'string',
-        'messages' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInner[]',
-        'last_updated' => '\DateTime'
+        'has_more' => 'bool',
+        'next_cursor' => 'string'
     ];
 
     /**
@@ -73,11 +70,8 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'pagination' => null,
-        'sort_order_applied' => null,
-        'messages' => null,
-        'last_updated' => 'date-time'
+        'has_more' => null,
+        'next_cursor' => null
     ];
 
     /**
@@ -86,11 +80,8 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'pagination' => false,
-        'sort_order_applied' => false,
-        'messages' => false,
-        'last_updated' => false
+        'has_more' => false,
+        'next_cursor' => false
     ];
 
     /**
@@ -179,11 +170,8 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'pagination' => 'pagination',
-        'sort_order_applied' => 'sortOrderApplied',
-        'messages' => 'messages',
-        'last_updated' => 'lastUpdated'
+        'has_more' => 'hasMore',
+        'next_cursor' => 'nextCursor'
     ];
 
     /**
@@ -192,11 +180,8 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'pagination' => 'setPagination',
-        'sort_order_applied' => 'setSortOrderApplied',
-        'messages' => 'setMessages',
-        'last_updated' => 'setLastUpdated'
+        'has_more' => 'setHasMore',
+        'next_cursor' => 'setNextCursor'
     ];
 
     /**
@@ -205,11 +190,8 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'pagination' => 'getPagination',
-        'sort_order_applied' => 'getSortOrderApplied',
-        'messages' => 'getMessages',
-        'last_updated' => 'getLastUpdated'
+        'has_more' => 'getHasMore',
+        'next_cursor' => 'getNextCursor'
     ];
 
     /**
@@ -253,21 +235,6 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
         return self::$openAPIModelName;
     }
 
-    public const SORT_ORDER_APPLIED_ASC = 'asc';
-    public const SORT_ORDER_APPLIED_DESC = 'desc';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSortOrderAppliedAllowableValues()
-    {
-        return [
-            self::SORT_ORDER_APPLIED_ASC,
-            self::SORT_ORDER_APPLIED_DESC,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -284,11 +251,8 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
-        $this->setIfExists('sort_order_applied', $data ?? [], null);
-        $this->setIfExists('messages', $data ?? [], null);
-        $this->setIfExists('last_updated', $data ?? [], null);
+        $this->setIfExists('has_more', $data ?? [], null);
+        $this->setIfExists('next_cursor', $data ?? [], null);
     }
 
     /**
@@ -318,15 +282,6 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getSortOrderAppliedAllowableValues();
-        if (!is_null($this->container['sort_order_applied']) && !in_array($this->container['sort_order_applied'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'sort_order_applied', must be one of '%s'",
-                $this->container['sort_order_applied'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -343,146 +298,55 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets status
+     * Gets has_more
+     *
+     * @return bool|null
+     */
+    public function getHasMore()
+    {
+        return $this->container['has_more'];
+    }
+
+    /**
+     * Sets has_more
+     *
+     * @param bool|null $has_more Whether more messages are available beyond this page.
+     *
+     * @return self
+     */
+    public function setHasMore($has_more)
+    {
+        if (is_null($has_more)) {
+            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
+        }
+        $this->container['has_more'] = $has_more;
+
+        return $this;
+    }
+
+    /**
+     * Gets next_cursor
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getNextCursor()
     {
-        return $this->container['status'];
+        return $this->container['next_cursor'];
     }
 
     /**
-     * Sets status
+     * Sets next_cursor
      *
-     * @param string|null $status status
+     * @param string|null $next_cursor Opaque cursor to fetch the next page. `null` on the last page.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setNextCursor($next_cursor)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($next_cursor)) {
+            throw new \InvalidArgumentException('non-nullable next_cursor cannot be null');
         }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets pagination
-     *
-     * @return \Zernio\Model\GetInboxConversationMessages200ResponsePagination|null
-     */
-    public function getPagination()
-    {
-        return $this->container['pagination'];
-    }
-
-    /**
-     * Sets pagination
-     *
-     * @param \Zernio\Model\GetInboxConversationMessages200ResponsePagination|null $pagination pagination
-     *
-     * @return self
-     */
-    public function setPagination($pagination)
-    {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
-        }
-        $this->container['pagination'] = $pagination;
-
-        return $this;
-    }
-
-    /**
-     * Gets sort_order_applied
-     *
-     * @return string|null
-     */
-    public function getSortOrderApplied()
-    {
-        return $this->container['sort_order_applied'];
-    }
-
-    /**
-     * Sets sort_order_applied
-     *
-     * @param string|null $sort_order_applied Sort order actually applied to the returned page. May differ from the requested `sortOrder` for Twitter, Facebook and Bluesky (always `desc` regardless of request).
-     *
-     * @return self
-     */
-    public function setSortOrderApplied($sort_order_applied)
-    {
-        if (is_null($sort_order_applied)) {
-            throw new \InvalidArgumentException('non-nullable sort_order_applied cannot be null');
-        }
-        $allowedValues = $this->getSortOrderAppliedAllowableValues();
-        if (!in_array($sort_order_applied, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sort_order_applied', must be one of '%s'",
-                    $sort_order_applied,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['sort_order_applied'] = $sort_order_applied;
-
-        return $this;
-    }
-
-    /**
-     * Gets messages
-     *
-     * @return \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInner[]|null
-     */
-    public function getMessages()
-    {
-        return $this->container['messages'];
-    }
-
-    /**
-     * Sets messages
-     *
-     * @param \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInner[]|null $messages messages
-     *
-     * @return self
-     */
-    public function setMessages($messages)
-    {
-        if (is_null($messages)) {
-            throw new \InvalidArgumentException('non-nullable messages cannot be null');
-        }
-        $this->container['messages'] = $messages;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_updated
-     *
-     * @return \DateTime|null
-     */
-    public function getLastUpdated()
-    {
-        return $this->container['last_updated'];
-    }
-
-    /**
-     * Sets last_updated
-     *
-     * @param \DateTime|null $last_updated last_updated
-     *
-     * @return self
-     */
-    public function setLastUpdated($last_updated)
-    {
-        if (is_null($last_updated)) {
-            throw new \InvalidArgumentException('non-nullable last_updated cannot be null');
-        }
-        $this->container['last_updated'] = $last_updated;
+        $this->container['next_cursor'] = $next_cursor;
 
         return $this;
     }

@@ -342,6 +342,7 @@ docs/Model/GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner.
 docs/Model/GetInboxConversationMessages200ResponseMessagesInnerDeliveryError.md
 docs/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner.md
 docs/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner.md
+docs/Model/GetInboxConversationMessages200ResponsePagination.md
 docs/Model/GetInboxPostComments200Response.md
 docs/Model/GetInboxPostComments200ResponseCommentsInner.md
 docs/Model/GetInboxPostComments200ResponseCommentsInnerFrom.md
@@ -833,6 +834,7 @@ docs/Model/WebhookPayloadMessageMessage.md
 docs/Model/WebhookPayloadMessageMessageSender.md
 docs/Model/WebhookPayloadMessageMessageSenderInstagramProfile.md
 docs/Model/WebhookPayloadMessageMetadata.md
+docs/Model/WebhookPayloadMessageMetadataReferral.md
 docs/Model/WebhookPayloadMessageSent.md
 docs/Model/WebhookPayloadMessageSentMessage.md
 docs/Model/WebhookPayloadMessageSentMessageSender.md
@@ -1205,6 +1207,7 @@ lib/Model/GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner.p
 lib/Model/GetInboxConversationMessages200ResponseMessagesInnerDeliveryError.php
 lib/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner.php
 lib/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner.php
+lib/Model/GetInboxConversationMessages200ResponsePagination.php
 lib/Model/GetInboxPostComments200Response.php
 lib/Model/GetInboxPostComments200ResponseCommentsInner.php
 lib/Model/GetInboxPostComments200ResponseCommentsInnerFrom.php
@@ -1697,6 +1700,7 @@ lib/Model/WebhookPayloadMessageMessage.php
 lib/Model/WebhookPayloadMessageMessageSender.php
 lib/Model/WebhookPayloadMessageMessageSenderInstagramProfile.php
 lib/Model/WebhookPayloadMessageMetadata.php
+lib/Model/WebhookPayloadMessageMetadataReferral.php
 lib/Model/WebhookPayloadMessageSent.php
 lib/Model/WebhookPayloadMessageSentMessage.php
 lib/Model/WebhookPayloadMessageSentMessageSender.php
@@ -1727,3 +1731,5 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetInboxConversationMessages200ResponsePaginationTest.php
+test/Model/WebhookPayloadMessageMetadataReferralTest.php

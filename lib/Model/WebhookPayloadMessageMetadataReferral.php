@@ -1,6 +1,6 @@
 <?php
 /**
- * GetInboxConversationMessages200Response
+ * WebhookPayloadMessageMetadataReferral
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetInboxConversationMessages200Response Class Doc Comment
+ * WebhookPayloadMessageMetadataReferral Class Doc Comment
  *
  * @category Class
+ * @description WhatsApp only. Click-to-WhatsApp (CTWA) ad attribution. Present only on the FIRST inbound message after a user reaches the business via a CTWA ad. Forwarded verbatim from Meta&#39;s referral envelope so it can be replayed to the Conversions API for Business Messaging. Attribution window is 7 days from click.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetInboxConversationMessages200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookPayloadMessageMetadataReferral implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getInboxConversationMessages_200_response';
+    protected static $openAPIModelName = 'WebhookPayloadMessage_metadata_referral';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +59,16 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'pagination' => '\Zernio\Model\GetInboxConversationMessages200ResponsePagination',
-        'sort_order_applied' => 'string',
-        'messages' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInner[]',
-        'last_updated' => '\DateTime'
+        'ctwa_clid' => 'string',
+        'source_id' => 'string',
+        'source_type' => 'string',
+        'source_url' => 'string',
+        'headline' => 'string',
+        'body' => 'string',
+        'media_type' => 'string',
+        'image_url' => 'string',
+        'video_url' => 'string',
+        'thumbnail_url' => 'string'
     ];
 
     /**
@@ -73,11 +79,16 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'pagination' => null,
-        'sort_order_applied' => null,
-        'messages' => null,
-        'last_updated' => 'date-time'
+        'ctwa_clid' => null,
+        'source_id' => null,
+        'source_type' => null,
+        'source_url' => null,
+        'headline' => null,
+        'body' => null,
+        'media_type' => null,
+        'image_url' => null,
+        'video_url' => null,
+        'thumbnail_url' => null
     ];
 
     /**
@@ -86,11 +97,16 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'pagination' => false,
-        'sort_order_applied' => false,
-        'messages' => false,
-        'last_updated' => false
+        'ctwa_clid' => false,
+        'source_id' => false,
+        'source_type' => false,
+        'source_url' => false,
+        'headline' => false,
+        'body' => false,
+        'media_type' => false,
+        'image_url' => false,
+        'video_url' => false,
+        'thumbnail_url' => false
     ];
 
     /**
@@ -179,11 +195,16 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'pagination' => 'pagination',
-        'sort_order_applied' => 'sortOrderApplied',
-        'messages' => 'messages',
-        'last_updated' => 'lastUpdated'
+        'ctwa_clid' => 'ctwa_clid',
+        'source_id' => 'source_id',
+        'source_type' => 'source_type',
+        'source_url' => 'source_url',
+        'headline' => 'headline',
+        'body' => 'body',
+        'media_type' => 'media_type',
+        'image_url' => 'image_url',
+        'video_url' => 'video_url',
+        'thumbnail_url' => 'thumbnail_url'
     ];
 
     /**
@@ -192,11 +213,16 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'pagination' => 'setPagination',
-        'sort_order_applied' => 'setSortOrderApplied',
-        'messages' => 'setMessages',
-        'last_updated' => 'setLastUpdated'
+        'ctwa_clid' => 'setCtwaClid',
+        'source_id' => 'setSourceId',
+        'source_type' => 'setSourceType',
+        'source_url' => 'setSourceUrl',
+        'headline' => 'setHeadline',
+        'body' => 'setBody',
+        'media_type' => 'setMediaType',
+        'image_url' => 'setImageUrl',
+        'video_url' => 'setVideoUrl',
+        'thumbnail_url' => 'setThumbnailUrl'
     ];
 
     /**
@@ -205,11 +231,16 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'pagination' => 'getPagination',
-        'sort_order_applied' => 'getSortOrderApplied',
-        'messages' => 'getMessages',
-        'last_updated' => 'getLastUpdated'
+        'ctwa_clid' => 'getCtwaClid',
+        'source_id' => 'getSourceId',
+        'source_type' => 'getSourceType',
+        'source_url' => 'getSourceUrl',
+        'headline' => 'getHeadline',
+        'body' => 'getBody',
+        'media_type' => 'getMediaType',
+        'image_url' => 'getImageUrl',
+        'video_url' => 'getVideoUrl',
+        'thumbnail_url' => 'getThumbnailUrl'
     ];
 
     /**
@@ -253,21 +284,6 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
         return self::$openAPIModelName;
     }
 
-    public const SORT_ORDER_APPLIED_ASC = 'asc';
-    public const SORT_ORDER_APPLIED_DESC = 'desc';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSortOrderAppliedAllowableValues()
-    {
-        return [
-            self::SORT_ORDER_APPLIED_ASC,
-            self::SORT_ORDER_APPLIED_DESC,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -284,11 +300,16 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
-        $this->setIfExists('sort_order_applied', $data ?? [], null);
-        $this->setIfExists('messages', $data ?? [], null);
-        $this->setIfExists('last_updated', $data ?? [], null);
+        $this->setIfExists('ctwa_clid', $data ?? [], null);
+        $this->setIfExists('source_id', $data ?? [], null);
+        $this->setIfExists('source_type', $data ?? [], null);
+        $this->setIfExists('source_url', $data ?? [], null);
+        $this->setIfExists('headline', $data ?? [], null);
+        $this->setIfExists('body', $data ?? [], null);
+        $this->setIfExists('media_type', $data ?? [], null);
+        $this->setIfExists('image_url', $data ?? [], null);
+        $this->setIfExists('video_url', $data ?? [], null);
+        $this->setIfExists('thumbnail_url', $data ?? [], null);
     }
 
     /**
@@ -318,15 +339,6 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getSortOrderAppliedAllowableValues();
-        if (!is_null($this->container['sort_order_applied']) && !in_array($this->container['sort_order_applied'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'sort_order_applied', must be one of '%s'",
-                $this->container['sort_order_applied'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -343,146 +355,271 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets status
+     * Gets ctwa_clid
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getCtwaClid()
     {
-        return $this->container['status'];
+        return $this->container['ctwa_clid'];
     }
 
     /**
-     * Sets status
+     * Sets ctwa_clid
      *
-     * @param string|null $status status
+     * @param string|null $ctwa_clid Meta's GCLID-equivalent click identifier.
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setCtwaClid($ctwa_clid)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($ctwa_clid)) {
+            throw new \InvalidArgumentException('non-nullable ctwa_clid cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['ctwa_clid'] = $ctwa_clid;
 
         return $this;
     }
 
     /**
-     * Gets pagination
-     *
-     * @return \Zernio\Model\GetInboxConversationMessages200ResponsePagination|null
-     */
-    public function getPagination()
-    {
-        return $this->container['pagination'];
-    }
-
-    /**
-     * Sets pagination
-     *
-     * @param \Zernio\Model\GetInboxConversationMessages200ResponsePagination|null $pagination pagination
-     *
-     * @return self
-     */
-    public function setPagination($pagination)
-    {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
-        }
-        $this->container['pagination'] = $pagination;
-
-        return $this;
-    }
-
-    /**
-     * Gets sort_order_applied
+     * Gets source_id
      *
      * @return string|null
      */
-    public function getSortOrderApplied()
+    public function getSourceId()
     {
-        return $this->container['sort_order_applied'];
+        return $this->container['source_id'];
     }
 
     /**
-     * Sets sort_order_applied
+     * Sets source_id
      *
-     * @param string|null $sort_order_applied Sort order actually applied to the returned page. May differ from the requested `sortOrder` for Twitter, Facebook and Bluesky (always `desc` regardless of request).
+     * @param string|null $source_id source_id
      *
      * @return self
      */
-    public function setSortOrderApplied($sort_order_applied)
+    public function setSourceId($source_id)
     {
-        if (is_null($sort_order_applied)) {
-            throw new \InvalidArgumentException('non-nullable sort_order_applied cannot be null');
+        if (is_null($source_id)) {
+            throw new \InvalidArgumentException('non-nullable source_id cannot be null');
         }
-        $allowedValues = $this->getSortOrderAppliedAllowableValues();
-        if (!in_array($sort_order_applied, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'sort_order_applied', must be one of '%s'",
-                    $sort_order_applied,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['sort_order_applied'] = $sort_order_applied;
+        $this->container['source_id'] = $source_id;
 
         return $this;
     }
 
     /**
-     * Gets messages
+     * Gets source_type
      *
-     * @return \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInner[]|null
+     * @return string|null
      */
-    public function getMessages()
+    public function getSourceType()
     {
-        return $this->container['messages'];
+        return $this->container['source_type'];
     }
 
     /**
-     * Sets messages
+     * Sets source_type
      *
-     * @param \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInner[]|null $messages messages
+     * @param string|null $source_type source_type
      *
      * @return self
      */
-    public function setMessages($messages)
+    public function setSourceType($source_type)
     {
-        if (is_null($messages)) {
-            throw new \InvalidArgumentException('non-nullable messages cannot be null');
+        if (is_null($source_type)) {
+            throw new \InvalidArgumentException('non-nullable source_type cannot be null');
         }
-        $this->container['messages'] = $messages;
+        $this->container['source_type'] = $source_type;
 
         return $this;
     }
 
     /**
-     * Gets last_updated
+     * Gets source_url
      *
-     * @return \DateTime|null
+     * @return string|null
      */
-    public function getLastUpdated()
+    public function getSourceUrl()
     {
-        return $this->container['last_updated'];
+        return $this->container['source_url'];
     }
 
     /**
-     * Sets last_updated
+     * Sets source_url
      *
-     * @param \DateTime|null $last_updated last_updated
+     * @param string|null $source_url source_url
      *
      * @return self
      */
-    public function setLastUpdated($last_updated)
+    public function setSourceUrl($source_url)
     {
-        if (is_null($last_updated)) {
-            throw new \InvalidArgumentException('non-nullable last_updated cannot be null');
+        if (is_null($source_url)) {
+            throw new \InvalidArgumentException('non-nullable source_url cannot be null');
         }
-        $this->container['last_updated'] = $last_updated;
+        $this->container['source_url'] = $source_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets headline
+     *
+     * @return string|null
+     */
+    public function getHeadline()
+    {
+        return $this->container['headline'];
+    }
+
+    /**
+     * Sets headline
+     *
+     * @param string|null $headline headline
+     *
+     * @return self
+     */
+    public function setHeadline($headline)
+    {
+        if (is_null($headline)) {
+            throw new \InvalidArgumentException('non-nullable headline cannot be null');
+        }
+        $this->container['headline'] = $headline;
+
+        return $this;
+    }
+
+    /**
+     * Gets body
+     *
+     * @return string|null
+     */
+    public function getBody()
+    {
+        return $this->container['body'];
+    }
+
+    /**
+     * Sets body
+     *
+     * @param string|null $body body
+     *
+     * @return self
+     */
+    public function setBody($body)
+    {
+        if (is_null($body)) {
+            throw new \InvalidArgumentException('non-nullable body cannot be null');
+        }
+        $this->container['body'] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Gets media_type
+     *
+     * @return string|null
+     */
+    public function getMediaType()
+    {
+        return $this->container['media_type'];
+    }
+
+    /**
+     * Sets media_type
+     *
+     * @param string|null $media_type media_type
+     *
+     * @return self
+     */
+    public function setMediaType($media_type)
+    {
+        if (is_null($media_type)) {
+            throw new \InvalidArgumentException('non-nullable media_type cannot be null');
+        }
+        $this->container['media_type'] = $media_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     *
+     * @return string|null
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     *
+     * @param string|null $image_url image_url
+     *
+     * @return self
+     */
+    public function setImageUrl($image_url)
+    {
+        if (is_null($image_url)) {
+            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
+        }
+        $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_url
+     *
+     * @return string|null
+     */
+    public function getVideoUrl()
+    {
+        return $this->container['video_url'];
+    }
+
+    /**
+     * Sets video_url
+     *
+     * @param string|null $video_url video_url
+     *
+     * @return self
+     */
+    public function setVideoUrl($video_url)
+    {
+        if (is_null($video_url)) {
+            throw new \InvalidArgumentException('non-nullable video_url cannot be null');
+        }
+        $this->container['video_url'] = $video_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets thumbnail_url
+     *
+     * @return string|null
+     */
+    public function getThumbnailUrl()
+    {
+        return $this->container['thumbnail_url'];
+    }
+
+    /**
+     * Sets thumbnail_url
+     *
+     * @param string|null $thumbnail_url thumbnail_url
+     *
+     * @return self
+     */
+    public function setThumbnailUrl($thumbnail_url)
+    {
+        if (is_null($thumbnail_url)) {
+            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
+        }
+        $this->container['thumbnail_url'] = $thumbnail_url;
 
         return $this;
     }

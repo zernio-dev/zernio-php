@@ -1765,15 +1765,18 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id Social account ID (required)
+     * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
+     * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response. (optional)
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). For Twitter, Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetInboxConversationMessages200Response|\Zernio\Model\InlineObject
      */
-    public function getInboxConversationMessages($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversationMessages'][0])
+    public function getInboxConversationMessages($conversation_id, $account_id, $limit = 100, $cursor = null, $sort_order = 'asc', string $contentType = self::contentTypes['getInboxConversationMessages'][0])
     {
-        list($response) = $this->getInboxConversationMessagesWithHttpInfo($conversation_id, $account_id, $contentType);
+        list($response) = $this->getInboxConversationMessagesWithHttpInfo($conversation_id, $account_id, $limit, $cursor, $sort_order, $contentType);
         return $response;
     }
 
@@ -1784,15 +1787,18 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id Social account ID (required)
+     * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
+     * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response. (optional)
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). For Twitter, Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetInboxConversationMessages200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getInboxConversationMessagesWithHttpInfo($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversationMessages'][0])
+    public function getInboxConversationMessagesWithHttpInfo($conversation_id, $account_id, $limit = 100, $cursor = null, $sort_order = 'asc', string $contentType = self::contentTypes['getInboxConversationMessages'][0])
     {
-        $request = $this->getInboxConversationMessagesRequest($conversation_id, $account_id, $contentType);
+        $request = $this->getInboxConversationMessagesRequest($conversation_id, $account_id, $limit, $cursor, $sort_order, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1884,14 +1890,17 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id Social account ID (required)
+     * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
+     * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response. (optional)
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). For Twitter, Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getInboxConversationMessagesAsync($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversationMessages'][0])
+    public function getInboxConversationMessagesAsync($conversation_id, $account_id, $limit = 100, $cursor = null, $sort_order = 'asc', string $contentType = self::contentTypes['getInboxConversationMessages'][0])
     {
-        return $this->getInboxConversationMessagesAsyncWithHttpInfo($conversation_id, $account_id, $contentType)
+        return $this->getInboxConversationMessagesAsyncWithHttpInfo($conversation_id, $account_id, $limit, $cursor, $sort_order, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1906,15 +1915,18 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id Social account ID (required)
+     * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
+     * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response. (optional)
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). For Twitter, Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getInboxConversationMessagesAsyncWithHttpInfo($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversationMessages'][0])
+    public function getInboxConversationMessagesAsyncWithHttpInfo($conversation_id, $account_id, $limit = 100, $cursor = null, $sort_order = 'asc', string $contentType = self::contentTypes['getInboxConversationMessages'][0])
     {
         $returnType = '\Zernio\Model\GetInboxConversationMessages200Response';
-        $request = $this->getInboxConversationMessagesRequest($conversation_id, $account_id, $contentType);
+        $request = $this->getInboxConversationMessagesRequest($conversation_id, $account_id, $limit, $cursor, $sort_order, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1957,12 +1969,15 @@ class MessagesApi
      *
      * @param  string $conversation_id The conversation ID (id field from list conversations endpoint). This is the platform-specific conversation identifier, not an internal database ID. (required)
      * @param  string $account_id Social account ID (required)
+     * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
+     * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response. (optional)
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). For Twitter, Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getInboxConversationMessagesRequest($conversation_id, $account_id, string $contentType = self::contentTypes['getInboxConversationMessages'][0])
+    public function getInboxConversationMessagesRequest($conversation_id, $account_id, $limit = 100, $cursor = null, $sort_order = 'asc', string $contentType = self::contentTypes['getInboxConversationMessages'][0])
     {
 
         // verify the required parameter 'conversation_id' is set
@@ -1978,6 +1993,15 @@ class MessagesApi
                 'Missing the required parameter $account_id when calling getInboxConversationMessages'
             );
         }
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling MessagesApi.getInboxConversationMessages, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling MessagesApi.getInboxConversationMessages, must be bigger than or equal to 1.');
+        }
+        
+
 
 
         $resourcePath = '/v1/inbox/conversations/{conversationId}/messages';
@@ -1995,6 +2019,33 @@ class MessagesApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cursor,
+            'cursor', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort_order,
+            'sortOrder', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
 
 
