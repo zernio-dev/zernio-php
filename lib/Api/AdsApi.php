@@ -78,6 +78,9 @@ class AdsApi
         'boostPost' => [
             'application/json',
         ],
+        'createCtwaAd' => [
+            'application/json',
+        ],
         'createStandaloneAd' => [
             'application/json',
         ],
@@ -106,6 +109,9 @@ class AdsApi
             'application/json',
         ],
         'sendConversions' => [
+            'application/json',
+        ],
+        'sendWhatsAppConversion' => [
             'application/json',
         ],
         'updateAd' => [
@@ -393,6 +399,291 @@ class AdsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($boost_post_request));
             } else {
                 $httpBody = $boost_post_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createCtwaAd
+     *
+     * Create a Click-to-WhatsApp (CTWA) ad
+     *
+     * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request create_ctwa_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateCtwaAd201Response|\Zernio\Model\InlineObject
+     */
+    public function createCtwaAd($create_ctwa_ad_request, string $contentType = self::contentTypes['createCtwaAd'][0])
+    {
+        list($response) = $this->createCtwaAdWithHttpInfo($create_ctwa_ad_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createCtwaAdWithHttpInfo
+     *
+     * Create a Click-to-WhatsApp (CTWA) ad
+     *
+     * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateCtwaAd201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createCtwaAdWithHttpInfo($create_ctwa_ad_request, string $contentType = self::contentTypes['createCtwaAd'][0])
+    {
+        $request = $this->createCtwaAdRequest($create_ctwa_ad_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateCtwaAd201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateCtwaAd201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateCtwaAd201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createCtwaAdAsync
+     *
+     * Create a Click-to-WhatsApp (CTWA) ad
+     *
+     * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createCtwaAdAsync($create_ctwa_ad_request, string $contentType = self::contentTypes['createCtwaAd'][0])
+    {
+        return $this->createCtwaAdAsyncWithHttpInfo($create_ctwa_ad_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createCtwaAdAsyncWithHttpInfo
+     *
+     * Create a Click-to-WhatsApp (CTWA) ad
+     *
+     * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createCtwaAdAsyncWithHttpInfo($create_ctwa_ad_request, string $contentType = self::contentTypes['createCtwaAd'][0])
+    {
+        $returnType = '\Zernio\Model\CreateCtwaAd201Response';
+        $request = $this->createCtwaAdRequest($create_ctwa_ad_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createCtwaAd'
+     *
+     * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createCtwaAdRequest($create_ctwa_ad_request, string $contentType = self::contentTypes['createCtwaAd'][0])
+    {
+
+        // verify the required parameter 'create_ctwa_ad_request' is set
+        if ($create_ctwa_ad_request === null || (is_array($create_ctwa_ad_request) && count($create_ctwa_ad_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_ctwa_ad_request when calling createCtwaAd'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/ctwa';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_ctwa_ad_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_ctwa_ad_request));
+            } else {
+                $httpBody = $create_ctwa_ad_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3565,6 +3856,291 @@ class AdsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($send_conversions_request));
             } else {
                 $httpBody = $send_conversions_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation sendWhatsAppConversion
+     *
+     * Send a WhatsApp conversation event to Meta CAPI for Business Messaging
+     *
+     * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request send_whats_app_conversion_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\SendWhatsAppConversion200Response|\Zernio\Model\InlineObject
+     */
+    public function sendWhatsAppConversion($send_whats_app_conversion_request, string $contentType = self::contentTypes['sendWhatsAppConversion'][0])
+    {
+        list($response) = $this->sendWhatsAppConversionWithHttpInfo($send_whats_app_conversion_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation sendWhatsAppConversionWithHttpInfo
+     *
+     * Send a WhatsApp conversation event to Meta CAPI for Business Messaging
+     *
+     * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\SendWhatsAppConversion200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function sendWhatsAppConversionWithHttpInfo($send_whats_app_conversion_request, string $contentType = self::contentTypes['sendWhatsAppConversion'][0])
+    {
+        $request = $this->sendWhatsAppConversionRequest($send_whats_app_conversion_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\SendWhatsAppConversion200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\SendWhatsAppConversion200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\SendWhatsAppConversion200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation sendWhatsAppConversionAsync
+     *
+     * Send a WhatsApp conversation event to Meta CAPI for Business Messaging
+     *
+     * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendWhatsAppConversionAsync($send_whats_app_conversion_request, string $contentType = self::contentTypes['sendWhatsAppConversion'][0])
+    {
+        return $this->sendWhatsAppConversionAsyncWithHttpInfo($send_whats_app_conversion_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation sendWhatsAppConversionAsyncWithHttpInfo
+     *
+     * Send a WhatsApp conversation event to Meta CAPI for Business Messaging
+     *
+     * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendWhatsAppConversionAsyncWithHttpInfo($send_whats_app_conversion_request, string $contentType = self::contentTypes['sendWhatsAppConversion'][0])
+    {
+        $returnType = '\Zernio\Model\SendWhatsAppConversion200Response';
+        $request = $this->sendWhatsAppConversionRequest($send_whats_app_conversion_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'sendWhatsAppConversion'
+     *
+     * @param  \Zernio\Model\SendWhatsAppConversionRequest $send_whats_app_conversion_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendWhatsAppConversion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function sendWhatsAppConversionRequest($send_whats_app_conversion_request, string $contentType = self::contentTypes['sendWhatsAppConversion'][0])
+    {
+
+        // verify the required parameter 'send_whats_app_conversion_request' is set
+        if ($send_whats_app_conversion_request === null || (is_array($send_whats_app_conversion_request) && count($send_whats_app_conversion_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $send_whats_app_conversion_request when calling sendWhatsAppConversion'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/conversions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($send_whats_app_conversion_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($send_whats_app_conversion_request));
+            } else {
+                $httpBody = $send_whats_app_conversion_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

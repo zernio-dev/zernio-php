@@ -144,6 +144,10 @@ docs/Model/CreateContact200Response.md
 docs/Model/CreateContact200ResponseChannel.md
 docs/Model/CreateContact200ResponseContact.md
 docs/Model/CreateContactRequest.md
+docs/Model/CreateCtwaAd201Response.md
+docs/Model/CreateCtwaAdRequest.md
+docs/Model/CreateCtwaAdRequestInterestsInner.md
+docs/Model/CreateCtwaAdRequestVideo.md
 docs/Model/CreateCustomField200Response.md
 docs/Model/CreateCustomFieldRequest.md
 docs/Model/CreateGoogleBusinessMedia200Response.md
@@ -655,6 +659,8 @@ docs/Model/SendInboxMessageRequestTemplateElementsInnerButtonsInner.md
 docs/Model/SendPrivateReplyToComment200Response.md
 docs/Model/SendPrivateReplyToCommentRequest.md
 docs/Model/SendTypingIndicatorRequest.md
+docs/Model/SendWhatsAppConversion200Response.md
+docs/Model/SendWhatsAppConversionRequest.md
 docs/Model/SendWhatsAppFlowMessage200Response.md
 docs/Model/SendWhatsAppFlowMessageRequest.md
 docs/Model/SendWhatsAppFlowMessageRequestFlowActionPayload.md
@@ -1001,6 +1007,10 @@ lib/Model/CreateContact200Response.php
 lib/Model/CreateContact200ResponseChannel.php
 lib/Model/CreateContact200ResponseContact.php
 lib/Model/CreateContactRequest.php
+lib/Model/CreateCtwaAd201Response.php
+lib/Model/CreateCtwaAdRequest.php
+lib/Model/CreateCtwaAdRequestInterestsInner.php
+lib/Model/CreateCtwaAdRequestVideo.php
 lib/Model/CreateCustomField200Response.php
 lib/Model/CreateCustomFieldRequest.php
 lib/Model/CreateGoogleBusinessMedia200Response.php
@@ -1513,6 +1523,8 @@ lib/Model/SendInboxMessageRequestTemplateElementsInnerButtonsInner.php
 lib/Model/SendPrivateReplyToComment200Response.php
 lib/Model/SendPrivateReplyToCommentRequest.php
 lib/Model/SendTypingIndicatorRequest.php
+lib/Model/SendWhatsAppConversion200Response.php
+lib/Model/SendWhatsAppConversionRequest.php
 lib/Model/SendWhatsAppFlowMessage200Response.php
 lib/Model/SendWhatsAppFlowMessageRequest.php
 lib/Model/SendWhatsAppFlowMessageRequestFlowActionPayload.php
@@ -1715,3 +1727,9 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateCtwaAd201ResponseTest.php
+test/Model/CreateCtwaAdRequestInterestsInnerTest.php
+test/Model/CreateCtwaAdRequestTest.php
+test/Model/CreateCtwaAdRequestVideoTest.php
+test/Model/SendWhatsAppConversion200ResponseTest.php
+test/Model/SendWhatsAppConversionRequestTest.php
