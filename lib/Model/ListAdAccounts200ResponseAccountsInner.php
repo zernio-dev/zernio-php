@@ -61,7 +61,9 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'id' => 'string',
         'name' => 'string',
         'currency' => 'string',
-        'status' => 'string'
+        'status' => 'string',
+        'timezone_name' => 'string',
+        'timezone_offset_hours_utc' => 'float'
     ];
 
     /**
@@ -75,7 +77,9 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'id' => null,
         'name' => null,
         'currency' => null,
-        'status' => null
+        'status' => null,
+        'timezone_name' => null,
+        'timezone_offset_hours_utc' => null
     ];
 
     /**
@@ -87,7 +91,9 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'id' => false,
         'name' => false,
         'currency' => false,
-        'status' => false
+        'status' => false,
+        'timezone_name' => false,
+        'timezone_offset_hours_utc' => false
     ];
 
     /**
@@ -179,7 +185,9 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'id' => 'id',
         'name' => 'name',
         'currency' => 'currency',
-        'status' => 'status'
+        'status' => 'status',
+        'timezone_name' => 'timezoneName',
+        'timezone_offset_hours_utc' => 'timezoneOffsetHoursUtc'
     ];
 
     /**
@@ -191,7 +199,9 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'id' => 'setId',
         'name' => 'setName',
         'currency' => 'setCurrency',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'timezone_name' => 'setTimezoneName',
+        'timezone_offset_hours_utc' => 'setTimezoneOffsetHoursUtc'
     ];
 
     /**
@@ -203,7 +213,9 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         'id' => 'getId',
         'name' => 'getName',
         'currency' => 'getCurrency',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'timezone_name' => 'getTimezoneName',
+        'timezone_offset_hours_utc' => 'getTimezoneOffsetHoursUtc'
     ];
 
     /**
@@ -267,6 +279,8 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('timezone_name', $data ?? [], null);
+        $this->setIfExists('timezone_offset_hours_utc', $data ?? [], null);
     }
 
     /**
@@ -415,6 +429,60 @@ class ListAdAccounts200ResponseAccountsInner implements ModelInterface, ArrayAcc
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets timezone_name
+     *
+     * @return string|null
+     */
+    public function getTimezoneName()
+    {
+        return $this->container['timezone_name'];
+    }
+
+    /**
+     * Sets timezone_name
+     *
+     * @param string|null $timezone_name IANA timezone of the ad account (Meta only). Drives daily-budget reset and Insights day boundaries.
+     *
+     * @return self
+     */
+    public function setTimezoneName($timezone_name)
+    {
+        if (is_null($timezone_name)) {
+            throw new \InvalidArgumentException('non-nullable timezone_name cannot be null');
+        }
+        $this->container['timezone_name'] = $timezone_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets timezone_offset_hours_utc
+     *
+     * @return float|null
+     */
+    public function getTimezoneOffsetHoursUtc()
+    {
+        return $this->container['timezone_offset_hours_utc'];
+    }
+
+    /**
+     * Sets timezone_offset_hours_utc
+     *
+     * @param float|null $timezone_offset_hours_utc Signed UTC offset in hours, reflecting current DST (Meta only).
+     *
+     * @return self
+     */
+    public function setTimezoneOffsetHoursUtc($timezone_offset_hours_utc)
+    {
+        if (is_null($timezone_offset_hours_utc)) {
+            throw new \InvalidArgumentException('non-nullable timezone_offset_hours_utc cannot be null');
+        }
+        $this->container['timezone_offset_hours_utc'] = $timezone_offset_hours_utc;
 
         return $this;
     }
