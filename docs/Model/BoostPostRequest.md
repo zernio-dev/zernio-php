@@ -17,5 +17,7 @@ Name | Type | Description | Notes
 **bid_amount** | **float** | Max bid cap (Meta only) | [optional]
 **tracking** | [**\Zernio\Model\BoostPostRequestTracking**](BoostPostRequestTracking.md) |  | [optional]
 **special_ad_categories** | **string[]** | Meta only. Required for housing, employment, credit, or political ads. | [optional]
+**dsa_beneficiary** | **string** | Name of the legal entity benefiting from the ad. Required by Meta when targeting EU users (DSA Article 26). Not enforced at schema level; enforced server-side when targeting intersects EU member states. | [optional]
+**dsa_payor** | **string** | Name of the legal entity paying for the ad. Required by Meta when targeting EU users (DSA Article 26). Note Meta API spelling: dsa_payor (not dsa_payer). | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

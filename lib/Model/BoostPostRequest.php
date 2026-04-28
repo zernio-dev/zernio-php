@@ -70,7 +70,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'targeting' => '\Zernio\Model\BoostPostRequestTargeting',
         'bid_amount' => 'float',
         'tracking' => '\Zernio\Model\BoostPostRequestTracking',
-        'special_ad_categories' => 'string[]'
+        'special_ad_categories' => 'string[]',
+        'dsa_beneficiary' => 'string',
+        'dsa_payor' => 'string'
     ];
 
     /**
@@ -93,7 +95,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'targeting' => null,
         'bid_amount' => null,
         'tracking' => null,
-        'special_ad_categories' => null
+        'special_ad_categories' => null,
+        'dsa_beneficiary' => null,
+        'dsa_payor' => null
     ];
 
     /**
@@ -114,7 +118,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'targeting' => false,
         'bid_amount' => false,
         'tracking' => false,
-        'special_ad_categories' => false
+        'special_ad_categories' => false,
+        'dsa_beneficiary' => false,
+        'dsa_payor' => false
     ];
 
     /**
@@ -215,7 +221,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'targeting' => 'targeting',
         'bid_amount' => 'bidAmount',
         'tracking' => 'tracking',
-        'special_ad_categories' => 'specialAdCategories'
+        'special_ad_categories' => 'specialAdCategories',
+        'dsa_beneficiary' => 'dsaBeneficiary',
+        'dsa_payor' => 'dsaPayor'
     ];
 
     /**
@@ -236,7 +244,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'targeting' => 'setTargeting',
         'bid_amount' => 'setBidAmount',
         'tracking' => 'setTracking',
-        'special_ad_categories' => 'setSpecialAdCategories'
+        'special_ad_categories' => 'setSpecialAdCategories',
+        'dsa_beneficiary' => 'setDsaBeneficiary',
+        'dsa_payor' => 'setDsaPayor'
     ];
 
     /**
@@ -257,7 +267,9 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'targeting' => 'getTargeting',
         'bid_amount' => 'getBidAmount',
         'tracking' => 'getTracking',
-        'special_ad_categories' => 'getSpecialAdCategories'
+        'special_ad_categories' => 'getSpecialAdCategories',
+        'dsa_beneficiary' => 'getDsaBeneficiary',
+        'dsa_payor' => 'getDsaPayor'
     ];
 
     /**
@@ -374,6 +386,8 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('bid_amount', $data ?? [], null);
         $this->setIfExists('tracking', $data ?? [], null);
         $this->setIfExists('special_ad_categories', $data ?? [], null);
+        $this->setIfExists('dsa_beneficiary', $data ?? [], null);
+        $this->setIfExists('dsa_payor', $data ?? [], null);
     }
 
     /**
@@ -431,6 +445,14 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['budget'] === null) {
             $invalidProperties[] = "'budget' can't be null";
         }
+        if (!is_null($this->container['dsa_beneficiary']) && (mb_strlen($this->container['dsa_beneficiary']) > 100)) {
+            $invalidProperties[] = "invalid value for 'dsa_beneficiary', the character length must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['dsa_payor']) && (mb_strlen($this->container['dsa_payor']) > 100)) {
+            $invalidProperties[] = "invalid value for 'dsa_payor', the character length must be smaller than or equal to 100.";
+        }
+
         return $invalidProperties;
     }
 
@@ -816,6 +838,68 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['special_ad_categories'] = $special_ad_categories;
+
+        return $this;
+    }
+
+    /**
+     * Gets dsa_beneficiary
+     *
+     * @return string|null
+     */
+    public function getDsaBeneficiary()
+    {
+        return $this->container['dsa_beneficiary'];
+    }
+
+    /**
+     * Sets dsa_beneficiary
+     *
+     * @param string|null $dsa_beneficiary Name of the legal entity benefiting from the ad. Required by Meta when targeting EU users (DSA Article 26). Not enforced at schema level; enforced server-side when targeting intersects EU member states.
+     *
+     * @return self
+     */
+    public function setDsaBeneficiary($dsa_beneficiary)
+    {
+        if (is_null($dsa_beneficiary)) {
+            throw new \InvalidArgumentException('non-nullable dsa_beneficiary cannot be null');
+        }
+        if ((mb_strlen($dsa_beneficiary) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $dsa_beneficiary when calling BoostPostRequest., must be smaller than or equal to 100.');
+        }
+
+        $this->container['dsa_beneficiary'] = $dsa_beneficiary;
+
+        return $this;
+    }
+
+    /**
+     * Gets dsa_payor
+     *
+     * @return string|null
+     */
+    public function getDsaPayor()
+    {
+        return $this->container['dsa_payor'];
+    }
+
+    /**
+     * Sets dsa_payor
+     *
+     * @param string|null $dsa_payor Name of the legal entity paying for the ad. Required by Meta when targeting EU users (DSA Article 26). Note Meta API spelling: dsa_payor (not dsa_payer).
+     *
+     * @return self
+     */
+    public function setDsaPayor($dsa_payor)
+    {
+        if (is_null($dsa_payor)) {
+            throw new \InvalidArgumentException('non-nullable dsa_payor cannot be null');
+        }
+        if ((mb_strlen($dsa_payor) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $dsa_payor when calling BoostPostRequest., must be smaller than or equal to 100.');
+        }
+
+        $this->container['dsa_payor'] = $dsa_payor;
 
         return $this;
     }

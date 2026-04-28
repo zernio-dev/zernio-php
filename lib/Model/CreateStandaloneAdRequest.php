@@ -88,7 +88,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_headlines' => 'string[]',
         'additional_descriptions' => 'string[]',
         'advantage_audience' => 'int',
-        'gender' => 'string'
+        'gender' => 'string',
+        'dsa_beneficiary' => 'string',
+        'dsa_payor' => 'string'
     ];
 
     /**
@@ -129,7 +131,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_headlines' => null,
         'additional_descriptions' => null,
         'advantage_audience' => null,
-        'gender' => null
+        'gender' => null,
+        'dsa_beneficiary' => null,
+        'dsa_payor' => null
     ];
 
     /**
@@ -168,7 +172,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_headlines' => false,
         'additional_descriptions' => false,
         'advantage_audience' => false,
-        'gender' => false
+        'gender' => false,
+        'dsa_beneficiary' => false,
+        'dsa_payor' => false
     ];
 
     /**
@@ -287,7 +293,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_headlines' => 'additionalHeadlines',
         'additional_descriptions' => 'additionalDescriptions',
         'advantage_audience' => 'advantageAudience',
-        'gender' => 'gender'
+        'gender' => 'gender',
+        'dsa_beneficiary' => 'dsaBeneficiary',
+        'dsa_payor' => 'dsaPayor'
     ];
 
     /**
@@ -326,7 +334,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_headlines' => 'setAdditionalHeadlines',
         'additional_descriptions' => 'setAdditionalDescriptions',
         'advantage_audience' => 'setAdvantageAudience',
-        'gender' => 'setGender'
+        'gender' => 'setGender',
+        'dsa_beneficiary' => 'setDsaBeneficiary',
+        'dsa_payor' => 'setDsaPayor'
     ];
 
     /**
@@ -365,7 +375,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_headlines' => 'getAdditionalHeadlines',
         'additional_descriptions' => 'getAdditionalDescriptions',
         'advantage_audience' => 'getAdvantageAudience',
-        'gender' => 'getGender'
+        'gender' => 'getGender',
+        'dsa_beneficiary' => 'getDsaBeneficiary',
+        'dsa_payor' => 'getDsaPayor'
     ];
 
     /**
@@ -574,6 +586,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('additional_descriptions', $data ?? [], null);
         $this->setIfExists('advantage_audience', $data ?? [], null);
         $this->setIfExists('gender', $data ?? [], 'all');
+        $this->setIfExists('dsa_beneficiary', $data ?? [], null);
+        $this->setIfExists('dsa_payor', $data ?? [], null);
     }
 
     /**
@@ -696,6 +710,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
                 $this->container['gender'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['dsa_beneficiary']) && (mb_strlen($this->container['dsa_beneficiary']) > 100)) {
+            $invalidProperties[] = "invalid value for 'dsa_beneficiary', the character length must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['dsa_payor']) && (mb_strlen($this->container['dsa_payor']) > 100)) {
+            $invalidProperties[] = "invalid value for 'dsa_payor', the character length must be smaller than or equal to 100.";
         }
 
         return $invalidProperties;
@@ -1639,6 +1661,68 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['gender'] = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Gets dsa_beneficiary
+     *
+     * @return string|null
+     */
+    public function getDsaBeneficiary()
+    {
+        return $this->container['dsa_beneficiary'];
+    }
+
+    /**
+     * Sets dsa_beneficiary
+     *
+     * @param string|null $dsa_beneficiary Name of the legal entity benefiting from the ad. Required by Meta when targeting EU users (DSA Article 26). Not enforced at schema level; enforced server-side when targeting intersects EU member states.
+     *
+     * @return self
+     */
+    public function setDsaBeneficiary($dsa_beneficiary)
+    {
+        if (is_null($dsa_beneficiary)) {
+            throw new \InvalidArgumentException('non-nullable dsa_beneficiary cannot be null');
+        }
+        if ((mb_strlen($dsa_beneficiary) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $dsa_beneficiary when calling CreateStandaloneAdRequest., must be smaller than or equal to 100.');
+        }
+
+        $this->container['dsa_beneficiary'] = $dsa_beneficiary;
+
+        return $this;
+    }
+
+    /**
+     * Gets dsa_payor
+     *
+     * @return string|null
+     */
+    public function getDsaPayor()
+    {
+        return $this->container['dsa_payor'];
+    }
+
+    /**
+     * Sets dsa_payor
+     *
+     * @param string|null $dsa_payor Name of the legal entity paying for the ad. Required by Meta when targeting EU users (DSA Article 26). Note Meta API spelling: dsa_payor (not dsa_payer).
+     *
+     * @return self
+     */
+    public function setDsaPayor($dsa_payor)
+    {
+        if (is_null($dsa_payor)) {
+            throw new \InvalidArgumentException('non-nullable dsa_payor cannot be null');
+        }
+        if ((mb_strlen($dsa_payor) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $dsa_payor when calling CreateStandaloneAdRequest., must be smaller than or equal to 100.');
+        }
+
+        $this->container['dsa_payor'] = $dsa_payor;
 
         return $this;
     }

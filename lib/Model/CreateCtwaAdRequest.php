@@ -76,7 +76,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'interests' => '\Zernio\Model\CreateCtwaAdRequestInterestsInner[]',
         'audience_id' => 'string',
         'advantage_audience' => 'int',
-        'objective' => 'string'
+        'objective' => 'string',
+        'dsa_beneficiary' => 'string',
+        'dsa_payor' => 'string'
     ];
 
     /**
@@ -104,7 +106,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'interests' => null,
         'audience_id' => null,
         'advantage_audience' => null,
-        'objective' => null
+        'objective' => null,
+        'dsa_beneficiary' => null,
+        'dsa_payor' => null
     ];
 
     /**
@@ -130,7 +134,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'interests' => false,
         'audience_id' => false,
         'advantage_audience' => false,
-        'objective' => false
+        'objective' => false,
+        'dsa_beneficiary' => false,
+        'dsa_payor' => false
     ];
 
     /**
@@ -236,7 +242,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'interests' => 'interests',
         'audience_id' => 'audienceId',
         'advantage_audience' => 'advantageAudience',
-        'objective' => 'objective'
+        'objective' => 'objective',
+        'dsa_beneficiary' => 'dsaBeneficiary',
+        'dsa_payor' => 'dsaPayor'
     ];
 
     /**
@@ -262,7 +270,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'interests' => 'setInterests',
         'audience_id' => 'setAudienceId',
         'advantage_audience' => 'setAdvantageAudience',
-        'objective' => 'setObjective'
+        'objective' => 'setObjective',
+        'dsa_beneficiary' => 'setDsaBeneficiary',
+        'dsa_payor' => 'setDsaPayor'
     ];
 
     /**
@@ -288,7 +298,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'interests' => 'getInterests',
         'audience_id' => 'getAudienceId',
         'advantage_audience' => 'getAdvantageAudience',
-        'objective' => 'getObjective'
+        'objective' => 'getObjective',
+        'dsa_beneficiary' => 'getDsaBeneficiary',
+        'dsa_payor' => 'getDsaPayor'
     ];
 
     /**
@@ -413,6 +425,8 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('audience_id', $data ?? [], null);
         $this->setIfExists('advantage_audience', $data ?? [], null);
         $this->setIfExists('objective', $data ?? [], null);
+        $this->setIfExists('dsa_beneficiary', $data ?? [], null);
+        $this->setIfExists('dsa_payor', $data ?? [], null);
     }
 
     /**
@@ -540,6 +554,14 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->container['objective'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['dsa_beneficiary']) && (mb_strlen($this->container['dsa_beneficiary']) > 100)) {
+            $invalidProperties[] = "invalid value for 'dsa_beneficiary', the character length must be smaller than or equal to 100.";
+        }
+
+        if (!is_null($this->container['dsa_payor']) && (mb_strlen($this->container['dsa_payor']) > 100)) {
+            $invalidProperties[] = "invalid value for 'dsa_payor', the character length must be smaller than or equal to 100.";
         }
 
         return $invalidProperties;
@@ -1124,6 +1146,68 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['objective'] = $objective;
+
+        return $this;
+    }
+
+    /**
+     * Gets dsa_beneficiary
+     *
+     * @return string|null
+     */
+    public function getDsaBeneficiary()
+    {
+        return $this->container['dsa_beneficiary'];
+    }
+
+    /**
+     * Sets dsa_beneficiary
+     *
+     * @param string|null $dsa_beneficiary Name of the legal entity benefiting from the ad. Required by Meta when targeting EU users (DSA Article 26). Not enforced at schema level; enforced server-side when targeting intersects EU member states.
+     *
+     * @return self
+     */
+    public function setDsaBeneficiary($dsa_beneficiary)
+    {
+        if (is_null($dsa_beneficiary)) {
+            throw new \InvalidArgumentException('non-nullable dsa_beneficiary cannot be null');
+        }
+        if ((mb_strlen($dsa_beneficiary) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $dsa_beneficiary when calling CreateCtwaAdRequest., must be smaller than or equal to 100.');
+        }
+
+        $this->container['dsa_beneficiary'] = $dsa_beneficiary;
+
+        return $this;
+    }
+
+    /**
+     * Gets dsa_payor
+     *
+     * @return string|null
+     */
+    public function getDsaPayor()
+    {
+        return $this->container['dsa_payor'];
+    }
+
+    /**
+     * Sets dsa_payor
+     *
+     * @param string|null $dsa_payor Name of the legal entity paying for the ad. Required by Meta when targeting EU users (DSA Article 26). Note Meta API spelling: dsa_payor (not dsa_payer).
+     *
+     * @return self
+     */
+    public function setDsaPayor($dsa_payor)
+    {
+        if (is_null($dsa_payor)) {
+            throw new \InvalidArgumentException('non-nullable dsa_payor cannot be null');
+        }
+        if ((mb_strlen($dsa_payor) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $dsa_payor when calling CreateCtwaAdRequest., must be smaller than or equal to 100.');
+        }
+
+        $this->container['dsa_payor'] = $dsa_payor;
 
         return $this;
     }
