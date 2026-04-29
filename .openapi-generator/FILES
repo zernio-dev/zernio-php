@@ -683,8 +683,6 @@ docs/Model/TelegramPlatformData.md
 docs/Model/TestWebhookRequest.md
 docs/Model/ThreadsPlatformData.md
 docs/Model/TikTokPlatformData.md
-docs/Model/TriggerAdsInitialSync202Response.md
-docs/Model/TriggerAdsInitialSyncRequest.md
 docs/Model/TwitterPlatformData.md
 docs/Model/TwitterPlatformDataPoll.md
 docs/Model/TwitterPlatformDataThreadItemsInner.md
@@ -1556,8 +1554,6 @@ lib/Model/TelegramPlatformData.php
 lib/Model/TestWebhookRequest.php
 lib/Model/ThreadsPlatformData.php
 lib/Model/TikTokPlatformData.php
-lib/Model/TriggerAdsInitialSync202Response.php
-lib/Model/TriggerAdsInitialSyncRequest.php
 lib/Model/TwitterPlatformData.php
 lib/Model/TwitterPlatformDataPoll.php
 lib/Model/TwitterPlatformDataThreadItemsInner.php

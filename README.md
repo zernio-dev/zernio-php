@@ -109,7 +109,6 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**searchAdInterests**](docs/Api/AdsApi.md#searchadinterests) | **GET** /v1/ads/interests | Search targeting interests
 *AdsApi* | [**sendConversions**](docs/Api/AdsApi.md#sendconversions) | **POST** /v1/ads/conversions | Send conversion events to an ad platform
 *AdsApi* | [**sendWhatsAppConversion**](docs/Api/AdsApi.md#sendwhatsappconversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event
-*AdsApi* | [**triggerAdsInitialSync**](docs/Api/AdsApi.md#triggeradsinitialsync) | **POST** /v1/ads/sync/initial | Re-sync an ads account
 *AdsApi* | [**updateAd**](docs/Api/AdsApi.md#updatead) | **PUT** /v1/ads/{adId} | Update ad
 *AnalyticsApi* | [**getAnalytics**](docs/Api/AnalyticsApi.md#getanalytics) | **GET** /v1/analytics | Get post analytics
 *AnalyticsApi* | [**getBestTimeToPost**](docs/Api/AnalyticsApi.md#getbesttimetopost) | **GET** /v1/analytics/best-time | Get best times to post
@@ -969,8 +968,6 @@ Class | Method | HTTP request | Description
 - [TestWebhookRequest](docs/Model/TestWebhookRequest.md)
 - [ThreadsPlatformData](docs/Model/ThreadsPlatformData.md)
 - [TikTokPlatformData](docs/Model/TikTokPlatformData.md)
-- [TriggerAdsInitialSync202Response](docs/Model/TriggerAdsInitialSync202Response.md)
-- [TriggerAdsInitialSyncRequest](docs/Model/TriggerAdsInitialSyncRequest.md)
 - [TwitterPlatformData](docs/Model/TwitterPlatformData.md)
 - [TwitterPlatformDataPoll](docs/Model/TwitterPlatformDataPoll.md)
 - [TwitterPlatformDataThreadItemsInner](docs/Model/TwitterPlatformDataThreadItemsInner.md)
