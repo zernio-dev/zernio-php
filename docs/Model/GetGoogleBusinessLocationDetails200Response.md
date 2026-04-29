@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **success** | **bool** |  | [optional]
 **account_id** | **string** |  | [optional]
 **location_id** | **string** |  | [optional]
+**location** | [**\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseLocation**](GetGoogleBusinessLocationDetails200ResponseLocation.md) |  | [optional]
 **title** | **string** | Business name | [optional]
 **regular_hours** | [**\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseRegularHours**](GetGoogleBusinessLocationDetails200ResponseRegularHours.md) |  | [optional]
 **special_hours** | [**\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHours**](GetGoogleBusinessLocationDetails200ResponseSpecialHours.md) |  | [optional]

@@ -61,6 +61,7 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         'success' => 'bool',
         'account_id' => 'string',
         'location_id' => 'string',
+        'location' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseLocation',
         'title' => 'string',
         'regular_hours' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseRegularHours',
         'special_hours' => '\Zernio\Model\GetGoogleBusinessLocationDetails200ResponseSpecialHours',
@@ -82,6 +83,7 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         'success' => null,
         'account_id' => null,
         'location_id' => null,
+        'location' => null,
         'title' => null,
         'regular_hours' => null,
         'special_hours' => null,
@@ -101,6 +103,7 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         'success' => false,
         'account_id' => false,
         'location_id' => false,
+        'location' => false,
         'title' => false,
         'regular_hours' => false,
         'special_hours' => false,
@@ -200,6 +203,7 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         'success' => 'success',
         'account_id' => 'accountId',
         'location_id' => 'locationId',
+        'location' => 'location',
         'title' => 'title',
         'regular_hours' => 'regularHours',
         'special_hours' => 'specialHours',
@@ -219,6 +223,7 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         'success' => 'setSuccess',
         'account_id' => 'setAccountId',
         'location_id' => 'setLocationId',
+        'location' => 'setLocation',
         'title' => 'setTitle',
         'regular_hours' => 'setRegularHours',
         'special_hours' => 'setSpecialHours',
@@ -238,6 +243,7 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         'success' => 'getSuccess',
         'account_id' => 'getAccountId',
         'location_id' => 'getLocationId',
+        'location' => 'getLocation',
         'title' => 'getTitle',
         'regular_hours' => 'getRegularHours',
         'special_hours' => 'getSpecialHours',
@@ -308,6 +314,7 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
         $this->setIfExists('success', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('location_id', $data ?? [], null);
+        $this->setIfExists('location', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('regular_hours', $data ?? [], null);
         $this->setIfExists('special_hours', $data ?? [], null);
@@ -437,6 +444,33 @@ class GetGoogleBusinessLocationDetails200Response implements ModelInterface, Arr
             throw new \InvalidArgumentException('non-nullable location_id cannot be null');
         }
         $this->container['location_id'] = $location_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets location
+     *
+     * @return \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseLocation|null
+     */
+    public function getLocation()
+    {
+        return $this->container['location'];
+    }
+
+    /**
+     * Sets location
+     *
+     * @param \Zernio\Model\GetGoogleBusinessLocationDetails200ResponseLocation|null $location location
+     *
+     * @return self
+     */
+    public function setLocation($location)
+    {
+        if (is_null($location)) {
+            throw new \InvalidArgumentException('non-nullable location cannot be null');
+        }
+        $this->container['location'] = $location;
 
         return $this;
     }
