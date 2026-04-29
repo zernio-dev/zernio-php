@@ -1745,8 +1745,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BusinessCenterTest.php
-test/Model/ListAdsBusinessCenters200ResponseTest.php
-test/Model/TriggerAdsInitialSync202ResponseTest.php
-test/Model/TriggerAdsInitialSyncRequestTest.php
-test/Model/UpdateAdRequestCreativeTest.php
