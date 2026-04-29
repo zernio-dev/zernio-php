@@ -77,7 +77,9 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'profile_id' => 'string',
         'platform_objective' => 'string',
         'optimization_goal' => 'string',
-        'bid_strategy' => 'string',
+        'bid_strategy' => '\Zernio\Model\BidStrategy',
+        'bid_amount' => 'float',
+        'roas_average_floor' => 'float',
         'promoted_object' => '\Zernio\Model\AdTreeCampaignPromotedObject',
         'earliest_ad' => '\DateTime',
         'latest_ad' => '\DateTime'
@@ -111,6 +113,8 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_objective' => null,
         'optimization_goal' => null,
         'bid_strategy' => null,
+        'bid_amount' => null,
+        'roas_average_floor' => null,
         'promoted_object' => null,
         'earliest_ad' => 'date-time',
         'latest_ad' => 'date-time'
@@ -142,6 +146,8 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_objective' => false,
         'optimization_goal' => false,
         'bid_strategy' => false,
+        'bid_amount' => false,
+        'roas_average_floor' => false,
         'promoted_object' => false,
         'earliest_ad' => false,
         'latest_ad' => false
@@ -253,6 +259,8 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_objective' => 'platformObjective',
         'optimization_goal' => 'optimizationGoal',
         'bid_strategy' => 'bidStrategy',
+        'bid_amount' => 'bidAmount',
+        'roas_average_floor' => 'roasAverageFloor',
         'promoted_object' => 'promotedObject',
         'earliest_ad' => 'earliestAd',
         'latest_ad' => 'latestAd'
@@ -284,6 +292,8 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_objective' => 'setPlatformObjective',
         'optimization_goal' => 'setOptimizationGoal',
         'bid_strategy' => 'setBidStrategy',
+        'bid_amount' => 'setBidAmount',
+        'roas_average_floor' => 'setRoasAverageFloor',
         'promoted_object' => 'setPromotedObject',
         'earliest_ad' => 'setEarliestAd',
         'latest_ad' => 'setLatestAd'
@@ -315,6 +325,8 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_objective' => 'getPlatformObjective',
         'optimization_goal' => 'getOptimizationGoal',
         'bid_strategy' => 'getBidStrategy',
+        'bid_amount' => 'getBidAmount',
+        'roas_average_floor' => 'getRoasAverageFloor',
         'promoted_object' => 'getPromotedObject',
         'earliest_ad' => 'getEarliestAd',
         'latest_ad' => 'getLatestAd'
@@ -456,6 +468,8 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('platform_objective', $data ?? [], null);
         $this->setIfExists('optimization_goal', $data ?? [], null);
         $this->setIfExists('bid_strategy', $data ?? [], null);
+        $this->setIfExists('bid_amount', $data ?? [], null);
+        $this->setIfExists('roas_average_floor', $data ?? [], null);
         $this->setIfExists('promoted_object', $data ?? [], null);
         $this->setIfExists('earliest_ad', $data ?? [], null);
         $this->setIfExists('latest_ad', $data ?? [], null);
@@ -1076,7 +1090,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets bid_strategy
      *
-     * @return string|null
+     * @return \Zernio\Model\BidStrategy|null
      */
     public function getBidStrategy()
     {
@@ -1086,7 +1100,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bid_strategy
      *
-     * @param string|null $bid_strategy Campaign-level bid strategy (e.g. LOWEST_COST_WITHOUT_CAP, COST_CAP, LOWEST_COST_WITH_MIN_ROAS)
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy Campaign-level bid strategy. Ad sets inherit this unless they override.
      *
      * @return self
      */
@@ -1096,6 +1110,60 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
         }
         $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_amount
+     *
+     * @return float|null
+     */
+    public function getBidAmount()
+    {
+        return $this->container['bid_amount'];
+    }
+
+    /**
+     * Sets bid_amount
+     *
+     * @param float|null $bid_amount Representative bid cap from the top-spending ad set (whole currency units). Populated when bidStrategy is LOWEST_COST_WITH_BID_CAP or COST_CAP.
+     *
+     * @return self
+     */
+    public function setBidAmount($bid_amount)
+    {
+        if (is_null($bid_amount)) {
+            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
+        }
+        $this->container['bid_amount'] = $bid_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets roas_average_floor
+     *
+     * @return float|null
+     */
+    public function getRoasAverageFloor()
+    {
+        return $this->container['roas_average_floor'];
+    }
+
+    /**
+     * Sets roas_average_floor
+     *
+     * @param float|null $roas_average_floor Representative ROAS floor from the top-spending ad set. Decimal multiplier (2.0 = 2.0x).
+     *
+     * @return self
+     */
+    public function setRoasAverageFloor($roas_average_floor)
+    {
+        if (is_null($roas_average_floor)) {
+            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
+        }
+        $this->container['roas_average_floor'] = $roas_average_floor;
 
         return $this;
     }

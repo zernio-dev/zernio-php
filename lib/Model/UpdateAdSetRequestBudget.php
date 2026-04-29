@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UpdateAdSetRequestBudget Class Doc Comment
  *
  * @category Class
- * @description Omit if only toggling status
+ * @description Omit if not updating budget
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

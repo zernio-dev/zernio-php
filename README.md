@@ -91,9 +91,9 @@ Class | Method | HTTP request | Description
 *AdCampaignsApi* | [**duplicateAdCampaign**](docs/Api/AdCampaignsApi.md#duplicateadcampaign) | **POST** /v1/ads/campaigns/{campaignId}/duplicate | Duplicate a campaign
 *AdCampaignsApi* | [**getAdTree**](docs/Api/AdCampaignsApi.md#getadtree) | **GET** /v1/ads/tree | Get campaign tree
 *AdCampaignsApi* | [**listAdCampaigns**](docs/Api/AdCampaignsApi.md#listadcampaigns) | **GET** /v1/ads/campaigns | List campaigns
-*AdCampaignsApi* | [**updateAdCampaign**](docs/Api/AdCampaignsApi.md#updateadcampaign) | **PUT** /v1/ads/campaigns/{campaignId} | Update a campaign (budget)
+*AdCampaignsApi* | [**updateAdCampaign**](docs/Api/AdCampaignsApi.md#updateadcampaign) | **PUT** /v1/ads/campaigns/{campaignId} | Update a campaign (budget and/or bid strategy)
 *AdCampaignsApi* | [**updateAdCampaignStatus**](docs/Api/AdCampaignsApi.md#updateadcampaignstatus) | **PUT** /v1/ads/campaigns/{campaignId}/status | Pause or resume a campaign
-*AdCampaignsApi* | [**updateAdSet**](docs/Api/AdCampaignsApi.md#updateadset) | **PUT** /v1/ads/ad-sets/{adSetId} | Update an ad set (budget and/or status)
+*AdCampaignsApi* | [**updateAdSet**](docs/Api/AdCampaignsApi.md#updateadset) | **PUT** /v1/ads/ad-sets/{adSetId} | Update an ad set (budget, status, and/or bid strategy)
 *AdCampaignsApi* | [**updateAdSetStatus**](docs/Api/AdCampaignsApi.md#updateadsetstatus) | **PUT** /v1/ads/ad-sets/{adSetId}/status | Pause or resume a single ad set
 *AdsApi* | [**boostPost**](docs/Api/AdsApi.md#boostpost) | **POST** /v1/ads/boost | Boost post as ad
 *AdsApi* | [**createCtwaAd**](docs/Api/AdsApi.md#createctwaad) | **POST** /v1/ads/ctwa | Create Click-to-WhatsApp ad
@@ -371,6 +371,7 @@ Class | Method | HTTP request | Description
 - [BatchGetGoogleBusinessReviews200Response](docs/Model/BatchGetGoogleBusinessReviews200Response.md)
 - [BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner](docs/Model/BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner.md)
 - [BatchGetGoogleBusinessReviewsRequest](docs/Model/BatchGetGoogleBusinessReviewsRequest.md)
+- [BidStrategy](docs/Model/BidStrategy.md)
 - [BlueskyPlatformData](docs/Model/BlueskyPlatformData.md)
 - [BookmarkPost200Response](docs/Model/BookmarkPost200Response.md)
 - [BookmarkPostRequest](docs/Model/BookmarkPostRequest.md)

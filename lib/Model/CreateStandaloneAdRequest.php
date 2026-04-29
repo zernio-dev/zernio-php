@@ -89,6 +89,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_descriptions' => 'string[]',
         'advantage_audience' => 'int',
         'gender' => 'string',
+        'bid_strategy' => '\Zernio\Model\BidStrategy',
+        'bid_amount' => 'float',
+        'roas_average_floor' => 'float',
         'dsa_beneficiary' => 'string',
         'dsa_payor' => 'string'
     ];
@@ -132,6 +135,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_descriptions' => null,
         'advantage_audience' => null,
         'gender' => null,
+        'bid_strategy' => null,
+        'bid_amount' => null,
+        'roas_average_floor' => null,
         'dsa_beneficiary' => null,
         'dsa_payor' => null
     ];
@@ -173,6 +179,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_descriptions' => false,
         'advantage_audience' => false,
         'gender' => false,
+        'bid_strategy' => false,
+        'bid_amount' => false,
+        'roas_average_floor' => false,
         'dsa_beneficiary' => false,
         'dsa_payor' => false
     ];
@@ -294,6 +303,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_descriptions' => 'additionalDescriptions',
         'advantage_audience' => 'advantageAudience',
         'gender' => 'gender',
+        'bid_strategy' => 'bidStrategy',
+        'bid_amount' => 'bidAmount',
+        'roas_average_floor' => 'roasAverageFloor',
         'dsa_beneficiary' => 'dsaBeneficiary',
         'dsa_payor' => 'dsaPayor'
     ];
@@ -335,6 +347,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_descriptions' => 'setAdditionalDescriptions',
         'advantage_audience' => 'setAdvantageAudience',
         'gender' => 'setGender',
+        'bid_strategy' => 'setBidStrategy',
+        'bid_amount' => 'setBidAmount',
+        'roas_average_floor' => 'setRoasAverageFloor',
         'dsa_beneficiary' => 'setDsaBeneficiary',
         'dsa_payor' => 'setDsaPayor'
     ];
@@ -376,6 +391,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_descriptions' => 'getAdditionalDescriptions',
         'advantage_audience' => 'getAdvantageAudience',
         'gender' => 'getGender',
+        'bid_strategy' => 'getBidStrategy',
+        'bid_amount' => 'getBidAmount',
+        'roas_average_floor' => 'getRoasAverageFloor',
         'dsa_beneficiary' => 'getDsaBeneficiary',
         'dsa_payor' => 'getDsaPayor'
     ];
@@ -586,6 +604,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('additional_descriptions', $data ?? [], null);
         $this->setIfExists('advantage_audience', $data ?? [], null);
         $this->setIfExists('gender', $data ?? [], 'all');
+        $this->setIfExists('bid_strategy', $data ?? [], null);
+        $this->setIfExists('bid_amount', $data ?? [], null);
+        $this->setIfExists('roas_average_floor', $data ?? [], null);
         $this->setIfExists('dsa_beneficiary', $data ?? [], null);
         $this->setIfExists('dsa_payor', $data ?? [], null);
     }
@@ -1223,7 +1244,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets ad_set_id
      *
-     * @param string|null $ad_set_id Meta-only. When present, switches to the attach shape: adds one new ad to this existing ad set without creating a new campaign. Budget, targeting, goal, and schedule are inherited from the ad set on Meta. Mutually exclusive with `creatives[]`.
+     * @param string|null $ad_set_id Meta-only. When present, switches to the attach shape: adds one new ad to this existing ad set without creating a new campaign. Budget, targeting, goal, schedule, AND bid strategy are inherited from the ad set on Meta — passing `bidStrategy` in attach mode returns 400. To change an existing ad set's bid, use `PUT /v1/ads/ad-sets/{adSetId}`. Mutually exclusive with `creatives[]`.
      *
      * @return self
      */
@@ -1661,6 +1682,87 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['gender'] = $gender;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_strategy
+     *
+     * @return \Zernio\Model\BidStrategy|null
+     */
+    public function getBidStrategy()
+    {
+        return $this->container['bid_strategy'];
+    }
+
+    /**
+     * Sets bid_strategy
+     *
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy Meta bid strategy applied to the ad set.
+     *
+     * @return self
+     */
+    public function setBidStrategy($bid_strategy)
+    {
+        if (is_null($bid_strategy)) {
+            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+        }
+        $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_amount
+     *
+     * @return float|null
+     */
+    public function getBidAmount()
+    {
+        return $this->container['bid_amount'];
+    }
+
+    /**
+     * Sets bid_amount
+     *
+     * @param float|null $bid_amount Bid cap in WHOLE currency units (USD: 5 = $5.00; JPY: 100 = ¥100). Required when `bidStrategy` is `LOWEST_COST_WITH_BID_CAP` or `COST_CAP`.
+     *
+     * @return self
+     */
+    public function setBidAmount($bid_amount)
+    {
+        if (is_null($bid_amount)) {
+            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
+        }
+        $this->container['bid_amount'] = $bid_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets roas_average_floor
+     *
+     * @return float|null
+     */
+    public function getRoasAverageFloor()
+    {
+        return $this->container['roas_average_floor'];
+    }
+
+    /**
+     * Sets roas_average_floor
+     *
+     * @param float|null $roas_average_floor Minimum ROAS as a decimal multiplier (e.g. 2.0 = 2.0x ROAS). Required when `bidStrategy` is `LOWEST_COST_WITH_MIN_ROAS`. Sent to Meta as `bid_constraints.roas_average_floor` × 10000.
+     *
+     * @return self
+     */
+    public function setRoasAverageFloor($roas_average_floor)
+    {
+        if (is_null($roas_average_floor)) {
+            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
+        }
+        $this->container['roas_average_floor'] = $roas_average_floor;
 
         return $this;
     }

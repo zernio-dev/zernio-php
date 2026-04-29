@@ -75,7 +75,9 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_set_name' => 'string',
         'platform_objective' => 'string',
         'optimization_goal' => 'string',
-        'bid_strategy' => 'string',
+        'bid_strategy' => '\Zernio\Model\BidStrategy',
+        'bid_amount' => 'float',
+        'roas_average_floor' => 'float',
         'promoted_object' => '\Zernio\Model\AdPromotedObject',
         'creative' => '\Zernio\Model\AdCreative',
         'targeting' => 'object',
@@ -111,6 +113,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_objective' => null,
         'optimization_goal' => null,
         'bid_strategy' => null,
+        'bid_amount' => null,
+        'roas_average_floor' => null,
         'promoted_object' => null,
         'creative' => null,
         'targeting' => null,
@@ -144,6 +148,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_objective' => false,
         'optimization_goal' => false,
         'bid_strategy' => false,
+        'bid_amount' => false,
+        'roas_average_floor' => false,
         'promoted_object' => false,
         'creative' => false,
         'targeting' => false,
@@ -257,6 +263,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_objective' => 'platformObjective',
         'optimization_goal' => 'optimizationGoal',
         'bid_strategy' => 'bidStrategy',
+        'bid_amount' => 'bidAmount',
+        'roas_average_floor' => 'roasAverageFloor',
         'promoted_object' => 'promotedObject',
         'creative' => 'creative',
         'targeting' => 'targeting',
@@ -290,6 +298,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_objective' => 'setPlatformObjective',
         'optimization_goal' => 'setOptimizationGoal',
         'bid_strategy' => 'setBidStrategy',
+        'bid_amount' => 'setBidAmount',
+        'roas_average_floor' => 'setRoasAverageFloor',
         'promoted_object' => 'setPromotedObject',
         'creative' => 'setCreative',
         'targeting' => 'setTargeting',
@@ -323,6 +333,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_objective' => 'getPlatformObjective',
         'optimization_goal' => 'getOptimizationGoal',
         'bid_strategy' => 'getBidStrategy',
+        'bid_amount' => 'getBidAmount',
+        'roas_average_floor' => 'getRoasAverageFloor',
         'promoted_object' => 'getPromotedObject',
         'creative' => 'getCreative',
         'targeting' => 'getTargeting',
@@ -472,6 +484,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('platform_objective', $data ?? [], null);
         $this->setIfExists('optimization_goal', $data ?? [], null);
         $this->setIfExists('bid_strategy', $data ?? [], null);
+        $this->setIfExists('bid_amount', $data ?? [], null);
+        $this->setIfExists('roas_average_floor', $data ?? [], null);
         $this->setIfExists('promoted_object', $data ?? [], null);
         $this->setIfExists('creative', $data ?? [], null);
         $this->setIfExists('targeting', $data ?? [], null);
@@ -1042,7 +1056,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets bid_strategy
      *
-     * @return string|null
+     * @return \Zernio\Model\BidStrategy|null
      */
     public function getBidStrategy()
     {
@@ -1052,7 +1066,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bid_strategy
      *
-     * @param string|null $bid_strategy Bid strategy (e.g. LOWEST_COST_WITHOUT_CAP, COST_CAP, LOWEST_COST_WITH_MIN_ROAS). Ad set level overrides campaign level. Only present for Meta ads.
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy Ad-set bid strategy (overrides campaign level on Meta). Populated for Meta and TikTok. TikTok's native `bid_type` is normalized to the cross-platform Meta enum: `BID_TYPE_NO_BID` -> `LOWEST_COST_WITHOUT_CAP`, `BID_TYPE_CUSTOM` -> `LOWEST_COST_WITH_BID_CAP`, deep_bid_type=MIN_ROAS or roas_bid>0 -> `LOWEST_COST_WITH_MIN_ROAS`, `BID_TYPE_MAX_CONVERSION` -> `LOWEST_COST_WITHOUT_CAP`.
      *
      * @return self
      */
@@ -1062,6 +1076,60 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
         }
         $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_amount
+     *
+     * @return float|null
+     */
+    public function getBidAmount()
+    {
+        return $this->container['bid_amount'];
+    }
+
+    /**
+     * Sets bid_amount
+     *
+     * @param float|null $bid_amount Bid cap in WHOLE currency units of the ad account (USD: 5 = $5.00; JPY: 100 = ¥100). Populated when bidStrategy is `LOWEST_COST_WITH_BID_CAP` or `COST_CAP`. `null` for auto-bid (`LOWEST_COST_WITHOUT_CAP`).  - Meta source: `bid_amount` on the ad set (smallest-denomination int, decoded here). - TikTok source: priority order `bid_price` -> `conversion_bid_price` -> `deep_cpa_bid`   (whichever is set on the ad group). TikTok stores all three in whole currency units.  Source: facebook-business-sdk-codegen api_specs/specs/AdSet.json (`bid_amount`).
+     *
+     * @return self
+     */
+    public function setBidAmount($bid_amount)
+    {
+        if (is_null($bid_amount)) {
+            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
+        }
+        $this->container['bid_amount'] = $bid_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets roas_average_floor
+     *
+     * @return float|null
+     */
+    public function getRoasAverageFloor()
+    {
+        return $this->container['roas_average_floor'];
+    }
+
+    /**
+     * Sets roas_average_floor
+     *
+     * @param float|null $roas_average_floor Minimum ROAS as a decimal multiplier (2.0 = 2.0x ROAS). Populated when bidStrategy is `LOWEST_COST_WITH_MIN_ROAS`.  - Meta source: decoded from `bid_constraints.roas_average_floor` (Meta stores as   fixed-point int × 10000; we return the decimal). - TikTok source: `roas_bid` on the ad group (already a decimal).  Source: facebook-business-sdk-codegen api_specs/specs/AdCampaignBidConstraint.json.
+     *
+     * @return self
+     */
+    public function setRoasAverageFloor($roas_average_floor)
+    {
+        if (is_null($roas_average_floor)) {
+            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
+        }
+        $this->container['roas_average_floor'] = $roas_average_floor;
 
         return $this;
     }

@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * GetGoogleBusinessLocationDetails200ResponseLocation Class Doc Comment
  *
  * @category Class
- * @description Compact public-facing summary derived from &#x60;metadata&#x60;. Useful for surfacing the \&quot;leave a review\&quot; URL (e.g. behind a QR code) without parsing Google&#39;s raw &#x60;metadata&#x60; block. Populated when the readMask includes &#x60;metadata&#x60; (the default). For unverified or new locations, Google omits placeId/reviewUrl/mapsUri, so those return as null.
+ * @description Compact public-facing summary derived from Google&#39;s &#x60;metadata&#x60;. Useful for surfacing the \&quot;leave a review\&quot; URL (e.g. behind a QR code) without parsing the raw block. Always populated regardless of readMask. For unverified or new locations Google omits placeId/reviewUrl/mapsUri, so those return as null and &#x60;isVerified&#x60; is false.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

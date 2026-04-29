@@ -60,7 +60,10 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPITypes = [
         'platform' => 'string',
         'budget' => '\Zernio\Model\UpdateAdSetRequestBudget',
-        'status' => 'string'
+        'status' => 'string',
+        'bid_strategy' => '\Zernio\Model\BidStrategy',
+        'bid_amount' => 'float',
+        'roas_average_floor' => 'float'
     ];
 
     /**
@@ -73,7 +76,10 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $openAPIFormats = [
         'platform' => null,
         'budget' => null,
-        'status' => null
+        'status' => null,
+        'bid_strategy' => null,
+        'bid_amount' => null,
+        'roas_average_floor' => null
     ];
 
     /**
@@ -84,7 +90,10 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static array $openAPINullables = [
         'platform' => false,
         'budget' => false,
-        'status' => false
+        'status' => false,
+        'bid_strategy' => false,
+        'bid_amount' => false,
+        'roas_average_floor' => false
     ];
 
     /**
@@ -175,7 +184,10 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $attributeMap = [
         'platform' => 'platform',
         'budget' => 'budget',
-        'status' => 'status'
+        'status' => 'status',
+        'bid_strategy' => 'bidStrategy',
+        'bid_amount' => 'bidAmount',
+        'roas_average_floor' => 'roasAverageFloor'
     ];
 
     /**
@@ -186,7 +198,10 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $setters = [
         'platform' => 'setPlatform',
         'budget' => 'setBudget',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'bid_strategy' => 'setBidStrategy',
+        'bid_amount' => 'setBidAmount',
+        'roas_average_floor' => 'setRoasAverageFloor'
     ];
 
     /**
@@ -197,7 +212,10 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     protected static $getters = [
         'platform' => 'getPlatform',
         'budget' => 'getBudget',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'bid_strategy' => 'getBidStrategy',
+        'bid_amount' => 'getBidAmount',
+        'roas_average_floor' => 'getRoasAverageFloor'
     ];
 
     /**
@@ -300,6 +318,9 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('bid_strategy', $data ?? [], null);
+        $this->setIfExists('bid_amount', $data ?? [], null);
+        $this->setIfExists('roas_average_floor', $data ?? [], null);
     }
 
     /**
@@ -442,7 +463,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets status
      *
-     * @param string|null $status Omit if only updating budget
+     * @param string|null $status Omit if not toggling delivery state
      *
      * @return self
      */
@@ -462,6 +483,87 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_strategy
+     *
+     * @return \Zernio\Model\BidStrategy|null
+     */
+    public function getBidStrategy()
+    {
+        return $this->container['bid_strategy'];
+    }
+
+    /**
+     * Sets bid_strategy
+     *
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy Ad-set-level bid strategy. Overrides the campaign-level default. Supported on Meta (facebook, instagram) and TikTok. On TikTok the Meta-style enum is mapped to bid_type / bid_price / deep_bid_type automatically. Other platforms (linkedin, pinterest, google, twitter) return 501 Not Implemented when bidStrategy is set.
+     *
+     * @return self
+     */
+    public function setBidStrategy($bid_strategy)
+    {
+        if (is_null($bid_strategy)) {
+            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+        }
+        $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_amount
+     *
+     * @return float|null
+     */
+    public function getBidAmount()
+    {
+        return $this->container['bid_amount'];
+    }
+
+    /**
+     * Sets bid_amount
+     *
+     * @param float|null $bid_amount Bid cap in WHOLE currency units (USD: 5 = $5.00; JPY: 100 = ¥100). Required when bidStrategy is LOWEST_COST_WITH_BID_CAP or COST_CAP. Internally converted to Meta's smallest-denomination integer.
+     *
+     * @return self
+     */
+    public function setBidAmount($bid_amount)
+    {
+        if (is_null($bid_amount)) {
+            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
+        }
+        $this->container['bid_amount'] = $bid_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets roas_average_floor
+     *
+     * @return float|null
+     */
+    public function getRoasAverageFloor()
+    {
+        return $this->container['roas_average_floor'];
+    }
+
+    /**
+     * Sets roas_average_floor
+     *
+     * @param float|null $roas_average_floor Minimum ROAS as a decimal multiplier (2.0 = 2.0x). Required when bidStrategy is LOWEST_COST_WITH_MIN_ROAS. Sent to Meta as `bid_constraints.roas_average_floor` × 10000.
+     *
+     * @return self
+     */
+    public function setRoasAverageFloor($roas_average_floor)
+    {
+        if (is_null($roas_average_floor)) {
+            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
+        }
+        $this->container['roas_average_floor'] = $roas_average_floor;
 
         return $this;
     }

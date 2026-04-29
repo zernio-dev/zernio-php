@@ -1868,7 +1868,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdCampaign
      *
-     * Update a campaign (budget)
+     * Update a campaign (budget and/or bid strategy)
      *
      * @param  string $campaign_id Platform campaign ID (required)
      * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request update_ad_campaign_request (required)
@@ -1887,7 +1887,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdCampaignWithHttpInfo
      *
-     * Update a campaign (budget)
+     * Update a campaign (budget and/or bid strategy)
      *
      * @param  string $campaign_id Platform campaign ID (required)
      * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
@@ -1987,7 +1987,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdCampaignAsync
      *
-     * Update a campaign (budget)
+     * Update a campaign (budget and/or bid strategy)
      *
      * @param  string $campaign_id Platform campaign ID (required)
      * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
@@ -2009,7 +2009,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdCampaignAsyncWithHttpInfo
      *
-     * Update a campaign (budget)
+     * Update a campaign (budget and/or bid strategy)
      *
      * @param  string $campaign_id Platform campaign ID (required)
      * @param  \Zernio\Model\UpdateAdCampaignRequest $update_ad_campaign_request (required)
@@ -2478,7 +2478,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdSet
      *
-     * Update an ad set (budget and/or status)
+     * Update an ad set (budget, status, and/or bid strategy)
      *
      * @param  string $ad_set_id Platform ad set ID (required)
      * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request update_ad_set_request (required)
@@ -2497,7 +2497,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdSetWithHttpInfo
      *
-     * Update an ad set (budget and/or status)
+     * Update an ad set (budget, status, and/or bid strategy)
      *
      * @param  string $ad_set_id Platform ad set ID (required)
      * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request (required)
@@ -2597,7 +2597,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdSetAsync
      *
-     * Update an ad set (budget and/or status)
+     * Update an ad set (budget, status, and/or bid strategy)
      *
      * @param  string $ad_set_id Platform ad set ID (required)
      * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request (required)
@@ -2619,7 +2619,7 @@ class AdCampaignsApi
     /**
      * Operation updateAdSetAsyncWithHttpInfo
      *
-     * Update an ad set (budget and/or status)
+     * Update an ad set (budget, status, and/or bid strategy)
      *
      * @param  string $ad_set_id Platform ad set ID (required)
      * @param  \Zernio\Model\UpdateAdSetRequest $update_ad_set_request (required)

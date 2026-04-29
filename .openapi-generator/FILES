@@ -87,6 +87,7 @@ docs/Model/ApproveWhatsAppGroupJoinRequestsRequest.md
 docs/Model/BatchGetGoogleBusinessReviews200Response.md
 docs/Model/BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner.md
 docs/Model/BatchGetGoogleBusinessReviewsRequest.md
+docs/Model/BidStrategy.md
 docs/Model/BlueskyPlatformData.md
 docs/Model/BookmarkPost200Response.md
 docs/Model/BookmarkPostRequest.md
@@ -953,6 +954,7 @@ lib/Model/ApproveWhatsAppGroupJoinRequestsRequest.php
 lib/Model/BatchGetGoogleBusinessReviews200Response.php
 lib/Model/BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner.php
 lib/Model/BatchGetGoogleBusinessReviewsRequest.php
+lib/Model/BidStrategy.php
 lib/Model/BlueskyPlatformData.php
 lib/Model/BookmarkPost200Response.php
 lib/Model/BookmarkPostRequest.php
@@ -1733,4 +1735,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetGoogleBusinessLocationDetails200ResponseLocationTest.php
+test/Model/BidStrategyTest.php

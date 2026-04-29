@@ -39,7 +39,7 @@ $apiInstance = new Zernio\Api\GMBLocationDetailsApi(
 );
 $account_id = 'account_id_example'; // string | The Zernio account ID (from /v1/accounts)
 $location_id = 'location_id_example'; // string | Override which location to query. If omitted, uses the account's selected location. Use GET /gmb-locations to list valid IDs.
-$read_mask = 'read_mask_example'; // string | Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, serviceItems, profile, openInfo, metadata, moreHours.
+$read_mask = 'read_mask_example'; // string | Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, serviceItems, profile, openInfo, metadata, moreHours. `title` and `metadata` are always included in the response so the `location` summary block can be populated, even if you omit them here. Note: `location` is a derived response field, not a Google readMask value, passing it returns 400.
 
 try {
     $result = $apiInstance->getGoogleBusinessLocationDetails($account_id, $location_id, $read_mask);
@@ -55,7 +55,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| The Zernio account ID (from /v1/accounts) | |
 | **location_id** | **string**| Override which location to query. If omitted, uses the account&#39;s selected location. Use GET /gmb-locations to list valid IDs. | [optional] |
-| **read_mask** | **string**| Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, serviceItems, profile, openInfo, metadata, moreHours. | [optional] |
+| **read_mask** | **string**| Comma-separated fields to return. Available: name, title, phoneNumbers, categories, storefrontAddress, websiteUri, regularHours, specialHours, serviceArea, serviceItems, profile, openInfo, metadata, moreHours. &#x60;title&#x60; and &#x60;metadata&#x60; are always included in the response so the &#x60;location&#x60; summary block can be populated, even if you omit them here. Note: &#x60;location&#x60; is a derived response field, not a Google readMask value, passing it returns 400. | [optional] |
 
 ### Return type
 

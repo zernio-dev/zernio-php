@@ -60,7 +60,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'updated' => 'int',
         'budget' => '\Zernio\Model\AdBudget',
-        'budget_level' => 'string'
+        'budget_level' => 'string',
+        'bid_strategy' => '\Zernio\Model\BidStrategy'
     ];
 
     /**
@@ -73,7 +74,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPIFormats = [
         'updated' => null,
         'budget' => null,
-        'budget_level' => null
+        'budget_level' => null,
+        'bid_strategy' => null
     ];
 
     /**
@@ -84,7 +86,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
     protected static array $openAPINullables = [
         'updated' => false,
         'budget' => false,
-        'budget_level' => false
+        'budget_level' => false,
+        'bid_strategy' => false
     ];
 
     /**
@@ -175,7 +178,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
     protected static $attributeMap = [
         'updated' => 'updated',
         'budget' => 'budget',
-        'budget_level' => 'budgetLevel'
+        'budget_level' => 'budgetLevel',
+        'bid_strategy' => 'bidStrategy'
     ];
 
     /**
@@ -186,7 +190,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
     protected static $setters = [
         'updated' => 'setUpdated',
         'budget' => 'setBudget',
-        'budget_level' => 'setBudgetLevel'
+        'budget_level' => 'setBudgetLevel',
+        'bid_strategy' => 'setBidStrategy'
     ];
 
     /**
@@ -197,7 +202,8 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
     protected static $getters = [
         'updated' => 'getUpdated',
         'budget' => 'getBudget',
-        'budget_level' => 'getBudgetLevel'
+        'budget_level' => 'getBudgetLevel',
+        'bid_strategy' => 'getBidStrategy'
     ];
 
     /**
@@ -273,6 +279,7 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('updated', $data ?? [], null);
         $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('budget_level', $data ?? [], null);
+        $this->setIfExists('bid_strategy', $data ?? [], null);
     }
 
     /**
@@ -413,6 +420,33 @@ class UpdateAdCampaign200Response implements ModelInterface, ArrayAccess, \JsonS
             );
         }
         $this->container['budget_level'] = $budget_level;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_strategy
+     *
+     * @return \Zernio\Model\BidStrategy|null
+     */
+    public function getBidStrategy()
+    {
+        return $this->container['bid_strategy'];
+    }
+
+    /**
+     * Sets bid_strategy
+     *
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy bid_strategy
+     *
+     * @return self
+     */
+    public function setBidStrategy($bid_strategy)
+    {
+        if (is_null($bid_strategy)) {
+            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+        }
+        $this->container['bid_strategy'] = $bid_strategy;
 
         return $this;
     }

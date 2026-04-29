@@ -59,7 +59,8 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPITypes = [
         'platform' => 'string',
-        'budget' => '\Zernio\Model\UpdateAdCampaignRequestBudget'
+        'budget' => '\Zernio\Model\UpdateAdCampaignRequestBudget',
+        'bid_strategy' => '\Zernio\Model\BidStrategy'
     ];
 
     /**
@@ -71,7 +72,8 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static $openAPIFormats = [
         'platform' => null,
-        'budget' => null
+        'budget' => null,
+        'bid_strategy' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
       */
     protected static array $openAPINullables = [
         'platform' => false,
-        'budget' => false
+        'budget' => false,
+        'bid_strategy' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $attributeMap = [
         'platform' => 'platform',
-        'budget' => 'budget'
+        'budget' => 'budget',
+        'bid_strategy' => 'bidStrategy'
     ];
 
     /**
@@ -181,7 +185,8 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $setters = [
         'platform' => 'setPlatform',
-        'budget' => 'setBudget'
+        'budget' => 'setBudget',
+        'bid_strategy' => 'setBidStrategy'
     ];
 
     /**
@@ -191,7 +196,8 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     protected static $getters = [
         'platform' => 'getPlatform',
-        'budget' => 'getBudget'
+        'budget' => 'getBudget',
+        'bid_strategy' => 'getBidStrategy'
     ];
 
     /**
@@ -268,6 +274,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('budget', $data ?? [], null);
+        $this->setIfExists('bid_strategy', $data ?? [], null);
     }
 
     /**
@@ -309,9 +316,6 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
 
-        if ($this->container['budget'] === null) {
-            $invalidProperties[] = "'budget' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -367,7 +371,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets budget
      *
-     * @return \Zernio\Model\UpdateAdCampaignRequestBudget
+     * @return \Zernio\Model\UpdateAdCampaignRequestBudget|null
      */
     public function getBudget()
     {
@@ -377,7 +381,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets budget
      *
-     * @param \Zernio\Model\UpdateAdCampaignRequestBudget $budget budget
+     * @param \Zernio\Model\UpdateAdCampaignRequestBudget|null $budget budget
      *
      * @return self
      */
@@ -387,6 +391,33 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable budget cannot be null');
         }
         $this->container['budget'] = $budget;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_strategy
+     *
+     * @return \Zernio\Model\BidStrategy|null
+     */
+    public function getBidStrategy()
+    {
+        return $this->container['bid_strategy'];
+    }
+
+    /**
+     * Sets bid_strategy
+     *
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy Campaign-level default. Ad sets inherit this unless they override.
+     *
+     * @return self
+     */
+    public function setBidStrategy($bid_strategy)
+    {
+        if (is_null($bid_strategy)) {
+            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+        }
+        $this->container['bid_strategy'] = $bid_strategy;
 
         return $this;
     }

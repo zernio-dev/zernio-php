@@ -67,7 +67,9 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_set_budget' => '\Zernio\Model\AdTreeAdSetAdSetBudget',
         'metrics' => '\Zernio\Model\AdMetrics',
         'optimization_goal' => 'string',
-        'bid_strategy' => 'string',
+        'bid_strategy' => '\Zernio\Model\BidStrategy',
+        'bid_amount' => 'float',
+        'roas_average_floor' => 'float',
         'promoted_object' => '\Zernio\Model\AdTreeAdSetPromotedObject',
         'ads' => '\Zernio\Model\Ad[]'
     ];
@@ -89,6 +91,8 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'metrics' => null,
         'optimization_goal' => null,
         'bid_strategy' => null,
+        'bid_amount' => null,
+        'roas_average_floor' => null,
         'promoted_object' => null,
         'ads' => null
     ];
@@ -108,6 +112,8 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'metrics' => false,
         'optimization_goal' => false,
         'bid_strategy' => false,
+        'bid_amount' => false,
+        'roas_average_floor' => false,
         'promoted_object' => false,
         'ads' => false
     ];
@@ -207,6 +213,8 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'metrics' => 'metrics',
         'optimization_goal' => 'optimizationGoal',
         'bid_strategy' => 'bidStrategy',
+        'bid_amount' => 'bidAmount',
+        'roas_average_floor' => 'roasAverageFloor',
         'promoted_object' => 'promotedObject',
         'ads' => 'ads'
     ];
@@ -226,6 +234,8 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'metrics' => 'setMetrics',
         'optimization_goal' => 'setOptimizationGoal',
         'bid_strategy' => 'setBidStrategy',
+        'bid_amount' => 'setBidAmount',
+        'roas_average_floor' => 'setRoasAverageFloor',
         'promoted_object' => 'setPromotedObject',
         'ads' => 'setAds'
     ];
@@ -245,6 +255,8 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         'metrics' => 'getMetrics',
         'optimization_goal' => 'getOptimizationGoal',
         'bid_strategy' => 'getBidStrategy',
+        'bid_amount' => 'getBidAmount',
+        'roas_average_floor' => 'getRoasAverageFloor',
         'promoted_object' => 'getPromotedObject',
         'ads' => 'getAds'
     ];
@@ -315,6 +327,8 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('optimization_goal', $data ?? [], null);
         $this->setIfExists('bid_strategy', $data ?? [], null);
+        $this->setIfExists('bid_amount', $data ?? [], null);
+        $this->setIfExists('roas_average_floor', $data ?? [], null);
         $this->setIfExists('promoted_object', $data ?? [], null);
         $this->setIfExists('ads', $data ?? [], null);
     }
@@ -580,7 +594,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets bid_strategy
      *
-     * @return string|null
+     * @return \Zernio\Model\BidStrategy|null
      */
     public function getBidStrategy()
     {
@@ -590,7 +604,7 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bid_strategy
      *
-     * @param string|null $bid_strategy Bid strategy for this ad set (overrides campaign level when set)
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy Bid strategy for this ad set (overrides campaign level when set)
      *
      * @return self
      */
@@ -600,6 +614,60 @@ class AdTreeAdSet implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
         }
         $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_amount
+     *
+     * @return float|null
+     */
+    public function getBidAmount()
+    {
+        return $this->container['bid_amount'];
+    }
+
+    /**
+     * Sets bid_amount
+     *
+     * @param float|null $bid_amount Bid cap in whole currency units. Populated when bidStrategy is LOWEST_COST_WITH_BID_CAP or COST_CAP.
+     *
+     * @return self
+     */
+    public function setBidAmount($bid_amount)
+    {
+        if (is_null($bid_amount)) {
+            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
+        }
+        $this->container['bid_amount'] = $bid_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets roas_average_floor
+     *
+     * @return float|null
+     */
+    public function getRoasAverageFloor()
+    {
+        return $this->container['roas_average_floor'];
+    }
+
+    /**
+     * Sets roas_average_floor
+     *
+     * @param float|null $roas_average_floor Minimum ROAS as a decimal multiplier (2.0 = 2.0x). Populated when bidStrategy is LOWEST_COST_WITH_MIN_ROAS.
+     *
+     * @return self
+     */
+    public function setRoasAverageFloor($roas_average_floor)
+    {
+        if (is_null($roas_average_floor)) {
+            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
+        }
+        $this->container['roas_average_floor'] = $roas_average_floor;
 
         return $this;
     }

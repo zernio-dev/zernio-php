@@ -68,9 +68,13 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'string',
         'schedule' => '\Zernio\Model\BoostPostRequestSchedule',
         'targeting' => '\Zernio\Model\BoostPostRequestTargeting',
+        'bid_strategy' => '\Zernio\Model\BidStrategy',
         'bid_amount' => 'float',
+        'roas_average_floor' => 'float',
         'tracking' => '\Zernio\Model\BoostPostRequestTracking',
         'special_ad_categories' => 'string[]',
+        'link_url' => 'string',
+        'call_to_action' => 'string',
         'dsa_beneficiary' => 'string',
         'dsa_payor' => 'string'
     ];
@@ -93,9 +97,13 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => null,
         'schedule' => null,
         'targeting' => null,
+        'bid_strategy' => null,
         'bid_amount' => null,
+        'roas_average_floor' => null,
         'tracking' => null,
         'special_ad_categories' => null,
+        'link_url' => 'uri',
+        'call_to_action' => null,
         'dsa_beneficiary' => null,
         'dsa_payor' => null
     ];
@@ -116,9 +124,13 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => false,
         'schedule' => false,
         'targeting' => false,
+        'bid_strategy' => false,
         'bid_amount' => false,
+        'roas_average_floor' => false,
         'tracking' => false,
         'special_ad_categories' => false,
+        'link_url' => false,
+        'call_to_action' => false,
         'dsa_beneficiary' => false,
         'dsa_payor' => false
     ];
@@ -219,9 +231,13 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'currency',
         'schedule' => 'schedule',
         'targeting' => 'targeting',
+        'bid_strategy' => 'bidStrategy',
         'bid_amount' => 'bidAmount',
+        'roas_average_floor' => 'roasAverageFloor',
         'tracking' => 'tracking',
         'special_ad_categories' => 'specialAdCategories',
+        'link_url' => 'linkUrl',
+        'call_to_action' => 'callToAction',
         'dsa_beneficiary' => 'dsaBeneficiary',
         'dsa_payor' => 'dsaPayor'
     ];
@@ -242,9 +258,13 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'setCurrency',
         'schedule' => 'setSchedule',
         'targeting' => 'setTargeting',
+        'bid_strategy' => 'setBidStrategy',
         'bid_amount' => 'setBidAmount',
+        'roas_average_floor' => 'setRoasAverageFloor',
         'tracking' => 'setTracking',
         'special_ad_categories' => 'setSpecialAdCategories',
+        'link_url' => 'setLinkUrl',
+        'call_to_action' => 'setCallToAction',
         'dsa_beneficiary' => 'setDsaBeneficiary',
         'dsa_payor' => 'setDsaPayor'
     ];
@@ -265,9 +285,13 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'getCurrency',
         'schedule' => 'getSchedule',
         'targeting' => 'getTargeting',
+        'bid_strategy' => 'getBidStrategy',
         'bid_amount' => 'getBidAmount',
+        'roas_average_floor' => 'getRoasAverageFloor',
         'tracking' => 'getTracking',
         'special_ad_categories' => 'getSpecialAdCategories',
+        'link_url' => 'getLinkUrl',
+        'call_to_action' => 'getCallToAction',
         'dsa_beneficiary' => 'getDsaBeneficiary',
         'dsa_payor' => 'getDsaPayor'
     ];
@@ -383,9 +407,13 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('schedule', $data ?? [], null);
         $this->setIfExists('targeting', $data ?? [], null);
+        $this->setIfExists('bid_strategy', $data ?? [], null);
         $this->setIfExists('bid_amount', $data ?? [], null);
+        $this->setIfExists('roas_average_floor', $data ?? [], null);
         $this->setIfExists('tracking', $data ?? [], null);
         $this->setIfExists('special_ad_categories', $data ?? [], null);
+        $this->setIfExists('link_url', $data ?? [], null);
+        $this->setIfExists('call_to_action', $data ?? [], null);
         $this->setIfExists('dsa_beneficiary', $data ?? [], null);
         $this->setIfExists('dsa_payor', $data ?? [], null);
     }
@@ -753,6 +781,33 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets bid_strategy
+     *
+     * @return \Zernio\Model\BidStrategy|null
+     */
+    public function getBidStrategy()
+    {
+        return $this->container['bid_strategy'];
+    }
+
+    /**
+     * Sets bid_strategy
+     *
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy Meta bid strategy applied to the ad set. On TikTok, mapped to `bid_type` / `bid_price` / `deep_bid_type` automatically.
+     *
+     * @return self
+     */
+    public function setBidStrategy($bid_strategy)
+    {
+        if (is_null($bid_strategy)) {
+            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+        }
+        $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
      * Gets bid_amount
      *
      * @return float|null
@@ -765,7 +820,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets bid_amount
      *
-     * @param float|null $bid_amount Max bid cap (Meta only)
+     * @param float|null $bid_amount Bid cap in WHOLE currency units (USD: 5 = $5.00; JPY: 100 = ¥100). Required when `bidStrategy` is `LOWEST_COST_WITH_BID_CAP` or `COST_CAP`. Backward-compat: providing `bidAmount` without `bidStrategy` is treated as `LOWEST_COST_WITH_BID_CAP`.
      *
      * @return self
      */
@@ -775,6 +830,33 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
         }
         $this->container['bid_amount'] = $bid_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets roas_average_floor
+     *
+     * @return float|null
+     */
+    public function getRoasAverageFloor()
+    {
+        return $this->container['roas_average_floor'];
+    }
+
+    /**
+     * Sets roas_average_floor
+     *
+     * @param float|null $roas_average_floor Minimum ROAS as a decimal multiplier (e.g. 2.0 = 2.0x ROAS). Required when `bidStrategy` is `LOWEST_COST_WITH_MIN_ROAS`. Sent to Meta as `bid_constraints.roas_average_floor` × 10000 (Meta uses fixed-point integers).
+     *
+     * @return self
+     */
+    public function setRoasAverageFloor($roas_average_floor)
+    {
+        if (is_null($roas_average_floor)) {
+            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
+        }
+        $this->container['roas_average_floor'] = $roas_average_floor;
 
         return $this;
     }
@@ -838,6 +920,60 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['special_ad_categories'] = $special_ad_categories;
+
+        return $this;
+    }
+
+    /**
+     * Gets link_url
+     *
+     * @return string|null
+     */
+    public function getLinkUrl()
+    {
+        return $this->container['link_url'];
+    }
+
+    /**
+     * Sets link_url
+     *
+     * @param string|null $link_url TikTok-only. Custom destination URL for the Spark Ad. Without this, TikTok Spark Ads have no clickable destination — required for traffic / conversion objectives. Maps to `landing_page_url` on the creative entry of /v2/ad/create/ (TikTok SDK `AdcreateCreatives.landing_page_url`). Ignored on Meta / LinkedIn / Pinterest / X / Google (those infer the destination from the boosted post).
+     *
+     * @return self
+     */
+    public function setLinkUrl($link_url)
+    {
+        if (is_null($link_url)) {
+            throw new \InvalidArgumentException('non-nullable link_url cannot be null');
+        }
+        $this->container['link_url'] = $link_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets call_to_action
+     *
+     * @return string|null
+     */
+    public function getCallToAction()
+    {
+        return $this->container['call_to_action'];
+    }
+
+    /**
+     * Sets call_to_action
+     *
+     * @param string|null $call_to_action TikTok-only. Call-to-action button label on the Spark Ad creative (e.g. `LEARN_MORE`, `SHOP_NOW`, `DOWNLOAD_NOW`, `SIGN_UP`, `WATCH_NOW`). Maps to `call_to_action` on the creative entry of /v2/ad/create/. Pass-through — the platform validates the value. See TikTok's \"Enumeration - Call-to-Action\" reference for the full list.
+     *
+     * @return self
+     */
+    public function setCallToAction($call_to_action)
+    {
+        if (is_null($call_to_action)) {
+            throw new \InvalidArgumentException('non-nullable call_to_action cannot be null');
+        }
+        $this->container['call_to_action'] = $call_to_action;
 
         return $this;
     }

@@ -62,7 +62,10 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'budget_level' => 'string',
         'status' => 'string',
         'status_updated' => 'int',
-        'status_skipped' => 'int'
+        'status_skipped' => 'int',
+        'bid_strategy' => '\Zernio\Model\BidStrategy',
+        'bid_amount' => 'float',
+        'roas_average_floor' => 'float'
     ];
 
     /**
@@ -77,7 +80,10 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'budget_level' => null,
         'status' => null,
         'status_updated' => null,
-        'status_skipped' => null
+        'status_skipped' => null,
+        'bid_strategy' => null,
+        'bid_amount' => null,
+        'roas_average_floor' => null
     ];
 
     /**
@@ -90,7 +96,10 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'budget_level' => false,
         'status' => false,
         'status_updated' => false,
-        'status_skipped' => false
+        'status_skipped' => false,
+        'bid_strategy' => false,
+        'bid_amount' => false,
+        'roas_average_floor' => false
     ];
 
     /**
@@ -183,7 +192,10 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'budget_level' => 'budgetLevel',
         'status' => 'status',
         'status_updated' => 'statusUpdated',
-        'status_skipped' => 'statusSkipped'
+        'status_skipped' => 'statusSkipped',
+        'bid_strategy' => 'bidStrategy',
+        'bid_amount' => 'bidAmount',
+        'roas_average_floor' => 'roasAverageFloor'
     ];
 
     /**
@@ -196,7 +208,10 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'budget_level' => 'setBudgetLevel',
         'status' => 'setStatus',
         'status_updated' => 'setStatusUpdated',
-        'status_skipped' => 'setStatusSkipped'
+        'status_skipped' => 'setStatusSkipped',
+        'bid_strategy' => 'setBidStrategy',
+        'bid_amount' => 'setBidAmount',
+        'roas_average_floor' => 'setRoasAverageFloor'
     ];
 
     /**
@@ -209,7 +224,10 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         'budget_level' => 'getBudgetLevel',
         'status' => 'getStatus',
         'status_updated' => 'getStatusUpdated',
-        'status_skipped' => 'getStatusSkipped'
+        'status_skipped' => 'getStatusSkipped',
+        'bid_strategy' => 'getBidStrategy',
+        'bid_amount' => 'getBidAmount',
+        'roas_average_floor' => 'getRoasAverageFloor'
     ];
 
     /**
@@ -302,6 +320,9 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('status_updated', $data ?? [], null);
         $this->setIfExists('status_skipped', $data ?? [], null);
+        $this->setIfExists('bid_strategy', $data ?? [], null);
+        $this->setIfExists('bid_amount', $data ?? [], null);
+        $this->setIfExists('roas_average_floor', $data ?? [], null);
     }
 
     /**
@@ -515,6 +536,87 @@ class UpdateAdSet200Response implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable status_skipped cannot be null');
         }
         $this->container['status_skipped'] = $status_skipped;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_strategy
+     *
+     * @return \Zernio\Model\BidStrategy|null
+     */
+    public function getBidStrategy()
+    {
+        return $this->container['bid_strategy'];
+    }
+
+    /**
+     * Sets bid_strategy
+     *
+     * @param \Zernio\Model\BidStrategy|null $bid_strategy bid_strategy
+     *
+     * @return self
+     */
+    public function setBidStrategy($bid_strategy)
+    {
+        if (is_null($bid_strategy)) {
+            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+        }
+        $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_amount
+     *
+     * @return float|null
+     */
+    public function getBidAmount()
+    {
+        return $this->container['bid_amount'];
+    }
+
+    /**
+     * Sets bid_amount
+     *
+     * @param float|null $bid_amount bid_amount
+     *
+     * @return self
+     */
+    public function setBidAmount($bid_amount)
+    {
+        if (is_null($bid_amount)) {
+            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
+        }
+        $this->container['bid_amount'] = $bid_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets roas_average_floor
+     *
+     * @return float|null
+     */
+    public function getRoasAverageFloor()
+    {
+        return $this->container['roas_average_floor'];
+    }
+
+    /**
+     * Sets roas_average_floor
+     *
+     * @param float|null $roas_average_floor roas_average_floor
+     *
+     * @return self
+     */
+    public function setRoasAverageFloor($roas_average_floor)
+    {
+        if (is_null($roas_average_floor)) {
+            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
+        }
+        $this->container['roas_average_floor'] = $roas_average_floor;
 
         return $this;
     }
