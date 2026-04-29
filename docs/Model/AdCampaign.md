@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **currency** | **string** | ISO 4217 currency code for all budget amounts. Budgets are NOT normalized to USD. | [optional]
 **metrics** | [**\Zernio\Model\AdMetrics**](AdMetrics.md) |  | [optional]
 **platform_ad_account_id** | **string** |  | [optional]
+**platform_ad_account_name** | **string** | Human-readable advertiser/account name from the platform. Refreshed on every sync. | [optional]
 **account_id** | **string** |  | [optional]
 **profile_id** | **string** |  | [optional]
 **platform_objective** | **string** | Raw Meta campaign objective (e.g. OUTCOME_SALES, OUTCOME_LEADS, OUTCOME_TRAFFIC) | [optional]

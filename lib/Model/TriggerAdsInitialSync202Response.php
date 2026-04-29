@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAdRequest
+ * TriggerAdsInitialSync202Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateAdRequest Class Doc Comment
+ * TriggerAdsInitialSync202Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class TriggerAdsInitialSync202Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateAd_request';
+    protected static $openAPIModelName = 'triggerAdsInitialSync_202_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,8 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'budget' => '\Zernio\Model\UpdateAdRequestBudget',
-        'targeting' => '\Zernio\Model\UpdateAdRequestTargeting',
-        'creative' => '\Zernio\Model\UpdateAdRequestCreative',
-        'name' => 'string'
+        'trace_id' => 'string',
+        'message' => 'string'
     ];
 
     /**
@@ -74,10 +72,8 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'budget' => null,
-        'targeting' => null,
-        'creative' => null,
-        'name' => null
+        'trace_id' => null,
+        'message' => null
     ];
 
     /**
@@ -87,10 +83,8 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'status' => false,
-        'budget' => false,
-        'targeting' => false,
-        'creative' => false,
-        'name' => false
+        'trace_id' => false,
+        'message' => false
     ];
 
     /**
@@ -180,10 +174,8 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'status' => 'status',
-        'budget' => 'budget',
-        'targeting' => 'targeting',
-        'creative' => 'creative',
-        'name' => 'name'
+        'trace_id' => 'traceId',
+        'message' => 'message'
     ];
 
     /**
@@ -193,10 +185,8 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'status' => 'setStatus',
-        'budget' => 'setBudget',
-        'targeting' => 'setTargeting',
-        'creative' => 'setCreative',
-        'name' => 'setName'
+        'trace_id' => 'setTraceId',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -206,10 +196,8 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'status' => 'getStatus',
-        'budget' => 'getBudget',
-        'targeting' => 'getTargeting',
-        'creative' => 'getCreative',
-        'name' => 'getName'
+        'trace_id' => 'getTraceId',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -253,8 +241,8 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const STATUS_ACTIVE = 'active';
-    public const STATUS_PAUSED = 'paused';
+    public const STATUS_QUEUED = 'queued';
+    public const STATUS_ALREADY_QUEUED = 'already_queued';
 
     /**
      * Gets allowable values of the enum
@@ -264,8 +252,8 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS_ACTIVE,
-            self::STATUS_PAUSED,
+            self::STATUS_QUEUED,
+            self::STATUS_ALREADY_QUEUED,
         ];
     }
 
@@ -285,10 +273,8 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('targeting', $data ?? [], null);
-        $this->setIfExists('creative', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('trace_id', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
     }
 
     /**
@@ -380,109 +366,55 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets budget
-     *
-     * @return \Zernio\Model\UpdateAdRequestBudget|null
-     */
-    public function getBudget()
-    {
-        return $this->container['budget'];
-    }
-
-    /**
-     * Sets budget
-     *
-     * @param \Zernio\Model\UpdateAdRequestBudget|null $budget budget
-     *
-     * @return self
-     */
-    public function setBudget($budget)
-    {
-        if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
-        }
-        $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets targeting
-     *
-     * @return \Zernio\Model\UpdateAdRequestTargeting|null
-     */
-    public function getTargeting()
-    {
-        return $this->container['targeting'];
-    }
-
-    /**
-     * Sets targeting
-     *
-     * @param \Zernio\Model\UpdateAdRequestTargeting|null $targeting targeting
-     *
-     * @return self
-     */
-    public function setTargeting($targeting)
-    {
-        if (is_null($targeting)) {
-            throw new \InvalidArgumentException('non-nullable targeting cannot be null');
-        }
-        $this->container['targeting'] = $targeting;
-
-        return $this;
-    }
-
-    /**
-     * Gets creative
-     *
-     * @return \Zernio\Model\UpdateAdRequestCreative|null
-     */
-    public function getCreative()
-    {
-        return $this->container['creative'];
-    }
-
-    /**
-     * Sets creative
-     *
-     * @param \Zernio\Model\UpdateAdRequestCreative|null $creative creative
-     *
-     * @return self
-     */
-    public function setCreative($creative)
-    {
-        if (is_null($creative)) {
-            throw new \InvalidArgumentException('non-nullable creative cannot be null');
-        }
-        $this->container['creative'] = $creative;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
+     * Gets trace_id
      *
      * @return string|null
      */
-    public function getName()
+    public function getTraceId()
     {
-        return $this->container['name'];
+        return $this->container['trace_id'];
     }
 
     /**
-     * Sets name
+     * Sets trace_id
      *
-     * @param string|null $name name
+     * @param string|null $trace_id Trace ID for the enqueued job. Reused on `already_queued`.
      *
      * @return self
      */
-    public function setName($name)
+    public function setTraceId($trace_id)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($trace_id)) {
+            throw new \InvalidArgumentException('non-nullable trace_id cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['trace_id'] = $trace_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message message
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        }
+        $this->container['message'] = $message;
 
         return $this;
     }

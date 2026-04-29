@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UpdateAdRequestTargeting Class Doc Comment
  *
  * @category Class
- * @description Meta-only. Targeting updates for other platforms are not supported after creation.
+ * @description Meta + TikTok only. Pinterest / X / LinkedIn / Google return 501.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -147,7 +147,7 @@ duplicateAdCampaign($campaign_id, $duplicate_ad_campaign_request): \Zernio\Model
 
 Duplicate a campaign
 
-Duplicates a campaign, including its ad sets, ads, creatives, and targeting by default (`deepCopy: true`). On Meta, this uses `POST /{campaign-id}/copies`. The copy is created paused by default so callers can review before launching.  The platform's duplication is asynchronous from our side; once the copy is created on the platform, we trigger a sync discovery so the new hierarchy shows up in /v1/ads/tree. Set `syncAfter: false` to skip the discovery trigger and poll on your own cadence.  Meta-only for now. Other platforms return 501 Not Implemented.
+Duplicates a campaign, including its ad sets, ads, creatives, and targeting by default (`deepCopy: true`). The copy is created paused so callers can review before launching.  Per-platform implementation: - **Meta** uses the native `POST /{campaign-id}/copies` endpoint. - **TikTok** has no native copy primitive; Zernio walks the source   graph (`/v2/campaign/get/`, `/v2/adgroup/get/`, `/v2/ad/get/`) and   recreates each entity via the corresponding `/create/` endpoints,   carrying over budget / targeting / bid_type / bid_price /   deep_bid_type / creative fields. Spark Ad linkage (`tiktok_item_id`)   is preserved.  The new hierarchy is asynchronous to materialize in our DB — we trigger sync discovery automatically. Set `syncAfter: false` to skip and poll `/v1/ads/tree` on your own cadence.  Other platforms return 501 Not Implemented.
 
 ### Example
 

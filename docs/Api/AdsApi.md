@@ -15,10 +15,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAdComments()**](AdsApi.md#getAdComments) | **GET** /v1/ads/{adId}/comments | List comments on an ad |
 | [**listAdAccounts()**](AdsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAds()**](AdsApi.md#listAds) | **GET** /v1/ads | List ads |
+| [**listAdsBusinessCenters()**](AdsApi.md#listAdsBusinessCenters) | **GET** /v1/ads/business-centers | List TikTok Business Centers |
 | [**listConversionDestinations()**](AdsApi.md#listConversionDestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List destinations for the Conversions API |
 | [**searchAdInterests()**](AdsApi.md#searchAdInterests) | **GET** /v1/ads/interests | Search targeting interests |
 | [**sendConversions()**](AdsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events to an ad platform |
 | [**sendWhatsAppConversion()**](AdsApi.md#sendWhatsAppConversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event |
+| [**triggerAdsInitialSync()**](AdsApi.md#triggerAdsInitialSync) | **POST** /v1/ads/sync/initial | Re-sync an ads account |
 | [**updateAd()**](AdsApi.md#updateAd) | **PUT** /v1/ads/{adId} | Update ad |
 
 
@@ -455,7 +457,7 @@ try {
 ## `listAdAccounts()`
 
 ```php
-listAdAccounts($account_id): \Zernio\Model\ListAdAccounts200Response
+listAdAccounts($account_id, $ad_account_id, $limit): \Zernio\Model\ListAdAccounts200Response
 ```
 
 List ad accounts
@@ -480,9 +482,11 @@ $apiInstance = new Zernio\Api\AdsApi(
     $config
 );
 $account_id = 'account_id_example'; // string | Social account ID
+$ad_account_id = 'ad_account_id_example'; // string | Filter response to a single platform ad account ID (e.g. `act_123` for Meta, advertiser_id for TikTok). Returns at most one item.
+$limit = 56; // int | Clamp the returned `accounts[]` length. Useful for typeahead pickers on agency tokens with hundreds of advertisers.
 
 try {
-    $result = $apiInstance->listAdAccounts($account_id);
+    $result = $apiInstance->listAdAccounts($account_id, $ad_account_id, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdsApi->listAdAccounts: ', $e->getMessage(), PHP_EOL;
@@ -494,6 +498,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**| Social account ID | |
+| **ad_account_id** | **string**| Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. | [optional] |
+| **limit** | **int**| Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. | [optional] |
 
 ### Return type
 
@@ -578,6 +584,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListAds200Response**](../Model/ListAds200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listAdsBusinessCenters()`
+
+```php
+listAdsBusinessCenters($account_id): \Zernio\Model\ListAdsBusinessCenters200Response
+```
+
+List TikTok Business Centers
+
+Returns the TikTok Business Centers (BCs) the connected `tiktokads` account can read. Each BC reports its advertiser count so callers can build agency-style pickers without re-walking `/v1/ads/accounts` per BC.  TikTok-only. Solo advertisers (non-agency tokens) return an empty array.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | ID of the `tiktokads` (or parent `tiktok` posting) SocialAccount
+
+try {
+    $result = $apiInstance->listAdsBusinessCenters($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->listAdsBusinessCenters: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| ID of the &#x60;tiktokads&#x60; (or parent &#x60;tiktok&#x60; posting) SocialAccount | |
+
+### Return type
+
+[**\Zernio\Model\ListAdsBusinessCenters200Response**](../Model/ListAdsBusinessCenters200Response.md)
 
 ### Authorization
 
@@ -834,6 +900,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `triggerAdsInitialSync()`
+
+```php
+triggerAdsInitialSync($trigger_ads_initial_sync_request): \Zernio\Model\TriggerAdsInitialSync202Response
+```
+
+Re-sync an ads account
+
+Enqueue a full re-sync (discovery + 90-day metrics backfill) for one ads SocialAccount. Returns immediately with a trace ID; subscribe to the `account.ads.initial_sync_completed` webhook for completion.  Use this when: - the customer changed which TikTok Business Center / Meta ad account a   token can reach and wants Zernio to discover the new ads, - a previous sync errored out and the customer wants a clean retry, - the customer rotated permissions on the platform side.  Per-account 1h debounce: subsequent calls within an hour return `202` with `status: \"already_queued\"` and the prior trace ID.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$trigger_ads_initial_sync_request = new \Zernio\Model\TriggerAdsInitialSyncRequest(); // \Zernio\Model\TriggerAdsInitialSyncRequest
+
+try {
+    $result = $apiInstance->triggerAdsInitialSync($trigger_ads_initial_sync_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->triggerAdsInitialSync: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **trigger_ads_initial_sync_request** | [**\Zernio\Model\TriggerAdsInitialSyncRequest**](../Model/TriggerAdsInitialSyncRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\TriggerAdsInitialSync202Response**](../Model/TriggerAdsInitialSync202Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `updateAd()`
 
 ```php
@@ -842,7 +968,7 @@ updateAd($ad_id, $update_ad_request): \Zernio\Model\UpdateAd200Response
 
 Update ad
 
-Update one or more fields on an ad. Status changes and budget updates are propagated to the platform. Targeting updates are Meta-only.
+Patch one or more fields on an ad. Status, budget, targeting, and creative changes are propagated to the platform.  Per-platform support: - **Meta** (Facebook + Instagram): all fields supported. - **TikTok**: status, budget, targeting (via `/v2/adgroup/update/`), and creative   (via `/v2/ad/update/` patch-style — `headline` is ignored, `body` becomes `ad_text`). - **Pinterest / X / LinkedIn / Google**: status + budget only. Sending `targeting`   or `creative` returns 501 with code `unsupported_platform_operation`.
 
 ### Example
 

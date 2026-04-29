@@ -73,6 +73,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'string',
         'metrics' => '\Zernio\Model\AdMetrics',
         'platform_ad_account_id' => 'string',
+        'platform_ad_account_name' => 'string',
         'account_id' => 'string',
         'profile_id' => 'string',
         'platform_objective' => 'string',
@@ -108,6 +109,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => null,
         'metrics' => null,
         'platform_ad_account_id' => null,
+        'platform_ad_account_name' => null,
         'account_id' => null,
         'profile_id' => null,
         'platform_objective' => null,
@@ -141,6 +143,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => false,
         'metrics' => false,
         'platform_ad_account_id' => false,
+        'platform_ad_account_name' => false,
         'account_id' => false,
         'profile_id' => false,
         'platform_objective' => false,
@@ -254,6 +257,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'currency',
         'metrics' => 'metrics',
         'platform_ad_account_id' => 'platformAdAccountId',
+        'platform_ad_account_name' => 'platformAdAccountName',
         'account_id' => 'accountId',
         'profile_id' => 'profileId',
         'platform_objective' => 'platformObjective',
@@ -287,6 +291,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'setCurrency',
         'metrics' => 'setMetrics',
         'platform_ad_account_id' => 'setPlatformAdAccountId',
+        'platform_ad_account_name' => 'setPlatformAdAccountName',
         'account_id' => 'setAccountId',
         'profile_id' => 'setProfileId',
         'platform_objective' => 'setPlatformObjective',
@@ -320,6 +325,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'currency' => 'getCurrency',
         'metrics' => 'getMetrics',
         'platform_ad_account_id' => 'getPlatformAdAccountId',
+        'platform_ad_account_name' => 'getPlatformAdAccountName',
         'account_id' => 'getAccountId',
         'profile_id' => 'getProfileId',
         'platform_objective' => 'getPlatformObjective',
@@ -463,6 +469,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('platform_ad_account_id', $data ?? [], null);
+        $this->setIfExists('platform_ad_account_name', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('platform_objective', $data ?? [], null);
@@ -975,6 +982,33 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable platform_ad_account_id cannot be null');
         }
         $this->container['platform_ad_account_id'] = $platform_ad_account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_ad_account_name
+     *
+     * @return string|null
+     */
+    public function getPlatformAdAccountName()
+    {
+        return $this->container['platform_ad_account_name'];
+    }
+
+    /**
+     * Sets platform_ad_account_name
+     *
+     * @param string|null $platform_ad_account_name Human-readable advertiser/account name from the platform. Refreshed on every sync.
+     *
+     * @return self
+     */
+    public function setPlatformAdAccountName($platform_ad_account_name)
+    {
+        if (is_null($platform_ad_account_name)) {
+            throw new \InvalidArgumentException('non-nullable platform_ad_account_name cannot be null');
+        }
+        $this->container['platform_ad_account_name'] = $platform_ad_account_name;
 
         return $this;
     }

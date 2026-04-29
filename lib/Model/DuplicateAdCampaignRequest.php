@@ -279,6 +279,7 @@ class DuplicateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSe
 
     public const PLATFORM_FACEBOOK = 'facebook';
     public const PLATFORM_INSTAGRAM = 'instagram';
+    public const PLATFORM_TIKTOK = 'tiktok';
     public const STATUS_OPTION_ACTIVE = 'ACTIVE';
     public const STATUS_OPTION_PAUSED = 'PAUSED';
     public const STATUS_OPTION_INHERITED_FROM_SOURCE = 'INHERITED_FROM_SOURCE';
@@ -296,6 +297,7 @@ class DuplicateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSe
         return [
             self::PLATFORM_FACEBOOK,
             self::PLATFORM_INSTAGRAM,
+            self::PLATFORM_TIKTOK,
         ];
     }
 

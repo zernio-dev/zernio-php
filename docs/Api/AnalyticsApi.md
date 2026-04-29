@@ -1,6 +1,6 @@
 # Zernio\AnalyticsApi
 
-
+Cross-platform analytics for connected social accounts: per-post timelines, account-level insights, follower history, demographics, posting frequency, and best-time-to-post recommendations.  **Requires the Analytics add-on.** Endpoints in this group return &#x60;402&#x60; with code &#x60;analytics_addon_required&#x60; when the calling user (or root user, for invited team members) does not have the addon active. Subscribe via the Zernio dashboard or via Stripe.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

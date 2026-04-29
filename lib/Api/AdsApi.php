@@ -102,6 +102,9 @@ class AdsApi
         'listAds' => [
             'application/json',
         ],
+        'listAdsBusinessCenters' => [
+            'application/json',
+        ],
         'listConversionDestinations' => [
             'application/json',
         ],
@@ -112,6 +115,9 @@ class AdsApi
             'application/json',
         ],
         'sendWhatsAppConversion' => [
+            'application/json',
+        ],
+        'triggerAdsInitialSync' => [
             'application/json',
         ],
         'updateAd' => [
@@ -2307,15 +2313,17 @@ class AdsApi
      * List ad accounts
      *
      * @param  string $account_id Social account ID (required)
+     * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
+     * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListAdAccounts200Response|\Zernio\Model\InlineObject
      */
-    public function listAdAccounts($account_id, string $contentType = self::contentTypes['listAdAccounts'][0])
+    public function listAdAccounts($account_id, $ad_account_id = null, $limit = null, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
-        list($response) = $this->listAdAccountsWithHttpInfo($account_id, $contentType);
+        list($response) = $this->listAdAccountsWithHttpInfo($account_id, $ad_account_id, $limit, $contentType);
         return $response;
     }
 
@@ -2325,15 +2333,17 @@ class AdsApi
      * List ad accounts
      *
      * @param  string $account_id Social account ID (required)
+     * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
+     * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListAdAccounts200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdAccountsWithHttpInfo($account_id, string $contentType = self::contentTypes['listAdAccounts'][0])
+    public function listAdAccountsWithHttpInfo($account_id, $ad_account_id = null, $limit = null, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
-        $request = $this->listAdAccountsRequest($account_id, $contentType);
+        $request = $this->listAdAccountsRequest($account_id, $ad_account_id, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2424,14 +2434,16 @@ class AdsApi
      * List ad accounts
      *
      * @param  string $account_id Social account ID (required)
+     * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
+     * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdAccountsAsync($account_id, string $contentType = self::contentTypes['listAdAccounts'][0])
+    public function listAdAccountsAsync($account_id, $ad_account_id = null, $limit = null, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
-        return $this->listAdAccountsAsyncWithHttpInfo($account_id, $contentType)
+        return $this->listAdAccountsAsyncWithHttpInfo($account_id, $ad_account_id, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2445,15 +2457,17 @@ class AdsApi
      * List ad accounts
      *
      * @param  string $account_id Social account ID (required)
+     * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
+     * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdAccountsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['listAdAccounts'][0])
+    public function listAdAccountsAsyncWithHttpInfo($account_id, $ad_account_id = null, $limit = null, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
         $returnType = '\Zernio\Model\ListAdAccounts200Response';
-        $request = $this->listAdAccountsRequest($account_id, $contentType);
+        $request = $this->listAdAccountsRequest($account_id, $ad_account_id, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2495,12 +2509,14 @@ class AdsApi
      * Create request for operation 'listAdAccounts'
      *
      * @param  string $account_id Social account ID (required)
+     * @param  string|null $ad_account_id Filter response to a single platform ad account ID (e.g. &#x60;act_123&#x60; for Meta, advertiser_id for TikTok). Returns at most one item. (optional)
+     * @param  int|null $limit Clamp the returned &#x60;accounts[]&#x60; length. Useful for typeahead pickers on agency tokens with hundreds of advertisers. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdAccountsRequest($account_id, string $contentType = self::contentTypes['listAdAccounts'][0])
+    public function listAdAccountsRequest($account_id, $ad_account_id = null, $limit = null, string $contentType = self::contentTypes['listAdAccounts'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -2510,6 +2526,14 @@ class AdsApi
             );
         }
 
+
+        if ($limit !== null && $limit > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.listAdAccounts, must be smaller than or equal to 1000.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.listAdAccounts, must be bigger than or equal to 1.');
+        }
+        
 
         $resourcePath = '/v1/ads/accounts';
         $formParams = [];
@@ -2526,6 +2550,24 @@ class AdsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
 
 
@@ -2966,6 +3008,293 @@ class AdsApi
             'form', // style
             true, // explode
             false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listAdsBusinessCenters
+     *
+     * List TikTok Business Centers
+     *
+     * @param  string $account_id ID of the &#x60;tiktokads&#x60; (or parent &#x60;tiktok&#x60; posting) SocialAccount (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdsBusinessCenters'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListAdsBusinessCenters200Response|\Zernio\Model\InlineObject
+     */
+    public function listAdsBusinessCenters($account_id, string $contentType = self::contentTypes['listAdsBusinessCenters'][0])
+    {
+        list($response) = $this->listAdsBusinessCentersWithHttpInfo($account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listAdsBusinessCentersWithHttpInfo
+     *
+     * List TikTok Business Centers
+     *
+     * @param  string $account_id ID of the &#x60;tiktokads&#x60; (or parent &#x60;tiktok&#x60; posting) SocialAccount (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdsBusinessCenters'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListAdsBusinessCenters200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAdsBusinessCentersWithHttpInfo($account_id, string $contentType = self::contentTypes['listAdsBusinessCenters'][0])
+    {
+        $request = $this->listAdsBusinessCentersRequest($account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListAdsBusinessCenters200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListAdsBusinessCenters200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListAdsBusinessCenters200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listAdsBusinessCentersAsync
+     *
+     * List TikTok Business Centers
+     *
+     * @param  string $account_id ID of the &#x60;tiktokads&#x60; (or parent &#x60;tiktok&#x60; posting) SocialAccount (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdsBusinessCenters'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAdsBusinessCentersAsync($account_id, string $contentType = self::contentTypes['listAdsBusinessCenters'][0])
+    {
+        return $this->listAdsBusinessCentersAsyncWithHttpInfo($account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAdsBusinessCentersAsyncWithHttpInfo
+     *
+     * List TikTok Business Centers
+     *
+     * @param  string $account_id ID of the &#x60;tiktokads&#x60; (or parent &#x60;tiktok&#x60; posting) SocialAccount (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdsBusinessCenters'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAdsBusinessCentersAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['listAdsBusinessCenters'][0])
+    {
+        $returnType = '\Zernio\Model\ListAdsBusinessCenters200Response';
+        $request = $this->listAdsBusinessCentersRequest($account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAdsBusinessCenters'
+     *
+     * @param  string $account_id ID of the &#x60;tiktokads&#x60; (or parent &#x60;tiktok&#x60; posting) SocialAccount (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdsBusinessCenters'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listAdsBusinessCentersRequest($account_id, string $contentType = self::contentTypes['listAdsBusinessCenters'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listAdsBusinessCenters'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/business-centers';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
         ) ?? []);
 
 
@@ -4141,6 +4470,291 @@ class AdsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($send_whats_app_conversion_request));
             } else {
                 $httpBody = $send_whats_app_conversion_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation triggerAdsInitialSync
+     *
+     * Re-sync an ads account
+     *
+     * @param  \Zernio\Model\TriggerAdsInitialSyncRequest $trigger_ads_initial_sync_request trigger_ads_initial_sync_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerAdsInitialSync'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\TriggerAdsInitialSync202Response|\Zernio\Model\InlineObject
+     */
+    public function triggerAdsInitialSync($trigger_ads_initial_sync_request, string $contentType = self::contentTypes['triggerAdsInitialSync'][0])
+    {
+        list($response) = $this->triggerAdsInitialSyncWithHttpInfo($trigger_ads_initial_sync_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation triggerAdsInitialSyncWithHttpInfo
+     *
+     * Re-sync an ads account
+     *
+     * @param  \Zernio\Model\TriggerAdsInitialSyncRequest $trigger_ads_initial_sync_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerAdsInitialSync'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\TriggerAdsInitialSync202Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function triggerAdsInitialSyncWithHttpInfo($trigger_ads_initial_sync_request, string $contentType = self::contentTypes['triggerAdsInitialSync'][0])
+    {
+        $request = $this->triggerAdsInitialSyncRequest($trigger_ads_initial_sync_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 202:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\TriggerAdsInitialSync202Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\TriggerAdsInitialSync202Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 202:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\TriggerAdsInitialSync202Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation triggerAdsInitialSyncAsync
+     *
+     * Re-sync an ads account
+     *
+     * @param  \Zernio\Model\TriggerAdsInitialSyncRequest $trigger_ads_initial_sync_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerAdsInitialSync'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function triggerAdsInitialSyncAsync($trigger_ads_initial_sync_request, string $contentType = self::contentTypes['triggerAdsInitialSync'][0])
+    {
+        return $this->triggerAdsInitialSyncAsyncWithHttpInfo($trigger_ads_initial_sync_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation triggerAdsInitialSyncAsyncWithHttpInfo
+     *
+     * Re-sync an ads account
+     *
+     * @param  \Zernio\Model\TriggerAdsInitialSyncRequest $trigger_ads_initial_sync_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerAdsInitialSync'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function triggerAdsInitialSyncAsyncWithHttpInfo($trigger_ads_initial_sync_request, string $contentType = self::contentTypes['triggerAdsInitialSync'][0])
+    {
+        $returnType = '\Zernio\Model\TriggerAdsInitialSync202Response';
+        $request = $this->triggerAdsInitialSyncRequest($trigger_ads_initial_sync_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'triggerAdsInitialSync'
+     *
+     * @param  \Zernio\Model\TriggerAdsInitialSyncRequest $trigger_ads_initial_sync_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['triggerAdsInitialSync'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function triggerAdsInitialSyncRequest($trigger_ads_initial_sync_request, string $contentType = self::contentTypes['triggerAdsInitialSync'][0])
+    {
+
+        // verify the required parameter 'trigger_ads_initial_sync_request' is set
+        if ($trigger_ads_initial_sync_request === null || (is_array($trigger_ads_initial_sync_request) && count($trigger_ads_initial_sync_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $trigger_ads_initial_sync_request when calling triggerAdsInitialSync'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/sync/initial';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($trigger_ads_initial_sync_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($trigger_ads_initial_sync_request));
+            } else {
+                $httpBody = $trigger_ads_initial_sync_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

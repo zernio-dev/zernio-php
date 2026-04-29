@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAdRequest
+ * UpdateAdRequestCreative
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateAdRequest Class Doc Comment
+ * UpdateAdRequestCreative Class Doc Comment
  *
  * @category Class
+ * @description Replace the ad&#39;s creative. Meta + TikTok only.  - **Meta**: requires &#x60;headline&#x60;, &#x60;body&#x60;, &#x60;callToAction&#x60;, &#x60;linkUrl&#x60;, &#x60;imageUrl&#x60;. The   ad&#39;s existing creative is replaced via a new &#x60;/act_X/adcreatives&#x60; upload + ad   update. The old creative is retained on the ad account for historical reporting. - **TikTok**: patch-style. Pass any subset; &#x60;headline&#x60; is ignored (TikTok creatives   have no headline slot). &#x60;body&#x60; becomes the in-feed &#x60;ad_text&#x60;; &#x60;linkUrl&#x60; becomes   &#x60;landing_page_url&#x60;; &#x60;videoUrl&#x60; triggers a fresh upload.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateAdRequestCreative implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateAd_request';
+    protected static $openAPIModelName = 'updateAd_request_creative';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +59,12 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'budget' => '\Zernio\Model\UpdateAdRequestBudget',
-        'targeting' => '\Zernio\Model\UpdateAdRequestTargeting',
-        'creative' => '\Zernio\Model\UpdateAdRequestCreative',
-        'name' => 'string'
+        'headline' => 'string',
+        'body' => 'string',
+        'call_to_action' => 'string',
+        'link_url' => 'string',
+        'image_url' => 'string',
+        'video_url' => 'string'
     ];
 
     /**
@@ -73,11 +75,12 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'budget' => null,
-        'targeting' => null,
-        'creative' => null,
-        'name' => null
+        'headline' => null,
+        'body' => null,
+        'call_to_action' => null,
+        'link_url' => 'uri',
+        'image_url' => 'uri',
+        'video_url' => 'uri'
     ];
 
     /**
@@ -86,11 +89,12 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'budget' => false,
-        'targeting' => false,
-        'creative' => false,
-        'name' => false
+        'headline' => false,
+        'body' => false,
+        'call_to_action' => false,
+        'link_url' => false,
+        'image_url' => false,
+        'video_url' => false
     ];
 
     /**
@@ -179,11 +183,12 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'budget' => 'budget',
-        'targeting' => 'targeting',
-        'creative' => 'creative',
-        'name' => 'name'
+        'headline' => 'headline',
+        'body' => 'body',
+        'call_to_action' => 'callToAction',
+        'link_url' => 'linkUrl',
+        'image_url' => 'imageUrl',
+        'video_url' => 'videoUrl'
     ];
 
     /**
@@ -192,11 +197,12 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'budget' => 'setBudget',
-        'targeting' => 'setTargeting',
-        'creative' => 'setCreative',
-        'name' => 'setName'
+        'headline' => 'setHeadline',
+        'body' => 'setBody',
+        'call_to_action' => 'setCallToAction',
+        'link_url' => 'setLinkUrl',
+        'image_url' => 'setImageUrl',
+        'video_url' => 'setVideoUrl'
     ];
 
     /**
@@ -205,11 +211,12 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'budget' => 'getBudget',
-        'targeting' => 'getTargeting',
-        'creative' => 'getCreative',
-        'name' => 'getName'
+        'headline' => 'getHeadline',
+        'body' => 'getBody',
+        'call_to_action' => 'getCallToAction',
+        'link_url' => 'getLinkUrl',
+        'image_url' => 'getImageUrl',
+        'video_url' => 'getVideoUrl'
     ];
 
     /**
@@ -253,21 +260,6 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const STATUS_ACTIVE = 'active';
-    public const STATUS_PAUSED = 'paused';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_ACTIVE,
-            self::STATUS_PAUSED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -284,11 +276,12 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('targeting', $data ?? [], null);
-        $this->setIfExists('creative', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('headline', $data ?? [], null);
+        $this->setIfExists('body', $data ?? [], null);
+        $this->setIfExists('call_to_action', $data ?? [], null);
+        $this->setIfExists('link_url', $data ?? [], null);
+        $this->setIfExists('image_url', $data ?? [], null);
+        $this->setIfExists('video_url', $data ?? [], null);
     }
 
     /**
@@ -318,15 +311,6 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -343,146 +327,163 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets status
+     * Gets headline
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getHeadline()
     {
-        return $this->container['status'];
+        return $this->container['headline'];
     }
 
     /**
-     * Sets status
+     * Sets headline
      *
-     * @param string|null $status status
+     * @param string|null $headline Meta only
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setHeadline($headline)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($headline)) {
+            throw new \InvalidArgumentException('non-nullable headline cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
+        $this->container['headline'] = $headline;
 
         return $this;
     }
 
     /**
-     * Gets budget
-     *
-     * @return \Zernio\Model\UpdateAdRequestBudget|null
-     */
-    public function getBudget()
-    {
-        return $this->container['budget'];
-    }
-
-    /**
-     * Sets budget
-     *
-     * @param \Zernio\Model\UpdateAdRequestBudget|null $budget budget
-     *
-     * @return self
-     */
-    public function setBudget($budget)
-    {
-        if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
-        }
-        $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets targeting
-     *
-     * @return \Zernio\Model\UpdateAdRequestTargeting|null
-     */
-    public function getTargeting()
-    {
-        return $this->container['targeting'];
-    }
-
-    /**
-     * Sets targeting
-     *
-     * @param \Zernio\Model\UpdateAdRequestTargeting|null $targeting targeting
-     *
-     * @return self
-     */
-    public function setTargeting($targeting)
-    {
-        if (is_null($targeting)) {
-            throw new \InvalidArgumentException('non-nullable targeting cannot be null');
-        }
-        $this->container['targeting'] = $targeting;
-
-        return $this;
-    }
-
-    /**
-     * Gets creative
-     *
-     * @return \Zernio\Model\UpdateAdRequestCreative|null
-     */
-    public function getCreative()
-    {
-        return $this->container['creative'];
-    }
-
-    /**
-     * Sets creative
-     *
-     * @param \Zernio\Model\UpdateAdRequestCreative|null $creative creative
-     *
-     * @return self
-     */
-    public function setCreative($creative)
-    {
-        if (is_null($creative)) {
-            throw new \InvalidArgumentException('non-nullable creative cannot be null');
-        }
-        $this->container['creative'] = $creative;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
+     * Gets body
      *
      * @return string|null
      */
-    public function getName()
+    public function getBody()
     {
-        return $this->container['name'];
+        return $this->container['body'];
     }
 
     /**
-     * Sets name
+     * Sets body
      *
-     * @param string|null $name name
+     * @param string|null $body body
      *
      * @return self
      */
-    public function setName($name)
+    public function setBody($body)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($body)) {
+            throw new \InvalidArgumentException('non-nullable body cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['body'] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Gets call_to_action
+     *
+     * @return string|null
+     */
+    public function getCallToAction()
+    {
+        return $this->container['call_to_action'];
+    }
+
+    /**
+     * Sets call_to_action
+     *
+     * @param string|null $call_to_action call_to_action
+     *
+     * @return self
+     */
+    public function setCallToAction($call_to_action)
+    {
+        if (is_null($call_to_action)) {
+            throw new \InvalidArgumentException('non-nullable call_to_action cannot be null');
+        }
+        $this->container['call_to_action'] = $call_to_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets link_url
+     *
+     * @return string|null
+     */
+    public function getLinkUrl()
+    {
+        return $this->container['link_url'];
+    }
+
+    /**
+     * Sets link_url
+     *
+     * @param string|null $link_url link_url
+     *
+     * @return self
+     */
+    public function setLinkUrl($link_url)
+    {
+        if (is_null($link_url)) {
+            throw new \InvalidArgumentException('non-nullable link_url cannot be null');
+        }
+        $this->container['link_url'] = $link_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     *
+     * @return string|null
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     *
+     * @param string|null $image_url image_url
+     *
+     * @return self
+     */
+    public function setImageUrl($image_url)
+    {
+        if (is_null($image_url)) {
+            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
+        }
+        $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_url
+     *
+     * @return string|null
+     */
+    public function getVideoUrl()
+    {
+        return $this->container['video_url'];
+    }
+
+    /**
+     * Sets video_url
+     *
+     * @param string|null $video_url video_url
+     *
+     * @return self
+     */
+    public function setVideoUrl($video_url)
+    {
+        if (is_null($video_url)) {
+            throw new \InvalidArgumentException('non-nullable video_url cannot be null');
+        }
+        $this->container['video_url'] = $video_url;
 
         return $this;
     }

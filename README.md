@@ -104,10 +104,12 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**getAdComments**](docs/Api/AdsApi.md#getadcomments) | **GET** /v1/ads/{adId}/comments | List comments on an ad
 *AdsApi* | [**listAdAccounts**](docs/Api/AdsApi.md#listadaccounts) | **GET** /v1/ads/accounts | List ad accounts
 *AdsApi* | [**listAds**](docs/Api/AdsApi.md#listads) | **GET** /v1/ads | List ads
+*AdsApi* | [**listAdsBusinessCenters**](docs/Api/AdsApi.md#listadsbusinesscenters) | **GET** /v1/ads/business-centers | List TikTok Business Centers
 *AdsApi* | [**listConversionDestinations**](docs/Api/AdsApi.md#listconversiondestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List destinations for the Conversions API
 *AdsApi* | [**searchAdInterests**](docs/Api/AdsApi.md#searchadinterests) | **GET** /v1/ads/interests | Search targeting interests
 *AdsApi* | [**sendConversions**](docs/Api/AdsApi.md#sendconversions) | **POST** /v1/ads/conversions | Send conversion events to an ad platform
 *AdsApi* | [**sendWhatsAppConversion**](docs/Api/AdsApi.md#sendwhatsappconversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event
+*AdsApi* | [**triggerAdsInitialSync**](docs/Api/AdsApi.md#triggeradsinitialsync) | **POST** /v1/ads/sync/initial | Re-sync an ads account
 *AdsApi* | [**updateAd**](docs/Api/AdsApi.md#updatead) | **PUT** /v1/ads/{adId} | Update ad
 *AnalyticsApi* | [**getAnalytics**](docs/Api/AnalyticsApi.md#getanalytics) | **GET** /v1/analytics | Get post analytics
 *AnalyticsApi* | [**getBestTimeToPost**](docs/Api/AnalyticsApi.md#getbesttimetopost) | **GET** /v1/analytics/best-time | Get best times to post
@@ -391,6 +393,7 @@ Class | Method | HTTP request | Description
 - [BulkUploadPosts200Response](docs/Model/BulkUploadPosts200Response.md)
 - [BulkUploadPosts200ResponseErrorsInner](docs/Model/BulkUploadPosts200ResponseErrorsInner.md)
 - [BulkUploadPosts429Response](docs/Model/BulkUploadPosts429Response.md)
+- [BusinessCenter](docs/Model/BusinessCenter.md)
 - [CancelBroadcast200Response](docs/Model/CancelBroadcast200Response.md)
 - [CancelBroadcast200ResponseBroadcast](docs/Model/CancelBroadcast200ResponseBroadcast.md)
 - [CompleteTelegramConnect200Response](docs/Model/CompleteTelegramConnect200Response.md)
@@ -764,6 +767,7 @@ Class | Method | HTTP request | Description
 - [ListAdAudiences200ResponseAudiencesInner](docs/Model/ListAdAudiences200ResponseAudiencesInner.md)
 - [ListAdCampaigns200Response](docs/Model/ListAdCampaigns200Response.md)
 - [ListAds200Response](docs/Model/ListAds200Response.md)
+- [ListAdsBusinessCenters200Response](docs/Model/ListAdsBusinessCenters200Response.md)
 - [ListApiKeys200Response](docs/Model/ListApiKeys200Response.md)
 - [ListBroadcastRecipients200Response](docs/Model/ListBroadcastRecipients200Response.md)
 - [ListBroadcastRecipients200ResponseRecipientsInner](docs/Model/ListBroadcastRecipients200ResponseRecipientsInner.md)
@@ -965,6 +969,8 @@ Class | Method | HTTP request | Description
 - [TestWebhookRequest](docs/Model/TestWebhookRequest.md)
 - [ThreadsPlatformData](docs/Model/ThreadsPlatformData.md)
 - [TikTokPlatformData](docs/Model/TikTokPlatformData.md)
+- [TriggerAdsInitialSync202Response](docs/Model/TriggerAdsInitialSync202Response.md)
+- [TriggerAdsInitialSyncRequest](docs/Model/TriggerAdsInitialSyncRequest.md)
 - [TwitterPlatformData](docs/Model/TwitterPlatformData.md)
 - [TwitterPlatformDataPoll](docs/Model/TwitterPlatformDataPoll.md)
 - [TwitterPlatformDataThreadItemsInner](docs/Model/TwitterPlatformDataThreadItemsInner.md)
@@ -985,6 +991,7 @@ Class | Method | HTTP request | Description
 - [UpdateAdCampaignStatusRequest](docs/Model/UpdateAdCampaignStatusRequest.md)
 - [UpdateAdRequest](docs/Model/UpdateAdRequest.md)
 - [UpdateAdRequestBudget](docs/Model/UpdateAdRequestBudget.md)
+- [UpdateAdRequestCreative](docs/Model/UpdateAdRequestCreative.md)
 - [UpdateAdRequestTargeting](docs/Model/UpdateAdRequestTargeting.md)
 - [UpdateAdRequestTargetingInterestsInner](docs/Model/UpdateAdRequestTargetingInterestsInner.md)
 - [UpdateAdSet200Response](docs/Model/UpdateAdSet200Response.md)

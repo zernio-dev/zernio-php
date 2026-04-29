@@ -75,6 +75,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'special_ad_categories' => 'string[]',
         'link_url' => 'string',
         'call_to_action' => 'string',
+        'spark_auth_code' => 'string',
         'dsa_beneficiary' => 'string',
         'dsa_payor' => 'string'
     ];
@@ -104,6 +105,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'special_ad_categories' => null,
         'link_url' => 'uri',
         'call_to_action' => null,
+        'spark_auth_code' => null,
         'dsa_beneficiary' => null,
         'dsa_payor' => null
     ];
@@ -131,6 +133,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'special_ad_categories' => false,
         'link_url' => false,
         'call_to_action' => false,
+        'spark_auth_code' => false,
         'dsa_beneficiary' => false,
         'dsa_payor' => false
     ];
@@ -238,6 +241,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'special_ad_categories' => 'specialAdCategories',
         'link_url' => 'linkUrl',
         'call_to_action' => 'callToAction',
+        'spark_auth_code' => 'sparkAuthCode',
         'dsa_beneficiary' => 'dsaBeneficiary',
         'dsa_payor' => 'dsaPayor'
     ];
@@ -265,6 +269,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'special_ad_categories' => 'setSpecialAdCategories',
         'link_url' => 'setLinkUrl',
         'call_to_action' => 'setCallToAction',
+        'spark_auth_code' => 'setSparkAuthCode',
         'dsa_beneficiary' => 'setDsaBeneficiary',
         'dsa_payor' => 'setDsaPayor'
     ];
@@ -292,6 +297,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         'special_ad_categories' => 'getSpecialAdCategories',
         'link_url' => 'getLinkUrl',
         'call_to_action' => 'getCallToAction',
+        'spark_auth_code' => 'getSparkAuthCode',
         'dsa_beneficiary' => 'getDsaBeneficiary',
         'dsa_payor' => 'getDsaPayor'
     ];
@@ -414,6 +420,7 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('special_ad_categories', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('call_to_action', $data ?? [], null);
+        $this->setIfExists('spark_auth_code', $data ?? [], null);
         $this->setIfExists('dsa_beneficiary', $data ?? [], null);
         $this->setIfExists('dsa_payor', $data ?? [], null);
     }
@@ -974,6 +981,33 @@ class BoostPostRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable call_to_action cannot be null');
         }
         $this->container['call_to_action'] = $call_to_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets spark_auth_code
+     *
+     * @return string|null
+     */
+    public function getSparkAuthCode()
+    {
+        return $this->container['spark_auth_code'];
+    }
+
+    /**
+     * Sets spark_auth_code
+     *
+     * @param string|null $spark_auth_code TikTok-only. Spark Code (creator's `auth_code`) authorizing cross-creator Spark Ads — the advertiser can boost a video owned by a DIFFERENT TikTok account. Without this, boosts are limited to videos owned by the same account running the ads (same-BC creators only). The creator generates the code in their TikTok app's Promote settings and shares it with the advertiser. Maps to `auth_code` on the creative entry of /v2/ad/create/.
+     *
+     * @return self
+     */
+    public function setSparkAuthCode($spark_auth_code)
+    {
+        if (is_null($spark_auth_code)) {
+            throw new \InvalidArgumentException('non-nullable spark_auth_code cannot be null');
+        }
+        $this->container['spark_auth_code'] = $spark_auth_code;
 
         return $this;
     }

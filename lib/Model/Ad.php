@@ -75,6 +75,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_set_name' => 'string',
         'platform_objective' => 'string',
         'optimization_goal' => 'string',
+        'platform_ad_account_name' => 'string',
+        'platform_created_at' => '\DateTime',
         'bid_strategy' => '\Zernio\Model\BidStrategy',
         'bid_amount' => 'float',
         'roas_average_floor' => 'float',
@@ -112,6 +114,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_set_name' => null,
         'platform_objective' => null,
         'optimization_goal' => null,
+        'platform_ad_account_name' => null,
+        'platform_created_at' => 'date-time',
         'bid_strategy' => null,
         'bid_amount' => null,
         'roas_average_floor' => null,
@@ -147,6 +151,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_set_name' => false,
         'platform_objective' => false,
         'optimization_goal' => false,
+        'platform_ad_account_name' => false,
+        'platform_created_at' => false,
         'bid_strategy' => false,
         'bid_amount' => false,
         'roas_average_floor' => false,
@@ -262,6 +268,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_set_name' => 'adSetName',
         'platform_objective' => 'platformObjective',
         'optimization_goal' => 'optimizationGoal',
+        'platform_ad_account_name' => 'platformAdAccountName',
+        'platform_created_at' => 'platformCreatedAt',
         'bid_strategy' => 'bidStrategy',
         'bid_amount' => 'bidAmount',
         'roas_average_floor' => 'roasAverageFloor',
@@ -297,6 +305,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_set_name' => 'setAdSetName',
         'platform_objective' => 'setPlatformObjective',
         'optimization_goal' => 'setOptimizationGoal',
+        'platform_ad_account_name' => 'setPlatformAdAccountName',
+        'platform_created_at' => 'setPlatformCreatedAt',
         'bid_strategy' => 'setBidStrategy',
         'bid_amount' => 'setBidAmount',
         'roas_average_floor' => 'setRoasAverageFloor',
@@ -332,6 +342,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         'ad_set_name' => 'getAdSetName',
         'platform_objective' => 'getPlatformObjective',
         'optimization_goal' => 'getOptimizationGoal',
+        'platform_ad_account_name' => 'getPlatformAdAccountName',
+        'platform_created_at' => 'getPlatformCreatedAt',
         'bid_strategy' => 'getBidStrategy',
         'bid_amount' => 'getBidAmount',
         'roas_average_floor' => 'getRoasAverageFloor',
@@ -483,6 +495,8 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('ad_set_name', $data ?? [], null);
         $this->setIfExists('platform_objective', $data ?? [], null);
         $this->setIfExists('optimization_goal', $data ?? [], null);
+        $this->setIfExists('platform_ad_account_name', $data ?? [], null);
+        $this->setIfExists('platform_created_at', $data ?? [], null);
         $this->setIfExists('bid_strategy', $data ?? [], null);
         $this->setIfExists('bid_amount', $data ?? [], null);
         $this->setIfExists('roas_average_floor', $data ?? [], null);
@@ -1049,6 +1063,60 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable optimization_goal cannot be null');
         }
         $this->container['optimization_goal'] = $optimization_goal;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_ad_account_name
+     *
+     * @return string|null
+     */
+    public function getPlatformAdAccountName()
+    {
+        return $this->container['platform_ad_account_name'];
+    }
+
+    /**
+     * Sets platform_ad_account_name
+     *
+     * @param string|null $platform_ad_account_name Human-readable advertiser/account name (Meta `AdAccount.name`, TikTok `advertiser_name`, LinkedIn / X / Pinterest equivalents). Refreshed every sync so platform-side renames propagate within one cycle. `null` when the platform doesn't return a name or the sync hasn't run yet.
+     *
+     * @return self
+     */
+    public function setPlatformAdAccountName($platform_ad_account_name)
+    {
+        if (is_null($platform_ad_account_name)) {
+            throw new \InvalidArgumentException('non-nullable platform_ad_account_name cannot be null');
+        }
+        $this->container['platform_ad_account_name'] = $platform_ad_account_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getPlatformCreatedAt()
+    {
+        return $this->container['platform_created_at'];
+    }
+
+    /**
+     * Sets platform_created_at
+     *
+     * @param \DateTime|null $platform_created_at Platform-reported creation timestamp (Meta `created_time`, TikTok `create_time`). Distinct from `createdAt` which reflects when Zernio first synced the doc — for sort/filter by \"when the ad was actually created on the platform\", read this field. `null` for legacy ads synced before this field was added; aggregations fall back to `createdAt` in that case.
+     *
+     * @return self
+     */
+    public function setPlatformCreatedAt($platform_created_at)
+    {
+        if (is_null($platform_created_at)) {
+            throw new \InvalidArgumentException('non-nullable platform_created_at cannot be null');
+        }
+        $this->container['platform_created_at'] = $platform_created_at;
 
         return $this;
     }

@@ -107,6 +107,7 @@ docs/Model/BulkUpdateAdCampaignStatusRequestCampaignsInner.md
 docs/Model/BulkUploadPosts200Response.md
 docs/Model/BulkUploadPosts200ResponseErrorsInner.md
 docs/Model/BulkUploadPosts429Response.md
+docs/Model/BusinessCenter.md
 docs/Model/CancelBroadcast200Response.md
 docs/Model/CancelBroadcast200ResponseBroadcast.md
 docs/Model/CompleteTelegramConnect200Response.md
@@ -480,6 +481,7 @@ docs/Model/ListAdAudiences200Response.md
 docs/Model/ListAdAudiences200ResponseAudiencesInner.md
 docs/Model/ListAdCampaigns200Response.md
 docs/Model/ListAds200Response.md
+docs/Model/ListAdsBusinessCenters200Response.md
 docs/Model/ListApiKeys200Response.md
 docs/Model/ListBroadcastRecipients200Response.md
 docs/Model/ListBroadcastRecipients200ResponseRecipientsInner.md
@@ -681,6 +683,8 @@ docs/Model/TelegramPlatformData.md
 docs/Model/TestWebhookRequest.md
 docs/Model/ThreadsPlatformData.md
 docs/Model/TikTokPlatformData.md
+docs/Model/TriggerAdsInitialSync202Response.md
+docs/Model/TriggerAdsInitialSyncRequest.md
 docs/Model/TwitterPlatformData.md
 docs/Model/TwitterPlatformDataPoll.md
 docs/Model/TwitterPlatformDataThreadItemsInner.md
@@ -701,6 +705,7 @@ docs/Model/UpdateAdCampaignStatus200Response.md
 docs/Model/UpdateAdCampaignStatusRequest.md
 docs/Model/UpdateAdRequest.md
 docs/Model/UpdateAdRequestBudget.md
+docs/Model/UpdateAdRequestCreative.md
 docs/Model/UpdateAdRequestTargeting.md
 docs/Model/UpdateAdRequestTargetingInterestsInner.md
 docs/Model/UpdateAdSet200Response.md
@@ -974,6 +979,7 @@ lib/Model/BulkUpdateAdCampaignStatusRequestCampaignsInner.php
 lib/Model/BulkUploadPosts200Response.php
 lib/Model/BulkUploadPosts200ResponseErrorsInner.php
 lib/Model/BulkUploadPosts429Response.php
+lib/Model/BusinessCenter.php
 lib/Model/CancelBroadcast200Response.php
 lib/Model/CancelBroadcast200ResponseBroadcast.php
 lib/Model/CompleteTelegramConnect200Response.php
@@ -1347,6 +1353,7 @@ lib/Model/ListAdAudiences200Response.php
 lib/Model/ListAdAudiences200ResponseAudiencesInner.php
 lib/Model/ListAdCampaigns200Response.php
 lib/Model/ListAds200Response.php
+lib/Model/ListAdsBusinessCenters200Response.php
 lib/Model/ListApiKeys200Response.php
 lib/Model/ListBroadcastRecipients200Response.php
 lib/Model/ListBroadcastRecipients200ResponseRecipientsInner.php
@@ -1549,6 +1556,8 @@ lib/Model/TelegramPlatformData.php
 lib/Model/TestWebhookRequest.php
 lib/Model/ThreadsPlatformData.php
 lib/Model/TikTokPlatformData.php
+lib/Model/TriggerAdsInitialSync202Response.php
+lib/Model/TriggerAdsInitialSyncRequest.php
 lib/Model/TwitterPlatformData.php
 lib/Model/TwitterPlatformDataPoll.php
 lib/Model/TwitterPlatformDataThreadItemsInner.php
@@ -1569,6 +1578,7 @@ lib/Model/UpdateAdCampaignStatus200Response.php
 lib/Model/UpdateAdCampaignStatusRequest.php
 lib/Model/UpdateAdRequest.php
 lib/Model/UpdateAdRequestBudget.php
+lib/Model/UpdateAdRequestCreative.php
 lib/Model/UpdateAdRequestTargeting.php
 lib/Model/UpdateAdRequestTargetingInterestsInner.php
 lib/Model/UpdateAdSet200Response.php
@@ -1735,3 +1745,8 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/BusinessCenterTest.php
+test/Model/ListAdsBusinessCenters200ResponseTest.php
+test/Model/TriggerAdsInitialSync202ResponseTest.php
+test/Model/TriggerAdsInitialSyncRequestTest.php
+test/Model/UpdateAdRequestCreativeTest.php

@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateAdRequest
+ * BusinessCenter
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateAdRequest Class Doc Comment
+ * BusinessCenter Class Doc Comment
  *
  * @category Class
+ * @description TikTok Business Center entity. Returned by &#x60;GET /v1/ads/business-centers&#x60;. BCs are TikTok&#39;s agency container — one BC owns N advertisers (ad accounts). Most solo advertisers don&#39;t have one; the agency token uses BCs to roll up multi-client access.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class BusinessCenter implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateAd_request';
+    protected static $openAPIModelName = 'BusinessCenter';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +59,9 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'budget' => '\Zernio\Model\UpdateAdRequestBudget',
-        'targeting' => '\Zernio\Model\UpdateAdRequestTargeting',
-        'creative' => '\Zernio\Model\UpdateAdRequestCreative',
-        'name' => 'string'
+        'bc_id' => 'string',
+        'name' => 'string',
+        'advertiser_count' => 'int'
     ];
 
     /**
@@ -73,11 +72,9 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'budget' => null,
-        'targeting' => null,
-        'creative' => null,
-        'name' => null
+        'bc_id' => null,
+        'name' => null,
+        'advertiser_count' => null
     ];
 
     /**
@@ -86,11 +83,9 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'budget' => false,
-        'targeting' => false,
-        'creative' => false,
-        'name' => false
+        'bc_id' => false,
+        'name' => false,
+        'advertiser_count' => false
     ];
 
     /**
@@ -179,11 +174,9 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'budget' => 'budget',
-        'targeting' => 'targeting',
-        'creative' => 'creative',
-        'name' => 'name'
+        'bc_id' => 'bcId',
+        'name' => 'name',
+        'advertiser_count' => 'advertiserCount'
     ];
 
     /**
@@ -192,11 +185,9 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'budget' => 'setBudget',
-        'targeting' => 'setTargeting',
-        'creative' => 'setCreative',
-        'name' => 'setName'
+        'bc_id' => 'setBcId',
+        'name' => 'setName',
+        'advertiser_count' => 'setAdvertiserCount'
     ];
 
     /**
@@ -205,11 +196,9 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'budget' => 'getBudget',
-        'targeting' => 'getTargeting',
-        'creative' => 'getCreative',
-        'name' => 'getName'
+        'bc_id' => 'getBcId',
+        'name' => 'getName',
+        'advertiser_count' => 'getAdvertiserCount'
     ];
 
     /**
@@ -253,21 +242,6 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const STATUS_ACTIVE = 'active';
-    public const STATUS_PAUSED = 'paused';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_ACTIVE,
-            self::STATUS_PAUSED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -284,11 +258,9 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('budget', $data ?? [], null);
-        $this->setIfExists('targeting', $data ?? [], null);
-        $this->setIfExists('creative', $data ?? [], null);
+        $this->setIfExists('bc_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('advertiser_count', $data ?? [], null);
     }
 
     /**
@@ -318,15 +290,6 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -343,119 +306,28 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets status
+     * Gets bc_id
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getBcId()
     {
-        return $this->container['status'];
+        return $this->container['bc_id'];
     }
 
     /**
-     * Sets status
+     * Sets bc_id
      *
-     * @param string|null $status status
+     * @param string|null $bc_id Business Center ID
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setBcId($bc_id)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($bc_id)) {
+            throw new \InvalidArgumentException('non-nullable bc_id cannot be null');
         }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets budget
-     *
-     * @return \Zernio\Model\UpdateAdRequestBudget|null
-     */
-    public function getBudget()
-    {
-        return $this->container['budget'];
-    }
-
-    /**
-     * Sets budget
-     *
-     * @param \Zernio\Model\UpdateAdRequestBudget|null $budget budget
-     *
-     * @return self
-     */
-    public function setBudget($budget)
-    {
-        if (is_null($budget)) {
-            throw new \InvalidArgumentException('non-nullable budget cannot be null');
-        }
-        $this->container['budget'] = $budget;
-
-        return $this;
-    }
-
-    /**
-     * Gets targeting
-     *
-     * @return \Zernio\Model\UpdateAdRequestTargeting|null
-     */
-    public function getTargeting()
-    {
-        return $this->container['targeting'];
-    }
-
-    /**
-     * Sets targeting
-     *
-     * @param \Zernio\Model\UpdateAdRequestTargeting|null $targeting targeting
-     *
-     * @return self
-     */
-    public function setTargeting($targeting)
-    {
-        if (is_null($targeting)) {
-            throw new \InvalidArgumentException('non-nullable targeting cannot be null');
-        }
-        $this->container['targeting'] = $targeting;
-
-        return $this;
-    }
-
-    /**
-     * Gets creative
-     *
-     * @return \Zernio\Model\UpdateAdRequestCreative|null
-     */
-    public function getCreative()
-    {
-        return $this->container['creative'];
-    }
-
-    /**
-     * Sets creative
-     *
-     * @param \Zernio\Model\UpdateAdRequestCreative|null $creative creative
-     *
-     * @return self
-     */
-    public function setCreative($creative)
-    {
-        if (is_null($creative)) {
-            throw new \InvalidArgumentException('non-nullable creative cannot be null');
-        }
-        $this->container['creative'] = $creative;
+        $this->container['bc_id'] = $bc_id;
 
         return $this;
     }
@@ -473,7 +345,7 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string|null $name Display name set by the BC owner
      *
      * @return self
      */
@@ -483,6 +355,33 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets advertiser_count
+     *
+     * @return int|null
+     */
+    public function getAdvertiserCount()
+    {
+        return $this->container['advertiser_count'];
+    }
+
+    /**
+     * Sets advertiser_count
+     *
+     * @param int|null $advertiser_count Number of advertisers (ad accounts) reachable under this BC for the calling token
+     *
+     * @return self
+     */
+    public function setAdvertiserCount($advertiser_count)
+    {
+        if (is_null($advertiser_count)) {
+            throw new \InvalidArgumentException('non-nullable advertiser_count cannot be null');
+        }
+        $this->container['advertiser_count'] = $advertiser_count;
 
         return $this;
     }
