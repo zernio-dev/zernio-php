@@ -1067,7 +1067,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets call_to_action
      *
-     * @param string|null $call_to_action Required on legacy + attach shapes. Meta only.
+     * @param string|null $call_to_action Required on legacy + attach shapes for Meta. Honoured on TikTok too — passes through to the Spark Ad creative's `call_to_action`. Ignored by other platforms.
      *
      * @return self
      */

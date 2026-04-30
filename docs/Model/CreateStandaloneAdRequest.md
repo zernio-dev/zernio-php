@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **headline** | **string** | Required for Meta, Google, and Pinterest on legacy + attach shapes (skip for multi-creative — use &#x60;creatives[].headline&#x60;). Ignored for TikTok and X/Twitter. Max: Meta&#x3D;255, Google&#x3D;30, Pinterest&#x3D;100. | [optional]
 **long_headline** | **string** | Google Display only. Defaults to &#x60;headline&#x60; if omitted. | [optional]
 **body** | **string** | Required on legacy + attach shapes. For X/Twitter this is the tweet text (max 280 chars including a ~24-char URL when &#x60;linkUrl&#x60; is set). Max: Google&#x3D;90, Pinterest&#x3D;500. | [optional]
-**call_to_action** | **string** | Required on legacy + attach shapes. Meta only. | [optional]
+**call_to_action** | **string** | Required on legacy + attach shapes for Meta. Honoured on TikTok too — passes through to the Spark Ad creative&#39;s &#x60;call_to_action&#x60;. Ignored by other platforms. | [optional]
 **link_url** | **string** | Required on legacy + attach shapes. Skip for multi-creative. | [optional]
 **image_url** | **string** | Image creative for Meta/Google/Pinterest on legacy + attach shapes (mutually exclusive with &#x60;video&#x60;). Not required for Google Search campaigns. For TikTok, this field carries the VIDEO URL (the TikTok ads endpoint is video-only; the field retains the &#x60;imageUrl&#x60; name for cross-platform consistency). Ignored for X/Twitter. For Google Display, treated as the landscape image (alias of &#x60;images.landscape&#x60;); supply &#x60;images.square&#x60; alongside or the request is rejected. | [optional]
 **images** | [**\Zernio\Model\CreateStandaloneAdRequestImages**](CreateStandaloneAdRequestImages.md) |  | [optional]
