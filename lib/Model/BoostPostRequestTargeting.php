@@ -441,7 +441,7 @@ class BoostPostRequestTargeting implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets countries
      *
-     * @param string[]|null $countries countries
+     * @param string[]|null $countries ISO country codes. Required for TikTok boosts (TikTok's ad group requires location_ids); optional on other platforms.
      *
      * @return self
      */

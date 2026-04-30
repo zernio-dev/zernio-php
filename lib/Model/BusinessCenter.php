@@ -372,7 +372,7 @@ class BusinessCenter implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets advertiser_count
      *
-     * @param int|null $advertiser_count Number of advertisers (ad accounts) reachable under this BC for the calling token
+     * @param int|null $advertiser_count Number of advertisers reachable under this BC for the calling token. `null` when the BC asset walk returned empty or failed (typical for agency apps without full BC asset read scope) — distinct from `0`, which would imply the BC genuinely has no advertisers.
      *
      * @return self
      */
