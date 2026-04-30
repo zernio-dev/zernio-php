@@ -717,6 +717,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
@@ -724,9 +725,9 @@ class AnalyticsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetBestTimeToPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetBestTimeToPost403Response
      */
-    public function getBestTimeToPost($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    public function getBestTimeToPost($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
-        list($response) = $this->getBestTimeToPostWithHttpInfo($platform, $profile_id, $source, $contentType);
+        list($response) = $this->getBestTimeToPostWithHttpInfo($platform, $profile_id, $account_id, $source, $contentType);
         return $response;
     }
 
@@ -737,6 +738,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
@@ -744,9 +746,9 @@ class AnalyticsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetBestTimeToPost200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBestTimeToPostWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    public function getBestTimeToPostWithHttpInfo($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
-        $request = $this->getBestTimeToPostRequest($platform, $profile_id, $source, $contentType);
+        $request = $this->getBestTimeToPostRequest($platform, $profile_id, $account_id, $source, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -852,15 +854,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBestTimeToPostAsync($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    public function getBestTimeToPostAsync($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
-        return $this->getBestTimeToPostAsyncWithHttpInfo($platform, $profile_id, $source, $contentType)
+        return $this->getBestTimeToPostAsyncWithHttpInfo($platform, $profile_id, $account_id, $source, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -875,16 +878,17 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getBestTimeToPostAsyncWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    public function getBestTimeToPostAsyncWithHttpInfo($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
         $returnType = '\Zernio\Model\GetBestTimeToPost200Response';
-        $request = $this->getBestTimeToPostRequest($platform, $profile_id, $source, $contentType);
+        $request = $this->getBestTimeToPostRequest($platform, $profile_id, $account_id, $source, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -927,14 +931,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getBestTimeToPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getBestTimeToPostRequest($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
+    public function getBestTimeToPostRequest($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getBestTimeToPost'][0])
     {
+
 
 
 
@@ -960,6 +966,15 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $profile_id,
             'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1042,6 +1057,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
@@ -1049,9 +1065,9 @@ class AnalyticsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetContentDecay200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetBestTimeToPost403Response
      */
-    public function getContentDecay($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
+    public function getContentDecay($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
-        list($response) = $this->getContentDecayWithHttpInfo($platform, $profile_id, $source, $contentType);
+        list($response) = $this->getContentDecayWithHttpInfo($platform, $profile_id, $account_id, $source, $contentType);
         return $response;
     }
 
@@ -1062,6 +1078,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
@@ -1069,9 +1086,9 @@ class AnalyticsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetContentDecay200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getContentDecayWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
+    public function getContentDecayWithHttpInfo($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
-        $request = $this->getContentDecayRequest($platform, $profile_id, $source, $contentType);
+        $request = $this->getContentDecayRequest($platform, $profile_id, $account_id, $source, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1177,15 +1194,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContentDecayAsync($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
+    public function getContentDecayAsync($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
-        return $this->getContentDecayAsyncWithHttpInfo($platform, $profile_id, $source, $contentType)
+        return $this->getContentDecayAsyncWithHttpInfo($platform, $profile_id, $account_id, $source, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1200,16 +1218,17 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getContentDecayAsyncWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
+    public function getContentDecayAsyncWithHttpInfo($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
         $returnType = '\Zernio\Model\GetContentDecay200Response';
-        $request = $this->getContentDecayRequest($platform, $profile_id, $source, $contentType);
+        $request = $this->getContentDecayRequest($platform, $profile_id, $account_id, $source, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1252,14 +1271,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getContentDecay'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getContentDecayRequest($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
+    public function getContentDecayRequest($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getContentDecay'][0])
     {
+
 
 
 
@@ -1285,6 +1306,15 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $profile_id,
             'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -6145,6 +6175,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
@@ -6152,9 +6183,9 @@ class AnalyticsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetPostingFrequency200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetBestTimeToPost403Response
      */
-    public function getPostingFrequency($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
+    public function getPostingFrequency($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
-        list($response) = $this->getPostingFrequencyWithHttpInfo($platform, $profile_id, $source, $contentType);
+        list($response) = $this->getPostingFrequencyWithHttpInfo($platform, $profile_id, $account_id, $source, $contentType);
         return $response;
     }
 
@@ -6165,6 +6196,7 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
@@ -6172,9 +6204,9 @@ class AnalyticsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetPostingFrequency200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetBestTimeToPost403Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPostingFrequencyWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
+    public function getPostingFrequencyWithHttpInfo($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
-        $request = $this->getPostingFrequencyRequest($platform, $profile_id, $source, $contentType);
+        $request = $this->getPostingFrequencyRequest($platform, $profile_id, $account_id, $source, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6280,15 +6312,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPostingFrequencyAsync($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
+    public function getPostingFrequencyAsync($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
-        return $this->getPostingFrequencyAsyncWithHttpInfo($platform, $profile_id, $source, $contentType)
+        return $this->getPostingFrequencyAsyncWithHttpInfo($platform, $profile_id, $account_id, $source, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6303,16 +6336,17 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPostingFrequencyAsyncWithHttpInfo($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
+    public function getPostingFrequencyAsyncWithHttpInfo($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
         $returnType = '\Zernio\Model\GetPostingFrequency200Response';
-        $request = $this->getPostingFrequencyRequest($platform, $profile_id, $source, $contentType);
+        $request = $this->getPostingFrequencyRequest($platform, $profile_id, $account_id, $source, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6355,14 +6389,16 @@ class AnalyticsApi
      *
      * @param  string|null $platform Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. (optional)
      * @param  string|null $profile_id Filter by profile ID. Omit for all profiles. (optional)
+     * @param  string|null $account_id Filter by social account ID. Omit for all accounts. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPostingFrequency'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPostingFrequencyRequest($platform = null, $profile_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
+    public function getPostingFrequencyRequest($platform = null, $profile_id = null, $account_id = null, $source = 'all', string $contentType = self::contentTypes['getPostingFrequency'][0])
     {
+
 
 
 
@@ -6388,6 +6424,15 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $profile_id,
             'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

@@ -112,7 +112,7 @@ try {
 ## `getBestTimeToPost()`
 
 ```php
-getBestTimeToPost($platform, $profile_id, $source): \Zernio\Model\GetBestTimeToPost200Response
+getBestTimeToPost($platform, $profile_id, $account_id, $source): \Zernio\Model\GetBestTimeToPost200Response
 ```
 
 Get best times to post
@@ -138,10 +138,11 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
+$account_id = 'account_id_example'; // string | Filter by social account ID. Omit for all accounts.
 $source = 'all'; // string | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms.
 
 try {
-    $result = $apiInstance->getBestTimeToPost($platform, $profile_id, $source);
+    $result = $apiInstance->getBestTimeToPost($platform, $profile_id, $account_id, $source);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getBestTimeToPost: ', $e->getMessage(), PHP_EOL;
@@ -154,6 +155,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
+| **account_id** | **string**| Filter by social account ID. Omit for all accounts. | [optional] |
 | **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
@@ -176,7 +178,7 @@ try {
 ## `getContentDecay()`
 
 ```php
-getContentDecay($platform, $profile_id, $source): \Zernio\Model\GetContentDecay200Response
+getContentDecay($platform, $profile_id, $account_id, $source): \Zernio\Model\GetContentDecay200Response
 ```
 
 Get content performance decay
@@ -202,10 +204,11 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
+$account_id = 'account_id_example'; // string | Filter by social account ID. Omit for all accounts.
 $source = 'all'; // string | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms.
 
 try {
-    $result = $apiInstance->getContentDecay($platform, $profile_id, $source);
+    $result = $apiInstance->getContentDecay($platform, $profile_id, $account_id, $source);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getContentDecay: ', $e->getMessage(), PHP_EOL;
@@ -218,6 +221,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
+| **account_id** | **string**| Filter by social account ID. Omit for all accounts. | [optional] |
 | **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
@@ -1108,7 +1112,7 @@ try {
 ## `getPostingFrequency()`
 
 ```php
-getPostingFrequency($platform, $profile_id, $source): \Zernio\Model\GetPostingFrequency200Response
+getPostingFrequency($platform, $profile_id, $account_id, $source): \Zernio\Model\GetPostingFrequency200Response
 ```
 
 Get frequency vs engagement
@@ -1134,10 +1138,11 @@ $apiInstance = new Zernio\Api\AnalyticsApi(
 );
 $platform = 'platform_example'; // string | Filter by platform (e.g. \"instagram\", \"tiktok\"). Omit for all platforms.
 $profile_id = 'profile_id_example'; // string | Filter by profile ID. Omit for all profiles.
+$account_id = 'account_id_example'; // string | Filter by social account ID. Omit for all accounts.
 $source = 'all'; // string | Filter by post origin. \"late\" for posts published via Zernio, \"external\" for posts imported from platforms.
 
 try {
-    $result = $apiInstance->getPostingFrequency($platform, $profile_id, $source);
+    $result = $apiInstance->getPostingFrequency($platform, $profile_id, $account_id, $source);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AnalyticsApi->getPostingFrequency: ', $e->getMessage(), PHP_EOL;
@@ -1150,6 +1155,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **platform** | **string**| Filter by platform (e.g. \&quot;instagram\&quot;, \&quot;tiktok\&quot;). Omit for all platforms. | [optional] |
 | **profile_id** | **string**| Filter by profile ID. Omit for all profiles. | [optional] |
+| **account_id** | **string**| Filter by social account ID. Omit for all accounts. | [optional] |
 | **source** | **string**| Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. | [optional] [default to &#39;all&#39;] |
 
 ### Return type
