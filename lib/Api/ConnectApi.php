@@ -78,6 +78,9 @@ class ConnectApi
         'completeTelegramConnect' => [
             'application/json',
         ],
+        'configureTikTokAdsBrandIdentity' => [
+            'application/json',
+        ],
         'connectAds' => [
             'application/json',
         ],
@@ -507,13 +510,298 @@ class ConnectApi
     }
 
     /**
+     * Operation configureTikTokAdsBrandIdentity
+     *
+     * Configure TikTok Ads Brand Identity
+     *
+     * @param  \Zernio\Model\ConfigureTikTokAdsBrandIdentityRequest $configure_tik_tok_ads_brand_identity_request configure_tik_tok_ads_brand_identity_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureTikTokAdsBrandIdentity'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ConfigureTikTokAdsBrandIdentity200Response|\Zernio\Model\InlineObject
+     */
+    public function configureTikTokAdsBrandIdentity($configure_tik_tok_ads_brand_identity_request, string $contentType = self::contentTypes['configureTikTokAdsBrandIdentity'][0])
+    {
+        list($response) = $this->configureTikTokAdsBrandIdentityWithHttpInfo($configure_tik_tok_ads_brand_identity_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation configureTikTokAdsBrandIdentityWithHttpInfo
+     *
+     * Configure TikTok Ads Brand Identity
+     *
+     * @param  \Zernio\Model\ConfigureTikTokAdsBrandIdentityRequest $configure_tik_tok_ads_brand_identity_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureTikTokAdsBrandIdentity'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ConfigureTikTokAdsBrandIdentity200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function configureTikTokAdsBrandIdentityWithHttpInfo($configure_tik_tok_ads_brand_identity_request, string $contentType = self::contentTypes['configureTikTokAdsBrandIdentity'][0])
+    {
+        $request = $this->configureTikTokAdsBrandIdentityRequest($configure_tik_tok_ads_brand_identity_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ConfigureTikTokAdsBrandIdentity200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ConfigureTikTokAdsBrandIdentity200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ConfigureTikTokAdsBrandIdentity200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation configureTikTokAdsBrandIdentityAsync
+     *
+     * Configure TikTok Ads Brand Identity
+     *
+     * @param  \Zernio\Model\ConfigureTikTokAdsBrandIdentityRequest $configure_tik_tok_ads_brand_identity_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureTikTokAdsBrandIdentity'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function configureTikTokAdsBrandIdentityAsync($configure_tik_tok_ads_brand_identity_request, string $contentType = self::contentTypes['configureTikTokAdsBrandIdentity'][0])
+    {
+        return $this->configureTikTokAdsBrandIdentityAsyncWithHttpInfo($configure_tik_tok_ads_brand_identity_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation configureTikTokAdsBrandIdentityAsyncWithHttpInfo
+     *
+     * Configure TikTok Ads Brand Identity
+     *
+     * @param  \Zernio\Model\ConfigureTikTokAdsBrandIdentityRequest $configure_tik_tok_ads_brand_identity_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureTikTokAdsBrandIdentity'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function configureTikTokAdsBrandIdentityAsyncWithHttpInfo($configure_tik_tok_ads_brand_identity_request, string $contentType = self::contentTypes['configureTikTokAdsBrandIdentity'][0])
+    {
+        $returnType = '\Zernio\Model\ConfigureTikTokAdsBrandIdentity200Response';
+        $request = $this->configureTikTokAdsBrandIdentityRequest($configure_tik_tok_ads_brand_identity_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'configureTikTokAdsBrandIdentity'
+     *
+     * @param  \Zernio\Model\ConfigureTikTokAdsBrandIdentityRequest $configure_tik_tok_ads_brand_identity_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['configureTikTokAdsBrandIdentity'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function configureTikTokAdsBrandIdentityRequest($configure_tik_tok_ads_brand_identity_request, string $contentType = self::contentTypes['configureTikTokAdsBrandIdentity'][0])
+    {
+
+        // verify the required parameter 'configure_tik_tok_ads_brand_identity_request' is set
+        if ($configure_tik_tok_ads_brand_identity_request === null || (is_array($configure_tik_tok_ads_brand_identity_request) && count($configure_tik_tok_ads_brand_identity_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $configure_tik_tok_ads_brand_identity_request when calling configureTikTokAdsBrandIdentity'
+            );
+        }
+
+
+        $resourcePath = '/v1/connect/tiktok-ads';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($configure_tik_tok_ads_brand_identity_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($configure_tik_tok_ads_brand_identity_request));
+            } else {
+                $httpBody = $configure_tik_tok_ads_brand_identity_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation connectAds
      *
      * Connect ads for a platform
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter). Ignored for same-token and standalone platforms. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
@@ -535,7 +823,7 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter). Ignored for same-token and standalone platforms. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
@@ -638,7 +926,7 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter). Ignored for same-token and standalone platforms. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
@@ -663,7 +951,7 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter). Ignored for same-token and standalone platforms. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
@@ -717,7 +1005,7 @@ class ConnectApi
      *
      * @param  string $platform Platform to connect ads for. Only platforms with ads support are accepted. (required)
      * @param  string $profile_id Your Zernio profile ID (required)
-     * @param  string|null $account_id Existing SocialAccount ID. Required for separate-token platforms (tiktok, twitter). Ignored for same-token and standalone platforms. (optional)
+     * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation

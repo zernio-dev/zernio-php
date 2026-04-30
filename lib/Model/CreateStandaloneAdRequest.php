@@ -96,6 +96,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'roas_average_floor' => 'float',
         'dsa_beneficiary' => 'string',
         'dsa_payor' => 'string',
+        'brand_identity' => '\Zernio\Model\CreateStandaloneAdRequestBrandIdentity',
+        'identity_type' => 'string',
         'promoted_object' => '\Zernio\Model\CreateStandaloneAdRequestPromotedObject'
     ];
 
@@ -145,6 +147,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'roas_average_floor' => null,
         'dsa_beneficiary' => null,
         'dsa_payor' => null,
+        'brand_identity' => null,
+        'identity_type' => null,
         'promoted_object' => null
     ];
 
@@ -192,6 +196,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'roas_average_floor' => false,
         'dsa_beneficiary' => false,
         'dsa_payor' => false,
+        'brand_identity' => false,
+        'identity_type' => false,
         'promoted_object' => false
     ];
 
@@ -319,6 +325,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'roas_average_floor' => 'roasAverageFloor',
         'dsa_beneficiary' => 'dsaBeneficiary',
         'dsa_payor' => 'dsaPayor',
+        'brand_identity' => 'brandIdentity',
+        'identity_type' => 'identityType',
         'promoted_object' => 'promotedObject'
     ];
 
@@ -366,6 +374,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'roas_average_floor' => 'setRoasAverageFloor',
         'dsa_beneficiary' => 'setDsaBeneficiary',
         'dsa_payor' => 'setDsaPayor',
+        'brand_identity' => 'setBrandIdentity',
+        'identity_type' => 'setIdentityType',
         'promoted_object' => 'setPromotedObject'
     ];
 
@@ -413,6 +423,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'roas_average_floor' => 'getRoasAverageFloor',
         'dsa_beneficiary' => 'getDsaBeneficiary',
         'dsa_payor' => 'getDsaPayor',
+        'brand_identity' => 'getBrandIdentity',
+        'identity_type' => 'getIdentityType',
         'promoted_object' => 'getPromotedObject'
     ];
 
@@ -483,6 +495,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const GENDER_ALL = 'all';
     public const GENDER_MALE = 'male';
     public const GENDER_FEMALE = 'female';
+    public const IDENTITY_TYPE_TT_USER = 'TT_USER';
+    public const IDENTITY_TYPE_CUSTOMIZED_USER = 'CUSTOMIZED_USER';
 
     /**
      * Gets allowable values of the enum
@@ -577,6 +591,19 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIdentityTypeAllowableValues()
+    {
+        return [
+            self::IDENTITY_TYPE_TT_USER,
+            self::IDENTITY_TYPE_CUSTOMIZED_USER,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -629,6 +656,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('roas_average_floor', $data ?? [], null);
         $this->setIfExists('dsa_beneficiary', $data ?? [], null);
         $this->setIfExists('dsa_payor', $data ?? [], null);
+        $this->setIfExists('brand_identity', $data ?? [], null);
+        $this->setIfExists('identity_type', $data ?? [], null);
         $this->setIfExists('promoted_object', $data ?? [], null);
     }
 
@@ -760,6 +789,15 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
 
         if (!is_null($this->container['dsa_payor']) && (mb_strlen($this->container['dsa_payor']) > 100)) {
             $invalidProperties[] = "invalid value for 'dsa_payor', the character length must be smaller than or equal to 100.";
+        }
+
+        $allowedValues = $this->getIdentityTypeAllowableValues();
+        if (!is_null($this->container['identity_type']) && !in_array($this->container['identity_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'identity_type', must be one of '%s'",
+                $this->container['identity_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -1900,6 +1938,70 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         }
 
         $this->container['dsa_payor'] = $dsa_payor;
+
+        return $this;
+    }
+
+    /**
+     * Gets brand_identity
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestBrandIdentity|null
+     */
+    public function getBrandIdentity()
+    {
+        return $this->container['brand_identity'];
+    }
+
+    /**
+     * Sets brand_identity
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestBrandIdentity|null $brand_identity brand_identity
+     *
+     * @return self
+     */
+    public function setBrandIdentity($brand_identity)
+    {
+        if (is_null($brand_identity)) {
+            throw new \InvalidArgumentException('non-nullable brand_identity cannot be null');
+        }
+        $this->container['brand_identity'] = $brand_identity;
+
+        return $this;
+    }
+
+    /**
+     * Gets identity_type
+     *
+     * @return string|null
+     */
+    public function getIdentityType()
+    {
+        return $this->container['identity_type'];
+    }
+
+    /**
+     * Sets identity_type
+     *
+     * @param string|null $identity_type TikTok only. Forces the identity attribution on the ad:    - `TT_USER`: the posting account's open_id (real @username     branding). Requires a connected TikTok posting account     on the same profile.   - `CUSTOMIZED_USER`: synthetic Brand Identity (display     name + avatar). Requires a configured Brand Identity     (cached on the `tiktokads` SocialAccount via     `PATCH /v1/connect/tiktok-ads`) or an inline     `brandIdentity` to create one on the fly.  When omitted, defaults to `TT_USER` if a posting account is connected on this profile, else `CUSTOMIZED_USER`. Spark Ads (`POST /v1/ads/boost`) always use `TT_USER` regardless of this field — TikTok requires the original organic post's author identity for Spark.
+     *
+     * @return self
+     */
+    public function setIdentityType($identity_type)
+    {
+        if (is_null($identity_type)) {
+            throw new \InvalidArgumentException('non-nullable identity_type cannot be null');
+        }
+        $allowedValues = $this->getIdentityTypeAllowableValues();
+        if (!in_array($identity_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'identity_type', must be one of '%s'",
+                    $identity_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['identity_type'] = $identity_type;
 
         return $this;
     }

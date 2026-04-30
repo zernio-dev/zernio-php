@@ -111,6 +111,8 @@ docs/Model/BusinessCenter.md
 docs/Model/CancelBroadcast200Response.md
 docs/Model/CancelBroadcast200ResponseBroadcast.md
 docs/Model/CompleteTelegramConnect200Response.md
+docs/Model/ConfigureTikTokAdsBrandIdentity200Response.md
+docs/Model/ConfigureTikTokAdsBrandIdentityRequest.md
 docs/Model/ConnectAds200Response.md
 docs/Model/ConnectAds200ResponseOneOf.md
 docs/Model/ConnectAds200ResponseOneOf1.md
@@ -183,6 +185,7 @@ docs/Model/CreateStandaloneAd201Response.md
 docs/Model/CreateStandaloneAd201ResponseOneOf.md
 docs/Model/CreateStandaloneAd201ResponseOneOf1.md
 docs/Model/CreateStandaloneAdRequest.md
+docs/Model/CreateStandaloneAdRequestBrandIdentity.md
 docs/Model/CreateStandaloneAdRequestCitiesInner.md
 docs/Model/CreateStandaloneAdRequestCreativesInner.md
 docs/Model/CreateStandaloneAdRequestCreativesInnerVideo.md
@@ -987,6 +990,8 @@ lib/Model/BusinessCenter.php
 lib/Model/CancelBroadcast200Response.php
 lib/Model/CancelBroadcast200ResponseBroadcast.php
 lib/Model/CompleteTelegramConnect200Response.php
+lib/Model/ConfigureTikTokAdsBrandIdentity200Response.php
+lib/Model/ConfigureTikTokAdsBrandIdentityRequest.php
 lib/Model/ConnectAds200Response.php
 lib/Model/ConnectAds200ResponseOneOf.php
 lib/Model/ConnectAds200ResponseOneOf1.php
@@ -1059,6 +1064,7 @@ lib/Model/CreateStandaloneAd201Response.php
 lib/Model/CreateStandaloneAd201ResponseOneOf.php
 lib/Model/CreateStandaloneAd201ResponseOneOf1.php
 lib/Model/CreateStandaloneAdRequest.php
+lib/Model/CreateStandaloneAdRequestBrandIdentity.php
 lib/Model/CreateStandaloneAdRequestCitiesInner.php
 lib/Model/CreateStandaloneAdRequestCreativesInner.php
 lib/Model/CreateStandaloneAdRequestCreativesInnerVideo.php
@@ -1753,8 +1759,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateStandaloneAdRequestCitiesInnerTest.php
-test/Model/CreateStandaloneAdRequestRegionsInnerTest.php
-test/Model/SearchAdTargetingLocations200ResponseResultsInnerRegionIdTest.php
-test/Model/SearchAdTargetingLocations200ResponseResultsInnerTest.php
-test/Model/SearchAdTargetingLocations200ResponseTest.php
+test/Model/ConfigureTikTokAdsBrandIdentity200ResponseTest.php
+test/Model/ConfigureTikTokAdsBrandIdentityRequestTest.php
+test/Model/CreateStandaloneAdRequestBrandIdentityTest.php
