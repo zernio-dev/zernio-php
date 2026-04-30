@@ -93,7 +93,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_amount' => 'float',
         'roas_average_floor' => 'float',
         'dsa_beneficiary' => 'string',
-        'dsa_payor' => 'string'
+        'dsa_payor' => 'string',
+        'promoted_object' => '\Zernio\Model\CreateStandaloneAdRequestPromotedObject'
     ];
 
     /**
@@ -139,7 +140,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_amount' => null,
         'roas_average_floor' => null,
         'dsa_beneficiary' => null,
-        'dsa_payor' => null
+        'dsa_payor' => null,
+        'promoted_object' => null
     ];
 
     /**
@@ -183,7 +185,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_amount' => false,
         'roas_average_floor' => false,
         'dsa_beneficiary' => false,
-        'dsa_payor' => false
+        'dsa_payor' => false,
+        'promoted_object' => false
     ];
 
     /**
@@ -307,7 +310,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_amount' => 'bidAmount',
         'roas_average_floor' => 'roasAverageFloor',
         'dsa_beneficiary' => 'dsaBeneficiary',
-        'dsa_payor' => 'dsaPayor'
+        'dsa_payor' => 'dsaPayor',
+        'promoted_object' => 'promotedObject'
     ];
 
     /**
@@ -351,7 +355,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_amount' => 'setBidAmount',
         'roas_average_floor' => 'setRoasAverageFloor',
         'dsa_beneficiary' => 'setDsaBeneficiary',
-        'dsa_payor' => 'setDsaPayor'
+        'dsa_payor' => 'setDsaPayor',
+        'promoted_object' => 'setPromotedObject'
     ];
 
     /**
@@ -395,7 +400,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'bid_amount' => 'getBidAmount',
         'roas_average_floor' => 'getRoasAverageFloor',
         'dsa_beneficiary' => 'getDsaBeneficiary',
-        'dsa_payor' => 'getDsaPayor'
+        'dsa_payor' => 'getDsaPayor',
+        'promoted_object' => 'getPromotedObject'
     ];
 
     /**
@@ -609,6 +615,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('roas_average_floor', $data ?? [], null);
         $this->setIfExists('dsa_beneficiary', $data ?? [], null);
         $this->setIfExists('dsa_payor', $data ?? [], null);
+        $this->setIfExists('promoted_object', $data ?? [], null);
     }
 
     /**
@@ -854,7 +861,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets goal
      *
-     * @param string|null $goal Required on legacy + multi-creative shapes. Inherited from the ad set on the attach shape. Available goals vary by platform.
+     * @param string|null $goal Required on legacy + multi-creative shapes. Inherited from the ad set on the attach shape. Available goals vary by platform. Meta-specific: `conversions` requires `promotedObject.pixelId` + `promotedObject.customEventType`; `app_promotion` requires `promotedObject.applicationId` + `promotedObject.objectStoreUrl`; `lead_generation` accepts an optional `promotedObject.pageId` (auto-filled from the connected Page when omitted).
      *
      * @return self
      */
@@ -1825,6 +1832,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         }
 
         $this->container['dsa_payor'] = $dsa_payor;
+
+        return $this;
+    }
+
+    /**
+     * Gets promoted_object
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestPromotedObject|null
+     */
+    public function getPromotedObject()
+    {
+        return $this->container['promoted_object'];
+    }
+
+    /**
+     * Sets promoted_object
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestPromotedObject|null $promoted_object promoted_object
+     *
+     * @return self
+     */
+    public function setPromotedObject($promoted_object)
+    {
+        if (is_null($promoted_object)) {
+            throw new \InvalidArgumentException('non-nullable promoted_object cannot be null');
+        }
+        $this->container['promoted_object'] = $promoted_object;
 
         return $this;
     }
