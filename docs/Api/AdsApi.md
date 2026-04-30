@@ -18,6 +18,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listAdsBusinessCenters()**](AdsApi.md#listAdsBusinessCenters) | **GET** /v1/ads/business-centers | List TikTok Business Centers |
 | [**listConversionDestinations()**](AdsApi.md#listConversionDestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List destinations for the Conversions API |
 | [**searchAdInterests()**](AdsApi.md#searchAdInterests) | **GET** /v1/ads/interests | Search targeting interests |
+| [**searchAdTargetingLocations()**](AdsApi.md#searchAdTargetingLocations) | **GET** /v1/ads/targeting/search | Search geo targeting locations (Meta) |
 | [**sendConversions()**](AdsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events to an ad platform |
 | [**sendWhatsAppConversion()**](AdsApi.md#sendWhatsAppConversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event |
 | [**updateAd()**](AdsApi.md#updateAd) | **PUT** /v1/ads/{adId} | Update ad |
@@ -765,6 +766,74 @@ try {
 ### Return type
 
 [**\Zernio\Model\SearchAdInterests200Response**](../Model/SearchAdInterests200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `searchAdTargetingLocations()`
+
+```php
+searchAdTargetingLocations($account_id, $q, $type, $country_code, $limit): \Zernio\Model\SearchAdTargetingLocations200Response
+```
+
+Search geo targeting locations (Meta)
+
+Resolve a human-readable location name into Meta's opaque `key` used in `targeting.cities[]` / `targeting.regions[]` on `POST /v1/ads/create` (and the same fields under `targeting.geo_locations` on `POST /v1/ads/boost`). Wraps Meta's `/search?type=adgeolocation` endpoint.  Meta-only for now. Other platforms have their own location id systems and are not exposed here.  Per Meta's docs, `q` must contain only the locality name (e.g. `\"Amsterdam\"`, not `\"Amsterdam, NL\"`). Use `countryCode` to disambiguate when the same name exists in multiple countries.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Social account ID (must be a connected Facebook or Instagram account).
+$q = 'q_example'; // string | Location name. Locality only — no region/country suffix.
+$type = 'city'; // string | Type of location to search. Defaults to city.
+$country_code = 'country_code_example'; // string | ISO 3166-1 alpha-2 country code (e.g. NL) to scope the search.
+$limit = 25; // int | Maximum results to return.
+
+try {
+    $result = $apiInstance->searchAdTargetingLocations($account_id, $q, $type, $country_code, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->searchAdTargetingLocations: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Social account ID (must be a connected Facebook or Instagram account). | |
+| **q** | **string**| Location name. Locality only — no region/country suffix. | |
+| **type** | **string**| Type of location to search. Defaults to city. | [optional] [default to &#39;city&#39;] |
+| **country_code** | **string**| ISO 3166-1 alpha-2 country code (e.g. NL) to scope the search. | [optional] |
+| **limit** | **int**| Maximum results to return. | [optional] [default to 25] |
+
+### Return type
+
+[**\Zernio\Model\SearchAdTargetingLocations200Response**](../Model/SearchAdTargetingLocations200Response.md)
 
 ### Authorization
 

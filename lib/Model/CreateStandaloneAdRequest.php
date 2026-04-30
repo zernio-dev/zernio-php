@@ -78,6 +78,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'business_name' => 'string',
         'board_id' => 'string',
         'countries' => 'string[]',
+        'cities' => '\Zernio\Model\CreateStandaloneAdRequestCitiesInner[]',
+        'regions' => '\Zernio\Model\CreateStandaloneAdRequestRegionsInner[]',
         'age_min' => 'int',
         'age_max' => 'int',
         'interests' => '\Zernio\Model\UpdateAdRequestTargetingInterestsInner[]',
@@ -125,6 +127,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'business_name' => null,
         'board_id' => null,
         'countries' => null,
+        'cities' => null,
+        'regions' => null,
         'age_min' => null,
         'age_max' => null,
         'interests' => null,
@@ -170,6 +174,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'business_name' => false,
         'board_id' => false,
         'countries' => false,
+        'cities' => false,
+        'regions' => false,
         'age_min' => false,
         'age_max' => false,
         'interests' => false,
@@ -295,6 +301,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'business_name' => 'businessName',
         'board_id' => 'boardId',
         'countries' => 'countries',
+        'cities' => 'cities',
+        'regions' => 'regions',
         'age_min' => 'ageMin',
         'age_max' => 'ageMax',
         'interests' => 'interests',
@@ -340,6 +348,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'business_name' => 'setBusinessName',
         'board_id' => 'setBoardId',
         'countries' => 'setCountries',
+        'cities' => 'setCities',
+        'regions' => 'setRegions',
         'age_min' => 'setAgeMin',
         'age_max' => 'setAgeMax',
         'interests' => 'setInterests',
@@ -385,6 +395,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'business_name' => 'getBusinessName',
         'board_id' => 'getBoardId',
         'countries' => 'getCountries',
+        'cities' => 'getCities',
+        'regions' => 'getRegions',
         'age_min' => 'getAgeMin',
         'age_max' => 'getAgeMax',
         'interests' => 'getInterests',
@@ -599,6 +611,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('business_name', $data ?? [], null);
         $this->setIfExists('board_id', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
+        $this->setIfExists('cities', $data ?? [], null);
+        $this->setIfExists('regions', $data ?? [], null);
         $this->setIfExists('age_min', $data ?? [], null);
         $this->setIfExists('age_max', $data ?? [], null);
         $this->setIfExists('interests', $data ?? [], null);
@@ -1336,7 +1350,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets countries
      *
-     * @param string[]|null $countries countries
+     * @param string[]|null $countries ISO 3166-1 alpha-2 country codes (e.g. ['NL']). Defaults to ['US'] when no `cities` or `regions` are provided.
      *
      * @return self
      */
@@ -1346,6 +1360,60 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable countries cannot be null');
         }
         $this->container['countries'] = $countries;
+
+        return $this;
+    }
+
+    /**
+     * Gets cities
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestCitiesInner[]|null
+     */
+    public function getCities()
+    {
+        return $this->container['cities'];
+    }
+
+    /**
+     * Sets cities
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestCitiesInner[]|null $cities Meta-only. City-level geo targeting. Each city is targeted by Meta's opaque `key` (the city ID) which can be looked up via `GET /v1/ads/targeting/search?type=city&q=<name>&country_code=<ISO>`. Optional `radius` + `distance_unit` extend the targeting beyond the city limits (e.g. radius 25 km around the city center). Both must be set together, or both omitted (Meta defaults to ~16 km when omitted).  Cannot overlap with the same country in `countries` (Meta returns a \"locations overlap\" error). Either drop the country or scope it to a different country.
+     *
+     * @return self
+     */
+    public function setCities($cities)
+    {
+        if (is_null($cities)) {
+            throw new \InvalidArgumentException('non-nullable cities cannot be null');
+        }
+        $this->container['cities'] = $cities;
+
+        return $this;
+    }
+
+    /**
+     * Gets regions
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestRegionsInner[]|null
+     */
+    public function getRegions()
+    {
+        return $this->container['regions'];
+    }
+
+    /**
+     * Sets regions
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestRegionsInner[]|null $regions Meta-only. Region-level (state/province) geo targeting. Each region is targeted by Meta's opaque `key` (the region ID) which can be looked up via `GET /v1/ads/targeting/search?type=region&q=<name>&country_code=<ISO>`.
+     *
+     * @return self
+     */
+    public function setRegions($regions)
+    {
+        if (is_null($regions)) {
+            throw new \InvalidArgumentException('non-nullable regions cannot be null');
+        }
+        $this->container['regions'] = $regions;
 
         return $this;
     }

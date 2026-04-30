@@ -183,10 +183,12 @@ docs/Model/CreateStandaloneAd201Response.md
 docs/Model/CreateStandaloneAd201ResponseOneOf.md
 docs/Model/CreateStandaloneAd201ResponseOneOf1.md
 docs/Model/CreateStandaloneAdRequest.md
+docs/Model/CreateStandaloneAdRequestCitiesInner.md
 docs/Model/CreateStandaloneAdRequestCreativesInner.md
 docs/Model/CreateStandaloneAdRequestCreativesInnerVideo.md
 docs/Model/CreateStandaloneAdRequestImages.md
 docs/Model/CreateStandaloneAdRequestPromotedObject.md
+docs/Model/CreateStandaloneAdRequestRegionsInner.md
 docs/Model/CreateStandaloneAdRequestVideo.md
 docs/Model/CreateWebhookSettingsRequest.md
 docs/Model/CreateWhatsAppFlow200Response.md
@@ -612,6 +614,9 @@ docs/Model/ScheduleBroadcast200ResponseBroadcast.md
 docs/Model/ScheduleBroadcastRequest.md
 docs/Model/SearchAdInterests200Response.md
 docs/Model/SearchAdInterests200ResponseInterestsInner.md
+docs/Model/SearchAdTargetingLocations200Response.md
+docs/Model/SearchAdTargetingLocations200ResponseResultsInner.md
+docs/Model/SearchAdTargetingLocations200ResponseResultsInnerRegionId.md
 docs/Model/SearchReddit200Response.md
 docs/Model/SelectFacebookPage200Response.md
 docs/Model/SelectFacebookPage200ResponseAccount.md
@@ -1054,10 +1059,12 @@ lib/Model/CreateStandaloneAd201Response.php
 lib/Model/CreateStandaloneAd201ResponseOneOf.php
 lib/Model/CreateStandaloneAd201ResponseOneOf1.php
 lib/Model/CreateStandaloneAdRequest.php
+lib/Model/CreateStandaloneAdRequestCitiesInner.php
 lib/Model/CreateStandaloneAdRequestCreativesInner.php
 lib/Model/CreateStandaloneAdRequestCreativesInnerVideo.php
 lib/Model/CreateStandaloneAdRequestImages.php
 lib/Model/CreateStandaloneAdRequestPromotedObject.php
+lib/Model/CreateStandaloneAdRequestRegionsInner.php
 lib/Model/CreateStandaloneAdRequestVideo.php
 lib/Model/CreateWebhookSettingsRequest.php
 lib/Model/CreateWhatsAppFlow200Response.php
@@ -1484,6 +1491,9 @@ lib/Model/ScheduleBroadcast200ResponseBroadcast.php
 lib/Model/ScheduleBroadcastRequest.php
 lib/Model/SearchAdInterests200Response.php
 lib/Model/SearchAdInterests200ResponseInterestsInner.php
+lib/Model/SearchAdTargetingLocations200Response.php
+lib/Model/SearchAdTargetingLocations200ResponseResultsInner.php
+lib/Model/SearchAdTargetingLocations200ResponseResultsInnerRegionId.php
 lib/Model/SearchReddit200Response.php
 lib/Model/SelectFacebookPage200Response.php
 lib/Model/SelectFacebookPage200ResponseAccount.php
@@ -1743,4 +1753,8 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateStandaloneAdRequestPromotedObjectTest.php
+test/Model/CreateStandaloneAdRequestCitiesInnerTest.php
+test/Model/CreateStandaloneAdRequestRegionsInnerTest.php
+test/Model/SearchAdTargetingLocations200ResponseResultsInnerRegionIdTest.php
+test/Model/SearchAdTargetingLocations200ResponseResultsInnerTest.php
+test/Model/SearchAdTargetingLocations200ResponseTest.php
