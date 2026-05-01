@@ -39,7 +39,7 @@ $apiInstance = new Zernio\Api\AccountGroupsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_account_group_request = {"name":"Marketing Accounts","accountIds":["64e1f0a9e2b5af0012ab34cd","64e1f0a9e2b5af0012ab34ce"]}; // \Zernio\Model\CreateAccountGroupRequest
+$create_account_group_request = {"name":"Marketing Accounts","profileId":"6507a1b2c3d4e5f6a7b8c9aa","accountIds":["64e1f0a9e2b5af0012ab34cd","64e1f0a9e2b5af0012ab34ce"]}; // \Zernio\Model\CreateAccountGroupRequest
 
 try {
     $result = $apiInstance->createAccountGroup($create_account_group_request);
