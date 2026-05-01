@@ -59,7 +59,6 @@ class CreateAccountGroupRequest implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'name' => 'string',
-        'profile_id' => 'string',
         'account_ids' => 'string[]'
     ];
 
@@ -72,7 +71,6 @@ class CreateAccountGroupRequest implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'name' => null,
-        'profile_id' => null,
         'account_ids' => null
     ];
 
@@ -83,7 +81,6 @@ class CreateAccountGroupRequest implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'name' => false,
-        'profile_id' => false,
         'account_ids' => false
     ];
 
@@ -174,7 +171,6 @@ class CreateAccountGroupRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'name' => 'name',
-        'profile_id' => 'profileId',
         'account_ids' => 'accountIds'
     ];
 
@@ -185,7 +181,6 @@ class CreateAccountGroupRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'name' => 'setName',
-        'profile_id' => 'setProfileId',
         'account_ids' => 'setAccountIds'
     ];
 
@@ -196,7 +191,6 @@ class CreateAccountGroupRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'name' => 'getName',
-        'profile_id' => 'getProfileId',
         'account_ids' => 'getAccountIds'
     ];
 
@@ -258,7 +252,6 @@ class CreateAccountGroupRequest implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('account_ids', $data ?? [], null);
     }
 
@@ -291,9 +284,6 @@ class CreateAccountGroupRequest implements ModelInterface, ArrayAccess, \JsonSer
 
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['profile_id'] === null) {
-            $invalidProperties[] = "'profile_id' can't be null";
         }
         if ($this->container['account_ids'] === null) {
             $invalidProperties[] = "'account_ids' can't be null";
@@ -336,33 +326,6 @@ class CreateAccountGroupRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets profile_id
-     *
-     * @return string
-     */
-    public function getProfileId()
-    {
-        return $this->container['profile_id'];
-    }
-
-    /**
-     * Sets profile_id
-     *
-     * @param string $profile_id ID of the profile this group belongs to. All accountIds must belong to this profile.
-     *
-     * @return self
-     */
-    public function setProfileId($profile_id)
-    {
-        if (is_null($profile_id)) {
-            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
-        }
-        $this->container['profile_id'] = $profile_id;
 
         return $this;
     }
