@@ -359,9 +359,6 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
-        if ($this->container['platform_post_id'] === null) {
-            $invalidProperties[] = "'platform_post_id' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -449,7 +446,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets platform_post_id
      *
-     * @return string
+     * @return string|null
      */
     public function getPlatformPostId()
     {
@@ -459,7 +456,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets platform_post_id
      *
-     * @param string $platform_post_id Platform media/post ID
+     * @param string|null $platform_post_id Platform media/post ID. Omit for an account-wide (any-post) automation.
      *
      * @return self
      */
@@ -486,7 +483,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets post_id
      *
-     * @param string|null $post_id Zernio post ID (optional)
+     * @param string|null $post_id Zernio post ID. Required only when also targeting a specific post via platformPostId.
      *
      * @return self
      */

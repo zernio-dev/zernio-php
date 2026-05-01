@@ -1759,6 +1759,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ConfigureTikTokAdsBrandIdentity200ResponseTest.php
-test/Model/ConfigureTikTokAdsBrandIdentityRequestTest.php
-test/Model/CreateStandaloneAdRequestBrandIdentityTest.php

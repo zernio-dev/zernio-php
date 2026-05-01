@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **profile_id** | **string** |  |
 **account_id** | **string** | Instagram or Facebook account ID |
-**platform_post_id** | **string** | Platform media/post ID |
-**post_id** | **string** | Zernio post ID (optional) | [optional]
+**platform_post_id** | **string** | Platform media/post ID. Omit for an account-wide (any-post) automation. | [optional]
+**post_id** | **string** | Zernio post ID. Required only when also targeting a specific post via platformPostId. | [optional]
 **post_title** | **string** | Post content snippet for display | [optional]
 **name** | **string** | Automation label |
 **keywords** | **string[]** | Trigger keywords (empty &#x3D; any comment triggers) | [optional]
