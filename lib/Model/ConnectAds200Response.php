@@ -63,6 +63,7 @@ class ConnectAds200Response implements ModelInterface, ArrayAccess, \JsonSeriali
         'platform' => 'string',
         'username' => 'string',
         'display_name' => 'string',
+        'scoped_ad_account_ids' => 'string[]',
         'auth_url' => 'string',
         'state' => 'string'
     ];
@@ -80,6 +81,7 @@ class ConnectAds200Response implements ModelInterface, ArrayAccess, \JsonSeriali
         'platform' => null,
         'username' => null,
         'display_name' => null,
+        'scoped_ad_account_ids' => null,
         'auth_url' => 'uri',
         'state' => null
     ];
@@ -95,6 +97,7 @@ class ConnectAds200Response implements ModelInterface, ArrayAccess, \JsonSeriali
         'platform' => false,
         'username' => false,
         'display_name' => false,
+        'scoped_ad_account_ids' => false,
         'auth_url' => false,
         'state' => false
     ];
@@ -190,6 +193,7 @@ class ConnectAds200Response implements ModelInterface, ArrayAccess, \JsonSeriali
         'platform' => 'platform',
         'username' => 'username',
         'display_name' => 'displayName',
+        'scoped_ad_account_ids' => 'scopedAdAccountIds',
         'auth_url' => 'authUrl',
         'state' => 'state'
     ];
@@ -205,6 +209,7 @@ class ConnectAds200Response implements ModelInterface, ArrayAccess, \JsonSeriali
         'platform' => 'setPlatform',
         'username' => 'setUsername',
         'display_name' => 'setDisplayName',
+        'scoped_ad_account_ids' => 'setScopedAdAccountIds',
         'auth_url' => 'setAuthUrl',
         'state' => 'setState'
     ];
@@ -220,6 +225,7 @@ class ConnectAds200Response implements ModelInterface, ArrayAccess, \JsonSeriali
         'platform' => 'getPlatform',
         'username' => 'getUsername',
         'display_name' => 'getDisplayName',
+        'scoped_ad_account_ids' => 'getScopedAdAccountIds',
         'auth_url' => 'getAuthUrl',
         'state' => 'getState'
     ];
@@ -286,6 +292,7 @@ class ConnectAds200Response implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('scoped_ad_account_ids', $data ?? [], null);
         $this->setIfExists('auth_url', $data ?? [], null);
         $this->setIfExists('state', $data ?? [], null);
     }
@@ -463,6 +470,33 @@ class ConnectAds200Response implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
         $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets scoped_ad_account_ids
+     *
+     * @return string[]|null
+     */
+    public function getScopedAdAccountIds()
+    {
+        return $this->container['scoped_ad_account_ids'];
+    }
+
+    /**
+     * Sets scoped_ad_account_ids
+     *
+     * @param string[]|null $scoped_ad_account_ids Echo of the persisted ad-account scope when the caller passed `adAccountId` / `adAccountIds`. Omitted when no scope is set.
+     *
+     * @return self
+     */
+    public function setScopedAdAccountIds($scoped_ad_account_ids)
+    {
+        if (is_null($scoped_ad_account_ids)) {
+            throw new \InvalidArgumentException('non-nullable scoped_ad_account_ids cannot be null');
+        }
+        $this->container['scoped_ad_account_ids'] = $scoped_ad_account_ids;
 
         return $this;
     }

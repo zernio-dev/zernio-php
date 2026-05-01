@@ -20,7 +20,7 @@ createAccountGroup($create_account_group_request): \Zernio\Model\CreateAccountGr
 
 Create group
 
-Creates a new account group with a name and a list of social account IDs.
+Creates a new account group with a name and a list of social account IDs. Accounts can belong to different profiles; the caller must have access to every account's profile. Group names must be unique per user.
 
 ### Example
 
@@ -140,7 +140,7 @@ listAccountGroups(): \Zernio\Model\ListAccountGroups200Response
 
 List groups
 
-Returns all account groups for the authenticated user, including group names and associated account IDs.
+Returns all account groups visible to the authenticated user. Groups can contain accounts from multiple profiles. For API keys scoped to specific profiles, only groups whose accounts all live in allowed profiles are returned.
 
 ### Example
 

@@ -415,6 +415,7 @@ Class | Method | HTTP request | Description
 - [ConversionEventUser](docs/Model/ConversionEventUser.md)
 - [ConversionEventUserClickIds](docs/Model/ConversionEventUserClickIds.md)
 - [CreateAccountGroup201Response](docs/Model/CreateAccountGroup201Response.md)
+- [CreateAccountGroup201ResponseGroup](docs/Model/CreateAccountGroup201ResponseGroup.md)
 - [CreateAccountGroupRequest](docs/Model/CreateAccountGroupRequest.md)
 - [CreateAdAudience201Response](docs/Model/CreateAdAudience201Response.md)
 - [CreateAdAudienceRequest](docs/Model/CreateAdAudienceRequest.md)

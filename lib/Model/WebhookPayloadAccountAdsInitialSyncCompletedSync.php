@@ -62,7 +62,11 @@ class WebhookPayloadAccountAdsInitialSyncCompletedSync implements ModelInterface
         'status' => 'string',
         'total_ads' => 'int',
         'synced' => 'int',
-        'failed' => 'int'
+        'failed' => 'int',
+        'error' => 'string',
+        'error_code' => 'string',
+        'error_subcode' => 'string',
+        'error_category' => 'string'
     ];
 
     /**
@@ -76,7 +80,11 @@ class WebhookPayloadAccountAdsInitialSyncCompletedSync implements ModelInterface
         'status' => null,
         'total_ads' => null,
         'synced' => null,
-        'failed' => null
+        'failed' => null,
+        'error' => null,
+        'error_code' => null,
+        'error_subcode' => null,
+        'error_category' => null
     ];
 
     /**
@@ -88,7 +96,11 @@ class WebhookPayloadAccountAdsInitialSyncCompletedSync implements ModelInterface
         'status' => false,
         'total_ads' => false,
         'synced' => false,
-        'failed' => false
+        'failed' => false,
+        'error' => false,
+        'error_code' => false,
+        'error_subcode' => false,
+        'error_category' => false
     ];
 
     /**
@@ -180,7 +192,11 @@ class WebhookPayloadAccountAdsInitialSyncCompletedSync implements ModelInterface
         'status' => 'status',
         'total_ads' => 'totalAds',
         'synced' => 'synced',
-        'failed' => 'failed'
+        'failed' => 'failed',
+        'error' => 'error',
+        'error_code' => 'errorCode',
+        'error_subcode' => 'errorSubcode',
+        'error_category' => 'errorCategory'
     ];
 
     /**
@@ -192,7 +208,11 @@ class WebhookPayloadAccountAdsInitialSyncCompletedSync implements ModelInterface
         'status' => 'setStatus',
         'total_ads' => 'setTotalAds',
         'synced' => 'setSynced',
-        'failed' => 'setFailed'
+        'failed' => 'setFailed',
+        'error' => 'setError',
+        'error_code' => 'setErrorCode',
+        'error_subcode' => 'setErrorSubcode',
+        'error_category' => 'setErrorCategory'
     ];
 
     /**
@@ -204,7 +224,11 @@ class WebhookPayloadAccountAdsInitialSyncCompletedSync implements ModelInterface
         'status' => 'getStatus',
         'total_ads' => 'getTotalAds',
         'synced' => 'getSynced',
-        'failed' => 'getFailed'
+        'failed' => 'getFailed',
+        'error' => 'getError',
+        'error_code' => 'getErrorCode',
+        'error_subcode' => 'getErrorSubcode',
+        'error_category' => 'getErrorCategory'
     ];
 
     /**
@@ -250,6 +274,12 @@ class WebhookPayloadAccountAdsInitialSyncCompletedSync implements ModelInterface
 
     public const STATUS_SUCCESS = 'success';
     public const STATUS_FAILURE = 'failure';
+    public const ERROR_CATEGORY_TOKEN_INVALID = 'token_invalid';
+    public const ERROR_CATEGORY_PERMISSION_DENIED = 'permission_denied';
+    public const ERROR_CATEGORY_NO_AD_ACCOUNTS = 'no_ad_accounts';
+    public const ERROR_CATEGORY_RATE_LIMITED = 'rate_limited';
+    public const ERROR_CATEGORY_DISCOVERY_FAILED = 'discovery_failed';
+    public const ERROR_CATEGORY_UNKNOWN = 'unknown';
 
     /**
      * Gets allowable values of the enum
@@ -261,6 +291,23 @@ class WebhookPayloadAccountAdsInitialSyncCompletedSync implements ModelInterface
         return [
             self::STATUS_SUCCESS,
             self::STATUS_FAILURE,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getErrorCategoryAllowableValues()
+    {
+        return [
+            self::ERROR_CATEGORY_TOKEN_INVALID,
+            self::ERROR_CATEGORY_PERMISSION_DENIED,
+            self::ERROR_CATEGORY_NO_AD_ACCOUNTS,
+            self::ERROR_CATEGORY_RATE_LIMITED,
+            self::ERROR_CATEGORY_DISCOVERY_FAILED,
+            self::ERROR_CATEGORY_UNKNOWN,
         ];
     }
 
@@ -283,6 +330,10 @@ class WebhookPayloadAccountAdsInitialSyncCompletedSync implements ModelInterface
         $this->setIfExists('total_ads', $data ?? [], null);
         $this->setIfExists('synced', $data ?? [], null);
         $this->setIfExists('failed', $data ?? [], null);
+        $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('error_code', $data ?? [], null);
+        $this->setIfExists('error_subcode', $data ?? [], null);
+        $this->setIfExists('error_category', $data ?? [], null);
     }
 
     /**
@@ -333,6 +384,15 @@ class WebhookPayloadAccountAdsInitialSyncCompletedSync implements ModelInterface
         if ($this->container['failed'] === null) {
             $invalidProperties[] = "'failed' can't be null";
         }
+        $allowedValues = $this->getErrorCategoryAllowableValues();
+        if (!is_null($this->container['error_category']) && !in_array($this->container['error_category'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'error_category', must be one of '%s'",
+                $this->container['error_category'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -462,6 +522,124 @@ class WebhookPayloadAccountAdsInitialSyncCompletedSync implements ModelInterface
             throw new \InvalidArgumentException('non-nullable failed cannot be null');
         }
         $this->container['failed'] = $failed;
+
+        return $this;
+    }
+
+    /**
+     * Gets error
+     *
+     * @return string|null
+     */
+    public function getError()
+    {
+        return $this->container['error'];
+    }
+
+    /**
+     * Sets error
+     *
+     * @param string|null $error Free-form error message from the platform (typically Meta's Marketing API). Truncated to ~2KB. Present when `status` is `failure` (and sometimes on `success` when discovery saw zero ad accounts). For UX branching prefer `errorCategory`; this field is for human display and debugging.
+     *
+     * @return self
+     */
+    public function setError($error)
+    {
+        if (is_null($error)) {
+            throw new \InvalidArgumentException('non-nullable error cannot be null');
+        }
+        $this->container['error'] = $error;
+
+        return $this;
+    }
+
+    /**
+     * Gets error_code
+     *
+     * @return string|null
+     */
+    public function getErrorCode()
+    {
+        return $this->container['error_code'];
+    }
+
+    /**
+     * Sets error_code
+     *
+     * @param string|null $error_code Platform-native error code if parsed (e.g. Meta `190`, `10`, `200`).
+     *
+     * @return self
+     */
+    public function setErrorCode($error_code)
+    {
+        if (is_null($error_code)) {
+            throw new \InvalidArgumentException('non-nullable error_code cannot be null');
+        }
+        $this->container['error_code'] = $error_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets error_subcode
+     *
+     * @return string|null
+     */
+    public function getErrorSubcode()
+    {
+        return $this->container['error_subcode'];
+    }
+
+    /**
+     * Sets error_subcode
+     *
+     * @param string|null $error_subcode Platform-native error subcode if parsed.
+     *
+     * @return self
+     */
+    public function setErrorSubcode($error_subcode)
+    {
+        if (is_null($error_subcode)) {
+            throw new \InvalidArgumentException('non-nullable error_subcode cannot be null');
+        }
+        $this->container['error_subcode'] = $error_subcode;
+
+        return $this;
+    }
+
+    /**
+     * Gets error_category
+     *
+     * @return string|null
+     */
+    public function getErrorCategory()
+    {
+        return $this->container['error_category'];
+    }
+
+    /**
+     * Sets error_category
+     *
+     * @param string|null $error_category Stable category for UX branching. New values may be added; existing ones are stable. Mapping:   - `token_invalid`: access token is expired or revoked. Reconnect.   - `permission_denied`: token lacks required scope, or the user has no role     on the Business Manager that owns the ad account. Reconnect with full     permissions, or have an admin grant access.   - `no_ad_accounts`: token is valid but sees zero ad accounts. The user     needs to connect a Business Manager that owns ad accounts.   - `rate_limited`: platform throttled us. Sync will retry automatically.   - `discovery_failed`: any other platform-side failure. Inspect `error`.   - `unknown`: classifier could not categorize the failure.
+     *
+     * @return self
+     */
+    public function setErrorCategory($error_category)
+    {
+        if (is_null($error_category)) {
+            throw new \InvalidArgumentException('non-nullable error_category cannot be null');
+        }
+        $allowedValues = $this->getErrorCategoryAllowableValues();
+        if (!in_array($error_category, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'error_category', must be one of '%s'",
+                    $error_category,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['error_category'] = $error_category;
 
         return $this;
     }

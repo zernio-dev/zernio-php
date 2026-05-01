@@ -164,7 +164,7 @@ try {
 ## `connectAds()`
 
 ```php
-connectAds($platform, $profile_id, $account_id, $redirect_url, $headless): \Zernio\Model\ConnectAds200Response
+connectAds($platform, $profile_id, $account_id, $redirect_url, $headless, $ad_account_id, $ad_account_ids): \Zernio\Model\ConnectAds200Response
 ```
 
 Connect ads for a platform
@@ -193,9 +193,11 @@ $profile_id = 'profile_id_example'; // string | Your Zernio profile ID
 $account_id = 'account_id_example'; // string | Existing SocialAccount ID. Required for `twitter` (X Ads). Optional for `tiktok` — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (`facebook`, `instagram`, `linkedin`, `pinterest`) and standalone (`googleads`) platforms.
 $redirect_url = 'redirect_url_example'; // string | Custom redirect URL after OAuth completes (same-token platforms only)
 $headless = false; // bool | Enable headless mode (same-token platforms only)
+$ad_account_id = act_1330190928038136; // string | (metaads only) Scope ad sync to a single Meta ad account. Without this param, sync covers every `act_*` the connected token can see. Pass this to limit `sync.totalAds` / `synced` and the resulting ads to one ad account. Format: `act_<digits>` (matches what `/me/adaccounts` returns). Validated against the connected token; unreachable IDs return 400. For multiple accounts use `adAccountIds` instead.
+$ad_account_ids = array('ad_account_ids_example'); // string[] | (metaads only) Scope ad sync to multiple Meta ad accounts. Repeat the param (`?adAccountIds=act_1&adAccountIds=act_2`) or comma-separate (`?adAccountIds=act_1,act_2`). Validated against the connected token. Persisted server-side; latest call wins. Omitting both `adAccountId` and `adAccountIds` keeps any previously persisted scope unchanged.
 
 try {
-    $result = $apiInstance->connectAds($platform, $profile_id, $account_id, $redirect_url, $headless);
+    $result = $apiInstance->connectAds($platform, $profile_id, $account_id, $redirect_url, $headless, $ad_account_id, $ad_account_ids);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->connectAds: ', $e->getMessage(), PHP_EOL;
@@ -211,6 +213,8 @@ try {
 | **account_id** | **string**| Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. | [optional] |
 | **redirect_url** | **string**| Custom redirect URL after OAuth completes (same-token platforms only) | [optional] |
 | **headless** | **bool**| Enable headless mode (same-token platforms only) | [optional] [default to false] |
+| **ad_account_id** | **string**| (metaads only) Scope ad sync to a single Meta ad account. Without this param, sync covers every &#x60;act_*&#x60; the connected token can see. Pass this to limit &#x60;sync.totalAds&#x60; / &#x60;synced&#x60; and the resulting ads to one ad account. Format: &#x60;act_&lt;digits&gt;&#x60; (matches what &#x60;/me/adaccounts&#x60; returns). Validated against the connected token; unreachable IDs return 400. For multiple accounts use &#x60;adAccountIds&#x60; instead. | [optional] |
+| **ad_account_ids** | [**string[]**](../Model/string.md)| (metaads only) Scope ad sync to multiple Meta ad accounts. Repeat the param (&#x60;?adAccountIds&#x3D;act_1&amp;adAccountIds&#x3D;act_2&#x60;) or comma-separate (&#x60;?adAccountIds&#x3D;act_1,act_2&#x60;). Validated against the connected token. Persisted server-side; latest call wins. Omitting both &#x60;adAccountId&#x60; and &#x60;adAccountIds&#x60; keeps any previously persisted scope unchanged. | [optional] |
 
 ### Return type
 

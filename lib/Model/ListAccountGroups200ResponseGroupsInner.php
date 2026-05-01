@@ -60,7 +60,9 @@ class ListAccountGroups200ResponseGroupsInner implements ModelInterface, ArrayAc
     protected static $openAPITypes = [
         '_id' => 'string',
         'name' => 'string',
-        'account_ids' => 'string[]'
+        'account_ids' => 'string[]',
+        'created_by' => 'string',
+        'profile_id' => 'string'
     ];
 
     /**
@@ -73,7 +75,9 @@ class ListAccountGroups200ResponseGroupsInner implements ModelInterface, ArrayAc
     protected static $openAPIFormats = [
         '_id' => null,
         'name' => null,
-        'account_ids' => null
+        'account_ids' => null,
+        'created_by' => null,
+        'profile_id' => null
     ];
 
     /**
@@ -84,7 +88,9 @@ class ListAccountGroups200ResponseGroupsInner implements ModelInterface, ArrayAc
     protected static array $openAPINullables = [
         '_id' => false,
         'name' => false,
-        'account_ids' => false
+        'account_ids' => false,
+        'created_by' => false,
+        'profile_id' => false
     ];
 
     /**
@@ -175,7 +181,9 @@ class ListAccountGroups200ResponseGroupsInner implements ModelInterface, ArrayAc
     protected static $attributeMap = [
         '_id' => '_id',
         'name' => 'name',
-        'account_ids' => 'accountIds'
+        'account_ids' => 'accountIds',
+        'created_by' => 'createdBy',
+        'profile_id' => 'profileId'
     ];
 
     /**
@@ -186,7 +194,9 @@ class ListAccountGroups200ResponseGroupsInner implements ModelInterface, ArrayAc
     protected static $setters = [
         '_id' => 'setId',
         'name' => 'setName',
-        'account_ids' => 'setAccountIds'
+        'account_ids' => 'setAccountIds',
+        'created_by' => 'setCreatedBy',
+        'profile_id' => 'setProfileId'
     ];
 
     /**
@@ -197,7 +207,9 @@ class ListAccountGroups200ResponseGroupsInner implements ModelInterface, ArrayAc
     protected static $getters = [
         '_id' => 'getId',
         'name' => 'getName',
-        'account_ids' => 'getAccountIds'
+        'account_ids' => 'getAccountIds',
+        'created_by' => 'getCreatedBy',
+        'profile_id' => 'getProfileId'
     ];
 
     /**
@@ -260,6 +272,8 @@ class ListAccountGroups200ResponseGroupsInner implements ModelInterface, ArrayAc
         $this->setIfExists('_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('account_ids', $data ?? [], null);
+        $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
     }
 
     /**
@@ -381,6 +395,60 @@ class ListAccountGroups200ResponseGroupsInner implements ModelInterface, ArrayAc
             throw new \InvalidArgumentException('non-nullable account_ids cannot be null');
         }
         $this->container['account_ids'] = $account_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by
+     *
+     * @return string|null
+     */
+    public function getCreatedBy()
+    {
+        return $this->container['created_by'];
+    }
+
+    /**
+     * Sets created_by
+     *
+     * @param string|null $created_by created_by
+     *
+     * @return self
+     */
+    public function setCreatedBy($created_by)
+    {
+        if (is_null($created_by)) {
+            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+        }
+        $this->container['created_by'] = $created_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_id
+     *
+     * @return string|null
+     */
+    public function getProfileId()
+    {
+        return $this->container['profile_id'];
+    }
+
+    /**
+     * Sets profile_id
+     *
+     * @param string|null $profile_id Legacy field. Present only on groups created before cross-profile groups were supported. New groups omit it.
+     *
+     * @return self
+     */
+    public function setProfileId($profile_id)
+    {
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
+        }
+        $this->container['profile_id'] = $profile_id;
 
         return $this;
     }

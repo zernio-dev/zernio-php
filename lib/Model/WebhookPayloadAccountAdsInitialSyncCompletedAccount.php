@@ -64,7 +64,9 @@ class WebhookPayloadAccountAdsInitialSyncCompletedAccount implements ModelInterf
         'username' => 'string',
         'display_name' => 'string',
         'platform_user_id' => 'string',
-        'profile_picture' => 'string'
+        'profile_picture' => 'string',
+        'platform_ad_account_id' => 'string',
+        'platform_ad_account_ids' => 'string[]'
     ];
 
     /**
@@ -81,7 +83,9 @@ class WebhookPayloadAccountAdsInitialSyncCompletedAccount implements ModelInterf
         'username' => null,
         'display_name' => null,
         'platform_user_id' => null,
-        'profile_picture' => 'uri'
+        'profile_picture' => 'uri',
+        'platform_ad_account_id' => null,
+        'platform_ad_account_ids' => null
     ];
 
     /**
@@ -96,7 +100,9 @@ class WebhookPayloadAccountAdsInitialSyncCompletedAccount implements ModelInterf
         'username' => false,
         'display_name' => false,
         'platform_user_id' => false,
-        'profile_picture' => false
+        'profile_picture' => false,
+        'platform_ad_account_id' => false,
+        'platform_ad_account_ids' => false
     ];
 
     /**
@@ -191,7 +197,9 @@ class WebhookPayloadAccountAdsInitialSyncCompletedAccount implements ModelInterf
         'username' => 'username',
         'display_name' => 'displayName',
         'platform_user_id' => 'platformUserId',
-        'profile_picture' => 'profilePicture'
+        'profile_picture' => 'profilePicture',
+        'platform_ad_account_id' => 'platformAdAccountId',
+        'platform_ad_account_ids' => 'platformAdAccountIds'
     ];
 
     /**
@@ -206,7 +214,9 @@ class WebhookPayloadAccountAdsInitialSyncCompletedAccount implements ModelInterf
         'username' => 'setUsername',
         'display_name' => 'setDisplayName',
         'platform_user_id' => 'setPlatformUserId',
-        'profile_picture' => 'setProfilePicture'
+        'profile_picture' => 'setProfilePicture',
+        'platform_ad_account_id' => 'setPlatformAdAccountId',
+        'platform_ad_account_ids' => 'setPlatformAdAccountIds'
     ];
 
     /**
@@ -221,7 +231,9 @@ class WebhookPayloadAccountAdsInitialSyncCompletedAccount implements ModelInterf
         'username' => 'getUsername',
         'display_name' => 'getDisplayName',
         'platform_user_id' => 'getPlatformUserId',
-        'profile_picture' => 'getProfilePicture'
+        'profile_picture' => 'getProfilePicture',
+        'platform_ad_account_id' => 'getPlatformAdAccountId',
+        'platform_ad_account_ids' => 'getPlatformAdAccountIds'
     ];
 
     /**
@@ -288,6 +300,8 @@ class WebhookPayloadAccountAdsInitialSyncCompletedAccount implements ModelInterf
         $this->setIfExists('display_name', $data ?? [], null);
         $this->setIfExists('platform_user_id', $data ?? [], null);
         $this->setIfExists('profile_picture', $data ?? [], null);
+        $this->setIfExists('platform_ad_account_id', $data ?? [], null);
+        $this->setIfExists('platform_ad_account_ids', $data ?? [], null);
     }
 
     /**
@@ -529,6 +543,60 @@ class WebhookPayloadAccountAdsInitialSyncCompletedAccount implements ModelInterf
             throw new \InvalidArgumentException('non-nullable profile_picture cannot be null');
         }
         $this->container['profile_picture'] = $profile_picture;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_ad_account_id
+     *
+     * @return string|null
+     */
+    public function getPlatformAdAccountId()
+    {
+        return $this->container['platform_ad_account_id'];
+    }
+
+    /**
+     * Sets platform_ad_account_id
+     *
+     * @param string|null $platform_ad_account_id When the consumer scoped the connect call to a single ad account, this echoes that ID back so the webhook can be correlated to the originating connect request without consulting the consumer's DB. Meta uses the `act_*` shape.
+     *
+     * @return self
+     */
+    public function setPlatformAdAccountId($platform_ad_account_id)
+    {
+        if (is_null($platform_ad_account_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_ad_account_id cannot be null');
+        }
+        $this->container['platform_ad_account_id'] = $platform_ad_account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_ad_account_ids
+     *
+     * @return string[]|null
+     */
+    public function getPlatformAdAccountIds()
+    {
+        return $this->container['platform_ad_account_ids'];
+    }
+
+    /**
+     * Sets platform_ad_account_ids
+     *
+     * @param string[]|null $platform_ad_account_ids Every ad-account ID that the connected token could see at discovery time. Useful for \"we synced ads from these accounts\" UX without a follow-up API call. Empty array when the token had no ad-account visibility.
+     *
+     * @return self
+     */
+    public function setPlatformAdAccountIds($platform_ad_account_ids)
+    {
+        if (is_null($platform_ad_account_ids)) {
+            throw new \InvalidArgumentException('non-nullable platform_ad_account_ids cannot be null');
+        }
+        $this->container['platform_ad_account_ids'] = $platform_ad_account_ids;
 
         return $this;
     }

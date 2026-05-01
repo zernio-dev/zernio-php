@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **platform** | **string** |  | [optional]
 **username** | **string** |  | [optional]
 **display_name** | **string** |  | [optional]
+**scoped_ad_account_ids** | **string[]** | Echo of the persisted ad-account scope when the caller passed &#x60;adAccountId&#x60; / &#x60;adAccountIds&#x60;. Omitted when no scope is set. | [optional]
 **auth_url** | **string** |  | [optional]
 **state** | **string** |  | [optional]
 

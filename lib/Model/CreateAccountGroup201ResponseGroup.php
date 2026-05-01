@@ -1,6 +1,6 @@
 <?php
 /**
- * ConnectAds200ResponseOneOf
+ * CreateAccountGroup201ResponseGroup
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ConnectAds200ResponseOneOf Class Doc Comment
+ * CreateAccountGroup201ResponseGroup Class Doc Comment
  *
  * @category Class
- * @description Ads already connected (no OAuth needed)
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateAccountGroup201ResponseGroup implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
       *
       * @var string
       */
-    protected static $openAPIModelName = 'connectAds_200_response_oneOf';
+    protected static $openAPIModelName = 'createAccountGroup_201_response_group';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +58,9 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
       * @var string[]
       */
     protected static $openAPITypes = [
-        'already_connected' => 'bool',
-        'account_id' => 'string',
-        'platform' => 'string',
-        'username' => 'string',
-        'display_name' => 'string',
-        'scoped_ad_account_ids' => 'string[]'
+        '_id' => 'string',
+        'name' => 'string',
+        'account_ids' => 'string[]'
     ];
 
     /**
@@ -75,12 +71,9 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'already_connected' => null,
-        'account_id' => null,
-        'platform' => null,
-        'username' => null,
-        'display_name' => null,
-        'scoped_ad_account_ids' => null
+        '_id' => null,
+        'name' => null,
+        'account_ids' => null
     ];
 
     /**
@@ -89,12 +82,9 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'already_connected' => false,
-        'account_id' => false,
-        'platform' => false,
-        'username' => false,
-        'display_name' => false,
-        'scoped_ad_account_ids' => false
+        '_id' => false,
+        'name' => false,
+        'account_ids' => false
     ];
 
     /**
@@ -183,12 +173,9 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $attributeMap = [
-        'already_connected' => 'alreadyConnected',
-        'account_id' => 'accountId',
-        'platform' => 'platform',
-        'username' => 'username',
-        'display_name' => 'displayName',
-        'scoped_ad_account_ids' => 'scopedAdAccountIds'
+        '_id' => '_id',
+        'name' => 'name',
+        'account_ids' => 'accountIds'
     ];
 
     /**
@@ -197,12 +184,9 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $setters = [
-        'already_connected' => 'setAlreadyConnected',
-        'account_id' => 'setAccountId',
-        'platform' => 'setPlatform',
-        'username' => 'setUsername',
-        'display_name' => 'setDisplayName',
-        'scoped_ad_account_ids' => 'setScopedAdAccountIds'
+        '_id' => 'setId',
+        'name' => 'setName',
+        'account_ids' => 'setAccountIds'
     ];
 
     /**
@@ -211,12 +195,9 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
      * @var string[]
      */
     protected static $getters = [
-        'already_connected' => 'getAlreadyConnected',
-        'account_id' => 'getAccountId',
-        'platform' => 'getPlatform',
-        'username' => 'getUsername',
-        'display_name' => 'getDisplayName',
-        'scoped_ad_account_ids' => 'getScopedAdAccountIds'
+        '_id' => 'getId',
+        'name' => 'getName',
+        'account_ids' => 'getAccountIds'
     ];
 
     /**
@@ -276,12 +257,9 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('already_connected', $data ?? [], null);
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('username', $data ?? [], null);
-        $this->setIfExists('display_name', $data ?? [], null);
-        $this->setIfExists('scoped_ad_account_ids', $data ?? [], null);
+        $this->setIfExists('_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('account_ids', $data ?? [], null);
     }
 
     /**
@@ -327,163 +305,82 @@ class ConnectAds200ResponseOneOf implements ModelInterface, ArrayAccess, \JsonSe
 
 
     /**
-     * Gets already_connected
-     *
-     * @return bool|null
-     */
-    public function getAlreadyConnected()
-    {
-        return $this->container['already_connected'];
-    }
-
-    /**
-     * Sets already_connected
-     *
-     * @param bool|null $already_connected already_connected
-     *
-     * @return self
-     */
-    public function setAlreadyConnected($already_connected)
-    {
-        if (is_null($already_connected)) {
-            throw new \InvalidArgumentException('non-nullable already_connected cannot be null');
-        }
-        $this->container['already_connected'] = $already_connected;
-
-        return $this;
-    }
-
-    /**
-     * Gets account_id
+     * Gets _id
      *
      * @return string|null
      */
-    public function getAccountId()
+    public function getId()
     {
-        return $this->container['account_id'];
+        return $this->container['_id'];
     }
 
     /**
-     * Sets account_id
+     * Sets _id
      *
-     * @param string|null $account_id account_id
+     * @param string|null $_id _id
      *
      * @return self
      */
-    public function setAccountId($account_id)
+    public function setId($_id)
     {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        if (is_null($_id)) {
+            throw new \InvalidArgumentException('non-nullable _id cannot be null');
         }
-        $this->container['account_id'] = $account_id;
+        $this->container['_id'] = $_id;
 
         return $this;
     }
 
     /**
-     * Gets platform
+     * Gets name
      *
      * @return string|null
      */
-    public function getPlatform()
+    public function getName()
     {
-        return $this->container['platform'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets platform
+     * Sets name
      *
-     * @param string|null $platform platform
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setPlatform($platform)
+    public function setName($name)
     {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['platform'] = $platform;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets username
-     *
-     * @return string|null
-     */
-    public function getUsername()
-    {
-        return $this->container['username'];
-    }
-
-    /**
-     * Sets username
-     *
-     * @param string|null $username username
-     *
-     * @return self
-     */
-    public function setUsername($username)
-    {
-        if (is_null($username)) {
-            throw new \InvalidArgumentException('non-nullable username cannot be null');
-        }
-        $this->container['username'] = $username;
-
-        return $this;
-    }
-
-    /**
-     * Gets display_name
-     *
-     * @return string|null
-     */
-    public function getDisplayName()
-    {
-        return $this->container['display_name'];
-    }
-
-    /**
-     * Sets display_name
-     *
-     * @param string|null $display_name display_name
-     *
-     * @return self
-     */
-    public function setDisplayName($display_name)
-    {
-        if (is_null($display_name)) {
-            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
-        }
-        $this->container['display_name'] = $display_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets scoped_ad_account_ids
+     * Gets account_ids
      *
      * @return string[]|null
      */
-    public function getScopedAdAccountIds()
+    public function getAccountIds()
     {
-        return $this->container['scoped_ad_account_ids'];
+        return $this->container['account_ids'];
     }
 
     /**
-     * Sets scoped_ad_account_ids
+     * Sets account_ids
      *
-     * @param string[]|null $scoped_ad_account_ids Echo of the persisted ad-account scope when the caller passed `adAccountId` / `adAccountIds`. Omitted when no scope is set.
+     * @param string[]|null $account_ids account_ids
      *
      * @return self
      */
-    public function setScopedAdAccountIds($scoped_ad_account_ids)
+    public function setAccountIds($account_ids)
     {
-        if (is_null($scoped_ad_account_ids)) {
-            throw new \InvalidArgumentException('non-nullable scoped_ad_account_ids cannot be null');
+        if (is_null($account_ids)) {
+            throw new \InvalidArgumentException('non-nullable account_ids cannot be null');
         }
-        $this->container['scoped_ad_account_ids'] = $scoped_ad_account_ids;
+        $this->container['account_ids'] = $account_ids;
 
         return $this;
     }

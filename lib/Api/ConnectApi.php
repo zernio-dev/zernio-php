@@ -804,15 +804,17 @@ class ConnectApi
      * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
+     * @param  string|null $ad_account_id (metaads only) Scope ad sync to a single Meta ad account. Without this param, sync covers every &#x60;act_*&#x60; the connected token can see. Pass this to limit &#x60;sync.totalAds&#x60; / &#x60;synced&#x60; and the resulting ads to one ad account. Format: &#x60;act_&lt;digits&gt;&#x60; (matches what &#x60;/me/adaccounts&#x60; returns). Validated against the connected token; unreachable IDs return 400. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
+     * @param  string[]|null $ad_account_ids (metaads only) Scope ad sync to multiple Meta ad accounts. Repeat the param (&#x60;?adAccountIds&#x3D;act_1&amp;adAccountIds&#x3D;act_2&#x60;) or comma-separate (&#x60;?adAccountIds&#x3D;act_1,act_2&#x60;). Validated against the connected token. Persisted server-side; latest call wins. Omitting both &#x60;adAccountId&#x60; and &#x60;adAccountIds&#x60; keeps any previously persisted scope unchanged. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ConnectAds200Response|\Zernio\Model\InlineObject
      */
-    public function connectAds($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
+    public function connectAds($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
     {
-        list($response) = $this->connectAdsWithHttpInfo($platform, $profile_id, $account_id, $redirect_url, $headless, $contentType);
+        list($response) = $this->connectAdsWithHttpInfo($platform, $profile_id, $account_id, $redirect_url, $headless, $ad_account_id, $ad_account_ids, $contentType);
         return $response;
     }
 
@@ -826,15 +828,17 @@ class ConnectApi
      * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
+     * @param  string|null $ad_account_id (metaads only) Scope ad sync to a single Meta ad account. Without this param, sync covers every &#x60;act_*&#x60; the connected token can see. Pass this to limit &#x60;sync.totalAds&#x60; / &#x60;synced&#x60; and the resulting ads to one ad account. Format: &#x60;act_&lt;digits&gt;&#x60; (matches what &#x60;/me/adaccounts&#x60; returns). Validated against the connected token; unreachable IDs return 400. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
+     * @param  string[]|null $ad_account_ids (metaads only) Scope ad sync to multiple Meta ad accounts. Repeat the param (&#x60;?adAccountIds&#x3D;act_1&amp;adAccountIds&#x3D;act_2&#x60;) or comma-separate (&#x60;?adAccountIds&#x3D;act_1,act_2&#x60;). Validated against the connected token. Persisted server-side; latest call wins. Omitting both &#x60;adAccountId&#x60; and &#x60;adAccountIds&#x60; keeps any previously persisted scope unchanged. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ConnectAds200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function connectAdsWithHttpInfo($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
+    public function connectAdsWithHttpInfo($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
     {
-        $request = $this->connectAdsRequest($platform, $profile_id, $account_id, $redirect_url, $headless, $contentType);
+        $request = $this->connectAdsRequest($platform, $profile_id, $account_id, $redirect_url, $headless, $ad_account_id, $ad_account_ids, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -929,14 +933,16 @@ class ConnectApi
      * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
+     * @param  string|null $ad_account_id (metaads only) Scope ad sync to a single Meta ad account. Without this param, sync covers every &#x60;act_*&#x60; the connected token can see. Pass this to limit &#x60;sync.totalAds&#x60; / &#x60;synced&#x60; and the resulting ads to one ad account. Format: &#x60;act_&lt;digits&gt;&#x60; (matches what &#x60;/me/adaccounts&#x60; returns). Validated against the connected token; unreachable IDs return 400. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
+     * @param  string[]|null $ad_account_ids (metaads only) Scope ad sync to multiple Meta ad accounts. Repeat the param (&#x60;?adAccountIds&#x3D;act_1&amp;adAccountIds&#x3D;act_2&#x60;) or comma-separate (&#x60;?adAccountIds&#x3D;act_1,act_2&#x60;). Validated against the connected token. Persisted server-side; latest call wins. Omitting both &#x60;adAccountId&#x60; and &#x60;adAccountIds&#x60; keeps any previously persisted scope unchanged. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function connectAdsAsync($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
+    public function connectAdsAsync($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
     {
-        return $this->connectAdsAsyncWithHttpInfo($platform, $profile_id, $account_id, $redirect_url, $headless, $contentType)
+        return $this->connectAdsAsyncWithHttpInfo($platform, $profile_id, $account_id, $redirect_url, $headless, $ad_account_id, $ad_account_ids, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -954,15 +960,17 @@ class ConnectApi
      * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
+     * @param  string|null $ad_account_id (metaads only) Scope ad sync to a single Meta ad account. Without this param, sync covers every &#x60;act_*&#x60; the connected token can see. Pass this to limit &#x60;sync.totalAds&#x60; / &#x60;synced&#x60; and the resulting ads to one ad account. Format: &#x60;act_&lt;digits&gt;&#x60; (matches what &#x60;/me/adaccounts&#x60; returns). Validated against the connected token; unreachable IDs return 400. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
+     * @param  string[]|null $ad_account_ids (metaads only) Scope ad sync to multiple Meta ad accounts. Repeat the param (&#x60;?adAccountIds&#x3D;act_1&amp;adAccountIds&#x3D;act_2&#x60;) or comma-separate (&#x60;?adAccountIds&#x3D;act_1,act_2&#x60;). Validated against the connected token. Persisted server-side; latest call wins. Omitting both &#x60;adAccountId&#x60; and &#x60;adAccountIds&#x60; keeps any previously persisted scope unchanged. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function connectAdsAsyncWithHttpInfo($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
+    public function connectAdsAsyncWithHttpInfo($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
     {
         $returnType = '\Zernio\Model\ConnectAds200Response';
-        $request = $this->connectAdsRequest($platform, $profile_id, $account_id, $redirect_url, $headless, $contentType);
+        $request = $this->connectAdsRequest($platform, $profile_id, $account_id, $redirect_url, $headless, $ad_account_id, $ad_account_ids, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1008,12 +1016,14 @@ class ConnectApi
      * @param  string|null $account_id Existing SocialAccount ID. Required for &#x60;twitter&#x60; (X Ads). Optional for &#x60;tiktok&#x60; — omit to enter ads-only mode (no TikTok posting account linked; ad creation uses a Brand Identity instead of a TT_USER). Ignored for same-token (&#x60;facebook&#x60;, &#x60;instagram&#x60;, &#x60;linkedin&#x60;, &#x60;pinterest&#x60;) and standalone (&#x60;googleads&#x60;) platforms. (optional)
      * @param  string|null $redirect_url Custom redirect URL after OAuth completes (same-token platforms only) (optional)
      * @param  bool|null $headless Enable headless mode (same-token platforms only) (optional, default to false)
+     * @param  string|null $ad_account_id (metaads only) Scope ad sync to a single Meta ad account. Without this param, sync covers every &#x60;act_*&#x60; the connected token can see. Pass this to limit &#x60;sync.totalAds&#x60; / &#x60;synced&#x60; and the resulting ads to one ad account. Format: &#x60;act_&lt;digits&gt;&#x60; (matches what &#x60;/me/adaccounts&#x60; returns). Validated against the connected token; unreachable IDs return 400. For multiple accounts use &#x60;adAccountIds&#x60; instead. (optional)
+     * @param  string[]|null $ad_account_ids (metaads only) Scope ad sync to multiple Meta ad accounts. Repeat the param (&#x60;?adAccountIds&#x3D;act_1&amp;adAccountIds&#x3D;act_2&#x60;) or comma-separate (&#x60;?adAccountIds&#x3D;act_1,act_2&#x60;). Validated against the connected token. Persisted server-side; latest call wins. Omitting both &#x60;adAccountId&#x60; and &#x60;adAccountIds&#x60; keeps any previously persisted scope unchanged. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['connectAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function connectAdsRequest($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, string $contentType = self::contentTypes['connectAds'][0])
+    public function connectAdsRequest($platform, $profile_id, $account_id = null, $redirect_url = null, $headless = false, $ad_account_id = null, $ad_account_ids = null, string $contentType = self::contentTypes['connectAds'][0])
     {
 
         // verify the required parameter 'platform' is set
@@ -1032,6 +1042,11 @@ class ConnectApi
 
 
 
+
+        if ($ad_account_id !== null && !preg_match("/^act_\\d+$/", $ad_account_id)) {
+            throw new \InvalidArgumentException("invalid value for \"ad_account_id\" when calling ConnectApi.connectAds, must conform to the pattern /^act_\\d+$/.");
+        }
+        
 
 
         $resourcePath = '/v1/connect/{platform}/ads';
@@ -1073,6 +1088,24 @@ class ConnectApi
             $headless,
             'headless', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_ids,
+            'adAccountIds', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

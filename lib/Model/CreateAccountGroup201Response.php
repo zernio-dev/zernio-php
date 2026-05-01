@@ -59,7 +59,7 @@ class CreateAccountGroup201Response implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'message' => 'string',
-        'group' => '\Zernio\Model\ListAccountGroups200ResponseGroupsInner'
+        'group' => '\Zernio\Model\CreateAccountGroup201ResponseGroup'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CreateAccountGroup201Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets group
      *
-     * @return \Zernio\Model\ListAccountGroups200ResponseGroupsInner|null
+     * @return \Zernio\Model\CreateAccountGroup201ResponseGroup|null
      */
     public function getGroup()
     {
@@ -337,7 +337,7 @@ class CreateAccountGroup201Response implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets group
      *
-     * @param \Zernio\Model\ListAccountGroups200ResponseGroupsInner|null $group group
+     * @param \Zernio\Model\CreateAccountGroup201ResponseGroup|null $group group
      *
      * @return self
      */
