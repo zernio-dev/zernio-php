@@ -224,14 +224,6 @@ Class | Method | HTTP request | Description
 *GMBServicesApi* | [**getGoogleBusinessServices**](docs/Api/GMBServicesApi.md#getgooglebusinessservices) | **GET** /v1/accounts/{accountId}/gmb-services | Get services
 *GMBServicesApi* | [**updateGoogleBusinessServices**](docs/Api/GMBServicesApi.md#updategooglebusinessservices) | **PUT** /v1/accounts/{accountId}/gmb-services | Replace services
 *InvitesApi* | [**createInviteToken**](docs/Api/InvitesApi.md#createinvitetoken) | **POST** /v1/invite/tokens | Create invite token
-*LeadFormsApi* | [**createLeadForm**](docs/Api/LeadFormsApi.md#createleadform) | **POST** /v1/ads/lead-forms | Create a Meta Lead Gen Form
-*LeadFormsApi* | [**createLeadFormTestLead**](docs/Api/LeadFormsApi.md#createleadformtestlead) | **POST** /v1/ads/lead-forms/{formId}/test-leads | Create a synthetic test lead
-*LeadFormsApi* | [**deleteLeadForm**](docs/Api/LeadFormsApi.md#deleteleadform) | **DELETE** /v1/ads/lead-forms/{formId} | Delete a Lead Gen Form
-*LeadFormsApi* | [**deleteLeadFormTestLead**](docs/Api/LeadFormsApi.md#deleteleadformtestlead) | **DELETE** /v1/ads/lead-forms/{formId}/test-leads/{leadId} | Delete a (test) lead
-*LeadFormsApi* | [**getLeadForm**](docs/Api/LeadFormsApi.md#getleadform) | **GET** /v1/ads/lead-forms/{formId} | Get a Lead Gen Form
-*LeadFormsApi* | [**listLeadFormLeads**](docs/Api/LeadFormsApi.md#listleadformleads) | **GET** /v1/ads/lead-forms/{formId}/leads | List submitted leads for a form
-*LeadFormsApi* | [**listLeadForms**](docs/Api/LeadFormsApi.md#listleadforms) | **GET** /v1/ads/lead-forms | List Meta Lead Gen Forms
-*LeadFormsApi* | [**updateLeadForm**](docs/Api/LeadFormsApi.md#updateleadform) | **PATCH** /v1/ads/lead-forms/{formId} | Update a Lead Gen Form (status only)
 *LinkedInMentionsApi* | [**getLinkedInMentions**](docs/Api/LinkedInMentionsApi.md#getlinkedinmentions) | **GET** /v1/accounts/{accountId}/linkedin-mentions | Resolve LinkedIn mention
 *LogsApi* | [**listLogs**](docs/Api/LogsApi.md#listlogs) | **GET** /v1/logs | List activity logs
 *MediaApi* | [**getMediaPresignedUrl**](docs/Api/MediaApi.md#getmediapresignedurl) | **POST** /v1/media/presign | Get upload URL
@@ -461,15 +453,6 @@ Class | Method | HTTP request | Description
 - [CreateInboxConversationRequest](docs/Model/CreateInboxConversationRequest.md)
 - [CreateInviteToken201Response](docs/Model/CreateInviteToken201Response.md)
 - [CreateInviteTokenRequest](docs/Model/CreateInviteTokenRequest.md)
-- [CreateLeadForm201Response](docs/Model/CreateLeadForm201Response.md)
-- [CreateLeadFormBody](docs/Model/CreateLeadFormBody.md)
-- [CreateLeadFormBodyContextCard](docs/Model/CreateLeadFormBodyContextCard.md)
-- [CreateLeadFormBodyLegalContent](docs/Model/CreateLeadFormBodyLegalContent.md)
-- [CreateLeadFormBodyLegalContentCustomDisclaimer](docs/Model/CreateLeadFormBodyLegalContentCustomDisclaimer.md)
-- [CreateLeadFormTestLead200Response](docs/Model/CreateLeadFormTestLead200Response.md)
-- [CreateLeadFormTestLead200ResponseTestLead](docs/Model/CreateLeadFormTestLead200ResponseTestLead.md)
-- [CreateLeadFormTestLeadRequest](docs/Model/CreateLeadFormTestLeadRequest.md)
-- [CreateLeadFormTestLeadRequestFieldDataInner](docs/Model/CreateLeadFormTestLeadRequestFieldDataInner.md)
 - [CreatePost409Response](docs/Model/CreatePost409Response.md)
 - [CreatePost409ResponseDetails](docs/Model/CreatePost409ResponseDetails.md)
 - [CreatePost429Response](docs/Model/CreatePost429Response.md)
@@ -519,7 +502,6 @@ Class | Method | HTTP request | Description
 - [DeleteInboxComment200Response](docs/Model/DeleteInboxComment200Response.md)
 - [DeleteInboxReviewReply200Response](docs/Model/DeleteInboxReviewReply200Response.md)
 - [DeleteInboxReviewReplyRequest](docs/Model/DeleteInboxReviewReplyRequest.md)
-- [DeleteLeadForm200Response](docs/Model/DeleteLeadForm200Response.md)
 - [DeleteQueueSlot200Response](docs/Model/DeleteQueueSlot200Response.md)
 - [DiscordPlatformData](docs/Model/DiscordPlatformData.md)
 - [DiscordPlatformDataEmbedsInner](docs/Model/DiscordPlatformDataEmbedsInner.md)
@@ -664,7 +646,6 @@ Class | Method | HTTP request | Description
 - [GetInboxPostComments200ResponseMeta](docs/Model/GetInboxPostComments200ResponseMeta.md)
 - [GetInboxPostComments200ResponsePagination](docs/Model/GetInboxPostComments200ResponsePagination.md)
 - [GetInstagramAccountInsights404Response](docs/Model/GetInstagramAccountInsights404Response.md)
-- [GetLeadForm200Response](docs/Model/GetLeadForm200Response.md)
 - [GetLinkedInAggregateAnalytics200Response](docs/Model/GetLinkedInAggregateAnalytics200Response.md)
 - [GetLinkedInAggregateAnalytics400Response](docs/Model/GetLinkedInAggregateAnalytics400Response.md)
 - [GetLinkedInAggregateAnalytics402Response](docs/Model/GetLinkedInAggregateAnalytics402Response.md)
@@ -776,12 +757,6 @@ Class | Method | HTTP request | Description
 - [InstagramPlatformData](docs/Model/InstagramPlatformData.md)
 - [InstagramPlatformDataTrialParams](docs/Model/InstagramPlatformDataTrialParams.md)
 - [InstagramPlatformDataUserTagsInner](docs/Model/InstagramPlatformDataUserTagsInner.md)
-- [Lead](docs/Model/Lead.md)
-- [LeadFieldDataInner](docs/Model/LeadFieldDataInner.md)
-- [LeadFormResponseMeta](docs/Model/LeadFormResponseMeta.md)
-- [LeadGenForm](docs/Model/LeadGenForm.md)
-- [LeadGenFormQuestion](docs/Model/LeadGenFormQuestion.md)
-- [LeadGenFormQuestionOptionsInner](docs/Model/LeadGenFormQuestionOptionsInner.md)
 - [LikeInboxComment200Response](docs/Model/LikeInboxComment200Response.md)
 - [LikeInboxCommentRequest](docs/Model/LikeInboxCommentRequest.md)
 - [LinkedInAggregateAnalyticsDailyResponse](docs/Model/LinkedInAggregateAnalyticsDailyResponse.md)
@@ -840,8 +815,6 @@ Class | Method | HTTP request | Description
 - [ListInboxReviews200ResponseDataInnerReply](docs/Model/ListInboxReviews200ResponseDataInnerReply.md)
 - [ListInboxReviews200ResponseDataInnerReviewer](docs/Model/ListInboxReviews200ResponseDataInnerReviewer.md)
 - [ListInboxReviews200ResponseSummary](docs/Model/ListInboxReviews200ResponseSummary.md)
-- [ListLeadFormLeads200Response](docs/Model/ListLeadFormLeads200Response.md)
-- [ListLeadForms200Response](docs/Model/ListLeadForms200Response.md)
 - [ListLinkedInOrganizations200Response](docs/Model/ListLinkedInOrganizations200Response.md)
 - [ListLinkedInOrganizations200ResponseOrganizationsInner](docs/Model/ListLinkedInOrganizations200ResponseOrganizationsInner.md)
 - [ListLogs200Response](docs/Model/ListLogs200Response.md)
@@ -1079,7 +1052,6 @@ Class | Method | HTTP request | Description
 - [UpdateInboxConversation200Response](docs/Model/UpdateInboxConversation200Response.md)
 - [UpdateInboxConversation200ResponseData](docs/Model/UpdateInboxConversation200ResponseData.md)
 - [UpdateInboxConversationRequest](docs/Model/UpdateInboxConversationRequest.md)
-- [UpdateLeadFormRequest](docs/Model/UpdateLeadFormRequest.md)
 - [UpdateLinkedInOrganizationRequest](docs/Model/UpdateLinkedInOrganizationRequest.md)
 - [UpdatePinterestBoardsRequest](docs/Model/UpdatePinterestBoardsRequest.md)
 - [UpdatePostMetadata200Response](docs/Model/UpdatePostMetadata200Response.md)
@@ -1152,8 +1124,6 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadCommentCommentAd](docs/Model/WebhookPayloadCommentCommentAd.md)
 - [WebhookPayloadCommentCommentAuthor](docs/Model/WebhookPayloadCommentCommentAuthor.md)
 - [WebhookPayloadCommentPost](docs/Model/WebhookPayloadCommentPost.md)
-- [WebhookPayloadLeadReceived](docs/Model/WebhookPayloadLeadReceived.md)
-- [WebhookPayloadLeadReceivedAccount](docs/Model/WebhookPayloadLeadReceivedAccount.md)
 - [WebhookPayloadMessage](docs/Model/WebhookPayloadMessage.md)
 - [WebhookPayloadMessageAccount](docs/Model/WebhookPayloadMessageAccount.md)
 - [WebhookPayloadMessageConversation](docs/Model/WebhookPayloadMessageConversation.md)

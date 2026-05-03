@@ -64,8 +64,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         'image_url' => 'string',
         'video' => '\Zernio\Model\CreateStandaloneAdRequestCreativesInnerVideo',
         'link_url' => 'string',
-        'call_to_action' => 'string',
-        'lead_gen_form_id' => 'string'
+        'call_to_action' => 'string'
     ];
 
     /**
@@ -81,8 +80,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         'image_url' => 'uri',
         'video' => null,
         'link_url' => 'uri',
-        'call_to_action' => null,
-        'lead_gen_form_id' => null
+        'call_to_action' => null
     ];
 
     /**
@@ -96,8 +94,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         'image_url' => false,
         'video' => false,
         'link_url' => false,
-        'call_to_action' => false,
-        'lead_gen_form_id' => false
+        'call_to_action' => false
     ];
 
     /**
@@ -191,8 +188,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         'image_url' => 'imageUrl',
         'video' => 'video',
         'link_url' => 'linkUrl',
-        'call_to_action' => 'callToAction',
-        'lead_gen_form_id' => 'leadGenFormId'
+        'call_to_action' => 'callToAction'
     ];
 
     /**
@@ -206,8 +202,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         'image_url' => 'setImageUrl',
         'video' => 'setVideo',
         'link_url' => 'setLinkUrl',
-        'call_to_action' => 'setCallToAction',
-        'lead_gen_form_id' => 'setLeadGenFormId'
+        'call_to_action' => 'setCallToAction'
     ];
 
     /**
@@ -221,8 +216,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         'image_url' => 'getImageUrl',
         'video' => 'getVideo',
         'link_url' => 'getLinkUrl',
-        'call_to_action' => 'getCallToAction',
-        'lead_gen_form_id' => 'getLeadGenFormId'
+        'call_to_action' => 'getCallToAction'
     ];
 
     /**
@@ -319,7 +313,6 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         $this->setIfExists('video', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('call_to_action', $data ?? [], null);
-        $this->setIfExists('lead_gen_form_id', $data ?? [], null);
     }
 
     /**
@@ -561,33 +554,6 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
             );
         }
         $this->container['call_to_action'] = $call_to_action;
-
-        return $this;
-    }
-
-    /**
-     * Gets lead_gen_form_id
-     *
-     * @return string|null
-     */
-    public function getLeadGenFormId()
-    {
-        return $this->container['lead_gen_form_id'];
-    }
-
-    /**
-     * Sets lead_gen_form_id
-     *
-     * @param string|null $lead_gen_form_id Per-creative Lead Gen Form ID. Wins over the top-level `leadGenFormId` so each ad in a campaign can A/B a different form. Forces CTA to SIGN_UP.
-     *
-     * @return self
-     */
-    public function setLeadGenFormId($lead_gen_form_id)
-    {
-        if (is_null($lead_gen_form_id)) {
-            throw new \InvalidArgumentException('non-nullable lead_gen_form_id cannot be null');
-        }
-        $this->container['lead_gen_form_id'] = $lead_gen_form_id;
 
         return $this;
     }

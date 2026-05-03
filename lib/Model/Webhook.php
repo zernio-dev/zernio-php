@@ -297,7 +297,6 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     public const EVENTS_COMMENT_RECEIVED = 'comment.received';
     public const EVENTS_REVIEW_NEW = 'review.new';
     public const EVENTS_REVIEW_UPDATED = 'review.updated';
-    public const EVENTS_LEAD_RECEIVED = 'lead.received';
 
     /**
      * Gets allowable values of the enum
@@ -326,7 +325,6 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENTS_COMMENT_RECEIVED,
             self::EVENTS_REVIEW_NEW,
             self::EVENTS_REVIEW_UPDATED,
-            self::EVENTS_LEAD_RECEIVED,
         ];
     }
 
