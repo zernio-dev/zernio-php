@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateStandaloneAdRequestCreativesInner
+ * LeadGenFormQuestion
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateStandaloneAdRequestCreativesInner Class Doc Comment
+ * LeadGenFormQuestion Class Doc Comment
  *
  * @category Class
- * @description Each creative must supply EXACTLY ONE of &#x60;imageUrl&#x60; (image creative) or &#x60;video&#x60; (video creative).
+ * @description A single question on a Meta Instant Form. The &#x60;type&#x60; enum spans Meta&#39;s prefill set (FULL_NAME, EMAIL, PHONE, STREET_ADDRESS, CITY, STATE, COUNTRY, POST_CODE, DOB, GENDER, JOB_TITLE, COMPANY_NAME, etc.) plus custom types (CUSTOM, MULTIPLE_CHOICE, CONDITIONAL, STORE_LOOKUP, APPOINTMENT_REQUEST). See Meta&#39;s Lead Ads docs for the full list — we forward whatever string the caller sends so new types work without a Zernio release.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class LeadGenFormQuestion implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createStandaloneAd_request_creatives_inner';
+    protected static $openAPIModelName = 'LeadGenFormQuestion';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +59,11 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'headline' => 'string',
-        'body' => 'string',
-        'image_url' => 'string',
-        'video' => '\Zernio\Model\CreateStandaloneAdRequestCreativesInnerVideo',
-        'link_url' => 'string',
-        'call_to_action' => 'string',
-        'lead_gen_form_id' => 'string'
+        'key' => 'string',
+        'label' => 'string',
+        'type' => 'string',
+        'options' => '\Zernio\Model\LeadGenFormQuestionOptionsInner[]',
+        'inline_context' => 'string'
     ];
 
     /**
@@ -76,13 +74,11 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'headline' => null,
-        'body' => null,
-        'image_url' => 'uri',
-        'video' => null,
-        'link_url' => 'uri',
-        'call_to_action' => null,
-        'lead_gen_form_id' => null
+        'key' => null,
+        'label' => null,
+        'type' => null,
+        'options' => null,
+        'inline_context' => null
     ];
 
     /**
@@ -91,13 +87,11 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'headline' => false,
-        'body' => false,
-        'image_url' => false,
-        'video' => false,
-        'link_url' => false,
-        'call_to_action' => false,
-        'lead_gen_form_id' => false
+        'key' => false,
+        'label' => false,
+        'type' => false,
+        'options' => false,
+        'inline_context' => false
     ];
 
     /**
@@ -186,13 +180,11 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
-        'headline' => 'headline',
-        'body' => 'body',
-        'image_url' => 'imageUrl',
-        'video' => 'video',
-        'link_url' => 'linkUrl',
-        'call_to_action' => 'callToAction',
-        'lead_gen_form_id' => 'leadGenFormId'
+        'key' => 'key',
+        'label' => 'label',
+        'type' => 'type',
+        'options' => 'options',
+        'inline_context' => 'inline_context'
     ];
 
     /**
@@ -201,13 +193,11 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
-        'headline' => 'setHeadline',
-        'body' => 'setBody',
-        'image_url' => 'setImageUrl',
-        'video' => 'setVideo',
-        'link_url' => 'setLinkUrl',
-        'call_to_action' => 'setCallToAction',
-        'lead_gen_form_id' => 'setLeadGenFormId'
+        'key' => 'setKey',
+        'label' => 'setLabel',
+        'type' => 'setType',
+        'options' => 'setOptions',
+        'inline_context' => 'setInlineContext'
     ];
 
     /**
@@ -216,13 +206,11 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
-        'headline' => 'getHeadline',
-        'body' => 'getBody',
-        'image_url' => 'getImageUrl',
-        'video' => 'getVideo',
-        'link_url' => 'getLinkUrl',
-        'call_to_action' => 'getCallToAction',
-        'lead_gen_form_id' => 'getLeadGenFormId'
+        'key' => 'getKey',
+        'label' => 'getLabel',
+        'type' => 'getType',
+        'options' => 'getOptions',
+        'inline_context' => 'getInlineContext'
     ];
 
     /**
@@ -266,37 +254,6 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         return self::$openAPIModelName;
     }
 
-    public const CALL_TO_ACTION_LEARN_MORE = 'LEARN_MORE';
-    public const CALL_TO_ACTION_SHOP_NOW = 'SHOP_NOW';
-    public const CALL_TO_ACTION_SIGN_UP = 'SIGN_UP';
-    public const CALL_TO_ACTION_BOOK_TRAVEL = 'BOOK_TRAVEL';
-    public const CALL_TO_ACTION_CONTACT_US = 'CONTACT_US';
-    public const CALL_TO_ACTION_DOWNLOAD = 'DOWNLOAD';
-    public const CALL_TO_ACTION_GET_OFFER = 'GET_OFFER';
-    public const CALL_TO_ACTION_GET_QUOTE = 'GET_QUOTE';
-    public const CALL_TO_ACTION_SUBSCRIBE = 'SUBSCRIBE';
-    public const CALL_TO_ACTION_WATCH_MORE = 'WATCH_MORE';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCallToActionAllowableValues()
-    {
-        return [
-            self::CALL_TO_ACTION_LEARN_MORE,
-            self::CALL_TO_ACTION_SHOP_NOW,
-            self::CALL_TO_ACTION_SIGN_UP,
-            self::CALL_TO_ACTION_BOOK_TRAVEL,
-            self::CALL_TO_ACTION_CONTACT_US,
-            self::CALL_TO_ACTION_DOWNLOAD,
-            self::CALL_TO_ACTION_GET_OFFER,
-            self::CALL_TO_ACTION_GET_QUOTE,
-            self::CALL_TO_ACTION_SUBSCRIBE,
-            self::CALL_TO_ACTION_WATCH_MORE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -313,13 +270,11 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('headline', $data ?? [], null);
-        $this->setIfExists('body', $data ?? [], null);
-        $this->setIfExists('image_url', $data ?? [], null);
-        $this->setIfExists('video', $data ?? [], null);
-        $this->setIfExists('link_url', $data ?? [], null);
-        $this->setIfExists('call_to_action', $data ?? [], null);
-        $this->setIfExists('lead_gen_form_id', $data ?? [], null);
+        $this->setIfExists('key', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('options', $data ?? [], null);
+        $this->setIfExists('inline_context', $data ?? [], null);
     }
 
     /**
@@ -349,31 +304,9 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
     {
         $invalidProperties = [];
 
-        if ($this->container['headline'] === null) {
-            $invalidProperties[] = "'headline' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ((mb_strlen($this->container['headline']) > 255)) {
-            $invalidProperties[] = "invalid value for 'headline', the character length must be smaller than or equal to 255.";
-        }
-
-        if ($this->container['body'] === null) {
-            $invalidProperties[] = "'body' can't be null";
-        }
-        if ($this->container['link_url'] === null) {
-            $invalidProperties[] = "'link_url' can't be null";
-        }
-        if ($this->container['call_to_action'] === null) {
-            $invalidProperties[] = "'call_to_action' can't be null";
-        }
-        $allowedValues = $this->getCallToActionAllowableValues();
-        if (!is_null($this->container['call_to_action']) && !in_array($this->container['call_to_action'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'call_to_action', must be one of '%s'",
-                $this->container['call_to_action'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -390,204 +323,136 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
 
 
     /**
-     * Gets headline
-     *
-     * @return string
-     */
-    public function getHeadline()
-    {
-        return $this->container['headline'];
-    }
-
-    /**
-     * Sets headline
-     *
-     * @param string $headline headline
-     *
-     * @return self
-     */
-    public function setHeadline($headline)
-    {
-        if (is_null($headline)) {
-            throw new \InvalidArgumentException('non-nullable headline cannot be null');
-        }
-        if ((mb_strlen($headline) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $headline when calling CreateStandaloneAdRequestCreativesInner., must be smaller than or equal to 255.');
-        }
-
-        $this->container['headline'] = $headline;
-
-        return $this;
-    }
-
-    /**
-     * Gets body
-     *
-     * @return string
-     */
-    public function getBody()
-    {
-        return $this->container['body'];
-    }
-
-    /**
-     * Sets body
-     *
-     * @param string $body body
-     *
-     * @return self
-     */
-    public function setBody($body)
-    {
-        if (is_null($body)) {
-            throw new \InvalidArgumentException('non-nullable body cannot be null');
-        }
-        $this->container['body'] = $body;
-
-        return $this;
-    }
-
-    /**
-     * Gets image_url
+     * Gets key
      *
      * @return string|null
      */
-    public function getImageUrl()
+    public function getKey()
     {
-        return $this->container['image_url'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets image_url
+     * Sets key
      *
-     * @param string|null $image_url Image creative. Mutually exclusive with `video`.
+     * @param string|null $key Stable key returned in `field_data` on each lead. If omitted, Meta auto-derives one from `label`.
      *
      * @return self
      */
-    public function setImageUrl($image_url)
+    public function setKey($key)
     {
-        if (is_null($image_url)) {
-            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
+        if (is_null($key)) {
+            throw new \InvalidArgumentException('non-nullable key cannot be null');
         }
-        $this->container['image_url'] = $image_url;
+        $this->container['key'] = $key;
 
         return $this;
     }
 
     /**
-     * Gets video
-     *
-     * @return \Zernio\Model\CreateStandaloneAdRequestCreativesInnerVideo|null
-     */
-    public function getVideo()
-    {
-        return $this->container['video'];
-    }
-
-    /**
-     * Sets video
-     *
-     * @param \Zernio\Model\CreateStandaloneAdRequestCreativesInnerVideo|null $video video
-     *
-     * @return self
-     */
-    public function setVideo($video)
-    {
-        if (is_null($video)) {
-            throw new \InvalidArgumentException('non-nullable video cannot be null');
-        }
-        $this->container['video'] = $video;
-
-        return $this;
-    }
-
-    /**
-     * Gets link_url
-     *
-     * @return string
-     */
-    public function getLinkUrl()
-    {
-        return $this->container['link_url'];
-    }
-
-    /**
-     * Sets link_url
-     *
-     * @param string $link_url link_url
-     *
-     * @return self
-     */
-    public function setLinkUrl($link_url)
-    {
-        if (is_null($link_url)) {
-            throw new \InvalidArgumentException('non-nullable link_url cannot be null');
-        }
-        $this->container['link_url'] = $link_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets call_to_action
-     *
-     * @return string
-     */
-    public function getCallToAction()
-    {
-        return $this->container['call_to_action'];
-    }
-
-    /**
-     * Sets call_to_action
-     *
-     * @param string $call_to_action call_to_action
-     *
-     * @return self
-     */
-    public function setCallToAction($call_to_action)
-    {
-        if (is_null($call_to_action)) {
-            throw new \InvalidArgumentException('non-nullable call_to_action cannot be null');
-        }
-        $allowedValues = $this->getCallToActionAllowableValues();
-        if (!in_array($call_to_action, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'call_to_action', must be one of '%s'",
-                    $call_to_action,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['call_to_action'] = $call_to_action;
-
-        return $this;
-    }
-
-    /**
-     * Gets lead_gen_form_id
+     * Gets label
      *
      * @return string|null
      */
-    public function getLeadGenFormId()
+    public function getLabel()
     {
-        return $this->container['lead_gen_form_id'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets lead_gen_form_id
+     * Sets label
      *
-     * @param string|null $lead_gen_form_id Per-creative Lead Gen Form ID. Wins over the top-level `leadGenFormId` so each ad in a campaign can A/B a different form. Forces CTA to SIGN_UP.
+     * @param string|null $label Display text shown above the input.
      *
      * @return self
      */
-    public function setLeadGenFormId($lead_gen_form_id)
+    public function setLabel($label)
     {
-        if (is_null($lead_gen_form_id)) {
-            throw new \InvalidArgumentException('non-nullable lead_gen_form_id cannot be null');
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
-        $this->container['lead_gen_form_id'] = $lead_gen_form_id;
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \Zernio\Model\LeadGenFormQuestionOptionsInner[]|null
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \Zernio\Model\LeadGenFormQuestionOptionsInner[]|null $options Required for MULTIPLE_CHOICE / CONDITIONAL questions.
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        if (is_null($options)) {
+            throw new \InvalidArgumentException('non-nullable options cannot be null');
+        }
+        $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets inline_context
+     *
+     * @return string|null
+     */
+    public function getInlineContext()
+    {
+        return $this->container['inline_context'];
+    }
+
+    /**
+     * Sets inline_context
+     *
+     * @param string|null $inline_context Help text rendered below the field.
+     *
+     * @return self
+     */
+    public function setInlineContext($inline_context)
+    {
+        if (is_null($inline_context)) {
+            throw new \InvalidArgumentException('non-nullable inline_context cannot be null');
+        }
+        $this->container['inline_context'] = $inline_context;
 
         return $this;
     }

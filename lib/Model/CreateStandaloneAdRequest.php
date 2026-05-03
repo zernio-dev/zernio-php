@@ -69,6 +69,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'long_headline' => 'string',
         'body' => 'string',
         'call_to_action' => 'string',
+        'lead_gen_form_id' => 'string',
         'link_url' => 'string',
         'image_url' => 'string',
         'images' => '\Zernio\Model\CreateStandaloneAdRequestImages',
@@ -120,6 +121,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'long_headline' => null,
         'body' => null,
         'call_to_action' => null,
+        'lead_gen_form_id' => null,
         'link_url' => 'uri',
         'image_url' => 'uri',
         'images' => null,
@@ -169,6 +171,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'long_headline' => false,
         'body' => false,
         'call_to_action' => false,
+        'lead_gen_form_id' => false,
         'link_url' => false,
         'image_url' => false,
         'images' => false,
@@ -298,6 +301,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'long_headline' => 'longHeadline',
         'body' => 'body',
         'call_to_action' => 'callToAction',
+        'lead_gen_form_id' => 'leadGenFormId',
         'link_url' => 'linkUrl',
         'image_url' => 'imageUrl',
         'images' => 'images',
@@ -347,6 +351,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'long_headline' => 'setLongHeadline',
         'body' => 'setBody',
         'call_to_action' => 'setCallToAction',
+        'lead_gen_form_id' => 'setLeadGenFormId',
         'link_url' => 'setLinkUrl',
         'image_url' => 'setImageUrl',
         'images' => 'setImages',
@@ -396,6 +401,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'long_headline' => 'getLongHeadline',
         'body' => 'getBody',
         'call_to_action' => 'getCallToAction',
+        'lead_gen_form_id' => 'getLeadGenFormId',
         'link_url' => 'getLinkUrl',
         'image_url' => 'getImageUrl',
         'images' => 'getImages',
@@ -629,6 +635,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('long_headline', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
         $this->setIfExists('call_to_action', $data ?? [], null);
+        $this->setIfExists('lead_gen_form_id', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('images', $data ?? [], null);
@@ -1126,7 +1133,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets call_to_action
      *
-     * @param string|null $call_to_action Required on legacy + attach shapes for Meta. Honoured on TikTok too — passes through to the Spark Ad creative's `call_to_action`. Ignored by other platforms.
+     * @param string|null $call_to_action Required on legacy + attach shapes for Meta. Honoured on TikTok too — passes through to the Spark Ad creative's `call_to_action`. Ignored by other platforms. Ignored on Meta when `leadGenFormId` is set — lead ads force CTA type to SIGN_UP.
      *
      * @return self
      */
@@ -1146,6 +1153,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['call_to_action'] = $call_to_action;
+
+        return $this;
+    }
+
+    /**
+     * Gets lead_gen_form_id
+     *
+     * @return string|null
+     */
+    public function getLeadGenFormId()
+    {
+        return $this->container['lead_gen_form_id'];
+    }
+
+    /**
+     * Sets lead_gen_form_id
+     *
+     * @param string|null $lead_gen_form_id Meta-only. Attaches a Lead Gen (Instant) Form to the creative. Required when `goal=\"lead_generation\"`. Force-overrides the CTA to SIGN_UP. Create a form first via POST /v1/ads/lead-forms. On the multi-creative shape this can also be set per `creatives[i]` to A/B different forms inside one ad set.
+     *
+     * @return self
+     */
+    public function setLeadGenFormId($lead_gen_form_id)
+    {
+        if (is_null($lead_gen_form_id)) {
+            throw new \InvalidArgumentException('non-nullable lead_gen_form_id cannot be null');
+        }
+        $this->container['lead_gen_form_id'] = $lead_gen_form_id;
 
         return $this;
     }
