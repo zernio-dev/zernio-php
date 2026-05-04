@@ -1,6 +1,6 @@
 <?php
 /**
- * UsageStatsLimits
+ * InlineObject2Details
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UsageStatsLimits Class Doc Comment
+ * InlineObject2Details Class Doc Comment
  *
  * @category Class
- * @description Plan limits. For Metronome users both fields are &#x60;-1&#x60; (unlimited).
+ * @description Structured context for SDK clients that want to render their own UX. Keys vary by &#x60;reason&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
+class InlineObject2Details implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UsageStats_limits';
+    protected static $openAPIModelName = 'inline_object_2_details';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,11 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'uploads' => 'int',
-        'profiles' => 'int'
+        'free_tier_account_limit' => 'int',
+        'current_account_count' => 'int',
+        'has_payment_method' => 'bool',
+        'public_account_limit' => 'int',
+        'effective_account_limit' => 'int'
     ];
 
     /**
@@ -71,8 +74,11 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'uploads' => null,
-        'profiles' => null
+        'free_tier_account_limit' => null,
+        'current_account_count' => null,
+        'has_payment_method' => null,
+        'public_account_limit' => null,
+        'effective_account_limit' => null
     ];
 
     /**
@@ -81,8 +87,11 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'uploads' => false,
-        'profiles' => false
+        'free_tier_account_limit' => false,
+        'current_account_count' => false,
+        'has_payment_method' => false,
+        'public_account_limit' => false,
+        'effective_account_limit' => false
     ];
 
     /**
@@ -171,8 +180,11 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'uploads' => 'uploads',
-        'profiles' => 'profiles'
+        'free_tier_account_limit' => 'free_tier_account_limit',
+        'current_account_count' => 'current_account_count',
+        'has_payment_method' => 'has_payment_method',
+        'public_account_limit' => 'public_account_limit',
+        'effective_account_limit' => 'effective_account_limit'
     ];
 
     /**
@@ -181,8 +193,11 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'uploads' => 'setUploads',
-        'profiles' => 'setProfiles'
+        'free_tier_account_limit' => 'setFreeTierAccountLimit',
+        'current_account_count' => 'setCurrentAccountCount',
+        'has_payment_method' => 'setHasPaymentMethod',
+        'public_account_limit' => 'setPublicAccountLimit',
+        'effective_account_limit' => 'setEffectiveAccountLimit'
     ];
 
     /**
@@ -191,8 +206,11 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'uploads' => 'getUploads',
-        'profiles' => 'getProfiles'
+        'free_tier_account_limit' => 'getFreeTierAccountLimit',
+        'current_account_count' => 'getCurrentAccountCount',
+        'has_payment_method' => 'getHasPaymentMethod',
+        'public_account_limit' => 'getPublicAccountLimit',
+        'effective_account_limit' => 'getEffectiveAccountLimit'
     ];
 
     /**
@@ -252,8 +270,11 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('uploads', $data ?? [], null);
-        $this->setIfExists('profiles', $data ?? [], null);
+        $this->setIfExists('free_tier_account_limit', $data ?? [], null);
+        $this->setIfExists('current_account_count', $data ?? [], null);
+        $this->setIfExists('has_payment_method', $data ?? [], null);
+        $this->setIfExists('public_account_limit', $data ?? [], null);
+        $this->setIfExists('effective_account_limit', $data ?? [], null);
     }
 
     /**
@@ -299,55 +320,136 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets uploads
+     * Gets free_tier_account_limit
      *
      * @return int|null
      */
-    public function getUploads()
+    public function getFreeTierAccountLimit()
     {
-        return $this->container['uploads'];
+        return $this->container['free_tier_account_limit'];
     }
 
     /**
-     * Sets uploads
+     * Sets free_tier_account_limit
      *
-     * @param int|null $uploads uploads
+     * @param int|null $free_tier_account_limit How many accounts the free tier allows. Only set when reason=free_tier_exceeded.
      *
      * @return self
      */
-    public function setUploads($uploads)
+    public function setFreeTierAccountLimit($free_tier_account_limit)
     {
-        if (is_null($uploads)) {
-            throw new \InvalidArgumentException('non-nullable uploads cannot be null');
+        if (is_null($free_tier_account_limit)) {
+            throw new \InvalidArgumentException('non-nullable free_tier_account_limit cannot be null');
         }
-        $this->container['uploads'] = $uploads;
+        $this->container['free_tier_account_limit'] = $free_tier_account_limit;
 
         return $this;
     }
 
     /**
-     * Gets profiles
+     * Gets current_account_count
      *
      * @return int|null
      */
-    public function getProfiles()
+    public function getCurrentAccountCount()
     {
-        return $this->container['profiles'];
+        return $this->container['current_account_count'];
     }
 
     /**
-     * Sets profiles
+     * Sets current_account_count
      *
-     * @param int|null $profiles profiles
+     * @param int|null $current_account_count How many accounts the team currently has connected. Set when reason=free_tier_exceeded or reason=enterprise_required.
      *
      * @return self
      */
-    public function setProfiles($profiles)
+    public function setCurrentAccountCount($current_account_count)
     {
-        if (is_null($profiles)) {
-            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        if (is_null($current_account_count)) {
+            throw new \InvalidArgumentException('non-nullable current_account_count cannot be null');
         }
-        $this->container['profiles'] = $profiles;
+        $this->container['current_account_count'] = $current_account_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_payment_method
+     *
+     * @return bool|null
+     */
+    public function getHasPaymentMethod()
+    {
+        return $this->container['has_payment_method'];
+    }
+
+    /**
+     * Sets has_payment_method
+     *
+     * @param bool|null $has_payment_method Whether the team currently has a card on file in Stripe. Set when reason=free_tier_exceeded or reason=twitter_passthrough.
+     *
+     * @return self
+     */
+    public function setHasPaymentMethod($has_payment_method)
+    {
+        if (is_null($has_payment_method)) {
+            throw new \InvalidArgumentException('non-nullable has_payment_method cannot be null');
+        }
+        $this->container['has_payment_method'] = $has_payment_method;
+
+        return $this;
+    }
+
+    /**
+     * Gets public_account_limit
+     *
+     * @return int|null
+     */
+    public function getPublicAccountLimit()
+    {
+        return $this->container['public_account_limit'];
+    }
+
+    /**
+     * Sets public_account_limit
+     *
+     * @param int|null $public_account_limit Public pricing ceiling (the published cap beyond which an enterprise contract is required). Only set when reason=enterprise_required.
+     *
+     * @return self
+     */
+    public function setPublicAccountLimit($public_account_limit)
+    {
+        if (is_null($public_account_limit)) {
+            throw new \InvalidArgumentException('non-nullable public_account_limit cannot be null');
+        }
+        $this->container['public_account_limit'] = $public_account_limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets effective_account_limit
+     *
+     * @return int|null
+     */
+    public function getEffectiveAccountLimit()
+    {
+        return $this->container['effective_account_limit'];
+    }
+
+    /**
+     * Sets effective_account_limit
+     *
+     * @param int|null $effective_account_limit The cap actually applied to this team. Equals `public_account_limit` for organic teams; for teams with a per-customer override (grandfathered legacy customers, signed enterprise contracts) this can be higher. Only set when reason=enterprise_required.
+     *
+     * @return self
+     */
+    public function setEffectiveAccountLimit($effective_account_limit)
+    {
+        if (is_null($effective_account_limit)) {
+            throw new \InvalidArgumentException('non-nullable effective_account_limit cannot be null');
+        }
+        $this->container['effective_account_limit'] = $effective_account_limit;
 
         return $this;
     }

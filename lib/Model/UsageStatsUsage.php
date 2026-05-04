@@ -36,6 +36,7 @@ use \Zernio\ObjectSerializer;
  * UsageStatsUsage Class Doc Comment
  *
  * @category Class
+ * @description Per-period usage counts. Fields present depend on &#x60;billingSystem&#x60;: Stripe returns &#x60;uploads&#x60; / &#x60;profiles&#x60; / &#x60;lastReset&#x60;; Metronome returns &#x60;connectedAccounts&#x60; / &#x60;xApiCalls&#x60; / &#x60;xApiCallsByOperation&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +61,10 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'uploads' => 'int',
         'profiles' => 'int',
-        'last_reset' => '\DateTime'
+        'last_reset' => '\DateTime',
+        'connected_accounts' => 'int',
+        'x_api_calls' => '\Zernio\Model\UsageStatsUsageXApiCalls',
+        'x_api_calls_by_operation' => 'array<string,int>'
     ];
 
     /**
@@ -73,7 +77,10 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'uploads' => null,
         'profiles' => null,
-        'last_reset' => 'date-time'
+        'last_reset' => 'date-time',
+        'connected_accounts' => null,
+        'x_api_calls' => null,
+        'x_api_calls_by_operation' => null
     ];
 
     /**
@@ -84,7 +91,10 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static array $openAPINullables = [
         'uploads' => false,
         'profiles' => false,
-        'last_reset' => false
+        'last_reset' => false,
+        'connected_accounts' => false,
+        'x_api_calls' => false,
+        'x_api_calls_by_operation' => false
     ];
 
     /**
@@ -175,7 +185,10 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'uploads' => 'uploads',
         'profiles' => 'profiles',
-        'last_reset' => 'lastReset'
+        'last_reset' => 'lastReset',
+        'connected_accounts' => 'connectedAccounts',
+        'x_api_calls' => 'xApiCalls',
+        'x_api_calls_by_operation' => 'xApiCallsByOperation'
     ];
 
     /**
@@ -186,7 +199,10 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'uploads' => 'setUploads',
         'profiles' => 'setProfiles',
-        'last_reset' => 'setLastReset'
+        'last_reset' => 'setLastReset',
+        'connected_accounts' => 'setConnectedAccounts',
+        'x_api_calls' => 'setXApiCalls',
+        'x_api_calls_by_operation' => 'setXApiCallsByOperation'
     ];
 
     /**
@@ -197,7 +213,10 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'uploads' => 'getUploads',
         'profiles' => 'getProfiles',
-        'last_reset' => 'getLastReset'
+        'last_reset' => 'getLastReset',
+        'connected_accounts' => 'getConnectedAccounts',
+        'x_api_calls' => 'getXApiCalls',
+        'x_api_calls_by_operation' => 'getXApiCallsByOperation'
     ];
 
     /**
@@ -260,6 +279,9 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('uploads', $data ?? [], null);
         $this->setIfExists('profiles', $data ?? [], null);
         $this->setIfExists('last_reset', $data ?? [], null);
+        $this->setIfExists('connected_accounts', $data ?? [], null);
+        $this->setIfExists('x_api_calls', $data ?? [], null);
+        $this->setIfExists('x_api_calls_by_operation', $data ?? [], null);
     }
 
     /**
@@ -317,7 +339,7 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets uploads
      *
-     * @param int|null $uploads uploads
+     * @param int|null $uploads Stripe users only. Uploads consumed in the current period.
      *
      * @return self
      */
@@ -344,7 +366,7 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets profiles
      *
-     * @param int|null $profiles profiles
+     * @param int|null $profiles Stripe users only. Profiles currently owned.
      *
      * @return self
      */
@@ -371,7 +393,7 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets last_reset
      *
-     * @param \DateTime|null $last_reset last_reset
+     * @param \DateTime|null $last_reset Stripe users only.
      *
      * @return self
      */
@@ -381,6 +403,87 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable last_reset cannot be null');
         }
         $this->container['last_reset'] = $last_reset;
+
+        return $this;
+    }
+
+    /**
+     * Gets connected_accounts
+     *
+     * @return int|null
+     */
+    public function getConnectedAccounts()
+    {
+        return $this->container['connected_accounts'];
+    }
+
+    /**
+     * Sets connected_accounts
+     *
+     * @param int|null $connected_accounts Metronome users only. Accounts currently connected across the team.
+     *
+     * @return self
+     */
+    public function setConnectedAccounts($connected_accounts)
+    {
+        if (is_null($connected_accounts)) {
+            throw new \InvalidArgumentException('non-nullable connected_accounts cannot be null');
+        }
+        $this->container['connected_accounts'] = $connected_accounts;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_api_calls
+     *
+     * @return \Zernio\Model\UsageStatsUsageXApiCalls|null
+     */
+    public function getXApiCalls()
+    {
+        return $this->container['x_api_calls'];
+    }
+
+    /**
+     * Sets x_api_calls
+     *
+     * @param \Zernio\Model\UsageStatsUsageXApiCalls|null $x_api_calls x_api_calls
+     *
+     * @return self
+     */
+    public function setXApiCalls($x_api_calls)
+    {
+        if (is_null($x_api_calls)) {
+            throw new \InvalidArgumentException('non-nullable x_api_calls cannot be null');
+        }
+        $this->container['x_api_calls'] = $x_api_calls;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_api_calls_by_operation
+     *
+     * @return array<string,int>|null
+     */
+    public function getXApiCallsByOperation()
+    {
+        return $this->container['x_api_calls_by_operation'];
+    }
+
+    /**
+     * Sets x_api_calls_by_operation
+     *
+     * @param array<string,int>|null $x_api_calls_by_operation Metronome users only. Per-operation X API call counts keyed by operation (e.g. `posts_read`, `content_create`). Resolve each key to price and metadata via `GET /v1/billing/x-pricing`.
+     *
+     * @return self
+     */
+    public function setXApiCallsByOperation($x_api_calls_by_operation)
+    {
+        if (is_null($x_api_calls_by_operation)) {
+            throw new \InvalidArgumentException('non-nullable x_api_calls_by_operation cannot be null');
+        }
+        $this->container['x_api_calls_by_operation'] = $x_api_calls_by_operation;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * UsageStatsLimits
+ * UsageStatsSpend
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UsageStatsLimits Class Doc Comment
+ * UsageStatsSpend Class Doc Comment
  *
  * @category Class
- * @description Plan limits. For Metronome users both fields are &#x60;-1&#x60; (unlimited).
+ * @description Metronome users only. Current-period spend summary.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
+class UsageStatsSpend implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UsageStats_limits';
+    protected static $openAPIModelName = 'UsageStats_spend';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,10 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'uploads' => 'int',
-        'profiles' => 'int'
+        'current_period_cents' => 'int',
+        'credits_remaining_cents' => 'int',
+        'x_spend_cents' => 'int',
+        'x_spend_limit_cents' => 'int'
     ];
 
     /**
@@ -71,8 +73,10 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'uploads' => null,
-        'profiles' => null
+        'current_period_cents' => null,
+        'credits_remaining_cents' => null,
+        'x_spend_cents' => null,
+        'x_spend_limit_cents' => null
     ];
 
     /**
@@ -81,8 +85,10 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'uploads' => false,
-        'profiles' => false
+        'current_period_cents' => false,
+        'credits_remaining_cents' => false,
+        'x_spend_cents' => false,
+        'x_spend_limit_cents' => false
     ];
 
     /**
@@ -171,8 +177,10 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'uploads' => 'uploads',
-        'profiles' => 'profiles'
+        'current_period_cents' => 'currentPeriodCents',
+        'credits_remaining_cents' => 'creditsRemainingCents',
+        'x_spend_cents' => 'xSpendCents',
+        'x_spend_limit_cents' => 'xSpendLimitCents'
     ];
 
     /**
@@ -181,8 +189,10 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'uploads' => 'setUploads',
-        'profiles' => 'setProfiles'
+        'current_period_cents' => 'setCurrentPeriodCents',
+        'credits_remaining_cents' => 'setCreditsRemainingCents',
+        'x_spend_cents' => 'setXSpendCents',
+        'x_spend_limit_cents' => 'setXSpendLimitCents'
     ];
 
     /**
@@ -191,8 +201,10 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'uploads' => 'getUploads',
-        'profiles' => 'getProfiles'
+        'current_period_cents' => 'getCurrentPeriodCents',
+        'credits_remaining_cents' => 'getCreditsRemainingCents',
+        'x_spend_cents' => 'getXSpendCents',
+        'x_spend_limit_cents' => 'getXSpendLimitCents'
     ];
 
     /**
@@ -252,8 +264,10 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('uploads', $data ?? [], null);
-        $this->setIfExists('profiles', $data ?? [], null);
+        $this->setIfExists('current_period_cents', $data ?? [], null);
+        $this->setIfExists('credits_remaining_cents', $data ?? [], null);
+        $this->setIfExists('x_spend_cents', $data ?? [], null);
+        $this->setIfExists('x_spend_limit_cents', $data ?? [], null);
     }
 
     /**
@@ -299,55 +313,109 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets uploads
+     * Gets current_period_cents
      *
      * @return int|null
      */
-    public function getUploads()
+    public function getCurrentPeriodCents()
     {
-        return $this->container['uploads'];
+        return $this->container['current_period_cents'];
     }
 
     /**
-     * Sets uploads
+     * Sets current_period_cents
      *
-     * @param int|null $uploads uploads
+     * @param int|null $current_period_cents Total current-period spend in cents (all products combined).
      *
      * @return self
      */
-    public function setUploads($uploads)
+    public function setCurrentPeriodCents($current_period_cents)
     {
-        if (is_null($uploads)) {
-            throw new \InvalidArgumentException('non-nullable uploads cannot be null');
+        if (is_null($current_period_cents)) {
+            throw new \InvalidArgumentException('non-nullable current_period_cents cannot be null');
         }
-        $this->container['uploads'] = $uploads;
+        $this->container['current_period_cents'] = $current_period_cents;
 
         return $this;
     }
 
     /**
-     * Gets profiles
+     * Gets credits_remaining_cents
      *
      * @return int|null
      */
-    public function getProfiles()
+    public function getCreditsRemainingCents()
     {
-        return $this->container['profiles'];
+        return $this->container['credits_remaining_cents'];
     }
 
     /**
-     * Sets profiles
+     * Sets credits_remaining_cents
      *
-     * @param int|null $profiles profiles
+     * @param int|null $credits_remaining_cents Free-tier credit remaining in cents. Applied before any charge.
      *
      * @return self
      */
-    public function setProfiles($profiles)
+    public function setCreditsRemainingCents($credits_remaining_cents)
     {
-        if (is_null($profiles)) {
-            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        if (is_null($credits_remaining_cents)) {
+            throw new \InvalidArgumentException('non-nullable credits_remaining_cents cannot be null');
         }
-        $this->container['profiles'] = $profiles;
+        $this->container['credits_remaining_cents'] = $credits_remaining_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_spend_cents
+     *
+     * @return int|null
+     */
+    public function getXSpendCents()
+    {
+        return $this->container['x_spend_cents'];
+    }
+
+    /**
+     * Sets x_spend_cents
+     *
+     * @param int|null $x_spend_cents Current-period X/Twitter API spend in cents, derived from the per-tier call counts. Rounded up for conservative enforcement against `xSpendLimitCents`.
+     *
+     * @return self
+     */
+    public function setXSpendCents($x_spend_cents)
+    {
+        if (is_null($x_spend_cents)) {
+            throw new \InvalidArgumentException('non-nullable x_spend_cents cannot be null');
+        }
+        $this->container['x_spend_cents'] = $x_spend_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_spend_limit_cents
+     *
+     * @return int|null
+     */
+    public function getXSpendLimitCents()
+    {
+        return $this->container['x_spend_limit_cents'];
+    }
+
+    /**
+     * Sets x_spend_limit_cents
+     *
+     * @param int|null $x_spend_limit_cents Monthly X spend cap set by the account owner, or null if no cap. When current X spend hits this cap, analytics and inbox sync are auto-paused for X accounts. Publishing is never blocked by this cap.
+     *
+     * @return self
+     */
+    public function setXSpendLimitCents($x_spend_limit_cents)
+    {
+        if (is_null($x_spend_limit_cents)) {
+            throw new \InvalidArgumentException('non-nullable x_spend_limit_cents cannot be null');
+        }
+        $this->container['x_spend_limit_cents'] = $x_spend_limit_cents;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * UsageStatsLimits
+ * XApiOperation
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UsageStatsLimits Class Doc Comment
+ * XApiOperation Class Doc Comment
  *
  * @category Class
- * @description Plan limits. For Metronome users both fields are &#x60;-1&#x60; (unlimited).
+ * @description A single X API operation with its per-call price and the Zernio platform methods that trigger it.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
+class XApiOperation implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UsageStats_limits';
+    protected static $openAPIModelName = 'XApiOperation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,13 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'uploads' => 'int',
-        'profiles' => 'int'
+        'operation' => 'string',
+        'event_type' => 'string',
+        'display_name' => 'string',
+        'price_per_call_usd' => 'float',
+        'price_per_call_cents' => 'float',
+        'tier' => 'string',
+        'triggered_by' => '\Zernio\Model\XApiOperationTriggeredByInner[]'
     ];
 
     /**
@@ -71,8 +76,13 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'uploads' => null,
-        'profiles' => null
+        'operation' => null,
+        'event_type' => null,
+        'display_name' => null,
+        'price_per_call_usd' => null,
+        'price_per_call_cents' => null,
+        'tier' => null,
+        'triggered_by' => null
     ];
 
     /**
@@ -81,8 +91,13 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'uploads' => false,
-        'profiles' => false
+        'operation' => false,
+        'event_type' => false,
+        'display_name' => false,
+        'price_per_call_usd' => false,
+        'price_per_call_cents' => false,
+        'tier' => false,
+        'triggered_by' => false
     ];
 
     /**
@@ -171,8 +186,13 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'uploads' => 'uploads',
-        'profiles' => 'profiles'
+        'operation' => 'operation',
+        'event_type' => 'eventType',
+        'display_name' => 'displayName',
+        'price_per_call_usd' => 'pricePerCallUsd',
+        'price_per_call_cents' => 'pricePerCallCents',
+        'tier' => 'tier',
+        'triggered_by' => 'triggeredBy'
     ];
 
     /**
@@ -181,8 +201,13 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'uploads' => 'setUploads',
-        'profiles' => 'setProfiles'
+        'operation' => 'setOperation',
+        'event_type' => 'setEventType',
+        'display_name' => 'setDisplayName',
+        'price_per_call_usd' => 'setPricePerCallUsd',
+        'price_per_call_cents' => 'setPricePerCallCents',
+        'tier' => 'setTier',
+        'triggered_by' => 'setTriggeredBy'
     ];
 
     /**
@@ -191,8 +216,13 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'uploads' => 'getUploads',
-        'profiles' => 'getProfiles'
+        'operation' => 'getOperation',
+        'event_type' => 'getEventType',
+        'display_name' => 'getDisplayName',
+        'price_per_call_usd' => 'getPricePerCallUsd',
+        'price_per_call_cents' => 'getPricePerCallCents',
+        'tier' => 'getTier',
+        'triggered_by' => 'getTriggeredBy'
     ];
 
     /**
@@ -236,6 +266,23 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const TIER_X_API_005 = 'x_api_005';
+    public const TIER_X_API_010 = 'x_api_010';
+    public const TIER_X_API_015 = 'x_api_015';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTierAllowableValues()
+    {
+        return [
+            self::TIER_X_API_005,
+            self::TIER_X_API_010,
+            self::TIER_X_API_015,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -252,8 +299,13 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('uploads', $data ?? [], null);
-        $this->setIfExists('profiles', $data ?? [], null);
+        $this->setIfExists('operation', $data ?? [], null);
+        $this->setIfExists('event_type', $data ?? [], null);
+        $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('price_per_call_usd', $data ?? [], null);
+        $this->setIfExists('price_per_call_cents', $data ?? [], null);
+        $this->setIfExists('tier', $data ?? [], null);
+        $this->setIfExists('triggered_by', $data ?? [], null);
     }
 
     /**
@@ -283,6 +335,15 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getTierAllowableValues();
+        if (!is_null($this->container['tier']) && !in_array($this->container['tier'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'tier', must be one of '%s'",
+                $this->container['tier'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -299,55 +360,200 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets uploads
+     * Gets operation
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getUploads()
+    public function getOperation()
     {
-        return $this->container['uploads'];
+        return $this->container['operation'];
     }
 
     /**
-     * Sets uploads
+     * Sets operation
      *
-     * @param int|null $uploads uploads
+     * @param string|null $operation Internal operation key. Matches keys in `xApiCallsByOperation`.
      *
      * @return self
      */
-    public function setUploads($uploads)
+    public function setOperation($operation)
     {
-        if (is_null($uploads)) {
-            throw new \InvalidArgumentException('non-nullable uploads cannot be null');
+        if (is_null($operation)) {
+            throw new \InvalidArgumentException('non-nullable operation cannot be null');
         }
-        $this->container['uploads'] = $uploads;
+        $this->container['operation'] = $operation;
 
         return $this;
     }
 
     /**
-     * Gets profiles
+     * Gets event_type
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getProfiles()
+    public function getEventType()
     {
-        return $this->container['profiles'];
+        return $this->container['event_type'];
     }
 
     /**
-     * Sets profiles
+     * Sets event_type
      *
-     * @param int|null $profiles profiles
+     * @param string|null $event_type Metronome `event_type` emitted when this operation runs.
      *
      * @return self
      */
-    public function setProfiles($profiles)
+    public function setEventType($event_type)
     {
-        if (is_null($profiles)) {
-            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        if (is_null($event_type)) {
+            throw new \InvalidArgumentException('non-nullable event_type cannot be null');
         }
-        $this->container['profiles'] = $profiles;
+        $this->container['event_type'] = $event_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets display_name
+     *
+     * @return string|null
+     */
+    public function getDisplayName()
+    {
+        return $this->container['display_name'];
+    }
+
+    /**
+     * Sets display_name
+     *
+     * @param string|null $display_name Human-readable label shown on Metronome invoices.
+     *
+     * @return self
+     */
+    public function setDisplayName($display_name)
+    {
+        if (is_null($display_name)) {
+            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
+        }
+        $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets price_per_call_usd
+     *
+     * @return float|null
+     */
+    public function getPricePerCallUsd()
+    {
+        return $this->container['price_per_call_usd'];
+    }
+
+    /**
+     * Sets price_per_call_usd
+     *
+     * @param float|null $price_per_call_usd price_per_call_usd
+     *
+     * @return self
+     */
+    public function setPricePerCallUsd($price_per_call_usd)
+    {
+        if (is_null($price_per_call_usd)) {
+            throw new \InvalidArgumentException('non-nullable price_per_call_usd cannot be null');
+        }
+        $this->container['price_per_call_usd'] = $price_per_call_usd;
+
+        return $this;
+    }
+
+    /**
+     * Gets price_per_call_cents
+     *
+     * @return float|null
+     */
+    public function getPricePerCallCents()
+    {
+        return $this->container['price_per_call_cents'];
+    }
+
+    /**
+     * Sets price_per_call_cents
+     *
+     * @param float|null $price_per_call_cents Per-call price in cents. Fractional values are intentional.
+     *
+     * @return self
+     */
+    public function setPricePerCallCents($price_per_call_cents)
+    {
+        if (is_null($price_per_call_cents)) {
+            throw new \InvalidArgumentException('non-nullable price_per_call_cents cannot be null');
+        }
+        $this->container['price_per_call_cents'] = $price_per_call_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets tier
+     *
+     * @return string|null
+     */
+    public function getTier()
+    {
+        return $this->container['tier'];
+    }
+
+    /**
+     * Sets tier
+     *
+     * @param string|null $tier Which aggregate price tier this operation falls into.
+     *
+     * @return self
+     */
+    public function setTier($tier)
+    {
+        if (is_null($tier)) {
+            throw new \InvalidArgumentException('non-nullable tier cannot be null');
+        }
+        $allowedValues = $this->getTierAllowableValues();
+        if (!in_array($tier, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'tier', must be one of '%s'",
+                    $tier,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['tier'] = $tier;
+
+        return $this;
+    }
+
+    /**
+     * Gets triggered_by
+     *
+     * @return \Zernio\Model\XApiOperationTriggeredByInner[]|null
+     */
+    public function getTriggeredBy()
+    {
+        return $this->container['triggered_by'];
+    }
+
+    /**
+     * Sets triggered_by
+     *
+     * @param \Zernio\Model\XApiOperationTriggeredByInner[]|null $triggered_by Zernio platform methods that emit this operation, with their metering rule.
+     *
+     * @return self
+     */
+    public function setTriggeredBy($triggered_by)
+    {
+        if (is_null($triggered_by)) {
+            throw new \InvalidArgumentException('non-nullable triggered_by cannot be null');
+        }
+        $this->container['triggered_by'] = $triggered_by;
 
         return $this;
     }

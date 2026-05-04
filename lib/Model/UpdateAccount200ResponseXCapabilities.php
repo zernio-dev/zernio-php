@@ -1,6 +1,6 @@
 <?php
 /**
- * UsageStatsLimits
+ * UpdateAccount200ResponseXCapabilities
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UsageStatsLimits Class Doc Comment
+ * UpdateAccount200ResponseXCapabilities Class Doc Comment
  *
  * @category Class
- * @description Plan limits. For Metronome users both fields are &#x60;-1&#x60; (unlimited).
+ * @description Echo of the resulting &#x60;xCapabilities&#x60; state, returned only when the request body included an &#x60;xCapabilities&#x60; object.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdateAccount200ResponseXCapabilities implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UsageStats_limits';
+    protected static $openAPIModelName = 'updateAccount_200_response_xCapabilities';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'uploads' => 'int',
-        'profiles' => 'int'
+        'analytics' => 'bool',
+        'inbox' => 'bool'
     ];
 
     /**
@@ -71,8 +71,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'uploads' => null,
-        'profiles' => null
+        'analytics' => null,
+        'inbox' => null
     ];
 
     /**
@@ -81,8 +81,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'uploads' => false,
-        'profiles' => false
+        'analytics' => false,
+        'inbox' => false
     ];
 
     /**
@@ -171,8 +171,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'uploads' => 'uploads',
-        'profiles' => 'profiles'
+        'analytics' => 'analytics',
+        'inbox' => 'inbox'
     ];
 
     /**
@@ -181,8 +181,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'uploads' => 'setUploads',
-        'profiles' => 'setProfiles'
+        'analytics' => 'setAnalytics',
+        'inbox' => 'setInbox'
     ];
 
     /**
@@ -191,8 +191,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'uploads' => 'getUploads',
-        'profiles' => 'getProfiles'
+        'analytics' => 'getAnalytics',
+        'inbox' => 'getInbox'
     ];
 
     /**
@@ -252,8 +252,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('uploads', $data ?? [], null);
-        $this->setIfExists('profiles', $data ?? [], null);
+        $this->setIfExists('analytics', $data ?? [], null);
+        $this->setIfExists('inbox', $data ?? [], null);
     }
 
     /**
@@ -299,55 +299,55 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets uploads
+     * Gets analytics
      *
-     * @return int|null
+     * @return bool|null
      */
-    public function getUploads()
+    public function getAnalytics()
     {
-        return $this->container['uploads'];
+        return $this->container['analytics'];
     }
 
     /**
-     * Sets uploads
+     * Sets analytics
      *
-     * @param int|null $uploads uploads
+     * @param bool|null $analytics analytics
      *
      * @return self
      */
-    public function setUploads($uploads)
+    public function setAnalytics($analytics)
     {
-        if (is_null($uploads)) {
-            throw new \InvalidArgumentException('non-nullable uploads cannot be null');
+        if (is_null($analytics)) {
+            throw new \InvalidArgumentException('non-nullable analytics cannot be null');
         }
-        $this->container['uploads'] = $uploads;
+        $this->container['analytics'] = $analytics;
 
         return $this;
     }
 
     /**
-     * Gets profiles
+     * Gets inbox
      *
-     * @return int|null
+     * @return bool|null
      */
-    public function getProfiles()
+    public function getInbox()
     {
-        return $this->container['profiles'];
+        return $this->container['inbox'];
     }
 
     /**
-     * Sets profiles
+     * Sets inbox
      *
-     * @param int|null $profiles profiles
+     * @param bool|null $inbox inbox
      *
      * @return self
      */
-    public function setProfiles($profiles)
+    public function setInbox($inbox)
     {
-        if (is_null($profiles)) {
-            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        if (is_null($inbox)) {
+            throw new \InvalidArgumentException('non-nullable inbox cannot be null');
         }
-        $this->container['profiles'] = $profiles;
+        $this->container['inbox'] = $inbox;
 
         return $this;
     }

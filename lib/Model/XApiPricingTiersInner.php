@@ -1,6 +1,6 @@
 <?php
 /**
- * UsageStatsLimits
+ * XApiPricingTiersInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UsageStatsLimits Class Doc Comment
+ * XApiPricingTiersInner Class Doc Comment
  *
  * @category Class
- * @description Plan limits. For Metronome users both fields are &#x60;-1&#x60; (unlimited).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
+class XApiPricingTiersInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UsageStats_limits';
+    protected static $openAPIModelName = 'XApiPricing_tiers_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'uploads' => 'int',
-        'profiles' => 'int'
+        'tier' => 'string',
+        'price_per_call_usd' => 'float',
+        'operation_count' => 'int'
     ];
 
     /**
@@ -71,8 +71,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'uploads' => null,
-        'profiles' => null
+        'tier' => null,
+        'price_per_call_usd' => null,
+        'operation_count' => null
     ];
 
     /**
@@ -81,8 +82,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'uploads' => false,
-        'profiles' => false
+        'tier' => false,
+        'price_per_call_usd' => false,
+        'operation_count' => false
     ];
 
     /**
@@ -171,8 +173,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'uploads' => 'uploads',
-        'profiles' => 'profiles'
+        'tier' => 'tier',
+        'price_per_call_usd' => 'pricePerCallUsd',
+        'operation_count' => 'operationCount'
     ];
 
     /**
@@ -181,8 +184,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'uploads' => 'setUploads',
-        'profiles' => 'setProfiles'
+        'tier' => 'setTier',
+        'price_per_call_usd' => 'setPricePerCallUsd',
+        'operation_count' => 'setOperationCount'
     ];
 
     /**
@@ -191,8 +195,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'uploads' => 'getUploads',
-        'profiles' => 'getProfiles'
+        'tier' => 'getTier',
+        'price_per_call_usd' => 'getPricePerCallUsd',
+        'operation_count' => 'getOperationCount'
     ];
 
     /**
@@ -236,6 +241,23 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const TIER_X_API_005 = 'x_api_005';
+    public const TIER_X_API_010 = 'x_api_010';
+    public const TIER_X_API_015 = 'x_api_015';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTierAllowableValues()
+    {
+        return [
+            self::TIER_X_API_005,
+            self::TIER_X_API_010,
+            self::TIER_X_API_015,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -252,8 +274,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('uploads', $data ?? [], null);
-        $this->setIfExists('profiles', $data ?? [], null);
+        $this->setIfExists('tier', $data ?? [], null);
+        $this->setIfExists('price_per_call_usd', $data ?? [], null);
+        $this->setIfExists('operation_count', $data ?? [], null);
     }
 
     /**
@@ -283,6 +306,15 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getTierAllowableValues();
+        if (!is_null($this->container['tier']) && !in_array($this->container['tier'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'tier', must be one of '%s'",
+                $this->container['tier'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -299,55 +331,92 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets uploads
+     * Gets tier
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getUploads()
+    public function getTier()
     {
-        return $this->container['uploads'];
+        return $this->container['tier'];
     }
 
     /**
-     * Sets uploads
+     * Sets tier
      *
-     * @param int|null $uploads uploads
+     * @param string|null $tier Historical bucket key used in `xApiCalls` aggregation.
      *
      * @return self
      */
-    public function setUploads($uploads)
+    public function setTier($tier)
     {
-        if (is_null($uploads)) {
-            throw new \InvalidArgumentException('non-nullable uploads cannot be null');
+        if (is_null($tier)) {
+            throw new \InvalidArgumentException('non-nullable tier cannot be null');
         }
-        $this->container['uploads'] = $uploads;
+        $allowedValues = $this->getTierAllowableValues();
+        if (!in_array($tier, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'tier', must be one of '%s'",
+                    $tier,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['tier'] = $tier;
 
         return $this;
     }
 
     /**
-     * Gets profiles
+     * Gets price_per_call_usd
      *
-     * @return int|null
+     * @return float|null
      */
-    public function getProfiles()
+    public function getPricePerCallUsd()
     {
-        return $this->container['profiles'];
+        return $this->container['price_per_call_usd'];
     }
 
     /**
-     * Sets profiles
+     * Sets price_per_call_usd
      *
-     * @param int|null $profiles profiles
+     * @param float|null $price_per_call_usd price_per_call_usd
      *
      * @return self
      */
-    public function setProfiles($profiles)
+    public function setPricePerCallUsd($price_per_call_usd)
     {
-        if (is_null($profiles)) {
-            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        if (is_null($price_per_call_usd)) {
+            throw new \InvalidArgumentException('non-nullable price_per_call_usd cannot be null');
         }
-        $this->container['profiles'] = $profiles;
+        $this->container['price_per_call_usd'] = $price_per_call_usd;
+
+        return $this;
+    }
+
+    /**
+     * Gets operation_count
+     *
+     * @return int|null
+     */
+    public function getOperationCount()
+    {
+        return $this->container['operation_count'];
+    }
+
+    /**
+     * Sets operation_count
+     *
+     * @param int|null $operation_count operation_count
+     *
+     * @return self
+     */
+    public function setOperationCount($operation_count)
+    {
+        if (is_null($operation_count)) {
+            throw new \InvalidArgumentException('non-nullable operation_count cannot be null');
+        }
+        $this->container['operation_count'] = $operation_count;
 
         return $this;
     }

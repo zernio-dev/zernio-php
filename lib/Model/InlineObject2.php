@@ -1,6 +1,6 @@
 <?php
 /**
- * UsageStatsLimits
+ * InlineObject2
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UsageStatsLimits Class Doc Comment
+ * InlineObject2 Class Doc Comment
  *
  * @category Class
- * @description Plan limits. For Metronome users both fields are &#x60;-1&#x60; (unlimited).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
+class InlineObject2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UsageStats_limits';
+    protected static $openAPIModelName = 'inline_object_2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'uploads' => 'int',
-        'profiles' => 'int'
+        'error' => 'string',
+        'code' => 'string',
+        'reason' => 'string',
+        'documentation_url' => 'string',
+        'dashboard_url' => 'string',
+        'details' => '\Zernio\Model\InlineObject2Details'
     ];
 
     /**
@@ -71,8 +74,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'uploads' => null,
-        'profiles' => null
+        'error' => null,
+        'code' => null,
+        'reason' => null,
+        'documentation_url' => 'uri',
+        'dashboard_url' => 'uri',
+        'details' => null
     ];
 
     /**
@@ -81,8 +88,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'uploads' => false,
-        'profiles' => false
+        'error' => false,
+        'code' => false,
+        'reason' => false,
+        'documentation_url' => false,
+        'dashboard_url' => false,
+        'details' => false
     ];
 
     /**
@@ -171,8 +182,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'uploads' => 'uploads',
-        'profiles' => 'profiles'
+        'error' => 'error',
+        'code' => 'code',
+        'reason' => 'reason',
+        'documentation_url' => 'documentation_url',
+        'dashboard_url' => 'dashboard_url',
+        'details' => 'details'
     ];
 
     /**
@@ -181,8 +196,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'uploads' => 'setUploads',
-        'profiles' => 'setProfiles'
+        'error' => 'setError',
+        'code' => 'setCode',
+        'reason' => 'setReason',
+        'documentation_url' => 'setDocumentationUrl',
+        'dashboard_url' => 'setDashboardUrl',
+        'details' => 'setDetails'
     ];
 
     /**
@@ -191,8 +210,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'uploads' => 'getUploads',
-        'profiles' => 'getProfiles'
+        'error' => 'getError',
+        'code' => 'getCode',
+        'reason' => 'getReason',
+        'documentation_url' => 'getDocumentationUrl',
+        'dashboard_url' => 'getDashboardUrl',
+        'details' => 'getDetails'
     ];
 
     /**
@@ -236,6 +259,36 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const CODE_PAYMENT_REQUIRED = 'PAYMENT_REQUIRED';
+    public const REASON_FREE_TIER_EXCEEDED = 'free_tier_exceeded';
+    public const REASON_TWITTER_PASSTHROUGH = 'twitter_passthrough';
+    public const REASON_ENTERPRISE_REQUIRED = 'enterprise_required';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCodeAllowableValues()
+    {
+        return [
+            self::CODE_PAYMENT_REQUIRED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getReasonAllowableValues()
+    {
+        return [
+            self::REASON_FREE_TIER_EXCEEDED,
+            self::REASON_TWITTER_PASSTHROUGH,
+            self::REASON_ENTERPRISE_REQUIRED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -252,8 +305,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('uploads', $data ?? [], null);
-        $this->setIfExists('profiles', $data ?? [], null);
+        $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('reason', $data ?? [], null);
+        $this->setIfExists('documentation_url', $data ?? [], null);
+        $this->setIfExists('dashboard_url', $data ?? [], null);
+        $this->setIfExists('details', $data ?? [], null);
     }
 
     /**
@@ -283,6 +340,33 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['error'] === null) {
+            $invalidProperties[] = "'error' can't be null";
+        }
+        if ($this->container['code'] === null) {
+            $invalidProperties[] = "'code' can't be null";
+        }
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'code', must be one of '%s'",
+                $this->container['code'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['reason'] === null) {
+            $invalidProperties[] = "'reason' can't be null";
+        }
+        $allowedValues = $this->getReasonAllowableValues();
+        if (!is_null($this->container['reason']) && !in_array($this->container['reason'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'reason', must be one of '%s'",
+                $this->container['reason'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -299,55 +383,183 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets uploads
+     * Gets error
      *
-     * @return int|null
+     * @return string
      */
-    public function getUploads()
+    public function getError()
     {
-        return $this->container['uploads'];
+        return $this->container['error'];
     }
 
     /**
-     * Sets uploads
+     * Sets error
      *
-     * @param int|null $uploads uploads
+     * @param string $error Human-readable error message suitable for end-user display.
      *
      * @return self
      */
-    public function setUploads($uploads)
+    public function setError($error)
     {
-        if (is_null($uploads)) {
-            throw new \InvalidArgumentException('non-nullable uploads cannot be null');
+        if (is_null($error)) {
+            throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
-        $this->container['uploads'] = $uploads;
+        $this->container['error'] = $error;
 
         return $this;
     }
 
     /**
-     * Gets profiles
+     * Gets code
      *
-     * @return int|null
+     * @return string
      */
-    public function getProfiles()
+    public function getCode()
     {
-        return $this->container['profiles'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets profiles
+     * Sets code
      *
-     * @param int|null $profiles profiles
+     * @param string $code Machine-readable error code. Stable across versions.
      *
      * @return self
      */
-    public function setProfiles($profiles)
+    public function setCode($code)
     {
-        if (is_null($profiles)) {
-            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        $this->container['profiles'] = $profiles;
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!in_array($code, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'code', must be one of '%s'",
+                    $code,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets reason
+     *
+     * @return string
+     */
+    public function getReason()
+    {
+        return $this->container['reason'];
+    }
+
+    /**
+     * Sets reason
+     *
+     * @param string $reason Discriminator for which gate fired.
+     *
+     * @return self
+     */
+    public function setReason($reason)
+    {
+        if (is_null($reason)) {
+            throw new \InvalidArgumentException('non-nullable reason cannot be null');
+        }
+        $allowedValues = $this->getReasonAllowableValues();
+        if (!in_array($reason, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'reason', must be one of '%s'",
+                    $reason,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['reason'] = $reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets documentation_url
+     *
+     * @return string|null
+     */
+    public function getDocumentationUrl()
+    {
+        return $this->container['documentation_url'];
+    }
+
+    /**
+     * Sets documentation_url
+     *
+     * @param string|null $documentation_url Link to the relevant documentation page.
+     *
+     * @return self
+     */
+    public function setDocumentationUrl($documentation_url)
+    {
+        if (is_null($documentation_url)) {
+            throw new \InvalidArgumentException('non-nullable documentation_url cannot be null');
+        }
+        $this->container['documentation_url'] = $documentation_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets dashboard_url
+     *
+     * @return string|null
+     */
+    public function getDashboardUrl()
+    {
+        return $this->container['dashboard_url'];
+    }
+
+    /**
+     * Sets dashboard_url
+     *
+     * @param string|null $dashboard_url Deep-link to send the end-user to. For `free_tier_exceeded` and `twitter_passthrough` this is the Zernio billing tab. For `enterprise_required` this is the Zernio enterprise contact page.
+     *
+     * @return self
+     */
+    public function setDashboardUrl($dashboard_url)
+    {
+        if (is_null($dashboard_url)) {
+            throw new \InvalidArgumentException('non-nullable dashboard_url cannot be null');
+        }
+        $this->container['dashboard_url'] = $dashboard_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets details
+     *
+     * @return \Zernio\Model\InlineObject2Details|null
+     */
+    public function getDetails()
+    {
+        return $this->container['details'];
+    }
+
+    /**
+     * Sets details
+     *
+     * @param \Zernio\Model\InlineObject2Details|null $details details
+     *
+     * @return self
+     */
+    public function setDetails($details)
+    {
+        if (is_null($details)) {
+            throw new \InvalidArgumentException('non-nullable details cannot be null');
+        }
+        $this->container['details'] = $details;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * UsageStatsLimits
+ * XApiPricing
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UsageStatsLimits Class Doc Comment
+ * XApiPricing Class Doc Comment
  *
  * @category Class
- * @description Plan limits. For Metronome users both fields are &#x60;-1&#x60; (unlimited).
+ * @description Canonical X/Twitter API pricing table. Zernio passes X API costs through at exact rates with zero markup, so every call you make has a known per-unit price. Use this payload alongside &#x60;/v1/usage-stats&#x60; (which returns per-operation call counts via &#x60;xApiCallsByOperation&#x60;) to compute exact cost attribution by X action.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
+class XApiPricing implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UsageStats_limits';
+    protected static $openAPIModelName = 'XApiPricing';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'uploads' => 'int',
-        'profiles' => 'int'
+        'currency' => 'string',
+        'markup' => 'string',
+        'source' => 'string',
+        'last_verified' => '\DateTime',
+        'tiers' => '\Zernio\Model\XApiPricingTiersInner[]',
+        'operations' => '\Zernio\Model\XApiOperation[]'
     ];
 
     /**
@@ -71,8 +75,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'uploads' => null,
-        'profiles' => null
+        'currency' => null,
+        'markup' => null,
+        'source' => 'uri',
+        'last_verified' => 'date',
+        'tiers' => null,
+        'operations' => null
     ];
 
     /**
@@ -81,8 +89,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'uploads' => false,
-        'profiles' => false
+        'currency' => false,
+        'markup' => false,
+        'source' => false,
+        'last_verified' => false,
+        'tiers' => false,
+        'operations' => false
     ];
 
     /**
@@ -171,8 +183,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'uploads' => 'uploads',
-        'profiles' => 'profiles'
+        'currency' => 'currency',
+        'markup' => 'markup',
+        'source' => 'source',
+        'last_verified' => 'lastVerified',
+        'tiers' => 'tiers',
+        'operations' => 'operations'
     ];
 
     /**
@@ -181,8 +197,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'uploads' => 'setUploads',
-        'profiles' => 'setProfiles'
+        'currency' => 'setCurrency',
+        'markup' => 'setMarkup',
+        'source' => 'setSource',
+        'last_verified' => 'setLastVerified',
+        'tiers' => 'setTiers',
+        'operations' => 'setOperations'
     ];
 
     /**
@@ -191,8 +211,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'uploads' => 'getUploads',
-        'profiles' => 'getProfiles'
+        'currency' => 'getCurrency',
+        'markup' => 'getMarkup',
+        'source' => 'getSource',
+        'last_verified' => 'getLastVerified',
+        'tiers' => 'getTiers',
+        'operations' => 'getOperations'
     ];
 
     /**
@@ -252,8 +276,12 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('uploads', $data ?? [], null);
-        $this->setIfExists('profiles', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
+        $this->setIfExists('markup', $data ?? [], null);
+        $this->setIfExists('source', $data ?? [], null);
+        $this->setIfExists('last_verified', $data ?? [], null);
+        $this->setIfExists('tiers', $data ?? [], null);
+        $this->setIfExists('operations', $data ?? [], null);
     }
 
     /**
@@ -299,55 +327,163 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets uploads
+     * Gets currency
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getUploads()
+    public function getCurrency()
     {
-        return $this->container['uploads'];
+        return $this->container['currency'];
     }
 
     /**
-     * Sets uploads
+     * Sets currency
      *
-     * @param int|null $uploads uploads
+     * @param string|null $currency currency
      *
      * @return self
      */
-    public function setUploads($uploads)
+    public function setCurrency($currency)
     {
-        if (is_null($uploads)) {
-            throw new \InvalidArgumentException('non-nullable uploads cannot be null');
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
         }
-        $this->container['uploads'] = $uploads;
+        $this->container['currency'] = $currency;
 
         return $this;
     }
 
     /**
-     * Gets profiles
+     * Gets markup
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getProfiles()
+    public function getMarkup()
     {
-        return $this->container['profiles'];
+        return $this->container['markup'];
     }
 
     /**
-     * Sets profiles
+     * Sets markup
      *
-     * @param int|null $profiles profiles
+     * @param string|null $markup Always 0% — Zernio does not mark up X API rates.
      *
      * @return self
      */
-    public function setProfiles($profiles)
+    public function setMarkup($markup)
     {
-        if (is_null($profiles)) {
-            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        if (is_null($markup)) {
+            throw new \InvalidArgumentException('non-nullable markup cannot be null');
         }
-        $this->container['profiles'] = $profiles;
+        $this->container['markup'] = $markup;
+
+        return $this;
+    }
+
+    /**
+     * Gets source
+     *
+     * @return string|null
+     */
+    public function getSource()
+    {
+        return $this->container['source'];
+    }
+
+    /**
+     * Sets source
+     *
+     * @param string|null $source source
+     *
+     * @return self
+     */
+    public function setSource($source)
+    {
+        if (is_null($source)) {
+            throw new \InvalidArgumentException('non-nullable source cannot be null');
+        }
+        $this->container['source'] = $source;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_verified
+     *
+     * @return \DateTime|null
+     */
+    public function getLastVerified()
+    {
+        return $this->container['last_verified'];
+    }
+
+    /**
+     * Sets last_verified
+     *
+     * @param \DateTime|null $last_verified Date the prices were last verified against X's published rates.
+     *
+     * @return self
+     */
+    public function setLastVerified($last_verified)
+    {
+        if (is_null($last_verified)) {
+            throw new \InvalidArgumentException('non-nullable last_verified cannot be null');
+        }
+        $this->container['last_verified'] = $last_verified;
+
+        return $this;
+    }
+
+    /**
+     * Gets tiers
+     *
+     * @return \Zernio\Model\XApiPricingTiersInner[]|null
+     */
+    public function getTiers()
+    {
+        return $this->container['tiers'];
+    }
+
+    /**
+     * Sets tiers
+     *
+     * @param \Zernio\Model\XApiPricingTiersInner[]|null $tiers Rollup of operations grouped by their per-call price.
+     *
+     * @return self
+     */
+    public function setTiers($tiers)
+    {
+        if (is_null($tiers)) {
+            throw new \InvalidArgumentException('non-nullable tiers cannot be null');
+        }
+        $this->container['tiers'] = $tiers;
+
+        return $this;
+    }
+
+    /**
+     * Gets operations
+     *
+     * @return \Zernio\Model\XApiOperation[]|null
+     */
+    public function getOperations()
+    {
+        return $this->container['operations'];
+    }
+
+    /**
+     * Sets operations
+     *
+     * @param \Zernio\Model\XApiOperation[]|null $operations Flat list of every X operation Zernio can perform, with its rate.
+     *
+     * @return self
+     */
+    public function setOperations($operations)
+    {
+        if (is_null($operations)) {
+            throw new \InvalidArgumentException('non-nullable operations cannot be null');
+        }
+        $this->container['operations'] = $operations;
 
         return $this;
     }

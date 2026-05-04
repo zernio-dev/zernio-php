@@ -59,7 +59,8 @@ class UpdateAccountRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'username' => 'string',
-        'display_name' => 'string'
+        'display_name' => 'string',
+        'x_capabilities' => '\Zernio\Model\UpdateAccountRequestXCapabilities'
     ];
 
     /**
@@ -71,7 +72,8 @@ class UpdateAccountRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'username' => null,
-        'display_name' => null
+        'display_name' => null,
+        'x_capabilities' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class UpdateAccountRequest implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'username' => false,
-        'display_name' => false
+        'display_name' => false,
+        'x_capabilities' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class UpdateAccountRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'username' => 'username',
-        'display_name' => 'displayName'
+        'display_name' => 'displayName',
+        'x_capabilities' => 'xCapabilities'
     ];
 
     /**
@@ -181,7 +185,8 @@ class UpdateAccountRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'username' => 'setUsername',
-        'display_name' => 'setDisplayName'
+        'display_name' => 'setDisplayName',
+        'x_capabilities' => 'setXCapabilities'
     ];
 
     /**
@@ -191,7 +196,8 @@ class UpdateAccountRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'username' => 'getUsername',
-        'display_name' => 'getDisplayName'
+        'display_name' => 'getDisplayName',
+        'x_capabilities' => 'getXCapabilities'
     ];
 
     /**
@@ -253,6 +259,7 @@ class UpdateAccountRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('x_capabilities', $data ?? [], null);
     }
 
     /**
@@ -347,6 +354,33 @@ class UpdateAccountRequest implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
         $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_capabilities
+     *
+     * @return \Zernio\Model\UpdateAccountRequestXCapabilities|null
+     */
+    public function getXCapabilities()
+    {
+        return $this->container['x_capabilities'];
+    }
+
+    /**
+     * Sets x_capabilities
+     *
+     * @param \Zernio\Model\UpdateAccountRequestXCapabilities|null $x_capabilities x_capabilities
+     *
+     * @return self
+     */
+    public function setXCapabilities($x_capabilities)
+    {
+        if (is_null($x_capabilities)) {
+            throw new \InvalidArgumentException('non-nullable x_capabilities cannot be null');
+        }
+        $this->container['x_capabilities'] = $x_capabilities;
 
         return $this;
     }

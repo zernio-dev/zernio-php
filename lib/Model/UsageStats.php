@@ -36,6 +36,7 @@ use \Zernio\ObjectSerializer;
  * UsageStats Class Doc Comment
  *
  * @category Class
+ * @description Plan and usage stats. The response shape depends on &#x60;billingSystem&#x60;:   * Stripe users (default): per-period counters like &#x60;usage.uploads&#x60; and     &#x60;usage.profiles&#x60; are returned, scoped by the plan&#39;s &#x60;limits&#x60;.   * Metronome users (usage-based): &#x60;limits&#x60; are unlimited (-1). The     &#x60;usage&#x60; block carries connected-account and per-X-operation counts,     and the &#x60;spend&#x60; block carries current-period costs plus the X cap.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,12 +59,18 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'billing_system' => 'string',
         'plan_name' => 'string',
         'billing_period' => 'string',
         'signup_date' => '\DateTime',
         'billing_anchor_day' => 'int',
+        'has_access' => 'bool',
+        'customer_id' => 'string',
+        'is_invited_user' => 'bool',
+        'auto_upgrade_enabled' => 'bool',
         'limits' => '\Zernio\Model\UsageStatsLimits',
-        'usage' => '\Zernio\Model\UsageStatsUsage'
+        'usage' => '\Zernio\Model\UsageStatsUsage',
+        'spend' => '\Zernio\Model\UsageStatsSpend'
     ];
 
     /**
@@ -74,12 +81,18 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'billing_system' => null,
         'plan_name' => null,
         'billing_period' => null,
         'signup_date' => 'date-time',
         'billing_anchor_day' => null,
+        'has_access' => null,
+        'customer_id' => null,
+        'is_invited_user' => null,
+        'auto_upgrade_enabled' => null,
         'limits' => null,
-        'usage' => null
+        'usage' => null,
+        'spend' => null
     ];
 
     /**
@@ -88,12 +101,18 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'billing_system' => false,
         'plan_name' => false,
         'billing_period' => false,
         'signup_date' => false,
         'billing_anchor_day' => false,
+        'has_access' => false,
+        'customer_id' => false,
+        'is_invited_user' => false,
+        'auto_upgrade_enabled' => false,
         'limits' => false,
-        'usage' => false
+        'usage' => false,
+        'spend' => false
     ];
 
     /**
@@ -182,12 +201,18 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'billing_system' => 'billingSystem',
         'plan_name' => 'planName',
         'billing_period' => 'billingPeriod',
         'signup_date' => 'signupDate',
         'billing_anchor_day' => 'billingAnchorDay',
+        'has_access' => 'hasAccess',
+        'customer_id' => 'customerId',
+        'is_invited_user' => 'isInvitedUser',
+        'auto_upgrade_enabled' => 'autoUpgradeEnabled',
         'limits' => 'limits',
-        'usage' => 'usage'
+        'usage' => 'usage',
+        'spend' => 'spend'
     ];
 
     /**
@@ -196,12 +221,18 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'billing_system' => 'setBillingSystem',
         'plan_name' => 'setPlanName',
         'billing_period' => 'setBillingPeriod',
         'signup_date' => 'setSignupDate',
         'billing_anchor_day' => 'setBillingAnchorDay',
+        'has_access' => 'setHasAccess',
+        'customer_id' => 'setCustomerId',
+        'is_invited_user' => 'setIsInvitedUser',
+        'auto_upgrade_enabled' => 'setAutoUpgradeEnabled',
         'limits' => 'setLimits',
-        'usage' => 'setUsage'
+        'usage' => 'setUsage',
+        'spend' => 'setSpend'
     ];
 
     /**
@@ -210,12 +241,18 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'billing_system' => 'getBillingSystem',
         'plan_name' => 'getPlanName',
         'billing_period' => 'getBillingPeriod',
         'signup_date' => 'getSignupDate',
         'billing_anchor_day' => 'getBillingAnchorDay',
+        'has_access' => 'getHasAccess',
+        'customer_id' => 'getCustomerId',
+        'is_invited_user' => 'getIsInvitedUser',
+        'auto_upgrade_enabled' => 'getAutoUpgradeEnabled',
         'limits' => 'getLimits',
-        'usage' => 'getUsage'
+        'usage' => 'getUsage',
+        'spend' => 'getSpend'
     ];
 
     /**
@@ -259,8 +296,23 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const BILLING_SYSTEM_STRIPE = 'stripe';
+    public const BILLING_SYSTEM_METRONOME = 'metronome';
     public const BILLING_PERIOD_MONTHLY = 'monthly';
     public const BILLING_PERIOD_YEARLY = 'yearly';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBillingSystemAllowableValues()
+    {
+        return [
+            self::BILLING_SYSTEM_STRIPE,
+            self::BILLING_SYSTEM_METRONOME,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -290,12 +342,18 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('billing_system', $data ?? [], null);
         $this->setIfExists('plan_name', $data ?? [], null);
         $this->setIfExists('billing_period', $data ?? [], null);
         $this->setIfExists('signup_date', $data ?? [], null);
         $this->setIfExists('billing_anchor_day', $data ?? [], null);
+        $this->setIfExists('has_access', $data ?? [], null);
+        $this->setIfExists('customer_id', $data ?? [], null);
+        $this->setIfExists('is_invited_user', $data ?? [], null);
+        $this->setIfExists('auto_upgrade_enabled', $data ?? [], null);
         $this->setIfExists('limits', $data ?? [], null);
         $this->setIfExists('usage', $data ?? [], null);
+        $this->setIfExists('spend', $data ?? [], null);
     }
 
     /**
@@ -325,6 +383,15 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getBillingSystemAllowableValues();
+        if (!is_null($this->container['billing_system']) && !in_array($this->container['billing_system'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'billing_system', must be one of '%s'",
+                $this->container['billing_system'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         $allowedValues = $this->getBillingPeriodAllowableValues();
         if (!is_null($this->container['billing_period']) && !in_array($this->container['billing_period'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -348,6 +415,43 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets billing_system
+     *
+     * @return string|null
+     */
+    public function getBillingSystem()
+    {
+        return $this->container['billing_system'];
+    }
+
+    /**
+     * Sets billing_system
+     *
+     * @param string|null $billing_system Which billing system the account is on. Shape of `usage`/`spend` differs.
+     *
+     * @return self
+     */
+    public function setBillingSystem($billing_system)
+    {
+        if (is_null($billing_system)) {
+            throw new \InvalidArgumentException('non-nullable billing_system cannot be null');
+        }
+        $allowedValues = $this->getBillingSystemAllowableValues();
+        if (!in_array($billing_system, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'billing_system', must be one of '%s'",
+                    $billing_system,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['billing_system'] = $billing_system;
+
+        return $this;
+    }
 
     /**
      * Gets plan_name
@@ -468,6 +572,114 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets has_access
+     *
+     * @return bool|null
+     */
+    public function getHasAccess()
+    {
+        return $this->container['has_access'];
+    }
+
+    /**
+     * Sets has_access
+     *
+     * @param bool|null $has_access True if the account is in good standing. False for past-due/unpaid/paused subscriptions.
+     *
+     * @return self
+     */
+    public function setHasAccess($has_access)
+    {
+        if (is_null($has_access)) {
+            throw new \InvalidArgumentException('non-nullable has_access cannot be null');
+        }
+        $this->container['has_access'] = $has_access;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer_id
+     *
+     * @return string|null
+     */
+    public function getCustomerId()
+    {
+        return $this->container['customer_id'];
+    }
+
+    /**
+     * Sets customer_id
+     *
+     * @param string|null $customer_id Stripe customer ID, when present.
+     *
+     * @return self
+     */
+    public function setCustomerId($customer_id)
+    {
+        if (is_null($customer_id)) {
+            throw new \InvalidArgumentException('non-nullable customer_id cannot be null');
+        }
+        $this->container['customer_id'] = $customer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_invited_user
+     *
+     * @return bool|null
+     */
+    public function getIsInvitedUser()
+    {
+        return $this->container['is_invited_user'];
+    }
+
+    /**
+     * Sets is_invited_user
+     *
+     * @param bool|null $is_invited_user True if this is a team member; limits/usage reflect the account owner.
+     *
+     * @return self
+     */
+    public function setIsInvitedUser($is_invited_user)
+    {
+        if (is_null($is_invited_user)) {
+            throw new \InvalidArgumentException('non-nullable is_invited_user cannot be null');
+        }
+        $this->container['is_invited_user'] = $is_invited_user;
+
+        return $this;
+    }
+
+    /**
+     * Gets auto_upgrade_enabled
+     *
+     * @return bool|null
+     */
+    public function getAutoUpgradeEnabled()
+    {
+        return $this->container['auto_upgrade_enabled'];
+    }
+
+    /**
+     * Sets auto_upgrade_enabled
+     *
+     * @param bool|null $auto_upgrade_enabled Stripe-only. Always false for Metronome users.
+     *
+     * @return self
+     */
+    public function setAutoUpgradeEnabled($auto_upgrade_enabled)
+    {
+        if (is_null($auto_upgrade_enabled)) {
+            throw new \InvalidArgumentException('non-nullable auto_upgrade_enabled cannot be null');
+        }
+        $this->container['auto_upgrade_enabled'] = $auto_upgrade_enabled;
+
+        return $this;
+    }
+
+    /**
      * Gets limits
      *
      * @return \Zernio\Model\UsageStatsLimits|null
@@ -517,6 +729,33 @@ class UsageStats implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable usage cannot be null');
         }
         $this->container['usage'] = $usage;
+
+        return $this;
+    }
+
+    /**
+     * Gets spend
+     *
+     * @return \Zernio\Model\UsageStatsSpend|null
+     */
+    public function getSpend()
+    {
+        return $this->container['spend'];
+    }
+
+    /**
+     * Sets spend
+     *
+     * @param \Zernio\Model\UsageStatsSpend|null $spend spend
+     *
+     * @return self
+     */
+    public function setSpend($spend)
+    {
+        if (is_null($spend)) {
+            throw new \InvalidArgumentException('non-nullable spend cannot be null');
+        }
+        $this->container['spend'] = $spend;
 
         return $this;
     }

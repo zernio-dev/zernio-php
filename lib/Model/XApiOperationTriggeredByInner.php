@@ -1,6 +1,6 @@
 <?php
 /**
- * UsageStatsLimits
+ * XApiOperationTriggeredByInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UsageStatsLimits Class Doc Comment
+ * XApiOperationTriggeredByInner Class Doc Comment
  *
  * @category Class
- * @description Plan limits. For Metronome users both fields are &#x60;-1&#x60; (unlimited).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
+class XApiOperationTriggeredByInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UsageStats_limits';
+    protected static $openAPIModelName = 'XApiOperation_triggeredBy_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'uploads' => 'int',
-        'profiles' => 'int'
+        'method' => 'string',
+        'metering' => 'string'
     ];
 
     /**
@@ -71,8 +70,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'uploads' => null,
-        'profiles' => null
+        'method' => null,
+        'metering' => null
     ];
 
     /**
@@ -81,8 +80,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'uploads' => false,
-        'profiles' => false
+        'method' => false,
+        'metering' => false
     ];
 
     /**
@@ -171,8 +170,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'uploads' => 'uploads',
-        'profiles' => 'profiles'
+        'method' => 'method',
+        'metering' => 'metering'
     ];
 
     /**
@@ -181,8 +180,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'uploads' => 'setUploads',
-        'profiles' => 'setProfiles'
+        'method' => 'setMethod',
+        'metering' => 'setMetering'
     ];
 
     /**
@@ -191,8 +190,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'uploads' => 'getUploads',
-        'profiles' => 'getProfiles'
+        'method' => 'getMethod',
+        'metering' => 'getMetering'
     ];
 
     /**
@@ -236,6 +235,25 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const METERING_ALWAYS = 'always';
+    public const METERING_ANALYTICS_OPTIN = 'analytics_optin';
+    public const METERING_INBOX_OPTIN = 'inbox_optin';
+    public const METERING_ABSORBED = 'absorbed';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getMeteringAllowableValues()
+    {
+        return [
+            self::METERING_ALWAYS,
+            self::METERING_ANALYTICS_OPTIN,
+            self::METERING_INBOX_OPTIN,
+            self::METERING_ABSORBED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -252,8 +270,8 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('uploads', $data ?? [], null);
-        $this->setIfExists('profiles', $data ?? [], null);
+        $this->setIfExists('method', $data ?? [], null);
+        $this->setIfExists('metering', $data ?? [], null);
     }
 
     /**
@@ -283,6 +301,15 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getMeteringAllowableValues();
+        if (!is_null($this->container['metering']) && !in_array($this->container['metering'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'metering', must be one of '%s'",
+                $this->container['metering'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -299,55 +326,65 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets uploads
+     * Gets method
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getUploads()
+    public function getMethod()
     {
-        return $this->container['uploads'];
+        return $this->container['method'];
     }
 
     /**
-     * Sets uploads
+     * Sets method
      *
-     * @param int|null $uploads uploads
+     * @param string|null $method Zernio platform method name.
      *
      * @return self
      */
-    public function setUploads($uploads)
+    public function setMethod($method)
     {
-        if (is_null($uploads)) {
-            throw new \InvalidArgumentException('non-nullable uploads cannot be null');
+        if (is_null($method)) {
+            throw new \InvalidArgumentException('non-nullable method cannot be null');
         }
-        $this->container['uploads'] = $uploads;
+        $this->container['method'] = $method;
 
         return $this;
     }
 
     /**
-     * Gets profiles
+     * Gets metering
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getProfiles()
+    public function getMetering()
     {
-        return $this->container['profiles'];
+        return $this->container['metering'];
     }
 
     /**
-     * Sets profiles
+     * Sets metering
      *
-     * @param int|null $profiles profiles
+     * @param string|null $metering When the method actually bills the user:   * `always` — every call is metered   * `analytics_optin` — only when the X account has analytics enabled   * `inbox_optin` — only when the X account has inbox sync enabled   * `absorbed` — Zernio eats the cost, never billed
      *
      * @return self
      */
-    public function setProfiles($profiles)
+    public function setMetering($metering)
     {
-        if (is_null($profiles)) {
-            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        if (is_null($metering)) {
+            throw new \InvalidArgumentException('non-nullable metering cannot be null');
         }
-        $this->container['profiles'] = $profiles;
+        $allowedValues = $this->getMeteringAllowableValues();
+        if (!in_array($metering, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'metering', must be one of '%s'",
+                    $metering,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['metering'] = $metering;
 
         return $this;
     }

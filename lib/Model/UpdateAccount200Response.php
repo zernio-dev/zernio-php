@@ -60,7 +60,8 @@ class UpdateAccount200Response implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPITypes = [
         'message' => 'string',
         'username' => 'string',
-        'display_name' => 'string'
+        'display_name' => 'string',
+        'x_capabilities' => '\Zernio\Model\UpdateAccount200ResponseXCapabilities'
     ];
 
     /**
@@ -73,7 +74,8 @@ class UpdateAccount200Response implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $openAPIFormats = [
         'message' => null,
         'username' => null,
-        'display_name' => null
+        'display_name' => null,
+        'x_capabilities' => null
     ];
 
     /**
@@ -84,7 +86,8 @@ class UpdateAccount200Response implements ModelInterface, ArrayAccess, \JsonSeri
     protected static array $openAPINullables = [
         'message' => false,
         'username' => false,
-        'display_name' => false
+        'display_name' => false,
+        'x_capabilities' => false
     ];
 
     /**
@@ -175,7 +178,8 @@ class UpdateAccount200Response implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $attributeMap = [
         'message' => 'message',
         'username' => 'username',
-        'display_name' => 'displayName'
+        'display_name' => 'displayName',
+        'x_capabilities' => 'xCapabilities'
     ];
 
     /**
@@ -186,7 +190,8 @@ class UpdateAccount200Response implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $setters = [
         'message' => 'setMessage',
         'username' => 'setUsername',
-        'display_name' => 'setDisplayName'
+        'display_name' => 'setDisplayName',
+        'x_capabilities' => 'setXCapabilities'
     ];
 
     /**
@@ -197,7 +202,8 @@ class UpdateAccount200Response implements ModelInterface, ArrayAccess, \JsonSeri
     protected static $getters = [
         'message' => 'getMessage',
         'username' => 'getUsername',
-        'display_name' => 'getDisplayName'
+        'display_name' => 'getDisplayName',
+        'x_capabilities' => 'getXCapabilities'
     ];
 
     /**
@@ -260,6 +266,7 @@ class UpdateAccount200Response implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('x_capabilities', $data ?? [], null);
     }
 
     /**
@@ -381,6 +388,33 @@ class UpdateAccount200Response implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
         $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_capabilities
+     *
+     * @return \Zernio\Model\UpdateAccount200ResponseXCapabilities|null
+     */
+    public function getXCapabilities()
+    {
+        return $this->container['x_capabilities'];
+    }
+
+    /**
+     * Sets x_capabilities
+     *
+     * @param \Zernio\Model\UpdateAccount200ResponseXCapabilities|null $x_capabilities x_capabilities
+     *
+     * @return self
+     */
+    public function setXCapabilities($x_capabilities)
+    {
+        if (is_null($x_capabilities)) {
+            throw new \InvalidArgumentException('non-nullable x_capabilities cannot be null');
+        }
+        $this->container['x_capabilities'] = $x_capabilities;
 
         return $this;
     }

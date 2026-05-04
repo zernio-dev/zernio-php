@@ -1,6 +1,6 @@
 <?php
 /**
- * UsageStatsLimits
+ * UsageStatsUsageXApiCalls
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UsageStatsLimits Class Doc Comment
+ * UsageStatsUsageXApiCalls Class Doc Comment
  *
  * @category Class
- * @description Plan limits. For Metronome users both fields are &#x60;-1&#x60; (unlimited).
+ * @description Metronome users only. Aggregated X API call counts bucketed by price tier (backward-compat). For per-operation breakdown use &#x60;xApiCallsByOperation&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
+class UsageStatsUsageXApiCalls implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'UsageStats_limits';
+    protected static $openAPIModelName = 'UsageStats_usage_xApiCalls';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'uploads' => 'int',
-        'profiles' => 'int'
+        'x_api_005' => 'int',
+        'x_api_010' => 'int',
+        'x_api_015' => 'int'
     ];
 
     /**
@@ -71,8 +72,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'uploads' => null,
-        'profiles' => null
+        'x_api_005' => null,
+        'x_api_010' => null,
+        'x_api_015' => null
     ];
 
     /**
@@ -81,8 +83,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'uploads' => false,
-        'profiles' => false
+        'x_api_005' => false,
+        'x_api_010' => false,
+        'x_api_015' => false
     ];
 
     /**
@@ -171,8 +174,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'uploads' => 'uploads',
-        'profiles' => 'profiles'
+        'x_api_005' => 'x_api_005',
+        'x_api_010' => 'x_api_010',
+        'x_api_015' => 'x_api_015'
     ];
 
     /**
@@ -181,8 +185,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'uploads' => 'setUploads',
-        'profiles' => 'setProfiles'
+        'x_api_005' => 'setXApi005',
+        'x_api_010' => 'setXApi010',
+        'x_api_015' => 'setXApi015'
     ];
 
     /**
@@ -191,8 +196,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'uploads' => 'getUploads',
-        'profiles' => 'getProfiles'
+        'x_api_005' => 'getXApi005',
+        'x_api_010' => 'getXApi010',
+        'x_api_015' => 'getXApi015'
     ];
 
     /**
@@ -252,8 +258,9 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('uploads', $data ?? [], null);
-        $this->setIfExists('profiles', $data ?? [], null);
+        $this->setIfExists('x_api_005', $data ?? [], null);
+        $this->setIfExists('x_api_010', $data ?? [], null);
+        $this->setIfExists('x_api_015', $data ?? [], null);
     }
 
     /**
@@ -299,55 +306,82 @@ class UsageStatsLimits implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets uploads
+     * Gets x_api_005
      *
      * @return int|null
      */
-    public function getUploads()
+    public function getXApi005()
     {
-        return $this->container['uploads'];
+        return $this->container['x_api_005'];
     }
 
     /**
-     * Sets uploads
+     * Sets x_api_005
      *
-     * @param int|null $uploads uploads
+     * @param int|null $x_api_005 Calls at $0.005 per call (reads, list mgmt, bookmarks, etc.)
      *
      * @return self
      */
-    public function setUploads($uploads)
+    public function setXApi005($x_api_005)
     {
-        if (is_null($uploads)) {
-            throw new \InvalidArgumentException('non-nullable uploads cannot be null');
+        if (is_null($x_api_005)) {
+            throw new \InvalidArgumentException('non-nullable x_api_005 cannot be null');
         }
-        $this->container['uploads'] = $uploads;
+        $this->container['x_api_005'] = $x_api_005;
 
         return $this;
     }
 
     /**
-     * Gets profiles
+     * Gets x_api_010
      *
      * @return int|null
      */
-    public function getProfiles()
+    public function getXApi010()
     {
-        return $this->container['profiles'];
+        return $this->container['x_api_010'];
     }
 
     /**
-     * Sets profiles
+     * Sets x_api_010
      *
-     * @param int|null $profiles profiles
+     * @param int|null $x_api_010 Calls at $0.010 per call (publish/delete, DM reads, follows)
      *
      * @return self
      */
-    public function setProfiles($profiles)
+    public function setXApi010($x_api_010)
     {
-        if (is_null($profiles)) {
-            throw new \InvalidArgumentException('non-nullable profiles cannot be null');
+        if (is_null($x_api_010)) {
+            throw new \InvalidArgumentException('non-nullable x_api_010 cannot be null');
         }
-        $this->container['profiles'] = $profiles;
+        $this->container['x_api_010'] = $x_api_010;
+
+        return $this;
+    }
+
+    /**
+     * Gets x_api_015
+     *
+     * @return int|null
+     */
+    public function getXApi015()
+    {
+        return $this->container['x_api_015'];
+    }
+
+    /**
+     * Sets x_api_015
+     *
+     * @param int|null $x_api_015 Calls at $0.015 per call (sending DMs, follow actions)
+     *
+     * @return self
+     */
+    public function setXApi015($x_api_015)
+    {
+        if (is_null($x_api_015)) {
+            throw new \InvalidArgumentException('non-nullable x_api_015 cannot be null');
+        }
+        $this->container['x_api_015'] = $x_api_015;
 
         return $this;
     }
