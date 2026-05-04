@@ -673,6 +673,7 @@ docs/Model/SendInboxMessageRequestTemplateElementsInner.md
 docs/Model/SendInboxMessageRequestTemplateElementsInnerButtonsInner.md
 docs/Model/SendPrivateReplyToComment200Response.md
 docs/Model/SendPrivateReplyToCommentRequest.md
+docs/Model/SendPrivateReplyToCommentRequestQuickRepliesInner.md
 docs/Model/SendTypingIndicatorRequest.md
 docs/Model/SendWhatsAppConversion200Response.md
 docs/Model/SendWhatsAppConversionRequest.md
@@ -1554,6 +1555,7 @@ lib/Model/SendInboxMessageRequestTemplateElementsInner.php
 lib/Model/SendInboxMessageRequestTemplateElementsInnerButtonsInner.php
 lib/Model/SendPrivateReplyToComment200Response.php
 lib/Model/SendPrivateReplyToCommentRequest.php
+lib/Model/SendPrivateReplyToCommentRequestQuickRepliesInner.php
 lib/Model/SendTypingIndicatorRequest.php
 lib/Model/SendWhatsAppConversion200Response.php
 lib/Model/SendWhatsAppConversionRequest.php
@@ -1761,3 +1763,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/SendPrivateReplyToCommentRequestQuickRepliesInnerTest.php

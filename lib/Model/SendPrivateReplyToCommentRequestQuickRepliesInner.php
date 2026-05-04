@@ -1,6 +1,6 @@
 <?php
 /**
- * SendPrivateReplyToCommentRequest
+ * SendPrivateReplyToCommentRequestQuickRepliesInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendPrivateReplyToCommentRequest Class Doc Comment
+ * SendPrivateReplyToCommentRequestQuickRepliesInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendPrivateReplyToCommentRequestQuickRepliesInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendPrivateReplyToComment_request';
+    protected static $openAPIModelName = 'sendPrivateReplyToComment_request_quickReplies_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_id' => 'string',
-        'message' => 'string',
-        'quick_replies' => '\Zernio\Model\SendPrivateReplyToCommentRequestQuickRepliesInner[]'
+        'title' => 'string',
+        'payload' => 'string',
+        'image_url' => 'string'
     ];
 
     /**
@@ -71,9 +71,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_id' => null,
-        'message' => null,
-        'quick_replies' => null
+        'title' => null,
+        'payload' => null,
+        'image_url' => 'uri'
     ];
 
     /**
@@ -82,9 +82,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_id' => false,
-        'message' => false,
-        'quick_replies' => false
+        'title' => false,
+        'payload' => false,
+        'image_url' => false
     ];
 
     /**
@@ -173,9 +173,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_id' => 'accountId',
-        'message' => 'message',
-        'quick_replies' => 'quickReplies'
+        'title' => 'title',
+        'payload' => 'payload',
+        'image_url' => 'imageUrl'
     ];
 
     /**
@@ -184,9 +184,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'account_id' => 'setAccountId',
-        'message' => 'setMessage',
-        'quick_replies' => 'setQuickReplies'
+        'title' => 'setTitle',
+        'payload' => 'setPayload',
+        'image_url' => 'setImageUrl'
     ];
 
     /**
@@ -195,9 +195,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'account_id' => 'getAccountId',
-        'message' => 'getMessage',
-        'quick_replies' => 'getQuickReplies'
+        'title' => 'getTitle',
+        'payload' => 'getPayload',
+        'image_url' => 'getImageUrl'
     ];
 
     /**
@@ -257,9 +257,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('quick_replies', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('payload', $data ?? [], null);
+        $this->setIfExists('image_url', $data ?? [], null);
     }
 
     /**
@@ -289,16 +289,16 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if ($this->container['account_id'] === null) {
-            $invalidProperties[] = "'account_id' can't be null";
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
         }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if (!is_null($this->container['quick_replies']) && (count($this->container['quick_replies']) > 13)) {
-            $invalidProperties[] = "invalid value for 'quick_replies', number of items must be less than or equal to 13.";
+        if ((mb_strlen($this->container['title']) > 20)) {
+            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 20.";
         }
 
+        if ($this->container['payload'] === null) {
+            $invalidProperties[] = "'payload' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -315,86 +315,86 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets account_id
+     * Gets title
      *
      * @return string
      */
-    public function getAccountId()
+    public function getTitle()
     {
-        return $this->container['account_id'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets account_id
+     * Sets title
      *
-     * @param string $account_id The social account ID (Instagram or Facebook)
+     * @param string $title Label shown on the chip. Truncated by Meta beyond 20 characters.
      *
      * @return self
      */
-    public function setAccountId($account_id)
+    public function setTitle($title)
     {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
-        $this->container['account_id'] = $account_id;
+        if ((mb_strlen($title) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $title when calling SendPrivateReplyToCommentRequestQuickRepliesInner., must be smaller than or equal to 20.');
+        }
+
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets payload
      *
      * @return string
      */
-    public function getMessage()
+    public function getPayload()
     {
-        return $this->container['message'];
+        return $this->container['payload'];
     }
 
     /**
-     * Sets message
+     * Sets payload
      *
-     * @param string $message The message text to send as a private DM
+     * @param string $payload Opaque value returned in the inbound webhook when the user taps the chip.
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setPayload($payload)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($payload)) {
+            throw new \InvalidArgumentException('non-nullable payload cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['payload'] = $payload;
 
         return $this;
     }
 
     /**
-     * Gets quick_replies
+     * Gets image_url
      *
-     * @return \Zernio\Model\SendPrivateReplyToCommentRequestQuickRepliesInner[]|null
+     * @return string|null
      */
-    public function getQuickReplies()
+    public function getImageUrl()
     {
-        return $this->container['quick_replies'];
+        return $this->container['image_url'];
     }
 
     /**
-     * Sets quick_replies
+     * Sets image_url
      *
-     * @param \Zernio\Model\SendPrivateReplyToCommentRequestQuickRepliesInner[]|null $quick_replies Optional quick-reply chips appended to the message. Visible only in the Instagram and Messenger apps (not on web). Maximum 13 entries.
+     * @param string|null $image_url Optional thumbnail shown next to the chip title.
      *
      * @return self
      */
-    public function setQuickReplies($quick_replies)
+    public function setImageUrl($image_url)
     {
-        if (is_null($quick_replies)) {
-            throw new \InvalidArgumentException('non-nullable quick_replies cannot be null');
+        if (is_null($image_url)) {
+            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
         }
-
-        if ((count($quick_replies) > 13)) {
-            throw new \InvalidArgumentException('invalid value for $quick_replies when calling SendPrivateReplyToCommentRequest., number of items must be less than or equal to 13.');
-        }
-        $this->container['quick_replies'] = $quick_replies;
+        $this->container['image_url'] = $image_url;
 
         return $this;
     }

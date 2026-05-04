@@ -960,6 +960,7 @@ Class | Method | HTTP request | Description
 - [SendInboxMessageRequestTemplateElementsInnerButtonsInner](docs/Model/SendInboxMessageRequestTemplateElementsInnerButtonsInner.md)
 - [SendPrivateReplyToComment200Response](docs/Model/SendPrivateReplyToComment200Response.md)
 - [SendPrivateReplyToCommentRequest](docs/Model/SendPrivateReplyToCommentRequest.md)
+- [SendPrivateReplyToCommentRequestQuickRepliesInner](docs/Model/SendPrivateReplyToCommentRequestQuickRepliesInner.md)
 - [SendTypingIndicatorRequest](docs/Model/SendTypingIndicatorRequest.md)
 - [SendWhatsAppConversion200Response](docs/Model/SendWhatsAppConversion200Response.md)
 - [SendWhatsAppConversionRequest](docs/Model/SendWhatsAppConversionRequest.md)
