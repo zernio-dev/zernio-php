@@ -1783,13 +1783,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/InlineObject2DetailsTest.php
-test/Model/InlineObject2Test.php
-test/Model/UpdateAccount200ResponseXCapabilitiesTest.php
-test/Model/UpdateAccountRequestXCapabilitiesTest.php
-test/Model/UsageStatsSpendTest.php
-test/Model/UsageStatsUsageXApiCallsTest.php
-test/Model/XApiOperationTest.php
-test/Model/XApiOperationTriggeredByInnerTest.php
-test/Model/XApiPricingTest.php
-test/Model/XApiPricingTiersInnerTest.php
