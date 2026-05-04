@@ -78,6 +78,9 @@ class ConnectApi
         'completeTelegramConnect' => [
             'application/json',
         ],
+        'completeWhatsAppPhoneSelection' => [
+            'application/json',
+        ],
         'configureTikTokAdsBrandIdentity' => [
             'application/json',
         ],
@@ -139,6 +142,9 @@ class ConnectApi
             'application/json',
         ],
         'listSnapchatProfiles' => [
+            'application/json',
+        ],
+        'listWhatsAppPhoneNumbers' => [
             'application/json',
         ],
         'selectFacebookPage' => [
@@ -503,6 +509,343 @@ class ConnectApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation completeWhatsAppPhoneSelection
+     *
+     * Complete WhatsApp phone number selection
+     *
+     * @param  \Zernio\Model\CompleteWhatsAppPhoneSelectionRequest $complete_whats_app_phone_selection_request complete_whats_app_phone_selection_request (required)
+     * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeWhatsAppPhoneSelection'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CompleteWhatsAppPhoneSelection200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     */
+    public function completeWhatsAppPhoneSelection($complete_whats_app_phone_selection_request, $x_connect_token = null, string $contentType = self::contentTypes['completeWhatsAppPhoneSelection'][0])
+    {
+        list($response) = $this->completeWhatsAppPhoneSelectionWithHttpInfo($complete_whats_app_phone_selection_request, $x_connect_token, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation completeWhatsAppPhoneSelectionWithHttpInfo
+     *
+     * Complete WhatsApp phone number selection
+     *
+     * @param  \Zernio\Model\CompleteWhatsAppPhoneSelectionRequest $complete_whats_app_phone_selection_request (required)
+     * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeWhatsAppPhoneSelection'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CompleteWhatsAppPhoneSelection200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function completeWhatsAppPhoneSelectionWithHttpInfo($complete_whats_app_phone_selection_request, $x_connect_token = null, string $contentType = self::contentTypes['completeWhatsAppPhoneSelection'][0])
+    {
+        $request = $this->completeWhatsAppPhoneSelectionRequest($complete_whats_app_phone_selection_request, $x_connect_token, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CompleteWhatsAppPhoneSelection200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CompleteWhatsAppPhoneSelection200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CompleteWhatsAppPhoneSelection200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation completeWhatsAppPhoneSelectionAsync
+     *
+     * Complete WhatsApp phone number selection
+     *
+     * @param  \Zernio\Model\CompleteWhatsAppPhoneSelectionRequest $complete_whats_app_phone_selection_request (required)
+     * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeWhatsAppPhoneSelection'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function completeWhatsAppPhoneSelectionAsync($complete_whats_app_phone_selection_request, $x_connect_token = null, string $contentType = self::contentTypes['completeWhatsAppPhoneSelection'][0])
+    {
+        return $this->completeWhatsAppPhoneSelectionAsyncWithHttpInfo($complete_whats_app_phone_selection_request, $x_connect_token, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation completeWhatsAppPhoneSelectionAsyncWithHttpInfo
+     *
+     * Complete WhatsApp phone number selection
+     *
+     * @param  \Zernio\Model\CompleteWhatsAppPhoneSelectionRequest $complete_whats_app_phone_selection_request (required)
+     * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeWhatsAppPhoneSelection'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function completeWhatsAppPhoneSelectionAsyncWithHttpInfo($complete_whats_app_phone_selection_request, $x_connect_token = null, string $contentType = self::contentTypes['completeWhatsAppPhoneSelection'][0])
+    {
+        $returnType = '\Zernio\Model\CompleteWhatsAppPhoneSelection200Response';
+        $request = $this->completeWhatsAppPhoneSelectionRequest($complete_whats_app_phone_selection_request, $x_connect_token, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'completeWhatsAppPhoneSelection'
+     *
+     * @param  \Zernio\Model\CompleteWhatsAppPhoneSelectionRequest $complete_whats_app_phone_selection_request (required)
+     * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['completeWhatsAppPhoneSelection'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function completeWhatsAppPhoneSelectionRequest($complete_whats_app_phone_selection_request, $x_connect_token = null, string $contentType = self::contentTypes['completeWhatsAppPhoneSelection'][0])
+    {
+
+        // verify the required parameter 'complete_whats_app_phone_selection_request' is set
+        if ($complete_whats_app_phone_selection_request === null || (is_array($complete_whats_app_phone_selection_request) && count($complete_whats_app_phone_selection_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $complete_whats_app_phone_selection_request when calling completeWhatsAppPhoneSelection'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/connect/whatsapp/select-phone-number';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($x_connect_token !== null) {
+            $headerParams['X-Connect-Token'] = ObjectSerializer::toHeaderValue($x_connect_token);
+        }
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($complete_whats_app_phone_selection_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($complete_whats_app_phone_selection_request));
+            } else {
+                $httpBody = $complete_whats_app_phone_selection_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -6755,6 +7098,352 @@ class ConnectApi
 
 
         $resourcePath = '/v1/connect/snapchat/select-profile';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $profile_id,
+            'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $temp_token,
+            'tempToken', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+        // header params
+        if ($x_connect_token !== null) {
+            $headerParams['X-Connect-Token'] = ObjectSerializer::toHeaderValue($x_connect_token);
+        }
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listWhatsAppPhoneNumbers
+     *
+     * List WhatsApp phone numbers for selection
+     *
+     * @param  string $profile_id The Zernio profile ID from the headless redirect (required)
+     * @param  string $temp_token The temporary access token from the headless redirect (required)
+     * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (used when the bearer token is scoped to a different user) (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppPhoneNumbers'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListWhatsAppPhoneNumbers200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse
+     */
+    public function listWhatsAppPhoneNumbers($profile_id, $temp_token, $x_connect_token = null, string $contentType = self::contentTypes['listWhatsAppPhoneNumbers'][0])
+    {
+        list($response) = $this->listWhatsAppPhoneNumbersWithHttpInfo($profile_id, $temp_token, $x_connect_token, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listWhatsAppPhoneNumbersWithHttpInfo
+     *
+     * List WhatsApp phone numbers for selection
+     *
+     * @param  string $profile_id The Zernio profile ID from the headless redirect (required)
+     * @param  string $temp_token The temporary access token from the headless redirect (required)
+     * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (used when the bearer token is scoped to a different user) (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppPhoneNumbers'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListWhatsAppPhoneNumbers200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listWhatsAppPhoneNumbersWithHttpInfo($profile_id, $temp_token, $x_connect_token = null, string $contentType = self::contentTypes['listWhatsAppPhoneNumbers'][0])
+    {
+        $request = $this->listWhatsAppPhoneNumbersRequest($profile_id, $temp_token, $x_connect_token, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListWhatsAppPhoneNumbers200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListWhatsAppPhoneNumbers200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListWhatsAppPhoneNumbers200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listWhatsAppPhoneNumbersAsync
+     *
+     * List WhatsApp phone numbers for selection
+     *
+     * @param  string $profile_id The Zernio profile ID from the headless redirect (required)
+     * @param  string $temp_token The temporary access token from the headless redirect (required)
+     * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (used when the bearer token is scoped to a different user) (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppPhoneNumbers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listWhatsAppPhoneNumbersAsync($profile_id, $temp_token, $x_connect_token = null, string $contentType = self::contentTypes['listWhatsAppPhoneNumbers'][0])
+    {
+        return $this->listWhatsAppPhoneNumbersAsyncWithHttpInfo($profile_id, $temp_token, $x_connect_token, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listWhatsAppPhoneNumbersAsyncWithHttpInfo
+     *
+     * List WhatsApp phone numbers for selection
+     *
+     * @param  string $profile_id The Zernio profile ID from the headless redirect (required)
+     * @param  string $temp_token The temporary access token from the headless redirect (required)
+     * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (used when the bearer token is scoped to a different user) (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppPhoneNumbers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listWhatsAppPhoneNumbersAsyncWithHttpInfo($profile_id, $temp_token, $x_connect_token = null, string $contentType = self::contentTypes['listWhatsAppPhoneNumbers'][0])
+    {
+        $returnType = '\Zernio\Model\ListWhatsAppPhoneNumbers200Response';
+        $request = $this->listWhatsAppPhoneNumbersRequest($profile_id, $temp_token, $x_connect_token, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listWhatsAppPhoneNumbers'
+     *
+     * @param  string $profile_id The Zernio profile ID from the headless redirect (required)
+     * @param  string $temp_token The temporary access token from the headless redirect (required)
+     * @param  string|null $x_connect_token Alternative auth for API users&#39; end customers (used when the bearer token is scoped to a different user) (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppPhoneNumbers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listWhatsAppPhoneNumbersRequest($profile_id, $temp_token, $x_connect_token = null, string $contentType = self::contentTypes['listWhatsAppPhoneNumbers'][0])
+    {
+
+        // verify the required parameter 'profile_id' is set
+        if ($profile_id === null || (is_array($profile_id) && count($profile_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $profile_id when calling listWhatsAppPhoneNumbers'
+            );
+        }
+
+        // verify the required parameter 'temp_token' is set
+        if ($temp_token === null || (is_array($temp_token) && count($temp_token) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $temp_token when calling listWhatsAppPhoneNumbers'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/connect/whatsapp/select-phone-number';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

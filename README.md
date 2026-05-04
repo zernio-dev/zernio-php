@@ -158,6 +158,7 @@ Class | Method | HTTP request | Description
 *CommentsApi* | [**unhideInboxComment**](docs/Api/CommentsApi.md#unhideinboxcomment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/hide | Unhide comment
 *CommentsApi* | [**unlikeInboxComment**](docs/Api/CommentsApi.md#unlikeinboxcomment) | **DELETE** /v1/inbox/comments/{postId}/{commentId}/like | Unlike comment
 *ConnectApi* | [**completeTelegramConnect**](docs/Api/ConnectApi.md#completetelegramconnect) | **PATCH** /v1/connect/telegram | Check Telegram status
+*ConnectApi* | [**completeWhatsAppPhoneSelection**](docs/Api/ConnectApi.md#completewhatsappphoneselection) | **POST** /v1/connect/whatsapp/select-phone-number | Complete WhatsApp phone number selection
 *ConnectApi* | [**configureTikTokAdsBrandIdentity**](docs/Api/ConnectApi.md#configuretiktokadsbrandidentity) | **PATCH** /v1/connect/tiktok-ads | Configure TikTok Ads Brand Identity
 *ConnectApi* | [**connectAds**](docs/Api/ConnectApi.md#connectads) | **GET** /v1/connect/{platform}/ads | Connect ads for a platform
 *ConnectApi* | [**connectBlueskyCredentials**](docs/Api/ConnectApi.md#connectblueskycredentials) | **POST** /v1/connect/bluesky/credentials | Connect Bluesky account
@@ -179,6 +180,7 @@ Class | Method | HTTP request | Description
 *ConnectApi* | [**listLinkedInOrganizations**](docs/Api/ConnectApi.md#listlinkedinorganizations) | **GET** /v1/connect/linkedin/organizations | List LinkedIn orgs
 *ConnectApi* | [**listPinterestBoardsForSelection**](docs/Api/ConnectApi.md#listpinterestboardsforselection) | **GET** /v1/connect/pinterest/select-board | List Pinterest boards
 *ConnectApi* | [**listSnapchatProfiles**](docs/Api/ConnectApi.md#listsnapchatprofiles) | **GET** /v1/connect/snapchat/select-profile | List Snapchat profiles
+*ConnectApi* | [**listWhatsAppPhoneNumbers**](docs/Api/ConnectApi.md#listwhatsappphonenumbers) | **GET** /v1/connect/whatsapp/select-phone-number | List WhatsApp phone numbers for selection
 *ConnectApi* | [**selectFacebookPage**](docs/Api/ConnectApi.md#selectfacebookpage) | **POST** /v1/connect/facebook/select-page | Select Facebook page
 *ConnectApi* | [**selectGoogleBusinessLocation**](docs/Api/ConnectApi.md#selectgooglebusinesslocation) | **POST** /v1/connect/googlebusiness/select-location | Select GBP location
 *ConnectApi* | [**selectLinkedInOrganization**](docs/Api/ConnectApi.md#selectlinkedinorganization) | **POST** /v1/connect/linkedin/select-organization | Select LinkedIn org
@@ -399,6 +401,9 @@ Class | Method | HTTP request | Description
 - [CancelBroadcast200Response](docs/Model/CancelBroadcast200Response.md)
 - [CancelBroadcast200ResponseBroadcast](docs/Model/CancelBroadcast200ResponseBroadcast.md)
 - [CompleteTelegramConnect200Response](docs/Model/CompleteTelegramConnect200Response.md)
+- [CompleteWhatsAppPhoneSelection200Response](docs/Model/CompleteWhatsAppPhoneSelection200Response.md)
+- [CompleteWhatsAppPhoneSelection200ResponseAccount](docs/Model/CompleteWhatsAppPhoneSelection200ResponseAccount.md)
+- [CompleteWhatsAppPhoneSelectionRequest](docs/Model/CompleteWhatsAppPhoneSelectionRequest.md)
 - [ConfigureTikTokAdsBrandIdentity200Response](docs/Model/ConfigureTikTokAdsBrandIdentity200Response.md)
 - [ConfigureTikTokAdsBrandIdentityRequest](docs/Model/ConfigureTikTokAdsBrandIdentityRequest.md)
 - [ConnectAds200Response](docs/Model/ConnectAds200Response.md)
@@ -844,6 +849,8 @@ Class | Method | HTTP request | Description
 - [ListWhatsAppGroupChats200ResponsePagingCursors](docs/Model/ListWhatsAppGroupChats200ResponsePagingCursors.md)
 - [ListWhatsAppGroupJoinRequests200Response](docs/Model/ListWhatsAppGroupJoinRequests200Response.md)
 - [ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner](docs/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.md)
+- [ListWhatsAppPhoneNumbers200Response](docs/Model/ListWhatsAppPhoneNumbers200Response.md)
+- [ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner](docs/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.md)
 - [MediaItem](docs/Model/MediaItem.md)
 - [MediaUploadResponse](docs/Model/MediaUploadResponse.md)
 - [Money](docs/Model/Money.md)

@@ -111,6 +111,9 @@ docs/Model/BusinessCenter.md
 docs/Model/CancelBroadcast200Response.md
 docs/Model/CancelBroadcast200ResponseBroadcast.md
 docs/Model/CompleteTelegramConnect200Response.md
+docs/Model/CompleteWhatsAppPhoneSelection200Response.md
+docs/Model/CompleteWhatsAppPhoneSelection200ResponseAccount.md
+docs/Model/CompleteWhatsAppPhoneSelectionRequest.md
 docs/Model/ConfigureTikTokAdsBrandIdentity200Response.md
 docs/Model/ConfigureTikTokAdsBrandIdentityRequest.md
 docs/Model/ConnectAds200Response.md
@@ -556,6 +559,8 @@ docs/Model/ListWhatsAppGroupChats200ResponsePaging.md
 docs/Model/ListWhatsAppGroupChats200ResponsePagingCursors.md
 docs/Model/ListWhatsAppGroupJoinRequests200Response.md
 docs/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.md
+docs/Model/ListWhatsAppPhoneNumbers200Response.md
+docs/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.md
 docs/Model/MediaItem.md
 docs/Model/MediaUploadResponse.md
 docs/Model/Money.md
@@ -1002,6 +1007,9 @@ lib/Model/BusinessCenter.php
 lib/Model/CancelBroadcast200Response.php
 lib/Model/CancelBroadcast200ResponseBroadcast.php
 lib/Model/CompleteTelegramConnect200Response.php
+lib/Model/CompleteWhatsAppPhoneSelection200Response.php
+lib/Model/CompleteWhatsAppPhoneSelection200ResponseAccount.php
+lib/Model/CompleteWhatsAppPhoneSelectionRequest.php
 lib/Model/ConfigureTikTokAdsBrandIdentity200Response.php
 lib/Model/ConfigureTikTokAdsBrandIdentityRequest.php
 lib/Model/ConnectAds200Response.php
@@ -1447,6 +1455,8 @@ lib/Model/ListWhatsAppGroupChats200ResponsePaging.php
 lib/Model/ListWhatsAppGroupChats200ResponsePagingCursors.php
 lib/Model/ListWhatsAppGroupJoinRequests200Response.php
 lib/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.php
+lib/Model/ListWhatsAppPhoneNumbers200Response.php
+lib/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.php
 lib/Model/MediaItem.php
 lib/Model/MediaUploadResponse.php
 lib/Model/ModelInterface.php
@@ -1783,3 +1793,8 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CompleteWhatsAppPhoneSelection200ResponseAccountTest.php
+test/Model/CompleteWhatsAppPhoneSelection200ResponseTest.php
+test/Model/CompleteWhatsAppPhoneSelectionRequestTest.php
+test/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInnerTest.php
+test/Model/ListWhatsAppPhoneNumbers200ResponseTest.php
