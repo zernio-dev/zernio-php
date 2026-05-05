@@ -1,6 +1,6 @@
 <?php
 /**
- * SendPrivateReplyToCommentRequest
+ * SendPrivateReplyToCommentRequestButtonsInnerOneOf
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendPrivateReplyToCommentRequest Class Doc Comment
+ * SendPrivateReplyToCommentRequestButtonsInnerOneOf Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendPrivateReplyToCommentRequestButtonsInnerOneOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendPrivateReplyToComment_request';
+    protected static $openAPIModelName = 'sendPrivateReplyToComment_request_buttons_inner_oneOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_id' => 'string',
-        'message' => 'string',
-        'quick_replies' => '\Zernio\Model\SendPrivateReplyToCommentRequestQuickRepliesInner[]',
-        'buttons' => '\Zernio\Model\SendPrivateReplyToCommentRequestButtonsInner[]'
+        'type' => 'string',
+        'title' => 'string',
+        'url' => 'string'
     ];
 
     /**
@@ -72,10 +71,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_id' => null,
-        'message' => null,
-        'quick_replies' => null,
-        'buttons' => null
+        'type' => null,
+        'title' => null,
+        'url' => 'uri'
     ];
 
     /**
@@ -84,10 +82,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_id' => false,
-        'message' => false,
-        'quick_replies' => false,
-        'buttons' => false
+        'type' => false,
+        'title' => false,
+        'url' => false
     ];
 
     /**
@@ -176,10 +173,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_id' => 'accountId',
-        'message' => 'message',
-        'quick_replies' => 'quickReplies',
-        'buttons' => 'buttons'
+        'type' => 'type',
+        'title' => 'title',
+        'url' => 'url'
     ];
 
     /**
@@ -188,10 +184,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $setters = [
-        'account_id' => 'setAccountId',
-        'message' => 'setMessage',
-        'quick_replies' => 'setQuickReplies',
-        'buttons' => 'setButtons'
+        'type' => 'setType',
+        'title' => 'setTitle',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -200,10 +195,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
      * @var string[]
      */
     protected static $getters = [
-        'account_id' => 'getAccountId',
-        'message' => 'getMessage',
-        'quick_replies' => 'getQuickReplies',
-        'buttons' => 'getButtons'
+        'type' => 'getType',
+        'title' => 'getTitle',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -247,6 +241,19 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
         return self::$openAPIModelName;
     }
 
+    public const TYPE_URL = 'url';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_URL,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -263,10 +270,9 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('quick_replies', $data ?? [], null);
-        $this->setIfExists('buttons', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
     }
 
     /**
@@ -296,24 +302,28 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
     {
         $invalidProperties = [];
 
-        if ($this->container['account_id'] === null) {
-            $invalidProperties[] = "'account_id' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if (!is_null($this->container['quick_replies']) && (count($this->container['quick_replies']) > 13)) {
-            $invalidProperties[] = "invalid value for 'quick_replies', number of items must be less than or equal to 13.";
-        }
-
-        if (!is_null($this->container['buttons']) && (count($this->container['buttons']) > 3)) {
-            $invalidProperties[] = "invalid value for 'buttons', number of items must be less than or equal to 3.";
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
         }
 
-        if (!is_null($this->container['buttons']) && (count($this->container['buttons']) < 1)) {
-            $invalidProperties[] = "invalid value for 'buttons', number of items must be greater than or equal to 1.";
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
+        }
+        if ((mb_strlen($this->container['title']) > 20)) {
+            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 20.";
         }
 
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -330,120 +340,96 @@ class SendPrivateReplyToCommentRequest implements ModelInterface, ArrayAccess, \
 
 
     /**
-     * Gets account_id
+     * Gets type
      *
      * @return string
      */
-    public function getAccountId()
+    public function getType()
     {
-        return $this->container['account_id'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets account_id
+     * Sets type
      *
-     * @param string $account_id The social account ID (Instagram or Facebook)
+     * @param string $type type
      *
      * @return self
      */
-    public function setAccountId($account_id)
+    public function setType($type)
     {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['account_id'] = $account_id;
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets title
      *
      * @return string
      */
-    public function getMessage()
+    public function getTitle()
     {
-        return $this->container['message'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets message
+     * Sets title
      *
-     * @param string $message The message text to send as a private DM
+     * @param string $title Label shown on the button.
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setTitle($title)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
-        $this->container['message'] = $message;
+        if ((mb_strlen($title) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $title when calling SendPrivateReplyToCommentRequestButtonsInnerOneOf., must be smaller than or equal to 20.');
+        }
+
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets quick_replies
+     * Gets url
      *
-     * @return \Zernio\Model\SendPrivateReplyToCommentRequestQuickRepliesInner[]|null
+     * @return string
      */
-    public function getQuickReplies()
+    public function getUrl()
     {
-        return $this->container['quick_replies'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets quick_replies
+     * Sets url
      *
-     * @param \Zernio\Model\SendPrivateReplyToCommentRequestQuickRepliesInner[]|null $quick_replies Optional quick-reply chips appended to the message. Visible only in the Instagram and Messenger apps (not on web). Maximum 13 entries. Mutually exclusive with `buttons`. Note: chips do NOT render in the Instagram Message Requests folder where DMs from non-followers land — use `buttons` instead for cold reach.
+     * @param string $url URL opened when the button is tapped.
      *
      * @return self
      */
-    public function setQuickReplies($quick_replies)
+    public function setUrl($url)
     {
-        if (is_null($quick_replies)) {
-            throw new \InvalidArgumentException('non-nullable quick_replies cannot be null');
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
-
-        if ((count($quick_replies) > 13)) {
-            throw new \InvalidArgumentException('invalid value for $quick_replies when calling SendPrivateReplyToCommentRequest., number of items must be less than or equal to 13.');
-        }
-        $this->container['quick_replies'] = $quick_replies;
-
-        return $this;
-    }
-
-    /**
-     * Gets buttons
-     *
-     * @return \Zernio\Model\SendPrivateReplyToCommentRequestButtonsInner[]|null
-     */
-    public function getButtons()
-    {
-        return $this->container['buttons'];
-    }
-
-    /**
-     * Sets buttons
-     *
-     * @param \Zernio\Model\SendPrivateReplyToCommentRequestButtonsInner[]|null $buttons Optional 1-3 inline buttons rendered as part of the same message bubble via Meta's button_template. Visible in the Instagram Message Requests folder (unlike quick replies). Mutually exclusive with `quickReplies`.
-     *
-     * @return self
-     */
-    public function setButtons($buttons)
-    {
-        if (is_null($buttons)) {
-            throw new \InvalidArgumentException('non-nullable buttons cannot be null');
-        }
-
-        if ((count($buttons) > 3)) {
-            throw new \InvalidArgumentException('invalid value for $buttons when calling SendPrivateReplyToCommentRequest., number of items must be less than or equal to 3.');
-        }
-        if ((count($buttons) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $buttons when calling SendPrivateReplyToCommentRequest., number of items must be greater than or equal to 1.');
-        }
-        $this->container['buttons'] = $buttons;
+        $this->container['url'] = $url;
 
         return $this;
     }
