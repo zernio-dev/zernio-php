@@ -1632,8 +1632,8 @@ class AdsApi
      * Get ad analytics
      *
      * @param  string $ad_id ad_id (required)
-     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
@@ -1653,8 +1653,8 @@ class AdsApi
      * Get ad analytics
      *
      * @param  string $ad_id (required)
-     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
@@ -1769,8 +1769,8 @@ class AdsApi
      * Get ad analytics
      *
      * @param  string $ad_id (required)
-     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
@@ -1793,8 +1793,8 @@ class AdsApi
      * Get ad analytics
      *
      * @param  string $ad_id (required)
-     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
@@ -1846,8 +1846,8 @@ class AdsApi
      * Create request for operation 'getAdAnalytics'
      *
      * @param  string $ad_id (required)
-     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch. (optional)
+     * @param  \DateTime|null $to_date End of date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $breakdowns Comma-separated breakdown dimensions. Meta: age, gender, country, publisher_platform, device_platform, region. TikTok: gender, age, country_code, platform, ac, language. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdAnalytics'] to see the possible values for this operation
      *
@@ -2644,8 +2644,8 @@ class AdsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch when scoped to a specific accountId. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2672,8 +2672,8 @@ class AdsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch when scoped to a specific accountId. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2781,8 +2781,8 @@ class AdsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch when scoped to a specific accountId. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2812,8 +2812,8 @@ class AdsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch when scoped to a specific accountId. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2872,8 +2872,8 @@ class AdsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch when scoped to a specific accountId. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -1058,8 +1058,8 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch when scoped to a specific accountId. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1085,8 +1085,8 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch when scoped to a specific accountId. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1193,8 +1193,8 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch when scoped to a specific accountId. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1223,8 +1223,8 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch when scoped to a specific accountId. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1282,8 +1282,8 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
-     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 90-day range. (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. Ranges older than 90 days trigger an on-demand platform fetch when scoped to a specific accountId. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
