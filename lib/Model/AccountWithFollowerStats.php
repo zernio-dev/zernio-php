@@ -454,6 +454,12 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
+        if ($this->container['_id'] === null) {
+            $invalidProperties[] = "'_id' can't be null";
+        }
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
         $allowedValues = $this->getPlatformAllowableValues();
         if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -463,6 +469,12 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
             );
         }
 
+        if ($this->container['profile_id'] === null) {
+            $invalidProperties[] = "'profile_id' can't be null";
+        }
+        if ($this->container['is_active'] === null) {
+            $invalidProperties[] = "'is_active' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -481,7 +493,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets _id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -491,7 +503,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets _id
      *
-     * @param string|null $_id _id
+     * @param string $_id _id
      *
      * @return self
      */
@@ -508,7 +520,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets platform
      *
-     * @return string|null
+     * @return string
      */
     public function getPlatform()
     {
@@ -518,7 +530,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets platform
      *
-     * @param string|null $platform platform
+     * @param string $platform platform
      *
      * @return self
      */
@@ -545,7 +557,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets profile_id
      *
-     * @return \Zernio\Model\SocialAccountProfileId|null
+     * @return \Zernio\Model\SocialAccountProfileId
      */
     public function getProfileId()
     {
@@ -555,7 +567,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets profile_id
      *
-     * @param \Zernio\Model\SocialAccountProfileId|null $profile_id profile_id
+     * @param \Zernio\Model\SocialAccountProfileId $profile_id profile_id
      *
      * @return self
      */
@@ -680,7 +692,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets is_active
      *
-     * @return bool|null
+     * @return bool
      */
     public function getIsActive()
     {
@@ -690,7 +702,7 @@ class AccountWithFollowerStats implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets is_active
      *
-     * @param bool|null $is_active is_active
+     * @param bool $is_active is_active
      *
      * @return self
      */

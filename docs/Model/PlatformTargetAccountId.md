@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_id** | **string** |  | [optional]
-**platform** | **string** |  | [optional]
-**profile_id** | [**\Zernio\Model\SocialAccountProfileId**](SocialAccountProfileId.md) |  | [optional]
+**_id** | **string** |  |
+**platform** | **string** |  |
+**profile_id** | [**\Zernio\Model\SocialAccountProfileId**](SocialAccountProfileId.md) |  |
 **username** | **string** |  | [optional]
 **display_name** | **string** |  | [optional]
 **profile_picture** | **string** | URL to the account&#39;s profile picture on the platform. May be null if the platform does not provide one. | [optional]
 **profile_url** | **string** | Full profile URL for the connected account on its platform. | [optional]
-**is_active** | **bool** |  | [optional]
+**is_active** | **bool** |  |
 **followers_count** | **float** | Follower count (only included if user has analytics add-on) | [optional]
 **followers_last_updated** | **\DateTime** | Last time follower count was updated (only included if user has analytics add-on) | [optional]
 **parent_account_id** | **string** | Reference to the parent posting SocialAccount. Set for ads accounts that share or derive from a posting account&#39;s OAuth token. null for standalone ads (Google Ads) and all posting accounts. | [optional]

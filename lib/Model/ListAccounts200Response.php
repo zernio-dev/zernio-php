@@ -289,6 +289,12 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['accounts'] === null) {
+            $invalidProperties[] = "'accounts' can't be null";
+        }
+        if ($this->container['has_analytics_access'] === null) {
+            $invalidProperties[] = "'has_analytics_access' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -307,7 +313,7 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets accounts
      *
-     * @return \Zernio\Model\SocialAccount[]|null
+     * @return \Zernio\Model\SocialAccount[]
      */
     public function getAccounts()
     {
@@ -317,7 +323,7 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets accounts
      *
-     * @param \Zernio\Model\SocialAccount[]|null $accounts accounts
+     * @param \Zernio\Model\SocialAccount[] $accounts accounts
      *
      * @return self
      */
@@ -334,7 +340,7 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets has_analytics_access
      *
-     * @return bool|null
+     * @return bool
      */
     public function getHasAnalyticsAccess()
     {
@@ -344,7 +350,7 @@ class ListAccounts200Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets has_analytics_access
      *
-     * @param bool|null $has_analytics_access Whether user has analytics add-on access
+     * @param bool $has_analytics_access Whether user has analytics add-on access
      *
      * @return self
      */

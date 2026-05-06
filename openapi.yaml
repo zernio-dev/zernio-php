@@ -2984,6 +2984,7 @@ components:
         createdAt: { type: string, format: date-time }
     SocialAccount:
       type: object
+      required: [_id, platform, profileId, isActive]
       properties:
         _id: { type: string }
         platform:
@@ -8580,6 +8581,7 @@ paths:
             application/json:
               schema:
                 type: object
+                required: [accounts, hasAnalyticsAccess]
                 properties:
                   accounts:
                     type: array

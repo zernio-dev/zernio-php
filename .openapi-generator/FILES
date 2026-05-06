@@ -1801,7 +1801,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOf1Test.php
-test/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOf2Test.php
-test/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOfTest.php
-test/Model/SendPrivateReplyToCommentRequestButtonsInnerTest.php
