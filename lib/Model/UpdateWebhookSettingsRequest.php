@@ -275,6 +275,12 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
     public const EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED = 'account.ads.initial_sync_completed';
     public const EVENTS_MESSAGE_RECEIVED = 'message.received';
+    public const EVENTS_MESSAGE_SENT = 'message.sent';
+    public const EVENTS_MESSAGE_EDITED = 'message.edited';
+    public const EVENTS_MESSAGE_DELETED = 'message.deleted';
+    public const EVENTS_MESSAGE_DELIVERED = 'message.delivered';
+    public const EVENTS_MESSAGE_READ = 'message.read';
+    public const EVENTS_MESSAGE_FAILED = 'message.failed';
     public const EVENTS_COMMENT_RECEIVED = 'comment.received';
     public const EVENTS_REVIEW_NEW = 'review.new';
     public const EVENTS_REVIEW_UPDATED = 'review.updated';
@@ -297,6 +303,12 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
             self::EVENTS_ACCOUNT_DISCONNECTED,
             self::EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED,
             self::EVENTS_MESSAGE_RECEIVED,
+            self::EVENTS_MESSAGE_SENT,
+            self::EVENTS_MESSAGE_EDITED,
+            self::EVENTS_MESSAGE_DELETED,
+            self::EVENTS_MESSAGE_DELIVERED,
+            self::EVENTS_MESSAGE_READ,
+            self::EVENTS_MESSAGE_FAILED,
             self::EVENTS_COMMENT_RECEIVED,
             self::EVENTS_REVIEW_NEW,
             self::EVENTS_REVIEW_UPDATED,

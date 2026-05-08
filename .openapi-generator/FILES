@@ -866,6 +866,7 @@ docs/Model/WebhookPayloadMessageMessageSender.md
 docs/Model/WebhookPayloadMessageMessageSenderInstagramProfile.md
 docs/Model/WebhookPayloadMessageMetadata.md
 docs/Model/WebhookPayloadMessageMetadataReferral.md
+docs/Model/WebhookPayloadMessageMetadataStoryReply.md
 docs/Model/WebhookPayloadMessageSent.md
 docs/Model/WebhookPayloadMessageSentMessage.md
 docs/Model/WebhookPayloadMessageSentMessageSender.md
@@ -1767,6 +1768,7 @@ lib/Model/WebhookPayloadMessageMessageSender.php
 lib/Model/WebhookPayloadMessageMessageSenderInstagramProfile.php
 lib/Model/WebhookPayloadMessageMetadata.php
 lib/Model/WebhookPayloadMessageMetadataReferral.php
+lib/Model/WebhookPayloadMessageMetadataStoryReply.php
 lib/Model/WebhookPayloadMessageSent.php
 lib/Model/WebhookPayloadMessageSentMessage.php
 lib/Model/WebhookPayloadMessageSentMessageSender.php
@@ -1801,3 +1803,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadMessageMetadataStoryReplyTest.php
