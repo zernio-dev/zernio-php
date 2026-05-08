@@ -61,7 +61,8 @@ class ListConversionDestinations200ResponseDestinationsInner implements ModelInt
         'id' => 'string',
         'name' => 'string',
         'type' => 'string',
-        'status' => 'string'
+        'status' => 'string',
+        'ad_account_id' => 'string'
     ];
 
     /**
@@ -75,7 +76,8 @@ class ListConversionDestinations200ResponseDestinationsInner implements ModelInt
         'id' => null,
         'name' => null,
         'type' => null,
-        'status' => null
+        'status' => null,
+        'ad_account_id' => null
     ];
 
     /**
@@ -87,7 +89,8 @@ class ListConversionDestinations200ResponseDestinationsInner implements ModelInt
         'id' => false,
         'name' => false,
         'type' => false,
-        'status' => false
+        'status' => false,
+        'ad_account_id' => false
     ];
 
     /**
@@ -179,7 +182,8 @@ class ListConversionDestinations200ResponseDestinationsInner implements ModelInt
         'id' => 'id',
         'name' => 'name',
         'type' => 'type',
-        'status' => 'status'
+        'status' => 'status',
+        'ad_account_id' => 'adAccountId'
     ];
 
     /**
@@ -191,7 +195,8 @@ class ListConversionDestinations200ResponseDestinationsInner implements ModelInt
         'id' => 'setId',
         'name' => 'setName',
         'type' => 'setType',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'ad_account_id' => 'setAdAccountId'
     ];
 
     /**
@@ -203,7 +208,8 @@ class ListConversionDestinations200ResponseDestinationsInner implements ModelInt
         'id' => 'getId',
         'name' => 'getName',
         'type' => 'getType',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'ad_account_id' => 'getAdAccountId'
     ];
 
     /**
@@ -282,6 +288,7 @@ class ListConversionDestinations200ResponseDestinationsInner implements ModelInt
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('ad_account_id', $data ?? [], null);
     }
 
     /**
@@ -348,7 +355,7 @@ class ListConversionDestinations200ResponseDestinationsInner implements ModelInt
     /**
      * Sets id
      *
-     * @param string|null $id Destination identifier. Meta: pixel ID. Google: conversion action resource name.
+     * @param string|null $id Destination identifier. Meta: pixel ID. Google: conversion action resource name. LinkedIn: numeric conversion rule ID.
      *
      * @return self
      */
@@ -402,7 +409,7 @@ class ListConversionDestinations200ResponseDestinationsInner implements ModelInt
     /**
      * Sets type
      *
-     * @param string|null $type Present when the platform locks event type to the destination (Google conversion actions).
+     * @param string|null $type Present when the platform locks event type to the destination (Google conversion actions, LinkedIn conversion rules).
      *
      * @return self
      */
@@ -449,6 +456,33 @@ class ListConversionDestinations200ResponseDestinationsInner implements ModelInt
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_account_id
+     *
+     * @return string|null
+     */
+    public function getAdAccountId()
+    {
+        return $this->container['ad_account_id'];
+    }
+
+    /**
+     * Sets ad_account_id
+     *
+     * @param string|null $ad_account_id Set by adapters whose destinations are scoped to a specific ad account (LinkedIn). Pass back on subsequent CRUD calls.
+     *
+     * @return self
+     */
+    public function setAdAccountId($ad_account_id)
+    {
+        if (is_null($ad_account_id)) {
+            throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
+        }
+        $this->container['ad_account_id'] = $ad_account_id;
 
         return $this;
     }

@@ -255,6 +255,7 @@ class SendConversions200Response implements ModelInterface, ArrayAccess, \JsonSe
 
     public const PLATFORM_METAADS = 'metaads';
     public const PLATFORM_GOOGLEADS = 'googleads';
+    public const PLATFORM_LINKEDINADS = 'linkedinads';
 
     /**
      * Gets allowable values of the enum
@@ -266,6 +267,7 @@ class SendConversions200Response implements ModelInterface, ArrayAccess, \JsonSe
         return [
             self::PLATFORM_METAADS,
             self::PLATFORM_GOOGLEADS,
+            self::PLATFORM_LINKEDINADS,
         ];
     }
 
@@ -473,7 +475,7 @@ class SendConversions200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets trace_id
      *
-     * @param string|null $trace_id Platform trace ID (fbtrace_id for Meta, requestId for Google) for debugging.
+     * @param string|null $trace_id Platform trace ID for debugging. fbtrace_id for Meta, requestId for Google. Absent for LinkedIn (LinkedIn's conversionEvents endpoint does not surface a trace ID).
      *
      * @return self
      */

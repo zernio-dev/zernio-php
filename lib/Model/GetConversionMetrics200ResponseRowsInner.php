@@ -1,6 +1,6 @@
 <?php
 /**
- * ConversionEventUserClickIds
+ * GetConversionMetrics200ResponseRowsInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ConversionEventUserClickIds Class Doc Comment
+ * GetConversionMetrics200ResponseRowsInner Class Doc Comment
  *
  * @category Class
- * @description Platform click identifiers captured from the originating ad click.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetConversionMetrics200ResponseRowsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ConversionEvent_user_clickIds';
+    protected static $openAPIModelName = 'getConversionMetrics_200_response_rows_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +58,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'fbc' => 'string',
-        'fbp' => 'string',
-        'gclid' => 'string',
-        'gbraid' => 'string',
-        'wbraid' => 'string',
-        'li_fat_id' => 'string'
+        'start' => 'string',
+        'end' => 'string',
+        'metrics' => 'array<string,\Zernio\Model\GetConversionMetrics200ResponseRowsInnerMetricsValue>'
     ];
 
     /**
@@ -75,12 +71,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'fbc' => null,
-        'fbp' => null,
-        'gclid' => null,
-        'gbraid' => null,
-        'wbraid' => null,
-        'li_fat_id' => null
+        'start' => null,
+        'end' => null,
+        'metrics' => null
     ];
 
     /**
@@ -89,12 +82,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fbc' => false,
-        'fbp' => false,
-        'gclid' => false,
-        'gbraid' => false,
-        'wbraid' => false,
-        'li_fat_id' => false
+        'start' => false,
+        'end' => false,
+        'metrics' => false
     ];
 
     /**
@@ -183,12 +173,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'fbc' => 'fbc',
-        'fbp' => 'fbp',
-        'gclid' => 'gclid',
-        'gbraid' => 'gbraid',
-        'wbraid' => 'wbraid',
-        'li_fat_id' => 'li_fat_id'
+        'start' => 'start',
+        'end' => 'end',
+        'metrics' => 'metrics'
     ];
 
     /**
@@ -197,12 +184,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'fbc' => 'setFbc',
-        'fbp' => 'setFbp',
-        'gclid' => 'setGclid',
-        'gbraid' => 'setGbraid',
-        'wbraid' => 'setWbraid',
-        'li_fat_id' => 'setLiFatId'
+        'start' => 'setStart',
+        'end' => 'setEnd',
+        'metrics' => 'setMetrics'
     ];
 
     /**
@@ -211,12 +195,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'fbc' => 'getFbc',
-        'fbp' => 'getFbp',
-        'gclid' => 'getGclid',
-        'gbraid' => 'getGbraid',
-        'wbraid' => 'getWbraid',
-        'li_fat_id' => 'getLiFatId'
+        'start' => 'getStart',
+        'end' => 'getEnd',
+        'metrics' => 'getMetrics'
     ];
 
     /**
@@ -276,12 +257,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('fbc', $data ?? [], null);
-        $this->setIfExists('fbp', $data ?? [], null);
-        $this->setIfExists('gclid', $data ?? [], null);
-        $this->setIfExists('gbraid', $data ?? [], null);
-        $this->setIfExists('wbraid', $data ?? [], null);
-        $this->setIfExists('li_fat_id', $data ?? [], null);
+        $this->setIfExists('start', $data ?? [], null);
+        $this->setIfExists('end', $data ?? [], null);
+        $this->setIfExists('metrics', $data ?? [], null);
     }
 
     /**
@@ -327,163 +305,82 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets fbc
+     * Gets start
      *
      * @return string|null
      */
-    public function getFbc()
+    public function getStart()
     {
-        return $this->container['fbc'];
+        return $this->container['start'];
     }
 
     /**
-     * Sets fbc
+     * Sets start
      *
-     * @param string|null $fbc Meta click ID (from fbclid URL param).
+     * @param string|null $start YYYY-MM-DD
      *
      * @return self
      */
-    public function setFbc($fbc)
+    public function setStart($start)
     {
-        if (is_null($fbc)) {
-            throw new \InvalidArgumentException('non-nullable fbc cannot be null');
+        if (is_null($start)) {
+            throw new \InvalidArgumentException('non-nullable start cannot be null');
         }
-        $this->container['fbc'] = $fbc;
+        $this->container['start'] = $start;
 
         return $this;
     }
 
     /**
-     * Gets fbp
+     * Gets end
      *
      * @return string|null
      */
-    public function getFbp()
+    public function getEnd()
     {
-        return $this->container['fbp'];
+        return $this->container['end'];
     }
 
     /**
-     * Sets fbp
+     * Sets end
      *
-     * @param string|null $fbp Meta browser ID (_fbp cookie).
+     * @param string|null $end YYYY-MM-DD (inclusive)
      *
      * @return self
      */
-    public function setFbp($fbp)
+    public function setEnd($end)
     {
-        if (is_null($fbp)) {
-            throw new \InvalidArgumentException('non-nullable fbp cannot be null');
+        if (is_null($end)) {
+            throw new \InvalidArgumentException('non-nullable end cannot be null');
         }
-        $this->container['fbp'] = $fbp;
+        $this->container['end'] = $end;
 
         return $this;
     }
 
     /**
-     * Gets gclid
+     * Gets metrics
      *
-     * @return string|null
+     * @return array<string,\Zernio\Model\GetConversionMetrics200ResponseRowsInnerMetricsValue>|null
      */
-    public function getGclid()
+    public function getMetrics()
     {
-        return $this->container['gclid'];
+        return $this->container['metrics'];
     }
 
     /**
-     * Sets gclid
+     * Sets metrics
      *
-     * @param string|null $gclid Google click ID (from gclid URL param).
+     * @param array<string,\Zernio\Model\GetConversionMetrics200ResponseRowsInnerMetricsValue>|null $metrics metrics
      *
      * @return self
      */
-    public function setGclid($gclid)
+    public function setMetrics($metrics)
     {
-        if (is_null($gclid)) {
-            throw new \InvalidArgumentException('non-nullable gclid cannot be null');
+        if (is_null($metrics)) {
+            throw new \InvalidArgumentException('non-nullable metrics cannot be null');
         }
-        $this->container['gclid'] = $gclid;
-
-        return $this;
-    }
-
-    /**
-     * Gets gbraid
-     *
-     * @return string|null
-     */
-    public function getGbraid()
-    {
-        return $this->container['gbraid'];
-    }
-
-    /**
-     * Sets gbraid
-     *
-     * @param string|null $gbraid Google iOS 14.5+ app attribution ID.
-     *
-     * @return self
-     */
-    public function setGbraid($gbraid)
-    {
-        if (is_null($gbraid)) {
-            throw new \InvalidArgumentException('non-nullable gbraid cannot be null');
-        }
-        $this->container['gbraid'] = $gbraid;
-
-        return $this;
-    }
-
-    /**
-     * Gets wbraid
-     *
-     * @return string|null
-     */
-    public function getWbraid()
-    {
-        return $this->container['wbraid'];
-    }
-
-    /**
-     * Sets wbraid
-     *
-     * @param string|null $wbraid Google iOS 14.5+ web-to-app attribution ID.
-     *
-     * @return self
-     */
-    public function setWbraid($wbraid)
-    {
-        if (is_null($wbraid)) {
-            throw new \InvalidArgumentException('non-nullable wbraid cannot be null');
-        }
-        $this->container['wbraid'] = $wbraid;
-
-        return $this;
-    }
-
-    /**
-     * Gets li_fat_id
-     *
-     * @return string|null
-     */
-    public function getLiFatId()
-    {
-        return $this->container['li_fat_id'];
-    }
-
-    /**
-     * Sets li_fat_id
-     *
-     * @param string|null $li_fat_id LinkedIn first-party ad tracking click ID. Captured by parsing `li_fat_id` from landing-page URLs after the advertiser enables enhanced conversion tracking on the LinkedIn Insight Tag. Sent to LinkedIn as the LINKEDIN_FIRST_PARTY_ADS_TRACKING_UUID userId. Opaque token, not hashed.
-     *
-     * @return self
-     */
-    public function setLiFatId($li_fat_id)
-    {
-        if (is_null($li_fat_id)) {
-            throw new \InvalidArgumentException('non-nullable li_fat_id cannot be null');
-        }
-        $this->container['li_fat_id'] = $li_fat_id;
+        $this->container['metrics'] = $metrics;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * ConversionEventUserClickIds
+ * ConversionDestination
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ConversionEventUserClickIds Class Doc Comment
+ * ConversionDestination Class Doc Comment
  *
  * @category Class
- * @description Platform click identifiers captured from the originating ad click.
+ * @description A discoverable conversion destination on an ad platform — a Meta pixel, Google conversion action, or LinkedIn conversion rule. Returned by &#x60;listConversionDestinations&#x60;, &#x60;getConversionDestination&#x60;, &#x60;createConversionDestination&#x60;, and &#x60;updateConversionDestination&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonSerializable
+class ConversionDestination implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ConversionEvent_user_clickIds';
+    protected static $openAPIModelName = 'ConversionDestination';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,11 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'fbc' => 'string',
-        'fbp' => 'string',
-        'gclid' => 'string',
-        'gbraid' => 'string',
-        'wbraid' => 'string',
-        'li_fat_id' => 'string'
+        'id' => 'string',
+        'name' => 'string',
+        'type' => 'string',
+        'status' => 'string',
+        'ad_account_id' => 'string'
     ];
 
     /**
@@ -75,12 +74,11 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'fbc' => null,
-        'fbp' => null,
-        'gclid' => null,
-        'gbraid' => null,
-        'wbraid' => null,
-        'li_fat_id' => null
+        'id' => null,
+        'name' => null,
+        'type' => null,
+        'status' => null,
+        'ad_account_id' => null
     ];
 
     /**
@@ -89,12 +87,11 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fbc' => false,
-        'fbp' => false,
-        'gclid' => false,
-        'gbraid' => false,
-        'wbraid' => false,
-        'li_fat_id' => false
+        'id' => false,
+        'name' => false,
+        'type' => false,
+        'status' => false,
+        'ad_account_id' => false
     ];
 
     /**
@@ -183,12 +180,11 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'fbc' => 'fbc',
-        'fbp' => 'fbp',
-        'gclid' => 'gclid',
-        'gbraid' => 'gbraid',
-        'wbraid' => 'wbraid',
-        'li_fat_id' => 'li_fat_id'
+        'id' => 'id',
+        'name' => 'name',
+        'type' => 'type',
+        'status' => 'status',
+        'ad_account_id' => 'adAccountId'
     ];
 
     /**
@@ -197,12 +193,11 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'fbc' => 'setFbc',
-        'fbp' => 'setFbp',
-        'gclid' => 'setGclid',
-        'gbraid' => 'setGbraid',
-        'wbraid' => 'setWbraid',
-        'li_fat_id' => 'setLiFatId'
+        'id' => 'setId',
+        'name' => 'setName',
+        'type' => 'setType',
+        'status' => 'setStatus',
+        'ad_account_id' => 'setAdAccountId'
     ];
 
     /**
@@ -211,12 +206,11 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'fbc' => 'getFbc',
-        'fbp' => 'getFbp',
-        'gclid' => 'getGclid',
-        'gbraid' => 'getGbraid',
-        'wbraid' => 'getWbraid',
-        'li_fat_id' => 'getLiFatId'
+        'id' => 'getId',
+        'name' => 'getName',
+        'type' => 'getType',
+        'status' => 'getStatus',
+        'ad_account_id' => 'getAdAccountId'
     ];
 
     /**
@@ -260,6 +254,21 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    public const STATUS_ACTIVE = 'active';
+    public const STATUS_INACTIVE = 'inactive';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_ACTIVE,
+            self::STATUS_INACTIVE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -276,12 +285,11 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('fbc', $data ?? [], null);
-        $this->setIfExists('fbp', $data ?? [], null);
-        $this->setIfExists('gclid', $data ?? [], null);
-        $this->setIfExists('gbraid', $data ?? [], null);
-        $this->setIfExists('wbraid', $data ?? [], null);
-        $this->setIfExists('li_fat_id', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('ad_account_id', $data ?? [], null);
     }
 
     /**
@@ -311,6 +319,21 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -327,163 +350,146 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets fbc
+     * Gets id
      *
-     * @return string|null
+     * @return string
      */
-    public function getFbc()
+    public function getId()
     {
-        return $this->container['fbc'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets fbc
+     * Sets id
      *
-     * @param string|null $fbc Meta click ID (from fbclid URL param).
+     * @param string $id Platform-native identifier. Pass back as `destinationId` on event send and as the path segment on CRUD endpoints.
      *
      * @return self
      */
-    public function setFbc($fbc)
+    public function setId($id)
     {
-        if (is_null($fbc)) {
-            throw new \InvalidArgumentException('non-nullable fbc cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['fbc'] = $fbc;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets fbp
+     * Gets name
      *
-     * @return string|null
+     * @return string
      */
-    public function getFbp()
+    public function getName()
     {
-        return $this->container['fbp'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets fbp
+     * Sets name
      *
-     * @param string|null $fbp Meta browser ID (_fbp cookie).
+     * @param string $name name
      *
      * @return self
      */
-    public function setFbp($fbp)
+    public function setName($name)
     {
-        if (is_null($fbp)) {
-            throw new \InvalidArgumentException('non-nullable fbp cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['fbp'] = $fbp;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets gclid
+     * Gets type
      *
      * @return string|null
      */
-    public function getGclid()
+    public function getType()
     {
-        return $this->container['gclid'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets gclid
+     * Sets type
      *
-     * @param string|null $gclid Google click ID (from gclid URL param).
+     * @param string|null $type Present when the platform locks the event type/category to the destination (Google conversion actions, LinkedIn conversion rules). Absent for Meta pixels (which accept any event name per request).
      *
      * @return self
      */
-    public function setGclid($gclid)
+    public function setType($type)
     {
-        if (is_null($gclid)) {
-            throw new \InvalidArgumentException('non-nullable gclid cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['gclid'] = $gclid;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets gbraid
+     * Gets status
      *
      * @return string|null
      */
-    public function getGbraid()
+    public function getStatus()
     {
-        return $this->container['gbraid'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets gbraid
+     * Sets status
      *
-     * @param string|null $gbraid Google iOS 14.5+ app attribution ID.
+     * @param string|null $status For LinkedIn, `inactive` means the rule is soft-deleted (`enabled: false`).
      *
      * @return self
      */
-    public function setGbraid($gbraid)
+    public function setStatus($status)
     {
-        if (is_null($gbraid)) {
-            throw new \InvalidArgumentException('non-nullable gbraid cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['gbraid'] = $gbraid;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets wbraid
+     * Gets ad_account_id
      *
      * @return string|null
      */
-    public function getWbraid()
+    public function getAdAccountId()
     {
-        return $this->container['wbraid'];
+        return $this->container['ad_account_id'];
     }
 
     /**
-     * Sets wbraid
+     * Sets ad_account_id
      *
-     * @param string|null $wbraid Google iOS 14.5+ web-to-app attribution ID.
+     * @param string|null $ad_account_id Set by adapters whose destinations are scoped to a specific ad account (LinkedIn). Pass back on subsequent CRUD calls to identify the parent ad account.
      *
      * @return self
      */
-    public function setWbraid($wbraid)
+    public function setAdAccountId($ad_account_id)
     {
-        if (is_null($wbraid)) {
-            throw new \InvalidArgumentException('non-nullable wbraid cannot be null');
+        if (is_null($ad_account_id)) {
+            throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
         }
-        $this->container['wbraid'] = $wbraid;
-
-        return $this;
-    }
-
-    /**
-     * Gets li_fat_id
-     *
-     * @return string|null
-     */
-    public function getLiFatId()
-    {
-        return $this->container['li_fat_id'];
-    }
-
-    /**
-     * Sets li_fat_id
-     *
-     * @param string|null $li_fat_id LinkedIn first-party ad tracking click ID. Captured by parsing `li_fat_id` from landing-page URLs after the advertiser enables enhanced conversion tracking on the LinkedIn Insight Tag. Sent to LinkedIn as the LINKEDIN_FIRST_PARTY_ADS_TRACKING_UUID userId. Opaque token, not hashed.
-     *
-     * @return self
-     */
-    public function setLiFatId($li_fat_id)
-    {
-        if (is_null($li_fat_id)) {
-            throw new \InvalidArgumentException('non-nullable li_fat_id cannot be null');
-        }
-        $this->container['li_fat_id'] = $li_fat_id;
+        $this->container['ad_account_id'] = $ad_account_id;
 
         return $this;
     }

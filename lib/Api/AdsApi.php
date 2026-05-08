@@ -75,7 +75,13 @@ class AdsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'addConversionAssociations' => [
+            'application/json',
+        ],
         'boostPost' => [
+            'application/json',
+        ],
+        'createConversionDestination' => [
             'application/json',
         ],
         'createCtwaAd' => [
@@ -87,6 +93,9 @@ class AdsApi
         'deleteAd' => [
             'application/json',
         ],
+        'deleteConversionDestination' => [
+            'application/json',
+        ],
         'getAd' => [
             'application/json',
         ],
@@ -94,6 +103,12 @@ class AdsApi
             'application/json',
         ],
         'getAdComments' => [
+            'application/json',
+        ],
+        'getConversionDestination' => [
+            'application/json',
+        ],
+        'getConversionMetrics' => [
             'application/json',
         ],
         'listAdAccounts' => [
@@ -105,7 +120,13 @@ class AdsApi
         'listAdsBusinessCenters' => [
             'application/json',
         ],
+        'listConversionAssociations' => [
+            'application/json',
+        ],
         'listConversionDestinations' => [
+            'application/json',
+        ],
+        'removeConversionAssociations' => [
             'application/json',
         ],
         'searchAdInterests' => [
@@ -121,6 +142,9 @@ class AdsApi
             'application/json',
         ],
         'updateAd' => [
+            'application/json',
+        ],
+        'updateConversionDestination' => [
             'application/json',
         ],
     ];
@@ -169,6 +193,331 @@ class AdsApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation addConversionAssociations
+     *
+     * Associate campaigns with a conversion destination
+     *
+     * @param  string $account_id account_id (required)
+     * @param  string $destination_id destination_id (required)
+     * @param  \Zernio\Model\AddConversionAssociationsRequest $add_conversion_associations_request add_conversion_associations_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\AddConversionAssociations200Response|\Zernio\Model\InlineObject
+     */
+    public function addConversionAssociations($account_id, $destination_id, $add_conversion_associations_request, string $contentType = self::contentTypes['addConversionAssociations'][0])
+    {
+        list($response) = $this->addConversionAssociationsWithHttpInfo($account_id, $destination_id, $add_conversion_associations_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation addConversionAssociationsWithHttpInfo
+     *
+     * Associate campaigns with a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  \Zernio\Model\AddConversionAssociationsRequest $add_conversion_associations_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\AddConversionAssociations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function addConversionAssociationsWithHttpInfo($account_id, $destination_id, $add_conversion_associations_request, string $contentType = self::contentTypes['addConversionAssociations'][0])
+    {
+        $request = $this->addConversionAssociationsRequest($account_id, $destination_id, $add_conversion_associations_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\AddConversionAssociations200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\AddConversionAssociations200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\AddConversionAssociations200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation addConversionAssociationsAsync
+     *
+     * Associate campaigns with a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  \Zernio\Model\AddConversionAssociationsRequest $add_conversion_associations_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addConversionAssociationsAsync($account_id, $destination_id, $add_conversion_associations_request, string $contentType = self::contentTypes['addConversionAssociations'][0])
+    {
+        return $this->addConversionAssociationsAsyncWithHttpInfo($account_id, $destination_id, $add_conversion_associations_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation addConversionAssociationsAsyncWithHttpInfo
+     *
+     * Associate campaigns with a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  \Zernio\Model\AddConversionAssociationsRequest $add_conversion_associations_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addConversionAssociationsAsyncWithHttpInfo($account_id, $destination_id, $add_conversion_associations_request, string $contentType = self::contentTypes['addConversionAssociations'][0])
+    {
+        $returnType = '\Zernio\Model\AddConversionAssociations200Response';
+        $request = $this->addConversionAssociationsRequest($account_id, $destination_id, $add_conversion_associations_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'addConversionAssociations'
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  \Zernio\Model\AddConversionAssociationsRequest $add_conversion_associations_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function addConversionAssociationsRequest($account_id, $destination_id, $add_conversion_associations_request, string $contentType = self::contentTypes['addConversionAssociations'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling addConversionAssociations'
+            );
+        }
+
+        // verify the required parameter 'destination_id' is set
+        if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $destination_id when calling addConversionAssociations'
+            );
+        }
+
+        // verify the required parameter 'add_conversion_associations_request' is set
+        if ($add_conversion_associations_request === null || (is_array($add_conversion_associations_request) && count($add_conversion_associations_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $add_conversion_associations_request when calling addConversionAssociations'
+            );
+        }
+
+
+        $resourcePath = '/v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($destination_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'destinationId' . '}',
+                ObjectSerializer::toPathValue($destination_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($add_conversion_associations_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($add_conversion_associations_request));
+            } else {
+                $httpBody = $add_conversion_associations_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -405,6 +754,311 @@ class AdsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($boost_post_request));
             } else {
                 $httpBody = $boost_post_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createConversionDestination
+     *
+     * Create a conversion destination (LinkedIn)
+     *
+     * @param  string $account_id SocialAccount ID (linkedinads). (required)
+     * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request create_conversion_destination_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject
+     */
+    public function createConversionDestination($account_id, $create_conversion_destination_request, string $contentType = self::contentTypes['createConversionDestination'][0])
+    {
+        list($response) = $this->createConversionDestinationWithHttpInfo($account_id, $create_conversion_destination_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createConversionDestinationWithHttpInfo
+     *
+     * Create a conversion destination (LinkedIn)
+     *
+     * @param  string $account_id SocialAccount ID (linkedinads). (required)
+     * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createConversionDestinationWithHttpInfo($account_id, $create_conversion_destination_request, string $contentType = self::contentTypes['createConversionDestination'][0])
+    {
+        $request = $this->createConversionDestinationRequest($account_id, $create_conversion_destination_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateConversionDestination201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateConversionDestination201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateConversionDestination201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createConversionDestinationAsync
+     *
+     * Create a conversion destination (LinkedIn)
+     *
+     * @param  string $account_id SocialAccount ID (linkedinads). (required)
+     * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createConversionDestinationAsync($account_id, $create_conversion_destination_request, string $contentType = self::contentTypes['createConversionDestination'][0])
+    {
+        return $this->createConversionDestinationAsyncWithHttpInfo($account_id, $create_conversion_destination_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createConversionDestinationAsyncWithHttpInfo
+     *
+     * Create a conversion destination (LinkedIn)
+     *
+     * @param  string $account_id SocialAccount ID (linkedinads). (required)
+     * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createConversionDestinationAsyncWithHttpInfo($account_id, $create_conversion_destination_request, string $contentType = self::contentTypes['createConversionDestination'][0])
+    {
+        $returnType = '\Zernio\Model\CreateConversionDestination201Response';
+        $request = $this->createConversionDestinationRequest($account_id, $create_conversion_destination_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createConversionDestination'
+     *
+     * @param  string $account_id SocialAccount ID (linkedinads). (required)
+     * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createConversionDestinationRequest($account_id, $create_conversion_destination_request, string $contentType = self::contentTypes['createConversionDestination'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling createConversionDestination'
+            );
+        }
+
+        // verify the required parameter 'create_conversion_destination_request' is set
+        if ($create_conversion_destination_request === null || (is_array($create_conversion_destination_request) && count($create_conversion_destination_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_conversion_destination_request when calling createConversionDestination'
+            );
+        }
+
+
+        $resourcePath = '/v1/accounts/{accountId}/conversion-destinations';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_conversion_destination_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_conversion_destination_request));
+            } else {
+                $httpBody = $create_conversion_destination_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1264,6 +1918,271 @@ class AdsApi
             $resourcePath = str_replace(
                 '{' . 'adId' . '}',
                 ObjectSerializer::toPathValue($ad_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteConversionDestination
+     *
+     * Soft-delete a conversion destination
+     *
+     * @param  string $account_id account_id (required)
+     * @param  string $destination_id destination_id (required)
+     * @param  string|null $ad_account_id Required as query OR in JSON body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function deleteConversionDestination($account_id, $destination_id, $ad_account_id = null, string $contentType = self::contentTypes['deleteConversionDestination'][0])
+    {
+        $this->deleteConversionDestinationWithHttpInfo($account_id, $destination_id, $ad_account_id, $contentType);
+    }
+
+    /**
+     * Operation deleteConversionDestinationWithHttpInfo
+     *
+     * Soft-delete a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string|null $ad_account_id Required as query OR in JSON body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteConversionDestinationWithHttpInfo($account_id, $destination_id, $ad_account_id = null, string $contentType = self::contentTypes['deleteConversionDestination'][0])
+    {
+        $request = $this->deleteConversionDestinationRequest($account_id, $destination_id, $ad_account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteConversionDestinationAsync
+     *
+     * Soft-delete a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string|null $ad_account_id Required as query OR in JSON body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteConversionDestinationAsync($account_id, $destination_id, $ad_account_id = null, string $contentType = self::contentTypes['deleteConversionDestination'][0])
+    {
+        return $this->deleteConversionDestinationAsyncWithHttpInfo($account_id, $destination_id, $ad_account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteConversionDestinationAsyncWithHttpInfo
+     *
+     * Soft-delete a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string|null $ad_account_id Required as query OR in JSON body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteConversionDestinationAsyncWithHttpInfo($account_id, $destination_id, $ad_account_id = null, string $contentType = self::contentTypes['deleteConversionDestination'][0])
+    {
+        $returnType = '';
+        $request = $this->deleteConversionDestinationRequest($account_id, $destination_id, $ad_account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteConversionDestination'
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string|null $ad_account_id Required as query OR in JSON body. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteConversionDestinationRequest($account_id, $destination_id, $ad_account_id = null, string $contentType = self::contentTypes['deleteConversionDestination'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling deleteConversionDestination'
+            );
+        }
+
+        // verify the required parameter 'destination_id' is set
+        if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $destination_id when calling deleteConversionDestination'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/accounts/{accountId}/conversion-destinations/{destinationId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($destination_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'destinationId' . '}',
+                ObjectSerializer::toPathValue($destination_id),
                 $resourcePath
             );
         }
@@ -2245,6 +3164,717 @@ class AdsApi
             $resourcePath = str_replace(
                 '{' . 'adId' . '}',
                 ObjectSerializer::toPathValue($ad_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getConversionDestination
+     *
+     * Fetch a single conversion destination
+     *
+     * @param  string $account_id account_id (required)
+     * @param  string $destination_id destination_id (required)
+     * @param  string $ad_account_id Numeric ID or full &#x60;urn:li:sponsoredAccount:{id}&#x60; URN. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject
+     */
+    public function getConversionDestination($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['getConversionDestination'][0])
+    {
+        list($response) = $this->getConversionDestinationWithHttpInfo($account_id, $destination_id, $ad_account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getConversionDestinationWithHttpInfo
+     *
+     * Fetch a single conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id Numeric ID or full &#x60;urn:li:sponsoredAccount:{id}&#x60; URN. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getConversionDestinationWithHttpInfo($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['getConversionDestination'][0])
+    {
+        $request = $this->getConversionDestinationRequest($account_id, $destination_id, $ad_account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateConversionDestination201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateConversionDestination201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateConversionDestination201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getConversionDestinationAsync
+     *
+     * Fetch a single conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id Numeric ID or full &#x60;urn:li:sponsoredAccount:{id}&#x60; URN. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getConversionDestinationAsync($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['getConversionDestination'][0])
+    {
+        return $this->getConversionDestinationAsyncWithHttpInfo($account_id, $destination_id, $ad_account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getConversionDestinationAsyncWithHttpInfo
+     *
+     * Fetch a single conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id Numeric ID or full &#x60;urn:li:sponsoredAccount:{id}&#x60; URN. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getConversionDestinationAsyncWithHttpInfo($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['getConversionDestination'][0])
+    {
+        $returnType = '\Zernio\Model\CreateConversionDestination201Response';
+        $request = $this->getConversionDestinationRequest($account_id, $destination_id, $ad_account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getConversionDestination'
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id Numeric ID or full &#x60;urn:li:sponsoredAccount:{id}&#x60; URN. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getConversionDestinationRequest($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['getConversionDestination'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getConversionDestination'
+            );
+        }
+
+        // verify the required parameter 'destination_id' is set
+        if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $destination_id when calling getConversionDestination'
+            );
+        }
+
+        // verify the required parameter 'ad_account_id' is set
+        if ($ad_account_id === null || (is_array($ad_account_id) && count($ad_account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_account_id when calling getConversionDestination'
+            );
+        }
+
+
+        $resourcePath = '/v1/accounts/{accountId}/conversion-destinations/{destinationId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($destination_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'destinationId' . '}',
+                ObjectSerializer::toPathValue($destination_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getConversionMetrics
+     *
+     * Fetch attribution metrics for a conversion destination
+     *
+     * @param  string $account_id account_id (required)
+     * @param  string $destination_id destination_id (required)
+     * @param  string $ad_account_id ad_account_id (required)
+     * @param  string $start_date start_date (required)
+     * @param  string|null $end_date end_date (optional)
+     * @param  string|null $granularity granularity (optional, default to 'DAILY')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionMetrics'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetConversionMetrics200Response|\Zernio\Model\InlineObject
+     */
+    public function getConversionMetrics($account_id, $destination_id, $ad_account_id, $start_date, $end_date = null, $granularity = 'DAILY', string $contentType = self::contentTypes['getConversionMetrics'][0])
+    {
+        list($response) = $this->getConversionMetricsWithHttpInfo($account_id, $destination_id, $ad_account_id, $start_date, $end_date, $granularity, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getConversionMetricsWithHttpInfo
+     *
+     * Fetch attribution metrics for a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $start_date (required)
+     * @param  string|null $end_date (optional)
+     * @param  string|null $granularity (optional, default to 'DAILY')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionMetrics'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetConversionMetrics200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getConversionMetricsWithHttpInfo($account_id, $destination_id, $ad_account_id, $start_date, $end_date = null, $granularity = 'DAILY', string $contentType = self::contentTypes['getConversionMetrics'][0])
+    {
+        $request = $this->getConversionMetricsRequest($account_id, $destination_id, $ad_account_id, $start_date, $end_date, $granularity, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetConversionMetrics200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetConversionMetrics200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetConversionMetrics200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getConversionMetricsAsync
+     *
+     * Fetch attribution metrics for a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $start_date (required)
+     * @param  string|null $end_date (optional)
+     * @param  string|null $granularity (optional, default to 'DAILY')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionMetrics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getConversionMetricsAsync($account_id, $destination_id, $ad_account_id, $start_date, $end_date = null, $granularity = 'DAILY', string $contentType = self::contentTypes['getConversionMetrics'][0])
+    {
+        return $this->getConversionMetricsAsyncWithHttpInfo($account_id, $destination_id, $ad_account_id, $start_date, $end_date, $granularity, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getConversionMetricsAsyncWithHttpInfo
+     *
+     * Fetch attribution metrics for a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $start_date (required)
+     * @param  string|null $end_date (optional)
+     * @param  string|null $granularity (optional, default to 'DAILY')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionMetrics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getConversionMetricsAsyncWithHttpInfo($account_id, $destination_id, $ad_account_id, $start_date, $end_date = null, $granularity = 'DAILY', string $contentType = self::contentTypes['getConversionMetrics'][0])
+    {
+        $returnType = '\Zernio\Model\GetConversionMetrics200Response';
+        $request = $this->getConversionMetricsRequest($account_id, $destination_id, $ad_account_id, $start_date, $end_date, $granularity, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getConversionMetrics'
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $start_date (required)
+     * @param  string|null $end_date (optional)
+     * @param  string|null $granularity (optional, default to 'DAILY')
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionMetrics'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getConversionMetricsRequest($account_id, $destination_id, $ad_account_id, $start_date, $end_date = null, $granularity = 'DAILY', string $contentType = self::contentTypes['getConversionMetrics'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getConversionMetrics'
+            );
+        }
+
+        // verify the required parameter 'destination_id' is set
+        if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $destination_id when calling getConversionMetrics'
+            );
+        }
+
+        // verify the required parameter 'ad_account_id' is set
+        if ($ad_account_id === null || (is_array($ad_account_id) && count($ad_account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_account_id when calling getConversionMetrics'
+            );
+        }
+
+        // verify the required parameter 'start_date' is set
+        if ($start_date === null || (is_array($start_date) && count($start_date) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $start_date when calling getConversionMetrics'
+            );
+        }
+        if (!preg_match("/^\\\\d{4}-\\\\d{2}-\\\\d{2}$/", $start_date)) {
+            throw new \InvalidArgumentException("invalid value for \"start_date\" when calling AdsApi.getConversionMetrics, must conform to the pattern /^\\\\d{4}-\\\\d{2}-\\\\d{2}$/.");
+        }
+        
+        if ($end_date !== null && !preg_match("/^\\\\d{4}-\\\\d{2}-\\\\d{2}$/", $end_date)) {
+            throw new \InvalidArgumentException("invalid value for \"end_date\" when calling AdsApi.getConversionMetrics, must conform to the pattern /^\\\\d{4}-\\\\d{2}-\\\\d{2}$/.");
+        }
+        
+
+
+        $resourcePath = '/v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $start_date,
+            'startDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $end_date,
+            'endDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $granularity,
+            'granularity', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($destination_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'destinationId' . '}',
+                ObjectSerializer::toPathValue($destination_id),
                 $resourcePath
             );
         }
@@ -3358,11 +4988,338 @@ class AdsApi
     }
 
     /**
+     * Operation listConversionAssociations
+     *
+     * List campaigns associated with a conversion destination
+     *
+     * @param  string $account_id account_id (required)
+     * @param  string $destination_id destination_id (required)
+     * @param  string $ad_account_id ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListConversionAssociations200Response|\Zernio\Model\InlineObject
+     */
+    public function listConversionAssociations($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['listConversionAssociations'][0])
+    {
+        list($response) = $this->listConversionAssociationsWithHttpInfo($account_id, $destination_id, $ad_account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listConversionAssociationsWithHttpInfo
+     *
+     * List campaigns associated with a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListConversionAssociations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listConversionAssociationsWithHttpInfo($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['listConversionAssociations'][0])
+    {
+        $request = $this->listConversionAssociationsRequest($account_id, $destination_id, $ad_account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListConversionAssociations200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListConversionAssociations200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListConversionAssociations200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listConversionAssociationsAsync
+     *
+     * List campaigns associated with a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listConversionAssociationsAsync($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['listConversionAssociations'][0])
+    {
+        return $this->listConversionAssociationsAsyncWithHttpInfo($account_id, $destination_id, $ad_account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listConversionAssociationsAsyncWithHttpInfo
+     *
+     * List campaigns associated with a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listConversionAssociationsAsyncWithHttpInfo($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['listConversionAssociations'][0])
+    {
+        $returnType = '\Zernio\Model\ListConversionAssociations200Response';
+        $request = $this->listConversionAssociationsRequest($account_id, $destination_id, $ad_account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listConversionAssociations'
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listConversionAssociationsRequest($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['listConversionAssociations'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listConversionAssociations'
+            );
+        }
+
+        // verify the required parameter 'destination_id' is set
+        if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $destination_id when calling listConversionAssociations'
+            );
+        }
+
+        // verify the required parameter 'ad_account_id' is set
+        if ($ad_account_id === null || (is_array($ad_account_id) && count($ad_account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_account_id when calling listConversionAssociations'
+            );
+        }
+
+
+        $resourcePath = '/v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($destination_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'destinationId' . '}',
+                ObjectSerializer::toPathValue($destination_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listConversionDestinations
      *
      * List destinations for the Conversions API
      *
-     * @param  string $account_id SocialAccount ID (metaads or googleads). (required)
+     * @param  string $account_id SocialAccount ID (metaads, googleads, or linkedinads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3380,7 +5337,7 @@ class AdsApi
      *
      * List destinations for the Conversions API
      *
-     * @param  string $account_id SocialAccount ID (metaads or googleads). (required)
+     * @param  string $account_id SocialAccount ID (metaads, googleads, or linkedinads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -3479,7 +5436,7 @@ class AdsApi
      *
      * List destinations for the Conversions API
      *
-     * @param  string $account_id SocialAccount ID (metaads or googleads). (required)
+     * @param  string $account_id SocialAccount ID (metaads, googleads, or linkedinads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3500,7 +5457,7 @@ class AdsApi
      *
      * List destinations for the Conversions API
      *
-     * @param  string $account_id SocialAccount ID (metaads or googleads). (required)
+     * @param  string $account_id SocialAccount ID (metaads, googleads, or linkedinads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3550,7 +5507,7 @@ class AdsApi
     /**
      * Create request for operation 'listConversionDestinations'
      *
-     * @param  string $account_id SocialAccount ID (metaads or googleads). (required)
+     * @param  string $account_id SocialAccount ID (metaads, googleads, or linkedinads). (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listConversionDestinations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -3637,6 +5594,354 @@ class AdsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeConversionAssociations
+     *
+     * Remove campaign↔conversion associations
+     *
+     * @param  string $account_id account_id (required)
+     * @param  string $destination_id destination_id (required)
+     * @param  string $ad_account_id ad_account_id (required)
+     * @param  string $campaign_ids Comma-separated list of campaign IDs. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\RemoveConversionAssociations200Response|\Zernio\Model\InlineObject
+     */
+    public function removeConversionAssociations($account_id, $destination_id, $ad_account_id, $campaign_ids, string $contentType = self::contentTypes['removeConversionAssociations'][0])
+    {
+        list($response) = $this->removeConversionAssociationsWithHttpInfo($account_id, $destination_id, $ad_account_id, $campaign_ids, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation removeConversionAssociationsWithHttpInfo
+     *
+     * Remove campaign↔conversion associations
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $campaign_ids Comma-separated list of campaign IDs. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\RemoveConversionAssociations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeConversionAssociationsWithHttpInfo($account_id, $destination_id, $ad_account_id, $campaign_ids, string $contentType = self::contentTypes['removeConversionAssociations'][0])
+    {
+        $request = $this->removeConversionAssociationsRequest($account_id, $destination_id, $ad_account_id, $campaign_ids, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\RemoveConversionAssociations200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\RemoveConversionAssociations200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\RemoveConversionAssociations200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeConversionAssociationsAsync
+     *
+     * Remove campaign↔conversion associations
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $campaign_ids Comma-separated list of campaign IDs. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeConversionAssociationsAsync($account_id, $destination_id, $ad_account_id, $campaign_ids, string $contentType = self::contentTypes['removeConversionAssociations'][0])
+    {
+        return $this->removeConversionAssociationsAsyncWithHttpInfo($account_id, $destination_id, $ad_account_id, $campaign_ids, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeConversionAssociationsAsyncWithHttpInfo
+     *
+     * Remove campaign↔conversion associations
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $campaign_ids Comma-separated list of campaign IDs. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeConversionAssociationsAsyncWithHttpInfo($account_id, $destination_id, $ad_account_id, $campaign_ids, string $contentType = self::contentTypes['removeConversionAssociations'][0])
+    {
+        $returnType = '\Zernio\Model\RemoveConversionAssociations200Response';
+        $request = $this->removeConversionAssociationsRequest($account_id, $destination_id, $ad_account_id, $campaign_ids, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeConversionAssociations'
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  string $ad_account_id (required)
+     * @param  string $campaign_ids Comma-separated list of campaign IDs. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeConversionAssociations'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeConversionAssociationsRequest($account_id, $destination_id, $ad_account_id, $campaign_ids, string $contentType = self::contentTypes['removeConversionAssociations'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling removeConversionAssociations'
+            );
+        }
+
+        // verify the required parameter 'destination_id' is set
+        if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $destination_id when calling removeConversionAssociations'
+            );
+        }
+
+        // verify the required parameter 'ad_account_id' is set
+        if ($ad_account_id === null || (is_array($ad_account_id) && count($ad_account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_account_id when calling removeConversionAssociations'
+            );
+        }
+
+        // verify the required parameter 'campaign_ids' is set
+        if ($campaign_ids === null || (is_array($campaign_ids) && count($campaign_ids) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $campaign_ids when calling removeConversionAssociations'
+            );
+        }
+
+
+        $resourcePath = '/v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $campaign_ids,
+            'campaignIds', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($destination_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'destinationId' . '}',
+                ObjectSerializer::toPathValue($destination_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -5199,6 +7504,331 @@ class AdsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateConversionDestination
+     *
+     * Update a conversion destination
+     *
+     * @param  string $account_id account_id (required)
+     * @param  string $destination_id destination_id (required)
+     * @param  \Zernio\Model\UpdateConversionDestinationRequest $update_conversion_destination_request update_conversion_destination_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject
+     */
+    public function updateConversionDestination($account_id, $destination_id, $update_conversion_destination_request, string $contentType = self::contentTypes['updateConversionDestination'][0])
+    {
+        list($response) = $this->updateConversionDestinationWithHttpInfo($account_id, $destination_id, $update_conversion_destination_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateConversionDestinationWithHttpInfo
+     *
+     * Update a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  \Zernio\Model\UpdateConversionDestinationRequest $update_conversion_destination_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateConversionDestinationWithHttpInfo($account_id, $destination_id, $update_conversion_destination_request, string $contentType = self::contentTypes['updateConversionDestination'][0])
+    {
+        $request = $this->updateConversionDestinationRequest($account_id, $destination_id, $update_conversion_destination_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateConversionDestination201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateConversionDestination201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateConversionDestination201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateConversionDestinationAsync
+     *
+     * Update a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  \Zernio\Model\UpdateConversionDestinationRequest $update_conversion_destination_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateConversionDestinationAsync($account_id, $destination_id, $update_conversion_destination_request, string $contentType = self::contentTypes['updateConversionDestination'][0])
+    {
+        return $this->updateConversionDestinationAsyncWithHttpInfo($account_id, $destination_id, $update_conversion_destination_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateConversionDestinationAsyncWithHttpInfo
+     *
+     * Update a conversion destination
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  \Zernio\Model\UpdateConversionDestinationRequest $update_conversion_destination_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateConversionDestinationAsyncWithHttpInfo($account_id, $destination_id, $update_conversion_destination_request, string $contentType = self::contentTypes['updateConversionDestination'][0])
+    {
+        $returnType = '\Zernio\Model\CreateConversionDestination201Response';
+        $request = $this->updateConversionDestinationRequest($account_id, $destination_id, $update_conversion_destination_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateConversionDestination'
+     *
+     * @param  string $account_id (required)
+     * @param  string $destination_id (required)
+     * @param  \Zernio\Model\UpdateConversionDestinationRequest $update_conversion_destination_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateConversionDestination'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateConversionDestinationRequest($account_id, $destination_id, $update_conversion_destination_request, string $contentType = self::contentTypes['updateConversionDestination'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling updateConversionDestination'
+            );
+        }
+
+        // verify the required parameter 'destination_id' is set
+        if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $destination_id when calling updateConversionDestination'
+            );
+        }
+
+        // verify the required parameter 'update_conversion_destination_request' is set
+        if ($update_conversion_destination_request === null || (is_array($update_conversion_destination_request) && count($update_conversion_destination_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_conversion_destination_request when calling updateConversionDestination'
+            );
+        }
+
+
+        $resourcePath = '/v1/accounts/{accountId}/conversion-destinations/{destinationId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($destination_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'destinationId' . '}',
+                ObjectSerializer::toPathValue($destination_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_conversion_destination_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_conversion_destination_request));
+            } else {
+                $httpBody = $update_conversion_destination_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

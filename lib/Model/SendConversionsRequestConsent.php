@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * SendConversionsRequestConsent Class Doc Comment
  *
  * @category Class
- * @description Batch-level user consent. Required by Google for EEA/UK events under the Feb 2026 restrictions. Ignored by Meta.
+ * @description Batch-level user consent. Required by Google for EEA/UK events under the Feb 2026 restrictions. Ignored by Meta and LinkedIn.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

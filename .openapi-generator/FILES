@@ -70,6 +70,9 @@ docs/Model/AdTreeCampaignCampaignBudget.md
 docs/Model/AdTreeCampaignPromotedObject.md
 docs/Model/AddBroadcastRecipients200Response.md
 docs/Model/AddBroadcastRecipientsRequest.md
+docs/Model/AddConversionAssociations200Response.md
+docs/Model/AddConversionAssociations200ResponseFailedInner.md
+docs/Model/AddConversionAssociationsRequest.md
 docs/Model/AddMessageReactionRequest.md
 docs/Model/AddUsersToAdAudience200Response.md
 docs/Model/AddUsersToAdAudienceRequest.md
@@ -126,6 +129,7 @@ docs/Model/ConnectWhatsAppCredentials200ResponseAccount.md
 docs/Model/ConnectWhatsAppCredentialsRequest.md
 docs/Model/Connected.md
 docs/Model/ConnectedAccount.md
+docs/Model/ConversionDestination.md
 docs/Model/ConversionEvent.md
 docs/Model/ConversionEventItemsInner.md
 docs/Model/ConversionEventUser.md
@@ -152,6 +156,9 @@ docs/Model/CreateContact200Response.md
 docs/Model/CreateContact200ResponseChannel.md
 docs/Model/CreateContact200ResponseContact.md
 docs/Model/CreateContactRequest.md
+docs/Model/CreateConversionDestination201Response.md
+docs/Model/CreateConversionDestinationRequest.md
+docs/Model/CreateConversionDestinationRequestValue.md
 docs/Model/CreateCtwaAd201Response.md
 docs/Model/CreateCtwaAdRequest.md
 docs/Model/CreateCtwaAdRequestInterestsInner.md
@@ -292,6 +299,9 @@ docs/Model/GetContactChannels200Response.md
 docs/Model/GetContactChannels200ResponseChannelsInner.md
 docs/Model/GetContentDecay200Response.md
 docs/Model/GetContentDecay200ResponseBucketsInner.md
+docs/Model/GetConversionMetrics200Response.md
+docs/Model/GetConversionMetrics200ResponseRowsInner.md
+docs/Model/GetConversionMetrics200ResponseRowsInnerMetricsValue.md
 docs/Model/GetDailyMetrics200Response.md
 docs/Model/GetDailyMetrics200ResponseDailyDataInner.md
 docs/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.md
@@ -507,6 +517,8 @@ docs/Model/ListContacts200Response.md
 docs/Model/ListContacts200ResponseContactsInner.md
 docs/Model/ListContacts200ResponseFilters.md
 docs/Model/ListContacts200ResponsePagination.md
+docs/Model/ListConversionAssociations200Response.md
+docs/Model/ListConversionAssociations200ResponseAssociationsInner.md
 docs/Model/ListConversionDestinations200Response.md
 docs/Model/ListConversionDestinations200ResponseDestinationsInner.md
 docs/Model/ListCustomFields200Response.md
@@ -608,6 +620,7 @@ docs/Model/RejectWhatsAppGroupJoinRequestsRequest.md
 docs/Model/ReleaseWhatsAppPhoneNumber200Response.md
 docs/Model/ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber.md
 docs/Model/RemoveBookmark200Response.md
+docs/Model/RemoveConversionAssociations200Response.md
 docs/Model/RemoveWhatsAppGroupParticipantsRequest.md
 docs/Model/ReplyToInboxPost200Response.md
 docs/Model/ReplyToInboxPost200ResponseData.md
@@ -742,6 +755,8 @@ docs/Model/UpdateCommentAutomationRequest.md
 docs/Model/UpdateContact200Response.md
 docs/Model/UpdateContact200ResponseContact.md
 docs/Model/UpdateContactRequest.md
+docs/Model/UpdateConversionDestinationRequest.md
+docs/Model/UpdateConversionDestinationRequestValue.md
 docs/Model/UpdateCustomField200Response.md
 docs/Model/UpdateCustomField200ResponseField.md
 docs/Model/UpdateCustomFieldRequest.md
@@ -971,6 +986,9 @@ lib/Model/AdTreeCampaignCampaignBudget.php
 lib/Model/AdTreeCampaignPromotedObject.php
 lib/Model/AddBroadcastRecipients200Response.php
 lib/Model/AddBroadcastRecipientsRequest.php
+lib/Model/AddConversionAssociations200Response.php
+lib/Model/AddConversionAssociations200ResponseFailedInner.php
+lib/Model/AddConversionAssociationsRequest.php
 lib/Model/AddMessageReactionRequest.php
 lib/Model/AddUsersToAdAudience200Response.php
 lib/Model/AddUsersToAdAudienceRequest.php
@@ -1027,6 +1045,7 @@ lib/Model/ConnectWhatsAppCredentials200ResponseAccount.php
 lib/Model/ConnectWhatsAppCredentialsRequest.php
 lib/Model/Connected.php
 lib/Model/ConnectedAccount.php
+lib/Model/ConversionDestination.php
 lib/Model/ConversionEvent.php
 lib/Model/ConversionEventItemsInner.php
 lib/Model/ConversionEventUser.php
@@ -1053,6 +1072,9 @@ lib/Model/CreateContact200Response.php
 lib/Model/CreateContact200ResponseChannel.php
 lib/Model/CreateContact200ResponseContact.php
 lib/Model/CreateContactRequest.php
+lib/Model/CreateConversionDestination201Response.php
+lib/Model/CreateConversionDestinationRequest.php
+lib/Model/CreateConversionDestinationRequestValue.php
 lib/Model/CreateCtwaAd201Response.php
 lib/Model/CreateCtwaAdRequest.php
 lib/Model/CreateCtwaAdRequestInterestsInner.php
@@ -1193,6 +1215,9 @@ lib/Model/GetContactChannels200Response.php
 lib/Model/GetContactChannels200ResponseChannelsInner.php
 lib/Model/GetContentDecay200Response.php
 lib/Model/GetContentDecay200ResponseBucketsInner.php
+lib/Model/GetConversionMetrics200Response.php
+lib/Model/GetConversionMetrics200ResponseRowsInner.php
+lib/Model/GetConversionMetrics200ResponseRowsInnerMetricsValue.php
 lib/Model/GetDailyMetrics200Response.php
 lib/Model/GetDailyMetrics200ResponseDailyDataInner.php
 lib/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.php
@@ -1408,6 +1433,8 @@ lib/Model/ListContacts200Response.php
 lib/Model/ListContacts200ResponseContactsInner.php
 lib/Model/ListContacts200ResponseFilters.php
 lib/Model/ListContacts200ResponsePagination.php
+lib/Model/ListConversionAssociations200Response.php
+lib/Model/ListConversionAssociations200ResponseAssociationsInner.php
 lib/Model/ListConversionDestinations200Response.php
 lib/Model/ListConversionDestinations200ResponseDestinationsInner.php
 lib/Model/ListCustomFields200Response.php
@@ -1510,6 +1537,7 @@ lib/Model/RejectWhatsAppGroupJoinRequestsRequest.php
 lib/Model/ReleaseWhatsAppPhoneNumber200Response.php
 lib/Model/ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber.php
 lib/Model/RemoveBookmark200Response.php
+lib/Model/RemoveConversionAssociations200Response.php
 lib/Model/RemoveWhatsAppGroupParticipantsRequest.php
 lib/Model/ReplyToInboxPost200Response.php
 lib/Model/ReplyToInboxPost200ResponseData.php
@@ -1644,6 +1672,8 @@ lib/Model/UpdateCommentAutomationRequest.php
 lib/Model/UpdateContact200Response.php
 lib/Model/UpdateContact200ResponseContact.php
 lib/Model/UpdateContactRequest.php
+lib/Model/UpdateConversionDestinationRequest.php
+lib/Model/UpdateConversionDestinationRequestValue.php
 lib/Model/UpdateCustomField200Response.php
 lib/Model/UpdateCustomField200ResponseField.php
 lib/Model/UpdateCustomFieldRequest.php
@@ -1803,4 +1833,18 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadMessageMetadataStoryReplyTest.php
+test/Model/AddConversionAssociations200ResponseFailedInnerTest.php
+test/Model/AddConversionAssociations200ResponseTest.php
+test/Model/AddConversionAssociationsRequestTest.php
+test/Model/ConversionDestinationTest.php
+test/Model/CreateConversionDestination201ResponseTest.php
+test/Model/CreateConversionDestinationRequestTest.php
+test/Model/CreateConversionDestinationRequestValueTest.php
+test/Model/GetConversionMetrics200ResponseRowsInnerMetricsValueTest.php
+test/Model/GetConversionMetrics200ResponseRowsInnerTest.php
+test/Model/GetConversionMetrics200ResponseTest.php
+test/Model/ListConversionAssociations200ResponseAssociationsInnerTest.php
+test/Model/ListConversionAssociations200ResponseTest.php
+test/Model/RemoveConversionAssociations200ResponseTest.php
+test/Model/UpdateConversionDestinationRequestTest.php
+test/Model/UpdateConversionDestinationRequestValueTest.php

@@ -468,7 +468,7 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets external_id
      *
-     * @param string|null $external_id Stable customer identifier (e.g. CRM user ID). Hashed server-side.
+     * @param string|null $external_id Stable customer identifier (e.g. CRM user ID). Hashed server-side for Meta and Google. Sent as plaintext to LinkedIn (LinkedIn's Conversions API spec requires the raw value). Maximum effective list size on LinkedIn is 1.
      *
      * @return self
      */

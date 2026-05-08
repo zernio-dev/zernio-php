@@ -1,6 +1,6 @@
 <?php
 /**
- * ConversionEventUserClickIds
+ * GetConversionMetrics200Response
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ConversionEventUserClickIds Class Doc Comment
+ * GetConversionMetrics200Response Class Doc Comment
  *
  * @category Class
- * @description Platform click identifiers captured from the originating ad click.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetConversionMetrics200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ConversionEvent_user_clickIds';
+    protected static $openAPIModelName = 'getConversionMetrics_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +58,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'fbc' => 'string',
-        'fbp' => 'string',
-        'gclid' => 'string',
-        'gbraid' => 'string',
-        'wbraid' => 'string',
-        'li_fat_id' => 'string'
+        'platform' => 'string',
+        'granularity' => 'string',
+        'rows' => '\Zernio\Model\GetConversionMetrics200ResponseRowsInner[]'
     ];
 
     /**
@@ -75,12 +71,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'fbc' => null,
-        'fbp' => null,
-        'gclid' => null,
-        'gbraid' => null,
-        'wbraid' => null,
-        'li_fat_id' => null
+        'platform' => null,
+        'granularity' => null,
+        'rows' => null
     ];
 
     /**
@@ -89,12 +82,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fbc' => false,
-        'fbp' => false,
-        'gclid' => false,
-        'gbraid' => false,
-        'wbraid' => false,
-        'li_fat_id' => false
+        'platform' => false,
+        'granularity' => false,
+        'rows' => false
     ];
 
     /**
@@ -183,12 +173,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'fbc' => 'fbc',
-        'fbp' => 'fbp',
-        'gclid' => 'gclid',
-        'gbraid' => 'gbraid',
-        'wbraid' => 'wbraid',
-        'li_fat_id' => 'li_fat_id'
+        'platform' => 'platform',
+        'granularity' => 'granularity',
+        'rows' => 'rows'
     ];
 
     /**
@@ -197,12 +184,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'fbc' => 'setFbc',
-        'fbp' => 'setFbp',
-        'gclid' => 'setGclid',
-        'gbraid' => 'setGbraid',
-        'wbraid' => 'setWbraid',
-        'li_fat_id' => 'setLiFatId'
+        'platform' => 'setPlatform',
+        'granularity' => 'setGranularity',
+        'rows' => 'setRows'
     ];
 
     /**
@@ -211,12 +195,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'fbc' => 'getFbc',
-        'fbp' => 'getFbp',
-        'gclid' => 'getGclid',
-        'gbraid' => 'getGbraid',
-        'wbraid' => 'getWbraid',
-        'li_fat_id' => 'getLiFatId'
+        'platform' => 'getPlatform',
+        'granularity' => 'getGranularity',
+        'rows' => 'getRows'
     ];
 
     /**
@@ -260,6 +241,38 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    public const PLATFORM_LINKEDINADS = 'linkedinads';
+    public const GRANULARITY_ALL = 'ALL';
+    public const GRANULARITY_DAILY = 'DAILY';
+    public const GRANULARITY_MONTHLY = 'MONTHLY';
+    public const GRANULARITY_YEARLY = 'YEARLY';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlatformAllowableValues()
+    {
+        return [
+            self::PLATFORM_LINKEDINADS,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getGranularityAllowableValues()
+    {
+        return [
+            self::GRANULARITY_ALL,
+            self::GRANULARITY_DAILY,
+            self::GRANULARITY_MONTHLY,
+            self::GRANULARITY_YEARLY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -276,12 +289,9 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('fbc', $data ?? [], null);
-        $this->setIfExists('fbp', $data ?? [], null);
-        $this->setIfExists('gclid', $data ?? [], null);
-        $this->setIfExists('gbraid', $data ?? [], null);
-        $this->setIfExists('wbraid', $data ?? [], null);
-        $this->setIfExists('li_fat_id', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('granularity', $data ?? [], null);
+        $this->setIfExists('rows', $data ?? [], null);
     }
 
     /**
@@ -311,6 +321,24 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!is_null($this->container['platform']) && !in_array($this->container['platform'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'platform', must be one of '%s'",
+                $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getGranularityAllowableValues();
+        if (!is_null($this->container['granularity']) && !in_array($this->container['granularity'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'granularity', must be one of '%s'",
+                $this->container['granularity'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -327,163 +355,102 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets fbc
+     * Gets platform
      *
      * @return string|null
      */
-    public function getFbc()
+    public function getPlatform()
     {
-        return $this->container['fbc'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets fbc
+     * Sets platform
      *
-     * @param string|null $fbc Meta click ID (from fbclid URL param).
+     * @param string|null $platform platform
      *
      * @return self
      */
-    public function setFbc($fbc)
+    public function setPlatform($platform)
     {
-        if (is_null($fbc)) {
-            throw new \InvalidArgumentException('non-nullable fbc cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $this->container['fbc'] = $fbc;
+        $allowedValues = $this->getPlatformAllowableValues();
+        if (!in_array($platform, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'platform', must be one of '%s'",
+                    $platform,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['platform'] = $platform;
 
         return $this;
     }
 
     /**
-     * Gets fbp
+     * Gets granularity
      *
      * @return string|null
      */
-    public function getFbp()
+    public function getGranularity()
     {
-        return $this->container['fbp'];
+        return $this->container['granularity'];
     }
 
     /**
-     * Sets fbp
+     * Sets granularity
      *
-     * @param string|null $fbp Meta browser ID (_fbp cookie).
+     * @param string|null $granularity granularity
      *
      * @return self
      */
-    public function setFbp($fbp)
+    public function setGranularity($granularity)
     {
-        if (is_null($fbp)) {
-            throw new \InvalidArgumentException('non-nullable fbp cannot be null');
+        if (is_null($granularity)) {
+            throw new \InvalidArgumentException('non-nullable granularity cannot be null');
         }
-        $this->container['fbp'] = $fbp;
+        $allowedValues = $this->getGranularityAllowableValues();
+        if (!in_array($granularity, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'granularity', must be one of '%s'",
+                    $granularity,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['granularity'] = $granularity;
 
         return $this;
     }
 
     /**
-     * Gets gclid
+     * Gets rows
      *
-     * @return string|null
+     * @return \Zernio\Model\GetConversionMetrics200ResponseRowsInner[]|null
      */
-    public function getGclid()
+    public function getRows()
     {
-        return $this->container['gclid'];
+        return $this->container['rows'];
     }
 
     /**
-     * Sets gclid
+     * Sets rows
      *
-     * @param string|null $gclid Google click ID (from gclid URL param).
+     * @param \Zernio\Model\GetConversionMetrics200ResponseRowsInner[]|null $rows rows
      *
      * @return self
      */
-    public function setGclid($gclid)
+    public function setRows($rows)
     {
-        if (is_null($gclid)) {
-            throw new \InvalidArgumentException('non-nullable gclid cannot be null');
+        if (is_null($rows)) {
+            throw new \InvalidArgumentException('non-nullable rows cannot be null');
         }
-        $this->container['gclid'] = $gclid;
-
-        return $this;
-    }
-
-    /**
-     * Gets gbraid
-     *
-     * @return string|null
-     */
-    public function getGbraid()
-    {
-        return $this->container['gbraid'];
-    }
-
-    /**
-     * Sets gbraid
-     *
-     * @param string|null $gbraid Google iOS 14.5+ app attribution ID.
-     *
-     * @return self
-     */
-    public function setGbraid($gbraid)
-    {
-        if (is_null($gbraid)) {
-            throw new \InvalidArgumentException('non-nullable gbraid cannot be null');
-        }
-        $this->container['gbraid'] = $gbraid;
-
-        return $this;
-    }
-
-    /**
-     * Gets wbraid
-     *
-     * @return string|null
-     */
-    public function getWbraid()
-    {
-        return $this->container['wbraid'];
-    }
-
-    /**
-     * Sets wbraid
-     *
-     * @param string|null $wbraid Google iOS 14.5+ web-to-app attribution ID.
-     *
-     * @return self
-     */
-    public function setWbraid($wbraid)
-    {
-        if (is_null($wbraid)) {
-            throw new \InvalidArgumentException('non-nullable wbraid cannot be null');
-        }
-        $this->container['wbraid'] = $wbraid;
-
-        return $this;
-    }
-
-    /**
-     * Gets li_fat_id
-     *
-     * @return string|null
-     */
-    public function getLiFatId()
-    {
-        return $this->container['li_fat_id'];
-    }
-
-    /**
-     * Sets li_fat_id
-     *
-     * @param string|null $li_fat_id LinkedIn first-party ad tracking click ID. Captured by parsing `li_fat_id` from landing-page URLs after the advertiser enables enhanced conversion tracking on the LinkedIn Insight Tag. Sent to LinkedIn as the LINKEDIN_FIRST_PARTY_ADS_TRACKING_UUID userId. Opaque token, not hashed.
-     *
-     * @return self
-     */
-    public function setLiFatId($li_fat_id)
-    {
-        if (is_null($li_fat_id)) {
-            throw new \InvalidArgumentException('non-nullable li_fat_id cannot be null');
-        }
-        $this->container['li_fat_id'] = $li_fat_id;
+        $this->container['rows'] = $rows;
 
         return $this;
     }

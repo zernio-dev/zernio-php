@@ -411,7 +411,7 @@ class ConversionEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets event_name
      *
-     * @param string $event_name Standard event name (Purchase, Lead, CompleteRegistration, AddToCart, InitiateCheckout, AddPaymentInfo, Subscribe, StartTrial, ViewContent, Search, Contact, SubmitApplication, Schedule) or a custom string (only supported on platforms that accept custom events).
+     * @param string $event_name Standard event name (Purchase, Lead, CompleteRegistration, AddToCart, InitiateCheckout, AddPaymentInfo, Subscribe, StartTrial, ViewContent, Search, Contact, SubmitApplication, Schedule) or a custom string (only supported on platforms that accept custom events — Meta).  Per-platform behavior: - Meta: free-form; standard names match Meta's built-ins. - Google: ignored — the conversion action's category determines the type. - LinkedIn: ignored — the conversion rule's `type` is locked to the destination.
      *
      * @return self
      */
@@ -465,7 +465,7 @@ class ConversionEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets event_id
      *
-     * @param string $event_id Unique dedup key. The same eventId must be used on pixel + CAPI to prevent double-counting. Mapped to event_id on Meta and transactionId on Google.
+     * @param string $event_id Unique dedup key. The same eventId must be used on pixel + CAPI to prevent double-counting. Mapped to event_id on Meta, transactionId on Google, eventId on LinkedIn (LinkedIn deduplicates against Insight Tag events with the same eventId; the Insight Tag event wins when both arrive).
      *
      * @return self
      */

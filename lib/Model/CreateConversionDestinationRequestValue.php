@@ -1,6 +1,6 @@
 <?php
 /**
- * ConversionEventUserClickIds
+ * CreateConversionDestinationRequestValue
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ConversionEventUserClickIds Class Doc Comment
+ * CreateConversionDestinationRequestValue Class Doc Comment
  *
  * @category Class
- * @description Platform click identifiers captured from the originating ad click.
+ * @description Static conversion value. Used when &#x60;valueType&#x3D;FIXED&#x60;. The currency should match the ad account&#39;s currency.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateConversionDestinationRequestValue implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ConversionEvent_user_clickIds';
+    protected static $openAPIModelName = 'createConversionDestination_request_value';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       * @var string[]
       */
     protected static $openAPITypes = [
-        'fbc' => 'string',
-        'fbp' => 'string',
-        'gclid' => 'string',
-        'gbraid' => 'string',
-        'wbraid' => 'string',
-        'li_fat_id' => 'string'
+        'currency_code' => 'string',
+        'amount' => 'string'
     ];
 
     /**
@@ -75,12 +71,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'fbc' => null,
-        'fbp' => null,
-        'gclid' => null,
-        'gbraid' => null,
-        'wbraid' => null,
-        'li_fat_id' => null
+        'currency_code' => null,
+        'amount' => null
     ];
 
     /**
@@ -89,12 +81,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'fbc' => false,
-        'fbp' => false,
-        'gclid' => false,
-        'gbraid' => false,
-        'wbraid' => false,
-        'li_fat_id' => false
+        'currency_code' => false,
+        'amount' => false
     ];
 
     /**
@@ -183,12 +171,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $attributeMap = [
-        'fbc' => 'fbc',
-        'fbp' => 'fbp',
-        'gclid' => 'gclid',
-        'gbraid' => 'gbraid',
-        'wbraid' => 'wbraid',
-        'li_fat_id' => 'li_fat_id'
+        'currency_code' => 'currencyCode',
+        'amount' => 'amount'
     ];
 
     /**
@@ -197,12 +181,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $setters = [
-        'fbc' => 'setFbc',
-        'fbp' => 'setFbp',
-        'gclid' => 'setGclid',
-        'gbraid' => 'setGbraid',
-        'wbraid' => 'setWbraid',
-        'li_fat_id' => 'setLiFatId'
+        'currency_code' => 'setCurrencyCode',
+        'amount' => 'setAmount'
     ];
 
     /**
@@ -211,12 +191,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      * @var string[]
      */
     protected static $getters = [
-        'fbc' => 'getFbc',
-        'fbp' => 'getFbp',
-        'gclid' => 'getGclid',
-        'gbraid' => 'getGbraid',
-        'wbraid' => 'getWbraid',
-        'li_fat_id' => 'getLiFatId'
+        'currency_code' => 'getCurrencyCode',
+        'amount' => 'getAmount'
     ];
 
     /**
@@ -276,12 +252,8 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('fbc', $data ?? [], null);
-        $this->setIfExists('fbp', $data ?? [], null);
-        $this->setIfExists('gclid', $data ?? [], null);
-        $this->setIfExists('gbraid', $data ?? [], null);
-        $this->setIfExists('wbraid', $data ?? [], null);
-        $this->setIfExists('li_fat_id', $data ?? [], null);
+        $this->setIfExists('currency_code', $data ?? [], null);
+        $this->setIfExists('amount', $data ?? [], null);
     }
 
     /**
@@ -311,6 +283,20 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['currency_code'] === null) {
+            $invalidProperties[] = "'currency_code' can't be null";
+        }
+        if ((mb_strlen($this->container['currency_code']) > 3)) {
+            $invalidProperties[] = "invalid value for 'currency_code', the character length must be smaller than or equal to 3.";
+        }
+
+        if ((mb_strlen($this->container['currency_code']) < 3)) {
+            $invalidProperties[] = "invalid value for 'currency_code', the character length must be bigger than or equal to 3.";
+        }
+
+        if ($this->container['amount'] === null) {
+            $invalidProperties[] = "'amount' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -327,163 +313,62 @@ class ConversionEventUserClickIds implements ModelInterface, ArrayAccess, \JsonS
 
 
     /**
-     * Gets fbc
+     * Gets currency_code
      *
-     * @return string|null
+     * @return string
      */
-    public function getFbc()
+    public function getCurrencyCode()
     {
-        return $this->container['fbc'];
+        return $this->container['currency_code'];
     }
 
     /**
-     * Sets fbc
+     * Sets currency_code
      *
-     * @param string|null $fbc Meta click ID (from fbclid URL param).
+     * @param string $currency_code ISO 4217 (e.g. \"USD\").
      *
      * @return self
      */
-    public function setFbc($fbc)
+    public function setCurrencyCode($currency_code)
     {
-        if (is_null($fbc)) {
-            throw new \InvalidArgumentException('non-nullable fbc cannot be null');
+        if (is_null($currency_code)) {
+            throw new \InvalidArgumentException('non-nullable currency_code cannot be null');
         }
-        $this->container['fbc'] = $fbc;
+        if ((mb_strlen($currency_code) > 3)) {
+            throw new \InvalidArgumentException('invalid length for $currency_code when calling CreateConversionDestinationRequestValue., must be smaller than or equal to 3.');
+        }
+        if ((mb_strlen($currency_code) < 3)) {
+            throw new \InvalidArgumentException('invalid length for $currency_code when calling CreateConversionDestinationRequestValue., must be bigger than or equal to 3.');
+        }
+
+        $this->container['currency_code'] = $currency_code;
 
         return $this;
     }
 
     /**
-     * Gets fbp
+     * Gets amount
      *
-     * @return string|null
+     * @return string
      */
-    public function getFbp()
+    public function getAmount()
     {
-        return $this->container['fbp'];
+        return $this->container['amount'];
     }
 
     /**
-     * Sets fbp
+     * Sets amount
      *
-     * @param string|null $fbp Meta browser ID (_fbp cookie).
+     * @param string $amount Decimal string (e.g. \"49.99\").
      *
      * @return self
      */
-    public function setFbp($fbp)
+    public function setAmount($amount)
     {
-        if (is_null($fbp)) {
-            throw new \InvalidArgumentException('non-nullable fbp cannot be null');
+        if (is_null($amount)) {
+            throw new \InvalidArgumentException('non-nullable amount cannot be null');
         }
-        $this->container['fbp'] = $fbp;
-
-        return $this;
-    }
-
-    /**
-     * Gets gclid
-     *
-     * @return string|null
-     */
-    public function getGclid()
-    {
-        return $this->container['gclid'];
-    }
-
-    /**
-     * Sets gclid
-     *
-     * @param string|null $gclid Google click ID (from gclid URL param).
-     *
-     * @return self
-     */
-    public function setGclid($gclid)
-    {
-        if (is_null($gclid)) {
-            throw new \InvalidArgumentException('non-nullable gclid cannot be null');
-        }
-        $this->container['gclid'] = $gclid;
-
-        return $this;
-    }
-
-    /**
-     * Gets gbraid
-     *
-     * @return string|null
-     */
-    public function getGbraid()
-    {
-        return $this->container['gbraid'];
-    }
-
-    /**
-     * Sets gbraid
-     *
-     * @param string|null $gbraid Google iOS 14.5+ app attribution ID.
-     *
-     * @return self
-     */
-    public function setGbraid($gbraid)
-    {
-        if (is_null($gbraid)) {
-            throw new \InvalidArgumentException('non-nullable gbraid cannot be null');
-        }
-        $this->container['gbraid'] = $gbraid;
-
-        return $this;
-    }
-
-    /**
-     * Gets wbraid
-     *
-     * @return string|null
-     */
-    public function getWbraid()
-    {
-        return $this->container['wbraid'];
-    }
-
-    /**
-     * Sets wbraid
-     *
-     * @param string|null $wbraid Google iOS 14.5+ web-to-app attribution ID.
-     *
-     * @return self
-     */
-    public function setWbraid($wbraid)
-    {
-        if (is_null($wbraid)) {
-            throw new \InvalidArgumentException('non-nullable wbraid cannot be null');
-        }
-        $this->container['wbraid'] = $wbraid;
-
-        return $this;
-    }
-
-    /**
-     * Gets li_fat_id
-     *
-     * @return string|null
-     */
-    public function getLiFatId()
-    {
-        return $this->container['li_fat_id'];
-    }
-
-    /**
-     * Sets li_fat_id
-     *
-     * @param string|null $li_fat_id LinkedIn first-party ad tracking click ID. Captured by parsing `li_fat_id` from landing-page URLs after the advertiser enables enhanced conversion tracking on the LinkedIn Insight Tag. Sent to LinkedIn as the LINKEDIN_FIRST_PARTY_ADS_TRACKING_UUID userId. Opaque token, not hashed.
-     *
-     * @return self
-     */
-    public function setLiFatId($li_fat_id)
-    {
-        if (is_null($li_fat_id)) {
-            throw new \InvalidArgumentException('non-nullable li_fat_id cannot be null');
-        }
-        $this->container['li_fat_id'] = $li_fat_id;
+        $this->container['amount'] = $amount;
 
         return $this;
     }
