@@ -881,6 +881,7 @@ docs/Model/WebhookPayloadMessageMessageSender.md
 docs/Model/WebhookPayloadMessageMessageSenderInstagramProfile.md
 docs/Model/WebhookPayloadMessageMetadata.md
 docs/Model/WebhookPayloadMessageMetadataReferral.md
+docs/Model/WebhookPayloadMessageMetadataReferralAdsContextData.md
 docs/Model/WebhookPayloadMessageMetadataStoryReply.md
 docs/Model/WebhookPayloadMessageSent.md
 docs/Model/WebhookPayloadMessageSentMessage.md
@@ -1798,6 +1799,7 @@ lib/Model/WebhookPayloadMessageMessageSender.php
 lib/Model/WebhookPayloadMessageMessageSenderInstagramProfile.php
 lib/Model/WebhookPayloadMessageMetadata.php
 lib/Model/WebhookPayloadMessageMetadataReferral.php
+lib/Model/WebhookPayloadMessageMetadataReferralAdsContextData.php
 lib/Model/WebhookPayloadMessageMetadataStoryReply.php
 lib/Model/WebhookPayloadMessageSent.php
 lib/Model/WebhookPayloadMessageSentMessage.php
@@ -1833,18 +1835,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AddConversionAssociations200ResponseFailedInnerTest.php
-test/Model/AddConversionAssociations200ResponseTest.php
-test/Model/AddConversionAssociationsRequestTest.php
-test/Model/ConversionDestinationTest.php
-test/Model/CreateConversionDestination201ResponseTest.php
-test/Model/CreateConversionDestinationRequestTest.php
-test/Model/CreateConversionDestinationRequestValueTest.php
-test/Model/GetConversionMetrics200ResponseRowsInnerMetricsValueTest.php
-test/Model/GetConversionMetrics200ResponseRowsInnerTest.php
-test/Model/GetConversionMetrics200ResponseTest.php
-test/Model/ListConversionAssociations200ResponseAssociationsInnerTest.php
-test/Model/ListConversionAssociations200ResponseTest.php
-test/Model/RemoveConversionAssociations200ResponseTest.php
-test/Model/UpdateConversionDestinationRequestTest.php
-test/Model/UpdateConversionDestinationRequestValueTest.php
+test/Model/WebhookPayloadMessageMetadataReferralAdsContextDataTest.php
