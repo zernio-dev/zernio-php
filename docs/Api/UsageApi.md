@@ -18,7 +18,7 @@ getUsageStats(): \Zernio\Model\UsageStats
 
 Get plan and usage stats
 
-Returns the current plan name, billing period, plan limits, and usage counts.  The response shape depends on the account's `billingSystem`:   * Stripe users: per-period `usage.uploads` / `usage.profiles` counters.   * Metronome (usage-based) users: `usage.connectedAccounts`,     `usage.xApiCalls` (aggregated by tier), `usage.xApiCallsByOperation`     (per-operation map — resolve keys via `GET /v1/billing/x-pricing`),     plus a `spend` block with `currentPeriodCents`, `xSpendCents`, and     `xSpendLimitCents`.
+Returns the current plan name, billing period, plan limits, and usage counts.  The response shape depends on the account's `billingSystem`:   * Stripe users: per-period `usage.uploads` / `usage.profiles` counters.   * Metronome (usage-based) users: `usage.connectedAccounts`,     `usage.xApiCallsByOperation` (per-operation X API call counts —     resolve keys via `GET /v1/billing/x-pricing`), plus a `spend`     block with `currentPeriodCents`, `xSpendCents`, and     `xSpendLimitCents`. The legacy `usage.xApiCalls` 3-tier     aggregate is still emitted for back-compat but excludes the     $0.200 URL tier and any future tiers — new clients should     consume `xApiCallsByOperation` only.
 
 ### Example
 

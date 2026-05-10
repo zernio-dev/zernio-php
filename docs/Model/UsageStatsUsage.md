@@ -9,6 +9,6 @@ Name | Type | Description | Notes
 **last_reset** | **\DateTime** | Stripe users only. | [optional]
 **connected_accounts** | **int** | Metronome users only. Accounts currently connected across the team. | [optional]
 **x_api_calls** | [**\Zernio\Model\UsageStatsUsageXApiCalls**](UsageStatsUsageXApiCalls.md) |  | [optional]
-**x_api_calls_by_operation** | **array<string,int>** | Metronome users only. Per-operation X API call counts keyed by operation (e.g. &#x60;posts_read&#x60;, &#x60;content_create&#x60;). Resolve each key to price and metadata via &#x60;GET /v1/billing/x-pricing&#x60;. | [optional]
+**x_api_calls_by_operation** | **array<string,int>** | Metronome users only. Per-operation X API call counts keyed by operation (e.g. &#x60;posts_read&#x60;, &#x60;content_create&#x60;, &#x60;content_create_with_url&#x60;). Resolve each key to price and metadata via &#x60;GET /v1/billing/x-pricing&#x60;. This is the canonical source — covers every price tier including the $0.200 URL tier that &#x60;xApiCalls&#x60; excludes. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

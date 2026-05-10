@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UsageStatsUsageXApiCalls Class Doc Comment
  *
  * @category Class
- * @description Metronome users only. Aggregated X API call counts bucketed by price tier (backward-compat). For per-operation breakdown use &#x60;xApiCallsByOperation&#x60;.
+ * @description **Deprecated.** Legacy 3-tier aggregate. Operations outside the three historical prices ($0.005/$0.010/$0.015) — notably the $0.200 \&quot;Posts with URL\&quot; tier added April 2026 — are silently excluded from this shape. Use &#x60;xApiCallsByOperation&#x60; instead; it captures every tier and is the source of truth for per-operation call counts.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -318,7 +318,7 @@ class UsageStatsUsageXApiCalls implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets x_api_005
      *
-     * @param int|null $x_api_005 Calls at $0.005 per call (reads, list mgmt, bookmarks, etc.)
+     * @param int|null $x_api_005 Calls at $0.005 per call (reads, lists, bookmarks, content manage, etc.)
      *
      * @return self
      */
@@ -345,7 +345,7 @@ class UsageStatsUsageXApiCalls implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets x_api_010
      *
-     * @param int|null $x_api_010 Calls at $0.010 per call (publish/delete, DM reads, follows)
+     * @param int|null $x_api_010 Calls at $0.010 per call (user reads, DM reads, follow reads, trends, list create, privacy update)
      *
      * @return self
      */
@@ -372,7 +372,7 @@ class UsageStatsUsageXApiCalls implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets x_api_015
      *
-     * @param int|null $x_api_015 Calls at $0.015 per call (sending DMs, follow actions)
+     * @param int|null $x_api_015 Calls at $0.015 per call (posts/replies, DM sends, user interactions)
      *
      * @return self
      */

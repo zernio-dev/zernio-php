@@ -379,7 +379,7 @@ class UsageStatsSpend implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_spend_cents
      *
-     * @param int|null $x_spend_cents Current-period X/Twitter API spend in cents, derived from the per-tier call counts. Rounded up for conservative enforcement against `xSpendLimitCents`.
+     * @param int|null $x_spend_cents Current-period X/Twitter API spend in cents, summed from `xApiCallsByOperation` × per-operation prices. Tier-agnostic (covers every price including the $0.200 URL tier). Rounded up for conservative enforcement against `xSpendLimitCents`.
      *
      * @return self
      */

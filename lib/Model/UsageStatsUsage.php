@@ -438,6 +438,7 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
      * Gets x_api_calls
      *
      * @return \Zernio\Model\UsageStatsUsageXApiCalls|null
+     * @deprecated
      */
     public function getXApiCalls()
     {
@@ -450,6 +451,7 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param \Zernio\Model\UsageStatsUsageXApiCalls|null $x_api_calls x_api_calls
      *
      * @return self
+     * @deprecated
      */
     public function setXApiCalls($x_api_calls)
     {
@@ -474,7 +476,7 @@ class UsageStatsUsage implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets x_api_calls_by_operation
      *
-     * @param array<string,int>|null $x_api_calls_by_operation Metronome users only. Per-operation X API call counts keyed by operation (e.g. `posts_read`, `content_create`). Resolve each key to price and metadata via `GET /v1/billing/x-pricing`.
+     * @param array<string,int>|null $x_api_calls_by_operation Metronome users only. Per-operation X API call counts keyed by operation (e.g. `posts_read`, `content_create`, `content_create_with_url`). Resolve each key to price and metadata via `GET /v1/billing/x-pricing`. This is the canonical source — covers every price tier including the $0.200 URL tier that `xApiCalls` excludes.
      *
      * @return self
      */

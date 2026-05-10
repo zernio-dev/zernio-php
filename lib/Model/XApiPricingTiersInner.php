@@ -241,23 +241,6 @@ class XApiPricingTiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-    public const TIER_X_API_005 = 'x_api_005';
-    public const TIER_X_API_010 = 'x_api_010';
-    public const TIER_X_API_015 = 'x_api_015';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTierAllowableValues()
-    {
-        return [
-            self::TIER_X_API_005,
-            self::TIER_X_API_010,
-            self::TIER_X_API_015,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -306,15 +289,6 @@ class XApiPricingTiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTierAllowableValues();
-        if (!is_null($this->container['tier']) && !in_array($this->container['tier'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'tier', must be one of '%s'",
-                $this->container['tier'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -343,7 +317,7 @@ class XApiPricingTiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets tier
      *
-     * @param string|null $tier Historical bucket key used in `xApiCalls` aggregation.
+     * @param string|null $tier Tier key derived from price (e.g. `x_api_005` for $0.005, `x_api_200` for $0.200). The first three keys map to the legacy `xApiCalls` aggregate; new tiers (e.g. `x_api_200` for the URL tier added April 2026) are surfaced here but not in the legacy shape.
      *
      * @return self
      */
@@ -351,16 +325,6 @@ class XApiPricingTiersInner implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         if (is_null($tier)) {
             throw new \InvalidArgumentException('non-nullable tier cannot be null');
-        }
-        $allowedValues = $this->getTierAllowableValues();
-        if (!in_array($tier, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'tier', must be one of '%s'",
-                    $tier,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['tier'] = $tier;
 
