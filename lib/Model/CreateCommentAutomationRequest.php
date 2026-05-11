@@ -67,6 +67,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'keywords' => 'string[]',
         'match_mode' => 'string',
         'dm_message' => 'string',
+        'buttons' => '\Zernio\Model\DmButton[]',
         'comment_reply' => 'string'
     ];
 
@@ -87,6 +88,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'keywords' => null,
         'match_mode' => null,
         'dm_message' => null,
+        'buttons' => null,
         'comment_reply' => null
     ];
 
@@ -105,6 +107,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'keywords' => false,
         'match_mode' => false,
         'dm_message' => false,
+        'buttons' => false,
         'comment_reply' => false
     ];
 
@@ -203,6 +206,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'keywords' => 'keywords',
         'match_mode' => 'matchMode',
         'dm_message' => 'dmMessage',
+        'buttons' => 'buttons',
         'comment_reply' => 'commentReply'
     ];
 
@@ -221,6 +225,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'keywords' => 'setKeywords',
         'match_mode' => 'setMatchMode',
         'dm_message' => 'setDmMessage',
+        'buttons' => 'setButtons',
         'comment_reply' => 'setCommentReply'
     ];
 
@@ -239,6 +244,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'keywords' => 'getKeywords',
         'match_mode' => 'getMatchMode',
         'dm_message' => 'getDmMessage',
+        'buttons' => 'getButtons',
         'comment_reply' => 'getCommentReply'
     ];
 
@@ -323,6 +329,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('keywords', $data ?? [], null);
         $this->setIfExists('match_mode', $data ?? [], 'contains');
         $this->setIfExists('dm_message', $data ?? [], null);
+        $this->setIfExists('buttons', $data ?? [], null);
         $this->setIfExists('comment_reply', $data ?? [], null);
     }
 
@@ -374,6 +381,10 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         if ($this->container['dm_message'] === null) {
             $invalidProperties[] = "'dm_message' can't be null";
         }
+        if (!is_null($this->container['buttons']) && (count($this->container['buttons']) > 3)) {
+            $invalidProperties[] = "invalid value for 'buttons', number of items must be less than or equal to 3.";
+        }
+
         return $invalidProperties;
     }
 
@@ -628,7 +639,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets dm_message
      *
-     * @param string $dm_message DM text to send to commenter
+     * @param string $dm_message DM text to send to commenter. Max 640 chars when buttons are set, otherwise ~1000.
      *
      * @return self
      */
@@ -638,6 +649,37 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable dm_message cannot be null');
         }
         $this->container['dm_message'] = $dm_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets buttons
+     *
+     * @return \Zernio\Model\DmButton[]|null
+     */
+    public function getButtons()
+    {
+        return $this->container['buttons'];
+    }
+
+    /**
+     * Sets buttons
+     *
+     * @param \Zernio\Model\DmButton[]|null $buttons Optional inline DM buttons (1-3). Phone buttons are Facebook-only. Omit or pass [] for a plain-text DM.
+     *
+     * @return self
+     */
+    public function setButtons($buttons)
+    {
+        if (is_null($buttons)) {
+            throw new \InvalidArgumentException('non-nullable buttons cannot be null');
+        }
+
+        if ((count($buttons) > 3)) {
+            throw new \InvalidArgumentException('invalid value for $buttons when calling CreateCommentAutomationRequest., number of items must be less than or equal to 3.');
+        }
+        $this->container['buttons'] = $buttons;
 
         return $this;
     }

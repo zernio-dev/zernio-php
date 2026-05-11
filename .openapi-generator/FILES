@@ -237,6 +237,7 @@ docs/Model/DiscordPlatformDataPollAnswersInner.md
 docs/Model/DiscordPlatformDataPollAnswersInnerPollMedia.md
 docs/Model/DiscordPlatformDataPollQuestion.md
 docs/Model/DiscordPlatformDataThreadFromMessage.md
+docs/Model/DmButton.md
 docs/Model/DuplicateAdCampaign200Response.md
 docs/Model/DuplicateAdCampaignRequest.md
 docs/Model/EditInboxMessage200Response.md
@@ -1154,6 +1155,7 @@ lib/Model/DiscordPlatformDataPollAnswersInner.php
 lib/Model/DiscordPlatformDataPollAnswersInnerPollMedia.php
 lib/Model/DiscordPlatformDataPollQuestion.php
 lib/Model/DiscordPlatformDataThreadFromMessage.php
+lib/Model/DmButton.php
 lib/Model/DuplicateAdCampaign200Response.php
 lib/Model/DuplicateAdCampaignRequest.php
 lib/Model/EditInboxMessage200Response.php
@@ -1835,3 +1837,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/DmButtonTest.php

@@ -62,6 +62,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'keywords' => 'string[]',
         'match_mode' => 'string',
         'dm_message' => 'string',
+        'buttons' => '\Zernio\Model\DmButton[]',
         'comment_reply' => 'string',
         'is_active' => 'bool'
     ];
@@ -78,6 +79,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'keywords' => null,
         'match_mode' => null,
         'dm_message' => null,
+        'buttons' => null,
         'comment_reply' => null,
         'is_active' => null
     ];
@@ -92,6 +94,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'keywords' => false,
         'match_mode' => false,
         'dm_message' => false,
+        'buttons' => false,
         'comment_reply' => false,
         'is_active' => false
     ];
@@ -186,6 +189,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'keywords' => 'keywords',
         'match_mode' => 'matchMode',
         'dm_message' => 'dmMessage',
+        'buttons' => 'buttons',
         'comment_reply' => 'commentReply',
         'is_active' => 'isActive'
     ];
@@ -200,6 +204,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'keywords' => 'setKeywords',
         'match_mode' => 'setMatchMode',
         'dm_message' => 'setDmMessage',
+        'buttons' => 'setButtons',
         'comment_reply' => 'setCommentReply',
         'is_active' => 'setIsActive'
     ];
@@ -214,6 +219,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'keywords' => 'getKeywords',
         'match_mode' => 'getMatchMode',
         'dm_message' => 'getDmMessage',
+        'buttons' => 'getButtons',
         'comment_reply' => 'getCommentReply',
         'is_active' => 'getIsActive'
     ];
@@ -294,6 +300,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('keywords', $data ?? [], null);
         $this->setIfExists('match_mode', $data ?? [], null);
         $this->setIfExists('dm_message', $data ?? [], null);
+        $this->setIfExists('buttons', $data ?? [], null);
         $this->setIfExists('comment_reply', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
     }
@@ -332,6 +339,10 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
                 $this->container['match_mode'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['buttons']) && (count($this->container['buttons']) > 3)) {
+            $invalidProperties[] = "invalid value for 'buttons', number of items must be less than or equal to 3.";
         }
 
         return $invalidProperties;
@@ -463,6 +474,37 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable dm_message cannot be null');
         }
         $this->container['dm_message'] = $dm_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets buttons
+     *
+     * @return \Zernio\Model\DmButton[]|null
+     */
+    public function getButtons()
+    {
+        return $this->container['buttons'];
+    }
+
+    /**
+     * Sets buttons
+     *
+     * @param \Zernio\Model\DmButton[]|null $buttons Inline DM buttons (1-3). Pass [] to clear all buttons.
+     *
+     * @return self
+     */
+    public function setButtons($buttons)
+    {
+        if (is_null($buttons)) {
+            throw new \InvalidArgumentException('non-nullable buttons cannot be null');
+        }
+
+        if ((count($buttons) > 3)) {
+            throw new \InvalidArgumentException('invalid value for $buttons when calling UpdateCommentAutomationRequest., number of items must be less than or equal to 3.');
+        }
+        $this->container['buttons'] = $buttons;
 
         return $this;
     }

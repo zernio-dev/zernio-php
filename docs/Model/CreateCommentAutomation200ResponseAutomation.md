@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **keywords** | **string[]** |  | [optional]
 **match_mode** | **string** |  | [optional]
 **dm_message** | **string** |  | [optional]
+**buttons** | [**\Zernio\Model\DmButton[]**](DmButton.md) | Inline DM buttons (up to 3). Omitted when none are set. | [optional]
 **comment_reply** | **string** |  | [optional]
 **is_active** | **bool** |  | [optional]
 **stats** | [**\Zernio\Model\CreateCommentAutomation200ResponseAutomationStats**](CreateCommentAutomation200ResponseAutomationStats.md) |  | [optional]

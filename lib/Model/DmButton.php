@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateCommentAutomation200ResponseAutomation
+ * DmButton
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateCommentAutomation200ResponseAutomation Class Doc Comment
+ * DmButton Class Doc Comment
  *
  * @category Class
+ * @description A single inline button rendered inside an auto-DM via Meta&#39;s button_template. Up to 3 buttons per automation. &#x60;url&#x60; and &#x60;postback&#x60; work on Instagram and Facebook; &#x60;phone&#x60; is Facebook-only. When buttons are set, &#x60;dmMessage&#x60; becomes the button_template text and must be 640 characters or less.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, ArrayAccess, \JsonSerializable
+class DmButton implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateCommentAutomation_200_response_automation';
+    protected static $openAPIModelName = 'DmButton';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +59,11 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'keywords' => 'string[]',
-        'match_mode' => 'string',
-        'dm_message' => 'string',
-        'buttons' => '\Zernio\Model\DmButton[]',
-        'comment_reply' => 'string',
-        'is_active' => 'bool',
-        'updated_at' => '\DateTime'
+        'type' => 'string',
+        'title' => 'string',
+        'url' => 'string',
+        'payload' => 'string',
+        'phone' => 'string'
     ];
 
     /**
@@ -77,15 +74,11 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'keywords' => null,
-        'match_mode' => null,
-        'dm_message' => null,
-        'buttons' => null,
-        'comment_reply' => null,
-        'is_active' => null,
-        'updated_at' => 'date-time'
+        'type' => null,
+        'title' => null,
+        'url' => 'uri',
+        'payload' => null,
+        'phone' => null
     ];
 
     /**
@@ -94,15 +87,11 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'keywords' => false,
-        'match_mode' => false,
-        'dm_message' => false,
-        'buttons' => false,
-        'comment_reply' => false,
-        'is_active' => false,
-        'updated_at' => false
+        'type' => false,
+        'title' => false,
+        'url' => false,
+        'payload' => false,
+        'phone' => false
     ];
 
     /**
@@ -191,15 +180,11 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'keywords' => 'keywords',
-        'match_mode' => 'matchMode',
-        'dm_message' => 'dmMessage',
-        'buttons' => 'buttons',
-        'comment_reply' => 'commentReply',
-        'is_active' => 'isActive',
-        'updated_at' => 'updatedAt'
+        'type' => 'type',
+        'title' => 'title',
+        'url' => 'url',
+        'payload' => 'payload',
+        'phone' => 'phone'
     ];
 
     /**
@@ -208,15 +193,11 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'keywords' => 'setKeywords',
-        'match_mode' => 'setMatchMode',
-        'dm_message' => 'setDmMessage',
-        'buttons' => 'setButtons',
-        'comment_reply' => 'setCommentReply',
-        'is_active' => 'setIsActive',
-        'updated_at' => 'setUpdatedAt'
+        'type' => 'setType',
+        'title' => 'setTitle',
+        'url' => 'setUrl',
+        'payload' => 'setPayload',
+        'phone' => 'setPhone'
     ];
 
     /**
@@ -225,15 +206,11 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'keywords' => 'getKeywords',
-        'match_mode' => 'getMatchMode',
-        'dm_message' => 'getDmMessage',
-        'buttons' => 'getButtons',
-        'comment_reply' => 'getCommentReply',
-        'is_active' => 'getIsActive',
-        'updated_at' => 'getUpdatedAt'
+        'type' => 'getType',
+        'title' => 'getTitle',
+        'url' => 'getUrl',
+        'payload' => 'getPayload',
+        'phone' => 'getPhone'
     ];
 
     /**
@@ -277,19 +254,21 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         return self::$openAPIModelName;
     }
 
-    public const MATCH_MODE_EXACT = 'exact';
-    public const MATCH_MODE_CONTAINS = 'contains';
+    public const TYPE_URL = 'url';
+    public const TYPE_POSTBACK = 'postback';
+    public const TYPE_PHONE = 'phone';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getMatchModeAllowableValues()
+    public function getTypeAllowableValues()
     {
         return [
-            self::MATCH_MODE_EXACT,
-            self::MATCH_MODE_CONTAINS,
+            self::TYPE_URL,
+            self::TYPE_POSTBACK,
+            self::TYPE_PHONE,
         ];
     }
 
@@ -308,15 +287,11 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('keywords', $data ?? [], null);
-        $this->setIfExists('match_mode', $data ?? [], null);
-        $this->setIfExists('dm_message', $data ?? [], null);
-        $this->setIfExists('buttons', $data ?? [], null);
-        $this->setIfExists('comment_reply', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], null);
-        $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('payload', $data ?? [], null);
+        $this->setIfExists('phone', $data ?? [], null);
     }
 
     /**
@@ -346,13 +321,23 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getMatchModeAllowableValues();
-        if (!is_null($this->container['match_mode']) && !in_array($this->container['match_mode'], $allowedValues, true)) {
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'match_mode', must be one of '%s'",
-                $this->container['match_mode'],
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if ($this->container['title'] === null) {
+            $invalidProperties[] = "'title' can't be null";
+        }
+        if ((mb_strlen($this->container['title']) > 20)) {
+            $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 20.";
         }
 
         return $invalidProperties;
@@ -371,254 +356,150 @@ class UpdateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
 
 
     /**
-     * Gets id
+     * Gets type
      *
-     * @return string|null
+     * @return string
      */
-    public function getId()
+    public function getType()
     {
-        return $this->container['id'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets id
+     * Sets type
      *
-     * @param string|null $id id
+     * @param string $type type
      *
      * @return self
      */
-    public function setId($id)
+    public function setType($type)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets keywords
-     *
-     * @return string[]|null
-     */
-    public function getKeywords()
-    {
-        return $this->container['keywords'];
-    }
-
-    /**
-     * Sets keywords
-     *
-     * @param string[]|null $keywords keywords
-     *
-     * @return self
-     */
-    public function setKeywords($keywords)
-    {
-        if (is_null($keywords)) {
-            throw new \InvalidArgumentException('non-nullable keywords cannot be null');
-        }
-        $this->container['keywords'] = $keywords;
-
-        return $this;
-    }
-
-    /**
-     * Gets match_mode
-     *
-     * @return string|null
-     */
-    public function getMatchMode()
-    {
-        return $this->container['match_mode'];
-    }
-
-    /**
-     * Sets match_mode
-     *
-     * @param string|null $match_mode match_mode
-     *
-     * @return self
-     */
-    public function setMatchMode($match_mode)
-    {
-        if (is_null($match_mode)) {
-            throw new \InvalidArgumentException('non-nullable match_mode cannot be null');
-        }
-        $allowedValues = $this->getMatchModeAllowableValues();
-        if (!in_array($match_mode, $allowedValues, true)) {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'match_mode', must be one of '%s'",
-                    $match_mode,
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['match_mode'] = $match_mode;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets dm_message
+     * Gets title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string $title Button label (20 chars max)
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        if ((mb_strlen($title) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $title when calling DmButton., must be smaller than or equal to 20.');
+        }
+
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
      *
      * @return string|null
      */
-    public function getDmMessage()
+    public function getUrl()
     {
-        return $this->container['dm_message'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets dm_message
+     * Sets url
      *
-     * @param string|null $dm_message dm_message
+     * @param string|null $url Target URL (required when type is url)
      *
      * @return self
      */
-    public function setDmMessage($dm_message)
+    public function setUrl($url)
     {
-        if (is_null($dm_message)) {
-            throw new \InvalidArgumentException('non-nullable dm_message cannot be null');
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
         }
-        $this->container['dm_message'] = $dm_message;
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets buttons
-     *
-     * @return \Zernio\Model\DmButton[]|null
-     */
-    public function getButtons()
-    {
-        return $this->container['buttons'];
-    }
-
-    /**
-     * Sets buttons
-     *
-     * @param \Zernio\Model\DmButton[]|null $buttons Inline DM buttons (up to 3). Omitted when none are set.
-     *
-     * @return self
-     */
-    public function setButtons($buttons)
-    {
-        if (is_null($buttons)) {
-            throw new \InvalidArgumentException('non-nullable buttons cannot be null');
-        }
-        $this->container['buttons'] = $buttons;
-
-        return $this;
-    }
-
-    /**
-     * Gets comment_reply
+     * Gets payload
      *
      * @return string|null
      */
-    public function getCommentReply()
+    public function getPayload()
     {
-        return $this->container['comment_reply'];
+        return $this->container['payload'];
     }
 
     /**
-     * Sets comment_reply
+     * Sets payload
      *
-     * @param string|null $comment_reply comment_reply
+     * @param string|null $payload Postback payload delivered via the messaging_postbacks webhook (required when type is postback)
      *
      * @return self
      */
-    public function setCommentReply($comment_reply)
+    public function setPayload($payload)
     {
-        if (is_null($comment_reply)) {
-            throw new \InvalidArgumentException('non-nullable comment_reply cannot be null');
+        if (is_null($payload)) {
+            throw new \InvalidArgumentException('non-nullable payload cannot be null');
         }
-        $this->container['comment_reply'] = $comment_reply;
+        $this->container['payload'] = $payload;
 
         return $this;
     }
 
     /**
-     * Gets is_active
+     * Gets phone
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getIsActive()
+    public function getPhone()
     {
-        return $this->container['is_active'];
+        return $this->container['phone'];
     }
 
     /**
-     * Sets is_active
+     * Sets phone
      *
-     * @param bool|null $is_active is_active
+     * @param string|null $phone Phone number, e.g. +14155551234 (required when type is phone; Facebook only)
      *
      * @return self
      */
-    public function setIsActive($is_active)
+    public function setPhone($phone)
     {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
+        if (is_null($phone)) {
+            throw new \InvalidArgumentException('non-nullable phone cannot be null');
         }
-        $this->container['is_active'] = $is_active;
-
-        return $this;
-    }
-
-    /**
-     * Gets updated_at
-     *
-     * @return \DateTime|null
-     */
-    public function getUpdatedAt()
-    {
-        return $this->container['updated_at'];
-    }
-
-    /**
-     * Sets updated_at
-     *
-     * @param \DateTime|null $updated_at updated_at
-     *
-     * @return self
-     */
-    public function setUpdatedAt($updated_at)
-    {
-        if (is_null($updated_at)) {
-            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
-        }
-        $this->container['updated_at'] = $updated_at;
+        $this->container['phone'] = $phone;
 
         return $this;
     }

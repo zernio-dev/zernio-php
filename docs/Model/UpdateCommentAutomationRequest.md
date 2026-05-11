@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **keywords** | **string[]** |  | [optional]
 **match_mode** | **string** |  | [optional]
 **dm_message** | **string** |  | [optional]
+**buttons** | [**\Zernio\Model\DmButton[]**](DmButton.md) | Inline DM buttons (1-3). Pass [] to clear all buttons. | [optional]
 **comment_reply** | **string** |  | [optional]
 **is_active** | **bool** |  | [optional]
 

@@ -65,6 +65,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'keywords' => 'string[]',
         'match_mode' => 'string',
         'dm_message' => 'string',
+        'buttons' => '\Zernio\Model\DmButton[]',
         'comment_reply' => 'string',
         'is_active' => 'bool',
         'stats' => '\Zernio\Model\CreateCommentAutomation200ResponseAutomationStats',
@@ -86,6 +87,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'keywords' => null,
         'match_mode' => null,
         'dm_message' => null,
+        'buttons' => null,
         'comment_reply' => null,
         'is_active' => null,
         'stats' => null,
@@ -105,6 +107,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'keywords' => false,
         'match_mode' => false,
         'dm_message' => false,
+        'buttons' => false,
         'comment_reply' => false,
         'is_active' => false,
         'stats' => false,
@@ -204,6 +207,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'keywords' => 'keywords',
         'match_mode' => 'matchMode',
         'dm_message' => 'dmMessage',
+        'buttons' => 'buttons',
         'comment_reply' => 'commentReply',
         'is_active' => 'isActive',
         'stats' => 'stats',
@@ -223,6 +227,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'keywords' => 'setKeywords',
         'match_mode' => 'setMatchMode',
         'dm_message' => 'setDmMessage',
+        'buttons' => 'setButtons',
         'comment_reply' => 'setCommentReply',
         'is_active' => 'setIsActive',
         'stats' => 'setStats',
@@ -242,6 +247,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'keywords' => 'getKeywords',
         'match_mode' => 'getMatchMode',
         'dm_message' => 'getDmMessage',
+        'buttons' => 'getButtons',
         'comment_reply' => 'getCommentReply',
         'is_active' => 'getIsActive',
         'stats' => 'getStats',
@@ -327,6 +333,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         $this->setIfExists('keywords', $data ?? [], null);
         $this->setIfExists('match_mode', $data ?? [], null);
         $this->setIfExists('dm_message', $data ?? [], null);
+        $this->setIfExists('buttons', $data ?? [], null);
         $this->setIfExists('comment_reply', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
         $this->setIfExists('stats', $data ?? [], null);
@@ -579,6 +586,33 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
             throw new \InvalidArgumentException('non-nullable dm_message cannot be null');
         }
         $this->container['dm_message'] = $dm_message;
+
+        return $this;
+    }
+
+    /**
+     * Gets buttons
+     *
+     * @return \Zernio\Model\DmButton[]|null
+     */
+    public function getButtons()
+    {
+        return $this->container['buttons'];
+    }
+
+    /**
+     * Sets buttons
+     *
+     * @param \Zernio\Model\DmButton[]|null $buttons Inline DM buttons (up to 3). Omitted when none are set.
+     *
+     * @return self
+     */
+    public function setButtons($buttons)
+    {
+        if (is_null($buttons)) {
+            throw new \InvalidArgumentException('non-nullable buttons cannot be null');
+        }
+        $this->container['buttons'] = $buttons;
 
         return $this;
     }
