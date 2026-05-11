@@ -74,6 +74,8 @@ docs/Model/AddConversionAssociations200Response.md
 docs/Model/AddConversionAssociations200ResponseFailedInner.md
 docs/Model/AddConversionAssociationsRequest.md
 docs/Model/AddMessageReactionRequest.md
+docs/Model/AddTrackingTagSharedAccount201Response.md
+docs/Model/AddTrackingTagSharedAccountRequest.md
 docs/Model/AddUsersToAdAudience200Response.md
 docs/Model/AddUsersToAdAudienceRequest.md
 docs/Model/AddUsersToAdAudienceRequestUsersInner.md
@@ -204,6 +206,8 @@ docs/Model/CreateStandaloneAdRequestImages.md
 docs/Model/CreateStandaloneAdRequestPromotedObject.md
 docs/Model/CreateStandaloneAdRequestRegionsInner.md
 docs/Model/CreateStandaloneAdRequestVideo.md
+docs/Model/CreateTrackingTag201Response.md
+docs/Model/CreateTrackingTagRequest.md
 docs/Model/CreateWebhookSettingsRequest.md
 docs/Model/CreateWhatsAppFlow200Response.md
 docs/Model/CreateWhatsAppFlow200ResponseFlow.md
@@ -421,6 +425,8 @@ docs/Model/GetTikTokCreatorInfo200ResponseCommercialContentTypesInner.md
 docs/Model/GetTikTokCreatorInfo200ResponseCreator.md
 docs/Model/GetTikTokCreatorInfo200ResponsePostingLimits.md
 docs/Model/GetTikTokCreatorInfo200ResponsePrivacyLevelsInner.md
+docs/Model/GetTrackingTagStats200Response.md
+docs/Model/GetTrackingTagStats200ResponseStats.md
 docs/Model/GetUser200Response.md
 docs/Model/GetUser200ResponseUser.md
 docs/Model/GetWebhookSettings200Response.md
@@ -562,6 +568,8 @@ docs/Model/ListSequences200Response.md
 docs/Model/ListSequences200ResponseSequencesInner.md
 docs/Model/ListSnapchatProfiles200Response.md
 docs/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.md
+docs/Model/ListTrackingTagSharedAccounts200Response.md
+docs/Model/ListTrackingTags200Response.md
 docs/Model/ListUsers200Response.md
 docs/Model/ListUsers200ResponseUsersInner.md
 docs/Model/ListWhatsAppFlows200Response.md
@@ -712,6 +720,7 @@ docs/Model/SetInstagramIceBreakersRequestIceBreakersInner.md
 docs/Model/SetMessengerMenuRequest.md
 docs/Model/SetTelegramCommandsRequest.md
 docs/Model/SetTelegramCommandsRequestCommandsInner.md
+docs/Model/SharedAdAccount.md
 docs/Model/SnapchatPlatformData.md
 docs/Model/SocialAccount.md
 docs/Model/SocialAccountProfileId.md
@@ -719,6 +728,7 @@ docs/Model/TelegramPlatformData.md
 docs/Model/TestWebhookRequest.md
 docs/Model/ThreadsPlatformData.md
 docs/Model/TikTokPlatformData.md
+docs/Model/TrackingTag.md
 docs/Model/TwitterPlatformData.md
 docs/Model/TwitterPlatformDataPoll.md
 docs/Model/TwitterPlatformDataThreadItemsInner.md
@@ -807,6 +817,7 @@ docs/Model/UpdateQueueSlotRequest.md
 docs/Model/UpdateRedditSubredditsRequest.md
 docs/Model/UpdateSequence200Response.md
 docs/Model/UpdateSequence200ResponseSequence.md
+docs/Model/UpdateTrackingTagRequest.md
 docs/Model/UpdateWebhookSettings200Response.md
 docs/Model/UpdateWebhookSettingsRequest.md
 docs/Model/UpdateWhatsAppBusinessProfileRequest.md
@@ -992,6 +1003,8 @@ lib/Model/AddConversionAssociations200Response.php
 lib/Model/AddConversionAssociations200ResponseFailedInner.php
 lib/Model/AddConversionAssociationsRequest.php
 lib/Model/AddMessageReactionRequest.php
+lib/Model/AddTrackingTagSharedAccount201Response.php
+lib/Model/AddTrackingTagSharedAccountRequest.php
 lib/Model/AddUsersToAdAudience200Response.php
 lib/Model/AddUsersToAdAudienceRequest.php
 lib/Model/AddUsersToAdAudienceRequestUsersInner.php
@@ -1122,6 +1135,8 @@ lib/Model/CreateStandaloneAdRequestImages.php
 lib/Model/CreateStandaloneAdRequestPromotedObject.php
 lib/Model/CreateStandaloneAdRequestRegionsInner.php
 lib/Model/CreateStandaloneAdRequestVideo.php
+lib/Model/CreateTrackingTag201Response.php
+lib/Model/CreateTrackingTagRequest.php
 lib/Model/CreateWebhookSettingsRequest.php
 lib/Model/CreateWhatsAppFlow200Response.php
 lib/Model/CreateWhatsAppFlow200ResponseFlow.php
@@ -1339,6 +1354,8 @@ lib/Model/GetTikTokCreatorInfo200ResponseCommercialContentTypesInner.php
 lib/Model/GetTikTokCreatorInfo200ResponseCreator.php
 lib/Model/GetTikTokCreatorInfo200ResponsePostingLimits.php
 lib/Model/GetTikTokCreatorInfo200ResponsePrivacyLevelsInner.php
+lib/Model/GetTrackingTagStats200Response.php
+lib/Model/GetTrackingTagStats200ResponseStats.php
 lib/Model/GetUser200Response.php
 lib/Model/GetUser200ResponseUser.php
 lib/Model/GetWebhookSettings200Response.php
@@ -1480,6 +1497,8 @@ lib/Model/ListSequences200Response.php
 lib/Model/ListSequences200ResponseSequencesInner.php
 lib/Model/ListSnapchatProfiles200Response.php
 lib/Model/ListSnapchatProfiles200ResponsePublicProfilesInner.php
+lib/Model/ListTrackingTagSharedAccounts200Response.php
+lib/Model/ListTrackingTags200Response.php
 lib/Model/ListUsers200Response.php
 lib/Model/ListUsers200ResponseUsersInner.php
 lib/Model/ListWhatsAppFlows200Response.php
@@ -1631,6 +1650,7 @@ lib/Model/SetInstagramIceBreakersRequestIceBreakersInner.php
 lib/Model/SetMessengerMenuRequest.php
 lib/Model/SetTelegramCommandsRequest.php
 lib/Model/SetTelegramCommandsRequestCommandsInner.php
+lib/Model/SharedAdAccount.php
 lib/Model/SnapchatPlatformData.php
 lib/Model/SocialAccount.php
 lib/Model/SocialAccountProfileId.php
@@ -1638,6 +1658,7 @@ lib/Model/TelegramPlatformData.php
 lib/Model/TestWebhookRequest.php
 lib/Model/ThreadsPlatformData.php
 lib/Model/TikTokPlatformData.php
+lib/Model/TrackingTag.php
 lib/Model/TwitterPlatformData.php
 lib/Model/TwitterPlatformDataPoll.php
 lib/Model/TwitterPlatformDataThreadItemsInner.php
@@ -1726,6 +1747,7 @@ lib/Model/UpdateQueueSlotRequest.php
 lib/Model/UpdateRedditSubredditsRequest.php
 lib/Model/UpdateSequence200Response.php
 lib/Model/UpdateSequence200ResponseSequence.php
+lib/Model/UpdateTrackingTagRequest.php
 lib/Model/UpdateWebhookSettings200Response.php
 lib/Model/UpdateWebhookSettingsRequest.php
 lib/Model/UpdateWhatsAppBusinessProfileRequest.php
@@ -1837,4 +1859,14 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/DmButtonTest.php
+test/Model/AddTrackingTagSharedAccount201ResponseTest.php
+test/Model/AddTrackingTagSharedAccountRequestTest.php
+test/Model/CreateTrackingTag201ResponseTest.php
+test/Model/CreateTrackingTagRequestTest.php
+test/Model/GetTrackingTagStats200ResponseStatsTest.php
+test/Model/GetTrackingTagStats200ResponseTest.php
+test/Model/ListTrackingTagSharedAccounts200ResponseTest.php
+test/Model/ListTrackingTags200ResponseTest.php
+test/Model/SharedAdAccountTest.php
+test/Model/TrackingTagTest.php
+test/Model/UpdateTrackingTagRequestTest.php

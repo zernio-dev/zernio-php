@@ -7,10 +7,12 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**addConversionAssociations()**](AdsApi.md#addConversionAssociations) | **POST** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Associate campaigns with a conversion destination |
+| [**addTrackingTagSharedAccount()**](AdsApi.md#addTrackingTagSharedAccount) | **POST** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Share a tracking tag with an ad account |
 | [**boostPost()**](AdsApi.md#boostPost) | **POST** /v1/ads/boost | Boost post as ad |
 | [**createConversionDestination()**](AdsApi.md#createConversionDestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination (LinkedIn) |
 | [**createCtwaAd()**](AdsApi.md#createCtwaAd) | **POST** /v1/ads/ctwa | Create Click-to-WhatsApp ad |
 | [**createStandaloneAd()**](AdsApi.md#createStandaloneAd) | **POST** /v1/ads/create | Create standalone ad |
+| [**createTrackingTag()**](AdsApi.md#createTrackingTag) | **POST** /v1/accounts/{accountId}/tracking-tags | Create a tracking tag (Meta Pixel) |
 | [**deleteAd()**](AdsApi.md#deleteAd) | **DELETE** /v1/ads/{adId} | Cancel an ad |
 | [**deleteConversionDestination()**](AdsApi.md#deleteConversionDestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Soft-delete a conversion destination |
 | [**getAd()**](AdsApi.md#getAd) | **GET** /v1/ads/{adId} | Get ad details |
@@ -18,18 +20,24 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getAdComments()**](AdsApi.md#getAdComments) | **GET** /v1/ads/{adId}/comments | List comments on an ad |
 | [**getConversionDestination()**](AdsApi.md#getConversionDestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Fetch a single conversion destination |
 | [**getConversionMetrics()**](AdsApi.md#getConversionMetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Fetch attribution metrics for a conversion destination |
+| [**getTrackingTag()**](AdsApi.md#getTrackingTag) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId} | Fetch a single tracking tag (Meta Pixel) |
+| [**getTrackingTagStats()**](AdsApi.md#getTrackingTagStats) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/stats | Aggregated event stats for a tracking tag (Meta Pixel) |
 | [**listAdAccounts()**](AdsApi.md#listAdAccounts) | **GET** /v1/ads/accounts | List ad accounts |
 | [**listAds()**](AdsApi.md#listAds) | **GET** /v1/ads | List ads |
 | [**listAdsBusinessCenters()**](AdsApi.md#listAdsBusinessCenters) | **GET** /v1/ads/business-centers | List TikTok Business Centers |
 | [**listConversionAssociations()**](AdsApi.md#listConversionAssociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List campaigns associated with a conversion destination |
 | [**listConversionDestinations()**](AdsApi.md#listConversionDestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List destinations for the Conversions API |
+| [**listTrackingTagSharedAccounts()**](AdsApi.md#listTrackingTagSharedAccounts) | **GET** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | List ad accounts a tracking tag is shared with |
+| [**listTrackingTags()**](AdsApi.md#listTrackingTags) | **GET** /v1/accounts/{accountId}/tracking-tags | List tracking tags (Meta Pixels) |
 | [**removeConversionAssociations()**](AdsApi.md#removeConversionAssociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove campaign↔conversion associations |
+| [**removeTrackingTagSharedAccount()**](AdsApi.md#removeTrackingTagSharedAccount) | **DELETE** /v1/accounts/{accountId}/tracking-tags/{tagId}/shared-accounts | Stop sharing a tracking tag with an ad account |
 | [**searchAdInterests()**](AdsApi.md#searchAdInterests) | **GET** /v1/ads/interests | Search targeting interests |
 | [**searchAdTargetingLocations()**](AdsApi.md#searchAdTargetingLocations) | **GET** /v1/ads/targeting/search | Search geo targeting locations (Meta) |
 | [**sendConversions()**](AdsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events to an ad platform |
 | [**sendWhatsAppConversion()**](AdsApi.md#sendWhatsAppConversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event |
 | [**updateAd()**](AdsApi.md#updateAd) | **PUT** /v1/ads/{adId} | Update ad |
 | [**updateConversionDestination()**](AdsApi.md#updateConversionDestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination |
+| [**updateTrackingTag()**](AdsApi.md#updateTrackingTag) | **PATCH** /v1/accounts/{accountId}/tracking-tags/{tagId} | Update a tracking tag (Meta Pixel) |
 
 
 ## `addConversionAssociations()`
@@ -82,6 +90,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\AddConversionAssociations200Response**](../Model/AddConversionAssociations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `addTrackingTagSharedAccount()`
+
+```php
+addTrackingTagSharedAccount($account_id, $tag_id, $add_tracking_tag_shared_account_request): \Zernio\Model\AddTrackingTagSharedAccount201Response
+```
+
+Share a tracking tag with an ad account
+
+Shares the pixel with another ad account so campaigns/audiences in that account can use it. Requires that you administer both the pixel's owning Business Manager and the target ad account; a pixel on a personal (non-BM) ad account can't be shared (Meta will reject the call). Meta only (platform `metaads`); other platforms return 405.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Pixel id.
+$add_tracking_tag_shared_account_request = new \Zernio\Model\AddTrackingTagSharedAccountRequest(); // \Zernio\Model\AddTrackingTagSharedAccountRequest
+
+try {
+    $result = $apiInstance->addTrackingTagSharedAccount($account_id, $tag_id, $add_tracking_tag_shared_account_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->addTrackingTagSharedAccount: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Pixel id. | |
+| **add_tracking_tag_shared_account_request** | [**\Zernio\Model\AddTrackingTagSharedAccountRequest**](../Model/AddTrackingTagSharedAccountRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\AddTrackingTagSharedAccount201Response**](../Model/AddTrackingTagSharedAccount201Response.md)
 
 ### Authorization
 
@@ -324,6 +396,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateStandaloneAd201Response**](../Model/CreateStandaloneAd201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createTrackingTag()`
+
+```php
+createTrackingTag($account_id, $create_tracking_tag_request): \Zernio\Model\CreateTrackingTag201Response
+```
+
+Create a tracking tag (Meta Pixel)
+
+Creates a Meta Pixel on the given ad account (`POST /act_{id}/adspixels` — `name` is the only input). Returns the created tag including its install `code`. The pixel is owned by the Business Manager that owns the ad account; a pixel created on a personal (non-BM) ad account ends up with `ownerBusinessId: null` and can't be shared with other ad accounts.  Creating a pixel does NOT install it — install the returned `code` snippet on the site, or send events server-side via `POST /v1/ads/conversions`. The check `installed` is derived from `lastFiredTime`.  NOT idempotent: each call creates a new pixel. Do not retry blindly on timeout. Meta only (platform `metaads`); other platforms return 405.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Meta ads SocialAccount id (platform `metaads`).
+$create_tracking_tag_request = new \Zernio\Model\CreateTrackingTagRequest(); // \Zernio\Model\CreateTrackingTagRequest
+
+try {
+    $result = $apiInstance->createTrackingTag($account_id, $create_tracking_tag_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->createTrackingTag: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Meta ads SocialAccount id (platform &#x60;metaads&#x60;). | |
+| **create_tracking_tag_request** | [**\Zernio\Model\CreateTrackingTagRequest**](../Model/CreateTrackingTagRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateTrackingTag201Response**](../Model/CreateTrackingTag201Response.md)
 
 ### Authorization
 
@@ -785,6 +919,136 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getTrackingTag()`
+
+```php
+getTrackingTag($account_id, $tag_id): \Zernio\Model\CreateTrackingTag201Response
+```
+
+Fetch a single tracking tag (Meta Pixel)
+
+Returns the full tag record including the base-code `code` snippet, `lastFiredTime`, `ownerBusinessId`, `isUnavailable`, etc. Meta only (platform `metaads`); other platforms return 405.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Pixel id.
+
+try {
+    $result = $apiInstance->getTrackingTag($account_id, $tag_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->getTrackingTag: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Pixel id. | |
+
+### Return type
+
+[**\Zernio\Model\CreateTrackingTag201Response**](../Model/CreateTrackingTag201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTrackingTagStats()`
+
+```php
+getTrackingTagStats($account_id, $tag_id, $aggregation, $start_time, $end_time): \Zernio\Model\GetTrackingTagStats200Response
+```
+
+Aggregated event stats for a tracking tag (Meta Pixel)
+
+Returns aggregated event counts for the pixel (`GET /{pixel_id}/stats`). Rows are passed through from Meta as-is — their shape depends on the `aggregation` requested. Meta only (platform `metaads`); other platforms return 405.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Pixel id.
+$aggregation = 'event'; // string | Aggregation dimension. Defaults to `event`.
+$start_time = 56; // int | Unix seconds lower bound.
+$end_time = 56; // int | Unix seconds upper bound.
+
+try {
+    $result = $apiInstance->getTrackingTagStats($account_id, $tag_id, $aggregation, $start_time, $end_time);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->getTrackingTagStats: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Pixel id. | |
+| **aggregation** | **string**| Aggregation dimension. Defaults to &#x60;event&#x60;. | [optional] [default to &#39;event&#39;] |
+| **start_time** | **int**| Unix seconds lower bound. | [optional] |
+| **end_time** | **int**| Unix seconds upper bound. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetTrackingTagStats200Response**](../Model/GetTrackingTagStats200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listAdAccounts()`
 
 ```php
@@ -1113,6 +1377,130 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listTrackingTagSharedAccounts()`
+
+```php
+listTrackingTagSharedAccounts($account_id, $tag_id): \Zernio\Model\ListTrackingTagSharedAccounts200Response
+```
+
+List ad accounts a tracking tag is shared with
+
+Meta only (platform `metaads`); other platforms return 405.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Pixel id.
+
+try {
+    $result = $apiInstance->listTrackingTagSharedAccounts($account_id, $tag_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->listTrackingTagSharedAccounts: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Pixel id. | |
+
+### Return type
+
+[**\Zernio\Model\ListTrackingTagSharedAccounts200Response**](../Model/ListTrackingTagSharedAccounts200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listTrackingTags()`
+
+```php
+listTrackingTags($account_id, $ad_account_id): \Zernio\Model\ListTrackingTags200Response
+```
+
+List tracking tags (Meta Pixels)
+
+Returns the tracking tags (Meta Pixels) the connected ads account can see. Pass `?adAccountId=act_...` to scope the list to a single ad account; omit it to list every pixel reachable by the token (the name is then suffixed with the ad account it was discovered on, for disambiguation). The list view omits `code` — call `getTrackingTag` for the install snippet and full detail.  Meta only today (platform `metaads`); other platforms return 405. The `accountId` must be the Meta *ads* SocialAccount created by the Ads add-on connect flow, not a Facebook/Instagram posting account. Get your `act_...` ids from `GET /v1/ads/accounts`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | Meta ads SocialAccount id (platform `metaads`).
+$ad_account_id = 'ad_account_id_example'; // string | Optional. Scope to one ad account, e.g. `act_123456789`.
+
+try {
+    $result = $apiInstance->listTrackingTags($account_id, $ad_account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->listTrackingTags: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| Meta ads SocialAccount id (platform &#x60;metaads&#x60;). | |
+| **ad_account_id** | **string**| Optional. Scope to one ad account, e.g. &#x60;act_123456789&#x60;. | [optional] |
+
+### Return type
+
+[**\Zernio\Model\ListTrackingTags200Response**](../Model/ListTrackingTags200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `removeConversionAssociations()`
 
 ```php
@@ -1165,6 +1553,69 @@ try {
 ### Return type
 
 [**\Zernio\Model\RemoveConversionAssociations200Response**](../Model/RemoveConversionAssociations200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `removeTrackingTagSharedAccount()`
+
+```php
+removeTrackingTagSharedAccount($account_id, $tag_id, $ad_account_id)
+```
+
+Stop sharing a tracking tag with an ad account
+
+`adAccountId` may be passed as a query parameter (recommended) or as a JSON body field for clients that can send DELETE bodies. Meta only (platform `metaads`); other platforms return 405.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Pixel id.
+$ad_account_id = 'ad_account_id_example'; // string | Ad account to unshare, e.g. `act_123456789`. May also be sent in the JSON body.
+
+try {
+    $apiInstance->removeTrackingTagSharedAccount($account_id, $tag_id, $ad_account_id);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->removeTrackingTagSharedAccount: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Pixel id. | |
+| **ad_account_id** | **string**| Ad account to unshare, e.g. &#x60;act_123456789&#x60;. May also be sent in the JSON body. | [optional] |
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -1541,6 +1992,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\CreateConversionDestination201Response**](../Model/CreateConversionDestination201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateTrackingTag()`
+
+```php
+updateTrackingTag($account_id, $tag_id, $update_tracking_tag_request): \Zernio\Model\CreateTrackingTag201Response
+```
+
+Update a tracking tag (Meta Pixel)
+
+Partial-update a pixel. Whitelisted fields: `name` (rename), `enableAutomaticMatching`, `automaticMatchingFields`, `firstPartyCookieStatus`, `dataUseSetting`. At least one is required. Returns the re-fetched canonical tag. Meta only (platform `metaads`); other platforms return 405.  There is no DELETE — Meta has no API to delete a pixel. To stop using one, unshare it from your ad accounts (`DELETE .../tracking-tags/{tagId}/shared-accounts`) or disable it in Events Manager.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$tag_id = 'tag_id_example'; // string | Pixel id.
+$update_tracking_tag_request = new \Zernio\Model\UpdateTrackingTagRequest(); // \Zernio\Model\UpdateTrackingTagRequest
+
+try {
+    $result = $apiInstance->updateTrackingTag($account_id, $tag_id, $update_tracking_tag_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->updateTrackingTag: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **tag_id** | **string**| Pixel id. | |
+| **update_tracking_tag_request** | [**\Zernio\Model\UpdateTrackingTagRequest**](../Model/UpdateTrackingTagRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateTrackingTag201Response**](../Model/CreateTrackingTag201Response.md)
 
 ### Authorization
 
