@@ -36,6 +36,7 @@ docs/Api/QueueApi.md
 docs/Api/RedditSearchApi.md
 docs/Api/ReviewsApi.md
 docs/Api/SequencesApi.md
+docs/Api/TrackingTagsApi.md
 docs/Api/TwitterEngagementApi.md
 docs/Api/UsageApi.md
 docs/Api/UsersApi.md
@@ -961,6 +962,7 @@ lib/Api/QueueApi.php
 lib/Api/RedditSearchApi.php
 lib/Api/ReviewsApi.php
 lib/Api/SequencesApi.php
+lib/Api/TrackingTagsApi.php
 lib/Api/TwitterEngagementApi.php
 lib/Api/UsageApi.php
 lib/Api/UsersApi.php
@@ -1859,14 +1861,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AddTrackingTagSharedAccount201ResponseTest.php
-test/Model/AddTrackingTagSharedAccountRequestTest.php
-test/Model/CreateTrackingTag201ResponseTest.php
-test/Model/CreateTrackingTagRequestTest.php
-test/Model/GetTrackingTagStats200ResponseStatsTest.php
-test/Model/GetTrackingTagStats200ResponseTest.php
-test/Model/ListTrackingTagSharedAccounts200ResponseTest.php
-test/Model/ListTrackingTags200ResponseTest.php
-test/Model/SharedAdAccountTest.php
-test/Model/TrackingTagTest.php
-test/Model/UpdateTrackingTagRequestTest.php
+test/Api/TrackingTagsApiTest.php
