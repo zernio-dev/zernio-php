@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateStandaloneAdRequestPromotedObject Class Doc Comment
  *
  * @category Class
- * @description Meta only. Forwarded to the ad set&#39;s &#x60;promoted_object&#x60; (snake-cased).  Required for goals whose ad-set optimization_goal points at a specific event/page/app — without it Meta rejects the ad-set create with &#x60;error_subcode: 1815430&#x60; \&quot;Please select a promoted object for your ad set\&quot;:   - &#x60;goal: conversions&#x60; (OFFSITE_CONVERSIONS) — requires &#x60;pixelId&#x60; + &#x60;customEventType&#x60;   - &#x60;goal: app_promotion&#x60; (APP_INSTALLS) — requires &#x60;applicationId&#x60; + &#x60;objectStoreUrl&#x60;   - &#x60;goal: lead_generation&#x60; (LEAD_GENERATION) — &#x60;pageId&#x60; is auto-filled from the connected Page when omitted  Other goals (engagement, traffic, awareness, video_views) ignore this field.
+ * @description What the ad optimises against. Behaviour depends on the platform.  **Meta**: forwarded to the ad set&#39;s &#x60;promoted_object&#x60; (snake-cased). Required for goals whose ad-set optimization_goal points at a specific event/page/app (without it Meta rejects the ad-set create with &#x60;error_subcode: 1815430&#x60; \&quot;Please select a promoted object for your ad set\&quot;):   - &#x60;goal: conversions&#x60; (OFFSITE_CONVERSIONS): requires &#x60;pixelId&#x60; + &#x60;customEventType&#x60;   - &#x60;goal: app_promotion&#x60; (APP_INSTALLS): requires &#x60;applicationId&#x60; + &#x60;objectStoreUrl&#x60;   - &#x60;goal: lead_generation&#x60; (LEAD_GENERATION): &#x60;pageId&#x60; is auto-filled from the connected Page when omitted  Other Meta goals (engagement, traffic, awareness, video_views) ignore this field.  **TikTok**: only &#x60;goal: conversions&#x60; uses it.   - &#x60;pixelId&#x60; maps to the ad group&#39;s &#x60;pixel_id&#x60;. Required: a TikTok website-conversion     ad group without a pixel is rejected with &#x60;40002: Please select a pixel&#x60;.   - &#x60;customEventType&#x60; maps to the ad group&#39;s &#x60;optimization_event&#x60; (the pixel event to     optimise for). Optional: TikTok accepts a pixel-only auto-bid conversion ad group.     See the &#x60;customEventType&#x60; field below for the valid TikTok codes.  The remaining &#x60;promotedObject.*&#x60; fields are Meta-only. Platforms other than Meta and TikTok ignore &#x60;promotedObject&#x60; entirely.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -353,7 +353,7 @@ class CreateStandaloneAdRequestPromotedObject implements ModelInterface, ArrayAc
     /**
      * Sets pixel_id
      *
-     * @param string|null $pixel_id Facebook Pixel ID. Required for `goal: conversions`.
+     * @param string|null $pixel_id Pixel ID. **Meta:** Facebook Pixel ID, required for `goal: conversions`. **TikTok:** TikTok Pixel ID, required for `goal: conversions`.
      *
      * @return self
      */
@@ -380,7 +380,7 @@ class CreateStandaloneAdRequestPromotedObject implements ModelInterface, ArrayAc
     /**
      * Sets custom_event_type
      *
-     * @param string|null $custom_event_type Standard event the campaign optimises against, e.g. `PURCHASE`, `LEAD`, `COMPLETE_REGISTRATION`, `ADD_TO_CART`. Uppercased internally so callers can pass any case. Required for `goal: conversions`.
+     * @param string|null $custom_event_type The event the campaign/ad group optimises against.  **Meta:** standard event like `PURCHASE`, `LEAD`, `COMPLETE_REGISTRATION`, `ADD_TO_CART`. Uppercased internally so callers can pass any case. Required for `goal: conversions`.  **TikTok:** an `optimization_event` code (UPPER_SNAKE, not Meta's vocabulary and not PascalCase), e.g. `ON_WEB_ORDER` (Complete Payment), `INITIATE_ORDER` (Place an Order), `ON_WEB_CART` (Add to Cart), `ON_WEB_REGISTER` (Complete Registration), `FORM` (Submit Form), `ON_WEB_DETAIL` (View Content). Must be one of the events your TikTok Pixel is configured to track; passed through verbatim and validated by TikTok. Optional for `goal: conversions`.
      *
      * @return self
      */
