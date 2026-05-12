@@ -62,6 +62,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => 'string',
         'platform_ad_id' => 'string',
         'effective_story_id' => 'string',
+        'instagram_user_id' => 'string',
+        'instagram_permalink' => 'string',
+        'instagram_account_id' => 'string',
         'account_id' => 'string',
         'last_updated' => '\DateTime'
     ];
@@ -78,6 +81,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => null,
         'platform_ad_id' => null,
         'effective_story_id' => null,
+        'instagram_user_id' => null,
+        'instagram_permalink' => null,
+        'instagram_account_id' => null,
         'account_id' => null,
         'last_updated' => 'date-time'
     ];
@@ -92,6 +98,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => false,
         'platform_ad_id' => false,
         'effective_story_id' => false,
+        'instagram_user_id' => false,
+        'instagram_permalink' => false,
+        'instagram_account_id' => false,
         'account_id' => false,
         'last_updated' => false
     ];
@@ -186,6 +195,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => 'adId',
         'platform_ad_id' => 'platformAdId',
         'effective_story_id' => 'effectiveStoryId',
+        'instagram_user_id' => 'instagramUserId',
+        'instagram_permalink' => 'instagramPermalink',
+        'instagram_account_id' => 'instagramAccountId',
         'account_id' => 'accountId',
         'last_updated' => 'lastUpdated'
     ];
@@ -200,6 +212,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => 'setAdId',
         'platform_ad_id' => 'setPlatformAdId',
         'effective_story_id' => 'setEffectiveStoryId',
+        'instagram_user_id' => 'setInstagramUserId',
+        'instagram_permalink' => 'setInstagramPermalink',
+        'instagram_account_id' => 'setInstagramAccountId',
         'account_id' => 'setAccountId',
         'last_updated' => 'setLastUpdated'
     ];
@@ -214,6 +229,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => 'getAdId',
         'platform_ad_id' => 'getPlatformAdId',
         'effective_story_id' => 'getEffectiveStoryId',
+        'instagram_user_id' => 'getInstagramUserId',
+        'instagram_permalink' => 'getInstagramPermalink',
+        'instagram_account_id' => 'getInstagramAccountId',
         'account_id' => 'getAccountId',
         'last_updated' => 'getLastUpdated'
     ];
@@ -294,6 +312,9 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('ad_id', $data ?? [], null);
         $this->setIfExists('platform_ad_id', $data ?? [], null);
         $this->setIfExists('effective_story_id', $data ?? [], null);
+        $this->setIfExists('instagram_user_id', $data ?? [], null);
+        $this->setIfExists('instagram_permalink', $data ?? [], null);
+        $this->setIfExists('instagram_account_id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('last_updated', $data ?? [], null);
     }
@@ -481,6 +502,87 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable effective_story_id cannot be null');
         }
         $this->container['effective_story_id'] = $effective_story_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets instagram_user_id
+     *
+     * @return string|null
+     */
+    public function getInstagramUserId()
+    {
+        return $this->container['instagram_user_id'];
+    }
+
+    /**
+     * Sets instagram_user_id
+     *
+     * @param string|null $instagram_user_id Instagram-only. The Instagram-scoped business ID that owns the boosted media (creative.instagram_user_id).
+     *
+     * @return self
+     */
+    public function setInstagramUserId($instagram_user_id)
+    {
+        if (is_null($instagram_user_id)) {
+            throw new \InvalidArgumentException('non-nullable instagram_user_id cannot be null');
+        }
+        $this->container['instagram_user_id'] = $instagram_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets instagram_permalink
+     *
+     * @return string|null
+     */
+    public function getInstagramPermalink()
+    {
+        return $this->container['instagram_permalink'];
+    }
+
+    /**
+     * Sets instagram_permalink
+     *
+     * @param string|null $instagram_permalink Instagram-only. Public permalink of the boosted IG post (creative.instagram_permalink_url).
+     *
+     * @return self
+     */
+    public function setInstagramPermalink($instagram_permalink)
+    {
+        if (is_null($instagram_permalink)) {
+            throw new \InvalidArgumentException('non-nullable instagram_permalink cannot be null');
+        }
+        $this->container['instagram_permalink'] = $instagram_permalink;
+
+        return $this;
+    }
+
+    /**
+     * Gets instagram_account_id
+     *
+     * @return string|null
+     */
+    public function getInstagramAccountId()
+    {
+        return $this->container['instagram_account_id'];
+    }
+
+    /**
+     * Sets instagram_account_id
+     *
+     * @param string|null $instagram_account_id Instagram-only. The connected Instagram SocialAccount these comments were read through — use it for reply/hide actions via /v1/inbox/comments.
+     *
+     * @return self
+     */
+    public function setInstagramAccountId($instagram_account_id)
+    {
+        if (is_null($instagram_account_id)) {
+            throw new \InvalidArgumentException('non-nullable instagram_account_id cannot be null');
+        }
+        $this->container['instagram_account_id'] = $instagram_account_id;
 
         return $this;
     }
