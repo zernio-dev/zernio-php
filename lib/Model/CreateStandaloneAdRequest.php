@@ -77,6 +77,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'ad_set_id' => 'string',
         'business_name' => 'string',
         'board_id' => 'string',
+        'organization_id' => 'string',
         'countries' => 'string[]',
         'cities' => '\Zernio\Model\CreateStandaloneAdRequestCitiesInner[]',
         'regions' => '\Zernio\Model\CreateStandaloneAdRequestRegionsInner[]',
@@ -90,6 +91,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_headlines' => 'string[]',
         'additional_descriptions' => 'string[]',
         'advantage_audience' => 'int',
+        'attribution_spec' => '\Zernio\Model\CreateStandaloneAdRequestAttributionSpecInner[]',
         'gender' => 'string',
         'bid_strategy' => '\Zernio\Model\BidStrategy',
         'bid_amount' => 'float',
@@ -128,6 +130,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'ad_set_id' => null,
         'business_name' => null,
         'board_id' => null,
+        'organization_id' => null,
         'countries' => null,
         'cities' => null,
         'regions' => null,
@@ -141,6 +144,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_headlines' => null,
         'additional_descriptions' => null,
         'advantage_audience' => null,
+        'attribution_spec' => null,
         'gender' => null,
         'bid_strategy' => null,
         'bid_amount' => null,
@@ -177,6 +181,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'ad_set_id' => false,
         'business_name' => false,
         'board_id' => false,
+        'organization_id' => false,
         'countries' => false,
         'cities' => false,
         'regions' => false,
@@ -190,6 +195,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_headlines' => false,
         'additional_descriptions' => false,
         'advantage_audience' => false,
+        'attribution_spec' => false,
         'gender' => false,
         'bid_strategy' => false,
         'bid_amount' => false,
@@ -306,6 +312,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'ad_set_id' => 'adSetId',
         'business_name' => 'businessName',
         'board_id' => 'boardId',
+        'organization_id' => 'organizationId',
         'countries' => 'countries',
         'cities' => 'cities',
         'regions' => 'regions',
@@ -319,6 +326,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_headlines' => 'additionalHeadlines',
         'additional_descriptions' => 'additionalDescriptions',
         'advantage_audience' => 'advantageAudience',
+        'attribution_spec' => 'attributionSpec',
         'gender' => 'gender',
         'bid_strategy' => 'bidStrategy',
         'bid_amount' => 'bidAmount',
@@ -355,6 +363,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'ad_set_id' => 'setAdSetId',
         'business_name' => 'setBusinessName',
         'board_id' => 'setBoardId',
+        'organization_id' => 'setOrganizationId',
         'countries' => 'setCountries',
         'cities' => 'setCities',
         'regions' => 'setRegions',
@@ -368,6 +377,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_headlines' => 'setAdditionalHeadlines',
         'additional_descriptions' => 'setAdditionalDescriptions',
         'advantage_audience' => 'setAdvantageAudience',
+        'attribution_spec' => 'setAttributionSpec',
         'gender' => 'setGender',
         'bid_strategy' => 'setBidStrategy',
         'bid_amount' => 'setBidAmount',
@@ -404,6 +414,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'ad_set_id' => 'getAdSetId',
         'business_name' => 'getBusinessName',
         'board_id' => 'getBoardId',
+        'organization_id' => 'getOrganizationId',
         'countries' => 'getCountries',
         'cities' => 'getCities',
         'regions' => 'getRegions',
@@ -417,6 +428,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'additional_headlines' => 'getAdditionalHeadlines',
         'additional_descriptions' => 'getAdditionalDescriptions',
         'advantage_audience' => 'getAdvantageAudience',
+        'attribution_spec' => 'getAttributionSpec',
         'gender' => 'getGender',
         'bid_strategy' => 'getBidStrategy',
         'bid_amount' => 'getBidAmount',
@@ -488,6 +500,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const CALL_TO_ACTION_GET_QUOTE = 'GET_QUOTE';
     public const CALL_TO_ACTION_SUBSCRIBE = 'SUBSCRIBE';
     public const CALL_TO_ACTION_WATCH_MORE = 'WATCH_MORE';
+    public const CALL_TO_ACTION_REGISTER = 'REGISTER';
+    public const CALL_TO_ACTION_JOIN = 'JOIN';
+    public const CALL_TO_ACTION_ATTEND = 'ATTEND';
+    public const CALL_TO_ACTION_REQUEST_DEMO = 'REQUEST_DEMO';
+    public const CALL_TO_ACTION_VIEW_QUOTE = 'VIEW_QUOTE';
+    public const CALL_TO_ACTION_APPLY = 'APPLY';
+    public const CALL_TO_ACTION_SEE_MORE = 'SEE_MORE';
+    public const CALL_TO_ACTION_BUY_NOW = 'BUY_NOW';
     public const CAMPAIGN_TYPE_DISPLAY = 'display';
     public const CAMPAIGN_TYPE_SEARCH = 'search';
     public const ADVANTAGE_AUDIENCE_NUMBER_0 = 0;
@@ -547,6 +567,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             self::CALL_TO_ACTION_GET_QUOTE,
             self::CALL_TO_ACTION_SUBSCRIBE,
             self::CALL_TO_ACTION_WATCH_MORE,
+            self::CALL_TO_ACTION_REGISTER,
+            self::CALL_TO_ACTION_JOIN,
+            self::CALL_TO_ACTION_ATTEND,
+            self::CALL_TO_ACTION_REQUEST_DEMO,
+            self::CALL_TO_ACTION_VIEW_QUOTE,
+            self::CALL_TO_ACTION_APPLY,
+            self::CALL_TO_ACTION_SEE_MORE,
+            self::CALL_TO_ACTION_BUY_NOW,
         ];
     }
 
@@ -637,6 +665,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('ad_set_id', $data ?? [], null);
         $this->setIfExists('business_name', $data ?? [], null);
         $this->setIfExists('board_id', $data ?? [], null);
+        $this->setIfExists('organization_id', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
         $this->setIfExists('cities', $data ?? [], null);
         $this->setIfExists('regions', $data ?? [], null);
@@ -650,6 +679,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('additional_headlines', $data ?? [], null);
         $this->setIfExists('additional_descriptions', $data ?? [], null);
         $this->setIfExists('advantage_audience', $data ?? [], null);
+        $this->setIfExists('attribution_spec', $data ?? [], null);
         $this->setIfExists('gender', $data ?? [], 'all');
         $this->setIfExists('bid_strategy', $data ?? [], null);
         $this->setIfExists('bid_amount', $data ?? [], null);
@@ -772,6 +802,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
                 $this->container['advantage_audience'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['attribution_spec']) && (count($this->container['attribution_spec']) > 3)) {
+            $invalidProperties[] = "invalid value for 'attribution_spec', number of items must be less than or equal to 3.";
+        }
+
+        if (!is_null($this->container['attribution_spec']) && (count($this->container['attribution_spec']) < 1)) {
+            $invalidProperties[] = "invalid value for 'attribution_spec', number of items must be greater than or equal to 1.";
         }
 
         $allowedValues = $this->getGenderAllowableValues();
@@ -913,7 +951,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets goal
      *
-     * @param string|null $goal Required on legacy + multi-creative shapes. Inherited from the ad set on the attach shape. Available goals vary by platform. Meta-specific: `conversions` requires `promotedObject.pixelId` + `promotedObject.customEventType`; `app_promotion` requires `promotedObject.applicationId` + `promotedObject.objectStoreUrl`; `lead_generation` accepts an optional `promotedObject.pageId` (auto-filled from the connected Page when omitted).
+     * @param string|null $goal Required on legacy + multi-creative shapes. Inherited from the ad set on the attach shape. Available goals vary by platform. Meta-specific: `conversions` requires `promotedObject.pixelId` + `promotedObject.customEventType`; `app_promotion` requires `promotedObject.applicationId` + `promotedObject.objectStoreUrl`; `lead_generation` accepts an optional `promotedObject.pageId` (auto-filled from the connected Page when omitted). LinkedIn-specific: only `engagement`, `traffic`, and `awareness` are supported for standalone ads (creates a Direct Sponsored Content single image ad); `traffic` requires `linkUrl`. For `video_views` / `lead_generation` / `conversions` on LinkedIn — or to promote an existing post — use `POST /v1/ads/boost`.
      *
      * @return self
      */
@@ -1041,7 +1079,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets headline
      *
-     * @param string|null $headline Required for Meta, Google, and Pinterest on legacy + attach shapes (skip for multi-creative — use `creatives[].headline`). Ignored for TikTok and X/Twitter. Max: Meta=255, Google=30, Pinterest=100.
+     * @param string|null $headline Required for Meta, Google, Pinterest, and LinkedIn on legacy + attach shapes (skip for multi-creative — use `creatives[].headline`). Ignored for TikTok and X/Twitter. Max: Meta=255, Google=30, Pinterest=100, LinkedIn=400. On LinkedIn this is the ad's headline (the bold text on the creative); for traffic ads it's the link card title.
      *
      * @return self
      */
@@ -1068,7 +1106,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets long_headline
      *
-     * @param string|null $long_headline Google Display only. Defaults to `headline` if omitted.
+     * @param string|null $long_headline Google Display only — defaults to `headline` if omitted. On LinkedIn, reused as the optional secondary description text on traffic (link) ads; omitted if not provided.
      *
      * @return self
      */
@@ -1099,7 +1137,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets body
      *
-     * @param string|null $body Required on legacy + attach shapes. For X/Twitter this is the tweet text (max 280 chars including a ~24-char URL when `linkUrl` is set). Max: Google=90, Pinterest=500.
+     * @param string|null $body Required on legacy + attach shapes. For X/Twitter this is the tweet text (max 280 chars including a ~24-char URL when `linkUrl` is set). On LinkedIn this is the post commentary (the intro text shown above the ad). Max: Google=90, Pinterest=500.
      *
      * @return self
      */
@@ -1126,7 +1164,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets call_to_action
      *
-     * @param string|null $call_to_action Required on legacy + attach shapes for Meta. Honoured on TikTok too — passes through to the Spark Ad creative's `call_to_action`. Ignored by other platforms.
+     * @param string|null $call_to_action Required on legacy + attach shapes for Meta. Honoured on TikTok (passes through to the Spark Ad creative's `call_to_action`) and on LinkedIn (the CTA button on the ad; defaults to LEARN_MORE when `linkUrl` is set). LinkedIn accepts: LEARN_MORE, SIGN_UP, DOWNLOAD, SUBSCRIBE, REGISTER, JOIN, ATTEND, REQUEST_DEMO, VIEW_QUOTE, APPLY, SEE_MORE, SHOP_NOW, BUY_NOW. Ignored by Google, Pinterest, and X/Twitter.
      *
      * @return self
      */
@@ -1163,7 +1201,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets link_url
      *
-     * @param string|null $link_url Required on legacy + attach shapes. Skip for multi-creative.
+     * @param string|null $link_url Required on legacy + attach shapes (skip for multi-creative). On LinkedIn it's the ad's destination URL; required for `traffic` ads, optional for `engagement` / `awareness`.
      *
      * @return self
      */
@@ -1190,7 +1228,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets image_url
      *
-     * @param string|null $image_url Image creative for Meta/Google/Pinterest on legacy + attach shapes (mutually exclusive with `video`). Not required for Google Search campaigns. For TikTok, this field carries the VIDEO URL (the TikTok ads endpoint is video-only; the field retains the `imageUrl` name for cross-platform consistency). Ignored for X/Twitter. For Google Display, treated as the landscape image (alias of `images.landscape`); supply `images.square` alongside or the request is rejected.
+     * @param string|null $image_url Image creative for Meta/Google/Pinterest/LinkedIn on legacy + attach shapes (mutually exclusive with `video`). Required for LinkedIn ads. Not required for Google Search campaigns. For TikTok, this field carries the VIDEO URL (the TikTok ads endpoint is video-only; the field retains the `imageUrl` name for cross-platform consistency). Ignored for X/Twitter. For Google Display, treated as the landscape image (alias of `images.landscape`); supply `images.square` alongside or the request is rejected. For LinkedIn the image is uploaded to LinkedIn under the authoring Company Page (see `organizationId`); recommended ratio 1.91:1 (e.g. 1200×627).
      *
      * @return self
      */
@@ -1376,6 +1414,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets organization_id
+     *
+     * @return string|null
+     */
+    public function getOrganizationId()
+    {
+        return $this->container['organization_id'];
+    }
+
+    /**
+     * Sets organization_id
+     *
+     * @param string|null $organization_id LinkedIn only. The Company Page that authors the Direct Sponsored Content (\"dark\") post backing the ad — accepts a numeric organization ID or a full `urn:li:organization:N` URN. Required unless the resolved `accountId` is a connected LinkedIn Company-Page account (defaults to that page) or the LinkedIn ad account is org-owned (defaults to the account's owning organization). The authenticated member must be an ADMINISTRATOR or DIRECT_SPONSORED_CONTENT_POSTER of this page (and the page must be associated with the ad account), or LinkedIn returns 403. Ignored by every other platform.
+     *
+     * @return self
+     */
+    public function setOrganizationId($organization_id)
+    {
+        if (is_null($organization_id)) {
+            throw new \InvalidArgumentException('non-nullable organization_id cannot be null');
+        }
+        $this->container['organization_id'] = $organization_id;
+
+        return $this;
+    }
+
+    /**
      * Gets countries
      *
      * @return string[]|null
@@ -1388,7 +1453,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets countries
      *
-     * @param string[]|null $countries ISO 3166-1 alpha-2 country codes (e.g. ['NL']). Defaults to ['US'] when no `cities` or `regions` are provided.
+     * @param string[]|null $countries ISO 3166-1 alpha-2 country codes (e.g. ['NL']). Defaults to ['US'] when no `cities` or `regions` are provided. (LinkedIn currently honours country-level targeting only.)
      *
      * @return self
      */
@@ -1758,6 +1823,40 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['advantage_audience'] = $advantage_audience;
+
+        return $this;
+    }
+
+    /**
+     * Gets attribution_spec
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestAttributionSpecInner[]|null
+     */
+    public function getAttributionSpec()
+    {
+        return $this->container['attribution_spec'];
+    }
+
+    /**
+     * Sets attribution_spec
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestAttributionSpecInner[]|null $attribution_spec Meta only. Conversion attribution window for the ad set — maps 1:1 to Meta's ad-set `attribution_spec`. Only honored for conversion goals (`conversions`, `lead_generation`, `app_promotion`); ignored for awareness/traffic/engagement. Omit to use Meta's default (`7-day click` + `1-day view`). Meta enforces the valid combinations: `VIEW_THROUGH` only allows `windowDays: 1` (7d/28d view windows were removed Jan 2026); `ENGAGED_VIDEO_VIEW` only `1` and only alongside `VIEW_THROUGH: 1`; `CLICK_THROUGH: 28` only on certain objectives. Invalid combos surface as a Meta 400. Example: `[{ \"eventType\": \"CLICK_THROUGH\", \"windowDays\": 7 }, { \"eventType\": \"VIEW_THROUGH\", \"windowDays\": 1 }]`
+     *
+     * @return self
+     */
+    public function setAttributionSpec($attribution_spec)
+    {
+        if (is_null($attribution_spec)) {
+            throw new \InvalidArgumentException('non-nullable attribution_spec cannot be null');
+        }
+
+        if ((count($attribution_spec) > 3)) {
+            throw new \InvalidArgumentException('invalid value for $attribution_spec when calling CreateStandaloneAdRequest., number of items must be less than or equal to 3.');
+        }
+        if ((count($attribution_spec) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $attribution_spec when calling CreateStandaloneAdRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['attribution_spec'] = $attribution_spec;
 
         return $this;
     }

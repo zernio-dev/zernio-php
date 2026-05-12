@@ -504,6 +504,7 @@ Class | Method | HTTP request | Description
 - [CreateStandaloneAd201ResponseOneOf](docs/Model/CreateStandaloneAd201ResponseOneOf.md)
 - [CreateStandaloneAd201ResponseOneOf1](docs/Model/CreateStandaloneAd201ResponseOneOf1.md)
 - [CreateStandaloneAdRequest](docs/Model/CreateStandaloneAdRequest.md)
+- [CreateStandaloneAdRequestAttributionSpecInner](docs/Model/CreateStandaloneAdRequestAttributionSpecInner.md)
 - [CreateStandaloneAdRequestBrandIdentity](docs/Model/CreateStandaloneAdRequestBrandIdentity.md)
 - [CreateStandaloneAdRequestCitiesInner](docs/Model/CreateStandaloneAdRequestCitiesInner.md)
 - [CreateStandaloneAdRequestCreativesInner](docs/Model/CreateStandaloneAdRequestCreativesInner.md)
