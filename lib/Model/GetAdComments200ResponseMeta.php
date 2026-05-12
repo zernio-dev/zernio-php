@@ -63,6 +63,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => 'string',
         'platform_ad_id' => 'string',
         'effective_story_id' => 'string',
+        'facebook_account_id' => 'string',
         'instagram_user_id' => 'string',
         'instagram_permalink' => 'string',
         'instagram_account_id' => 'string',
@@ -83,6 +84,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => null,
         'platform_ad_id' => null,
         'effective_story_id' => null,
+        'facebook_account_id' => null,
         'instagram_user_id' => null,
         'instagram_permalink' => null,
         'instagram_account_id' => null,
@@ -101,6 +103,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => false,
         'platform_ad_id' => false,
         'effective_story_id' => false,
+        'facebook_account_id' => false,
         'instagram_user_id' => false,
         'instagram_permalink' => false,
         'instagram_account_id' => false,
@@ -199,6 +202,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => 'adId',
         'platform_ad_id' => 'platformAdId',
         'effective_story_id' => 'effectiveStoryId',
+        'facebook_account_id' => 'facebookAccountId',
         'instagram_user_id' => 'instagramUserId',
         'instagram_permalink' => 'instagramPermalink',
         'instagram_account_id' => 'instagramAccountId',
@@ -217,6 +221,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => 'setAdId',
         'platform_ad_id' => 'setPlatformAdId',
         'effective_story_id' => 'setEffectiveStoryId',
+        'facebook_account_id' => 'setFacebookAccountId',
         'instagram_user_id' => 'setInstagramUserId',
         'instagram_permalink' => 'setInstagramPermalink',
         'instagram_account_id' => 'setInstagramAccountId',
@@ -235,6 +240,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         'ad_id' => 'getAdId',
         'platform_ad_id' => 'getPlatformAdId',
         'effective_story_id' => 'getEffectiveStoryId',
+        'facebook_account_id' => 'getFacebookAccountId',
         'instagram_user_id' => 'getInstagramUserId',
         'instagram_permalink' => 'getInstagramPermalink',
         'instagram_account_id' => 'getInstagramAccountId',
@@ -334,6 +340,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('ad_id', $data ?? [], null);
         $this->setIfExists('platform_ad_id', $data ?? [], null);
         $this->setIfExists('effective_story_id', $data ?? [], null);
+        $this->setIfExists('facebook_account_id', $data ?? [], null);
         $this->setIfExists('instagram_user_id', $data ?? [], null);
         $this->setIfExists('instagram_permalink', $data ?? [], null);
         $this->setIfExists('instagram_account_id', $data ?? [], null);
@@ -578,6 +585,33 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
+     * Gets facebook_account_id
+     *
+     * @return string|null
+     */
+    public function getFacebookAccountId()
+    {
+        return $this->container['facebook_account_id'];
+    }
+
+    /**
+     * Sets facebook_account_id
+     *
+     * @param string|null $facebook_account_id Facebook-only. The connected Facebook Page SocialAccount these comments were read through — pass it as `accountId` (with `effectiveStoryId` as the postId) to /v1/inbox/comments to reply/hide/delete. Null when no connected Page was used (then moderation isn't possible).
+     *
+     * @return self
+     */
+    public function setFacebookAccountId($facebook_account_id)
+    {
+        if (is_null($facebook_account_id)) {
+            throw new \InvalidArgumentException('non-nullable facebook_account_id cannot be null');
+        }
+        $this->container['facebook_account_id'] = $facebook_account_id;
+
+        return $this;
+    }
+
+    /**
      * Gets instagram_user_id
      *
      * @return string|null
@@ -644,7 +678,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets instagram_account_id
      *
-     * @param string|null $instagram_account_id Instagram-only. The connected Instagram SocialAccount these comments were read through — use it for reply/hide actions via /v1/inbox/comments.
+     * @param string|null $instagram_account_id Instagram-only. The connected Instagram SocialAccount these comments were read through — pass it as `accountId` (with `effectiveStoryId` as the postId) to /v1/inbox/comments to reply/hide/delete.
      *
      * @return self
      */
