@@ -59,6 +59,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'platform' => 'string',
+        'placement' => 'string',
         'ad_id' => 'string',
         'platform_ad_id' => 'string',
         'effective_story_id' => 'string',
@@ -78,6 +79,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPIFormats = [
         'platform' => null,
+        'placement' => null,
         'ad_id' => null,
         'platform_ad_id' => null,
         'effective_story_id' => null,
@@ -95,6 +97,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
       */
     protected static array $openAPINullables = [
         'platform' => false,
+        'placement' => false,
         'ad_id' => false,
         'platform_ad_id' => false,
         'effective_story_id' => false,
@@ -192,6 +195,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'platform' => 'platform',
+        'placement' => 'placement',
         'ad_id' => 'adId',
         'platform_ad_id' => 'platformAdId',
         'effective_story_id' => 'effectiveStoryId',
@@ -209,6 +213,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'platform' => 'setPlatform',
+        'placement' => 'setPlacement',
         'ad_id' => 'setAdId',
         'platform_ad_id' => 'setPlatformAdId',
         'effective_story_id' => 'setEffectiveStoryId',
@@ -226,6 +231,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'platform' => 'getPlatform',
+        'placement' => 'getPlacement',
         'ad_id' => 'getAdId',
         'platform_ad_id' => 'getPlatformAdId',
         'effective_story_id' => 'getEffectiveStoryId',
@@ -279,6 +285,8 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
 
     public const PLATFORM_FACEBOOK = 'facebook';
     public const PLATFORM_INSTAGRAM = 'instagram';
+    public const PLACEMENT_FACEBOOK = 'facebook';
+    public const PLACEMENT_INSTAGRAM = 'instagram';
 
     /**
      * Gets allowable values of the enum
@@ -290,6 +298,19 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
         return [
             self::PLATFORM_FACEBOOK,
             self::PLATFORM_INSTAGRAM,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlacementAllowableValues()
+    {
+        return [
+            self::PLACEMENT_FACEBOOK,
+            self::PLACEMENT_INSTAGRAM,
         ];
     }
 
@@ -309,6 +330,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     public function __construct(?array $data = null)
     {
         $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('placement', $data ?? [], null);
         $this->setIfExists('ad_id', $data ?? [], null);
         $this->setIfExists('platform_ad_id', $data ?? [], null);
         $this->setIfExists('effective_story_id', $data ?? [], null);
@@ -358,6 +380,18 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
             );
         }
 
+        if ($this->container['placement'] === null) {
+            $invalidProperties[] = "'placement' can't be null";
+        }
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($this->container['placement']) && !in_array($this->container['placement'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'placement', must be one of '%s'",
+                $this->container['placement'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['ad_id'] === null) {
             $invalidProperties[] = "'ad_id' can't be null";
         }
@@ -401,7 +435,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets platform
      *
-     * @param string $platform platform
+     * @param string $platform Which side these comments are on (same as `placement`).
      *
      * @return self
      */
@@ -421,6 +455,43 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
             );
         }
         $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets placement
+     *
+     * @return string
+     */
+    public function getPlacement()
+    {
+        return $this->container['placement'];
+    }
+
+    /**
+     * Sets placement
+     *
+     * @param string $placement The placement these comments are for — useful when you didn't pass ?placement= and want to know which one you got.
+     *
+     * @return self
+     */
+    public function setPlacement($placement)
+    {
+        if (is_null($placement)) {
+            throw new \InvalidArgumentException('non-nullable placement cannot be null');
+        }
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!in_array($placement, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'placement', must be one of '%s'",
+                    $placement,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['placement'] = $placement;
 
         return $this;
     }
@@ -492,7 +563,7 @@ class GetAdComments200ResponseMeta implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets effective_story_id
      *
-     * @param string $effective_story_id Underlying post ID the comments belong to. effective_object_story_id for Facebook, effective_instagram_media_id for Instagram.
+     * @param string $effective_story_id Underlying post ID the comments belong to. effective_object_story_id for the Facebook side, effective_instagram_media_id for the Instagram side.
      *
      * @return self
      */

@@ -287,7 +287,7 @@ listInboxComments($profile_id, $platform, $min_comments, $since, $sort_by, $sort
 
 List commented posts
 
-Returns posts with comment counts from all connected accounts. Aggregates data across multiple accounts.  For users with the Ads add-on (Metronome plans always qualify), the user's Meta ads (boosted/dark posts) are included too, flagged with `isAd: true` and an `adId`. Use `?platform=metaads` to return *only* ad rows; passing `facebook`/`instagram` returns *organic* posts only (no ads); omitting `platform` returns both. Fetch an ad row's thread from GET /v1/ads/{adId}/comments. Ad comment counts are read with the Marketing API token (Facebook) or the connected Instagram account's token (Instagram); an ad whose count can't be read is omitted.
+Returns posts with comment counts from all connected accounts. Aggregates data across multiple accounts.  For users with the Ads add-on (Metronome plans always qualify), the user's Meta ads (boosted/dark posts) are included too. There's one row per (ad, placement-with-comments): an ad that runs on both Facebook feed and Instagram feed produces up to two rows (the Page dark post and the IG media have separate comment threads), each flagged `isAd: true` with `adId` and `placement` (`id` is `{adId}:{placement}`). Use `?platform=metaads` to return *only* ad rows; passing `facebook`/`instagram` returns *organic* posts only (no ads); omitting `platform` returns both. Fetch a row's thread from GET /v1/ads/{adId}/comments?placement={placement}. Ad comment counts are read with the Marketing API token (Facebook side) or the connected Instagram account's token (Instagram side); a row whose count can't be read is omitted.
 
 ### Example
 

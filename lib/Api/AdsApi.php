@@ -2896,6 +2896,7 @@ class AdsApi
      * List comments on an ad
      *
      * @param  string $ad_id Internal Zernio ad ID (ObjectId). (required)
+     * @param  string|null $placement Which side of the ad to return comments for. Omit to default to the Instagram side when present, else Facebook. Returns ad_not_commentable if the ad has no such placement. (optional)
      * @param  int|null $limit limit (optional, default to 25)
      * @param  string|null $cursor Pagination cursor from a previous response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdComments'] to see the possible values for this operation
@@ -2904,9 +2905,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetAdComments200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
-    public function getAdComments($ad_id, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
+    public function getAdComments($ad_id, $placement = null, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
     {
-        list($response) = $this->getAdCommentsWithHttpInfo($ad_id, $limit, $cursor, $contentType);
+        list($response) = $this->getAdCommentsWithHttpInfo($ad_id, $placement, $limit, $cursor, $contentType);
         return $response;
     }
 
@@ -2916,6 +2917,7 @@ class AdsApi
      * List comments on an ad
      *
      * @param  string $ad_id Internal Zernio ad ID (ObjectId). (required)
+     * @param  string|null $placement Which side of the ad to return comments for. Omit to default to the Instagram side when present, else Facebook. Returns ad_not_commentable if the ad has no such placement. (optional)
      * @param  int|null $limit (optional, default to 25)
      * @param  string|null $cursor Pagination cursor from a previous response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdComments'] to see the possible values for this operation
@@ -2924,9 +2926,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetAdComments200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAdCommentsWithHttpInfo($ad_id, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
+    public function getAdCommentsWithHttpInfo($ad_id, $placement = null, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
     {
-        $request = $this->getAdCommentsRequest($ad_id, $limit, $cursor, $contentType);
+        $request = $this->getAdCommentsRequest($ad_id, $placement, $limit, $cursor, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3031,6 +3033,7 @@ class AdsApi
      * List comments on an ad
      *
      * @param  string $ad_id Internal Zernio ad ID (ObjectId). (required)
+     * @param  string|null $placement Which side of the ad to return comments for. Omit to default to the Instagram side when present, else Facebook. Returns ad_not_commentable if the ad has no such placement. (optional)
      * @param  int|null $limit (optional, default to 25)
      * @param  string|null $cursor Pagination cursor from a previous response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdComments'] to see the possible values for this operation
@@ -3038,9 +3041,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdCommentsAsync($ad_id, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
+    public function getAdCommentsAsync($ad_id, $placement = null, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
     {
-        return $this->getAdCommentsAsyncWithHttpInfo($ad_id, $limit, $cursor, $contentType)
+        return $this->getAdCommentsAsyncWithHttpInfo($ad_id, $placement, $limit, $cursor, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3054,6 +3057,7 @@ class AdsApi
      * List comments on an ad
      *
      * @param  string $ad_id Internal Zernio ad ID (ObjectId). (required)
+     * @param  string|null $placement Which side of the ad to return comments for. Omit to default to the Instagram side when present, else Facebook. Returns ad_not_commentable if the ad has no such placement. (optional)
      * @param  int|null $limit (optional, default to 25)
      * @param  string|null $cursor Pagination cursor from a previous response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdComments'] to see the possible values for this operation
@@ -3061,10 +3065,10 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdCommentsAsyncWithHttpInfo($ad_id, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
+    public function getAdCommentsAsyncWithHttpInfo($ad_id, $placement = null, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
     {
         $returnType = '\Zernio\Model\GetAdComments200Response';
-        $request = $this->getAdCommentsRequest($ad_id, $limit, $cursor, $contentType);
+        $request = $this->getAdCommentsRequest($ad_id, $placement, $limit, $cursor, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3106,6 +3110,7 @@ class AdsApi
      * Create request for operation 'getAdComments'
      *
      * @param  string $ad_id Internal Zernio ad ID (ObjectId). (required)
+     * @param  string|null $placement Which side of the ad to return comments for. Omit to default to the Instagram side when present, else Facebook. Returns ad_not_commentable if the ad has no such placement. (optional)
      * @param  int|null $limit (optional, default to 25)
      * @param  string|null $cursor Pagination cursor from a previous response. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdComments'] to see the possible values for this operation
@@ -3113,7 +3118,7 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAdCommentsRequest($ad_id, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
+    public function getAdCommentsRequest($ad_id, $placement = null, $limit = 25, $cursor = null, string $contentType = self::contentTypes['getAdComments'][0])
     {
 
         // verify the required parameter 'ad_id' is set
@@ -3122,6 +3127,7 @@ class AdsApi
                 'Missing the required parameter $ad_id when calling getAdComments'
             );
         }
+
 
         if ($limit !== null && $limit > 100) {
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.getAdComments, must be smaller than or equal to 100.');
@@ -3139,6 +3145,15 @@ class AdsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $placement,
+            'placement', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,

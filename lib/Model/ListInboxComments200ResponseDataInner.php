@@ -71,7 +71,8 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'cid' => 'string',
         'subreddit' => 'string',
         'is_ad' => 'bool',
-        'ad_id' => 'string'
+        'ad_id' => 'string',
+        'placement' => 'string'
     ];
 
     /**
@@ -95,7 +96,8 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'cid' => null,
         'subreddit' => null,
         'is_ad' => null,
-        'ad_id' => null
+        'ad_id' => null,
+        'placement' => null
     ];
 
     /**
@@ -117,7 +119,8 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'cid' => false,
         'subreddit' => false,
         'is_ad' => false,
-        'ad_id' => false
+        'ad_id' => false,
+        'placement' => false
     ];
 
     /**
@@ -219,7 +222,8 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'cid' => 'cid',
         'subreddit' => 'subreddit',
         'is_ad' => 'isAd',
-        'ad_id' => 'adId'
+        'ad_id' => 'adId',
+        'placement' => 'placement'
     ];
 
     /**
@@ -241,7 +245,8 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'cid' => 'setCid',
         'subreddit' => 'setSubreddit',
         'is_ad' => 'setIsAd',
-        'ad_id' => 'setAdId'
+        'ad_id' => 'setAdId',
+        'placement' => 'setPlacement'
     ];
 
     /**
@@ -263,7 +268,8 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'cid' => 'getCid',
         'subreddit' => 'getSubreddit',
         'is_ad' => 'getIsAd',
-        'ad_id' => 'getAdId'
+        'ad_id' => 'getAdId',
+        'placement' => 'getPlacement'
     ];
 
     /**
@@ -307,6 +313,21 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         return self::$openAPIModelName;
     }
 
+    public const PLACEMENT_FACEBOOK = 'facebook';
+    public const PLACEMENT_INSTAGRAM = 'instagram';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlacementAllowableValues()
+    {
+        return [
+            self::PLACEMENT_FACEBOOK,
+            self::PLACEMENT_INSTAGRAM,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -337,6 +358,7 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         $this->setIfExists('subreddit', $data ?? [], null);
         $this->setIfExists('is_ad', $data ?? [], null);
         $this->setIfExists('ad_id', $data ?? [], null);
+        $this->setIfExists('placement', $data ?? [], null);
     }
 
     /**
@@ -365,6 +387,15 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!is_null($this->container['placement']) && !in_array($this->container['placement'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'placement', must be one of '%s'",
+                $this->container['placement'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -718,7 +749,7 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets is_ad
      *
-     * @param bool|null $is_ad True when this row is an ad (boosted/dark post). `platform` is then the comment platform (facebook or instagram), `id` equals `adId`, and the thread is at GET /v1/ads/{adId}/comments.
+     * @param bool|null $is_ad True when this row is an ad (boosted/dark post). `platform` is then the placement (facebook = the Page dark post / instagram = the IG media), `id` is `{adId}:{placement}`, and the thread is at GET /v1/ads/{adId}/comments?placement={placement}.
      *
      * @return self
      */
@@ -745,7 +776,7 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
     /**
      * Sets ad_id
      *
-     * @param string|null $ad_id Internal Zernio ad id — only on ad rows (same value as `id`).
+     * @param string|null $ad_id Internal Zernio ad id — only on ad rows.
      *
      * @return self
      */
@@ -755,6 +786,43 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable ad_id cannot be null');
         }
         $this->container['ad_id'] = $ad_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets placement
+     *
+     * @return string|null
+     */
+    public function getPlacement()
+    {
+        return $this->container['placement'];
+    }
+
+    /**
+     * Sets placement
+     *
+     * @param string|null $placement Which side of the ad this row's comments are on — only on ad rows.
+     *
+     * @return self
+     */
+    public function setPlacement($placement)
+    {
+        if (is_null($placement)) {
+            throw new \InvalidArgumentException('non-nullable placement cannot be null');
+        }
+        $allowedValues = $this->getPlacementAllowableValues();
+        if (!in_array($placement, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'placement', must be one of '%s'",
+                    $placement,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['placement'] = $placement;
 
         return $this;
     }
