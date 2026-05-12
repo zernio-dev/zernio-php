@@ -1,6 +1,6 @@
 <?php
 /**
- * GetInboxPostComments200ResponseMeta
+ * GetInboxPostComments200ResponseMetaAdComments
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetInboxPostComments200ResponseMeta Class Doc Comment
+ * GetInboxPostComments200ResponseMetaAdComments Class Doc Comment
  *
  * @category Class
+ * @description (Facebook/Instagram only) Present when this post has no organic comments but is a boosted post — the engagement lives on the ad. Use the ad-comments endpoint instead.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetInboxPostComments200ResponseMeta implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetInboxPostComments200ResponseMetaAdComments implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class GetInboxPostComments200ResponseMeta implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getInboxPostComments_200_response_meta';
+    protected static $openAPIModelName = 'getInboxPostComments_200_response_meta_adComments';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +59,8 @@ class GetInboxPostComments200ResponseMeta implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'platform' => 'string',
-        'post_id' => 'string',
-        'account_id' => 'string',
-        'subreddit' => 'string',
-        'last_updated' => '\DateTime',
-        'ad_comments' => '\Zernio\Model\GetInboxPostComments200ResponseMetaAdComments'
+        'ad_id' => 'string',
+        'ad_comments_url' => 'string'
     ];
 
     /**
@@ -74,12 +71,8 @@ class GetInboxPostComments200ResponseMeta implements ModelInterface, ArrayAccess
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'platform' => null,
-        'post_id' => null,
-        'account_id' => null,
-        'subreddit' => null,
-        'last_updated' => 'date-time',
-        'ad_comments' => null
+        'ad_id' => null,
+        'ad_comments_url' => null
     ];
 
     /**
@@ -88,12 +81,8 @@ class GetInboxPostComments200ResponseMeta implements ModelInterface, ArrayAccess
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'platform' => false,
-        'post_id' => false,
-        'account_id' => false,
-        'subreddit' => false,
-        'last_updated' => false,
-        'ad_comments' => false
+        'ad_id' => false,
+        'ad_comments_url' => false
     ];
 
     /**
@@ -182,12 +171,8 @@ class GetInboxPostComments200ResponseMeta implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'platform' => 'platform',
-        'post_id' => 'postId',
-        'account_id' => 'accountId',
-        'subreddit' => 'subreddit',
-        'last_updated' => 'lastUpdated',
-        'ad_comments' => 'adComments'
+        'ad_id' => 'adId',
+        'ad_comments_url' => 'adCommentsUrl'
     ];
 
     /**
@@ -196,12 +181,8 @@ class GetInboxPostComments200ResponseMeta implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'platform' => 'setPlatform',
-        'post_id' => 'setPostId',
-        'account_id' => 'setAccountId',
-        'subreddit' => 'setSubreddit',
-        'last_updated' => 'setLastUpdated',
-        'ad_comments' => 'setAdComments'
+        'ad_id' => 'setAdId',
+        'ad_comments_url' => 'setAdCommentsUrl'
     ];
 
     /**
@@ -210,12 +191,8 @@ class GetInboxPostComments200ResponseMeta implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'platform' => 'getPlatform',
-        'post_id' => 'getPostId',
-        'account_id' => 'getAccountId',
-        'subreddit' => 'getSubreddit',
-        'last_updated' => 'getLastUpdated',
-        'ad_comments' => 'getAdComments'
+        'ad_id' => 'getAdId',
+        'ad_comments_url' => 'getAdCommentsUrl'
     ];
 
     /**
@@ -275,12 +252,8 @@ class GetInboxPostComments200ResponseMeta implements ModelInterface, ArrayAccess
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('post_id', $data ?? [], null);
-        $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('subreddit', $data ?? [], null);
-        $this->setIfExists('last_updated', $data ?? [], null);
-        $this->setIfExists('ad_comments', $data ?? [], null);
+        $this->setIfExists('ad_id', $data ?? [], null);
+        $this->setIfExists('ad_comments_url', $data ?? [], null);
     }
 
     /**
@@ -326,163 +299,55 @@ class GetInboxPostComments200ResponseMeta implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets platform
+     * Gets ad_id
      *
      * @return string|null
      */
-    public function getPlatform()
+    public function getAdId()
     {
-        return $this->container['platform'];
+        return $this->container['ad_id'];
     }
 
     /**
-     * Sets platform
+     * Sets ad_id
      *
-     * @param string|null $platform platform
+     * @param string|null $ad_id Internal Zernio ad ID
      *
      * @return self
      */
-    public function setPlatform($platform)
+    public function setAdId($ad_id)
     {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        if (is_null($ad_id)) {
+            throw new \InvalidArgumentException('non-nullable ad_id cannot be null');
         }
-        $this->container['platform'] = $platform;
+        $this->container['ad_id'] = $ad_id;
 
         return $this;
     }
 
     /**
-     * Gets post_id
+     * Gets ad_comments_url
      *
      * @return string|null
      */
-    public function getPostId()
+    public function getAdCommentsUrl()
     {
-        return $this->container['post_id'];
+        return $this->container['ad_comments_url'];
     }
 
     /**
-     * Sets post_id
+     * Sets ad_comments_url
      *
-     * @param string|null $post_id post_id
+     * @param string|null $ad_comments_url Path to fetch the ad's comments (GET /v1/ads/{adId}/comments)
      *
      * @return self
      */
-    public function setPostId($post_id)
+    public function setAdCommentsUrl($ad_comments_url)
     {
-        if (is_null($post_id)) {
-            throw new \InvalidArgumentException('non-nullable post_id cannot be null');
+        if (is_null($ad_comments_url)) {
+            throw new \InvalidArgumentException('non-nullable ad_comments_url cannot be null');
         }
-        $this->container['post_id'] = $post_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets account_id
-     *
-     * @return string|null
-     */
-    public function getAccountId()
-    {
-        return $this->container['account_id'];
-    }
-
-    /**
-     * Sets account_id
-     *
-     * @param string|null $account_id account_id
-     *
-     * @return self
-     */
-    public function setAccountId($account_id)
-    {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
-        }
-        $this->container['account_id'] = $account_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets subreddit
-     *
-     * @return string|null
-     */
-    public function getSubreddit()
-    {
-        return $this->container['subreddit'];
-    }
-
-    /**
-     * Sets subreddit
-     *
-     * @param string|null $subreddit (Reddit only) Subreddit name
-     *
-     * @return self
-     */
-    public function setSubreddit($subreddit)
-    {
-        if (is_null($subreddit)) {
-            throw new \InvalidArgumentException('non-nullable subreddit cannot be null');
-        }
-        $this->container['subreddit'] = $subreddit;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_updated
-     *
-     * @return \DateTime|null
-     */
-    public function getLastUpdated()
-    {
-        return $this->container['last_updated'];
-    }
-
-    /**
-     * Sets last_updated
-     *
-     * @param \DateTime|null $last_updated last_updated
-     *
-     * @return self
-     */
-    public function setLastUpdated($last_updated)
-    {
-        if (is_null($last_updated)) {
-            throw new \InvalidArgumentException('non-nullable last_updated cannot be null');
-        }
-        $this->container['last_updated'] = $last_updated;
-
-        return $this;
-    }
-
-    /**
-     * Gets ad_comments
-     *
-     * @return \Zernio\Model\GetInboxPostComments200ResponseMetaAdComments|null
-     */
-    public function getAdComments()
-    {
-        return $this->container['ad_comments'];
-    }
-
-    /**
-     * Sets ad_comments
-     *
-     * @param \Zernio\Model\GetInboxPostComments200ResponseMetaAdComments|null $ad_comments ad_comments
-     *
-     * @return self
-     */
-    public function setAdComments($ad_comments)
-    {
-        if (is_null($ad_comments)) {
-            throw new \InvalidArgumentException('non-nullable ad_comments cannot be null');
-        }
-        $this->container['ad_comments'] = $ad_comments;
+        $this->container['ad_comments_url'] = $ad_comments_url;
 
         return $this;
     }

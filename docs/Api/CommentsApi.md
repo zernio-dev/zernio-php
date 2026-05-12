@@ -287,7 +287,7 @@ listInboxComments($profile_id, $platform, $min_comments, $since, $sort_by, $sort
 
 List commented posts
 
-Returns posts with comment counts from all connected accounts. Aggregates data across multiple accounts.
+Returns posts with comment counts from all connected accounts. Aggregates data across multiple accounts.  For users with the Ads add-on (Metronome plans always qualify), the user's Meta ads (boosted/dark posts) are included too, flagged with `isAd: true` and an `adId`. Use `?platform=metaads` to return *only* ad rows; passing `facebook`/`instagram` returns *organic* posts only (no ads); omitting `platform` returns both. Fetch an ad row's thread from GET /v1/ads/{adId}/comments. Ad comment counts are read with the Marketing API token (Facebook) or the connected Instagram account's token (Instagram); an ad whose count can't be read is omitted.
 
 ### Example
 
@@ -307,7 +307,7 @@ $apiInstance = new Zernio\Api\CommentsApi(
     $config
 );
 $profile_id = 'profile_id_example'; // string | Filter by profile ID
-$platform = 'platform_example'; // string | Filter by platform
+$platform = 'platform_example'; // string | Filter by platform. `metaads` is a synthetic value meaning the user's ads (boosted/dark posts) only; `facebook`/`instagram` return organic posts only.
 $min_comments = 56; // int | Minimum comment count
 $since = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Posts created after this date
 $sort_by = 'date'; // string | Sort field
@@ -329,7 +329,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| Filter by profile ID | [optional] |
-| **platform** | **string**| Filter by platform | [optional] |
+| **platform** | **string**| Filter by platform. &#x60;metaads&#x60; is a synthetic value meaning the user&#39;s ads (boosted/dark posts) only; &#x60;facebook&#x60;/&#x60;instagram&#x60; return organic posts only. | [optional] |
 | **min_comments** | **int**| Minimum comment count | [optional] |
 | **since** | **\DateTime**| Posts created after this date | [optional] |
 | **sort_by** | **string**| Sort field | [optional] [default to &#39;date&#39;] |

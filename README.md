@@ -681,6 +681,7 @@ Class | Method | HTTP request | Description
 - [GetInboxPostComments200ResponseCommentsInner](docs/Model/GetInboxPostComments200ResponseCommentsInner.md)
 - [GetInboxPostComments200ResponseCommentsInnerFrom](docs/Model/GetInboxPostComments200ResponseCommentsInnerFrom.md)
 - [GetInboxPostComments200ResponseMeta](docs/Model/GetInboxPostComments200ResponseMeta.md)
+- [GetInboxPostComments200ResponseMetaAdComments](docs/Model/GetInboxPostComments200ResponseMetaAdComments.md)
 - [GetInboxPostComments200ResponsePagination](docs/Model/GetInboxPostComments200ResponsePagination.md)
 - [GetInstagramAccountInsights404Response](docs/Model/GetInstagramAccountInsights404Response.md)
 - [GetLinkedInAggregateAnalytics200Response](docs/Model/GetLinkedInAggregateAnalytics200Response.md)

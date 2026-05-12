@@ -4274,6 +4274,9 @@ class AdsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
+     * @param  string|null $platform_ad_id Meta ad ID. Returns the ad with this platform-side ad ID. (optional)
+     * @param  string|null $effective_object_story_id Facebook &#x60;{pageId}_{postId}&#x60; of the post the ad&#39;s engagement lives on (Meta &#x60;effective_object_story_id&#x60;). Use to map a Business-Manager-visible post back to the Zernio ad. (optional)
+     * @param  string|null $effective_instagram_media_id Instagram media ID of the boosted post (Meta &#x60;effective_instagram_media_id&#x60;). Use to map a Business-Manager-visible IG post back to the Zernio ad. (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
@@ -4282,9 +4285,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListAds200Response|\Zernio\Model\InlineObject
      */
-    public function listAds($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAds($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
-        list($response) = $this->listAdsWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
+        list($response) = $this->listAdsWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $contentType);
         return $response;
     }
 
@@ -4302,6 +4305,9 @@ class AdsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
+     * @param  string|null $platform_ad_id Meta ad ID. Returns the ad with this platform-side ad ID. (optional)
+     * @param  string|null $effective_object_story_id Facebook &#x60;{pageId}_{postId}&#x60; of the post the ad&#39;s engagement lives on (Meta &#x60;effective_object_story_id&#x60;). Use to map a Business-Manager-visible post back to the Zernio ad. (optional)
+     * @param  string|null $effective_instagram_media_id Instagram media ID of the boosted post (Meta &#x60;effective_instagram_media_id&#x60;). Use to map a Business-Manager-visible IG post back to the Zernio ad. (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
@@ -4310,9 +4316,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListAds200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdsWithHttpInfo($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsWithHttpInfo($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
-        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
+        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4411,6 +4417,9 @@ class AdsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
+     * @param  string|null $platform_ad_id Meta ad ID. Returns the ad with this platform-side ad ID. (optional)
+     * @param  string|null $effective_object_story_id Facebook &#x60;{pageId}_{postId}&#x60; of the post the ad&#39;s engagement lives on (Meta &#x60;effective_object_story_id&#x60;). Use to map a Business-Manager-visible post back to the Zernio ad. (optional)
+     * @param  string|null $effective_instagram_media_id Instagram media ID of the boosted post (Meta &#x60;effective_instagram_media_id&#x60;). Use to map a Business-Manager-visible IG post back to the Zernio ad. (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
@@ -4418,9 +4427,9 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdsAsync($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsAsync($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
-        return $this->listAdsAsyncWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType)
+        return $this->listAdsAsyncWithHttpInfo($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4442,6 +4451,9 @@ class AdsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
+     * @param  string|null $platform_ad_id Meta ad ID. Returns the ad with this platform-side ad ID. (optional)
+     * @param  string|null $effective_object_story_id Facebook &#x60;{pageId}_{postId}&#x60; of the post the ad&#39;s engagement lives on (Meta &#x60;effective_object_story_id&#x60;). Use to map a Business-Manager-visible post back to the Zernio ad. (optional)
+     * @param  string|null $effective_instagram_media_id Instagram media ID of the boosted post (Meta &#x60;effective_instagram_media_id&#x60;). Use to map a Business-Manager-visible IG post back to the Zernio ad. (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
@@ -4449,10 +4461,10 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdsAsyncWithHttpInfo($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsAsyncWithHttpInfo($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
         $returnType = '\Zernio\Model\ListAds200Response';
-        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $from_date, $to_date, $contentType);
+        $request = $this->listAdsRequest($page, $limit, $source, $status, $platform, $account_id, $ad_account_id, $profile_id, $campaign_id, $platform_ad_id, $effective_object_story_id, $effective_instagram_media_id, $from_date, $to_date, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4502,6 +4514,9 @@ class AdsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta). Mirrors the same filter on /v1/ads/campaigns and /v1/ads/tree. (optional)
      * @param  string|null $profile_id Profile ID (optional)
      * @param  string|null $campaign_id Platform campaign ID (filter ads within a campaign) (optional)
+     * @param  string|null $platform_ad_id Meta ad ID. Returns the ad with this platform-side ad ID. (optional)
+     * @param  string|null $effective_object_story_id Facebook &#x60;{pageId}_{postId}&#x60; of the post the ad&#39;s engagement lives on (Meta &#x60;effective_object_story_id&#x60;). Use to map a Business-Manager-visible post back to the Zernio ad. (optional)
+     * @param  string|null $effective_instagram_media_id Instagram media ID of the boosted post (Meta &#x60;effective_instagram_media_id&#x60;). Use to map a Business-Manager-visible IG post back to the Zernio ad. (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAds'] to see the possible values for this operation
@@ -4509,7 +4524,7 @@ class AdsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdsRequest($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
+    public function listAdsRequest($page = 1, $limit = 50, $source = 'all', $status = null, $platform = null, $account_id = null, $ad_account_id = null, $profile_id = null, $campaign_id = null, $platform_ad_id = null, $effective_object_story_id = null, $effective_instagram_media_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAds'][0])
     {
 
         if ($page !== null && $page < 1) {
@@ -4523,6 +4538,9 @@ class AdsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.listAds, must be bigger than or equal to 1.');
         }
         
+
+
+
 
 
 
@@ -4616,6 +4634,33 @@ class AdsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $campaign_id,
             'campaignId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform_ad_id,
+            'platformAdId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $effective_object_story_id,
+            'effectiveObjectStoryId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $effective_instagram_media_id,
+            'effectiveInstagramMediaId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

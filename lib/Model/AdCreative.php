@@ -64,6 +64,11 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'video_id' => 'string',
         'video_url' => 'string',
         'object_type' => 'string',
+        'object_story_id' => 'string',
+        'effective_object_story_id' => 'string',
+        'effective_instagram_media_id' => 'string',
+        'instagram_user_id' => 'string',
+        'instagram_permalink_url' => 'string',
         'media_urls' => 'string[]',
         'body' => 'string',
         'google_headline' => 'string',
@@ -87,6 +92,11 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'video_id' => null,
         'video_url' => null,
         'object_type' => null,
+        'object_story_id' => null,
+        'effective_object_story_id' => null,
+        'effective_instagram_media_id' => null,
+        'instagram_user_id' => null,
+        'instagram_permalink_url' => null,
         'media_urls' => null,
         'body' => null,
         'google_headline' => null,
@@ -108,6 +118,11 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'video_id' => false,
         'video_url' => false,
         'object_type' => false,
+        'object_story_id' => false,
+        'effective_object_story_id' => false,
+        'effective_instagram_media_id' => false,
+        'instagram_user_id' => false,
+        'instagram_permalink_url' => false,
         'media_urls' => false,
         'body' => false,
         'google_headline' => false,
@@ -209,6 +224,11 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'video_id' => 'videoId',
         'video_url' => 'videoUrl',
         'object_type' => 'objectType',
+        'object_story_id' => 'objectStoryId',
+        'effective_object_story_id' => 'effectiveObjectStoryId',
+        'effective_instagram_media_id' => 'effectiveInstagramMediaId',
+        'instagram_user_id' => 'instagramUserId',
+        'instagram_permalink_url' => 'instagramPermalinkUrl',
         'media_urls' => 'mediaUrls',
         'body' => 'body',
         'google_headline' => 'googleHeadline',
@@ -230,6 +250,11 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'video_id' => 'setVideoId',
         'video_url' => 'setVideoUrl',
         'object_type' => 'setObjectType',
+        'object_story_id' => 'setObjectStoryId',
+        'effective_object_story_id' => 'setEffectiveObjectStoryId',
+        'effective_instagram_media_id' => 'setEffectiveInstagramMediaId',
+        'instagram_user_id' => 'setInstagramUserId',
+        'instagram_permalink_url' => 'setInstagramPermalinkUrl',
         'media_urls' => 'setMediaUrls',
         'body' => 'setBody',
         'google_headline' => 'setGoogleHeadline',
@@ -251,6 +276,11 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         'video_id' => 'getVideoId',
         'video_url' => 'getVideoUrl',
         'object_type' => 'getObjectType',
+        'object_story_id' => 'getObjectStoryId',
+        'effective_object_story_id' => 'getEffectiveObjectStoryId',
+        'effective_instagram_media_id' => 'getEffectiveInstagramMediaId',
+        'instagram_user_id' => 'getInstagramUserId',
+        'instagram_permalink_url' => 'getInstagramPermalinkUrl',
         'media_urls' => 'getMediaUrls',
         'body' => 'getBody',
         'google_headline' => 'getGoogleHeadline',
@@ -323,6 +353,11 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('video_id', $data ?? [], null);
         $this->setIfExists('video_url', $data ?? [], null);
         $this->setIfExists('object_type', $data ?? [], null);
+        $this->setIfExists('object_story_id', $data ?? [], null);
+        $this->setIfExists('effective_object_story_id', $data ?? [], null);
+        $this->setIfExists('effective_instagram_media_id', $data ?? [], null);
+        $this->setIfExists('instagram_user_id', $data ?? [], null);
+        $this->setIfExists('instagram_permalink_url', $data ?? [], null);
         $this->setIfExists('media_urls', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
         $this->setIfExists('google_headline', $data ?? [], null);
@@ -506,6 +541,141 @@ class AdCreative implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable object_type cannot be null');
         }
         $this->container['object_type'] = $object_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets object_story_id
+     *
+     * @return string|null
+     */
+    public function getObjectStoryId()
+    {
+        return $this->container['object_story_id'];
+    }
+
+    /**
+     * Sets object_story_id
+     *
+     * @param string|null $object_story_id Meta creative `object_story_id` (the SHARE reference). Frequently absent — Meta omits it for SHARE creatives. Use effectiveObjectStoryId instead.
+     *
+     * @return self
+     */
+    public function setObjectStoryId($object_story_id)
+    {
+        if (is_null($object_story_id)) {
+            throw new \InvalidArgumentException('non-nullable object_story_id cannot be null');
+        }
+        $this->container['object_story_id'] = $object_story_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets effective_object_story_id
+     *
+     * @return string|null
+     */
+    public function getEffectiveObjectStoryId()
+    {
+        return $this->container['effective_object_story_id'];
+    }
+
+    /**
+     * Sets effective_object_story_id
+     *
+     * @param string|null $effective_object_story_id Meta `effective_object_story_id` — `{pageId}_{postId}` of the Facebook post the ad's engagement (comments) lives on. Pass to GET /v1/ads?effectiveObjectStoryId= to map a Business-Manager-visible post back to this ad; GET /v1/ads/{adId}/comments resolves comments against it.
+     *
+     * @return self
+     */
+    public function setEffectiveObjectStoryId($effective_object_story_id)
+    {
+        if (is_null($effective_object_story_id)) {
+            throw new \InvalidArgumentException('non-nullable effective_object_story_id cannot be null');
+        }
+        $this->container['effective_object_story_id'] = $effective_object_story_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets effective_instagram_media_id
+     *
+     * @return string|null
+     */
+    public function getEffectiveInstagramMediaId()
+    {
+        return $this->container['effective_instagram_media_id'];
+    }
+
+    /**
+     * Sets effective_instagram_media_id
+     *
+     * @param string|null $effective_instagram_media_id Meta `effective_instagram_media_id` — the Instagram media ID of the boosted post the ad's engagement lives on. Pass to GET /v1/ads?effectiveInstagramMediaId= to map a Business-Manager-visible IG post back to this ad.
+     *
+     * @return self
+     */
+    public function setEffectiveInstagramMediaId($effective_instagram_media_id)
+    {
+        if (is_null($effective_instagram_media_id)) {
+            throw new \InvalidArgumentException('non-nullable effective_instagram_media_id cannot be null');
+        }
+        $this->container['effective_instagram_media_id'] = $effective_instagram_media_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets instagram_user_id
+     *
+     * @return string|null
+     */
+    public function getInstagramUserId()
+    {
+        return $this->container['instagram_user_id'];
+    }
+
+    /**
+     * Sets instagram_user_id
+     *
+     * @param string|null $instagram_user_id Meta `instagram_user_id` — the Instagram-scoped business ID that owns the boosted media.
+     *
+     * @return self
+     */
+    public function setInstagramUserId($instagram_user_id)
+    {
+        if (is_null($instagram_user_id)) {
+            throw new \InvalidArgumentException('non-nullable instagram_user_id cannot be null');
+        }
+        $this->container['instagram_user_id'] = $instagram_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets instagram_permalink_url
+     *
+     * @return string|null
+     */
+    public function getInstagramPermalinkUrl()
+    {
+        return $this->container['instagram_permalink_url'];
+    }
+
+    /**
+     * Sets instagram_permalink_url
+     *
+     * @param string|null $instagram_permalink_url Meta `instagram_permalink_url` — public Instagram post URL of the boosted media.
+     *
+     * @return self
+     */
+    public function setInstagramPermalinkUrl($instagram_permalink_url)
+    {
+        if (is_null($instagram_permalink_url)) {
+            throw new \InvalidArgumentException('non-nullable instagram_permalink_url cannot be null');
+        }
+        $this->container['instagram_permalink_url'] = $instagram_permalink_url;
 
         return $this;
     }

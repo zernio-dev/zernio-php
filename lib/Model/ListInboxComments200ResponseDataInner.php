@@ -69,7 +69,9 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'comment_count' => 'int',
         'like_count' => 'int',
         'cid' => 'string',
-        'subreddit' => 'string'
+        'subreddit' => 'string',
+        'is_ad' => 'bool',
+        'ad_id' => 'string'
     ];
 
     /**
@@ -91,7 +93,9 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'comment_count' => null,
         'like_count' => null,
         'cid' => null,
-        'subreddit' => null
+        'subreddit' => null,
+        'is_ad' => null,
+        'ad_id' => null
     ];
 
     /**
@@ -111,7 +115,9 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'comment_count' => false,
         'like_count' => false,
         'cid' => false,
-        'subreddit' => false
+        'subreddit' => false,
+        'is_ad' => false,
+        'ad_id' => false
     ];
 
     /**
@@ -211,7 +217,9 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'comment_count' => 'commentCount',
         'like_count' => 'likeCount',
         'cid' => 'cid',
-        'subreddit' => 'subreddit'
+        'subreddit' => 'subreddit',
+        'is_ad' => 'isAd',
+        'ad_id' => 'adId'
     ];
 
     /**
@@ -231,7 +239,9 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'comment_count' => 'setCommentCount',
         'like_count' => 'setLikeCount',
         'cid' => 'setCid',
-        'subreddit' => 'setSubreddit'
+        'subreddit' => 'setSubreddit',
+        'is_ad' => 'setIsAd',
+        'ad_id' => 'setAdId'
     ];
 
     /**
@@ -251,7 +261,9 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         'comment_count' => 'getCommentCount',
         'like_count' => 'getLikeCount',
         'cid' => 'getCid',
-        'subreddit' => 'getSubreddit'
+        'subreddit' => 'getSubreddit',
+        'is_ad' => 'getIsAd',
+        'ad_id' => 'getAdId'
     ];
 
     /**
@@ -323,6 +335,8 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
         $this->setIfExists('like_count', $data ?? [], null);
         $this->setIfExists('cid', $data ?? [], null);
         $this->setIfExists('subreddit', $data ?? [], null);
+        $this->setIfExists('is_ad', $data ?? [], null);
+        $this->setIfExists('ad_id', $data ?? [], null);
     }
 
     /**
@@ -687,6 +701,60 @@ class ListInboxComments200ResponseDataInner implements ModelInterface, ArrayAcce
             throw new \InvalidArgumentException('non-nullable subreddit cannot be null');
         }
         $this->container['subreddit'] = $subreddit;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_ad
+     *
+     * @return bool|null
+     */
+    public function getIsAd()
+    {
+        return $this->container['is_ad'];
+    }
+
+    /**
+     * Sets is_ad
+     *
+     * @param bool|null $is_ad True when this row is an ad (boosted/dark post). `platform` is then the comment platform (facebook or instagram), `id` equals `adId`, and the thread is at GET /v1/ads/{adId}/comments.
+     *
+     * @return self
+     */
+    public function setIsAd($is_ad)
+    {
+        if (is_null($is_ad)) {
+            throw new \InvalidArgumentException('non-nullable is_ad cannot be null');
+        }
+        $this->container['is_ad'] = $is_ad;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_id
+     *
+     * @return string|null
+     */
+    public function getAdId()
+    {
+        return $this->container['ad_id'];
+    }
+
+    /**
+     * Sets ad_id
+     *
+     * @param string|null $ad_id Internal Zernio ad id — only on ad rows (same value as `id`).
+     *
+     * @return self
+     */
+    public function setAdId($ad_id)
+    {
+        if (is_null($ad_id)) {
+            throw new \InvalidArgumentException('non-nullable ad_id cannot be null');
+        }
+        $this->container['ad_id'] = $ad_id;
 
         return $this;
     }
