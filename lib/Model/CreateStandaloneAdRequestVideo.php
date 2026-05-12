@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateStandaloneAdRequestVideo Class Doc Comment
  *
  * @category Class
- * @description Meta only (facebook, instagram). When set, creates a VIDEO ad on the legacy or attach shape. Mutually exclusive with &#x60;imageUrl&#x60;. For multi-creative, set &#x60;video&#x60; per entry inside &#x60;creatives[]&#x60; instead.
+ * @description Meta (facebook, instagram) and LinkedIn. When set, creates a VIDEO ad on the legacy (or, for Meta, attach) shape. Mutually exclusive with &#x60;imageUrl&#x60;. For Meta multi-creative, set &#x60;video&#x60; per entry inside &#x60;creatives[]&#x60; instead. For LinkedIn the video is uploaded to LinkedIn under the authoring Company Page (see &#x60;organizationId&#x60;) and the campaign format is set to SINGLE_VIDEO; LinkedIn ignores &#x60;thumbnailUrl&#x60; (it auto-generates the poster frame) — supply MP4 H.264/AAC, 3s-30min, 75KB-500MB.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -286,9 +286,6 @@ class CreateStandaloneAdRequestVideo implements ModelInterface, ArrayAccess, \Js
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
         }
-        if ($this->container['thumbnail_url'] === null) {
-            $invalidProperties[] = "'thumbnail_url' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -317,7 +314,7 @@ class CreateStandaloneAdRequestVideo implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets url
      *
-     * @param string $url Public URL of the video. Uploaded to Meta via chunked transfer on /act_X/advideos; then the request blocks on Meta's transcoding until status.video_status === 'ready'.
+     * @param string $url Public URL of the video. Meta: uploaded via chunked transfer on /act_X/advideos, then the request blocks on Meta's transcoding until status.video_status === 'ready'. LinkedIn: uploaded via the Videos API (multipart), then the request blocks until LinkedIn finishes transcoding (status AVAILABLE) — short clips take ~10-30s.
      *
      * @return self
      */
@@ -334,7 +331,7 @@ class CreateStandaloneAdRequestVideo implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets thumbnail_url
      *
-     * @return string
+     * @return string|null
      */
     public function getThumbnailUrl()
     {
@@ -344,7 +341,7 @@ class CreateStandaloneAdRequestVideo implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets thumbnail_url
      *
-     * @param string $thumbnail_url Public URL of a still-image thumbnail for the video. Required by Meta on every video creative. Uploaded to Meta as an ad image and referenced as the thumbnail in object_story_spec.video_data.
+     * @param string|null $thumbnail_url Public URL of a still-image thumbnail for the video. Required by Meta on every video creative (uploaded as an ad image and referenced in object_story_spec.video_data). Ignored by LinkedIn (auto-generated poster frame).
      *
      * @return self
      */
