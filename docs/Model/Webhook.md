@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **_id** | **string** | Unique webhook identifier | [optional]
 **name** | **string** | Webhook name (for identification) | [optional]
 **url** | **string** | Webhook endpoint URL | [optional]
-**secret** | **string** | Secret key for HMAC-SHA256 signature (not returned in responses for security) | [optional]
+**secret** | **string** | Secret key for HMAC-SHA256 signature verification. | [optional]
 **events** | **string[]** | Events subscribed to | [optional]
 **is_active** | **bool** | Whether webhook delivery is enabled | [optional]
 **last_fired_at** | **\DateTime** | Timestamp of last successful webhook delivery | [optional]

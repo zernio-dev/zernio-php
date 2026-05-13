@@ -498,7 +498,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets secret
      *
-     * @param string|null $secret Secret key for HMAC-SHA256 signature (not returned in responses for security)
+     * @param string|null $secret Secret key for HMAC-SHA256 signature verification.
      *
      * @return self
      */

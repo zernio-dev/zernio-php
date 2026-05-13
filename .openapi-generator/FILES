@@ -1869,5 +1869,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/MoveAccountToProfile200ResponseTest.php
-test/Model/MoveAccountToProfileRequestTest.php
