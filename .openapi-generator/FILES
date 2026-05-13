@@ -282,6 +282,8 @@ docs/Model/GetAdComments200Response.md
 docs/Model/GetAdComments200ResponseMeta.md
 docs/Model/GetAdComments200ResponsePagination.md
 docs/Model/GetAdTree200Response.md
+docs/Model/GetAdsTimeline200Response.md
+docs/Model/GetAdsTimeline200ResponseRowsInner.md
 docs/Model/GetAllAccountsHealth200Response.md
 docs/Model/GetAllAccountsHealth200ResponseAccountsInner.md
 docs/Model/GetAllAccountsHealth200ResponseSummary.md
@@ -1216,6 +1218,8 @@ lib/Model/GetAdComments200Response.php
 lib/Model/GetAdComments200ResponseMeta.php
 lib/Model/GetAdComments200ResponsePagination.php
 lib/Model/GetAdTree200Response.php
+lib/Model/GetAdsTimeline200Response.php
+lib/Model/GetAdsTimeline200ResponseRowsInner.php
 lib/Model/GetAllAccountsHealth200Response.php
 lib/Model/GetAllAccountsHealth200ResponseAccountsInner.php
 lib/Model/GetAllAccountsHealth200ResponseSummary.php
@@ -1869,3 +1873,5 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetAdsTimeline200ResponseRowsInnerTest.php
+test/Model/GetAdsTimeline200ResponseTest.php

@@ -87,6 +87,9 @@ class AdCampaignsApi
         'getAdTree' => [
             'application/json',
         ],
+        'getAdsTimeline' => [
+            'application/json',
+        ],
         'listAdCampaigns' => [
             'application/json',
         ],
@@ -1404,6 +1407,338 @@ class AdCampaignsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $to_date,
             'toDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getAdsTimeline
+     *
+     * Get daily aggregate ad metrics for an account
+     *
+     * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $platform Restrict to one platform. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdsTimeline'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetAdsTimeline200Response|\Zernio\Model\InlineObject
+     */
+    public function getAdsTimeline($account_id, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    {
+        list($response) = $this->getAdsTimelineWithHttpInfo($account_id, $from_date, $to_date, $platform, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getAdsTimelineWithHttpInfo
+     *
+     * Get daily aggregate ad metrics for an account
+     *
+     * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $platform Restrict to one platform. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdsTimeline'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetAdsTimeline200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAdsTimelineWithHttpInfo($account_id, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    {
+        $request = $this->getAdsTimelineRequest($account_id, $from_date, $to_date, $platform, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetAdsTimeline200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetAdsTimeline200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetAdsTimeline200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAdsTimelineAsync
+     *
+     * Get daily aggregate ad metrics for an account
+     *
+     * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $platform Restrict to one platform. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdsTimeline'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdsTimelineAsync($account_id, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    {
+        return $this->getAdsTimelineAsyncWithHttpInfo($account_id, $from_date, $to_date, $platform, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAdsTimelineAsyncWithHttpInfo
+     *
+     * Get daily aggregate ad metrics for an account
+     *
+     * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $platform Restrict to one platform. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdsTimeline'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdsTimelineAsyncWithHttpInfo($account_id, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    {
+        $returnType = '\Zernio\Model\GetAdsTimeline200Response';
+        $request = $this->getAdsTimelineRequest($account_id, $from_date, $to_date, $platform, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAdsTimeline'
+     *
+     * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $platform Restrict to one platform. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdsTimeline'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAdsTimelineRequest($account_id, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getAdsTimeline'
+            );
+        }
+
+
+
+
+
+        $resourcePath = '/v1/ads/timeline';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_date,
+            'fromDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_date,
+            'toDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $platform,
+            'platform', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
