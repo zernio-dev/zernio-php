@@ -1479,6 +1479,7 @@ class AdCampaignsApi
      * Get daily aggregate ad metrics for an account
      *
      * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $platform Restrict to one platform. (optional)
@@ -1488,9 +1489,9 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetAdsTimeline200Response|\Zernio\Model\InlineObject
      */
-    public function getAdsTimeline($account_id, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    public function getAdsTimeline($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
     {
-        list($response) = $this->getAdsTimelineWithHttpInfo($account_id, $from_date, $to_date, $platform, $contentType);
+        list($response) = $this->getAdsTimelineWithHttpInfo($account_id, $ad_account_id, $from_date, $to_date, $platform, $contentType);
         return $response;
     }
 
@@ -1500,6 +1501,7 @@ class AdCampaignsApi
      * Get daily aggregate ad metrics for an account
      *
      * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $platform Restrict to one platform. (optional)
@@ -1509,9 +1511,9 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetAdsTimeline200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAdsTimelineWithHttpInfo($account_id, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    public function getAdsTimelineWithHttpInfo($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
     {
-        $request = $this->getAdsTimelineRequest($account_id, $from_date, $to_date, $platform, $contentType);
+        $request = $this->getAdsTimelineRequest($account_id, $ad_account_id, $from_date, $to_date, $platform, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1602,6 +1604,7 @@ class AdCampaignsApi
      * Get daily aggregate ad metrics for an account
      *
      * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $platform Restrict to one platform. (optional)
@@ -1610,9 +1613,9 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdsTimelineAsync($account_id, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    public function getAdsTimelineAsync($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
     {
-        return $this->getAdsTimelineAsyncWithHttpInfo($account_id, $from_date, $to_date, $platform, $contentType)
+        return $this->getAdsTimelineAsyncWithHttpInfo($account_id, $ad_account_id, $from_date, $to_date, $platform, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1626,6 +1629,7 @@ class AdCampaignsApi
      * Get daily aggregate ad metrics for an account
      *
      * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $platform Restrict to one platform. (optional)
@@ -1634,10 +1638,10 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdsTimelineAsyncWithHttpInfo($account_id, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    public function getAdsTimelineAsyncWithHttpInfo($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
     {
         $returnType = '\Zernio\Model\GetAdsTimeline200Response';
-        $request = $this->getAdsTimelineRequest($account_id, $from_date, $to_date, $platform, $contentType);
+        $request = $this->getAdsTimelineRequest($account_id, $ad_account_id, $from_date, $to_date, $platform, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1679,6 +1683,7 @@ class AdCampaignsApi
      * Create request for operation 'getAdsTimeline'
      *
      * @param  string $account_id Social account ID. Sibling-expanded to its linked posting↔ads pair. (required)
+     * @param  string|null $ad_account_id Optional platform-native ad account ID (e.g. Meta &#x60;act_…&#x60;, TikTok advertiser ID). Use when the connection wraps multiple platform ad accounts and the chart should show one only. Note: rows ingested before 2026-05-13 don&#39;t carry this column; the recurring 7-day re-sync repopulates them naturally. (optional)
      * @param  \DateTime|null $from_date Inclusive start of metrics range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end of metrics range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $platform Restrict to one platform. (optional)
@@ -1687,7 +1692,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAdsTimelineRequest($account_id, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
+    public function getAdsTimelineRequest($account_id, $ad_account_id = null, $from_date = null, $to_date = null, $platform = null, string $contentType = self::contentTypes['getAdsTimeline'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -1696,6 +1701,7 @@ class AdCampaignsApi
                 'Missing the required parameter $account_id when calling getAdsTimeline'
             );
         }
+
 
 
 
@@ -1716,6 +1722,15 @@ class AdCampaignsApi
             'form', // style
             true, // explode
             true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ad_account_id,
+            'adAccountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
