@@ -588,6 +588,8 @@ docs/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.md
 docs/Model/MediaItem.md
 docs/Model/MediaUploadResponse.md
 docs/Model/Money.md
+docs/Model/MoveAccountToProfile200Response.md
+docs/Model/MoveAccountToProfileRequest.md
 docs/Model/Pagination.md
 docs/Model/Pending.md
 docs/Model/PinterestPlatformData.md
@@ -1521,6 +1523,8 @@ lib/Model/MediaItem.php
 lib/Model/MediaUploadResponse.php
 lib/Model/ModelInterface.php
 lib/Model/Money.php
+lib/Model/MoveAccountToProfile200Response.php
+lib/Model/MoveAccountToProfileRequest.php
 lib/Model/Pagination.php
 lib/Model/Pending.php
 lib/Model/PinterestPlatformData.php
@@ -1865,3 +1869,5 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/MoveAccountToProfile200ResponseTest.php
+test/Model/MoveAccountToProfileRequestTest.php

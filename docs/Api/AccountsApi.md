@@ -12,6 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getFollowerStats()**](AccountsApi.md#getFollowerStats) | **GET** /v1/accounts/follower-stats | Get follower stats |
 | [**getTikTokCreatorInfo()**](AccountsApi.md#getTikTokCreatorInfo) | **GET** /v1/accounts/{accountId}/tiktok/creator-info | Get TikTok creator info |
 | [**listAccounts()**](AccountsApi.md#listAccounts) | **GET** /v1/accounts | List accounts |
+| [**moveAccountToProfile()**](AccountsApi.md#moveAccountToProfile) | **PATCH** /v1/accounts/{accountId} | Move account to a different profile |
 | [**updateAccount()**](AccountsApi.md#updateAccount) | **PUT** /v1/accounts/{accountId} | Update account |
 
 
@@ -391,6 +392,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `moveAccountToProfile()`
+
+```php
+moveAccountToProfile($account_id, $move_account_to_profile_request): \Zernio\Model\MoveAccountToProfile200Response
+```
+
+Move account to a different profile
+
+Moves a connected social account to a different profile owned by the same user. The target profile must belong to the same user as the account.  For API keys restricted to specific profiles, BOTH the source account's current profile AND the target profile must be in the key's allowed set. Calls with a target profile outside the key's scope return 403.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AccountsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$move_account_to_profile_request = {"profileId":"65f1a2b3c4d5e6f7a8b9c0d1"}; // \Zernio\Model\MoveAccountToProfileRequest
+
+try {
+    $result = $apiInstance->moveAccountToProfile($account_id, $move_account_to_profile_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountsApi->moveAccountToProfile: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **move_account_to_profile_request** | [**\Zernio\Model\MoveAccountToProfileRequest**](../Model/MoveAccountToProfileRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\MoveAccountToProfile200Response**](../Model/MoveAccountToProfile200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
