@@ -61,7 +61,8 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'id' => 'string',
         'name' => 'string',
         'platform' => 'string',
-        'status' => 'string'
+        'status' => 'string',
+        'currency' => 'string'
     ];
 
     /**
@@ -75,7 +76,8 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'id' => null,
         'name' => null,
         'platform' => null,
-        'status' => null
+        'status' => null,
+        'currency' => null
     ];
 
     /**
@@ -87,7 +89,8 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'id' => false,
         'name' => false,
         'platform' => false,
-        'status' => false
+        'status' => false,
+        'currency' => false
     ];
 
     /**
@@ -179,7 +182,8 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'id' => 'id',
         'name' => 'name',
         'platform' => 'platform',
-        'status' => 'status'
+        'status' => 'status',
+        'currency' => 'currency'
     ];
 
     /**
@@ -191,7 +195,8 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'id' => 'setId',
         'name' => 'setName',
         'platform' => 'setPlatform',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'currency' => 'setCurrency'
     ];
 
     /**
@@ -203,7 +208,8 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'id' => 'getId',
         'name' => 'getName',
         'platform' => 'getPlatform',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'currency' => 'getCurrency'
     ];
 
     /**
@@ -267,6 +273,7 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('currency', $data ?? [], null);
     }
 
     /**
@@ -415,6 +422,33 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets currency
+     *
+     * @return string|null
+     */
+    public function getCurrency()
+    {
+        return $this->container['currency'];
+    }
+
+    /**
+     * Sets currency
+     *
+     * @param string|null $currency ISO 4217 code of the ad account that owns this ad (e.g. USD, THB, INR). All money values in `summary` and `daily` are in this currency. Null only on legacy ads synced before currency was persisted.
+     *
+     * @return self
+     */
+    public function setCurrency($currency)
+    {
+        if (is_null($currency)) {
+            throw new \InvalidArgumentException('non-nullable currency cannot be null');
+        }
+        $this->container['currency'] = $currency;
 
         return $this;
     }
