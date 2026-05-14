@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateWebhookSettingsRequest
+ * WebhookPayloadAdStatusChangedAdObject
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateWebhookSettingsRequest Class Doc Comment
+ * WebhookPayloadAdStatusChangedAdObject Class Doc Comment
  *
  * @category Class
+ * @description The ad-platform object the status change applies to.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookPayloadAdStatusChangedAdObject implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateWebhookSettings_request';
+    protected static $openAPIModelName = 'WebhookPayloadAdStatusChanged_adObject';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +59,9 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_id' => 'string',
-        'name' => 'string',
-        'url' => 'string',
-        'secret' => 'string',
-        'events' => 'string[]',
-        'is_active' => 'bool',
-        'custom_headers' => 'array<string,string>'
+        'level' => 'string',
+        'platform_id' => 'string',
+        'platform_ad_account_id' => 'string'
     ];
 
     /**
@@ -75,13 +72,9 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_id' => null,
-        'name' => null,
-        'url' => 'uri',
-        'secret' => null,
-        'events' => null,
-        'is_active' => null,
-        'custom_headers' => null
+        'level' => null,
+        'platform_id' => null,
+        'platform_ad_account_id' => null
     ];
 
     /**
@@ -90,13 +83,9 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        '_id' => false,
-        'name' => false,
-        'url' => false,
-        'secret' => false,
-        'events' => false,
-        'is_active' => false,
-        'custom_headers' => false
+        'level' => false,
+        'platform_id' => false,
+        'platform_ad_account_id' => false
     ];
 
     /**
@@ -185,13 +174,9 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        '_id' => '_id',
-        'name' => 'name',
-        'url' => 'url',
-        'secret' => 'secret',
-        'events' => 'events',
-        'is_active' => 'isActive',
-        'custom_headers' => 'customHeaders'
+        'level' => 'level',
+        'platform_id' => 'platformId',
+        'platform_ad_account_id' => 'platformAdAccountId'
     ];
 
     /**
@@ -200,13 +185,9 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        '_id' => 'setId',
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'secret' => 'setSecret',
-        'events' => 'setEvents',
-        'is_active' => 'setIsActive',
-        'custom_headers' => 'setCustomHeaders'
+        'level' => 'setLevel',
+        'platform_id' => 'setPlatformId',
+        'platform_ad_account_id' => 'setPlatformAdAccountId'
     ];
 
     /**
@@ -215,13 +196,9 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        '_id' => 'getId',
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'secret' => 'getSecret',
-        'events' => 'getEvents',
-        'is_active' => 'getIsActive',
-        'custom_headers' => 'getCustomHeaders'
+        'level' => 'getLevel',
+        'platform_id' => 'getPlatformId',
+        'platform_ad_account_id' => 'getPlatformAdAccountId'
     ];
 
     /**
@@ -265,55 +242,21 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    public const EVENTS_POST_SCHEDULED = 'post.scheduled';
-    public const EVENTS_POST_PUBLISHED = 'post.published';
-    public const EVENTS_POST_FAILED = 'post.failed';
-    public const EVENTS_POST_PARTIAL = 'post.partial';
-    public const EVENTS_POST_CANCELLED = 'post.cancelled';
-    public const EVENTS_POST_RECYCLED = 'post.recycled';
-    public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
-    public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
-    public const EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED = 'account.ads.initial_sync_completed';
-    public const EVENTS_MESSAGE_RECEIVED = 'message.received';
-    public const EVENTS_MESSAGE_SENT = 'message.sent';
-    public const EVENTS_MESSAGE_EDITED = 'message.edited';
-    public const EVENTS_MESSAGE_DELETED = 'message.deleted';
-    public const EVENTS_MESSAGE_DELIVERED = 'message.delivered';
-    public const EVENTS_MESSAGE_READ = 'message.read';
-    public const EVENTS_MESSAGE_FAILED = 'message.failed';
-    public const EVENTS_COMMENT_RECEIVED = 'comment.received';
-    public const EVENTS_REVIEW_NEW = 'review.new';
-    public const EVENTS_REVIEW_UPDATED = 'review.updated';
-    public const EVENTS_AD_STATUS_CHANGED = 'ad.status_changed';
+    public const LEVEL_CAMPAIGN = 'CAMPAIGN';
+    public const LEVEL_AD_SET = 'AD_SET';
+    public const LEVEL_AD = 'AD';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getEventsAllowableValues()
+    public function getLevelAllowableValues()
     {
         return [
-            self::EVENTS_POST_SCHEDULED,
-            self::EVENTS_POST_PUBLISHED,
-            self::EVENTS_POST_FAILED,
-            self::EVENTS_POST_PARTIAL,
-            self::EVENTS_POST_CANCELLED,
-            self::EVENTS_POST_RECYCLED,
-            self::EVENTS_ACCOUNT_CONNECTED,
-            self::EVENTS_ACCOUNT_DISCONNECTED,
-            self::EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED,
-            self::EVENTS_MESSAGE_RECEIVED,
-            self::EVENTS_MESSAGE_SENT,
-            self::EVENTS_MESSAGE_EDITED,
-            self::EVENTS_MESSAGE_DELETED,
-            self::EVENTS_MESSAGE_DELIVERED,
-            self::EVENTS_MESSAGE_READ,
-            self::EVENTS_MESSAGE_FAILED,
-            self::EVENTS_COMMENT_RECEIVED,
-            self::EVENTS_REVIEW_NEW,
-            self::EVENTS_REVIEW_UPDATED,
-            self::EVENTS_AD_STATUS_CHANGED,
+            self::LEVEL_CAMPAIGN,
+            self::LEVEL_AD_SET,
+            self::LEVEL_AD,
         ];
     }
 
@@ -332,13 +275,9 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('secret', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], null);
-        $this->setIfExists('custom_headers', $data ?? [], null);
+        $this->setIfExists('level', $data ?? [], null);
+        $this->setIfExists('platform_id', $data ?? [], null);
+        $this->setIfExists('platform_ad_account_id', $data ?? [], null);
     }
 
     /**
@@ -368,21 +307,24 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['_id'] === null) {
-            $invalidProperties[] = "'_id' can't be null";
+        if ($this->container['level'] === null) {
+            $invalidProperties[] = "'level' can't be null";
         }
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
-        }
-
-        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['events']) && (count($this->container['events']) < 1)) {
-            $invalidProperties[] = "invalid value for 'events', number of items must be greater than or equal to 1.";
+        $allowedValues = $this->getLevelAllowableValues();
+        if (!is_null($this->container['level']) && !in_array($this->container['level'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'level', must be one of '%s'",
+                $this->container['level'],
+                implode("', '", $allowedValues)
+            );
         }
 
+        if ($this->container['platform_id'] === null) {
+            $invalidProperties[] = "'platform_id' can't be null";
+        }
+        if ($this->container['platform_ad_account_id'] === null) {
+            $invalidProperties[] = "'platform_ad_account_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -399,211 +341,92 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets _id
+     * Gets level
      *
      * @return string
      */
-    public function getId()
+    public function getLevel()
     {
-        return $this->container['_id'];
+        return $this->container['level'];
     }
 
     /**
-     * Sets _id
+     * Sets level
      *
-     * @param string $_id Webhook ID to update (required)
+     * @param string $level Hierarchy level the status applies to. Mirrors Meta's `level`. Creative-level events are not forwarded.
      *
      * @return self
      */
-    public function setId($_id)
+    public function setLevel($level)
     {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
+        if (is_null($level)) {
+            throw new \InvalidArgumentException('non-nullable level cannot be null');
         }
-        $this->container['_id'] = $_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name Webhook name (1-50 characters). Must be non-empty if provided.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateWebhookSettingsRequest., must be smaller than or equal to 50.');
-        }
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling UpdateWebhookSettingsRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string|null
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string|null $url Webhook endpoint URL (must be a valid URL, whitespace trimmed). Must be a valid URL if provided.
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
-        }
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets secret
-     *
-     * @return string|null
-     */
-    public function getSecret()
-    {
-        return $this->container['secret'];
-    }
-
-    /**
-     * Sets secret
-     *
-     * @param string|null $secret Secret key for HMAC-SHA256 signature verification
-     *
-     * @return self
-     */
-    public function setSecret($secret)
-    {
-        if (is_null($secret)) {
-            throw new \InvalidArgumentException('non-nullable secret cannot be null');
-        }
-        $this->container['secret'] = $secret;
-
-        return $this;
-    }
-
-    /**
-     * Gets events
-     *
-     * @return string[]|null
-     */
-    public function getEvents()
-    {
-        return $this->container['events'];
-    }
-
-    /**
-     * Sets events
-     *
-     * @param string[]|null $events Events to subscribe to. Must contain at least one event if provided.
-     *
-     * @return self
-     */
-    public function setEvents($events)
-    {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
-        }
-        $allowedValues = $this->getEventsAllowableValues();
-        if (array_diff($events, $allowedValues)) {
+        $allowedValues = $this->getLevelAllowableValues();
+        if (!in_array($level, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'events', must be one of '%s'",
+                    "Invalid value '%s' for 'level', must be one of '%s'",
+                    $level,
                     implode("', '", $allowedValues)
                 )
             );
         }
-
-
-        if ((count($events) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $events when calling UpdateWebhookSettingsRequest., number of items must be greater than or equal to 1.');
-        }
-        $this->container['events'] = $events;
+        $this->container['level'] = $level;
 
         return $this;
     }
 
     /**
-     * Gets is_active
+     * Gets platform_id
      *
-     * @return bool|null
+     * @return string
      */
-    public function getIsActive()
+    public function getPlatformId()
     {
-        return $this->container['is_active'];
+        return $this->container['platform_id'];
     }
 
     /**
-     * Sets is_active
+     * Sets platform_id
      *
-     * @param bool|null $is_active Enable or disable webhook delivery
+     * @param string $platform_id Platform-native ID of the campaign / ad set / ad. For Meta this is the bare numeric ID (e.g. `120244894077860689`).
      *
      * @return self
      */
-    public function setIsActive($is_active)
+    public function setPlatformId($platform_id)
     {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
+        if (is_null($platform_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_id cannot be null');
         }
-        $this->container['is_active'] = $is_active;
+        $this->container['platform_id'] = $platform_id;
 
         return $this;
     }
 
     /**
-     * Gets custom_headers
+     * Gets platform_ad_account_id
      *
-     * @return array<string,string>|null
+     * @return string
      */
-    public function getCustomHeaders()
+    public function getPlatformAdAccountId()
     {
-        return $this->container['custom_headers'];
+        return $this->container['platform_ad_account_id'];
     }
 
     /**
-     * Sets custom_headers
+     * Sets platform_ad_account_id
      *
-     * @param array<string,string>|null $custom_headers Custom headers to include in webhook requests
+     * @param string $platform_ad_account_id Platform-native ad-account ID. For Meta this uses the `act_<id>` shape.
      *
      * @return self
      */
-    public function setCustomHeaders($custom_headers)
+    public function setPlatformAdAccountId($platform_ad_account_id)
     {
-        if (is_null($custom_headers)) {
-            throw new \InvalidArgumentException('non-nullable custom_headers cannot be null');
+        if (is_null($platform_ad_account_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_ad_account_id cannot be null');
         }
-        $this->container['custom_headers'] = $custom_headers;
+        $this->container['platform_ad_account_id'] = $platform_ad_account_id;
 
         return $this;
     }

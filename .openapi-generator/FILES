@@ -881,6 +881,11 @@ docs/Model/WebhookPayloadAccountConnected.md
 docs/Model/WebhookPayloadAccountConnectedAccount.md
 docs/Model/WebhookPayloadAccountDisconnected.md
 docs/Model/WebhookPayloadAccountDisconnectedAccount.md
+docs/Model/WebhookPayloadAdStatusChanged.md
+docs/Model/WebhookPayloadAdStatusChangedAccount.md
+docs/Model/WebhookPayloadAdStatusChangedAdObject.md
+docs/Model/WebhookPayloadAdStatusChangedError.md
+docs/Model/WebhookPayloadAdStatusChangedStatus.md
 docs/Model/WebhookPayloadComment.md
 docs/Model/WebhookPayloadCommentAccount.md
 docs/Model/WebhookPayloadCommentComment.md
@@ -1818,6 +1823,11 @@ lib/Model/WebhookPayloadAccountConnected.php
 lib/Model/WebhookPayloadAccountConnectedAccount.php
 lib/Model/WebhookPayloadAccountDisconnected.php
 lib/Model/WebhookPayloadAccountDisconnectedAccount.php
+lib/Model/WebhookPayloadAdStatusChanged.php
+lib/Model/WebhookPayloadAdStatusChangedAccount.php
+lib/Model/WebhookPayloadAdStatusChangedAdObject.php
+lib/Model/WebhookPayloadAdStatusChangedError.php
+lib/Model/WebhookPayloadAdStatusChangedStatus.php
 lib/Model/WebhookPayloadComment.php
 lib/Model/WebhookPayloadCommentAccount.php
 lib/Model/WebhookPayloadCommentComment.php
@@ -1873,3 +1883,8 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadAdStatusChangedAccountTest.php
+test/Model/WebhookPayloadAdStatusChangedAdObjectTest.php
+test/Model/WebhookPayloadAdStatusChangedErrorTest.php
+test/Model/WebhookPayloadAdStatusChangedStatusTest.php
+test/Model/WebhookPayloadAdStatusChangedTest.php
