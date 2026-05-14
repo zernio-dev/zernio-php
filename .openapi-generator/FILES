@@ -1883,8 +1883,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadAdStatusChangedAccountTest.php
-test/Model/WebhookPayloadAdStatusChangedAdObjectTest.php
-test/Model/WebhookPayloadAdStatusChangedErrorTest.php
-test/Model/WebhookPayloadAdStatusChangedStatusTest.php
-test/Model/WebhookPayloadAdStatusChangedTest.php
