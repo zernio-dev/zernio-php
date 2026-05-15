@@ -924,6 +924,9 @@ docs/Model/WebhookPayloadReviewNew.md
 docs/Model/WebhookPayloadReviewNewAccount.md
 docs/Model/WebhookPayloadReviewUpdated.md
 docs/Model/WebhookPayloadTest.md
+docs/Model/WebhookPayloadWhatsAppTemplateStatusUpdated.md
+docs/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedAccount.md
+docs/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedTemplate.md
 docs/Model/WhatsAppBodyComponent.md
 docs/Model/WhatsAppBodyComponentExample.md
 docs/Model/WhatsAppButtonsComponent.md
@@ -1873,6 +1876,9 @@ lib/Model/WebhookPayloadReviewNew.php
 lib/Model/WebhookPayloadReviewNewAccount.php
 lib/Model/WebhookPayloadReviewUpdated.php
 lib/Model/WebhookPayloadTest.php
+lib/Model/WebhookPayloadWhatsAppTemplateStatusUpdated.php
+lib/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedAccount.php
+lib/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedTemplate.php
 lib/Model/WhatsAppBodyComponent.php
 lib/Model/WhatsAppBodyComponentExample.php
 lib/Model/WhatsAppButtonsComponent.php
@@ -1897,10 +1903,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateCtwaAdRequestCreativesInnerTest.php
-test/Model/CreateCtwaAdRequestCreativesInnerVideoTest.php
-test/Model/CtwaMultiResponseTest.php
-test/Model/CtwaSingleResponseTest.php
-test/Model/DeleteGoogleBusinessReviewReply200ResponseTest.php
-test/Model/ReplyToGoogleBusinessReview200ResponseTest.php
-test/Model/ReplyToGoogleBusinessReviewRequestTest.php
+test/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedAccountTest.php
+test/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedTemplateTest.php
+test/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedTest.php

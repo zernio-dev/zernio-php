@@ -27,6 +27,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onReviewNew()**](WebhookEventsApi.md#onReviewNew) | **POST** /review.new | Review new event |
 | [**onReviewUpdated()**](WebhookEventsApi.md#onReviewUpdated) | **POST** /review.updated | Review updated event |
 | [**onWebhookTest()**](WebhookEventsApi.md#onWebhookTest) | **POST** /webhook.test | Webhook test event |
+| [**onWhatsAppTemplateStatusUpdated()**](WebhookEventsApi.md#onWhatsAppTemplateStatusUpdated) | **POST** /whatsapp.template.status_updated | WhatsApp template status updated event |
 
 
 ## `onAccountAdsInitialSyncCompleted()`
@@ -1250,6 +1251,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_test** | [**\Zernio\Model\WebhookPayloadTest**](../Model/WebhookPayloadTest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWhatsAppTemplateStatusUpdated()`
+
+```php
+onWhatsAppTemplateStatusUpdated($webhook_payload_whats_app_template_status_updated)
+```
+
+WhatsApp template status updated event
+
+Fired when Meta finishes (re)reviewing a WhatsApp Business template attached to a connected WABA. Forwarded from Meta's `message_template_status_update` webhook field on the WhatsApp Business Account. Consumers branch on `template.status` (APPROVED, REJECTED, PENDING, PAUSED, DISABLED, IN_APPEAL, PENDING_DELETION). Meta does not include the previous status or the template's category in this event.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_whats_app_template_status_updated = new \Zernio\Model\WebhookPayloadWhatsAppTemplateStatusUpdated(); // \Zernio\Model\WebhookPayloadWhatsAppTemplateStatusUpdated
+
+try {
+    $apiInstance->onWhatsAppTemplateStatusUpdated($webhook_payload_whats_app_template_status_updated);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWhatsAppTemplateStatusUpdated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_whats_app_template_status_updated** | [**\Zernio\Model\WebhookPayloadWhatsAppTemplateStatusUpdated**](../Model/WebhookPayloadWhatsAppTemplateStatusUpdated.md)|  | |
 
 ### Return type
 
