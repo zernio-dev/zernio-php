@@ -120,6 +120,12 @@ class WebhookEventsApi
         'onPostPartial' => [
             'application/json',
         ],
+        'onPostPlatformFailed' => [
+            'application/json',
+        ],
+        'onPostPlatformPublished' => [
+            'application/json',
+        ],
         'onPostPublished' => [
             'application/json',
         ],
@@ -3453,6 +3459,448 @@ class WebhookEventsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_post));
             } else {
                 $httpBody = $webhook_payload_post;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onPostPlatformFailed
+     *
+     * Post platform failed event
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPlatformFailed'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onPostPlatformFailed($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostPlatformFailed'][0])
+    {
+        $this->onPostPlatformFailedWithHttpInfo($webhook_payload_post_platform, $contentType);
+    }
+
+    /**
+     * Operation onPostPlatformFailedWithHttpInfo
+     *
+     * Post platform failed event
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPlatformFailed'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onPostPlatformFailedWithHttpInfo($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostPlatformFailed'][0])
+    {
+        $request = $this->onPostPlatformFailedRequest($webhook_payload_post_platform, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onPostPlatformFailedAsync
+     *
+     * Post platform failed event
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPlatformFailed'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onPostPlatformFailedAsync($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostPlatformFailed'][0])
+    {
+        return $this->onPostPlatformFailedAsyncWithHttpInfo($webhook_payload_post_platform, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onPostPlatformFailedAsyncWithHttpInfo
+     *
+     * Post platform failed event
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPlatformFailed'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onPostPlatformFailedAsyncWithHttpInfo($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostPlatformFailed'][0])
+    {
+        $returnType = '';
+        $request = $this->onPostPlatformFailedRequest($webhook_payload_post_platform, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onPostPlatformFailed'
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPlatformFailed'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onPostPlatformFailedRequest($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostPlatformFailed'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_post_platform' is set
+        if ($webhook_payload_post_platform === null || (is_array($webhook_payload_post_platform) && count($webhook_payload_post_platform) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_post_platform when calling onPostPlatformFailed'
+            );
+        }
+
+
+        $resourcePath = '/post.platform.failed';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_post_platform)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_post_platform));
+            } else {
+                $httpBody = $webhook_payload_post_platform;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onPostPlatformPublished
+     *
+     * Post platform published event
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPlatformPublished'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onPostPlatformPublished($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostPlatformPublished'][0])
+    {
+        $this->onPostPlatformPublishedWithHttpInfo($webhook_payload_post_platform, $contentType);
+    }
+
+    /**
+     * Operation onPostPlatformPublishedWithHttpInfo
+     *
+     * Post platform published event
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPlatformPublished'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onPostPlatformPublishedWithHttpInfo($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostPlatformPublished'][0])
+    {
+        $request = $this->onPostPlatformPublishedRequest($webhook_payload_post_platform, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onPostPlatformPublishedAsync
+     *
+     * Post platform published event
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPlatformPublished'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onPostPlatformPublishedAsync($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostPlatformPublished'][0])
+    {
+        return $this->onPostPlatformPublishedAsyncWithHttpInfo($webhook_payload_post_platform, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onPostPlatformPublishedAsyncWithHttpInfo
+     *
+     * Post platform published event
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPlatformPublished'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onPostPlatformPublishedAsyncWithHttpInfo($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostPlatformPublished'][0])
+    {
+        $returnType = '';
+        $request = $this->onPostPlatformPublishedRequest($webhook_payload_post_platform, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onPostPlatformPublished'
+     *
+     * @param  \Zernio\Model\WebhookPayloadPostPlatform $webhook_payload_post_platform (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostPlatformPublished'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onPostPlatformPublishedRequest($webhook_payload_post_platform, string $contentType = self::contentTypes['onPostPlatformPublished'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_post_platform' is set
+        if ($webhook_payload_post_platform === null || (is_array($webhook_payload_post_platform) && count($webhook_payload_post_platform) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_post_platform when calling onPostPlatformPublished'
+            );
+        }
+
+
+        $resourcePath = '/post.platform.published';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_post_platform)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_post_platform));
+            } else {
+                $httpBody = $webhook_payload_post_platform;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

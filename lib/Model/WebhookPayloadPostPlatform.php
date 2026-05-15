@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateWebhookSettingsRequest
+ * WebhookPayloadPostPlatform
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateWebhookSettingsRequest Class Doc Comment
+ * WebhookPayloadPostPlatform Class Doc Comment
  *
  * @category Class
+ * @description Webhook payload for the per-platform terminal events &#x60;post.platform.published&#x60; and &#x60;post.platform.failed&#x60;. Fires once per platform target inside a post as that platform reaches a terminal state (published or permanent failure). The &#x60;post&#x60; envelope mirrors the shape of &#x60;WebhookPayloadPost&#x60; so consumers can reuse rendering logic; the &#x60;platform&#x60; block identifies which specific platform transitioned; the &#x60;account&#x60; block identifies the connected social account behind that platform-write.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookPayloadPostPlatform implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createWebhookSettings_request';
+    protected static $openAPIModelName = 'WebhookPayloadPostPlatform';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +59,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'url' => 'string',
-        'secret' => 'string',
-        'events' => 'string[]',
-        'is_active' => 'bool',
-        'custom_headers' => 'array<string,string>'
+        'id' => 'string',
+        'event' => 'string',
+        'post' => '\Zernio\Model\WebhookPayloadPostPlatformPost',
+        'platform' => '\Zernio\Model\WebhookPayloadPostPlatformPlatform',
+        'account' => '\Zernio\Model\WebhookPayloadPostPlatformAccount',
+        'timestamp' => '\DateTime'
     ];
 
     /**
@@ -74,12 +75,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'url' => 'uri',
-        'secret' => null,
-        'events' => null,
-        'is_active' => null,
-        'custom_headers' => null
+        'id' => null,
+        'event' => null,
+        'post' => null,
+        'platform' => null,
+        'account' => null,
+        'timestamp' => 'date-time'
     ];
 
     /**
@@ -88,12 +89,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'url' => false,
-        'secret' => false,
-        'events' => false,
-        'is_active' => false,
-        'custom_headers' => false
+        'id' => false,
+        'event' => false,
+        'post' => false,
+        'platform' => false,
+        'account' => false,
+        'timestamp' => false
     ];
 
     /**
@@ -182,12 +183,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'url' => 'url',
-        'secret' => 'secret',
-        'events' => 'events',
-        'is_active' => 'isActive',
-        'custom_headers' => 'customHeaders'
+        'id' => 'id',
+        'event' => 'event',
+        'post' => 'post',
+        'platform' => 'platform',
+        'account' => 'account',
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -196,12 +197,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'secret' => 'setSecret',
-        'events' => 'setEvents',
-        'is_active' => 'setIsActive',
-        'custom_headers' => 'setCustomHeaders'
+        'id' => 'setId',
+        'event' => 'setEvent',
+        'post' => 'setPost',
+        'platform' => 'setPlatform',
+        'account' => 'setAccount',
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -210,12 +211,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'secret' => 'getSecret',
-        'events' => 'getEvents',
-        'is_active' => 'getIsActive',
-        'custom_headers' => 'getCustomHeaders'
+        'id' => 'getId',
+        'event' => 'getEvent',
+        'post' => 'getPost',
+        'platform' => 'getPlatform',
+        'account' => 'getAccount',
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -259,61 +260,19 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    public const EVENTS_POST_SCHEDULED = 'post.scheduled';
-    public const EVENTS_POST_PUBLISHED = 'post.published';
-    public const EVENTS_POST_FAILED = 'post.failed';
-    public const EVENTS_POST_PARTIAL = 'post.partial';
-    public const EVENTS_POST_CANCELLED = 'post.cancelled';
-    public const EVENTS_POST_RECYCLED = 'post.recycled';
-    public const EVENTS_POST_PLATFORM_PUBLISHED = 'post.platform.published';
-    public const EVENTS_POST_PLATFORM_FAILED = 'post.platform.failed';
-    public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
-    public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
-    public const EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED = 'account.ads.initial_sync_completed';
-    public const EVENTS_MESSAGE_RECEIVED = 'message.received';
-    public const EVENTS_MESSAGE_SENT = 'message.sent';
-    public const EVENTS_MESSAGE_EDITED = 'message.edited';
-    public const EVENTS_MESSAGE_DELETED = 'message.deleted';
-    public const EVENTS_MESSAGE_DELIVERED = 'message.delivered';
-    public const EVENTS_MESSAGE_READ = 'message.read';
-    public const EVENTS_MESSAGE_FAILED = 'message.failed';
-    public const EVENTS_COMMENT_RECEIVED = 'comment.received';
-    public const EVENTS_REVIEW_NEW = 'review.new';
-    public const EVENTS_REVIEW_UPDATED = 'review.updated';
-    public const EVENTS_AD_STATUS_CHANGED = 'ad.status_changed';
-    public const EVENTS_WHATSAPP_TEMPLATE_STATUS_UPDATED = 'whatsapp.template.status_updated';
+    public const EVENT_POST_PLATFORM_PUBLISHED = 'post.platform.published';
+    public const EVENT_POST_PLATFORM_FAILED = 'post.platform.failed';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getEventsAllowableValues()
+    public function getEventAllowableValues()
     {
         return [
-            self::EVENTS_POST_SCHEDULED,
-            self::EVENTS_POST_PUBLISHED,
-            self::EVENTS_POST_FAILED,
-            self::EVENTS_POST_PARTIAL,
-            self::EVENTS_POST_CANCELLED,
-            self::EVENTS_POST_RECYCLED,
-            self::EVENTS_POST_PLATFORM_PUBLISHED,
-            self::EVENTS_POST_PLATFORM_FAILED,
-            self::EVENTS_ACCOUNT_CONNECTED,
-            self::EVENTS_ACCOUNT_DISCONNECTED,
-            self::EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED,
-            self::EVENTS_MESSAGE_RECEIVED,
-            self::EVENTS_MESSAGE_SENT,
-            self::EVENTS_MESSAGE_EDITED,
-            self::EVENTS_MESSAGE_DELETED,
-            self::EVENTS_MESSAGE_DELIVERED,
-            self::EVENTS_MESSAGE_READ,
-            self::EVENTS_MESSAGE_FAILED,
-            self::EVENTS_COMMENT_RECEIVED,
-            self::EVENTS_REVIEW_NEW,
-            self::EVENTS_REVIEW_UPDATED,
-            self::EVENTS_AD_STATUS_CHANGED,
-            self::EVENTS_WHATSAPP_TEMPLATE_STATUS_UPDATED,
+            self::EVENT_POST_PLATFORM_PUBLISHED,
+            self::EVENT_POST_PLATFORM_FAILED,
         ];
     }
 
@@ -332,12 +291,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('secret', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], true);
-        $this->setIfExists('custom_headers', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('event', $data ?? [], null);
+        $this->setIfExists('post', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('account', $data ?? [], null);
+        $this->setIfExists('timestamp', $data ?? [], null);
     }
 
     /**
@@ -367,27 +326,33 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-        if ((mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
+        if ($this->container['event'] === null) {
+            $invalidProperties[] = "'event' can't be null";
         }
-
-        if ((mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
-        if ($this->container['events'] === null) {
-            $invalidProperties[] = "'events' can't be null";
-        }
-        if ((count($this->container['events']) < 1)) {
-            $invalidProperties[] = "invalid value for 'events', number of items must be greater than or equal to 1.";
+        $allowedValues = $this->getEventAllowableValues();
+        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'event', must be one of '%s'",
+                $this->container['event'],
+                implode("', '", $allowedValues)
+            );
         }
 
+        if ($this->container['post'] === null) {
+            $invalidProperties[] = "'post' can't be null";
+        }
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
+        if ($this->container['account'] === null) {
+            $invalidProperties[] = "'account' can't be null";
+        }
+        if ($this->container['timestamp'] === null) {
+            $invalidProperties[] = "'timestamp' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -404,184 +369,173 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets name
+     * Gets id
      *
      * @return string
      */
-    public function getName()
+    public function getId()
     {
-        return $this->container['name'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets name
+     * Sets id
      *
-     * @param string $name Webhook name (1-50 characters)
+     * @param string $id Stable webhook event ID.
      *
      * @return self
      */
-    public function setName($name)
+    public function setId($id)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        if ((mb_strlen($name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateWebhookSettingsRequest., must be smaller than or equal to 50.');
-        }
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateWebhookSettingsRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['name'] = $name;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets url
+     * Gets event
      *
      * @return string
      */
-    public function getUrl()
+    public function getEvent()
     {
-        return $this->container['url'];
+        return $this->container['event'];
     }
 
     /**
-     * Sets url
+     * Sets event
      *
-     * @param string $url Webhook endpoint URL (must be a valid URL, whitespace trimmed)
+     * @param string $event event
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setEvent($event)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($event)) {
+            throw new \InvalidArgumentException('non-nullable event cannot be null');
         }
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets secret
-     *
-     * @return string|null
-     */
-    public function getSecret()
-    {
-        return $this->container['secret'];
-    }
-
-    /**
-     * Sets secret
-     *
-     * @param string|null $secret Secret key for HMAC-SHA256 signature verification
-     *
-     * @return self
-     */
-    public function setSecret($secret)
-    {
-        if (is_null($secret)) {
-            throw new \InvalidArgumentException('non-nullable secret cannot be null');
-        }
-        $this->container['secret'] = $secret;
-
-        return $this;
-    }
-
-    /**
-     * Gets events
-     *
-     * @return string[]
-     */
-    public function getEvents()
-    {
-        return $this->container['events'];
-    }
-
-    /**
-     * Sets events
-     *
-     * @param string[] $events Events to subscribe to (at least one required)
-     *
-     * @return self
-     */
-    public function setEvents($events)
-    {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
-        }
-        $allowedValues = $this->getEventsAllowableValues();
-        if (array_diff($events, $allowedValues)) {
+        $allowedValues = $this->getEventAllowableValues();
+        if (!in_array($event, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'events', must be one of '%s'",
+                    "Invalid value '%s' for 'event', must be one of '%s'",
+                    $event,
                     implode("', '", $allowedValues)
                 )
             );
         }
-
-
-        if ((count($events) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $events when calling CreateWebhookSettingsRequest., number of items must be greater than or equal to 1.');
-        }
-        $this->container['events'] = $events;
+        $this->container['event'] = $event;
 
         return $this;
     }
 
     /**
-     * Gets is_active
+     * Gets post
      *
-     * @return bool|null
+     * @return \Zernio\Model\WebhookPayloadPostPlatformPost
      */
-    public function getIsActive()
+    public function getPost()
     {
-        return $this->container['is_active'];
+        return $this->container['post'];
     }
 
     /**
-     * Sets is_active
+     * Sets post
      *
-     * @param bool|null $is_active Enable or disable webhook delivery. Defaults to `true` when omitted.
+     * @param \Zernio\Model\WebhookPayloadPostPlatformPost $post post
      *
      * @return self
      */
-    public function setIsActive($is_active)
+    public function setPost($post)
     {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
+        if (is_null($post)) {
+            throw new \InvalidArgumentException('non-nullable post cannot be null');
         }
-        $this->container['is_active'] = $is_active;
+        $this->container['post'] = $post;
 
         return $this;
     }
 
     /**
-     * Gets custom_headers
+     * Gets platform
      *
-     * @return array<string,string>|null
+     * @return \Zernio\Model\WebhookPayloadPostPlatformPlatform
      */
-    public function getCustomHeaders()
+    public function getPlatform()
     {
-        return $this->container['custom_headers'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets custom_headers
+     * Sets platform
      *
-     * @param array<string,string>|null $custom_headers Custom headers to include in webhook requests
+     * @param \Zernio\Model\WebhookPayloadPostPlatformPlatform $platform platform
      *
      * @return self
      */
-    public function setCustomHeaders($custom_headers)
+    public function setPlatform($platform)
     {
-        if (is_null($custom_headers)) {
-            throw new \InvalidArgumentException('non-nullable custom_headers cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $this->container['custom_headers'] = $custom_headers;
+        $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets account
+     *
+     * @return \Zernio\Model\WebhookPayloadPostPlatformAccount
+     */
+    public function getAccount()
+    {
+        return $this->container['account'];
+    }
+
+    /**
+     * Sets account
+     *
+     * @param \Zernio\Model\WebhookPayloadPostPlatformAccount $account account
+     *
+     * @return self
+     */
+    public function setAccount($account)
+    {
+        if (is_null($account)) {
+            throw new \InvalidArgumentException('non-nullable account cannot be null');
+        }
+        $this->container['account'] = $account;
+
+        return $this;
+    }
+
+    /**
+     * Gets timestamp
+     *
+     * @return \DateTime
+     */
+    public function getTimestamp()
+    {
+        return $this->container['timestamp'];
+    }
+
+    /**
+     * Sets timestamp
+     *
+     * @param \DateTime $timestamp timestamp
+     *
+     * @return self
+     */
+    public function setTimestamp($timestamp)
+    {
+        if (is_null($timestamp)) {
+            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
+        }
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

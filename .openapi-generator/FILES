@@ -918,6 +918,10 @@ docs/Model/WebhookPayloadMessageSent.md
 docs/Model/WebhookPayloadMessageSentMessage.md
 docs/Model/WebhookPayloadMessageSentMessageSender.md
 docs/Model/WebhookPayloadPost.md
+docs/Model/WebhookPayloadPostPlatform.md
+docs/Model/WebhookPayloadPostPlatformAccount.md
+docs/Model/WebhookPayloadPostPlatformPlatform.md
+docs/Model/WebhookPayloadPostPlatformPost.md
 docs/Model/WebhookPayloadPostPost.md
 docs/Model/WebhookPayloadPostPostPlatformsInner.md
 docs/Model/WebhookPayloadReviewNew.md
@@ -1870,6 +1874,10 @@ lib/Model/WebhookPayloadMessageSent.php
 lib/Model/WebhookPayloadMessageSentMessage.php
 lib/Model/WebhookPayloadMessageSentMessageSender.php
 lib/Model/WebhookPayloadPost.php
+lib/Model/WebhookPayloadPostPlatform.php
+lib/Model/WebhookPayloadPostPlatformAccount.php
+lib/Model/WebhookPayloadPostPlatformPlatform.php
+lib/Model/WebhookPayloadPostPlatformPost.php
 lib/Model/WebhookPayloadPostPost.php
 lib/Model/WebhookPayloadPostPostPlatformsInner.php
 lib/Model/WebhookPayloadReviewNew.php
@@ -1903,3 +1911,7 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadPostPlatformAccountTest.php
+test/Model/WebhookPayloadPostPlatformPlatformTest.php
+test/Model/WebhookPayloadPostPlatformPostTest.php
+test/Model/WebhookPayloadPostPlatformTest.php

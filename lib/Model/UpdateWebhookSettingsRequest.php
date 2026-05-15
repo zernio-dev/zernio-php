@@ -271,6 +271,8 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     public const EVENTS_POST_PARTIAL = 'post.partial';
     public const EVENTS_POST_CANCELLED = 'post.cancelled';
     public const EVENTS_POST_RECYCLED = 'post.recycled';
+    public const EVENTS_POST_PLATFORM_PUBLISHED = 'post.platform.published';
+    public const EVENTS_POST_PLATFORM_FAILED = 'post.platform.failed';
     public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
     public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
     public const EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED = 'account.ads.initial_sync_completed';
@@ -285,6 +287,7 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     public const EVENTS_REVIEW_NEW = 'review.new';
     public const EVENTS_REVIEW_UPDATED = 'review.updated';
     public const EVENTS_AD_STATUS_CHANGED = 'ad.status_changed';
+    public const EVENTS_WHATSAPP_TEMPLATE_STATUS_UPDATED = 'whatsapp.template.status_updated';
 
     /**
      * Gets allowable values of the enum
@@ -300,6 +303,8 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
             self::EVENTS_POST_PARTIAL,
             self::EVENTS_POST_CANCELLED,
             self::EVENTS_POST_RECYCLED,
+            self::EVENTS_POST_PLATFORM_PUBLISHED,
+            self::EVENTS_POST_PLATFORM_FAILED,
             self::EVENTS_ACCOUNT_CONNECTED,
             self::EVENTS_ACCOUNT_DISCONNECTED,
             self::EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED,
@@ -314,6 +319,7 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
             self::EVENTS_REVIEW_NEW,
             self::EVENTS_REVIEW_UPDATED,
             self::EVENTS_AD_STATUS_CHANGED,
+            self::EVENTS_WHATSAPP_TEMPLATE_STATUS_UPDATED,
         ];
     }
 
