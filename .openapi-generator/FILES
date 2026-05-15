@@ -263,6 +263,7 @@ docs/Model/EnrollContactsRequest.md
 docs/Model/ErrorResponse.md
 docs/Model/Expired.md
 docs/Model/FacebookPlatformData.md
+docs/Model/FacebookPlatformDataCarouselCardsInner.md
 docs/Model/FollowUser200Response.md
 docs/Model/FollowUserRequest.md
 docs/Model/FollowerStatsResponse.md
@@ -1218,6 +1219,7 @@ lib/Model/EnrollContactsRequest.php
 lib/Model/ErrorResponse.php
 lib/Model/Expired.php
 lib/Model/FacebookPlatformData.php
+lib/Model/FacebookPlatformDataCarouselCardsInner.php
 lib/Model/FollowUser200Response.php
 lib/Model/FollowUserRequest.php
 lib/Model/FollowerStatsResponse.php
@@ -1911,3 +1913,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/FacebookPlatformDataCarouselCardsInnerTest.php

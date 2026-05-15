@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * FacebookPlatformData Class Doc Comment
  *
  * @category Class
- * @description Feed posts support up to 10 images (no mixed video+image). Stories require single media (24h, no captions). Reels require single vertical video (9:16, 3-60s). Geo-restriction is a hard visibility restriction: users outside the specified countries cannot see the post. Not supported for stories.
+ * @description Feed posts support up to 10 images (no mixed video+image). Stories require single media (24h, no captions). Reels require single vertical video (9:16, 3-60s). Carousel posts (carouselCards) render a 2-5 card multi-link post, images only, mutually exclusive with story/reel. Geo-restriction is a hard visibility restriction: users outside the specified countries cannot see the post. Not supported for stories.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -64,7 +64,9 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'title' => 'string',
         'first_comment' => 'string',
         'page_id' => 'string',
-        'geo_restriction' => '\Zernio\Model\GeoRestriction'
+        'geo_restriction' => '\Zernio\Model\GeoRestriction',
+        'carousel_cards' => '\Zernio\Model\FacebookPlatformDataCarouselCardsInner[]',
+        'carousel_link' => 'string'
     ];
 
     /**
@@ -80,7 +82,9 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'title' => null,
         'first_comment' => null,
         'page_id' => null,
-        'geo_restriction' => null
+        'geo_restriction' => null,
+        'carousel_cards' => null,
+        'carousel_link' => 'uri'
     ];
 
     /**
@@ -94,7 +98,9 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'title' => false,
         'first_comment' => false,
         'page_id' => false,
-        'geo_restriction' => false
+        'geo_restriction' => false,
+        'carousel_cards' => false,
+        'carousel_link' => false
     ];
 
     /**
@@ -188,7 +194,9 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'title' => 'title',
         'first_comment' => 'firstComment',
         'page_id' => 'pageId',
-        'geo_restriction' => 'geoRestriction'
+        'geo_restriction' => 'geoRestriction',
+        'carousel_cards' => 'carouselCards',
+        'carousel_link' => 'carouselLink'
     ];
 
     /**
@@ -202,7 +210,9 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'title' => 'setTitle',
         'first_comment' => 'setFirstComment',
         'page_id' => 'setPageId',
-        'geo_restriction' => 'setGeoRestriction'
+        'geo_restriction' => 'setGeoRestriction',
+        'carousel_cards' => 'setCarouselCards',
+        'carousel_link' => 'setCarouselLink'
     ];
 
     /**
@@ -216,7 +226,9 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         'title' => 'getTitle',
         'first_comment' => 'getFirstComment',
         'page_id' => 'getPageId',
-        'geo_restriction' => 'getGeoRestriction'
+        'geo_restriction' => 'getGeoRestriction',
+        'carousel_cards' => 'getCarouselCards',
+        'carousel_link' => 'getCarouselLink'
     ];
 
     /**
@@ -297,6 +309,8 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('first_comment', $data ?? [], null);
         $this->setIfExists('page_id', $data ?? [], null);
         $this->setIfExists('geo_restriction', $data ?? [], null);
+        $this->setIfExists('carousel_cards', $data ?? [], null);
+        $this->setIfExists('carousel_link', $data ?? [], null);
     }
 
     /**
@@ -333,6 +347,14 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
                 $this->container['content_type'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['carousel_cards']) && (count($this->container['carousel_cards']) > 5)) {
+            $invalidProperties[] = "invalid value for 'carousel_cards', number of items must be less than or equal to 5.";
+        }
+
+        if (!is_null($this->container['carousel_cards']) && (count($this->container['carousel_cards']) < 2)) {
+            $invalidProperties[] = "invalid value for 'carousel_cards', number of items must be greater than or equal to 2.";
         }
 
         return $invalidProperties;
@@ -518,6 +540,67 @@ class FacebookPlatformData implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable geo_restriction cannot be null');
         }
         $this->container['geo_restriction'] = $geo_restriction;
+
+        return $this;
+    }
+
+    /**
+     * Gets carousel_cards
+     *
+     * @return \Zernio\Model\FacebookPlatformDataCarouselCardsInner[]|null
+     */
+    public function getCarouselCards()
+    {
+        return $this->container['carousel_cards'];
+    }
+
+    /**
+     * Sets carousel_cards
+     *
+     * @param \Zernio\Model\FacebookPlatformDataCarouselCardsInner[]|null $carousel_cards Renders the post as a multi-link carousel (organic Page post). When set, mediaItems must be provided with the same length and all items must be images (no videos). Each cards[i] adds the click-through link and headline for the image at mediaItems[i]. Mutually exclusive with contentType=story|reel. Facebook display truncates name at ~35 chars and description at ~30 chars; longer strings are accepted but get truncated on render.
+     *
+     * @return self
+     */
+    public function setCarouselCards($carousel_cards)
+    {
+        if (is_null($carousel_cards)) {
+            throw new \InvalidArgumentException('non-nullable carousel_cards cannot be null');
+        }
+
+        if ((count($carousel_cards) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $carousel_cards when calling FacebookPlatformData., number of items must be less than or equal to 5.');
+        }
+        if ((count($carousel_cards) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $carousel_cards when calling FacebookPlatformData., number of items must be greater than or equal to 2.');
+        }
+        $this->container['carousel_cards'] = $carousel_cards;
+
+        return $this;
+    }
+
+    /**
+     * Gets carousel_link
+     *
+     * @return string|null
+     */
+    public function getCarouselLink()
+    {
+        return $this->container['carousel_link'];
+    }
+
+    /**
+     * Sets carousel_link
+     *
+     * @param string|null $carousel_link Optional top-level \"See more\" destination shown on the carousel end card. Defaults to the first card's link when omitted. Only used together with carouselCards.
+     *
+     * @return self
+     */
+    public function setCarouselLink($carousel_link)
+    {
+        if (is_null($carousel_link)) {
+            throw new \InvalidArgumentException('non-nullable carousel_link cannot be null');
+        }
+        $this->container['carousel_link'] = $carousel_link;
 
         return $this;
     }

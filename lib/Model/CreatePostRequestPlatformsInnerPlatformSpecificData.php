@@ -70,6 +70,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'title' => 'string',
         'first_comment' => 'string',
         'page_id' => 'string',
+        'carousel_cards' => '\Zernio\Model\FacebookPlatformDataCarouselCardsInner[]',
+        'carousel_link' => 'string',
         'share_to_feed' => 'bool',
         'collaborators' => 'string[]',
         'trial_params' => '\Zernio\Model\InstagramPlatformDataTrialParams',
@@ -154,6 +156,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'title' => null,
         'first_comment' => null,
         'page_id' => null,
+        'carousel_cards' => null,
+        'carousel_link' => 'uri',
         'share_to_feed' => null,
         'collaborators' => null,
         'trial_params' => null,
@@ -236,6 +240,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'title' => false,
         'first_comment' => false,
         'page_id' => false,
+        'carousel_cards' => false,
+        'carousel_link' => false,
         'share_to_feed' => false,
         'collaborators' => false,
         'trial_params' => false,
@@ -398,6 +404,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'title' => 'title',
         'first_comment' => 'firstComment',
         'page_id' => 'pageId',
+        'carousel_cards' => 'carouselCards',
+        'carousel_link' => 'carouselLink',
         'share_to_feed' => 'shareToFeed',
         'collaborators' => 'collaborators',
         'trial_params' => 'trialParams',
@@ -480,6 +488,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'title' => 'setTitle',
         'first_comment' => 'setFirstComment',
         'page_id' => 'setPageId',
+        'carousel_cards' => 'setCarouselCards',
+        'carousel_link' => 'setCarouselLink',
         'share_to_feed' => 'setShareToFeed',
         'collaborators' => 'setCollaborators',
         'trial_params' => 'setTrialParams',
@@ -562,6 +572,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'title' => 'getTitle',
         'first_comment' => 'getFirstComment',
         'page_id' => 'getPageId',
+        'carousel_cards' => 'getCarouselCards',
+        'carousel_link' => 'getCarouselLink',
         'share_to_feed' => 'getShareToFeed',
         'collaborators' => 'getCollaborators',
         'trial_params' => 'getTrialParams',
@@ -814,6 +826,8 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('first_comment', $data ?? [], null);
         $this->setIfExists('page_id', $data ?? [], null);
+        $this->setIfExists('carousel_cards', $data ?? [], null);
+        $this->setIfExists('carousel_link', $data ?? [], null);
         $this->setIfExists('share_to_feed', $data ?? [], true);
         $this->setIfExists('collaborators', $data ?? [], null);
         $this->setIfExists('trial_params', $data ?? [], null);
@@ -937,6 +951,14 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
 
         if (!is_null($this->container['first_comment']) && (mb_strlen($this->container['first_comment']) > 10000)) {
             $invalidProperties[] = "invalid value for 'first_comment', the character length must be smaller than or equal to 10000.";
+        }
+
+        if (!is_null($this->container['carousel_cards']) && (count($this->container['carousel_cards']) > 5)) {
+            $invalidProperties[] = "invalid value for 'carousel_cards', number of items must be less than or equal to 5.";
+        }
+
+        if (!is_null($this->container['carousel_cards']) && (count($this->container['carousel_cards']) < 2)) {
+            $invalidProperties[] = "invalid value for 'carousel_cards', number of items must be greater than or equal to 2.";
         }
 
         if (!is_null($this->container['thumb_offset']) && ($this->container['thumb_offset'] < 0)) {
@@ -1381,6 +1403,67 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
             throw new \InvalidArgumentException('non-nullable page_id cannot be null');
         }
         $this->container['page_id'] = $page_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets carousel_cards
+     *
+     * @return \Zernio\Model\FacebookPlatformDataCarouselCardsInner[]|null
+     */
+    public function getCarouselCards()
+    {
+        return $this->container['carousel_cards'];
+    }
+
+    /**
+     * Sets carousel_cards
+     *
+     * @param \Zernio\Model\FacebookPlatformDataCarouselCardsInner[]|null $carousel_cards Renders the post as a multi-link carousel (organic Page post). When set, mediaItems must be provided with the same length and all items must be images (no videos). Each cards[i] adds the click-through link and headline for the image at mediaItems[i]. Mutually exclusive with contentType=story|reel. Facebook display truncates name at ~35 chars and description at ~30 chars; longer strings are accepted but get truncated on render.
+     *
+     * @return self
+     */
+    public function setCarouselCards($carousel_cards)
+    {
+        if (is_null($carousel_cards)) {
+            throw new \InvalidArgumentException('non-nullable carousel_cards cannot be null');
+        }
+
+        if ((count($carousel_cards) > 5)) {
+            throw new \InvalidArgumentException('invalid value for $carousel_cards when calling CreatePostRequestPlatformsInnerPlatformSpecificData., number of items must be less than or equal to 5.');
+        }
+        if ((count($carousel_cards) < 2)) {
+            throw new \InvalidArgumentException('invalid length for $carousel_cards when calling CreatePostRequestPlatformsInnerPlatformSpecificData., number of items must be greater than or equal to 2.');
+        }
+        $this->container['carousel_cards'] = $carousel_cards;
+
+        return $this;
+    }
+
+    /**
+     * Gets carousel_link
+     *
+     * @return string|null
+     */
+    public function getCarouselLink()
+    {
+        return $this->container['carousel_link'];
+    }
+
+    /**
+     * Sets carousel_link
+     *
+     * @param string|null $carousel_link Optional top-level \"See more\" destination shown on the carousel end card. Defaults to the first card's link when omitted. Only used together with carouselCards.
+     *
+     * @return self
+     */
+    public function setCarouselLink($carousel_link)
+    {
+        if (is_null($carousel_link)) {
+            throw new \InvalidArgumentException('non-nullable carousel_link cannot be null');
+        }
+        $this->container['carousel_link'] = $carousel_link;
 
         return $this;
     }

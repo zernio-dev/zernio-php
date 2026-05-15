@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **title** | **string** | Post title. Defaults to the first line of content, truncated to 300 characters. | [optional]
 **first_comment** | **string** | Optional first comment to post immediately after video upload. Up to 10,000 characters (YouTube&#39;s comment limit). | [optional]
 **page_id** | **string** | Target Facebook Page ID for multi-page posting. If omitted, uses the default page. Use GET /v1/accounts/{id}/facebook-page to list pages. | [optional]
+**carousel_cards** | [**\Zernio\Model\FacebookPlatformDataCarouselCardsInner[]**](FacebookPlatformDataCarouselCardsInner.md) | Renders the post as a multi-link carousel (organic Page post). When set, mediaItems must be provided with the same length and all items must be images (no videos). Each cards[i] adds the click-through link and headline for the image at mediaItems[i]. Mutually exclusive with contentType&#x3D;story|reel. Facebook display truncates name at ~35 chars and description at ~30 chars; longer strings are accepted but get truncated on render. | [optional]
+**carousel_link** | **string** | Optional top-level \&quot;See more\&quot; destination shown on the carousel end card. Defaults to the first card&#39;s link when omitted. Only used together with carouselCards. | [optional]
 **share_to_feed** | **bool** | For Reels only. When true (default), the Reel appears on both the Reels tab and your main profile feed. Set to false to post to the Reels tab only. | [optional] [default to true]
 **collaborators** | **string[]** | Up to 3 Instagram usernames to invite as collaborators (feed/Reels only) | [optional]
 **trial_params** | [**\Zernio\Model\InstagramPlatformDataTrialParams**](InstagramPlatformDataTrialParams.md) |  | [optional]
