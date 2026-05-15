@@ -83,12 +83,12 @@ try {
 ## `createPost()`
 
 ```php
-createPost($create_post_request): \Zernio\Model\PostCreateResponse
+createPost($create_post_request, $x_request_id): \Zernio\Model\PostCreateResponse
 ```
 
 Create post
 
-Create and optionally publish a post. Immediate posts (publishNow: true) include platformPostUrl in the response. Content is optional when media is attached or all platforms have customContent. See each platform's schema for media constraints.
+Create and optionally publish a post. Immediate posts (`publishNow: true`) include `platformPostUrl` in the response. Content is optional when media is attached or all platforms have `customContent`. See each platform's schema for media constraints.  ## Idempotency  Two layers of duplicate-protection apply, so safe-to-retry callers (network blips, n8n / Zapier retries, etc.) don't accidentally double-post.  **1. Same-request idempotency (5-minute window).** Pass an `x-request-id` header to mark a logical request. If a second request arrives with the same `x-request-id` while the first is in-flight (or within ~5 minutes of completion), we return **HTTP 200** with the original post in the `existingPost` field — no new post is created. The official Zernio SDKs auto-generate a unique `x-request-id` per call. If you're using a generic HTTP client (curl, n8n's HTTP node, Zapier, custom code), either: - Set a unique `x-request-id` per logical call (recommended — UUIDv4 is fine) - Or simply omit the header — we'll treat each request as new  **Common pitfall**: if your workflow tool uses a single execution-level request ID and reuses it across multiple HTTP nodes (e.g. one ID for the whole run, shared across 6 different platform calls), every call after the first will look like a retry of the first and return its post. Generate a fresh ID per node.  **2. Content-hash dedup (24-hour window).** Independently, we hash `(platform, accountId, content + media URLs)` and reject duplicates within 24 hours with **HTTP 409**. This catches genuine \"same content posted twice to the same account\" cases regardless of `x-request-id`. Returns `error`, `accountId`, `platform`, and `existingPostId` so you can find the original. To intentionally re-post identical content within 24h, change something (the caption, the media, the account) — the dedup is keyed on the full content fingerprint.  Order: same-`x-request-id` retries (200) are checked first; if no idempotency match, the content-hash dedup (409) runs.
 
 ### Example
 
@@ -108,9 +108,10 @@ $apiInstance = new Zernio\Api\PostsApi(
     $config
 );
 $create_post_request = {"content":"Draft post for review before publishing","platforms":[{"platform":"facebook","accountId":"64e1f0a9e2b5af0012ab34cd"}],"publishNow":true,"facebookSettings":{"draft":true}}; // \Zernio\Model\CreatePostRequest
+$x_request_id = 'x_request_id_example'; // string | Optional client-generated request identifier for safe retry (idempotency). When two requests carry the same value, the second is treated as a retry of the first and returns the original post (HTTP 200) instead of creating a duplicate. Window is ~5 minutes from the first request. Generate a UUID per logical call. SDKs do this automatically; HTTP clients should set it themselves or omit it. See the operation description for the full idempotency contract.
 
 try {
-    $result = $apiInstance->createPost($create_post_request);
+    $result = $apiInstance->createPost($create_post_request, $x_request_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PostsApi->createPost: ', $e->getMessage(), PHP_EOL;
@@ -122,6 +123,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **create_post_request** | [**\Zernio\Model\CreatePostRequest**](../Model/CreatePostRequest.md)|  | |
+| **x_request_id** | **string**| Optional client-generated request identifier for safe retry (idempotency). When two requests carry the same value, the second is treated as a retry of the first and returns the original post (HTTP 200) instead of creating a duplicate. Window is ~5 minutes from the first request. Generate a UUID per logical call. SDKs do this automatically; HTTP clients should set it themselves or omit it. See the operation description for the full idempotency contract. | [optional] |
 
 ### Return type
 

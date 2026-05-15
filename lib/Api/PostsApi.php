@@ -470,15 +470,16 @@ class PostsApi
      * Create post
      *
      * @param  \Zernio\Model\CreatePostRequest $create_post_request create_post_request (required)
+     * @param  string|null $x_request_id Optional client-generated request identifier for safe retry (idempotency). When two requests carry the same value, the second is treated as a retry of the first and returns the original post (HTTP 200) instead of creating a duplicate. Window is ~5 minutes from the first request. Generate a UUID per logical call. SDKs do this automatically; HTTP clients should set it themselves or omit it. See the operation description for the full idempotency contract. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPost'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\PostCreateResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\CreatePost409Response|\Zernio\Model\CreatePost429Response
      */
-    public function createPost($create_post_request, string $contentType = self::contentTypes['createPost'][0])
+    public function createPost($create_post_request, $x_request_id = null, string $contentType = self::contentTypes['createPost'][0])
     {
-        list($response) = $this->createPostWithHttpInfo($create_post_request, $contentType);
+        list($response) = $this->createPostWithHttpInfo($create_post_request, $x_request_id, $contentType);
         return $response;
     }
 
@@ -488,15 +489,16 @@ class PostsApi
      * Create post
      *
      * @param  \Zernio\Model\CreatePostRequest $create_post_request (required)
+     * @param  string|null $x_request_id Optional client-generated request identifier for safe retry (idempotency). When two requests carry the same value, the second is treated as a retry of the first and returns the original post (HTTP 200) instead of creating a duplicate. Window is ~5 minutes from the first request. Generate a UUID per logical call. SDKs do this automatically; HTTP clients should set it themselves or omit it. See the operation description for the full idempotency contract. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPost'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\PostCreateResponse|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response|\Zernio\Model\CreatePost409Response|\Zernio\Model\CreatePost429Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createPostWithHttpInfo($create_post_request, string $contentType = self::contentTypes['createPost'][0])
+    public function createPostWithHttpInfo($create_post_request, $x_request_id = null, string $contentType = self::contentTypes['createPost'][0])
     {
-        $request = $this->createPostRequest($create_post_request, $contentType);
+        $request = $this->createPostRequest($create_post_request, $x_request_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -643,14 +645,15 @@ class PostsApi
      * Create post
      *
      * @param  \Zernio\Model\CreatePostRequest $create_post_request (required)
+     * @param  string|null $x_request_id Optional client-generated request identifier for safe retry (idempotency). When two requests carry the same value, the second is treated as a retry of the first and returns the original post (HTTP 200) instead of creating a duplicate. Window is ~5 minutes from the first request. Generate a UUID per logical call. SDKs do this automatically; HTTP clients should set it themselves or omit it. See the operation description for the full idempotency contract. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPostAsync($create_post_request, string $contentType = self::contentTypes['createPost'][0])
+    public function createPostAsync($create_post_request, $x_request_id = null, string $contentType = self::contentTypes['createPost'][0])
     {
-        return $this->createPostAsyncWithHttpInfo($create_post_request, $contentType)
+        return $this->createPostAsyncWithHttpInfo($create_post_request, $x_request_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -664,15 +667,16 @@ class PostsApi
      * Create post
      *
      * @param  \Zernio\Model\CreatePostRequest $create_post_request (required)
+     * @param  string|null $x_request_id Optional client-generated request identifier for safe retry (idempotency). When two requests carry the same value, the second is treated as a retry of the first and returns the original post (HTTP 200) instead of creating a duplicate. Window is ~5 minutes from the first request. Generate a UUID per logical call. SDKs do this automatically; HTTP clients should set it themselves or omit it. See the operation description for the full idempotency contract. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createPostAsyncWithHttpInfo($create_post_request, string $contentType = self::contentTypes['createPost'][0])
+    public function createPostAsyncWithHttpInfo($create_post_request, $x_request_id = null, string $contentType = self::contentTypes['createPost'][0])
     {
         $returnType = '\Zernio\Model\PostCreateResponse';
-        $request = $this->createPostRequest($create_post_request, $contentType);
+        $request = $this->createPostRequest($create_post_request, $x_request_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -714,12 +718,13 @@ class PostsApi
      * Create request for operation 'createPost'
      *
      * @param  \Zernio\Model\CreatePostRequest $create_post_request (required)
+     * @param  string|null $x_request_id Optional client-generated request identifier for safe retry (idempotency). When two requests carry the same value, the second is treated as a retry of the first and returns the original post (HTTP 200) instead of creating a duplicate. Window is ~5 minutes from the first request. Generate a UUID per logical call. SDKs do this automatically; HTTP clients should set it themselves or omit it. See the operation description for the full idempotency contract. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createPostRequest($create_post_request, string $contentType = self::contentTypes['createPost'][0])
+    public function createPostRequest($create_post_request, $x_request_id = null, string $contentType = self::contentTypes['createPost'][0])
     {
 
         // verify the required parameter 'create_post_request' is set
@@ -730,6 +735,7 @@ class PostsApi
         }
 
 
+
         $resourcePath = '/v1/posts';
         $formParams = [];
         $queryParams = [];
@@ -738,6 +744,10 @@ class PostsApi
         $multipart = false;
 
 
+        // header params
+        if ($x_request_id !== null) {
+            $headerParams['x-request-id'] = ObjectSerializer::toHeaderValue($x_request_id);
+        }
 
 
 
