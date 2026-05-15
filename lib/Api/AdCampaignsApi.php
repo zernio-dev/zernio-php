@@ -1833,15 +1833,17 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD, inclusive). Defaults to 90 days ago when both date params are omitted. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD, inclusive). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCampaigns'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListAdCampaigns200Response|\Zernio\Model\InlineObject
      */
-    public function listAdCampaigns($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
+    public function listAdCampaigns($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
-        list($response) = $this->listAdCampaignsWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType);
+        list($response) = $this->listAdCampaignsWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType);
         return $response;
     }
 
@@ -1858,15 +1860,17 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD, inclusive). Defaults to 90 days ago when both date params are omitted. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD, inclusive). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCampaigns'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListAdCampaigns200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdCampaignsWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
+    public function listAdCampaignsWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
-        $request = $this->listAdCampaignsRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType);
+        $request = $this->listAdCampaignsRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1964,14 +1968,16 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD, inclusive). Defaults to 90 days ago when both date params are omitted. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD, inclusive). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCampaigns'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdCampaignsAsync($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
+    public function listAdCampaignsAsync($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
-        return $this->listAdCampaignsAsyncWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType)
+        return $this->listAdCampaignsAsyncWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1992,15 +1998,17 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD, inclusive). Defaults to 90 days ago when both date params are omitted. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD, inclusive). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCampaigns'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdCampaignsAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
+    public function listAdCampaignsAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
         $returnType = '\Zernio\Model\ListAdCampaigns200Response';
-        $request = $this->listAdCampaignsRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $contentType);
+        $request = $this->listAdCampaignsRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2049,12 +2057,14 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (e.g. act_123 for Meta) (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
+     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD, inclusive). Defaults to 90 days ago when both date params are omitted. (optional)
+     * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD, inclusive). Defaults to today. Max 730-day range. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdCampaigns'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdCampaignsRequest($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
+    public function listAdCampaignsRequest($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['listAdCampaigns'][0])
     {
 
         if ($page !== null && $page < 1) {
@@ -2068,6 +2078,8 @@ class AdCampaignsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AdCampaignsApi.listAdCampaigns, must be bigger than or equal to 1.');
         }
         
+
+
 
 
 
@@ -2149,6 +2161,24 @@ class AdCampaignsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $profile_id,
             'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from_date,
+            'fromDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to_date,
+            'toDate', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

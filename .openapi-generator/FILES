@@ -1903,6 +1903,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedAccountTest.php
-test/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedTemplateTest.php
-test/Model/WebhookPayloadWhatsAppTemplateStatusUpdatedTest.php
