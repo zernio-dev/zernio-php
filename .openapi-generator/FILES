@@ -1911,7 +1911,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadPostPlatformAccountTest.php
-test/Model/WebhookPayloadPostPlatformPlatformTest.php
-test/Model/WebhookPayloadPostPlatformPostTest.php
-test/Model/WebhookPayloadPostPlatformTest.php

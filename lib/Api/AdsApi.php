@@ -2250,7 +2250,7 @@ class AdsApi
      *
      * Get ad details
      *
-     * @param  string $ad_id ad_id (required)
+     * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. See description for details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAd'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2268,7 +2268,7 @@ class AdsApi
      *
      * Get ad details
      *
-     * @param  string $ad_id (required)
+     * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. See description for details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAd'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -2381,7 +2381,7 @@ class AdsApi
      *
      * Get ad details
      *
-     * @param  string $ad_id (required)
+     * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. See description for details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2402,7 +2402,7 @@ class AdsApi
      *
      * Get ad details
      *
-     * @param  string $ad_id (required)
+     * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. See description for details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -2452,7 +2452,7 @@ class AdsApi
     /**
      * Create request for operation 'getAd'
      *
-     * @param  string $ad_id (required)
+     * @param  string $ad_id Zernio &#x60;_id&#x60; (hex), Meta &#x60;platformAdId&#x60; (numeric), or one of the creative&#39;s effective story/media IDs. See description for details. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
