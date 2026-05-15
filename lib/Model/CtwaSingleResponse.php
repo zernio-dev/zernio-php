@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestVideo
+ * CtwaSingleResponse
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestVideo Class Doc Comment
+ * CtwaSingleResponse Class Doc Comment
  *
  * @category Class
- * @description Video creative for single-creative shape. Mutually exclusive with &#x60;imageUrl&#x60; and with &#x60;creatives[]&#x60;. Required on the single-creative shape if &#x60;imageUrl&#x60; is not supplied.
+ * @description Response returned by &#x60;POST /v1/ads/ctwa&#x60; when the request used the single-creative shape (top-level headline / body / imageUrl|video). &#x60;adType&#x60; is the union discriminator.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSerializable
+class CtwaSingleResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_video';
+    protected static $openAPIModelName = 'CtwaSingleResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'url' => 'string',
-        'thumbnail_url' => 'string'
+        'ad_type' => 'string',
+        'ad' => 'object',
+        'message' => 'string'
     ];
 
     /**
@@ -71,8 +72,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'url' => 'uri',
-        'thumbnail_url' => 'uri'
+        'ad_type' => null,
+        'ad' => null,
+        'message' => null
     ];
 
     /**
@@ -81,8 +83,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'url' => false,
-        'thumbnail_url' => false
+        'ad_type' => false,
+        'ad' => false,
+        'message' => false
     ];
 
     /**
@@ -171,8 +174,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
-        'thumbnail_url' => 'thumbnailUrl'
+        'ad_type' => 'adType',
+        'ad' => 'ad',
+        'message' => 'message'
     ];
 
     /**
@@ -181,8 +185,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
-        'thumbnail_url' => 'setThumbnailUrl'
+        'ad_type' => 'setAdType',
+        'ad' => 'setAd',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -191,8 +196,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
-        'thumbnail_url' => 'getThumbnailUrl'
+        'ad_type' => 'getAdType',
+        'ad' => 'getAd',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -236,6 +242,19 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
+    public const AD_TYPE_SINGLE = 'single';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAdTypeAllowableValues()
+    {
+        return [
+            self::AD_TYPE_SINGLE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -252,8 +271,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('thumbnail_url', $data ?? [], null);
+        $this->setIfExists('ad_type', $data ?? [], null);
+        $this->setIfExists('ad', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
     }
 
     /**
@@ -283,11 +303,23 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
+        if ($this->container['ad_type'] === null) {
+            $invalidProperties[] = "'ad_type' can't be null";
         }
-        if ($this->container['thumbnail_url'] === null) {
-            $invalidProperties[] = "'thumbnail_url' can't be null";
+        $allowedValues = $this->getAdTypeAllowableValues();
+        if (!is_null($this->container['ad_type']) && !in_array($this->container['ad_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'ad_type', must be one of '%s'",
+                $this->container['ad_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['ad'] === null) {
+            $invalidProperties[] = "'ad' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
         return $invalidProperties;
     }
@@ -305,55 +337,92 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets url
+     * Gets ad_type
      *
      * @return string
      */
-    public function getUrl()
+    public function getAdType()
     {
-        return $this->container['url'];
+        return $this->container['ad_type'];
     }
 
     /**
-     * Sets url
+     * Sets ad_type
      *
-     * @param string $url url
+     * @param string $ad_type ad_type
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setAdType($ad_type)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($ad_type)) {
+            throw new \InvalidArgumentException('non-nullable ad_type cannot be null');
         }
-        $this->container['url'] = $url;
+        $allowedValues = $this->getAdTypeAllowableValues();
+        if (!in_array($ad_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'ad_type', must be one of '%s'",
+                    $ad_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ad_type'] = $ad_type;
 
         return $this;
     }
 
     /**
-     * Gets thumbnail_url
+     * Gets ad
      *
-     * @return string
+     * @return object
      */
-    public function getThumbnailUrl()
+    public function getAd()
     {
-        return $this->container['thumbnail_url'];
+        return $this->container['ad'];
     }
 
     /**
-     * Sets thumbnail_url
+     * Sets ad
      *
-     * @param string $thumbnail_url Required by Meta for every video creative. Used as the ad thumbnail.
+     * @param object $ad The persisted Ad document.
      *
      * @return self
      */
-    public function setThumbnailUrl($thumbnail_url)
+    public function setAd($ad)
     {
-        if (is_null($thumbnail_url)) {
-            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
+        if (is_null($ad)) {
+            throw new \InvalidArgumentException('non-nullable ad cannot be null');
         }
-        $this->container['thumbnail_url'] = $thumbnail_url;
+        $this->container['ad'] = $ad;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message message
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        }
+        $this->container['message'] = $message;
 
         return $this;
     }

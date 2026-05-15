@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestVideo
+ * DeleteGoogleBusinessReviewReply200Response
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestVideo Class Doc Comment
+ * DeleteGoogleBusinessReviewReply200Response Class Doc Comment
  *
  * @category Class
- * @description Video creative for single-creative shape. Mutually exclusive with &#x60;imageUrl&#x60; and with &#x60;creatives[]&#x60;. Required on the single-creative shape if &#x60;imageUrl&#x60; is not supplied.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSerializable
+class DeleteGoogleBusinessReviewReply200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_video';
+    protected static $openAPIModelName = 'deleteGoogleBusinessReviewReply_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'url' => 'string',
-        'thumbnail_url' => 'string'
+        'success' => 'bool',
+        'message' => 'string',
+        'platform' => 'string'
     ];
 
     /**
@@ -71,8 +71,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'url' => 'uri',
-        'thumbnail_url' => 'uri'
+        'success' => null,
+        'message' => null,
+        'platform' => null
     ];
 
     /**
@@ -81,8 +82,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'url' => false,
-        'thumbnail_url' => false
+        'success' => false,
+        'message' => false,
+        'platform' => false
     ];
 
     /**
@@ -171,8 +173,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
-        'thumbnail_url' => 'thumbnailUrl'
+        'success' => 'success',
+        'message' => 'message',
+        'platform' => 'platform'
     ];
 
     /**
@@ -181,8 +184,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
-        'thumbnail_url' => 'setThumbnailUrl'
+        'success' => 'setSuccess',
+        'message' => 'setMessage',
+        'platform' => 'setPlatform'
     ];
 
     /**
@@ -191,8 +195,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
-        'thumbnail_url' => 'getThumbnailUrl'
+        'success' => 'getSuccess',
+        'message' => 'getMessage',
+        'platform' => 'getPlatform'
     ];
 
     /**
@@ -252,8 +257,9 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('thumbnail_url', $data ?? [], null);
+        $this->setIfExists('success', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
     }
 
     /**
@@ -283,12 +289,6 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
-        if ($this->container['thumbnail_url'] === null) {
-            $invalidProperties[] = "'thumbnail_url' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -305,55 +305,82 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets url
+     * Gets success
      *
-     * @return string
+     * @return bool|null
      */
-    public function getUrl()
+    public function getSuccess()
     {
-        return $this->container['url'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets url
+     * Sets success
      *
-     * @param string $url url
+     * @param bool|null $success success
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setSuccess($success)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($success)) {
+            throw new \InvalidArgumentException('non-nullable success cannot be null');
         }
-        $this->container['url'] = $url;
+        $this->container['success'] = $success;
 
         return $this;
     }
 
     /**
-     * Gets thumbnail_url
+     * Gets message
      *
-     * @return string
+     * @return string|null
      */
-    public function getThumbnailUrl()
+    public function getMessage()
     {
-        return $this->container['thumbnail_url'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets thumbnail_url
+     * Sets message
      *
-     * @param string $thumbnail_url Required by Meta for every video creative. Used as the ad thumbnail.
+     * @param string|null $message message
      *
      * @return self
      */
-    public function setThumbnailUrl($thumbnail_url)
+    public function setMessage($message)
     {
-        if (is_null($thumbnail_url)) {
-            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
-        $this->container['thumbnail_url'] = $thumbnail_url;
+        $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform
+     *
+     * @return string|null
+     */
+    public function getPlatform()
+    {
+        return $this->container['platform'];
+    }
+
+    /**
+     * Sets platform
+     *
+     * @param string|null $platform platform
+     *
+     * @return self
+     */
+    public function setPlatform($platform)
+    {
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $this->container['platform'] = $platform;
 
         return $this;
     }

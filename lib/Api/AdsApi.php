@@ -1113,7 +1113,7 @@ class AdsApi
     /**
      * Operation createCtwaAd
      *
-     * Create Click-to-WhatsApp ad
+     * Create Click-to-WhatsApp ad(s)
      *
      * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request create_ctwa_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -1131,7 +1131,7 @@ class AdsApi
     /**
      * Operation createCtwaAdWithHttpInfo
      *
-     * Create Click-to-WhatsApp ad
+     * Create Click-to-WhatsApp ad(s)
      *
      * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -1230,7 +1230,7 @@ class AdsApi
     /**
      * Operation createCtwaAdAsync
      *
-     * Create Click-to-WhatsApp ad
+     * Create Click-to-WhatsApp ad(s)
      *
      * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation
@@ -1251,7 +1251,7 @@ class AdsApi
     /**
      * Operation createCtwaAdAsyncWithHttpInfo
      *
-     * Create Click-to-WhatsApp ad
+     * Create Click-to-WhatsApp ad(s)
      *
      * @param  \Zernio\Model\CreateCtwaAdRequest $create_ctwa_ad_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCtwaAd'] to see the possible values for this operation

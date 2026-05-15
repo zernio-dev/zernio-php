@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestVideo
+ * CreateCtwaAdRequestCreativesInnerVideo
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestVideo Class Doc Comment
+ * CreateCtwaAdRequestCreativesInnerVideo Class Doc Comment
  *
  * @category Class
- * @description Video creative for single-creative shape. Mutually exclusive with &#x60;imageUrl&#x60; and with &#x60;creatives[]&#x60;. Required on the single-creative shape if &#x60;imageUrl&#x60; is not supplied.
+ * @description Video creative. Mutually exclusive with this entry&#39;s &#x60;imageUrl&#x60;. Required if &#x60;imageUrl&#x60; is not supplied.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCtwaAdRequestCreativesInnerVideo implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_video';
+    protected static $openAPIModelName = 'createCtwaAd_request_creatives_inner_video';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestVideo
+ * CtwaMultiResponse
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestVideo Class Doc Comment
+ * CtwaMultiResponse Class Doc Comment
  *
  * @category Class
- * @description Video creative for single-creative shape. Mutually exclusive with &#x60;imageUrl&#x60; and with &#x60;creatives[]&#x60;. Required on the single-creative shape if &#x60;imageUrl&#x60; is not supplied.
+ * @description Response returned by &#x60;POST /v1/ads/ctwa&#x60; when the request used the multi-creative shape (&#x60;creatives[]&#x60;). N persisted Ad documents share the returned &#x60;platformCampaignId&#x60; and &#x60;platformAdSetId&#x60;. &#x60;adType&#x60; is the union discriminator.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSerializable
+class CtwaMultiResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_video';
+    protected static $openAPIModelName = 'CtwaMultiResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,11 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'url' => 'string',
-        'thumbnail_url' => 'string'
+        'ad_type' => 'string',
+        'ads' => 'object[]',
+        'platform_campaign_id' => 'string',
+        'platform_ad_set_id' => 'string',
+        'message' => 'string'
     ];
 
     /**
@@ -71,8 +74,11 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'url' => 'uri',
-        'thumbnail_url' => 'uri'
+        'ad_type' => null,
+        'ads' => null,
+        'platform_campaign_id' => null,
+        'platform_ad_set_id' => null,
+        'message' => null
     ];
 
     /**
@@ -81,8 +87,11 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'url' => false,
-        'thumbnail_url' => false
+        'ad_type' => false,
+        'ads' => false,
+        'platform_campaign_id' => false,
+        'platform_ad_set_id' => false,
+        'message' => false
     ];
 
     /**
@@ -171,8 +180,11 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
-        'thumbnail_url' => 'thumbnailUrl'
+        'ad_type' => 'adType',
+        'ads' => 'ads',
+        'platform_campaign_id' => 'platformCampaignId',
+        'platform_ad_set_id' => 'platformAdSetId',
+        'message' => 'message'
     ];
 
     /**
@@ -181,8 +193,11 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
-        'thumbnail_url' => 'setThumbnailUrl'
+        'ad_type' => 'setAdType',
+        'ads' => 'setAds',
+        'platform_campaign_id' => 'setPlatformCampaignId',
+        'platform_ad_set_id' => 'setPlatformAdSetId',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -191,8 +206,11 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
-        'thumbnail_url' => 'getThumbnailUrl'
+        'ad_type' => 'getAdType',
+        'ads' => 'getAds',
+        'platform_campaign_id' => 'getPlatformCampaignId',
+        'platform_ad_set_id' => 'getPlatformAdSetId',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -236,6 +254,19 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
+    public const AD_TYPE_MULTI = 'multi';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAdTypeAllowableValues()
+    {
+        return [
+            self::AD_TYPE_MULTI,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -252,8 +283,11 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('thumbnail_url', $data ?? [], null);
+        $this->setIfExists('ad_type', $data ?? [], null);
+        $this->setIfExists('ads', $data ?? [], null);
+        $this->setIfExists('platform_campaign_id', $data ?? [], null);
+        $this->setIfExists('platform_ad_set_id', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
     }
 
     /**
@@ -283,11 +317,29 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
+        if ($this->container['ad_type'] === null) {
+            $invalidProperties[] = "'ad_type' can't be null";
         }
-        if ($this->container['thumbnail_url'] === null) {
-            $invalidProperties[] = "'thumbnail_url' can't be null";
+        $allowedValues = $this->getAdTypeAllowableValues();
+        if (!is_null($this->container['ad_type']) && !in_array($this->container['ad_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'ad_type', must be one of '%s'",
+                $this->container['ad_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['ads'] === null) {
+            $invalidProperties[] = "'ads' can't be null";
+        }
+        if ($this->container['platform_campaign_id'] === null) {
+            $invalidProperties[] = "'platform_campaign_id' can't be null";
+        }
+        if ($this->container['platform_ad_set_id'] === null) {
+            $invalidProperties[] = "'platform_ad_set_id' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
         return $invalidProperties;
     }
@@ -305,55 +357,146 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets url
+     * Gets ad_type
      *
      * @return string
      */
-    public function getUrl()
+    public function getAdType()
     {
-        return $this->container['url'];
+        return $this->container['ad_type'];
     }
 
     /**
-     * Sets url
+     * Sets ad_type
      *
-     * @param string $url url
+     * @param string $ad_type ad_type
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setAdType($ad_type)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($ad_type)) {
+            throw new \InvalidArgumentException('non-nullable ad_type cannot be null');
         }
-        $this->container['url'] = $url;
+        $allowedValues = $this->getAdTypeAllowableValues();
+        if (!in_array($ad_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'ad_type', must be one of '%s'",
+                    $ad_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ad_type'] = $ad_type;
 
         return $this;
     }
 
     /**
-     * Gets thumbnail_url
+     * Gets ads
      *
-     * @return string
+     * @return object[]
      */
-    public function getThumbnailUrl()
+    public function getAds()
     {
-        return $this->container['thumbnail_url'];
+        return $this->container['ads'];
     }
 
     /**
-     * Sets thumbnail_url
+     * Sets ads
      *
-     * @param string $thumbnail_url Required by Meta for every video creative. Used as the ad thumbnail.
+     * @param object[] $ads The persisted Ad documents (one per creative), all sharing the same `platformCampaignId` and `platformAdSetId`.
      *
      * @return self
      */
-    public function setThumbnailUrl($thumbnail_url)
+    public function setAds($ads)
     {
-        if (is_null($thumbnail_url)) {
-            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
+        if (is_null($ads)) {
+            throw new \InvalidArgumentException('non-nullable ads cannot be null');
         }
-        $this->container['thumbnail_url'] = $thumbnail_url;
+        $this->container['ads'] = $ads;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_campaign_id
+     *
+     * @return string
+     */
+    public function getPlatformCampaignId()
+    {
+        return $this->container['platform_campaign_id'];
+    }
+
+    /**
+     * Sets platform_campaign_id
+     *
+     * @param string $platform_campaign_id platform_campaign_id
+     *
+     * @return self
+     */
+    public function setPlatformCampaignId($platform_campaign_id)
+    {
+        if (is_null($platform_campaign_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_campaign_id cannot be null');
+        }
+        $this->container['platform_campaign_id'] = $platform_campaign_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_ad_set_id
+     *
+     * @return string
+     */
+    public function getPlatformAdSetId()
+    {
+        return $this->container['platform_ad_set_id'];
+    }
+
+    /**
+     * Sets platform_ad_set_id
+     *
+     * @param string $platform_ad_set_id platform_ad_set_id
+     *
+     * @return self
+     */
+    public function setPlatformAdSetId($platform_ad_set_id)
+    {
+        if (is_null($platform_ad_set_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_ad_set_id cannot be null');
+        }
+        $this->container['platform_ad_set_id'] = $platform_ad_set_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string $message message
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        }
+        $this->container['message'] = $message;
 
         return $this;
     }

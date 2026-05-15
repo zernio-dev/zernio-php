@@ -78,7 +78,13 @@ class GMBReviewsApi
         'batchGetGoogleBusinessReviews' => [
             'application/json',
         ],
+        'deleteGoogleBusinessReviewReply' => [
+            'application/json',
+        ],
         'getGoogleBusinessReviews' => [
+            'application/json',
+        ],
+        'replyToGoogleBusinessReview' => [
             'application/json',
         ],
     ];
@@ -442,6 +448,354 @@ class GMBReviewsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteGoogleBusinessReviewReply
+     *
+     * Delete a review reply
+     *
+     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
+     * @param  string $review_id The review ID portion (e.g. \&quot;AIe9_BGx1234567890\&quot;), not the full resource name (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessReviewReply'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\DeleteGoogleBusinessReviewReply200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
+     */
+    public function deleteGoogleBusinessReviewReply($account_id, $review_id, string $contentType = self::contentTypes['deleteGoogleBusinessReviewReply'][0])
+    {
+        list($response) = $this->deleteGoogleBusinessReviewReplyWithHttpInfo($account_id, $review_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteGoogleBusinessReviewReplyWithHttpInfo
+     *
+     * Delete a review reply
+     *
+     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
+     * @param  string $review_id The review ID portion (e.g. \&quot;AIe9_BGx1234567890\&quot;), not the full resource name (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessReviewReply'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\DeleteGoogleBusinessReviewReply200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteGoogleBusinessReviewReplyWithHttpInfo($account_id, $review_id, string $contentType = self::contentTypes['deleteGoogleBusinessReviewReply'][0])
+    {
+        $request = $this->deleteGoogleBusinessReviewReplyRequest($account_id, $review_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\DeleteGoogleBusinessReviewReply200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\DeleteGoogleBusinessReviewReply200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\DeleteGoogleBusinessReviewReply200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteGoogleBusinessReviewReplyAsync
+     *
+     * Delete a review reply
+     *
+     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
+     * @param  string $review_id The review ID portion (e.g. \&quot;AIe9_BGx1234567890\&quot;), not the full resource name (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessReviewReply'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteGoogleBusinessReviewReplyAsync($account_id, $review_id, string $contentType = self::contentTypes['deleteGoogleBusinessReviewReply'][0])
+    {
+        return $this->deleteGoogleBusinessReviewReplyAsyncWithHttpInfo($account_id, $review_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteGoogleBusinessReviewReplyAsyncWithHttpInfo
+     *
+     * Delete a review reply
+     *
+     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
+     * @param  string $review_id The review ID portion (e.g. \&quot;AIe9_BGx1234567890\&quot;), not the full resource name (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessReviewReply'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteGoogleBusinessReviewReplyAsyncWithHttpInfo($account_id, $review_id, string $contentType = self::contentTypes['deleteGoogleBusinessReviewReply'][0])
+    {
+        $returnType = '\Zernio\Model\DeleteGoogleBusinessReviewReply200Response';
+        $request = $this->deleteGoogleBusinessReviewReplyRequest($account_id, $review_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteGoogleBusinessReviewReply'
+     *
+     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
+     * @param  string $review_id The review ID portion (e.g. \&quot;AIe9_BGx1234567890\&quot;), not the full resource name (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteGoogleBusinessReviewReply'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteGoogleBusinessReviewReplyRequest($account_id, $review_id, string $contentType = self::contentTypes['deleteGoogleBusinessReviewReply'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling deleteGoogleBusinessReviewReply'
+            );
+        }
+
+        // verify the required parameter 'review_id' is set
+        if ($review_id === null || (is_array($review_id) && count($review_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $review_id when calling deleteGoogleBusinessReviewReply'
+            );
+        }
+
+
+        $resourcePath = '/v1/accounts/{accountId}/gmb-reviews/{reviewId}/reply';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($review_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'reviewId' . '}',
+                ObjectSerializer::toPathValue($review_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -835,6 +1189,373 @@ class GMBReviewsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation replyToGoogleBusinessReview
+     *
+     * Reply to a review
+     *
+     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
+     * @param  string $review_id The review ID portion (e.g. \&quot;AIe9_BGx1234567890\&quot;), not the full resource name (required)
+     * @param  \Zernio\Model\ReplyToGoogleBusinessReviewRequest $reply_to_google_business_review_request reply_to_google_business_review_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToGoogleBusinessReview'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ReplyToGoogleBusinessReview200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse
+     */
+    public function replyToGoogleBusinessReview($account_id, $review_id, $reply_to_google_business_review_request, string $contentType = self::contentTypes['replyToGoogleBusinessReview'][0])
+    {
+        list($response) = $this->replyToGoogleBusinessReviewWithHttpInfo($account_id, $review_id, $reply_to_google_business_review_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation replyToGoogleBusinessReviewWithHttpInfo
+     *
+     * Reply to a review
+     *
+     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
+     * @param  string $review_id The review ID portion (e.g. \&quot;AIe9_BGx1234567890\&quot;), not the full resource name (required)
+     * @param  \Zernio\Model\ReplyToGoogleBusinessReviewRequest $reply_to_google_business_review_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToGoogleBusinessReview'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ReplyToGoogleBusinessReview200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\InlineObject1|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function replyToGoogleBusinessReviewWithHttpInfo($account_id, $review_id, $reply_to_google_business_review_request, string $contentType = self::contentTypes['replyToGoogleBusinessReview'][0])
+    {
+        $request = $this->replyToGoogleBusinessReviewRequest($account_id, $review_id, $reply_to_google_business_review_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ReplyToGoogleBusinessReview200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ReplyToGoogleBusinessReview200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ReplyToGoogleBusinessReview200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation replyToGoogleBusinessReviewAsync
+     *
+     * Reply to a review
+     *
+     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
+     * @param  string $review_id The review ID portion (e.g. \&quot;AIe9_BGx1234567890\&quot;), not the full resource name (required)
+     * @param  \Zernio\Model\ReplyToGoogleBusinessReviewRequest $reply_to_google_business_review_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToGoogleBusinessReview'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function replyToGoogleBusinessReviewAsync($account_id, $review_id, $reply_to_google_business_review_request, string $contentType = self::contentTypes['replyToGoogleBusinessReview'][0])
+    {
+        return $this->replyToGoogleBusinessReviewAsyncWithHttpInfo($account_id, $review_id, $reply_to_google_business_review_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation replyToGoogleBusinessReviewAsyncWithHttpInfo
+     *
+     * Reply to a review
+     *
+     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
+     * @param  string $review_id The review ID portion (e.g. \&quot;AIe9_BGx1234567890\&quot;), not the full resource name (required)
+     * @param  \Zernio\Model\ReplyToGoogleBusinessReviewRequest $reply_to_google_business_review_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToGoogleBusinessReview'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function replyToGoogleBusinessReviewAsyncWithHttpInfo($account_id, $review_id, $reply_to_google_business_review_request, string $contentType = self::contentTypes['replyToGoogleBusinessReview'][0])
+    {
+        $returnType = '\Zernio\Model\ReplyToGoogleBusinessReview200Response';
+        $request = $this->replyToGoogleBusinessReviewRequest($account_id, $review_id, $reply_to_google_business_review_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'replyToGoogleBusinessReview'
+     *
+     * @param  string $account_id The Zernio account ID (from /v1/accounts) (required)
+     * @param  string $review_id The review ID portion (e.g. \&quot;AIe9_BGx1234567890\&quot;), not the full resource name (required)
+     * @param  \Zernio\Model\ReplyToGoogleBusinessReviewRequest $reply_to_google_business_review_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replyToGoogleBusinessReview'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function replyToGoogleBusinessReviewRequest($account_id, $review_id, $reply_to_google_business_review_request, string $contentType = self::contentTypes['replyToGoogleBusinessReview'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling replyToGoogleBusinessReview'
+            );
+        }
+
+        // verify the required parameter 'review_id' is set
+        if ($review_id === null || (is_array($review_id) && count($review_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $review_id when calling replyToGoogleBusinessReview'
+            );
+        }
+
+        // verify the required parameter 'reply_to_google_business_review_request' is set
+        if ($reply_to_google_business_review_request === null || (is_array($reply_to_google_business_review_request) && count($reply_to_google_business_review_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $reply_to_google_business_review_request when calling replyToGoogleBusinessReview'
+            );
+        }
+
+
+        $resourcePath = '/v1/accounts/{accountId}/gmb-reviews/{reviewId}/reply';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($review_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'reviewId' . '}',
+                ObjectSerializer::toPathValue($review_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($reply_to_google_business_review_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($reply_to_google_business_review_request));
+            } else {
+                $httpBody = $reply_to_google_business_review_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

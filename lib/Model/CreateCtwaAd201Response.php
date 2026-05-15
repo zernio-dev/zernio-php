@@ -43,7 +43,7 @@ use \Zernio\ObjectSerializer;
  */
 class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    public const DISCRIMINATOR = 'ad_type';
 
     /**
       * The original name of the model.
@@ -58,8 +58,12 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
+        'ad_type' => 'string',
         'ad' => 'object',
-        'message' => 'string'
+        'message' => 'string',
+        'ads' => 'object[]',
+        'platform_campaign_id' => 'string',
+        'platform_ad_set_id' => 'string'
     ];
 
     /**
@@ -70,8 +74,12 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'ad_type' => null,
         'ad' => null,
-        'message' => null
+        'message' => null,
+        'ads' => null,
+        'platform_campaign_id' => null,
+        'platform_ad_set_id' => null
     ];
 
     /**
@@ -80,8 +88,12 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'ad_type' => false,
         'ad' => false,
-        'message' => false
+        'message' => false,
+        'ads' => false,
+        'platform_campaign_id' => false,
+        'platform_ad_set_id' => false
     ];
 
     /**
@@ -170,8 +182,12 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'ad_type' => 'adType',
         'ad' => 'ad',
-        'message' => 'message'
+        'message' => 'message',
+        'ads' => 'ads',
+        'platform_campaign_id' => 'platformCampaignId',
+        'platform_ad_set_id' => 'platformAdSetId'
     ];
 
     /**
@@ -180,8 +196,12 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'ad_type' => 'setAdType',
         'ad' => 'setAd',
-        'message' => 'setMessage'
+        'message' => 'setMessage',
+        'ads' => 'setAds',
+        'platform_campaign_id' => 'setPlatformCampaignId',
+        'platform_ad_set_id' => 'setPlatformAdSetId'
     ];
 
     /**
@@ -190,8 +210,12 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'ad_type' => 'getAdType',
         'ad' => 'getAd',
-        'message' => 'getMessage'
+        'message' => 'getMessage',
+        'ads' => 'getAds',
+        'platform_campaign_id' => 'getPlatformCampaignId',
+        'platform_ad_set_id' => 'getPlatformAdSetId'
     ];
 
     /**
@@ -235,6 +259,19 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
+    public const AD_TYPE_MULTI = 'multi';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAdTypeAllowableValues()
+    {
+        return [
+            self::AD_TYPE_MULTI,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +288,15 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('ad_type', $data ?? [], null);
         $this->setIfExists('ad', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('ads', $data ?? [], null);
+        $this->setIfExists('platform_campaign_id', $data ?? [], null);
+        $this->setIfExists('platform_ad_set_id', $data ?? [], null);
+
+        // Initialize discriminator property with the model name.
+        $this->container['ad_type'] = static::$openAPIModelName;
     }
 
     /**
@@ -282,6 +326,33 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['ad_type'] === null) {
+            $invalidProperties[] = "'ad_type' can't be null";
+        }
+        $allowedValues = $this->getAdTypeAllowableValues();
+        if (!is_null($this->container['ad_type']) && !in_array($this->container['ad_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'ad_type', must be one of '%s'",
+                $this->container['ad_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['ad'] === null) {
+            $invalidProperties[] = "'ad' can't be null";
+        }
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
+        }
+        if ($this->container['ads'] === null) {
+            $invalidProperties[] = "'ads' can't be null";
+        }
+        if ($this->container['platform_campaign_id'] === null) {
+            $invalidProperties[] = "'platform_campaign_id' can't be null";
+        }
+        if ($this->container['platform_ad_set_id'] === null) {
+            $invalidProperties[] = "'platform_ad_set_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -298,9 +369,46 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
+     * Gets ad_type
+     *
+     * @return string
+     */
+    public function getAdType()
+    {
+        return $this->container['ad_type'];
+    }
+
+    /**
+     * Sets ad_type
+     *
+     * @param string $ad_type ad_type
+     *
+     * @return self
+     */
+    public function setAdType($ad_type)
+    {
+        if (is_null($ad_type)) {
+            throw new \InvalidArgumentException('non-nullable ad_type cannot be null');
+        }
+        $allowedValues = $this->getAdTypeAllowableValues();
+        if (!in_array($ad_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'ad_type', must be one of '%s'",
+                    $ad_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['ad_type'] = $ad_type;
+
+        return $this;
+    }
+
+    /**
      * Gets ad
      *
-     * @return object|null
+     * @return object
      */
     public function getAd()
     {
@@ -310,7 +418,7 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets ad
      *
-     * @param object|null $ad The persisted Ad document.
+     * @param object $ad The persisted Ad document.
      *
      * @return self
      */
@@ -327,7 +435,7 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets message
      *
-     * @return string|null
+     * @return string
      */
     public function getMessage()
     {
@@ -337,7 +445,7 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets message
      *
-     * @param string|null $message message
+     * @param string $message message
      *
      * @return self
      */
@@ -347,6 +455,87 @@ class CreateCtwaAd201Response implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
         $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets ads
+     *
+     * @return object[]
+     */
+    public function getAds()
+    {
+        return $this->container['ads'];
+    }
+
+    /**
+     * Sets ads
+     *
+     * @param object[] $ads The persisted Ad documents (one per creative), all sharing the same `platformCampaignId` and `platformAdSetId`.
+     *
+     * @return self
+     */
+    public function setAds($ads)
+    {
+        if (is_null($ads)) {
+            throw new \InvalidArgumentException('non-nullable ads cannot be null');
+        }
+        $this->container['ads'] = $ads;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_campaign_id
+     *
+     * @return string
+     */
+    public function getPlatformCampaignId()
+    {
+        return $this->container['platform_campaign_id'];
+    }
+
+    /**
+     * Sets platform_campaign_id
+     *
+     * @param string $platform_campaign_id platform_campaign_id
+     *
+     * @return self
+     */
+    public function setPlatformCampaignId($platform_campaign_id)
+    {
+        if (is_null($platform_campaign_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_campaign_id cannot be null');
+        }
+        $this->container['platform_campaign_id'] = $platform_campaign_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_ad_set_id
+     *
+     * @return string
+     */
+    public function getPlatformAdSetId()
+    {
+        return $this->container['platform_ad_set_id'];
+    }
+
+    /**
+     * Sets platform_ad_set_id
+     *
+     * @param string $platform_ad_set_id platform_ad_set_id
+     *
+     * @return self
+     */
+    public function setPlatformAdSetId($platform_ad_set_id)
+    {
+        if (is_null($platform_ad_set_id)) {
+            throw new \InvalidArgumentException('non-nullable platform_ad_set_id cannot be null');
+        }
+        $this->container['platform_ad_set_id'] = $platform_ad_set_id;
 
         return $this;
     }

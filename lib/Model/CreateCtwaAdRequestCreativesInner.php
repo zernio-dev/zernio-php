@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestVideo
+ * CreateCtwaAdRequestCreativesInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestVideo Class Doc Comment
+ * CreateCtwaAdRequestCreativesInner Class Doc Comment
  *
  * @category Class
- * @description Video creative for single-creative shape. Mutually exclusive with &#x60;imageUrl&#x60; and with &#x60;creatives[]&#x60;. Required on the single-creative shape if &#x60;imageUrl&#x60; is not supplied.
+ * @description Each entry must also include exactly one of &#x60;imageUrl&#x60; or &#x60;video&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCtwaAdRequestCreativesInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_video';
+    protected static $openAPIModelName = 'createCtwaAd_request_creatives_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,10 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'url' => 'string',
-        'thumbnail_url' => 'string'
+        'headline' => 'string',
+        'body' => 'string',
+        'image_url' => 'string',
+        'video' => '\Zernio\Model\CreateCtwaAdRequestCreativesInnerVideo'
     ];
 
     /**
@@ -71,8 +73,10 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'url' => 'uri',
-        'thumbnail_url' => 'uri'
+        'headline' => null,
+        'body' => null,
+        'image_url' => 'uri',
+        'video' => null
     ];
 
     /**
@@ -81,8 +85,10 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'url' => false,
-        'thumbnail_url' => false
+        'headline' => false,
+        'body' => false,
+        'image_url' => false,
+        'video' => false
     ];
 
     /**
@@ -171,8 +177,10 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'url' => 'url',
-        'thumbnail_url' => 'thumbnailUrl'
+        'headline' => 'headline',
+        'body' => 'body',
+        'image_url' => 'imageUrl',
+        'video' => 'video'
     ];
 
     /**
@@ -181,8 +189,10 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'url' => 'setUrl',
-        'thumbnail_url' => 'setThumbnailUrl'
+        'headline' => 'setHeadline',
+        'body' => 'setBody',
+        'image_url' => 'setImageUrl',
+        'video' => 'setVideo'
     ];
 
     /**
@@ -191,8 +201,10 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'url' => 'getUrl',
-        'thumbnail_url' => 'getThumbnailUrl'
+        'headline' => 'getHeadline',
+        'body' => 'getBody',
+        'image_url' => 'getImageUrl',
+        'video' => 'getVideo'
     ];
 
     /**
@@ -252,8 +264,10 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('thumbnail_url', $data ?? [], null);
+        $this->setIfExists('headline', $data ?? [], null);
+        $this->setIfExists('body', $data ?? [], null);
+        $this->setIfExists('image_url', $data ?? [], null);
+        $this->setIfExists('video', $data ?? [], null);
     }
 
     /**
@@ -283,12 +297,24 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
+        if ($this->container['headline'] === null) {
+            $invalidProperties[] = "'headline' can't be null";
         }
-        if ($this->container['thumbnail_url'] === null) {
-            $invalidProperties[] = "'thumbnail_url' can't be null";
+        if ((mb_strlen($this->container['headline']) > 255)) {
+            $invalidProperties[] = "invalid value for 'headline', the character length must be smaller than or equal to 255.";
         }
+
+        if ((mb_strlen($this->container['headline']) < 1)) {
+            $invalidProperties[] = "invalid value for 'headline', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['body'] === null) {
+            $invalidProperties[] = "'body' can't be null";
+        }
+        if ((mb_strlen($this->container['body']) < 1)) {
+            $invalidProperties[] = "invalid value for 'body', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -305,55 +331,121 @@ class CreateCtwaAdRequestVideo implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets url
+     * Gets headline
      *
      * @return string
      */
-    public function getUrl()
+    public function getHeadline()
     {
-        return $this->container['url'];
+        return $this->container['headline'];
     }
 
     /**
-     * Sets url
+     * Sets headline
      *
-     * @param string $url url
+     * @param string $headline headline
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setHeadline($headline)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($headline)) {
+            throw new \InvalidArgumentException('non-nullable headline cannot be null');
         }
-        $this->container['url'] = $url;
+        if ((mb_strlen($headline) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $headline when calling CreateCtwaAdRequestCreativesInner., must be smaller than or equal to 255.');
+        }
+        if ((mb_strlen($headline) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $headline when calling CreateCtwaAdRequestCreativesInner., must be bigger than or equal to 1.');
+        }
+
+        $this->container['headline'] = $headline;
 
         return $this;
     }
 
     /**
-     * Gets thumbnail_url
+     * Gets body
      *
      * @return string
      */
-    public function getThumbnailUrl()
+    public function getBody()
     {
-        return $this->container['thumbnail_url'];
+        return $this->container['body'];
     }
 
     /**
-     * Sets thumbnail_url
+     * Sets body
      *
-     * @param string $thumbnail_url Required by Meta for every video creative. Used as the ad thumbnail.
+     * @param string $body Primary text shown above the image / video.
      *
      * @return self
      */
-    public function setThumbnailUrl($thumbnail_url)
+    public function setBody($body)
     {
-        if (is_null($thumbnail_url)) {
-            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
+        if (is_null($body)) {
+            throw new \InvalidArgumentException('non-nullable body cannot be null');
         }
-        $this->container['thumbnail_url'] = $thumbnail_url;
+
+        if ((mb_strlen($body) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $body when calling CreateCtwaAdRequestCreativesInner., must be bigger than or equal to 1.');
+        }
+
+        $this->container['body'] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_url
+     *
+     * @return string|null
+     */
+    public function getImageUrl()
+    {
+        return $this->container['image_url'];
+    }
+
+    /**
+     * Sets image_url
+     *
+     * @param string|null $image_url Image asset. Mutually exclusive with this entry's `video`. Required if `video` is not supplied.
+     *
+     * @return self
+     */
+    public function setImageUrl($image_url)
+    {
+        if (is_null($image_url)) {
+            throw new \InvalidArgumentException('non-nullable image_url cannot be null');
+        }
+        $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets video
+     *
+     * @return \Zernio\Model\CreateCtwaAdRequestCreativesInnerVideo|null
+     */
+    public function getVideo()
+    {
+        return $this->container['video'];
+    }
+
+    /**
+     * Sets video
+     *
+     * @param \Zernio\Model\CreateCtwaAdRequestCreativesInnerVideo|null $video video
+     *
+     * @return self
+     */
+    public function setVideo($video)
+    {
+        if (is_null($video)) {
+            throw new \InvalidArgumentException('non-nullable video cannot be null');
+        }
+        $this->container['video'] = $video;
 
         return $this;
     }

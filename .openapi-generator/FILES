@@ -164,6 +164,8 @@ docs/Model/CreateConversionDestinationRequest.md
 docs/Model/CreateConversionDestinationRequestValue.md
 docs/Model/CreateCtwaAd201Response.md
 docs/Model/CreateCtwaAdRequest.md
+docs/Model/CreateCtwaAdRequestCreativesInner.md
+docs/Model/CreateCtwaAdRequestCreativesInnerVideo.md
 docs/Model/CreateCtwaAdRequestInterestsInner.md
 docs/Model/CreateCtwaAdRequestVideo.md
 docs/Model/CreateCustomField200Response.md
@@ -223,11 +225,14 @@ docs/Model/CreateWhatsAppTemplate200ResponseTemplate.md
 docs/Model/CreateWhatsAppTemplateRequest.md
 docs/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner.md
 docs/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl.md
+docs/Model/CtwaMultiResponse.md
+docs/Model/CtwaSingleResponse.md
 docs/Model/DeleteAccountGroup200Response.md
 docs/Model/DeleteAdCampaign200Response.md
 docs/Model/DeleteAdCampaignRequest.md
 docs/Model/DeleteGoogleBusinessMedia200Response.md
 docs/Model/DeleteGoogleBusinessPlaceAction200Response.md
+docs/Model/DeleteGoogleBusinessReviewReply200Response.md
 docs/Model/DeleteInboxComment200Response.md
 docs/Model/DeleteInboxReviewReply200Response.md
 docs/Model/DeleteInboxReviewReplyRequest.md
@@ -638,6 +643,8 @@ docs/Model/ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber.md
 docs/Model/RemoveBookmark200Response.md
 docs/Model/RemoveConversionAssociations200Response.md
 docs/Model/RemoveWhatsAppGroupParticipantsRequest.md
+docs/Model/ReplyToGoogleBusinessReview200Response.md
+docs/Model/ReplyToGoogleBusinessReviewRequest.md
 docs/Model/ReplyToInboxPost200Response.md
 docs/Model/ReplyToInboxPost200ResponseData.md
 docs/Model/ReplyToInboxPostRequest.md
@@ -1105,6 +1112,8 @@ lib/Model/CreateConversionDestinationRequest.php
 lib/Model/CreateConversionDestinationRequestValue.php
 lib/Model/CreateCtwaAd201Response.php
 lib/Model/CreateCtwaAdRequest.php
+lib/Model/CreateCtwaAdRequestCreativesInner.php
+lib/Model/CreateCtwaAdRequestCreativesInnerVideo.php
 lib/Model/CreateCtwaAdRequestInterestsInner.php
 lib/Model/CreateCtwaAdRequestVideo.php
 lib/Model/CreateCustomField200Response.php
@@ -1164,11 +1173,14 @@ lib/Model/CreateWhatsAppTemplate200ResponseTemplate.php
 lib/Model/CreateWhatsAppTemplateRequest.php
 lib/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner.php
 lib/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl.php
+lib/Model/CtwaMultiResponse.php
+lib/Model/CtwaSingleResponse.php
 lib/Model/DeleteAccountGroup200Response.php
 lib/Model/DeleteAdCampaign200Response.php
 lib/Model/DeleteAdCampaignRequest.php
 lib/Model/DeleteGoogleBusinessMedia200Response.php
 lib/Model/DeleteGoogleBusinessPlaceAction200Response.php
+lib/Model/DeleteGoogleBusinessReviewReply200Response.php
 lib/Model/DeleteInboxComment200Response.php
 lib/Model/DeleteInboxReviewReply200Response.php
 lib/Model/DeleteInboxReviewReplyRequest.php
@@ -1580,6 +1592,8 @@ lib/Model/ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber.php
 lib/Model/RemoveBookmark200Response.php
 lib/Model/RemoveConversionAssociations200Response.php
 lib/Model/RemoveWhatsAppGroupParticipantsRequest.php
+lib/Model/ReplyToGoogleBusinessReview200Response.php
+lib/Model/ReplyToGoogleBusinessReviewRequest.php
 lib/Model/ReplyToInboxPost200Response.php
 lib/Model/ReplyToInboxPost200ResponseData.php
 lib/Model/ReplyToInboxPostRequest.php
@@ -1883,3 +1897,10 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateCtwaAdRequestCreativesInnerTest.php
+test/Model/CreateCtwaAdRequestCreativesInnerVideoTest.php
+test/Model/CtwaMultiResponseTest.php
+test/Model/CtwaSingleResponseTest.php
+test/Model/DeleteGoogleBusinessReviewReply200ResponseTest.php
+test/Model/ReplyToGoogleBusinessReview200ResponseTest.php
+test/Model/ReplyToGoogleBusinessReviewRequestTest.php

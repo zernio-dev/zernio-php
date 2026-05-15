@@ -100,7 +100,7 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**addConversionAssociations**](docs/Api/AdsApi.md#addconversionassociations) | **POST** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Associate campaigns with a conversion destination
 *AdsApi* | [**boostPost**](docs/Api/AdsApi.md#boostpost) | **POST** /v1/ads/boost | Boost post as ad
 *AdsApi* | [**createConversionDestination**](docs/Api/AdsApi.md#createconversiondestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination (LinkedIn)
-*AdsApi* | [**createCtwaAd**](docs/Api/AdsApi.md#createctwaad) | **POST** /v1/ads/ctwa | Create Click-to-WhatsApp ad
+*AdsApi* | [**createCtwaAd**](docs/Api/AdsApi.md#createctwaad) | **POST** /v1/ads/ctwa | Create Click-to-WhatsApp ad(s)
 *AdsApi* | [**createStandaloneAd**](docs/Api/AdsApi.md#createstandalonead) | **POST** /v1/ads/create | Create standalone ad
 *AdsApi* | [**deleteAd**](docs/Api/AdsApi.md#deletead) | **DELETE** /v1/ads/{adId} | Cancel an ad
 *AdsApi* | [**deleteConversionDestination**](docs/Api/AdsApi.md#deleteconversiondestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Soft-delete a conversion destination
@@ -232,7 +232,9 @@ Class | Method | HTTP request | Description
 *GMBPlaceActionsApi* | [**listGoogleBusinessPlaceActions**](docs/Api/GMBPlaceActionsApi.md#listgooglebusinessplaceactions) | **GET** /v1/accounts/{accountId}/gmb-place-actions | List action links
 *GMBPlaceActionsApi* | [**updateGoogleBusinessPlaceAction**](docs/Api/GMBPlaceActionsApi.md#updategooglebusinessplaceaction) | **PATCH** /v1/accounts/{accountId}/gmb-place-actions | Update action link
 *GMBReviewsApi* | [**batchGetGoogleBusinessReviews**](docs/Api/GMBReviewsApi.md#batchgetgooglebusinessreviews) | **POST** /v1/accounts/{accountId}/gmb-reviews/batch | Batch get reviews
+*GMBReviewsApi* | [**deleteGoogleBusinessReviewReply**](docs/Api/GMBReviewsApi.md#deletegooglebusinessreviewreply) | **DELETE** /v1/accounts/{accountId}/gmb-reviews/{reviewId}/reply | Delete a review reply
 *GMBReviewsApi* | [**getGoogleBusinessReviews**](docs/Api/GMBReviewsApi.md#getgooglebusinessreviews) | **GET** /v1/accounts/{accountId}/gmb-reviews | Get reviews
+*GMBReviewsApi* | [**replyToGoogleBusinessReview**](docs/Api/GMBReviewsApi.md#replytogooglebusinessreview) | **POST** /v1/accounts/{accountId}/gmb-reviews/{reviewId}/reply | Reply to a review
 *GMBServicesApi* | [**getGoogleBusinessServices**](docs/Api/GMBServicesApi.md#getgooglebusinessservices) | **GET** /v1/accounts/{accountId}/gmb-services | Get services
 *GMBServicesApi* | [**updateGoogleBusinessServices**](docs/Api/GMBServicesApi.md#updategooglebusinessservices) | **PUT** /v1/accounts/{accountId}/gmb-services | Replace services
 *InvitesApi* | [**createInviteToken**](docs/Api/InvitesApi.md#createinvitetoken) | **POST** /v1/invite/tokens | Create invite token
@@ -471,6 +473,8 @@ Class | Method | HTTP request | Description
 - [CreateConversionDestinationRequestValue](docs/Model/CreateConversionDestinationRequestValue.md)
 - [CreateCtwaAd201Response](docs/Model/CreateCtwaAd201Response.md)
 - [CreateCtwaAdRequest](docs/Model/CreateCtwaAdRequest.md)
+- [CreateCtwaAdRequestCreativesInner](docs/Model/CreateCtwaAdRequestCreativesInner.md)
+- [CreateCtwaAdRequestCreativesInnerVideo](docs/Model/CreateCtwaAdRequestCreativesInnerVideo.md)
 - [CreateCtwaAdRequestInterestsInner](docs/Model/CreateCtwaAdRequestInterestsInner.md)
 - [CreateCtwaAdRequestVideo](docs/Model/CreateCtwaAdRequestVideo.md)
 - [CreateCustomField200Response](docs/Model/CreateCustomField200Response.md)
@@ -530,11 +534,14 @@ Class | Method | HTTP request | Description
 - [CreateWhatsAppTemplateRequest](docs/Model/CreateWhatsAppTemplateRequest.md)
 - [CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner](docs/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInner.md)
 - [CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl](docs/Model/CreateWhatsAppTemplateRequestLibraryTemplateButtonInputsInnerUrl.md)
+- [CtwaMultiResponse](docs/Model/CtwaMultiResponse.md)
+- [CtwaSingleResponse](docs/Model/CtwaSingleResponse.md)
 - [DeleteAccountGroup200Response](docs/Model/DeleteAccountGroup200Response.md)
 - [DeleteAdCampaign200Response](docs/Model/DeleteAdCampaign200Response.md)
 - [DeleteAdCampaignRequest](docs/Model/DeleteAdCampaignRequest.md)
 - [DeleteGoogleBusinessMedia200Response](docs/Model/DeleteGoogleBusinessMedia200Response.md)
 - [DeleteGoogleBusinessPlaceAction200Response](docs/Model/DeleteGoogleBusinessPlaceAction200Response.md)
+- [DeleteGoogleBusinessReviewReply200Response](docs/Model/DeleteGoogleBusinessReviewReply200Response.md)
 - [DeleteInboxComment200Response](docs/Model/DeleteInboxComment200Response.md)
 - [DeleteInboxReviewReply200Response](docs/Model/DeleteInboxReviewReply200Response.md)
 - [DeleteInboxReviewReplyRequest](docs/Model/DeleteInboxReviewReplyRequest.md)
@@ -945,6 +952,8 @@ Class | Method | HTTP request | Description
 - [RemoveBookmark200Response](docs/Model/RemoveBookmark200Response.md)
 - [RemoveConversionAssociations200Response](docs/Model/RemoveConversionAssociations200Response.md)
 - [RemoveWhatsAppGroupParticipantsRequest](docs/Model/RemoveWhatsAppGroupParticipantsRequest.md)
+- [ReplyToGoogleBusinessReview200Response](docs/Model/ReplyToGoogleBusinessReview200Response.md)
+- [ReplyToGoogleBusinessReviewRequest](docs/Model/ReplyToGoogleBusinessReviewRequest.md)
 - [ReplyToInboxPost200Response](docs/Model/ReplyToInboxPost200Response.md)
 - [ReplyToInboxPost200ResponseData](docs/Model/ReplyToInboxPost200ResponseData.md)
 - [ReplyToInboxPostRequest](docs/Model/ReplyToInboxPostRequest.md)

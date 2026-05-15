@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateCtwaAdRequest Class Doc Comment
  *
  * @category Class
- * @description In addition to the &#x60;required&#x60; list, exactly one of &#x60;imageUrl&#x60; or &#x60;video&#x60; must be supplied (they are mutually exclusive). The route enforces this at the Zod boundary; OpenAPI&#39;s &#x60;required&#x60; cannot express OR-required cleanly.
+ * @description In addition to the &#x60;required&#x60; list, the request must use EXACTLY ONE of the two shapes:  - Single-creative: &#x60;headline&#x60;, &#x60;body&#x60;, and one of   &#x60;imageUrl&#x60; / &#x60;video&#x60; (mutually exclusive). - Multi-creative: a non-empty &#x60;creatives[]&#x60; array. Top-level   &#x60;headline&#x60; / &#x60;body&#x60; / &#x60;imageUrl&#x60; / &#x60;video&#x60; must NOT be set   on this shape.  The route enforces this at the Zod boundary; OpenAPI&#39;s &#x60;required&#x60; cannot express the OR cleanly.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -66,6 +66,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'body' => 'string',
         'image_url' => 'string',
         'video' => '\Zernio\Model\CreateCtwaAdRequestVideo',
+        'creatives' => '\Zernio\Model\CreateCtwaAdRequestCreativesInner[]',
         'budget_amount' => 'float',
         'budget_type' => 'string',
         'currency' => 'string',
@@ -77,6 +78,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'audience_id' => 'string',
         'advantage_audience' => 'int',
         'objective' => 'string',
+        'bid_strategy' => 'string',
+        'bid_amount' => 'float',
+        'roas_average_floor' => 'float',
         'dsa_beneficiary' => 'string',
         'dsa_payor' => 'string'
     ];
@@ -96,6 +100,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'body' => null,
         'image_url' => 'uri',
         'video' => null,
+        'creatives' => null,
         'budget_amount' => null,
         'budget_type' => null,
         'currency' => null,
@@ -107,6 +112,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'audience_id' => null,
         'advantage_audience' => null,
         'objective' => null,
+        'bid_strategy' => null,
+        'bid_amount' => null,
+        'roas_average_floor' => null,
         'dsa_beneficiary' => null,
         'dsa_payor' => null
     ];
@@ -124,6 +132,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'body' => false,
         'image_url' => false,
         'video' => false,
+        'creatives' => false,
         'budget_amount' => false,
         'budget_type' => false,
         'currency' => false,
@@ -135,6 +144,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'audience_id' => false,
         'advantage_audience' => false,
         'objective' => false,
+        'bid_strategy' => false,
+        'bid_amount' => false,
+        'roas_average_floor' => false,
         'dsa_beneficiary' => false,
         'dsa_payor' => false
     ];
@@ -232,6 +244,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'body' => 'body',
         'image_url' => 'imageUrl',
         'video' => 'video',
+        'creatives' => 'creatives',
         'budget_amount' => 'budgetAmount',
         'budget_type' => 'budgetType',
         'currency' => 'currency',
@@ -243,6 +256,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'audience_id' => 'audienceId',
         'advantage_audience' => 'advantageAudience',
         'objective' => 'objective',
+        'bid_strategy' => 'bidStrategy',
+        'bid_amount' => 'bidAmount',
+        'roas_average_floor' => 'roasAverageFloor',
         'dsa_beneficiary' => 'dsaBeneficiary',
         'dsa_payor' => 'dsaPayor'
     ];
@@ -260,6 +276,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'body' => 'setBody',
         'image_url' => 'setImageUrl',
         'video' => 'setVideo',
+        'creatives' => 'setCreatives',
         'budget_amount' => 'setBudgetAmount',
         'budget_type' => 'setBudgetType',
         'currency' => 'setCurrency',
@@ -271,6 +288,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'audience_id' => 'setAudienceId',
         'advantage_audience' => 'setAdvantageAudience',
         'objective' => 'setObjective',
+        'bid_strategy' => 'setBidStrategy',
+        'bid_amount' => 'setBidAmount',
+        'roas_average_floor' => 'setRoasAverageFloor',
         'dsa_beneficiary' => 'setDsaBeneficiary',
         'dsa_payor' => 'setDsaPayor'
     ];
@@ -288,6 +308,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'body' => 'getBody',
         'image_url' => 'getImageUrl',
         'video' => 'getVideo',
+        'creatives' => 'getCreatives',
         'budget_amount' => 'getBudgetAmount',
         'budget_type' => 'getBudgetType',
         'currency' => 'getCurrency',
@@ -299,6 +320,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'audience_id' => 'getAudienceId',
         'advantage_audience' => 'getAdvantageAudience',
         'objective' => 'getObjective',
+        'bid_strategy' => 'getBidStrategy',
+        'bid_amount' => 'getBidAmount',
+        'roas_average_floor' => 'getRoasAverageFloor',
         'dsa_beneficiary' => 'getDsaBeneficiary',
         'dsa_payor' => 'getDsaPayor'
     ];
@@ -351,6 +375,10 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     public const OBJECTIVE_OUTCOME_ENGAGEMENT = 'OUTCOME_ENGAGEMENT';
     public const OBJECTIVE_OUTCOME_SALES = 'OUTCOME_SALES';
     public const OBJECTIVE_OUTCOME_LEADS = 'OUTCOME_LEADS';
+    public const BID_STRATEGY_LOWEST_COST_WITHOUT_CAP = 'LOWEST_COST_WITHOUT_CAP';
+    public const BID_STRATEGY_LOWEST_COST_WITH_BID_CAP = 'LOWEST_COST_WITH_BID_CAP';
+    public const BID_STRATEGY_COST_CAP = 'COST_CAP';
+    public const BID_STRATEGY_LOWEST_COST_WITH_MIN_ROAS = 'LOWEST_COST_WITH_MIN_ROAS';
 
     /**
      * Gets allowable values of the enum
@@ -393,6 +421,21 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBidStrategyAllowableValues()
+    {
+        return [
+            self::BID_STRATEGY_LOWEST_COST_WITHOUT_CAP,
+            self::BID_STRATEGY_LOWEST_COST_WITH_BID_CAP,
+            self::BID_STRATEGY_COST_CAP,
+            self::BID_STRATEGY_LOWEST_COST_WITH_MIN_ROAS,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -414,6 +457,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('body', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('video', $data ?? [], null);
+        $this->setIfExists('creatives', $data ?? [], null);
         $this->setIfExists('budget_amount', $data ?? [], null);
         $this->setIfExists('budget_type', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
@@ -425,6 +469,9 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('audience_id', $data ?? [], null);
         $this->setIfExists('advantage_audience', $data ?? [], null);
         $this->setIfExists('objective', $data ?? [], null);
+        $this->setIfExists('bid_strategy', $data ?? [], null);
+        $this->setIfExists('bid_amount', $data ?? [], null);
+        $this->setIfExists('roas_average_floor', $data ?? [], null);
         $this->setIfExists('dsa_beneficiary', $data ?? [], null);
         $this->setIfExists('dsa_payor', $data ?? [], null);
     }
@@ -477,22 +524,20 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['headline'] === null) {
-            $invalidProperties[] = "'headline' can't be null";
-        }
-        if ((mb_strlen($this->container['headline']) > 255)) {
+        if (!is_null($this->container['headline']) && (mb_strlen($this->container['headline']) > 255)) {
             $invalidProperties[] = "invalid value for 'headline', the character length must be smaller than or equal to 255.";
         }
 
-        if ((mb_strlen($this->container['headline']) < 1)) {
+        if (!is_null($this->container['headline']) && (mb_strlen($this->container['headline']) < 1)) {
             $invalidProperties[] = "invalid value for 'headline', the character length must be bigger than or equal to 1.";
         }
 
-        if ($this->container['body'] === null) {
-            $invalidProperties[] = "'body' can't be null";
-        }
-        if ((mb_strlen($this->container['body']) < 1)) {
+        if (!is_null($this->container['body']) && (mb_strlen($this->container['body']) < 1)) {
             $invalidProperties[] = "invalid value for 'body', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['creatives']) && (count($this->container['creatives']) < 1)) {
+            $invalidProperties[] = "invalid value for 'creatives', number of items must be greater than or equal to 1.";
         }
 
         if ($this->container['budget_amount'] === null) {
@@ -554,6 +599,23 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
                 $this->container['objective'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        $allowedValues = $this->getBidStrategyAllowableValues();
+        if (!is_null($this->container['bid_strategy']) && !in_array($this->container['bid_strategy'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'bid_strategy', must be one of '%s'",
+                $this->container['bid_strategy'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['bid_amount']) && ($this->container['bid_amount'] < 0)) {
+            $invalidProperties[] = "invalid value for 'bid_amount', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['roas_average_floor']) && ($this->container['roas_average_floor'] < 0)) {
+            $invalidProperties[] = "invalid value for 'roas_average_floor', must be bigger than or equal to 0.";
         }
 
         if (!is_null($this->container['dsa_beneficiary']) && (mb_strlen($this->container['dsa_beneficiary']) > 100)) {
@@ -656,7 +718,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets name
      *
-     * @param string $name Ad display name. Used to derive campaign / ad set names.
+     * @param string $name Ad display name. Used to derive campaign / ad set names. On the multi-creative shape, each ad's Meta name gets a \" #N\" suffix (1-indexed) so Ads Manager shows them as a numbered batch.
      *
      * @return self
      */
@@ -678,7 +740,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets headline
      *
-     * @return string
+     * @return string|null
      */
     public function getHeadline()
     {
@@ -688,7 +750,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets headline
      *
-     * @param string $headline headline
+     * @param string|null $headline Single-creative shape only. Mutually exclusive with `creatives[]`.
      *
      * @return self
      */
@@ -712,7 +774,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets body
      *
-     * @return string
+     * @return string|null
      */
     public function getBody()
     {
@@ -722,7 +784,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets body
      *
-     * @param string $body Primary text shown above the image / video.
+     * @param string|null $body Primary text shown above the image / video. Single-creative shape only. Mutually exclusive with `creatives[]`.
      *
      * @return self
      */
@@ -754,7 +816,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets image_url
      *
-     * @param string|null $image_url Image asset for image creatives. Mutually exclusive with `video`. Required if `video` is not supplied.
+     * @param string|null $image_url Image asset for single-creative shape. Mutually exclusive with `video` and with `creatives[]`. Required on the single-creative shape if `video` is not supplied.
      *
      * @return self
      */
@@ -791,6 +853,38 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable video cannot be null');
         }
         $this->container['video'] = $video;
+
+        return $this;
+    }
+
+    /**
+     * Gets creatives
+     *
+     * @return \Zernio\Model\CreateCtwaAdRequestCreativesInner[]|null
+     */
+    public function getCreatives()
+    {
+        return $this->container['creatives'];
+    }
+
+    /**
+     * Sets creatives
+     *
+     * @param \Zernio\Model\CreateCtwaAdRequestCreativesInner[]|null $creatives Multi-creative shape: N CTWA ads under one campaign + one ad set, sharing budget and targeting. Mutually exclusive with the top-level single-creative fields (`headline` / `body` / `imageUrl` / `video`). Each entry must supply its own headline, body, and exactly one of `imageUrl` / `video`.
+     *
+     * @return self
+     */
+    public function setCreatives($creatives)
+    {
+        if (is_null($creatives)) {
+            throw new \InvalidArgumentException('non-nullable creatives cannot be null');
+        }
+
+
+        if ((count($creatives) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $creatives when calling CreateCtwaAdRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['creatives'] = $creatives;
 
         return $this;
     }
@@ -1146,6 +1240,107 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             );
         }
         $this->container['objective'] = $objective;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_strategy
+     *
+     * @return string|null
+     */
+    public function getBidStrategy()
+    {
+        return $this->container['bid_strategy'];
+    }
+
+    /**
+     * Sets bid_strategy
+     *
+     * @param string|null $bid_strategy Meta bid strategy applied to the shared ad set. Defaults to `LOWEST_COST_WITHOUT_CAP` (auto-bid) when omitted. `LOWEST_COST_WITH_BID_CAP` and `COST_CAP` require `bidAmount`. `LOWEST_COST_WITH_MIN_ROAS` requires `roasAverageFloor`. CTWA's `optimization_goal` is fixed to `CONVERSATIONS`, but the bid strategy is independent.
+     *
+     * @return self
+     */
+    public function setBidStrategy($bid_strategy)
+    {
+        if (is_null($bid_strategy)) {
+            throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
+        }
+        $allowedValues = $this->getBidStrategyAllowableValues();
+        if (!in_array($bid_strategy, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'bid_strategy', must be one of '%s'",
+                    $bid_strategy,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets bid_amount
+     *
+     * @return float|null
+     */
+    public function getBidAmount()
+    {
+        return $this->container['bid_amount'];
+    }
+
+    /**
+     * Sets bid_amount
+     *
+     * @param float|null $bid_amount Whole currency units (e.g. `5` = $5.00 on a USD account). Required when `bidStrategy` is `LOWEST_COST_WITH_BID_CAP` or `COST_CAP`; rejected otherwise.
+     *
+     * @return self
+     */
+    public function setBidAmount($bid_amount)
+    {
+        if (is_null($bid_amount)) {
+            throw new \InvalidArgumentException('non-nullable bid_amount cannot be null');
+        }
+
+        if (($bid_amount < 0)) {
+            throw new \InvalidArgumentException('invalid value for $bid_amount when calling CreateCtwaAdRequest., must be bigger than or equal to 0.');
+        }
+
+        $this->container['bid_amount'] = $bid_amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets roas_average_floor
+     *
+     * @return float|null
+     */
+    public function getRoasAverageFloor()
+    {
+        return $this->container['roas_average_floor'];
+    }
+
+    /**
+     * Sets roas_average_floor
+     *
+     * @param float|null $roas_average_floor Decimal ROAS multiplier (e.g. `2.0` = 2.0× ROAS floor). Required when `bidStrategy` is `LOWEST_COST_WITH_MIN_ROAS`; rejected otherwise. Meta enforces its own upper bound server-side.
+     *
+     * @return self
+     */
+    public function setRoasAverageFloor($roas_average_floor)
+    {
+        if (is_null($roas_average_floor)) {
+            throw new \InvalidArgumentException('non-nullable roas_average_floor cannot be null');
+        }
+
+        if (($roas_average_floor < 0)) {
+            throw new \InvalidArgumentException('invalid value for $roas_average_floor when calling CreateCtwaAdRequest., must be bigger than or equal to 0.');
+        }
+
+        $this->container['roas_average_floor'] = $roas_average_floor;
 
         return $this;
     }
