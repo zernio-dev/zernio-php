@@ -486,7 +486,7 @@ try {
 ## `getFacebookPages()`
 
 ```php
-getFacebookPages($account_id): \Zernio\Model\GetFacebookPages200Response
+getFacebookPages($account_id, $refresh): \Zernio\Model\GetFacebookPages200Response
 ```
 
 List Facebook pages
@@ -511,9 +511,10 @@ $apiInstance = new Zernio\Api\ConnectApi(
     $config
 );
 $account_id = 'account_id_example'; // string
+$refresh = True; // bool | When true, bypasses the page cache and fetches fresh pages from Meta. Rate-limited server-side to 1 refresh per 60s. Pages no longer accessible to the connected account will be removed from the list on refresh.
 
 try {
-    $result = $apiInstance->getFacebookPages($account_id);
+    $result = $apiInstance->getFacebookPages($account_id, $refresh);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->getFacebookPages: ', $e->getMessage(), PHP_EOL;
@@ -525,6 +526,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
+| **refresh** | **bool**| When true, bypasses the page cache and fetches fresh pages from Meta. Rate-limited server-side to 1 refresh per 60s. Pages no longer accessible to the connected account will be removed from the list on refresh. | [optional] |
 
 ### Return type
 

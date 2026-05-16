@@ -2435,15 +2435,16 @@ class ConnectApi
      * List Facebook pages
      *
      * @param  string $account_id account_id (required)
+     * @param  bool|null $refresh When true, bypasses the page cache and fetches fresh pages from Meta. Rate-limited server-side to 1 refresh per 60s. Pages no longer accessible to the connected account will be removed from the list on refresh. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPages'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetFacebookPages200Response|\Zernio\Model\InlineObject
      */
-    public function getFacebookPages($account_id, string $contentType = self::contentTypes['getFacebookPages'][0])
+    public function getFacebookPages($account_id, $refresh = null, string $contentType = self::contentTypes['getFacebookPages'][0])
     {
-        list($response) = $this->getFacebookPagesWithHttpInfo($account_id, $contentType);
+        list($response) = $this->getFacebookPagesWithHttpInfo($account_id, $refresh, $contentType);
         return $response;
     }
 
@@ -2453,15 +2454,16 @@ class ConnectApi
      * List Facebook pages
      *
      * @param  string $account_id (required)
+     * @param  bool|null $refresh When true, bypasses the page cache and fetches fresh pages from Meta. Rate-limited server-side to 1 refresh per 60s. Pages no longer accessible to the connected account will be removed from the list on refresh. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPages'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetFacebookPages200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFacebookPagesWithHttpInfo($account_id, string $contentType = self::contentTypes['getFacebookPages'][0])
+    public function getFacebookPagesWithHttpInfo($account_id, $refresh = null, string $contentType = self::contentTypes['getFacebookPages'][0])
     {
-        $request = $this->getFacebookPagesRequest($account_id, $contentType);
+        $request = $this->getFacebookPagesRequest($account_id, $refresh, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2552,14 +2554,15 @@ class ConnectApi
      * List Facebook pages
      *
      * @param  string $account_id (required)
+     * @param  bool|null $refresh When true, bypasses the page cache and fetches fresh pages from Meta. Rate-limited server-side to 1 refresh per 60s. Pages no longer accessible to the connected account will be removed from the list on refresh. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFacebookPagesAsync($account_id, string $contentType = self::contentTypes['getFacebookPages'][0])
+    public function getFacebookPagesAsync($account_id, $refresh = null, string $contentType = self::contentTypes['getFacebookPages'][0])
     {
-        return $this->getFacebookPagesAsyncWithHttpInfo($account_id, $contentType)
+        return $this->getFacebookPagesAsyncWithHttpInfo($account_id, $refresh, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2573,15 +2576,16 @@ class ConnectApi
      * List Facebook pages
      *
      * @param  string $account_id (required)
+     * @param  bool|null $refresh When true, bypasses the page cache and fetches fresh pages from Meta. Rate-limited server-side to 1 refresh per 60s. Pages no longer accessible to the connected account will be removed from the list on refresh. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFacebookPagesAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getFacebookPages'][0])
+    public function getFacebookPagesAsyncWithHttpInfo($account_id, $refresh = null, string $contentType = self::contentTypes['getFacebookPages'][0])
     {
         $returnType = '\Zernio\Model\GetFacebookPages200Response';
-        $request = $this->getFacebookPagesRequest($account_id, $contentType);
+        $request = $this->getFacebookPagesRequest($account_id, $refresh, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2623,12 +2627,13 @@ class ConnectApi
      * Create request for operation 'getFacebookPages'
      *
      * @param  string $account_id (required)
+     * @param  bool|null $refresh When true, bypasses the page cache and fetches fresh pages from Meta. Rate-limited server-side to 1 refresh per 60s. Pages no longer accessible to the connected account will be removed from the list on refresh. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getFacebookPages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFacebookPagesRequest($account_id, string $contentType = self::contentTypes['getFacebookPages'][0])
+    public function getFacebookPagesRequest($account_id, $refresh = null, string $contentType = self::contentTypes['getFacebookPages'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -2639,6 +2644,7 @@ class ConnectApi
         }
 
 
+
         $resourcePath = '/v1/accounts/{accountId}/facebook-page';
         $formParams = [];
         $queryParams = [];
@@ -2646,6 +2652,15 @@ class ConnectApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $refresh,
+            'refresh', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
