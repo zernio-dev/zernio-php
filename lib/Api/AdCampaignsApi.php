@@ -1063,15 +1063,16 @@ class AdCampaignsApi
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) and &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; are accepted for forward compatibility but currently fall back to an adSetCount-based ordering (spend ranking via Tinybird is pending). (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetAdTree200Response|\Zernio\Model\InlineObject
      */
-    public function getAdTree($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTree($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
     {
-        list($response) = $this->getAdTreeWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType);
+        list($response) = $this->getAdTreeWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $sort, $contentType);
         return $response;
     }
 
@@ -1090,15 +1091,16 @@ class AdCampaignsApi
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) and &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; are accepted for forward compatibility but currently fall back to an adSetCount-based ordering (spend ranking via Tinybird is pending). (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetAdTree200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAdTreeWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
     {
-        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType);
+        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $sort, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1198,14 +1200,15 @@ class AdCampaignsApi
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) and &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; are accepted for forward compatibility but currently fall back to an adSetCount-based ordering (spend ranking via Tinybird is pending). (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdTreeAsync($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeAsync($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
     {
-        return $this->getAdTreeAsyncWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType)
+        return $this->getAdTreeAsyncWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $sort, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1228,15 +1231,16 @@ class AdCampaignsApi
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) and &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; are accepted for forward compatibility but currently fall back to an adSetCount-based ordering (spend ranking via Tinybird is pending). (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdTreeAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
     {
         $returnType = '\Zernio\Model\GetAdTree200Response';
-        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $contentType);
+        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $sort, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1287,12 +1291,13 @@ class AdCampaignsApi
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
+     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) and &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; are accepted for forward compatibility but currently fall back to an adSetCount-based ordering (spend ranking via Tinybird is pending). (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAdTreeRequest($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeRequest($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
     {
 
         if ($page !== null && $page < 1) {
@@ -1306,6 +1311,7 @@ class AdCampaignsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AdCampaignsApi.getAdTree, must be bigger than or equal to 1.');
         }
         
+
 
 
 
@@ -1407,6 +1413,15 @@ class AdCampaignsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $to_date,
             'toDate', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
