@@ -1063,7 +1063,7 @@ class AdCampaignsApi
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) and &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; are accepted for forward compatibility but currently fall back to an adSetCount-based ordering (spend ranking via Tinybird is pending). (optional, default to 'newest')
+     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1091,7 +1091,7 @@ class AdCampaignsApi
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) and &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; are accepted for forward compatibility but currently fall back to an adSetCount-based ordering (spend ranking via Tinybird is pending). (optional, default to 'newest')
+     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1200,7 +1200,7 @@ class AdCampaignsApi
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) and &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; are accepted for forward compatibility but currently fall back to an adSetCount-based ordering (spend ranking via Tinybird is pending). (optional, default to 'newest')
+     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1231,7 +1231,7 @@ class AdCampaignsApi
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) and &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; are accepted for forward compatibility but currently fall back to an adSetCount-based ordering (spend ranking via Tinybird is pending). (optional, default to 'newest')
+     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1291,7 +1291,7 @@ class AdCampaignsApi
      * @param  string|null $profile_id Profile ID (optional)
      * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
-     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) and &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; are accepted for forward compatibility but currently fall back to an adSetCount-based ordering (spend ranking via Tinybird is pending). (optional, default to 'newest')
+     * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
