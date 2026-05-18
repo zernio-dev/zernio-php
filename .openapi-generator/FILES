@@ -25,6 +25,7 @@ docs/Api/GMBMediaApi.md
 docs/Api/GMBPlaceActionsApi.md
 docs/Api/GMBReviewsApi.md
 docs/Api/GMBServicesApi.md
+docs/Api/InstagramApi.md
 docs/Api/InvitesApi.md
 docs/Api/LinkedInMentionsApi.md
 docs/Api/LogsApi.md
@@ -388,6 +389,9 @@ docs/Model/GetInboxPostComments200ResponseMeta.md
 docs/Model/GetInboxPostComments200ResponseMetaAdComments.md
 docs/Model/GetInboxPostComments200ResponsePagination.md
 docs/Model/GetInstagramAccountInsights404Response.md
+docs/Model/GetInstagramStoryInsights200Response.md
+docs/Model/GetInstagramStoryInsights200ResponseData.md
+docs/Model/GetInstagramStoryInsights200ResponseDataMetrics.md
 docs/Model/GetLinkedInAggregateAnalytics200Response.md
 docs/Model/GetLinkedInAggregateAnalytics400Response.md
 docs/Model/GetLinkedInAggregateAnalytics402Response.md
@@ -563,6 +567,8 @@ docs/Model/ListInboxReviews200ResponseDataInner.md
 docs/Model/ListInboxReviews200ResponseDataInnerReply.md
 docs/Model/ListInboxReviews200ResponseDataInnerReviewer.md
 docs/Model/ListInboxReviews200ResponseSummary.md
+docs/Model/ListInstagramStories200Response.md
+docs/Model/ListInstagramStories200ResponseDataInner.md
 docs/Model/ListLinkedInOrganizations200Response.md
 docs/Model/ListLinkedInOrganizations200ResponseOrganizationsInner.md
 docs/Model/ListLogs200Response.md
@@ -977,6 +983,7 @@ lib/Api/GMBMediaApi.php
 lib/Api/GMBPlaceActionsApi.php
 lib/Api/GMBReviewsApi.php
 lib/Api/GMBServicesApi.php
+lib/Api/InstagramApi.php
 lib/Api/InvitesApi.php
 lib/Api/LinkedInMentionsApi.php
 lib/Api/LogsApi.php
@@ -1344,6 +1351,9 @@ lib/Model/GetInboxPostComments200ResponseMeta.php
 lib/Model/GetInboxPostComments200ResponseMetaAdComments.php
 lib/Model/GetInboxPostComments200ResponsePagination.php
 lib/Model/GetInstagramAccountInsights404Response.php
+lib/Model/GetInstagramStoryInsights200Response.php
+lib/Model/GetInstagramStoryInsights200ResponseData.php
+lib/Model/GetInstagramStoryInsights200ResponseDataMetrics.php
 lib/Model/GetLinkedInAggregateAnalytics200Response.php
 lib/Model/GetLinkedInAggregateAnalytics400Response.php
 lib/Model/GetLinkedInAggregateAnalytics402Response.php
@@ -1519,6 +1529,8 @@ lib/Model/ListInboxReviews200ResponseDataInner.php
 lib/Model/ListInboxReviews200ResponseDataInnerReply.php
 lib/Model/ListInboxReviews200ResponseDataInnerReviewer.php
 lib/Model/ListInboxReviews200ResponseSummary.php
+lib/Model/ListInstagramStories200Response.php
+lib/Model/ListInstagramStories200ResponseDataInner.php
 lib/Model/ListLinkedInOrganizations200Response.php
 lib/Model/ListLinkedInOrganizations200ResponseOrganizationsInner.php
 lib/Model/ListLogs200Response.php
@@ -1913,3 +1925,9 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/InstagramApiTest.php
+test/Model/GetInstagramStoryInsights200ResponseDataMetricsTest.php
+test/Model/GetInstagramStoryInsights200ResponseDataTest.php
+test/Model/GetInstagramStoryInsights200ResponseTest.php
+test/Model/ListInstagramStories200ResponseDataInnerTest.php
+test/Model/ListInstagramStories200ResponseTest.php

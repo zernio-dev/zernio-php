@@ -237,6 +237,8 @@ Class | Method | HTTP request | Description
 *GMBReviewsApi* | [**replyToGoogleBusinessReview**](docs/Api/GMBReviewsApi.md#replytogooglebusinessreview) | **POST** /v1/accounts/{accountId}/gmb-reviews/{reviewId}/reply | Reply to a review
 *GMBServicesApi* | [**getGoogleBusinessServices**](docs/Api/GMBServicesApi.md#getgooglebusinessservices) | **GET** /v1/accounts/{accountId}/gmb-services | Get services
 *GMBServicesApi* | [**updateGoogleBusinessServices**](docs/Api/GMBServicesApi.md#updategooglebusinessservices) | **PUT** /v1/accounts/{accountId}/gmb-services | Replace services
+*InstagramApi* | [**getInstagramStoryInsights**](docs/Api/InstagramApi.md#getinstagramstoryinsights) | **GET** /v1/accounts/{accountId}/instagram/stories/{storyId}/insights | Get Instagram story insights
+*InstagramApi* | [**listInstagramStories**](docs/Api/InstagramApi.md#listinstagramstories) | **GET** /v1/accounts/{accountId}/instagram/stories | List active Instagram stories
 *InvitesApi* | [**createInviteToken**](docs/Api/InvitesApi.md#createinvitetoken) | **POST** /v1/invite/tokens | Create invite token
 *LinkedInMentionsApi* | [**getLinkedInMentions**](docs/Api/LinkedInMentionsApi.md#getlinkedinmentions) | **GET** /v1/accounts/{accountId}/linkedin-mentions | Resolve LinkedIn mention
 *LogsApi* | [**listLogs**](docs/Api/LogsApi.md#listlogs) | **GET** /v1/logs | List activity logs
@@ -697,6 +699,9 @@ Class | Method | HTTP request | Description
 - [GetInboxPostComments200ResponseMetaAdComments](docs/Model/GetInboxPostComments200ResponseMetaAdComments.md)
 - [GetInboxPostComments200ResponsePagination](docs/Model/GetInboxPostComments200ResponsePagination.md)
 - [GetInstagramAccountInsights404Response](docs/Model/GetInstagramAccountInsights404Response.md)
+- [GetInstagramStoryInsights200Response](docs/Model/GetInstagramStoryInsights200Response.md)
+- [GetInstagramStoryInsights200ResponseData](docs/Model/GetInstagramStoryInsights200ResponseData.md)
+- [GetInstagramStoryInsights200ResponseDataMetrics](docs/Model/GetInstagramStoryInsights200ResponseDataMetrics.md)
 - [GetLinkedInAggregateAnalytics200Response](docs/Model/GetLinkedInAggregateAnalytics200Response.md)
 - [GetLinkedInAggregateAnalytics400Response](docs/Model/GetLinkedInAggregateAnalytics400Response.md)
 - [GetLinkedInAggregateAnalytics402Response](docs/Model/GetLinkedInAggregateAnalytics402Response.md)
@@ -872,6 +877,8 @@ Class | Method | HTTP request | Description
 - [ListInboxReviews200ResponseDataInnerReply](docs/Model/ListInboxReviews200ResponseDataInnerReply.md)
 - [ListInboxReviews200ResponseDataInnerReviewer](docs/Model/ListInboxReviews200ResponseDataInnerReviewer.md)
 - [ListInboxReviews200ResponseSummary](docs/Model/ListInboxReviews200ResponseSummary.md)
+- [ListInstagramStories200Response](docs/Model/ListInstagramStories200Response.md)
+- [ListInstagramStories200ResponseDataInner](docs/Model/ListInstagramStories200ResponseDataInner.md)
 - [ListLinkedInOrganizations200Response](docs/Model/ListLinkedInOrganizations200Response.md)
 - [ListLinkedInOrganizations200ResponseOrganizationsInner](docs/Model/ListLinkedInOrganizations200ResponseOrganizationsInner.md)
 - [ListLogs200Response](docs/Model/ListLogs200Response.md)
