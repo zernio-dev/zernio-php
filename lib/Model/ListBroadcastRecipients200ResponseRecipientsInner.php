@@ -66,6 +66,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'status' => 'string',
         'message_id' => 'string',
         'error' => 'string',
+        'error_code' => 'int',
         'sent_at' => '\DateTime',
         'delivered_at' => '\DateTime',
         'read_at' => '\DateTime'
@@ -87,6 +88,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'status' => null,
         'message_id' => null,
         'error' => null,
+        'error_code' => null,
         'sent_at' => 'date-time',
         'delivered_at' => 'date-time',
         'read_at' => 'date-time'
@@ -106,6 +108,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'status' => false,
         'message_id' => false,
         'error' => false,
+        'error_code' => false,
         'sent_at' => false,
         'delivered_at' => false,
         'read_at' => false
@@ -205,6 +208,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'status' => 'status',
         'message_id' => 'messageId',
         'error' => 'error',
+        'error_code' => 'errorCode',
         'sent_at' => 'sentAt',
         'delivered_at' => 'deliveredAt',
         'read_at' => 'readAt'
@@ -224,6 +228,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'status' => 'setStatus',
         'message_id' => 'setMessageId',
         'error' => 'setError',
+        'error_code' => 'setErrorCode',
         'sent_at' => 'setSentAt',
         'delivered_at' => 'setDeliveredAt',
         'read_at' => 'setReadAt'
@@ -243,6 +248,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'status' => 'getStatus',
         'message_id' => 'getMessageId',
         'error' => 'getError',
+        'error_code' => 'getErrorCode',
         'sent_at' => 'getSentAt',
         'delivered_at' => 'getDeliveredAt',
         'read_at' => 'getReadAt'
@@ -334,6 +340,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('message_id', $data ?? [], null);
         $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('error_code', $data ?? [], null);
         $this->setIfExists('sent_at', $data ?? [], null);
         $this->setIfExists('delivered_at', $data ?? [], null);
         $this->setIfExists('read_at', $data ?? [], null);
@@ -612,6 +619,33 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
             throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
         $this->container['error'] = $error;
+
+        return $this;
+    }
+
+    /**
+     * Gets error_code
+     *
+     * @return int|null
+     */
+    public function getErrorCode()
+    {
+        return $this->container['error_code'];
+    }
+
+    /**
+     * Sets error_code
+     *
+     * @param int|null $error_code Meta WhatsApp error code (e.g. 131049 for antispam, 131021 for invalid phone, 131026 for re-engagement required). Only populated for status=failed.
+     *
+     * @return self
+     */
+    public function setErrorCode($error_code)
+    {
+        if (is_null($error_code)) {
+            throw new \InvalidArgumentException('non-nullable error_code cannot be null');
+        }
+        $this->container['error_code'] = $error_code;
 
         return $this;
     }

@@ -1925,9 +1925,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/InstagramApiTest.php
-test/Model/GetInstagramStoryInsights200ResponseDataMetricsTest.php
-test/Model/GetInstagramStoryInsights200ResponseDataTest.php
-test/Model/GetInstagramStoryInsights200ResponseTest.php
-test/Model/ListInstagramStories200ResponseDataInnerTest.php
-test/Model/ListInstagramStories200ResponseTest.php
