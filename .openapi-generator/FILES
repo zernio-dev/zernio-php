@@ -1939,10 +1939,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UpdateBroadcastRequestMessageTest.php
-test/Model/UpdateBroadcastRequestTemplateTest.php
-test/Model/UpdateBroadcastRequestTemplateVariableMappingValueTest.php
-test/Model/UpdateBroadcastRequestTest.php
-test/Model/UpdateSequenceRequestStepsInnerTemplateTest.php
-test/Model/UpdateSequenceRequestStepsInnerTest.php
-test/Model/UpdateSequenceRequestTest.php

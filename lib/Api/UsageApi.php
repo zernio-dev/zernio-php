@@ -134,15 +134,16 @@ class UsageApi
      *
      * Get plan and usage stats
      *
+     * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\UsageStats|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
-    public function getUsageStats(string $contentType = self::contentTypes['getUsageStats'][0])
+    public function getUsageStats($reconcile = null, string $contentType = self::contentTypes['getUsageStats'][0])
     {
-        list($response) = $this->getUsageStatsWithHttpInfo($contentType);
+        list($response) = $this->getUsageStatsWithHttpInfo($reconcile, $contentType);
         return $response;
     }
 
@@ -151,15 +152,16 @@ class UsageApi
      *
      * Get plan and usage stats
      *
+     * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\UsageStats|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getUsageStatsWithHttpInfo(string $contentType = self::contentTypes['getUsageStats'][0])
+    public function getUsageStatsWithHttpInfo($reconcile = null, string $contentType = self::contentTypes['getUsageStats'][0])
     {
-        $request = $this->getUsageStatsRequest($contentType);
+        $request = $this->getUsageStatsRequest($reconcile, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -263,14 +265,15 @@ class UsageApi
      *
      * Get plan and usage stats
      *
+     * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUsageStatsAsync(string $contentType = self::contentTypes['getUsageStats'][0])
+    public function getUsageStatsAsync($reconcile = null, string $contentType = self::contentTypes['getUsageStats'][0])
     {
-        return $this->getUsageStatsAsyncWithHttpInfo($contentType)
+        return $this->getUsageStatsAsyncWithHttpInfo($reconcile, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -283,15 +286,16 @@ class UsageApi
      *
      * Get plan and usage stats
      *
+     * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getUsageStatsAsyncWithHttpInfo(string $contentType = self::contentTypes['getUsageStats'][0])
+    public function getUsageStatsAsyncWithHttpInfo($reconcile = null, string $contentType = self::contentTypes['getUsageStats'][0])
     {
         $returnType = '\Zernio\Model\UsageStats';
-        $request = $this->getUsageStatsRequest($contentType);
+        $request = $this->getUsageStatsRequest($reconcile, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -332,13 +336,15 @@ class UsageApi
     /**
      * Create request for operation 'getUsageStats'
      *
+     * @param  bool|null $reconcile For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getUsageStats'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getUsageStatsRequest(string $contentType = self::contentTypes['getUsageStats'][0])
+    public function getUsageStatsRequest($reconcile = null, string $contentType = self::contentTypes['getUsageStats'][0])
     {
+
 
 
         $resourcePath = '/v1/usage-stats';
@@ -348,6 +354,15 @@ class UsageApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $reconcile,
+            'reconcile', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
 

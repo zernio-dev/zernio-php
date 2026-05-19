@@ -13,7 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `getUsageStats()`
 
 ```php
-getUsageStats(): \Zernio\Model\UsageStats
+getUsageStats($reconcile): \Zernio\Model\UsageStats
 ```
 
 Get plan and usage stats
@@ -37,9 +37,10 @@ $apiInstance = new Zernio\Api\UsageApi(
     new GuzzleHttp\Client(),
     $config
 );
+$reconcile = True; // bool | For Stripe subscription users, `true` forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass `false`, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected.
 
 try {
-    $result = $apiInstance->getUsageStats();
+    $result = $apiInstance->getUsageStats($reconcile);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UsageApi->getUsageStats: ', $e->getMessage(), PHP_EOL;
@@ -48,7 +49,9 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **reconcile** | **bool**| For Stripe subscription users, &#x60;true&#x60; forces a subscription reconciliation pass even when cached plan data looks complete. Omit the parameter, or pass &#x60;false&#x60;, to use the default first-time-only reconciliation behavior. Invalid boolean values are rejected. | [optional] |
 
 ### Return type
 
