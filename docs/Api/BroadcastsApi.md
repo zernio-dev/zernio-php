@@ -578,7 +578,7 @@ try {
 ## `updateBroadcast()`
 
 ```php
-updateBroadcast($broadcast_id): \Zernio\Model\UpdateBroadcast200Response
+updateBroadcast($broadcast_id, $update_broadcast_request): \Zernio\Model\UpdateBroadcast200Response
 ```
 
 Update broadcast
@@ -603,9 +603,10 @@ $apiInstance = new Zernio\Api\BroadcastsApi(
     $config
 );
 $broadcast_id = 'broadcast_id_example'; // string
+$update_broadcast_request = new \Zernio\Model\UpdateBroadcastRequest(); // \Zernio\Model\UpdateBroadcastRequest
 
 try {
-    $result = $apiInstance->updateBroadcast($broadcast_id);
+    $result = $apiInstance->updateBroadcast($broadcast_id, $update_broadcast_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling BroadcastsApi->updateBroadcast: ', $e->getMessage(), PHP_EOL;
@@ -617,6 +618,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **broadcast_id** | **string**|  | |
+| **update_broadcast_request** | [**\Zernio\Model\UpdateBroadcastRequest**](../Model/UpdateBroadcastRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -628,7 +630,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

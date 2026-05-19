@@ -2906,15 +2906,16 @@ class BroadcastsApi
      * Update broadcast
      *
      * @param  string $broadcast_id broadcast_id (required)
+     * @param  \Zernio\Model\UpdateBroadcastRequest|null $update_broadcast_request update_broadcast_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBroadcast'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\UpdateBroadcast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
-    public function updateBroadcast($broadcast_id, string $contentType = self::contentTypes['updateBroadcast'][0])
+    public function updateBroadcast($broadcast_id, $update_broadcast_request = null, string $contentType = self::contentTypes['updateBroadcast'][0])
     {
-        list($response) = $this->updateBroadcastWithHttpInfo($broadcast_id, $contentType);
+        list($response) = $this->updateBroadcastWithHttpInfo($broadcast_id, $update_broadcast_request, $contentType);
         return $response;
     }
 
@@ -2924,15 +2925,16 @@ class BroadcastsApi
      * Update broadcast
      *
      * @param  string $broadcast_id (required)
+     * @param  \Zernio\Model\UpdateBroadcastRequest|null $update_broadcast_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBroadcast'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\UpdateBroadcast200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateBroadcastWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['updateBroadcast'][0])
+    public function updateBroadcastWithHttpInfo($broadcast_id, $update_broadcast_request = null, string $contentType = self::contentTypes['updateBroadcast'][0])
     {
-        $request = $this->updateBroadcastRequest($broadcast_id, $contentType);
+        $request = $this->updateBroadcastRequest($broadcast_id, $update_broadcast_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3037,14 +3039,15 @@ class BroadcastsApi
      * Update broadcast
      *
      * @param  string $broadcast_id (required)
+     * @param  \Zernio\Model\UpdateBroadcastRequest|null $update_broadcast_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBroadcast'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateBroadcastAsync($broadcast_id, string $contentType = self::contentTypes['updateBroadcast'][0])
+    public function updateBroadcastAsync($broadcast_id, $update_broadcast_request = null, string $contentType = self::contentTypes['updateBroadcast'][0])
     {
-        return $this->updateBroadcastAsyncWithHttpInfo($broadcast_id, $contentType)
+        return $this->updateBroadcastAsyncWithHttpInfo($broadcast_id, $update_broadcast_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3058,15 +3061,16 @@ class BroadcastsApi
      * Update broadcast
      *
      * @param  string $broadcast_id (required)
+     * @param  \Zernio\Model\UpdateBroadcastRequest|null $update_broadcast_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBroadcast'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateBroadcastAsyncWithHttpInfo($broadcast_id, string $contentType = self::contentTypes['updateBroadcast'][0])
+    public function updateBroadcastAsyncWithHttpInfo($broadcast_id, $update_broadcast_request = null, string $contentType = self::contentTypes['updateBroadcast'][0])
     {
         $returnType = '\Zernio\Model\UpdateBroadcast200Response';
-        $request = $this->updateBroadcastRequest($broadcast_id, $contentType);
+        $request = $this->updateBroadcastRequest($broadcast_id, $update_broadcast_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3108,12 +3112,13 @@ class BroadcastsApi
      * Create request for operation 'updateBroadcast'
      *
      * @param  string $broadcast_id (required)
+     * @param  \Zernio\Model\UpdateBroadcastRequest|null $update_broadcast_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBroadcast'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateBroadcastRequest($broadcast_id, string $contentType = self::contentTypes['updateBroadcast'][0])
+    public function updateBroadcastRequest($broadcast_id, $update_broadcast_request = null, string $contentType = self::contentTypes['updateBroadcast'][0])
     {
 
         // verify the required parameter 'broadcast_id' is set
@@ -3122,6 +3127,7 @@ class BroadcastsApi
                 'Missing the required parameter $broadcast_id when calling updateBroadcast'
             );
         }
+
 
 
         $resourcePath = '/v1/broadcasts/{broadcastId}';
@@ -3150,7 +3156,14 @@ class BroadcastsApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($update_broadcast_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_broadcast_request));
+            } else {
+                $httpBody = $update_broadcast_request;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {

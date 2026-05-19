@@ -2830,15 +2830,16 @@ class SequencesApi
      * Update sequence
      *
      * @param  string $sequence_id sequence_id (required)
+     * @param  \Zernio\Model\UpdateSequenceRequest|null $update_sequence_request update_sequence_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSequence'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\UpdateSequence200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
-    public function updateSequence($sequence_id, string $contentType = self::contentTypes['updateSequence'][0])
+    public function updateSequence($sequence_id, $update_sequence_request = null, string $contentType = self::contentTypes['updateSequence'][0])
     {
-        list($response) = $this->updateSequenceWithHttpInfo($sequence_id, $contentType);
+        list($response) = $this->updateSequenceWithHttpInfo($sequence_id, $update_sequence_request, $contentType);
         return $response;
     }
 
@@ -2848,15 +2849,16 @@ class SequencesApi
      * Update sequence
      *
      * @param  string $sequence_id (required)
+     * @param  \Zernio\Model\UpdateSequenceRequest|null $update_sequence_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSequence'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\UpdateSequence200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateSequenceWithHttpInfo($sequence_id, string $contentType = self::contentTypes['updateSequence'][0])
+    public function updateSequenceWithHttpInfo($sequence_id, $update_sequence_request = null, string $contentType = self::contentTypes['updateSequence'][0])
     {
-        $request = $this->updateSequenceRequest($sequence_id, $contentType);
+        $request = $this->updateSequenceRequest($sequence_id, $update_sequence_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2961,14 +2963,15 @@ class SequencesApi
      * Update sequence
      *
      * @param  string $sequence_id (required)
+     * @param  \Zernio\Model\UpdateSequenceRequest|null $update_sequence_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSequence'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateSequenceAsync($sequence_id, string $contentType = self::contentTypes['updateSequence'][0])
+    public function updateSequenceAsync($sequence_id, $update_sequence_request = null, string $contentType = self::contentTypes['updateSequence'][0])
     {
-        return $this->updateSequenceAsyncWithHttpInfo($sequence_id, $contentType)
+        return $this->updateSequenceAsyncWithHttpInfo($sequence_id, $update_sequence_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2982,15 +2985,16 @@ class SequencesApi
      * Update sequence
      *
      * @param  string $sequence_id (required)
+     * @param  \Zernio\Model\UpdateSequenceRequest|null $update_sequence_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSequence'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateSequenceAsyncWithHttpInfo($sequence_id, string $contentType = self::contentTypes['updateSequence'][0])
+    public function updateSequenceAsyncWithHttpInfo($sequence_id, $update_sequence_request = null, string $contentType = self::contentTypes['updateSequence'][0])
     {
         $returnType = '\Zernio\Model\UpdateSequence200Response';
-        $request = $this->updateSequenceRequest($sequence_id, $contentType);
+        $request = $this->updateSequenceRequest($sequence_id, $update_sequence_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3032,12 +3036,13 @@ class SequencesApi
      * Create request for operation 'updateSequence'
      *
      * @param  string $sequence_id (required)
+     * @param  \Zernio\Model\UpdateSequenceRequest|null $update_sequence_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSequence'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateSequenceRequest($sequence_id, string $contentType = self::contentTypes['updateSequence'][0])
+    public function updateSequenceRequest($sequence_id, $update_sequence_request = null, string $contentType = self::contentTypes['updateSequence'][0])
     {
 
         // verify the required parameter 'sequence_id' is set
@@ -3046,6 +3051,7 @@ class SequencesApi
                 'Missing the required parameter $sequence_id when calling updateSequence'
             );
         }
+
 
 
         $resourcePath = '/v1/sequences/{sequenceId}';
@@ -3074,7 +3080,14 @@ class SequencesApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($update_sequence_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_sequence_request));
+            } else {
+                $httpBody = $update_sequence_request;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {

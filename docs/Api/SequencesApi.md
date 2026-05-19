@@ -575,12 +575,12 @@ void (empty response body)
 ## `updateSequence()`
 
 ```php
-updateSequence($sequence_id): \Zernio\Model\UpdateSequence200Response
+updateSequence($sequence_id, $update_sequence_request): \Zernio\Model\UpdateSequence200Response
 ```
 
 Update sequence
 
-Update a sequence's name, steps, or exit conditions. Active sequences can be updated without pausing.
+Update a sequence's name, steps, or exit conditions. Steps can only be modified while the sequence is draft or paused.
 
 ### Example
 
@@ -600,9 +600,10 @@ $apiInstance = new Zernio\Api\SequencesApi(
     $config
 );
 $sequence_id = 'sequence_id_example'; // string
+$update_sequence_request = new \Zernio\Model\UpdateSequenceRequest(); // \Zernio\Model\UpdateSequenceRequest
 
 try {
-    $result = $apiInstance->updateSequence($sequence_id);
+    $result = $apiInstance->updateSequence($sequence_id, $update_sequence_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SequencesApi->updateSequence: ', $e->getMessage(), PHP_EOL;
@@ -614,6 +615,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **sequence_id** | **string**|  | |
+| **update_sequence_request** | [**\Zernio\Model\UpdateSequenceRequest**](../Model/UpdateSequenceRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -625,7 +627,7 @@ try {
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

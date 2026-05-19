@@ -781,6 +781,10 @@ docs/Model/UpdateAdSetRequestBudget.md
 docs/Model/UpdateAdSetStatus200Response.md
 docs/Model/UpdateBroadcast200Response.md
 docs/Model/UpdateBroadcast200ResponseBroadcast.md
+docs/Model/UpdateBroadcastRequest.md
+docs/Model/UpdateBroadcastRequestMessage.md
+docs/Model/UpdateBroadcastRequestTemplate.md
+docs/Model/UpdateBroadcastRequestTemplateVariableMappingValue.md
 docs/Model/UpdateCommentAutomation200Response.md
 docs/Model/UpdateCommentAutomation200ResponseAutomation.md
 docs/Model/UpdateCommentAutomationRequest.md
@@ -838,6 +842,9 @@ docs/Model/UpdateQueueSlotRequest.md
 docs/Model/UpdateRedditSubredditsRequest.md
 docs/Model/UpdateSequence200Response.md
 docs/Model/UpdateSequence200ResponseSequence.md
+docs/Model/UpdateSequenceRequest.md
+docs/Model/UpdateSequenceRequestStepsInner.md
+docs/Model/UpdateSequenceRequestStepsInnerTemplate.md
 docs/Model/UpdateTrackingTagRequest.md
 docs/Model/UpdateWebhookSettings200Response.md
 docs/Model/UpdateWebhookSettingsRequest.md
@@ -1744,6 +1751,10 @@ lib/Model/UpdateAdSetRequestBudget.php
 lib/Model/UpdateAdSetStatus200Response.php
 lib/Model/UpdateBroadcast200Response.php
 lib/Model/UpdateBroadcast200ResponseBroadcast.php
+lib/Model/UpdateBroadcastRequest.php
+lib/Model/UpdateBroadcastRequestMessage.php
+lib/Model/UpdateBroadcastRequestTemplate.php
+lib/Model/UpdateBroadcastRequestTemplateVariableMappingValue.php
 lib/Model/UpdateCommentAutomation200Response.php
 lib/Model/UpdateCommentAutomation200ResponseAutomation.php
 lib/Model/UpdateCommentAutomationRequest.php
@@ -1801,6 +1812,9 @@ lib/Model/UpdateQueueSlotRequest.php
 lib/Model/UpdateRedditSubredditsRequest.php
 lib/Model/UpdateSequence200Response.php
 lib/Model/UpdateSequence200ResponseSequence.php
+lib/Model/UpdateSequenceRequest.php
+lib/Model/UpdateSequenceRequestStepsInner.php
+lib/Model/UpdateSequenceRequestStepsInnerTemplate.php
 lib/Model/UpdateTrackingTagRequest.php
 lib/Model/UpdateWebhookSettings200Response.php
 lib/Model/UpdateWebhookSettingsRequest.php
@@ -1925,3 +1939,10 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/UpdateBroadcastRequestMessageTest.php
+test/Model/UpdateBroadcastRequestTemplateTest.php
+test/Model/UpdateBroadcastRequestTemplateVariableMappingValueTest.php
+test/Model/UpdateBroadcastRequestTest.php
+test/Model/UpdateSequenceRequestStepsInnerTemplateTest.php
+test/Model/UpdateSequenceRequestStepsInnerTest.php
+test/Model/UpdateSequenceRequestTest.php
