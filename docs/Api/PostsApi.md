@@ -21,7 +21,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 ## `bulkUploadPosts()`
 
 ```php
-bulkUploadPosts($dry_run, $file): \Zernio\Model\BulkUploadPosts200Response
+bulkUploadPosts($dry_run, $file): \Zernio\Model\BulkUploadResult
 ```
 
 Bulk upload from CSV
@@ -65,7 +65,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\BulkUploadPosts200Response**](../Model/BulkUploadPosts200Response.md)
+[**\Zernio\Model\BulkUploadResult**](../Model/BulkUploadResult.md)
 
 ### Authorization
 

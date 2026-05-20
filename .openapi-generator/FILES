@@ -111,9 +111,10 @@ docs/Model/BulkUpdateAdCampaignStatus200ResponseResultsInner.md
 docs/Model/BulkUpdateAdCampaignStatus200ResponseTotals.md
 docs/Model/BulkUpdateAdCampaignStatusRequest.md
 docs/Model/BulkUpdateAdCampaignStatusRequestCampaignsInner.md
-docs/Model/BulkUploadPosts200Response.md
-docs/Model/BulkUploadPosts200ResponseErrorsInner.md
 docs/Model/BulkUploadPosts429Response.md
+docs/Model/BulkUploadResult.md
+docs/Model/BulkUploadResultRateLimitedAccountsInner.md
+docs/Model/BulkUploadResultResultsInner.md
 docs/Model/BusinessCenter.md
 docs/Model/CancelBroadcast200Response.md
 docs/Model/CancelBroadcast200ResponseBroadcast.md
@@ -1080,9 +1081,10 @@ lib/Model/BulkUpdateAdCampaignStatus200ResponseResultsInner.php
 lib/Model/BulkUpdateAdCampaignStatus200ResponseTotals.php
 lib/Model/BulkUpdateAdCampaignStatusRequest.php
 lib/Model/BulkUpdateAdCampaignStatusRequestCampaignsInner.php
-lib/Model/BulkUploadPosts200Response.php
-lib/Model/BulkUploadPosts200ResponseErrorsInner.php
 lib/Model/BulkUploadPosts429Response.php
+lib/Model/BulkUploadResult.php
+lib/Model/BulkUploadResultRateLimitedAccountsInner.php
+lib/Model/BulkUploadResultResultsInner.php
 lib/Model/BusinessCenter.php
 lib/Model/CancelBroadcast200Response.php
 lib/Model/CancelBroadcast200ResponseBroadcast.php
@@ -1939,3 +1941,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/BulkUploadResultRateLimitedAccountsInnerTest.php
+test/Model/BulkUploadResultResultsInnerTest.php
+test/Model/BulkUploadResultTest.php

@@ -164,7 +164,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\BulkUploadPosts200Response|\Zernio\Model\InlineObject|\Zernio\Model\BulkUploadPosts429Response
+     * @return \Zernio\Model\BulkUploadResult|\Zernio\Model\BulkUploadResult|\Zernio\Model\InlineObject|\Zernio\Model\BulkUploadPosts429Response
      */
     public function bulkUploadPosts($dry_run = false, $file = null, string $contentType = self::contentTypes['bulkUploadPosts'][0])
     {
@@ -183,7 +183,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\BulkUploadPosts200Response|\Zernio\Model\InlineObject|\Zernio\Model\BulkUploadPosts429Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\BulkUploadResult|\Zernio\Model\BulkUploadResult|\Zernio\Model\InlineObject|\Zernio\Model\BulkUploadPosts429Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function bulkUploadPostsWithHttpInfo($dry_run = false, $file = null, string $contentType = self::contentTypes['bulkUploadPosts'][0])
     {
@@ -215,7 +215,13 @@ class PostsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\BulkUploadPosts200Response',
+                        '\Zernio\Model\BulkUploadResult',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\BulkUploadResult',
                         $request,
                         $response,
                     );
@@ -249,7 +255,7 @@ class PostsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\BulkUploadPosts200Response',
+                '\Zernio\Model\BulkUploadResult',
                 $request,
                 $response,
             );
@@ -258,7 +264,15 @@ class PostsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\BulkUploadPosts200Response',
+                        '\Zernio\Model\BulkUploadResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\BulkUploadResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -322,7 +336,7 @@ class PostsApi
      */
     public function bulkUploadPostsAsyncWithHttpInfo($dry_run = false, $file = null, string $contentType = self::contentTypes['bulkUploadPosts'][0])
     {
-        $returnType = '\Zernio\Model\BulkUploadPosts200Response';
+        $returnType = '\Zernio\Model\BulkUploadResult';
         $request = $this->bulkUploadPostsRequest($dry_run, $file, $contentType);
 
         return $this->client
