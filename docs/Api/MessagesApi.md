@@ -13,6 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getInboxConversation()**](MessagesApi.md#getInboxConversation) | **GET** /v1/inbox/conversations/{conversationId} | Get conversation |
 | [**getInboxConversationMessages()**](MessagesApi.md#getInboxConversationMessages) | **GET** /v1/inbox/conversations/{conversationId}/messages | List messages |
 | [**listInboxConversations()**](MessagesApi.md#listInboxConversations) | **GET** /v1/inbox/conversations | List conversations |
+| [**markConversationRead()**](MessagesApi.md#markConversationRead) | **POST** /v1/inbox/conversations/{conversationId}/read | Mark a conversation as read |
 | [**removeMessageReaction()**](MessagesApi.md#removeMessageReaction) | **DELETE** /v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions | Remove reaction |
 | [**sendInboxMessage()**](MessagesApi.md#sendInboxMessage) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send message |
 | [**sendTypingIndicator()**](MessagesApi.md#sendTypingIndicator) | **POST** /v1/inbox/conversations/{conversationId}/typing | Send typing indicator |
@@ -342,7 +343,7 @@ getInboxConversationMessages($conversation_id, $account_id, $limit, $cursor, $so
 
 List messages
 
-Fetch messages for a specific conversation, with cursor-based pagination and ordering control.  Pagination: pass `pagination.nextCursor` from a prior response back as the `cursor` query param to fetch the next page. The cursor is opaque; do not parse or construct it client-side.  Sort order: defaults to `asc` (oldest first, chat style). For the \"show me the latest messages\" pattern, pass `?sortOrder=desc&limit=N`. For Twitter, Facebook and Bluesky, the upstream APIs only return newest-first and have no order parameter — sort order is best-effort and only reverses items within a single page (pages still walk newest→oldest). The response field `sortOrderApplied` tells you what was actually applied.  Reddit threads are paginated client-side because Reddit's API has no per-thread cursor. Very long threads may be upstream-truncated by Reddit's inbox/sent windows (~100 most-recent items each); this is a Reddit platform limitation.  Twitter/X limitation: X's encrypted \"X Chat\" messages are not accessible via the API. Conversations where the other participant uses encrypted X Chat may only show your outgoing messages. See the list conversations endpoint for more details.
+Fetch messages for a specific conversation, with cursor-based pagination and ordering control.  Pagination: pass `pagination.nextCursor` from a prior response back as the `cursor` query param to fetch the next page. The cursor is opaque; do not parse or construct it client-side.  Sort order: defaults to `asc` (oldest first, chat style). For the \"show me the latest messages\" pattern, pass `?sortOrder=desc&limit=N`. For Twitter, Facebook and Bluesky, the upstream APIs only return newest-first and have no order parameter — sort order is best-effort and only reverses items within a single page (pages still walk newest→oldest). The response field `sortOrderApplied` tells you what was actually applied.  Reddit threads are paginated client-side because Reddit's API has no per-thread cursor. Very long threads may be upstream-truncated by Reddit's inbox/sent windows (~100 most-recent items each); this is a Reddit platform limitation.  Twitter/X limitation: X's encrypted \"X Chat\" messages are not accessible via the API. Conversations where the other participant uses encrypted X Chat may only show your outgoing messages. See the list conversations endpoint for more details.  This endpoint is read-only and does NOT mark messages as read or send read receipts. To mark a conversation read (and send WhatsApp blue ticks on eligible accounts), call `POST /v1/inbox/conversations/{conversationId}/read`.
 
 ### Example
 
@@ -468,6 +469,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `markConversationRead()`
+
+```php
+markConversationRead($conversation_id, $send_typing_indicator_request): \Zernio\Model\MarkConversationRead200Response
+```
+
+Mark a conversation as read
+
+Marks all unread incoming messages in the conversation as read.  For WhatsApp, this also sends read receipts (blue ticks) to the contact, EXCEPT on coexistence accounts (where the WhatsApp Business app on the customer's phone owns read state and we never override it).  This is the explicit, human-driven counterpart to `GET .../messages`, which is side-effect-free and does NOT mark anything read. Call this when a user actually views the conversation.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\MessagesApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$conversation_id = 'conversation_id_example'; // string | The conversation ID
+$send_typing_indicator_request = new \Zernio\Model\SendTypingIndicatorRequest(); // \Zernio\Model\SendTypingIndicatorRequest
+
+try {
+    $result = $apiInstance->markConversationRead($conversation_id, $send_typing_indicator_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling MessagesApi->markConversationRead: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **conversation_id** | **string**| The conversation ID | |
+| **send_typing_indicator_request** | [**\Zernio\Model\SendTypingIndicatorRequest**](../Model/SendTypingIndicatorRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\MarkConversationRead200Response**](../Model/MarkConversationRead200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

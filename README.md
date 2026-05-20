@@ -250,6 +250,7 @@ Class | Method | HTTP request | Description
 *MessagesApi* | [**getInboxConversation**](docs/Api/MessagesApi.md#getinboxconversation) | **GET** /v1/inbox/conversations/{conversationId} | Get conversation
 *MessagesApi* | [**getInboxConversationMessages**](docs/Api/MessagesApi.md#getinboxconversationmessages) | **GET** /v1/inbox/conversations/{conversationId}/messages | List messages
 *MessagesApi* | [**listInboxConversations**](docs/Api/MessagesApi.md#listinboxconversations) | **GET** /v1/inbox/conversations | List conversations
+*MessagesApi* | [**markConversationRead**](docs/Api/MessagesApi.md#markconversationread) | **POST** /v1/inbox/conversations/{conversationId}/read | Mark a conversation as read
 *MessagesApi* | [**removeMessageReaction**](docs/Api/MessagesApi.md#removemessagereaction) | **DELETE** /v1/inbox/conversations/{conversationId}/messages/{messageId}/reactions | Remove reaction
 *MessagesApi* | [**sendInboxMessage**](docs/Api/MessagesApi.md#sendinboxmessage) | **POST** /v1/inbox/conversations/{conversationId}/messages | Send message
 *MessagesApi* | [**sendTypingIndicator**](docs/Api/MessagesApi.md#sendtypingindicator) | **POST** /v1/inbox/conversations/{conversationId}/typing | Send typing indicator
@@ -910,6 +911,7 @@ Class | Method | HTTP request | Description
 - [ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner](docs/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.md)
 - [ListWhatsAppPhoneNumbers200Response](docs/Model/ListWhatsAppPhoneNumbers200Response.md)
 - [ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner](docs/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.md)
+- [MarkConversationRead200Response](docs/Model/MarkConversationRead200Response.md)
 - [MediaItem](docs/Model/MediaItem.md)
 - [MediaUploadResponse](docs/Model/MediaUploadResponse.md)
 - [Money](docs/Model/Money.md)

@@ -600,6 +600,7 @@ docs/Model/ListWhatsAppGroupJoinRequests200Response.md
 docs/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.md
 docs/Model/ListWhatsAppPhoneNumbers200Response.md
 docs/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.md
+docs/Model/MarkConversationRead200Response.md
 docs/Model/MediaItem.md
 docs/Model/MediaUploadResponse.md
 docs/Model/Money.md
@@ -1570,6 +1571,7 @@ lib/Model/ListWhatsAppGroupJoinRequests200Response.php
 lib/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.php
 lib/Model/ListWhatsAppPhoneNumbers200Response.php
 lib/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.php
+lib/Model/MarkConversationRead200Response.php
 lib/Model/MediaItem.php
 lib/Model/MediaUploadResponse.php
 lib/Model/ModelInterface.php
@@ -1941,6 +1943,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BulkUploadResultRateLimitedAccountsInnerTest.php
-test/Model/BulkUploadResultResultsInnerTest.php
-test/Model/BulkUploadResultTest.php
+test/Model/MarkConversationRead200ResponseTest.php
