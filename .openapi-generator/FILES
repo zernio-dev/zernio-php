@@ -1949,8 +1949,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadReactionAccountTest.php
-test/Model/WebhookPayloadReactionConversationTest.php
-test/Model/WebhookPayloadReactionReactionSenderTest.php
-test/Model/WebhookPayloadReactionReactionTest.php
-test/Model/WebhookPayloadReactionTest.php
