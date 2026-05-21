@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookPayloadMessageSent
+ * WebhookPayloadReactionAccount
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * WebhookPayloadMessageSent Class Doc Comment
+ * WebhookPayloadReactionAccount Class Doc Comment
  *
  * @category Class
- * @description Webhook payload for message sent events (fired when a message is sent via the API)
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSerializable
+class WebhookPayloadReactionAccount implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WebhookPayloadMessageSent';
+    protected static $openAPIModelName = 'WebhookPayloadReaction_account';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,11 +59,9 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'event' => 'string',
-        'message' => '\Zernio\Model\WebhookPayloadMessageSentMessage',
-        'conversation' => '\Zernio\Model\WebhookPayloadReactionConversation',
-        'account' => '\Zernio\Model\WebhookPayloadReactionAccount',
-        'timestamp' => '\DateTime'
+        'platform' => 'string',
+        'username' => 'string',
+        'display_name' => 'string'
     ];
 
     /**
@@ -76,11 +73,9 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'event' => null,
-        'message' => null,
-        'conversation' => null,
-        'account' => null,
-        'timestamp' => 'date-time'
+        'platform' => null,
+        'username' => null,
+        'display_name' => null
     ];
 
     /**
@@ -90,11 +85,9 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'event' => false,
-        'message' => false,
-        'conversation' => false,
-        'account' => false,
-        'timestamp' => false
+        'platform' => false,
+        'username' => false,
+        'display_name' => false
     ];
 
     /**
@@ -184,11 +177,9 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'event' => 'event',
-        'message' => 'message',
-        'conversation' => 'conversation',
-        'account' => 'account',
-        'timestamp' => 'timestamp'
+        'platform' => 'platform',
+        'username' => 'username',
+        'display_name' => 'displayName'
     ];
 
     /**
@@ -198,11 +189,9 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'id' => 'setId',
-        'event' => 'setEvent',
-        'message' => 'setMessage',
-        'conversation' => 'setConversation',
-        'account' => 'setAccount',
-        'timestamp' => 'setTimestamp'
+        'platform' => 'setPlatform',
+        'username' => 'setUsername',
+        'display_name' => 'setDisplayName'
     ];
 
     /**
@@ -212,11 +201,9 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'id' => 'getId',
-        'event' => 'getEvent',
-        'message' => 'getMessage',
-        'conversation' => 'getConversation',
-        'account' => 'getAccount',
-        'timestamp' => 'getTimestamp'
+        'platform' => 'getPlatform',
+        'username' => 'getUsername',
+        'display_name' => 'getDisplayName'
     ];
 
     /**
@@ -260,19 +247,6 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const EVENT_MESSAGE_SENT = 'message.sent';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEventAllowableValues()
-    {
-        return [
-            self::EVENT_MESSAGE_SENT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -290,11 +264,9 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('event', $data ?? [], null);
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('conversation', $data ?? [], null);
-        $this->setIfExists('account', $data ?? [], null);
-        $this->setIfExists('timestamp', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('username', $data ?? [], null);
+        $this->setIfExists('display_name', $data ?? [], null);
     }
 
     /**
@@ -327,29 +299,11 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
         if ($this->container['id'] === null) {
             $invalidProperties[] = "'id' can't be null";
         }
-        if ($this->container['event'] === null) {
-            $invalidProperties[] = "'event' can't be null";
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
         }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!is_null($this->container['event']) && !in_array($this->container['event'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'event', must be one of '%s'",
-                $this->container['event'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['message'] === null) {
-            $invalidProperties[] = "'message' can't be null";
-        }
-        if ($this->container['conversation'] === null) {
-            $invalidProperties[] = "'conversation' can't be null";
-        }
-        if ($this->container['account'] === null) {
-            $invalidProperties[] = "'account' can't be null";
-        }
-        if ($this->container['timestamp'] === null) {
-            $invalidProperties[] = "'timestamp' can't be null";
+        if ($this->container['username'] === null) {
+            $invalidProperties[] = "'username' can't be null";
         }
         return $invalidProperties;
     }
@@ -379,7 +333,7 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets id
      *
-     * @param string $id Stable webhook event ID
+     * @param string $id Social account ID
      *
      * @return self
      */
@@ -394,146 +348,82 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets event
+     * Gets platform
      *
      * @return string
      */
-    public function getEvent()
+    public function getPlatform()
     {
-        return $this->container['event'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets event
+     * Sets platform
      *
-     * @param string $event event
+     * @param string $platform platform
      *
      * @return self
      */
-    public function setEvent($event)
+    public function setPlatform($platform)
     {
-        if (is_null($event)) {
-            throw new \InvalidArgumentException('non-nullable event cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $allowedValues = $this->getEventAllowableValues();
-        if (!in_array($event, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'event', must be one of '%s'",
-                    $event,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['event'] = $event;
+        $this->container['platform'] = $platform;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets username
      *
-     * @return \Zernio\Model\WebhookPayloadMessageSentMessage
+     * @return string
      */
-    public function getMessage()
+    public function getUsername()
     {
-        return $this->container['message'];
+        return $this->container['username'];
     }
 
     /**
-     * Sets message
+     * Sets username
      *
-     * @param \Zernio\Model\WebhookPayloadMessageSentMessage $message message
+     * @param string $username username
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setUsername($username)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($username)) {
+            throw new \InvalidArgumentException('non-nullable username cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['username'] = $username;
 
         return $this;
     }
 
     /**
-     * Gets conversation
+     * Gets display_name
      *
-     * @return \Zernio\Model\WebhookPayloadReactionConversation
+     * @return string|null
      */
-    public function getConversation()
+    public function getDisplayName()
     {
-        return $this->container['conversation'];
+        return $this->container['display_name'];
     }
 
     /**
-     * Sets conversation
+     * Sets display_name
      *
-     * @param \Zernio\Model\WebhookPayloadReactionConversation $conversation conversation
+     * @param string|null $display_name display_name
      *
      * @return self
      */
-    public function setConversation($conversation)
+    public function setDisplayName($display_name)
     {
-        if (is_null($conversation)) {
-            throw new \InvalidArgumentException('non-nullable conversation cannot be null');
+        if (is_null($display_name)) {
+            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
-        $this->container['conversation'] = $conversation;
-
-        return $this;
-    }
-
-    /**
-     * Gets account
-     *
-     * @return \Zernio\Model\WebhookPayloadReactionAccount
-     */
-    public function getAccount()
-    {
-        return $this->container['account'];
-    }
-
-    /**
-     * Sets account
-     *
-     * @param \Zernio\Model\WebhookPayloadReactionAccount $account account
-     *
-     * @return self
-     */
-    public function setAccount($account)
-    {
-        if (is_null($account)) {
-            throw new \InvalidArgumentException('non-nullable account cannot be null');
-        }
-        $this->container['account'] = $account;
-
-        return $this;
-    }
-
-    /**
-     * Gets timestamp
-     *
-     * @return \DateTime
-     */
-    public function getTimestamp()
-    {
-        return $this->container['timestamp'];
-    }
-
-    /**
-     * Sets timestamp
-     *
-     * @param \DateTime $timestamp timestamp
-     *
-     * @return self
-     */
-    public function setTimestamp($timestamp)
-    {
-        if (is_null($timestamp)) {
-            throw new \InvalidArgumentException('non-nullable timestamp cannot be null');
-        }
-        $this->container['timestamp'] = $timestamp;
+        $this->container['display_name'] = $display_name;
 
         return $this;
     }

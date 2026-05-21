@@ -916,8 +916,6 @@ docs/Model/WebhookPayloadCommentCommentAd.md
 docs/Model/WebhookPayloadCommentCommentAuthor.md
 docs/Model/WebhookPayloadCommentPost.md
 docs/Model/WebhookPayloadMessage.md
-docs/Model/WebhookPayloadMessageAccount.md
-docs/Model/WebhookPayloadMessageConversation.md
 docs/Model/WebhookPayloadMessageDeleted.md
 docs/Model/WebhookPayloadMessageDeliveryStatus.md
 docs/Model/WebhookPayloadMessageDeliveryStatusError.md
@@ -940,6 +938,11 @@ docs/Model/WebhookPayloadPostPlatformPlatform.md
 docs/Model/WebhookPayloadPostPlatformPost.md
 docs/Model/WebhookPayloadPostPost.md
 docs/Model/WebhookPayloadPostPostPlatformsInner.md
+docs/Model/WebhookPayloadReaction.md
+docs/Model/WebhookPayloadReactionAccount.md
+docs/Model/WebhookPayloadReactionConversation.md
+docs/Model/WebhookPayloadReactionReaction.md
+docs/Model/WebhookPayloadReactionReactionSender.md
 docs/Model/WebhookPayloadReviewNew.md
 docs/Model/WebhookPayloadReviewNewAccount.md
 docs/Model/WebhookPayloadReviewUpdated.md
@@ -1888,8 +1891,6 @@ lib/Model/WebhookPayloadCommentCommentAd.php
 lib/Model/WebhookPayloadCommentCommentAuthor.php
 lib/Model/WebhookPayloadCommentPost.php
 lib/Model/WebhookPayloadMessage.php
-lib/Model/WebhookPayloadMessageAccount.php
-lib/Model/WebhookPayloadMessageConversation.php
 lib/Model/WebhookPayloadMessageDeleted.php
 lib/Model/WebhookPayloadMessageDeliveryStatus.php
 lib/Model/WebhookPayloadMessageDeliveryStatusError.php
@@ -1912,6 +1913,11 @@ lib/Model/WebhookPayloadPostPlatformPlatform.php
 lib/Model/WebhookPayloadPostPlatformPost.php
 lib/Model/WebhookPayloadPostPost.php
 lib/Model/WebhookPayloadPostPostPlatformsInner.php
+lib/Model/WebhookPayloadReaction.php
+lib/Model/WebhookPayloadReactionAccount.php
+lib/Model/WebhookPayloadReactionConversation.php
+lib/Model/WebhookPayloadReactionReaction.php
+lib/Model/WebhookPayloadReactionReactionSender.php
 lib/Model/WebhookPayloadReviewNew.php
 lib/Model/WebhookPayloadReviewNewAccount.php
 lib/Model/WebhookPayloadReviewUpdated.php
@@ -1943,3 +1949,8 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadReactionAccountTest.php
+test/Model/WebhookPayloadReactionConversationTest.php
+test/Model/WebhookPayloadReactionReactionSenderTest.php
+test/Model/WebhookPayloadReactionReactionTest.php
+test/Model/WebhookPayloadReactionTest.php

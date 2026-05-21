@@ -296,6 +296,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     public const EVENTS_MESSAGE_DELIVERED = 'message.delivered';
     public const EVENTS_MESSAGE_READ = 'message.read';
     public const EVENTS_MESSAGE_FAILED = 'message.failed';
+    public const EVENTS_REACTION_RECEIVED = 'reaction.received';
     public const EVENTS_COMMENT_RECEIVED = 'comment.received';
     public const EVENTS_REVIEW_NEW = 'review.new';
     public const EVENTS_REVIEW_UPDATED = 'review.updated';
@@ -328,6 +329,7 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENTS_MESSAGE_DELIVERED,
             self::EVENTS_MESSAGE_READ,
             self::EVENTS_MESSAGE_FAILED,
+            self::EVENTS_REACTION_RECEIVED,
             self::EVENTS_COMMENT_RECEIVED,
             self::EVENTS_REVIEW_NEW,
             self::EVENTS_REVIEW_UPDATED,

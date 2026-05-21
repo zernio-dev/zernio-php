@@ -62,8 +62,8 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
         'id' => 'string',
         'event' => 'string',
         'message' => '\Zernio\Model\WebhookPayloadMessageMessage',
-        'conversation' => '\Zernio\Model\WebhookPayloadMessageConversation',
-        'account' => '\Zernio\Model\WebhookPayloadMessageAccount',
+        'conversation' => '\Zernio\Model\WebhookPayloadReactionConversation',
+        'account' => '\Zernio\Model\WebhookPayloadReactionAccount',
         'metadata' => '\Zernio\Model\WebhookPayloadMessageMetadata',
         'timestamp' => '\DateTime'
     ];
@@ -467,7 +467,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets conversation
      *
-     * @return \Zernio\Model\WebhookPayloadMessageConversation
+     * @return \Zernio\Model\WebhookPayloadReactionConversation
      */
     public function getConversation()
     {
@@ -477,7 +477,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets conversation
      *
-     * @param \Zernio\Model\WebhookPayloadMessageConversation $conversation conversation
+     * @param \Zernio\Model\WebhookPayloadReactionConversation $conversation conversation
      *
      * @return self
      */
@@ -494,7 +494,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets account
      *
-     * @return \Zernio\Model\WebhookPayloadMessageAccount
+     * @return \Zernio\Model\WebhookPayloadReactionAccount
      */
     public function getAccount()
     {
@@ -504,7 +504,7 @@ class WebhookPayloadMessage implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets account
      *
-     * @param \Zernio\Model\WebhookPayloadMessageAccount $account account
+     * @param \Zernio\Model\WebhookPayloadReactionAccount $account account
      *
      * @return self
      */
