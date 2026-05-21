@@ -25,6 +25,7 @@ docs/Api/GMBMediaApi.md
 docs/Api/GMBPlaceActionsApi.md
 docs/Api/GMBReviewsApi.md
 docs/Api/GMBServicesApi.md
+docs/Api/GMBVerificationsApi.md
 docs/Api/InstagramApi.md
 docs/Api/InvitesApi.md
 docs/Api/LinkedInMentionsApi.md
@@ -118,6 +119,7 @@ docs/Model/BulkUploadResultResultsInner.md
 docs/Model/BusinessCenter.md
 docs/Model/CancelBroadcast200Response.md
 docs/Model/CancelBroadcast200ResponseBroadcast.md
+docs/Model/CompleteGoogleBusinessVerificationRequest.md
 docs/Model/CompleteTelegramConnect200Response.md
 docs/Model/CompleteWhatsAppPhoneSelection200Response.md
 docs/Model/CompleteWhatsAppPhoneSelection200ResponseAccount.md
@@ -266,6 +268,9 @@ docs/Model/ErrorResponse.md
 docs/Model/Expired.md
 docs/Model/FacebookPlatformData.md
 docs/Model/FacebookPlatformDataCarouselCardsInner.md
+docs/Model/FetchGoogleBusinessVerificationOptions200Response.md
+docs/Model/FetchGoogleBusinessVerificationOptions200ResponseOptionsInner.md
+docs/Model/FetchGoogleBusinessVerificationOptionsRequest.md
 docs/Model/FollowUser200Response.md
 docs/Model/FollowUserRequest.md
 docs/Model/FollowerStatsResponse.md
@@ -374,6 +379,10 @@ docs/Model/GetGoogleBusinessServices200ResponseServicesInner.md
 docs/Model/GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItem.md
 docs/Model/GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItemLabel.md
 docs/Model/GetGoogleBusinessServices200ResponseServicesInnerPrice.md
+docs/Model/GetGoogleBusinessVerifications200Response.md
+docs/Model/GetGoogleBusinessVerifications200ResponseVerificationsInner.md
+docs/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantState.md
+docs/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantStateVerify.md
 docs/Model/GetInboxConversation200Response.md
 docs/Model/GetInboxConversation200ResponseData.md
 docs/Model/GetInboxConversationMessages200Response.md
@@ -747,6 +756,9 @@ docs/Model/SharedAdAccount.md
 docs/Model/SnapchatPlatformData.md
 docs/Model/SocialAccount.md
 docs/Model/SocialAccountProfileId.md
+docs/Model/StartGoogleBusinessVerification200Response.md
+docs/Model/StartGoogleBusinessVerification200ResponseVerification.md
+docs/Model/StartGoogleBusinessVerificationRequest.md
 docs/Model/TelegramPlatformData.md
 docs/Model/TestWebhookRequest.md
 docs/Model/ThreadsPlatformData.md
@@ -995,6 +1007,7 @@ lib/Api/GMBMediaApi.php
 lib/Api/GMBPlaceActionsApi.php
 lib/Api/GMBReviewsApi.php
 lib/Api/GMBServicesApi.php
+lib/Api/GMBVerificationsApi.php
 lib/Api/InstagramApi.php
 lib/Api/InvitesApi.php
 lib/Api/LinkedInMentionsApi.php
@@ -1092,6 +1105,7 @@ lib/Model/BulkUploadResultResultsInner.php
 lib/Model/BusinessCenter.php
 lib/Model/CancelBroadcast200Response.php
 lib/Model/CancelBroadcast200ResponseBroadcast.php
+lib/Model/CompleteGoogleBusinessVerificationRequest.php
 lib/Model/CompleteTelegramConnect200Response.php
 lib/Model/CompleteWhatsAppPhoneSelection200Response.php
 lib/Model/CompleteWhatsAppPhoneSelection200ResponseAccount.php
@@ -1240,6 +1254,9 @@ lib/Model/ErrorResponse.php
 lib/Model/Expired.php
 lib/Model/FacebookPlatformData.php
 lib/Model/FacebookPlatformDataCarouselCardsInner.php
+lib/Model/FetchGoogleBusinessVerificationOptions200Response.php
+lib/Model/FetchGoogleBusinessVerificationOptions200ResponseOptionsInner.php
+lib/Model/FetchGoogleBusinessVerificationOptionsRequest.php
 lib/Model/FollowUser200Response.php
 lib/Model/FollowUserRequest.php
 lib/Model/FollowerStatsResponse.php
@@ -1348,6 +1365,10 @@ lib/Model/GetGoogleBusinessServices200ResponseServicesInner.php
 lib/Model/GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItem.php
 lib/Model/GetGoogleBusinessServices200ResponseServicesInnerFreeFormServiceItemLabel.php
 lib/Model/GetGoogleBusinessServices200ResponseServicesInnerPrice.php
+lib/Model/GetGoogleBusinessVerifications200Response.php
+lib/Model/GetGoogleBusinessVerifications200ResponseVerificationsInner.php
+lib/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantState.php
+lib/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantStateVerify.php
 lib/Model/GetInboxConversation200Response.php
 lib/Model/GetInboxConversation200ResponseData.php
 lib/Model/GetInboxConversationMessages200Response.php
@@ -1722,6 +1743,9 @@ lib/Model/SharedAdAccount.php
 lib/Model/SnapchatPlatformData.php
 lib/Model/SocialAccount.php
 lib/Model/SocialAccountProfileId.php
+lib/Model/StartGoogleBusinessVerification200Response.php
+lib/Model/StartGoogleBusinessVerification200ResponseVerification.php
+lib/Model/StartGoogleBusinessVerificationRequest.php
 lib/Model/TelegramPlatformData.php
 lib/Model/TestWebhookRequest.php
 lib/Model/ThreadsPlatformData.php
@@ -1949,3 +1973,15 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/GMBVerificationsApiTest.php
+test/Model/CompleteGoogleBusinessVerificationRequestTest.php
+test/Model/FetchGoogleBusinessVerificationOptions200ResponseOptionsInnerTest.php
+test/Model/FetchGoogleBusinessVerificationOptions200ResponseTest.php
+test/Model/FetchGoogleBusinessVerificationOptionsRequestTest.php
+test/Model/GetGoogleBusinessVerifications200ResponseTest.php
+test/Model/GetGoogleBusinessVerifications200ResponseVerificationsInnerTest.php
+test/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantStateTest.php
+test/Model/GetGoogleBusinessVerifications200ResponseVoiceOfMerchantStateVerifyTest.php
+test/Model/StartGoogleBusinessVerification200ResponseTest.php
+test/Model/StartGoogleBusinessVerification200ResponseVerificationTest.php
+test/Model/StartGoogleBusinessVerificationRequestTest.php

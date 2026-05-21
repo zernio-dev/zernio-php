@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **account_id** | **string** |  |
-**ad_account_id** | **string** | Must start with act_ |
+**ad_account_id** | **string** | Platform ad account ID. Must start with act_ for Meta; bare platform id for others (Google customer id, X/TikTok/LinkedIn/Pinterest account id). |
 **name** | **string** |  |
 **description** | **string** |  | [optional]
 **type** | **string** |  |

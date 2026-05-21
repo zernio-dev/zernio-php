@@ -465,7 +465,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets ad_account_id
      *
-     * @param string $ad_account_id Must start with act_
+     * @param string $ad_account_id Platform ad account ID. Must start with act_ for Meta; bare platform id for others (Google customer id, X/TikTok/LinkedIn/Pinterest account id).
      *
      * @return self
      */
