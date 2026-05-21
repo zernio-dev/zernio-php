@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateBroadcastRequestTemplate
+ * CreateBroadcastRequestTemplateVariableMappingValue
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateBroadcastRequestTemplate Class Doc Comment
+ * CreateBroadcastRequestTemplateVariableMappingValue Class Doc Comment
  *
  * @category Class
- * @description WhatsApp template (required when platform is whatsapp)
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateBroadcastRequestTemplateVariableMappingValue implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createBroadcast_request_template';
+    protected static $openAPIModelName = 'createBroadcast_request_template_variableMapping_value';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +58,8 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'language' => 'string',
-        'components' => 'mixed[]',
-        'variable_mapping' => 'array<string,\Zernio\Model\CreateBroadcastRequestTemplateVariableMappingValue>'
+        'field' => 'string',
+        'custom_value' => 'string'
     ];
 
     /**
@@ -73,10 +70,8 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'language' => null,
-        'components' => null,
-        'variable_mapping' => null
+        'field' => null,
+        'custom_value' => null
     ];
 
     /**
@@ -85,10 +80,8 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'language' => false,
-        'components' => false,
-        'variable_mapping' => false
+        'field' => false,
+        'custom_value' => false
     ];
 
     /**
@@ -177,10 +170,8 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'language' => 'language',
-        'components' => 'components',
-        'variable_mapping' => 'variableMapping'
+        'field' => 'field',
+        'custom_value' => 'customValue'
     ];
 
     /**
@@ -189,10 +180,8 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'language' => 'setLanguage',
-        'components' => 'setComponents',
-        'variable_mapping' => 'setVariableMapping'
+        'field' => 'setField',
+        'custom_value' => 'setCustomValue'
     ];
 
     /**
@@ -201,10 +190,8 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'language' => 'getLanguage',
-        'components' => 'getComponents',
-        'variable_mapping' => 'getVariableMapping'
+        'field' => 'getField',
+        'custom_value' => 'getCustomValue'
     ];
 
     /**
@@ -248,6 +235,27 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
+    public const FIELD_NAME = 'name';
+    public const FIELD_PHONE = 'phone';
+    public const FIELD_EMAIL = 'email';
+    public const FIELD_COMPANY = 'company';
+    public const FIELD_CUSTOM = 'custom';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFieldAllowableValues()
+    {
+        return [
+            self::FIELD_NAME,
+            self::FIELD_PHONE,
+            self::FIELD_EMAIL,
+            self::FIELD_COMPANY,
+            self::FIELD_CUSTOM,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -264,10 +272,8 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('language', $data ?? [], null);
-        $this->setIfExists('components', $data ?? [], null);
-        $this->setIfExists('variable_mapping', $data ?? [], null);
+        $this->setIfExists('field', $data ?? [], null);
+        $this->setIfExists('custom_value', $data ?? [], null);
     }
 
     /**
@@ -297,6 +303,15 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getFieldAllowableValues();
+        if (!is_null($this->container['field']) && !in_array($this->container['field'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'field', must be one of '%s'",
+                $this->container['field'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -313,109 +328,65 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets name
+     * Gets field
      *
      * @return string|null
      */
-    public function getName()
+    public function getField()
     {
-        return $this->container['name'];
+        return $this->container['field'];
     }
 
     /**
-     * Sets name
+     * Sets field
      *
-     * @param string|null $name name
+     * @param string|null $field field
      *
      * @return self
      */
-    public function setName($name)
+    public function setField($field)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($field)) {
+            throw new \InvalidArgumentException('non-nullable field cannot be null');
         }
-        $this->container['name'] = $name;
+        $allowedValues = $this->getFieldAllowableValues();
+        if (!in_array($field, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'field', must be one of '%s'",
+                    $field,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['field'] = $field;
 
         return $this;
     }
 
     /**
-     * Gets language
+     * Gets custom_value
      *
      * @return string|null
      */
-    public function getLanguage()
+    public function getCustomValue()
     {
-        return $this->container['language'];
+        return $this->container['custom_value'];
     }
 
     /**
-     * Sets language
+     * Sets custom_value
      *
-     * @param string|null $language language
+     * @param string|null $custom_value Static value used when field is \"custom\"
      *
      * @return self
      */
-    public function setLanguage($language)
+    public function setCustomValue($custom_value)
     {
-        if (is_null($language)) {
-            throw new \InvalidArgumentException('non-nullable language cannot be null');
+        if (is_null($custom_value)) {
+            throw new \InvalidArgumentException('non-nullable custom_value cannot be null');
         }
-        $this->container['language'] = $language;
-
-        return $this;
-    }
-
-    /**
-     * Gets components
-     *
-     * @return mixed[]|null
-     */
-    public function getComponents()
-    {
-        return $this->container['components'];
-    }
-
-    /**
-     * Sets components
-     *
-     * @param mixed[]|null $components components
-     *
-     * @return self
-     */
-    public function setComponents($components)
-    {
-        if (is_null($components)) {
-            throw new \InvalidArgumentException('non-nullable components cannot be null');
-        }
-        $this->container['components'] = $components;
-
-        return $this;
-    }
-
-    /**
-     * Gets variable_mapping
-     *
-     * @return array<string,\Zernio\Model\CreateBroadcastRequestTemplateVariableMappingValue>|null
-     */
-    public function getVariableMapping()
-    {
-        return $this->container['variable_mapping'];
-    }
-
-    /**
-     * Sets variable_mapping
-     *
-     * @param array<string,\Zernio\Model\CreateBroadcastRequestTemplateVariableMappingValue>|null $variable_mapping Maps template variable positions (\"1\", \"2\") to contact fields or static values. Resolved per recipient at send time.
-     *
-     * @return self
-     */
-    public function setVariableMapping($variable_mapping)
-    {
-        if (is_null($variable_mapping)) {
-            throw new \InvalidArgumentException('non-nullable variable_mapping cannot be null');
-        }
-        $this->container['variable_mapping'] = $variable_mapping;
+        $this->container['custom_value'] = $custom_value;
 
         return $this;
     }
