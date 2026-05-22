@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **string** |  | [optional]
 **content** | **string** | Post caption/text. Optional when media is attached or all platforms have customContent. Required for text-only posts. | [optional]
-**media_items** | [**\Zernio\Model\CreatePostRequestMediaItemsInner[]**](CreatePostRequestMediaItemsInner.md) |  | [optional]
+**media_items** | [**\Zernio\Model\MediaItem[]**](MediaItem.md) |  | [optional]
 **platforms** | [**\Zernio\Model\CreatePostRequestPlatformsInner[]**](CreatePostRequestPlatformsInner.md) | Target platforms and accounts for this post. Required for non-draft posts (returns 400 if empty). Drafts can omit platforms. | [optional]
 **scheduled_for** | **\DateTime** |  | [optional]
 **publish_now** | **bool** |  | [optional] [default to false]

@@ -190,7 +190,6 @@ docs/Model/CreatePost409Response.md
 docs/Model/CreatePost409ResponseDetails.md
 docs/Model/CreatePost429Response.md
 docs/Model/CreatePostRequest.md
-docs/Model/CreatePostRequestMediaItemsInner.md
 docs/Model/CreatePostRequestPlatformsInner.md
 docs/Model/CreatePostRequestPlatformsInnerPlatformSpecificData.md
 docs/Model/CreateProfileRequest.md
@@ -1177,7 +1176,6 @@ lib/Model/CreatePost409Response.php
 lib/Model/CreatePost409ResponseDetails.php
 lib/Model/CreatePost429Response.php
 lib/Model/CreatePostRequest.php
-lib/Model/CreatePostRequestMediaItemsInner.php
 lib/Model/CreatePostRequestPlatformsInner.php
 lib/Model/CreatePostRequestPlatformsInnerPlatformSpecificData.php
 lib/Model/CreateProfileRequest.php

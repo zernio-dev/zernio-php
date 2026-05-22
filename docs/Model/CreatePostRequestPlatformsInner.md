@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **platform** | **string** |  | [optional]
 **account_id** | **string** |  | [optional]
 **custom_content** | **string** | Platform-specific text override. When set, this content is used instead of the top-level post content for this platform. Useful for tailoring captions per platform (e.g. keeping tweets under 280 characters). | [optional]
-**custom_media** | [**\Zernio\Model\CreatePostRequestMediaItemsInner[]**](CreatePostRequestMediaItemsInner.md) |  | [optional]
+**custom_media** | [**\Zernio\Model\MediaItem[]**](MediaItem.md) |  | [optional]
 **scheduled_for** | **\DateTime** | Optional per-platform scheduled time override. When omitted, the top-level scheduledFor is used. | [optional]
 **platform_specific_data** | [**\Zernio\Model\CreatePostRequestPlatformsInnerPlatformSpecificData**](CreatePostRequestPlatformsInnerPlatformSpecificData.md) |  | [optional]
 
