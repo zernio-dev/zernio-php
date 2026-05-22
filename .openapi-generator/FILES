@@ -901,9 +901,7 @@ docs/Model/ValidatePostLength200Response.md
 docs/Model/ValidatePostLength200ResponsePlatformsValue.md
 docs/Model/ValidatePostLengthRequest.md
 docs/Model/ValidatePostRequest.md
-docs/Model/ValidatePostRequestMediaItemsInner.md
 docs/Model/ValidatePostRequestPlatformsInner.md
-docs/Model/ValidatePostRequestPlatformsInnerCustomMediaInner.md
 docs/Model/ValidateSubreddit200Response.md
 docs/Model/ValidateSubreddit200ResponseOneOf.md
 docs/Model/ValidateSubreddit200ResponseOneOf1.md
@@ -1888,9 +1886,7 @@ lib/Model/ValidatePostLength200Response.php
 lib/Model/ValidatePostLength200ResponsePlatformsValue.php
 lib/Model/ValidatePostLengthRequest.php
 lib/Model/ValidatePostRequest.php
-lib/Model/ValidatePostRequestMediaItemsInner.php
 lib/Model/ValidatePostRequestPlatformsInner.php
-lib/Model/ValidatePostRequestPlatformsInnerCustomMediaInner.php
 lib/Model/ValidateSubreddit200Response.php
 lib/Model/ValidateSubreddit200ResponseOneOf.php
 lib/Model/ValidateSubreddit200ResponseOneOf1.php
