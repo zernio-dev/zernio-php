@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateAdAudienceRequest
+ * SavedTargetingAudience
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateAdAudienceRequest Class Doc Comment
+ * SavedTargetingAudience Class Doc Comment
  *
  * @category Class
+ * @description A reusable, stored TargetingSpec. No member upload step, no adAccountId, the spec is the audience. Reference it later via &#x60;savedTargetingId&#x60; on POST /v1/ads/create.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SavedTargetingAudience implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createAdAudience_request';
+    protected static $openAPIModelName = 'SavedTargetingAudience';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,18 +59,10 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
+        'type' => 'string',
         'account_id' => 'string',
-        'ad_account_id' => 'string',
         'name' => 'string',
         'description' => 'string',
-        'type' => 'string',
-        'pixel_id' => 'string',
-        'retention_days' => 'int',
-        'source_audience_id' => 'string',
-        'country' => 'string',
-        'ratio' => 'float',
-        'rule' => 'object',
-        'customer_file_source' => 'string',
         'spec' => '\Zernio\Model\TargetingSpec'
     ];
 
@@ -81,18 +74,10 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'type' => null,
         'account_id' => null,
-        'ad_account_id' => null,
         'name' => null,
         'description' => null,
-        'type' => null,
-        'pixel_id' => null,
-        'retention_days' => null,
-        'source_audience_id' => null,
-        'country' => null,
-        'ratio' => null,
-        'rule' => null,
-        'customer_file_source' => null,
         'spec' => null
     ];
 
@@ -102,18 +87,10 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'type' => false,
         'account_id' => false,
-        'ad_account_id' => false,
         'name' => false,
         'description' => false,
-        'type' => false,
-        'pixel_id' => false,
-        'retention_days' => false,
-        'source_audience_id' => false,
-        'country' => false,
-        'ratio' => false,
-        'rule' => false,
-        'customer_file_source' => false,
         'spec' => false
     ];
 
@@ -203,18 +180,10 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
+        'type' => 'type',
         'account_id' => 'accountId',
-        'ad_account_id' => 'adAccountId',
         'name' => 'name',
         'description' => 'description',
-        'type' => 'type',
-        'pixel_id' => 'pixelId',
-        'retention_days' => 'retentionDays',
-        'source_audience_id' => 'sourceAudienceId',
-        'country' => 'country',
-        'ratio' => 'ratio',
-        'rule' => 'rule',
-        'customer_file_source' => 'customerFileSource',
         'spec' => 'spec'
     ];
 
@@ -224,18 +193,10 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
+        'type' => 'setType',
         'account_id' => 'setAccountId',
-        'ad_account_id' => 'setAdAccountId',
         'name' => 'setName',
         'description' => 'setDescription',
-        'type' => 'setType',
-        'pixel_id' => 'setPixelId',
-        'retention_days' => 'setRetentionDays',
-        'source_audience_id' => 'setSourceAudienceId',
-        'country' => 'setCountry',
-        'ratio' => 'setRatio',
-        'rule' => 'setRule',
-        'customer_file_source' => 'setCustomerFileSource',
         'spec' => 'setSpec'
     ];
 
@@ -245,18 +206,10 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
+        'type' => 'getType',
         'account_id' => 'getAccountId',
-        'ad_account_id' => 'getAdAccountId',
         'name' => 'getName',
         'description' => 'getDescription',
-        'type' => 'getType',
-        'pixel_id' => 'getPixelId',
-        'retention_days' => 'getRetentionDays',
-        'source_audience_id' => 'getSourceAudienceId',
-        'country' => 'getCountry',
-        'ratio' => 'getRatio',
-        'rule' => 'getRule',
-        'customer_file_source' => 'getCustomerFileSource',
         'spec' => 'getSpec'
     ];
 
@@ -301,9 +254,6 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    public const TYPE_CUSTOMER_LIST = 'customer_list';
-    public const TYPE_WEBSITE = 'website';
-    public const TYPE_LOOKALIKE = 'lookalike';
     public const TYPE_SAVED_TARGETING = 'saved_targeting';
 
     /**
@@ -314,9 +264,6 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function getTypeAllowableValues()
     {
         return [
-            self::TYPE_CUSTOMER_LIST,
-            self::TYPE_WEBSITE,
-            self::TYPE_LOOKALIKE,
             self::TYPE_SAVED_TARGETING,
         ];
     }
@@ -336,18 +283,10 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('type', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
-        $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('pixel_id', $data ?? [], null);
-        $this->setIfExists('retention_days', $data ?? [], null);
-        $this->setIfExists('source_audience_id', $data ?? [], null);
-        $this->setIfExists('country', $data ?? [], null);
-        $this->setIfExists('ratio', $data ?? [], null);
-        $this->setIfExists('rule', $data ?? [], null);
-        $this->setIfExists('customer_file_source', $data ?? [], null);
         $this->setIfExists('spec', $data ?? [], null);
     }
 
@@ -378,19 +317,6 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['account_id'] === null) {
-            $invalidProperties[] = "'account_id' can't be null";
-        }
-        if ($this->container['ad_account_id'] === null) {
-            $invalidProperties[] = "'ad_account_id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ((mb_strlen($this->container['name']) > 255)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
-        }
-
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
@@ -403,20 +329,14 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
 
-        if (!is_null($this->container['retention_days']) && ($this->container['retention_days'] > 180)) {
-            $invalidProperties[] = "invalid value for 'retention_days', must be smaller than or equal to 180.";
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
         }
-
-        if (!is_null($this->container['retention_days']) && ($this->container['retention_days'] < 1)) {
-            $invalidProperties[] = "invalid value for 'retention_days', must be bigger than or equal to 1.";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
-
-        if (!is_null($this->container['ratio']) && ($this->container['ratio'] > 0.2)) {
-            $invalidProperties[] = "invalid value for 'ratio', must be smaller than or equal to 0.2.";
-        }
-
-        if (!is_null($this->container['ratio']) && ($this->container['ratio'] < 0.01)) {
-            $invalidProperties[] = "invalid value for 'ratio', must be bigger than or equal to 0.01.";
+        if ((mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
 
         if ($this->container['spec'] === null) {
@@ -436,118 +356,6 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets account_id
-     *
-     * @return string
-     */
-    public function getAccountId()
-    {
-        return $this->container['account_id'];
-    }
-
-    /**
-     * Sets account_id
-     *
-     * @param string $account_id Social account ID on the target ad platform.
-     *
-     * @return self
-     */
-    public function setAccountId($account_id)
-    {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
-        }
-        $this->container['account_id'] = $account_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets ad_account_id
-     *
-     * @return string
-     */
-    public function getAdAccountId()
-    {
-        return $this->container['ad_account_id'];
-    }
-
-    /**
-     * Sets ad_account_id
-     *
-     * @param string $ad_account_id Platform ad account ID. Must start with act_ for Meta; bare platform id for others (Google customer id, X/TikTok/LinkedIn/Pinterest account id).
-     *
-     * @return self
-     */
-    public function setAdAccountId($ad_account_id)
-    {
-        if (is_null($ad_account_id)) {
-            throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
-        }
-        $this->container['ad_account_id'] = $ad_account_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateAdAudienceRequest., must be smaller than or equal to 255.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
 
     /**
      * Gets type
@@ -587,206 +395,86 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     }
 
     /**
-     * Gets pixel_id
+     * Gets account_id
+     *
+     * @return string
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string $account_id Social account ID on the target ad platform.
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling SavedTargetingAudience., must be smaller than or equal to 255.');
+        }
+
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
      *
      * @return string|null
      */
-    public function getPixelId()
+    public function getDescription()
     {
-        return $this->container['pixel_id'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets pixel_id
+     * Sets description
      *
-     * @param string|null $pixel_id Required for website audiences
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setPixelId($pixel_id)
+    public function setDescription($description)
     {
-        if (is_null($pixel_id)) {
-            throw new \InvalidArgumentException('non-nullable pixel_id cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['pixel_id'] = $pixel_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets retention_days
-     *
-     * @return int|null
-     */
-    public function getRetentionDays()
-    {
-        return $this->container['retention_days'];
-    }
-
-    /**
-     * Sets retention_days
-     *
-     * @param int|null $retention_days Required for website audiences
-     *
-     * @return self
-     */
-    public function setRetentionDays($retention_days)
-    {
-        if (is_null($retention_days)) {
-            throw new \InvalidArgumentException('non-nullable retention_days cannot be null');
-        }
-
-        if (($retention_days > 180)) {
-            throw new \InvalidArgumentException('invalid value for $retention_days when calling CreateAdAudienceRequest., must be smaller than or equal to 180.');
-        }
-        if (($retention_days < 1)) {
-            throw new \InvalidArgumentException('invalid value for $retention_days when calling CreateAdAudienceRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['retention_days'] = $retention_days;
-
-        return $this;
-    }
-
-    /**
-     * Gets source_audience_id
-     *
-     * @return string|null
-     */
-    public function getSourceAudienceId()
-    {
-        return $this->container['source_audience_id'];
-    }
-
-    /**
-     * Sets source_audience_id
-     *
-     * @param string|null $source_audience_id Required for lookalike audiences
-     *
-     * @return self
-     */
-    public function setSourceAudienceId($source_audience_id)
-    {
-        if (is_null($source_audience_id)) {
-            throw new \InvalidArgumentException('non-nullable source_audience_id cannot be null');
-        }
-        $this->container['source_audience_id'] = $source_audience_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets country
-     *
-     * @return string|null
-     */
-    public function getCountry()
-    {
-        return $this->container['country'];
-    }
-
-    /**
-     * Sets country
-     *
-     * @param string|null $country 2-letter code, required for lookalike audiences
-     *
-     * @return self
-     */
-    public function setCountry($country)
-    {
-        if (is_null($country)) {
-            throw new \InvalidArgumentException('non-nullable country cannot be null');
-        }
-        $this->container['country'] = $country;
-
-        return $this;
-    }
-
-    /**
-     * Gets ratio
-     *
-     * @return float|null
-     */
-    public function getRatio()
-    {
-        return $this->container['ratio'];
-    }
-
-    /**
-     * Sets ratio
-     *
-     * @param float|null $ratio Required for lookalike audiences
-     *
-     * @return self
-     */
-    public function setRatio($ratio)
-    {
-        if (is_null($ratio)) {
-            throw new \InvalidArgumentException('non-nullable ratio cannot be null');
-        }
-
-        if (($ratio > 0.2)) {
-            throw new \InvalidArgumentException('invalid value for $ratio when calling CreateAdAudienceRequest., must be smaller than or equal to 0.2.');
-        }
-        if (($ratio < 0.01)) {
-            throw new \InvalidArgumentException('invalid value for $ratio when calling CreateAdAudienceRequest., must be bigger than or equal to 0.01.');
-        }
-
-        $this->container['ratio'] = $ratio;
-
-        return $this;
-    }
-
-    /**
-     * Gets rule
-     *
-     * @return object|null
-     */
-    public function getRule()
-    {
-        return $this->container['rule'];
-    }
-
-    /**
-     * Sets rule
-     *
-     * @param object|null $rule Pixel event rule for website audiences (optional)
-     *
-     * @return self
-     */
-    public function setRule($rule)
-    {
-        if (is_null($rule)) {
-            throw new \InvalidArgumentException('non-nullable rule cannot be null');
-        }
-        $this->container['rule'] = $rule;
-
-        return $this;
-    }
-
-    /**
-     * Gets customer_file_source
-     *
-     * @return string|null
-     */
-    public function getCustomerFileSource()
-    {
-        return $this->container['customer_file_source'];
-    }
-
-    /**
-     * Sets customer_file_source
-     *
-     * @param string|null $customer_file_source Data source declaration for GDPR compliance (customer_list only)
-     *
-     * @return self
-     */
-    public function setCustomerFileSource($customer_file_source)
-    {
-        if (is_null($customer_file_source)) {
-            throw new \InvalidArgumentException('non-nullable customer_file_source cannot be null');
-        }
-        $this->container['customer_file_source'] = $customer_file_source;
+        $this->container['description'] = $description;
 
         return $this;
     }

@@ -83,7 +83,7 @@ createAdAudience($create_ad_audience_request): \Zernio\Model\CreateAdAudience201
 
 Create custom audience
 
-Create a custom audience. `customer_list` is supported on Meta, Google, X, LinkedIn, TikTok, and Pinterest; `website` and `lookalike` are Meta-only. The audience is created empty — add members via `POST /v1/ads/audiences/{audienceId}/users`. On TikTok and Pinterest the audience is provisioned lazily on the first member upload (until then its status is `pending`). Create is not idempotent — never auto-retry.
+Create a custom audience. `customer_list` is supported on Meta, Google, X, LinkedIn, TikTok, and Pinterest; `website` and `lookalike` are Meta-only. `saved_targeting` stores a reusable TargetingSpec (no member upload, no adAccountId) that you reference later via `savedTargetingId` on `POST /v1/ads/create`. Upload-backed audiences are created empty, add members via `POST /v1/ads/audiences/{audienceId}/users`. On TikTok and Pinterest the audience is provisioned lazily on the first member upload (until then its status is `pending`). Create is not idempotent, never auto-retry.
 
 ### Example
 
@@ -258,7 +258,7 @@ try {
 ## `listAdAudiences()`
 
 ```php
-listAdAudiences($account_id, $ad_account_id, $platform): \Zernio\Model\ListAdAudiences200Response
+listAdAudiences($account_id, $ad_account_id, $platform, $type): \Zernio\Model\ListAdAudiences200Response
 ```
 
 List custom audiences
@@ -285,9 +285,10 @@ $apiInstance = new Zernio\Api\AdAudiencesApi(
 $account_id = 'account_id_example'; // string | Social account ID
 $ad_account_id = 'ad_account_id_example'; // string | Platform ad account ID
 $platform = 'platform_example'; // string
+$type = 'type_example'; // string | Filter to one audience type. `saved_targeting` returns stored TargetingSpec audiences (each item carries a `spec`); the other types return uploaded/derived audiences.
 
 try {
-    $result = $apiInstance->listAdAudiences($account_id, $ad_account_id, $platform);
+    $result = $apiInstance->listAdAudiences($account_id, $ad_account_id, $platform, $type);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdAudiencesApi->listAdAudiences: ', $e->getMessage(), PHP_EOL;
@@ -301,6 +302,7 @@ try {
 | **account_id** | **string**| Social account ID | |
 | **ad_account_id** | **string**| Platform ad account ID | |
 | **platform** | **string**|  | [optional] |
+| **type** | **string**| Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences (each item carries a &#x60;spec&#x60;); the other types return uploaded/derived audiences. | [optional] |
 
 ### Return type
 

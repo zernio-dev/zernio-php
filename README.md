@@ -104,6 +104,7 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**createStandaloneAd**](docs/Api/AdsApi.md#createstandalonead) | **POST** /v1/ads/create | Create standalone ad
 *AdsApi* | [**deleteAd**](docs/Api/AdsApi.md#deletead) | **DELETE** /v1/ads/{adId} | Cancel an ad
 *AdsApi* | [**deleteConversionDestination**](docs/Api/AdsApi.md#deleteconversiondestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Soft-delete a conversion destination
+*AdsApi* | [**estimateAdReach**](docs/Api/AdsApi.md#estimateadreach) | **POST** /v1/ads/targeting/reach-estimate | Estimate audience reach
 *AdsApi* | [**getAd**](docs/Api/AdsApi.md#getad) | **GET** /v1/ads/{adId} | Get ad details
 *AdsApi* | [**getAdAnalytics**](docs/Api/AdsApi.md#getadanalytics) | **GET** /v1/ads/{adId}/analytics | Get ad analytics
 *AdsApi* | [**getAdComments**](docs/Api/AdsApi.md#getadcomments) | **GET** /v1/ads/{adId}/comments | List comments on an ad
@@ -115,8 +116,8 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**listConversionAssociations**](docs/Api/AdsApi.md#listconversionassociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List campaigns associated with a conversion destination
 *AdsApi* | [**listConversionDestinations**](docs/Api/AdsApi.md#listconversiondestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List destinations for the Conversions API
 *AdsApi* | [**removeConversionAssociations**](docs/Api/AdsApi.md#removeconversionassociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove campaign↔conversion associations
-*AdsApi* | [**searchAdInterests**](docs/Api/AdsApi.md#searchadinterests) | **GET** /v1/ads/interests | Search targeting interests
-*AdsApi* | [**searchAdTargetingLocations**](docs/Api/AdsApi.md#searchadtargetinglocations) | **GET** /v1/ads/targeting/search | Search geo targeting locations (Meta)
+*AdsApi* | [**searchAdInterests**](docs/Api/AdsApi.md#searchadinterests) | **GET** /v1/ads/interests | Search targeting interests (deprecated)
+*AdsApi* | [**searchAdTargeting**](docs/Api/AdsApi.md#searchadtargeting) | **GET** /v1/ads/targeting/search | Search targeting options
 *AdsApi* | [**sendConversions**](docs/Api/AdsApi.md#sendconversions) | **POST** /v1/ads/conversions | Send conversion events to an ad platform
 *AdsApi* | [**sendWhatsAppConversion**](docs/Api/AdsApi.md#sendwhatsappconversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event
 *AdsApi* | [**updateAd**](docs/Api/AdsApi.md#updatead) | **PUT** /v1/ads/{adId} | Update ad
@@ -485,7 +486,6 @@ Class | Method | HTTP request | Description
 - [CreateCtwaAdRequest](docs/Model/CreateCtwaAdRequest.md)
 - [CreateCtwaAdRequestCreativesInner](docs/Model/CreateCtwaAdRequestCreativesInner.md)
 - [CreateCtwaAdRequestCreativesInnerVideo](docs/Model/CreateCtwaAdRequestCreativesInnerVideo.md)
-- [CreateCtwaAdRequestInterestsInner](docs/Model/CreateCtwaAdRequestInterestsInner.md)
 - [CreateCtwaAdRequestVideo](docs/Model/CreateCtwaAdRequestVideo.md)
 - [CreateCustomField200Response](docs/Model/CreateCustomField200Response.md)
 - [CreateCustomFieldRequest](docs/Model/CreateCustomFieldRequest.md)
@@ -520,14 +520,17 @@ Class | Method | HTTP request | Description
 - [CreateStandaloneAd201ResponseOneOf1](docs/Model/CreateStandaloneAd201ResponseOneOf1.md)
 - [CreateStandaloneAdRequest](docs/Model/CreateStandaloneAdRequest.md)
 - [CreateStandaloneAdRequestAttributionSpecInner](docs/Model/CreateStandaloneAdRequestAttributionSpecInner.md)
+- [CreateStandaloneAdRequestBehaviorsInner](docs/Model/CreateStandaloneAdRequestBehaviorsInner.md)
 - [CreateStandaloneAdRequestBrandIdentity](docs/Model/CreateStandaloneAdRequestBrandIdentity.md)
 - [CreateStandaloneAdRequestCitiesInner](docs/Model/CreateStandaloneAdRequestCitiesInner.md)
 - [CreateStandaloneAdRequestCreativesInner](docs/Model/CreateStandaloneAdRequestCreativesInner.md)
 - [CreateStandaloneAdRequestCreativesInnerVideo](docs/Model/CreateStandaloneAdRequestCreativesInnerVideo.md)
+- [CreateStandaloneAdRequestCustomLocationsInner](docs/Model/CreateStandaloneAdRequestCustomLocationsInner.md)
 - [CreateStandaloneAdRequestImages](docs/Model/CreateStandaloneAdRequestImages.md)
 - [CreateStandaloneAdRequestPromotedObject](docs/Model/CreateStandaloneAdRequestPromotedObject.md)
 - [CreateStandaloneAdRequestRegionsInner](docs/Model/CreateStandaloneAdRequestRegionsInner.md)
 - [CreateStandaloneAdRequestVideo](docs/Model/CreateStandaloneAdRequestVideo.md)
+- [CreateStandaloneAdRequestZipsInner](docs/Model/CreateStandaloneAdRequestZipsInner.md)
 - [CreateTrackingTag201Response](docs/Model/CreateTrackingTag201Response.md)
 - [CreateTrackingTagRequest](docs/Model/CreateTrackingTagRequest.md)
 - [CreateWebhookSettingsRequest](docs/Model/CreateWebhookSettingsRequest.md)
@@ -579,6 +582,8 @@ Class | Method | HTTP request | Description
 - [EnrollContacts200Response](docs/Model/EnrollContacts200Response.md)
 - [EnrollContactsRequest](docs/Model/EnrollContactsRequest.md)
 - [ErrorResponse](docs/Model/ErrorResponse.md)
+- [EstimateAdReach200Response](docs/Model/EstimateAdReach200Response.md)
+- [EstimateAdReachRequest](docs/Model/EstimateAdReachRequest.md)
 - [Expired](docs/Model/Expired.md)
 - [FacebookPlatformData](docs/Model/FacebookPlatformData.md)
 - [FacebookPlatformDataCarouselCardsInner](docs/Model/FacebookPlatformDataCarouselCardsInner.md)
@@ -989,14 +994,14 @@ Class | Method | HTTP request | Description
 - [ReviewWebhookReview](docs/Model/ReviewWebhookReview.md)
 - [ReviewWebhookReviewReply](docs/Model/ReviewWebhookReviewReply.md)
 - [ReviewWebhookReviewReviewer](docs/Model/ReviewWebhookReviewReviewer.md)
+- [SavedTargetingAudience](docs/Model/SavedTargetingAudience.md)
 - [ScheduleBroadcast200Response](docs/Model/ScheduleBroadcast200Response.md)
 - [ScheduleBroadcast200ResponseBroadcast](docs/Model/ScheduleBroadcast200ResponseBroadcast.md)
 - [ScheduleBroadcastRequest](docs/Model/ScheduleBroadcastRequest.md)
 - [SearchAdInterests200Response](docs/Model/SearchAdInterests200Response.md)
 - [SearchAdInterests200ResponseInterestsInner](docs/Model/SearchAdInterests200ResponseInterestsInner.md)
-- [SearchAdTargetingLocations200Response](docs/Model/SearchAdTargetingLocations200Response.md)
-- [SearchAdTargetingLocations200ResponseResultsInner](docs/Model/SearchAdTargetingLocations200ResponseResultsInner.md)
-- [SearchAdTargetingLocations200ResponseResultsInnerRegionId](docs/Model/SearchAdTargetingLocations200ResponseResultsInnerRegionId.md)
+- [SearchAdTargeting200Response](docs/Model/SearchAdTargeting200Response.md)
+- [SearchAdTargeting200ResponseResultsInner](docs/Model/SearchAdTargeting200ResponseResultsInner.md)
 - [SearchReddit200Response](docs/Model/SearchReddit200Response.md)
 - [SelectFacebookPage200Response](docs/Model/SelectFacebookPage200Response.md)
 - [SelectFacebookPage200ResponseAccount](docs/Model/SelectFacebookPage200ResponseAccount.md)
@@ -1074,6 +1079,10 @@ Class | Method | HTTP request | Description
 - [StartGoogleBusinessVerification200Response](docs/Model/StartGoogleBusinessVerification200Response.md)
 - [StartGoogleBusinessVerification200ResponseVerification](docs/Model/StartGoogleBusinessVerification200ResponseVerification.md)
 - [StartGoogleBusinessVerificationRequest](docs/Model/StartGoogleBusinessVerificationRequest.md)
+- [TargetingSpec](docs/Model/TargetingSpec.md)
+- [TargetingSpecCitiesInner](docs/Model/TargetingSpecCitiesInner.md)
+- [TargetingSpecCustomLocationsInner](docs/Model/TargetingSpecCustomLocationsInner.md)
+- [TargetingSpecExcludedLocations](docs/Model/TargetingSpecExcludedLocations.md)
 - [TelegramPlatformData](docs/Model/TelegramPlatformData.md)
 - [TestWebhookRequest](docs/Model/TestWebhookRequest.md)
 - [ThreadsPlatformData](docs/Model/ThreadsPlatformData.md)
@@ -1196,6 +1205,7 @@ Class | Method | HTTP request | Description
 - [UploadWhatsAppFlowJsonRequest](docs/Model/UploadWhatsAppFlowJsonRequest.md)
 - [UploadWhatsAppFlowJsonRequestFlowJson](docs/Model/UploadWhatsAppFlowJsonRequestFlowJson.md)
 - [UploadedFile](docs/Model/UploadedFile.md)
+- [UploadedOrDerivedAudience](docs/Model/UploadedOrDerivedAudience.md)
 - [UsageStats](docs/Model/UsageStats.md)
 - [UsageStatsLimits](docs/Model/UsageStatsLimits.md)
 - [UsageStatsSpend](docs/Model/UsageStatsSpend.md)

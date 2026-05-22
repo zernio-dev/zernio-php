@@ -1350,15 +1350,16 @@ class AdAudiencesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform platform (optional)
+     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences (each item carries a &#x60;spec&#x60;); the other types return uploaded/derived audiences. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAudiences'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListAdAudiences200Response|\Zernio\Model\InlineObject
      */
-    public function listAdAudiences($account_id, $ad_account_id, $platform = null, string $contentType = self::contentTypes['listAdAudiences'][0])
+    public function listAdAudiences($account_id, $ad_account_id, $platform = null, $type = null, string $contentType = self::contentTypes['listAdAudiences'][0])
     {
-        list($response) = $this->listAdAudiencesWithHttpInfo($account_id, $ad_account_id, $platform, $contentType);
+        list($response) = $this->listAdAudiencesWithHttpInfo($account_id, $ad_account_id, $platform, $type, $contentType);
         return $response;
     }
 
@@ -1370,15 +1371,16 @@ class AdAudiencesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform (optional)
+     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences (each item carries a &#x60;spec&#x60;); the other types return uploaded/derived audiences. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAudiences'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListAdAudiences200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAdAudiencesWithHttpInfo($account_id, $ad_account_id, $platform = null, string $contentType = self::contentTypes['listAdAudiences'][0])
+    public function listAdAudiencesWithHttpInfo($account_id, $ad_account_id, $platform = null, $type = null, string $contentType = self::contentTypes['listAdAudiences'][0])
     {
-        $request = $this->listAdAudiencesRequest($account_id, $ad_account_id, $platform, $contentType);
+        $request = $this->listAdAudiencesRequest($account_id, $ad_account_id, $platform, $type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1471,14 +1473,15 @@ class AdAudiencesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform (optional)
+     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences (each item carries a &#x60;spec&#x60;); the other types return uploaded/derived audiences. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAudiences'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdAudiencesAsync($account_id, $ad_account_id, $platform = null, string $contentType = self::contentTypes['listAdAudiences'][0])
+    public function listAdAudiencesAsync($account_id, $ad_account_id, $platform = null, $type = null, string $contentType = self::contentTypes['listAdAudiences'][0])
     {
-        return $this->listAdAudiencesAsyncWithHttpInfo($account_id, $ad_account_id, $platform, $contentType)
+        return $this->listAdAudiencesAsyncWithHttpInfo($account_id, $ad_account_id, $platform, $type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1494,15 +1497,16 @@ class AdAudiencesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform (optional)
+     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences (each item carries a &#x60;spec&#x60;); the other types return uploaded/derived audiences. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAudiences'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAdAudiencesAsyncWithHttpInfo($account_id, $ad_account_id, $platform = null, string $contentType = self::contentTypes['listAdAudiences'][0])
+    public function listAdAudiencesAsyncWithHttpInfo($account_id, $ad_account_id, $platform = null, $type = null, string $contentType = self::contentTypes['listAdAudiences'][0])
     {
         $returnType = '\Zernio\Model\ListAdAudiences200Response';
-        $request = $this->listAdAudiencesRequest($account_id, $ad_account_id, $platform, $contentType);
+        $request = $this->listAdAudiencesRequest($account_id, $ad_account_id, $platform, $type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1546,12 +1550,13 @@ class AdAudiencesApi
      * @param  string $account_id Social account ID (required)
      * @param  string $ad_account_id Platform ad account ID (required)
      * @param  string|null $platform (optional)
+     * @param  string|null $type Filter to one audience type. &#x60;saved_targeting&#x60; returns stored TargetingSpec audiences (each item carries a &#x60;spec&#x60;); the other types return uploaded/derived audiences. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAdAudiences'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAdAudiencesRequest($account_id, $ad_account_id, $platform = null, string $contentType = self::contentTypes['listAdAudiences'][0])
+    public function listAdAudiencesRequest($account_id, $ad_account_id, $platform = null, $type = null, string $contentType = self::contentTypes['listAdAudiences'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -1567,6 +1572,7 @@ class AdAudiencesApi
                 'Missing the required parameter $ad_account_id when calling listAdAudiences'
             );
         }
+
 
 
 
@@ -1599,6 +1605,15 @@ class AdAudiencesApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $platform,
             'platform', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $type,
+            'type', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

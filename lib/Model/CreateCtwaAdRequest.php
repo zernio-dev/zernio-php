@@ -74,7 +74,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'countries' => 'string[]',
         'age_min' => 'int',
         'age_max' => 'int',
-        'interests' => '\Zernio\Model\CreateCtwaAdRequestInterestsInner[]',
+        'interests' => '\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]',
         'audience_id' => 'string',
         'advantage_audience' => 'int',
         'objective' => 'string',
@@ -1119,7 +1119,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets interests
      *
-     * @return \Zernio\Model\CreateCtwaAdRequestInterestsInner[]|null
+     * @return \Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]|null
      */
     public function getInterests()
     {
@@ -1129,7 +1129,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets interests
      *
-     * @param \Zernio\Model\CreateCtwaAdRequestInterestsInner[]|null $interests interests
+     * @param \Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]|null $interests interests
      *
      * @return self
      */

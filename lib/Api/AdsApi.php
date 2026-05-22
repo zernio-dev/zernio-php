@@ -96,6 +96,9 @@ class AdsApi
         'deleteConversionDestination' => [
             'application/json',
         ],
+        'estimateAdReach' => [
+            'application/json',
+        ],
         'getAd' => [
             'application/json',
         ],
@@ -132,7 +135,7 @@ class AdsApi
         'searchAdInterests' => [
             'application/json',
         ],
-        'searchAdTargetingLocations' => [
+        'searchAdTargeting' => [
             'application/json',
         ],
         'sendConversions' => [
@@ -2239,6 +2242,305 @@ class AdsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation estimateAdReach
+     *
+     * Estimate audience reach
+     *
+     * @param  \Zernio\Model\EstimateAdReachRequest $estimate_ad_reach_request estimate_ad_reach_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAdReach'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\EstimateAdReach200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     */
+    public function estimateAdReach($estimate_ad_reach_request, string $contentType = self::contentTypes['estimateAdReach'][0])
+    {
+        list($response) = $this->estimateAdReachWithHttpInfo($estimate_ad_reach_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation estimateAdReachWithHttpInfo
+     *
+     * Estimate audience reach
+     *
+     * @param  \Zernio\Model\EstimateAdReachRequest $estimate_ad_reach_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAdReach'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\EstimateAdReach200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function estimateAdReachWithHttpInfo($estimate_ad_reach_request, string $contentType = self::contentTypes['estimateAdReach'][0])
+    {
+        $request = $this->estimateAdReachRequest($estimate_ad_reach_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\EstimateAdReach200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\EstimateAdReach200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\EstimateAdReach200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation estimateAdReachAsync
+     *
+     * Estimate audience reach
+     *
+     * @param  \Zernio\Model\EstimateAdReachRequest $estimate_ad_reach_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAdReach'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function estimateAdReachAsync($estimate_ad_reach_request, string $contentType = self::contentTypes['estimateAdReach'][0])
+    {
+        return $this->estimateAdReachAsyncWithHttpInfo($estimate_ad_reach_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation estimateAdReachAsyncWithHttpInfo
+     *
+     * Estimate audience reach
+     *
+     * @param  \Zernio\Model\EstimateAdReachRequest $estimate_ad_reach_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAdReach'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function estimateAdReachAsyncWithHttpInfo($estimate_ad_reach_request, string $contentType = self::contentTypes['estimateAdReach'][0])
+    {
+        $returnType = '\Zernio\Model\EstimateAdReach200Response';
+        $request = $this->estimateAdReachRequest($estimate_ad_reach_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'estimateAdReach'
+     *
+     * @param  \Zernio\Model\EstimateAdReachRequest $estimate_ad_reach_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['estimateAdReach'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function estimateAdReachRequest($estimate_ad_reach_request, string $contentType = self::contentTypes['estimateAdReach'][0])
+    {
+
+        // verify the required parameter 'estimate_ad_reach_request' is set
+        if ($estimate_ad_reach_request === null || (is_array($estimate_ad_reach_request) && count($estimate_ad_reach_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $estimate_ad_reach_request when calling estimateAdReach'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/targeting/reach-estimate';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($estimate_ad_reach_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($estimate_ad_reach_request));
+            } else {
+                $httpBody = $estimate_ad_reach_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -6011,7 +6313,7 @@ class AdsApi
     /**
      * Operation searchAdInterests
      *
-     * Search targeting interests
+     * Search targeting interests (deprecated)
      *
      * @param  string $q Search query (required)
      * @param  string $account_id Social account ID (required)
@@ -6020,6 +6322,7 @@ class AdsApi
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\SearchAdInterests200Response|\Zernio\Model\InlineObject
+     * @deprecated
      */
     public function searchAdInterests($q, $account_id, string $contentType = self::contentTypes['searchAdInterests'][0])
     {
@@ -6030,7 +6333,7 @@ class AdsApi
     /**
      * Operation searchAdInterestsWithHttpInfo
      *
-     * Search targeting interests
+     * Search targeting interests (deprecated)
      *
      * @param  string $q Search query (required)
      * @param  string $account_id Social account ID (required)
@@ -6039,6 +6342,7 @@ class AdsApi
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\SearchAdInterests200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function searchAdInterestsWithHttpInfo($q, $account_id, string $contentType = self::contentTypes['searchAdInterests'][0])
     {
@@ -6130,7 +6434,7 @@ class AdsApi
     /**
      * Operation searchAdInterestsAsync
      *
-     * Search targeting interests
+     * Search targeting interests (deprecated)
      *
      * @param  string $q Search query (required)
      * @param  string $account_id Social account ID (required)
@@ -6138,6 +6442,7 @@ class AdsApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function searchAdInterestsAsync($q, $account_id, string $contentType = self::contentTypes['searchAdInterests'][0])
     {
@@ -6152,7 +6457,7 @@ class AdsApi
     /**
      * Operation searchAdInterestsAsyncWithHttpInfo
      *
-     * Search targeting interests
+     * Search targeting interests (deprecated)
      *
      * @param  string $q Search query (required)
      * @param  string $account_id Social account ID (required)
@@ -6160,6 +6465,7 @@ class AdsApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function searchAdInterestsAsyncWithHttpInfo($q, $account_id, string $contentType = self::contentTypes['searchAdInterests'][0])
     {
@@ -6211,6 +6517,7 @@ class AdsApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function searchAdInterestsRequest($q, $account_id, string $contentType = self::contentTypes['searchAdInterests'][0])
     {
@@ -6317,46 +6624,48 @@ class AdsApi
     }
 
     /**
-     * Operation searchAdTargetingLocations
+     * Operation searchAdTargeting
      *
-     * Search geo targeting locations (Meta)
+     * Search targeting options
      *
-     * @param  string $account_id Social account ID (must be a connected Facebook or Instagram account). (required)
-     * @param  string $q Location name. Locality only — no region/country suffix. (required)
-     * @param  string|null $type Type of location to search. Defaults to city. (optional, default to 'city')
-     * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope the search. (optional)
+     * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
+     * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
+     * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
+     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. Defaults to &#x60;city&#x60;. (optional, default to 'city')
+     * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search. (optional)
      * @param  int|null $limit Maximum results to return. (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargetingLocations'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargeting'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\SearchAdTargetingLocations200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\SearchAdTargeting200Response|\Zernio\Model\InlineObject
      */
-    public function searchAdTargetingLocations($account_id, $q, $type = 'city', $country_code = null, $limit = 25, string $contentType = self::contentTypes['searchAdTargetingLocations'][0])
+    public function searchAdTargeting($account_id, $q, $dimension = 'interest', $geo_type = 'city', $country_code = null, $limit = 25, string $contentType = self::contentTypes['searchAdTargeting'][0])
     {
-        list($response) = $this->searchAdTargetingLocationsWithHttpInfo($account_id, $q, $type, $country_code, $limit, $contentType);
+        list($response) = $this->searchAdTargetingWithHttpInfo($account_id, $q, $dimension, $geo_type, $country_code, $limit, $contentType);
         return $response;
     }
 
     /**
-     * Operation searchAdTargetingLocationsWithHttpInfo
+     * Operation searchAdTargetingWithHttpInfo
      *
-     * Search geo targeting locations (Meta)
+     * Search targeting options
      *
-     * @param  string $account_id Social account ID (must be a connected Facebook or Instagram account). (required)
-     * @param  string $q Location name. Locality only — no region/country suffix. (required)
-     * @param  string|null $type Type of location to search. Defaults to city. (optional, default to 'city')
-     * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope the search. (optional)
+     * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
+     * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
+     * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
+     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. Defaults to &#x60;city&#x60;. (optional, default to 'city')
+     * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search. (optional)
      * @param  int|null $limit Maximum results to return. (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargetingLocations'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargeting'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\SearchAdTargetingLocations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\SearchAdTargeting200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchAdTargetingLocationsWithHttpInfo($account_id, $q, $type = 'city', $country_code = null, $limit = 25, string $contentType = self::contentTypes['searchAdTargetingLocations'][0])
+    public function searchAdTargetingWithHttpInfo($account_id, $q, $dimension = 'interest', $geo_type = 'city', $country_code = null, $limit = 25, string $contentType = self::contentTypes['searchAdTargeting'][0])
     {
-        $request = $this->searchAdTargetingLocationsRequest($account_id, $q, $type, $country_code, $limit, $contentType);
+        $request = $this->searchAdTargetingRequest($account_id, $q, $dimension, $geo_type, $country_code, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6384,7 +6693,7 @@ class AdsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\SearchAdTargetingLocations200Response',
+                        '\Zernio\Model\SearchAdTargeting200Response',
                         $request,
                         $response,
                     );
@@ -6412,7 +6721,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\SearchAdTargetingLocations200Response',
+                '\Zernio\Model\SearchAdTargeting200Response',
                 $request,
                 $response,
             );
@@ -6421,7 +6730,7 @@ class AdsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\SearchAdTargetingLocations200Response',
+                        '\Zernio\Model\SearchAdTargeting200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6442,23 +6751,24 @@ class AdsApi
     }
 
     /**
-     * Operation searchAdTargetingLocationsAsync
+     * Operation searchAdTargetingAsync
      *
-     * Search geo targeting locations (Meta)
+     * Search targeting options
      *
-     * @param  string $account_id Social account ID (must be a connected Facebook or Instagram account). (required)
-     * @param  string $q Location name. Locality only — no region/country suffix. (required)
-     * @param  string|null $type Type of location to search. Defaults to city. (optional, default to 'city')
-     * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope the search. (optional)
+     * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
+     * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
+     * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
+     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. Defaults to &#x60;city&#x60;. (optional, default to 'city')
+     * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search. (optional)
      * @param  int|null $limit Maximum results to return. (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargetingLocations'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargeting'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAdTargetingLocationsAsync($account_id, $q, $type = 'city', $country_code = null, $limit = 25, string $contentType = self::contentTypes['searchAdTargetingLocations'][0])
+    public function searchAdTargetingAsync($account_id, $q, $dimension = 'interest', $geo_type = 'city', $country_code = null, $limit = 25, string $contentType = self::contentTypes['searchAdTargeting'][0])
     {
-        return $this->searchAdTargetingLocationsAsyncWithHttpInfo($account_id, $q, $type, $country_code, $limit, $contentType)
+        return $this->searchAdTargetingAsyncWithHttpInfo($account_id, $q, $dimension, $geo_type, $country_code, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6467,24 +6777,25 @@ class AdsApi
     }
 
     /**
-     * Operation searchAdTargetingLocationsAsyncWithHttpInfo
+     * Operation searchAdTargetingAsyncWithHttpInfo
      *
-     * Search geo targeting locations (Meta)
+     * Search targeting options
      *
-     * @param  string $account_id Social account ID (must be a connected Facebook or Instagram account). (required)
-     * @param  string $q Location name. Locality only — no region/country suffix. (required)
-     * @param  string|null $type Type of location to search. Defaults to city. (optional, default to 'city')
-     * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope the search. (optional)
+     * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
+     * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
+     * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
+     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. Defaults to &#x60;city&#x60;. (optional, default to 'city')
+     * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search. (optional)
      * @param  int|null $limit Maximum results to return. (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargetingLocations'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargeting'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAdTargetingLocationsAsyncWithHttpInfo($account_id, $q, $type = 'city', $country_code = null, $limit = 25, string $contentType = self::contentTypes['searchAdTargetingLocations'][0])
+    public function searchAdTargetingAsyncWithHttpInfo($account_id, $q, $dimension = 'interest', $geo_type = 'city', $country_code = null, $limit = 25, string $contentType = self::contentTypes['searchAdTargeting'][0])
     {
-        $returnType = '\Zernio\Model\SearchAdTargetingLocations200Response';
-        $request = $this->searchAdTargetingLocationsRequest($account_id, $q, $type, $country_code, $limit, $contentType);
+        $returnType = '\Zernio\Model\SearchAdTargeting200Response';
+        $request = $this->searchAdTargetingRequest($account_id, $q, $dimension, $geo_type, $country_code, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6523,48 +6834,50 @@ class AdsApi
     }
 
     /**
-     * Create request for operation 'searchAdTargetingLocations'
+     * Create request for operation 'searchAdTargeting'
      *
-     * @param  string $account_id Social account ID (must be a connected Facebook or Instagram account). (required)
-     * @param  string $q Location name. Locality only — no region/country suffix. (required)
-     * @param  string|null $type Type of location to search. Defaults to city. (optional, default to 'city')
-     * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope the search. (optional)
+     * @param  string $account_id Social account ID (a connected account on the target ad platform). (required)
+     * @param  string $q Search query. For geo, the locality name only (no region/country suffix). (required)
+     * @param  string|null $dimension What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. (optional, default to 'interest')
+     * @param  string|null $geo_type Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. Defaults to &#x60;city&#x60;. (optional, default to 'city')
+     * @param  string|null $country_code ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search. (optional)
      * @param  int|null $limit Maximum results to return. (optional, default to 25)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargetingLocations'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAdTargeting'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchAdTargetingLocationsRequest($account_id, $q, $type = 'city', $country_code = null, $limit = 25, string $contentType = self::contentTypes['searchAdTargetingLocations'][0])
+    public function searchAdTargetingRequest($account_id, $q, $dimension = 'interest', $geo_type = 'city', $country_code = null, $limit = 25, string $contentType = self::contentTypes['searchAdTargeting'][0])
     {
 
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $account_id when calling searchAdTargetingLocations'
+                'Missing the required parameter $account_id when calling searchAdTargeting'
             );
         }
 
         // verify the required parameter 'q' is set
         if ($q === null || (is_array($q) && count($q) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $q when calling searchAdTargetingLocations'
+                'Missing the required parameter $q when calling searchAdTargeting'
             );
         }
 
 
+
         if ($country_code !== null && strlen($country_code) > 2) {
-            throw new \InvalidArgumentException('invalid length for "$country_code" when calling AdsApi.searchAdTargetingLocations, must be smaller than or equal to 2.');
+            throw new \InvalidArgumentException('invalid length for "$country_code" when calling AdsApi.searchAdTargeting, must be smaller than or equal to 2.');
         }
         if ($country_code !== null && strlen($country_code) < 2) {
-            throw new \InvalidArgumentException('invalid length for "$country_code" when calling AdsApi.searchAdTargetingLocations, must be bigger than or equal to 2.');
+            throw new \InvalidArgumentException('invalid length for "$country_code" when calling AdsApi.searchAdTargeting, must be bigger than or equal to 2.');
         }
         
         if ($limit !== null && $limit > 100) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.searchAdTargetingLocations, must be smaller than or equal to 100.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.searchAdTargeting, must be smaller than or equal to 100.');
         }
         if ($limit !== null && $limit < 1) {
-            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.searchAdTargetingLocations, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.searchAdTargeting, must be bigger than or equal to 1.');
         }
         
 
@@ -6595,8 +6908,17 @@ class AdsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $type,
-            'type', // param base name
+            $dimension,
+            'dimension', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $geo_type,
+            'geoType', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateAdAudienceRequest
+ * UploadedOrDerivedAudience
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateAdAudienceRequest Class Doc Comment
+ * UploadedOrDerivedAudience Class Doc Comment
  *
  * @category Class
+ * @description customer_list, website, or lookalike audience (uploaded or derived from a source).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class UploadedOrDerivedAudience implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createAdAudience_request';
+    protected static $openAPIModelName = 'UploadedOrDerivedAudience';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -69,8 +70,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'country' => 'string',
         'ratio' => 'float',
         'rule' => 'object',
-        'customer_file_source' => 'string',
-        'spec' => '\Zernio\Model\TargetingSpec'
+        'customer_file_source' => 'string'
     ];
 
     /**
@@ -92,8 +92,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'country' => null,
         'ratio' => null,
         'rule' => null,
-        'customer_file_source' => null,
-        'spec' => null
+        'customer_file_source' => null
     ];
 
     /**
@@ -113,8 +112,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'country' => false,
         'ratio' => false,
         'rule' => false,
-        'customer_file_source' => false,
-        'spec' => false
+        'customer_file_source' => false
     ];
 
     /**
@@ -214,8 +212,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'country' => 'country',
         'ratio' => 'ratio',
         'rule' => 'rule',
-        'customer_file_source' => 'customerFileSource',
-        'spec' => 'spec'
+        'customer_file_source' => 'customerFileSource'
     ];
 
     /**
@@ -235,8 +232,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'country' => 'setCountry',
         'ratio' => 'setRatio',
         'rule' => 'setRule',
-        'customer_file_source' => 'setCustomerFileSource',
-        'spec' => 'setSpec'
+        'customer_file_source' => 'setCustomerFileSource'
     ];
 
     /**
@@ -256,8 +252,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'country' => 'getCountry',
         'ratio' => 'getRatio',
         'rule' => 'getRule',
-        'customer_file_source' => 'getCustomerFileSource',
-        'spec' => 'getSpec'
+        'customer_file_source' => 'getCustomerFileSource'
     ];
 
     /**
@@ -304,7 +299,6 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public const TYPE_CUSTOMER_LIST = 'customer_list';
     public const TYPE_WEBSITE = 'website';
     public const TYPE_LOOKALIKE = 'lookalike';
-    public const TYPE_SAVED_TARGETING = 'saved_targeting';
 
     /**
      * Gets allowable values of the enum
@@ -317,7 +311,6 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
             self::TYPE_CUSTOMER_LIST,
             self::TYPE_WEBSITE,
             self::TYPE_LOOKALIKE,
-            self::TYPE_SAVED_TARGETING,
         ];
     }
 
@@ -348,7 +341,6 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('ratio', $data ?? [], null);
         $this->setIfExists('rule', $data ?? [], null);
         $this->setIfExists('customer_file_source', $data ?? [], null);
-        $this->setIfExists('spec', $data ?? [], null);
     }
 
     /**
@@ -419,9 +411,6 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
             $invalidProperties[] = "invalid value for 'ratio', must be bigger than or equal to 0.01.";
         }
 
-        if ($this->container['spec'] === null) {
-            $invalidProperties[] = "'spec' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -450,7 +439,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets account_id
      *
-     * @param string $account_id Social account ID on the target ad platform.
+     * @param string $account_id account_id
      *
      * @return self
      */
@@ -514,7 +503,7 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
         if ((mb_strlen($name) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateAdAudienceRequest., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $name when calling UploadedOrDerivedAudience., must be smaller than or equal to 255.');
         }
 
         $this->container['name'] = $name;
@@ -637,10 +626,10 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         }
 
         if (($retention_days > 180)) {
-            throw new \InvalidArgumentException('invalid value for $retention_days when calling CreateAdAudienceRequest., must be smaller than or equal to 180.');
+            throw new \InvalidArgumentException('invalid value for $retention_days when calling UploadedOrDerivedAudience., must be smaller than or equal to 180.');
         }
         if (($retention_days < 1)) {
-            throw new \InvalidArgumentException('invalid value for $retention_days when calling CreateAdAudienceRequest., must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for $retention_days when calling UploadedOrDerivedAudience., must be bigger than or equal to 1.');
         }
 
         $this->container['retention_days'] = $retention_days;
@@ -726,10 +715,10 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         }
 
         if (($ratio > 0.2)) {
-            throw new \InvalidArgumentException('invalid value for $ratio when calling CreateAdAudienceRequest., must be smaller than or equal to 0.2.');
+            throw new \InvalidArgumentException('invalid value for $ratio when calling UploadedOrDerivedAudience., must be smaller than or equal to 0.2.');
         }
         if (($ratio < 0.01)) {
-            throw new \InvalidArgumentException('invalid value for $ratio when calling CreateAdAudienceRequest., must be bigger than or equal to 0.01.');
+            throw new \InvalidArgumentException('invalid value for $ratio when calling UploadedOrDerivedAudience., must be bigger than or equal to 0.01.');
         }
 
         $this->container['ratio'] = $ratio;
@@ -787,33 +776,6 @@ class CreateAdAudienceRequest implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable customer_file_source cannot be null');
         }
         $this->container['customer_file_source'] = $customer_file_source;
-
-        return $this;
-    }
-
-    /**
-     * Gets spec
-     *
-     * @return \Zernio\Model\TargetingSpec
-     */
-    public function getSpec()
-    {
-        return $this->container['spec'];
-    }
-
-    /**
-     * Sets spec
-     *
-     * @param \Zernio\Model\TargetingSpec $spec The targeting spec to store.
-     *
-     * @return self
-     */
-    public function setSpec($spec)
-    {
-        if (is_null($spec)) {
-            throw new \InvalidArgumentException('non-nullable spec cannot be null');
-        }
-        $this->container['spec'] = $spec;
 
         return $this;
     }

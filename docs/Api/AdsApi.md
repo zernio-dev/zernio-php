@@ -13,6 +13,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createStandaloneAd()**](AdsApi.md#createStandaloneAd) | **POST** /v1/ads/create | Create standalone ad |
 | [**deleteAd()**](AdsApi.md#deleteAd) | **DELETE** /v1/ads/{adId} | Cancel an ad |
 | [**deleteConversionDestination()**](AdsApi.md#deleteConversionDestination) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Soft-delete a conversion destination |
+| [**estimateAdReach()**](AdsApi.md#estimateAdReach) | **POST** /v1/ads/targeting/reach-estimate | Estimate audience reach |
 | [**getAd()**](AdsApi.md#getAd) | **GET** /v1/ads/{adId} | Get ad details |
 | [**getAdAnalytics()**](AdsApi.md#getAdAnalytics) | **GET** /v1/ads/{adId}/analytics | Get ad analytics |
 | [**getAdComments()**](AdsApi.md#getAdComments) | **GET** /v1/ads/{adId}/comments | List comments on an ad |
@@ -24,8 +25,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**listConversionAssociations()**](AdsApi.md#listConversionAssociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List campaigns associated with a conversion destination |
 | [**listConversionDestinations()**](AdsApi.md#listConversionDestinations) | **GET** /v1/accounts/{accountId}/conversion-destinations | List destinations for the Conversions API |
 | [**removeConversionAssociations()**](AdsApi.md#removeConversionAssociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove campaign↔conversion associations |
-| [**searchAdInterests()**](AdsApi.md#searchAdInterests) | **GET** /v1/ads/interests | Search targeting interests |
-| [**searchAdTargetingLocations()**](AdsApi.md#searchAdTargetingLocations) | **GET** /v1/ads/targeting/search | Search geo targeting locations (Meta) |
+| [**searchAdInterests()**](AdsApi.md#searchAdInterests) | **GET** /v1/ads/interests | Search targeting interests (deprecated) |
+| [**searchAdTargeting()**](AdsApi.md#searchAdTargeting) | **GET** /v1/ads/targeting/search | Search targeting options |
 | [**sendConversions()**](AdsApi.md#sendConversions) | **POST** /v1/ads/conversions | Send conversion events to an ad platform |
 | [**sendWhatsAppConversion()**](AdsApi.md#sendWhatsAppConversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event |
 | [**updateAd()**](AdsApi.md#updateAd) | **PUT** /v1/ads/{adId} | Update ad |
@@ -455,6 +456,66 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `estimateAdReach()`
+
+```php
+estimateAdReach($estimate_ad_reach_request): \Zernio\Model\EstimateAdReach200Response
+```
+
+Estimate audience reach
+
+Returns a normalized pre-flight audience-size estimate for a targeting spec, before any campaign is created. Backed by each platform's native reach API (Meta `delivery_estimate`, LinkedIn `audienceCounts`, X `audience_summary`, Pinterest `audience_sizing`).  Platforms without a usable pre-flight reach API (Google Search/Display, TikTok) return `available: false` with no bounds, so clients can hide or grey out the estimate rather than treat the absence as an error.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AdsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$estimate_ad_reach_request = new \Zernio\Model\EstimateAdReachRequest(); // \Zernio\Model\EstimateAdReachRequest
+
+try {
+    $result = $apiInstance->estimateAdReach($estimate_ad_reach_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdsApi->estimateAdReach: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **estimate_ad_reach_request** | [**\Zernio\Model\EstimateAdReachRequest**](../Model/EstimateAdReachRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\EstimateAdReach200Response**](../Model/EstimateAdReach200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -1193,9 +1254,9 @@ try {
 searchAdInterests($q, $account_id): \Zernio\Model\SearchAdInterests200Response
 ```
 
-Search targeting interests
+Search targeting interests (deprecated)
 
-Search for interest-based targeting options available on the platform.
+Deprecated alias for `GET /v1/ads/targeting/search?dimension=interest`. Kept for backward compatibility, it returns the legacy `{ interests: [...] }` shape rather than the normalized `{ results: [...] }`. New integrations should use `GET /v1/ads/targeting/search` with `dimension=interest`.
 
 ### Example
 
@@ -1249,15 +1310,15 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `searchAdTargetingLocations()`
+## `searchAdTargeting()`
 
 ```php
-searchAdTargetingLocations($account_id, $q, $type, $country_code, $limit): \Zernio\Model\SearchAdTargetingLocations200Response
+searchAdTargeting($account_id, $q, $dimension, $geo_type, $country_code, $limit): \Zernio\Model\SearchAdTargeting200Response
 ```
 
-Search geo targeting locations (Meta)
+Search targeting options
 
-Resolve a human-readable location name into Meta's opaque `key` used in `targeting.cities[]` / `targeting.regions[]` on `POST /v1/ads/create` (and the same fields under `targeting.geo_locations` on `POST /v1/ads/boost`). Wraps Meta's `/search?type=adgeolocation` endpoint.  Meta-only for now. Other platforms have their own location id systems and are not exposed here.  Per Meta's docs, `q` must contain only the locality name (e.g. `\"Amsterdam\"`, not `\"Amsterdam, NL\"`). Use `countryCode` to disambiguate when the same name exists in multiple countries.
+Resolve a human-readable query into the platform's opaque targeting ids used in the `TargetingSpec` (`countries`/`regions`/`cities`/`zips`/`metros` geo keys, and `interests`/`behaviors` entity ids) on `POST /v1/ads/create`, `POST /v1/ads/targeting/reach-estimate`, and `saved_targeting` audiences.  The `dimension` param selects what is searched, `geo` (locations, further scoped by `geoType`), `interest`, `behavior`, or `income`. Availability of each dimension varies by platform (e.g. behaviours are Meta/TikTok only). Results are normalized across platforms into a single shape, so the same client code consumes Meta, TikTok, LinkedIn, X, Pinterest, and Google results.  For geo queries, `q` should contain only the locality name (e.g. `\"Amsterdam\"`, not `\"Amsterdam, NL\"`). Use `countryCode` to disambiguate.
 
 ### Example
 
@@ -1276,17 +1337,18 @@ $apiInstance = new Zernio\Api\AdsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | Social account ID (must be a connected Facebook or Instagram account).
-$q = 'q_example'; // string | Location name. Locality only — no region/country suffix.
-$type = 'city'; // string | Type of location to search. Defaults to city.
-$country_code = 'country_code_example'; // string | ISO 3166-1 alpha-2 country code (e.g. NL) to scope the search.
+$account_id = 'account_id_example'; // string | Social account ID (a connected account on the target ad platform).
+$q = 'q_example'; // string | Search query. For geo, the locality name only (no region/country suffix).
+$dimension = 'interest'; // string | What to search. `geo` resolves locations (scope further with `geoType`), `interest`/`behavior` resolve audience entities, `income` resolves income-tier options. Defaults to `interest` for backward compatibility with the deprecated /v1/ads/interests alias.
+$geo_type = 'city'; // string | Only used when `dimension=geo`. The kind of location to resolve. Defaults to `city`.
+$country_code = 'country_code_example'; // string | ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search.
 $limit = 25; // int | Maximum results to return.
 
 try {
-    $result = $apiInstance->searchAdTargetingLocations($account_id, $q, $type, $country_code, $limit);
+    $result = $apiInstance->searchAdTargeting($account_id, $q, $dimension, $geo_type, $country_code, $limit);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AdsApi->searchAdTargetingLocations: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AdsApi->searchAdTargeting: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -1294,15 +1356,16 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| Social account ID (must be a connected Facebook or Instagram account). | |
-| **q** | **string**| Location name. Locality only — no region/country suffix. | |
-| **type** | **string**| Type of location to search. Defaults to city. | [optional] [default to &#39;city&#39;] |
-| **country_code** | **string**| ISO 3166-1 alpha-2 country code (e.g. NL) to scope the search. | [optional] |
+| **account_id** | **string**| Social account ID (a connected account on the target ad platform). | |
+| **q** | **string**| Search query. For geo, the locality name only (no region/country suffix). | |
+| **dimension** | **string**| What to search. &#x60;geo&#x60; resolves locations (scope further with &#x60;geoType&#x60;), &#x60;interest&#x60;/&#x60;behavior&#x60; resolve audience entities, &#x60;income&#x60; resolves income-tier options. Defaults to &#x60;interest&#x60; for backward compatibility with the deprecated /v1/ads/interests alias. | [optional] [default to &#39;interest&#39;] |
+| **geo_type** | **string**| Only used when &#x60;dimension&#x3D;geo&#x60;. The kind of location to resolve. Defaults to &#x60;city&#x60;. | [optional] [default to &#39;city&#39;] |
+| **country_code** | **string**| ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search. | [optional] |
 | **limit** | **int**| Maximum results to return. | [optional] [default to 25] |
 
 ### Return type
 
-[**\Zernio\Model\SearchAdTargetingLocations200Response**](../Model/SearchAdTargetingLocations200Response.md)
+[**\Zernio\Model\SearchAdTargeting200Response**](../Model/SearchAdTargeting200Response.md)
 
 ### Authorization
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdAudiences200ResponseAudiencesInner
+ * SearchAdTargeting200ResponseResultsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdAudiences200ResponseAudiencesInner Class Doc Comment
+ * SearchAdTargeting200ResponseResultsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdAudiences_200_response_audiences_inner';
+    protected static $openAPIModelName = 'searchAdTargeting_200_response_results_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,14 +59,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'platform_audience_id' => 'string',
         'name' => 'string',
-        'description' => 'string',
         'type' => 'string',
-        'spec' => '\Zernio\Model\TargetingSpec',
-        'platform' => 'string',
-        'size' => 'int',
-        'status' => 'string'
+        'path' => 'string[]',
+        'audience_size' => 'int'
     ];
 
     /**
@@ -78,14 +74,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'platform_audience_id' => null,
         'name' => null,
-        'description' => null,
         'type' => null,
-        'spec' => null,
-        'platform' => null,
-        'size' => null,
-        'status' => null
+        'path' => null,
+        'audience_size' => null
     ];
 
     /**
@@ -95,14 +87,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'platform_audience_id' => false,
         'name' => false,
-        'description' => false,
         'type' => false,
-        'spec' => false,
-        'platform' => false,
-        'size' => false,
-        'status' => false
+        'path' => false,
+        'audience_size' => false
     ];
 
     /**
@@ -192,14 +180,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'platform_audience_id' => 'platformAudienceId',
         'name' => 'name',
-        'description' => 'description',
         'type' => 'type',
-        'spec' => 'spec',
-        'platform' => 'platform',
-        'size' => 'size',
-        'status' => 'status'
+        'path' => 'path',
+        'audience_size' => 'audienceSize'
     ];
 
     /**
@@ -209,14 +193,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      */
     protected static $setters = [
         'id' => 'setId',
-        'platform_audience_id' => 'setPlatformAudienceId',
         'name' => 'setName',
-        'description' => 'setDescription',
         'type' => 'setType',
-        'spec' => 'setSpec',
-        'platform' => 'setPlatform',
-        'size' => 'setSize',
-        'status' => 'setStatus'
+        'path' => 'setPath',
+        'audience_size' => 'setAudienceSize'
     ];
 
     /**
@@ -226,14 +206,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      */
     protected static $getters = [
         'id' => 'getId',
-        'platform_audience_id' => 'getPlatformAudienceId',
         'name' => 'getName',
-        'description' => 'getDescription',
         'type' => 'getType',
-        'spec' => 'getSpec',
-        'platform' => 'getPlatform',
-        'size' => 'getSize',
-        'status' => 'getStatus'
+        'path' => 'getPath',
+        'audience_size' => 'getAudienceSize'
     ];
 
     /**
@@ -277,25 +253,6 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
-    public const TYPE_CUSTOMER_LIST = 'customer_list';
-    public const TYPE_WEBSITE = 'website';
-    public const TYPE_LOOKALIKE = 'lookalike';
-    public const TYPE_SAVED_TARGETING = 'saved_targeting';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_CUSTOMER_LIST,
-            self::TYPE_WEBSITE,
-            self::TYPE_LOOKALIKE,
-            self::TYPE_SAVED_TARGETING,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -313,14 +270,10 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('platform_audience_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('spec', $data ?? [], null);
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('path', $data ?? [], null);
+        $this->setIfExists('audience_size', $data ?? [], null);
     }
 
     /**
@@ -350,15 +303,15 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
         }
-
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -377,7 +330,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     /**
      * Gets id
      *
-     * @return string|null
+     * @return string
      */
     public function getId()
     {
@@ -387,7 +340,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     /**
      * Sets id
      *
-     * @param string|null $id id
+     * @param string $id The platform's opaque id. Use as a geo `key` (regions/cities/zips/metros) or an entity `id` (interests/behaviors) in TargetingSpec.
      *
      * @return self
      */
@@ -402,36 +355,9 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     }
 
     /**
-     * Gets platform_audience_id
-     *
-     * @return string|null
-     */
-    public function getPlatformAudienceId()
-    {
-        return $this->container['platform_audience_id'];
-    }
-
-    /**
-     * Sets platform_audience_id
-     *
-     * @param string|null $platform_audience_id platform_audience_id
-     *
-     * @return self
-     */
-    public function setPlatformAudienceId($platform_audience_id)
-    {
-        if (is_null($platform_audience_id)) {
-            throw new \InvalidArgumentException('non-nullable platform_audience_id cannot be null');
-        }
-        $this->container['platform_audience_id'] = $platform_audience_id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -441,7 +367,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string $name Human-readable label.
      *
      * @return self
      */
@@ -456,36 +382,9 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     }
 
     /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
      * Gets type
      *
-     * @return string|null
+     * @return string
      */
     public function getType()
     {
@@ -495,7 +394,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     /**
      * Sets type
      *
-     * @param string|null $type type
+     * @param string $type What the result is (e.g. city, region, country, zip, metro, interest, behavior, income).
      *
      * @return self
      */
@@ -504,125 +403,61 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
         if (is_null($type)) {
             throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets spec
+     * Gets path
      *
-     * @return \Zernio\Model\TargetingSpec|null
+     * @return string[]|null
      */
-    public function getSpec()
+    public function getPath()
     {
-        return $this->container['spec'];
+        return $this->container['path'];
     }
 
     /**
-     * Sets spec
+     * Sets path
      *
-     * @param \Zernio\Model\TargetingSpec|null $spec Present (and the only meaningful payload) when `type` is `saved_targeting`. Null for uploaded/derived audience types.
+     * @param string[]|null $path Optional breadcrumb of parent labels (e.g. ['United States', 'California', 'Los Angeles']). Disambiguates same-named results.
      *
      * @return self
      */
-    public function setSpec($spec)
+    public function setPath($path)
     {
-        if (is_null($spec)) {
-            throw new \InvalidArgumentException('non-nullable spec cannot be null');
+        if (is_null($path)) {
+            throw new \InvalidArgumentException('non-nullable path cannot be null');
         }
-        $this->container['spec'] = $spec;
+        $this->container['path'] = $path;
 
         return $this;
     }
 
     /**
-     * Gets platform
-     *
-     * @return string|null
-     */
-    public function getPlatform()
-    {
-        return $this->container['platform'];
-    }
-
-    /**
-     * Sets platform
-     *
-     * @param string|null $platform platform
-     *
-     * @return self
-     */
-    public function setPlatform($platform)
-    {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
-        }
-        $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
+     * Gets audience_size
      *
      * @return int|null
      */
-    public function getSize()
+    public function getAudienceSize()
     {
-        return $this->container['size'];
+        return $this->container['audience_size'];
     }
 
     /**
-     * Sets size
+     * Sets audience_size
      *
-     * @param int|null $size size
+     * @param int|null $audience_size Optional estimated reachable users for this option, when the platform returns it.
      *
      * @return self
      */
-    public function setSize($size)
+    public function setAudienceSize($audience_size)
     {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
+        if (is_null($audience_size)) {
+            throw new \InvalidArgumentException('non-nullable audience_size cannot be null');
         }
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $this->container['status'] = $status;
+        $this->container['audience_size'] = $audience_size;
 
         return $this;
     }

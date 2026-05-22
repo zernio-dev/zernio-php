@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdAudiences200ResponseAudiencesInner
+ * SearchAdTargeting200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdAudiences200ResponseAudiencesInner Class Doc Comment
+ * SearchAdTargeting200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class SearchAdTargeting200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdAudiences_200_response_audiences_inner';
+    protected static $openAPIModelName = 'searchAdTargeting_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +58,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'platform_audience_id' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'type' => 'string',
-        'spec' => '\Zernio\Model\TargetingSpec',
-        'platform' => 'string',
-        'size' => 'int',
-        'status' => 'string'
+        'results' => '\Zernio\Model\SearchAdTargeting200ResponseResultsInner[]'
     ];
 
     /**
@@ -77,15 +69,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'platform_audience_id' => null,
-        'name' => null,
-        'description' => null,
-        'type' => null,
-        'spec' => null,
-        'platform' => null,
-        'size' => null,
-        'status' => null
+        'results' => null
     ];
 
     /**
@@ -94,15 +78,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'platform_audience_id' => false,
-        'name' => false,
-        'description' => false,
-        'type' => false,
-        'spec' => false,
-        'platform' => false,
-        'size' => false,
-        'status' => false
+        'results' => false
     ];
 
     /**
@@ -191,15 +167,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'platform_audience_id' => 'platformAudienceId',
-        'name' => 'name',
-        'description' => 'description',
-        'type' => 'type',
-        'spec' => 'spec',
-        'platform' => 'platform',
-        'size' => 'size',
-        'status' => 'status'
+        'results' => 'results'
     ];
 
     /**
@@ -208,15 +176,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'platform_audience_id' => 'setPlatformAudienceId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'type' => 'setType',
-        'spec' => 'setSpec',
-        'platform' => 'setPlatform',
-        'size' => 'setSize',
-        'status' => 'setStatus'
+        'results' => 'setResults'
     ];
 
     /**
@@ -225,15 +185,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'platform_audience_id' => 'getPlatformAudienceId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'type' => 'getType',
-        'spec' => 'getSpec',
-        'platform' => 'getPlatform',
-        'size' => 'getSize',
-        'status' => 'getStatus'
+        'results' => 'getResults'
     ];
 
     /**
@@ -277,25 +229,6 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
-    public const TYPE_CUSTOMER_LIST = 'customer_list';
-    public const TYPE_WEBSITE = 'website';
-    public const TYPE_LOOKALIKE = 'lookalike';
-    public const TYPE_SAVED_TARGETING = 'saved_targeting';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_CUSTOMER_LIST,
-            self::TYPE_WEBSITE,
-            self::TYPE_LOOKALIKE,
-            self::TYPE_SAVED_TARGETING,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -312,15 +245,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('platform_audience_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('spec', $data ?? [], null);
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('results', $data ?? [], null);
     }
 
     /**
@@ -350,15 +275,6 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -375,254 +291,28 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
 
 
     /**
-     * Gets id
+     * Gets results
      *
-     * @return string|null
+     * @return \Zernio\Model\SearchAdTargeting200ResponseResultsInner[]|null
      */
-    public function getId()
+    public function getResults()
     {
-        return $this->container['id'];
+        return $this->container['results'];
     }
 
     /**
-     * Sets id
+     * Sets results
      *
-     * @param string|null $id id
+     * @param \Zernio\Model\SearchAdTargeting200ResponseResultsInner[]|null $results results
      *
      * @return self
      */
-    public function setId($id)
+    public function setResults($results)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($results)) {
+            throw new \InvalidArgumentException('non-nullable results cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform_audience_id
-     *
-     * @return string|null
-     */
-    public function getPlatformAudienceId()
-    {
-        return $this->container['platform_audience_id'];
-    }
-
-    /**
-     * Sets platform_audience_id
-     *
-     * @param string|null $platform_audience_id platform_audience_id
-     *
-     * @return self
-     */
-    public function setPlatformAudienceId($platform_audience_id)
-    {
-        if (is_null($platform_audience_id)) {
-            throw new \InvalidArgumentException('non-nullable platform_audience_id cannot be null');
-        }
-        $this->container['platform_audience_id'] = $platform_audience_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets spec
-     *
-     * @return \Zernio\Model\TargetingSpec|null
-     */
-    public function getSpec()
-    {
-        return $this->container['spec'];
-    }
-
-    /**
-     * Sets spec
-     *
-     * @param \Zernio\Model\TargetingSpec|null $spec Present (and the only meaningful payload) when `type` is `saved_targeting`. Null for uploaded/derived audience types.
-     *
-     * @return self
-     */
-    public function setSpec($spec)
-    {
-        if (is_null($spec)) {
-            throw new \InvalidArgumentException('non-nullable spec cannot be null');
-        }
-        $this->container['spec'] = $spec;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform
-     *
-     * @return string|null
-     */
-    public function getPlatform()
-    {
-        return $this->container['platform'];
-    }
-
-    /**
-     * Sets platform
-     *
-     * @param string|null $platform platform
-     *
-     * @return self
-     */
-    public function setPlatform($platform)
-    {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
-        }
-        $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return int|null
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int|null $size size
-     *
-     * @return self
-     */
-    public function setSize($size)
-    {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
-        }
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $this->container['status'] = $status;
+        $this->container['results'] = $results;
 
         return $this;
     }

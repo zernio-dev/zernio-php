@@ -84,6 +84,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => 'int',
         'age_max' => 'int',
         'interests' => '\Zernio\Model\UpdateAdRequestTargetingInterestsInner[]',
+        'zips' => '\Zernio\Model\CreateStandaloneAdRequestZipsInner[]',
+        'metros' => '\Zernio\Model\CreateStandaloneAdRequestZipsInner[]',
+        'custom_locations' => '\Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]',
+        'behaviors' => '\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]',
+        'income_tier' => 'string',
+        'languages' => 'string[]',
+        'saved_targeting_id' => 'string',
+        'special_ad_categories' => 'string[]',
         'end_date' => '\DateTime',
         'audience_id' => 'string',
         'campaign_type' => 'string',
@@ -137,6 +145,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => null,
         'age_max' => null,
         'interests' => null,
+        'zips' => null,
+        'metros' => null,
+        'custom_locations' => null,
+        'behaviors' => null,
+        'income_tier' => null,
+        'languages' => null,
+        'saved_targeting_id' => null,
+        'special_ad_categories' => null,
         'end_date' => 'date-time',
         'audience_id' => null,
         'campaign_type' => null,
@@ -188,6 +204,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => false,
         'age_max' => false,
         'interests' => false,
+        'zips' => false,
+        'metros' => false,
+        'custom_locations' => false,
+        'behaviors' => false,
+        'income_tier' => false,
+        'languages' => false,
+        'saved_targeting_id' => false,
+        'special_ad_categories' => false,
         'end_date' => false,
         'audience_id' => false,
         'campaign_type' => false,
@@ -319,6 +343,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => 'ageMin',
         'age_max' => 'ageMax',
         'interests' => 'interests',
+        'zips' => 'zips',
+        'metros' => 'metros',
+        'custom_locations' => 'customLocations',
+        'behaviors' => 'behaviors',
+        'income_tier' => 'incomeTier',
+        'languages' => 'languages',
+        'saved_targeting_id' => 'savedTargetingId',
+        'special_ad_categories' => 'specialAdCategories',
         'end_date' => 'endDate',
         'audience_id' => 'audienceId',
         'campaign_type' => 'campaignType',
@@ -370,6 +402,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => 'setAgeMin',
         'age_max' => 'setAgeMax',
         'interests' => 'setInterests',
+        'zips' => 'setZips',
+        'metros' => 'setMetros',
+        'custom_locations' => 'setCustomLocations',
+        'behaviors' => 'setBehaviors',
+        'income_tier' => 'setIncomeTier',
+        'languages' => 'setLanguages',
+        'saved_targeting_id' => 'setSavedTargetingId',
+        'special_ad_categories' => 'setSpecialAdCategories',
         'end_date' => 'setEndDate',
         'audience_id' => 'setAudienceId',
         'campaign_type' => 'setCampaignType',
@@ -421,6 +461,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'age_min' => 'getAgeMin',
         'age_max' => 'getAgeMax',
         'interests' => 'getInterests',
+        'zips' => 'getZips',
+        'metros' => 'getMetros',
+        'custom_locations' => 'getCustomLocations',
+        'behaviors' => 'getBehaviors',
+        'income_tier' => 'getIncomeTier',
+        'languages' => 'getLanguages',
+        'saved_targeting_id' => 'getSavedTargetingId',
+        'special_ad_categories' => 'getSpecialAdCategories',
         'end_date' => 'getEndDate',
         'audience_id' => 'getAudienceId',
         'campaign_type' => 'getCampaignType',
@@ -508,6 +556,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const CALL_TO_ACTION_APPLY = 'APPLY';
     public const CALL_TO_ACTION_SEE_MORE = 'SEE_MORE';
     public const CALL_TO_ACTION_BUY_NOW = 'BUY_NOW';
+    public const INCOME_TIER_TOP_5 = 'top_5';
+    public const INCOME_TIER_TOP_10 = 'top_10';
+    public const INCOME_TIER_TOP_10_25 = 'top_10_25';
+    public const INCOME_TIER_TOP_25_50 = 'top_25_50';
+    public const SPECIAL_AD_CATEGORIES_HOUSING = 'HOUSING';
+    public const SPECIAL_AD_CATEGORIES_EMPLOYMENT = 'EMPLOYMENT';
+    public const SPECIAL_AD_CATEGORIES_CREDIT = 'CREDIT';
+    public const SPECIAL_AD_CATEGORIES_ISSUES_ELECTIONS_POLITICS = 'ISSUES_ELECTIONS_POLITICS';
     public const CAMPAIGN_TYPE_DISPLAY = 'display';
     public const CAMPAIGN_TYPE_SEARCH = 'search';
     public const ADVANTAGE_AUDIENCE_NUMBER_0 = 0;
@@ -575,6 +631,36 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             self::CALL_TO_ACTION_APPLY,
             self::CALL_TO_ACTION_SEE_MORE,
             self::CALL_TO_ACTION_BUY_NOW,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIncomeTierAllowableValues()
+    {
+        return [
+            self::INCOME_TIER_TOP_5,
+            self::INCOME_TIER_TOP_10,
+            self::INCOME_TIER_TOP_10_25,
+            self::INCOME_TIER_TOP_25_50,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSpecialAdCategoriesAllowableValues()
+    {
+        return [
+            self::SPECIAL_AD_CATEGORIES_HOUSING,
+            self::SPECIAL_AD_CATEGORIES_EMPLOYMENT,
+            self::SPECIAL_AD_CATEGORIES_CREDIT,
+            self::SPECIAL_AD_CATEGORIES_ISSUES_ELECTIONS_POLITICS,
         ];
     }
 
@@ -672,6 +758,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('age_min', $data ?? [], null);
         $this->setIfExists('age_max', $data ?? [], null);
         $this->setIfExists('interests', $data ?? [], null);
+        $this->setIfExists('zips', $data ?? [], null);
+        $this->setIfExists('metros', $data ?? [], null);
+        $this->setIfExists('custom_locations', $data ?? [], null);
+        $this->setIfExists('behaviors', $data ?? [], null);
+        $this->setIfExists('income_tier', $data ?? [], null);
+        $this->setIfExists('languages', $data ?? [], null);
+        $this->setIfExists('saved_targeting_id', $data ?? [], null);
+        $this->setIfExists('special_ad_categories', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('audience_id', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'display');
@@ -784,6 +878,15 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
 
         if (!is_null($this->container['age_max']) && ($this->container['age_max'] < 13)) {
             $invalidProperties[] = "invalid value for 'age_max', must be bigger than or equal to 13.";
+        }
+
+        $allowedValues = $this->getIncomeTierAllowableValues();
+        if (!is_null($this->container['income_tier']) && !in_array($this->container['income_tier'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'income_tier', must be one of '%s'",
+                $this->container['income_tier'],
+                implode("', '", $allowedValues)
+            );
         }
 
         $allowedValues = $this->getCampaignTypeAllowableValues();
@@ -1614,6 +1717,241 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable interests cannot be null');
         }
         $this->container['interests'] = $interests;
+
+        return $this;
+    }
+
+    /**
+     * Gets zips
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null
+     */
+    public function getZips()
+    {
+        return $this->container['zips'];
+    }
+
+    /**
+     * Sets zips
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null $zips Postal/ZIP geo targeting. `key` is the platform's postal location ID from /v1/ads/targeting/search?dimension=geo&geoType=zip. Supported on Meta, Google, TikTok, Pinterest, X.
+     *
+     * @return self
+     */
+    public function setZips($zips)
+    {
+        if (is_null($zips)) {
+            throw new \InvalidArgumentException('non-nullable zips cannot be null');
+        }
+        $this->container['zips'] = $zips;
+
+        return $this;
+    }
+
+    /**
+     * Gets metros
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null
+     */
+    public function getMetros()
+    {
+        return $this->container['metros'];
+    }
+
+    /**
+     * Sets metros
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestZipsInner[]|null $metros DMA / metro-area geo targeting. `key` is the platform's metro ID from /v1/ads/targeting/search?dimension=geo&geoType=metro.
+     *
+     * @return self
+     */
+    public function setMetros($metros)
+    {
+        if (is_null($metros)) {
+            throw new \InvalidArgumentException('non-nullable metros cannot be null');
+        }
+        $this->container['metros'] = $metros;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_locations
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]|null
+     */
+    public function getCustomLocations()
+    {
+        return $this->container['custom_locations'];
+    }
+
+    /**
+     * Sets custom_locations
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]|null $custom_locations Point-radius (lat/lng) geo targeting. Meta only (custom_locations). Rejected on platforms without radius support.
+     *
+     * @return self
+     */
+    public function setCustomLocations($custom_locations)
+    {
+        if (is_null($custom_locations)) {
+            throw new \InvalidArgumentException('non-nullable custom_locations cannot be null');
+        }
+        $this->container['custom_locations'] = $custom_locations;
+
+        return $this;
+    }
+
+    /**
+     * Gets behaviors
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]|null
+     */
+    public function getBehaviors()
+    {
+        return $this->container['behaviors'];
+    }
+
+    /**
+     * Sets behaviors
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]|null $behaviors Behaviour entities from /v1/ads/targeting/search?dimension=behavior. Supported on Meta and TikTok. Each must include id.
+     *
+     * @return self
+     */
+    public function setBehaviors($behaviors)
+    {
+        if (is_null($behaviors)) {
+            throw new \InvalidArgumentException('non-nullable behaviors cannot be null');
+        }
+        $this->container['behaviors'] = $behaviors;
+
+        return $this;
+    }
+
+    /**
+     * Gets income_tier
+     *
+     * @return string|null
+     */
+    public function getIncomeTier()
+    {
+        return $this->container['income_tier'];
+    }
+
+    /**
+     * Sets income_tier
+     *
+     * @param string|null $income_tier Normalized household-income tier. Meta and TikTok express all four; Google maps only `top_10`; rejected on LinkedIn, X, and Pinterest. On Meta, income targeting is incompatible with housing/employment/credit `specialAdCategories`.
+     *
+     * @return self
+     */
+    public function setIncomeTier($income_tier)
+    {
+        if (is_null($income_tier)) {
+            throw new \InvalidArgumentException('non-nullable income_tier cannot be null');
+        }
+        $allowedValues = $this->getIncomeTierAllowableValues();
+        if (!in_array($income_tier, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'income_tier', must be one of '%s'",
+                    $income_tier,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['income_tier'] = $income_tier;
+
+        return $this;
+    }
+
+    /**
+     * Gets languages
+     *
+     * @return string[]|null
+     */
+    public function getLanguages()
+    {
+        return $this->container['languages'];
+    }
+
+    /**
+     * Sets languages
+     *
+     * @param string[]|null $languages Language codes (e.g. ['en']). Restricts the audience by language.
+     *
+     * @return self
+     */
+    public function setLanguages($languages)
+    {
+        if (is_null($languages)) {
+            throw new \InvalidArgumentException('non-nullable languages cannot be null');
+        }
+        $this->container['languages'] = $languages;
+
+        return $this;
+    }
+
+    /**
+     * Gets saved_targeting_id
+     *
+     * @return string|null
+     */
+    public function getSavedTargetingId()
+    {
+        return $this->container['saved_targeting_id'];
+    }
+
+    /**
+     * Sets saved_targeting_id
+     *
+     * @param string|null $saved_targeting_id ID of a `saved_targeting` audience (created via POST /v1/ads/audiences). When set, its stored TargetingSpec is expanded as the base targeting; inline fields on this body merge on top. Lets you reuse a named targeting preset without re-sending every field.
+     *
+     * @return self
+     */
+    public function setSavedTargetingId($saved_targeting_id)
+    {
+        if (is_null($saved_targeting_id)) {
+            throw new \InvalidArgumentException('non-nullable saved_targeting_id cannot be null');
+        }
+        $this->container['saved_targeting_id'] = $saved_targeting_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets special_ad_categories
+     *
+     * @return string[]|null
+     */
+    public function getSpecialAdCategories()
+    {
+        return $this->container['special_ad_categories'];
+    }
+
+    /**
+     * Sets special_ad_categories
+     *
+     * @param string[]|null $special_ad_categories Meta only. Declares the ad's special category, required for housing, employment, credit, or political/social-issue ads (Meta enforces restricted targeting for these). Note: setting a special category disables income/zip targeting on Meta.
+     *
+     * @return self
+     */
+    public function setSpecialAdCategories($special_ad_categories)
+    {
+        if (is_null($special_ad_categories)) {
+            throw new \InvalidArgumentException('non-nullable special_ad_categories cannot be null');
+        }
+        $allowedValues = $this->getSpecialAdCategoriesAllowableValues();
+        if (array_diff($special_ad_categories, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'special_ad_categories', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['special_ad_categories'] = $special_ad_categories;
 
         return $this;
     }

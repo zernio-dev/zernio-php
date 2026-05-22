@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdAudiences200ResponseAudiencesInner
+ * EstimateAdReachRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdAudiences200ResponseAudiencesInner Class Doc Comment
+ * EstimateAdReachRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class EstimateAdReachRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdAudiences_200_response_audiences_inner';
+    protected static $openAPIModelName = 'estimateAdReach_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +58,9 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'platform_audience_id' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'type' => 'string',
+        'account_id' => 'string',
         'spec' => '\Zernio\Model\TargetingSpec',
-        'platform' => 'string',
-        'size' => 'int',
-        'status' => 'string'
+        'optimization_goal' => 'string'
     ];
 
     /**
@@ -77,15 +71,9 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'platform_audience_id' => null,
-        'name' => null,
-        'description' => null,
-        'type' => null,
+        'account_id' => null,
         'spec' => null,
-        'platform' => null,
-        'size' => null,
-        'status' => null
+        'optimization_goal' => null
     ];
 
     /**
@@ -94,15 +82,9 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'platform_audience_id' => false,
-        'name' => false,
-        'description' => false,
-        'type' => false,
+        'account_id' => false,
         'spec' => false,
-        'platform' => false,
-        'size' => false,
-        'status' => false
+        'optimization_goal' => false
     ];
 
     /**
@@ -191,15 +173,9 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'platform_audience_id' => 'platformAudienceId',
-        'name' => 'name',
-        'description' => 'description',
-        'type' => 'type',
+        'account_id' => 'accountId',
         'spec' => 'spec',
-        'platform' => 'platform',
-        'size' => 'size',
-        'status' => 'status'
+        'optimization_goal' => 'optimizationGoal'
     ];
 
     /**
@@ -208,15 +184,9 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'platform_audience_id' => 'setPlatformAudienceId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'type' => 'setType',
+        'account_id' => 'setAccountId',
         'spec' => 'setSpec',
-        'platform' => 'setPlatform',
-        'size' => 'setSize',
-        'status' => 'setStatus'
+        'optimization_goal' => 'setOptimizationGoal'
     ];
 
     /**
@@ -225,15 +195,9 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'platform_audience_id' => 'getPlatformAudienceId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'type' => 'getType',
+        'account_id' => 'getAccountId',
         'spec' => 'getSpec',
-        'platform' => 'getPlatform',
-        'size' => 'getSize',
-        'status' => 'getStatus'
+        'optimization_goal' => 'getOptimizationGoal'
     ];
 
     /**
@@ -277,25 +241,6 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
-    public const TYPE_CUSTOMER_LIST = 'customer_list';
-    public const TYPE_WEBSITE = 'website';
-    public const TYPE_LOOKALIKE = 'lookalike';
-    public const TYPE_SAVED_TARGETING = 'saved_targeting';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_CUSTOMER_LIST,
-            self::TYPE_WEBSITE,
-            self::TYPE_LOOKALIKE,
-            self::TYPE_SAVED_TARGETING,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -312,15 +257,9 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('platform_audience_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('spec', $data ?? [], null);
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('optimization_goal', $data ?? [], null);
     }
 
     /**
@@ -350,15 +289,12 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
         }
-
+        if ($this->container['spec'] === null) {
+            $invalidProperties[] = "'spec' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -375,146 +311,28 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
 
 
     /**
-     * Gets id
+     * Gets account_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getId()
+    public function getAccountId()
     {
-        return $this->container['id'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets id
+     * Sets account_id
      *
-     * @param string|null $id id
+     * @param string $account_id Social account ID on the target ad platform.
      *
      * @return self
      */
-    public function setId($id)
+    public function setAccountId($account_id)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform_audience_id
-     *
-     * @return string|null
-     */
-    public function getPlatformAudienceId()
-    {
-        return $this->container['platform_audience_id'];
-    }
-
-    /**
-     * Sets platform_audience_id
-     *
-     * @param string|null $platform_audience_id platform_audience_id
-     *
-     * @return self
-     */
-    public function setPlatformAudienceId($platform_audience_id)
-    {
-        if (is_null($platform_audience_id)) {
-            throw new \InvalidArgumentException('non-nullable platform_audience_id cannot be null');
-        }
-        $this->container['platform_audience_id'] = $platform_audience_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string|null $name name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
@@ -522,7 +340,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     /**
      * Gets spec
      *
-     * @return \Zernio\Model\TargetingSpec|null
+     * @return \Zernio\Model\TargetingSpec
      */
     public function getSpec()
     {
@@ -532,7 +350,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     /**
      * Sets spec
      *
-     * @param \Zernio\Model\TargetingSpec|null $spec Present (and the only meaningful payload) when `type` is `saved_targeting`. Null for uploaded/derived audience types.
+     * @param \Zernio\Model\TargetingSpec $spec The targeting spec to estimate. Same shape used by POST /v1/ads/create.
      *
      * @return self
      */
@@ -547,82 +365,28 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     }
 
     /**
-     * Gets platform
+     * Gets optimization_goal
      *
      * @return string|null
      */
-    public function getPlatform()
+    public function getOptimizationGoal()
     {
-        return $this->container['platform'];
+        return $this->container['optimization_goal'];
     }
 
     /**
-     * Sets platform
+     * Sets optimization_goal
      *
-     * @param string|null $platform platform
+     * @param string|null $optimization_goal Optional. The optimization goal the estimate should assume (platform's own vocabulary, e.g. Meta `REACH`, `LINK_CLICKS`, `OFFSITE_CONVERSIONS`). Some platforms vary the estimate by goal; omit to use the platform default.
      *
      * @return self
      */
-    public function setPlatform($platform)
+    public function setOptimizationGoal($optimization_goal)
     {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        if (is_null($optimization_goal)) {
+            throw new \InvalidArgumentException('non-nullable optimization_goal cannot be null');
         }
-        $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return int|null
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int|null $size size
-     *
-     * @return self
-     */
-    public function setSize($size)
-    {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
-        }
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $this->container['status'] = $status;
+        $this->container['optimization_goal'] = $optimization_goal;
 
         return $this;
     }

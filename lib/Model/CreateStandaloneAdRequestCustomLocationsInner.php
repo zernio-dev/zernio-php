@@ -1,6 +1,6 @@
 <?php
 /**
- * ListAdAudiences200ResponseAudiencesInner
+ * CreateStandaloneAdRequestCustomLocationsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * ListAdAudiences200ResponseAudiencesInner Class Doc Comment
+ * CreateStandaloneAdRequestCustomLocationsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateStandaloneAdRequestCustomLocationsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       *
       * @var string
       */
-    protected static $openAPIModelName = 'listAdAudiences_200_response_audiences_inner';
+    protected static $openAPIModelName = 'createStandaloneAd_request_customLocations_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,15 +58,12 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'platform_audience_id' => 'string',
+        'latitude' => 'float',
+        'longitude' => 'float',
+        'radius' => 'float',
+        'distance_unit' => 'string',
         'name' => 'string',
-        'description' => 'string',
-        'type' => 'string',
-        'spec' => '\Zernio\Model\TargetingSpec',
-        'platform' => 'string',
-        'size' => 'int',
-        'status' => 'string'
+        'address' => 'string'
     ];
 
     /**
@@ -77,15 +74,12 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'platform_audience_id' => null,
+        'latitude' => null,
+        'longitude' => null,
+        'radius' => null,
+        'distance_unit' => null,
         'name' => null,
-        'description' => null,
-        'type' => null,
-        'spec' => null,
-        'platform' => null,
-        'size' => null,
-        'status' => null
+        'address' => null
     ];
 
     /**
@@ -94,15 +88,12 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'platform_audience_id' => false,
+        'latitude' => false,
+        'longitude' => false,
+        'radius' => false,
+        'distance_unit' => false,
         'name' => false,
-        'description' => false,
-        'type' => false,
-        'spec' => false,
-        'platform' => false,
-        'size' => false,
-        'status' => false
+        'address' => false
     ];
 
     /**
@@ -191,15 +182,12 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'platform_audience_id' => 'platformAudienceId',
+        'latitude' => 'latitude',
+        'longitude' => 'longitude',
+        'radius' => 'radius',
+        'distance_unit' => 'distanceUnit',
         'name' => 'name',
-        'description' => 'description',
-        'type' => 'type',
-        'spec' => 'spec',
-        'platform' => 'platform',
-        'size' => 'size',
-        'status' => 'status'
+        'address' => 'address'
     ];
 
     /**
@@ -208,15 +196,12 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'platform_audience_id' => 'setPlatformAudienceId',
+        'latitude' => 'setLatitude',
+        'longitude' => 'setLongitude',
+        'radius' => 'setRadius',
+        'distance_unit' => 'setDistanceUnit',
         'name' => 'setName',
-        'description' => 'setDescription',
-        'type' => 'setType',
-        'spec' => 'setSpec',
-        'platform' => 'setPlatform',
-        'size' => 'setSize',
-        'status' => 'setStatus'
+        'address' => 'setAddress'
     ];
 
     /**
@@ -225,15 +210,12 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'platform_audience_id' => 'getPlatformAudienceId',
+        'latitude' => 'getLatitude',
+        'longitude' => 'getLongitude',
+        'radius' => 'getRadius',
+        'distance_unit' => 'getDistanceUnit',
         'name' => 'getName',
-        'description' => 'getDescription',
-        'type' => 'getType',
-        'spec' => 'getSpec',
-        'platform' => 'getPlatform',
-        'size' => 'getSize',
-        'status' => 'getStatus'
+        'address' => 'getAddress'
     ];
 
     /**
@@ -277,23 +259,19 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
-    public const TYPE_CUSTOMER_LIST = 'customer_list';
-    public const TYPE_WEBSITE = 'website';
-    public const TYPE_LOOKALIKE = 'lookalike';
-    public const TYPE_SAVED_TARGETING = 'saved_targeting';
+    public const DISTANCE_UNIT_MILE = 'mile';
+    public const DISTANCE_UNIT_KILOMETER = 'kilometer';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getDistanceUnitAllowableValues()
     {
         return [
-            self::TYPE_CUSTOMER_LIST,
-            self::TYPE_WEBSITE,
-            self::TYPE_LOOKALIKE,
-            self::TYPE_SAVED_TARGETING,
+            self::DISTANCE_UNIT_MILE,
+            self::DISTANCE_UNIT_KILOMETER,
         ];
     }
 
@@ -312,15 +290,12 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('platform_audience_id', $data ?? [], null);
+        $this->setIfExists('latitude', $data ?? [], null);
+        $this->setIfExists('longitude', $data ?? [], null);
+        $this->setIfExists('radius', $data ?? [], null);
+        $this->setIfExists('distance_unit', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('spec', $data ?? [], null);
-        $this->setIfExists('platform', $data ?? [], null);
-        $this->setIfExists('size', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
     }
 
     /**
@@ -350,11 +325,39 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        if ($this->container['latitude'] === null) {
+            $invalidProperties[] = "'latitude' can't be null";
+        }
+        if (($this->container['latitude'] > 90)) {
+            $invalidProperties[] = "invalid value for 'latitude', must be smaller than or equal to 90.";
+        }
+
+        if (($this->container['latitude'] < -90)) {
+            $invalidProperties[] = "invalid value for 'latitude', must be bigger than or equal to -90.";
+        }
+
+        if ($this->container['longitude'] === null) {
+            $invalidProperties[] = "'longitude' can't be null";
+        }
+        if (($this->container['longitude'] > 180)) {
+            $invalidProperties[] = "invalid value for 'longitude', must be smaller than or equal to 180.";
+        }
+
+        if (($this->container['longitude'] < -180)) {
+            $invalidProperties[] = "invalid value for 'longitude', must be bigger than or equal to -180.";
+        }
+
+        if ($this->container['radius'] === null) {
+            $invalidProperties[] = "'radius' can't be null";
+        }
+        if ($this->container['distance_unit'] === null) {
+            $invalidProperties[] = "'distance_unit' can't be null";
+        }
+        $allowedValues = $this->getDistanceUnitAllowableValues();
+        if (!is_null($this->container['distance_unit']) && !in_array($this->container['distance_unit'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'distance_unit', must be one of '%s'",
+                $this->container['distance_unit'],
                 implode("', '", $allowedValues)
             );
         }
@@ -375,55 +378,135 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
 
 
     /**
-     * Gets id
+     * Gets latitude
      *
-     * @return string|null
+     * @return float
      */
-    public function getId()
+    public function getLatitude()
     {
-        return $this->container['id'];
+        return $this->container['latitude'];
     }
 
     /**
-     * Sets id
+     * Sets latitude
      *
-     * @param string|null $id id
+     * @param float $latitude latitude
      *
      * @return self
      */
-    public function setId($id)
+    public function setLatitude($latitude)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($latitude)) {
+            throw new \InvalidArgumentException('non-nullable latitude cannot be null');
         }
-        $this->container['id'] = $id;
+
+        if (($latitude > 90)) {
+            throw new \InvalidArgumentException('invalid value for $latitude when calling CreateStandaloneAdRequestCustomLocationsInner., must be smaller than or equal to 90.');
+        }
+        if (($latitude < -90)) {
+            throw new \InvalidArgumentException('invalid value for $latitude when calling CreateStandaloneAdRequestCustomLocationsInner., must be bigger than or equal to -90.');
+        }
+
+        $this->container['latitude'] = $latitude;
 
         return $this;
     }
 
     /**
-     * Gets platform_audience_id
+     * Gets longitude
      *
-     * @return string|null
+     * @return float
      */
-    public function getPlatformAudienceId()
+    public function getLongitude()
     {
-        return $this->container['platform_audience_id'];
+        return $this->container['longitude'];
     }
 
     /**
-     * Sets platform_audience_id
+     * Sets longitude
      *
-     * @param string|null $platform_audience_id platform_audience_id
+     * @param float $longitude longitude
      *
      * @return self
      */
-    public function setPlatformAudienceId($platform_audience_id)
+    public function setLongitude($longitude)
     {
-        if (is_null($platform_audience_id)) {
-            throw new \InvalidArgumentException('non-nullable platform_audience_id cannot be null');
+        if (is_null($longitude)) {
+            throw new \InvalidArgumentException('non-nullable longitude cannot be null');
         }
-        $this->container['platform_audience_id'] = $platform_audience_id;
+
+        if (($longitude > 180)) {
+            throw new \InvalidArgumentException('invalid value for $longitude when calling CreateStandaloneAdRequestCustomLocationsInner., must be smaller than or equal to 180.');
+        }
+        if (($longitude < -180)) {
+            throw new \InvalidArgumentException('invalid value for $longitude when calling CreateStandaloneAdRequestCustomLocationsInner., must be bigger than or equal to -180.');
+        }
+
+        $this->container['longitude'] = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Gets radius
+     *
+     * @return float
+     */
+    public function getRadius()
+    {
+        return $this->container['radius'];
+    }
+
+    /**
+     * Sets radius
+     *
+     * @param float $radius radius
+     *
+     * @return self
+     */
+    public function setRadius($radius)
+    {
+        if (is_null($radius)) {
+            throw new \InvalidArgumentException('non-nullable radius cannot be null');
+        }
+        $this->container['radius'] = $radius;
+
+        return $this;
+    }
+
+    /**
+     * Gets distance_unit
+     *
+     * @return string
+     */
+    public function getDistanceUnit()
+    {
+        return $this->container['distance_unit'];
+    }
+
+    /**
+     * Sets distance_unit
+     *
+     * @param string $distance_unit distance_unit
+     *
+     * @return self
+     */
+    public function setDistanceUnit($distance_unit)
+    {
+        if (is_null($distance_unit)) {
+            throw new \InvalidArgumentException('non-nullable distance_unit cannot be null');
+        }
+        $allowedValues = $this->getDistanceUnitAllowableValues();
+        if (!in_array($distance_unit, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'distance_unit', must be one of '%s'",
+                    $distance_unit,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['distance_unit'] = $distance_unit;
 
         return $this;
     }
@@ -456,173 +539,28 @@ class ListAdAudiences200ResponseAudiencesInner implements ModelInterface, ArrayA
     }
 
     /**
-     * Gets description
+     * Gets address
      *
      * @return string|null
      */
-    public function getDescription()
+    public function getAddress()
     {
-        return $this->container['description'];
+        return $this->container['address'];
     }
 
     /**
-     * Sets description
+     * Sets address
      *
-     * @param string|null $description description
+     * @param string|null $address address
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setAddress($address)
     {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
         }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string|null
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string|null $type type
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets spec
-     *
-     * @return \Zernio\Model\TargetingSpec|null
-     */
-    public function getSpec()
-    {
-        return $this->container['spec'];
-    }
-
-    /**
-     * Sets spec
-     *
-     * @param \Zernio\Model\TargetingSpec|null $spec Present (and the only meaningful payload) when `type` is `saved_targeting`. Null for uploaded/derived audience types.
-     *
-     * @return self
-     */
-    public function setSpec($spec)
-    {
-        if (is_null($spec)) {
-            throw new \InvalidArgumentException('non-nullable spec cannot be null');
-        }
-        $this->container['spec'] = $spec;
-
-        return $this;
-    }
-
-    /**
-     * Gets platform
-     *
-     * @return string|null
-     */
-    public function getPlatform()
-    {
-        return $this->container['platform'];
-    }
-
-    /**
-     * Sets platform
-     *
-     * @param string|null $platform platform
-     *
-     * @return self
-     */
-    public function setPlatform($platform)
-    {
-        if (is_null($platform)) {
-            throw new \InvalidArgumentException('non-nullable platform cannot be null');
-        }
-        $this->container['platform'] = $platform;
-
-        return $this;
-    }
-
-    /**
-     * Gets size
-     *
-     * @return int|null
-     */
-    public function getSize()
-    {
-        return $this->container['size'];
-    }
-
-    /**
-     * Sets size
-     *
-     * @param int|null $size size
-     *
-     * @return self
-     */
-    public function setSize($size)
-    {
-        if (is_null($size)) {
-            throw new \InvalidArgumentException('non-nullable size cannot be null');
-        }
-        $this->container['size'] = $size;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $this->container['status'] = $status;
+        $this->container['address'] = $address;
 
         return $this;
     }

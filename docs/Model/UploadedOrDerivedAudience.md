@@ -1,10 +1,10 @@
-# # CreateAdAudienceRequest
+# # UploadedOrDerivedAudience
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_id** | **string** | Social account ID on the target ad platform. |
+**account_id** | **string** |  |
 **ad_account_id** | **string** | Platform ad account ID. Must start with act_ for Meta; bare platform id for others (Google customer id, X/TikTok/LinkedIn/Pinterest account id). |
 **name** | **string** |  |
 **description** | **string** |  | [optional]
@@ -16,6 +16,5 @@ Name | Type | Description | Notes
 **ratio** | **float** | Required for lookalike audiences | [optional]
 **rule** | **object** | Pixel event rule for website audiences (optional) | [optional]
 **customer_file_source** | **string** | Data source declaration for GDPR compliance (customer_list only) | [optional]
-**spec** | [**\Zernio\Model\TargetingSpec**](TargetingSpec.md) | The targeting spec to store. |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
