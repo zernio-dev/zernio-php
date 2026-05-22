@@ -60,6 +60,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     protected static $openAPITypes = [
         'status' => 'string',
         'comments' => '\Zernio\Model\GetInboxPostComments200ResponseCommentsInner[]',
+        'post' => '\Zernio\Model\GetInboxPostComments200ResponsePost',
         'pagination' => '\Zernio\Model\GetInboxPostComments200ResponsePagination',
         'meta' => '\Zernio\Model\GetInboxPostComments200ResponseMeta'
     ];
@@ -74,6 +75,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     protected static $openAPIFormats = [
         'status' => null,
         'comments' => null,
+        'post' => null,
         'pagination' => null,
         'meta' => null
     ];
@@ -86,6 +88,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     protected static array $openAPINullables = [
         'status' => false,
         'comments' => false,
+        'post' => false,
         'pagination' => false,
         'meta' => false
     ];
@@ -178,6 +181,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     protected static $attributeMap = [
         'status' => 'status',
         'comments' => 'comments',
+        'post' => 'post',
         'pagination' => 'pagination',
         'meta' => 'meta'
     ];
@@ -190,6 +194,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     protected static $setters = [
         'status' => 'setStatus',
         'comments' => 'setComments',
+        'post' => 'setPost',
         'pagination' => 'setPagination',
         'meta' => 'setMeta'
     ];
@@ -202,6 +207,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     protected static $getters = [
         'status' => 'getStatus',
         'comments' => 'getComments',
+        'post' => 'getPost',
         'pagination' => 'getPagination',
         'meta' => 'getMeta'
     ];
@@ -265,6 +271,7 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
     {
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('comments', $data ?? [], null);
+        $this->setIfExists('post', $data ?? [], null);
         $this->setIfExists('pagination', $data ?? [], null);
         $this->setIfExists('meta', $data ?? [], null);
     }
@@ -361,6 +368,33 @@ class GetInboxPostComments200Response implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable comments cannot be null');
         }
         $this->container['comments'] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Gets post
+     *
+     * @return \Zernio\Model\GetInboxPostComments200ResponsePost|null
+     */
+    public function getPost()
+    {
+        return $this->container['post'];
+    }
+
+    /**
+     * Sets post
+     *
+     * @param \Zernio\Model\GetInboxPostComments200ResponsePost|null $post post
+     *
+     * @return self
+     */
+    public function setPost($post)
+    {
+        if (is_null($post)) {
+            throw new \InvalidArgumentException('non-nullable post cannot be null');
+        }
+        $this->container['post'] = $post;
 
         return $this;
     }

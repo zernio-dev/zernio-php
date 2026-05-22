@@ -398,6 +398,7 @@ docs/Model/GetInboxPostComments200ResponseCommentsInnerFrom.md
 docs/Model/GetInboxPostComments200ResponseMeta.md
 docs/Model/GetInboxPostComments200ResponseMetaAdComments.md
 docs/Model/GetInboxPostComments200ResponsePagination.md
+docs/Model/GetInboxPostComments200ResponsePost.md
 docs/Model/GetInstagramAccountInsights404Response.md
 docs/Model/GetInstagramStoryInsights200Response.md
 docs/Model/GetInstagramStoryInsights200ResponseData.md
@@ -1382,6 +1383,7 @@ lib/Model/GetInboxPostComments200ResponseCommentsInnerFrom.php
 lib/Model/GetInboxPostComments200ResponseMeta.php
 lib/Model/GetInboxPostComments200ResponseMetaAdComments.php
 lib/Model/GetInboxPostComments200ResponsePagination.php
+lib/Model/GetInboxPostComments200ResponsePost.php
 lib/Model/GetInstagramAccountInsights404Response.php
 lib/Model/GetInstagramStoryInsights200Response.php
 lib/Model/GetInstagramStoryInsights200ResponseData.php
@@ -1969,3 +1971,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetInboxPostComments200ResponsePostTest.php
