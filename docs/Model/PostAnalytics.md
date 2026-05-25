@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **saves** | **int** | Number of saves/bookmarks (Instagram, Pinterest) | [optional]
 **clicks** | **int** |  | [optional]
 **views** | **int** |  | [optional]
+**ig_reels_avg_watch_time** | **int** | Instagram Reels only: average watch time per play, in milliseconds. 0 for non-Reels media and other platforms. | [optional]
+**ig_reels_video_view_total_time** | **int** | Instagram Reels only: total watch time including replays, in milliseconds. 0 for non-Reels media and other platforms. | [optional]
 **engagement_rate** | **float** |  | [optional]
 **last_updated** | **\DateTime** |  | [optional]
 

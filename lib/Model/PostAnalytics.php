@@ -66,6 +66,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'saves' => 'int',
         'clicks' => 'int',
         'views' => 'int',
+        'ig_reels_avg_watch_time' => 'int',
+        'ig_reels_video_view_total_time' => 'int',
         'engagement_rate' => 'float',
         'last_updated' => '\DateTime'
     ];
@@ -86,6 +88,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'saves' => null,
         'clicks' => null,
         'views' => null,
+        'ig_reels_avg_watch_time' => null,
+        'ig_reels_video_view_total_time' => null,
         'engagement_rate' => null,
         'last_updated' => 'date-time'
     ];
@@ -104,6 +108,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'saves' => false,
         'clicks' => false,
         'views' => false,
+        'ig_reels_avg_watch_time' => false,
+        'ig_reels_video_view_total_time' => false,
         'engagement_rate' => false,
         'last_updated' => false
     ];
@@ -202,6 +208,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'saves' => 'saves',
         'clicks' => 'clicks',
         'views' => 'views',
+        'ig_reels_avg_watch_time' => 'igReelsAvgWatchTime',
+        'ig_reels_video_view_total_time' => 'igReelsVideoViewTotalTime',
         'engagement_rate' => 'engagementRate',
         'last_updated' => 'lastUpdated'
     ];
@@ -220,6 +228,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'saves' => 'setSaves',
         'clicks' => 'setClicks',
         'views' => 'setViews',
+        'ig_reels_avg_watch_time' => 'setIgReelsAvgWatchTime',
+        'ig_reels_video_view_total_time' => 'setIgReelsVideoViewTotalTime',
         'engagement_rate' => 'setEngagementRate',
         'last_updated' => 'setLastUpdated'
     ];
@@ -238,6 +248,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         'saves' => 'getSaves',
         'clicks' => 'getClicks',
         'views' => 'getViews',
+        'ig_reels_avg_watch_time' => 'getIgReelsAvgWatchTime',
+        'ig_reels_video_view_total_time' => 'getIgReelsVideoViewTotalTime',
         'engagement_rate' => 'getEngagementRate',
         'last_updated' => 'getLastUpdated'
     ];
@@ -307,6 +319,8 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('saves', $data ?? [], null);
         $this->setIfExists('clicks', $data ?? [], null);
         $this->setIfExists('views', $data ?? [], null);
+        $this->setIfExists('ig_reels_avg_watch_time', $data ?? [], null);
+        $this->setIfExists('ig_reels_video_view_total_time', $data ?? [], null);
         $this->setIfExists('engagement_rate', $data ?? [], null);
         $this->setIfExists('last_updated', $data ?? [], null);
     }
@@ -565,6 +579,60 @@ class PostAnalytics implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable views cannot be null');
         }
         $this->container['views'] = $views;
+
+        return $this;
+    }
+
+    /**
+     * Gets ig_reels_avg_watch_time
+     *
+     * @return int|null
+     */
+    public function getIgReelsAvgWatchTime()
+    {
+        return $this->container['ig_reels_avg_watch_time'];
+    }
+
+    /**
+     * Sets ig_reels_avg_watch_time
+     *
+     * @param int|null $ig_reels_avg_watch_time Instagram Reels only: average watch time per play, in milliseconds. 0 for non-Reels media and other platforms.
+     *
+     * @return self
+     */
+    public function setIgReelsAvgWatchTime($ig_reels_avg_watch_time)
+    {
+        if (is_null($ig_reels_avg_watch_time)) {
+            throw new \InvalidArgumentException('non-nullable ig_reels_avg_watch_time cannot be null');
+        }
+        $this->container['ig_reels_avg_watch_time'] = $ig_reels_avg_watch_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets ig_reels_video_view_total_time
+     *
+     * @return int|null
+     */
+    public function getIgReelsVideoViewTotalTime()
+    {
+        return $this->container['ig_reels_video_view_total_time'];
+    }
+
+    /**
+     * Sets ig_reels_video_view_total_time
+     *
+     * @param int|null $ig_reels_video_view_total_time Instagram Reels only: total watch time including replays, in milliseconds. 0 for non-Reels media and other platforms.
+     *
+     * @return self
+     */
+    public function setIgReelsVideoViewTotalTime($ig_reels_video_view_total_time)
+    {
+        if (is_null($ig_reels_video_view_total_time)) {
+            throw new \InvalidArgumentException('non-nullable ig_reels_video_view_total_time cannot be null');
+        }
+        $this->container['ig_reels_video_view_total_time'] = $ig_reels_video_view_total_time;
 
         return $this;
     }
