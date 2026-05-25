@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * CreateLeadForm200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * CreateLeadForm200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'createLeadForm_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'form' => 'object'
+        'form' => '\Zernio\Model\UpdateFacebookPage200ResponseSelectedPage'
     ];
 
     /**
@@ -327,7 +327,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets form
      *
-     * @return object|null
+     * @return \Zernio\Model\UpdateFacebookPage200ResponseSelectedPage|null
      */
     public function getForm()
     {
@@ -337,7 +337,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets form
      *
-     * @param object|null $form form
+     * @param \Zernio\Model\UpdateFacebookPage200ResponseSelectedPage|null $form form
      *
      * @return self
      */

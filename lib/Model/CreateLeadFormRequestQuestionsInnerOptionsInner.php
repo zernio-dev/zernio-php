@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * CreateLeadFormRequestQuestionsInnerOptionsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * CreateLeadFormRequestQuestionsInnerOptionsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateLeadFormRequestQuestionsInnerOptionsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'createLeadForm_request_questions_inner_options_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'form' => 'object'
+        'key' => 'string',
+        'value' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'form' => null
+        'key' => null,
+        'value' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'form' => false
+        'key' => false,
+        'value' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'form' => 'form'
+        'key' => 'key',
+        'value' => 'value'
     ];
 
     /**
@@ -180,8 +180,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'form' => 'setForm'
+        'key' => 'setKey',
+        'value' => 'setValue'
     ];
 
     /**
@@ -190,8 +190,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'form' => 'getForm'
+        'key' => 'getKey',
+        'value' => 'getValue'
     ];
 
     /**
@@ -251,8 +251,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('key', $data ?? [], null);
+        $this->setIfExists('value', $data ?? [], null);
     }
 
     /**
@@ -298,55 +298,55 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets status
+     * Gets key
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getKey()
     {
-        return $this->container['status'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets status
+     * Sets key
      *
-     * @param string|null $status status
+     * @param string|null $key key
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setKey($key)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($key)) {
+            throw new \InvalidArgumentException('non-nullable key cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['key'] = $key;
 
         return $this;
     }
 
     /**
-     * Gets form
+     * Gets value
      *
-     * @return object|null
+     * @return string|null
      */
-    public function getForm()
+    public function getValue()
     {
-        return $this->container['form'];
+        return $this->container['value'];
     }
 
     /**
-     * Sets form
+     * Sets value
      *
-     * @param object|null $form form
+     * @param string|null $value value
      *
      * @return self
      */
-    public function setForm($form)
+    public function setValue($value)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($value)) {
+            throw new \InvalidArgumentException('non-nullable value cannot be null');
         }
-        $this->container['form'] = $form;
+        $this->container['value'] = $value;
 
         return $this;
     }

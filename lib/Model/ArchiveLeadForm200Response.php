@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * ArchiveLeadForm200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * ArchiveLeadForm200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class ArchiveLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'archiveLeadForm_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'form' => 'object'
+        'form_id' => 'string',
+        'archived' => 'bool'
     ];
 
     /**
@@ -71,7 +72,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'form' => null
+        'form_id' => null,
+        'archived' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'status' => false,
-        'form' => false
+        'form_id' => false,
+        'archived' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'status' => 'status',
-        'form' => 'form'
+        'form_id' => 'formId',
+        'archived' => 'archived'
     ];
 
     /**
@@ -181,7 +185,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'status' => 'setStatus',
-        'form' => 'setForm'
+        'form_id' => 'setFormId',
+        'archived' => 'setArchived'
     ];
 
     /**
@@ -191,7 +196,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'status' => 'getStatus',
-        'form' => 'getForm'
+        'form_id' => 'getFormId',
+        'archived' => 'getArchived'
     ];
 
     /**
@@ -252,7 +258,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(?array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('form_id', $data ?? [], null);
+        $this->setIfExists('archived', $data ?? [], null);
     }
 
     /**
@@ -325,28 +332,55 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets form
+     * Gets form_id
      *
-     * @return object|null
+     * @return string|null
      */
-    public function getForm()
+    public function getFormId()
     {
-        return $this->container['form'];
+        return $this->container['form_id'];
     }
 
     /**
-     * Sets form
+     * Sets form_id
      *
-     * @param object|null $form form
+     * @param string|null $form_id form_id
      *
      * @return self
      */
-    public function setForm($form)
+    public function setFormId($form_id)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($form_id)) {
+            throw new \InvalidArgumentException('non-nullable form_id cannot be null');
         }
-        $this->container['form'] = $form;
+        $this->container['form_id'] = $form_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets archived
+     *
+     * @return bool|null
+     */
+    public function getArchived()
+    {
+        return $this->container['archived'];
+    }
+
+    /**
+     * Sets archived
+     *
+     * @param bool|null $archived archived
+     *
+     * @return self
+     */
+    public function setArchived($archived)
+    {
+        if (is_null($archived)) {
+            throw new \InvalidArgumentException('non-nullable archived cannot be null');
+        }
+        $this->container['archived'] = $archived;
 
         return $this;
     }

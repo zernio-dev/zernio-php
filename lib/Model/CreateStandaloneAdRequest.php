@@ -70,6 +70,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'body' => 'string',
         'call_to_action' => 'string',
         'link_url' => 'string',
+        'lead_gen_form_id' => 'string',
         'image_url' => 'string',
         'images' => '\Zernio\Model\CreateStandaloneAdRequestImages',
         'video' => '\Zernio\Model\CreateStandaloneAdRequestVideo',
@@ -131,6 +132,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'body' => null,
         'call_to_action' => null,
         'link_url' => 'uri',
+        'lead_gen_form_id' => null,
         'image_url' => 'uri',
         'images' => null,
         'video' => null,
@@ -190,6 +192,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'body' => false,
         'call_to_action' => false,
         'link_url' => false,
+        'lead_gen_form_id' => false,
         'image_url' => false,
         'images' => false,
         'video' => false,
@@ -329,6 +332,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'body' => 'body',
         'call_to_action' => 'callToAction',
         'link_url' => 'linkUrl',
+        'lead_gen_form_id' => 'leadGenFormId',
         'image_url' => 'imageUrl',
         'images' => 'images',
         'video' => 'video',
@@ -388,6 +392,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'body' => 'setBody',
         'call_to_action' => 'setCallToAction',
         'link_url' => 'setLinkUrl',
+        'lead_gen_form_id' => 'setLeadGenFormId',
         'image_url' => 'setImageUrl',
         'images' => 'setImages',
         'video' => 'setVideo',
@@ -447,6 +452,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'body' => 'getBody',
         'call_to_action' => 'getCallToAction',
         'link_url' => 'getLinkUrl',
+        'lead_gen_form_id' => 'getLeadGenFormId',
         'image_url' => 'getImageUrl',
         'images' => 'getImages',
         'video' => 'getVideo',
@@ -744,6 +750,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('body', $data ?? [], null);
         $this->setIfExists('call_to_action', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
+        $this->setIfExists('lead_gen_form_id', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('images', $data ?? [], null);
         $this->setIfExists('video', $data ?? [], null);
@@ -1304,7 +1311,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets link_url
      *
-     * @param string|null $link_url Required on legacy + attach shapes (skip for multi-creative). On LinkedIn it's the ad's destination URL; required for `traffic` ads, optional for `engagement` / `awareness`.
+     * @param string|null $link_url Required on legacy + attach shapes (skip for multi-creative). On LinkedIn it's the ad's destination URL; required for `traffic` ads, optional for `engagement` / `awareness`. NOT required when `goal` is `lead_generation` (the ad opens a Lead Gen form instead of a destination).
      *
      * @return self
      */
@@ -1314,6 +1321,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable link_url cannot be null');
         }
         $this->container['link_url'] = $link_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets lead_gen_form_id
+     *
+     * @return string|null
+     */
+    public function getLeadGenFormId()
+    {
+        return $this->container['lead_gen_form_id'];
+    }
+
+    /**
+     * Sets lead_gen_form_id
+     *
+     * @param string|null $lead_gen_form_id Meta Lead Gen forms only (facebook/instagram). The leadgen_forms ID to attach to the ad's creative — create one via POST /v1/ads/lead-forms. REQUIRED when `goal` is `lead_generation`; ignored otherwise. The ad set's promoted_object.page_id + LEAD_GENERATION optimization are derived automatically from the goal.
+     *
+     * @return self
+     */
+    public function setLeadGenFormId($lead_gen_form_id)
+    {
+        if (is_null($lead_gen_form_id)) {
+            throw new \InvalidArgumentException('non-nullable lead_gen_form_id cannot be null');
+        }
+        $this->container['lead_gen_form_id'] = $lead_gen_form_id;
 
         return $this;
     }

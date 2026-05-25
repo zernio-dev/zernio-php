@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * CreateTestLead200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * CreateTestLead200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateTestLead200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'createTestLead_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'form' => 'object'
+        'test_lead' => '\Zernio\Model\CreateTestLead200ResponseTestLead'
     ];
 
     /**
@@ -71,7 +71,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'form' => null
+        'test_lead' => null
     ];
 
     /**
@@ -81,7 +81,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'status' => false,
-        'form' => false
+        'test_lead' => false
     ];
 
     /**
@@ -171,7 +171,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'status' => 'status',
-        'form' => 'form'
+        'test_lead' => 'testLead'
     ];
 
     /**
@@ -181,7 +181,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'status' => 'setStatus',
-        'form' => 'setForm'
+        'test_lead' => 'setTestLead'
     ];
 
     /**
@@ -191,7 +191,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'status' => 'getStatus',
-        'form' => 'getForm'
+        'test_lead' => 'getTestLead'
     ];
 
     /**
@@ -252,7 +252,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(?array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('test_lead', $data ?? [], null);
     }
 
     /**
@@ -325,28 +325,28 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets form
+     * Gets test_lead
      *
-     * @return object|null
+     * @return \Zernio\Model\CreateTestLead200ResponseTestLead|null
      */
-    public function getForm()
+    public function getTestLead()
     {
-        return $this->container['form'];
+        return $this->container['test_lead'];
     }
 
     /**
-     * Sets form
+     * Sets test_lead
      *
-     * @param object|null $form form
+     * @param \Zernio\Model\CreateTestLead200ResponseTestLead|null $test_lead test_lead
      *
      * @return self
      */
-    public function setForm($form)
+    public function setTestLead($test_lead)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($test_lead)) {
+            throw new \InvalidArgumentException('non-nullable test_lead cannot be null');
         }
-        $this->container['form'] = $form;
+        $this->container['test_lead'] = $test_lead;
 
         return $this;
     }

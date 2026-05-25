@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * ListLeads200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * ListLeads200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListLeads200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'listLeads_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +59,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'status' => 'string',
-        'form' => 'object'
+        'leads' => '\Zernio\Model\ListLeads200ResponseLeadsInner[]',
+        'pagination' => '\Zernio\Model\GetInboxPostComments200ResponsePagination'
     ];
 
     /**
@@ -71,7 +72,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'status' => null,
-        'form' => null
+        'leads' => null,
+        'pagination' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'status' => false,
-        'form' => false
+        'leads' => false,
+        'pagination' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'status' => 'status',
-        'form' => 'form'
+        'leads' => 'leads',
+        'pagination' => 'pagination'
     ];
 
     /**
@@ -181,7 +185,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'status' => 'setStatus',
-        'form' => 'setForm'
+        'leads' => 'setLeads',
+        'pagination' => 'setPagination'
     ];
 
     /**
@@ -191,7 +196,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'status' => 'getStatus',
-        'form' => 'getForm'
+        'leads' => 'getLeads',
+        'pagination' => 'getPagination'
     ];
 
     /**
@@ -252,7 +258,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(?array $data = null)
     {
         $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('leads', $data ?? [], null);
+        $this->setIfExists('pagination', $data ?? [], null);
     }
 
     /**
@@ -325,28 +332,55 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     }
 
     /**
-     * Gets form
+     * Gets leads
      *
-     * @return object|null
+     * @return \Zernio\Model\ListLeads200ResponseLeadsInner[]|null
      */
-    public function getForm()
+    public function getLeads()
     {
-        return $this->container['form'];
+        return $this->container['leads'];
     }
 
     /**
-     * Sets form
+     * Sets leads
      *
-     * @param object|null $form form
+     * @param \Zernio\Model\ListLeads200ResponseLeadsInner[]|null $leads leads
      *
      * @return self
      */
-    public function setForm($form)
+    public function setLeads($leads)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($leads)) {
+            throw new \InvalidArgumentException('non-nullable leads cannot be null');
         }
-        $this->container['form'] = $form;
+        $this->container['leads'] = $leads;
+
+        return $this;
+    }
+
+    /**
+     * Gets pagination
+     *
+     * @return \Zernio\Model\GetInboxPostComments200ResponsePagination|null
+     */
+    public function getPagination()
+    {
+        return $this->container['pagination'];
+    }
+
+    /**
+     * Sets pagination
+     *
+     * @param \Zernio\Model\GetInboxPostComments200ResponsePagination|null $pagination pagination
+     *
+     * @return self
+     */
+    public function setPagination($pagination)
+    {
+        if (is_null($pagination)) {
+            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        }
+        $this->container['pagination'] = $pagination;
 
         return $this;
     }

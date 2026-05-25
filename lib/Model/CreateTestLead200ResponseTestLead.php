@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * CreateTestLead200ResponseTestLead
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * CreateTestLead200ResponseTestLead Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateTestLead200ResponseTestLead implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'createTestLead_200_response_testLead';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'form' => 'object'
+        'id' => 'string'
     ];
 
     /**
@@ -70,8 +69,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'form' => null
+        'id' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'form' => false
+        'id' => false
     ];
 
     /**
@@ -170,8 +167,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'form' => 'form'
+        'id' => 'id'
     ];
 
     /**
@@ -180,8 +176,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'form' => 'setForm'
+        'id' => 'setId'
     ];
 
     /**
@@ -190,8 +185,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'form' => 'getForm'
+        'id' => 'getId'
     ];
 
     /**
@@ -251,8 +245,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
     }
 
     /**
@@ -298,55 +291,28 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets status
+     * Gets id
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getId()
     {
-        return $this->container['status'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets status
+     * Sets id
      *
-     * @param string|null $status status
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setId($id)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets form
-     *
-     * @return object|null
-     */
-    public function getForm()
-    {
-        return $this->container['form'];
-    }
-
-    /**
-     * Sets form
-     *
-     * @param object|null $form form
-     *
-     * @return self
-     */
-    public function setForm($form)
-    {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
-        }
-        $this->container['form'] = $form;
+        $this->container['id'] = $id;
 
         return $this;
     }

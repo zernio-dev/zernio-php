@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * ListFormLeads200ResponseLeadsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * ListFormLeads200ResponseLeadsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListFormLeads200ResponseLeadsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'listFormLeads_200_response_leads_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'form' => 'object'
+        'id' => 'string',
+        'created_time' => 'string',
+        'ad_id' => 'string',
+        'form_id' => 'string',
+        'fields' => 'array<string,string>',
+        'field_data' => 'object[]'
     ];
 
     /**
@@ -70,8 +74,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'form' => null
+        'id' => null,
+        'created_time' => null,
+        'ad_id' => null,
+        'form_id' => null,
+        'fields' => null,
+        'field_data' => null
     ];
 
     /**
@@ -80,8 +88,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'form' => false
+        'id' => false,
+        'created_time' => false,
+        'ad_id' => false,
+        'form_id' => false,
+        'fields' => false,
+        'field_data' => false
     ];
 
     /**
@@ -170,8 +182,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'form' => 'form'
+        'id' => 'id',
+        'created_time' => 'createdTime',
+        'ad_id' => 'adId',
+        'form_id' => 'formId',
+        'fields' => 'fields',
+        'field_data' => 'fieldData'
     ];
 
     /**
@@ -180,8 +196,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'form' => 'setForm'
+        'id' => 'setId',
+        'created_time' => 'setCreatedTime',
+        'ad_id' => 'setAdId',
+        'form_id' => 'setFormId',
+        'fields' => 'setFields',
+        'field_data' => 'setFieldData'
     ];
 
     /**
@@ -190,8 +210,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'form' => 'getForm'
+        'id' => 'getId',
+        'created_time' => 'getCreatedTime',
+        'ad_id' => 'getAdId',
+        'form_id' => 'getFormId',
+        'fields' => 'getFields',
+        'field_data' => 'getFieldData'
     ];
 
     /**
@@ -251,8 +275,12 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('created_time', $data ?? [], null);
+        $this->setIfExists('ad_id', $data ?? [], null);
+        $this->setIfExists('form_id', $data ?? [], null);
+        $this->setIfExists('fields', $data ?? [], null);
+        $this->setIfExists('field_data', $data ?? [], null);
     }
 
     /**
@@ -298,55 +326,163 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets status
+     * Gets id
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getId()
     {
-        return $this->container['status'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets status
+     * Sets id
      *
-     * @param string|null $status status
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setId($id)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets form
+     * Gets created_time
      *
-     * @return object|null
+     * @return string|null
      */
-    public function getForm()
+    public function getCreatedTime()
     {
-        return $this->container['form'];
+        return $this->container['created_time'];
     }
 
     /**
-     * Sets form
+     * Sets created_time
      *
-     * @param object|null $form form
+     * @param string|null $created_time created_time
      *
      * @return self
      */
-    public function setForm($form)
+    public function setCreatedTime($created_time)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($created_time)) {
+            throw new \InvalidArgumentException('non-nullable created_time cannot be null');
         }
-        $this->container['form'] = $form;
+        $this->container['created_time'] = $created_time;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_id
+     *
+     * @return string|null
+     */
+    public function getAdId()
+    {
+        return $this->container['ad_id'];
+    }
+
+    /**
+     * Sets ad_id
+     *
+     * @param string|null $ad_id ad_id
+     *
+     * @return self
+     */
+    public function setAdId($ad_id)
+    {
+        if (is_null($ad_id)) {
+            throw new \InvalidArgumentException('non-nullable ad_id cannot be null');
+        }
+        $this->container['ad_id'] = $ad_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets form_id
+     *
+     * @return string|null
+     */
+    public function getFormId()
+    {
+        return $this->container['form_id'];
+    }
+
+    /**
+     * Sets form_id
+     *
+     * @param string|null $form_id form_id
+     *
+     * @return self
+     */
+    public function setFormId($form_id)
+    {
+        if (is_null($form_id)) {
+            throw new \InvalidArgumentException('non-nullable form_id cannot be null');
+        }
+        $this->container['form_id'] = $form_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets fields
+     *
+     * @return array<string,string>|null
+     */
+    public function getFields()
+    {
+        return $this->container['fields'];
+    }
+
+    /**
+     * Sets fields
+     *
+     * @param array<string,string>|null $fields fields
+     *
+     * @return self
+     */
+    public function setFields($fields)
+    {
+        if (is_null($fields)) {
+            throw new \InvalidArgumentException('non-nullable fields cannot be null');
+        }
+        $this->container['fields'] = $fields;
+
+        return $this;
+    }
+
+    /**
+     * Gets field_data
+     *
+     * @return object[]|null
+     */
+    public function getFieldData()
+    {
+        return $this->container['field_data'];
+    }
+
+    /**
+     * Sets field_data
+     *
+     * @param object[]|null $field_data field_data
+     *
+     * @return self
+     */
+    public function setFieldData($field_data)
+    {
+        if (is_null($field_data)) {
+            throw new \InvalidArgumentException('non-nullable field_data cannot be null');
+        }
+        $this->container['field_data'] = $field_data;
 
         return $this;
     }

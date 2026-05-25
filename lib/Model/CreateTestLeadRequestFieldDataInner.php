@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * CreateTestLeadRequestFieldDataInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * CreateTestLeadRequestFieldDataInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateTestLeadRequestFieldDataInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'createTestLead_request_fieldData_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'form' => 'object'
+        'name' => 'string',
+        'values' => 'string[]'
     ];
 
     /**
@@ -70,8 +70,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'form' => null
+        'name' => null,
+        'values' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'form' => false
+        'name' => false,
+        'values' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'form' => 'form'
+        'name' => 'name',
+        'values' => 'values'
     ];
 
     /**
@@ -180,8 +180,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'form' => 'setForm'
+        'name' => 'setName',
+        'values' => 'setValues'
     ];
 
     /**
@@ -190,8 +190,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'form' => 'getForm'
+        'name' => 'getName',
+        'values' => 'getValues'
     ];
 
     /**
@@ -251,8 +251,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('values', $data ?? [], null);
     }
 
     /**
@@ -282,6 +282,16 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['values'] === null) {
+            $invalidProperties[] = "'values' can't be null";
+        }
+        if ((count($this->container['values']) < 1)) {
+            $invalidProperties[] = "invalid value for 'values', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -298,55 +308,60 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets status
+     * Gets name
      *
-     * @return string|null
+     * @return string
      */
-    public function getStatus()
+    public function getName()
     {
-        return $this->container['status'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets status
+     * Sets name
      *
-     * @param string|null $status status
+     * @param string $name name
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setName($name)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets form
+     * Gets values
      *
-     * @return object|null
+     * @return string[]
      */
-    public function getForm()
+    public function getValues()
     {
-        return $this->container['form'];
+        return $this->container['values'];
     }
 
     /**
-     * Sets form
+     * Sets values
      *
-     * @param object|null $form form
+     * @param string[] $values values
      *
      * @return self
      */
-    public function setForm($form)
+    public function setValues($values)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($values)) {
+            throw new \InvalidArgumentException('non-nullable values cannot be null');
         }
-        $this->container['form'] = $form;
+
+
+        if ((count($values) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $values when calling CreateTestLeadRequestFieldDataInner., number of items must be greater than or equal to 1.');
+        }
+        $this->container['values'] = $values;
 
         return $this;
     }

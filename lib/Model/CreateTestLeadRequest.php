@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * CreateTestLeadRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * CreateTestLeadRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateTestLeadRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'createTestLead_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'form' => 'object'
+        'account_id' => 'string',
+        'field_data' => '\Zernio\Model\CreateTestLeadRequestFieldDataInner[]'
     ];
 
     /**
@@ -70,8 +70,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'form' => null
+        'account_id' => null,
+        'field_data' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'form' => false
+        'account_id' => false,
+        'field_data' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'form' => 'form'
+        'account_id' => 'accountId',
+        'field_data' => 'fieldData'
     ];
 
     /**
@@ -180,8 +180,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'form' => 'setForm'
+        'account_id' => 'setAccountId',
+        'field_data' => 'setFieldData'
     ];
 
     /**
@@ -190,8 +190,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'form' => 'getForm'
+        'account_id' => 'getAccountId',
+        'field_data' => 'getFieldData'
     ];
 
     /**
@@ -251,8 +251,8 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('field_data', $data ?? [], null);
     }
 
     /**
@@ -282,6 +282,16 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
+        if ($this->container['field_data'] === null) {
+            $invalidProperties[] = "'field_data' can't be null";
+        }
+        if ((count($this->container['field_data']) < 1)) {
+            $invalidProperties[] = "invalid value for 'field_data', number of items must be greater than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -298,55 +308,60 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets status
+     * Gets account_id
      *
-     * @return string|null
+     * @return string
      */
-    public function getStatus()
+    public function getAccountId()
     {
-        return $this->container['status'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets status
+     * Sets account_id
      *
-     * @param string|null $status status
+     * @param string $account_id account_id
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setAccountId($account_id)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets form
+     * Gets field_data
      *
-     * @return object|null
+     * @return \Zernio\Model\CreateTestLeadRequestFieldDataInner[]
      */
-    public function getForm()
+    public function getFieldData()
     {
-        return $this->container['form'];
+        return $this->container['field_data'];
     }
 
     /**
-     * Sets form
+     * Sets field_data
      *
-     * @param object|null $form form
+     * @param \Zernio\Model\CreateTestLeadRequestFieldDataInner[] $field_data field_data
      *
      * @return self
      */
-    public function setForm($form)
+    public function setFieldData($field_data)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($field_data)) {
+            throw new \InvalidArgumentException('non-nullable field_data cannot be null');
         }
-        $this->container['form'] = $form;
+
+
+        if ((count($field_data) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $field_data when calling CreateTestLeadRequest., number of items must be greater than or equal to 1.');
+        }
+        $this->container['field_data'] = $field_data;
 
         return $this;
     }

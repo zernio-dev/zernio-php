@@ -78,6 +78,9 @@ class AdsApi
         'addConversionAssociations' => [
             'application/json',
         ],
+        'archiveLeadForm' => [
+            'application/json',
+        ],
         'boostPost' => [
             'application/json',
         ],
@@ -87,7 +90,13 @@ class AdsApi
         'createCtwaAd' => [
             'application/json',
         ],
+        'createLeadForm' => [
+            'application/json',
+        ],
         'createStandaloneAd' => [
+            'application/json',
+        ],
+        'createTestLead' => [
             'application/json',
         ],
         'deleteAd' => [
@@ -114,6 +123,9 @@ class AdsApi
         'getConversionMetrics' => [
             'application/json',
         ],
+        'getLeadForm' => [
+            'application/json',
+        ],
         'listAdAccounts' => [
             'application/json',
         ],
@@ -127,6 +139,15 @@ class AdsApi
             'application/json',
         ],
         'listConversionDestinations' => [
+            'application/json',
+        ],
+        'listFormLeads' => [
+            'application/json',
+        ],
+        'listLeadForms' => [
+            'application/json',
+        ],
+        'listLeads' => [
             'application/json',
         ],
         'removeConversionAssociations' => [
@@ -517,6 +538,313 @@ class AdsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation archiveLeadForm
+     *
+     * Archive a Lead Gen form
+     *
+     * @param  string $form_id form_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLeadForm'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ArchiveLeadForm200Response|\Zernio\Model\InlineObject
+     */
+    public function archiveLeadForm($form_id, $account_id, string $contentType = self::contentTypes['archiveLeadForm'][0])
+    {
+        list($response) = $this->archiveLeadFormWithHttpInfo($form_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation archiveLeadFormWithHttpInfo
+     *
+     * Archive a Lead Gen form
+     *
+     * @param  string $form_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLeadForm'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ArchiveLeadForm200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function archiveLeadFormWithHttpInfo($form_id, $account_id, string $contentType = self::contentTypes['archiveLeadForm'][0])
+    {
+        $request = $this->archiveLeadFormRequest($form_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ArchiveLeadForm200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ArchiveLeadForm200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ArchiveLeadForm200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation archiveLeadFormAsync
+     *
+     * Archive a Lead Gen form
+     *
+     * @param  string $form_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLeadForm'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function archiveLeadFormAsync($form_id, $account_id, string $contentType = self::contentTypes['archiveLeadForm'][0])
+    {
+        return $this->archiveLeadFormAsyncWithHttpInfo($form_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation archiveLeadFormAsyncWithHttpInfo
+     *
+     * Archive a Lead Gen form
+     *
+     * @param  string $form_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLeadForm'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function archiveLeadFormAsyncWithHttpInfo($form_id, $account_id, string $contentType = self::contentTypes['archiveLeadForm'][0])
+    {
+        $returnType = '\Zernio\Model\ArchiveLeadForm200Response';
+        $request = $this->archiveLeadFormRequest($form_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'archiveLeadForm'
+     *
+     * @param  string $form_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLeadForm'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function archiveLeadFormRequest($form_id, $account_id, string $contentType = self::contentTypes['archiveLeadForm'][0])
+    {
+
+        // verify the required parameter 'form_id' is set
+        if ($form_id === null || (is_array($form_id) && count($form_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $form_id when calling archiveLeadForm'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling archiveLeadForm'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/lead-forms/{formId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($form_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'formId' . '}',
+                ObjectSerializer::toPathValue($form_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1399,6 +1727,291 @@ class AdsApi
     }
 
     /**
+     * Operation createLeadForm
+     *
+     * Create a Lead Gen (Instant) form
+     *
+     * @param  \Zernio\Model\CreateLeadFormRequest $create_lead_form_request create_lead_form_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLeadForm'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateLeadForm200Response|\Zernio\Model\InlineObject
+     */
+    public function createLeadForm($create_lead_form_request, string $contentType = self::contentTypes['createLeadForm'][0])
+    {
+        list($response) = $this->createLeadFormWithHttpInfo($create_lead_form_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createLeadFormWithHttpInfo
+     *
+     * Create a Lead Gen (Instant) form
+     *
+     * @param  \Zernio\Model\CreateLeadFormRequest $create_lead_form_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLeadForm'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateLeadForm200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createLeadFormWithHttpInfo($create_lead_form_request, string $contentType = self::contentTypes['createLeadForm'][0])
+    {
+        $request = $this->createLeadFormRequest($create_lead_form_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateLeadForm200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateLeadForm200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateLeadForm200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createLeadFormAsync
+     *
+     * Create a Lead Gen (Instant) form
+     *
+     * @param  \Zernio\Model\CreateLeadFormRequest $create_lead_form_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLeadForm'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createLeadFormAsync($create_lead_form_request, string $contentType = self::contentTypes['createLeadForm'][0])
+    {
+        return $this->createLeadFormAsyncWithHttpInfo($create_lead_form_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createLeadFormAsyncWithHttpInfo
+     *
+     * Create a Lead Gen (Instant) form
+     *
+     * @param  \Zernio\Model\CreateLeadFormRequest $create_lead_form_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLeadForm'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createLeadFormAsyncWithHttpInfo($create_lead_form_request, string $contentType = self::contentTypes['createLeadForm'][0])
+    {
+        $returnType = '\Zernio\Model\CreateLeadForm200Response';
+        $request = $this->createLeadFormRequest($create_lead_form_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createLeadForm'
+     *
+     * @param  \Zernio\Model\CreateLeadFormRequest $create_lead_form_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLeadForm'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createLeadFormRequest($create_lead_form_request, string $contentType = self::contentTypes['createLeadForm'][0])
+    {
+
+        // verify the required parameter 'create_lead_form_request' is set
+        if ($create_lead_form_request === null || (is_array($create_lead_form_request) && count($create_lead_form_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_lead_form_request when calling createLeadForm'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/lead-forms';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_lead_form_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_lead_form_request));
+            } else {
+                $httpBody = $create_lead_form_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createStandaloneAd
      *
      * Create standalone ad
@@ -1632,6 +2245,311 @@ class AdsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_standalone_ad_request));
             } else {
                 $httpBody = $create_standalone_ad_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createTestLead
+     *
+     * Create a synthetic test lead
+     *
+     * @param  string $form_id form_id (required)
+     * @param  \Zernio\Model\CreateTestLeadRequest $create_test_lead_request create_test_lead_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTestLead'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateTestLead200Response|\Zernio\Model\InlineObject
+     */
+    public function createTestLead($form_id, $create_test_lead_request, string $contentType = self::contentTypes['createTestLead'][0])
+    {
+        list($response) = $this->createTestLeadWithHttpInfo($form_id, $create_test_lead_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createTestLeadWithHttpInfo
+     *
+     * Create a synthetic test lead
+     *
+     * @param  string $form_id (required)
+     * @param  \Zernio\Model\CreateTestLeadRequest $create_test_lead_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTestLead'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateTestLead200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createTestLeadWithHttpInfo($form_id, $create_test_lead_request, string $contentType = self::contentTypes['createTestLead'][0])
+    {
+        $request = $this->createTestLeadRequest($form_id, $create_test_lead_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateTestLead200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateTestLead200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateTestLead200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createTestLeadAsync
+     *
+     * Create a synthetic test lead
+     *
+     * @param  string $form_id (required)
+     * @param  \Zernio\Model\CreateTestLeadRequest $create_test_lead_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTestLead'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createTestLeadAsync($form_id, $create_test_lead_request, string $contentType = self::contentTypes['createTestLead'][0])
+    {
+        return $this->createTestLeadAsyncWithHttpInfo($form_id, $create_test_lead_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createTestLeadAsyncWithHttpInfo
+     *
+     * Create a synthetic test lead
+     *
+     * @param  string $form_id (required)
+     * @param  \Zernio\Model\CreateTestLeadRequest $create_test_lead_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTestLead'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createTestLeadAsyncWithHttpInfo($form_id, $create_test_lead_request, string $contentType = self::contentTypes['createTestLead'][0])
+    {
+        $returnType = '\Zernio\Model\CreateTestLead200Response';
+        $request = $this->createTestLeadRequest($form_id, $create_test_lead_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createTestLead'
+     *
+     * @param  string $form_id (required)
+     * @param  \Zernio\Model\CreateTestLeadRequest $create_test_lead_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTestLead'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createTestLeadRequest($form_id, $create_test_lead_request, string $contentType = self::contentTypes['createTestLead'][0])
+    {
+
+        // verify the required parameter 'form_id' is set
+        if ($form_id === null || (is_array($form_id) && count($form_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $form_id when calling createTestLead'
+            );
+        }
+
+        // verify the required parameter 'create_test_lead_request' is set
+        if ($create_test_lead_request === null || (is_array($create_test_lead_request) && count($create_test_lead_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_test_lead_request when calling createTestLead'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/lead-forms/{formId}/test-leads';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($form_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'formId' . '}',
+                ObjectSerializer::toPathValue($form_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_test_lead_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_test_lead_request));
+            } else {
+                $httpBody = $create_test_lead_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -4255,6 +5173,313 @@ class AdsApi
     }
 
     /**
+     * Operation getLeadForm
+     *
+     * Get a single Lead Gen form
+     *
+     * @param  string $form_id form_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetLeadForm200Response|\Zernio\Model\InlineObject
+     */
+    public function getLeadForm($form_id, $account_id, string $contentType = self::contentTypes['getLeadForm'][0])
+    {
+        list($response) = $this->getLeadFormWithHttpInfo($form_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getLeadFormWithHttpInfo
+     *
+     * Get a single Lead Gen form
+     *
+     * @param  string $form_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetLeadForm200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getLeadFormWithHttpInfo($form_id, $account_id, string $contentType = self::contentTypes['getLeadForm'][0])
+    {
+        $request = $this->getLeadFormRequest($form_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetLeadForm200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetLeadForm200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetLeadForm200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getLeadFormAsync
+     *
+     * Get a single Lead Gen form
+     *
+     * @param  string $form_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getLeadFormAsync($form_id, $account_id, string $contentType = self::contentTypes['getLeadForm'][0])
+    {
+        return $this->getLeadFormAsyncWithHttpInfo($form_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getLeadFormAsyncWithHttpInfo
+     *
+     * Get a single Lead Gen form
+     *
+     * @param  string $form_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getLeadFormAsyncWithHttpInfo($form_id, $account_id, string $contentType = self::contentTypes['getLeadForm'][0])
+    {
+        $returnType = '\Zernio\Model\GetLeadForm200Response';
+        $request = $this->getLeadFormRequest($form_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getLeadForm'
+     *
+     * @param  string $form_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLeadForm'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getLeadFormRequest($form_id, $account_id, string $contentType = self::contentTypes['getLeadForm'][0])
+    {
+
+        // verify the required parameter 'form_id' is set
+        if ($form_id === null || (is_array($form_id) && count($form_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $form_id when calling getLeadForm'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getLeadForm'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/lead-forms/{formId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($form_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'formId' . '}',
+                ObjectSerializer::toPathValue($form_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listAdAccounts
      *
      * List ad accounts
@@ -5903,6 +7128,1034 @@ class AdsApi
                 $resourcePath
             );
         }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listFormLeads
+     *
+     * List leads for a single form
+     *
+     * @param  string $form_id form_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  int|null $limit limit (optional, default to 25)
+     * @param  string|null $cursor cursor (optional)
+     * @param  int|null $since Unix seconds. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listFormLeads'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListFormLeads200Response|\Zernio\Model\InlineObject
+     */
+    public function listFormLeads($form_id, $account_id, $limit = 25, $cursor = null, $since = null, string $contentType = self::contentTypes['listFormLeads'][0])
+    {
+        list($response) = $this->listFormLeadsWithHttpInfo($form_id, $account_id, $limit, $cursor, $since, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listFormLeadsWithHttpInfo
+     *
+     * List leads for a single form
+     *
+     * @param  string $form_id (required)
+     * @param  string $account_id (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string|null $cursor (optional)
+     * @param  int|null $since Unix seconds. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listFormLeads'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListFormLeads200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listFormLeadsWithHttpInfo($form_id, $account_id, $limit = 25, $cursor = null, $since = null, string $contentType = self::contentTypes['listFormLeads'][0])
+    {
+        $request = $this->listFormLeadsRequest($form_id, $account_id, $limit, $cursor, $since, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListFormLeads200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListFormLeads200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListFormLeads200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listFormLeadsAsync
+     *
+     * List leads for a single form
+     *
+     * @param  string $form_id (required)
+     * @param  string $account_id (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string|null $cursor (optional)
+     * @param  int|null $since Unix seconds. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listFormLeads'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listFormLeadsAsync($form_id, $account_id, $limit = 25, $cursor = null, $since = null, string $contentType = self::contentTypes['listFormLeads'][0])
+    {
+        return $this->listFormLeadsAsyncWithHttpInfo($form_id, $account_id, $limit, $cursor, $since, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listFormLeadsAsyncWithHttpInfo
+     *
+     * List leads for a single form
+     *
+     * @param  string $form_id (required)
+     * @param  string $account_id (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string|null $cursor (optional)
+     * @param  int|null $since Unix seconds. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listFormLeads'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listFormLeadsAsyncWithHttpInfo($form_id, $account_id, $limit = 25, $cursor = null, $since = null, string $contentType = self::contentTypes['listFormLeads'][0])
+    {
+        $returnType = '\Zernio\Model\ListFormLeads200Response';
+        $request = $this->listFormLeadsRequest($form_id, $account_id, $limit, $cursor, $since, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listFormLeads'
+     *
+     * @param  string $form_id (required)
+     * @param  string $account_id (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string|null $cursor (optional)
+     * @param  int|null $since Unix seconds. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listFormLeads'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listFormLeadsRequest($form_id, $account_id, $limit = 25, $cursor = null, $since = null, string $contentType = self::contentTypes['listFormLeads'][0])
+    {
+
+        // verify the required parameter 'form_id' is set
+        if ($form_id === null || (is_array($form_id) && count($form_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $form_id when calling listFormLeads'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listFormLeads'
+            );
+        }
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.listFormLeads, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.listFormLeads, must be bigger than or equal to 1.');
+        }
+        
+
+
+
+        $resourcePath = '/v1/ads/lead-forms/{formId}/leads';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cursor,
+            'cursor', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $since,
+            'since', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($form_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'formId' . '}',
+                ObjectSerializer::toPathValue($form_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listLeadForms
+     *
+     * List Lead Gen (Instant) forms
+     *
+     * @param  string $account_id Connected facebook account id. (required)
+     * @param  int|null $limit limit (optional, default to 25)
+     * @param  string|null $cursor cursor (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeadForms'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListLeadForms200Response|\Zernio\Model\InlineObject
+     */
+    public function listLeadForms($account_id, $limit = 25, $cursor = null, string $contentType = self::contentTypes['listLeadForms'][0])
+    {
+        list($response) = $this->listLeadFormsWithHttpInfo($account_id, $limit, $cursor, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listLeadFormsWithHttpInfo
+     *
+     * List Lead Gen (Instant) forms
+     *
+     * @param  string $account_id Connected facebook account id. (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string|null $cursor (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeadForms'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListLeadForms200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listLeadFormsWithHttpInfo($account_id, $limit = 25, $cursor = null, string $contentType = self::contentTypes['listLeadForms'][0])
+    {
+        $request = $this->listLeadFormsRequest($account_id, $limit, $cursor, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListLeadForms200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListLeadForms200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListLeadForms200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listLeadFormsAsync
+     *
+     * List Lead Gen (Instant) forms
+     *
+     * @param  string $account_id Connected facebook account id. (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string|null $cursor (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeadForms'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listLeadFormsAsync($account_id, $limit = 25, $cursor = null, string $contentType = self::contentTypes['listLeadForms'][0])
+    {
+        return $this->listLeadFormsAsyncWithHttpInfo($account_id, $limit, $cursor, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listLeadFormsAsyncWithHttpInfo
+     *
+     * List Lead Gen (Instant) forms
+     *
+     * @param  string $account_id Connected facebook account id. (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string|null $cursor (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeadForms'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listLeadFormsAsyncWithHttpInfo($account_id, $limit = 25, $cursor = null, string $contentType = self::contentTypes['listLeadForms'][0])
+    {
+        $returnType = '\Zernio\Model\ListLeadForms200Response';
+        $request = $this->listLeadFormsRequest($account_id, $limit, $cursor, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listLeadForms'
+     *
+     * @param  string $account_id Connected facebook account id. (required)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  string|null $cursor (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeadForms'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listLeadFormsRequest($account_id, $limit = 25, $cursor = null, string $contentType = self::contentTypes['listLeadForms'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listLeadForms'
+            );
+        }
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.listLeadForms, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.listLeadForms, must be bigger than or equal to 1.');
+        }
+        
+
+
+        $resourcePath = '/v1/ads/lead-forms';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cursor,
+            'cursor', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listLeads
+     *
+     * List submitted leads (cross-form CRM view)
+     *
+     * @param  string|null $form_id Filter to a single lead form. (optional)
+     * @param  string|null $account_id Filter to a single connected account. (optional)
+     * @param  int|null $limit limit (optional, default to 25)
+     * @param  int|null $since Unix seconds; only leads created at/after this Meta timestamp. (optional)
+     * @param  string|null $cursor Keyset cursor from a previous response&#39;s pagination.cursor. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeads'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListLeads200Response|\Zernio\Model\InlineObject
+     */
+    public function listLeads($form_id = null, $account_id = null, $limit = 25, $since = null, $cursor = null, string $contentType = self::contentTypes['listLeads'][0])
+    {
+        list($response) = $this->listLeadsWithHttpInfo($form_id, $account_id, $limit, $since, $cursor, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listLeadsWithHttpInfo
+     *
+     * List submitted leads (cross-form CRM view)
+     *
+     * @param  string|null $form_id Filter to a single lead form. (optional)
+     * @param  string|null $account_id Filter to a single connected account. (optional)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  int|null $since Unix seconds; only leads created at/after this Meta timestamp. (optional)
+     * @param  string|null $cursor Keyset cursor from a previous response&#39;s pagination.cursor. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeads'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListLeads200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listLeadsWithHttpInfo($form_id = null, $account_id = null, $limit = 25, $since = null, $cursor = null, string $contentType = self::contentTypes['listLeads'][0])
+    {
+        $request = $this->listLeadsRequest($form_id, $account_id, $limit, $since, $cursor, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListLeads200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListLeads200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListLeads200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listLeadsAsync
+     *
+     * List submitted leads (cross-form CRM view)
+     *
+     * @param  string|null $form_id Filter to a single lead form. (optional)
+     * @param  string|null $account_id Filter to a single connected account. (optional)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  int|null $since Unix seconds; only leads created at/after this Meta timestamp. (optional)
+     * @param  string|null $cursor Keyset cursor from a previous response&#39;s pagination.cursor. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeads'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listLeadsAsync($form_id = null, $account_id = null, $limit = 25, $since = null, $cursor = null, string $contentType = self::contentTypes['listLeads'][0])
+    {
+        return $this->listLeadsAsyncWithHttpInfo($form_id, $account_id, $limit, $since, $cursor, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listLeadsAsyncWithHttpInfo
+     *
+     * List submitted leads (cross-form CRM view)
+     *
+     * @param  string|null $form_id Filter to a single lead form. (optional)
+     * @param  string|null $account_id Filter to a single connected account. (optional)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  int|null $since Unix seconds; only leads created at/after this Meta timestamp. (optional)
+     * @param  string|null $cursor Keyset cursor from a previous response&#39;s pagination.cursor. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeads'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listLeadsAsyncWithHttpInfo($form_id = null, $account_id = null, $limit = 25, $since = null, $cursor = null, string $contentType = self::contentTypes['listLeads'][0])
+    {
+        $returnType = '\Zernio\Model\ListLeads200Response';
+        $request = $this->listLeadsRequest($form_id, $account_id, $limit, $since, $cursor, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listLeads'
+     *
+     * @param  string|null $form_id Filter to a single lead form. (optional)
+     * @param  string|null $account_id Filter to a single connected account. (optional)
+     * @param  int|null $limit (optional, default to 25)
+     * @param  int|null $since Unix seconds; only leads created at/after this Meta timestamp. (optional)
+     * @param  string|null $cursor Keyset cursor from a previous response&#39;s pagination.cursor. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listLeads'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listLeadsRequest($form_id = null, $account_id = null, $limit = 25, $since = null, $cursor = null, string $contentType = self::contentTypes['listLeads'][0])
+    {
+
+
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.listLeads, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling AdsApi.listLeads, must be bigger than or equal to 1.');
+        }
+        
+
+
+
+        $resourcePath = '/v1/ads/leads';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $form_id,
+            'formId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $since,
+            'since', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $cursor,
+            'cursor', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
 
 
         $headers = $this->headerSelector->selectHeaders(
