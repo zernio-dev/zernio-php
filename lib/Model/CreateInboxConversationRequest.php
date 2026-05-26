@@ -62,7 +62,10 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'participant_id' => 'string',
         'participant_username' => 'string',
         'message' => 'string',
-        'skip_dm_check' => 'bool'
+        'skip_dm_check' => 'bool',
+        'template_name' => 'string',
+        'template_language' => 'string',
+        'template_params' => 'string[]'
     ];
 
     /**
@@ -77,7 +80,10 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'participant_id' => null,
         'participant_username' => null,
         'message' => null,
-        'skip_dm_check' => null
+        'skip_dm_check' => null,
+        'template_name' => null,
+        'template_language' => null,
+        'template_params' => null
     ];
 
     /**
@@ -90,7 +96,10 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'participant_id' => false,
         'participant_username' => false,
         'message' => false,
-        'skip_dm_check' => false
+        'skip_dm_check' => false,
+        'template_name' => false,
+        'template_language' => false,
+        'template_params' => false
     ];
 
     /**
@@ -183,7 +192,10 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'participant_id' => 'participantId',
         'participant_username' => 'participantUsername',
         'message' => 'message',
-        'skip_dm_check' => 'skipDmCheck'
+        'skip_dm_check' => 'skipDmCheck',
+        'template_name' => 'templateName',
+        'template_language' => 'templateLanguage',
+        'template_params' => 'templateParams'
     ];
 
     /**
@@ -196,7 +208,10 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'participant_id' => 'setParticipantId',
         'participant_username' => 'setParticipantUsername',
         'message' => 'setMessage',
-        'skip_dm_check' => 'setSkipDmCheck'
+        'skip_dm_check' => 'setSkipDmCheck',
+        'template_name' => 'setTemplateName',
+        'template_language' => 'setTemplateLanguage',
+        'template_params' => 'setTemplateParams'
     ];
 
     /**
@@ -209,7 +224,10 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         'participant_id' => 'getParticipantId',
         'participant_username' => 'getParticipantUsername',
         'message' => 'getMessage',
-        'skip_dm_check' => 'getSkipDmCheck'
+        'skip_dm_check' => 'getSkipDmCheck',
+        'template_name' => 'getTemplateName',
+        'template_language' => 'getTemplateLanguage',
+        'template_params' => 'getTemplateParams'
     ];
 
     /**
@@ -274,6 +292,9 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('participant_username', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('skip_dm_check', $data ?? [], false);
+        $this->setIfExists('template_name', $data ?? [], null);
+        $this->setIfExists('template_language', $data ?? [], null);
+        $this->setIfExists('template_params', $data ?? [], null);
     }
 
     /**
@@ -361,7 +382,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets participant_id
      *
-     * @param string|null $participant_id Twitter numeric user ID of the recipient. Provide either this or participantUsername.
+     * @param string|null $participant_id Recipient identifier. For X this is the numeric user ID; for WhatsApp, the recipient phone number in international format (digits, country code included). Provide either this or participantUsername.
      *
      * @return self
      */
@@ -388,7 +409,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets participant_username
      *
-     * @param string|null $participant_username Twitter username (with or without @) of the recipient. Resolved to a user ID via lookup. Provide either this or participantId.
+     * @param string|null $participant_username Recipient handle/username — an X or Bluesky handle (with or without @) or a Reddit username (with or without u/). Resolved via lookup. Provide either this or participantId.
      *
      * @return self
      */
@@ -415,7 +436,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets message
      *
-     * @param string|null $message Text content of the message. At least one of message or attachment is required.
+     * @param string|null $message Text content of the message. At least one of message, attachment, or (for WhatsApp) templateName is required.
      *
      * @return self
      */
@@ -442,7 +463,7 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets skip_dm_check
      *
-     * @param bool|null $skip_dm_check Skip the receives_your_dm eligibility check before sending. Use if you have already verified the recipient accepts DMs.
+     * @param bool|null $skip_dm_check X/Twitter only. Skip the receives_your_dm eligibility check before sending. Use if you have already verified the recipient accepts DMs.
      *
      * @return self
      */
@@ -452,6 +473,87 @@ class CreateInboxConversationRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable skip_dm_check cannot be null');
         }
         $this->container['skip_dm_check'] = $skip_dm_check;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_name
+     *
+     * @return string|null
+     */
+    public function getTemplateName()
+    {
+        return $this->container['template_name'];
+    }
+
+    /**
+     * Sets template_name
+     *
+     * @param string|null $template_name WhatsApp only. Name of the approved template to start the conversation with (required for WhatsApp).
+     *
+     * @return self
+     */
+    public function setTemplateName($template_name)
+    {
+        if (is_null($template_name)) {
+            throw new \InvalidArgumentException('non-nullable template_name cannot be null');
+        }
+        $this->container['template_name'] = $template_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_language
+     *
+     * @return string|null
+     */
+    public function getTemplateLanguage()
+    {
+        return $this->container['template_language'];
+    }
+
+    /**
+     * Sets template_language
+     *
+     * @param string|null $template_language WhatsApp only. Template language code (e.g. en_US).
+     *
+     * @return self
+     */
+    public function setTemplateLanguage($template_language)
+    {
+        if (is_null($template_language)) {
+            throw new \InvalidArgumentException('non-nullable template_language cannot be null');
+        }
+        $this->container['template_language'] = $template_language;
+
+        return $this;
+    }
+
+    /**
+     * Gets template_params
+     *
+     * @return string[]|null
+     */
+    public function getTemplateParams()
+    {
+        return $this->container['template_params'];
+    }
+
+    /**
+     * Sets template_params
+     *
+     * @param string[]|null $template_params WhatsApp only. Body variable values, in order, substituted into the template body ({{1}}, {{2}}, ...).
+     *
+     * @return self
+     */
+    public function setTemplateParams($template_params)
+    {
+        if (is_null($template_params)) {
+            throw new \InvalidArgumentException('non-nullable template_params cannot be null');
+        }
+        $this->container['template_params'] = $template_params;
 
         return $this;
     }
