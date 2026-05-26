@@ -82,7 +82,8 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'delivered_at' => '\DateTime',
         'read_at' => '\DateTime',
         'sent_at' => '\DateTime',
-        'delivery_error' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError'
+        'delivery_error' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError',
+        'reactions' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerReactionsInner[]'
     ];
 
     /**
@@ -117,7 +118,8 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'delivered_at' => 'date-time',
         'read_at' => 'date-time',
         'sent_at' => 'date-time',
-        'delivery_error' => null
+        'delivery_error' => null,
+        'reactions' => null
     ];
 
     /**
@@ -150,7 +152,8 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'delivered_at' => false,
         'read_at' => false,
         'sent_at' => false,
-        'delivery_error' => false
+        'delivery_error' => false,
+        'reactions' => false
     ];
 
     /**
@@ -263,7 +266,8 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'delivered_at' => 'deliveredAt',
         'read_at' => 'readAt',
         'sent_at' => 'sentAt',
-        'delivery_error' => 'deliveryError'
+        'delivery_error' => 'deliveryError',
+        'reactions' => 'reactions'
     ];
 
     /**
@@ -296,7 +300,8 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'delivered_at' => 'setDeliveredAt',
         'read_at' => 'setReadAt',
         'sent_at' => 'setSentAt',
-        'delivery_error' => 'setDeliveryError'
+        'delivery_error' => 'setDeliveryError',
+        'reactions' => 'setReactions'
     ];
 
     /**
@@ -329,7 +334,8 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'delivered_at' => 'getDeliveredAt',
         'read_at' => 'getReadAt',
         'sent_at' => 'getSentAt',
-        'delivery_error' => 'getDeliveryError'
+        'delivery_error' => 'getDeliveryError',
+        'reactions' => 'getReactions'
     ];
 
     /**
@@ -469,6 +475,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         $this->setIfExists('read_at', $data ?? [], null);
         $this->setIfExists('sent_at', $data ?? [], null);
         $this->setIfExists('delivery_error', $data ?? [], null);
+        $this->setIfExists('reactions', $data ?? [], null);
     }
 
     /**
@@ -1241,6 +1248,33 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
             throw new \InvalidArgumentException('non-nullable delivery_error cannot be null');
         }
         $this->container['delivery_error'] = $delivery_error;
+
+        return $this;
+    }
+
+    /**
+     * Gets reactions
+     *
+     * @return \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerReactionsInner[]|null
+     */
+    public function getReactions()
+    {
+        return $this->container['reactions'];
+    }
+
+    /**
+     * Sets reactions
+     *
+     * @param \Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerReactionsInner[]|null $reactions Emoji reactions on this message (WhatsApp / Telegram). At most one per party in a 1:1 thread.
+     *
+     * @return self
+     */
+    public function setReactions($reactions)
+    {
+        if (is_null($reactions)) {
+            throw new \InvalidArgumentException('non-nullable reactions cannot be null');
+        }
+        $this->container['reactions'] = $reactions;
 
         return $this;
     }

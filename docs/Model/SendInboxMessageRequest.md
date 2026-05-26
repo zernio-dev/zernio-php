@@ -16,5 +16,7 @@ Name | Type | Description | Notes
 **messaging_type** | **string** | Facebook messaging type. Required when using messageTag. | [optional]
 **message_tag** | **string** | Facebook message tag for messaging outside 24h window. Requires messagingType MESSAGE_TAG. Instagram only supports HUMAN_AGENT. | [optional]
 **reply_to** | **string** | Platform message ID to quote-reply to. For WhatsApp, pass the wamid (available in message.platformMessageId from webhooks). For Telegram, pass the Telegram message ID. | [optional]
+**location** | [**\Zernio\Model\SendInboxMessageRequestLocation**](SendInboxMessageRequestLocation.md) |  | [optional]
+**contacts** | [**\Zernio\Model\SendInboxMessageRequestContactsInner[]**](SendInboxMessageRequestContactsInner.md) | WhatsApp-only. Send one or more contact cards. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

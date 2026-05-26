@@ -69,7 +69,9 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'reply_markup' => '\Zernio\Model\SendInboxMessageRequestReplyMarkup',
         'messaging_type' => 'string',
         'message_tag' => 'string',
-        'reply_to' => 'string'
+        'reply_to' => 'string',
+        'location' => '\Zernio\Model\SendInboxMessageRequestLocation',
+        'contacts' => '\Zernio\Model\SendInboxMessageRequestContactsInner[]'
     ];
 
     /**
@@ -91,7 +93,9 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'reply_markup' => null,
         'messaging_type' => null,
         'message_tag' => null,
-        'reply_to' => null
+        'reply_to' => null,
+        'location' => null,
+        'contacts' => null
     ];
 
     /**
@@ -111,7 +115,9 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'reply_markup' => false,
         'messaging_type' => false,
         'message_tag' => false,
-        'reply_to' => false
+        'reply_to' => false,
+        'location' => false,
+        'contacts' => false
     ];
 
     /**
@@ -211,7 +217,9 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'reply_markup' => 'replyMarkup',
         'messaging_type' => 'messagingType',
         'message_tag' => 'messageTag',
-        'reply_to' => 'replyTo'
+        'reply_to' => 'replyTo',
+        'location' => 'location',
+        'contacts' => 'contacts'
     ];
 
     /**
@@ -231,7 +239,9 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'reply_markup' => 'setReplyMarkup',
         'messaging_type' => 'setMessagingType',
         'message_tag' => 'setMessageTag',
-        'reply_to' => 'setReplyTo'
+        'reply_to' => 'setReplyTo',
+        'location' => 'setLocation',
+        'contacts' => 'setContacts'
     ];
 
     /**
@@ -251,7 +261,9 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'reply_markup' => 'getReplyMarkup',
         'messaging_type' => 'getMessagingType',
         'message_tag' => 'getMessageTag',
-        'reply_to' => 'getReplyTo'
+        'reply_to' => 'getReplyTo',
+        'location' => 'getLocation',
+        'contacts' => 'getContacts'
     ];
 
     /**
@@ -378,6 +390,8 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('messaging_type', $data ?? [], null);
         $this->setIfExists('message_tag', $data ?? [], null);
         $this->setIfExists('reply_to', $data ?? [], null);
+        $this->setIfExists('location', $data ?? [], null);
+        $this->setIfExists('contacts', $data ?? [], null);
     }
 
     /**
@@ -818,6 +832,60 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable reply_to cannot be null');
         }
         $this->container['reply_to'] = $reply_to;
+
+        return $this;
+    }
+
+    /**
+     * Gets location
+     *
+     * @return \Zernio\Model\SendInboxMessageRequestLocation|null
+     */
+    public function getLocation()
+    {
+        return $this->container['location'];
+    }
+
+    /**
+     * Sets location
+     *
+     * @param \Zernio\Model\SendInboxMessageRequestLocation|null $location location
+     *
+     * @return self
+     */
+    public function setLocation($location)
+    {
+        if (is_null($location)) {
+            throw new \InvalidArgumentException('non-nullable location cannot be null');
+        }
+        $this->container['location'] = $location;
+
+        return $this;
+    }
+
+    /**
+     * Gets contacts
+     *
+     * @return \Zernio\Model\SendInboxMessageRequestContactsInner[]|null
+     */
+    public function getContacts()
+    {
+        return $this->container['contacts'];
+    }
+
+    /**
+     * Sets contacts
+     *
+     * @param \Zernio\Model\SendInboxMessageRequestContactsInner[]|null $contacts WhatsApp-only. Send one or more contact cards.
+     *
+     * @return self
+     */
+    public function setContacts($contacts)
+    {
+        if (is_null($contacts)) {
+            throw new \InvalidArgumentException('non-nullable contacts cannot be null');
+        }
+        $this->container['contacts'] = $contacts;
 
         return $this;
     }

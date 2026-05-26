@@ -404,6 +404,7 @@ docs/Model/GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner.
 docs/Model/GetInboxConversationMessages200ResponseMessagesInnerDeliveryError.md
 docs/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner.md
 docs/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner.md
+docs/Model/GetInboxConversationMessages200ResponseMessagesInnerReactionsInner.md
 docs/Model/GetInboxConversationMessages200ResponsePagination.md
 docs/Model/GetInboxPostComments200Response.md
 docs/Model/GetInboxPostComments200ResponseCommentsInner.md
@@ -732,6 +733,10 @@ docs/Model/SendInboxMessage200ResponseData.md
 docs/Model/SendInboxMessage400Response.md
 docs/Model/SendInboxMessageRequest.md
 docs/Model/SendInboxMessageRequestButtonsInner.md
+docs/Model/SendInboxMessageRequestContactsInner.md
+docs/Model/SendInboxMessageRequestContactsInnerEmailsInner.md
+docs/Model/SendInboxMessageRequestContactsInnerName.md
+docs/Model/SendInboxMessageRequestContactsInnerPhonesInner.md
 docs/Model/SendInboxMessageRequestInteractive.md
 docs/Model/SendInboxMessageRequestInteractiveAction.md
 docs/Model/SendInboxMessageRequestInteractiveActionOneOf.md
@@ -746,6 +751,7 @@ docs/Model/SendInboxMessageRequestInteractiveBody.md
 docs/Model/SendInboxMessageRequestInteractiveFooter.md
 docs/Model/SendInboxMessageRequestInteractiveHeader.md
 docs/Model/SendInboxMessageRequestInteractiveHeaderImage.md
+docs/Model/SendInboxMessageRequestLocation.md
 docs/Model/SendInboxMessageRequestQuickRepliesInner.md
 docs/Model/SendInboxMessageRequestReplyMarkup.md
 docs/Model/SendInboxMessageRequestReplyMarkupKeyboardInnerInner.md
@@ -1416,6 +1422,7 @@ lib/Model/GetInboxConversationMessages200ResponseMessagesInnerAttachmentsInner.p
 lib/Model/GetInboxConversationMessages200ResponseMessagesInnerDeliveryError.php
 lib/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInner.php
 lib/Model/GetInboxConversationMessages200ResponseMessagesInnerEditHistoryInnerAttachmentsInner.php
+lib/Model/GetInboxConversationMessages200ResponseMessagesInnerReactionsInner.php
 lib/Model/GetInboxConversationMessages200ResponsePagination.php
 lib/Model/GetInboxPostComments200Response.php
 lib/Model/GetInboxPostComments200ResponseCommentsInner.php
@@ -1745,6 +1752,10 @@ lib/Model/SendInboxMessage200ResponseData.php
 lib/Model/SendInboxMessage400Response.php
 lib/Model/SendInboxMessageRequest.php
 lib/Model/SendInboxMessageRequestButtonsInner.php
+lib/Model/SendInboxMessageRequestContactsInner.php
+lib/Model/SendInboxMessageRequestContactsInnerEmailsInner.php
+lib/Model/SendInboxMessageRequestContactsInnerName.php
+lib/Model/SendInboxMessageRequestContactsInnerPhonesInner.php
 lib/Model/SendInboxMessageRequestInteractive.php
 lib/Model/SendInboxMessageRequestInteractiveAction.php
 lib/Model/SendInboxMessageRequestInteractiveActionOneOf.php
@@ -1759,6 +1770,7 @@ lib/Model/SendInboxMessageRequestInteractiveBody.php
 lib/Model/SendInboxMessageRequestInteractiveFooter.php
 lib/Model/SendInboxMessageRequestInteractiveHeader.php
 lib/Model/SendInboxMessageRequestInteractiveHeaderImage.php
+lib/Model/SendInboxMessageRequestLocation.php
 lib/Model/SendInboxMessageRequestQuickRepliesInner.php
 lib/Model/SendInboxMessageRequestReplyMarkup.php
 lib/Model/SendInboxMessageRequestReplyMarkupKeyboardInnerInner.php
@@ -2025,3 +2037,9 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetInboxConversationMessages200ResponseMessagesInnerReactionsInnerTest.php
+test/Model/SendInboxMessageRequestContactsInnerEmailsInnerTest.php
+test/Model/SendInboxMessageRequestContactsInnerNameTest.php
+test/Model/SendInboxMessageRequestContactsInnerPhonesInnerTest.php
+test/Model/SendInboxMessageRequestContactsInnerTest.php
+test/Model/SendInboxMessageRequestLocationTest.php

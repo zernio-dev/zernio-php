@@ -29,5 +29,6 @@ Name | Type | Description | Notes
 **read_at** | **\DateTime** |  | [optional]
 **sent_at** | **\DateTime** | Original send time for outgoing messages (used for Messenger watermark queries). | [optional]
 **delivery_error** | [**\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError**](GetInboxConversationMessages200ResponseMessagesInnerDeliveryError.md) |  | [optional]
+**reactions** | [**\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerReactionsInner[]**](GetInboxConversationMessages200ResponseMessagesInnerReactionsInner.md) | Emoji reactions on this message (WhatsApp / Telegram). At most one per party in a 1:1 thread. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
