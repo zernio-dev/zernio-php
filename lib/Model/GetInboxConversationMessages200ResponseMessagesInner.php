@@ -83,7 +83,8 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'read_at' => '\DateTime',
         'sent_at' => '\DateTime',
         'delivery_error' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerDeliveryError',
-        'reactions' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerReactionsInner[]'
+        'reactions' => '\Zernio\Model\GetInboxConversationMessages200ResponseMessagesInnerReactionsInner[]',
+        'metadata' => 'array<string,mixed>'
     ];
 
     /**
@@ -119,7 +120,8 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'read_at' => 'date-time',
         'sent_at' => 'date-time',
         'delivery_error' => null,
-        'reactions' => null
+        'reactions' => null,
+        'metadata' => null
     ];
 
     /**
@@ -153,7 +155,8 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'read_at' => false,
         'sent_at' => false,
         'delivery_error' => false,
-        'reactions' => false
+        'reactions' => false,
+        'metadata' => false
     ];
 
     /**
@@ -267,7 +270,8 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'read_at' => 'readAt',
         'sent_at' => 'sentAt',
         'delivery_error' => 'deliveryError',
-        'reactions' => 'reactions'
+        'reactions' => 'reactions',
+        'metadata' => 'metadata'
     ];
 
     /**
@@ -301,7 +305,8 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'read_at' => 'setReadAt',
         'sent_at' => 'setSentAt',
         'delivery_error' => 'setDeliveryError',
-        'reactions' => 'setReactions'
+        'reactions' => 'setReactions',
+        'metadata' => 'setMetadata'
     ];
 
     /**
@@ -335,7 +340,8 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         'read_at' => 'getReadAt',
         'sent_at' => 'getSentAt',
         'delivery_error' => 'getDeliveryError',
-        'reactions' => 'getReactions'
+        'reactions' => 'getReactions',
+        'metadata' => 'getMetadata'
     ];
 
     /**
@@ -476,6 +482,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
         $this->setIfExists('sent_at', $data ?? [], null);
         $this->setIfExists('delivery_error', $data ?? [], null);
         $this->setIfExists('reactions', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -1275,6 +1282,33 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
             throw new \InvalidArgumentException('non-nullable reactions cannot be null');
         }
         $this->container['reactions'] = $reactions;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,mixed>|null $metadata Platform-specific extras. Free-form, but commonly includes: `quotedMessageId` (platformMessageId this message replies to), `waInteractive` (a compact descriptor of WhatsApp interactive content sent: buttons / list / cta_url / flow), and for inbound interactive taps `interactiveType` / `interactiveId`.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }

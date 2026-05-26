@@ -2037,9 +2037,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetInboxConversationMessages200ResponseMessagesInnerReactionsInnerTest.php
-test/Model/SendInboxMessageRequestContactsInnerEmailsInnerTest.php
-test/Model/SendInboxMessageRequestContactsInnerNameTest.php
-test/Model/SendInboxMessageRequestContactsInnerPhonesInnerTest.php
-test/Model/SendInboxMessageRequestContactsInnerTest.php
-test/Model/SendInboxMessageRequestLocationTest.php
