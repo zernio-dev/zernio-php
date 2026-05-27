@@ -409,7 +409,7 @@ class GetInboxConversationMessages200Response implements ModelInterface, ArrayAc
     /**
      * Sets sort_order_applied
      *
-     * @param string|null $sort_order_applied Sort order actually applied to the returned page. May differ from the requested `sortOrder` for Twitter, Facebook and Bluesky (always `desc` regardless of request).
+     * @param string|null $sort_order_applied Sort order actually applied to the returned page. May differ from the requested `sortOrder` for Facebook and Bluesky (always `desc` regardless of request).
      *
      * @return self
      */

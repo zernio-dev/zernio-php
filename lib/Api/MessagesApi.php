@@ -1770,7 +1770,7 @@ class MessagesApi
      * @param  string $account_id Social account ID (required)
      * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
      * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response. (optional)
-     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). For Twitter, Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1792,7 +1792,7 @@ class MessagesApi
      * @param  string $account_id Social account ID (required)
      * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
      * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response. (optional)
-     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). For Twitter, Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1895,7 +1895,7 @@ class MessagesApi
      * @param  string $account_id Social account ID (required)
      * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
      * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response. (optional)
-     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). For Twitter, Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1920,7 +1920,7 @@ class MessagesApi
      * @param  string $account_id Social account ID (required)
      * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
      * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response. (optional)
-     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). For Twitter, Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1974,7 +1974,7 @@ class MessagesApi
      * @param  string $account_id Social account ID (required)
      * @param  int|null $limit Number of messages to return per page. Default 100, max 100. (optional, default to 100)
      * @param  string|null $cursor Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response. (optional)
-     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). For Twitter, Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
+     * @param  string|null $sort_order Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. (optional, default to 'asc')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getInboxConversationMessages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

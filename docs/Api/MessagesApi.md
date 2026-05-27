@@ -343,7 +343,7 @@ getInboxConversationMessages($conversation_id, $account_id, $limit, $cursor, $so
 
 List messages
 
-Fetch messages for a specific conversation, with cursor-based pagination and ordering control.  Pagination: pass `pagination.nextCursor` from a prior response back as the `cursor` query param to fetch the next page. The cursor is opaque; do not parse or construct it client-side.  Sort order: defaults to `asc` (oldest first, chat style). For the \"show me the latest messages\" pattern, pass `?sortOrder=desc&limit=N`. For Twitter, Facebook and Bluesky, the upstream APIs only return newest-first and have no order parameter — sort order is best-effort and only reverses items within a single page (pages still walk newest→oldest). The response field `sortOrderApplied` tells you what was actually applied.  Reddit threads are paginated client-side because Reddit's API has no per-thread cursor. Very long threads may be upstream-truncated by Reddit's inbox/sent windows (~100 most-recent items each); this is a Reddit platform limitation.  Twitter/X limitation: X's encrypted \"X Chat\" messages are not accessible via the API. Conversations where the other participant uses encrypted X Chat may only show your outgoing messages. See the list conversations endpoint for more details.  This endpoint is read-only and does NOT mark messages as read or send read receipts. To mark a conversation read (and send WhatsApp blue ticks on eligible accounts), call `POST /v1/inbox/conversations/{conversationId}/read`.
+Fetch messages for a specific conversation, with cursor-based pagination and ordering control.  Pagination: pass `pagination.nextCursor` from a prior response back as the `cursor` query param to fetch the next page. The cursor is opaque; do not parse or construct it client-side.  Sort order: defaults to `asc` (oldest first, chat style). For the \"show me the latest messages\" pattern, pass `?sortOrder=desc&limit=N`. Twitter, Instagram, Telegram, WhatsApp and Reddit honor the requested order from the local message store. For Facebook and Bluesky, the upstream APIs only return newest-first and have no order parameter — sort order is best-effort and only reverses items within a single page (pages still walk newest→oldest). The response field `sortOrderApplied` tells you what was actually applied.  Reddit threads are paginated client-side because Reddit's API has no per-thread cursor. Very long threads may be upstream-truncated by Reddit's inbox/sent windows (~100 most-recent items each); this is a Reddit platform limitation.  Twitter/X limitation: X's encrypted \"X Chat\" messages are not accessible via the API. Conversations where the other participant uses encrypted X Chat may only show your outgoing messages. See the list conversations endpoint for more details.  This endpoint is read-only and does NOT mark messages as read or send read receipts. To mark a conversation read (and send WhatsApp blue ticks on eligible accounts), call `POST /v1/inbox/conversations/{conversationId}/read`.
 
 ### Example
 
@@ -366,7 +366,7 @@ $conversation_id = 'conversation_id_example'; // string | The conversation ID (i
 $account_id = 'account_id_example'; // string | Social account ID
 $limit = 100; // int | Number of messages to return per page. Default 100, max 100.
 $cursor = 'cursor_example'; // string | Opaque pagination cursor. Pass `pagination.nextCursor` from a prior response.
-$sort_order = 'asc'; // string | Order of returned messages. Default `asc` (oldest first, chat style). For Twitter, Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See `sortOrderApplied` in the response.
+$sort_order = 'asc'; // string | Order of returned messages. Default `asc` (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See `sortOrderApplied` in the response.
 
 try {
     $result = $apiInstance->getInboxConversationMessages($conversation_id, $account_id, $limit, $cursor, $sort_order);
@@ -384,7 +384,7 @@ try {
 | **account_id** | **string**| Social account ID | |
 | **limit** | **int**| Number of messages to return per page. Default 100, max 100. | [optional] [default to 100] |
 | **cursor** | **string**| Opaque pagination cursor. Pass &#x60;pagination.nextCursor&#x60; from a prior response. | [optional] |
-| **sort_order** | **string**| Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). For Twitter, Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. | [optional] [default to &#39;asc&#39;] |
+| **sort_order** | **string**| Order of returned messages. Default &#x60;asc&#x60; (oldest first, chat style). Twitter, Instagram, Telegram, WhatsApp and Reddit honor this order across cursor pages. For Facebook and Bluesky, only intra-page ordering is affected — pages always walk newest→oldest. See &#x60;sortOrderApplied&#x60; in the response. | [optional] [default to &#39;asc&#39;] |
 
 ### Return type
 
