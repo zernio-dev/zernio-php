@@ -366,6 +366,7 @@ Class | Method | HTTP request | Description
 *WhatsAppFlowsApi* | [**sendWhatsAppFlowMessage**](docs/Api/WhatsAppFlowsApi.md#sendwhatsappflowmessage) | **POST** /v1/whatsapp/flows/send | Send flow message
 *WhatsAppFlowsApi* | [**updateWhatsAppFlow**](docs/Api/WhatsAppFlowsApi.md#updatewhatsappflow) | **PATCH** /v1/whatsapp/flows/{flowId} | Update flow
 *WhatsAppFlowsApi* | [**uploadWhatsAppFlowJson**](docs/Api/WhatsAppFlowsApi.md#uploadwhatsappflowjson) | **PUT** /v1/whatsapp/flows/{flowId}/json | Upload flow JSON
+*WhatsAppPhoneNumbersApi* | [**getWhatsAppNumberInfo**](docs/Api/WhatsAppPhoneNumbersApi.md#getwhatsappnumberinfo) | **GET** /v1/whatsapp/number-info | Get number status
 *WhatsAppPhoneNumbersApi* | [**getWhatsAppPhoneNumber**](docs/Api/WhatsAppPhoneNumbersApi.md#getwhatsappphonenumber) | **GET** /v1/whatsapp/phone-numbers/{phoneNumberId} | Get phone number
 *WhatsAppPhoneNumbersApi* | [**getWhatsAppPhoneNumbers**](docs/Api/WhatsAppPhoneNumbersApi.md#getwhatsappphonenumbers) | **GET** /v1/whatsapp/phone-numbers | List phone numbers
 *WhatsAppPhoneNumbersApi* | [**purchaseWhatsAppPhoneNumber**](docs/Api/WhatsAppPhoneNumbersApi.md#purchasewhatsappphonenumber) | **POST** /v1/whatsapp/phone-numbers/purchase | Purchase phone number
@@ -813,6 +814,10 @@ Class | Method | HTTP request | Description
 - [GetWhatsAppLibraryTemplate200Response](docs/Model/GetWhatsAppLibraryTemplate200Response.md)
 - [GetWhatsAppLibraryTemplate200ResponseTemplate](docs/Model/GetWhatsAppLibraryTemplate200ResponseTemplate.md)
 - [GetWhatsAppLibraryTemplate200ResponseTemplateButtonsInner](docs/Model/GetWhatsAppLibraryTemplate200ResponseTemplateButtonsInner.md)
+- [GetWhatsAppNumberInfo200Response](docs/Model/GetWhatsAppNumberInfo200Response.md)
+- [GetWhatsAppNumberInfo200ResponsePhone](docs/Model/GetWhatsAppNumberInfo200ResponsePhone.md)
+- [GetWhatsAppNumberInfo200ResponsePhoneThroughput](docs/Model/GetWhatsAppNumberInfo200ResponsePhoneThroughput.md)
+- [GetWhatsAppNumberInfo200ResponseWaba](docs/Model/GetWhatsAppNumberInfo200ResponseWaba.md)
 - [GetWhatsAppPhoneNumber200Response](docs/Model/GetWhatsAppPhoneNumber200Response.md)
 - [GetWhatsAppPhoneNumber200ResponsePhoneNumber](docs/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.md)
 - [GetWhatsAppPhoneNumbers200Response](docs/Model/GetWhatsAppPhoneNumbers200Response.md)

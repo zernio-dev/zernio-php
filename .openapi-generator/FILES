@@ -488,6 +488,10 @@ docs/Model/GetWhatsAppGroupChat200ResponseGroupParticipantsInner.md
 docs/Model/GetWhatsAppLibraryTemplate200Response.md
 docs/Model/GetWhatsAppLibraryTemplate200ResponseTemplate.md
 docs/Model/GetWhatsAppLibraryTemplate200ResponseTemplateButtonsInner.md
+docs/Model/GetWhatsAppNumberInfo200Response.md
+docs/Model/GetWhatsAppNumberInfo200ResponsePhone.md
+docs/Model/GetWhatsAppNumberInfo200ResponsePhoneThroughput.md
+docs/Model/GetWhatsAppNumberInfo200ResponseWaba.md
 docs/Model/GetWhatsAppPhoneNumber200Response.md
 docs/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.md
 docs/Model/GetWhatsAppPhoneNumbers200Response.md
@@ -1515,6 +1519,10 @@ lib/Model/GetWhatsAppGroupChat200ResponseGroupParticipantsInner.php
 lib/Model/GetWhatsAppLibraryTemplate200Response.php
 lib/Model/GetWhatsAppLibraryTemplate200ResponseTemplate.php
 lib/Model/GetWhatsAppLibraryTemplate200ResponseTemplateButtonsInner.php
+lib/Model/GetWhatsAppNumberInfo200Response.php
+lib/Model/GetWhatsAppNumberInfo200ResponsePhone.php
+lib/Model/GetWhatsAppNumberInfo200ResponsePhoneThroughput.php
+lib/Model/GetWhatsAppNumberInfo200ResponseWaba.php
 lib/Model/GetWhatsAppPhoneNumber200Response.php
 lib/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.php
 lib/Model/GetWhatsAppPhoneNumbers200Response.php
@@ -2055,7 +2063,7 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/WhatsAppTemplatesApiTest.php
-test/Model/GetWhatsAppLibraryTemplate200ResponseTemplateButtonsInnerTest.php
-test/Model/GetWhatsAppLibraryTemplate200ResponseTemplateTest.php
-test/Model/GetWhatsAppLibraryTemplate200ResponseTest.php
+test/Model/GetWhatsAppNumberInfo200ResponsePhoneTest.php
+test/Model/GetWhatsAppNumberInfo200ResponsePhoneThroughputTest.php
+test/Model/GetWhatsAppNumberInfo200ResponseTest.php
+test/Model/GetWhatsAppNumberInfo200ResponseWabaTest.php
