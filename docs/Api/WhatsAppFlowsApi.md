@@ -12,6 +12,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getWhatsAppFlow()**](WhatsAppFlowsApi.md#getWhatsAppFlow) | **GET** /v1/whatsapp/flows/{flowId} | Get flow |
 | [**getWhatsAppFlowJson()**](WhatsAppFlowsApi.md#getWhatsAppFlowJson) | **GET** /v1/whatsapp/flows/{flowId}/json | Get flow JSON asset |
 | [**getWhatsAppFlowPreview()**](WhatsAppFlowsApi.md#getWhatsAppFlowPreview) | **GET** /v1/whatsapp/flows/{flowId}/preview | Get flow preview URL |
+| [**listWhatsAppFlowResponses()**](WhatsAppFlowsApi.md#listWhatsAppFlowResponses) | **GET** /v1/whatsapp/flow-responses | List flow responses |
 | [**listWhatsAppFlowVersions()**](WhatsAppFlowsApi.md#listWhatsAppFlowVersions) | **GET** /v1/whatsapp/flows/{flowId}/versions | List flow versions |
 | [**listWhatsAppFlows()**](WhatsAppFlowsApi.md#listWhatsAppFlows) | **GET** /v1/whatsapp/flows | List flows |
 | [**publishWhatsAppFlow()**](WhatsAppFlowsApi.md#publishWhatsAppFlow) | **POST** /v1/whatsapp/flows/{flowId}/publish | Publish flow |
@@ -380,6 +381,70 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetWhatsAppFlowPreview200Response**](../Model/GetWhatsAppFlowPreview200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listWhatsAppFlowResponses()`
+
+```php
+listWhatsAppFlowResponses($account_id, $flow_id, $limit): \Zernio\Model\ListWhatsAppFlowResponses200Response
+```
+
+List flow responses
+
+List the responses customers submitted when completing a flow (parsed from the nfm_reply messages received via webhook), newest first. Scope to a single flow with `flowId` — this matches responses whose flow_token carries the `<flowId>:` prefix that Zernio stamps on auto-generated tokens at send time. Responses sent with a custom integrator-supplied flow_token are not attributed to a flow.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$flow_id = 'flow_id_example'; // string | Scope to responses for this flow
+$limit = 50; // int | Max responses to return
+
+try {
+    $result = $apiInstance->listWhatsAppFlowResponses($account_id, $flow_id, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppFlowsApi->listWhatsAppFlowResponses: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| WhatsApp social account ID | |
+| **flow_id** | **string**| Scope to responses for this flow | [optional] |
+| **limit** | **int**| Max responses to return | [optional] [default to 50] |
+
+### Return type
+
+[**\Zernio\Model\ListWhatsAppFlowResponses200Response**](../Model/ListWhatsAppFlowResponses200Response.md)
 
 ### Authorization
 

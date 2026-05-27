@@ -569,7 +569,7 @@ class SendWhatsAppFlowMessageRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets flow_token
      *
-     * @param string|null $flow_token Unique token to correlate responses. Auto-generated UUID if omitted.
+     * @param string|null $flow_token Unique token to correlate responses. If omitted, auto-generated as '<flowId>:<uuid>' so the response can be attributed to this flow in the Flow Responses view.
      *
      * @return self
      */
