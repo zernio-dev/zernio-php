@@ -62,7 +62,9 @@ class ListWhatsAppFlows200ResponseFlowsInner implements ModelInterface, ArrayAcc
         'name' => 'string',
         'status' => 'string',
         'categories' => 'string[]',
-        'validation_errors' => 'object[]'
+        'validation_errors' => 'object[]',
+        'version' => 'int',
+        'lineage_id' => 'string'
     ];
 
     /**
@@ -77,7 +79,9 @@ class ListWhatsAppFlows200ResponseFlowsInner implements ModelInterface, ArrayAcc
         'name' => null,
         'status' => null,
         'categories' => null,
-        'validation_errors' => null
+        'validation_errors' => null,
+        'version' => null,
+        'lineage_id' => null
     ];
 
     /**
@@ -90,7 +94,9 @@ class ListWhatsAppFlows200ResponseFlowsInner implements ModelInterface, ArrayAcc
         'name' => false,
         'status' => false,
         'categories' => false,
-        'validation_errors' => false
+        'validation_errors' => false,
+        'version' => false,
+        'lineage_id' => false
     ];
 
     /**
@@ -183,7 +189,9 @@ class ListWhatsAppFlows200ResponseFlowsInner implements ModelInterface, ArrayAcc
         'name' => 'name',
         'status' => 'status',
         'categories' => 'categories',
-        'validation_errors' => 'validation_errors'
+        'validation_errors' => 'validation_errors',
+        'version' => 'version',
+        'lineage_id' => 'lineageId'
     ];
 
     /**
@@ -196,7 +204,9 @@ class ListWhatsAppFlows200ResponseFlowsInner implements ModelInterface, ArrayAcc
         'name' => 'setName',
         'status' => 'setStatus',
         'categories' => 'setCategories',
-        'validation_errors' => 'setValidationErrors'
+        'validation_errors' => 'setValidationErrors',
+        'version' => 'setVersion',
+        'lineage_id' => 'setLineageId'
     ];
 
     /**
@@ -209,7 +219,9 @@ class ListWhatsAppFlows200ResponseFlowsInner implements ModelInterface, ArrayAcc
         'name' => 'getName',
         'status' => 'getStatus',
         'categories' => 'getCategories',
-        'validation_errors' => 'getValidationErrors'
+        'validation_errors' => 'getValidationErrors',
+        'version' => 'getVersion',
+        'lineage_id' => 'getLineageId'
     ];
 
     /**
@@ -295,6 +307,8 @@ class ListWhatsAppFlows200ResponseFlowsInner implements ModelInterface, ArrayAcc
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('categories', $data ?? [], null);
         $this->setIfExists('validation_errors', $data ?? [], null);
+        $this->setIfExists('version', $data ?? [], null);
+        $this->setIfExists('lineage_id', $data ?? [], null);
     }
 
     /**
@@ -489,6 +503,60 @@ class ListWhatsAppFlows200ResponseFlowsInner implements ModelInterface, ArrayAcc
             throw new \InvalidArgumentException('non-nullable validation_errors cannot be null');
         }
         $this->container['validation_errors'] = $validation_errors;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return int|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param int|null $version 1-based version within the flow's clone lineage (Zernio-tracked; Meta has no native versioning). Standalone flows are version 1.
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        if (is_null($version)) {
+            throw new \InvalidArgumentException('non-nullable version cannot be null');
+        }
+        $this->container['version'] = $version;
+
+        return $this;
+    }
+
+    /**
+     * Gets lineage_id
+     *
+     * @return string|null
+     */
+    public function getLineageId()
+    {
+        return $this->container['lineage_id'];
+    }
+
+    /**
+     * Sets lineage_id
+     *
+     * @param string|null $lineage_id Stable group key for the flow's version lineage (the root flow's ID).
+     *
+     * @return self
+     */
+    public function setLineageId($lineage_id)
+    {
+        if (is_null($lineage_id)) {
+            throw new \InvalidArgumentException('non-nullable lineage_id cannot be null');
+        }
+        $this->container['lineage_id'] = $lineage_id;
 
         return $this;
     }

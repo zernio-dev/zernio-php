@@ -1,14 +1,14 @@
-# # CreateWhatsAppFlow200ResponseFlow
+# # ListWhatsAppFlowVersions200ResponseVersionsInner
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | [optional]
+**flow_id** | **string** |  | [optional]
+**version** | **int** |  | [optional]
+**parent_flow_id** | **string** |  | [optional]
 **name** | **string** |  | [optional]
 **status** | **string** |  | [optional]
-**categories** | **string[]** |  | [optional]
-**version** | **int** | Version within the clone lineage | [optional]
-**lineage_id** | **string** | Version-lineage group key | [optional]
+**missing** | **bool** | True when Meta no longer has this flow | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -61,7 +61,9 @@ class CreateWhatsAppFlow200ResponseFlow implements ModelInterface, ArrayAccess, 
         'id' => 'string',
         'name' => 'string',
         'status' => 'string',
-        'categories' => 'string[]'
+        'categories' => 'string[]',
+        'version' => 'int',
+        'lineage_id' => 'string'
     ];
 
     /**
@@ -75,7 +77,9 @@ class CreateWhatsAppFlow200ResponseFlow implements ModelInterface, ArrayAccess, 
         'id' => null,
         'name' => null,
         'status' => null,
-        'categories' => null
+        'categories' => null,
+        'version' => null,
+        'lineage_id' => null
     ];
 
     /**
@@ -87,7 +91,9 @@ class CreateWhatsAppFlow200ResponseFlow implements ModelInterface, ArrayAccess, 
         'id' => false,
         'name' => false,
         'status' => false,
-        'categories' => false
+        'categories' => false,
+        'version' => false,
+        'lineage_id' => false
     ];
 
     /**
@@ -179,7 +185,9 @@ class CreateWhatsAppFlow200ResponseFlow implements ModelInterface, ArrayAccess, 
         'id' => 'id',
         'name' => 'name',
         'status' => 'status',
-        'categories' => 'categories'
+        'categories' => 'categories',
+        'version' => 'version',
+        'lineage_id' => 'lineageId'
     ];
 
     /**
@@ -191,7 +199,9 @@ class CreateWhatsAppFlow200ResponseFlow implements ModelInterface, ArrayAccess, 
         'id' => 'setId',
         'name' => 'setName',
         'status' => 'setStatus',
-        'categories' => 'setCategories'
+        'categories' => 'setCategories',
+        'version' => 'setVersion',
+        'lineage_id' => 'setLineageId'
     ];
 
     /**
@@ -203,7 +213,9 @@ class CreateWhatsAppFlow200ResponseFlow implements ModelInterface, ArrayAccess, 
         'id' => 'getId',
         'name' => 'getName',
         'status' => 'getStatus',
-        'categories' => 'getCategories'
+        'categories' => 'getCategories',
+        'version' => 'getVersion',
+        'lineage_id' => 'getLineageId'
     ];
 
     /**
@@ -267,6 +279,8 @@ class CreateWhatsAppFlow200ResponseFlow implements ModelInterface, ArrayAccess, 
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('categories', $data ?? [], null);
+        $this->setIfExists('version', $data ?? [], null);
+        $this->setIfExists('lineage_id', $data ?? [], null);
     }
 
     /**
@@ -415,6 +429,60 @@ class CreateWhatsAppFlow200ResponseFlow implements ModelInterface, ArrayAccess, 
             throw new \InvalidArgumentException('non-nullable categories cannot be null');
         }
         $this->container['categories'] = $categories;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return int|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param int|null $version Version within the clone lineage
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        if (is_null($version)) {
+            throw new \InvalidArgumentException('non-nullable version cannot be null');
+        }
+        $this->container['version'] = $version;
+
+        return $this;
+    }
+
+    /**
+     * Gets lineage_id
+     *
+     * @return string|null
+     */
+    public function getLineageId()
+    {
+        return $this->container['lineage_id'];
+    }
+
+    /**
+     * Sets lineage_id
+     *
+     * @param string|null $lineage_id Version-lineage group key
+     *
+     * @return self
+     */
+    public function setLineageId($lineage_id)
+    {
+        if (is_null($lineage_id)) {
+            throw new \InvalidArgumentException('non-nullable lineage_id cannot be null');
+        }
+        $this->container['lineage_id'] = $lineage_id;
 
         return $this;
     }

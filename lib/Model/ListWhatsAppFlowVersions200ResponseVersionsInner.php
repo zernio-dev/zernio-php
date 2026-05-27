@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateWhatsAppFlowRequest
+ * ListWhatsAppFlowVersions200ResponseVersionsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateWhatsAppFlowRequest Class Doc Comment
+ * ListWhatsAppFlowVersions200ResponseVersionsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListWhatsAppFlowVersions200ResponseVersionsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createWhatsAppFlow_request';
+    protected static $openAPIModelName = 'listWhatsAppFlowVersions_200_response_versions_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,12 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'account_id' => 'string',
+        'flow_id' => 'string',
+        'version' => 'int',
+        'parent_flow_id' => 'string',
         'name' => 'string',
-        'categories' => 'string[]',
-        'clone_flow_id' => 'string',
-        'as_version' => 'bool'
+        'status' => 'string',
+        'missing' => 'bool'
     ];
 
     /**
@@ -73,11 +74,12 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'account_id' => null,
+        'flow_id' => null,
+        'version' => null,
+        'parent_flow_id' => null,
         'name' => null,
-        'categories' => null,
-        'clone_flow_id' => null,
-        'as_version' => null
+        'status' => null,
+        'missing' => null
     ];
 
     /**
@@ -86,11 +88,12 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'account_id' => false,
+        'flow_id' => false,
+        'version' => false,
+        'parent_flow_id' => false,
         'name' => false,
-        'categories' => false,
-        'clone_flow_id' => false,
-        'as_version' => false
+        'status' => false,
+        'missing' => false
     ];
 
     /**
@@ -179,11 +182,12 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'account_id' => 'accountId',
+        'flow_id' => 'flowId',
+        'version' => 'version',
+        'parent_flow_id' => 'parentFlowId',
         'name' => 'name',
-        'categories' => 'categories',
-        'clone_flow_id' => 'cloneFlowId',
-        'as_version' => 'asVersion'
+        'status' => 'status',
+        'missing' => 'missing'
     ];
 
     /**
@@ -192,11 +196,12 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'account_id' => 'setAccountId',
+        'flow_id' => 'setFlowId',
+        'version' => 'setVersion',
+        'parent_flow_id' => 'setParentFlowId',
         'name' => 'setName',
-        'categories' => 'setCategories',
-        'clone_flow_id' => 'setCloneFlowId',
-        'as_version' => 'setAsVersion'
+        'status' => 'setStatus',
+        'missing' => 'setMissing'
     ];
 
     /**
@@ -205,11 +210,12 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'account_id' => 'getAccountId',
+        'flow_id' => 'getFlowId',
+        'version' => 'getVersion',
+        'parent_flow_id' => 'getParentFlowId',
         'name' => 'getName',
-        'categories' => 'getCategories',
-        'clone_flow_id' => 'getCloneFlowId',
-        'as_version' => 'getAsVersion'
+        'status' => 'getStatus',
+        'missing' => 'getMissing'
     ];
 
     /**
@@ -253,33 +259,6 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const CATEGORIES_SIGN_UP = 'SIGN_UP';
-    public const CATEGORIES_SIGN_IN = 'SIGN_IN';
-    public const CATEGORIES_APPOINTMENT_BOOKING = 'APPOINTMENT_BOOKING';
-    public const CATEGORIES_LEAD_GENERATION = 'LEAD_GENERATION';
-    public const CATEGORIES_CONTACT_US = 'CONTACT_US';
-    public const CATEGORIES_CUSTOMER_SUPPORT = 'CUSTOMER_SUPPORT';
-    public const CATEGORIES_SURVEY = 'SURVEY';
-    public const CATEGORIES_OTHER = 'OTHER';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getCategoriesAllowableValues()
-    {
-        return [
-            self::CATEGORIES_SIGN_UP,
-            self::CATEGORIES_SIGN_IN,
-            self::CATEGORIES_APPOINTMENT_BOOKING,
-            self::CATEGORIES_LEAD_GENERATION,
-            self::CATEGORIES_CONTACT_US,
-            self::CATEGORIES_CUSTOMER_SUPPORT,
-            self::CATEGORIES_SURVEY,
-            self::CATEGORIES_OTHER,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -296,11 +275,12 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('flow_id', $data ?? [], null);
+        $this->setIfExists('version', $data ?? [], null);
+        $this->setIfExists('parent_flow_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('categories', $data ?? [], null);
-        $this->setIfExists('clone_flow_id', $data ?? [], null);
-        $this->setIfExists('as_version', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('missing', $data ?? [], null);
     }
 
     /**
@@ -330,23 +310,6 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['account_id'] === null) {
-            $invalidProperties[] = "'account_id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ((mb_strlen($this->container['name']) > 128)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 128.";
-        }
-
-        if ($this->container['categories'] === null) {
-            $invalidProperties[] = "'categories' can't be null";
-        }
-        if ((count($this->container['categories']) < 1)) {
-            $invalidProperties[] = "invalid value for 'categories', number of items must be greater than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -363,28 +326,82 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets account_id
+     * Gets flow_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getAccountId()
+    public function getFlowId()
     {
-        return $this->container['account_id'];
+        return $this->container['flow_id'];
     }
 
     /**
-     * Sets account_id
+     * Sets flow_id
      *
-     * @param string $account_id WhatsApp social account ID
+     * @param string|null $flow_id flow_id
      *
      * @return self
      */
-    public function setAccountId($account_id)
+    public function setFlowId($flow_id)
     {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        if (is_null($flow_id)) {
+            throw new \InvalidArgumentException('non-nullable flow_id cannot be null');
         }
-        $this->container['account_id'] = $account_id;
+        $this->container['flow_id'] = $flow_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return int|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param int|null $version version
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        if (is_null($version)) {
+            throw new \InvalidArgumentException('non-nullable version cannot be null');
+        }
+        $this->container['version'] = $version;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_flow_id
+     *
+     * @return string|null
+     */
+    public function getParentFlowId()
+    {
+        return $this->container['parent_flow_id'];
+    }
+
+    /**
+     * Sets parent_flow_id
+     *
+     * @param string|null $parent_flow_id parent_flow_id
+     *
+     * @return self
+     */
+    public function setParentFlowId($parent_flow_id)
+    {
+        if (is_null($parent_flow_id)) {
+            throw new \InvalidArgumentException('non-nullable parent_flow_id cannot be null');
+        }
+        $this->container['parent_flow_id'] = $parent_flow_id;
 
         return $this;
     }
@@ -392,7 +409,7 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets name
      *
-     * @return string
+     * @return string|null
      */
     public function getName()
     {
@@ -402,7 +419,7 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets name
      *
-     * @param string $name Flow display name
+     * @param string|null $name name
      *
      * @return self
      */
@@ -411,106 +428,61 @@ class CreateWhatsAppFlowRequest implements ModelInterface, ArrayAccess, \JsonSer
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        if ((mb_strlen($name) > 128)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateWhatsAppFlowRequest., must be smaller than or equal to 128.');
-        }
-
         $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets categories
-     *
-     * @return string[]
-     */
-    public function getCategories()
-    {
-        return $this->container['categories'];
-    }
-
-    /**
-     * Sets categories
-     *
-     * @param string[] $categories Flow categories
-     *
-     * @return self
-     */
-    public function setCategories($categories)
-    {
-        if (is_null($categories)) {
-            throw new \InvalidArgumentException('non-nullable categories cannot be null');
-        }
-        $allowedValues = $this->getCategoriesAllowableValues();
-        if (array_diff($categories, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'categories', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-
-
-        if ((count($categories) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $categories when calling CreateWhatsAppFlowRequest., number of items must be greater than or equal to 1.');
-        }
-        $this->container['categories'] = $categories;
-
-        return $this;
-    }
-
-    /**
-     * Gets clone_flow_id
+     * Gets status
      *
      * @return string|null
      */
-    public function getCloneFlowId()
+    public function getStatus()
     {
-        return $this->container['clone_flow_id'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets clone_flow_id
+     * Sets status
      *
-     * @param string|null $clone_flow_id Optional: ID of an existing flow to clone the Flow JSON from
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setCloneFlowId($clone_flow_id)
+    public function setStatus($status)
     {
-        if (is_null($clone_flow_id)) {
-            throw new \InvalidArgumentException('non-nullable clone_flow_id cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['clone_flow_id'] = $clone_flow_id;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets as_version
+     * Gets missing
      *
      * @return bool|null
      */
-    public function getAsVersion()
+    public function getMissing()
     {
-        return $this->container['as_version'];
+        return $this->container['missing'];
     }
 
     /**
-     * Sets as_version
+     * Sets missing
      *
-     * @param bool|null $as_version When cloning, true keeps the clone in cloneFlowId's version lineage (auto-numbered next version); false/absent creates an independent flow. Ignored without cloneFlowId.
+     * @param bool|null $missing True when Meta no longer has this flow
      *
      * @return self
      */
-    public function setAsVersion($as_version)
+    public function setMissing($missing)
     {
-        if (is_null($as_version)) {
-            throw new \InvalidArgumentException('non-nullable as_version cannot be null');
+        if (is_null($missing)) {
+            throw new \InvalidArgumentException('non-nullable missing cannot be null');
         }
-        $this->container['as_version'] = $as_version;
+        $this->container['missing'] = $missing;
 
         return $this;
     }

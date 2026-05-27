@@ -90,6 +90,12 @@ class WhatsAppFlowsApi
         'getWhatsAppFlowJson' => [
             'application/json',
         ],
+        'getWhatsAppFlowPreview' => [
+            'application/json',
+        ],
+        'listWhatsAppFlowVersions' => [
+            'application/json',
+        ],
         'listWhatsAppFlows' => [
             'application/json',
         ],
@@ -1595,6 +1601,635 @@ class WhatsAppFlowsApi
 
 
         $resourcePath = '/v1/whatsapp/flows/{flowId}/json';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($flow_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'flowId' . '}',
+                ObjectSerializer::toPathValue($flow_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getWhatsAppFlowPreview
+     *
+     * Get flow preview URL
+     *
+     * @param  string $flow_id Flow ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  bool|null $invalidate Mint a fresh preview link (default false) (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowPreview'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetWhatsAppFlowPreview200Response|\Zernio\Model\InlineObject
+     */
+    public function getWhatsAppFlowPreview($flow_id, $account_id, $invalidate = null, string $contentType = self::contentTypes['getWhatsAppFlowPreview'][0])
+    {
+        list($response) = $this->getWhatsAppFlowPreviewWithHttpInfo($flow_id, $account_id, $invalidate, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWhatsAppFlowPreviewWithHttpInfo
+     *
+     * Get flow preview URL
+     *
+     * @param  string $flow_id Flow ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  bool|null $invalidate Mint a fresh preview link (default false) (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowPreview'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetWhatsAppFlowPreview200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWhatsAppFlowPreviewWithHttpInfo($flow_id, $account_id, $invalidate = null, string $contentType = self::contentTypes['getWhatsAppFlowPreview'][0])
+    {
+        $request = $this->getWhatsAppFlowPreviewRequest($flow_id, $account_id, $invalidate, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetWhatsAppFlowPreview200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetWhatsAppFlowPreview200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetWhatsAppFlowPreview200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWhatsAppFlowPreviewAsync
+     *
+     * Get flow preview URL
+     *
+     * @param  string $flow_id Flow ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  bool|null $invalidate Mint a fresh preview link (default false) (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowPreview'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppFlowPreviewAsync($flow_id, $account_id, $invalidate = null, string $contentType = self::contentTypes['getWhatsAppFlowPreview'][0])
+    {
+        return $this->getWhatsAppFlowPreviewAsyncWithHttpInfo($flow_id, $account_id, $invalidate, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWhatsAppFlowPreviewAsyncWithHttpInfo
+     *
+     * Get flow preview URL
+     *
+     * @param  string $flow_id Flow ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  bool|null $invalidate Mint a fresh preview link (default false) (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowPreview'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppFlowPreviewAsyncWithHttpInfo($flow_id, $account_id, $invalidate = null, string $contentType = self::contentTypes['getWhatsAppFlowPreview'][0])
+    {
+        $returnType = '\Zernio\Model\GetWhatsAppFlowPreview200Response';
+        $request = $this->getWhatsAppFlowPreviewRequest($flow_id, $account_id, $invalidate, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWhatsAppFlowPreview'
+     *
+     * @param  string $flow_id Flow ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  bool|null $invalidate Mint a fresh preview link (default false) (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppFlowPreview'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWhatsAppFlowPreviewRequest($flow_id, $account_id, $invalidate = null, string $contentType = self::contentTypes['getWhatsAppFlowPreview'][0])
+    {
+
+        // verify the required parameter 'flow_id' is set
+        if ($flow_id === null || (is_array($flow_id) && count($flow_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $flow_id when calling getWhatsAppFlowPreview'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getWhatsAppFlowPreview'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/whatsapp/flows/{flowId}/preview';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $invalidate,
+            'invalidate', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($flow_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'flowId' . '}',
+                ObjectSerializer::toPathValue($flow_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listWhatsAppFlowVersions
+     *
+     * List flow versions
+     *
+     * @param  string $flow_id Flow ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowVersions'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListWhatsAppFlowVersions200Response|\Zernio\Model\InlineObject
+     */
+    public function listWhatsAppFlowVersions($flow_id, $account_id, string $contentType = self::contentTypes['listWhatsAppFlowVersions'][0])
+    {
+        list($response) = $this->listWhatsAppFlowVersionsWithHttpInfo($flow_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listWhatsAppFlowVersionsWithHttpInfo
+     *
+     * List flow versions
+     *
+     * @param  string $flow_id Flow ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowVersions'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListWhatsAppFlowVersions200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listWhatsAppFlowVersionsWithHttpInfo($flow_id, $account_id, string $contentType = self::contentTypes['listWhatsAppFlowVersions'][0])
+    {
+        $request = $this->listWhatsAppFlowVersionsRequest($flow_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListWhatsAppFlowVersions200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListWhatsAppFlowVersions200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListWhatsAppFlowVersions200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listWhatsAppFlowVersionsAsync
+     *
+     * List flow versions
+     *
+     * @param  string $flow_id Flow ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowVersions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listWhatsAppFlowVersionsAsync($flow_id, $account_id, string $contentType = self::contentTypes['listWhatsAppFlowVersions'][0])
+    {
+        return $this->listWhatsAppFlowVersionsAsyncWithHttpInfo($flow_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listWhatsAppFlowVersionsAsyncWithHttpInfo
+     *
+     * List flow versions
+     *
+     * @param  string $flow_id Flow ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowVersions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listWhatsAppFlowVersionsAsyncWithHttpInfo($flow_id, $account_id, string $contentType = self::contentTypes['listWhatsAppFlowVersions'][0])
+    {
+        $returnType = '\Zernio\Model\ListWhatsAppFlowVersions200Response';
+        $request = $this->listWhatsAppFlowVersionsRequest($flow_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listWhatsAppFlowVersions'
+     *
+     * @param  string $flow_id Flow ID (required)
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWhatsAppFlowVersions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listWhatsAppFlowVersionsRequest($flow_id, $account_id, string $contentType = self::contentTypes['listWhatsAppFlowVersions'][0])
+    {
+
+        // verify the required parameter 'flow_id' is set
+        if ($flow_id === null || (is_array($flow_id) && count($flow_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $flow_id when calling listWhatsAppFlowVersions'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listWhatsAppFlowVersions'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/flows/{flowId}/versions';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

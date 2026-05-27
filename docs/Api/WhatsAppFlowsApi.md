@@ -11,6 +11,8 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**deprecateWhatsAppFlow()**](WhatsAppFlowsApi.md#deprecateWhatsAppFlow) | **POST** /v1/whatsapp/flows/{flowId}/deprecate | Deprecate flow |
 | [**getWhatsAppFlow()**](WhatsAppFlowsApi.md#getWhatsAppFlow) | **GET** /v1/whatsapp/flows/{flowId} | Get flow |
 | [**getWhatsAppFlowJson()**](WhatsAppFlowsApi.md#getWhatsAppFlowJson) | **GET** /v1/whatsapp/flows/{flowId}/json | Get flow JSON asset |
+| [**getWhatsAppFlowPreview()**](WhatsAppFlowsApi.md#getWhatsAppFlowPreview) | **GET** /v1/whatsapp/flows/{flowId}/preview | Get flow preview URL |
+| [**listWhatsAppFlowVersions()**](WhatsAppFlowsApi.md#listWhatsAppFlowVersions) | **GET** /v1/whatsapp/flows/{flowId}/versions | List flow versions |
 | [**listWhatsAppFlows()**](WhatsAppFlowsApi.md#listWhatsAppFlows) | **GET** /v1/whatsapp/flows | List flows |
 | [**publishWhatsAppFlow()**](WhatsAppFlowsApi.md#publishWhatsAppFlow) | **POST** /v1/whatsapp/flows/{flowId}/publish | Publish flow |
 | [**sendWhatsAppFlowMessage()**](WhatsAppFlowsApi.md#sendWhatsAppFlowMessage) | **POST** /v1/whatsapp/flows/send | Send flow message |
@@ -314,6 +316,132 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetWhatsAppFlowJson200Response**](../Model/GetWhatsAppFlowJson200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getWhatsAppFlowPreview()`
+
+```php
+getWhatsAppFlowPreview($flow_id, $account_id, $invalidate): \Zernio\Model\GetWhatsAppFlowPreview200Response
+```
+
+Get flow preview URL
+
+Get Meta's public web-preview URL for a flow (drafts included), embeddable as an interactive iframe. The link is reused across calls (valid ~30 days); pass invalidate=true to mint a fresh one (the previous link stops working).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$flow_id = 'flow_id_example'; // string | Flow ID
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$invalidate = True; // bool | Mint a fresh preview link (default false)
+
+try {
+    $result = $apiInstance->getWhatsAppFlowPreview($flow_id, $account_id, $invalidate);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppFlowsApi->getWhatsAppFlowPreview: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **flow_id** | **string**| Flow ID | |
+| **account_id** | **string**| WhatsApp social account ID | |
+| **invalidate** | **bool**| Mint a fresh preview link (default false) | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetWhatsAppFlowPreview200Response**](../Model/GetWhatsAppFlowPreview200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listWhatsAppFlowVersions()`
+
+```php
+listWhatsAppFlowVersions($flow_id, $account_id): \Zernio\Model\ListWhatsAppFlowVersions200Response
+```
+
+List flow versions
+
+List the flow's version history (the clone lineage Zernio tracks, since Meta has no native versioning), newest version first. Each entry is enriched with the version's live name and status from Meta. A flow with no lineage returns just itself as version 1.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppFlowsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$flow_id = 'flow_id_example'; // string | Flow ID
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+
+try {
+    $result = $apiInstance->listWhatsAppFlowVersions($flow_id, $account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppFlowsApi->listWhatsAppFlowVersions: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **flow_id** | **string**| Flow ID | |
+| **account_id** | **string**| WhatsApp social account ID | |
+
+### Return type
+
+[**\Zernio\Model\ListWhatsAppFlowVersions200Response**](../Model/ListWhatsAppFlowVersions200Response.md)
 
 ### Authorization
 

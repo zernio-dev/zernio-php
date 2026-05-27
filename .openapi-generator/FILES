@@ -480,6 +480,7 @@ docs/Model/GetWhatsAppFlow200ResponseFlow.md
 docs/Model/GetWhatsAppFlow200ResponseFlowPreview.md
 docs/Model/GetWhatsAppFlowJson200Response.md
 docs/Model/GetWhatsAppFlowJson200ResponseAssetsInner.md
+docs/Model/GetWhatsAppFlowPreview200Response.md
 docs/Model/GetWhatsAppGroupChat200Response.md
 docs/Model/GetWhatsAppGroupChat200ResponseGroup.md
 docs/Model/GetWhatsAppGroupChat200ResponseGroupParticipantsInner.md
@@ -620,6 +621,8 @@ docs/Model/ListTrackingTagSharedAccounts200Response.md
 docs/Model/ListTrackingTags200Response.md
 docs/Model/ListUsers200Response.md
 docs/Model/ListUsers200ResponseUsersInner.md
+docs/Model/ListWhatsAppFlowVersions200Response.md
+docs/Model/ListWhatsAppFlowVersions200ResponseVersionsInner.md
 docs/Model/ListWhatsAppFlows200Response.md
 docs/Model/ListWhatsAppFlows200ResponseFlowsInner.md
 docs/Model/ListWhatsAppGroupChats200Response.md
@@ -1498,6 +1501,7 @@ lib/Model/GetWhatsAppFlow200ResponseFlow.php
 lib/Model/GetWhatsAppFlow200ResponseFlowPreview.php
 lib/Model/GetWhatsAppFlowJson200Response.php
 lib/Model/GetWhatsAppFlowJson200ResponseAssetsInner.php
+lib/Model/GetWhatsAppFlowPreview200Response.php
 lib/Model/GetWhatsAppGroupChat200Response.php
 lib/Model/GetWhatsAppGroupChat200ResponseGroup.php
 lib/Model/GetWhatsAppGroupChat200ResponseGroupParticipantsInner.php
@@ -1638,6 +1642,8 @@ lib/Model/ListTrackingTagSharedAccounts200Response.php
 lib/Model/ListTrackingTags200Response.php
 lib/Model/ListUsers200Response.php
 lib/Model/ListUsers200ResponseUsersInner.php
+lib/Model/ListWhatsAppFlowVersions200Response.php
+lib/Model/ListWhatsAppFlowVersions200ResponseVersionsInner.php
 lib/Model/ListWhatsAppFlows200Response.php
 lib/Model/ListWhatsAppFlows200ResponseFlowsInner.php
 lib/Model/ListWhatsAppGroupChats200Response.php
@@ -2037,3 +2043,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetWhatsAppFlowPreview200ResponseTest.php
+test/Model/ListWhatsAppFlowVersions200ResponseTest.php
+test/Model/ListWhatsAppFlowVersions200ResponseVersionsInnerTest.php
