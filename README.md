@@ -370,6 +370,7 @@ Class | Method | HTTP request | Description
 *WhatsAppPhoneNumbersApi* | [**getWhatsAppPhoneNumbers**](docs/Api/WhatsAppPhoneNumbersApi.md#getwhatsappphonenumbers) | **GET** /v1/whatsapp/phone-numbers | List phone numbers
 *WhatsAppPhoneNumbersApi* | [**purchaseWhatsAppPhoneNumber**](docs/Api/WhatsAppPhoneNumbersApi.md#purchasewhatsappphonenumber) | **POST** /v1/whatsapp/phone-numbers/purchase | Purchase phone number
 *WhatsAppPhoneNumbersApi* | [**releaseWhatsAppPhoneNumber**](docs/Api/WhatsAppPhoneNumbersApi.md#releasewhatsappphonenumber) | **DELETE** /v1/whatsapp/phone-numbers/{phoneNumberId} | Release phone number
+*WhatsAppTemplatesApi* | [**getWhatsAppLibraryTemplate**](docs/Api/WhatsAppTemplatesApi.md#getwhatsapplibrarytemplate) | **GET** /v1/whatsapp/template-library | Look up a library template
 
 ## Models
 
@@ -809,6 +810,9 @@ Class | Method | HTTP request | Description
 - [GetWhatsAppGroupChat200Response](docs/Model/GetWhatsAppGroupChat200Response.md)
 - [GetWhatsAppGroupChat200ResponseGroup](docs/Model/GetWhatsAppGroupChat200ResponseGroup.md)
 - [GetWhatsAppGroupChat200ResponseGroupParticipantsInner](docs/Model/GetWhatsAppGroupChat200ResponseGroupParticipantsInner.md)
+- [GetWhatsAppLibraryTemplate200Response](docs/Model/GetWhatsAppLibraryTemplate200Response.md)
+- [GetWhatsAppLibraryTemplate200ResponseTemplate](docs/Model/GetWhatsAppLibraryTemplate200ResponseTemplate.md)
+- [GetWhatsAppLibraryTemplate200ResponseTemplateButtonsInner](docs/Model/GetWhatsAppLibraryTemplate200ResponseTemplateButtonsInner.md)
 - [GetWhatsAppPhoneNumber200Response](docs/Model/GetWhatsAppPhoneNumber200Response.md)
 - [GetWhatsAppPhoneNumber200ResponsePhoneNumber](docs/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.md)
 - [GetWhatsAppPhoneNumbers200Response](docs/Model/GetWhatsAppPhoneNumbers200Response.md)

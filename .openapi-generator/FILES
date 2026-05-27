@@ -48,6 +48,7 @@ docs/Api/WebhooksApi.md
 docs/Api/WhatsAppApi.md
 docs/Api/WhatsAppFlowsApi.md
 docs/Api/WhatsAppPhoneNumbersApi.md
+docs/Api/WhatsAppTemplatesApi.md
 docs/Model/AccountGetResponse.md
 docs/Model/AccountWithFollowerStats.md
 docs/Model/AccountWithFollowerStatsAllOfAccountStats.md
@@ -484,6 +485,9 @@ docs/Model/GetWhatsAppFlowPreview200Response.md
 docs/Model/GetWhatsAppGroupChat200Response.md
 docs/Model/GetWhatsAppGroupChat200ResponseGroup.md
 docs/Model/GetWhatsAppGroupChat200ResponseGroupParticipantsInner.md
+docs/Model/GetWhatsAppLibraryTemplate200Response.md
+docs/Model/GetWhatsAppLibraryTemplate200ResponseTemplate.md
+docs/Model/GetWhatsAppLibraryTemplate200ResponseTemplateButtonsInner.md
 docs/Model/GetWhatsAppPhoneNumber200Response.md
 docs/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.md
 docs/Model/GetWhatsAppPhoneNumbers200Response.md
@@ -1067,6 +1071,7 @@ lib/Api/WebhooksApi.php
 lib/Api/WhatsAppApi.php
 lib/Api/WhatsAppFlowsApi.php
 lib/Api/WhatsAppPhoneNumbersApi.php
+lib/Api/WhatsAppTemplatesApi.php
 lib/ApiException.php
 lib/Configuration.php
 lib/FormDataProcessor.php
@@ -1507,6 +1512,9 @@ lib/Model/GetWhatsAppFlowPreview200Response.php
 lib/Model/GetWhatsAppGroupChat200Response.php
 lib/Model/GetWhatsAppGroupChat200ResponseGroup.php
 lib/Model/GetWhatsAppGroupChat200ResponseGroupParticipantsInner.php
+lib/Model/GetWhatsAppLibraryTemplate200Response.php
+lib/Model/GetWhatsAppLibraryTemplate200ResponseTemplate.php
+lib/Model/GetWhatsAppLibraryTemplate200ResponseTemplateButtonsInner.php
 lib/Model/GetWhatsAppPhoneNumber200Response.php
 lib/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.php
 lib/Model/GetWhatsAppPhoneNumbers200Response.php
@@ -2047,5 +2055,7 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListWhatsAppFlowResponses200ResponseResponsesInnerTest.php
-test/Model/ListWhatsAppFlowResponses200ResponseTest.php
+test/Api/WhatsAppTemplatesApiTest.php
+test/Model/GetWhatsAppLibraryTemplate200ResponseTemplateButtonsInnerTest.php
+test/Model/GetWhatsAppLibraryTemplate200ResponseTemplateTest.php
+test/Model/GetWhatsAppLibraryTemplate200ResponseTest.php
