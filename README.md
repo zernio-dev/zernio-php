@@ -1335,8 +1335,6 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadPostPost](docs/Model/WebhookPayloadPostPost.md)
 - [WebhookPayloadPostPostPlatformsInner](docs/Model/WebhookPayloadPostPostPlatformsInner.md)
 - [WebhookPayloadReaction](docs/Model/WebhookPayloadReaction.md)
-- [WebhookPayloadReactionAccount](docs/Model/WebhookPayloadReactionAccount.md)
-- [WebhookPayloadReactionConversation](docs/Model/WebhookPayloadReactionConversation.md)
 - [WebhookPayloadReactionReaction](docs/Model/WebhookPayloadReactionReaction.md)
 - [WebhookPayloadReactionReactionSender](docs/Model/WebhookPayloadReactionReactionSender.md)
 - [WebhookPayloadReviewNew](docs/Model/WebhookPayloadReviewNew.md)

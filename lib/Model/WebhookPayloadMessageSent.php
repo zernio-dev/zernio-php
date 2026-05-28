@@ -62,8 +62,8 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
         'id' => 'string',
         'event' => 'string',
         'message' => '\Zernio\Model\WebhookPayloadMessageSentMessage',
-        'conversation' => '\Zernio\Model\WebhookPayloadReactionConversation',
-        'account' => '\Zernio\Model\WebhookPayloadReactionAccount',
+        'conversation' => '\Zernio\Model\InboxWebhookConversation',
+        'account' => '\Zernio\Model\InboxWebhookAccount',
         'timestamp' => '\DateTime'
     ];
 
@@ -460,7 +460,7 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets conversation
      *
-     * @return \Zernio\Model\WebhookPayloadReactionConversation
+     * @return \Zernio\Model\InboxWebhookConversation
      */
     public function getConversation()
     {
@@ -470,7 +470,7 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets conversation
      *
-     * @param \Zernio\Model\WebhookPayloadReactionConversation $conversation conversation
+     * @param \Zernio\Model\InboxWebhookConversation $conversation conversation
      *
      * @return self
      */
@@ -487,7 +487,7 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Gets account
      *
-     * @return \Zernio\Model\WebhookPayloadReactionAccount
+     * @return \Zernio\Model\InboxWebhookAccount
      */
     public function getAccount()
     {
@@ -497,7 +497,7 @@ class WebhookPayloadMessageSent implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets account
      *
-     * @param \Zernio\Model\WebhookPayloadReactionAccount $account account
+     * @param \Zernio\Model\InboxWebhookAccount $account account
      *
      * @return self
      */

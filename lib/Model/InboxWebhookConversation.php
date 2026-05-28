@@ -65,7 +65,8 @@ class InboxWebhookConversation implements ModelInterface, ArrayAccess, \JsonSeri
         'participant_name' => 'string',
         'participant_username' => 'string',
         'participant_picture' => 'string',
-        'status' => 'string'
+        'status' => 'string',
+        'contact_id' => 'string'
     ];
 
     /**
@@ -82,7 +83,8 @@ class InboxWebhookConversation implements ModelInterface, ArrayAccess, \JsonSeri
         'participant_name' => null,
         'participant_username' => null,
         'participant_picture' => null,
-        'status' => null
+        'status' => null,
+        'contact_id' => null
     ];
 
     /**
@@ -97,7 +99,8 @@ class InboxWebhookConversation implements ModelInterface, ArrayAccess, \JsonSeri
         'participant_name' => false,
         'participant_username' => false,
         'participant_picture' => false,
-        'status' => false
+        'status' => false,
+        'contact_id' => false
     ];
 
     /**
@@ -192,7 +195,8 @@ class InboxWebhookConversation implements ModelInterface, ArrayAccess, \JsonSeri
         'participant_name' => 'participantName',
         'participant_username' => 'participantUsername',
         'participant_picture' => 'participantPicture',
-        'status' => 'status'
+        'status' => 'status',
+        'contact_id' => 'contactId'
     ];
 
     /**
@@ -207,7 +211,8 @@ class InboxWebhookConversation implements ModelInterface, ArrayAccess, \JsonSeri
         'participant_name' => 'setParticipantName',
         'participant_username' => 'setParticipantUsername',
         'participant_picture' => 'setParticipantPicture',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'contact_id' => 'setContactId'
     ];
 
     /**
@@ -222,7 +227,8 @@ class InboxWebhookConversation implements ModelInterface, ArrayAccess, \JsonSeri
         'participant_name' => 'getParticipantName',
         'participant_username' => 'getParticipantUsername',
         'participant_picture' => 'getParticipantPicture',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'contact_id' => 'getContactId'
     ];
 
     /**
@@ -304,6 +310,7 @@ class InboxWebhookConversation implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('participant_username', $data ?? [], null);
         $this->setIfExists('participant_picture', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('contact_id', $data ?? [], null);
     }
 
     /**
@@ -561,6 +568,33 @@ class InboxWebhookConversation implements ModelInterface, ArrayAccess, \JsonSeri
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_id
+     *
+     * @return string|null
+     */
+    public function getContactId()
+    {
+        return $this->container['contact_id'];
+    }
+
+    /**
+     * Sets contact_id
+     *
+     * @param string|null $contact_id Zernio CRM Contact ID for the participant, when one exists. Resolved by joining `participantId` to the ContactChannel collection. Best-effort: omitted when no channel matches or `participantId` is absent. Lets integrators join any inbox webhook back to the CRM Contact without needing to look at the sender — which matters for outgoing and delivery-status events whose sender is the business.
+     *
+     * @return self
+     */
+    public function setContactId($contact_id)
+    {
+        if (is_null($contact_id)) {
+            throw new \InvalidArgumentException('non-nullable contact_id cannot be null');
+        }
+        $this->container['contact_id'] = $contact_id;
 
         return $this;
     }

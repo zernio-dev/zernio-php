@@ -1005,8 +1005,6 @@ docs/Model/WebhookPayloadPostPlatformPost.md
 docs/Model/WebhookPayloadPostPost.md
 docs/Model/WebhookPayloadPostPostPlatformsInner.md
 docs/Model/WebhookPayloadReaction.md
-docs/Model/WebhookPayloadReactionAccount.md
-docs/Model/WebhookPayloadReactionConversation.md
 docs/Model/WebhookPayloadReactionReaction.md
 docs/Model/WebhookPayloadReactionReactionSender.md
 docs/Model/WebhookPayloadReviewNew.md
@@ -2046,8 +2044,6 @@ lib/Model/WebhookPayloadPostPlatformPost.php
 lib/Model/WebhookPayloadPostPost.php
 lib/Model/WebhookPayloadPostPostPlatformsInner.php
 lib/Model/WebhookPayloadReaction.php
-lib/Model/WebhookPayloadReactionAccount.php
-lib/Model/WebhookPayloadReactionConversation.php
 lib/Model/WebhookPayloadReactionReaction.php
 lib/Model/WebhookPayloadReactionReactionSender.php
 lib/Model/WebhookPayloadReviewNew.php
@@ -2081,6 +2077,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateCtwaAdRequestCitiesInnerTest.php
-test/Model/CreateCtwaAdRequestRegionsInnerTest.php
-test/Model/CreateCtwaAdRequestZipsInnerTest.php

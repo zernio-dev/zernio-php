@@ -65,7 +65,8 @@ class WebhookPayloadConversationStartedConversation implements ModelInterface, A
         'participant_name' => 'string',
         'participant_username' => 'string',
         'participant_picture' => 'string',
-        'status' => 'string'
+        'status' => 'string',
+        'contact_id' => 'string'
     ];
 
     /**
@@ -83,7 +84,8 @@ class WebhookPayloadConversationStartedConversation implements ModelInterface, A
         'participant_name' => null,
         'participant_username' => null,
         'participant_picture' => null,
-        'status' => null
+        'status' => null,
+        'contact_id' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class WebhookPayloadConversationStartedConversation implements ModelInterface, A
         'participant_name' => false,
         'participant_username' => false,
         'participant_picture' => false,
-        'status' => false
+        'status' => false,
+        'contact_id' => false
     ];
 
     /**
@@ -195,7 +198,8 @@ class WebhookPayloadConversationStartedConversation implements ModelInterface, A
         'participant_name' => 'participantName',
         'participant_username' => 'participantUsername',
         'participant_picture' => 'participantPicture',
-        'status' => 'status'
+        'status' => 'status',
+        'contact_id' => 'contactId'
     ];
 
     /**
@@ -211,7 +215,8 @@ class WebhookPayloadConversationStartedConversation implements ModelInterface, A
         'participant_name' => 'setParticipantName',
         'participant_username' => 'setParticipantUsername',
         'participant_picture' => 'setParticipantPicture',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'contact_id' => 'setContactId'
     ];
 
     /**
@@ -227,7 +232,8 @@ class WebhookPayloadConversationStartedConversation implements ModelInterface, A
         'participant_name' => 'getParticipantName',
         'participant_username' => 'getParticipantUsername',
         'participant_picture' => 'getParticipantPicture',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'contact_id' => 'getContactId'
     ];
 
     /**
@@ -335,6 +341,7 @@ class WebhookPayloadConversationStartedConversation implements ModelInterface, A
         $this->setIfExists('participant_username', $data ?? [], null);
         $this->setIfExists('participant_picture', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('contact_id', $data ?? [], null);
     }
 
     /**
@@ -644,6 +651,33 @@ class WebhookPayloadConversationStartedConversation implements ModelInterface, A
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_id
+     *
+     * @return string|null
+     */
+    public function getContactId()
+    {
+        return $this->container['contact_id'];
+    }
+
+    /**
+     * Sets contact_id
+     *
+     * @param string|null $contact_id Zernio CRM Contact ID for the participant, when one exists. Resolved by joining `participantId` to the ContactChannel collection (same join used by message.*, reaction.received, and call.* webhooks). Best-effort: omitted when no channel matches or `participantId` is absent. Lets integrators seed the CRM straight from `conversation.started` without waiting for the first `message.*` event.
+     *
+     * @return self
+     */
+    public function setContactId($contact_id)
+    {
+        if (is_null($contact_id)) {
+            throw new \InvalidArgumentException('non-nullable contact_id cannot be null');
+        }
+        $this->container['contact_id'] = $contact_id;
 
         return $this;
     }
