@@ -60,6 +60,7 @@ class WebhookPayloadReactionReactionSender implements ModelInterface, ArrayAcces
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'contact_id' => 'string',
         'name' => 'string',
         'username' => 'string',
         'picture' => 'string',
@@ -75,6 +76,7 @@ class WebhookPayloadReactionReactionSender implements ModelInterface, ArrayAcces
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'contact_id' => null,
         'name' => null,
         'username' => null,
         'picture' => null,
@@ -88,6 +90,7 @@ class WebhookPayloadReactionReactionSender implements ModelInterface, ArrayAcces
       */
     protected static array $openAPINullables = [
         'id' => false,
+        'contact_id' => false,
         'name' => false,
         'username' => false,
         'picture' => false,
@@ -181,6 +184,7 @@ class WebhookPayloadReactionReactionSender implements ModelInterface, ArrayAcces
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'contact_id' => 'contactId',
         'name' => 'name',
         'username' => 'username',
         'picture' => 'picture',
@@ -194,6 +198,7 @@ class WebhookPayloadReactionReactionSender implements ModelInterface, ArrayAcces
      */
     protected static $setters = [
         'id' => 'setId',
+        'contact_id' => 'setContactId',
         'name' => 'setName',
         'username' => 'setUsername',
         'picture' => 'setPicture',
@@ -207,6 +212,7 @@ class WebhookPayloadReactionReactionSender implements ModelInterface, ArrayAcces
      */
     protected static $getters = [
         'id' => 'getId',
+        'contact_id' => 'getContactId',
         'name' => 'getName',
         'username' => 'getUsername',
         'picture' => 'getPicture',
@@ -271,6 +277,7 @@ class WebhookPayloadReactionReactionSender implements ModelInterface, ArrayAcces
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('contact_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('picture', $data ?? [], null);
@@ -345,6 +352,33 @@ class WebhookPayloadReactionReactionSender implements ModelInterface, ArrayAcces
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_id
+     *
+     * @return string|null
+     */
+    public function getContactId()
+    {
+        return $this->container['contact_id'];
+    }
+
+    /**
+     * Sets contact_id
+     *
+     * @param string|null $contact_id Zernio CRM Contact id for this sender, when one exists.
+     *
+     * @return self
+     */
+    public function setContactId($contact_id)
+    {
+        if (is_null($contact_id)) {
+            throw new \InvalidArgumentException('non-nullable contact_id cannot be null');
+        }
+        $this->container['contact_id'] = $contact_id;
 
         return $this;
     }

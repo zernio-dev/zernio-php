@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  |
+**contact_id** | **string** | Zernio CRM Contact id for this sender, when one exists. | [optional]
 **name** | **string** |  | [optional]
 **username** | **string** |  | [optional]
 **picture** | **string** |  | [optional]

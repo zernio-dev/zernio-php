@@ -59,6 +59,7 @@ class InboxWebhookMessageSender implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'id' => 'string',
+        'contact_id' => 'string',
         'name' => 'string',
         'username' => 'string',
         'picture' => 'string',
@@ -78,6 +79,7 @@ class InboxWebhookMessageSender implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'id' => null,
+        'contact_id' => null,
         'name' => null,
         'username' => null,
         'picture' => null,
@@ -95,6 +97,7 @@ class InboxWebhookMessageSender implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'id' => false,
+        'contact_id' => false,
         'name' => false,
         'username' => false,
         'picture' => false,
@@ -192,6 +195,7 @@ class InboxWebhookMessageSender implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'contact_id' => 'contactId',
         'name' => 'name',
         'username' => 'username',
         'picture' => 'picture',
@@ -209,6 +213,7 @@ class InboxWebhookMessageSender implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'id' => 'setId',
+        'contact_id' => 'setContactId',
         'name' => 'setName',
         'username' => 'setUsername',
         'picture' => 'setPicture',
@@ -226,6 +231,7 @@ class InboxWebhookMessageSender implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'id' => 'getId',
+        'contact_id' => 'getContactId',
         'name' => 'getName',
         'username' => 'getUsername',
         'picture' => 'getPicture',
@@ -294,6 +300,7 @@ class InboxWebhookMessageSender implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('contact_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('username', $data ?? [], null);
         $this->setIfExists('picture', $data ?? [], null);
@@ -372,6 +379,33 @@ class InboxWebhookMessageSender implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact_id
+     *
+     * @return string|null
+     */
+    public function getContactId()
+    {
+        return $this->container['contact_id'];
+    }
+
+    /**
+     * Sets contact_id
+     *
+     * @param string|null $contact_id Zernio CRM Contact id for this sender, when one exists (joined via the ContactChannel mapping). Lets integrators link a message straight to a Contact without a follow-up Contacts API call. Omitted when the sender isn't a tracked contact (e.g. outgoing messages where the sender is the business, or first-touch messages before the contact is created).
+     *
+     * @return self
+     */
+    public function setContactId($contact_id)
+    {
+        if (is_null($contact_id)) {
+            throw new \InvalidArgumentException('non-nullable contact_id cannot be null');
+        }
+        $this->container['contact_id'] = $contact_id;
 
         return $this;
     }
