@@ -171,9 +171,12 @@ docs/Model/CreateConversionDestinationRequest.md
 docs/Model/CreateConversionDestinationRequestValue.md
 docs/Model/CreateCtwaAd201Response.md
 docs/Model/CreateCtwaAdRequest.md
+docs/Model/CreateCtwaAdRequestCitiesInner.md
 docs/Model/CreateCtwaAdRequestCreativesInner.md
 docs/Model/CreateCtwaAdRequestCreativesInnerVideo.md
+docs/Model/CreateCtwaAdRequestRegionsInner.md
 docs/Model/CreateCtwaAdRequestVideo.md
+docs/Model/CreateCtwaAdRequestZipsInner.md
 docs/Model/CreateCustomField200Response.md
 docs/Model/CreateCustomFieldRequest.md
 docs/Model/CreateGoogleBusinessMedia200Response.md
@@ -1208,9 +1211,12 @@ lib/Model/CreateConversionDestinationRequest.php
 lib/Model/CreateConversionDestinationRequestValue.php
 lib/Model/CreateCtwaAd201Response.php
 lib/Model/CreateCtwaAdRequest.php
+lib/Model/CreateCtwaAdRequestCitiesInner.php
 lib/Model/CreateCtwaAdRequestCreativesInner.php
 lib/Model/CreateCtwaAdRequestCreativesInnerVideo.php
+lib/Model/CreateCtwaAdRequestRegionsInner.php
 lib/Model/CreateCtwaAdRequestVideo.php
+lib/Model/CreateCtwaAdRequestZipsInner.php
 lib/Model/CreateCustomField200Response.php
 lib/Model/CreateCustomFieldRequest.php
 lib/Model/CreateGoogleBusinessMedia200Response.php
@@ -2075,5 +2081,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadConversationStartedConversationTest.php
-test/Model/WebhookPayloadConversationStartedTest.php
+test/Model/CreateCtwaAdRequestCitiesInnerTest.php
+test/Model/CreateCtwaAdRequestRegionsInnerTest.php
+test/Model/CreateCtwaAdRequestZipsInnerTest.php

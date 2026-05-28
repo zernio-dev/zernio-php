@@ -72,6 +72,11 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => 'string',
         'end_date' => '\DateTime',
         'countries' => 'string[]',
+        'cities' => '\Zernio\Model\CreateCtwaAdRequestCitiesInner[]',
+        'regions' => '\Zernio\Model\CreateCtwaAdRequestRegionsInner[]',
+        'zips' => '\Zernio\Model\CreateCtwaAdRequestZipsInner[]',
+        'metros' => '\Zernio\Model\CreateCtwaAdRequestZipsInner[]',
+        'custom_locations' => '\Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]',
         'age_min' => 'int',
         'age_max' => 'int',
         'interests' => '\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]',
@@ -106,6 +111,11 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => null,
         'end_date' => 'date-time',
         'countries' => null,
+        'cities' => null,
+        'regions' => null,
+        'zips' => null,
+        'metros' => null,
+        'custom_locations' => null,
         'age_min' => null,
         'age_max' => null,
         'interests' => null,
@@ -138,6 +148,11 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => false,
         'end_date' => false,
         'countries' => false,
+        'cities' => false,
+        'regions' => false,
+        'zips' => false,
+        'metros' => false,
+        'custom_locations' => false,
         'age_min' => false,
         'age_max' => false,
         'interests' => false,
@@ -250,6 +265,11 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => 'currency',
         'end_date' => 'endDate',
         'countries' => 'countries',
+        'cities' => 'cities',
+        'regions' => 'regions',
+        'zips' => 'zips',
+        'metros' => 'metros',
+        'custom_locations' => 'customLocations',
         'age_min' => 'ageMin',
         'age_max' => 'ageMax',
         'interests' => 'interests',
@@ -282,6 +302,11 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => 'setCurrency',
         'end_date' => 'setEndDate',
         'countries' => 'setCountries',
+        'cities' => 'setCities',
+        'regions' => 'setRegions',
+        'zips' => 'setZips',
+        'metros' => 'setMetros',
+        'custom_locations' => 'setCustomLocations',
         'age_min' => 'setAgeMin',
         'age_max' => 'setAgeMax',
         'interests' => 'setInterests',
@@ -314,6 +339,11 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'currency' => 'getCurrency',
         'end_date' => 'getEndDate',
         'countries' => 'getCountries',
+        'cities' => 'getCities',
+        'regions' => 'getRegions',
+        'zips' => 'getZips',
+        'metros' => 'getMetros',
+        'custom_locations' => 'getCustomLocations',
         'age_min' => 'getAgeMin',
         'age_max' => 'getAgeMax',
         'interests' => 'getInterests',
@@ -463,6 +493,11 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('countries', $data ?? [], null);
+        $this->setIfExists('cities', $data ?? [], null);
+        $this->setIfExists('regions', $data ?? [], null);
+        $this->setIfExists('zips', $data ?? [], null);
+        $this->setIfExists('metros', $data ?? [], null);
+        $this->setIfExists('custom_locations', $data ?? [], null);
         $this->setIfExists('age_min', $data ?? [], null);
         $this->setIfExists('age_max', $data ?? [], null);
         $this->setIfExists('interests', $data ?? [], null);
@@ -1032,7 +1067,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets countries
      *
-     * @param string[]|null $countries ISO 3166-1 alpha-2 country codes. Defaults to `[\"US\"]`.
+     * @param string[]|null $countries ISO 3166-1 alpha-2 country codes. Defaults to `[\"US\"]` only when no other geo (`cities`, `regions`, `zips`, `metros`, `customLocations`) is supplied.
      *
      * @return self
      */
@@ -1042,6 +1077,141 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable countries cannot be null');
         }
         $this->container['countries'] = $countries;
+
+        return $this;
+    }
+
+    /**
+     * Gets cities
+     *
+     * @return \Zernio\Model\CreateCtwaAdRequestCitiesInner[]|null
+     */
+    public function getCities()
+    {
+        return $this->container['cities'];
+    }
+
+    /**
+     * Sets cities
+     *
+     * @param \Zernio\Model\CreateCtwaAdRequestCitiesInner[]|null $cities City-level geo targeting for local CTWA campaigns (e.g. 25km radius around Milan). Each entry maps to Meta's TargetingGeoLocationCity. `key` is Meta's city ID (lookupable via GET /v1/ads/targeting/search). `radius` and `distance_unit` are coupled: set both or neither.
+     *
+     * @return self
+     */
+    public function setCities($cities)
+    {
+        if (is_null($cities)) {
+            throw new \InvalidArgumentException('non-nullable cities cannot be null');
+        }
+        $this->container['cities'] = $cities;
+
+        return $this;
+    }
+
+    /**
+     * Gets regions
+     *
+     * @return \Zernio\Model\CreateCtwaAdRequestRegionsInner[]|null
+     */
+    public function getRegions()
+    {
+        return $this->container['regions'];
+    }
+
+    /**
+     * Sets regions
+     *
+     * @param \Zernio\Model\CreateCtwaAdRequestRegionsInner[]|null $regions Region / state-level geo targeting. `key` is Meta's region ID (lookupable via GET /v1/ads/targeting/search?type=region).
+     *
+     * @return self
+     */
+    public function setRegions($regions)
+    {
+        if (is_null($regions)) {
+            throw new \InvalidArgumentException('non-nullable regions cannot be null');
+        }
+        $this->container['regions'] = $regions;
+
+        return $this;
+    }
+
+    /**
+     * Gets zips
+     *
+     * @return \Zernio\Model\CreateCtwaAdRequestZipsInner[]|null
+     */
+    public function getZips()
+    {
+        return $this->container['zips'];
+    }
+
+    /**
+     * Sets zips
+     *
+     * @param \Zernio\Model\CreateCtwaAdRequestZipsInner[]|null $zips ZIP / postal-code geo targeting. `key` is the platform's postal id resolved via /v1/ads/targeting/search.
+     *
+     * @return self
+     */
+    public function setZips($zips)
+    {
+        if (is_null($zips)) {
+            throw new \InvalidArgumentException('non-nullable zips cannot be null');
+        }
+        $this->container['zips'] = $zips;
+
+        return $this;
+    }
+
+    /**
+     * Gets metros
+     *
+     * @return \Zernio\Model\CreateCtwaAdRequestZipsInner[]|null
+     */
+    public function getMetros()
+    {
+        return $this->container['metros'];
+    }
+
+    /**
+     * Sets metros
+     *
+     * @param \Zernio\Model\CreateCtwaAdRequestZipsInner[]|null $metros DMA / metro-area geo targeting. `key` is Meta's metro id (e.g. `DMA:807`).
+     *
+     * @return self
+     */
+    public function setMetros($metros)
+    {
+        if (is_null($metros)) {
+            throw new \InvalidArgumentException('non-nullable metros cannot be null');
+        }
+        $this->container['metros'] = $metros;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_locations
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]|null
+     */
+    public function getCustomLocations()
+    {
+        return $this->container['custom_locations'];
+    }
+
+    /**
+     * Sets custom_locations
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]|null $custom_locations Point-radius geo (Meta `geo_locations.custom_locations`). Use for targeting a radius around a specific lat/long when no Meta city/region key fits. `distanceUnit` is required.
+     *
+     * @return self
+     */
+    public function setCustomLocations($custom_locations)
+    {
+        if (is_null($custom_locations)) {
+            throw new \InvalidArgumentException('non-nullable custom_locations cannot be null');
+        }
+        $this->container['custom_locations'] = $custom_locations;
 
         return $this;
     }
