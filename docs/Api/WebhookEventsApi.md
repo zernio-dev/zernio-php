@@ -10,6 +10,10 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onAccountConnected()**](WebhookEventsApi.md#onAccountConnected) | **POST** /account.connected | Account connected event |
 | [**onAccountDisconnected()**](WebhookEventsApi.md#onAccountDisconnected) | **POST** /account.disconnected | Account disconnected event |
 | [**onAdStatusChanged()**](WebhookEventsApi.md#onAdStatusChanged) | **POST** /ad.status_changed | Ad status changed event |
+| [**onCallEnded()**](WebhookEventsApi.md#onCallEnded) | **POST** /call.ended | Call ended event |
+| [**onCallFailed()**](WebhookEventsApi.md#onCallFailed) | **POST** /call.failed | Call failed event |
+| [**onCallPermissionRequest()**](WebhookEventsApi.md#onCallPermissionRequest) | **POST** /call.permission_request | Call permission request reply event |
+| [**onCallReceived()**](WebhookEventsApi.md#onCallReceived) | **POST** /call.received | Call received event |
 | [**onCommentReceived()**](WebhookEventsApi.md#onCommentReceived) | **POST** /comment.received | Comment received event |
 | [**onConversationStarted()**](WebhookEventsApi.md#onConversationStarted) | **POST** /conversation.started | Conversation started event |
 | [**onLeadReceived()**](WebhookEventsApi.md#onLeadReceived) | **POST** /lead.received | Lead received event |
@@ -253,6 +257,242 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_ad_status_changed** | [**\Zernio\Model\WebhookPayloadAdStatusChanged**](../Model/WebhookPayloadAdStatusChanged.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCallEnded()`
+
+```php
+onCallEnded($webhook_payload_call_ended)
+```
+
+Call ended event
+
+Fired on call hangup with the duration and a zero-markup billing breakdown (Meta cost, Telnyx cost, recording surcharge, total). Costs are pass-through; no margin is applied.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_call_ended = new \Zernio\Model\WebhookPayloadCallEnded(); // \Zernio\Model\WebhookPayloadCallEnded
+
+try {
+    $apiInstance->onCallEnded($webhook_payload_call_ended);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCallEnded: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_call_ended** | [**\Zernio\Model\WebhookPayloadCallEnded**](../Model/WebhookPayloadCallEnded.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCallFailed()`
+
+```php
+onCallFailed($webhook_payload_call_failed)
+```
+
+Call failed event
+
+Fired when a call setup or in-progress call fails (Meta rejected the connect, Telnyx returned an error, etc.). Payload carries the upstream error code and message.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_call_failed = new \Zernio\Model\WebhookPayloadCallFailed(); // \Zernio\Model\WebhookPayloadCallFailed
+
+try {
+    $apiInstance->onCallFailed($webhook_payload_call_failed);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCallFailed: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_call_failed** | [**\Zernio\Model\WebhookPayloadCallFailed**](../Model/WebhookPayloadCallFailed.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCallPermissionRequest()`
+
+```php
+onCallPermissionRequest($webhook_payload_call_permission_request)
+```
+
+Call permission request reply event
+
+Fired when a consumer replies to a `call_permission_request` interactive message (or its marketing-template variant). Carries the response (`accept` / `reject`), whether the grant is permanent, and the expiration timestamp when it is temporary.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_call_permission_request = new \Zernio\Model\WebhookPayloadCallPermissionRequest(); // \Zernio\Model\WebhookPayloadCallPermissionRequest
+
+try {
+    $apiInstance->onCallPermissionRequest($webhook_payload_call_permission_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCallPermissionRequest: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_call_permission_request** | [**\Zernio\Model\WebhookPayloadCallPermissionRequest**](../Model/WebhookPayloadCallPermissionRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onCallReceived()`
+
+```php
+onCallReceived($webhook_payload_call_received)
+```
+
+Call received event
+
+Fired when a WhatsApp Business Call connects. For inbound (UIC) calls the event fires at the moment our Telnyx trunk bridges the consumer leg to the customer&apos;s forward-to destination; for outbound (BIC) calls it fires immediately after Meta accepts the connect. Branch on `call.direction` to distinguish.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_payload_call_received = new \Zernio\Model\WebhookPayloadCallReceived(); // \Zernio\Model\WebhookPayloadCallReceived
+
+try {
+    $apiInstance->onCallReceived($webhook_payload_call_received);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onCallReceived: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_payload_call_received** | [**\Zernio\Model\WebhookPayloadCallReceived**](../Model/WebhookPayloadCallReceived.md)|  | |
 
 ### Return type
 

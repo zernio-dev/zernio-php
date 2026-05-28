@@ -87,6 +87,18 @@ class WebhookEventsApi
         'onAdStatusChanged' => [
             'application/json',
         ],
+        'onCallEnded' => [
+            'application/json',
+        ],
+        'onCallFailed' => [
+            'application/json',
+        ],
+        'onCallPermissionRequest' => [
+            'application/json',
+        ],
+        'onCallReceived' => [
+            'application/json',
+        ],
         'onCommentReceived' => [
             'application/json',
         ],
@@ -1037,6 +1049,890 @@ class WebhookEventsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_ad_status_changed));
             } else {
                 $httpBody = $webhook_payload_ad_status_changed;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onCallEnded
+     *
+     * Call ended event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallEnded $webhook_payload_call_ended webhook_payload_call_ended (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallEnded'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onCallEnded($webhook_payload_call_ended, string $contentType = self::contentTypes['onCallEnded'][0])
+    {
+        $this->onCallEndedWithHttpInfo($webhook_payload_call_ended, $contentType);
+    }
+
+    /**
+     * Operation onCallEndedWithHttpInfo
+     *
+     * Call ended event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallEnded $webhook_payload_call_ended (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallEnded'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onCallEndedWithHttpInfo($webhook_payload_call_ended, string $contentType = self::contentTypes['onCallEnded'][0])
+    {
+        $request = $this->onCallEndedRequest($webhook_payload_call_ended, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onCallEndedAsync
+     *
+     * Call ended event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallEnded $webhook_payload_call_ended (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallEnded'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onCallEndedAsync($webhook_payload_call_ended, string $contentType = self::contentTypes['onCallEnded'][0])
+    {
+        return $this->onCallEndedAsyncWithHttpInfo($webhook_payload_call_ended, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onCallEndedAsyncWithHttpInfo
+     *
+     * Call ended event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallEnded $webhook_payload_call_ended (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallEnded'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onCallEndedAsyncWithHttpInfo($webhook_payload_call_ended, string $contentType = self::contentTypes['onCallEnded'][0])
+    {
+        $returnType = '';
+        $request = $this->onCallEndedRequest($webhook_payload_call_ended, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onCallEnded'
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallEnded $webhook_payload_call_ended (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallEnded'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onCallEndedRequest($webhook_payload_call_ended, string $contentType = self::contentTypes['onCallEnded'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_call_ended' is set
+        if ($webhook_payload_call_ended === null || (is_array($webhook_payload_call_ended) && count($webhook_payload_call_ended) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_call_ended when calling onCallEnded'
+            );
+        }
+
+
+        $resourcePath = '/call.ended';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_call_ended)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_call_ended));
+            } else {
+                $httpBody = $webhook_payload_call_ended;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onCallFailed
+     *
+     * Call failed event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallFailed $webhook_payload_call_failed webhook_payload_call_failed (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallFailed'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onCallFailed($webhook_payload_call_failed, string $contentType = self::contentTypes['onCallFailed'][0])
+    {
+        $this->onCallFailedWithHttpInfo($webhook_payload_call_failed, $contentType);
+    }
+
+    /**
+     * Operation onCallFailedWithHttpInfo
+     *
+     * Call failed event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallFailed $webhook_payload_call_failed (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallFailed'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onCallFailedWithHttpInfo($webhook_payload_call_failed, string $contentType = self::contentTypes['onCallFailed'][0])
+    {
+        $request = $this->onCallFailedRequest($webhook_payload_call_failed, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onCallFailedAsync
+     *
+     * Call failed event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallFailed $webhook_payload_call_failed (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallFailed'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onCallFailedAsync($webhook_payload_call_failed, string $contentType = self::contentTypes['onCallFailed'][0])
+    {
+        return $this->onCallFailedAsyncWithHttpInfo($webhook_payload_call_failed, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onCallFailedAsyncWithHttpInfo
+     *
+     * Call failed event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallFailed $webhook_payload_call_failed (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallFailed'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onCallFailedAsyncWithHttpInfo($webhook_payload_call_failed, string $contentType = self::contentTypes['onCallFailed'][0])
+    {
+        $returnType = '';
+        $request = $this->onCallFailedRequest($webhook_payload_call_failed, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onCallFailed'
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallFailed $webhook_payload_call_failed (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallFailed'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onCallFailedRequest($webhook_payload_call_failed, string $contentType = self::contentTypes['onCallFailed'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_call_failed' is set
+        if ($webhook_payload_call_failed === null || (is_array($webhook_payload_call_failed) && count($webhook_payload_call_failed) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_call_failed when calling onCallFailed'
+            );
+        }
+
+
+        $resourcePath = '/call.failed';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_call_failed)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_call_failed));
+            } else {
+                $httpBody = $webhook_payload_call_failed;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onCallPermissionRequest
+     *
+     * Call permission request reply event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallPermissionRequest $webhook_payload_call_permission_request webhook_payload_call_permission_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallPermissionRequest'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onCallPermissionRequest($webhook_payload_call_permission_request, string $contentType = self::contentTypes['onCallPermissionRequest'][0])
+    {
+        $this->onCallPermissionRequestWithHttpInfo($webhook_payload_call_permission_request, $contentType);
+    }
+
+    /**
+     * Operation onCallPermissionRequestWithHttpInfo
+     *
+     * Call permission request reply event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallPermissionRequest $webhook_payload_call_permission_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallPermissionRequest'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onCallPermissionRequestWithHttpInfo($webhook_payload_call_permission_request, string $contentType = self::contentTypes['onCallPermissionRequest'][0])
+    {
+        $request = $this->onCallPermissionRequestRequest($webhook_payload_call_permission_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onCallPermissionRequestAsync
+     *
+     * Call permission request reply event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallPermissionRequest $webhook_payload_call_permission_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallPermissionRequest'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onCallPermissionRequestAsync($webhook_payload_call_permission_request, string $contentType = self::contentTypes['onCallPermissionRequest'][0])
+    {
+        return $this->onCallPermissionRequestAsyncWithHttpInfo($webhook_payload_call_permission_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onCallPermissionRequestAsyncWithHttpInfo
+     *
+     * Call permission request reply event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallPermissionRequest $webhook_payload_call_permission_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallPermissionRequest'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onCallPermissionRequestAsyncWithHttpInfo($webhook_payload_call_permission_request, string $contentType = self::contentTypes['onCallPermissionRequest'][0])
+    {
+        $returnType = '';
+        $request = $this->onCallPermissionRequestRequest($webhook_payload_call_permission_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onCallPermissionRequest'
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallPermissionRequest $webhook_payload_call_permission_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallPermissionRequest'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onCallPermissionRequestRequest($webhook_payload_call_permission_request, string $contentType = self::contentTypes['onCallPermissionRequest'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_call_permission_request' is set
+        if ($webhook_payload_call_permission_request === null || (is_array($webhook_payload_call_permission_request) && count($webhook_payload_call_permission_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_call_permission_request when calling onCallPermissionRequest'
+            );
+        }
+
+
+        $resourcePath = '/call.permission_request';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_call_permission_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_call_permission_request));
+            } else {
+                $httpBody = $webhook_payload_call_permission_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onCallReceived
+     *
+     * Call received event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallReceived $webhook_payload_call_received webhook_payload_call_received (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallReceived'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onCallReceived($webhook_payload_call_received, string $contentType = self::contentTypes['onCallReceived'][0])
+    {
+        $this->onCallReceivedWithHttpInfo($webhook_payload_call_received, $contentType);
+    }
+
+    /**
+     * Operation onCallReceivedWithHttpInfo
+     *
+     * Call received event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallReceived $webhook_payload_call_received (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallReceived'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onCallReceivedWithHttpInfo($webhook_payload_call_received, string $contentType = self::contentTypes['onCallReceived'][0])
+    {
+        $request = $this->onCallReceivedRequest($webhook_payload_call_received, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onCallReceivedAsync
+     *
+     * Call received event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallReceived $webhook_payload_call_received (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallReceived'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onCallReceivedAsync($webhook_payload_call_received, string $contentType = self::contentTypes['onCallReceived'][0])
+    {
+        return $this->onCallReceivedAsyncWithHttpInfo($webhook_payload_call_received, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onCallReceivedAsyncWithHttpInfo
+     *
+     * Call received event
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallReceived $webhook_payload_call_received (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallReceived'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onCallReceivedAsyncWithHttpInfo($webhook_payload_call_received, string $contentType = self::contentTypes['onCallReceived'][0])
+    {
+        $returnType = '';
+        $request = $this->onCallReceivedRequest($webhook_payload_call_received, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onCallReceived'
+     *
+     * @param  \Zernio\Model\WebhookPayloadCallReceived $webhook_payload_call_received (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onCallReceived'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onCallReceivedRequest($webhook_payload_call_received, string $contentType = self::contentTypes['onCallReceived'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_call_received' is set
+        if ($webhook_payload_call_received === null || (is_array($webhook_payload_call_received) && count($webhook_payload_call_received) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_call_received when calling onCallReceived'
+            );
+        }
+
+
+        $resourcePath = '/call.received';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_call_received)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_call_received));
+            } else {
+                $httpBody = $webhook_payload_call_received;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
