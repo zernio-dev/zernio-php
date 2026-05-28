@@ -333,12 +333,14 @@ Class | Method | HTTP request | Description
 *WebhooksApi* | [**updateWebhookSettings**](docs/Api/WebhooksApi.md#updatewebhooksettings) | **PUT** /v1/webhooks/settings | Update webhook
 *WhatsAppApi* | [**addWhatsAppGroupParticipants**](docs/Api/WhatsAppApi.md#addwhatsappgroupparticipants) | **POST** /v1/whatsapp/wa-groups/{groupId}/participants | Add participants
 *WhatsAppApi* | [**approveWhatsAppGroupJoinRequests**](docs/Api/WhatsAppApi.md#approvewhatsappgroupjoinrequests) | **POST** /v1/whatsapp/wa-groups/{groupId}/join-requests | Approve join requests
+*WhatsAppApi* | [**createWhatsAppDataset**](docs/Api/WhatsAppApi.md#createwhatsappdataset) | **POST** /v1/whatsapp/dataset | Provision CTWA conversions dataset
 *WhatsAppApi* | [**createWhatsAppGroupChat**](docs/Api/WhatsAppApi.md#createwhatsappgroupchat) | **POST** /v1/whatsapp/wa-groups | Create group
 *WhatsAppApi* | [**createWhatsAppGroupInviteLink**](docs/Api/WhatsAppApi.md#createwhatsappgroupinvitelink) | **POST** /v1/whatsapp/wa-groups/{groupId}/invite-link | Create invite link
 *WhatsAppApi* | [**createWhatsAppTemplate**](docs/Api/WhatsAppApi.md#createwhatsapptemplate) | **POST** /v1/whatsapp/templates | Create template
 *WhatsAppApi* | [**deleteWhatsAppGroupChat**](docs/Api/WhatsAppApi.md#deletewhatsappgroupchat) | **DELETE** /v1/whatsapp/wa-groups/{groupId} | Delete group
 *WhatsAppApi* | [**deleteWhatsAppTemplate**](docs/Api/WhatsAppApi.md#deletewhatsapptemplate) | **DELETE** /v1/whatsapp/templates/{templateName} | Delete template
 *WhatsAppApi* | [**getWhatsAppBusinessProfile**](docs/Api/WhatsAppApi.md#getwhatsappbusinessprofile) | **GET** /v1/whatsapp/business-profile | Get business profile
+*WhatsAppApi* | [**getWhatsAppDataset**](docs/Api/WhatsAppApi.md#getwhatsappdataset) | **GET** /v1/whatsapp/dataset | Get CTWA conversions dataset
 *WhatsAppApi* | [**getWhatsAppDisplayName**](docs/Api/WhatsAppApi.md#getwhatsappdisplayname) | **GET** /v1/whatsapp/business-profile/display-name | Get display name status
 *WhatsAppApi* | [**getWhatsAppGroupChat**](docs/Api/WhatsAppApi.md#getwhatsappgroupchat) | **GET** /v1/whatsapp/wa-groups/{groupId} | Get group info
 *WhatsAppApi* | [**getWhatsAppTemplate**](docs/Api/WhatsAppApi.md#getwhatsapptemplate) | **GET** /v1/whatsapp/templates/{templateName} | Get template
@@ -555,6 +557,8 @@ Class | Method | HTTP request | Description
 - [CreateTrackingTag201Response](docs/Model/CreateTrackingTag201Response.md)
 - [CreateTrackingTagRequest](docs/Model/CreateTrackingTagRequest.md)
 - [CreateWebhookSettingsRequest](docs/Model/CreateWebhookSettingsRequest.md)
+- [CreateWhatsAppDataset200Response](docs/Model/CreateWhatsAppDataset200Response.md)
+- [CreateWhatsAppDatasetRequest](docs/Model/CreateWhatsAppDatasetRequest.md)
 - [CreateWhatsAppFlow200Response](docs/Model/CreateWhatsAppFlow200Response.md)
 - [CreateWhatsAppFlow200ResponseFlow](docs/Model/CreateWhatsAppFlow200ResponseFlow.md)
 - [CreateWhatsAppFlowRequest](docs/Model/CreateWhatsAppFlowRequest.md)
@@ -800,6 +804,7 @@ Class | Method | HTTP request | Description
 - [GetWebhookSettings200Response](docs/Model/GetWebhookSettings200Response.md)
 - [GetWhatsAppBusinessProfile200Response](docs/Model/GetWhatsAppBusinessProfile200Response.md)
 - [GetWhatsAppBusinessProfile200ResponseBusinessProfile](docs/Model/GetWhatsAppBusinessProfile200ResponseBusinessProfile.md)
+- [GetWhatsAppDataset200Response](docs/Model/GetWhatsAppDataset200Response.md)
 - [GetWhatsAppDisplayName200Response](docs/Model/GetWhatsAppDisplayName200Response.md)
 - [GetWhatsAppDisplayName200ResponseDisplayName](docs/Model/GetWhatsAppDisplayName200ResponseDisplayName.md)
 - [GetWhatsAppFlow200Response](docs/Model/GetWhatsAppFlow200Response.md)
@@ -998,7 +1003,6 @@ Class | Method | HTTP request | Description
 - [ProfileGetResponse](docs/Model/ProfileGetResponse.md)
 - [ProfileUpdateResponse](docs/Model/ProfileUpdateResponse.md)
 - [ProfilesListResponse](docs/Model/ProfilesListResponse.md)
-- [PublishWhatsAppFlowRequest](docs/Model/PublishWhatsAppFlowRequest.md)
 - [PurchaseWhatsAppPhoneNumber200Response](docs/Model/PurchaseWhatsAppPhoneNumber200Response.md)
 - [PurchaseWhatsAppPhoneNumber200ResponseOneOf](docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf.md)
 - [PurchaseWhatsAppPhoneNumber200ResponseOneOf1](docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf1.md)

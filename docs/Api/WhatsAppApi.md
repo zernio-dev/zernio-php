@@ -8,12 +8,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**addWhatsAppGroupParticipants()**](WhatsAppApi.md#addWhatsAppGroupParticipants) | **POST** /v1/whatsapp/wa-groups/{groupId}/participants | Add participants |
 | [**approveWhatsAppGroupJoinRequests()**](WhatsAppApi.md#approveWhatsAppGroupJoinRequests) | **POST** /v1/whatsapp/wa-groups/{groupId}/join-requests | Approve join requests |
+| [**createWhatsAppDataset()**](WhatsAppApi.md#createWhatsAppDataset) | **POST** /v1/whatsapp/dataset | Provision CTWA conversions dataset |
 | [**createWhatsAppGroupChat()**](WhatsAppApi.md#createWhatsAppGroupChat) | **POST** /v1/whatsapp/wa-groups | Create group |
 | [**createWhatsAppGroupInviteLink()**](WhatsAppApi.md#createWhatsAppGroupInviteLink) | **POST** /v1/whatsapp/wa-groups/{groupId}/invite-link | Create invite link |
 | [**createWhatsAppTemplate()**](WhatsAppApi.md#createWhatsAppTemplate) | **POST** /v1/whatsapp/templates | Create template |
 | [**deleteWhatsAppGroupChat()**](WhatsAppApi.md#deleteWhatsAppGroupChat) | **DELETE** /v1/whatsapp/wa-groups/{groupId} | Delete group |
 | [**deleteWhatsAppTemplate()**](WhatsAppApi.md#deleteWhatsAppTemplate) | **DELETE** /v1/whatsapp/templates/{templateName} | Delete template |
 | [**getWhatsAppBusinessProfile()**](WhatsAppApi.md#getWhatsAppBusinessProfile) | **GET** /v1/whatsapp/business-profile | Get business profile |
+| [**getWhatsAppDataset()**](WhatsAppApi.md#getWhatsAppDataset) | **GET** /v1/whatsapp/dataset | Get CTWA conversions dataset |
 | [**getWhatsAppDisplayName()**](WhatsAppApi.md#getWhatsAppDisplayName) | **GET** /v1/whatsapp/business-profile/display-name | Get display name status |
 | [**getWhatsAppGroupChat()**](WhatsAppApi.md#getWhatsAppGroupChat) | **GET** /v1/whatsapp/wa-groups/{groupId} | Get group info |
 | [**getWhatsAppTemplate()**](WhatsAppApi.md#getWhatsAppTemplate) | **GET** /v1/whatsapp/templates/{templateName} | Get template |
@@ -144,6 +146,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createWhatsAppDataset()`
+
+```php
+createWhatsAppDataset($create_whats_app_dataset_request): \Zernio\Model\CreateWhatsAppDataset200Response
+```
+
+Provision CTWA conversions dataset
+
+Creates (or fetches, if one already exists) the Meta dataset that Click-to-WhatsApp ad events are reported against via the Conversions API, and persists its ID on the account as `metadata.metaCapiDatasetId`.  The call is GET-first idempotent — a WABA can only own one CTWA dataset, so a second call after a successful provision is a safe no-op that returns the same ID with `created: false`.  Requires the connected WhatsApp account's token to carry the `whatsapp_business_manage_events` permission. If the permission is missing the endpoint returns 422 with a message asking the user to reconnect the account.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_whats_app_dataset_request = new \Zernio\Model\CreateWhatsAppDatasetRequest(); // \Zernio\Model\CreateWhatsAppDatasetRequest
+
+try {
+    $result = $apiInstance->createWhatsAppDataset($create_whats_app_dataset_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->createWhatsAppDataset: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_whats_app_dataset_request** | [**\Zernio\Model\CreateWhatsAppDatasetRequest**](../Model/CreateWhatsAppDatasetRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateWhatsAppDataset200Response**](../Model/CreateWhatsAppDataset200Response.md)
 
 ### Authorization
 
@@ -510,6 +572,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetWhatsAppBusinessProfile200Response**](../Model/GetWhatsAppBusinessProfile200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getWhatsAppDataset()`
+
+```php
+getWhatsAppDataset($account_id): \Zernio\Model\GetWhatsAppDataset200Response
+```
+
+Get CTWA conversions dataset
+
+Returns the Meta Click-to-WhatsApp conversions dataset currently linked to the WhatsApp account, if one has been provisioned. Reads only from the stored `metadata.metaCapiDatasetId` — never hits Meta, never creates a dataset. Use this to detect whether `POST /v1/whatsapp/conversions` is configured for an account.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+
+try {
+    $result = $apiInstance->getWhatsAppDataset($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->getWhatsAppDataset: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| WhatsApp social account ID | |
+
+### Return type
+
+[**\Zernio\Model\GetWhatsAppDataset200Response**](../Model/GetWhatsAppDataset200Response.md)
 
 ### Authorization
 

@@ -229,6 +229,8 @@ docs/Model/CreateTestLeadRequestFieldDataInner.md
 docs/Model/CreateTrackingTag201Response.md
 docs/Model/CreateTrackingTagRequest.md
 docs/Model/CreateWebhookSettingsRequest.md
+docs/Model/CreateWhatsAppDataset200Response.md
+docs/Model/CreateWhatsAppDatasetRequest.md
 docs/Model/CreateWhatsAppFlow200Response.md
 docs/Model/CreateWhatsAppFlow200ResponseFlow.md
 docs/Model/CreateWhatsAppFlowRequest.md
@@ -474,6 +476,7 @@ docs/Model/GetUser200ResponseUser.md
 docs/Model/GetWebhookSettings200Response.md
 docs/Model/GetWhatsAppBusinessProfile200Response.md
 docs/Model/GetWhatsAppBusinessProfile200ResponseBusinessProfile.md
+docs/Model/GetWhatsAppDataset200Response.md
 docs/Model/GetWhatsAppDisplayName200Response.md
 docs/Model/GetWhatsAppDisplayName200ResponseDisplayName.md
 docs/Model/GetWhatsAppFlow200Response.md
@@ -672,7 +675,6 @@ docs/Model/ProfileDeleteResponse.md
 docs/Model/ProfileGetResponse.md
 docs/Model/ProfileUpdateResponse.md
 docs/Model/ProfilesListResponse.md
-docs/Model/PublishWhatsAppFlowRequest.md
 docs/Model/PurchaseWhatsAppPhoneNumber200Response.md
 docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf.md
 docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf1.md
@@ -1260,6 +1262,8 @@ lib/Model/CreateTestLeadRequestFieldDataInner.php
 lib/Model/CreateTrackingTag201Response.php
 lib/Model/CreateTrackingTagRequest.php
 lib/Model/CreateWebhookSettingsRequest.php
+lib/Model/CreateWhatsAppDataset200Response.php
+lib/Model/CreateWhatsAppDatasetRequest.php
 lib/Model/CreateWhatsAppFlow200Response.php
 lib/Model/CreateWhatsAppFlow200ResponseFlow.php
 lib/Model/CreateWhatsAppFlowRequest.php
@@ -1505,6 +1509,7 @@ lib/Model/GetUser200ResponseUser.php
 lib/Model/GetWebhookSettings200Response.php
 lib/Model/GetWhatsAppBusinessProfile200Response.php
 lib/Model/GetWhatsAppBusinessProfile200ResponseBusinessProfile.php
+lib/Model/GetWhatsAppDataset200Response.php
 lib/Model/GetWhatsAppDisplayName200Response.php
 lib/Model/GetWhatsAppDisplayName200ResponseDisplayName.php
 lib/Model/GetWhatsAppFlow200Response.php
@@ -1704,7 +1709,6 @@ lib/Model/ProfileDeleteResponse.php
 lib/Model/ProfileGetResponse.php
 lib/Model/ProfileUpdateResponse.php
 lib/Model/ProfilesListResponse.php
-lib/Model/PublishWhatsAppFlowRequest.php
 lib/Model/PurchaseWhatsAppPhoneNumber200Response.php
 lib/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf.php
 lib/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf1.php
@@ -2063,7 +2067,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetWhatsAppNumberInfo200ResponsePhoneTest.php
-test/Model/GetWhatsAppNumberInfo200ResponsePhoneThroughputTest.php
-test/Model/GetWhatsAppNumberInfo200ResponseTest.php
-test/Model/GetWhatsAppNumberInfo200ResponseWabaTest.php
+test/Model/CreateWhatsAppDataset200ResponseTest.php
+test/Model/CreateWhatsAppDatasetRequestTest.php
+test/Model/GetWhatsAppDataset200ResponseTest.php

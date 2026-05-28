@@ -81,6 +81,9 @@ class WhatsAppApi
         'approveWhatsAppGroupJoinRequests' => [
             'application/json',
         ],
+        'createWhatsAppDataset' => [
+            'application/json',
+        ],
         'createWhatsAppGroupChat' => [
             'application/json',
         ],
@@ -97,6 +100,9 @@ class WhatsAppApi
             'application/json',
         ],
         'getWhatsAppBusinessProfile' => [
+            'application/json',
+        ],
+        'getWhatsAppDataset' => [
             'application/json',
         ],
         'getWhatsAppDisplayName' => [
@@ -790,6 +796,291 @@ class WhatsAppApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($approve_whats_app_group_join_requests_request));
             } else {
                 $httpBody = $approve_whats_app_group_join_requests_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createWhatsAppDataset
+     *
+     * Provision CTWA conversions dataset
+     *
+     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request create_whats_app_dataset_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateWhatsAppDataset200Response|\Zernio\Model\InlineObject
+     */
+    public function createWhatsAppDataset($create_whats_app_dataset_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
+    {
+        list($response) = $this->createWhatsAppDatasetWithHttpInfo($create_whats_app_dataset_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createWhatsAppDatasetWithHttpInfo
+     *
+     * Provision CTWA conversions dataset
+     *
+     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateWhatsAppDataset200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createWhatsAppDatasetWithHttpInfo($create_whats_app_dataset_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
+    {
+        $request = $this->createWhatsAppDatasetRequest($create_whats_app_dataset_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateWhatsAppDataset200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateWhatsAppDataset200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateWhatsAppDataset200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createWhatsAppDatasetAsync
+     *
+     * Provision CTWA conversions dataset
+     *
+     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createWhatsAppDatasetAsync($create_whats_app_dataset_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
+    {
+        return $this->createWhatsAppDatasetAsyncWithHttpInfo($create_whats_app_dataset_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createWhatsAppDatasetAsyncWithHttpInfo
+     *
+     * Provision CTWA conversions dataset
+     *
+     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createWhatsAppDatasetAsyncWithHttpInfo($create_whats_app_dataset_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
+    {
+        $returnType = '\Zernio\Model\CreateWhatsAppDataset200Response';
+        $request = $this->createWhatsAppDatasetRequest($create_whats_app_dataset_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createWhatsAppDataset'
+     *
+     * @param  \Zernio\Model\CreateWhatsAppDatasetRequest $create_whats_app_dataset_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createWhatsAppDataset'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createWhatsAppDatasetRequest($create_whats_app_dataset_request, string $contentType = self::contentTypes['createWhatsAppDataset'][0])
+    {
+
+        // verify the required parameter 'create_whats_app_dataset_request' is set
+        if ($create_whats_app_dataset_request === null || (is_array($create_whats_app_dataset_request) && count($create_whats_app_dataset_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_whats_app_dataset_request when calling createWhatsAppDataset'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/dataset';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_whats_app_dataset_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_whats_app_dataset_request));
+            } else {
+                $httpBody = $create_whats_app_dataset_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2571,6 +2862,293 @@ class WhatsAppApi
 
 
         $resourcePath = '/v1/whatsapp/business-profile';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getWhatsAppDataset
+     *
+     * Get CTWA conversions dataset
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDataset'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetWhatsAppDataset200Response|\Zernio\Model\InlineObject
+     */
+    public function getWhatsAppDataset($account_id, string $contentType = self::contentTypes['getWhatsAppDataset'][0])
+    {
+        list($response) = $this->getWhatsAppDatasetWithHttpInfo($account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWhatsAppDatasetWithHttpInfo
+     *
+     * Get CTWA conversions dataset
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDataset'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetWhatsAppDataset200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWhatsAppDatasetWithHttpInfo($account_id, string $contentType = self::contentTypes['getWhatsAppDataset'][0])
+    {
+        $request = $this->getWhatsAppDatasetRequest($account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetWhatsAppDataset200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetWhatsAppDataset200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetWhatsAppDataset200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWhatsAppDatasetAsync
+     *
+     * Get CTWA conversions dataset
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDataset'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppDatasetAsync($account_id, string $contentType = self::contentTypes['getWhatsAppDataset'][0])
+    {
+        return $this->getWhatsAppDatasetAsyncWithHttpInfo($account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWhatsAppDatasetAsyncWithHttpInfo
+     *
+     * Get CTWA conversions dataset
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDataset'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppDatasetAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getWhatsAppDataset'][0])
+    {
+        $returnType = '\Zernio\Model\GetWhatsAppDataset200Response';
+        $request = $this->getWhatsAppDatasetRequest($account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWhatsAppDataset'
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppDataset'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWhatsAppDatasetRequest($account_id, string $contentType = self::contentTypes['getWhatsAppDataset'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getWhatsAppDataset'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/dataset';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
