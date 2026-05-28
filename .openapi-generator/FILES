@@ -2071,5 +2071,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListWhatsAppConversions200ResponseEventsInnerTest.php
-test/Model/ListWhatsAppConversions200ResponseTest.php

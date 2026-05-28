@@ -62,6 +62,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => 'string',
         'attachment_url' => 'string',
         'attachment_type' => 'string',
+        'voice_note' => 'bool',
         'quick_replies' => '\Zernio\Model\SendInboxMessageRequestQuickRepliesInner[]',
         'buttons' => '\Zernio\Model\SendInboxMessageRequestButtonsInner[]',
         'template' => '\Zernio\Model\SendInboxMessageRequestTemplate',
@@ -86,6 +87,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => null,
         'attachment_url' => null,
         'attachment_type' => null,
+        'voice_note' => null,
         'quick_replies' => null,
         'buttons' => null,
         'template' => null,
@@ -108,6 +110,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => false,
         'attachment_url' => false,
         'attachment_type' => false,
+        'voice_note' => false,
         'quick_replies' => false,
         'buttons' => false,
         'template' => false,
@@ -210,6 +213,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => 'message',
         'attachment_url' => 'attachmentUrl',
         'attachment_type' => 'attachmentType',
+        'voice_note' => 'voiceNote',
         'quick_replies' => 'quickReplies',
         'buttons' => 'buttons',
         'template' => 'template',
@@ -232,6 +236,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => 'setMessage',
         'attachment_url' => 'setAttachmentUrl',
         'attachment_type' => 'setAttachmentType',
+        'voice_note' => 'setVoiceNote',
         'quick_replies' => 'setQuickReplies',
         'buttons' => 'setButtons',
         'template' => 'setTemplate',
@@ -254,6 +259,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         'message' => 'getMessage',
         'attachment_url' => 'getAttachmentUrl',
         'attachment_type' => 'getAttachmentType',
+        'voice_note' => 'getVoiceNote',
         'quick_replies' => 'getQuickReplies',
         'buttons' => 'getButtons',
         'template' => 'getTemplate',
@@ -382,6 +388,7 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('message', $data ?? [], null);
         $this->setIfExists('attachment_url', $data ?? [], null);
         $this->setIfExists('attachment_type', $data ?? [], null);
+        $this->setIfExists('voice_note', $data ?? [], null);
         $this->setIfExists('quick_replies', $data ?? [], null);
         $this->setIfExists('buttons', $data ?? [], null);
         $this->setIfExists('template', $data ?? [], null);
@@ -588,6 +595,33 @@ class SendInboxMessageRequest implements ModelInterface, ArrayAccess, \JsonSeria
             );
         }
         $this->container['attachment_type'] = $attachment_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets voice_note
+     *
+     * @return bool|null
+     */
+    public function getVoiceNote()
+    {
+        return $this->container['voice_note'];
+    }
+
+    /**
+     * Sets voice_note
+     *
+     * @param bool|null $voice_note WhatsApp only. When `true` on an audio attachment, the message is sent as a voice message (PTT) — the recipient sees the waveform + voice-note UI instead of a basic audio attachment. The audio file MUST be `.ogg` encoded with the OPUS codec (mono) per Meta's voice-message contract; other formats are rejected by WhatsApp. Ignored for non-audio attachments.
+     *
+     * @return self
+     */
+    public function setVoiceNote($voice_note)
+    {
+        if (is_null($voice_note)) {
+            throw new \InvalidArgumentException('non-nullable voice_note cannot be null');
+        }
+        $this->container['voice_note'] = $voice_note;
 
         return $this;
     }
