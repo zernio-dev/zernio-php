@@ -632,6 +632,8 @@ docs/Model/ListTrackingTagSharedAccounts200Response.md
 docs/Model/ListTrackingTags200Response.md
 docs/Model/ListUsers200Response.md
 docs/Model/ListUsers200ResponseUsersInner.md
+docs/Model/ListWhatsAppConversions200Response.md
+docs/Model/ListWhatsAppConversions200ResponseEventsInner.md
 docs/Model/ListWhatsAppFlowResponses200Response.md
 docs/Model/ListWhatsAppFlowResponses200ResponseResponsesInner.md
 docs/Model/ListWhatsAppFlowVersions200Response.md
@@ -1665,6 +1667,8 @@ lib/Model/ListTrackingTagSharedAccounts200Response.php
 lib/Model/ListTrackingTags200Response.php
 lib/Model/ListUsers200Response.php
 lib/Model/ListUsers200ResponseUsersInner.php
+lib/Model/ListWhatsAppConversions200Response.php
+lib/Model/ListWhatsAppConversions200ResponseEventsInner.php
 lib/Model/ListWhatsAppFlowResponses200Response.php
 lib/Model/ListWhatsAppFlowResponses200ResponseResponsesInner.php
 lib/Model/ListWhatsAppFlowVersions200Response.php
@@ -2067,3 +2071,5 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ListWhatsAppConversions200ResponseEventsInnerTest.php
+test/Model/ListWhatsAppConversions200ResponseTest.php

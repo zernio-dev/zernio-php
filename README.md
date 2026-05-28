@@ -122,6 +122,7 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**listFormLeads**](docs/Api/AdsApi.md#listformleads) | **GET** /v1/ads/lead-forms/{formId}/leads | List leads for a single form
 *AdsApi* | [**listLeadForms**](docs/Api/AdsApi.md#listleadforms) | **GET** /v1/ads/lead-forms | List Lead Gen (Instant) forms
 *AdsApi* | [**listLeads**](docs/Api/AdsApi.md#listleads) | **GET** /v1/ads/leads | List submitted leads (cross-form CRM view)
+*AdsApi* | [**listWhatsAppConversions**](docs/Api/AdsApi.md#listwhatsappconversions) | **GET** /v1/whatsapp/conversions | List recent WhatsApp conversion events
 *AdsApi* | [**removeConversionAssociations**](docs/Api/AdsApi.md#removeconversionassociations) | **DELETE** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | Remove campaign↔conversion associations
 *AdsApi* | [**searchAdInterests**](docs/Api/AdsApi.md#searchadinterests) | **GET** /v1/ads/interests | Search targeting interests (deprecated)
 *AdsApi* | [**searchAdTargeting**](docs/Api/AdsApi.md#searchadtargeting) | **GET** /v1/ads/targeting/search | Search targeting options
@@ -345,6 +346,7 @@ Class | Method | HTTP request | Description
 *WhatsAppApi* | [**getWhatsAppGroupChat**](docs/Api/WhatsAppApi.md#getwhatsappgroupchat) | **GET** /v1/whatsapp/wa-groups/{groupId} | Get group info
 *WhatsAppApi* | [**getWhatsAppTemplate**](docs/Api/WhatsAppApi.md#getwhatsapptemplate) | **GET** /v1/whatsapp/templates/{templateName} | Get template
 *WhatsAppApi* | [**getWhatsAppTemplates**](docs/Api/WhatsAppApi.md#getwhatsapptemplates) | **GET** /v1/whatsapp/templates | List templates
+*WhatsAppApi* | [**listWhatsAppConversions**](docs/Api/WhatsAppApi.md#listwhatsappconversions) | **GET** /v1/whatsapp/conversions | List recent WhatsApp conversion events
 *WhatsAppApi* | [**listWhatsAppGroupChats**](docs/Api/WhatsAppApi.md#listwhatsappgroupchats) | **GET** /v1/whatsapp/wa-groups | List active groups
 *WhatsAppApi* | [**listWhatsAppGroupJoinRequests**](docs/Api/WhatsAppApi.md#listwhatsappgroupjoinrequests) | **GET** /v1/whatsapp/wa-groups/{groupId}/join-requests | List join requests
 *WhatsAppApi* | [**rejectWhatsAppGroupJoinRequests**](docs/Api/WhatsAppApi.md#rejectwhatsappgroupjoinrequests) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/join-requests | Reject join requests
@@ -960,6 +962,8 @@ Class | Method | HTTP request | Description
 - [ListTrackingTags200Response](docs/Model/ListTrackingTags200Response.md)
 - [ListUsers200Response](docs/Model/ListUsers200Response.md)
 - [ListUsers200ResponseUsersInner](docs/Model/ListUsers200ResponseUsersInner.md)
+- [ListWhatsAppConversions200Response](docs/Model/ListWhatsAppConversions200Response.md)
+- [ListWhatsAppConversions200ResponseEventsInner](docs/Model/ListWhatsAppConversions200ResponseEventsInner.md)
 - [ListWhatsAppFlowResponses200Response](docs/Model/ListWhatsAppFlowResponses200Response.md)
 - [ListWhatsAppFlowResponses200ResponseResponsesInner](docs/Model/ListWhatsAppFlowResponses200ResponseResponsesInner.md)
 - [ListWhatsAppFlowVersions200Response](docs/Model/ListWhatsAppFlowVersions200Response.md)

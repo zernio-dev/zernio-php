@@ -20,6 +20,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getWhatsAppGroupChat()**](WhatsAppApi.md#getWhatsAppGroupChat) | **GET** /v1/whatsapp/wa-groups/{groupId} | Get group info |
 | [**getWhatsAppTemplate()**](WhatsAppApi.md#getWhatsAppTemplate) | **GET** /v1/whatsapp/templates/{templateName} | Get template |
 | [**getWhatsAppTemplates()**](WhatsAppApi.md#getWhatsAppTemplates) | **GET** /v1/whatsapp/templates | List templates |
+| [**listWhatsAppConversions()**](WhatsAppApi.md#listWhatsAppConversions) | **GET** /v1/whatsapp/conversions | List recent WhatsApp conversion events |
 | [**listWhatsAppGroupChats()**](WhatsAppApi.md#listWhatsAppGroupChats) | **GET** /v1/whatsapp/wa-groups | List active groups |
 | [**listWhatsAppGroupJoinRequests()**](WhatsAppApi.md#listWhatsAppGroupJoinRequests) | **GET** /v1/whatsapp/wa-groups/{groupId}/join-requests | List join requests |
 | [**rejectWhatsAppGroupJoinRequests()**](WhatsAppApi.md#rejectWhatsAppGroupJoinRequests) | **DELETE** /v1/whatsapp/wa-groups/{groupId}/join-requests | Reject join requests |
@@ -876,6 +877,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetWhatsAppTemplates200Response**](../Model/GetWhatsAppTemplates200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listWhatsAppConversions()`
+
+```php
+listWhatsAppConversions($account_id, $limit): \Zernio\Model\ListWhatsAppConversions200Response
+```
+
+List recent WhatsApp conversion events
+
+Returns the most recent conversion events sent through `POST /v1/whatsapp/conversions` for the given WhatsApp account. Sourced from delivery logs (Axiom `late` dataset), so the visible window is bounded by log retention (about 30 days). Useful for rendering a \"recent activity\" panel on the conversions setup tab without standing up a parallel persistence layer.  Per-event payload mirrors the structured log we write on every successful send: `eventName`, `conversationId`, `eventsReceived`, `eventsFailed`, `traceId`, `durationMs`, and the wall-clock `timestamp`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | WhatsApp social account ID
+$limit = 50; // int | Max events to return (1-200, default 50).
+
+try {
+    $result = $apiInstance->listWhatsAppConversions($account_id, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->listWhatsAppConversions: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**| WhatsApp social account ID | |
+| **limit** | **int**| Max events to return (1-200, default 50). | [optional] [default to 50] |
+
+### Return type
+
+[**\Zernio\Model\ListWhatsAppConversions200Response**](../Model/ListWhatsAppConversions200Response.md)
 
 ### Authorization
 
