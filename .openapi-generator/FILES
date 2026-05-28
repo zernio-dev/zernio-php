@@ -973,6 +973,8 @@ docs/Model/WebhookPayloadCommentComment.md
 docs/Model/WebhookPayloadCommentCommentAd.md
 docs/Model/WebhookPayloadCommentCommentAuthor.md
 docs/Model/WebhookPayloadCommentPost.md
+docs/Model/WebhookPayloadConversationStarted.md
+docs/Model/WebhookPayloadConversationStartedConversation.md
 docs/Model/WebhookPayloadLead.md
 docs/Model/WebhookPayloadLeadAccount.md
 docs/Model/WebhookPayloadLeadLead.md
@@ -2009,6 +2011,8 @@ lib/Model/WebhookPayloadCommentComment.php
 lib/Model/WebhookPayloadCommentCommentAd.php
 lib/Model/WebhookPayloadCommentCommentAuthor.php
 lib/Model/WebhookPayloadCommentPost.php
+lib/Model/WebhookPayloadConversationStarted.php
+lib/Model/WebhookPayloadConversationStartedConversation.php
 lib/Model/WebhookPayloadLead.php
 lib/Model/WebhookPayloadLeadAccount.php
 lib/Model/WebhookPayloadLeadLead.php
@@ -2071,3 +2075,5 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadConversationStartedConversationTest.php
+test/Model/WebhookPayloadConversationStartedTest.php

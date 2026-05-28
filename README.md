@@ -1303,6 +1303,8 @@ Class | Method | HTTP request | Description
 - [WebhookPayloadCommentCommentAd](docs/Model/WebhookPayloadCommentCommentAd.md)
 - [WebhookPayloadCommentCommentAuthor](docs/Model/WebhookPayloadCommentCommentAuthor.md)
 - [WebhookPayloadCommentPost](docs/Model/WebhookPayloadCommentPost.md)
+- [WebhookPayloadConversationStarted](docs/Model/WebhookPayloadConversationStarted.md)
+- [WebhookPayloadConversationStartedConversation](docs/Model/WebhookPayloadConversationStartedConversation.md)
 - [WebhookPayloadLead](docs/Model/WebhookPayloadLead.md)
 - [WebhookPayloadLeadAccount](docs/Model/WebhookPayloadLeadAccount.md)
 - [WebhookPayloadLeadLead](docs/Model/WebhookPayloadLeadLead.md)
