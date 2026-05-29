@@ -1,6 +1,6 @@
 <?php
 /**
- * GetWhatsAppPhoneNumbers200Response
+ * DeleteWhatsAppSandboxSession200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetWhatsAppPhoneNumbers200Response Class Doc Comment
+ * DeleteWhatsAppSandboxSession200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class DeleteWhatsAppSandboxSession200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getWhatsAppPhoneNumbers_200_response';
+    protected static $openAPIModelName = 'deleteWhatsAppSandboxSession_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'numbers' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]',
-        'sandbox' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox'
+        'success' => 'bool'
     ];
 
     /**
@@ -70,8 +69,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'numbers' => null,
-        'sandbox' => null
+        'success' => null
     ];
 
     /**
@@ -80,8 +78,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'numbers' => false,
-        'sandbox' => false
+        'success' => false
     ];
 
     /**
@@ -170,8 +167,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'numbers' => 'numbers',
-        'sandbox' => 'sandbox'
+        'success' => 'success'
     ];
 
     /**
@@ -180,8 +176,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'numbers' => 'setNumbers',
-        'sandbox' => 'setSandbox'
+        'success' => 'setSuccess'
     ];
 
     /**
@@ -190,8 +185,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'numbers' => 'getNumbers',
-        'sandbox' => 'getSandbox'
+        'success' => 'getSuccess'
     ];
 
     /**
@@ -235,6 +229,19 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    public const SUCCESS_TRUE = 'true';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSuccessAllowableValues()
+    {
+        return [
+            self::SUCCESS_TRUE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +258,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('numbers', $data ?? [], null);
-        $this->setIfExists('sandbox', $data ?? [], null);
+        $this->setIfExists('success', $data ?? [], null);
     }
 
     /**
@@ -282,6 +288,15 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getSuccessAllowableValues();
+        if (!is_null($this->container['success']) && !in_array($this->container['success'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'success', must be one of '%s'",
+                $this->container['success'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -298,55 +313,38 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets numbers
+     * Gets success
      *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]|null
+     * @return bool|null
      */
-    public function getNumbers()
+    public function getSuccess()
     {
-        return $this->container['numbers'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets numbers
+     * Sets success
      *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]|null $numbers numbers
+     * @param bool|null $success success
      *
      * @return self
      */
-    public function setNumbers($numbers)
+    public function setSuccess($success)
     {
-        if (is_null($numbers)) {
-            throw new \InvalidArgumentException('non-nullable numbers cannot be null');
+        if (is_null($success)) {
+            throw new \InvalidArgumentException('non-nullable success cannot be null');
         }
-        $this->container['numbers'] = $numbers;
-
-        return $this;
-    }
-
-    /**
-     * Gets sandbox
-     *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox|null
-     */
-    public function getSandbox()
-    {
-        return $this->container['sandbox'];
-    }
-
-    /**
-     * Sets sandbox
-     *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox|null $sandbox sandbox
-     *
-     * @return self
-     */
-    public function setSandbox($sandbox)
-    {
-        if (is_null($sandbox)) {
-            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
+        $allowedValues = $this->getSuccessAllowableValues();
+        if (!in_array($success, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'success', must be one of '%s'",
+                    $success,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['sandbox'] = $sandbox;
+        $this->container['success'] = $success;
 
         return $this;
     }

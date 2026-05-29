@@ -1,6 +1,6 @@
 <?php
 /**
- * GetWhatsAppPhoneNumbers200Response
+ * GetWhatsAppPhoneNumbers200ResponseSandbox
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetWhatsAppPhoneNumbers200Response Class Doc Comment
+ * GetWhatsAppPhoneNumbers200ResponseSandbox Class Doc Comment
  *
  * @category Class
+ * @description The shared WhatsApp sandbox (one Zernio-owned number, all users test against it). Present when the sandbox is configured; null otherwise. The &#x60;accountId&#x60; lets you address the sandbox in compose endpoints. &#x60;template&#x60; is the only template a sandbox send is allowed to use.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetWhatsAppPhoneNumbers200ResponseSandbox implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getWhatsAppPhoneNumbers_200_response';
+    protected static $openAPIModelName = 'getWhatsAppPhoneNumbers_200_response_sandbox';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,10 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'numbers' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]',
-        'sandbox' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox'
+        'phone_number' => 'string',
+        'account_id' => 'string',
+        'template' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandboxTemplate',
+        'is_sandbox' => 'bool'
     ];
 
     /**
@@ -70,8 +73,10 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'numbers' => null,
-        'sandbox' => null
+        'phone_number' => null,
+        'account_id' => null,
+        'template' => null,
+        'is_sandbox' => null
     ];
 
     /**
@@ -80,8 +85,10 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'numbers' => false,
-        'sandbox' => false
+        'phone_number' => false,
+        'account_id' => false,
+        'template' => false,
+        'is_sandbox' => false
     ];
 
     /**
@@ -170,8 +177,10 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'numbers' => 'numbers',
-        'sandbox' => 'sandbox'
+        'phone_number' => 'phoneNumber',
+        'account_id' => 'accountId',
+        'template' => 'template',
+        'is_sandbox' => 'isSandbox'
     ];
 
     /**
@@ -180,8 +189,10 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'numbers' => 'setNumbers',
-        'sandbox' => 'setSandbox'
+        'phone_number' => 'setPhoneNumber',
+        'account_id' => 'setAccountId',
+        'template' => 'setTemplate',
+        'is_sandbox' => 'setIsSandbox'
     ];
 
     /**
@@ -190,8 +201,10 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'numbers' => 'getNumbers',
-        'sandbox' => 'getSandbox'
+        'phone_number' => 'getPhoneNumber',
+        'account_id' => 'getAccountId',
+        'template' => 'getTemplate',
+        'is_sandbox' => 'getIsSandbox'
     ];
 
     /**
@@ -235,6 +248,19 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    public const IS_SANDBOX_TRUE = 'true';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIsSandboxAllowableValues()
+    {
+        return [
+            self::IS_SANDBOX_TRUE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +277,10 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('numbers', $data ?? [], null);
-        $this->setIfExists('sandbox', $data ?? [], null);
+        $this->setIfExists('phone_number', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('template', $data ?? [], null);
+        $this->setIfExists('is_sandbox', $data ?? [], null);
     }
 
     /**
@@ -282,6 +310,15 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getIsSandboxAllowableValues();
+        if (!is_null($this->container['is_sandbox']) && !in_array($this->container['is_sandbox'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'is_sandbox', must be one of '%s'",
+                $this->container['is_sandbox'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -298,55 +335,119 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets numbers
+     * Gets phone_number
      *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]|null
+     * @return string|null
      */
-    public function getNumbers()
+    public function getPhoneNumber()
     {
-        return $this->container['numbers'];
+        return $this->container['phone_number'];
     }
 
     /**
-     * Sets numbers
+     * Sets phone_number
      *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]|null $numbers numbers
+     * @param string|null $phone_number phone_number
      *
      * @return self
      */
-    public function setNumbers($numbers)
+    public function setPhoneNumber($phone_number)
     {
-        if (is_null($numbers)) {
-            throw new \InvalidArgumentException('non-nullable numbers cannot be null');
+        if (is_null($phone_number)) {
+            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
         }
-        $this->container['numbers'] = $numbers;
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }
 
     /**
-     * Gets sandbox
+     * Gets account_id
      *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox|null
+     * @return string|null
      */
-    public function getSandbox()
+    public function getAccountId()
     {
-        return $this->container['sandbox'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets sandbox
+     * Sets account_id
      *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox|null $sandbox sandbox
+     * @param string|null $account_id account_id
      *
      * @return self
      */
-    public function setSandbox($sandbox)
+    public function setAccountId($account_id)
     {
-        if (is_null($sandbox)) {
-            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $this->container['sandbox'] = $sandbox;
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets template
+     *
+     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandboxTemplate|null
+     */
+    public function getTemplate()
+    {
+        return $this->container['template'];
+    }
+
+    /**
+     * Sets template
+     *
+     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandboxTemplate|null $template template
+     *
+     * @return self
+     */
+    public function setTemplate($template)
+    {
+        if (is_null($template)) {
+            throw new \InvalidArgumentException('non-nullable template cannot be null');
+        }
+        $this->container['template'] = $template;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_sandbox
+     *
+     * @return bool|null
+     */
+    public function getIsSandbox()
+    {
+        return $this->container['is_sandbox'];
+    }
+
+    /**
+     * Sets is_sandbox
+     *
+     * @param bool|null $is_sandbox is_sandbox
+     *
+     * @return self
+     */
+    public function setIsSandbox($is_sandbox)
+    {
+        if (is_null($is_sandbox)) {
+            throw new \InvalidArgumentException('non-nullable is_sandbox cannot be null');
+        }
+        $allowedValues = $this->getIsSandboxAllowableValues();
+        if (!in_array($is_sandbox, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'is_sandbox', must be one of '%s'",
+                    $is_sandbox,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['is_sandbox'] = $is_sandbox;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * GetWhatsAppPhoneNumbers200Response
+ * GetWhatsAppPhoneNumbers200ResponseSandboxTemplate
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetWhatsAppPhoneNumbers200Response Class Doc Comment
+ * GetWhatsAppPhoneNumbers200ResponseSandboxTemplate Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetWhatsAppPhoneNumbers200ResponseSandboxTemplate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getWhatsAppPhoneNumbers_200_response';
+    protected static $openAPIModelName = 'getWhatsAppPhoneNumbers_200_response_sandbox_template';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'numbers' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]',
-        'sandbox' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox'
+        'name' => 'string',
+        'language' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'numbers' => null,
-        'sandbox' => null
+        'name' => null,
+        'language' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'numbers' => false,
-        'sandbox' => false
+        'name' => false,
+        'language' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'numbers' => 'numbers',
-        'sandbox' => 'sandbox'
+        'name' => 'name',
+        'language' => 'language'
     ];
 
     /**
@@ -180,8 +180,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'numbers' => 'setNumbers',
-        'sandbox' => 'setSandbox'
+        'name' => 'setName',
+        'language' => 'setLanguage'
     ];
 
     /**
@@ -190,8 +190,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'numbers' => 'getNumbers',
-        'sandbox' => 'getSandbox'
+        'name' => 'getName',
+        'language' => 'getLanguage'
     ];
 
     /**
@@ -251,8 +251,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('numbers', $data ?? [], null);
-        $this->setIfExists('sandbox', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('language', $data ?? [], null);
     }
 
     /**
@@ -298,55 +298,55 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets numbers
+     * Gets name
      *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]|null
+     * @return string|null
      */
-    public function getNumbers()
+    public function getName()
     {
-        return $this->container['numbers'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets numbers
+     * Sets name
      *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]|null $numbers numbers
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setNumbers($numbers)
+    public function setName($name)
     {
-        if (is_null($numbers)) {
-            throw new \InvalidArgumentException('non-nullable numbers cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['numbers'] = $numbers;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets sandbox
+     * Gets language
      *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox|null
+     * @return string|null
      */
-    public function getSandbox()
+    public function getLanguage()
     {
-        return $this->container['sandbox'];
+        return $this->container['language'];
     }
 
     /**
-     * Sets sandbox
+     * Sets language
      *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox|null $sandbox sandbox
+     * @param string|null $language language
      *
      * @return self
      */
-    public function setSandbox($sandbox)
+    public function setLanguage($language)
     {
-        if (is_null($sandbox)) {
-            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
+        if (is_null($language)) {
+            throw new \InvalidArgumentException('non-nullable language cannot be null');
         }
-        $this->container['sandbox'] = $sandbox;
+        $this->container['language'] = $language;
 
         return $this;
     }

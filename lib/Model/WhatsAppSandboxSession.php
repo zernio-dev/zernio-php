@@ -1,6 +1,6 @@
 <?php
 /**
- * GetWhatsAppPhoneNumbers200Response
+ * WhatsAppSandboxSession
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetWhatsAppPhoneNumbers200Response Class Doc Comment
+ * WhatsAppSandboxSession Class Doc Comment
  *
  * @category Class
+ * @description A per-user activation session against the shared WhatsApp sandbox number. Transitions &#x60;pending → active&#x60; when the inbound webhook receives a reply from the matching phone (the reply itself proves ownership).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class WhatsAppSandboxSession implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getWhatsAppPhoneNumbers_200_response';
+    protected static $openAPIModelName = 'WhatsAppSandboxSession';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +59,12 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'numbers' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]',
-        'sandbox' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox'
+        'id' => 'string',
+        'phone_e164' => 'string',
+        'status' => 'string',
+        'expires_at' => '\DateTime',
+        'activated_at' => '\DateTime',
+        'created_at' => '\DateTime'
     ];
 
     /**
@@ -70,8 +75,12 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'numbers' => null,
-        'sandbox' => null
+        'id' => null,
+        'phone_e164' => null,
+        'status' => null,
+        'expires_at' => 'date-time',
+        'activated_at' => 'date-time',
+        'created_at' => 'date-time'
     ];
 
     /**
@@ -80,8 +89,12 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'numbers' => false,
-        'sandbox' => false
+        'id' => false,
+        'phone_e164' => false,
+        'status' => false,
+        'expires_at' => false,
+        'activated_at' => false,
+        'created_at' => false
     ];
 
     /**
@@ -170,8 +183,12 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'numbers' => 'numbers',
-        'sandbox' => 'sandbox'
+        'id' => 'id',
+        'phone_e164' => 'phoneE164',
+        'status' => 'status',
+        'expires_at' => 'expiresAt',
+        'activated_at' => 'activatedAt',
+        'created_at' => 'createdAt'
     ];
 
     /**
@@ -180,8 +197,12 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'numbers' => 'setNumbers',
-        'sandbox' => 'setSandbox'
+        'id' => 'setId',
+        'phone_e164' => 'setPhoneE164',
+        'status' => 'setStatus',
+        'expires_at' => 'setExpiresAt',
+        'activated_at' => 'setActivatedAt',
+        'created_at' => 'setCreatedAt'
     ];
 
     /**
@@ -190,8 +211,12 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'numbers' => 'getNumbers',
-        'sandbox' => 'getSandbox'
+        'id' => 'getId',
+        'phone_e164' => 'getPhoneE164',
+        'status' => 'getStatus',
+        'expires_at' => 'getExpiresAt',
+        'activated_at' => 'getActivatedAt',
+        'created_at' => 'getCreatedAt'
     ];
 
     /**
@@ -235,6 +260,21 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    public const STATUS_PENDING = 'pending';
+    public const STATUS_ACTIVE = 'active';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_PENDING,
+            self::STATUS_ACTIVE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +291,12 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('numbers', $data ?? [], null);
-        $this->setIfExists('sandbox', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('phone_e164', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('expires_at', $data ?? [], null);
+        $this->setIfExists('activated_at', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
     }
 
     /**
@@ -282,6 +326,27 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['phone_e164'] === null) {
+            $invalidProperties[] = "'phone_e164' can't be null";
+        }
+        if ($this->container['status'] === null) {
+            $invalidProperties[] = "'status' can't be null";
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['expires_at'] === null) {
+            $invalidProperties[] = "'expires_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -298,55 +363,173 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets numbers
+     * Gets id
      *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]|null
+     * @return string
      */
-    public function getNumbers()
+    public function getId()
     {
-        return $this->container['numbers'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets numbers
+     * Sets id
      *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]|null $numbers numbers
+     * @param string $id Session id. Use this to revoke via DELETE.
      *
      * @return self
      */
-    public function setNumbers($numbers)
+    public function setId($id)
     {
-        if (is_null($numbers)) {
-            throw new \InvalidArgumentException('non-nullable numbers cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['numbers'] = $numbers;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets sandbox
+     * Gets phone_e164
      *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox|null
+     * @return string
      */
-    public function getSandbox()
+    public function getPhoneE164()
     {
-        return $this->container['sandbox'];
+        return $this->container['phone_e164'];
     }
 
     /**
-     * Sets sandbox
+     * Sets phone_e164
      *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox|null $sandbox sandbox
+     * @param string $phone_e164 Digits-only E.164 form (no +, spaces, or dashes).
      *
      * @return self
      */
-    public function setSandbox($sandbox)
+    public function setPhoneE164($phone_e164)
     {
-        if (is_null($sandbox)) {
-            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
+        if (is_null($phone_e164)) {
+            throw new \InvalidArgumentException('non-nullable phone_e164 cannot be null');
         }
-        $this->container['sandbox'] = $sandbox;
+        $this->container['phone_e164'] = $phone_e164;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string $status `pending` until the phone replies to the activation template, then `active`. Expired sessions are pruned by TTL and never appear in list responses.
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets expires_at
+     *
+     * @return \DateTime
+     */
+    public function getExpiresAt()
+    {
+        return $this->container['expires_at'];
+    }
+
+    /**
+     * Sets expires_at
+     *
+     * @param \DateTime $expires_at UTC timestamp at which the session becomes invalid. Pending sessions get a 24h window; activated sessions get 7 days.
+     *
+     * @return self
+     */
+    public function setExpiresAt($expires_at)
+    {
+        if (is_null($expires_at)) {
+            throw new \InvalidArgumentException('non-nullable expires_at cannot be null');
+        }
+        $this->container['expires_at'] = $expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets activated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getActivatedAt()
+    {
+        return $this->container['activated_at'];
+    }
+
+    /**
+     * Sets activated_at
+     *
+     * @param \DateTime|null $activated_at When the session transitioned `pending → active`, or null.
+     *
+     * @return self
+     */
+    public function setActivatedAt($activated_at)
+    {
+        if (is_null($activated_at)) {
+            throw new \InvalidArgumentException('non-nullable activated_at cannot be null');
+        }
+        $this->container['activated_at'] = $activated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

@@ -49,6 +49,7 @@ docs/Api/WhatsAppApi.md
 docs/Api/WhatsAppCallingApi.md
 docs/Api/WhatsAppFlowsApi.md
 docs/Api/WhatsAppPhoneNumbersApi.md
+docs/Api/WhatsAppSandboxApi.md
 docs/Api/WhatsAppTemplatesApi.md
 docs/Model/AccountGetResponse.md
 docs/Model/AccountWithFollowerStats.md
@@ -242,6 +243,8 @@ docs/Model/CreateWhatsAppGroupChat201Response.md
 docs/Model/CreateWhatsAppGroupChat201ResponseGroup.md
 docs/Model/CreateWhatsAppGroupChatRequest.md
 docs/Model/CreateWhatsAppGroupInviteLink200Response.md
+docs/Model/CreateWhatsAppSandboxSession200Response.md
+docs/Model/CreateWhatsAppSandboxSessionRequest.md
 docs/Model/CreateWhatsAppTemplate200Response.md
 docs/Model/CreateWhatsAppTemplate200ResponseTemplate.md
 docs/Model/CreateWhatsAppTemplateRequest.md
@@ -259,6 +262,7 @@ docs/Model/DeleteInboxComment200Response.md
 docs/Model/DeleteInboxReviewReply200Response.md
 docs/Model/DeleteInboxReviewReplyRequest.md
 docs/Model/DeleteQueueSlot200Response.md
+docs/Model/DeleteWhatsAppSandboxSession200Response.md
 docs/Model/DiscordPlatformData.md
 docs/Model/DiscordPlatformDataEmbedsInner.md
 docs/Model/DiscordPlatformDataEmbedsInnerAuthor.md
@@ -512,6 +516,8 @@ docs/Model/GetWhatsAppPhoneNumber200Response.md
 docs/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.md
 docs/Model/GetWhatsAppPhoneNumbers200Response.md
 docs/Model/GetWhatsAppPhoneNumbers200ResponseNumbersInner.md
+docs/Model/GetWhatsAppPhoneNumbers200ResponseSandbox.md
+docs/Model/GetWhatsAppPhoneNumbers200ResponseSandboxTemplate.md
 docs/Model/GetWhatsAppTemplate200Response.md
 docs/Model/GetWhatsAppTemplate200ResponseTemplate.md
 docs/Model/GetWhatsAppTemplates200Response.md
@@ -666,6 +672,7 @@ docs/Model/ListWhatsAppGroupJoinRequests200Response.md
 docs/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.md
 docs/Model/ListWhatsAppPhoneNumbers200Response.md
 docs/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.md
+docs/Model/ListWhatsAppSandboxSessions200Response.md
 docs/Model/MarkConversationRead200Response.md
 docs/Model/MediaItem.md
 docs/Model/MediaUploadResponse.md
@@ -1046,6 +1053,7 @@ docs/Model/WhatsAppButtonsComponent.md
 docs/Model/WhatsAppFooterComponent.md
 docs/Model/WhatsAppHeaderComponent.md
 docs/Model/WhatsAppHeaderComponentExample.md
+docs/Model/WhatsAppSandboxSession.md
 docs/Model/WhatsAppTemplateButton.md
 docs/Model/WhatsAppTemplateComponent.md
 docs/Model/XApiOperation.md
@@ -1109,6 +1117,7 @@ lib/Api/WhatsAppApi.php
 lib/Api/WhatsAppCallingApi.php
 lib/Api/WhatsAppFlowsApi.php
 lib/Api/WhatsAppPhoneNumbersApi.php
+lib/Api/WhatsAppSandboxApi.php
 lib/Api/WhatsAppTemplatesApi.php
 lib/ApiException.php
 lib/Configuration.php
@@ -1306,6 +1315,8 @@ lib/Model/CreateWhatsAppGroupChat201Response.php
 lib/Model/CreateWhatsAppGroupChat201ResponseGroup.php
 lib/Model/CreateWhatsAppGroupChatRequest.php
 lib/Model/CreateWhatsAppGroupInviteLink200Response.php
+lib/Model/CreateWhatsAppSandboxSession200Response.php
+lib/Model/CreateWhatsAppSandboxSessionRequest.php
 lib/Model/CreateWhatsAppTemplate200Response.php
 lib/Model/CreateWhatsAppTemplate200ResponseTemplate.php
 lib/Model/CreateWhatsAppTemplateRequest.php
@@ -1323,6 +1334,7 @@ lib/Model/DeleteInboxComment200Response.php
 lib/Model/DeleteInboxReviewReply200Response.php
 lib/Model/DeleteInboxReviewReplyRequest.php
 lib/Model/DeleteQueueSlot200Response.php
+lib/Model/DeleteWhatsAppSandboxSession200Response.php
 lib/Model/DiscordPlatformData.php
 lib/Model/DiscordPlatformDataEmbedsInner.php
 lib/Model/DiscordPlatformDataEmbedsInnerAuthor.php
@@ -1576,6 +1588,8 @@ lib/Model/GetWhatsAppPhoneNumber200Response.php
 lib/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.php
 lib/Model/GetWhatsAppPhoneNumbers200Response.php
 lib/Model/GetWhatsAppPhoneNumbers200ResponseNumbersInner.php
+lib/Model/GetWhatsAppPhoneNumbers200ResponseSandbox.php
+lib/Model/GetWhatsAppPhoneNumbers200ResponseSandboxTemplate.php
 lib/Model/GetWhatsAppTemplate200Response.php
 lib/Model/GetWhatsAppTemplate200ResponseTemplate.php
 lib/Model/GetWhatsAppTemplates200Response.php
@@ -1730,6 +1744,7 @@ lib/Model/ListWhatsAppGroupJoinRequests200Response.php
 lib/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.php
 lib/Model/ListWhatsAppPhoneNumbers200Response.php
 lib/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.php
+lib/Model/ListWhatsAppSandboxSessions200Response.php
 lib/Model/MarkConversationRead200Response.php
 lib/Model/MediaItem.php
 lib/Model/MediaUploadResponse.php
@@ -2111,6 +2126,7 @@ lib/Model/WhatsAppButtonsComponent.php
 lib/Model/WhatsAppFooterComponent.php
 lib/Model/WhatsAppHeaderComponent.php
 lib/Model/WhatsAppHeaderComponentExample.php
+lib/Model/WhatsAppSandboxSession.php
 lib/Model/WhatsAppTemplateButton.php
 lib/Model/WhatsAppTemplateComponent.php
 lib/Model/XApiOperation.php
@@ -2129,29 +2145,11 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/WhatsAppCallingApiTest.php
-test/Model/EnableWhatsAppCalling200ResponseTest.php
-test/Model/EnableWhatsAppCallingRequestTest.php
-test/Model/GetWhatsAppCall200ResponseTest.php
-test/Model/GetWhatsAppCallEstimate200ResponseBreakdownTest.php
-test/Model/GetWhatsAppCallEstimate200ResponseTest.php
-test/Model/GetWhatsAppCallPermissions200ResponseActionsInnerTest.php
-test/Model/GetWhatsAppCallPermissions200ResponsePermissionTest.php
-test/Model/GetWhatsAppCallPermissions200ResponseTest.php
-test/Model/GetWhatsAppCallingConfig200ResponseTest.php
-test/Model/InitiateWhatsAppCall200ResponseTest.php
-test/Model/InitiateWhatsAppCallRequestTest.php
-test/Model/ListWhatsAppCalls200ResponseCallsInnerBillingTest.php
-test/Model/ListWhatsAppCalls200ResponseCallsInnerTest.php
-test/Model/ListWhatsAppCalls200ResponseTest.php
-test/Model/UpdateWhatsAppCallingRequestTest.php
-test/Model/WebhookPayloadCallEndedCallBillingTest.php
-test/Model/WebhookPayloadCallEndedCallTest.php
-test/Model/WebhookPayloadCallEndedTest.php
-test/Model/WebhookPayloadCallFailedCallErrorTest.php
-test/Model/WebhookPayloadCallFailedCallTest.php
-test/Model/WebhookPayloadCallFailedTest.php
-test/Model/WebhookPayloadCallPermissionRequestPermissionTest.php
-test/Model/WebhookPayloadCallPermissionRequestTest.php
-test/Model/WebhookPayloadCallReceivedCallTest.php
-test/Model/WebhookPayloadCallReceivedTest.php
+test/Api/WhatsAppSandboxApiTest.php
+test/Model/CreateWhatsAppSandboxSession200ResponseTest.php
+test/Model/CreateWhatsAppSandboxSessionRequestTest.php
+test/Model/DeleteWhatsAppSandboxSession200ResponseTest.php
+test/Model/GetWhatsAppPhoneNumbers200ResponseSandboxTemplateTest.php
+test/Model/GetWhatsAppPhoneNumbers200ResponseSandboxTest.php
+test/Model/ListWhatsAppSandboxSessions200ResponseTest.php
+test/Model/WhatsAppSandboxSessionTest.php

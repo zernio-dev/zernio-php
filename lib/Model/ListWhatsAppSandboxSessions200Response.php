@@ -1,6 +1,6 @@
 <?php
 /**
- * GetWhatsAppPhoneNumbers200Response
+ * ListWhatsAppSandboxSessions200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetWhatsAppPhoneNumbers200Response Class Doc Comment
+ * ListWhatsAppSandboxSessions200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListWhatsAppSandboxSessions200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getWhatsAppPhoneNumbers_200_response';
+    protected static $openAPIModelName = 'listWhatsAppSandboxSessions_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'numbers' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]',
-        'sandbox' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox'
+        'sessions' => '\Zernio\Model\WhatsAppSandboxSession[]',
+        'sandbox_number' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'numbers' => null,
-        'sandbox' => null
+        'sessions' => null,
+        'sandbox_number' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'numbers' => false,
-        'sandbox' => false
+        'sessions' => false,
+        'sandbox_number' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'numbers' => 'numbers',
-        'sandbox' => 'sandbox'
+        'sessions' => 'sessions',
+        'sandbox_number' => 'sandboxNumber'
     ];
 
     /**
@@ -180,8 +180,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'numbers' => 'setNumbers',
-        'sandbox' => 'setSandbox'
+        'sessions' => 'setSessions',
+        'sandbox_number' => 'setSandboxNumber'
     ];
 
     /**
@@ -190,8 +190,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'numbers' => 'getNumbers',
-        'sandbox' => 'getSandbox'
+        'sessions' => 'getSessions',
+        'sandbox_number' => 'getSandboxNumber'
     ];
 
     /**
@@ -251,8 +251,8 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('numbers', $data ?? [], null);
-        $this->setIfExists('sandbox', $data ?? [], null);
+        $this->setIfExists('sessions', $data ?? [], null);
+        $this->setIfExists('sandbox_number', $data ?? [], null);
     }
 
     /**
@@ -298,55 +298,55 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets numbers
+     * Gets sessions
      *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]|null
+     * @return \Zernio\Model\WhatsAppSandboxSession[]|null
      */
-    public function getNumbers()
+    public function getSessions()
     {
-        return $this->container['numbers'];
+        return $this->container['sessions'];
     }
 
     /**
-     * Sets numbers
+     * Sets sessions
      *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]|null $numbers numbers
+     * @param \Zernio\Model\WhatsAppSandboxSession[]|null $sessions sessions
      *
      * @return self
      */
-    public function setNumbers($numbers)
+    public function setSessions($sessions)
     {
-        if (is_null($numbers)) {
-            throw new \InvalidArgumentException('non-nullable numbers cannot be null');
+        if (is_null($sessions)) {
+            throw new \InvalidArgumentException('non-nullable sessions cannot be null');
         }
-        $this->container['numbers'] = $numbers;
+        $this->container['sessions'] = $sessions;
 
         return $this;
     }
 
     /**
-     * Gets sandbox
+     * Gets sandbox_number
      *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox|null
+     * @return string|null
      */
-    public function getSandbox()
+    public function getSandboxNumber()
     {
-        return $this->container['sandbox'];
+        return $this->container['sandbox_number'];
     }
 
     /**
-     * Sets sandbox
+     * Sets sandbox_number
      *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox|null $sandbox sandbox
+     * @param string|null $sandbox_number The shared sandbox phone number in E.164 form.
      *
      * @return self
      */
-    public function setSandbox($sandbox)
+    public function setSandboxNumber($sandbox_number)
     {
-        if (is_null($sandbox)) {
-            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
+        if (is_null($sandbox_number)) {
+            throw new \InvalidArgumentException('non-nullable sandbox_number cannot be null');
         }
-        $this->container['sandbox'] = $sandbox;
+        $this->container['sandbox_number'] = $sandbox_number;
 
         return $this;
     }
