@@ -65,6 +65,7 @@ class GetContact200ResponseChannelsInner implements ModelInterface, ArrayAccess,
         'display_identifier' => 'string',
         'is_subscribed' => 'bool',
         'conversation_id' => 'string',
+        'last_active_at' => '\DateTime',
         'created_at' => '\DateTime'
     ];
 
@@ -83,6 +84,7 @@ class GetContact200ResponseChannelsInner implements ModelInterface, ArrayAccess,
         'display_identifier' => null,
         'is_subscribed' => null,
         'conversation_id' => null,
+        'last_active_at' => 'date-time',
         'created_at' => 'date-time'
     ];
 
@@ -99,6 +101,7 @@ class GetContact200ResponseChannelsInner implements ModelInterface, ArrayAccess,
         'display_identifier' => false,
         'is_subscribed' => false,
         'conversation_id' => false,
+        'last_active_at' => false,
         'created_at' => false
     ];
 
@@ -195,6 +198,7 @@ class GetContact200ResponseChannelsInner implements ModelInterface, ArrayAccess,
         'display_identifier' => 'displayIdentifier',
         'is_subscribed' => 'isSubscribed',
         'conversation_id' => 'conversationId',
+        'last_active_at' => 'lastActiveAt',
         'created_at' => 'createdAt'
     ];
 
@@ -211,6 +215,7 @@ class GetContact200ResponseChannelsInner implements ModelInterface, ArrayAccess,
         'display_identifier' => 'setDisplayIdentifier',
         'is_subscribed' => 'setIsSubscribed',
         'conversation_id' => 'setConversationId',
+        'last_active_at' => 'setLastActiveAt',
         'created_at' => 'setCreatedAt'
     ];
 
@@ -227,6 +232,7 @@ class GetContact200ResponseChannelsInner implements ModelInterface, ArrayAccess,
         'display_identifier' => 'getDisplayIdentifier',
         'is_subscribed' => 'getIsSubscribed',
         'conversation_id' => 'getConversationId',
+        'last_active_at' => 'getLastActiveAt',
         'created_at' => 'getCreatedAt'
     ];
 
@@ -294,6 +300,7 @@ class GetContact200ResponseChannelsInner implements ModelInterface, ArrayAccess,
         $this->setIfExists('display_identifier', $data ?? [], null);
         $this->setIfExists('is_subscribed', $data ?? [], null);
         $this->setIfExists('conversation_id', $data ?? [], null);
+        $this->setIfExists('last_active_at', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
     }
 
@@ -524,6 +531,33 @@ class GetContact200ResponseChannelsInner implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable conversation_id cannot be null');
         }
         $this->container['conversation_id'] = $conversation_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_active_at
+     *
+     * @return \DateTime|null
+     */
+    public function getLastActiveAt()
+    {
+        return $this->container['last_active_at'];
+    }
+
+    /**
+     * Sets last_active_at
+     *
+     * @param \DateTime|null $last_active_at Most recent message (either direction) in this channel's conversation, or null if none.
+     *
+     * @return self
+     */
+    public function setLastActiveAt($last_active_at)
+    {
+        if (is_null($last_active_at)) {
+            throw new \InvalidArgumentException('non-nullable last_active_at cannot be null');
+        }
+        $this->container['last_active_at'] = $last_active_at;
 
         return $this;
     }

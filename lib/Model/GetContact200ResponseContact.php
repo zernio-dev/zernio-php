@@ -66,6 +66,10 @@ class GetContact200ResponseContact implements ModelInterface, ArrayAccess, \Json
         'tags' => 'string[]',
         'is_subscribed' => 'bool',
         'is_blocked' => 'bool',
+        'messages_sent_count' => 'int',
+        'messages_received_count' => 'int',
+        'last_message_sent_at' => '\DateTime',
+        'last_message_received_at' => '\DateTime',
         'custom_fields' => 'object',
         'notes' => 'string',
         'conversation_ids' => 'string[]',
@@ -89,6 +93,10 @@ class GetContact200ResponseContact implements ModelInterface, ArrayAccess, \Json
         'tags' => null,
         'is_subscribed' => null,
         'is_blocked' => null,
+        'messages_sent_count' => null,
+        'messages_received_count' => null,
+        'last_message_sent_at' => 'date-time',
+        'last_message_received_at' => 'date-time',
         'custom_fields' => null,
         'notes' => null,
         'conversation_ids' => null,
@@ -110,6 +118,10 @@ class GetContact200ResponseContact implements ModelInterface, ArrayAccess, \Json
         'tags' => false,
         'is_subscribed' => false,
         'is_blocked' => false,
+        'messages_sent_count' => false,
+        'messages_received_count' => false,
+        'last_message_sent_at' => false,
+        'last_message_received_at' => false,
         'custom_fields' => false,
         'notes' => false,
         'conversation_ids' => false,
@@ -211,6 +223,10 @@ class GetContact200ResponseContact implements ModelInterface, ArrayAccess, \Json
         'tags' => 'tags',
         'is_subscribed' => 'isSubscribed',
         'is_blocked' => 'isBlocked',
+        'messages_sent_count' => 'messagesSentCount',
+        'messages_received_count' => 'messagesReceivedCount',
+        'last_message_sent_at' => 'lastMessageSentAt',
+        'last_message_received_at' => 'lastMessageReceivedAt',
         'custom_fields' => 'customFields',
         'notes' => 'notes',
         'conversation_ids' => 'conversationIds',
@@ -232,6 +248,10 @@ class GetContact200ResponseContact implements ModelInterface, ArrayAccess, \Json
         'tags' => 'setTags',
         'is_subscribed' => 'setIsSubscribed',
         'is_blocked' => 'setIsBlocked',
+        'messages_sent_count' => 'setMessagesSentCount',
+        'messages_received_count' => 'setMessagesReceivedCount',
+        'last_message_sent_at' => 'setLastMessageSentAt',
+        'last_message_received_at' => 'setLastMessageReceivedAt',
         'custom_fields' => 'setCustomFields',
         'notes' => 'setNotes',
         'conversation_ids' => 'setConversationIds',
@@ -253,6 +273,10 @@ class GetContact200ResponseContact implements ModelInterface, ArrayAccess, \Json
         'tags' => 'getTags',
         'is_subscribed' => 'getIsSubscribed',
         'is_blocked' => 'getIsBlocked',
+        'messages_sent_count' => 'getMessagesSentCount',
+        'messages_received_count' => 'getMessagesReceivedCount',
+        'last_message_sent_at' => 'getLastMessageSentAt',
+        'last_message_received_at' => 'getLastMessageReceivedAt',
         'custom_fields' => 'getCustomFields',
         'notes' => 'getNotes',
         'conversation_ids' => 'getConversationIds',
@@ -325,6 +349,10 @@ class GetContact200ResponseContact implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('tags', $data ?? [], null);
         $this->setIfExists('is_subscribed', $data ?? [], null);
         $this->setIfExists('is_blocked', $data ?? [], null);
+        $this->setIfExists('messages_sent_count', $data ?? [], null);
+        $this->setIfExists('messages_received_count', $data ?? [], null);
+        $this->setIfExists('last_message_sent_at', $data ?? [], null);
+        $this->setIfExists('last_message_received_at', $data ?? [], null);
         $this->setIfExists('custom_fields', $data ?? [], null);
         $this->setIfExists('notes', $data ?? [], null);
         $this->setIfExists('conversation_ids', $data ?? [], null);
@@ -586,6 +614,114 @@ class GetContact200ResponseContact implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable is_blocked cannot be null');
         }
         $this->container['is_blocked'] = $is_blocked;
+
+        return $this;
+    }
+
+    /**
+     * Gets messages_sent_count
+     *
+     * @return int|null
+     */
+    public function getMessagesSentCount()
+    {
+        return $this->container['messages_sent_count'];
+    }
+
+    /**
+     * Sets messages_sent_count
+     *
+     * @param int|null $messages_sent_count Messages sent to the contact, derived live from message history across all linked conversations.
+     *
+     * @return self
+     */
+    public function setMessagesSentCount($messages_sent_count)
+    {
+        if (is_null($messages_sent_count)) {
+            throw new \InvalidArgumentException('non-nullable messages_sent_count cannot be null');
+        }
+        $this->container['messages_sent_count'] = $messages_sent_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets messages_received_count
+     *
+     * @return int|null
+     */
+    public function getMessagesReceivedCount()
+    {
+        return $this->container['messages_received_count'];
+    }
+
+    /**
+     * Sets messages_received_count
+     *
+     * @param int|null $messages_received_count Messages received from the contact, derived live from message history across all linked conversations.
+     *
+     * @return self
+     */
+    public function setMessagesReceivedCount($messages_received_count)
+    {
+        if (is_null($messages_received_count)) {
+            throw new \InvalidArgumentException('non-nullable messages_received_count cannot be null');
+        }
+        $this->container['messages_received_count'] = $messages_received_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_message_sent_at
+     *
+     * @return \DateTime|null
+     */
+    public function getLastMessageSentAt()
+    {
+        return $this->container['last_message_sent_at'];
+    }
+
+    /**
+     * Sets last_message_sent_at
+     *
+     * @param \DateTime|null $last_message_sent_at Timestamp of the most recent outgoing message, or null if none.
+     *
+     * @return self
+     */
+    public function setLastMessageSentAt($last_message_sent_at)
+    {
+        if (is_null($last_message_sent_at)) {
+            throw new \InvalidArgumentException('non-nullable last_message_sent_at cannot be null');
+        }
+        $this->container['last_message_sent_at'] = $last_message_sent_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_message_received_at
+     *
+     * @return \DateTime|null
+     */
+    public function getLastMessageReceivedAt()
+    {
+        return $this->container['last_message_received_at'];
+    }
+
+    /**
+     * Sets last_message_received_at
+     *
+     * @param \DateTime|null $last_message_received_at Timestamp of the most recent incoming message, or null if none.
+     *
+     * @return self
+     */
+    public function setLastMessageReceivedAt($last_message_received_at)
+    {
+        if (is_null($last_message_received_at)) {
+            throw new \InvalidArgumentException('non-nullable last_message_received_at cannot be null');
+        }
+        $this->container['last_message_received_at'] = $last_message_received_at;
 
         return $this;
     }
