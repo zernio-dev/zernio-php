@@ -61,6 +61,7 @@ class WebhookPayloadCallEndedCallBilling implements ModelInterface, ArrayAccess,
         'meta_cost_usd' => 'float',
         'telnyx_cost_usd' => 'float',
         'recording_cost_usd' => 'float',
+        'billable_cost_usd' => 'float',
         'total_cost_usd' => 'float'
     ];
 
@@ -75,6 +76,7 @@ class WebhookPayloadCallEndedCallBilling implements ModelInterface, ArrayAccess,
         'meta_cost_usd' => null,
         'telnyx_cost_usd' => null,
         'recording_cost_usd' => null,
+        'billable_cost_usd' => null,
         'total_cost_usd' => null
     ];
 
@@ -87,6 +89,7 @@ class WebhookPayloadCallEndedCallBilling implements ModelInterface, ArrayAccess,
         'meta_cost_usd' => false,
         'telnyx_cost_usd' => false,
         'recording_cost_usd' => false,
+        'billable_cost_usd' => false,
         'total_cost_usd' => false
     ];
 
@@ -179,6 +182,7 @@ class WebhookPayloadCallEndedCallBilling implements ModelInterface, ArrayAccess,
         'meta_cost_usd' => 'metaCostUSD',
         'telnyx_cost_usd' => 'telnyxCostUSD',
         'recording_cost_usd' => 'recordingCostUSD',
+        'billable_cost_usd' => 'billableCostUSD',
         'total_cost_usd' => 'totalCostUSD'
     ];
 
@@ -191,6 +195,7 @@ class WebhookPayloadCallEndedCallBilling implements ModelInterface, ArrayAccess,
         'meta_cost_usd' => 'setMetaCostUsd',
         'telnyx_cost_usd' => 'setTelnyxCostUsd',
         'recording_cost_usd' => 'setRecordingCostUsd',
+        'billable_cost_usd' => 'setBillableCostUsd',
         'total_cost_usd' => 'setTotalCostUsd'
     ];
 
@@ -203,6 +208,7 @@ class WebhookPayloadCallEndedCallBilling implements ModelInterface, ArrayAccess,
         'meta_cost_usd' => 'getMetaCostUsd',
         'telnyx_cost_usd' => 'getTelnyxCostUsd',
         'recording_cost_usd' => 'getRecordingCostUsd',
+        'billable_cost_usd' => 'getBillableCostUsd',
         'total_cost_usd' => 'getTotalCostUsd'
     ];
 
@@ -266,6 +272,7 @@ class WebhookPayloadCallEndedCallBilling implements ModelInterface, ArrayAccess,
         $this->setIfExists('meta_cost_usd', $data ?? [], null);
         $this->setIfExists('telnyx_cost_usd', $data ?? [], null);
         $this->setIfExists('recording_cost_usd', $data ?? [], null);
+        $this->setIfExists('billable_cost_usd', $data ?? [], null);
         $this->setIfExists('total_cost_usd', $data ?? [], null);
     }
 
@@ -324,7 +331,7 @@ class WebhookPayloadCallEndedCallBilling implements ModelInterface, ArrayAccess,
     /**
      * Sets meta_cost_usd
      *
-     * @param float|null $meta_cost_usd meta_cost_usd
+     * @param float|null $meta_cost_usd Meta per-minute charge. Billed by Meta DIRECTLY to your WhatsApp Business Account payment method (your separate Meta invoice). Zernio does NOT charge this. Display only.
      *
      * @return self
      */
@@ -393,6 +400,33 @@ class WebhookPayloadCallEndedCallBilling implements ModelInterface, ArrayAccess,
     }
 
     /**
+     * Gets billable_cost_usd
+     *
+     * @return float|null
+     */
+    public function getBillableCostUsd()
+    {
+        return $this->container['billable_cost_usd'];
+    }
+
+    /**
+     * Sets billable_cost_usd
+     *
+     * @param float|null $billable_cost_usd The amount Zernio bills you = Telnyx leg + recording. Excludes Meta (billed by Meta directly).
+     *
+     * @return self
+     */
+    public function setBillableCostUsd($billable_cost_usd)
+    {
+        if (is_null($billable_cost_usd)) {
+            throw new \InvalidArgumentException('non-nullable billable_cost_usd cannot be null');
+        }
+        $this->container['billable_cost_usd'] = $billable_cost_usd;
+
+        return $this;
+    }
+
+    /**
      * Gets total_cost_usd
      *
      * @return float|null
@@ -405,7 +439,7 @@ class WebhookPayloadCallEndedCallBilling implements ModelInterface, ArrayAccess,
     /**
      * Sets total_cost_usd
      *
-     * @param float|null $total_cost_usd total_cost_usd
+     * @param float|null $total_cost_usd Full economic cost incl. the Meta portion you pay directly (Meta + Telnyx + recording). Display only, not the Zernio-billed amount.
      *
      * @return self
      */
