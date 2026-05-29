@@ -1,6 +1,6 @@
 # Zernio\InstagramApi
 
-
+Instagram-specific read endpoints: list a connected account&#39;s Stories and fetch per-Story insights. All endpoints require an accountId parameter identifying the Instagram-connected social account.
 
 All URIs are relative to https://zernio.com/api, except if the operation defines another base path.
 

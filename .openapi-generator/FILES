@@ -2145,11 +2145,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/WhatsAppSandboxApiTest.php
-test/Model/CreateWhatsAppSandboxSession200ResponseTest.php
-test/Model/CreateWhatsAppSandboxSessionRequestTest.php
-test/Model/DeleteWhatsAppSandboxSession200ResponseTest.php
-test/Model/GetWhatsAppPhoneNumbers200ResponseSandboxTemplateTest.php
-test/Model/GetWhatsAppPhoneNumbers200ResponseSandboxTest.php
-test/Model/ListWhatsAppSandboxSessions200ResponseTest.php
-test/Model/WhatsAppSandboxSessionTest.php
