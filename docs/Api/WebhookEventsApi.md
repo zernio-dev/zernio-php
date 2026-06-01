@@ -36,6 +36,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onReviewNew()**](WebhookEventsApi.md#onReviewNew) | **POST** /review.new | Review new event |
 | [**onReviewUpdated()**](WebhookEventsApi.md#onReviewUpdated) | **POST** /review.updated | Review updated event |
 | [**onWebhookTest()**](WebhookEventsApi.md#onWebhookTest) | **POST** /webhook.test | Webhook test event |
+| [**onWhatsAppNumberActivated()**](WebhookEventsApi.md#onWhatsAppNumberActivated) | **POST** /whatsapp.number.activated | WhatsApp number activated event |
+| [**onWhatsAppNumberDeclined()**](WebhookEventsApi.md#onWhatsAppNumberDeclined) | **POST** /whatsapp.number.declined | WhatsApp number declined event |
+| [**onWhatsAppNumberVerificationRequired()**](WebhookEventsApi.md#onWhatsAppNumberVerificationRequired) | **POST** /whatsapp.number.verification_required | WhatsApp number verification-required event |
 | [**onWhatsAppTemplateStatusUpdated()**](WebhookEventsApi.md#onWhatsAppTemplateStatusUpdated) | **POST** /whatsapp.template.status_updated | WhatsApp template status updated event |
 
 
@@ -1791,6 +1794,183 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **webhook_payload_test** | [**\Zernio\Model\WebhookPayloadTest**](../Model/WebhookPayloadTest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWhatsAppNumberActivated()`
+
+```php
+onWhatsAppNumberActivated($on_whats_app_number_activated_request)
+```
+
+WhatsApp number activated event
+
+Fired when a purchased WhatsApp number becomes active and usable — both the synchronous (Tier 1/2) path and the asynchronous regulated (Tier 3/4) path land here. Lets integrators react without polling GET /v1/whatsapp/phone-numbers.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$on_whats_app_number_activated_request = new \Zernio\Model\OnWhatsAppNumberActivatedRequest(); // \Zernio\Model\OnWhatsAppNumberActivatedRequest
+
+try {
+    $apiInstance->onWhatsAppNumberActivated($on_whats_app_number_activated_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWhatsAppNumberActivated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **on_whats_app_number_activated_request** | [**\Zernio\Model\OnWhatsAppNumberActivatedRequest**](../Model/OnWhatsAppNumberActivatedRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWhatsAppNumberDeclined()`
+
+```php
+onWhatsAppNumberDeclined($on_whats_app_number_declined_request)
+```
+
+WhatsApp number declined event
+
+Fired when a regulated (Tier 3/4) number order is declined or fails review. The number is never billed. `reason` carries the reviewer's rejection reason when available.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$on_whats_app_number_declined_request = new \Zernio\Model\OnWhatsAppNumberDeclinedRequest(); // \Zernio\Model\OnWhatsAppNumberDeclinedRequest
+
+try {
+    $apiInstance->onWhatsAppNumberDeclined($on_whats_app_number_declined_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWhatsAppNumberDeclined: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **on_whats_app_number_declined_request** | [**\Zernio\Model\OnWhatsAppNumberDeclinedRequest**](../Model/OnWhatsAppNumberDeclinedRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWhatsAppNumberVerificationRequired()`
+
+```php
+onWhatsAppNumberVerificationRequired($on_whats_app_number_verification_required_request)
+```
+
+WhatsApp number verification-required event
+
+Fired when a regulated number has an out-of-band identity-verification step (e.g. Onfido). `verificationUrl` is the link to forward to the number's end user; the order completes once they pass.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$on_whats_app_number_verification_required_request = new \Zernio\Model\OnWhatsAppNumberVerificationRequiredRequest(); // \Zernio\Model\OnWhatsAppNumberVerificationRequiredRequest
+
+try {
+    $apiInstance->onWhatsAppNumberVerificationRequired($on_whats_app_number_verification_required_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWhatsAppNumberVerificationRequired: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **on_whats_app_number_verification_required_request** | [**\Zernio\Model\OnWhatsAppNumberVerificationRequiredRequest**](../Model/OnWhatsAppNumberVerificationRequiredRequest.md)|  | |
 
 ### Return type
 

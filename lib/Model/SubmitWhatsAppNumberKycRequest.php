@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateWebhookSettingsRequest
+ * SubmitWhatsAppNumberKycRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateWebhookSettingsRequest Class Doc Comment
+ * SubmitWhatsAppNumberKycRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createWebhookSettings_request';
+    protected static $openAPIModelName = 'submitWhatsAppNumberKyc_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,14 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'url' => 'string',
-        'secret' => 'string',
-        'events' => 'string[]',
-        'is_active' => 'bool',
-        'custom_headers' => 'array<string,string>'
+        'profile_id' => 'string',
+        'country' => 'string',
+        'reuse' => 'bool',
+        'end_user_first_name' => 'string',
+        'end_user_last_name' => 'string',
+        'values' => 'array<string,string>',
+        'documents' => '\Zernio\Model\SubmitWhatsAppNumberKycRequestDocumentsInner[]',
+        'address' => '\Zernio\Model\SubmitWhatsAppNumberKycRequestAddress'
     ];
 
     /**
@@ -74,12 +76,14 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'url' => 'uri',
-        'secret' => null,
-        'events' => null,
-        'is_active' => null,
-        'custom_headers' => null
+        'profile_id' => null,
+        'country' => null,
+        'reuse' => null,
+        'end_user_first_name' => null,
+        'end_user_last_name' => null,
+        'values' => null,
+        'documents' => null,
+        'address' => null
     ];
 
     /**
@@ -88,12 +92,14 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'url' => false,
-        'secret' => false,
-        'events' => false,
-        'is_active' => false,
-        'custom_headers' => false
+        'profile_id' => false,
+        'country' => false,
+        'reuse' => false,
+        'end_user_first_name' => false,
+        'end_user_last_name' => false,
+        'values' => false,
+        'documents' => false,
+        'address' => false
     ];
 
     /**
@@ -182,12 +188,14 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'url' => 'url',
-        'secret' => 'secret',
-        'events' => 'events',
-        'is_active' => 'isActive',
-        'custom_headers' => 'customHeaders'
+        'profile_id' => 'profileId',
+        'country' => 'country',
+        'reuse' => 'reuse',
+        'end_user_first_name' => 'endUserFirstName',
+        'end_user_last_name' => 'endUserLastName',
+        'values' => 'values',
+        'documents' => 'documents',
+        'address' => 'address'
     ];
 
     /**
@@ -196,12 +204,14 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'secret' => 'setSecret',
-        'events' => 'setEvents',
-        'is_active' => 'setIsActive',
-        'custom_headers' => 'setCustomHeaders'
+        'profile_id' => 'setProfileId',
+        'country' => 'setCountry',
+        'reuse' => 'setReuse',
+        'end_user_first_name' => 'setEndUserFirstName',
+        'end_user_last_name' => 'setEndUserLastName',
+        'values' => 'setValues',
+        'documents' => 'setDocuments',
+        'address' => 'setAddress'
     ];
 
     /**
@@ -210,12 +220,14 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'secret' => 'getSecret',
-        'events' => 'getEvents',
-        'is_active' => 'getIsActive',
-        'custom_headers' => 'getCustomHeaders'
+        'profile_id' => 'getProfileId',
+        'country' => 'getCountry',
+        'reuse' => 'getReuse',
+        'end_user_first_name' => 'getEndUserFirstName',
+        'end_user_last_name' => 'getEndUserLastName',
+        'values' => 'getValues',
+        'documents' => 'getDocuments',
+        'address' => 'getAddress'
     ];
 
     /**
@@ -259,71 +271,6 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    public const EVENTS_POST_SCHEDULED = 'post.scheduled';
-    public const EVENTS_POST_PUBLISHED = 'post.published';
-    public const EVENTS_POST_FAILED = 'post.failed';
-    public const EVENTS_POST_PARTIAL = 'post.partial';
-    public const EVENTS_POST_CANCELLED = 'post.cancelled';
-    public const EVENTS_POST_RECYCLED = 'post.recycled';
-    public const EVENTS_POST_PLATFORM_PUBLISHED = 'post.platform.published';
-    public const EVENTS_POST_PLATFORM_FAILED = 'post.platform.failed';
-    public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
-    public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
-    public const EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED = 'account.ads.initial_sync_completed';
-    public const EVENTS_MESSAGE_RECEIVED = 'message.received';
-    public const EVENTS_MESSAGE_SENT = 'message.sent';
-    public const EVENTS_MESSAGE_EDITED = 'message.edited';
-    public const EVENTS_MESSAGE_DELETED = 'message.deleted';
-    public const EVENTS_MESSAGE_DELIVERED = 'message.delivered';
-    public const EVENTS_MESSAGE_READ = 'message.read';
-    public const EVENTS_MESSAGE_FAILED = 'message.failed';
-    public const EVENTS_REACTION_RECEIVED = 'reaction.received';
-    public const EVENTS_COMMENT_RECEIVED = 'comment.received';
-    public const EVENTS_REVIEW_NEW = 'review.new';
-    public const EVENTS_REVIEW_UPDATED = 'review.updated';
-    public const EVENTS_AD_STATUS_CHANGED = 'ad.status_changed';
-    public const EVENTS_WHATSAPP_TEMPLATE_STATUS_UPDATED = 'whatsapp.template.status_updated';
-    public const EVENTS_WHATSAPP_NUMBER_ACTIVATED = 'whatsapp.number.activated';
-    public const EVENTS_WHATSAPP_NUMBER_DECLINED = 'whatsapp.number.declined';
-    public const EVENTS_WHATSAPP_NUMBER_VERIFICATION_REQUIRED = 'whatsapp.number.verification_required';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getEventsAllowableValues()
-    {
-        return [
-            self::EVENTS_POST_SCHEDULED,
-            self::EVENTS_POST_PUBLISHED,
-            self::EVENTS_POST_FAILED,
-            self::EVENTS_POST_PARTIAL,
-            self::EVENTS_POST_CANCELLED,
-            self::EVENTS_POST_RECYCLED,
-            self::EVENTS_POST_PLATFORM_PUBLISHED,
-            self::EVENTS_POST_PLATFORM_FAILED,
-            self::EVENTS_ACCOUNT_CONNECTED,
-            self::EVENTS_ACCOUNT_DISCONNECTED,
-            self::EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED,
-            self::EVENTS_MESSAGE_RECEIVED,
-            self::EVENTS_MESSAGE_SENT,
-            self::EVENTS_MESSAGE_EDITED,
-            self::EVENTS_MESSAGE_DELETED,
-            self::EVENTS_MESSAGE_DELIVERED,
-            self::EVENTS_MESSAGE_READ,
-            self::EVENTS_MESSAGE_FAILED,
-            self::EVENTS_REACTION_RECEIVED,
-            self::EVENTS_COMMENT_RECEIVED,
-            self::EVENTS_REVIEW_NEW,
-            self::EVENTS_REVIEW_UPDATED,
-            self::EVENTS_AD_STATUS_CHANGED,
-            self::EVENTS_WHATSAPP_TEMPLATE_STATUS_UPDATED,
-            self::EVENTS_WHATSAPP_NUMBER_ACTIVATED,
-            self::EVENTS_WHATSAPP_NUMBER_DECLINED,
-            self::EVENTS_WHATSAPP_NUMBER_VERIFICATION_REQUIRED,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -340,12 +287,14 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('secret', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], true);
-        $this->setIfExists('custom_headers', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
+        $this->setIfExists('country', $data ?? [], null);
+        $this->setIfExists('reuse', $data ?? [], null);
+        $this->setIfExists('end_user_first_name', $data ?? [], null);
+        $this->setIfExists('end_user_last_name', $data ?? [], null);
+        $this->setIfExists('values', $data ?? [], null);
+        $this->setIfExists('documents', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
     }
 
     /**
@@ -375,27 +324,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['profile_id'] === null) {
+            $invalidProperties[] = "'profile_id' can't be null";
         }
-        if ((mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
+        if ($this->container['country'] === null) {
+            $invalidProperties[] = "'country' can't be null";
         }
-
-        if ((mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
-        if ($this->container['events'] === null) {
-            $invalidProperties[] = "'events' can't be null";
-        }
-        if ((count($this->container['events']) < 1)) {
-            $invalidProperties[] = "invalid value for 'events', number of items must be greater than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -412,184 +346,217 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets name
+     * Gets profile_id
      *
      * @return string
      */
-    public function getName()
+    public function getProfileId()
     {
-        return $this->container['name'];
+        return $this->container['profile_id'];
     }
 
     /**
-     * Sets name
+     * Sets profile_id
      *
-     * @param string $name Webhook name (1-50 characters)
+     * @param string $profile_id profile_id
      *
      * @return self
      */
-    public function setName($name)
+    public function setProfileId($profile_id)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
         }
-        if ((mb_strlen($name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateWebhookSettingsRequest., must be smaller than or equal to 50.');
-        }
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateWebhookSettingsRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['name'] = $name;
+        $this->container['profile_id'] = $profile_id;
 
         return $this;
     }
 
     /**
-     * Gets url
+     * Gets country
      *
      * @return string
      */
-    public function getUrl()
+    public function getCountry()
     {
-        return $this->container['url'];
+        return $this->container['country'];
     }
 
     /**
-     * Sets url
+     * Sets country
      *
-     * @param string $url Webhook endpoint URL (must be a valid URL, whitespace trimmed)
+     * @param string $country country
      *
      * @return self
      */
-    public function setUrl($url)
+    public function setCountry($country)
     {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        if (is_null($country)) {
+            throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
-        $this->container['url'] = $url;
+        $this->container['country'] = $country;
 
         return $this;
     }
 
     /**
-     * Gets secret
-     *
-     * @return string|null
-     */
-    public function getSecret()
-    {
-        return $this->container['secret'];
-    }
-
-    /**
-     * Sets secret
-     *
-     * @param string|null $secret Secret key for HMAC-SHA256 signature verification
-     *
-     * @return self
-     */
-    public function setSecret($secret)
-    {
-        if (is_null($secret)) {
-            throw new \InvalidArgumentException('non-nullable secret cannot be null');
-        }
-        $this->container['secret'] = $secret;
-
-        return $this;
-    }
-
-    /**
-     * Gets events
-     *
-     * @return string[]
-     */
-    public function getEvents()
-    {
-        return $this->container['events'];
-    }
-
-    /**
-     * Sets events
-     *
-     * @param string[] $events Events to subscribe to (at least one required)
-     *
-     * @return self
-     */
-    public function setEvents($events)
-    {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
-        }
-        $allowedValues = $this->getEventsAllowableValues();
-        if (array_diff($events, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'events', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-
-
-        if ((count($events) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $events when calling CreateWebhookSettingsRequest., number of items must be greater than or equal to 1.');
-        }
-        $this->container['events'] = $events;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_active
+     * Gets reuse
      *
      * @return bool|null
      */
-    public function getIsActive()
+    public function getReuse()
     {
-        return $this->container['is_active'];
+        return $this->container['reuse'];
     }
 
     /**
-     * Sets is_active
+     * Sets reuse
      *
-     * @param bool|null $is_active Enable or disable webhook delivery. Defaults to `true` when omitted.
+     * @param bool|null $reuse Reuse a prior approved verification for this country (skips document/field collection; places the order immediately).
      *
      * @return self
      */
-    public function setIsActive($is_active)
+    public function setReuse($reuse)
     {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
+        if (is_null($reuse)) {
+            throw new \InvalidArgumentException('non-nullable reuse cannot be null');
         }
-        $this->container['is_active'] = $is_active;
+        $this->container['reuse'] = $reuse;
 
         return $this;
     }
 
     /**
-     * Gets custom_headers
+     * Gets end_user_first_name
      *
-     * @return array<string,string>|null
+     * @return string|null
      */
-    public function getCustomHeaders()
+    public function getEndUserFirstName()
     {
-        return $this->container['custom_headers'];
+        return $this->container['end_user_first_name'];
     }
 
     /**
-     * Sets custom_headers
+     * Sets end_user_first_name
      *
-     * @param array<string,string>|null $custom_headers Custom headers to include in webhook requests
+     * @param string|null $end_user_first_name End user's legal first name. Required when the country has an action/ID-verification (Onfido) requirement.
      *
      * @return self
      */
-    public function setCustomHeaders($custom_headers)
+    public function setEndUserFirstName($end_user_first_name)
     {
-        if (is_null($custom_headers)) {
-            throw new \InvalidArgumentException('non-nullable custom_headers cannot be null');
+        if (is_null($end_user_first_name)) {
+            throw new \InvalidArgumentException('non-nullable end_user_first_name cannot be null');
         }
-        $this->container['custom_headers'] = $custom_headers;
+        $this->container['end_user_first_name'] = $end_user_first_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_user_last_name
+     *
+     * @return string|null
+     */
+    public function getEndUserLastName()
+    {
+        return $this->container['end_user_last_name'];
+    }
+
+    /**
+     * Sets end_user_last_name
+     *
+     * @param string|null $end_user_last_name End user's legal last name. Same condition as endUserFirstName.
+     *
+     * @return self
+     */
+    public function setEndUserLastName($end_user_last_name)
+    {
+        if (is_null($end_user_last_name)) {
+            throw new \InvalidArgumentException('non-nullable end_user_last_name cannot be null');
+        }
+        $this->container['end_user_last_name'] = $end_user_last_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets values
+     *
+     * @return array<string,string>|null
+     */
+    public function getValues()
+    {
+        return $this->container['values'];
+    }
+
+    /**
+     * Sets values
+     *
+     * @param array<string,string>|null $values requirementId → textual value
+     *
+     * @return self
+     */
+    public function setValues($values)
+    {
+        if (is_null($values)) {
+            throw new \InvalidArgumentException('non-nullable values cannot be null');
+        }
+        $this->container['values'] = $values;
+
+        return $this;
+    }
+
+    /**
+     * Gets documents
+     *
+     * @return \Zernio\Model\SubmitWhatsAppNumberKycRequestDocumentsInner[]|null
+     */
+    public function getDocuments()
+    {
+        return $this->container['documents'];
+    }
+
+    /**
+     * Sets documents
+     *
+     * @param \Zernio\Model\SubmitWhatsAppNumberKycRequestDocumentsInner[]|null $documents documents
+     *
+     * @return self
+     */
+    public function setDocuments($documents)
+    {
+        if (is_null($documents)) {
+            throw new \InvalidArgumentException('non-nullable documents cannot be null');
+        }
+        $this->container['documents'] = $documents;
+
+        return $this;
+    }
+
+    /**
+     * Gets address
+     *
+     * @return \Zernio\Model\SubmitWhatsAppNumberKycRequestAddress|null
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param \Zernio\Model\SubmitWhatsAppNumberKycRequestAddress|null $address address
+     *
+     * @return self
+     */
+    public function setAddress($address)
+    {
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
+        }
+        $this->container['address'] = $address;
 
         return $this;
     }

@@ -1,11 +1,11 @@
-# # SearchAvailableWhatsAppNumbers200Response
+# # PurchaseWhatsAppPhoneNumber202Response
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**status** | **string** |  | [optional]
 **country** | **string** |  | [optional]
-**number_type** | **string** |  | [optional]
-**numbers** | [**\Zernio\Model\SearchAvailableWhatsAppNumbers200ResponseNumbersInner[]**](SearchAvailableWhatsAppNumbers200ResponseNumbersInner.md) |  | [optional]
+**kyc_url** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

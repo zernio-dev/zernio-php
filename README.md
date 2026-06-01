@@ -380,10 +380,14 @@ Class | Method | HTTP request | Description
 *WhatsAppFlowsApi* | [**updateWhatsAppFlow**](docs/Api/WhatsAppFlowsApi.md#updatewhatsappflow) | **PATCH** /v1/whatsapp/flows/{flowId} | Update flow
 *WhatsAppFlowsApi* | [**uploadWhatsAppFlowJson**](docs/Api/WhatsAppFlowsApi.md#uploadwhatsappflowjson) | **PUT** /v1/whatsapp/flows/{flowId}/json | Upload flow JSON
 *WhatsAppPhoneNumbersApi* | [**getWhatsAppNumberInfo**](docs/Api/WhatsAppPhoneNumbersApi.md#getwhatsappnumberinfo) | **GET** /v1/whatsapp/number-info | Get number status
+*WhatsAppPhoneNumbersApi* | [**getWhatsAppNumberKycForm**](docs/Api/WhatsAppPhoneNumbersApi.md#getwhatsappnumberkycform) | **GET** /v1/whatsapp/phone-numbers/kyc | Get regulated-number KYC form spec
 *WhatsAppPhoneNumbersApi* | [**getWhatsAppPhoneNumber**](docs/Api/WhatsAppPhoneNumbersApi.md#getwhatsappphonenumber) | **GET** /v1/whatsapp/phone-numbers/{phoneNumberId} | Get phone number
 *WhatsAppPhoneNumbersApi* | [**getWhatsAppPhoneNumbers**](docs/Api/WhatsAppPhoneNumbersApi.md#getwhatsappphonenumbers) | **GET** /v1/whatsapp/phone-numbers | List phone numbers
+*WhatsAppPhoneNumbersApi* | [**listWhatsAppNumberCountries**](docs/Api/WhatsAppPhoneNumbersApi.md#listwhatsappnumbercountries) | **GET** /v1/whatsapp/phone-numbers/countries | List offerable number countries
 *WhatsAppPhoneNumbersApi* | [**purchaseWhatsAppPhoneNumber**](docs/Api/WhatsAppPhoneNumbersApi.md#purchasewhatsappphonenumber) | **POST** /v1/whatsapp/phone-numbers/purchase | Purchase phone number
 *WhatsAppPhoneNumbersApi* | [**releaseWhatsAppPhoneNumber**](docs/Api/WhatsAppPhoneNumbersApi.md#releasewhatsappphonenumber) | **DELETE** /v1/whatsapp/phone-numbers/{phoneNumberId} | Release phone number
+*WhatsAppPhoneNumbersApi* | [**searchAvailableWhatsAppNumbers**](docs/Api/WhatsAppPhoneNumbersApi.md#searchavailablewhatsappnumbers) | **GET** /v1/whatsapp/phone-numbers/available | Search available numbers to purchase
+*WhatsAppPhoneNumbersApi* | [**submitWhatsAppNumberKyc**](docs/Api/WhatsAppPhoneNumbersApi.md#submitwhatsappnumberkyc) | **POST** /v1/whatsapp/phone-numbers/kyc | Submit regulated-number KYC
 *WhatsAppSandboxApi* | [**createWhatsAppSandboxSession**](docs/Api/WhatsAppSandboxApi.md#createwhatsappsandboxsession) | **POST** /v1/whatsapp/sandbox/sessions | Start a sandbox activation for a phone
 *WhatsAppSandboxApi* | [**deleteWhatsAppSandboxSession**](docs/Api/WhatsAppSandboxApi.md#deletewhatsappsandboxsession) | **DELETE** /v1/whatsapp/sandbox/sessions/{sessionId} | Revoke a sandbox session
 *WhatsAppSandboxApi* | [**listWhatsAppSandboxSessions**](docs/Api/WhatsAppSandboxApi.md#listwhatsappsandboxsessions) | **GET** /v1/whatsapp/sandbox/sessions | List your sandbox sessions
@@ -866,6 +870,9 @@ Class | Method | HTTP request | Description
 - [GetWhatsAppNumberInfo200ResponsePhone](docs/Model/GetWhatsAppNumberInfo200ResponsePhone.md)
 - [GetWhatsAppNumberInfo200ResponsePhoneThroughput](docs/Model/GetWhatsAppNumberInfo200ResponsePhoneThroughput.md)
 - [GetWhatsAppNumberInfo200ResponseWaba](docs/Model/GetWhatsAppNumberInfo200ResponseWaba.md)
+- [GetWhatsAppNumberKycForm200Response](docs/Model/GetWhatsAppNumberKycForm200Response.md)
+- [GetWhatsAppNumberKycForm200ResponseFieldsInner](docs/Model/GetWhatsAppNumberKycForm200ResponseFieldsInner.md)
+- [GetWhatsAppNumberKycForm200ResponseReusable](docs/Model/GetWhatsAppNumberKycForm200ResponseReusable.md)
 - [GetWhatsAppPhoneNumber200Response](docs/Model/GetWhatsAppPhoneNumber200Response.md)
 - [GetWhatsAppPhoneNumber200ResponsePhoneNumber](docs/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.md)
 - [GetWhatsAppPhoneNumbers200Response](docs/Model/GetWhatsAppPhoneNumbers200Response.md)
@@ -1026,6 +1033,8 @@ Class | Method | HTTP request | Description
 - [ListWhatsAppGroupChats200ResponsePagingCursors](docs/Model/ListWhatsAppGroupChats200ResponsePagingCursors.md)
 - [ListWhatsAppGroupJoinRequests200Response](docs/Model/ListWhatsAppGroupJoinRequests200Response.md)
 - [ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner](docs/Model/ListWhatsAppGroupJoinRequests200ResponseJoinRequestsInner.md)
+- [ListWhatsAppNumberCountries200Response](docs/Model/ListWhatsAppNumberCountries200Response.md)
+- [ListWhatsAppNumberCountries200ResponseCountriesInner](docs/Model/ListWhatsAppNumberCountries200ResponseCountriesInner.md)
 - [ListWhatsAppPhoneNumbers200Response](docs/Model/ListWhatsAppPhoneNumbers200Response.md)
 - [ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner](docs/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.md)
 - [ListWhatsAppSandboxSessions200Response](docs/Model/ListWhatsAppSandboxSessions200Response.md)
@@ -1040,6 +1049,11 @@ Class | Method | HTTP request | Description
 - [Money](docs/Model/Money.md)
 - [MoveAccountToProfile200Response](docs/Model/MoveAccountToProfile200Response.md)
 - [MoveAccountToProfileRequest](docs/Model/MoveAccountToProfileRequest.md)
+- [OnWhatsAppNumberActivatedRequest](docs/Model/OnWhatsAppNumberActivatedRequest.md)
+- [OnWhatsAppNumberActivatedRequestNumber](docs/Model/OnWhatsAppNumberActivatedRequestNumber.md)
+- [OnWhatsAppNumberDeclinedRequest](docs/Model/OnWhatsAppNumberDeclinedRequest.md)
+- [OnWhatsAppNumberDeclinedRequestNumber](docs/Model/OnWhatsAppNumberDeclinedRequestNumber.md)
+- [OnWhatsAppNumberVerificationRequiredRequest](docs/Model/OnWhatsAppNumberVerificationRequiredRequest.md)
 - [Pagination](docs/Model/Pagination.md)
 - [PauseWorkflow200Response](docs/Model/PauseWorkflow200Response.md)
 - [Pending](docs/Model/Pending.md)
@@ -1068,6 +1082,7 @@ Class | Method | HTTP request | Description
 - [PurchaseWhatsAppPhoneNumber200ResponseOneOf](docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf.md)
 - [PurchaseWhatsAppPhoneNumber200ResponseOneOf1](docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf1.md)
 - [PurchaseWhatsAppPhoneNumber200ResponseOneOf1PhoneNumber](docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf1PhoneNumber.md)
+- [PurchaseWhatsAppPhoneNumber202Response](docs/Model/PurchaseWhatsAppPhoneNumber202Response.md)
 - [PurchaseWhatsAppPhoneNumberRequest](docs/Model/PurchaseWhatsAppPhoneNumberRequest.md)
 - [QueueDeleteResponse](docs/Model/QueueDeleteResponse.md)
 - [QueueNextSlotResponse](docs/Model/QueueNextSlotResponse.md)
@@ -1107,6 +1122,8 @@ Class | Method | HTTP request | Description
 - [SearchAdInterests200ResponseInterestsInner](docs/Model/SearchAdInterests200ResponseInterestsInner.md)
 - [SearchAdTargeting200Response](docs/Model/SearchAdTargeting200Response.md)
 - [SearchAdTargeting200ResponseResultsInner](docs/Model/SearchAdTargeting200ResponseResultsInner.md)
+- [SearchAvailableWhatsAppNumbers200Response](docs/Model/SearchAvailableWhatsAppNumbers200Response.md)
+- [SearchAvailableWhatsAppNumbers200ResponseNumbersInner](docs/Model/SearchAvailableWhatsAppNumbers200ResponseNumbersInner.md)
 - [SearchReddit200Response](docs/Model/SearchReddit200Response.md)
 - [SelectFacebookPage200Response](docs/Model/SelectFacebookPage200Response.md)
 - [SelectFacebookPage200ResponseAccount](docs/Model/SelectFacebookPage200ResponseAccount.md)
@@ -1189,6 +1206,11 @@ Class | Method | HTTP request | Description
 - [StartGoogleBusinessVerification200Response](docs/Model/StartGoogleBusinessVerification200Response.md)
 - [StartGoogleBusinessVerification200ResponseVerification](docs/Model/StartGoogleBusinessVerification200ResponseVerification.md)
 - [StartGoogleBusinessVerificationRequest](docs/Model/StartGoogleBusinessVerificationRequest.md)
+- [SubmitWhatsAppNumberKyc200Response](docs/Model/SubmitWhatsAppNumberKyc200Response.md)
+- [SubmitWhatsAppNumberKyc200ResponsePhoneNumber](docs/Model/SubmitWhatsAppNumberKyc200ResponsePhoneNumber.md)
+- [SubmitWhatsAppNumberKycRequest](docs/Model/SubmitWhatsAppNumberKycRequest.md)
+- [SubmitWhatsAppNumberKycRequestAddress](docs/Model/SubmitWhatsAppNumberKycRequestAddress.md)
+- [SubmitWhatsAppNumberKycRequestDocumentsInner](docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInner.md)
 - [TargetingSpec](docs/Model/TargetingSpec.md)
 - [TargetingSpecCitiesInner](docs/Model/TargetingSpecCitiesInner.md)
 - [TargetingSpecCustomLocationsInner](docs/Model/TargetingSpecCustomLocationsInner.md)

@@ -165,6 +165,15 @@ class WebhookEventsApi
         'onWebhookTest' => [
             'application/json',
         ],
+        'onWhatsAppNumberActivated' => [
+            'application/json',
+        ],
+        'onWhatsAppNumberDeclined' => [
+            'application/json',
+        ],
+        'onWhatsAppNumberVerificationRequired' => [
+            'application/json',
+        ],
         'onWhatsAppTemplateStatusUpdated' => [
             'application/json',
         ],
@@ -6795,6 +6804,669 @@ class WebhookEventsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_test));
             } else {
                 $httpBody = $webhook_payload_test;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onWhatsAppNumberActivated
+     *
+     * WhatsApp number activated event
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberActivatedRequest $on_whats_app_number_activated_request on_whats_app_number_activated_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberActivated'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onWhatsAppNumberActivated($on_whats_app_number_activated_request, string $contentType = self::contentTypes['onWhatsAppNumberActivated'][0])
+    {
+        $this->onWhatsAppNumberActivatedWithHttpInfo($on_whats_app_number_activated_request, $contentType);
+    }
+
+    /**
+     * Operation onWhatsAppNumberActivatedWithHttpInfo
+     *
+     * WhatsApp number activated event
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberActivatedRequest $on_whats_app_number_activated_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberActivated'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onWhatsAppNumberActivatedWithHttpInfo($on_whats_app_number_activated_request, string $contentType = self::contentTypes['onWhatsAppNumberActivated'][0])
+    {
+        $request = $this->onWhatsAppNumberActivatedRequest($on_whats_app_number_activated_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onWhatsAppNumberActivatedAsync
+     *
+     * WhatsApp number activated event
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberActivatedRequest $on_whats_app_number_activated_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberActivated'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onWhatsAppNumberActivatedAsync($on_whats_app_number_activated_request, string $contentType = self::contentTypes['onWhatsAppNumberActivated'][0])
+    {
+        return $this->onWhatsAppNumberActivatedAsyncWithHttpInfo($on_whats_app_number_activated_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onWhatsAppNumberActivatedAsyncWithHttpInfo
+     *
+     * WhatsApp number activated event
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberActivatedRequest $on_whats_app_number_activated_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberActivated'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onWhatsAppNumberActivatedAsyncWithHttpInfo($on_whats_app_number_activated_request, string $contentType = self::contentTypes['onWhatsAppNumberActivated'][0])
+    {
+        $returnType = '';
+        $request = $this->onWhatsAppNumberActivatedRequest($on_whats_app_number_activated_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onWhatsAppNumberActivated'
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberActivatedRequest $on_whats_app_number_activated_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberActivated'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onWhatsAppNumberActivatedRequest($on_whats_app_number_activated_request, string $contentType = self::contentTypes['onWhatsAppNumberActivated'][0])
+    {
+
+        // verify the required parameter 'on_whats_app_number_activated_request' is set
+        if ($on_whats_app_number_activated_request === null || (is_array($on_whats_app_number_activated_request) && count($on_whats_app_number_activated_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $on_whats_app_number_activated_request when calling onWhatsAppNumberActivated'
+            );
+        }
+
+
+        $resourcePath = '/whatsapp.number.activated';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($on_whats_app_number_activated_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($on_whats_app_number_activated_request));
+            } else {
+                $httpBody = $on_whats_app_number_activated_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onWhatsAppNumberDeclined
+     *
+     * WhatsApp number declined event
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberDeclinedRequest $on_whats_app_number_declined_request on_whats_app_number_declined_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberDeclined'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onWhatsAppNumberDeclined($on_whats_app_number_declined_request, string $contentType = self::contentTypes['onWhatsAppNumberDeclined'][0])
+    {
+        $this->onWhatsAppNumberDeclinedWithHttpInfo($on_whats_app_number_declined_request, $contentType);
+    }
+
+    /**
+     * Operation onWhatsAppNumberDeclinedWithHttpInfo
+     *
+     * WhatsApp number declined event
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberDeclinedRequest $on_whats_app_number_declined_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberDeclined'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onWhatsAppNumberDeclinedWithHttpInfo($on_whats_app_number_declined_request, string $contentType = self::contentTypes['onWhatsAppNumberDeclined'][0])
+    {
+        $request = $this->onWhatsAppNumberDeclinedRequest($on_whats_app_number_declined_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onWhatsAppNumberDeclinedAsync
+     *
+     * WhatsApp number declined event
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberDeclinedRequest $on_whats_app_number_declined_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberDeclined'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onWhatsAppNumberDeclinedAsync($on_whats_app_number_declined_request, string $contentType = self::contentTypes['onWhatsAppNumberDeclined'][0])
+    {
+        return $this->onWhatsAppNumberDeclinedAsyncWithHttpInfo($on_whats_app_number_declined_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onWhatsAppNumberDeclinedAsyncWithHttpInfo
+     *
+     * WhatsApp number declined event
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberDeclinedRequest $on_whats_app_number_declined_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberDeclined'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onWhatsAppNumberDeclinedAsyncWithHttpInfo($on_whats_app_number_declined_request, string $contentType = self::contentTypes['onWhatsAppNumberDeclined'][0])
+    {
+        $returnType = '';
+        $request = $this->onWhatsAppNumberDeclinedRequest($on_whats_app_number_declined_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onWhatsAppNumberDeclined'
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberDeclinedRequest $on_whats_app_number_declined_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberDeclined'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onWhatsAppNumberDeclinedRequest($on_whats_app_number_declined_request, string $contentType = self::contentTypes['onWhatsAppNumberDeclined'][0])
+    {
+
+        // verify the required parameter 'on_whats_app_number_declined_request' is set
+        if ($on_whats_app_number_declined_request === null || (is_array($on_whats_app_number_declined_request) && count($on_whats_app_number_declined_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $on_whats_app_number_declined_request when calling onWhatsAppNumberDeclined'
+            );
+        }
+
+
+        $resourcePath = '/whatsapp.number.declined';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($on_whats_app_number_declined_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($on_whats_app_number_declined_request));
+            } else {
+                $httpBody = $on_whats_app_number_declined_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onWhatsAppNumberVerificationRequired
+     *
+     * WhatsApp number verification-required event
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberVerificationRequiredRequest $on_whats_app_number_verification_required_request on_whats_app_number_verification_required_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberVerificationRequired'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onWhatsAppNumberVerificationRequired($on_whats_app_number_verification_required_request, string $contentType = self::contentTypes['onWhatsAppNumberVerificationRequired'][0])
+    {
+        $this->onWhatsAppNumberVerificationRequiredWithHttpInfo($on_whats_app_number_verification_required_request, $contentType);
+    }
+
+    /**
+     * Operation onWhatsAppNumberVerificationRequiredWithHttpInfo
+     *
+     * WhatsApp number verification-required event
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberVerificationRequiredRequest $on_whats_app_number_verification_required_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberVerificationRequired'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onWhatsAppNumberVerificationRequiredWithHttpInfo($on_whats_app_number_verification_required_request, string $contentType = self::contentTypes['onWhatsAppNumberVerificationRequired'][0])
+    {
+        $request = $this->onWhatsAppNumberVerificationRequiredRequest($on_whats_app_number_verification_required_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onWhatsAppNumberVerificationRequiredAsync
+     *
+     * WhatsApp number verification-required event
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberVerificationRequiredRequest $on_whats_app_number_verification_required_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberVerificationRequired'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onWhatsAppNumberVerificationRequiredAsync($on_whats_app_number_verification_required_request, string $contentType = self::contentTypes['onWhatsAppNumberVerificationRequired'][0])
+    {
+        return $this->onWhatsAppNumberVerificationRequiredAsyncWithHttpInfo($on_whats_app_number_verification_required_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onWhatsAppNumberVerificationRequiredAsyncWithHttpInfo
+     *
+     * WhatsApp number verification-required event
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberVerificationRequiredRequest $on_whats_app_number_verification_required_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberVerificationRequired'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onWhatsAppNumberVerificationRequiredAsyncWithHttpInfo($on_whats_app_number_verification_required_request, string $contentType = self::contentTypes['onWhatsAppNumberVerificationRequired'][0])
+    {
+        $returnType = '';
+        $request = $this->onWhatsAppNumberVerificationRequiredRequest($on_whats_app_number_verification_required_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onWhatsAppNumberVerificationRequired'
+     *
+     * @param  \Zernio\Model\OnWhatsAppNumberVerificationRequiredRequest $on_whats_app_number_verification_required_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onWhatsAppNumberVerificationRequired'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onWhatsAppNumberVerificationRequiredRequest($on_whats_app_number_verification_required_request, string $contentType = self::contentTypes['onWhatsAppNumberVerificationRequired'][0])
+    {
+
+        // verify the required parameter 'on_whats_app_number_verification_required_request' is set
+        if ($on_whats_app_number_verification_required_request === null || (is_array($on_whats_app_number_verification_required_request) && count($on_whats_app_number_verification_required_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $on_whats_app_number_verification_required_request when calling onWhatsAppNumberVerificationRequired'
+            );
+        }
+
+
+        $resourcePath = '/whatsapp.number.verification_required';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($on_whats_app_number_verification_required_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($on_whats_app_number_verification_required_request));
+            } else {
+                $httpBody = $on_whats_app_number_verification_required_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

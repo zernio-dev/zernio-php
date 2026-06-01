@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateWebhookSettingsRequest
+ * GetWhatsAppNumberKycForm200ResponseFieldsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateWebhookSettingsRequest Class Doc Comment
+ * GetWhatsAppNumberKycForm200ResponseFieldsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetWhatsAppNumberKycForm200ResponseFieldsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createWebhookSettings_request';
+    protected static $openAPIModelName = 'getWhatsAppNumberKycForm_200_response_fields_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'url' => 'string',
-        'secret' => 'string',
-        'events' => 'string[]',
-        'is_active' => 'bool',
-        'custom_headers' => 'array<string,string>'
+        'requirement_id' => 'string',
+        'label' => 'string',
+        'kind' => 'string',
+        'description' => 'string',
+        'example' => 'string',
+        'local_to' => 'string'
     ];
 
     /**
@@ -74,12 +74,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'url' => 'uri',
-        'secret' => null,
-        'events' => null,
-        'is_active' => null,
-        'custom_headers' => null
+        'requirement_id' => null,
+        'label' => null,
+        'kind' => null,
+        'description' => null,
+        'example' => null,
+        'local_to' => null
     ];
 
     /**
@@ -88,12 +88,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'url' => false,
-        'secret' => false,
-        'events' => false,
-        'is_active' => false,
-        'custom_headers' => false
+        'requirement_id' => false,
+        'label' => false,
+        'kind' => false,
+        'description' => false,
+        'example' => false,
+        'local_to' => false
     ];
 
     /**
@@ -182,12 +182,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'url' => 'url',
-        'secret' => 'secret',
-        'events' => 'events',
-        'is_active' => 'isActive',
-        'custom_headers' => 'customHeaders'
+        'requirement_id' => 'requirementId',
+        'label' => 'label',
+        'kind' => 'kind',
+        'description' => 'description',
+        'example' => 'example',
+        'local_to' => 'localTo'
     ];
 
     /**
@@ -196,12 +196,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'url' => 'setUrl',
-        'secret' => 'setSecret',
-        'events' => 'setEvents',
-        'is_active' => 'setIsActive',
-        'custom_headers' => 'setCustomHeaders'
+        'requirement_id' => 'setRequirementId',
+        'label' => 'setLabel',
+        'kind' => 'setKind',
+        'description' => 'setDescription',
+        'example' => 'setExample',
+        'local_to' => 'setLocalTo'
     ];
 
     /**
@@ -210,12 +210,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'url' => 'getUrl',
-        'secret' => 'getSecret',
-        'events' => 'getEvents',
-        'is_active' => 'getIsActive',
-        'custom_headers' => 'getCustomHeaders'
+        'requirement_id' => 'getRequirementId',
+        'label' => 'getLabel',
+        'kind' => 'getKind',
+        'description' => 'getDescription',
+        'example' => 'getExample',
+        'local_to' => 'getLocalTo'
     ];
 
     /**
@@ -259,69 +259,25 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
         return self::$openAPIModelName;
     }
 
-    public const EVENTS_POST_SCHEDULED = 'post.scheduled';
-    public const EVENTS_POST_PUBLISHED = 'post.published';
-    public const EVENTS_POST_FAILED = 'post.failed';
-    public const EVENTS_POST_PARTIAL = 'post.partial';
-    public const EVENTS_POST_CANCELLED = 'post.cancelled';
-    public const EVENTS_POST_RECYCLED = 'post.recycled';
-    public const EVENTS_POST_PLATFORM_PUBLISHED = 'post.platform.published';
-    public const EVENTS_POST_PLATFORM_FAILED = 'post.platform.failed';
-    public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
-    public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
-    public const EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED = 'account.ads.initial_sync_completed';
-    public const EVENTS_MESSAGE_RECEIVED = 'message.received';
-    public const EVENTS_MESSAGE_SENT = 'message.sent';
-    public const EVENTS_MESSAGE_EDITED = 'message.edited';
-    public const EVENTS_MESSAGE_DELETED = 'message.deleted';
-    public const EVENTS_MESSAGE_DELIVERED = 'message.delivered';
-    public const EVENTS_MESSAGE_READ = 'message.read';
-    public const EVENTS_MESSAGE_FAILED = 'message.failed';
-    public const EVENTS_REACTION_RECEIVED = 'reaction.received';
-    public const EVENTS_COMMENT_RECEIVED = 'comment.received';
-    public const EVENTS_REVIEW_NEW = 'review.new';
-    public const EVENTS_REVIEW_UPDATED = 'review.updated';
-    public const EVENTS_AD_STATUS_CHANGED = 'ad.status_changed';
-    public const EVENTS_WHATSAPP_TEMPLATE_STATUS_UPDATED = 'whatsapp.template.status_updated';
-    public const EVENTS_WHATSAPP_NUMBER_ACTIVATED = 'whatsapp.number.activated';
-    public const EVENTS_WHATSAPP_NUMBER_DECLINED = 'whatsapp.number.declined';
-    public const EVENTS_WHATSAPP_NUMBER_VERIFICATION_REQUIRED = 'whatsapp.number.verification_required';
+    public const KIND_TEXT = 'text';
+    public const KIND_DATE = 'date';
+    public const KIND_ADDRESS = 'address';
+    public const KIND_FILE = 'file';
+    public const KIND_ACTION = 'action';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getEventsAllowableValues()
+    public function getKindAllowableValues()
     {
         return [
-            self::EVENTS_POST_SCHEDULED,
-            self::EVENTS_POST_PUBLISHED,
-            self::EVENTS_POST_FAILED,
-            self::EVENTS_POST_PARTIAL,
-            self::EVENTS_POST_CANCELLED,
-            self::EVENTS_POST_RECYCLED,
-            self::EVENTS_POST_PLATFORM_PUBLISHED,
-            self::EVENTS_POST_PLATFORM_FAILED,
-            self::EVENTS_ACCOUNT_CONNECTED,
-            self::EVENTS_ACCOUNT_DISCONNECTED,
-            self::EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED,
-            self::EVENTS_MESSAGE_RECEIVED,
-            self::EVENTS_MESSAGE_SENT,
-            self::EVENTS_MESSAGE_EDITED,
-            self::EVENTS_MESSAGE_DELETED,
-            self::EVENTS_MESSAGE_DELIVERED,
-            self::EVENTS_MESSAGE_READ,
-            self::EVENTS_MESSAGE_FAILED,
-            self::EVENTS_REACTION_RECEIVED,
-            self::EVENTS_COMMENT_RECEIVED,
-            self::EVENTS_REVIEW_NEW,
-            self::EVENTS_REVIEW_UPDATED,
-            self::EVENTS_AD_STATUS_CHANGED,
-            self::EVENTS_WHATSAPP_TEMPLATE_STATUS_UPDATED,
-            self::EVENTS_WHATSAPP_NUMBER_ACTIVATED,
-            self::EVENTS_WHATSAPP_NUMBER_DECLINED,
-            self::EVENTS_WHATSAPP_NUMBER_VERIFICATION_REQUIRED,
+            self::KIND_TEXT,
+            self::KIND_DATE,
+            self::KIND_ADDRESS,
+            self::KIND_FILE,
+            self::KIND_ACTION,
         ];
     }
 
@@ -340,12 +296,12 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('url', $data ?? [], null);
-        $this->setIfExists('secret', $data ?? [], null);
-        $this->setIfExists('events', $data ?? [], null);
-        $this->setIfExists('is_active', $data ?? [], true);
-        $this->setIfExists('custom_headers', $data ?? [], null);
+        $this->setIfExists('requirement_id', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('kind', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('example', $data ?? [], null);
+        $this->setIfExists('local_to', $data ?? [], null);
     }
 
     /**
@@ -375,25 +331,13 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ((mb_strlen($this->container['name']) > 50)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
-        }
-
-        if ((mb_strlen($this->container['name']) < 1)) {
-            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
-        }
-
-        if ($this->container['url'] === null) {
-            $invalidProperties[] = "'url' can't be null";
-        }
-        if ($this->container['events'] === null) {
-            $invalidProperties[] = "'events' can't be null";
-        }
-        if ((count($this->container['events']) < 1)) {
-            $invalidProperties[] = "invalid value for 'events', number of items must be greater than or equal to 1.";
+        $allowedValues = $this->getKindAllowableValues();
+        if (!is_null($this->container['kind']) && !in_array($this->container['kind'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'kind', must be one of '%s'",
+                $this->container['kind'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -412,184 +356,173 @@ class CreateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Webhook name (1-50 characters)
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        if ((mb_strlen($name) > 50)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateWebhookSettingsRequest., must be smaller than or equal to 50.');
-        }
-        if ((mb_strlen($name) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $name when calling CreateWebhookSettingsRequest., must be bigger than or equal to 1.');
-        }
-
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->container['url'];
-    }
-
-    /**
-     * Sets url
-     *
-     * @param string $url Webhook endpoint URL (must be a valid URL, whitespace trimmed)
-     *
-     * @return self
-     */
-    public function setUrl($url)
-    {
-        if (is_null($url)) {
-            throw new \InvalidArgumentException('non-nullable url cannot be null');
-        }
-        $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets secret
+     * Gets requirement_id
      *
      * @return string|null
      */
-    public function getSecret()
+    public function getRequirementId()
     {
-        return $this->container['secret'];
+        return $this->container['requirement_id'];
     }
 
     /**
-     * Sets secret
+     * Sets requirement_id
      *
-     * @param string|null $secret Secret key for HMAC-SHA256 signature verification
+     * @param string|null $requirement_id requirement_id
      *
      * @return self
      */
-    public function setSecret($secret)
+    public function setRequirementId($requirement_id)
     {
-        if (is_null($secret)) {
-            throw new \InvalidArgumentException('non-nullable secret cannot be null');
+        if (is_null($requirement_id)) {
+            throw new \InvalidArgumentException('non-nullable requirement_id cannot be null');
         }
-        $this->container['secret'] = $secret;
+        $this->container['requirement_id'] = $requirement_id;
 
         return $this;
     }
 
     /**
-     * Gets events
+     * Gets label
      *
-     * @return string[]
+     * @return string|null
      */
-    public function getEvents()
+    public function getLabel()
     {
-        return $this->container['events'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets events
+     * Sets label
      *
-     * @param string[] $events Events to subscribe to (at least one required)
+     * @param string|null $label label
      *
      * @return self
      */
-    public function setEvents($events)
+    public function setLabel($label)
     {
-        if (is_null($events)) {
-            throw new \InvalidArgumentException('non-nullable events cannot be null');
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
-        $allowedValues = $this->getEventsAllowableValues();
-        if (array_diff($events, $allowedValues)) {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets kind
+     *
+     * @return string|null
+     */
+    public function getKind()
+    {
+        return $this->container['kind'];
+    }
+
+    /**
+     * Sets kind
+     *
+     * @param string|null $kind \"action\" = an out-of-band verification (e.g. Onfido); not filled here, fulfilled after the order via a link.
+     *
+     * @return self
+     */
+    public function setKind($kind)
+    {
+        if (is_null($kind)) {
+            throw new \InvalidArgumentException('non-nullable kind cannot be null');
+        }
+        $allowedValues = $this->getKindAllowableValues();
+        if (!in_array($kind, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value for 'events', must be one of '%s'",
+                    "Invalid value '%s' for 'kind', must be one of '%s'",
+                    $kind,
                     implode("', '", $allowedValues)
                 )
             );
         }
-
-
-        if ((count($events) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $events when calling CreateWebhookSettingsRequest., number of items must be greater than or equal to 1.');
-        }
-        $this->container['events'] = $events;
+        $this->container['kind'] = $kind;
 
         return $this;
     }
 
     /**
-     * Gets is_active
+     * Gets description
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getIsActive()
+    public function getDescription()
     {
-        return $this->container['is_active'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets is_active
+     * Sets description
      *
-     * @param bool|null $is_active Enable or disable webhook delivery. Defaults to `true` when omitted.
+     * @param string|null $description Plain-English explanation of what to provide.
      *
      * @return self
      */
-    public function setIsActive($is_active)
+    public function setDescription($description)
     {
-        if (is_null($is_active)) {
-            throw new \InvalidArgumentException('non-nullable is_active cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['is_active'] = $is_active;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets custom_headers
+     * Gets example
      *
-     * @return array<string,string>|null
+     * @return string|null
      */
-    public function getCustomHeaders()
+    public function getExample()
     {
-        return $this->container['custom_headers'];
+        return $this->container['example'];
     }
 
     /**
-     * Sets custom_headers
+     * Sets example
      *
-     * @param array<string,string>|null $custom_headers Custom headers to include in webhook requests
+     * @param string|null $example Concrete example value.
      *
      * @return self
      */
-    public function setCustomHeaders($custom_headers)
+    public function setExample($example)
     {
-        if (is_null($custom_headers)) {
-            throw new \InvalidArgumentException('non-nullable custom_headers cannot be null');
+        if (is_null($example)) {
+            throw new \InvalidArgumentException('non-nullable example cannot be null');
         }
-        $this->container['custom_headers'] = $custom_headers;
+        $this->container['example'] = $example;
+
+        return $this;
+    }
+
+    /**
+     * Gets local_to
+     *
+     * @return string|null
+     */
+    public function getLocalTo()
+    {
+        return $this->container['local_to'];
+    }
+
+    /**
+     * Sets local_to
+     *
+     * @param string|null $local_to ISO country the value must be local to
+     *
+     * @return self
+     */
+    public function setLocalTo($local_to)
+    {
+        if (is_null($local_to)) {
+            throw new \InvalidArgumentException('non-nullable local_to cannot be null');
+        }
+        $this->container['local_to'] = $local_to;
 
         return $this;
     }

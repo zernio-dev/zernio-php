@@ -7,10 +7,14 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getWhatsAppNumberInfo()**](WhatsAppPhoneNumbersApi.md#getWhatsAppNumberInfo) | **GET** /v1/whatsapp/number-info | Get number status |
+| [**getWhatsAppNumberKycForm()**](WhatsAppPhoneNumbersApi.md#getWhatsAppNumberKycForm) | **GET** /v1/whatsapp/phone-numbers/kyc | Get regulated-number KYC form spec |
 | [**getWhatsAppPhoneNumber()**](WhatsAppPhoneNumbersApi.md#getWhatsAppPhoneNumber) | **GET** /v1/whatsapp/phone-numbers/{phoneNumberId} | Get phone number |
 | [**getWhatsAppPhoneNumbers()**](WhatsAppPhoneNumbersApi.md#getWhatsAppPhoneNumbers) | **GET** /v1/whatsapp/phone-numbers | List phone numbers |
+| [**listWhatsAppNumberCountries()**](WhatsAppPhoneNumbersApi.md#listWhatsAppNumberCountries) | **GET** /v1/whatsapp/phone-numbers/countries | List offerable number countries |
 | [**purchaseWhatsAppPhoneNumber()**](WhatsAppPhoneNumbersApi.md#purchaseWhatsAppPhoneNumber) | **POST** /v1/whatsapp/phone-numbers/purchase | Purchase phone number |
 | [**releaseWhatsAppPhoneNumber()**](WhatsAppPhoneNumbersApi.md#releaseWhatsAppPhoneNumber) | **DELETE** /v1/whatsapp/phone-numbers/{phoneNumberId} | Release phone number |
+| [**searchAvailableWhatsAppNumbers()**](WhatsAppPhoneNumbersApi.md#searchAvailableWhatsAppNumbers) | **GET** /v1/whatsapp/phone-numbers/available | Search available numbers to purchase |
+| [**submitWhatsAppNumberKyc()**](WhatsAppPhoneNumbersApi.md#submitWhatsAppNumberKyc) | **POST** /v1/whatsapp/phone-numbers/kyc | Submit regulated-number KYC |
 
 
 ## `getWhatsAppNumberInfo()`
@@ -73,6 +77,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getWhatsAppNumberKycForm()`
+
+```php
+getWhatsAppNumberKycForm($country, $profile_id): \Zernio\Model\GetWhatsAppNumberKycForm200Response
+```
+
+Get regulated-number KYC form spec
+
+For a Tier 3/4 country, the fields the end customer must provide (Telnyx regulatory requirements) before a number can be ordered: text, date, address, or file (document) per requirement.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$country = 'country_example'; // string
+$profile_id = 'profile_id_example'; // string
+
+try {
+    $result = $apiInstance->getWhatsAppNumberKycForm($country, $profile_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppPhoneNumbersApi->getWhatsAppNumberKycForm: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **country** | **string**|  | |
+| **profile_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetWhatsAppNumberKycForm200Response**](../Model/GetWhatsAppNumberKycForm200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getWhatsAppPhoneNumber()`
 
 ```php
@@ -81,7 +147,7 @@ getWhatsAppPhoneNumber($phone_number_id): \Zernio\Model\GetWhatsAppPhoneNumber20
 
 Get phone number
 
-Retrieve the current status of a purchased phone number. Used to poll for Meta pre-verification completion after purchase.
+Retrieve the current status of a purchased phone number. Poll this to track Meta pre-verification (US sync path) and, for regulated (Tier 3/4) numbers, the async lifecycle: pending_regulatory → active (or regulatory_declined). When a regulated number has an Onfido ID step, `onfidoVerificationUrl` appears here once the order is placed — forward it to the end user. (Or subscribe to the whatsapp.number.* webhooks instead of polling.)
 
 ### Example
 
@@ -195,6 +261,63 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listWhatsAppNumberCountries()`
+
+```php
+listWhatsAppNumberCountries(): \Zernio\Model\ListWhatsAppNumberCountries200Response
+```
+
+List offerable number countries
+
+The WhatsApp number countries available to purchase, each with its flat monthly price (cents), regulatory tier, whether it needs end-user KYC (Tier 3/4), and whether outbound calling is available (not BIC-blocked). Drives the country picker. Tier-4 countries appear only when enabled.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->listWhatsAppNumberCountries();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppPhoneNumbersApi->listWhatsAppNumberCountries: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Zernio\Model\ListWhatsAppNumberCountries200Response**](../Model/ListWhatsAppNumberCountries200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `purchaseWhatsAppPhoneNumber()`
 
 ```php
@@ -222,7 +345,7 @@ $apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$purchase_whats_app_phone_number_request = {"profileId":"507f1f77bcf86cd799439011"}; // \Zernio\Model\PurchaseWhatsAppPhoneNumberRequest
+$purchase_whats_app_phone_number_request = {"profileId":"507f1f77bcf86cd799439011","country":"DE"}; // \Zernio\Model\PurchaseWhatsAppPhoneNumberRequest
 
 try {
     $result = $apiInstance->purchaseWhatsAppPhoneNumber($purchase_whats_app_phone_number_request);
@@ -309,6 +432,136 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `searchAvailableWhatsAppNumbers()`
+
+```php
+searchAvailableWhatsAppNumbers($country, $type, $prefix, $locality, $contains, $limit): \Zernio\Model\SearchAvailableWhatsAppNumbers200Response
+```
+
+Search available numbers to purchase
+
+Search the provider's inventory for numbers available to purchase in a country (default US). Optional filters narrow the results. The country must be offerable (see GET /v1/whatsapp/phone-numbers/countries).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$country = 'US'; // string
+$type = 'type_example'; // string | Number type; defaults to the country's WhatsApp-safe type
+$prefix = 'prefix_example'; // string | Area code
+$locality = 'locality_example'; // string | City
+$contains = 'contains_example'; // string | Pattern to match within the number
+$limit = 20; // int
+
+try {
+    $result = $apiInstance->searchAvailableWhatsAppNumbers($country, $type, $prefix, $locality, $contains, $limit);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppPhoneNumbersApi->searchAvailableWhatsAppNumbers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **country** | **string**|  | [optional] [default to &#39;US&#39;] |
+| **type** | **string**| Number type; defaults to the country&#39;s WhatsApp-safe type | [optional] |
+| **prefix** | **string**| Area code | [optional] |
+| **locality** | **string**| City | [optional] |
+| **contains** | **string**| Pattern to match within the number | [optional] |
+| **limit** | **int**|  | [optional] [default to 20] |
+
+### Return type
+
+[**\Zernio\Model\SearchAvailableWhatsAppNumbers200Response**](../Model/SearchAvailableWhatsAppNumbers200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `submitWhatsAppNumberKyc()`
+
+```php
+submitWhatsAppNumberKyc($submit_whats_app_number_kyc_request): \Zernio\Model\SubmitWhatsAppNumberKyc200Response
+```
+
+Submit regulated-number KYC
+
+Submit the end customer's KYC (textual values, uploaded documents, address) for a Tier 3/4 country. Documents are streamed straight to the number provider and are not stored by Zernio. Builds + submits a regulatory requirement group and claims a pending_regulatory slot; the number is ordered + activated once the provider approves (asynchronous). Idempotent per (owner, country).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$submit_whats_app_number_kyc_request = new \Zernio\Model\SubmitWhatsAppNumberKycRequest(); // \Zernio\Model\SubmitWhatsAppNumberKycRequest
+
+try {
+    $result = $apiInstance->submitWhatsAppNumberKyc($submit_whats_app_number_kyc_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppPhoneNumbersApi->submitWhatsAppNumberKyc: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **submit_whats_app_number_kyc_request** | [**\Zernio\Model\SubmitWhatsAppNumberKycRequest**](../Model/SubmitWhatsAppNumberKycRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\SubmitWhatsAppNumberKyc200Response**](../Model/SubmitWhatsAppNumberKyc200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

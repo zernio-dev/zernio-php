@@ -1,6 +1,6 @@
 <?php
 /**
- * PurchaseWhatsAppPhoneNumberRequest
+ * ListWhatsAppNumberCountries200ResponseCountriesInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PurchaseWhatsAppPhoneNumberRequest Class Doc Comment
+ * ListWhatsAppNumberCountries200ResponseCountriesInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListWhatsAppNumberCountries200ResponseCountriesInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'purchaseWhatsAppPhoneNumber_request';
+    protected static $openAPIModelName = 'listWhatsAppNumberCountries_200_response_countries_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'profile_id' => 'string',
-        'country' => 'string'
+        'code' => 'string',
+        'tier' => 'int',
+        'monthly_cents' => 'int',
+        'needs_kyc' => 'bool',
+        'outbound_calling_available' => 'bool'
     ];
 
     /**
@@ -70,8 +73,11 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'profile_id' => null,
-        'country' => null
+        'code' => null,
+        'tier' => null,
+        'monthly_cents' => null,
+        'needs_kyc' => null,
+        'outbound_calling_available' => null
     ];
 
     /**
@@ -80,8 +86,11 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'profile_id' => false,
-        'country' => false
+        'code' => false,
+        'tier' => false,
+        'monthly_cents' => false,
+        'needs_kyc' => false,
+        'outbound_calling_available' => false
     ];
 
     /**
@@ -170,8 +179,11 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'profile_id' => 'profileId',
-        'country' => 'country'
+        'code' => 'code',
+        'tier' => 'tier',
+        'monthly_cents' => 'monthlyCents',
+        'needs_kyc' => 'needsKyc',
+        'outbound_calling_available' => 'outboundCallingAvailable'
     ];
 
     /**
@@ -180,8 +192,11 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'profile_id' => 'setProfileId',
-        'country' => 'setCountry'
+        'code' => 'setCode',
+        'tier' => 'setTier',
+        'monthly_cents' => 'setMonthlyCents',
+        'needs_kyc' => 'setNeedsKyc',
+        'outbound_calling_available' => 'setOutboundCallingAvailable'
     ];
 
     /**
@@ -190,8 +205,11 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'profile_id' => 'getProfileId',
-        'country' => 'getCountry'
+        'code' => 'getCode',
+        'tier' => 'getTier',
+        'monthly_cents' => 'getMonthlyCents',
+        'needs_kyc' => 'getNeedsKyc',
+        'outbound_calling_available' => 'getOutboundCallingAvailable'
     ];
 
     /**
@@ -235,6 +253,25 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
         return self::$openAPIModelName;
     }
 
+    public const TIER_NUMBER_1 = 1;
+    public const TIER_NUMBER_2 = 2;
+    public const TIER_NUMBER_3 = 3;
+    public const TIER_NUMBER_4 = 4;
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTierAllowableValues()
+    {
+        return [
+            self::TIER_NUMBER_1,
+            self::TIER_NUMBER_2,
+            self::TIER_NUMBER_3,
+            self::TIER_NUMBER_4,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +288,11 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('profile_id', $data ?? [], null);
-        $this->setIfExists('country', $data ?? [], 'US');
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('tier', $data ?? [], null);
+        $this->setIfExists('monthly_cents', $data ?? [], null);
+        $this->setIfExists('needs_kyc', $data ?? [], null);
+        $this->setIfExists('outbound_calling_available', $data ?? [], null);
     }
 
     /**
@@ -282,9 +322,15 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['profile_id'] === null) {
-            $invalidProperties[] = "'profile_id' can't be null";
+        $allowedValues = $this->getTierAllowableValues();
+        if (!is_null($this->container['tier']) && !in_array($this->container['tier'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'tier', must be one of '%s'",
+                $this->container['tier'],
+                implode("', '", $allowedValues)
+            );
         }
+
         return $invalidProperties;
     }
 
@@ -301,55 +347,146 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets profile_id
+     * Gets code
      *
-     * @return string
+     * @return string|null
      */
-    public function getProfileId()
+    public function getCode()
     {
-        return $this->container['profile_id'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets profile_id
+     * Sets code
      *
-     * @param string $profile_id Profile to associate the number with
+     * @param string|null $code ISO 3166-1 alpha-2
      *
      * @return self
      */
-    public function setProfileId($profile_id)
+    public function setCode($code)
     {
-        if (is_null($profile_id)) {
-            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        $this->container['profile_id'] = $profile_id;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets country
+     * Gets tier
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getCountry()
+    public function getTier()
     {
-        return $this->container['country'];
+        return $this->container['tier'];
     }
 
     /**
-     * Sets country
+     * Sets tier
      *
-     * @param string|null $country ISO 3166-1 alpha-2 country for the number (default US). International numbers require usage-based billing. Tier 3/4 countries return 202 { status: \"kyc_required\", kycUrl } — the customer must complete KYC at that URL before the number is ordered. See GET /v1/whatsapp/phone-numbers/countries.
+     * @param int|null $tier tier
      *
      * @return self
      */
-    public function setCountry($country)
+    public function setTier($tier)
     {
-        if (is_null($country)) {
-            throw new \InvalidArgumentException('non-nullable country cannot be null');
+        if (is_null($tier)) {
+            throw new \InvalidArgumentException('non-nullable tier cannot be null');
         }
-        $this->container['country'] = $country;
+        $allowedValues = $this->getTierAllowableValues();
+        if (!in_array($tier, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'tier', must be one of '%s'",
+                    $tier,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['tier'] = $tier;
+
+        return $this;
+    }
+
+    /**
+     * Gets monthly_cents
+     *
+     * @return int|null
+     */
+    public function getMonthlyCents()
+    {
+        return $this->container['monthly_cents'];
+    }
+
+    /**
+     * Sets monthly_cents
+     *
+     * @param int|null $monthly_cents monthly_cents
+     *
+     * @return self
+     */
+    public function setMonthlyCents($monthly_cents)
+    {
+        if (is_null($monthly_cents)) {
+            throw new \InvalidArgumentException('non-nullable monthly_cents cannot be null');
+        }
+        $this->container['monthly_cents'] = $monthly_cents;
+
+        return $this;
+    }
+
+    /**
+     * Gets needs_kyc
+     *
+     * @return bool|null
+     */
+    public function getNeedsKyc()
+    {
+        return $this->container['needs_kyc'];
+    }
+
+    /**
+     * Sets needs_kyc
+     *
+     * @param bool|null $needs_kyc needs_kyc
+     *
+     * @return self
+     */
+    public function setNeedsKyc($needs_kyc)
+    {
+        if (is_null($needs_kyc)) {
+            throw new \InvalidArgumentException('non-nullable needs_kyc cannot be null');
+        }
+        $this->container['needs_kyc'] = $needs_kyc;
+
+        return $this;
+    }
+
+    /**
+     * Gets outbound_calling_available
+     *
+     * @return bool|null
+     */
+    public function getOutboundCallingAvailable()
+    {
+        return $this->container['outbound_calling_available'];
+    }
+
+    /**
+     * Sets outbound_calling_available
+     *
+     * @param bool|null $outbound_calling_available outbound_calling_available
+     *
+     * @return self
+     */
+    public function setOutboundCallingAvailable($outbound_calling_available)
+    {
+        if (is_null($outbound_calling_available)) {
+            throw new \InvalidArgumentException('non-nullable outbound_calling_available cannot be null');
+        }
+        $this->container['outbound_calling_available'] = $outbound_calling_available;
 
         return $this;
     }

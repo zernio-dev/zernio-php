@@ -1,6 +1,6 @@
 <?php
 /**
- * PurchaseWhatsAppPhoneNumberRequest
+ * SubmitWhatsAppNumberKycRequestAddress
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PurchaseWhatsAppPhoneNumberRequest Class Doc Comment
+ * SubmitWhatsAppNumberKycRequestAddress Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubmitWhatsAppNumberKycRequestAddress implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'purchaseWhatsAppPhoneNumber_request';
+    protected static $openAPIModelName = 'submitWhatsAppNumberKyc_request_address';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,15 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'profile_id' => 'string',
-        'country' => 'string'
+        'requirement_id' => 'string',
+        'country_code' => 'string',
+        'business_name' => 'string',
+        'first_name' => 'string',
+        'last_name' => 'string',
+        'street_address' => 'string',
+        'locality' => 'string',
+        'administrative_area' => 'string',
+        'postal_code' => 'string'
     ];
 
     /**
@@ -70,8 +77,15 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'profile_id' => null,
-        'country' => null
+        'requirement_id' => null,
+        'country_code' => null,
+        'business_name' => null,
+        'first_name' => null,
+        'last_name' => null,
+        'street_address' => null,
+        'locality' => null,
+        'administrative_area' => null,
+        'postal_code' => null
     ];
 
     /**
@@ -80,8 +94,15 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'profile_id' => false,
-        'country' => false
+        'requirement_id' => false,
+        'country_code' => false,
+        'business_name' => false,
+        'first_name' => false,
+        'last_name' => false,
+        'street_address' => false,
+        'locality' => false,
+        'administrative_area' => false,
+        'postal_code' => false
     ];
 
     /**
@@ -170,8 +191,15 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'profile_id' => 'profileId',
-        'country' => 'country'
+        'requirement_id' => 'requirementId',
+        'country_code' => 'country_code',
+        'business_name' => 'business_name',
+        'first_name' => 'first_name',
+        'last_name' => 'last_name',
+        'street_address' => 'street_address',
+        'locality' => 'locality',
+        'administrative_area' => 'administrative_area',
+        'postal_code' => 'postal_code'
     ];
 
     /**
@@ -180,8 +208,15 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'profile_id' => 'setProfileId',
-        'country' => 'setCountry'
+        'requirement_id' => 'setRequirementId',
+        'country_code' => 'setCountryCode',
+        'business_name' => 'setBusinessName',
+        'first_name' => 'setFirstName',
+        'last_name' => 'setLastName',
+        'street_address' => 'setStreetAddress',
+        'locality' => 'setLocality',
+        'administrative_area' => 'setAdministrativeArea',
+        'postal_code' => 'setPostalCode'
     ];
 
     /**
@@ -190,8 +225,15 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'profile_id' => 'getProfileId',
-        'country' => 'getCountry'
+        'requirement_id' => 'getRequirementId',
+        'country_code' => 'getCountryCode',
+        'business_name' => 'getBusinessName',
+        'first_name' => 'getFirstName',
+        'last_name' => 'getLastName',
+        'street_address' => 'getStreetAddress',
+        'locality' => 'getLocality',
+        'administrative_area' => 'getAdministrativeArea',
+        'postal_code' => 'getPostalCode'
     ];
 
     /**
@@ -251,8 +293,15 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('profile_id', $data ?? [], null);
-        $this->setIfExists('country', $data ?? [], 'US');
+        $this->setIfExists('requirement_id', $data ?? [], null);
+        $this->setIfExists('country_code', $data ?? [], null);
+        $this->setIfExists('business_name', $data ?? [], null);
+        $this->setIfExists('first_name', $data ?? [], null);
+        $this->setIfExists('last_name', $data ?? [], null);
+        $this->setIfExists('street_address', $data ?? [], null);
+        $this->setIfExists('locality', $data ?? [], null);
+        $this->setIfExists('administrative_area', $data ?? [], null);
+        $this->setIfExists('postal_code', $data ?? [], null);
     }
 
     /**
@@ -282,9 +331,6 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['profile_id'] === null) {
-            $invalidProperties[] = "'profile_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -301,55 +347,244 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets profile_id
+     * Gets requirement_id
      *
-     * @return string
+     * @return string|null
      */
-    public function getProfileId()
+    public function getRequirementId()
     {
-        return $this->container['profile_id'];
+        return $this->container['requirement_id'];
     }
 
     /**
-     * Sets profile_id
+     * Sets requirement_id
      *
-     * @param string $profile_id Profile to associate the number with
+     * @param string|null $requirement_id requirement_id
      *
      * @return self
      */
-    public function setProfileId($profile_id)
+    public function setRequirementId($requirement_id)
     {
-        if (is_null($profile_id)) {
-            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
+        if (is_null($requirement_id)) {
+            throw new \InvalidArgumentException('non-nullable requirement_id cannot be null');
         }
-        $this->container['profile_id'] = $profile_id;
+        $this->container['requirement_id'] = $requirement_id;
 
         return $this;
     }
 
     /**
-     * Gets country
+     * Gets country_code
      *
      * @return string|null
      */
-    public function getCountry()
+    public function getCountryCode()
     {
-        return $this->container['country'];
+        return $this->container['country_code'];
     }
 
     /**
-     * Sets country
+     * Sets country_code
      *
-     * @param string|null $country ISO 3166-1 alpha-2 country for the number (default US). International numbers require usage-based billing. Tier 3/4 countries return 202 { status: \"kyc_required\", kycUrl } — the customer must complete KYC at that URL before the number is ordered. See GET /v1/whatsapp/phone-numbers/countries.
+     * @param string|null $country_code country_code
      *
      * @return self
      */
-    public function setCountry($country)
+    public function setCountryCode($country_code)
     {
-        if (is_null($country)) {
-            throw new \InvalidArgumentException('non-nullable country cannot be null');
+        if (is_null($country_code)) {
+            throw new \InvalidArgumentException('non-nullable country_code cannot be null');
         }
-        $this->container['country'] = $country;
+        $this->container['country_code'] = $country_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets business_name
+     *
+     * @return string|null
+     */
+    public function getBusinessName()
+    {
+        return $this->container['business_name'];
+    }
+
+    /**
+     * Sets business_name
+     *
+     * @param string|null $business_name business_name
+     *
+     * @return self
+     */
+    public function setBusinessName($business_name)
+    {
+        if (is_null($business_name)) {
+            throw new \InvalidArgumentException('non-nullable business_name cannot be null');
+        }
+        $this->container['business_name'] = $business_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets first_name
+     *
+     * @return string|null
+     */
+    public function getFirstName()
+    {
+        return $this->container['first_name'];
+    }
+
+    /**
+     * Sets first_name
+     *
+     * @param string|null $first_name first_name
+     *
+     * @return self
+     */
+    public function setFirstName($first_name)
+    {
+        if (is_null($first_name)) {
+            throw new \InvalidArgumentException('non-nullable first_name cannot be null');
+        }
+        $this->container['first_name'] = $first_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_name
+     *
+     * @return string|null
+     */
+    public function getLastName()
+    {
+        return $this->container['last_name'];
+    }
+
+    /**
+     * Sets last_name
+     *
+     * @param string|null $last_name last_name
+     *
+     * @return self
+     */
+    public function setLastName($last_name)
+    {
+        if (is_null($last_name)) {
+            throw new \InvalidArgumentException('non-nullable last_name cannot be null');
+        }
+        $this->container['last_name'] = $last_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets street_address
+     *
+     * @return string|null
+     */
+    public function getStreetAddress()
+    {
+        return $this->container['street_address'];
+    }
+
+    /**
+     * Sets street_address
+     *
+     * @param string|null $street_address street_address
+     *
+     * @return self
+     */
+    public function setStreetAddress($street_address)
+    {
+        if (is_null($street_address)) {
+            throw new \InvalidArgumentException('non-nullable street_address cannot be null');
+        }
+        $this->container['street_address'] = $street_address;
+
+        return $this;
+    }
+
+    /**
+     * Gets locality
+     *
+     * @return string|null
+     */
+    public function getLocality()
+    {
+        return $this->container['locality'];
+    }
+
+    /**
+     * Sets locality
+     *
+     * @param string|null $locality locality
+     *
+     * @return self
+     */
+    public function setLocality($locality)
+    {
+        if (is_null($locality)) {
+            throw new \InvalidArgumentException('non-nullable locality cannot be null');
+        }
+        $this->container['locality'] = $locality;
+
+        return $this;
+    }
+
+    /**
+     * Gets administrative_area
+     *
+     * @return string|null
+     */
+    public function getAdministrativeArea()
+    {
+        return $this->container['administrative_area'];
+    }
+
+    /**
+     * Sets administrative_area
+     *
+     * @param string|null $administrative_area administrative_area
+     *
+     * @return self
+     */
+    public function setAdministrativeArea($administrative_area)
+    {
+        if (is_null($administrative_area)) {
+            throw new \InvalidArgumentException('non-nullable administrative_area cannot be null');
+        }
+        $this->container['administrative_area'] = $administrative_area;
+
+        return $this;
+    }
+
+    /**
+     * Gets postal_code
+     *
+     * @return string|null
+     */
+    public function getPostalCode()
+    {
+        return $this->container['postal_code'];
+    }
+
+    /**
+     * Sets postal_code
+     *
+     * @param string|null $postal_code postal_code
+     *
+     * @return self
+     */
+    public function setPostalCode($postal_code)
+    {
+        if (is_null($postal_code)) {
+            throw new \InvalidArgumentException('non-nullable postal_code cannot be null');
+        }
+        $this->container['postal_code'] = $postal_code;
 
         return $this;
     }

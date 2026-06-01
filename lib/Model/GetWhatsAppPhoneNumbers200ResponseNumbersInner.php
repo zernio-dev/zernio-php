@@ -62,10 +62,15 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         'phone_number' => 'string',
         'country' => 'string',
         'status' => 'string',
+        'monthly_cents' => 'int',
         'profile_id' => 'object',
         'provisioned_at' => '\DateTime',
         'meta_preverified_id' => 'string',
         'meta_verification_status' => 'string',
+        'onfido_verification_url' => 'string',
+        'end_user_first_name' => 'string',
+        'end_user_last_name' => 'string',
+        'regulatory_decline_reason' => 'string',
         'created_at' => '\DateTime'
     ];
 
@@ -81,10 +86,15 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         'phone_number' => null,
         'country' => null,
         'status' => null,
+        'monthly_cents' => null,
         'profile_id' => null,
         'provisioned_at' => 'date-time',
         'meta_preverified_id' => null,
         'meta_verification_status' => null,
+        'onfido_verification_url' => null,
+        'end_user_first_name' => null,
+        'end_user_last_name' => null,
+        'regulatory_decline_reason' => null,
         'created_at' => 'date-time'
     ];
 
@@ -98,10 +108,15 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         'phone_number' => false,
         'country' => false,
         'status' => false,
+        'monthly_cents' => false,
         'profile_id' => false,
         'provisioned_at' => false,
         'meta_preverified_id' => false,
         'meta_verification_status' => false,
+        'onfido_verification_url' => false,
+        'end_user_first_name' => false,
+        'end_user_last_name' => false,
+        'regulatory_decline_reason' => false,
         'created_at' => false
     ];
 
@@ -195,10 +210,15 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         'phone_number' => 'phoneNumber',
         'country' => 'country',
         'status' => 'status',
+        'monthly_cents' => 'monthlyCents',
         'profile_id' => 'profileId',
         'provisioned_at' => 'provisionedAt',
         'meta_preverified_id' => 'metaPreverifiedId',
         'meta_verification_status' => 'metaVerificationStatus',
+        'onfido_verification_url' => 'onfidoVerificationUrl',
+        'end_user_first_name' => 'endUserFirstName',
+        'end_user_last_name' => 'endUserLastName',
+        'regulatory_decline_reason' => 'regulatoryDeclineReason',
         'created_at' => 'createdAt'
     ];
 
@@ -212,10 +232,15 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         'phone_number' => 'setPhoneNumber',
         'country' => 'setCountry',
         'status' => 'setStatus',
+        'monthly_cents' => 'setMonthlyCents',
         'profile_id' => 'setProfileId',
         'provisioned_at' => 'setProvisionedAt',
         'meta_preverified_id' => 'setMetaPreverifiedId',
         'meta_verification_status' => 'setMetaVerificationStatus',
+        'onfido_verification_url' => 'setOnfidoVerificationUrl',
+        'end_user_first_name' => 'setEndUserFirstName',
+        'end_user_last_name' => 'setEndUserLastName',
+        'regulatory_decline_reason' => 'setRegulatoryDeclineReason',
         'created_at' => 'setCreatedAt'
     ];
 
@@ -229,10 +254,15 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         'phone_number' => 'getPhoneNumber',
         'country' => 'getCountry',
         'status' => 'getStatus',
+        'monthly_cents' => 'getMonthlyCents',
         'profile_id' => 'getProfileId',
         'provisioned_at' => 'getProvisionedAt',
         'meta_preverified_id' => 'getMetaPreverifiedId',
         'meta_verification_status' => 'getMetaVerificationStatus',
+        'onfido_verification_url' => 'getOnfidoVerificationUrl',
+        'end_user_first_name' => 'getEndUserFirstName',
+        'end_user_last_name' => 'getEndUserLastName',
+        'regulatory_decline_reason' => 'getRegulatoryDeclineReason',
         'created_at' => 'getCreatedAt'
     ];
 
@@ -278,6 +308,8 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
     }
 
     public const STATUS_PENDING_PAYMENT = 'pending_payment';
+    public const STATUS_PENDING_REGULATORY = 'pending_regulatory';
+    public const STATUS_REGULATORY_DECLINED = 'regulatory_declined';
     public const STATUS_PROVISIONING = 'provisioning';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_SUSPENDED = 'suspended';
@@ -293,6 +325,8 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
     {
         return [
             self::STATUS_PENDING_PAYMENT,
+            self::STATUS_PENDING_REGULATORY,
+            self::STATUS_REGULATORY_DECLINED,
             self::STATUS_PROVISIONING,
             self::STATUS_ACTIVE,
             self::STATUS_SUSPENDED,
@@ -320,10 +354,15 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('monthly_cents', $data ?? [], null);
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('provisioned_at', $data ?? [], null);
         $this->setIfExists('meta_preverified_id', $data ?? [], null);
         $this->setIfExists('meta_verification_status', $data ?? [], null);
+        $this->setIfExists('onfido_verification_url', $data ?? [], null);
+        $this->setIfExists('end_user_first_name', $data ?? [], null);
+        $this->setIfExists('end_user_last_name', $data ?? [], null);
+        $this->setIfExists('regulatory_decline_reason', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
     }
 
@@ -497,6 +536,33 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
     }
 
     /**
+     * Gets monthly_cents
+     *
+     * @return int|null
+     */
+    public function getMonthlyCents()
+    {
+        return $this->container['monthly_cents'];
+    }
+
+    /**
+     * Sets monthly_cents
+     *
+     * @param int|null $monthly_cents Per-country monthly price in cents ($2..$25).
+     *
+     * @return self
+     */
+    public function setMonthlyCents($monthly_cents)
+    {
+        if (is_null($monthly_cents)) {
+            throw new \InvalidArgumentException('non-nullable monthly_cents cannot be null');
+        }
+        $this->container['monthly_cents'] = $monthly_cents;
+
+        return $this;
+    }
+
+    /**
      * Gets profile_id
      *
      * @return object|null
@@ -600,6 +666,114 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
             throw new \InvalidArgumentException('non-nullable meta_verification_status cannot be null');
         }
         $this->container['meta_verification_status'] = $meta_verification_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets onfido_verification_url
+     *
+     * @return string|null
+     */
+    public function getOnfidoVerificationUrl()
+    {
+        return $this->container['onfido_verification_url'];
+    }
+
+    /**
+     * Sets onfido_verification_url
+     *
+     * @param string|null $onfido_verification_url For regulated (Tier 3/4) numbers with an Onfido ID-verification step — the link to forward to the end user. Set once the order is placed; null otherwise. Poll this field after submitting KYC.
+     *
+     * @return self
+     */
+    public function setOnfidoVerificationUrl($onfido_verification_url)
+    {
+        if (is_null($onfido_verification_url)) {
+            throw new \InvalidArgumentException('non-nullable onfido_verification_url cannot be null');
+        }
+        $this->container['onfido_verification_url'] = $onfido_verification_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_user_first_name
+     *
+     * @return string|null
+     */
+    public function getEndUserFirstName()
+    {
+        return $this->container['end_user_first_name'];
+    }
+
+    /**
+     * Sets end_user_first_name
+     *
+     * @param string|null $end_user_first_name end_user_first_name
+     *
+     * @return self
+     */
+    public function setEndUserFirstName($end_user_first_name)
+    {
+        if (is_null($end_user_first_name)) {
+            throw new \InvalidArgumentException('non-nullable end_user_first_name cannot be null');
+        }
+        $this->container['end_user_first_name'] = $end_user_first_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_user_last_name
+     *
+     * @return string|null
+     */
+    public function getEndUserLastName()
+    {
+        return $this->container['end_user_last_name'];
+    }
+
+    /**
+     * Sets end_user_last_name
+     *
+     * @param string|null $end_user_last_name end_user_last_name
+     *
+     * @return self
+     */
+    public function setEndUserLastName($end_user_last_name)
+    {
+        if (is_null($end_user_last_name)) {
+            throw new \InvalidArgumentException('non-nullable end_user_last_name cannot be null');
+        }
+        $this->container['end_user_last_name'] = $end_user_last_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets regulatory_decline_reason
+     *
+     * @return string|null
+     */
+    public function getRegulatoryDeclineReason()
+    {
+        return $this->container['regulatory_decline_reason'];
+    }
+
+    /**
+     * Sets regulatory_decline_reason
+     *
+     * @param string|null $regulatory_decline_reason Reviewer rejection reason when status is regulatory_declined.
+     *
+     * @return self
+     */
+    public function setRegulatoryDeclineReason($regulatory_decline_reason)
+    {
+        if (is_null($regulatory_decline_reason)) {
+            throw new \InvalidArgumentException('non-nullable regulatory_decline_reason cannot be null');
+        }
+        $this->container['regulatory_decline_reason'] = $regulatory_decline_reason;
 
         return $this;
     }

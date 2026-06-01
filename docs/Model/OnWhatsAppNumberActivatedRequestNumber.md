@@ -1,11 +1,12 @@
-# # SearchAvailableWhatsAppNumbers200Response
+# # OnWhatsAppNumberActivatedRequestNumber
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **string** |  | [optional]
+**phone_number** | **string** |  | [optional]
 **country** | **string** |  | [optional]
-**number_type** | **string** |  | [optional]
-**numbers** | [**\Zernio\Model\SearchAvailableWhatsAppNumbers200ResponseNumbersInner[]**](SearchAvailableWhatsAppNumbers200ResponseNumbersInner.md) |  | [optional]
+**profile_id** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

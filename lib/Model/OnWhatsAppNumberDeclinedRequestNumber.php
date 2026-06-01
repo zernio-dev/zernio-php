@@ -1,6 +1,6 @@
 <?php
 /**
- * PurchaseWhatsAppPhoneNumberRequest
+ * OnWhatsAppNumberDeclinedRequestNumber
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PurchaseWhatsAppPhoneNumberRequest Class Doc Comment
+ * OnWhatsAppNumberDeclinedRequestNumber Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class OnWhatsAppNumberDeclinedRequestNumber implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'purchaseWhatsAppPhoneNumber_request';
+    protected static $openAPIModelName = 'onWhatsAppNumberDeclined_request_number';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'profile_id' => 'string',
-        'country' => 'string'
+        'id' => 'string',
+        'phone_number' => 'string',
+        'country' => 'string',
+        'profile_id' => 'string'
     ];
 
     /**
@@ -70,8 +72,10 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'profile_id' => null,
-        'country' => null
+        'id' => null,
+        'phone_number' => null,
+        'country' => null,
+        'profile_id' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'profile_id' => false,
-        'country' => false
+        'id' => false,
+        'phone_number' => false,
+        'country' => false,
+        'profile_id' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'profile_id' => 'profileId',
-        'country' => 'country'
+        'id' => 'id',
+        'phone_number' => 'phoneNumber',
+        'country' => 'country',
+        'profile_id' => 'profileId'
     ];
 
     /**
@@ -180,8 +188,10 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'profile_id' => 'setProfileId',
-        'country' => 'setCountry'
+        'id' => 'setId',
+        'phone_number' => 'setPhoneNumber',
+        'country' => 'setCountry',
+        'profile_id' => 'setProfileId'
     ];
 
     /**
@@ -190,8 +200,10 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'profile_id' => 'getProfileId',
-        'country' => 'getCountry'
+        'id' => 'getId',
+        'phone_number' => 'getPhoneNumber',
+        'country' => 'getCountry',
+        'profile_id' => 'getProfileId'
     ];
 
     /**
@@ -251,8 +263,10 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('phone_number', $data ?? [], null);
+        $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('profile_id', $data ?? [], null);
-        $this->setIfExists('country', $data ?? [], 'US');
     }
 
     /**
@@ -282,9 +296,6 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
     {
         $invalidProperties = [];
 
-        if ($this->container['profile_id'] === null) {
-            $invalidProperties[] = "'profile_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -301,28 +312,55 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets profile_id
+     * Gets id
      *
-     * @return string
+     * @return string|null
      */
-    public function getProfileId()
+    public function getId()
     {
-        return $this->container['profile_id'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets profile_id
+     * Sets id
      *
-     * @param string $profile_id Profile to associate the number with
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setProfileId($profile_id)
+    public function setId($id)
     {
-        if (is_null($profile_id)) {
-            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['profile_id'] = $profile_id;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number
+     *
+     * @return string|null
+     */
+    public function getPhoneNumber()
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number
+     *
+     * @param string|null $phone_number phone_number
+     *
+     * @return self
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        if (is_null($phone_number)) {
+            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+        }
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }
@@ -340,7 +378,7 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets country
      *
-     * @param string|null $country ISO 3166-1 alpha-2 country for the number (default US). International numbers require usage-based billing. Tier 3/4 countries return 202 { status: \"kyc_required\", kycUrl } — the customer must complete KYC at that URL before the number is ordered. See GET /v1/whatsapp/phone-numbers/countries.
+     * @param string|null $country country
      *
      * @return self
      */
@@ -350,6 +388,33 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
         $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_id
+     *
+     * @return string|null
+     */
+    public function getProfileId()
+    {
+        return $this->container['profile_id'];
+    }
+
+    /**
+     * Sets profile_id
+     *
+     * @param string|null $profile_id profile_id
+     *
+     * @return self
+     */
+    public function setProfileId($profile_id)
+    {
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
+        }
+        $this->container['profile_id'] = $profile_id;
 
         return $this;
     }
