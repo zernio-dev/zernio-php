@@ -59,6 +59,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
       */
     protected static $openAPITypes = [
         'reply_to_tweet_id' => 'string',
+        'quote_tweet_id' => 'string',
         'reply_settings' => 'string',
         'thread_items' => '\Zernio\Model\TwitterPlatformDataThreadItemsInner[]',
         'poll' => '\Zernio\Model\DiscordPlatformDataPoll',
@@ -145,6 +146,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
       */
     protected static $openAPIFormats = [
         'reply_to_tweet_id' => null,
+        'quote_tweet_id' => null,
         'reply_settings' => null,
         'thread_items' => null,
         'poll' => null,
@@ -229,6 +231,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
       */
     protected static array $openAPINullables = [
         'reply_to_tweet_id' => false,
+        'quote_tweet_id' => false,
         'reply_settings' => false,
         'thread_items' => false,
         'poll' => false,
@@ -393,6 +396,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
      */
     protected static $attributeMap = [
         'reply_to_tweet_id' => 'replyToTweetId',
+        'quote_tweet_id' => 'quoteTweetId',
         'reply_settings' => 'replySettings',
         'thread_items' => 'threadItems',
         'poll' => 'poll',
@@ -477,6 +481,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
      */
     protected static $setters = [
         'reply_to_tweet_id' => 'setReplyToTweetId',
+        'quote_tweet_id' => 'setQuoteTweetId',
         'reply_settings' => 'setReplySettings',
         'thread_items' => 'setThreadItems',
         'poll' => 'setPoll',
@@ -561,6 +566,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
      */
     protected static $getters = [
         'reply_to_tweet_id' => 'getReplyToTweetId',
+        'quote_tweet_id' => 'getQuoteTweetId',
         'reply_settings' => 'getReplySettings',
         'thread_items' => 'getThreadItems',
         'poll' => 'getPoll',
@@ -815,6 +821,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
     public function __construct(?array $data = null)
     {
         $this->setIfExists('reply_to_tweet_id', $data ?? [], null);
+        $this->setIfExists('quote_tweet_id', $data ?? [], null);
         $this->setIfExists('reply_settings', $data ?? [], null);
         $this->setIfExists('thread_items', $data ?? [], null);
         $this->setIfExists('poll', $data ?? [], null);
@@ -1071,6 +1078,33 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
             throw new \InvalidArgumentException('non-nullable reply_to_tweet_id cannot be null');
         }
         $this->container['reply_to_tweet_id'] = $reply_to_tweet_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets quote_tweet_id
+     *
+     * @return string|null
+     */
+    public function getQuoteTweetId()
+    {
+        return $this->container['quote_tweet_id'];
+    }
+
+    /**
+     * Sets quote_tweet_id
+     *
+     * @param string|null $quote_tweet_id ID (or full status URL) of an existing tweet to quote-repost. The published tweet becomes a quote tweet of the target. Mutually exclusive with media and poll. X only permits quoting your own posts or posts you are mentioned in / part of the conversation thread of; quoting an arbitrary other account's post is rejected by X. Billed at the standard create rate ($0.015), unlike pasting a tweet URL into the text which is billed at the URL rate ($0.20). For threads, applies to the first tweet only.
+     *
+     * @return self
+     */
+    public function setQuoteTweetId($quote_tweet_id)
+    {
+        if (is_null($quote_tweet_id)) {
+            throw new \InvalidArgumentException('non-nullable quote_tweet_id cannot be null');
+        }
+        $this->container['quote_tweet_id'] = $quote_tweet_id;
 
         return $this;
     }
