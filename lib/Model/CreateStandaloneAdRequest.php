@@ -64,6 +64,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'goal' => 'string',
         'budget_amount' => 'float',
         'budget_type' => 'string',
+        'budget_level' => 'string',
         'currency' => 'string',
         'headline' => 'string',
         'long_headline' => 'string',
@@ -91,9 +92,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'behaviors' => '\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]',
         'income_tier' => 'string',
         'languages' => 'string[]',
+        'placements' => '\Zernio\Model\CreateStandaloneAdRequestPlacements',
         'saved_targeting_id' => 'string',
         'special_ad_categories' => 'string[]',
         'end_date' => '\DateTime',
+        'start_date' => '\DateTime',
+        'instagram_account_id' => 'string',
+        'dynamic_creative' => '\Zernio\Model\CreateStandaloneAdRequestDynamicCreative',
         'audience_id' => 'string',
         'campaign_type' => 'string',
         'keywords' => 'string[]',
@@ -126,6 +131,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'goal' => null,
         'budget_amount' => null,
         'budget_type' => null,
+        'budget_level' => null,
         'currency' => null,
         'headline' => null,
         'long_headline' => null,
@@ -153,9 +159,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'behaviors' => null,
         'income_tier' => null,
         'languages' => null,
+        'placements' => null,
         'saved_targeting_id' => null,
         'special_ad_categories' => null,
         'end_date' => 'date-time',
+        'start_date' => 'date-time',
+        'instagram_account_id' => null,
+        'dynamic_creative' => null,
         'audience_id' => null,
         'campaign_type' => null,
         'keywords' => null,
@@ -186,6 +196,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'goal' => false,
         'budget_amount' => false,
         'budget_type' => false,
+        'budget_level' => false,
         'currency' => false,
         'headline' => false,
         'long_headline' => false,
@@ -213,9 +224,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'behaviors' => false,
         'income_tier' => false,
         'languages' => false,
+        'placements' => false,
         'saved_targeting_id' => false,
         'special_ad_categories' => false,
         'end_date' => false,
+        'start_date' => false,
+        'instagram_account_id' => false,
+        'dynamic_creative' => false,
         'audience_id' => false,
         'campaign_type' => false,
         'keywords' => false,
@@ -326,6 +341,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'goal' => 'goal',
         'budget_amount' => 'budgetAmount',
         'budget_type' => 'budgetType',
+        'budget_level' => 'budgetLevel',
         'currency' => 'currency',
         'headline' => 'headline',
         'long_headline' => 'longHeadline',
@@ -353,9 +369,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'behaviors' => 'behaviors',
         'income_tier' => 'incomeTier',
         'languages' => 'languages',
+        'placements' => 'placements',
         'saved_targeting_id' => 'savedTargetingId',
         'special_ad_categories' => 'specialAdCategories',
         'end_date' => 'endDate',
+        'start_date' => 'startDate',
+        'instagram_account_id' => 'instagramAccountId',
+        'dynamic_creative' => 'dynamicCreative',
         'audience_id' => 'audienceId',
         'campaign_type' => 'campaignType',
         'keywords' => 'keywords',
@@ -386,6 +406,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'goal' => 'setGoal',
         'budget_amount' => 'setBudgetAmount',
         'budget_type' => 'setBudgetType',
+        'budget_level' => 'setBudgetLevel',
         'currency' => 'setCurrency',
         'headline' => 'setHeadline',
         'long_headline' => 'setLongHeadline',
@@ -413,9 +434,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'behaviors' => 'setBehaviors',
         'income_tier' => 'setIncomeTier',
         'languages' => 'setLanguages',
+        'placements' => 'setPlacements',
         'saved_targeting_id' => 'setSavedTargetingId',
         'special_ad_categories' => 'setSpecialAdCategories',
         'end_date' => 'setEndDate',
+        'start_date' => 'setStartDate',
+        'instagram_account_id' => 'setInstagramAccountId',
+        'dynamic_creative' => 'setDynamicCreative',
         'audience_id' => 'setAudienceId',
         'campaign_type' => 'setCampaignType',
         'keywords' => 'setKeywords',
@@ -446,6 +471,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'goal' => 'getGoal',
         'budget_amount' => 'getBudgetAmount',
         'budget_type' => 'getBudgetType',
+        'budget_level' => 'getBudgetLevel',
         'currency' => 'getCurrency',
         'headline' => 'getHeadline',
         'long_headline' => 'getLongHeadline',
@@ -473,9 +499,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'behaviors' => 'getBehaviors',
         'income_tier' => 'getIncomeTier',
         'languages' => 'getLanguages',
+        'placements' => 'getPlacements',
         'saved_targeting_id' => 'getSavedTargetingId',
         'special_ad_categories' => 'getSpecialAdCategories',
         'end_date' => 'getEndDate',
+        'start_date' => 'getStartDate',
+        'instagram_account_id' => 'getInstagramAccountId',
+        'dynamic_creative' => 'getDynamicCreative',
         'audience_id' => 'getAudienceId',
         'campaign_type' => 'getCampaignType',
         'keywords' => 'getKeywords',
@@ -544,6 +574,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const GOAL_APP_PROMOTION = 'app_promotion';
     public const BUDGET_TYPE_DAILY = 'daily';
     public const BUDGET_TYPE_LIFETIME = 'lifetime';
+    public const BUDGET_LEVEL_ADSET = 'adset';
+    public const BUDGET_LEVEL_CAMPAIGN = 'campaign';
     public const CALL_TO_ACTION_LEARN_MORE = 'LEARN_MORE';
     public const CALL_TO_ACTION_SHOP_NOW = 'SHOP_NOW';
     public const CALL_TO_ACTION_SIGN_UP = 'SIGN_UP';
@@ -608,6 +640,19 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         return [
             self::BUDGET_TYPE_DAILY,
             self::BUDGET_TYPE_LIFETIME,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getBudgetLevelAllowableValues()
+    {
+        return [
+            self::BUDGET_LEVEL_ADSET,
+            self::BUDGET_LEVEL_CAMPAIGN,
         ];
     }
 
@@ -744,6 +789,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('goal', $data ?? [], null);
         $this->setIfExists('budget_amount', $data ?? [], null);
         $this->setIfExists('budget_type', $data ?? [], null);
+        $this->setIfExists('budget_level', $data ?? [], 'adset');
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('headline', $data ?? [], null);
         $this->setIfExists('long_headline', $data ?? [], null);
@@ -771,9 +817,13 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('behaviors', $data ?? [], null);
         $this->setIfExists('income_tier', $data ?? [], null);
         $this->setIfExists('languages', $data ?? [], null);
+        $this->setIfExists('placements', $data ?? [], null);
         $this->setIfExists('saved_targeting_id', $data ?? [], null);
         $this->setIfExists('special_ad_categories', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
+        $this->setIfExists('start_date', $data ?? [], null);
+        $this->setIfExists('instagram_account_id', $data ?? [], null);
+        $this->setIfExists('dynamic_creative', $data ?? [], null);
         $this->setIfExists('audience_id', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'display');
         $this->setIfExists('keywords', $data ?? [], null);
@@ -846,6 +896,15 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'budget_type', must be one of '%s'",
                 $this->container['budget_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getBudgetLevelAllowableValues();
+        if (!is_null($this->container['budget_level']) && !in_array($this->container['budget_level'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'budget_level', must be one of '%s'",
+                $this->container['budget_level'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1145,6 +1204,43 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['budget_type'] = $budget_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets budget_level
+     *
+     * @return string|null
+     */
+    public function getBudgetLevel()
+    {
+        return $this->container['budget_level'];
+    }
+
+    /**
+     * Sets budget_level
+     *
+     * @param string|null $budget_level Meta only. Where the budget lives, which selects the Meta budget model:   - `adset` (default): ABO (Ad-set Budget Optimization). The budget is set on the     ad set. This is the back-compatible behaviour — omit this field to keep it.   - `campaign`: CBO (Campaign Budget Optimization / Advantage Campaign Budget). The     budget AND `bidStrategy` are set on the CAMPAIGN, and Meta distributes spend     across ad sets automatically. Meta requires the budget at exactly one level, never both. Non-Meta platforms ignore this field. Ignored on the attach shape (`adSetId`), which inherits the existing budget.
+     *
+     * @return self
+     */
+    public function setBudgetLevel($budget_level)
+    {
+        if (is_null($budget_level)) {
+            throw new \InvalidArgumentException('non-nullable budget_level cannot be null');
+        }
+        $allowedValues = $this->getBudgetLevelAllowableValues();
+        if (!in_array($budget_level, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'budget_level', must be one of '%s'",
+                    $budget_level,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['budget_level'] = $budget_level;
 
         return $this;
     }
@@ -1928,6 +2024,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets placements
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestPlacements|null
+     */
+    public function getPlacements()
+    {
+        return $this->container['placements'];
+    }
+
+    /**
+     * Sets placements
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestPlacements|null $placements placements
+     *
+     * @return self
+     */
+    public function setPlacements($placements)
+    {
+        if (is_null($placements)) {
+            throw new \InvalidArgumentException('non-nullable placements cannot be null');
+        }
+        $this->container['placements'] = $placements;
+
+        return $this;
+    }
+
+    /**
      * Gets saved_targeting_id
      *
      * @return string|null
@@ -2013,6 +2136,87 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable end_date cannot be null');
         }
         $this->container['end_date'] = $end_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return \DateTime|null
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param \DateTime|null $start_date Meta only. Ad-set start time (ISO 8601, e.g. \"2026-06-10T09:00:00Z\"), mapped to the ad set's `start_time`. When omitted the ad starts delivering immediately. For lifetime budgets Meta also requires `endDate`. (Same `schedule.startDate` semantics already available on `POST /v1/ads/boost`.)
+     *
+     * @return self
+     */
+    public function setStartDate($start_date)
+    {
+        if (is_null($start_date)) {
+            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        }
+        $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets instagram_account_id
+     *
+     * @return string|null
+     */
+    public function getInstagramAccountId()
+    {
+        return $this->container['instagram_account_id'];
+    }
+
+    /**
+     * Sets instagram_account_id
+     *
+     * @param string|null $instagram_account_id Meta only. Override the Instagram account the ad is delivered as — pass an Instagram Business Account ID (e.g. 17841...), mapped to the creative's `instagram_user_id`. When omitted we auto-resolve the IG account linked to the connected Facebook Page (the existing default). Useful when a Page has more than one eligible IG account.
+     *
+     * @return self
+     */
+    public function setInstagramAccountId($instagram_account_id)
+    {
+        if (is_null($instagram_account_id)) {
+            throw new \InvalidArgumentException('non-nullable instagram_account_id cannot be null');
+        }
+        $this->container['instagram_account_id'] = $instagram_account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets dynamic_creative
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestDynamicCreative|null
+     */
+    public function getDynamicCreative()
+    {
+        return $this->container['dynamic_creative'];
+    }
+
+    /**
+     * Sets dynamic_creative
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestDynamicCreative|null $dynamic_creative dynamic_creative
+     *
+     * @return self
+     */
+    public function setDynamicCreative($dynamic_creative)
+    {
+        if (is_null($dynamic_creative)) {
+            throw new \InvalidArgumentException('non-nullable dynamic_creative cannot be null');
+        }
+        $this->container['dynamic_creative'] = $dynamic_creative;
 
         return $this;
     }
