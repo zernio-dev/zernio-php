@@ -1,6 +1,6 @@
 <?php
 /**
- * WorkflowNodePosition
+ * ListWorkflowExecutionEvents200Response
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * WorkflowNodePosition Class Doc Comment
+ * ListWorkflowExecutionEvents200Response Class Doc Comment
  *
  * @category Class
- * @description Canvas coordinates (ignored by the executor; used by the visual builder).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListWorkflowExecutionEvents200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WorkflowNode_position';
+    protected static $openAPIModelName = 'listWorkflowExecutionEvents_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,9 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'x' => 'float',
-        'y' => 'float'
+        'success' => 'bool',
+        'execution' => '\Zernio\Model\ListWorkflowExecutionEvents200ResponseExecution',
+        'events' => '\Zernio\Model\WorkflowExecutionEvent[]'
     ];
 
     /**
@@ -71,8 +71,9 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'x' => null,
-        'y' => null
+        'success' => null,
+        'execution' => null,
+        'events' => null
     ];
 
     /**
@@ -81,8 +82,9 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x' => false,
-        'y' => false
+        'success' => false,
+        'execution' => false,
+        'events' => false
     ];
 
     /**
@@ -171,8 +173,9 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'x' => 'x',
-        'y' => 'y'
+        'success' => 'success',
+        'execution' => 'execution',
+        'events' => 'events'
     ];
 
     /**
@@ -181,8 +184,9 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'x' => 'setX',
-        'y' => 'setY'
+        'success' => 'setSuccess',
+        'execution' => 'setExecution',
+        'events' => 'setEvents'
     ];
 
     /**
@@ -191,8 +195,9 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'x' => 'getX',
-        'y' => 'getY'
+        'success' => 'getSuccess',
+        'execution' => 'getExecution',
+        'events' => 'getEvents'
     ];
 
     /**
@@ -252,8 +257,9 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('x', $data ?? [], null);
-        $this->setIfExists('y', $data ?? [], null);
+        $this->setIfExists('success', $data ?? [], null);
+        $this->setIfExists('execution', $data ?? [], null);
+        $this->setIfExists('events', $data ?? [], null);
     }
 
     /**
@@ -299,55 +305,82 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets x
+     * Gets success
      *
-     * @return float|null
+     * @return bool|null
      */
-    public function getX()
+    public function getSuccess()
     {
-        return $this->container['x'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets x
+     * Sets success
      *
-     * @param float|null $x x
+     * @param bool|null $success success
      *
      * @return self
      */
-    public function setX($x)
+    public function setSuccess($success)
     {
-        if (is_null($x)) {
-            throw new \InvalidArgumentException('non-nullable x cannot be null');
+        if (is_null($success)) {
+            throw new \InvalidArgumentException('non-nullable success cannot be null');
         }
-        $this->container['x'] = $x;
+        $this->container['success'] = $success;
 
         return $this;
     }
 
     /**
-     * Gets y
+     * Gets execution
      *
-     * @return float|null
+     * @return \Zernio\Model\ListWorkflowExecutionEvents200ResponseExecution|null
      */
-    public function getY()
+    public function getExecution()
     {
-        return $this->container['y'];
+        return $this->container['execution'];
     }
 
     /**
-     * Sets y
+     * Sets execution
      *
-     * @param float|null $y y
+     * @param \Zernio\Model\ListWorkflowExecutionEvents200ResponseExecution|null $execution execution
      *
      * @return self
      */
-    public function setY($y)
+    public function setExecution($execution)
     {
-        if (is_null($y)) {
-            throw new \InvalidArgumentException('non-nullable y cannot be null');
+        if (is_null($execution)) {
+            throw new \InvalidArgumentException('non-nullable execution cannot be null');
         }
-        $this->container['y'] = $y;
+        $this->container['execution'] = $execution;
+
+        return $this;
+    }
+
+    /**
+     * Gets events
+     *
+     * @return \Zernio\Model\WorkflowExecutionEvent[]|null
+     */
+    public function getEvents()
+    {
+        return $this->container['events'];
+    }
+
+    /**
+     * Sets events
+     *
+     * @param \Zernio\Model\WorkflowExecutionEvent[]|null $events Events in chronological order (oldest first).
+     *
+     * @return self
+     */
+    public function setEvents($events)
+    {
+        if (is_null($events)) {
+            throw new \InvalidArgumentException('non-nullable events cannot be null');
+        }
+        $this->container['events'] = $events;
 
         return $this;
     }

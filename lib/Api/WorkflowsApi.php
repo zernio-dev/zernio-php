@@ -84,16 +84,31 @@ class WorkflowsApi
         'deleteWorkflow' => [
             'application/json',
         ],
+        'duplicateWorkflow' => [
+            'application/json',
+        ],
         'getWorkflow' => [
             'application/json',
         ],
+        'getWorkflowVersion' => [
+            'application/json',
+        ],
+        'listWorkflowExecutionEvents' => [
+            'application/json',
+        ],
         'listWorkflowExecutions' => [
+            'application/json',
+        ],
+        'listWorkflowVersions' => [
             'application/json',
         ],
         'listWorkflows' => [
             'application/json',
         ],
         'pauseWorkflow' => [
+            'application/json',
+        ],
+        'restoreWorkflowVersion' => [
             'application/json',
         ],
         'triggerWorkflow' => [
@@ -974,6 +989,306 @@ class WorkflowsApi
     }
 
     /**
+     * Operation duplicateWorkflow
+     *
+     * Duplicate a workflow
+     *
+     * @param  string $workflow_id workflow_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateWorkflow'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\DuplicateWorkflow201Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     */
+    public function duplicateWorkflow($workflow_id, string $contentType = self::contentTypes['duplicateWorkflow'][0])
+    {
+        list($response) = $this->duplicateWorkflowWithHttpInfo($workflow_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation duplicateWorkflowWithHttpInfo
+     *
+     * Duplicate a workflow
+     *
+     * @param  string $workflow_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateWorkflow'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\DuplicateWorkflow201Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function duplicateWorkflowWithHttpInfo($workflow_id, string $contentType = self::contentTypes['duplicateWorkflow'][0])
+    {
+        $request = $this->duplicateWorkflowRequest($workflow_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\DuplicateWorkflow201Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\DuplicateWorkflow201Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\DuplicateWorkflow201Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation duplicateWorkflowAsync
+     *
+     * Duplicate a workflow
+     *
+     * @param  string $workflow_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateWorkflow'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function duplicateWorkflowAsync($workflow_id, string $contentType = self::contentTypes['duplicateWorkflow'][0])
+    {
+        return $this->duplicateWorkflowAsyncWithHttpInfo($workflow_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation duplicateWorkflowAsyncWithHttpInfo
+     *
+     * Duplicate a workflow
+     *
+     * @param  string $workflow_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateWorkflow'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function duplicateWorkflowAsyncWithHttpInfo($workflow_id, string $contentType = self::contentTypes['duplicateWorkflow'][0])
+    {
+        $returnType = '\Zernio\Model\DuplicateWorkflow201Response';
+        $request = $this->duplicateWorkflowRequest($workflow_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'duplicateWorkflow'
+     *
+     * @param  string $workflow_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['duplicateWorkflow'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function duplicateWorkflowRequest($workflow_id, string $contentType = self::contentTypes['duplicateWorkflow'][0])
+    {
+
+        // verify the required parameter 'workflow_id' is set
+        if ($workflow_id === null || (is_array($workflow_id) && count($workflow_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $workflow_id when calling duplicateWorkflow'
+            );
+        }
+
+
+        $resourcePath = '/v1/workflows/{workflowId}/duplicate';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($workflow_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'workflowId' . '}',
+                ObjectSerializer::toPathValue($workflow_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getWorkflow
      *
      * Get workflow with graph
@@ -1211,6 +1526,646 @@ class WorkflowsApi
             $resourcePath = str_replace(
                 '{' . 'workflowId' . '}',
                 ObjectSerializer::toPathValue($workflow_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getWorkflowVersion
+     *
+     * Get a specific workflow version
+     *
+     * @param  string $workflow_id workflow_id (required)
+     * @param  int $version version (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWorkflowVersion'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetWorkflowVersion200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     */
+    public function getWorkflowVersion($workflow_id, $version, string $contentType = self::contentTypes['getWorkflowVersion'][0])
+    {
+        list($response) = $this->getWorkflowVersionWithHttpInfo($workflow_id, $version, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWorkflowVersionWithHttpInfo
+     *
+     * Get a specific workflow version
+     *
+     * @param  string $workflow_id (required)
+     * @param  int $version (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWorkflowVersion'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetWorkflowVersion200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWorkflowVersionWithHttpInfo($workflow_id, $version, string $contentType = self::contentTypes['getWorkflowVersion'][0])
+    {
+        $request = $this->getWorkflowVersionRequest($workflow_id, $version, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetWorkflowVersion200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetWorkflowVersion200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetWorkflowVersion200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWorkflowVersionAsync
+     *
+     * Get a specific workflow version
+     *
+     * @param  string $workflow_id (required)
+     * @param  int $version (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWorkflowVersion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWorkflowVersionAsync($workflow_id, $version, string $contentType = self::contentTypes['getWorkflowVersion'][0])
+    {
+        return $this->getWorkflowVersionAsyncWithHttpInfo($workflow_id, $version, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWorkflowVersionAsyncWithHttpInfo
+     *
+     * Get a specific workflow version
+     *
+     * @param  string $workflow_id (required)
+     * @param  int $version (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWorkflowVersion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWorkflowVersionAsyncWithHttpInfo($workflow_id, $version, string $contentType = self::contentTypes['getWorkflowVersion'][0])
+    {
+        $returnType = '\Zernio\Model\GetWorkflowVersion200Response';
+        $request = $this->getWorkflowVersionRequest($workflow_id, $version, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWorkflowVersion'
+     *
+     * @param  string $workflow_id (required)
+     * @param  int $version (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWorkflowVersion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWorkflowVersionRequest($workflow_id, $version, string $contentType = self::contentTypes['getWorkflowVersion'][0])
+    {
+
+        // verify the required parameter 'workflow_id' is set
+        if ($workflow_id === null || (is_array($workflow_id) && count($workflow_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $workflow_id when calling getWorkflowVersion'
+            );
+        }
+
+        // verify the required parameter 'version' is set
+        if ($version === null || (is_array($version) && count($version) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $version when calling getWorkflowVersion'
+            );
+        }
+
+
+        $resourcePath = '/v1/workflows/{workflowId}/versions/{version}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($workflow_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'workflowId' . '}',
+                ObjectSerializer::toPathValue($workflow_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($version !== null) {
+            $resourcePath = str_replace(
+                '{' . 'version' . '}',
+                ObjectSerializer::toPathValue($version),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listWorkflowExecutionEvents
+     *
+     * Get an execution&#39;s timeline
+     *
+     * @param  string $workflow_id workflow_id (required)
+     * @param  string $execution_id execution_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWorkflowExecutionEvents'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListWorkflowExecutionEvents200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     */
+    public function listWorkflowExecutionEvents($workflow_id, $execution_id, string $contentType = self::contentTypes['listWorkflowExecutionEvents'][0])
+    {
+        list($response) = $this->listWorkflowExecutionEventsWithHttpInfo($workflow_id, $execution_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listWorkflowExecutionEventsWithHttpInfo
+     *
+     * Get an execution&#39;s timeline
+     *
+     * @param  string $workflow_id (required)
+     * @param  string $execution_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWorkflowExecutionEvents'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListWorkflowExecutionEvents200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listWorkflowExecutionEventsWithHttpInfo($workflow_id, $execution_id, string $contentType = self::contentTypes['listWorkflowExecutionEvents'][0])
+    {
+        $request = $this->listWorkflowExecutionEventsRequest($workflow_id, $execution_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListWorkflowExecutionEvents200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListWorkflowExecutionEvents200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListWorkflowExecutionEvents200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listWorkflowExecutionEventsAsync
+     *
+     * Get an execution&#39;s timeline
+     *
+     * @param  string $workflow_id (required)
+     * @param  string $execution_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWorkflowExecutionEvents'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listWorkflowExecutionEventsAsync($workflow_id, $execution_id, string $contentType = self::contentTypes['listWorkflowExecutionEvents'][0])
+    {
+        return $this->listWorkflowExecutionEventsAsyncWithHttpInfo($workflow_id, $execution_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listWorkflowExecutionEventsAsyncWithHttpInfo
+     *
+     * Get an execution&#39;s timeline
+     *
+     * @param  string $workflow_id (required)
+     * @param  string $execution_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWorkflowExecutionEvents'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listWorkflowExecutionEventsAsyncWithHttpInfo($workflow_id, $execution_id, string $contentType = self::contentTypes['listWorkflowExecutionEvents'][0])
+    {
+        $returnType = '\Zernio\Model\ListWorkflowExecutionEvents200Response';
+        $request = $this->listWorkflowExecutionEventsRequest($workflow_id, $execution_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listWorkflowExecutionEvents'
+     *
+     * @param  string $workflow_id (required)
+     * @param  string $execution_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWorkflowExecutionEvents'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listWorkflowExecutionEventsRequest($workflow_id, $execution_id, string $contentType = self::contentTypes['listWorkflowExecutionEvents'][0])
+    {
+
+        // verify the required parameter 'workflow_id' is set
+        if ($workflow_id === null || (is_array($workflow_id) && count($workflow_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $workflow_id when calling listWorkflowExecutionEvents'
+            );
+        }
+
+        // verify the required parameter 'execution_id' is set
+        if ($execution_id === null || (is_array($execution_id) && count($execution_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $execution_id when calling listWorkflowExecutionEvents'
+            );
+        }
+
+
+        $resourcePath = '/v1/workflows/{workflowId}/executions/{executionId}/events';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($workflow_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'workflowId' . '}',
+                ObjectSerializer::toPathValue($workflow_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($execution_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'executionId' . '}',
+                ObjectSerializer::toPathValue($execution_id),
                 $resourcePath
             );
         }
@@ -1549,6 +2504,306 @@ class WorkflowsApi
             true, // explode
             false // required
         ) ?? []);
+
+
+        // path params
+        if ($workflow_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'workflowId' . '}',
+                ObjectSerializer::toPathValue($workflow_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listWorkflowVersions
+     *
+     * List a workflow&#39;s version history
+     *
+     * @param  string $workflow_id workflow_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWorkflowVersions'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListWorkflowVersions200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     */
+    public function listWorkflowVersions($workflow_id, string $contentType = self::contentTypes['listWorkflowVersions'][0])
+    {
+        list($response) = $this->listWorkflowVersionsWithHttpInfo($workflow_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listWorkflowVersionsWithHttpInfo
+     *
+     * List a workflow&#39;s version history
+     *
+     * @param  string $workflow_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWorkflowVersions'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListWorkflowVersions200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listWorkflowVersionsWithHttpInfo($workflow_id, string $contentType = self::contentTypes['listWorkflowVersions'][0])
+    {
+        $request = $this->listWorkflowVersionsRequest($workflow_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListWorkflowVersions200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListWorkflowVersions200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListWorkflowVersions200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listWorkflowVersionsAsync
+     *
+     * List a workflow&#39;s version history
+     *
+     * @param  string $workflow_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWorkflowVersions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listWorkflowVersionsAsync($workflow_id, string $contentType = self::contentTypes['listWorkflowVersions'][0])
+    {
+        return $this->listWorkflowVersionsAsyncWithHttpInfo($workflow_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listWorkflowVersionsAsyncWithHttpInfo
+     *
+     * List a workflow&#39;s version history
+     *
+     * @param  string $workflow_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWorkflowVersions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listWorkflowVersionsAsyncWithHttpInfo($workflow_id, string $contentType = self::contentTypes['listWorkflowVersions'][0])
+    {
+        $returnType = '\Zernio\Model\ListWorkflowVersions200Response';
+        $request = $this->listWorkflowVersionsRequest($workflow_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listWorkflowVersions'
+     *
+     * @param  string $workflow_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listWorkflowVersions'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listWorkflowVersionsRequest($workflow_id, string $contentType = self::contentTypes['listWorkflowVersions'][0])
+    {
+
+        // verify the required parameter 'workflow_id' is set
+        if ($workflow_id === null || (is_array($workflow_id) && count($workflow_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $workflow_id when calling listWorkflowVersions'
+            );
+        }
+
+
+        $resourcePath = '/v1/workflows/{workflowId}/versions';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
 
 
         // path params
@@ -2182,6 +3437,326 @@ class WorkflowsApi
             $resourcePath = str_replace(
                 '{' . 'workflowId' . '}',
                 ObjectSerializer::toPathValue($workflow_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation restoreWorkflowVersion
+     *
+     * Restore a previous workflow version
+     *
+     * @param  string $workflow_id workflow_id (required)
+     * @param  int $version version (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWorkflowVersion'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\RestoreWorkflowVersion200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     */
+    public function restoreWorkflowVersion($workflow_id, $version, string $contentType = self::contentTypes['restoreWorkflowVersion'][0])
+    {
+        list($response) = $this->restoreWorkflowVersionWithHttpInfo($workflow_id, $version, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation restoreWorkflowVersionWithHttpInfo
+     *
+     * Restore a previous workflow version
+     *
+     * @param  string $workflow_id (required)
+     * @param  int $version (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWorkflowVersion'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\RestoreWorkflowVersion200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function restoreWorkflowVersionWithHttpInfo($workflow_id, $version, string $contentType = self::contentTypes['restoreWorkflowVersion'][0])
+    {
+        $request = $this->restoreWorkflowVersionRequest($workflow_id, $version, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\RestoreWorkflowVersion200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject1',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\RestoreWorkflowVersion200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\RestoreWorkflowVersion200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject1',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation restoreWorkflowVersionAsync
+     *
+     * Restore a previous workflow version
+     *
+     * @param  string $workflow_id (required)
+     * @param  int $version (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWorkflowVersion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function restoreWorkflowVersionAsync($workflow_id, $version, string $contentType = self::contentTypes['restoreWorkflowVersion'][0])
+    {
+        return $this->restoreWorkflowVersionAsyncWithHttpInfo($workflow_id, $version, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation restoreWorkflowVersionAsyncWithHttpInfo
+     *
+     * Restore a previous workflow version
+     *
+     * @param  string $workflow_id (required)
+     * @param  int $version (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWorkflowVersion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function restoreWorkflowVersionAsyncWithHttpInfo($workflow_id, $version, string $contentType = self::contentTypes['restoreWorkflowVersion'][0])
+    {
+        $returnType = '\Zernio\Model\RestoreWorkflowVersion200Response';
+        $request = $this->restoreWorkflowVersionRequest($workflow_id, $version, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'restoreWorkflowVersion'
+     *
+     * @param  string $workflow_id (required)
+     * @param  int $version (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreWorkflowVersion'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function restoreWorkflowVersionRequest($workflow_id, $version, string $contentType = self::contentTypes['restoreWorkflowVersion'][0])
+    {
+
+        // verify the required parameter 'workflow_id' is set
+        if ($workflow_id === null || (is_array($workflow_id) && count($workflow_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $workflow_id when calling restoreWorkflowVersion'
+            );
+        }
+
+        // verify the required parameter 'version' is set
+        if ($version === null || (is_array($version) && count($version) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $version when calling restoreWorkflowVersion'
+            );
+        }
+
+
+        $resourcePath = '/v1/workflows/{workflowId}/versions/{version}/restore';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($workflow_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'workflowId' . '}',
+                ObjectSerializer::toPathValue($workflow_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($version !== null) {
+            $resourcePath = str_replace(
+                '{' . 'version' . '}',
+                ObjectSerializer::toPathValue($version),
                 $resourcePath
             );
         }

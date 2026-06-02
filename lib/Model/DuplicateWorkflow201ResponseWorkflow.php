@@ -1,6 +1,6 @@
 <?php
 /**
- * WorkflowNode
+ * DuplicateWorkflow201ResponseWorkflow
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * WorkflowNode Class Doc Comment
+ * DuplicateWorkflow201ResponseWorkflow Class Doc Comment
  *
  * @category Class
- * @description A node in a workflow graph. &#x60;config&#x60; shape depends on &#x60;type&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
+class DuplicateWorkflow201ResponseWorkflow implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WorkflowNode';
+    protected static $openAPIModelName = 'duplicateWorkflow_201_response_workflow';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,9 +59,15 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'id' => 'string',
-        'type' => 'string',
-        'config' => 'array<string,mixed>',
-        'position' => '\Zernio\Model\WorkflowNodePosition'
+        'name' => 'string',
+        'description' => 'string',
+        'status' => 'string',
+        'platform' => 'string',
+        'account_id' => 'string',
+        'profile_id' => 'string',
+        'entry_node_id' => 'string',
+        'node_count' => 'int',
+        'created_at' => '\DateTime'
     ];
 
     /**
@@ -74,9 +79,15 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'id' => null,
-        'type' => null,
-        'config' => null,
-        'position' => null
+        'name' => null,
+        'description' => null,
+        'status' => null,
+        'platform' => null,
+        'account_id' => null,
+        'profile_id' => null,
+        'entry_node_id' => null,
+        'node_count' => null,
+        'created_at' => 'date-time'
     ];
 
     /**
@@ -86,9 +97,15 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'id' => false,
-        'type' => false,
-        'config' => false,
-        'position' => false
+        'name' => false,
+        'description' => false,
+        'status' => false,
+        'platform' => false,
+        'account_id' => false,
+        'profile_id' => false,
+        'entry_node_id' => false,
+        'node_count' => false,
+        'created_at' => false
     ];
 
     /**
@@ -178,9 +195,15 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'type' => 'type',
-        'config' => 'config',
-        'position' => 'position'
+        'name' => 'name',
+        'description' => 'description',
+        'status' => 'status',
+        'platform' => 'platform',
+        'account_id' => 'accountId',
+        'profile_id' => 'profileId',
+        'entry_node_id' => 'entryNodeId',
+        'node_count' => 'nodeCount',
+        'created_at' => 'createdAt'
     ];
 
     /**
@@ -190,9 +213,15 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'id' => 'setId',
-        'type' => 'setType',
-        'config' => 'setConfig',
-        'position' => 'setPosition'
+        'name' => 'setName',
+        'description' => 'setDescription',
+        'status' => 'setStatus',
+        'platform' => 'setPlatform',
+        'account_id' => 'setAccountId',
+        'profile_id' => 'setProfileId',
+        'entry_node_id' => 'setEntryNodeId',
+        'node_count' => 'setNodeCount',
+        'created_at' => 'setCreatedAt'
     ];
 
     /**
@@ -202,9 +231,15 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'id' => 'getId',
-        'type' => 'getType',
-        'config' => 'getConfig',
-        'position' => 'getPosition'
+        'name' => 'getName',
+        'description' => 'getDescription',
+        'status' => 'getStatus',
+        'platform' => 'getPlatform',
+        'account_id' => 'getAccountId',
+        'profile_id' => 'getProfileId',
+        'entry_node_id' => 'getEntryNodeId',
+        'node_count' => 'getNodeCount',
+        'created_at' => 'getCreatedAt'
     ];
 
     /**
@@ -248,47 +283,17 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const TYPE_TRIGGER = 'trigger';
-    public const TYPE_SEND_MESSAGE = 'send_message';
-    public const TYPE_WAIT_FOR_REPLY = 'wait_for_reply';
-    public const TYPE_CONDITION = 'condition';
-    public const TYPE_SET_VARIABLE = 'set_variable';
-    public const TYPE_DELAY = 'delay';
-    public const TYPE_WEBHOOK = 'webhook';
-    public const TYPE_AI = 'ai';
-    public const TYPE_HANDOFF = 'handoff';
-    public const TYPE_START_CALL = 'start_call';
-    public const TYPE_A_B_SPLIT = 'a_b_split';
-    public const TYPE_SET_FIELD = 'set_field';
-    public const TYPE_ENROLL_SEQUENCE = 'enroll_sequence';
-    public const TYPE_ADD_TAG = 'add_tag';
-    public const TYPE_REMOVE_TAG = 'remove_tag';
-    public const TYPE_END = 'end';
+    public const STATUS_DRAFT = 'draft';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getStatusAllowableValues()
     {
         return [
-            self::TYPE_TRIGGER,
-            self::TYPE_SEND_MESSAGE,
-            self::TYPE_WAIT_FOR_REPLY,
-            self::TYPE_CONDITION,
-            self::TYPE_SET_VARIABLE,
-            self::TYPE_DELAY,
-            self::TYPE_WEBHOOK,
-            self::TYPE_AI,
-            self::TYPE_HANDOFF,
-            self::TYPE_START_CALL,
-            self::TYPE_A_B_SPLIT,
-            self::TYPE_SET_FIELD,
-            self::TYPE_ENROLL_SEQUENCE,
-            self::TYPE_ADD_TAG,
-            self::TYPE_REMOVE_TAG,
-            self::TYPE_END,
+            self::STATUS_DRAFT,
         ];
     }
 
@@ -308,9 +313,15 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('config', $data ?? [], null);
-        $this->setIfExists('position', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
+        $this->setIfExists('entry_node_id', $data ?? [], null);
+        $this->setIfExists('node_count', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
     }
 
     /**
@@ -340,17 +351,11 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -373,7 +378,7 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets id
      *
-     * @return string
+     * @return string|null
      */
     public function getId()
     {
@@ -383,7 +388,7 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id
      *
-     * @param string $id Stable node id referenced by edges
+     * @param string|null $id id
      *
      * @return self
      */
@@ -398,92 +403,254 @@ class WorkflowNode implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets type
+     * Gets name
      *
-     * @return string
+     * @return string|null
      */
-    public function getType()
+    public function getName()
     {
-        return $this->container['type'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets type
+     * Sets name
      *
-     * @param string $type Node kind. The 16 supported types break into four groups:   messaging (send_message),   control flow (trigger, condition, delay, wait_for_reply, a_b_split, end),   data ops (set_variable, set_field, add_tag, remove_tag, enroll_sequence),   integrations (webhook, ai, handoff, start_call).
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setType($type)
+    public function setName($name)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['type'] = $type;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets config
+     * Gets platform
      *
-     * @return array<string,mixed>|null
+     * @return string|null
      */
-    public function getConfig()
+    public function getPlatform()
     {
-        return $this->container['config'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets config
+     * Sets platform
      *
-     * @param array<string,mixed>|null $config Type-specific settings. All string fields support `{{variable}}` interpolation against the run's variable bag (resolved at execution time).  **trigger**: `{ triggerType: inbound_message|api_call|whatsapp_event, keywords:[string], matchType: any|contains|exact|regex, onlyFirstMessage:boolean, eventType: message_sent|message_delivered|message_read|message_failed|reaction }`. Default `triggerType` is `inbound_message` for legacy nodes. `eventType` is only honored when `triggerType` is `whatsapp_event` (WhatsApp-only).  **send_message**: `{ messageType: text|template|media|interactive, text, template:{name,language,variableMapping}, media:{mediaType:image|video|audio|document, url,caption}, interactive }`. `template` and `interactive` are WhatsApp-only.  **wait_for_reply**: `{ timeoutMinutes:int (max 43200), saveAs:string }`. Resume via the `'reply'` edge on inbound, or `'timeout'` edge after `timeoutMinutes` of silence.  **condition**: `{ rules:[{ id, variable, operator: equals|not_equals|contains|not_contains|starts_with|ends_with|exists|not_exists|matches, value }] }`. First matching rule takes its `id` as the sourceHandle; otherwise `'default'`.  **set_variable**: `{ assignments:[{ name, value }] }`. Run-scoped (lives only for this execution; use `set_field` for persistent values).  **delay**: `{ delayMinutes:int (max 43200) }`. Suspends the run, resumes via timer.  **webhook**: `{ url, method: GET|POST|PUT|PATCH|DELETE, headers, bodyTemplate, saveAs }`. SSRF-guarded (private/loopback/metadata IPs rejected). Response saved as `{ status, ok, body }` to `vars[saveAs]`. Edge: `'success'` on 2xx, `'error'` otherwise.  **ai**: `{ provider: anthropic|openai|google|mistral|groq, model, preset: smart|tools|cheap, systemPrompt, userPromptTemplate, saveAs, temperature, maxTokens, outputType: text|json, tools:[{ name, description, parameters }] }`. Set `provider` + `model` for BYOK (uses your stored API key); omit `provider` for the legacy Telnyx path. Edges: `'success'`, `'tool:<name>'` (model picked a tool), `'error'`.  **handoff**: `{ note, assignTo }`. Terminates the run as `exited`, flags the conversation for a human operator.  **start_call**: `{ to, forwardTo, requirePermissionFirst, recordingEnabled, saveAs }`. WhatsApp-only. `forwardTo` can be `tel:+E164`, `sip:user@host`, or `wss://…` (AI voice agent). Edges: `'success'`, `'permission_required'`, `'failed'`.  **a_b_split**: `{ percentage: number 0-100 (default 50) }`. Random branch picker. Edges: `'a'` (with probability `percentage/100`), `'b'`.  **set_field**: `{ field, value }`. Persistent custom field on the Contact (vs `set_variable` which is run-scoped). Field name is sanitized to `[A-Za-z0-9_]`. No-op on `api_call` runs (no contact).  **enroll_sequence**: `{ sequenceId, saveAs }`. Enrolls the run's contact into a Sequence. Edges: `'success'`, `'error'`.  **add_tag** / **remove_tag**: `{ tag }`. Push or pull a tag on the Contact. No-op on `api_call` runs.  **end**: no config. Terminates the run as `completed`.
+     * @param string|null $platform platform
      *
      * @return self
      */
-    public function setConfig($config)
+    public function setPlatform($platform)
     {
-        if (is_null($config)) {
-            throw new \InvalidArgumentException('non-nullable config cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $this->container['config'] = $config;
+        $this->container['platform'] = $platform;
 
         return $this;
     }
 
     /**
-     * Gets position
+     * Gets account_id
      *
-     * @return \Zernio\Model\WorkflowNodePosition|null
+     * @return string|null
      */
-    public function getPosition()
+    public function getAccountId()
     {
-        return $this->container['position'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets position
+     * Sets account_id
      *
-     * @param \Zernio\Model\WorkflowNodePosition|null $position position
+     * @param string|null $account_id account_id
      *
      * @return self
      */
-    public function setPosition($position)
+    public function setAccountId($account_id)
     {
-        if (is_null($position)) {
-            throw new \InvalidArgumentException('non-nullable position cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $this->container['position'] = $position;
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_id
+     *
+     * @return string|null
+     */
+    public function getProfileId()
+    {
+        return $this->container['profile_id'];
+    }
+
+    /**
+     * Sets profile_id
+     *
+     * @param string|null $profile_id profile_id
+     *
+     * @return self
+     */
+    public function setProfileId($profile_id)
+    {
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
+        }
+        $this->container['profile_id'] = $profile_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets entry_node_id
+     *
+     * @return string|null
+     */
+    public function getEntryNodeId()
+    {
+        return $this->container['entry_node_id'];
+    }
+
+    /**
+     * Sets entry_node_id
+     *
+     * @param string|null $entry_node_id entry_node_id
+     *
+     * @return self
+     */
+    public function setEntryNodeId($entry_node_id)
+    {
+        if (is_null($entry_node_id)) {
+            throw new \InvalidArgumentException('non-nullable entry_node_id cannot be null');
+        }
+        $this->container['entry_node_id'] = $entry_node_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets node_count
+     *
+     * @return int|null
+     */
+    public function getNodeCount()
+    {
+        return $this->container['node_count'];
+    }
+
+    /**
+     * Sets node_count
+     *
+     * @param int|null $node_count node_count
+     *
+     * @return self
+     */
+    public function setNodeCount($node_count)
+    {
+        if (is_null($node_count)) {
+            throw new \InvalidArgumentException('non-nullable node_count cannot be null');
+        }
+        $this->container['node_count'] = $node_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

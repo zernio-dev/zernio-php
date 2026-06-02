@@ -1,6 +1,6 @@
 <?php
 /**
- * WorkflowNodePosition
+ * DuplicateWorkflow201Response
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * WorkflowNodePosition Class Doc Comment
+ * DuplicateWorkflow201Response Class Doc Comment
  *
  * @category Class
- * @description Canvas coordinates (ignored by the executor; used by the visual builder).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializable
+class DuplicateWorkflow201Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WorkflowNode_position';
+    protected static $openAPIModelName = 'duplicateWorkflow_201_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,8 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'x' => 'float',
-        'y' => 'float'
+        'success' => 'bool',
+        'workflow' => '\Zernio\Model\DuplicateWorkflow201ResponseWorkflow'
     ];
 
     /**
@@ -71,8 +70,8 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'x' => null,
-        'y' => null
+        'success' => null,
+        'workflow' => null
     ];
 
     /**
@@ -81,8 +80,8 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x' => false,
-        'y' => false
+        'success' => false,
+        'workflow' => false
     ];
 
     /**
@@ -171,8 +170,8 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'x' => 'x',
-        'y' => 'y'
+        'success' => 'success',
+        'workflow' => 'workflow'
     ];
 
     /**
@@ -181,8 +180,8 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'x' => 'setX',
-        'y' => 'setY'
+        'success' => 'setSuccess',
+        'workflow' => 'setWorkflow'
     ];
 
     /**
@@ -191,8 +190,8 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'x' => 'getX',
-        'y' => 'getY'
+        'success' => 'getSuccess',
+        'workflow' => 'getWorkflow'
     ];
 
     /**
@@ -252,8 +251,8 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('x', $data ?? [], null);
-        $this->setIfExists('y', $data ?? [], null);
+        $this->setIfExists('success', $data ?? [], null);
+        $this->setIfExists('workflow', $data ?? [], null);
     }
 
     /**
@@ -299,55 +298,55 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets x
+     * Gets success
      *
-     * @return float|null
+     * @return bool|null
      */
-    public function getX()
+    public function getSuccess()
     {
-        return $this->container['x'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets x
+     * Sets success
      *
-     * @param float|null $x x
+     * @param bool|null $success success
      *
      * @return self
      */
-    public function setX($x)
+    public function setSuccess($success)
     {
-        if (is_null($x)) {
-            throw new \InvalidArgumentException('non-nullable x cannot be null');
+        if (is_null($success)) {
+            throw new \InvalidArgumentException('non-nullable success cannot be null');
         }
-        $this->container['x'] = $x;
+        $this->container['success'] = $success;
 
         return $this;
     }
 
     /**
-     * Gets y
+     * Gets workflow
      *
-     * @return float|null
+     * @return \Zernio\Model\DuplicateWorkflow201ResponseWorkflow|null
      */
-    public function getY()
+    public function getWorkflow()
     {
-        return $this->container['y'];
+        return $this->container['workflow'];
     }
 
     /**
-     * Sets y
+     * Sets workflow
      *
-     * @param float|null $y y
+     * @param \Zernio\Model\DuplicateWorkflow201ResponseWorkflow|null $workflow workflow
      *
      * @return self
      */
-    public function setY($y)
+    public function setWorkflow($workflow)
     {
-        if (is_null($y)) {
-            throw new \InvalidArgumentException('non-nullable y cannot be null');
+        if (is_null($workflow)) {
+            throw new \InvalidArgumentException('non-nullable workflow cannot be null');
         }
-        $this->container['y'] = $y;
+        $this->container['workflow'] = $workflow;
 
         return $this;
     }

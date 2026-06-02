@@ -1,6 +1,6 @@
 <?php
 /**
- * WorkflowNodePosition
+ * ListWorkflowVersions200ResponseVersionsInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * WorkflowNodePosition Class Doc Comment
+ * ListWorkflowVersions200ResponseVersionsInner Class Doc Comment
  *
  * @category Class
- * @description Canvas coordinates (ignored by the executor; used by the visual builder).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListWorkflowVersions200ResponseVersionsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WorkflowNode_position';
+    protected static $openAPIModelName = 'listWorkflowVersions_200_response_versions_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'x' => 'float',
-        'y' => 'float'
+        'version' => 'int',
+        'name' => 'string',
+        'description' => 'string',
+        'created_by' => 'string',
+        'created_by_email' => 'string',
+        'restored_from_version' => 'int',
+        'created_at' => '\DateTime'
     ];
 
     /**
@@ -71,8 +75,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'x' => null,
-        'y' => null
+        'version' => null,
+        'name' => null,
+        'description' => null,
+        'created_by' => null,
+        'created_by_email' => null,
+        'restored_from_version' => null,
+        'created_at' => 'date-time'
     ];
 
     /**
@@ -81,8 +90,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x' => false,
-        'y' => false
+        'version' => false,
+        'name' => false,
+        'description' => false,
+        'created_by' => false,
+        'created_by_email' => false,
+        'restored_from_version' => false,
+        'created_at' => false
     ];
 
     /**
@@ -171,8 +185,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'x' => 'x',
-        'y' => 'y'
+        'version' => 'version',
+        'name' => 'name',
+        'description' => 'description',
+        'created_by' => 'createdBy',
+        'created_by_email' => 'createdByEmail',
+        'restored_from_version' => 'restoredFromVersion',
+        'created_at' => 'createdAt'
     ];
 
     /**
@@ -181,8 +200,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'x' => 'setX',
-        'y' => 'setY'
+        'version' => 'setVersion',
+        'name' => 'setName',
+        'description' => 'setDescription',
+        'created_by' => 'setCreatedBy',
+        'created_by_email' => 'setCreatedByEmail',
+        'restored_from_version' => 'setRestoredFromVersion',
+        'created_at' => 'setCreatedAt'
     ];
 
     /**
@@ -191,8 +215,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'x' => 'getX',
-        'y' => 'getY'
+        'version' => 'getVersion',
+        'name' => 'getName',
+        'description' => 'getDescription',
+        'created_by' => 'getCreatedBy',
+        'created_by_email' => 'getCreatedByEmail',
+        'restored_from_version' => 'getRestoredFromVersion',
+        'created_at' => 'getCreatedAt'
     ];
 
     /**
@@ -252,8 +281,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('x', $data ?? [], null);
-        $this->setIfExists('y', $data ?? [], null);
+        $this->setIfExists('version', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('created_by_email', $data ?? [], null);
+        $this->setIfExists('restored_from_version', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
     }
 
     /**
@@ -299,55 +333,190 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets x
+     * Gets version
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getX()
+    public function getVersion()
     {
-        return $this->container['x'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets x
+     * Sets version
      *
-     * @param float|null $x x
+     * @param int|null $version Monotonically increasing version number
      *
      * @return self
      */
-    public function setX($x)
+    public function setVersion($version)
     {
-        if (is_null($x)) {
-            throw new \InvalidArgumentException('non-nullable x cannot be null');
+        if (is_null($version)) {
+            throw new \InvalidArgumentException('non-nullable version cannot be null');
         }
-        $this->container['x'] = $x;
+        $this->container['version'] = $version;
 
         return $this;
     }
 
     /**
-     * Gets y
+     * Gets name
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getY()
+    public function getName()
     {
-        return $this->container['y'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets y
+     * Sets name
      *
-     * @param float|null $y y
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setY($y)
+    public function setName($name)
     {
-        if (is_null($y)) {
-            throw new \InvalidArgumentException('non-nullable y cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['y'] = $y;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by
+     *
+     * @return string|null
+     */
+    public function getCreatedBy()
+    {
+        return $this->container['created_by'];
+    }
+
+    /**
+     * Sets created_by
+     *
+     * @param string|null $created_by User id that authored this version
+     *
+     * @return self
+     */
+    public function setCreatedBy($created_by)
+    {
+        if (is_null($created_by)) {
+            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+        }
+        $this->container['created_by'] = $created_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by_email
+     *
+     * @return string|null
+     */
+    public function getCreatedByEmail()
+    {
+        return $this->container['created_by_email'];
+    }
+
+    /**
+     * Sets created_by_email
+     *
+     * @param string|null $created_by_email Denormalized email so the history UI can render without a join
+     *
+     * @return self
+     */
+    public function setCreatedByEmail($created_by_email)
+    {
+        if (is_null($created_by_email)) {
+            throw new \InvalidArgumentException('non-nullable created_by_email cannot be null');
+        }
+        $this->container['created_by_email'] = $created_by_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets restored_from_version
+     *
+     * @return int|null
+     */
+    public function getRestoredFromVersion()
+    {
+        return $this->container['restored_from_version'];
+    }
+
+    /**
+     * Sets restored_from_version
+     *
+     * @param int|null $restored_from_version When non-null
+     *
+     * @return self
+     */
+    public function setRestoredFromVersion($restored_from_version)
+    {
+        if (is_null($restored_from_version)) {
+            throw new \InvalidArgumentException('non-nullable restored_from_version cannot be null');
+        }
+        $this->container['restored_from_version'] = $restored_from_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

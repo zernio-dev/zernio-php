@@ -1,6 +1,6 @@
 <?php
 /**
- * WorkflowNodePosition
+ * ListWorkflowExecutionEvents200ResponseExecution
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * WorkflowNodePosition Class Doc Comment
+ * ListWorkflowExecutionEvents200ResponseExecution Class Doc Comment
  *
  * @category Class
- * @description Canvas coordinates (ignored by the executor; used by the visual builder).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListWorkflowExecutionEvents200ResponseExecution implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WorkflowNode_position';
+    protected static $openAPIModelName = 'listWorkflowExecutionEvents_200_response_execution';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,10 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'x' => 'float',
-        'y' => 'float'
+        'id' => 'string',
+        'status' => 'string',
+        'started_at' => '\DateTime',
+        'completed_at' => '\DateTime'
     ];
 
     /**
@@ -71,8 +72,10 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'x' => null,
-        'y' => null
+        'id' => null,
+        'status' => null,
+        'started_at' => 'date-time',
+        'completed_at' => 'date-time'
     ];
 
     /**
@@ -81,8 +84,10 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x' => false,
-        'y' => false
+        'id' => false,
+        'status' => false,
+        'started_at' => false,
+        'completed_at' => false
     ];
 
     /**
@@ -171,8 +176,10 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'x' => 'x',
-        'y' => 'y'
+        'id' => 'id',
+        'status' => 'status',
+        'started_at' => 'startedAt',
+        'completed_at' => 'completedAt'
     ];
 
     /**
@@ -181,8 +188,10 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'x' => 'setX',
-        'y' => 'setY'
+        'id' => 'setId',
+        'status' => 'setStatus',
+        'started_at' => 'setStartedAt',
+        'completed_at' => 'setCompletedAt'
     ];
 
     /**
@@ -191,8 +200,10 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'x' => 'getX',
-        'y' => 'getY'
+        'id' => 'getId',
+        'status' => 'getStatus',
+        'started_at' => 'getStartedAt',
+        'completed_at' => 'getCompletedAt'
     ];
 
     /**
@@ -236,6 +247,27 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
         return self::$openAPIModelName;
     }
 
+    public const STATUS_RUNNING = 'running';
+    public const STATUS_WAITING = 'waiting';
+    public const STATUS_COMPLETED = 'completed';
+    public const STATUS_EXITED = 'exited';
+    public const STATUS_FAILED = 'failed';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_RUNNING,
+            self::STATUS_WAITING,
+            self::STATUS_COMPLETED,
+            self::STATUS_EXITED,
+            self::STATUS_FAILED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -252,8 +284,10 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('x', $data ?? [], null);
-        $this->setIfExists('y', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('started_at', $data ?? [], null);
+        $this->setIfExists('completed_at', $data ?? [], null);
     }
 
     /**
@@ -283,6 +317,15 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'status', must be one of '%s'",
+                $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -299,55 +342,119 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets x
+     * Gets id
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getX()
+    public function getId()
     {
-        return $this->container['x'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets x
+     * Sets id
      *
-     * @param float|null $x x
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setX($x)
+    public function setId($id)
     {
-        if (is_null($x)) {
-            throw new \InvalidArgumentException('non-nullable x cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['x'] = $x;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets y
+     * Gets status
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getY()
+    public function getStatus()
     {
-        return $this->container['y'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets y
+     * Sets status
      *
-     * @param float|null $y y
+     * @param string|null $status status
      *
      * @return self
      */
-    public function setY($y)
+    public function setStatus($status)
     {
-        if (is_null($y)) {
-            throw new \InvalidArgumentException('non-nullable y cannot be null');
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['y'] = $y;
+        $allowedValues = $this->getStatusAllowableValues();
+        if (!in_array($status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'status', must be one of '%s'",
+                    $status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets started_at
+     *
+     * @return \DateTime|null
+     */
+    public function getStartedAt()
+    {
+        return $this->container['started_at'];
+    }
+
+    /**
+     * Sets started_at
+     *
+     * @param \DateTime|null $started_at started_at
+     *
+     * @return self
+     */
+    public function setStartedAt($started_at)
+    {
+        if (is_null($started_at)) {
+            throw new \InvalidArgumentException('non-nullable started_at cannot be null');
+        }
+        $this->container['started_at'] = $started_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets completed_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCompletedAt()
+    {
+        return $this->container['completed_at'];
+    }
+
+    /**
+     * Sets completed_at
+     *
+     * @param \DateTime|null $completed_at completed_at
+     *
+     * @return self
+     */
+    public function setCompletedAt($completed_at)
+    {
+        if (is_null($completed_at)) {
+            throw new \InvalidArgumentException('non-nullable completed_at cannot be null');
+        }
+        $this->container['completed_at'] = $completed_at;
 
         return $this;
     }

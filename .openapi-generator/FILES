@@ -283,6 +283,8 @@ docs/Model/DiscordPlatformDataThreadFromMessage.md
 docs/Model/DmButton.md
 docs/Model/DuplicateAdCampaign200Response.md
 docs/Model/DuplicateAdCampaignRequest.md
+docs/Model/DuplicateWorkflow201Response.md
+docs/Model/DuplicateWorkflow201ResponseWorkflow.md
 docs/Model/EditInboxMessage200Response.md
 docs/Model/EditInboxMessage200ResponseData.md
 docs/Model/EditInboxMessageRequest.md
@@ -533,6 +535,8 @@ docs/Model/GetWhatsAppTemplates200Response.md
 docs/Model/GetWhatsAppTemplates200ResponseTemplatesInner.md
 docs/Model/GetWorkflow200Response.md
 docs/Model/GetWorkflow200ResponseWorkflow.md
+docs/Model/GetWorkflowVersion200Response.md
+docs/Model/GetWorkflowVersion200ResponseVersion.md
 docs/Model/GetYouTubeDailyViews400Response.md
 docs/Model/GetYouTubeDailyViews403Response.md
 docs/Model/GetYouTubeDailyViews500Response.md
@@ -686,9 +690,13 @@ docs/Model/ListWhatsAppNumberCountries200ResponseCountriesInner.md
 docs/Model/ListWhatsAppPhoneNumbers200Response.md
 docs/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.md
 docs/Model/ListWhatsAppSandboxSessions200Response.md
+docs/Model/ListWorkflowExecutionEvents200Response.md
+docs/Model/ListWorkflowExecutionEvents200ResponseExecution.md
 docs/Model/ListWorkflowExecutions200Response.md
 docs/Model/ListWorkflowExecutions200ResponseExecutionsInner.md
 docs/Model/ListWorkflowExecutions200ResponseExecutionsInnerWaitingFor.md
+docs/Model/ListWorkflowVersions200Response.md
+docs/Model/ListWorkflowVersions200ResponseVersionsInner.md
 docs/Model/ListWorkflows200Response.md
 docs/Model/ListWorkflows200ResponseWorkflowsInner.md
 docs/Model/MarkConversationRead200Response.md
@@ -757,6 +765,8 @@ docs/Model/ReplyToInboxPostRequest.md
 docs/Model/ReplyToInboxReview200Response.md
 docs/Model/ReplyToInboxReview200ResponseReply.md
 docs/Model/ReplyToInboxReviewRequest.md
+docs/Model/RestoreWorkflowVersion200Response.md
+docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md
 docs/Model/RetweetPost200Response.md
 docs/Model/RetweetPostRequest.md
 docs/Model/ReviewWebhookReview.md
@@ -1095,6 +1105,7 @@ docs/Model/WhatsAppSandboxSession.md
 docs/Model/WhatsAppTemplateButton.md
 docs/Model/WhatsAppTemplateComponent.md
 docs/Model/WorkflowEdge.md
+docs/Model/WorkflowExecutionEvent.md
 docs/Model/WorkflowNode.md
 docs/Model/WorkflowNodePosition.md
 docs/Model/XApiOperation.md
@@ -1396,6 +1407,8 @@ lib/Model/DiscordPlatformDataThreadFromMessage.php
 lib/Model/DmButton.php
 lib/Model/DuplicateAdCampaign200Response.php
 lib/Model/DuplicateAdCampaignRequest.php
+lib/Model/DuplicateWorkflow201Response.php
+lib/Model/DuplicateWorkflow201ResponseWorkflow.php
 lib/Model/EditInboxMessage200Response.php
 lib/Model/EditInboxMessage200ResponseData.php
 lib/Model/EditInboxMessageRequest.php
@@ -1646,6 +1659,8 @@ lib/Model/GetWhatsAppTemplates200Response.php
 lib/Model/GetWhatsAppTemplates200ResponseTemplatesInner.php
 lib/Model/GetWorkflow200Response.php
 lib/Model/GetWorkflow200ResponseWorkflow.php
+lib/Model/GetWorkflowVersion200Response.php
+lib/Model/GetWorkflowVersion200ResponseVersion.php
 lib/Model/GetYouTubeDailyViews400Response.php
 lib/Model/GetYouTubeDailyViews403Response.php
 lib/Model/GetYouTubeDailyViews500Response.php
@@ -1799,9 +1814,13 @@ lib/Model/ListWhatsAppNumberCountries200ResponseCountriesInner.php
 lib/Model/ListWhatsAppPhoneNumbers200Response.php
 lib/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.php
 lib/Model/ListWhatsAppSandboxSessions200Response.php
+lib/Model/ListWorkflowExecutionEvents200Response.php
+lib/Model/ListWorkflowExecutionEvents200ResponseExecution.php
 lib/Model/ListWorkflowExecutions200Response.php
 lib/Model/ListWorkflowExecutions200ResponseExecutionsInner.php
 lib/Model/ListWorkflowExecutions200ResponseExecutionsInnerWaitingFor.php
+lib/Model/ListWorkflowVersions200Response.php
+lib/Model/ListWorkflowVersions200ResponseVersionsInner.php
 lib/Model/ListWorkflows200Response.php
 lib/Model/ListWorkflows200ResponseWorkflowsInner.php
 lib/Model/MarkConversationRead200Response.php
@@ -1871,6 +1890,8 @@ lib/Model/ReplyToInboxPostRequest.php
 lib/Model/ReplyToInboxReview200Response.php
 lib/Model/ReplyToInboxReview200ResponseReply.php
 lib/Model/ReplyToInboxReviewRequest.php
+lib/Model/RestoreWorkflowVersion200Response.php
+lib/Model/RestoreWorkflowVersion200ResponseWorkflow.php
 lib/Model/RetweetPost200Response.php
 lib/Model/RetweetPostRequest.php
 lib/Model/ReviewWebhookReview.php
@@ -2209,6 +2230,7 @@ lib/Model/WhatsAppSandboxSession.php
 lib/Model/WhatsAppTemplateButton.php
 lib/Model/WhatsAppTemplateComponent.php
 lib/Model/WorkflowEdge.php
+lib/Model/WorkflowExecutionEvent.php
 lib/Model/WorkflowNode.php
 lib/Model/WorkflowNodePosition.php
 lib/Model/XApiOperation.php
@@ -2227,3 +2249,14 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/DuplicateWorkflow201ResponseTest.php
+test/Model/DuplicateWorkflow201ResponseWorkflowTest.php
+test/Model/GetWorkflowVersion200ResponseTest.php
+test/Model/GetWorkflowVersion200ResponseVersionTest.php
+test/Model/ListWorkflowExecutionEvents200ResponseExecutionTest.php
+test/Model/ListWorkflowExecutionEvents200ResponseTest.php
+test/Model/ListWorkflowVersions200ResponseTest.php
+test/Model/ListWorkflowVersions200ResponseVersionsInnerTest.php
+test/Model/RestoreWorkflowVersion200ResponseTest.php
+test/Model/RestoreWorkflowVersion200ResponseWorkflowTest.php
+test/Model/WorkflowExecutionEventTest.php

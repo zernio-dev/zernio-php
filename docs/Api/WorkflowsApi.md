@@ -9,10 +9,15 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**activateWorkflow()**](WorkflowsApi.md#activateWorkflow) | **POST** /v1/workflows/{workflowId}/activate | Activate workflow |
 | [**createWorkflow()**](WorkflowsApi.md#createWorkflow) | **POST** /v1/workflows | Create workflow |
 | [**deleteWorkflow()**](WorkflowsApi.md#deleteWorkflow) | **DELETE** /v1/workflows/{workflowId} | Delete workflow |
+| [**duplicateWorkflow()**](WorkflowsApi.md#duplicateWorkflow) | **POST** /v1/workflows/{workflowId}/duplicate | Duplicate a workflow |
 | [**getWorkflow()**](WorkflowsApi.md#getWorkflow) | **GET** /v1/workflows/{workflowId} | Get workflow with graph |
+| [**getWorkflowVersion()**](WorkflowsApi.md#getWorkflowVersion) | **GET** /v1/workflows/{workflowId}/versions/{version} | Get a specific workflow version |
+| [**listWorkflowExecutionEvents()**](WorkflowsApi.md#listWorkflowExecutionEvents) | **GET** /v1/workflows/{workflowId}/executions/{executionId}/events | Get an execution&#39;s timeline |
 | [**listWorkflowExecutions()**](WorkflowsApi.md#listWorkflowExecutions) | **GET** /v1/workflows/{workflowId}/executions | List workflow runs |
+| [**listWorkflowVersions()**](WorkflowsApi.md#listWorkflowVersions) | **GET** /v1/workflows/{workflowId}/versions | List a workflow&#39;s version history |
 | [**listWorkflows()**](WorkflowsApi.md#listWorkflows) | **GET** /v1/workflows | List workflows |
 | [**pauseWorkflow()**](WorkflowsApi.md#pauseWorkflow) | **POST** /v1/workflows/{workflowId}/pause | Pause workflow |
+| [**restoreWorkflowVersion()**](WorkflowsApi.md#restoreWorkflowVersion) | **POST** /v1/workflows/{workflowId}/versions/{version}/restore | Restore a previous workflow version |
 | [**triggerWorkflow()**](WorkflowsApi.md#triggerWorkflow) | **POST** /v1/workflows/{workflowId}/executions | Manually start a workflow run |
 | [**updateWorkflow()**](WorkflowsApi.md#updateWorkflow) | **PATCH** /v1/workflows/{workflowId} | Update workflow |
 
@@ -196,6 +201,66 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `duplicateWorkflow()`
+
+```php
+duplicateWorkflow($workflow_id): \Zernio\Model\DuplicateWorkflow201Response
+```
+
+Duplicate a workflow
+
+Create an independent copy of a workflow's graph, name, description, and account binding. The copy is created in `draft` status with fresh execution counters and a new id — execution history is NOT copied. Useful for branching off a known-good workflow before making experimental edits.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WorkflowsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$workflow_id = 'workflow_id_example'; // string
+
+try {
+    $result = $apiInstance->duplicateWorkflow($workflow_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WorkflowsApi->duplicateWorkflow: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **workflow_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\DuplicateWorkflow201Response**](../Model/DuplicateWorkflow201Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getWorkflow()`
 
 ```php
@@ -242,6 +307,130 @@ try {
 ### Return type
 
 [**\Zernio\Model\GetWorkflow200Response**](../Model/GetWorkflow200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getWorkflowVersion()`
+
+```php
+getWorkflowVersion($workflow_id, $version): \Zernio\Model\GetWorkflowVersion200Response
+```
+
+Get a specific workflow version
+
+Returns the full snapshot for a single historical version, including the graph.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WorkflowsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$workflow_id = 'workflow_id_example'; // string
+$version = 56; // int
+
+try {
+    $result = $apiInstance->getWorkflowVersion($workflow_id, $version);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WorkflowsApi->getWorkflowVersion: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **workflow_id** | **string**|  | |
+| **version** | **int**|  | |
+
+### Return type
+
+[**\Zernio\Model\GetWorkflowVersion200Response**](../Model/GetWorkflowVersion200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listWorkflowExecutionEvents()`
+
+```php
+listWorkflowExecutionEvents($workflow_id, $execution_id): \Zernio\Model\ListWorkflowExecutionEvents200Response
+```
+
+Get an execution's timeline
+
+Returns the per-step run-log for a single workflow execution: trigger fired, each node visited, edge handles taken, errors, and durations. Backed by Tinybird (90-day retention). Used by the Runs UI drawer to render the timeline.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WorkflowsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$workflow_id = 'workflow_id_example'; // string
+$execution_id = 'execution_id_example'; // string
+
+try {
+    $result = $apiInstance->listWorkflowExecutionEvents($workflow_id, $execution_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WorkflowsApi->listWorkflowExecutionEvents: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **workflow_id** | **string**|  | |
+| **execution_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\ListWorkflowExecutionEvents200Response**](../Model/ListWorkflowExecutionEvents200Response.md)
 
 ### Authorization
 
@@ -308,6 +497,66 @@ try {
 ### Return type
 
 [**\Zernio\Model\ListWorkflowExecutions200Response**](../Model/ListWorkflowExecutions200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listWorkflowVersions()`
+
+```php
+listWorkflowVersions($workflow_id): \Zernio\Model\ListWorkflowVersions200Response
+```
+
+List a workflow's version history
+
+Returns the snapshot history. A new version is recorded automatically before every PATCH to `nodes` / `edges` / `entryNodeId`, and explicitly when a previous version is restored. Lightweight list — call `getWorkflowVersion` for the full snapshot graph.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WorkflowsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$workflow_id = 'workflow_id_example'; // string
+
+try {
+    $result = $apiInstance->listWorkflowVersions($workflow_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WorkflowsApi->listWorkflowVersions: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **workflow_id** | **string**|  | |
+
+### Return type
+
+[**\Zernio\Model\ListWorkflowVersions200Response**](../Model/ListWorkflowVersions200Response.md)
 
 ### Authorization
 
@@ -448,6 +697,68 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `restoreWorkflowVersion()`
+
+```php
+restoreWorkflowVersion($workflow_id, $version): \Zernio\Model\RestoreWorkflowVersion200Response
+```
+
+Restore a previous workflow version
+
+Replace the current graph with the named version's snapshot. Before the swap, the current graph is itself snapshotted as a new version, so a restore is reversible. The workflow must be in `draft` or `paused` status (same gate as a normal graph edit). The returned workflow carries `restoredFromVersion` so the UI can surface which version was rolled back to.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WorkflowsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$workflow_id = 'workflow_id_example'; // string
+$version = 56; // int
+
+try {
+    $result = $apiInstance->restoreWorkflowVersion($workflow_id, $version);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WorkflowsApi->restoreWorkflowVersion: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **workflow_id** | **string**|  | |
+| **version** | **int**|  | |
+
+### Return type
+
+[**\Zernio\Model\RestoreWorkflowVersion200Response**](../Model/RestoreWorkflowVersion200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `triggerWorkflow()`
 
 ```php
@@ -518,7 +829,7 @@ updateWorkflow($workflow_id, $update_workflow_request): \Zernio\Model\UpdateWork
 
 Update workflow
 
-Update name, description, or the graph. The graph can only be modified while the workflow is draft or paused.
+Update name, description, the graph, or reassign to a different account. The graph can only be modified while the workflow is draft or paused. Account swaps re-validate the graph against the new platform (so e.g. moving from WhatsApp to Facebook surfaces a `start_call` node as an error instead of silently saving an unrunnable graph).
 
 ### Example
 

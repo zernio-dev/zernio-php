@@ -395,10 +395,15 @@ Class | Method | HTTP request | Description
 *WorkflowsApi* | [**activateWorkflow**](docs/Api/WorkflowsApi.md#activateworkflow) | **POST** /v1/workflows/{workflowId}/activate | Activate workflow
 *WorkflowsApi* | [**createWorkflow**](docs/Api/WorkflowsApi.md#createworkflow) | **POST** /v1/workflows | Create workflow
 *WorkflowsApi* | [**deleteWorkflow**](docs/Api/WorkflowsApi.md#deleteworkflow) | **DELETE** /v1/workflows/{workflowId} | Delete workflow
+*WorkflowsApi* | [**duplicateWorkflow**](docs/Api/WorkflowsApi.md#duplicateworkflow) | **POST** /v1/workflows/{workflowId}/duplicate | Duplicate a workflow
 *WorkflowsApi* | [**getWorkflow**](docs/Api/WorkflowsApi.md#getworkflow) | **GET** /v1/workflows/{workflowId} | Get workflow with graph
+*WorkflowsApi* | [**getWorkflowVersion**](docs/Api/WorkflowsApi.md#getworkflowversion) | **GET** /v1/workflows/{workflowId}/versions/{version} | Get a specific workflow version
+*WorkflowsApi* | [**listWorkflowExecutionEvents**](docs/Api/WorkflowsApi.md#listworkflowexecutionevents) | **GET** /v1/workflows/{workflowId}/executions/{executionId}/events | Get an execution&#39;s timeline
 *WorkflowsApi* | [**listWorkflowExecutions**](docs/Api/WorkflowsApi.md#listworkflowexecutions) | **GET** /v1/workflows/{workflowId}/executions | List workflow runs
+*WorkflowsApi* | [**listWorkflowVersions**](docs/Api/WorkflowsApi.md#listworkflowversions) | **GET** /v1/workflows/{workflowId}/versions | List a workflow&#39;s version history
 *WorkflowsApi* | [**listWorkflows**](docs/Api/WorkflowsApi.md#listworkflows) | **GET** /v1/workflows | List workflows
 *WorkflowsApi* | [**pauseWorkflow**](docs/Api/WorkflowsApi.md#pauseworkflow) | **POST** /v1/workflows/{workflowId}/pause | Pause workflow
+*WorkflowsApi* | [**restoreWorkflowVersion**](docs/Api/WorkflowsApi.md#restoreworkflowversion) | **POST** /v1/workflows/{workflowId}/versions/{version}/restore | Restore a previous workflow version
 *WorkflowsApi* | [**triggerWorkflow**](docs/Api/WorkflowsApi.md#triggerworkflow) | **POST** /v1/workflows/{workflowId}/executions | Manually start a workflow run
 *WorkflowsApi* | [**updateWorkflow**](docs/Api/WorkflowsApi.md#updateworkflow) | **PATCH** /v1/workflows/{workflowId} | Update workflow
 
@@ -635,6 +640,8 @@ Class | Method | HTTP request | Description
 - [DmButton](docs/Model/DmButton.md)
 - [DuplicateAdCampaign200Response](docs/Model/DuplicateAdCampaign200Response.md)
 - [DuplicateAdCampaignRequest](docs/Model/DuplicateAdCampaignRequest.md)
+- [DuplicateWorkflow201Response](docs/Model/DuplicateWorkflow201Response.md)
+- [DuplicateWorkflow201ResponseWorkflow](docs/Model/DuplicateWorkflow201ResponseWorkflow.md)
 - [EditInboxMessage200Response](docs/Model/EditInboxMessage200Response.md)
 - [EditInboxMessage200ResponseData](docs/Model/EditInboxMessage200ResponseData.md)
 - [EditInboxMessageRequest](docs/Model/EditInboxMessageRequest.md)
@@ -885,6 +892,8 @@ Class | Method | HTTP request | Description
 - [GetWhatsAppTemplates200ResponseTemplatesInner](docs/Model/GetWhatsAppTemplates200ResponseTemplatesInner.md)
 - [GetWorkflow200Response](docs/Model/GetWorkflow200Response.md)
 - [GetWorkflow200ResponseWorkflow](docs/Model/GetWorkflow200ResponseWorkflow.md)
+- [GetWorkflowVersion200Response](docs/Model/GetWorkflowVersion200Response.md)
+- [GetWorkflowVersion200ResponseVersion](docs/Model/GetWorkflowVersion200ResponseVersion.md)
 - [GetYouTubeDailyViews400Response](docs/Model/GetYouTubeDailyViews400Response.md)
 - [GetYouTubeDailyViews403Response](docs/Model/GetYouTubeDailyViews403Response.md)
 - [GetYouTubeDailyViews500Response](docs/Model/GetYouTubeDailyViews500Response.md)
@@ -1038,9 +1047,13 @@ Class | Method | HTTP request | Description
 - [ListWhatsAppPhoneNumbers200Response](docs/Model/ListWhatsAppPhoneNumbers200Response.md)
 - [ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner](docs/Model/ListWhatsAppPhoneNumbers200ResponsePhoneNumbersInner.md)
 - [ListWhatsAppSandboxSessions200Response](docs/Model/ListWhatsAppSandboxSessions200Response.md)
+- [ListWorkflowExecutionEvents200Response](docs/Model/ListWorkflowExecutionEvents200Response.md)
+- [ListWorkflowExecutionEvents200ResponseExecution](docs/Model/ListWorkflowExecutionEvents200ResponseExecution.md)
 - [ListWorkflowExecutions200Response](docs/Model/ListWorkflowExecutions200Response.md)
 - [ListWorkflowExecutions200ResponseExecutionsInner](docs/Model/ListWorkflowExecutions200ResponseExecutionsInner.md)
 - [ListWorkflowExecutions200ResponseExecutionsInnerWaitingFor](docs/Model/ListWorkflowExecutions200ResponseExecutionsInnerWaitingFor.md)
+- [ListWorkflowVersions200Response](docs/Model/ListWorkflowVersions200Response.md)
+- [ListWorkflowVersions200ResponseVersionsInner](docs/Model/ListWorkflowVersions200ResponseVersionsInner.md)
 - [ListWorkflows200Response](docs/Model/ListWorkflows200Response.md)
 - [ListWorkflows200ResponseWorkflowsInner](docs/Model/ListWorkflows200ResponseWorkflowsInner.md)
 - [MarkConversationRead200Response](docs/Model/MarkConversationRead200Response.md)
@@ -1109,6 +1122,8 @@ Class | Method | HTTP request | Description
 - [ReplyToInboxReview200Response](docs/Model/ReplyToInboxReview200Response.md)
 - [ReplyToInboxReview200ResponseReply](docs/Model/ReplyToInboxReview200ResponseReply.md)
 - [ReplyToInboxReviewRequest](docs/Model/ReplyToInboxReviewRequest.md)
+- [RestoreWorkflowVersion200Response](docs/Model/RestoreWorkflowVersion200Response.md)
+- [RestoreWorkflowVersion200ResponseWorkflow](docs/Model/RestoreWorkflowVersion200ResponseWorkflow.md)
 - [RetweetPost200Response](docs/Model/RetweetPost200Response.md)
 - [RetweetPostRequest](docs/Model/RetweetPostRequest.md)
 - [ReviewWebhookReview](docs/Model/ReviewWebhookReview.md)
@@ -1447,6 +1462,7 @@ Class | Method | HTTP request | Description
 - [WhatsAppTemplateButton](docs/Model/WhatsAppTemplateButton.md)
 - [WhatsAppTemplateComponent](docs/Model/WhatsAppTemplateComponent.md)
 - [WorkflowEdge](docs/Model/WorkflowEdge.md)
+- [WorkflowExecutionEvent](docs/Model/WorkflowExecutionEvent.md)
 - [WorkflowNode](docs/Model/WorkflowNode.md)
 - [WorkflowNodePosition](docs/Model/WorkflowNodePosition.md)
 - [XApiOperation](docs/Model/XApiOperation.md)

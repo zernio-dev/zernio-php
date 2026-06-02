@@ -1,6 +1,6 @@
 <?php
 /**
- * UpdateWorkflowRequest
+ * GetWorkflowVersion200ResponseVersion
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * UpdateWorkflowRequest Class Doc Comment
+ * GetWorkflowVersion200ResponseVersion Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetWorkflowVersion200ResponseVersion implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'updateWorkflow_request';
+    protected static $openAPIModelName = 'getWorkflowVersion_200_response_version';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,19 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
+        'version' => 'int',
         'name' => 'string',
         'description' => 'string',
+        'entry_node_id' => 'string',
         'nodes' => '\Zernio\Model\WorkflowNode[]',
         'edges' => '\Zernio\Model\WorkflowEdge[]',
-        'entry_node_id' => 'string',
-        'account_id' => 'string'
+        'platform' => 'string',
+        'account_id' => 'string',
+        'profile_id' => 'string',
+        'created_by' => 'string',
+        'created_by_email' => 'string',
+        'restored_from_version' => 'int',
+        'created_at' => '\DateTime'
     ];
 
     /**
@@ -74,12 +81,19 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'version' => null,
         'name' => null,
         'description' => null,
+        'entry_node_id' => null,
         'nodes' => null,
         'edges' => null,
-        'entry_node_id' => null,
-        'account_id' => null
+        'platform' => null,
+        'account_id' => null,
+        'profile_id' => null,
+        'created_by' => null,
+        'created_by_email' => null,
+        'restored_from_version' => null,
+        'created_at' => 'date-time'
     ];
 
     /**
@@ -88,12 +102,19 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'version' => false,
         'name' => false,
         'description' => false,
+        'entry_node_id' => false,
         'nodes' => false,
         'edges' => false,
-        'entry_node_id' => false,
-        'account_id' => false
+        'platform' => false,
+        'account_id' => false,
+        'profile_id' => false,
+        'created_by' => false,
+        'created_by_email' => false,
+        'restored_from_version' => false,
+        'created_at' => false
     ];
 
     /**
@@ -182,12 +203,19 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
+        'version' => 'version',
         'name' => 'name',
         'description' => 'description',
+        'entry_node_id' => 'entryNodeId',
         'nodes' => 'nodes',
         'edges' => 'edges',
-        'entry_node_id' => 'entryNodeId',
-        'account_id' => 'accountId'
+        'platform' => 'platform',
+        'account_id' => 'accountId',
+        'profile_id' => 'profileId',
+        'created_by' => 'createdBy',
+        'created_by_email' => 'createdByEmail',
+        'restored_from_version' => 'restoredFromVersion',
+        'created_at' => 'createdAt'
     ];
 
     /**
@@ -196,12 +224,19 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
+        'version' => 'setVersion',
         'name' => 'setName',
         'description' => 'setDescription',
+        'entry_node_id' => 'setEntryNodeId',
         'nodes' => 'setNodes',
         'edges' => 'setEdges',
-        'entry_node_id' => 'setEntryNodeId',
-        'account_id' => 'setAccountId'
+        'platform' => 'setPlatform',
+        'account_id' => 'setAccountId',
+        'profile_id' => 'setProfileId',
+        'created_by' => 'setCreatedBy',
+        'created_by_email' => 'setCreatedByEmail',
+        'restored_from_version' => 'setRestoredFromVersion',
+        'created_at' => 'setCreatedAt'
     ];
 
     /**
@@ -210,12 +245,19 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
+        'version' => 'getVersion',
         'name' => 'getName',
         'description' => 'getDescription',
+        'entry_node_id' => 'getEntryNodeId',
         'nodes' => 'getNodes',
         'edges' => 'getEdges',
-        'entry_node_id' => 'getEntryNodeId',
-        'account_id' => 'getAccountId'
+        'platform' => 'getPlatform',
+        'account_id' => 'getAccountId',
+        'profile_id' => 'getProfileId',
+        'created_by' => 'getCreatedBy',
+        'created_by_email' => 'getCreatedByEmail',
+        'restored_from_version' => 'getRestoredFromVersion',
+        'created_at' => 'getCreatedAt'
     ];
 
     /**
@@ -275,12 +317,19 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('version', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('entry_node_id', $data ?? [], null);
         $this->setIfExists('nodes', $data ?? [], null);
         $this->setIfExists('edges', $data ?? [], null);
-        $this->setIfExists('entry_node_id', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
+        $this->setIfExists('created_by', $data ?? [], null);
+        $this->setIfExists('created_by_email', $data ?? [], null);
+        $this->setIfExists('restored_from_version', $data ?? [], null);
+        $this->setIfExists('created_at', $data ?? [], null);
     }
 
     /**
@@ -324,6 +373,33 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets version
+     *
+     * @return int|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param int|null $version version
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        if (is_null($version)) {
+            throw new \InvalidArgumentException('non-nullable version cannot be null');
+        }
+        $this->container['version'] = $version;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -375,6 +451,33 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets entry_node_id
+     *
+     * @return string|null
+     */
+    public function getEntryNodeId()
+    {
+        return $this->container['entry_node_id'];
+    }
+
+    /**
+     * Sets entry_node_id
+     *
+     * @param string|null $entry_node_id entry_node_id
+     *
+     * @return self
+     */
+    public function setEntryNodeId($entry_node_id)
+    {
+        if (is_null($entry_node_id)) {
+            throw new \InvalidArgumentException('non-nullable entry_node_id cannot be null');
+        }
+        $this->container['entry_node_id'] = $entry_node_id;
 
         return $this;
     }
@@ -434,28 +537,28 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets entry_node_id
+     * Gets platform
      *
      * @return string|null
      */
-    public function getEntryNodeId()
+    public function getPlatform()
     {
-        return $this->container['entry_node_id'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets entry_node_id
+     * Sets platform
      *
-     * @param string|null $entry_node_id entry_node_id
+     * @param string|null $platform platform
      *
      * @return self
      */
-    public function setEntryNodeId($entry_node_id)
+    public function setPlatform($platform)
     {
-        if (is_null($entry_node_id)) {
-            throw new \InvalidArgumentException('non-nullable entry_node_id cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $this->container['entry_node_id'] = $entry_node_id;
+        $this->container['platform'] = $platform;
 
         return $this;
     }
@@ -473,7 +576,7 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets account_id
      *
-     * @param string|null $account_id Reassign the workflow to a different `SocialAccount`. `platform` and `profileId` are derived server-side from the new account (the client never sends them directly). The account must belong to the caller's workspace and be on a workflow-supported platform (whatsapp, instagram, facebook, telegram, twitter, bluesky, reddit). Changing this triggers a graph revalidation against the new platform.
+     * @param string|null $account_id account_id
      *
      * @return self
      */
@@ -483,6 +586,141 @@ class UpdateWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
         $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_id
+     *
+     * @return string|null
+     */
+    public function getProfileId()
+    {
+        return $this->container['profile_id'];
+    }
+
+    /**
+     * Sets profile_id
+     *
+     * @param string|null $profile_id profile_id
+     *
+     * @return self
+     */
+    public function setProfileId($profile_id)
+    {
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
+        }
+        $this->container['profile_id'] = $profile_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by
+     *
+     * @return string|null
+     */
+    public function getCreatedBy()
+    {
+        return $this->container['created_by'];
+    }
+
+    /**
+     * Sets created_by
+     *
+     * @param string|null $created_by created_by
+     *
+     * @return self
+     */
+    public function setCreatedBy($created_by)
+    {
+        if (is_null($created_by)) {
+            throw new \InvalidArgumentException('non-nullable created_by cannot be null');
+        }
+        $this->container['created_by'] = $created_by;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_by_email
+     *
+     * @return string|null
+     */
+    public function getCreatedByEmail()
+    {
+        return $this->container['created_by_email'];
+    }
+
+    /**
+     * Sets created_by_email
+     *
+     * @param string|null $created_by_email created_by_email
+     *
+     * @return self
+     */
+    public function setCreatedByEmail($created_by_email)
+    {
+        if (is_null($created_by_email)) {
+            throw new \InvalidArgumentException('non-nullable created_by_email cannot be null');
+        }
+        $this->container['created_by_email'] = $created_by_email;
+
+        return $this;
+    }
+
+    /**
+     * Gets restored_from_version
+     *
+     * @return int|null
+     */
+    public function getRestoredFromVersion()
+    {
+        return $this->container['restored_from_version'];
+    }
+
+    /**
+     * Sets restored_from_version
+     *
+     * @param int|null $restored_from_version restored_from_version
+     *
+     * @return self
+     */
+    public function setRestoredFromVersion($restored_from_version)
+    {
+        if (is_null($restored_from_version)) {
+            throw new \InvalidArgumentException('non-nullable restored_from_version cannot be null');
+        }
+        $this->container['restored_from_version'] = $restored_from_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime|null
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime|null $created_at created_at
+     *
+     * @return self
+     */
+    public function setCreatedAt($created_at)
+    {
+        if (is_null($created_at)) {
+            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        }
+        $this->container['created_at'] = $created_at;
 
         return $this;
     }

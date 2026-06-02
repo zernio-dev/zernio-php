@@ -1,6 +1,6 @@
 <?php
 /**
- * WorkflowNodePosition
+ * RestoreWorkflowVersion200ResponseWorkflow
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * WorkflowNodePosition Class Doc Comment
+ * RestoreWorkflowVersion200ResponseWorkflow Class Doc Comment
  *
  * @category Class
- * @description Canvas coordinates (ignored by the executor; used by the visual builder).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializable
+class RestoreWorkflowVersion200ResponseWorkflow implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'WorkflowNode_position';
+    protected static $openAPIModelName = 'restoreWorkflowVersion_200_response_workflow';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +58,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'x' => 'float',
-        'y' => 'float'
+        'id' => 'string',
+        'name' => 'string',
+        'description' => 'string',
+        'status' => 'string',
+        'entry_node_id' => 'string',
+        'node_count' => 'int',
+        'updated_at' => '\DateTime'
     ];
 
     /**
@@ -71,8 +75,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'x' => null,
-        'y' => null
+        'id' => null,
+        'name' => null,
+        'description' => null,
+        'status' => null,
+        'entry_node_id' => null,
+        'node_count' => null,
+        'updated_at' => 'date-time'
     ];
 
     /**
@@ -81,8 +90,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'x' => false,
-        'y' => false
+        'id' => false,
+        'name' => false,
+        'description' => false,
+        'status' => false,
+        'entry_node_id' => false,
+        'node_count' => false,
+        'updated_at' => false
     ];
 
     /**
@@ -171,8 +185,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'x' => 'x',
-        'y' => 'y'
+        'id' => 'id',
+        'name' => 'name',
+        'description' => 'description',
+        'status' => 'status',
+        'entry_node_id' => 'entryNodeId',
+        'node_count' => 'nodeCount',
+        'updated_at' => 'updatedAt'
     ];
 
     /**
@@ -181,8 +200,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'x' => 'setX',
-        'y' => 'setY'
+        'id' => 'setId',
+        'name' => 'setName',
+        'description' => 'setDescription',
+        'status' => 'setStatus',
+        'entry_node_id' => 'setEntryNodeId',
+        'node_count' => 'setNodeCount',
+        'updated_at' => 'setUpdatedAt'
     ];
 
     /**
@@ -191,8 +215,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'x' => 'getX',
-        'y' => 'getY'
+        'id' => 'getId',
+        'name' => 'getName',
+        'description' => 'getDescription',
+        'status' => 'getStatus',
+        'entry_node_id' => 'getEntryNodeId',
+        'node_count' => 'getNodeCount',
+        'updated_at' => 'getUpdatedAt'
     ];
 
     /**
@@ -252,8 +281,13 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('x', $data ?? [], null);
-        $this->setIfExists('y', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('entry_node_id', $data ?? [], null);
+        $this->setIfExists('node_count', $data ?? [], null);
+        $this->setIfExists('updated_at', $data ?? [], null);
     }
 
     /**
@@ -299,55 +333,190 @@ class WorkflowNodePosition implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets x
+     * Gets id
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getX()
+    public function getId()
     {
-        return $this->container['x'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets x
+     * Sets id
      *
-     * @param float|null $x x
+     * @param string|null $id id
      *
      * @return self
      */
-    public function setX($x)
+    public function setId($id)
     {
-        if (is_null($x)) {
-            throw new \InvalidArgumentException('non-nullable x cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['x'] = $x;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets y
+     * Gets name
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getY()
+    public function getName()
     {
-        return $this->container['y'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets y
+     * Sets name
      *
-     * @param float|null $y y
+     * @param string|null $name name
      *
      * @return self
      */
-    public function setY($y)
+    public function setName($name)
     {
-        if (is_null($y)) {
-            throw new \InvalidArgumentException('non-nullable y cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['y'] = $y;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets status
+     *
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     *
+     * @param string|null $status status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        if (is_null($status)) {
+            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets entry_node_id
+     *
+     * @return string|null
+     */
+    public function getEntryNodeId()
+    {
+        return $this->container['entry_node_id'];
+    }
+
+    /**
+     * Sets entry_node_id
+     *
+     * @param string|null $entry_node_id entry_node_id
+     *
+     * @return self
+     */
+    public function setEntryNodeId($entry_node_id)
+    {
+        if (is_null($entry_node_id)) {
+            throw new \InvalidArgumentException('non-nullable entry_node_id cannot be null');
+        }
+        $this->container['entry_node_id'] = $entry_node_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets node_count
+     *
+     * @return int|null
+     */
+    public function getNodeCount()
+    {
+        return $this->container['node_count'];
+    }
+
+    /**
+     * Sets node_count
+     *
+     * @param int|null $node_count node_count
+     *
+     * @return self
+     */
+    public function setNodeCount($node_count)
+    {
+        if (is_null($node_count)) {
+            throw new \InvalidArgumentException('non-nullable node_count cannot be null');
+        }
+        $this->container['node_count'] = $node_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime|null
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime|null $updated_at updated_at
+     *
+     * @return self
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        if (is_null($updated_at)) {
+            throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
+        }
+        $this->container['updated_at'] = $updated_at;
 
         return $this;
     }
