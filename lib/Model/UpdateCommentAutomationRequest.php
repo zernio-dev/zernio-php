@@ -65,6 +65,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'buttons' => '\Zernio\Model\DmButton[]',
         'comment_reply' => 'string',
         'link_tracking' => 'bool',
+        'click_tag' => 'string',
         'is_active' => 'bool'
     ];
 
@@ -83,6 +84,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'buttons' => null,
         'comment_reply' => null,
         'link_tracking' => null,
+        'click_tag' => null,
         'is_active' => null
     ];
 
@@ -99,6 +101,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'buttons' => false,
         'comment_reply' => false,
         'link_tracking' => false,
+        'click_tag' => false,
         'is_active' => false
     ];
 
@@ -195,6 +198,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'buttons' => 'buttons',
         'comment_reply' => 'commentReply',
         'link_tracking' => 'linkTracking',
+        'click_tag' => 'clickTag',
         'is_active' => 'isActive'
     ];
 
@@ -211,6 +215,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'buttons' => 'setButtons',
         'comment_reply' => 'setCommentReply',
         'link_tracking' => 'setLinkTracking',
+        'click_tag' => 'setClickTag',
         'is_active' => 'setIsActive'
     ];
 
@@ -227,6 +232,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'buttons' => 'getButtons',
         'comment_reply' => 'getCommentReply',
         'link_tracking' => 'getLinkTracking',
+        'click_tag' => 'getClickTag',
         'is_active' => 'getIsActive'
     ];
 
@@ -309,6 +315,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('buttons', $data ?? [], null);
         $this->setIfExists('comment_reply', $data ?? [], null);
         $this->setIfExists('link_tracking', $data ?? [], null);
+        $this->setIfExists('click_tag', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
     }
 
@@ -566,6 +573,33 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable link_tracking cannot be null');
         }
         $this->container['link_tracking'] = $link_tracking;
+
+        return $this;
+    }
+
+    /**
+     * Gets click_tag
+     *
+     * @return string|null
+     */
+    public function getClickTag()
+    {
+        return $this->container['click_tag'];
+    }
+
+    /**
+     * Sets click_tag
+     *
+     * @param string|null $click_tag Tag applied to a contact when they click a tracked link (requires linkTracking). Empty string clears it.
+     *
+     * @return self
+     */
+    public function setClickTag($click_tag)
+    {
+        if (is_null($click_tag)) {
+            throw new \InvalidArgumentException('non-nullable click_tag cannot be null');
+        }
+        $this->container['click_tag'] = $click_tag;
 
         return $this;
     }

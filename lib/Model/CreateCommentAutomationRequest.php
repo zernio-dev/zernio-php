@@ -69,7 +69,8 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'dm_message' => 'string',
         'buttons' => '\Zernio\Model\DmButton[]',
         'comment_reply' => 'string',
-        'link_tracking' => 'bool'
+        'link_tracking' => 'bool',
+        'click_tag' => 'string'
     ];
 
     /**
@@ -91,7 +92,8 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'dm_message' => null,
         'buttons' => null,
         'comment_reply' => null,
-        'link_tracking' => null
+        'link_tracking' => null,
+        'click_tag' => null
     ];
 
     /**
@@ -111,7 +113,8 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'dm_message' => false,
         'buttons' => false,
         'comment_reply' => false,
-        'link_tracking' => false
+        'link_tracking' => false,
+        'click_tag' => false
     ];
 
     /**
@@ -211,7 +214,8 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'dm_message' => 'dmMessage',
         'buttons' => 'buttons',
         'comment_reply' => 'commentReply',
-        'link_tracking' => 'linkTracking'
+        'link_tracking' => 'linkTracking',
+        'click_tag' => 'clickTag'
     ];
 
     /**
@@ -231,7 +235,8 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'dm_message' => 'setDmMessage',
         'buttons' => 'setButtons',
         'comment_reply' => 'setCommentReply',
-        'link_tracking' => 'setLinkTracking'
+        'link_tracking' => 'setLinkTracking',
+        'click_tag' => 'setClickTag'
     ];
 
     /**
@@ -251,7 +256,8 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'dm_message' => 'getDmMessage',
         'buttons' => 'getButtons',
         'comment_reply' => 'getCommentReply',
-        'link_tracking' => 'getLinkTracking'
+        'link_tracking' => 'getLinkTracking',
+        'click_tag' => 'getClickTag'
     ];
 
     /**
@@ -338,6 +344,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('buttons', $data ?? [], null);
         $this->setIfExists('comment_reply', $data ?? [], null);
         $this->setIfExists('link_tracking', $data ?? [], true);
+        $this->setIfExists('click_tag', $data ?? [], null);
     }
 
     /**
@@ -741,6 +748,33 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable link_tracking cannot be null');
         }
         $this->container['link_tracking'] = $link_tracking;
+
+        return $this;
+    }
+
+    /**
+     * Gets click_tag
+     *
+     * @return string|null
+     */
+    public function getClickTag()
+    {
+        return $this->container['click_tag'];
+    }
+
+    /**
+     * Sets click_tag
+     *
+     * @param string|null $click_tag Optional tag applied to a contact when they click a tracked link (requires linkTracking). Lets you segment clickers for broadcasts/sequences.
+     *
+     * @return self
+     */
+    public function setClickTag($click_tag)
+    {
+        if (is_null($click_tag)) {
+            throw new \InvalidArgumentException('non-nullable click_tag cannot be null');
+        }
+        $this->container['click_tag'] = $click_tag;
 
         return $this;
     }

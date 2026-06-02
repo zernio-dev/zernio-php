@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **buttons** | [**\Zernio\Model\DmButton[]**](DmButton.md) | Inline DM buttons (up to 3). Omitted when none are set. | [optional]
 **comment_reply** | **string** |  | [optional]
 **link_tracking** | **bool** |  | [optional]
+**click_tag** | **string** |  | [optional]
 **is_active** | **bool** |  | [optional]
 **stats** | [**\Zernio\Model\CreateCommentAutomation200ResponseAutomationStats**](CreateCommentAutomation200ResponseAutomationStats.md) |  | [optional]
 **created_at** | **\DateTime** |  | [optional]
