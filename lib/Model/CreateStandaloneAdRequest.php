@@ -99,6 +99,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => '\DateTime',
         'instagram_account_id' => 'string',
         'dynamic_creative' => '\Zernio\Model\CreateStandaloneAdRequestDynamicCreative',
+        'placement_assets' => '\Zernio\Model\CreateStandaloneAdRequestPlacementAssets',
         'audience_id' => 'string',
         'campaign_type' => 'string',
         'keywords' => 'string[]',
@@ -166,6 +167,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => 'date-time',
         'instagram_account_id' => null,
         'dynamic_creative' => null,
+        'placement_assets' => null,
         'audience_id' => null,
         'campaign_type' => null,
         'keywords' => null,
@@ -231,6 +233,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => false,
         'instagram_account_id' => false,
         'dynamic_creative' => false,
+        'placement_assets' => false,
         'audience_id' => false,
         'campaign_type' => false,
         'keywords' => false,
@@ -376,6 +379,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => 'startDate',
         'instagram_account_id' => 'instagramAccountId',
         'dynamic_creative' => 'dynamicCreative',
+        'placement_assets' => 'placementAssets',
         'audience_id' => 'audienceId',
         'campaign_type' => 'campaignType',
         'keywords' => 'keywords',
@@ -441,6 +445,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => 'setStartDate',
         'instagram_account_id' => 'setInstagramAccountId',
         'dynamic_creative' => 'setDynamicCreative',
+        'placement_assets' => 'setPlacementAssets',
         'audience_id' => 'setAudienceId',
         'campaign_type' => 'setCampaignType',
         'keywords' => 'setKeywords',
@@ -506,6 +511,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'start_date' => 'getStartDate',
         'instagram_account_id' => 'getInstagramAccountId',
         'dynamic_creative' => 'getDynamicCreative',
+        'placement_assets' => 'getPlacementAssets',
         'audience_id' => 'getAudienceId',
         'campaign_type' => 'getCampaignType',
         'keywords' => 'getKeywords',
@@ -824,6 +830,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('start_date', $data ?? [], null);
         $this->setIfExists('instagram_account_id', $data ?? [], null);
         $this->setIfExists('dynamic_creative', $data ?? [], null);
+        $this->setIfExists('placement_assets', $data ?? [], null);
         $this->setIfExists('audience_id', $data ?? [], null);
         $this->setIfExists('campaign_type', $data ?? [], 'display');
         $this->setIfExists('keywords', $data ?? [], null);
@@ -2217,6 +2224,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable dynamic_creative cannot be null');
         }
         $this->container['dynamic_creative'] = $dynamic_creative;
+
+        return $this;
+    }
+
+    /**
+     * Gets placement_assets
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestPlacementAssets|null
+     */
+    public function getPlacementAssets()
+    {
+        return $this->container['placement_assets'];
+    }
+
+    /**
+     * Sets placement_assets
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestPlacementAssets|null $placement_assets placement_assets
+     *
+     * @return self
+     */
+    public function setPlacementAssets($placement_assets)
+    {
+        if (is_null($placement_assets)) {
+            throw new \InvalidArgumentException('non-nullable placement_assets cannot be null');
+        }
+        $this->container['placement_assets'] = $placement_assets;
 
         return $this;
     }

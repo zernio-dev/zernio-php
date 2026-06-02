@@ -235,6 +235,9 @@ docs/Model/CreateStandaloneAdRequestCreativesInnerVideo.md
 docs/Model/CreateStandaloneAdRequestCustomLocationsInner.md
 docs/Model/CreateStandaloneAdRequestDynamicCreative.md
 docs/Model/CreateStandaloneAdRequestImages.md
+docs/Model/CreateStandaloneAdRequestPlacementAssets.md
+docs/Model/CreateStandaloneAdRequestPlacementAssetsRulesInner.md
+docs/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements.md
 docs/Model/CreateStandaloneAdRequestPlacements.md
 docs/Model/CreateStandaloneAdRequestPromotedObject.md
 docs/Model/CreateStandaloneAdRequestRegionsInner.md
@@ -1389,6 +1392,9 @@ lib/Model/CreateStandaloneAdRequestCreativesInnerVideo.php
 lib/Model/CreateStandaloneAdRequestCustomLocationsInner.php
 lib/Model/CreateStandaloneAdRequestDynamicCreative.php
 lib/Model/CreateStandaloneAdRequestImages.php
+lib/Model/CreateStandaloneAdRequestPlacementAssets.php
+lib/Model/CreateStandaloneAdRequestPlacementAssetsRulesInner.php
+lib/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements.php
 lib/Model/CreateStandaloneAdRequestPlacements.php
 lib/Model/CreateStandaloneAdRequestPromotedObject.php
 lib/Model/CreateStandaloneAdRequestRegionsInner.php
@@ -2309,5 +2315,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateStandaloneAdRequestDynamicCreativeTest.php
-test/Model/CreateStandaloneAdRequestPlacementsTest.php
+test/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacementsTest.php
+test/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerTest.php
+test/Model/CreateStandaloneAdRequestPlacementAssetsTest.php
