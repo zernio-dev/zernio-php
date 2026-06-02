@@ -61,6 +61,7 @@ class GetCommentAutomation200ResponseAutomation implements ModelInterface, Array
         'id' => 'string',
         'name' => 'string',
         'platform' => 'string',
+        'trigger' => 'string',
         'account_id' => 'string',
         'platform_post_id' => 'string',
         'post_id' => 'string',
@@ -89,6 +90,7 @@ class GetCommentAutomation200ResponseAutomation implements ModelInterface, Array
         'id' => null,
         'name' => null,
         'platform' => null,
+        'trigger' => null,
         'account_id' => null,
         'platform_post_id' => null,
         'post_id' => null,
@@ -115,6 +117,7 @@ class GetCommentAutomation200ResponseAutomation implements ModelInterface, Array
         'id' => false,
         'name' => false,
         'platform' => false,
+        'trigger' => false,
         'account_id' => false,
         'platform_post_id' => false,
         'post_id' => false,
@@ -221,6 +224,7 @@ class GetCommentAutomation200ResponseAutomation implements ModelInterface, Array
         'id' => 'id',
         'name' => 'name',
         'platform' => 'platform',
+        'trigger' => 'trigger',
         'account_id' => 'accountId',
         'platform_post_id' => 'platformPostId',
         'post_id' => 'postId',
@@ -247,6 +251,7 @@ class GetCommentAutomation200ResponseAutomation implements ModelInterface, Array
         'id' => 'setId',
         'name' => 'setName',
         'platform' => 'setPlatform',
+        'trigger' => 'setTrigger',
         'account_id' => 'setAccountId',
         'platform_post_id' => 'setPlatformPostId',
         'post_id' => 'setPostId',
@@ -273,6 +278,7 @@ class GetCommentAutomation200ResponseAutomation implements ModelInterface, Array
         'id' => 'getId',
         'name' => 'getName',
         'platform' => 'getPlatform',
+        'trigger' => 'getTrigger',
         'account_id' => 'getAccountId',
         'platform_post_id' => 'getPlatformPostId',
         'post_id' => 'getPostId',
@@ -331,8 +337,23 @@ class GetCommentAutomation200ResponseAutomation implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
+    public const TRIGGER_COMMENT = 'comment';
+    public const TRIGGER_STORY_REPLY = 'story_reply';
     public const MATCH_MODE_EXACT = 'exact';
     public const MATCH_MODE_CONTAINS = 'contains';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTriggerAllowableValues()
+    {
+        return [
+            self::TRIGGER_COMMENT,
+            self::TRIGGER_STORY_REPLY,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -365,6 +386,7 @@ class GetCommentAutomation200ResponseAutomation implements ModelInterface, Array
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('trigger', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('platform_post_id', $data ?? [], null);
         $this->setIfExists('post_id', $data ?? [], null);
@@ -408,6 +430,15 @@ class GetCommentAutomation200ResponseAutomation implements ModelInterface, Array
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getTriggerAllowableValues();
+        if (!is_null($this->container['trigger']) && !in_array($this->container['trigger'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'trigger', must be one of '%s'",
+                $this->container['trigger'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getMatchModeAllowableValues();
         if (!is_null($this->container['match_mode']) && !in_array($this->container['match_mode'], $allowedValues, true)) {
@@ -510,6 +541,43 @@ class GetCommentAutomation200ResponseAutomation implements ModelInterface, Array
             throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
         $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets trigger
+     *
+     * @return string|null
+     */
+    public function getTrigger()
+    {
+        return $this->container['trigger'];
+    }
+
+    /**
+     * Sets trigger
+     *
+     * @param string|null $trigger trigger
+     *
+     * @return self
+     */
+    public function setTrigger($trigger)
+    {
+        if (is_null($trigger)) {
+            throw new \InvalidArgumentException('non-nullable trigger cannot be null');
+        }
+        $allowedValues = $this->getTriggerAllowableValues();
+        if (!in_array($trigger, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'trigger', must be one of '%s'",
+                    $trigger,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['trigger'] = $trigger;
 
         return $this;
     }

@@ -60,6 +60,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'profile_id' => 'string',
         'account_id' => 'string',
+        'trigger' => 'string',
         'platform_post_id' => 'string',
         'post_id' => 'string',
         'post_title' => 'string',
@@ -83,6 +84,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     protected static $openAPIFormats = [
         'profile_id' => null,
         'account_id' => null,
+        'trigger' => null,
         'platform_post_id' => null,
         'post_id' => null,
         'post_title' => null,
@@ -104,6 +106,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     protected static array $openAPINullables = [
         'profile_id' => false,
         'account_id' => false,
+        'trigger' => false,
         'platform_post_id' => false,
         'post_id' => false,
         'post_title' => false,
@@ -205,6 +208,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     protected static $attributeMap = [
         'profile_id' => 'profileId',
         'account_id' => 'accountId',
+        'trigger' => 'trigger',
         'platform_post_id' => 'platformPostId',
         'post_id' => 'postId',
         'post_title' => 'postTitle',
@@ -226,6 +230,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     protected static $setters = [
         'profile_id' => 'setProfileId',
         'account_id' => 'setAccountId',
+        'trigger' => 'setTrigger',
         'platform_post_id' => 'setPlatformPostId',
         'post_id' => 'setPostId',
         'post_title' => 'setPostTitle',
@@ -247,6 +252,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     protected static $getters = [
         'profile_id' => 'getProfileId',
         'account_id' => 'getAccountId',
+        'trigger' => 'getTrigger',
         'platform_post_id' => 'getPlatformPostId',
         'post_id' => 'getPostId',
         'post_title' => 'getPostTitle',
@@ -301,8 +307,23 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
+    public const TRIGGER_COMMENT = 'comment';
+    public const TRIGGER_STORY_REPLY = 'story_reply';
     public const MATCH_MODE_EXACT = 'exact';
     public const MATCH_MODE_CONTAINS = 'contains';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTriggerAllowableValues()
+    {
+        return [
+            self::TRIGGER_COMMENT,
+            self::TRIGGER_STORY_REPLY,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -334,6 +355,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     {
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('trigger', $data ?? [], 'comment');
         $this->setIfExists('platform_post_id', $data ?? [], null);
         $this->setIfExists('post_id', $data ?? [], null);
         $this->setIfExists('post_title', $data ?? [], null);
@@ -380,6 +402,15 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
+        $allowedValues = $this->getTriggerAllowableValues();
+        if (!is_null($this->container['trigger']) && !in_array($this->container['trigger'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'trigger', must be one of '%s'",
+                $this->container['trigger'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -469,6 +500,43 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     }
 
     /**
+     * Gets trigger
+     *
+     * @return string|null
+     */
+    public function getTrigger()
+    {
+        return $this->container['trigger'];
+    }
+
+    /**
+     * Sets trigger
+     *
+     * @param string|null $trigger What fires the automation. 'comment' (keyword comment on a post) or 'story_reply' (keyword reply to an Instagram story). For 'story_reply', platformPostId is the story media id (omit for any story).
+     *
+     * @return self
+     */
+    public function setTrigger($trigger)
+    {
+        if (is_null($trigger)) {
+            throw new \InvalidArgumentException('non-nullable trigger cannot be null');
+        }
+        $allowedValues = $this->getTriggerAllowableValues();
+        if (!in_array($trigger, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'trigger', must be one of '%s'",
+                    $trigger,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['trigger'] = $trigger;
+
+        return $this;
+    }
+
+    /**
      * Gets platform_post_id
      *
      * @return string|null
@@ -481,7 +549,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets platform_post_id
      *
-     * @param string|null $platform_post_id Platform media/post ID. Omit for an account-wide (any-post) automation.
+     * @param string|null $platform_post_id Platform media/post ID (or story media id when trigger=story_reply). Omit for an account-wide (any-post / any-story) automation.
      *
      * @return self
      */

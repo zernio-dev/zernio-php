@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | [optional]
 **name** | **string** |  | [optional]
 **platform** | **string** |  | [optional]
+**trigger** | **string** |  | [optional]
 **account_id** | **string** |  | [optional]
 **platform_post_id** | **string** |  | [optional]
 **post_title** | **string** |  | [optional]

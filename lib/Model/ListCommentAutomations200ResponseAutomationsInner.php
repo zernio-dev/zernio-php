@@ -61,6 +61,7 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
         'id' => 'string',
         'name' => 'string',
         'platform' => 'string',
+        'trigger' => 'string',
         'account_id' => 'string',
         'platform_post_id' => 'string',
         'post_title' => 'string',
@@ -87,6 +88,7 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
         'id' => null,
         'name' => null,
         'platform' => null,
+        'trigger' => null,
         'account_id' => null,
         'platform_post_id' => null,
         'post_title' => null,
@@ -111,6 +113,7 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
         'id' => false,
         'name' => false,
         'platform' => false,
+        'trigger' => false,
         'account_id' => false,
         'platform_post_id' => false,
         'post_title' => false,
@@ -215,6 +218,7 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
         'id' => 'id',
         'name' => 'name',
         'platform' => 'platform',
+        'trigger' => 'trigger',
         'account_id' => 'accountId',
         'platform_post_id' => 'platformPostId',
         'post_title' => 'postTitle',
@@ -239,6 +243,7 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
         'id' => 'setId',
         'name' => 'setName',
         'platform' => 'setPlatform',
+        'trigger' => 'setTrigger',
         'account_id' => 'setAccountId',
         'platform_post_id' => 'setPlatformPostId',
         'post_title' => 'setPostTitle',
@@ -263,6 +268,7 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
         'id' => 'getId',
         'name' => 'getName',
         'platform' => 'getPlatform',
+        'trigger' => 'getTrigger',
         'account_id' => 'getAccountId',
         'platform_post_id' => 'getPlatformPostId',
         'post_title' => 'getPostTitle',
@@ -321,6 +327,8 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
 
     public const PLATFORM_INSTAGRAM = 'instagram';
     public const PLATFORM_FACEBOOK = 'facebook';
+    public const TRIGGER_COMMENT = 'comment';
+    public const TRIGGER_STORY_REPLY = 'story_reply';
     public const MATCH_MODE_EXACT = 'exact';
     public const MATCH_MODE_CONTAINS = 'contains';
 
@@ -334,6 +342,19 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
         return [
             self::PLATFORM_INSTAGRAM,
             self::PLATFORM_FACEBOOK,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTriggerAllowableValues()
+    {
+        return [
+            self::TRIGGER_COMMENT,
+            self::TRIGGER_STORY_REPLY,
         ];
     }
 
@@ -368,6 +389,7 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('trigger', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('platform_post_id', $data ?? [], null);
         $this->setIfExists('post_title', $data ?? [], null);
@@ -415,6 +437,15 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'platform', must be one of '%s'",
                 $this->container['platform'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getTriggerAllowableValues();
+        if (!is_null($this->container['trigger']) && !in_array($this->container['trigger'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'trigger', must be one of '%s'",
+                $this->container['trigger'],
                 implode("', '", $allowedValues)
             );
         }
@@ -530,6 +561,43 @@ class ListCommentAutomations200ResponseAutomationsInner implements ModelInterfac
             );
         }
         $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets trigger
+     *
+     * @return string|null
+     */
+    public function getTrigger()
+    {
+        return $this->container['trigger'];
+    }
+
+    /**
+     * Sets trigger
+     *
+     * @param string|null $trigger trigger
+     *
+     * @return self
+     */
+    public function setTrigger($trigger)
+    {
+        if (is_null($trigger)) {
+            throw new \InvalidArgumentException('non-nullable trigger cannot be null');
+        }
+        $allowedValues = $this->getTriggerAllowableValues();
+        if (!in_array($trigger, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'trigger', must be one of '%s'",
+                    $trigger,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['trigger'] = $trigger;
 
         return $this;
     }

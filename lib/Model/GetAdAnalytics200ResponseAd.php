@@ -61,6 +61,7 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'id' => 'string',
         'name' => 'string',
         'platform' => 'string',
+        'trigger' => 'string',
         'status' => 'string',
         'currency' => 'string'
     ];
@@ -76,6 +77,7 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'id' => null,
         'name' => null,
         'platform' => null,
+        'trigger' => null,
         'status' => null,
         'currency' => null
     ];
@@ -89,6 +91,7 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'id' => false,
         'name' => false,
         'platform' => false,
+        'trigger' => false,
         'status' => false,
         'currency' => false
     ];
@@ -182,6 +185,7 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'id' => 'id',
         'name' => 'name',
         'platform' => 'platform',
+        'trigger' => 'trigger',
         'status' => 'status',
         'currency' => 'currency'
     ];
@@ -195,6 +199,7 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'id' => 'setId',
         'name' => 'setName',
         'platform' => 'setPlatform',
+        'trigger' => 'setTrigger',
         'status' => 'setStatus',
         'currency' => 'setCurrency'
     ];
@@ -208,6 +213,7 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         'id' => 'getId',
         'name' => 'getName',
         'platform' => 'getPlatform',
+        'trigger' => 'getTrigger',
         'status' => 'getStatus',
         'currency' => 'getCurrency'
     ];
@@ -253,6 +259,21 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    public const TRIGGER_COMMENT = 'comment';
+    public const TRIGGER_STORY_REPLY = 'story_reply';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTriggerAllowableValues()
+    {
+        return [
+            self::TRIGGER_COMMENT,
+            self::TRIGGER_STORY_REPLY,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -272,6 +293,7 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('trigger', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
     }
@@ -302,6 +324,15 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getTriggerAllowableValues();
+        if (!is_null($this->container['trigger']) && !in_array($this->container['trigger'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'trigger', must be one of '%s'",
+                $this->container['trigger'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -395,6 +426,43 @@ class GetAdAnalytics200ResponseAd implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
         $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets trigger
+     *
+     * @return string|null
+     */
+    public function getTrigger()
+    {
+        return $this->container['trigger'];
+    }
+
+    /**
+     * Sets trigger
+     *
+     * @param string|null $trigger trigger
+     *
+     * @return self
+     */
+    public function setTrigger($trigger)
+    {
+        if (is_null($trigger)) {
+            throw new \InvalidArgumentException('non-nullable trigger cannot be null');
+        }
+        $allowedValues = $this->getTriggerAllowableValues();
+        if (!in_array($trigger, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'trigger', must be one of '%s'",
+                    $trigger,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['trigger'] = $trigger;
 
         return $this;
     }
