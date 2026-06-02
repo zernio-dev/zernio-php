@@ -248,19 +248,6 @@ class GetWhatsAppPhoneNumbers200ResponseSandbox implements ModelInterface, Array
         return self::$openAPIModelName;
     }
 
-    public const IS_SANDBOX_TRUE = 'true';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getIsSandboxAllowableValues()
-    {
-        return [
-            self::IS_SANDBOX_TRUE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -309,15 +296,6 @@ class GetWhatsAppPhoneNumbers200ResponseSandbox implements ModelInterface, Array
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getIsSandboxAllowableValues();
-        if (!is_null($this->container['is_sandbox']) && !in_array($this->container['is_sandbox'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'is_sandbox', must be one of '%s'",
-                $this->container['is_sandbox'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -436,16 +414,6 @@ class GetWhatsAppPhoneNumbers200ResponseSandbox implements ModelInterface, Array
     {
         if (is_null($is_sandbox)) {
             throw new \InvalidArgumentException('non-nullable is_sandbox cannot be null');
-        }
-        $allowedValues = $this->getIsSandboxAllowableValues();
-        if (!in_array($is_sandbox, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'is_sandbox', must be one of '%s'",
-                    $is_sandbox,
-                    implode("', '", $allowedValues)
-                )
-            );
         }
         $this->container['is_sandbox'] = $is_sandbox;
 

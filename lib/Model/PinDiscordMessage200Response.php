@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestCitiesInner
+ * PinDiscordMessage200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestCitiesInner Class Doc Comment
+ * PinDiscordMessage200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class PinDiscordMessage200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_cities_inner';
+    protected static $openAPIModelName = 'pinDiscordMessage_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,10 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'key' => 'string',
-        'radius' => 'float',
-        'distance_unit' => 'string'
+        'success' => 'bool',
+        'operation' => 'string',
+        'channel_id' => 'string',
+        'message_id' => 'string'
     ];
 
     /**
@@ -71,9 +72,10 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'key' => null,
-        'radius' => null,
-        'distance_unit' => null
+        'success' => null,
+        'operation' => null,
+        'channel_id' => null,
+        'message_id' => null
     ];
 
     /**
@@ -82,9 +84,10 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'key' => false,
-        'radius' => false,
-        'distance_unit' => false
+        'success' => false,
+        'operation' => false,
+        'channel_id' => false,
+        'message_id' => false
     ];
 
     /**
@@ -173,9 +176,10 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-        'radius' => 'radius',
-        'distance_unit' => 'distance_unit'
+        'success' => 'success',
+        'operation' => 'operation',
+        'channel_id' => 'channelId',
+        'message_id' => 'messageId'
     ];
 
     /**
@@ -184,9 +188,10 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-        'radius' => 'setRadius',
-        'distance_unit' => 'setDistanceUnit'
+        'success' => 'setSuccess',
+        'operation' => 'setOperation',
+        'channel_id' => 'setChannelId',
+        'message_id' => 'setMessageId'
     ];
 
     /**
@@ -195,9 +200,10 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-        'radius' => 'getRadius',
-        'distance_unit' => 'getDistanceUnit'
+        'success' => 'getSuccess',
+        'operation' => 'getOperation',
+        'channel_id' => 'getChannelId',
+        'message_id' => 'getMessageId'
     ];
 
     /**
@@ -241,19 +247,17 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const DISTANCE_UNIT_MILE = 'mile';
-    public const DISTANCE_UNIT_KILOMETER = 'kilometer';
+    public const OPERATION_MESSAGE_PINNED = 'message_pinned';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getDistanceUnitAllowableValues()
+    public function getOperationAllowableValues()
     {
         return [
-            self::DISTANCE_UNIT_MILE,
-            self::DISTANCE_UNIT_KILOMETER,
+            self::OPERATION_MESSAGE_PINNED,
         ];
     }
 
@@ -272,9 +276,10 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('radius', $data ?? [], null);
-        $this->setIfExists('distance_unit', $data ?? [], null);
+        $this->setIfExists('success', $data ?? [], null);
+        $this->setIfExists('operation', $data ?? [], null);
+        $this->setIfExists('channel_id', $data ?? [], null);
+        $this->setIfExists('message_id', $data ?? [], null);
     }
 
     /**
@@ -304,22 +309,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
-        }
-        if ((mb_strlen($this->container['key']) < 1)) {
-            $invalidProperties[] = "invalid value for 'key', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['radius']) && ($this->container['radius'] < 0)) {
-            $invalidProperties[] = "invalid value for 'radius', must be bigger than or equal to 0.";
-        }
-
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!is_null($this->container['distance_unit']) && !in_array($this->container['distance_unit'], $allowedValues, true)) {
+        $allowedValues = $this->getOperationAllowableValues();
+        if (!is_null($this->container['operation']) && !in_array($this->container['operation'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'distance_unit', must be one of '%s'",
-                $this->container['distance_unit'],
+                "invalid value '%s' for 'operation', must be one of '%s'",
+                $this->container['operation'],
                 implode("', '", $allowedValues)
             );
         }
@@ -340,102 +334,119 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets key
+     * Gets success
      *
-     * @return string
+     * @return bool|null
      */
-    public function getKey()
+    public function getSuccess()
     {
-        return $this->container['key'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets key
+     * Sets success
      *
-     * @param string $key key
+     * @param bool|null $success success
      *
      * @return self
      */
-    public function setKey($key)
+    public function setSuccess($success)
     {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
+        if (is_null($success)) {
+            throw new \InvalidArgumentException('non-nullable success cannot be null');
         }
-
-        if ((mb_strlen($key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $key when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 1.');
-        }
-
-        $this->container['key'] = $key;
+        $this->container['success'] = $success;
 
         return $this;
     }
 
     /**
-     * Gets radius
-     *
-     * @return float|null
-     */
-    public function getRadius()
-    {
-        return $this->container['radius'];
-    }
-
-    /**
-     * Sets radius
-     *
-     * @param float|null $radius radius
-     *
-     * @return self
-     */
-    public function setRadius($radius)
-    {
-        if (is_null($radius)) {
-            throw new \InvalidArgumentException('non-nullable radius cannot be null');
-        }
-
-        if (($radius < 0)) {
-            throw new \InvalidArgumentException('invalid value for $radius when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 0.');
-        }
-
-        $this->container['radius'] = $radius;
-
-        return $this;
-    }
-
-    /**
-     * Gets distance_unit
+     * Gets operation
      *
      * @return string|null
      */
-    public function getDistanceUnit()
+    public function getOperation()
     {
-        return $this->container['distance_unit'];
+        return $this->container['operation'];
     }
 
     /**
-     * Sets distance_unit
+     * Sets operation
      *
-     * @param string|null $distance_unit distance_unit
+     * @param string|null $operation operation
      *
      * @return self
      */
-    public function setDistanceUnit($distance_unit)
+    public function setOperation($operation)
     {
-        if (is_null($distance_unit)) {
-            throw new \InvalidArgumentException('non-nullable distance_unit cannot be null');
+        if (is_null($operation)) {
+            throw new \InvalidArgumentException('non-nullable operation cannot be null');
         }
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!in_array($distance_unit, $allowedValues, true)) {
+        $allowedValues = $this->getOperationAllowableValues();
+        if (!in_array($operation, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'distance_unit', must be one of '%s'",
-                    $distance_unit,
+                    "Invalid value '%s' for 'operation', must be one of '%s'",
+                    $operation,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['distance_unit'] = $distance_unit;
+        $this->container['operation'] = $operation;
+
+        return $this;
+    }
+
+    /**
+     * Gets channel_id
+     *
+     * @return string|null
+     */
+    public function getChannelId()
+    {
+        return $this->container['channel_id'];
+    }
+
+    /**
+     * Sets channel_id
+     *
+     * @param string|null $channel_id channel_id
+     *
+     * @return self
+     */
+    public function setChannelId($channel_id)
+    {
+        if (is_null($channel_id)) {
+            throw new \InvalidArgumentException('non-nullable channel_id cannot be null');
+        }
+        $this->container['channel_id'] = $channel_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_id
+     *
+     * @return string|null
+     */
+    public function getMessageId()
+    {
+        return $this->container['message_id'];
+    }
+
+    /**
+     * Sets message_id
+     *
+     * @param string|null $message_id message_id
+     *
+     * @return self
+     */
+    public function setMessageId($message_id)
+    {
+        if (is_null($message_id)) {
+            throw new \InvalidArgumentException('non-nullable message_id cannot be null');
+        }
+        $this->container['message_id'] = $message_id;
 
         return $this;
     }

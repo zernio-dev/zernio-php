@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestCitiesInner
+ * ListDiscordGuildMembers200ResponsePagination
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestCitiesInner Class Doc Comment
+ * ListDiscordGuildMembers200ResponsePagination Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListDiscordGuildMembers200ResponsePagination implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_cities_inner';
+    protected static $openAPIModelName = 'listDiscordGuildMembers_200_response_pagination';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,8 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'key' => 'string',
-        'radius' => 'float',
-        'distance_unit' => 'string'
+        'next_cursor' => 'string',
+        'has_more' => 'bool'
     ];
 
     /**
@@ -71,9 +70,8 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'key' => null,
-        'radius' => null,
-        'distance_unit' => null
+        'next_cursor' => null,
+        'has_more' => null
     ];
 
     /**
@@ -82,9 +80,8 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'key' => false,
-        'radius' => false,
-        'distance_unit' => false
+        'next_cursor' => false,
+        'has_more' => false
     ];
 
     /**
@@ -173,9 +170,8 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-        'radius' => 'radius',
-        'distance_unit' => 'distance_unit'
+        'next_cursor' => 'nextCursor',
+        'has_more' => 'hasMore'
     ];
 
     /**
@@ -184,9 +180,8 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-        'radius' => 'setRadius',
-        'distance_unit' => 'setDistanceUnit'
+        'next_cursor' => 'setNextCursor',
+        'has_more' => 'setHasMore'
     ];
 
     /**
@@ -195,9 +190,8 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-        'radius' => 'getRadius',
-        'distance_unit' => 'getDistanceUnit'
+        'next_cursor' => 'getNextCursor',
+        'has_more' => 'getHasMore'
     ];
 
     /**
@@ -241,21 +235,6 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const DISTANCE_UNIT_MILE = 'mile';
-    public const DISTANCE_UNIT_KILOMETER = 'kilometer';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDistanceUnitAllowableValues()
-    {
-        return [
-            self::DISTANCE_UNIT_MILE,
-            self::DISTANCE_UNIT_KILOMETER,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -272,9 +251,8 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('radius', $data ?? [], null);
-        $this->setIfExists('distance_unit', $data ?? [], null);
+        $this->setIfExists('next_cursor', $data ?? [], null);
+        $this->setIfExists('has_more', $data ?? [], null);
     }
 
     /**
@@ -304,26 +282,6 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
-        }
-        if ((mb_strlen($this->container['key']) < 1)) {
-            $invalidProperties[] = "invalid value for 'key', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['radius']) && ($this->container['radius'] < 0)) {
-            $invalidProperties[] = "invalid value for 'radius', must be bigger than or equal to 0.";
-        }
-
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!is_null($this->container['distance_unit']) && !in_array($this->container['distance_unit'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'distance_unit', must be one of '%s'",
-                $this->container['distance_unit'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -340,102 +298,55 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets key
-     *
-     * @return string
-     */
-    public function getKey()
-    {
-        return $this->container['key'];
-    }
-
-    /**
-     * Sets key
-     *
-     * @param string $key key
-     *
-     * @return self
-     */
-    public function setKey($key)
-    {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
-        }
-
-        if ((mb_strlen($key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $key when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 1.');
-        }
-
-        $this->container['key'] = $key;
-
-        return $this;
-    }
-
-    /**
-     * Gets radius
-     *
-     * @return float|null
-     */
-    public function getRadius()
-    {
-        return $this->container['radius'];
-    }
-
-    /**
-     * Sets radius
-     *
-     * @param float|null $radius radius
-     *
-     * @return self
-     */
-    public function setRadius($radius)
-    {
-        if (is_null($radius)) {
-            throw new \InvalidArgumentException('non-nullable radius cannot be null');
-        }
-
-        if (($radius < 0)) {
-            throw new \InvalidArgumentException('invalid value for $radius when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 0.');
-        }
-
-        $this->container['radius'] = $radius;
-
-        return $this;
-    }
-
-    /**
-     * Gets distance_unit
+     * Gets next_cursor
      *
      * @return string|null
      */
-    public function getDistanceUnit()
+    public function getNextCursor()
     {
-        return $this->container['distance_unit'];
+        return $this->container['next_cursor'];
     }
 
     /**
-     * Sets distance_unit
+     * Sets next_cursor
      *
-     * @param string|null $distance_unit distance_unit
+     * @param string|null $next_cursor Pass as `after` on the next call. Null when there are no more pages.
      *
      * @return self
      */
-    public function setDistanceUnit($distance_unit)
+    public function setNextCursor($next_cursor)
     {
-        if (is_null($distance_unit)) {
-            throw new \InvalidArgumentException('non-nullable distance_unit cannot be null');
+        if (is_null($next_cursor)) {
+            throw new \InvalidArgumentException('non-nullable next_cursor cannot be null');
         }
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!in_array($distance_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'distance_unit', must be one of '%s'",
-                    $distance_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['next_cursor'] = $next_cursor;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_more
+     *
+     * @return bool|null
+     */
+    public function getHasMore()
+    {
+        return $this->container['has_more'];
+    }
+
+    /**
+     * Sets has_more
+     *
+     * @param bool|null $has_more has_more
+     *
+     * @return self
+     */
+    public function setHasMore($has_more)
+    {
+        if (is_null($has_more)) {
+            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
         }
-        $this->container['distance_unit'] = $distance_unit;
+        $this->container['has_more'] = $has_more;
 
         return $this;
     }

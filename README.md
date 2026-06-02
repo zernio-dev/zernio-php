@@ -224,8 +224,21 @@ Class | Method | HTTP request | Description
 *CustomFieldsApi* | [**listCustomFields**](docs/Api/CustomFieldsApi.md#listcustomfields) | **GET** /v1/custom-fields | List custom field definitions
 *CustomFieldsApi* | [**setContactFieldValue**](docs/Api/CustomFieldsApi.md#setcontactfieldvalue) | **PUT** /v1/contacts/{contactId}/fields/{slug} | Set custom field value
 *CustomFieldsApi* | [**updateCustomField**](docs/Api/CustomFieldsApi.md#updatecustomfield) | **PATCH** /v1/custom-fields/{fieldId} | Update custom field
+*DiscordApi* | [**addDiscordMemberRole**](docs/Api/DiscordApi.md#adddiscordmemberrole) | **PUT** /v1/discord/guilds/{guildId}/members/{userId}/roles/{roleId} | Assign a role to a guild member
+*DiscordApi* | [**createDiscordScheduledEvent**](docs/Api/DiscordApi.md#creatediscordscheduledevent) | **POST** /v1/discord/guilds/{guildId}/events | Create a Discord scheduled event
+*DiscordApi* | [**deleteDiscordScheduledEvent**](docs/Api/DiscordApi.md#deletediscordscheduledevent) | **DELETE** /v1/discord/guilds/{guildId}/events/{eventId} | Delete a Discord scheduled event
 *DiscordApi* | [**getDiscordChannels**](docs/Api/DiscordApi.md#getdiscordchannels) | **GET** /v1/accounts/{accountId}/discord-channels | List Discord guild channels
+*DiscordApi* | [**getDiscordScheduledEvent**](docs/Api/DiscordApi.md#getdiscordscheduledevent) | **GET** /v1/discord/guilds/{guildId}/events/{eventId} | Get a Discord scheduled event
 *DiscordApi* | [**getDiscordSettings**](docs/Api/DiscordApi.md#getdiscordsettings) | **GET** /v1/accounts/{accountId}/discord-settings | Get Discord account settings
+*DiscordApi* | [**listDiscordGuildMembers**](docs/Api/DiscordApi.md#listdiscordguildmembers) | **GET** /v1/discord/guilds/{guildId}/members | List Discord guild members
+*DiscordApi* | [**listDiscordGuildRoles**](docs/Api/DiscordApi.md#listdiscordguildroles) | **GET** /v1/discord/guilds/{guildId}/roles | List Discord guild roles
+*DiscordApi* | [**listDiscordPinnedMessages**](docs/Api/DiscordApi.md#listdiscordpinnedmessages) | **GET** /v1/discord/channels/{channelId}/pins | List pinned messages in a Discord channel
+*DiscordApi* | [**listDiscordScheduledEvents**](docs/Api/DiscordApi.md#listdiscordscheduledevents) | **GET** /v1/discord/guilds/{guildId}/events | List Discord scheduled events
+*DiscordApi* | [**pinDiscordMessage**](docs/Api/DiscordApi.md#pindiscordmessage) | **PUT** /v1/discord/channels/{channelId}/pins/{messageId} | Pin a Discord message
+*DiscordApi* | [**removeDiscordMemberRole**](docs/Api/DiscordApi.md#removediscordmemberrole) | **DELETE** /v1/discord/guilds/{guildId}/members/{userId}/roles/{roleId} | Remove a role from a guild member
+*DiscordApi* | [**sendDiscordDirectMessage**](docs/Api/DiscordApi.md#senddiscorddirectmessage) | **POST** /v1/discord/dms | Send a Discord Direct Message
+*DiscordApi* | [**unpinDiscordMessage**](docs/Api/DiscordApi.md#unpindiscordmessage) | **DELETE** /v1/discord/channels/{channelId}/pins/{messageId} | Unpin a Discord message
+*DiscordApi* | [**updateDiscordScheduledEvent**](docs/Api/DiscordApi.md#updatediscordscheduledevent) | **PATCH** /v1/discord/guilds/{guildId}/events/{eventId} | Update a Discord scheduled event
 *DiscordApi* | [**updateDiscordSettings**](docs/Api/DiscordApi.md#updatediscordsettings) | **PATCH** /v1/accounts/{accountId}/discord-settings | Update Discord settings
 *GMBAttributesApi* | [**getGoogleBusinessAttributes**](docs/Api/GMBAttributesApi.md#getgooglebusinessattributes) | **GET** /v1/accounts/{accountId}/gmb-attributes | Get attributes
 *GMBAttributesApi* | [**updateGoogleBusinessAttributes**](docs/Api/GMBAttributesApi.md#updategooglebusinessattributes) | **PUT** /v1/accounts/{accountId}/gmb-attributes | Update attributes
@@ -439,6 +452,7 @@ Class | Method | HTTP request | Description
 - [AddConversionAssociations200Response](docs/Model/AddConversionAssociations200Response.md)
 - [AddConversionAssociations200ResponseFailedInner](docs/Model/AddConversionAssociations200ResponseFailedInner.md)
 - [AddConversionAssociationsRequest](docs/Model/AddConversionAssociationsRequest.md)
+- [AddDiscordMemberRole200Response](docs/Model/AddDiscordMemberRole200Response.md)
 - [AddMessageReactionRequest](docs/Model/AddMessageReactionRequest.md)
 - [AddTrackingTagSharedAccount201Response](docs/Model/AddTrackingTagSharedAccount201Response.md)
 - [AddTrackingTagSharedAccountRequest](docs/Model/AddTrackingTagSharedAccountRequest.md)
@@ -536,11 +550,18 @@ Class | Method | HTTP request | Description
 - [CreateCtwaAdRequestCitiesInner](docs/Model/CreateCtwaAdRequestCitiesInner.md)
 - [CreateCtwaAdRequestCreativesInner](docs/Model/CreateCtwaAdRequestCreativesInner.md)
 - [CreateCtwaAdRequestCreativesInnerVideo](docs/Model/CreateCtwaAdRequestCreativesInnerVideo.md)
+- [CreateCtwaAdRequestCustomLocationsInner](docs/Model/CreateCtwaAdRequestCustomLocationsInner.md)
 - [CreateCtwaAdRequestRegionsInner](docs/Model/CreateCtwaAdRequestRegionsInner.md)
 - [CreateCtwaAdRequestVideo](docs/Model/CreateCtwaAdRequestVideo.md)
 - [CreateCtwaAdRequestZipsInner](docs/Model/CreateCtwaAdRequestZipsInner.md)
 - [CreateCustomField200Response](docs/Model/CreateCustomField200Response.md)
 - [CreateCustomFieldRequest](docs/Model/CreateCustomFieldRequest.md)
+- [CreateDiscordScheduledEvent200Response](docs/Model/CreateDiscordScheduledEvent200Response.md)
+- [CreateDiscordScheduledEventRequest](docs/Model/CreateDiscordScheduledEventRequest.md)
+- [CreateDiscordScheduledEventRequestEntity](docs/Model/CreateDiscordScheduledEventRequestEntity.md)
+- [CreateDiscordScheduledEventRequestEntityOneOf](docs/Model/CreateDiscordScheduledEventRequestEntityOneOf.md)
+- [CreateDiscordScheduledEventRequestEntityOneOf1](docs/Model/CreateDiscordScheduledEventRequestEntityOneOf1.md)
+- [CreateDiscordScheduledEventRequestEntityOneOf2](docs/Model/CreateDiscordScheduledEventRequestEntityOneOf2.md)
 - [CreateGoogleBusinessMedia200Response](docs/Model/CreateGoogleBusinessMedia200Response.md)
 - [CreateGoogleBusinessMediaRequest](docs/Model/CreateGoogleBusinessMediaRequest.md)
 - [CreateGoogleBusinessPlaceAction200Response](docs/Model/CreateGoogleBusinessPlaceAction200Response.md)
@@ -618,6 +639,7 @@ Class | Method | HTTP request | Description
 - [DeleteAccountGroup200Response](docs/Model/DeleteAccountGroup200Response.md)
 - [DeleteAdCampaign200Response](docs/Model/DeleteAdCampaign200Response.md)
 - [DeleteAdCampaignRequest](docs/Model/DeleteAdCampaignRequest.md)
+- [DeleteDiscordScheduledEvent200Response](docs/Model/DeleteDiscordScheduledEvent200Response.md)
 - [DeleteGoogleBusinessMedia200Response](docs/Model/DeleteGoogleBusinessMedia200Response.md)
 - [DeleteGoogleBusinessPlaceAction200Response](docs/Model/DeleteGoogleBusinessPlaceAction200Response.md)
 - [DeleteGoogleBusinessReviewReply200Response](docs/Model/DeleteGoogleBusinessReviewReply200Response.md)
@@ -625,7 +647,6 @@ Class | Method | HTTP request | Description
 - [DeleteInboxReviewReply200Response](docs/Model/DeleteInboxReviewReply200Response.md)
 - [DeleteInboxReviewReplyRequest](docs/Model/DeleteInboxReviewReplyRequest.md)
 - [DeleteQueueSlot200Response](docs/Model/DeleteQueueSlot200Response.md)
-- [DeleteWhatsAppSandboxSession200Response](docs/Model/DeleteWhatsAppSandboxSession200Response.md)
 - [DiscordPlatformData](docs/Model/DiscordPlatformData.md)
 - [DiscordPlatformDataEmbedsInner](docs/Model/DiscordPlatformDataEmbedsInner.md)
 - [DiscordPlatformDataEmbedsInnerAuthor](docs/Model/DiscordPlatformDataEmbedsInnerAuthor.md)
@@ -637,6 +658,8 @@ Class | Method | HTTP request | Description
 - [DiscordPlatformDataPollAnswersInnerPollMedia](docs/Model/DiscordPlatformDataPollAnswersInnerPollMedia.md)
 - [DiscordPlatformDataPollQuestion](docs/Model/DiscordPlatformDataPollQuestion.md)
 - [DiscordPlatformDataThreadFromMessage](docs/Model/DiscordPlatformDataThreadFromMessage.md)
+- [DiscordScheduledEvent](docs/Model/DiscordScheduledEvent.md)
+- [DiscordScheduledEventEntityMetadata](docs/Model/DiscordScheduledEventEntityMetadata.md)
 - [DmButton](docs/Model/DmButton.md)
 - [DuplicateAdCampaign200Response](docs/Model/DuplicateAdCampaign200Response.md)
 - [DuplicateAdCampaignRequest](docs/Model/DuplicateAdCampaignRequest.md)
@@ -976,6 +999,15 @@ Class | Method | HTTP request | Description
 - [ListConversionDestinations200ResponseDestinationsInner](docs/Model/ListConversionDestinations200ResponseDestinationsInner.md)
 - [ListCustomFields200Response](docs/Model/ListCustomFields200Response.md)
 - [ListCustomFields200ResponseFieldsInner](docs/Model/ListCustomFields200ResponseFieldsInner.md)
+- [ListDiscordGuildMembers200Response](docs/Model/ListDiscordGuildMembers200Response.md)
+- [ListDiscordGuildMembers200ResponseDataInner](docs/Model/ListDiscordGuildMembers200ResponseDataInner.md)
+- [ListDiscordGuildMembers200ResponseDataInnerUser](docs/Model/ListDiscordGuildMembers200ResponseDataInnerUser.md)
+- [ListDiscordGuildMembers200ResponsePagination](docs/Model/ListDiscordGuildMembers200ResponsePagination.md)
+- [ListDiscordGuildRoles200Response](docs/Model/ListDiscordGuildRoles200Response.md)
+- [ListDiscordGuildRoles200ResponseDataInner](docs/Model/ListDiscordGuildRoles200ResponseDataInner.md)
+- [ListDiscordPinnedMessages200Response](docs/Model/ListDiscordPinnedMessages200Response.md)
+- [ListDiscordPinnedMessages200ResponseDataInner](docs/Model/ListDiscordPinnedMessages200ResponseDataInner.md)
+- [ListDiscordScheduledEvents200Response](docs/Model/ListDiscordScheduledEvents200Response.md)
 - [ListFacebookPages200Response](docs/Model/ListFacebookPages200Response.md)
 - [ListFacebookPages200ResponsePagesInner](docs/Model/ListFacebookPages200ResponsePagesInner.md)
 - [ListFormLeads200Response](docs/Model/ListFormLeads200Response.md)
@@ -1070,6 +1102,7 @@ Class | Method | HTTP request | Description
 - [Pagination](docs/Model/Pagination.md)
 - [PauseWorkflow200Response](docs/Model/PauseWorkflow200Response.md)
 - [Pending](docs/Model/Pending.md)
+- [PinDiscordMessage200Response](docs/Model/PinDiscordMessage200Response.md)
 - [PinterestPlatformData](docs/Model/PinterestPlatformData.md)
 - [PlatformAnalytics](docs/Model/PlatformAnalytics.md)
 - [PlatformTarget](docs/Model/PlatformTarget.md)
@@ -1113,6 +1146,7 @@ Class | Method | HTTP request | Description
 - [ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber](docs/Model/ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber.md)
 - [RemoveBookmark200Response](docs/Model/RemoveBookmark200Response.md)
 - [RemoveConversionAssociations200Response](docs/Model/RemoveConversionAssociations200Response.md)
+- [RemoveDiscordMemberRole200Response](docs/Model/RemoveDiscordMemberRole200Response.md)
 - [RemoveWhatsAppGroupParticipantsRequest](docs/Model/RemoveWhatsAppGroupParticipantsRequest.md)
 - [ReplyToGoogleBusinessReview200Response](docs/Model/ReplyToGoogleBusinessReview200Response.md)
 - [ReplyToGoogleBusinessReviewRequest](docs/Model/ReplyToGoogleBusinessReviewRequest.md)
@@ -1164,6 +1198,11 @@ Class | Method | HTTP request | Description
 - [SendConversions200ResponseFailuresInnerCode](docs/Model/SendConversions200ResponseFailuresInnerCode.md)
 - [SendConversionsRequest](docs/Model/SendConversionsRequest.md)
 - [SendConversionsRequestConsent](docs/Model/SendConversionsRequestConsent.md)
+- [SendDiscordDirectMessage200Response](docs/Model/SendDiscordDirectMessage200Response.md)
+- [SendDiscordDirectMessage200ResponseAccount](docs/Model/SendDiscordDirectMessage200ResponseAccount.md)
+- [SendDiscordDirectMessage200ResponseRecipient](docs/Model/SendDiscordDirectMessage200ResponseRecipient.md)
+- [SendDiscordDirectMessageRequest](docs/Model/SendDiscordDirectMessageRequest.md)
+- [SendDiscordDirectMessageRequestAttachmentsInner](docs/Model/SendDiscordDirectMessageRequestAttachmentsInner.md)
 - [SendInboxMessage200Response](docs/Model/SendInboxMessage200Response.md)
 - [SendInboxMessage200ResponseData](docs/Model/SendInboxMessage200ResponseData.md)
 - [SendInboxMessage400Response](docs/Model/SendInboxMessage400Response.md)
@@ -1244,6 +1283,7 @@ Class | Method | HTTP request | Description
 - [UndoRetweet200Response](docs/Model/UndoRetweet200Response.md)
 - [UnfollowUser200Response](docs/Model/UnfollowUser200Response.md)
 - [UnlikeInboxComment200Response](docs/Model/UnlikeInboxComment200Response.md)
+- [UnpinDiscordMessage200Response](docs/Model/UnpinDiscordMessage200Response.md)
 - [UnpublishPost200Response](docs/Model/UnpublishPost200Response.md)
 - [UnpublishPostRequest](docs/Model/UnpublishPostRequest.md)
 - [UpdateAccount200Response](docs/Model/UpdateAccount200Response.md)
@@ -1284,6 +1324,7 @@ Class | Method | HTTP request | Description
 - [UpdateCustomField200Response](docs/Model/UpdateCustomField200Response.md)
 - [UpdateCustomField200ResponseField](docs/Model/UpdateCustomField200ResponseField.md)
 - [UpdateCustomFieldRequest](docs/Model/UpdateCustomFieldRequest.md)
+- [UpdateDiscordScheduledEventRequest](docs/Model/UpdateDiscordScheduledEventRequest.md)
 - [UpdateDiscordSettings200Response](docs/Model/UpdateDiscordSettings200Response.md)
 - [UpdateDiscordSettings200ResponseAccount](docs/Model/UpdateDiscordSettings200ResponseAccount.md)
 - [UpdateDiscordSettingsRequest](docs/Model/UpdateDiscordSettingsRequest.md)

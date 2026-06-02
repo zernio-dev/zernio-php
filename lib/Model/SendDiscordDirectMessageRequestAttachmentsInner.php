@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestCitiesInner
+ * SendDiscordDirectMessageRequestAttachmentsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestCitiesInner Class Doc Comment
+ * SendDiscordDirectMessageRequestAttachmentsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendDiscordDirectMessageRequestAttachmentsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_cities_inner';
+    protected static $openAPIModelName = 'sendDiscordDirectMessage_request_attachments_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'key' => 'string',
-        'radius' => 'float',
-        'distance_unit' => 'string'
+        'type' => 'string',
+        'url' => 'string',
+        'filename' => 'string',
+        'mime_type' => 'string',
+        'size' => 'int'
     ];
 
     /**
@@ -71,9 +73,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'key' => null,
-        'radius' => null,
-        'distance_unit' => null
+        'type' => null,
+        'url' => 'uri',
+        'filename' => null,
+        'mime_type' => null,
+        'size' => null
     ];
 
     /**
@@ -82,9 +86,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'key' => false,
-        'radius' => false,
-        'distance_unit' => false
+        'type' => false,
+        'url' => false,
+        'filename' => false,
+        'mime_type' => false,
+        'size' => false
     ];
 
     /**
@@ -173,9 +179,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-        'radius' => 'radius',
-        'distance_unit' => 'distance_unit'
+        'type' => 'type',
+        'url' => 'url',
+        'filename' => 'filename',
+        'mime_type' => 'mimeType',
+        'size' => 'size'
     ];
 
     /**
@@ -184,9 +192,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-        'radius' => 'setRadius',
-        'distance_unit' => 'setDistanceUnit'
+        'type' => 'setType',
+        'url' => 'setUrl',
+        'filename' => 'setFilename',
+        'mime_type' => 'setMimeType',
+        'size' => 'setSize'
     ];
 
     /**
@@ -195,9 +205,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-        'radius' => 'getRadius',
-        'distance_unit' => 'getDistanceUnit'
+        'type' => 'getType',
+        'url' => 'getUrl',
+        'filename' => 'getFilename',
+        'mime_type' => 'getMimeType',
+        'size' => 'getSize'
     ];
 
     /**
@@ -241,19 +253,23 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const DISTANCE_UNIT_MILE = 'mile';
-    public const DISTANCE_UNIT_KILOMETER = 'kilometer';
+    public const TYPE_IMAGE = 'image';
+    public const TYPE_VIDEO = 'video';
+    public const TYPE_GIF = 'gif';
+    public const TYPE_DOCUMENT = 'document';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getDistanceUnitAllowableValues()
+    public function getTypeAllowableValues()
     {
         return [
-            self::DISTANCE_UNIT_MILE,
-            self::DISTANCE_UNIT_KILOMETER,
+            self::TYPE_IMAGE,
+            self::TYPE_VIDEO,
+            self::TYPE_GIF,
+            self::TYPE_DOCUMENT,
         ];
     }
 
@@ -272,9 +288,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('radius', $data ?? [], null);
-        $this->setIfExists('distance_unit', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('url', $data ?? [], null);
+        $this->setIfExists('filename', $data ?? [], null);
+        $this->setIfExists('mime_type', $data ?? [], null);
+        $this->setIfExists('size', $data ?? [], null);
     }
 
     /**
@@ -304,26 +322,21 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
+        if ($this->container['type'] === null) {
+            $invalidProperties[] = "'type' can't be null";
         }
-        if ((mb_strlen($this->container['key']) < 1)) {
-            $invalidProperties[] = "invalid value for 'key', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['radius']) && ($this->container['radius'] < 0)) {
-            $invalidProperties[] = "invalid value for 'radius', must be bigger than or equal to 0.";
-        }
-
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!is_null($this->container['distance_unit']) && !in_array($this->container['distance_unit'], $allowedValues, true)) {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'distance_unit', must be one of '%s'",
-                $this->container['distance_unit'],
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
                 implode("', '", $allowedValues)
             );
         }
 
+        if ($this->container['url'] === null) {
+            $invalidProperties[] = "'url' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -340,102 +353,146 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets key
+     * Gets type
      *
      * @return string
      */
-    public function getKey()
+    public function getType()
     {
-        return $this->container['key'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets key
+     * Sets type
      *
-     * @param string $key key
+     * @param string $type type
      *
      * @return self
      */
-    public function setKey($key)
+    public function setType($type)
     {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-
-        if ((mb_strlen($key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $key when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 1.');
-        }
-
-        $this->container['key'] = $key;
-
-        return $this;
-    }
-
-    /**
-     * Gets radius
-     *
-     * @return float|null
-     */
-    public function getRadius()
-    {
-        return $this->container['radius'];
-    }
-
-    /**
-     * Sets radius
-     *
-     * @param float|null $radius radius
-     *
-     * @return self
-     */
-    public function setRadius($radius)
-    {
-        if (is_null($radius)) {
-            throw new \InvalidArgumentException('non-nullable radius cannot be null');
-        }
-
-        if (($radius < 0)) {
-            throw new \InvalidArgumentException('invalid value for $radius when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 0.');
-        }
-
-        $this->container['radius'] = $radius;
-
-        return $this;
-    }
-
-    /**
-     * Gets distance_unit
-     *
-     * @return string|null
-     */
-    public function getDistanceUnit()
-    {
-        return $this->container['distance_unit'];
-    }
-
-    /**
-     * Sets distance_unit
-     *
-     * @param string|null $distance_unit distance_unit
-     *
-     * @return self
-     */
-    public function setDistanceUnit($distance_unit)
-    {
-        if (is_null($distance_unit)) {
-            throw new \InvalidArgumentException('non-nullable distance_unit cannot be null');
-        }
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!in_array($distance_unit, $allowedValues, true)) {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'distance_unit', must be one of '%s'",
-                    $distance_unit,
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['distance_unit'] = $distance_unit;
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url url
+     *
+     * @return self
+     */
+    public function setUrl($url)
+    {
+        if (is_null($url)) {
+            throw new \InvalidArgumentException('non-nullable url cannot be null');
+        }
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets filename
+     *
+     * @return string|null
+     */
+    public function getFilename()
+    {
+        return $this->container['filename'];
+    }
+
+    /**
+     * Sets filename
+     *
+     * @param string|null $filename filename
+     *
+     * @return self
+     */
+    public function setFilename($filename)
+    {
+        if (is_null($filename)) {
+            throw new \InvalidArgumentException('non-nullable filename cannot be null');
+        }
+        $this->container['filename'] = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Gets mime_type
+     *
+     * @return string|null
+     */
+    public function getMimeType()
+    {
+        return $this->container['mime_type'];
+    }
+
+    /**
+     * Sets mime_type
+     *
+     * @param string|null $mime_type mime_type
+     *
+     * @return self
+     */
+    public function setMimeType($mime_type)
+    {
+        if (is_null($mime_type)) {
+            throw new \InvalidArgumentException('non-nullable mime_type cannot be null');
+        }
+        $this->container['mime_type'] = $mime_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets size
+     *
+     * @return int|null
+     */
+    public function getSize()
+    {
+        return $this->container['size'];
+    }
+
+    /**
+     * Sets size
+     *
+     * @param int|null $size size
+     *
+     * @return self
+     */
+    public function setSize($size)
+    {
+        if (is_null($size)) {
+            throw new \InvalidArgumentException('non-nullable size cannot be null');
+        }
+        $this->container['size'] = $size;
 
         return $this;
     }

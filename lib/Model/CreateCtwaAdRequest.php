@@ -76,7 +76,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
         'regions' => '\Zernio\Model\CreateCtwaAdRequestRegionsInner[]',
         'zips' => '\Zernio\Model\CreateCtwaAdRequestZipsInner[]',
         'metros' => '\Zernio\Model\CreateCtwaAdRequestZipsInner[]',
-        'custom_locations' => '\Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]',
+        'custom_locations' => '\Zernio\Model\CreateCtwaAdRequestCustomLocationsInner[]',
         'age_min' => 'int',
         'age_max' => 'int',
         'interests' => '\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]',
@@ -1192,7 +1192,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Gets custom_locations
      *
-     * @return \Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]|null
+     * @return \Zernio\Model\CreateCtwaAdRequestCustomLocationsInner[]|null
      */
     public function getCustomLocations()
     {
@@ -1202,7 +1202,7 @@ class CreateCtwaAdRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets custom_locations
      *
-     * @param \Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]|null $custom_locations Point-radius geo (Meta `geo_locations.custom_locations`). Use for targeting a radius around a specific lat/long when no Meta city/region key fits. `distanceUnit` is required.
+     * @param \Zernio\Model\CreateCtwaAdRequestCustomLocationsInner[]|null $custom_locations Point-radius geo (Meta `geo_locations.custom_locations`). Use for targeting a radius around a specific lat/long when no Meta city/region key fits. `distanceUnit` is required.
      *
      * @return self
      */

@@ -427,7 +427,7 @@ class WhatsAppSandboxApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DeleteWhatsAppSandboxSession200Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject
      */
     public function deleteWhatsAppSandboxSession($session_id, string $contentType = self::contentTypes['deleteWhatsAppSandboxSession'][0])
     {
@@ -445,7 +445,7 @@ class WhatsAppSandboxApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DeleteWhatsAppSandboxSession200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteWhatsAppSandboxSessionWithHttpInfo($session_id, string $contentType = self::contentTypes['deleteWhatsAppSandboxSession'][0])
     {
@@ -477,7 +477,7 @@ class WhatsAppSandboxApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\DeleteWhatsAppSandboxSession200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $request,
                         $response,
                     );
@@ -505,7 +505,7 @@ class WhatsAppSandboxApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\DeleteWhatsAppSandboxSession200Response',
+                '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                 $request,
                 $response,
             );
@@ -514,7 +514,7 @@ class WhatsAppSandboxApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\DeleteWhatsAppSandboxSession200Response',
+                        '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -568,7 +568,7 @@ class WhatsAppSandboxApi
      */
     public function deleteWhatsAppSandboxSessionAsyncWithHttpInfo($session_id, string $contentType = self::contentTypes['deleteWhatsAppSandboxSession'][0])
     {
-        $returnType = '\Zernio\Model\DeleteWhatsAppSandboxSession200Response';
+        $returnType = '\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response';
         $request = $this->deleteWhatsAppSandboxSessionRequest($session_id, $contentType);
 
         return $this->client

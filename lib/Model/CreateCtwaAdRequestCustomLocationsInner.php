@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestCitiesInner
+ * CreateCtwaAdRequestCustomLocationsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestCitiesInner Class Doc Comment
+ * CreateCtwaAdRequestCustomLocationsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateCtwaAdRequestCustomLocationsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_cities_inner';
+    protected static $openAPIModelName = 'createCtwaAd_request_customLocations_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'key' => 'string',
+        'latitude' => 'float',
+        'longitude' => 'float',
         'radius' => 'float',
-        'distance_unit' => 'string'
+        'distance_unit' => 'string',
+        'name' => 'string',
+        'address' => 'string'
     ];
 
     /**
@@ -71,9 +74,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'key' => null,
+        'latitude' => null,
+        'longitude' => null,
         'radius' => null,
-        'distance_unit' => null
+        'distance_unit' => null,
+        'name' => null,
+        'address' => null
     ];
 
     /**
@@ -82,9 +88,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'key' => false,
+        'latitude' => false,
+        'longitude' => false,
         'radius' => false,
-        'distance_unit' => false
+        'distance_unit' => false,
+        'name' => false,
+        'address' => false
     ];
 
     /**
@@ -173,9 +182,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
+        'latitude' => 'latitude',
+        'longitude' => 'longitude',
         'radius' => 'radius',
-        'distance_unit' => 'distance_unit'
+        'distance_unit' => 'distanceUnit',
+        'name' => 'name',
+        'address' => 'address'
     ];
 
     /**
@@ -184,9 +196,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
+        'latitude' => 'setLatitude',
+        'longitude' => 'setLongitude',
         'radius' => 'setRadius',
-        'distance_unit' => 'setDistanceUnit'
+        'distance_unit' => 'setDistanceUnit',
+        'name' => 'setName',
+        'address' => 'setAddress'
     ];
 
     /**
@@ -195,9 +210,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
+        'latitude' => 'getLatitude',
+        'longitude' => 'getLongitude',
         'radius' => 'getRadius',
-        'distance_unit' => 'getDistanceUnit'
+        'distance_unit' => 'getDistanceUnit',
+        'name' => 'getName',
+        'address' => 'getAddress'
     ];
 
     /**
@@ -272,9 +290,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('key', $data ?? [], null);
+        $this->setIfExists('latitude', $data ?? [], null);
+        $this->setIfExists('longitude', $data ?? [], null);
         $this->setIfExists('radius', $data ?? [], null);
         $this->setIfExists('distance_unit', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
     }
 
     /**
@@ -304,17 +325,38 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
+        if ($this->container['latitude'] === null) {
+            $invalidProperties[] = "'latitude' can't be null";
         }
-        if ((mb_strlen($this->container['key']) < 1)) {
-            $invalidProperties[] = "invalid value for 'key', the character length must be bigger than or equal to 1.";
+        if (($this->container['latitude'] > 90)) {
+            $invalidProperties[] = "invalid value for 'latitude', must be smaller than or equal to 90.";
         }
 
-        if (!is_null($this->container['radius']) && ($this->container['radius'] < 0)) {
+        if (($this->container['latitude'] < -90)) {
+            $invalidProperties[] = "invalid value for 'latitude', must be bigger than or equal to -90.";
+        }
+
+        if ($this->container['longitude'] === null) {
+            $invalidProperties[] = "'longitude' can't be null";
+        }
+        if (($this->container['longitude'] > 180)) {
+            $invalidProperties[] = "invalid value for 'longitude', must be smaller than or equal to 180.";
+        }
+
+        if (($this->container['longitude'] < -180)) {
+            $invalidProperties[] = "invalid value for 'longitude', must be bigger than or equal to -180.";
+        }
+
+        if ($this->container['radius'] === null) {
+            $invalidProperties[] = "'radius' can't be null";
+        }
+        if (($this->container['radius'] < 0)) {
             $invalidProperties[] = "invalid value for 'radius', must be bigger than or equal to 0.";
         }
 
+        if ($this->container['distance_unit'] === null) {
+            $invalidProperties[] = "'distance_unit' can't be null";
+        }
         $allowedValues = $this->getDistanceUnitAllowableValues();
         if (!is_null($this->container['distance_unit']) && !in_array($this->container['distance_unit'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -340,33 +382,71 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets key
+     * Gets latitude
      *
-     * @return string
+     * @return float
      */
-    public function getKey()
+    public function getLatitude()
     {
-        return $this->container['key'];
+        return $this->container['latitude'];
     }
 
     /**
-     * Sets key
+     * Sets latitude
      *
-     * @param string $key key
+     * @param float $latitude latitude
      *
      * @return self
      */
-    public function setKey($key)
+    public function setLatitude($latitude)
     {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
+        if (is_null($latitude)) {
+            throw new \InvalidArgumentException('non-nullable latitude cannot be null');
         }
 
-        if ((mb_strlen($key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $key when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 1.');
+        if (($latitude > 90)) {
+            throw new \InvalidArgumentException('invalid value for $latitude when calling CreateCtwaAdRequestCustomLocationsInner., must be smaller than or equal to 90.');
+        }
+        if (($latitude < -90)) {
+            throw new \InvalidArgumentException('invalid value for $latitude when calling CreateCtwaAdRequestCustomLocationsInner., must be bigger than or equal to -90.');
         }
 
-        $this->container['key'] = $key;
+        $this->container['latitude'] = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Gets longitude
+     *
+     * @return float
+     */
+    public function getLongitude()
+    {
+        return $this->container['longitude'];
+    }
+
+    /**
+     * Sets longitude
+     *
+     * @param float $longitude longitude
+     *
+     * @return self
+     */
+    public function setLongitude($longitude)
+    {
+        if (is_null($longitude)) {
+            throw new \InvalidArgumentException('non-nullable longitude cannot be null');
+        }
+
+        if (($longitude > 180)) {
+            throw new \InvalidArgumentException('invalid value for $longitude when calling CreateCtwaAdRequestCustomLocationsInner., must be smaller than or equal to 180.');
+        }
+        if (($longitude < -180)) {
+            throw new \InvalidArgumentException('invalid value for $longitude when calling CreateCtwaAdRequestCustomLocationsInner., must be bigger than or equal to -180.');
+        }
+
+        $this->container['longitude'] = $longitude;
 
         return $this;
     }
@@ -374,7 +454,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets radius
      *
-     * @return float|null
+     * @return float
      */
     public function getRadius()
     {
@@ -384,7 +464,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets radius
      *
-     * @param float|null $radius radius
+     * @param float $radius radius
      *
      * @return self
      */
@@ -395,7 +475,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
         }
 
         if (($radius < 0)) {
-            throw new \InvalidArgumentException('invalid value for $radius when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for $radius when calling CreateCtwaAdRequestCustomLocationsInner., must be bigger than or equal to 0.');
         }
 
         $this->container['radius'] = $radius;
@@ -406,7 +486,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets distance_unit
      *
-     * @return string|null
+     * @return string
      */
     public function getDistanceUnit()
     {
@@ -416,7 +496,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets distance_unit
      *
-     * @param string|null $distance_unit distance_unit
+     * @param string $distance_unit distance_unit
      *
      * @return self
      */
@@ -436,6 +516,60 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
             );
         }
         $this->container['distance_unit'] = $distance_unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets address
+     *
+     * @return string|null
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param string|null $address address
+     *
+     * @return self
+     */
+    public function setAddress($address)
+    {
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
+        }
+        $this->container['address'] = $address;
 
         return $this;
     }

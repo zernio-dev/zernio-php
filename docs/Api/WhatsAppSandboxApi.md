@@ -74,7 +74,7 @@ try {
 ## `deleteWhatsAppSandboxSession()`
 
 ```php
-deleteWhatsAppSandboxSession($session_id): \Zernio\Model\DeleteWhatsAppSandboxSession200Response
+deleteWhatsAppSandboxSession($session_id): \Zernio\Model\UpdateYoutubeDefaultPlaylist200Response
 ```
 
 Revoke a sandbox session
@@ -116,7 +116,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\DeleteWhatsAppSandboxSession200Response**](../Model/DeleteWhatsAppSandboxSession200Response.md)
+[**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
 
 ### Authorization
 

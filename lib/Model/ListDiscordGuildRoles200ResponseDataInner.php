@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestCitiesInner
+ * ListDiscordGuildRoles200ResponseDataInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestCitiesInner Class Doc Comment
+ * ListDiscordGuildRoles200ResponseDataInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListDiscordGuildRoles200ResponseDataInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_cities_inner';
+    protected static $openAPIModelName = 'listDiscordGuildRoles_200_response_data_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,14 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'key' => 'string',
-        'radius' => 'float',
-        'distance_unit' => 'string'
+        'id' => 'string',
+        'name' => 'string',
+        'color' => 'int',
+        'position' => 'int',
+        'permissions' => 'string',
+        'managed' => 'bool',
+        'mentionable' => 'bool',
+        'hoist' => 'bool'
     ];
 
     /**
@@ -71,9 +76,14 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'key' => null,
-        'radius' => null,
-        'distance_unit' => null
+        'id' => null,
+        'name' => null,
+        'color' => null,
+        'position' => null,
+        'permissions' => null,
+        'managed' => null,
+        'mentionable' => null,
+        'hoist' => null
     ];
 
     /**
@@ -82,9 +92,14 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'key' => false,
-        'radius' => false,
-        'distance_unit' => false
+        'id' => false,
+        'name' => false,
+        'color' => false,
+        'position' => false,
+        'permissions' => false,
+        'managed' => false,
+        'mentionable' => false,
+        'hoist' => false
     ];
 
     /**
@@ -173,9 +188,14 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-        'radius' => 'radius',
-        'distance_unit' => 'distance_unit'
+        'id' => 'id',
+        'name' => 'name',
+        'color' => 'color',
+        'position' => 'position',
+        'permissions' => 'permissions',
+        'managed' => 'managed',
+        'mentionable' => 'mentionable',
+        'hoist' => 'hoist'
     ];
 
     /**
@@ -184,9 +204,14 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-        'radius' => 'setRadius',
-        'distance_unit' => 'setDistanceUnit'
+        'id' => 'setId',
+        'name' => 'setName',
+        'color' => 'setColor',
+        'position' => 'setPosition',
+        'permissions' => 'setPermissions',
+        'managed' => 'setManaged',
+        'mentionable' => 'setMentionable',
+        'hoist' => 'setHoist'
     ];
 
     /**
@@ -195,9 +220,14 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-        'radius' => 'getRadius',
-        'distance_unit' => 'getDistanceUnit'
+        'id' => 'getId',
+        'name' => 'getName',
+        'color' => 'getColor',
+        'position' => 'getPosition',
+        'permissions' => 'getPermissions',
+        'managed' => 'getManaged',
+        'mentionable' => 'getMentionable',
+        'hoist' => 'getHoist'
     ];
 
     /**
@@ -241,21 +271,6 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const DISTANCE_UNIT_MILE = 'mile';
-    public const DISTANCE_UNIT_KILOMETER = 'kilometer';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDistanceUnitAllowableValues()
-    {
-        return [
-            self::DISTANCE_UNIT_MILE,
-            self::DISTANCE_UNIT_KILOMETER,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -272,9 +287,14 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('radius', $data ?? [], null);
-        $this->setIfExists('distance_unit', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('color', $data ?? [], null);
+        $this->setIfExists('position', $data ?? [], null);
+        $this->setIfExists('permissions', $data ?? [], null);
+        $this->setIfExists('managed', $data ?? [], null);
+        $this->setIfExists('mentionable', $data ?? [], null);
+        $this->setIfExists('hoist', $data ?? [], null);
     }
 
     /**
@@ -304,26 +324,6 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
-        }
-        if ((mb_strlen($this->container['key']) < 1)) {
-            $invalidProperties[] = "invalid value for 'key', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['radius']) && ($this->container['radius'] < 0)) {
-            $invalidProperties[] = "invalid value for 'radius', must be bigger than or equal to 0.";
-        }
-
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!is_null($this->container['distance_unit']) && !in_array($this->container['distance_unit'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'distance_unit', must be one of '%s'",
-                $this->container['distance_unit'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -340,102 +340,217 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets key
-     *
-     * @return string
-     */
-    public function getKey()
-    {
-        return $this->container['key'];
-    }
-
-    /**
-     * Sets key
-     *
-     * @param string $key key
-     *
-     * @return self
-     */
-    public function setKey($key)
-    {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
-        }
-
-        if ((mb_strlen($key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $key when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 1.');
-        }
-
-        $this->container['key'] = $key;
-
-        return $this;
-    }
-
-    /**
-     * Gets radius
-     *
-     * @return float|null
-     */
-    public function getRadius()
-    {
-        return $this->container['radius'];
-    }
-
-    /**
-     * Sets radius
-     *
-     * @param float|null $radius radius
-     *
-     * @return self
-     */
-    public function setRadius($radius)
-    {
-        if (is_null($radius)) {
-            throw new \InvalidArgumentException('non-nullable radius cannot be null');
-        }
-
-        if (($radius < 0)) {
-            throw new \InvalidArgumentException('invalid value for $radius when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 0.');
-        }
-
-        $this->container['radius'] = $radius;
-
-        return $this;
-    }
-
-    /**
-     * Gets distance_unit
+     * Gets id
      *
      * @return string|null
      */
-    public function getDistanceUnit()
+    public function getId()
     {
-        return $this->container['distance_unit'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets distance_unit
+     * Sets id
      *
-     * @param string|null $distance_unit distance_unit
+     * @param string|null $id Role snowflake ID
      *
      * @return self
      */
-    public function setDistanceUnit($distance_unit)
+    public function setId($id)
     {
-        if (is_null($distance_unit)) {
-            throw new \InvalidArgumentException('non-nullable distance_unit cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!in_array($distance_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'distance_unit', must be one of '%s'",
-                    $distance_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['distance_unit'] = $distance_unit;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets color
+     *
+     * @return int|null
+     */
+    public function getColor()
+    {
+        return $this->container['color'];
+    }
+
+    /**
+     * Sets color
+     *
+     * @param int|null $color Decimal color (0 = no color). Convert to hex via .toString(16).
+     *
+     * @return self
+     */
+    public function setColor($color)
+    {
+        if (is_null($color)) {
+            throw new \InvalidArgumentException('non-nullable color cannot be null');
+        }
+        $this->container['color'] = $color;
+
+        return $this;
+    }
+
+    /**
+     * Gets position
+     *
+     * @return int|null
+     */
+    public function getPosition()
+    {
+        return $this->container['position'];
+    }
+
+    /**
+     * Sets position
+     *
+     * @param int|null $position Position in role hierarchy (higher = more authority)
+     *
+     * @return self
+     */
+    public function setPosition($position)
+    {
+        if (is_null($position)) {
+            throw new \InvalidArgumentException('non-nullable position cannot be null');
+        }
+        $this->container['position'] = $position;
+
+        return $this;
+    }
+
+    /**
+     * Gets permissions
+     *
+     * @return string|null
+     */
+    public function getPermissions()
+    {
+        return $this->container['permissions'];
+    }
+
+    /**
+     * Sets permissions
+     *
+     * @param string|null $permissions Permissions bitfield as a stringified integer
+     *
+     * @return self
+     */
+    public function setPermissions($permissions)
+    {
+        if (is_null($permissions)) {
+            throw new \InvalidArgumentException('non-nullable permissions cannot be null');
+        }
+        $this->container['permissions'] = $permissions;
+
+        return $this;
+    }
+
+    /**
+     * Gets managed
+     *
+     * @return bool|null
+     */
+    public function getManaged()
+    {
+        return $this->container['managed'];
+    }
+
+    /**
+     * Sets managed
+     *
+     * @param bool|null $managed True for integration-managed roles (bot roles)
+     *
+     * @return self
+     */
+    public function setManaged($managed)
+    {
+        if (is_null($managed)) {
+            throw new \InvalidArgumentException('non-nullable managed cannot be null');
+        }
+        $this->container['managed'] = $managed;
+
+        return $this;
+    }
+
+    /**
+     * Gets mentionable
+     *
+     * @return bool|null
+     */
+    public function getMentionable()
+    {
+        return $this->container['mentionable'];
+    }
+
+    /**
+     * Sets mentionable
+     *
+     * @param bool|null $mentionable mentionable
+     *
+     * @return self
+     */
+    public function setMentionable($mentionable)
+    {
+        if (is_null($mentionable)) {
+            throw new \InvalidArgumentException('non-nullable mentionable cannot be null');
+        }
+        $this->container['mentionable'] = $mentionable;
+
+        return $this;
+    }
+
+    /**
+     * Gets hoist
+     *
+     * @return bool|null
+     */
+    public function getHoist()
+    {
+        return $this->container['hoist'];
+    }
+
+    /**
+     * Sets hoist
+     *
+     * @param bool|null $hoist True if role is displayed separately in member list
+     *
+     * @return self
+     */
+    public function setHoist($hoist)
+    {
+        if (is_null($hoist)) {
+            throw new \InvalidArgumentException('non-nullable hoist cannot be null');
+        }
+        $this->container['hoist'] = $hoist;
 
         return $this;
     }

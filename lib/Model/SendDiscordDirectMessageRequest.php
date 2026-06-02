@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestCitiesInner
+ * SendDiscordDirectMessageRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestCitiesInner Class Doc Comment
+ * SendDiscordDirectMessageRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendDiscordDirectMessageRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_cities_inner';
+    protected static $openAPIModelName = 'sendDiscordDirectMessage_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'key' => 'string',
-        'radius' => 'float',
-        'distance_unit' => 'string'
+        'account_id' => 'string',
+        'user_id' => 'string',
+        'content' => 'string',
+        'embeds' => 'object[]',
+        'attachments' => '\Zernio\Model\SendDiscordDirectMessageRequestAttachmentsInner[]',
+        'tts' => 'bool'
     ];
 
     /**
@@ -71,9 +74,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'key' => null,
-        'radius' => null,
-        'distance_unit' => null
+        'account_id' => null,
+        'user_id' => null,
+        'content' => null,
+        'embeds' => null,
+        'attachments' => null,
+        'tts' => null
     ];
 
     /**
@@ -82,9 +88,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'key' => false,
-        'radius' => false,
-        'distance_unit' => false
+        'account_id' => false,
+        'user_id' => false,
+        'content' => false,
+        'embeds' => false,
+        'attachments' => false,
+        'tts' => false
     ];
 
     /**
@@ -173,9 +182,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-        'radius' => 'radius',
-        'distance_unit' => 'distance_unit'
+        'account_id' => 'accountId',
+        'user_id' => 'userId',
+        'content' => 'content',
+        'embeds' => 'embeds',
+        'attachments' => 'attachments',
+        'tts' => 'tts'
     ];
 
     /**
@@ -184,9 +196,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-        'radius' => 'setRadius',
-        'distance_unit' => 'setDistanceUnit'
+        'account_id' => 'setAccountId',
+        'user_id' => 'setUserId',
+        'content' => 'setContent',
+        'embeds' => 'setEmbeds',
+        'attachments' => 'setAttachments',
+        'tts' => 'setTts'
     ];
 
     /**
@@ -195,9 +210,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-        'radius' => 'getRadius',
-        'distance_unit' => 'getDistanceUnit'
+        'account_id' => 'getAccountId',
+        'user_id' => 'getUserId',
+        'content' => 'getContent',
+        'embeds' => 'getEmbeds',
+        'attachments' => 'getAttachments',
+        'tts' => 'getTts'
     ];
 
     /**
@@ -241,21 +259,6 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const DISTANCE_UNIT_MILE = 'mile';
-    public const DISTANCE_UNIT_KILOMETER = 'kilometer';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDistanceUnitAllowableValues()
-    {
-        return [
-            self::DISTANCE_UNIT_MILE,
-            self::DISTANCE_UNIT_KILOMETER,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -272,9 +275,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('radius', $data ?? [], null);
-        $this->setIfExists('distance_unit', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('user_id', $data ?? [], null);
+        $this->setIfExists('content', $data ?? [], null);
+        $this->setIfExists('embeds', $data ?? [], null);
+        $this->setIfExists('attachments', $data ?? [], null);
+        $this->setIfExists('tts', $data ?? [], null);
     }
 
     /**
@@ -304,24 +310,22 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
         }
-        if ((mb_strlen($this->container['key']) < 1)) {
-            $invalidProperties[] = "invalid value for 'key', the character length must be bigger than or equal to 1.";
+        if ($this->container['user_id'] === null) {
+            $invalidProperties[] = "'user_id' can't be null";
+        }
+        if (!is_null($this->container['content']) && (mb_strlen($this->container['content']) > 2000)) {
+            $invalidProperties[] = "invalid value for 'content', the character length must be smaller than or equal to 2000.";
         }
 
-        if (!is_null($this->container['radius']) && ($this->container['radius'] < 0)) {
-            $invalidProperties[] = "invalid value for 'radius', must be bigger than or equal to 0.";
+        if (!is_null($this->container['embeds']) && (count($this->container['embeds']) > 10)) {
+            $invalidProperties[] = "invalid value for 'embeds', number of items must be less than or equal to 10.";
         }
 
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!is_null($this->container['distance_unit']) && !in_array($this->container['distance_unit'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'distance_unit', must be one of '%s'",
-                $this->container['distance_unit'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['attachments']) && (count($this->container['attachments']) > 10)) {
+            $invalidProperties[] = "invalid value for 'attachments', number of items must be less than or equal to 10.";
         }
 
         return $invalidProperties;
@@ -340,102 +344,175 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets key
+     * Gets account_id
      *
      * @return string
      */
-    public function getKey()
+    public function getAccountId()
     {
-        return $this->container['key'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets key
+     * Sets account_id
      *
-     * @param string $key key
+     * @param string $account_id SocialAccount _id of the connected Discord account the bot speaks as. Caller must own the account (directly or via team membership).
      *
      * @return self
      */
-    public function setKey($key)
+    public function setAccountId($account_id)
     {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-
-        if ((mb_strlen($key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $key when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 1.');
-        }
-
-        $this->container['key'] = $key;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets radius
+     * Gets user_id
      *
-     * @return float|null
+     * @return string
      */
-    public function getRadius()
+    public function getUserId()
     {
-        return $this->container['radius'];
+        return $this->container['user_id'];
     }
 
     /**
-     * Sets radius
+     * Sets user_id
      *
-     * @param float|null $radius radius
+     * @param string $user_id Discord snowflake ID of the recipient (15-21 digits).
      *
      * @return self
      */
-    public function setRadius($radius)
+    public function setUserId($user_id)
     {
-        if (is_null($radius)) {
-            throw new \InvalidArgumentException('non-nullable radius cannot be null');
+        if (is_null($user_id)) {
+            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
         }
-
-        if (($radius < 0)) {
-            throw new \InvalidArgumentException('invalid value for $radius when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 0.');
-        }
-
-        $this->container['radius'] = $radius;
+        $this->container['user_id'] = $user_id;
 
         return $this;
     }
 
     /**
-     * Gets distance_unit
+     * Gets content
      *
      * @return string|null
      */
-    public function getDistanceUnit()
+    public function getContent()
     {
-        return $this->container['distance_unit'];
+        return $this->container['content'];
     }
 
     /**
-     * Sets distance_unit
+     * Sets content
      *
-     * @param string|null $distance_unit distance_unit
+     * @param string|null $content Message text, up to 2,000 characters.
      *
      * @return self
      */
-    public function setDistanceUnit($distance_unit)
+    public function setContent($content)
     {
-        if (is_null($distance_unit)) {
-            throw new \InvalidArgumentException('non-nullable distance_unit cannot be null');
+        if (is_null($content)) {
+            throw new \InvalidArgumentException('non-nullable content cannot be null');
         }
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!in_array($distance_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'distance_unit', must be one of '%s'",
-                    $distance_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if ((mb_strlen($content) > 2000)) {
+            throw new \InvalidArgumentException('invalid length for $content when calling SendDiscordDirectMessageRequest., must be smaller than or equal to 2000.');
         }
-        $this->container['distance_unit'] = $distance_unit;
+
+        $this->container['content'] = $content;
+
+        return $this;
+    }
+
+    /**
+     * Gets embeds
+     *
+     * @return object[]|null
+     */
+    public function getEmbeds()
+    {
+        return $this->container['embeds'];
+    }
+
+    /**
+     * Sets embeds
+     *
+     * @param object[]|null $embeds Up to 10 Discord embeds. Same shape as channel-post embeds (title, description, color, fields, etc.). See DiscordPlatformData.embeds for the embed object schema.
+     *
+     * @return self
+     */
+    public function setEmbeds($embeds)
+    {
+        if (is_null($embeds)) {
+            throw new \InvalidArgumentException('non-nullable embeds cannot be null');
+        }
+
+        if ((count($embeds) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $embeds when calling SendDiscordDirectMessageRequest., number of items must be less than or equal to 10.');
+        }
+        $this->container['embeds'] = $embeds;
+
+        return $this;
+    }
+
+    /**
+     * Gets attachments
+     *
+     * @return \Zernio\Model\SendDiscordDirectMessageRequestAttachmentsInner[]|null
+     */
+    public function getAttachments()
+    {
+        return $this->container['attachments'];
+    }
+
+    /**
+     * Sets attachments
+     *
+     * @param \Zernio\Model\SendDiscordDirectMessageRequestAttachmentsInner[]|null $attachments Up to 10 media attachments. Each is `{ type: image|video|gif|document, url, filename?, mimeType?, size? }`.
+     *
+     * @return self
+     */
+    public function setAttachments($attachments)
+    {
+        if (is_null($attachments)) {
+            throw new \InvalidArgumentException('non-nullable attachments cannot be null');
+        }
+
+        if ((count($attachments) > 10)) {
+            throw new \InvalidArgumentException('invalid value for $attachments when calling SendDiscordDirectMessageRequest., number of items must be less than or equal to 10.');
+        }
+        $this->container['attachments'] = $attachments;
+
+        return $this;
+    }
+
+    /**
+     * Gets tts
+     *
+     * @return bool|null
+     */
+    public function getTts()
+    {
+        return $this->container['tts'];
+    }
+
+    /**
+     * Sets tts
+     *
+     * @param bool|null $tts Send as text-to-speech message.
+     *
+     * @return self
+     */
+    public function setTts($tts)
+    {
+        if (is_null($tts)) {
+            throw new \InvalidArgumentException('non-nullable tts cannot be null');
+        }
+        $this->container['tts'] = $tts;
 
         return $this;
     }

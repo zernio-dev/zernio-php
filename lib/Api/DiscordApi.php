@@ -75,10 +75,49 @@ class DiscordApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'addDiscordMemberRole' => [
+            'application/json',
+        ],
+        'createDiscordScheduledEvent' => [
+            'application/json',
+        ],
+        'deleteDiscordScheduledEvent' => [
+            'application/json',
+        ],
         'getDiscordChannels' => [
             'application/json',
         ],
+        'getDiscordScheduledEvent' => [
+            'application/json',
+        ],
         'getDiscordSettings' => [
+            'application/json',
+        ],
+        'listDiscordGuildMembers' => [
+            'application/json',
+        ],
+        'listDiscordGuildRoles' => [
+            'application/json',
+        ],
+        'listDiscordPinnedMessages' => [
+            'application/json',
+        ],
+        'listDiscordScheduledEvents' => [
+            'application/json',
+        ],
+        'pinDiscordMessage' => [
+            'application/json',
+        ],
+        'removeDiscordMemberRole' => [
+            'application/json',
+        ],
+        'sendDiscordDirectMessage' => [
+            'application/json',
+        ],
+        'unpinDiscordMessage' => [
+            'application/json',
+        ],
+        'updateDiscordScheduledEvent' => [
             'application/json',
         ],
         'updateDiscordSettings' => [
@@ -130,6 +169,985 @@ class DiscordApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation addDiscordMemberRole
+     *
+     * Assign a role to a guild member
+     *
+     * @param  string $guild_id guild_id (required)
+     * @param  string $user_id Discord user snowflake to assign the role to. (required)
+     * @param  string $role_id role_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addDiscordMemberRole'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\AddDiscordMemberRole200Response|\Zernio\Model\InlineObject
+     */
+    public function addDiscordMemberRole($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['addDiscordMemberRole'][0])
+    {
+        list($response) = $this->addDiscordMemberRoleWithHttpInfo($guild_id, $user_id, $role_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation addDiscordMemberRoleWithHttpInfo
+     *
+     * Assign a role to a guild member
+     *
+     * @param  string $guild_id (required)
+     * @param  string $user_id Discord user snowflake to assign the role to. (required)
+     * @param  string $role_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addDiscordMemberRole'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\AddDiscordMemberRole200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function addDiscordMemberRoleWithHttpInfo($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['addDiscordMemberRole'][0])
+    {
+        $request = $this->addDiscordMemberRoleRequest($guild_id, $user_id, $role_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\AddDiscordMemberRole200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\AddDiscordMemberRole200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\AddDiscordMemberRole200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation addDiscordMemberRoleAsync
+     *
+     * Assign a role to a guild member
+     *
+     * @param  string $guild_id (required)
+     * @param  string $user_id Discord user snowflake to assign the role to. (required)
+     * @param  string $role_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addDiscordMemberRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addDiscordMemberRoleAsync($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['addDiscordMemberRole'][0])
+    {
+        return $this->addDiscordMemberRoleAsyncWithHttpInfo($guild_id, $user_id, $role_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation addDiscordMemberRoleAsyncWithHttpInfo
+     *
+     * Assign a role to a guild member
+     *
+     * @param  string $guild_id (required)
+     * @param  string $user_id Discord user snowflake to assign the role to. (required)
+     * @param  string $role_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addDiscordMemberRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function addDiscordMemberRoleAsyncWithHttpInfo($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['addDiscordMemberRole'][0])
+    {
+        $returnType = '\Zernio\Model\AddDiscordMemberRole200Response';
+        $request = $this->addDiscordMemberRoleRequest($guild_id, $user_id, $role_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'addDiscordMemberRole'
+     *
+     * @param  string $guild_id (required)
+     * @param  string $user_id Discord user snowflake to assign the role to. (required)
+     * @param  string $role_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['addDiscordMemberRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function addDiscordMemberRoleRequest($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['addDiscordMemberRole'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling addDiscordMemberRole'
+            );
+        }
+
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $user_id when calling addDiscordMemberRole'
+            );
+        }
+
+        // verify the required parameter 'role_id' is set
+        if ($role_id === null || (is_array($role_id) && count($role_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $role_id when calling addDiscordMemberRole'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling addDiscordMemberRole'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/members/{userId}/roles/{roleId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($user_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($role_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'roleId' . '}',
+                ObjectSerializer::toPathValue($role_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createDiscordScheduledEvent
+     *
+     * Create a Discord scheduled event
+     *
+     * @param  string $guild_id guild_id (required)
+     * @param  \Zernio\Model\CreateDiscordScheduledEventRequest $create_discord_scheduled_event_request create_discord_scheduled_event_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject
+     */
+    public function createDiscordScheduledEvent($guild_id, $create_discord_scheduled_event_request, string $contentType = self::contentTypes['createDiscordScheduledEvent'][0])
+    {
+        list($response) = $this->createDiscordScheduledEventWithHttpInfo($guild_id, $create_discord_scheduled_event_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createDiscordScheduledEventWithHttpInfo
+     *
+     * Create a Discord scheduled event
+     *
+     * @param  string $guild_id (required)
+     * @param  \Zernio\Model\CreateDiscordScheduledEventRequest $create_discord_scheduled_event_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createDiscordScheduledEventWithHttpInfo($guild_id, $create_discord_scheduled_event_request, string $contentType = self::contentTypes['createDiscordScheduledEvent'][0])
+    {
+        $request = $this->createDiscordScheduledEventRequest($guild_id, $create_discord_scheduled_event_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateDiscordScheduledEvent200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateDiscordScheduledEvent200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateDiscordScheduledEvent200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createDiscordScheduledEventAsync
+     *
+     * Create a Discord scheduled event
+     *
+     * @param  string $guild_id (required)
+     * @param  \Zernio\Model\CreateDiscordScheduledEventRequest $create_discord_scheduled_event_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDiscordScheduledEventAsync($guild_id, $create_discord_scheduled_event_request, string $contentType = self::contentTypes['createDiscordScheduledEvent'][0])
+    {
+        return $this->createDiscordScheduledEventAsyncWithHttpInfo($guild_id, $create_discord_scheduled_event_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createDiscordScheduledEventAsyncWithHttpInfo
+     *
+     * Create a Discord scheduled event
+     *
+     * @param  string $guild_id (required)
+     * @param  \Zernio\Model\CreateDiscordScheduledEventRequest $create_discord_scheduled_event_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDiscordScheduledEventAsyncWithHttpInfo($guild_id, $create_discord_scheduled_event_request, string $contentType = self::contentTypes['createDiscordScheduledEvent'][0])
+    {
+        $returnType = '\Zernio\Model\CreateDiscordScheduledEvent200Response';
+        $request = $this->createDiscordScheduledEventRequest($guild_id, $create_discord_scheduled_event_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createDiscordScheduledEvent'
+     *
+     * @param  string $guild_id (required)
+     * @param  \Zernio\Model\CreateDiscordScheduledEventRequest $create_discord_scheduled_event_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createDiscordScheduledEventRequest($guild_id, $create_discord_scheduled_event_request, string $contentType = self::contentTypes['createDiscordScheduledEvent'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling createDiscordScheduledEvent'
+            );
+        }
+
+        // verify the required parameter 'create_discord_scheduled_event_request' is set
+        if ($create_discord_scheduled_event_request === null || (is_array($create_discord_scheduled_event_request) && count($create_discord_scheduled_event_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_discord_scheduled_event_request when calling createDiscordScheduledEvent'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/events';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_discord_scheduled_event_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_discord_scheduled_event_request));
+            } else {
+                $httpBody = $create_discord_scheduled_event_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteDiscordScheduledEvent
+     *
+     * Delete a Discord scheduled event
+     *
+     * @param  string $guild_id guild_id (required)
+     * @param  string $event_id event_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\DeleteDiscordScheduledEvent200Response|\Zernio\Model\InlineObject
+     */
+    public function deleteDiscordScheduledEvent($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['deleteDiscordScheduledEvent'][0])
+    {
+        list($response) = $this->deleteDiscordScheduledEventWithHttpInfo($guild_id, $event_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteDiscordScheduledEventWithHttpInfo
+     *
+     * Delete a Discord scheduled event
+     *
+     * @param  string $guild_id (required)
+     * @param  string $event_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\DeleteDiscordScheduledEvent200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteDiscordScheduledEventWithHttpInfo($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['deleteDiscordScheduledEvent'][0])
+    {
+        $request = $this->deleteDiscordScheduledEventRequest($guild_id, $event_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\DeleteDiscordScheduledEvent200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\DeleteDiscordScheduledEvent200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\DeleteDiscordScheduledEvent200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteDiscordScheduledEventAsync
+     *
+     * Delete a Discord scheduled event
+     *
+     * @param  string $guild_id (required)
+     * @param  string $event_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteDiscordScheduledEventAsync($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['deleteDiscordScheduledEvent'][0])
+    {
+        return $this->deleteDiscordScheduledEventAsyncWithHttpInfo($guild_id, $event_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteDiscordScheduledEventAsyncWithHttpInfo
+     *
+     * Delete a Discord scheduled event
+     *
+     * @param  string $guild_id (required)
+     * @param  string $event_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteDiscordScheduledEventAsyncWithHttpInfo($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['deleteDiscordScheduledEvent'][0])
+    {
+        $returnType = '\Zernio\Model\DeleteDiscordScheduledEvent200Response';
+        $request = $this->deleteDiscordScheduledEventRequest($guild_id, $event_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteDiscordScheduledEvent'
+     *
+     * @param  string $guild_id (required)
+     * @param  string $event_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteDiscordScheduledEventRequest($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['deleteDiscordScheduledEvent'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling deleteDiscordScheduledEvent'
+            );
+        }
+
+        // verify the required parameter 'event_id' is set
+        if ($event_id === null || (is_array($event_id) && count($event_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $event_id when calling deleteDiscordScheduledEvent'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling deleteDiscordScheduledEvent'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/events/{eventId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($event_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'eventId' . '}',
+                ObjectSerializer::toPathValue($event_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -356,6 +1374,333 @@ class DiscordApi
             $resourcePath = str_replace(
                 '{' . 'accountId' . '}',
                 ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getDiscordScheduledEvent
+     *
+     * Get a Discord scheduled event
+     *
+     * @param  string $guild_id guild_id (required)
+     * @param  string $event_id event_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject
+     */
+    public function getDiscordScheduledEvent($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['getDiscordScheduledEvent'][0])
+    {
+        list($response) = $this->getDiscordScheduledEventWithHttpInfo($guild_id, $event_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getDiscordScheduledEventWithHttpInfo
+     *
+     * Get a Discord scheduled event
+     *
+     * @param  string $guild_id (required)
+     * @param  string $event_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getDiscordScheduledEventWithHttpInfo($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['getDiscordScheduledEvent'][0])
+    {
+        $request = $this->getDiscordScheduledEventRequest($guild_id, $event_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateDiscordScheduledEvent200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateDiscordScheduledEvent200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateDiscordScheduledEvent200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getDiscordScheduledEventAsync
+     *
+     * Get a Discord scheduled event
+     *
+     * @param  string $guild_id (required)
+     * @param  string $event_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDiscordScheduledEventAsync($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['getDiscordScheduledEvent'][0])
+    {
+        return $this->getDiscordScheduledEventAsyncWithHttpInfo($guild_id, $event_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getDiscordScheduledEventAsyncWithHttpInfo
+     *
+     * Get a Discord scheduled event
+     *
+     * @param  string $guild_id (required)
+     * @param  string $event_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDiscordScheduledEventAsyncWithHttpInfo($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['getDiscordScheduledEvent'][0])
+    {
+        $returnType = '\Zernio\Model\CreateDiscordScheduledEvent200Response';
+        $request = $this->getDiscordScheduledEventRequest($guild_id, $event_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getDiscordScheduledEvent'
+     *
+     * @param  string $guild_id (required)
+     * @param  string $event_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getDiscordScheduledEventRequest($guild_id, $event_id, $account_id, string $contentType = self::contentTypes['getDiscordScheduledEvent'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling getDiscordScheduledEvent'
+            );
+        }
+
+        // verify the required parameter 'event_id' is set
+        if ($event_id === null || (is_array($event_id) && count($event_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $event_id when calling getDiscordScheduledEvent'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getDiscordScheduledEvent'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/events/{eventId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($event_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'eventId' . '}',
+                ObjectSerializer::toPathValue($event_id),
                 $resourcePath
             );
         }
@@ -698,6 +2043,2896 @@ class DiscordApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listDiscordGuildMembers
+     *
+     * List Discord guild members
+     *
+     * @param  string $guild_id guild_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  int|null $limit Page size (1-1000). (optional, default to 100)
+     * @param  string|null $after Snowflake of the last member from the previous page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordGuildMembers'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListDiscordGuildMembers200Response|\Zernio\Model\InlineObject
+     */
+    public function listDiscordGuildMembers($guild_id, $account_id, $limit = 100, $after = null, string $contentType = self::contentTypes['listDiscordGuildMembers'][0])
+    {
+        list($response) = $this->listDiscordGuildMembersWithHttpInfo($guild_id, $account_id, $limit, $after, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listDiscordGuildMembersWithHttpInfo
+     *
+     * List Discord guild members
+     *
+     * @param  string $guild_id (required)
+     * @param  string $account_id (required)
+     * @param  int|null $limit Page size (1-1000). (optional, default to 100)
+     * @param  string|null $after Snowflake of the last member from the previous page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordGuildMembers'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListDiscordGuildMembers200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listDiscordGuildMembersWithHttpInfo($guild_id, $account_id, $limit = 100, $after = null, string $contentType = self::contentTypes['listDiscordGuildMembers'][0])
+    {
+        $request = $this->listDiscordGuildMembersRequest($guild_id, $account_id, $limit, $after, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListDiscordGuildMembers200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListDiscordGuildMembers200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListDiscordGuildMembers200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listDiscordGuildMembersAsync
+     *
+     * List Discord guild members
+     *
+     * @param  string $guild_id (required)
+     * @param  string $account_id (required)
+     * @param  int|null $limit Page size (1-1000). (optional, default to 100)
+     * @param  string|null $after Snowflake of the last member from the previous page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordGuildMembers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDiscordGuildMembersAsync($guild_id, $account_id, $limit = 100, $after = null, string $contentType = self::contentTypes['listDiscordGuildMembers'][0])
+    {
+        return $this->listDiscordGuildMembersAsyncWithHttpInfo($guild_id, $account_id, $limit, $after, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listDiscordGuildMembersAsyncWithHttpInfo
+     *
+     * List Discord guild members
+     *
+     * @param  string $guild_id (required)
+     * @param  string $account_id (required)
+     * @param  int|null $limit Page size (1-1000). (optional, default to 100)
+     * @param  string|null $after Snowflake of the last member from the previous page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordGuildMembers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDiscordGuildMembersAsyncWithHttpInfo($guild_id, $account_id, $limit = 100, $after = null, string $contentType = self::contentTypes['listDiscordGuildMembers'][0])
+    {
+        $returnType = '\Zernio\Model\ListDiscordGuildMembers200Response';
+        $request = $this->listDiscordGuildMembersRequest($guild_id, $account_id, $limit, $after, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listDiscordGuildMembers'
+     *
+     * @param  string $guild_id (required)
+     * @param  string $account_id (required)
+     * @param  int|null $limit Page size (1-1000). (optional, default to 100)
+     * @param  string|null $after Snowflake of the last member from the previous page. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordGuildMembers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listDiscordGuildMembersRequest($guild_id, $account_id, $limit = 100, $after = null, string $contentType = self::contentTypes['listDiscordGuildMembers'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling listDiscordGuildMembers'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listDiscordGuildMembers'
+            );
+        }
+
+        if ($limit !== null && $limit > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling DiscordApi.listDiscordGuildMembers, must be smaller than or equal to 1000.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling DiscordApi.listDiscordGuildMembers, must be bigger than or equal to 1.');
+        }
+        
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/members';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listDiscordGuildRoles
+     *
+     * List Discord guild roles
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordGuildRoles'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListDiscordGuildRoles200Response|\Zernio\Model\InlineObject
+     */
+    public function listDiscordGuildRoles($guild_id, $account_id, string $contentType = self::contentTypes['listDiscordGuildRoles'][0])
+    {
+        list($response) = $this->listDiscordGuildRolesWithHttpInfo($guild_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listDiscordGuildRolesWithHttpInfo
+     *
+     * List Discord guild roles
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordGuildRoles'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListDiscordGuildRoles200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listDiscordGuildRolesWithHttpInfo($guild_id, $account_id, string $contentType = self::contentTypes['listDiscordGuildRoles'][0])
+    {
+        $request = $this->listDiscordGuildRolesRequest($guild_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListDiscordGuildRoles200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListDiscordGuildRoles200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListDiscordGuildRoles200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listDiscordGuildRolesAsync
+     *
+     * List Discord guild roles
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordGuildRoles'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDiscordGuildRolesAsync($guild_id, $account_id, string $contentType = self::contentTypes['listDiscordGuildRoles'][0])
+    {
+        return $this->listDiscordGuildRolesAsyncWithHttpInfo($guild_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listDiscordGuildRolesAsyncWithHttpInfo
+     *
+     * List Discord guild roles
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordGuildRoles'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDiscordGuildRolesAsyncWithHttpInfo($guild_id, $account_id, string $contentType = self::contentTypes['listDiscordGuildRoles'][0])
+    {
+        $returnType = '\Zernio\Model\ListDiscordGuildRoles200Response';
+        $request = $this->listDiscordGuildRolesRequest($guild_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listDiscordGuildRoles'
+     *
+     * @param  string $guild_id Discord guild snowflake ID (required)
+     * @param  string $account_id SocialAccount _id of the Discord account bound to this guild (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordGuildRoles'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listDiscordGuildRolesRequest($guild_id, $account_id, string $contentType = self::contentTypes['listDiscordGuildRoles'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling listDiscordGuildRoles'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listDiscordGuildRoles'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/roles';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listDiscordPinnedMessages
+     *
+     * List pinned messages in a Discord channel
+     *
+     * @param  string $channel_id Discord channel snowflake. (required)
+     * @param  string $account_id SocialAccount _id of any Discord account in the same guild. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordPinnedMessages'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListDiscordPinnedMessages200Response|\Zernio\Model\InlineObject
+     */
+    public function listDiscordPinnedMessages($channel_id, $account_id, string $contentType = self::contentTypes['listDiscordPinnedMessages'][0])
+    {
+        list($response) = $this->listDiscordPinnedMessagesWithHttpInfo($channel_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listDiscordPinnedMessagesWithHttpInfo
+     *
+     * List pinned messages in a Discord channel
+     *
+     * @param  string $channel_id Discord channel snowflake. (required)
+     * @param  string $account_id SocialAccount _id of any Discord account in the same guild. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordPinnedMessages'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListDiscordPinnedMessages200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listDiscordPinnedMessagesWithHttpInfo($channel_id, $account_id, string $contentType = self::contentTypes['listDiscordPinnedMessages'][0])
+    {
+        $request = $this->listDiscordPinnedMessagesRequest($channel_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListDiscordPinnedMessages200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListDiscordPinnedMessages200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListDiscordPinnedMessages200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listDiscordPinnedMessagesAsync
+     *
+     * List pinned messages in a Discord channel
+     *
+     * @param  string $channel_id Discord channel snowflake. (required)
+     * @param  string $account_id SocialAccount _id of any Discord account in the same guild. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordPinnedMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDiscordPinnedMessagesAsync($channel_id, $account_id, string $contentType = self::contentTypes['listDiscordPinnedMessages'][0])
+    {
+        return $this->listDiscordPinnedMessagesAsyncWithHttpInfo($channel_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listDiscordPinnedMessagesAsyncWithHttpInfo
+     *
+     * List pinned messages in a Discord channel
+     *
+     * @param  string $channel_id Discord channel snowflake. (required)
+     * @param  string $account_id SocialAccount _id of any Discord account in the same guild. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordPinnedMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDiscordPinnedMessagesAsyncWithHttpInfo($channel_id, $account_id, string $contentType = self::contentTypes['listDiscordPinnedMessages'][0])
+    {
+        $returnType = '\Zernio\Model\ListDiscordPinnedMessages200Response';
+        $request = $this->listDiscordPinnedMessagesRequest($channel_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listDiscordPinnedMessages'
+     *
+     * @param  string $channel_id Discord channel snowflake. (required)
+     * @param  string $account_id SocialAccount _id of any Discord account in the same guild. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordPinnedMessages'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listDiscordPinnedMessagesRequest($channel_id, $account_id, string $contentType = self::contentTypes['listDiscordPinnedMessages'][0])
+    {
+
+        // verify the required parameter 'channel_id' is set
+        if ($channel_id === null || (is_array($channel_id) && count($channel_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $channel_id when calling listDiscordPinnedMessages'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listDiscordPinnedMessages'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/channels/{channelId}/pins';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($channel_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'channelId' . '}',
+                ObjectSerializer::toPathValue($channel_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listDiscordScheduledEvents
+     *
+     * List Discord scheduled events
+     *
+     * @param  string $guild_id guild_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  bool|null $with_user_count Include user_count on each event. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordScheduledEvents'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\ListDiscordScheduledEvents200Response|\Zernio\Model\InlineObject
+     */
+    public function listDiscordScheduledEvents($guild_id, $account_id, $with_user_count = null, string $contentType = self::contentTypes['listDiscordScheduledEvents'][0])
+    {
+        list($response) = $this->listDiscordScheduledEventsWithHttpInfo($guild_id, $account_id, $with_user_count, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listDiscordScheduledEventsWithHttpInfo
+     *
+     * List Discord scheduled events
+     *
+     * @param  string $guild_id (required)
+     * @param  string $account_id (required)
+     * @param  bool|null $with_user_count Include user_count on each event. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordScheduledEvents'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\ListDiscordScheduledEvents200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listDiscordScheduledEventsWithHttpInfo($guild_id, $account_id, $with_user_count = null, string $contentType = self::contentTypes['listDiscordScheduledEvents'][0])
+    {
+        $request = $this->listDiscordScheduledEventsRequest($guild_id, $account_id, $with_user_count, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ListDiscordScheduledEvents200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\ListDiscordScheduledEvents200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ListDiscordScheduledEvents200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listDiscordScheduledEventsAsync
+     *
+     * List Discord scheduled events
+     *
+     * @param  string $guild_id (required)
+     * @param  string $account_id (required)
+     * @param  bool|null $with_user_count Include user_count on each event. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordScheduledEvents'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDiscordScheduledEventsAsync($guild_id, $account_id, $with_user_count = null, string $contentType = self::contentTypes['listDiscordScheduledEvents'][0])
+    {
+        return $this->listDiscordScheduledEventsAsyncWithHttpInfo($guild_id, $account_id, $with_user_count, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listDiscordScheduledEventsAsyncWithHttpInfo
+     *
+     * List Discord scheduled events
+     *
+     * @param  string $guild_id (required)
+     * @param  string $account_id (required)
+     * @param  bool|null $with_user_count Include user_count on each event. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordScheduledEvents'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listDiscordScheduledEventsAsyncWithHttpInfo($guild_id, $account_id, $with_user_count = null, string $contentType = self::contentTypes['listDiscordScheduledEvents'][0])
+    {
+        $returnType = '\Zernio\Model\ListDiscordScheduledEvents200Response';
+        $request = $this->listDiscordScheduledEventsRequest($guild_id, $account_id, $with_user_count, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listDiscordScheduledEvents'
+     *
+     * @param  string $guild_id (required)
+     * @param  string $account_id (required)
+     * @param  bool|null $with_user_count Include user_count on each event. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listDiscordScheduledEvents'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listDiscordScheduledEventsRequest($guild_id, $account_id, $with_user_count = null, string $contentType = self::contentTypes['listDiscordScheduledEvents'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling listDiscordScheduledEvents'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling listDiscordScheduledEvents'
+            );
+        }
+
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/events';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $with_user_count,
+            'withUserCount', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation pinDiscordMessage
+     *
+     * Pin a Discord message
+     *
+     * @param  string $channel_id channel_id (required)
+     * @param  string $message_id message_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pinDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\PinDiscordMessage200Response|\Zernio\Model\InlineObject
+     */
+    public function pinDiscordMessage($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['pinDiscordMessage'][0])
+    {
+        list($response) = $this->pinDiscordMessageWithHttpInfo($channel_id, $message_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation pinDiscordMessageWithHttpInfo
+     *
+     * Pin a Discord message
+     *
+     * @param  string $channel_id (required)
+     * @param  string $message_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pinDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\PinDiscordMessage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function pinDiscordMessageWithHttpInfo($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['pinDiscordMessage'][0])
+    {
+        $request = $this->pinDiscordMessageRequest($channel_id, $message_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\PinDiscordMessage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\PinDiscordMessage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\PinDiscordMessage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation pinDiscordMessageAsync
+     *
+     * Pin a Discord message
+     *
+     * @param  string $channel_id (required)
+     * @param  string $message_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pinDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function pinDiscordMessageAsync($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['pinDiscordMessage'][0])
+    {
+        return $this->pinDiscordMessageAsyncWithHttpInfo($channel_id, $message_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation pinDiscordMessageAsyncWithHttpInfo
+     *
+     * Pin a Discord message
+     *
+     * @param  string $channel_id (required)
+     * @param  string $message_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pinDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function pinDiscordMessageAsyncWithHttpInfo($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['pinDiscordMessage'][0])
+    {
+        $returnType = '\Zernio\Model\PinDiscordMessage200Response';
+        $request = $this->pinDiscordMessageRequest($channel_id, $message_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'pinDiscordMessage'
+     *
+     * @param  string $channel_id (required)
+     * @param  string $message_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['pinDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function pinDiscordMessageRequest($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['pinDiscordMessage'][0])
+    {
+
+        // verify the required parameter 'channel_id' is set
+        if ($channel_id === null || (is_array($channel_id) && count($channel_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $channel_id when calling pinDiscordMessage'
+            );
+        }
+
+        // verify the required parameter 'message_id' is set
+        if ($message_id === null || (is_array($message_id) && count($message_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $message_id when calling pinDiscordMessage'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling pinDiscordMessage'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/channels/{channelId}/pins/{messageId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($channel_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'channelId' . '}',
+                ObjectSerializer::toPathValue($channel_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($message_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'messageId' . '}',
+                ObjectSerializer::toPathValue($message_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeDiscordMemberRole
+     *
+     * Remove a role from a guild member
+     *
+     * @param  string $guild_id guild_id (required)
+     * @param  string $user_id user_id (required)
+     * @param  string $role_id role_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeDiscordMemberRole'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\RemoveDiscordMemberRole200Response|\Zernio\Model\InlineObject
+     */
+    public function removeDiscordMemberRole($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['removeDiscordMemberRole'][0])
+    {
+        list($response) = $this->removeDiscordMemberRoleWithHttpInfo($guild_id, $user_id, $role_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation removeDiscordMemberRoleWithHttpInfo
+     *
+     * Remove a role from a guild member
+     *
+     * @param  string $guild_id (required)
+     * @param  string $user_id (required)
+     * @param  string $role_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeDiscordMemberRole'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\RemoveDiscordMemberRole200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeDiscordMemberRoleWithHttpInfo($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['removeDiscordMemberRole'][0])
+    {
+        $request = $this->removeDiscordMemberRoleRequest($guild_id, $user_id, $role_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\RemoveDiscordMemberRole200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\RemoveDiscordMemberRole200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\RemoveDiscordMemberRole200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeDiscordMemberRoleAsync
+     *
+     * Remove a role from a guild member
+     *
+     * @param  string $guild_id (required)
+     * @param  string $user_id (required)
+     * @param  string $role_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeDiscordMemberRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeDiscordMemberRoleAsync($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['removeDiscordMemberRole'][0])
+    {
+        return $this->removeDiscordMemberRoleAsyncWithHttpInfo($guild_id, $user_id, $role_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeDiscordMemberRoleAsyncWithHttpInfo
+     *
+     * Remove a role from a guild member
+     *
+     * @param  string $guild_id (required)
+     * @param  string $user_id (required)
+     * @param  string $role_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeDiscordMemberRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeDiscordMemberRoleAsyncWithHttpInfo($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['removeDiscordMemberRole'][0])
+    {
+        $returnType = '\Zernio\Model\RemoveDiscordMemberRole200Response';
+        $request = $this->removeDiscordMemberRoleRequest($guild_id, $user_id, $role_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeDiscordMemberRole'
+     *
+     * @param  string $guild_id (required)
+     * @param  string $user_id (required)
+     * @param  string $role_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeDiscordMemberRole'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeDiscordMemberRoleRequest($guild_id, $user_id, $role_id, $account_id, string $contentType = self::contentTypes['removeDiscordMemberRole'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling removeDiscordMemberRole'
+            );
+        }
+
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $user_id when calling removeDiscordMemberRole'
+            );
+        }
+
+        // verify the required parameter 'role_id' is set
+        if ($role_id === null || (is_array($role_id) && count($role_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $role_id when calling removeDiscordMemberRole'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling removeDiscordMemberRole'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/members/{userId}/roles/{roleId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($user_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'userId' . '}',
+                ObjectSerializer::toPathValue($user_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($role_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'roleId' . '}',
+                ObjectSerializer::toPathValue($role_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation sendDiscordDirectMessage
+     *
+     * Send a Discord Direct Message
+     *
+     * @param  \Zernio\Model\SendDiscordDirectMessageRequest $send_discord_direct_message_request send_discord_direct_message_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendDiscordDirectMessage'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\SendDiscordDirectMessage200Response|\Zernio\Model\InlineObject
+     */
+    public function sendDiscordDirectMessage($send_discord_direct_message_request, string $contentType = self::contentTypes['sendDiscordDirectMessage'][0])
+    {
+        list($response) = $this->sendDiscordDirectMessageWithHttpInfo($send_discord_direct_message_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation sendDiscordDirectMessageWithHttpInfo
+     *
+     * Send a Discord Direct Message
+     *
+     * @param  \Zernio\Model\SendDiscordDirectMessageRequest $send_discord_direct_message_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendDiscordDirectMessage'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\SendDiscordDirectMessage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function sendDiscordDirectMessageWithHttpInfo($send_discord_direct_message_request, string $contentType = self::contentTypes['sendDiscordDirectMessage'][0])
+    {
+        $request = $this->sendDiscordDirectMessageRequest($send_discord_direct_message_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\SendDiscordDirectMessage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\SendDiscordDirectMessage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\SendDiscordDirectMessage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation sendDiscordDirectMessageAsync
+     *
+     * Send a Discord Direct Message
+     *
+     * @param  \Zernio\Model\SendDiscordDirectMessageRequest $send_discord_direct_message_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendDiscordDirectMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendDiscordDirectMessageAsync($send_discord_direct_message_request, string $contentType = self::contentTypes['sendDiscordDirectMessage'][0])
+    {
+        return $this->sendDiscordDirectMessageAsyncWithHttpInfo($send_discord_direct_message_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation sendDiscordDirectMessageAsyncWithHttpInfo
+     *
+     * Send a Discord Direct Message
+     *
+     * @param  \Zernio\Model\SendDiscordDirectMessageRequest $send_discord_direct_message_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendDiscordDirectMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendDiscordDirectMessageAsyncWithHttpInfo($send_discord_direct_message_request, string $contentType = self::contentTypes['sendDiscordDirectMessage'][0])
+    {
+        $returnType = '\Zernio\Model\SendDiscordDirectMessage200Response';
+        $request = $this->sendDiscordDirectMessageRequest($send_discord_direct_message_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'sendDiscordDirectMessage'
+     *
+     * @param  \Zernio\Model\SendDiscordDirectMessageRequest $send_discord_direct_message_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendDiscordDirectMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function sendDiscordDirectMessageRequest($send_discord_direct_message_request, string $contentType = self::contentTypes['sendDiscordDirectMessage'][0])
+    {
+
+        // verify the required parameter 'send_discord_direct_message_request' is set
+        if ($send_discord_direct_message_request === null || (is_array($send_discord_direct_message_request) && count($send_discord_direct_message_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $send_discord_direct_message_request when calling sendDiscordDirectMessage'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/dms';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($send_discord_direct_message_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($send_discord_direct_message_request));
+            } else {
+                $httpBody = $send_discord_direct_message_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation unpinDiscordMessage
+     *
+     * Unpin a Discord message
+     *
+     * @param  string $channel_id channel_id (required)
+     * @param  string $message_id message_id (required)
+     * @param  string $account_id account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpinDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UnpinDiscordMessage200Response|\Zernio\Model\InlineObject
+     */
+    public function unpinDiscordMessage($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['unpinDiscordMessage'][0])
+    {
+        list($response) = $this->unpinDiscordMessageWithHttpInfo($channel_id, $message_id, $account_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation unpinDiscordMessageWithHttpInfo
+     *
+     * Unpin a Discord message
+     *
+     * @param  string $channel_id (required)
+     * @param  string $message_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpinDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UnpinDiscordMessage200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function unpinDiscordMessageWithHttpInfo($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['unpinDiscordMessage'][0])
+    {
+        $request = $this->unpinDiscordMessageRequest($channel_id, $message_id, $account_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UnpinDiscordMessage200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UnpinDiscordMessage200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UnpinDiscordMessage200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation unpinDiscordMessageAsync
+     *
+     * Unpin a Discord message
+     *
+     * @param  string $channel_id (required)
+     * @param  string $message_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpinDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function unpinDiscordMessageAsync($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['unpinDiscordMessage'][0])
+    {
+        return $this->unpinDiscordMessageAsyncWithHttpInfo($channel_id, $message_id, $account_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation unpinDiscordMessageAsyncWithHttpInfo
+     *
+     * Unpin a Discord message
+     *
+     * @param  string $channel_id (required)
+     * @param  string $message_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpinDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function unpinDiscordMessageAsyncWithHttpInfo($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['unpinDiscordMessage'][0])
+    {
+        $returnType = '\Zernio\Model\UnpinDiscordMessage200Response';
+        $request = $this->unpinDiscordMessageRequest($channel_id, $message_id, $account_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'unpinDiscordMessage'
+     *
+     * @param  string $channel_id (required)
+     * @param  string $message_id (required)
+     * @param  string $account_id (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unpinDiscordMessage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function unpinDiscordMessageRequest($channel_id, $message_id, $account_id, string $contentType = self::contentTypes['unpinDiscordMessage'][0])
+    {
+
+        // verify the required parameter 'channel_id' is set
+        if ($channel_id === null || (is_array($channel_id) && count($channel_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $channel_id when calling unpinDiscordMessage'
+            );
+        }
+
+        // verify the required parameter 'message_id' is set
+        if ($message_id === null || (is_array($message_id) && count($message_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $message_id when calling unpinDiscordMessage'
+            );
+        }
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling unpinDiscordMessage'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/channels/{channelId}/pins/{messageId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+        // path params
+        if ($channel_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'channelId' . '}',
+                ObjectSerializer::toPathValue($channel_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($message_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'messageId' . '}',
+                ObjectSerializer::toPathValue($message_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateDiscordScheduledEvent
+     *
+     * Update a Discord scheduled event
+     *
+     * @param  string $guild_id guild_id (required)
+     * @param  string $event_id event_id (required)
+     * @param  \Zernio\Model\UpdateDiscordScheduledEventRequest $update_discord_scheduled_event_request update_discord_scheduled_event_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject
+     */
+    public function updateDiscordScheduledEvent($guild_id, $event_id, $update_discord_scheduled_event_request, string $contentType = self::contentTypes['updateDiscordScheduledEvent'][0])
+    {
+        list($response) = $this->updateDiscordScheduledEventWithHttpInfo($guild_id, $event_id, $update_discord_scheduled_event_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateDiscordScheduledEventWithHttpInfo
+     *
+     * Update a Discord scheduled event
+     *
+     * @param  string $guild_id (required)
+     * @param  string $event_id (required)
+     * @param  \Zernio\Model\UpdateDiscordScheduledEventRequest $update_discord_scheduled_event_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CreateDiscordScheduledEvent200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateDiscordScheduledEventWithHttpInfo($guild_id, $event_id, $update_discord_scheduled_event_request, string $contentType = self::contentTypes['updateDiscordScheduledEvent'][0])
+    {
+        $request = $this->updateDiscordScheduledEventRequest($guild_id, $event_id, $update_discord_scheduled_event_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CreateDiscordScheduledEvent200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CreateDiscordScheduledEvent200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CreateDiscordScheduledEvent200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateDiscordScheduledEventAsync
+     *
+     * Update a Discord scheduled event
+     *
+     * @param  string $guild_id (required)
+     * @param  string $event_id (required)
+     * @param  \Zernio\Model\UpdateDiscordScheduledEventRequest $update_discord_scheduled_event_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateDiscordScheduledEventAsync($guild_id, $event_id, $update_discord_scheduled_event_request, string $contentType = self::contentTypes['updateDiscordScheduledEvent'][0])
+    {
+        return $this->updateDiscordScheduledEventAsyncWithHttpInfo($guild_id, $event_id, $update_discord_scheduled_event_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateDiscordScheduledEventAsyncWithHttpInfo
+     *
+     * Update a Discord scheduled event
+     *
+     * @param  string $guild_id (required)
+     * @param  string $event_id (required)
+     * @param  \Zernio\Model\UpdateDiscordScheduledEventRequest $update_discord_scheduled_event_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateDiscordScheduledEventAsyncWithHttpInfo($guild_id, $event_id, $update_discord_scheduled_event_request, string $contentType = self::contentTypes['updateDiscordScheduledEvent'][0])
+    {
+        $returnType = '\Zernio\Model\CreateDiscordScheduledEvent200Response';
+        $request = $this->updateDiscordScheduledEventRequest($guild_id, $event_id, $update_discord_scheduled_event_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateDiscordScheduledEvent'
+     *
+     * @param  string $guild_id (required)
+     * @param  string $event_id (required)
+     * @param  \Zernio\Model\UpdateDiscordScheduledEventRequest $update_discord_scheduled_event_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateDiscordScheduledEvent'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateDiscordScheduledEventRequest($guild_id, $event_id, $update_discord_scheduled_event_request, string $contentType = self::contentTypes['updateDiscordScheduledEvent'][0])
+    {
+
+        // verify the required parameter 'guild_id' is set
+        if ($guild_id === null || (is_array($guild_id) && count($guild_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $guild_id when calling updateDiscordScheduledEvent'
+            );
+        }
+
+        // verify the required parameter 'event_id' is set
+        if ($event_id === null || (is_array($event_id) && count($event_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $event_id when calling updateDiscordScheduledEvent'
+            );
+        }
+
+        // verify the required parameter 'update_discord_scheduled_event_request' is set
+        if ($update_discord_scheduled_event_request === null || (is_array($update_discord_scheduled_event_request) && count($update_discord_scheduled_event_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_discord_scheduled_event_request when calling updateDiscordScheduledEvent'
+            );
+        }
+
+
+        $resourcePath = '/v1/discord/guilds/{guildId}/events/{eventId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($guild_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'guildId' . '}',
+                ObjectSerializer::toPathValue($guild_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($event_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'eventId' . '}',
+                ObjectSerializer::toPathValue($event_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_discord_scheduled_event_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_discord_scheduled_event_request));
+            } else {
+                $httpBody = $update_discord_scheduled_event_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

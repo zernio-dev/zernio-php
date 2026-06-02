@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestCitiesInner
+ * CreateDiscordScheduledEventRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestCitiesInner Class Doc Comment
+ * CreateDiscordScheduledEventRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateDiscordScheduledEventRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_cities_inner';
+    protected static $openAPIModelName = 'createDiscordScheduledEvent_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'key' => 'string',
-        'radius' => 'float',
-        'distance_unit' => 'string'
+        'account_id' => 'string',
+        'name' => 'string',
+        'description' => 'string',
+        'starts_at' => '\DateTime',
+        'entity' => '\Zernio\Model\CreateDiscordScheduledEventRequestEntity',
+        'image_data_uri' => 'string'
     ];
 
     /**
@@ -71,9 +74,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'key' => null,
-        'radius' => null,
-        'distance_unit' => null
+        'account_id' => null,
+        'name' => null,
+        'description' => null,
+        'starts_at' => 'date-time',
+        'entity' => null,
+        'image_data_uri' => null
     ];
 
     /**
@@ -82,9 +88,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'key' => false,
-        'radius' => false,
-        'distance_unit' => false
+        'account_id' => false,
+        'name' => false,
+        'description' => false,
+        'starts_at' => false,
+        'entity' => false,
+        'image_data_uri' => false
     ];
 
     /**
@@ -173,9 +182,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-        'radius' => 'radius',
-        'distance_unit' => 'distance_unit'
+        'account_id' => 'accountId',
+        'name' => 'name',
+        'description' => 'description',
+        'starts_at' => 'startsAt',
+        'entity' => 'entity',
+        'image_data_uri' => 'imageDataUri'
     ];
 
     /**
@@ -184,9 +196,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-        'radius' => 'setRadius',
-        'distance_unit' => 'setDistanceUnit'
+        'account_id' => 'setAccountId',
+        'name' => 'setName',
+        'description' => 'setDescription',
+        'starts_at' => 'setStartsAt',
+        'entity' => 'setEntity',
+        'image_data_uri' => 'setImageDataUri'
     ];
 
     /**
@@ -195,9 +210,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-        'radius' => 'getRadius',
-        'distance_unit' => 'getDistanceUnit'
+        'account_id' => 'getAccountId',
+        'name' => 'getName',
+        'description' => 'getDescription',
+        'starts_at' => 'getStartsAt',
+        'entity' => 'getEntity',
+        'image_data_uri' => 'getImageDataUri'
     ];
 
     /**
@@ -241,21 +259,6 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const DISTANCE_UNIT_MILE = 'mile';
-    public const DISTANCE_UNIT_KILOMETER = 'kilometer';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDistanceUnitAllowableValues()
-    {
-        return [
-            self::DISTANCE_UNIT_MILE,
-            self::DISTANCE_UNIT_KILOMETER,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -272,9 +275,12 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('radius', $data ?? [], null);
-        $this->setIfExists('distance_unit', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('starts_at', $data ?? [], null);
+        $this->setIfExists('entity', $data ?? [], null);
+        $this->setIfExists('image_data_uri', $data ?? [], null);
     }
 
     /**
@@ -304,24 +310,32 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
         }
-        if ((mb_strlen($this->container['key']) < 1)) {
-            $invalidProperties[] = "invalid value for 'key', the character length must be bigger than or equal to 1.";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ((mb_strlen($this->container['name']) > 100)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 100.";
         }
 
-        if (!is_null($this->container['radius']) && ($this->container['radius'] < 0)) {
-            $invalidProperties[] = "invalid value for 'radius', must be bigger than or equal to 0.";
+        if ((mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
 
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!is_null($this->container['distance_unit']) && !in_array($this->container['distance_unit'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'distance_unit', must be one of '%s'",
-                $this->container['distance_unit'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 1000)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 1000.";
+        }
+
+        if ($this->container['starts_at'] === null) {
+            $invalidProperties[] = "'starts_at' can't be null";
+        }
+        if ($this->container['entity'] === null) {
+            $invalidProperties[] = "'entity' can't be null";
+        }
+        if (!is_null($this->container['image_data_uri']) && !preg_match("/^data:image\/(png|jpeg|gif);base64,/", $this->container['image_data_uri'])) {
+            $invalidProperties[] = "invalid value for 'image_data_uri', must be conform to the pattern /^data:image\/(png|jpeg|gif);base64,/.";
         }
 
         return $invalidProperties;
@@ -340,102 +354,179 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets key
+     * Gets account_id
      *
      * @return string
      */
-    public function getKey()
+    public function getAccountId()
     {
-        return $this->container['key'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets key
+     * Sets account_id
      *
-     * @param string $key key
+     * @param string $account_id account_id
      *
      * @return self
      */
-    public function setKey($key)
+    public function setAccountId($account_id)
     {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-
-        if ((mb_strlen($key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $key when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 1.');
-        }
-
-        $this->container['key'] = $key;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets radius
+     * Gets name
      *
-     * @return float|null
+     * @return string
      */
-    public function getRadius()
+    public function getName()
     {
-        return $this->container['radius'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets radius
+     * Sets name
      *
-     * @param float|null $radius radius
+     * @param string $name name
      *
      * @return self
      */
-    public function setRadius($radius)
+    public function setName($name)
     {
-        if (is_null($radius)) {
-            throw new \InvalidArgumentException('non-nullable radius cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling CreateDiscordScheduledEventRequest., must be smaller than or equal to 100.');
+        }
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling CreateDiscordScheduledEventRequest., must be bigger than or equal to 1.');
         }
 
-        if (($radius < 0)) {
-            throw new \InvalidArgumentException('invalid value for $radius when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 0.');
-        }
-
-        $this->container['radius'] = $radius;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets distance_unit
+     * Gets description
      *
      * @return string|null
      */
-    public function getDistanceUnit()
+    public function getDescription()
     {
-        return $this->container['distance_unit'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets distance_unit
+     * Sets description
      *
-     * @param string|null $distance_unit distance_unit
+     * @param string|null $description description
      *
      * @return self
      */
-    public function setDistanceUnit($distance_unit)
+    public function setDescription($description)
     {
-        if (is_null($distance_unit)) {
-            throw new \InvalidArgumentException('non-nullable distance_unit cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!in_array($distance_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'distance_unit', must be one of '%s'",
-                    $distance_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if ((mb_strlen($description) > 1000)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling CreateDiscordScheduledEventRequest., must be smaller than or equal to 1000.');
         }
-        $this->container['distance_unit'] = $distance_unit;
+
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets starts_at
+     *
+     * @return \DateTime
+     */
+    public function getStartsAt()
+    {
+        return $this->container['starts_at'];
+    }
+
+    /**
+     * Sets starts_at
+     *
+     * @param \DateTime $starts_at ISO 8601 start time. Must be in the future.
+     *
+     * @return self
+     */
+    public function setStartsAt($starts_at)
+    {
+        if (is_null($starts_at)) {
+            throw new \InvalidArgumentException('non-nullable starts_at cannot be null');
+        }
+        $this->container['starts_at'] = $starts_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets entity
+     *
+     * @return \Zernio\Model\CreateDiscordScheduledEventRequestEntity
+     */
+    public function getEntity()
+    {
+        return $this->container['entity'];
+    }
+
+    /**
+     * Sets entity
+     *
+     * @param \Zernio\Model\CreateDiscordScheduledEventRequestEntity $entity entity
+     *
+     * @return self
+     */
+    public function setEntity($entity)
+    {
+        if (is_null($entity)) {
+            throw new \InvalidArgumentException('non-nullable entity cannot be null');
+        }
+        $this->container['entity'] = $entity;
+
+        return $this;
+    }
+
+    /**
+     * Gets image_data_uri
+     *
+     * @return string|null
+     */
+    public function getImageDataUri()
+    {
+        return $this->container['image_data_uri'];
+    }
+
+    /**
+     * Sets image_data_uri
+     *
+     * @param string|null $image_data_uri Optional cover image as a base64 data URI.
+     *
+     * @return self
+     */
+    public function setImageDataUri($image_data_uri)
+    {
+        if (is_null($image_data_uri)) {
+            throw new \InvalidArgumentException('non-nullable image_data_uri cannot be null');
+        }
+
+        if ((!preg_match("/^data:image\/(png|jpeg|gif);base64,/", ObjectSerializer::toString($image_data_uri)))) {
+            throw new \InvalidArgumentException("invalid value for \$image_data_uri when calling CreateDiscordScheduledEventRequest., must conform to the pattern /^data:image\/(png|jpeg|gif);base64,/.");
+        }
+
+        $this->container['image_data_uri'] = $image_data_uri;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateCtwaAdRequestCitiesInner
+ * ListDiscordGuildMembers200ResponseDataInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateCtwaAdRequestCitiesInner Class Doc Comment
+ * ListDiscordGuildMembers200ResponseDataInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListDiscordGuildMembers200ResponseDataInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createCtwaAd_request_cities_inner';
+    protected static $openAPIModelName = 'listDiscordGuildMembers_200_response_data_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'key' => 'string',
-        'radius' => 'float',
-        'distance_unit' => 'string'
+        'user' => '\Zernio\Model\ListDiscordGuildMembers200ResponseDataInnerUser',
+        'nick' => 'string',
+        'roles' => 'string[]',
+        'joined_at' => '\DateTime',
+        'premium_since' => '\DateTime'
     ];
 
     /**
@@ -71,9 +73,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'key' => null,
-        'radius' => null,
-        'distance_unit' => null
+        'user' => null,
+        'nick' => null,
+        'roles' => null,
+        'joined_at' => 'date-time',
+        'premium_since' => 'date-time'
     ];
 
     /**
@@ -82,9 +86,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'key' => false,
-        'radius' => false,
-        'distance_unit' => false
+        'user' => false,
+        'nick' => false,
+        'roles' => false,
+        'joined_at' => false,
+        'premium_since' => false
     ];
 
     /**
@@ -173,9 +179,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-        'radius' => 'radius',
-        'distance_unit' => 'distance_unit'
+        'user' => 'user',
+        'nick' => 'nick',
+        'roles' => 'roles',
+        'joined_at' => 'joined_at',
+        'premium_since' => 'premium_since'
     ];
 
     /**
@@ -184,9 +192,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-        'radius' => 'setRadius',
-        'distance_unit' => 'setDistanceUnit'
+        'user' => 'setUser',
+        'nick' => 'setNick',
+        'roles' => 'setRoles',
+        'joined_at' => 'setJoinedAt',
+        'premium_since' => 'setPremiumSince'
     ];
 
     /**
@@ -195,9 +205,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-        'radius' => 'getRadius',
-        'distance_unit' => 'getDistanceUnit'
+        'user' => 'getUser',
+        'nick' => 'getNick',
+        'roles' => 'getRoles',
+        'joined_at' => 'getJoinedAt',
+        'premium_since' => 'getPremiumSince'
     ];
 
     /**
@@ -241,21 +253,6 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
         return self::$openAPIModelName;
     }
 
-    public const DISTANCE_UNIT_MILE = 'mile';
-    public const DISTANCE_UNIT_KILOMETER = 'kilometer';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getDistanceUnitAllowableValues()
-    {
-        return [
-            self::DISTANCE_UNIT_MILE,
-            self::DISTANCE_UNIT_KILOMETER,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -272,9 +269,11 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('radius', $data ?? [], null);
-        $this->setIfExists('distance_unit', $data ?? [], null);
+        $this->setIfExists('user', $data ?? [], null);
+        $this->setIfExists('nick', $data ?? [], null);
+        $this->setIfExists('roles', $data ?? [], null);
+        $this->setIfExists('joined_at', $data ?? [], null);
+        $this->setIfExists('premium_since', $data ?? [], null);
     }
 
     /**
@@ -304,26 +303,6 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
     {
         $invalidProperties = [];
 
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
-        }
-        if ((mb_strlen($this->container['key']) < 1)) {
-            $invalidProperties[] = "invalid value for 'key', the character length must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['radius']) && ($this->container['radius'] < 0)) {
-            $invalidProperties[] = "invalid value for 'radius', must be bigger than or equal to 0.";
-        }
-
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!is_null($this->container['distance_unit']) && !in_array($this->container['distance_unit'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'distance_unit', must be one of '%s'",
-                $this->container['distance_unit'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -340,102 +319,136 @@ class CreateCtwaAdRequestCitiesInner implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets key
+     * Gets user
      *
-     * @return string
+     * @return \Zernio\Model\ListDiscordGuildMembers200ResponseDataInnerUser|null
      */
-    public function getKey()
+    public function getUser()
     {
-        return $this->container['key'];
+        return $this->container['user'];
     }
 
     /**
-     * Sets key
+     * Sets user
      *
-     * @param string $key key
+     * @param \Zernio\Model\ListDiscordGuildMembers200ResponseDataInnerUser|null $user user
      *
      * @return self
      */
-    public function setKey($key)
+    public function setUser($user)
     {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
+        if (is_null($user)) {
+            throw new \InvalidArgumentException('non-nullable user cannot be null');
         }
-
-        if ((mb_strlen($key) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $key when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 1.');
-        }
-
-        $this->container['key'] = $key;
+        $this->container['user'] = $user;
 
         return $this;
     }
 
     /**
-     * Gets radius
-     *
-     * @return float|null
-     */
-    public function getRadius()
-    {
-        return $this->container['radius'];
-    }
-
-    /**
-     * Sets radius
-     *
-     * @param float|null $radius radius
-     *
-     * @return self
-     */
-    public function setRadius($radius)
-    {
-        if (is_null($radius)) {
-            throw new \InvalidArgumentException('non-nullable radius cannot be null');
-        }
-
-        if (($radius < 0)) {
-            throw new \InvalidArgumentException('invalid value for $radius when calling CreateCtwaAdRequestCitiesInner., must be bigger than or equal to 0.');
-        }
-
-        $this->container['radius'] = $radius;
-
-        return $this;
-    }
-
-    /**
-     * Gets distance_unit
+     * Gets nick
      *
      * @return string|null
      */
-    public function getDistanceUnit()
+    public function getNick()
     {
-        return $this->container['distance_unit'];
+        return $this->container['nick'];
     }
 
     /**
-     * Sets distance_unit
+     * Sets nick
      *
-     * @param string|null $distance_unit distance_unit
+     * @param string|null $nick Guild-specific nickname
      *
      * @return self
      */
-    public function setDistanceUnit($distance_unit)
+    public function setNick($nick)
     {
-        if (is_null($distance_unit)) {
-            throw new \InvalidArgumentException('non-nullable distance_unit cannot be null');
+        if (is_null($nick)) {
+            throw new \InvalidArgumentException('non-nullable nick cannot be null');
         }
-        $allowedValues = $this->getDistanceUnitAllowableValues();
-        if (!in_array($distance_unit, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'distance_unit', must be one of '%s'",
-                    $distance_unit,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['nick'] = $nick;
+
+        return $this;
+    }
+
+    /**
+     * Gets roles
+     *
+     * @return string[]|null
+     */
+    public function getRoles()
+    {
+        return $this->container['roles'];
+    }
+
+    /**
+     * Sets roles
+     *
+     * @param string[]|null $roles Snowflake IDs of roles assigned to this member
+     *
+     * @return self
+     */
+    public function setRoles($roles)
+    {
+        if (is_null($roles)) {
+            throw new \InvalidArgumentException('non-nullable roles cannot be null');
         }
-        $this->container['distance_unit'] = $distance_unit;
+        $this->container['roles'] = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Gets joined_at
+     *
+     * @return \DateTime|null
+     */
+    public function getJoinedAt()
+    {
+        return $this->container['joined_at'];
+    }
+
+    /**
+     * Sets joined_at
+     *
+     * @param \DateTime|null $joined_at joined_at
+     *
+     * @return self
+     */
+    public function setJoinedAt($joined_at)
+    {
+        if (is_null($joined_at)) {
+            throw new \InvalidArgumentException('non-nullable joined_at cannot be null');
+        }
+        $this->container['joined_at'] = $joined_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets premium_since
+     *
+     * @return \DateTime|null
+     */
+    public function getPremiumSince()
+    {
+        return $this->container['premium_since'];
+    }
+
+    /**
+     * Sets premium_since
+     *
+     * @param \DateTime|null $premium_since When the user started boosting the server
+     *
+     * @return self
+     */
+    public function setPremiumSince($premium_since)
+    {
+        if (is_null($premium_since)) {
+            throw new \InvalidArgumentException('non-nullable premium_since cannot be null');
+        }
+        $this->container['premium_since'] = $premium_since;
 
         return $this;
     }
