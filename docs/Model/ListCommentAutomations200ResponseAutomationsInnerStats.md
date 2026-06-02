@@ -10,5 +10,7 @@ Name | Type | Description | Notes
 **unique_contacts** | **int** |  | [optional]
 **link_clicks** | **int** | Total clicks on tracked links (bots/prefetch excluded). | [optional]
 **unique_clicks** | **int** | Distinct people who clicked a tracked link. | [optional]
+**delivered** | **int** | DMs confirmed delivered (Messenger; IG emits no delivery receipt). | [optional]
+**read** | **int** | DMs confirmed read (IG messaging_seen / Messenger message_reads). | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -63,7 +63,9 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'dms_failed' => 'int',
         'unique_contacts' => 'int',
         'link_clicks' => 'int',
-        'unique_clicks' => 'int'
+        'unique_clicks' => 'int',
+        'delivered' => 'int',
+        'read' => 'int'
     ];
 
     /**
@@ -79,7 +81,9 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'dms_failed' => null,
         'unique_contacts' => null,
         'link_clicks' => null,
-        'unique_clicks' => null
+        'unique_clicks' => null,
+        'delivered' => null,
+        'read' => null
     ];
 
     /**
@@ -93,7 +97,9 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'dms_failed' => false,
         'unique_contacts' => false,
         'link_clicks' => false,
-        'unique_clicks' => false
+        'unique_clicks' => false,
+        'delivered' => false,
+        'read' => false
     ];
 
     /**
@@ -187,7 +193,9 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'dms_failed' => 'dmsFailed',
         'unique_contacts' => 'uniqueContacts',
         'link_clicks' => 'linkClicks',
-        'unique_clicks' => 'uniqueClicks'
+        'unique_clicks' => 'uniqueClicks',
+        'delivered' => 'delivered',
+        'read' => 'read'
     ];
 
     /**
@@ -201,7 +209,9 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'dms_failed' => 'setDmsFailed',
         'unique_contacts' => 'setUniqueContacts',
         'link_clicks' => 'setLinkClicks',
-        'unique_clicks' => 'setUniqueClicks'
+        'unique_clicks' => 'setUniqueClicks',
+        'delivered' => 'setDelivered',
+        'read' => 'setRead'
     ];
 
     /**
@@ -215,7 +225,9 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'dms_failed' => 'getDmsFailed',
         'unique_contacts' => 'getUniqueContacts',
         'link_clicks' => 'getLinkClicks',
-        'unique_clicks' => 'getUniqueClicks'
+        'unique_clicks' => 'getUniqueClicks',
+        'delivered' => 'getDelivered',
+        'read' => 'getRead'
     ];
 
     /**
@@ -281,6 +293,8 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         $this->setIfExists('unique_contacts', $data ?? [], null);
         $this->setIfExists('link_clicks', $data ?? [], null);
         $this->setIfExists('unique_clicks', $data ?? [], null);
+        $this->setIfExists('delivered', $data ?? [], null);
+        $this->setIfExists('read', $data ?? [], null);
     }
 
     /**
@@ -483,6 +497,60 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
             throw new \InvalidArgumentException('non-nullable unique_clicks cannot be null');
         }
         $this->container['unique_clicks'] = $unique_clicks;
+
+        return $this;
+    }
+
+    /**
+     * Gets delivered
+     *
+     * @return int|null
+     */
+    public function getDelivered()
+    {
+        return $this->container['delivered'];
+    }
+
+    /**
+     * Sets delivered
+     *
+     * @param int|null $delivered DMs confirmed delivered (Messenger; IG emits no delivery receipt).
+     *
+     * @return self
+     */
+    public function setDelivered($delivered)
+    {
+        if (is_null($delivered)) {
+            throw new \InvalidArgumentException('non-nullable delivered cannot be null');
+        }
+        $this->container['delivered'] = $delivered;
+
+        return $this;
+    }
+
+    /**
+     * Gets read
+     *
+     * @return int|null
+     */
+    public function getRead()
+    {
+        return $this->container['read'];
+    }
+
+    /**
+     * Sets read
+     *
+     * @param int|null $read DMs confirmed read (IG messaging_seen / Messenger message_reads).
+     *
+     * @return self
+     */
+    public function setRead($read)
+    {
+        if (is_null($read)) {
+            throw new \InvalidArgumentException('non-nullable read cannot be null');
+        }
+        $this->container['read'] = $read;
 
         return $this;
     }
