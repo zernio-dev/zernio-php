@@ -2249,14 +2249,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/DuplicateWorkflow201ResponseTest.php
-test/Model/DuplicateWorkflow201ResponseWorkflowTest.php
-test/Model/GetWorkflowVersion200ResponseTest.php
-test/Model/GetWorkflowVersion200ResponseVersionTest.php
-test/Model/ListWorkflowExecutionEvents200ResponseExecutionTest.php
-test/Model/ListWorkflowExecutionEvents200ResponseTest.php
-test/Model/ListWorkflowVersions200ResponseTest.php
-test/Model/ListWorkflowVersions200ResponseVersionsInnerTest.php
-test/Model/RestoreWorkflowVersion200ResponseTest.php
-test/Model/RestoreWorkflowVersion200ResponseWorkflowTest.php
-test/Model/WorkflowExecutionEventTest.php
