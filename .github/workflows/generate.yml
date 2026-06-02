@@ -149,6 +149,16 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
+          # The "Check for changes" gate above can report has_changes=true off a
+          # transient diff (e.g. the generator strips composer.json's `version`
+          # field, which the version-bump step then restores to the same value).
+          # Once that churn is neutralized there may be nothing left to commit;
+          # `git commit` would exit non-zero and, under `bash -e`, fail the job.
+          # Bail out cleanly instead so an idempotent regen is a success, not red.
+          if git diff --staged --quiet; then
+            echo "No net changes after version bump; nothing to commit."
+            exit 0
+          fi
           git commit -m "chore: regenerate from OpenAPI spec
 
           - Auto-generated SDK updates
