@@ -61,7 +61,9 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'triggered' => 'int',
         'dms_sent' => 'int',
         'dms_failed' => 'int',
-        'unique_contacts' => 'int'
+        'unique_contacts' => 'int',
+        'link_clicks' => 'int',
+        'unique_clicks' => 'int'
     ];
 
     /**
@@ -75,7 +77,9 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'triggered' => null,
         'dms_sent' => null,
         'dms_failed' => null,
-        'unique_contacts' => null
+        'unique_contacts' => null,
+        'link_clicks' => null,
+        'unique_clicks' => null
     ];
 
     /**
@@ -87,7 +91,9 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'triggered' => false,
         'dms_sent' => false,
         'dms_failed' => false,
-        'unique_contacts' => false
+        'unique_contacts' => false,
+        'link_clicks' => false,
+        'unique_clicks' => false
     ];
 
     /**
@@ -179,7 +185,9 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'triggered' => 'triggered',
         'dms_sent' => 'dmsSent',
         'dms_failed' => 'dmsFailed',
-        'unique_contacts' => 'uniqueContacts'
+        'unique_contacts' => 'uniqueContacts',
+        'link_clicks' => 'linkClicks',
+        'unique_clicks' => 'uniqueClicks'
     ];
 
     /**
@@ -191,7 +199,9 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'triggered' => 'setTriggered',
         'dms_sent' => 'setDmsSent',
         'dms_failed' => 'setDmsFailed',
-        'unique_contacts' => 'setUniqueContacts'
+        'unique_contacts' => 'setUniqueContacts',
+        'link_clicks' => 'setLinkClicks',
+        'unique_clicks' => 'setUniqueClicks'
     ];
 
     /**
@@ -203,7 +213,9 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'triggered' => 'getTriggered',
         'dms_sent' => 'getDmsSent',
         'dms_failed' => 'getDmsFailed',
-        'unique_contacts' => 'getUniqueContacts'
+        'unique_contacts' => 'getUniqueContacts',
+        'link_clicks' => 'getLinkClicks',
+        'unique_clicks' => 'getUniqueClicks'
     ];
 
     /**
@@ -267,6 +279,8 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         $this->setIfExists('dms_sent', $data ?? [], null);
         $this->setIfExists('dms_failed', $data ?? [], null);
         $this->setIfExists('unique_contacts', $data ?? [], null);
+        $this->setIfExists('link_clicks', $data ?? [], null);
+        $this->setIfExists('unique_clicks', $data ?? [], null);
     }
 
     /**
@@ -415,6 +429,60 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
             throw new \InvalidArgumentException('non-nullable unique_contacts cannot be null');
         }
         $this->container['unique_contacts'] = $unique_contacts;
+
+        return $this;
+    }
+
+    /**
+     * Gets link_clicks
+     *
+     * @return int|null
+     */
+    public function getLinkClicks()
+    {
+        return $this->container['link_clicks'];
+    }
+
+    /**
+     * Sets link_clicks
+     *
+     * @param int|null $link_clicks Total clicks on tracked links (bots/prefetch excluded).
+     *
+     * @return self
+     */
+    public function setLinkClicks($link_clicks)
+    {
+        if (is_null($link_clicks)) {
+            throw new \InvalidArgumentException('non-nullable link_clicks cannot be null');
+        }
+        $this->container['link_clicks'] = $link_clicks;
+
+        return $this;
+    }
+
+    /**
+     * Gets unique_clicks
+     *
+     * @return int|null
+     */
+    public function getUniqueClicks()
+    {
+        return $this->container['unique_clicks'];
+    }
+
+    /**
+     * Sets unique_clicks
+     *
+     * @param int|null $unique_clicks Distinct people who clicked a tracked link.
+     *
+     * @return self
+     */
+    public function setUniqueClicks($unique_clicks)
+    {
+        if (is_null($unique_clicks)) {
+            throw new \InvalidArgumentException('non-nullable unique_clicks cannot be null');
+        }
+        $this->container['unique_clicks'] = $unique_clicks;
 
         return $this;
     }

@@ -68,7 +68,8 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'match_mode' => 'string',
         'dm_message' => 'string',
         'buttons' => '\Zernio\Model\DmButton[]',
-        'comment_reply' => 'string'
+        'comment_reply' => 'string',
+        'link_tracking' => 'bool'
     ];
 
     /**
@@ -89,7 +90,8 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'match_mode' => null,
         'dm_message' => null,
         'buttons' => null,
-        'comment_reply' => null
+        'comment_reply' => null,
+        'link_tracking' => null
     ];
 
     /**
@@ -108,7 +110,8 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'match_mode' => false,
         'dm_message' => false,
         'buttons' => false,
-        'comment_reply' => false
+        'comment_reply' => false,
+        'link_tracking' => false
     ];
 
     /**
@@ -207,7 +210,8 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'match_mode' => 'matchMode',
         'dm_message' => 'dmMessage',
         'buttons' => 'buttons',
-        'comment_reply' => 'commentReply'
+        'comment_reply' => 'commentReply',
+        'link_tracking' => 'linkTracking'
     ];
 
     /**
@@ -226,7 +230,8 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'match_mode' => 'setMatchMode',
         'dm_message' => 'setDmMessage',
         'buttons' => 'setButtons',
-        'comment_reply' => 'setCommentReply'
+        'comment_reply' => 'setCommentReply',
+        'link_tracking' => 'setLinkTracking'
     ];
 
     /**
@@ -245,7 +250,8 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'match_mode' => 'getMatchMode',
         'dm_message' => 'getDmMessage',
         'buttons' => 'getButtons',
-        'comment_reply' => 'getCommentReply'
+        'comment_reply' => 'getCommentReply',
+        'link_tracking' => 'getLinkTracking'
     ];
 
     /**
@@ -331,6 +337,7 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('dm_message', $data ?? [], null);
         $this->setIfExists('buttons', $data ?? [], null);
         $this->setIfExists('comment_reply', $data ?? [], null);
+        $this->setIfExists('link_tracking', $data ?? [], true);
     }
 
     /**
@@ -707,6 +714,33 @@ class CreateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable comment_reply cannot be null');
         }
         $this->container['comment_reply'] = $comment_reply;
+
+        return $this;
+    }
+
+    /**
+     * Gets link_tracking
+     *
+     * @return bool|null
+     */
+    public function getLinkTracking()
+    {
+        return $this->container['link_tracking'];
+    }
+
+    /**
+     * Sets link_tracking
+     *
+     * @param bool|null $link_tracking Wrap link buttons in the DM in a tracked redirect so clicks are counted (Link Clicks / CTR). Pass false to send links exactly as written. Defaults to on.
+     *
+     * @return self
+     */
+    public function setLinkTracking($link_tracking)
+    {
+        if (is_null($link_tracking)) {
+            throw new \InvalidArgumentException('non-nullable link_tracking cannot be null');
+        }
+        $this->container['link_tracking'] = $link_tracking;
 
         return $this;
     }

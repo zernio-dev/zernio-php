@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **dm_message** | **string** |  | [optional]
 **buttons** | [**\Zernio\Model\DmButton[]**](DmButton.md) | Inline DM buttons (up to 3). Omitted when none are set. | [optional]
 **comment_reply** | **string** |  | [optional]
+**link_tracking** | **bool** | Whether link buttons in the DM are wrapped in a tracked redirect to count clicks. | [optional]
 **is_active** | **bool** |  | [optional]
 **stats** | [**\Zernio\Model\ListCommentAutomations200ResponseAutomationsInnerStats**](ListCommentAutomations200ResponseAutomationsInnerStats.md) |  | [optional]
 **created_at** | **\DateTime** |  | [optional]

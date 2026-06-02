@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **dm_message** | **string** | DM text to send to commenter. Max 640 chars when buttons are set, otherwise ~1000. |
 **buttons** | [**\Zernio\Model\DmButton[]**](DmButton.md) | Optional inline DM buttons (1-3). Phone buttons are Facebook-only. Omit or pass [] for a plain-text DM. | [optional]
 **comment_reply** | **string** | Optional public reply to the comment | [optional]
+**link_tracking** | **bool** | Wrap link buttons in the DM in a tracked redirect so clicks are counted (Link Clicks / CTR). Pass false to send links exactly as written. Defaults to on. | [optional] [default to true]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

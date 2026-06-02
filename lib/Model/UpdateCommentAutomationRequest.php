@@ -64,6 +64,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'dm_message' => 'string',
         'buttons' => '\Zernio\Model\DmButton[]',
         'comment_reply' => 'string',
+        'link_tracking' => 'bool',
         'is_active' => 'bool'
     ];
 
@@ -81,6 +82,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'dm_message' => null,
         'buttons' => null,
         'comment_reply' => null,
+        'link_tracking' => null,
         'is_active' => null
     ];
 
@@ -96,6 +98,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'dm_message' => false,
         'buttons' => false,
         'comment_reply' => false,
+        'link_tracking' => false,
         'is_active' => false
     ];
 
@@ -191,6 +194,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'dm_message' => 'dmMessage',
         'buttons' => 'buttons',
         'comment_reply' => 'commentReply',
+        'link_tracking' => 'linkTracking',
         'is_active' => 'isActive'
     ];
 
@@ -206,6 +210,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'dm_message' => 'setDmMessage',
         'buttons' => 'setButtons',
         'comment_reply' => 'setCommentReply',
+        'link_tracking' => 'setLinkTracking',
         'is_active' => 'setIsActive'
     ];
 
@@ -221,6 +226,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         'dm_message' => 'getDmMessage',
         'buttons' => 'getButtons',
         'comment_reply' => 'getCommentReply',
+        'link_tracking' => 'getLinkTracking',
         'is_active' => 'getIsActive'
     ];
 
@@ -302,6 +308,7 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('dm_message', $data ?? [], null);
         $this->setIfExists('buttons', $data ?? [], null);
         $this->setIfExists('comment_reply', $data ?? [], null);
+        $this->setIfExists('link_tracking', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
     }
 
@@ -532,6 +539,33 @@ class UpdateCommentAutomationRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable comment_reply cannot be null');
         }
         $this->container['comment_reply'] = $comment_reply;
+
+        return $this;
+    }
+
+    /**
+     * Gets link_tracking
+     *
+     * @return bool|null
+     */
+    public function getLinkTracking()
+    {
+        return $this->container['link_tracking'];
+    }
+
+    /**
+     * Sets link_tracking
+     *
+     * @param bool|null $link_tracking Wrap link buttons in a tracked redirect to count clicks. Pass false to send links untouched.
+     *
+     * @return self
+     */
+    public function setLinkTracking($link_tracking)
+    {
+        if (is_null($link_tracking)) {
+            throw new \InvalidArgumentException('non-nullable link_tracking cannot be null');
+        }
+        $this->container['link_tracking'] = $link_tracking;
 
         return $this;
     }

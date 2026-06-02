@@ -67,6 +67,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'dm_message' => 'string',
         'buttons' => '\Zernio\Model\DmButton[]',
         'comment_reply' => 'string',
+        'link_tracking' => 'bool',
         'is_active' => 'bool',
         'stats' => '\Zernio\Model\CreateCommentAutomation200ResponseAutomationStats',
         'created_at' => '\DateTime'
@@ -89,6 +90,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'dm_message' => null,
         'buttons' => null,
         'comment_reply' => null,
+        'link_tracking' => null,
         'is_active' => null,
         'stats' => null,
         'created_at' => 'date-time'
@@ -109,6 +111,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'dm_message' => false,
         'buttons' => false,
         'comment_reply' => false,
+        'link_tracking' => false,
         'is_active' => false,
         'stats' => false,
         'created_at' => false
@@ -209,6 +212,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'dm_message' => 'dmMessage',
         'buttons' => 'buttons',
         'comment_reply' => 'commentReply',
+        'link_tracking' => 'linkTracking',
         'is_active' => 'isActive',
         'stats' => 'stats',
         'created_at' => 'createdAt'
@@ -229,6 +233,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'dm_message' => 'setDmMessage',
         'buttons' => 'setButtons',
         'comment_reply' => 'setCommentReply',
+        'link_tracking' => 'setLinkTracking',
         'is_active' => 'setIsActive',
         'stats' => 'setStats',
         'created_at' => 'setCreatedAt'
@@ -249,6 +254,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         'dm_message' => 'getDmMessage',
         'buttons' => 'getButtons',
         'comment_reply' => 'getCommentReply',
+        'link_tracking' => 'getLinkTracking',
         'is_active' => 'getIsActive',
         'stats' => 'getStats',
         'created_at' => 'getCreatedAt'
@@ -335,6 +341,7 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
         $this->setIfExists('dm_message', $data ?? [], null);
         $this->setIfExists('buttons', $data ?? [], null);
         $this->setIfExists('comment_reply', $data ?? [], null);
+        $this->setIfExists('link_tracking', $data ?? [], null);
         $this->setIfExists('is_active', $data ?? [], null);
         $this->setIfExists('stats', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
@@ -640,6 +647,33 @@ class CreateCommentAutomation200ResponseAutomation implements ModelInterface, Ar
             throw new \InvalidArgumentException('non-nullable comment_reply cannot be null');
         }
         $this->container['comment_reply'] = $comment_reply;
+
+        return $this;
+    }
+
+    /**
+     * Gets link_tracking
+     *
+     * @return bool|null
+     */
+    public function getLinkTracking()
+    {
+        return $this->container['link_tracking'];
+    }
+
+    /**
+     * Sets link_tracking
+     *
+     * @param bool|null $link_tracking link_tracking
+     *
+     * @return self
+     */
+    public function setLinkTracking($link_tracking)
+    {
+        if (is_null($link_tracking)) {
+            throw new \InvalidArgumentException('non-nullable link_tracking cannot be null');
+        }
+        $this->container['link_tracking'] = $link_tracking;
 
         return $this;
     }
