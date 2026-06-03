@@ -67,6 +67,11 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
         'ip_address' => 'string',
         'user_agent' => 'string',
         'country' => 'string',
+        'city' => 'string',
+        'state' => 'string',
+        'zip' => 'string',
+        'dob' => 'string',
+        'gender' => 'string',
         'click_ids' => '\Zernio\Model\ConversionEventUserClickIds'
     ];
 
@@ -86,6 +91,11 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
         'ip_address' => null,
         'user_agent' => null,
         'country' => null,
+        'city' => null,
+        'state' => null,
+        'zip' => null,
+        'dob' => null,
+        'gender' => null,
         'click_ids' => null
     ];
 
@@ -103,6 +113,11 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
         'ip_address' => false,
         'user_agent' => false,
         'country' => false,
+        'city' => false,
+        'state' => false,
+        'zip' => false,
+        'dob' => false,
+        'gender' => false,
         'click_ids' => false
     ];
 
@@ -200,6 +215,11 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
         'ip_address' => 'ipAddress',
         'user_agent' => 'userAgent',
         'country' => 'country',
+        'city' => 'city',
+        'state' => 'state',
+        'zip' => 'zip',
+        'dob' => 'dob',
+        'gender' => 'gender',
         'click_ids' => 'clickIds'
     ];
 
@@ -217,6 +237,11 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
         'ip_address' => 'setIpAddress',
         'user_agent' => 'setUserAgent',
         'country' => 'setCountry',
+        'city' => 'setCity',
+        'state' => 'setState',
+        'zip' => 'setZip',
+        'dob' => 'setDob',
+        'gender' => 'setGender',
         'click_ids' => 'setClickIds'
     ];
 
@@ -234,6 +259,11 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
         'ip_address' => 'getIpAddress',
         'user_agent' => 'getUserAgent',
         'country' => 'getCountry',
+        'city' => 'getCity',
+        'state' => 'getState',
+        'zip' => 'getZip',
+        'dob' => 'getDob',
+        'gender' => 'getGender',
         'click_ids' => 'getClickIds'
     ];
 
@@ -302,6 +332,11 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('ip_address', $data ?? [], null);
         $this->setIfExists('user_agent', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
+        $this->setIfExists('city', $data ?? [], null);
+        $this->setIfExists('state', $data ?? [], null);
+        $this->setIfExists('zip', $data ?? [], null);
+        $this->setIfExists('dob', $data ?? [], null);
+        $this->setIfExists('gender', $data ?? [], null);
         $this->setIfExists('click_ids', $data ?? [], null);
     }
 
@@ -559,6 +594,141 @@ class ConversionEventUser implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
         $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets city
+     *
+     * @return string|null
+     */
+    public function getCity()
+    {
+        return $this->container['city'];
+    }
+
+    /**
+     * Sets city
+     *
+     * @param string|null $city Meta advanced matching (ct). Plaintext city; normalized + SHA-256 hashed server-side. Meta only.
+     *
+     * @return self
+     */
+    public function setCity($city)
+    {
+        if (is_null($city)) {
+            throw new \InvalidArgumentException('non-nullable city cannot be null');
+        }
+        $this->container['city'] = $city;
+
+        return $this;
+    }
+
+    /**
+     * Gets state
+     *
+     * @return string|null
+     */
+    public function getState()
+    {
+        return $this->container['state'];
+    }
+
+    /**
+     * Sets state
+     *
+     * @param string|null $state Meta advanced matching (st). 2-letter ANSI for US; hashed server-side. Meta only.
+     *
+     * @return self
+     */
+    public function setState($state)
+    {
+        if (is_null($state)) {
+            throw new \InvalidArgumentException('non-nullable state cannot be null');
+        }
+        $this->container['state'] = $state;
+
+        return $this;
+    }
+
+    /**
+     * Gets zip
+     *
+     * @return string|null
+     */
+    public function getZip()
+    {
+        return $this->container['zip'];
+    }
+
+    /**
+     * Sets zip
+     *
+     * @param string|null $zip Meta advanced matching (zp). US uses first 5 digits; hashed server-side. Meta only.
+     *
+     * @return self
+     */
+    public function setZip($zip)
+    {
+        if (is_null($zip)) {
+            throw new \InvalidArgumentException('non-nullable zip cannot be null');
+        }
+        $this->container['zip'] = $zip;
+
+        return $this;
+    }
+
+    /**
+     * Gets dob
+     *
+     * @return string|null
+     */
+    public function getDob()
+    {
+        return $this->container['dob'];
+    }
+
+    /**
+     * Sets dob
+     *
+     * @param string|null $dob Meta advanced matching (db). YYYYMMDD; hashed server-side. Meta only.
+     *
+     * @return self
+     */
+    public function setDob($dob)
+    {
+        if (is_null($dob)) {
+            throw new \InvalidArgumentException('non-nullable dob cannot be null');
+        }
+        $this->container['dob'] = $dob;
+
+        return $this;
+    }
+
+    /**
+     * Gets gender
+     *
+     * @return string|null
+     */
+    public function getGender()
+    {
+        return $this->container['gender'];
+    }
+
+    /**
+     * Sets gender
+     *
+     * @param string|null $gender Meta advanced matching (ge). 'f' or 'm'; hashed server-side. Meta only.
+     *
+     * @return self
+     */
+    public function setGender($gender)
+    {
+        if (is_null($gender)) {
+            throw new \InvalidArgumentException('non-nullable gender cannot be null');
+        }
+        $this->container['gender'] = $gender;
 
         return $this;
     }

@@ -117,10 +117,16 @@ class AdsApi
         'getAdComments' => [
             'application/json',
         ],
+        'getAdTrackingTags' => [
+            'application/json',
+        ],
         'getConversionDestination' => [
             'application/json',
         ],
         'getConversionMetrics' => [
+            'application/json',
+        ],
+        'getConversionsQuality' => [
             'application/json',
         ],
         'getLeadForm' => [
@@ -169,6 +175,9 @@ class AdsApi
             'application/json',
         ],
         'updateAd' => [
+            'application/json',
+        ],
+        'updateAdTrackingTags' => [
             'application/json',
         ],
         'updateConversionDestination' => [
@@ -4465,6 +4474,292 @@ class AdsApi
     }
 
     /**
+     * Operation getAdTrackingTags
+     *
+     * Read an ad&#39;s click-URL tracking tags
+     *
+     * @param  string $ad_id Ad id (hex _id, platformAdId, or effective story/media id). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTrackingTags'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetAdTrackingTags200Response|\Zernio\Model\InlineObject
+     */
+    public function getAdTrackingTags($ad_id, string $contentType = self::contentTypes['getAdTrackingTags'][0])
+    {
+        list($response) = $this->getAdTrackingTagsWithHttpInfo($ad_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getAdTrackingTagsWithHttpInfo
+     *
+     * Read an ad&#39;s click-URL tracking tags
+     *
+     * @param  string $ad_id Ad id (hex _id, platformAdId, or effective story/media id). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTrackingTags'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetAdTrackingTags200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getAdTrackingTagsWithHttpInfo($ad_id, string $contentType = self::contentTypes['getAdTrackingTags'][0])
+    {
+        $request = $this->getAdTrackingTagsRequest($ad_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetAdTrackingTags200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetAdTrackingTags200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetAdTrackingTags200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getAdTrackingTagsAsync
+     *
+     * Read an ad&#39;s click-URL tracking tags
+     *
+     * @param  string $ad_id Ad id (hex _id, platformAdId, or effective story/media id). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTrackingTags'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdTrackingTagsAsync($ad_id, string $contentType = self::contentTypes['getAdTrackingTags'][0])
+    {
+        return $this->getAdTrackingTagsAsyncWithHttpInfo($ad_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getAdTrackingTagsAsyncWithHttpInfo
+     *
+     * Read an ad&#39;s click-URL tracking tags
+     *
+     * @param  string $ad_id Ad id (hex _id, platformAdId, or effective story/media id). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTrackingTags'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getAdTrackingTagsAsyncWithHttpInfo($ad_id, string $contentType = self::contentTypes['getAdTrackingTags'][0])
+    {
+        $returnType = '\Zernio\Model\GetAdTrackingTags200Response';
+        $request = $this->getAdTrackingTagsRequest($ad_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getAdTrackingTags'
+     *
+     * @param  string $ad_id Ad id (hex _id, platformAdId, or effective story/media id). (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTrackingTags'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getAdTrackingTagsRequest($ad_id, string $contentType = self::contentTypes['getAdTrackingTags'][0])
+    {
+
+        // verify the required parameter 'ad_id' is set
+        if ($ad_id === null || (is_array($ad_id) && count($ad_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_id when calling getAdTrackingTags'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/{adId}/tracking-tags';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($ad_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'adId' . '}',
+                ObjectSerializer::toPathValue($ad_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getConversionDestination
      *
      * Fetch a single conversion destination
@@ -5116,6 +5411,314 @@ class AdsApi
                 $resourcePath
             );
         }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getConversionsQuality
+     *
+     * Read Event Match Quality + coverage for a Meta pixel
+     *
+     * @param  string $account_id SocialAccount _id (must be a metaads account). (required)
+     * @param  string $destination_id Meta pixel/dataset ID. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionsQuality'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetConversionsQuality200Response|\Zernio\Model\InlineObject
+     */
+    public function getConversionsQuality($account_id, $destination_id, string $contentType = self::contentTypes['getConversionsQuality'][0])
+    {
+        list($response) = $this->getConversionsQualityWithHttpInfo($account_id, $destination_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getConversionsQualityWithHttpInfo
+     *
+     * Read Event Match Quality + coverage for a Meta pixel
+     *
+     * @param  string $account_id SocialAccount _id (must be a metaads account). (required)
+     * @param  string $destination_id Meta pixel/dataset ID. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionsQuality'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetConversionsQuality200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getConversionsQualityWithHttpInfo($account_id, $destination_id, string $contentType = self::contentTypes['getConversionsQuality'][0])
+    {
+        $request = $this->getConversionsQualityRequest($account_id, $destination_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetConversionsQuality200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetConversionsQuality200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetConversionsQuality200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getConversionsQualityAsync
+     *
+     * Read Event Match Quality + coverage for a Meta pixel
+     *
+     * @param  string $account_id SocialAccount _id (must be a metaads account). (required)
+     * @param  string $destination_id Meta pixel/dataset ID. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionsQuality'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getConversionsQualityAsync($account_id, $destination_id, string $contentType = self::contentTypes['getConversionsQuality'][0])
+    {
+        return $this->getConversionsQualityAsyncWithHttpInfo($account_id, $destination_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getConversionsQualityAsyncWithHttpInfo
+     *
+     * Read Event Match Quality + coverage for a Meta pixel
+     *
+     * @param  string $account_id SocialAccount _id (must be a metaads account). (required)
+     * @param  string $destination_id Meta pixel/dataset ID. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionsQuality'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getConversionsQualityAsyncWithHttpInfo($account_id, $destination_id, string $contentType = self::contentTypes['getConversionsQuality'][0])
+    {
+        $returnType = '\Zernio\Model\GetConversionsQuality200Response';
+        $request = $this->getConversionsQualityRequest($account_id, $destination_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getConversionsQuality'
+     *
+     * @param  string $account_id SocialAccount _id (must be a metaads account). (required)
+     * @param  string $destination_id Meta pixel/dataset ID. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getConversionsQuality'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getConversionsQualityRequest($account_id, $destination_id, string $contentType = self::contentTypes['getConversionsQuality'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getConversionsQuality'
+            );
+        }
+
+        // verify the required parameter 'destination_id' is set
+        if ($destination_id === null || (is_array($destination_id) && count($destination_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $destination_id when calling getConversionsQuality'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/conversions/quality';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $destination_id,
+            'destinationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
 
 
         $headers = $this->headerSelector->selectHeaders(
@@ -10450,6 +11053,255 @@ class AdsApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateAdTrackingTags
+     *
+     * Set/update an ad&#39;s click-URL tracking tags
+     *
+     * @param  string $ad_id ad_id (required)
+     * @param  \Zernio\Model\UpdateAdTrackingTagsRequest $update_ad_tracking_tags_request update_ad_tracking_tags_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdTrackingTags'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function updateAdTrackingTags($ad_id, $update_ad_tracking_tags_request, string $contentType = self::contentTypes['updateAdTrackingTags'][0])
+    {
+        $this->updateAdTrackingTagsWithHttpInfo($ad_id, $update_ad_tracking_tags_request, $contentType);
+    }
+
+    /**
+     * Operation updateAdTrackingTagsWithHttpInfo
+     *
+     * Set/update an ad&#39;s click-URL tracking tags
+     *
+     * @param  string $ad_id (required)
+     * @param  \Zernio\Model\UpdateAdTrackingTagsRequest $update_ad_tracking_tags_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdTrackingTags'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateAdTrackingTagsWithHttpInfo($ad_id, $update_ad_tracking_tags_request, string $contentType = self::contentTypes['updateAdTrackingTags'][0])
+    {
+        $request = $this->updateAdTrackingTagsRequest($ad_id, $update_ad_tracking_tags_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateAdTrackingTagsAsync
+     *
+     * Set/update an ad&#39;s click-URL tracking tags
+     *
+     * @param  string $ad_id (required)
+     * @param  \Zernio\Model\UpdateAdTrackingTagsRequest $update_ad_tracking_tags_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdTrackingTags'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdTrackingTagsAsync($ad_id, $update_ad_tracking_tags_request, string $contentType = self::contentTypes['updateAdTrackingTags'][0])
+    {
+        return $this->updateAdTrackingTagsAsyncWithHttpInfo($ad_id, $update_ad_tracking_tags_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateAdTrackingTagsAsyncWithHttpInfo
+     *
+     * Set/update an ad&#39;s click-URL tracking tags
+     *
+     * @param  string $ad_id (required)
+     * @param  \Zernio\Model\UpdateAdTrackingTagsRequest $update_ad_tracking_tags_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdTrackingTags'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateAdTrackingTagsAsyncWithHttpInfo($ad_id, $update_ad_tracking_tags_request, string $contentType = self::contentTypes['updateAdTrackingTags'][0])
+    {
+        $returnType = '';
+        $request = $this->updateAdTrackingTagsRequest($ad_id, $update_ad_tracking_tags_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateAdTrackingTags'
+     *
+     * @param  string $ad_id (required)
+     * @param  \Zernio\Model\UpdateAdTrackingTagsRequest $update_ad_tracking_tags_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateAdTrackingTags'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateAdTrackingTagsRequest($ad_id, $update_ad_tracking_tags_request, string $contentType = self::contentTypes['updateAdTrackingTags'][0])
+    {
+
+        // verify the required parameter 'ad_id' is set
+        if ($ad_id === null || (is_array($ad_id) && count($ad_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ad_id when calling updateAdTrackingTags'
+            );
+        }
+
+        // verify the required parameter 'update_ad_tracking_tags_request' is set
+        if ($update_ad_tracking_tags_request === null || (is_array($update_ad_tracking_tags_request) && count($update_ad_tracking_tags_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_ad_tracking_tags_request when calling updateAdTrackingTags'
+            );
+        }
+
+
+        $resourcePath = '/v1/ads/{adId}/tracking-tags';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($ad_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'adId' . '}',
+                ObjectSerializer::toPathValue($ad_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_ad_tracking_tags_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_ad_tracking_tags_request));
+            } else {
+                $httpBody = $update_ad_tracking_tags_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

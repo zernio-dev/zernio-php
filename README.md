@@ -111,8 +111,10 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**getAd**](docs/Api/AdsApi.md#getad) | **GET** /v1/ads/{adId} | Get ad details
 *AdsApi* | [**getAdAnalytics**](docs/Api/AdsApi.md#getadanalytics) | **GET** /v1/ads/{adId}/analytics | Get ad analytics
 *AdsApi* | [**getAdComments**](docs/Api/AdsApi.md#getadcomments) | **GET** /v1/ads/{adId}/comments | List comments on an ad
+*AdsApi* | [**getAdTrackingTags**](docs/Api/AdsApi.md#getadtrackingtags) | **GET** /v1/ads/{adId}/tracking-tags | Read an ad&#39;s click-URL tracking tags
 *AdsApi* | [**getConversionDestination**](docs/Api/AdsApi.md#getconversiondestination) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Fetch a single conversion destination
 *AdsApi* | [**getConversionMetrics**](docs/Api/AdsApi.md#getconversionmetrics) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/metrics | Fetch attribution metrics for a conversion destination
+*AdsApi* | [**getConversionsQuality**](docs/Api/AdsApi.md#getconversionsquality) | **GET** /v1/ads/conversions/quality | Read Event Match Quality + coverage for a Meta pixel
 *AdsApi* | [**getLeadForm**](docs/Api/AdsApi.md#getleadform) | **GET** /v1/ads/lead-forms/{formId} | Get a single Lead Gen form
 *AdsApi* | [**listAdAccounts**](docs/Api/AdsApi.md#listadaccounts) | **GET** /v1/ads/accounts | List ad accounts
 *AdsApi* | [**listAds**](docs/Api/AdsApi.md#listads) | **GET** /v1/ads | List ads
@@ -129,6 +131,7 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**sendConversions**](docs/Api/AdsApi.md#sendconversions) | **POST** /v1/ads/conversions | Send conversion events to an ad platform
 *AdsApi* | [**sendWhatsAppConversion**](docs/Api/AdsApi.md#sendwhatsappconversion) | **POST** /v1/whatsapp/conversions | Send WhatsApp conversion event
 *AdsApi* | [**updateAd**](docs/Api/AdsApi.md#updatead) | **PUT** /v1/ads/{adId} | Update ad
+*AdsApi* | [**updateAdTrackingTags**](docs/Api/AdsApi.md#updateadtrackingtags) | **PATCH** /v1/ads/{adId}/tracking-tags | Set/update an ad&#39;s click-URL tracking tags
 *AdsApi* | [**updateConversionDestination**](docs/Api/AdsApi.md#updateconversiondestination) | **PATCH** /v1/accounts/{accountId}/conversion-destinations/{destinationId} | Update a conversion destination
 *AnalyticsApi* | [**getAnalytics**](docs/Api/AnalyticsApi.md#getanalytics) | **GET** /v1/analytics | Get post analytics
 *AnalyticsApi* | [**getBestTimeToPost**](docs/Api/AnalyticsApi.md#getbesttimetopost) | **GET** /v1/analytics/best-time | Get best times to post
@@ -713,6 +716,7 @@ Class | Method | HTTP request | Description
 - [GetAdComments200Response](docs/Model/GetAdComments200Response.md)
 - [GetAdComments200ResponseMeta](docs/Model/GetAdComments200ResponseMeta.md)
 - [GetAdComments200ResponsePagination](docs/Model/GetAdComments200ResponsePagination.md)
+- [GetAdTrackingTags200Response](docs/Model/GetAdTrackingTags200Response.md)
 - [GetAdTree200Response](docs/Model/GetAdTree200Response.md)
 - [GetAdsTimeline200Response](docs/Model/GetAdsTimeline200Response.md)
 - [GetAdsTimeline200ResponseRowsInner](docs/Model/GetAdsTimeline200ResponseRowsInner.md)
@@ -743,6 +747,9 @@ Class | Method | HTTP request | Description
 - [GetConversionMetrics200Response](docs/Model/GetConversionMetrics200Response.md)
 - [GetConversionMetrics200ResponseRowsInner](docs/Model/GetConversionMetrics200ResponseRowsInner.md)
 - [GetConversionMetrics200ResponseRowsInnerMetricsValue](docs/Model/GetConversionMetrics200ResponseRowsInnerMetricsValue.md)
+- [GetConversionsQuality200Response](docs/Model/GetConversionsQuality200Response.md)
+- [GetConversionsQuality200ResponseRowsInner](docs/Model/GetConversionsQuality200ResponseRowsInner.md)
+- [GetConversionsQuality200ResponseRowsInnerMatchKeysInner](docs/Model/GetConversionsQuality200ResponseRowsInnerMatchKeysInner.md)
 - [GetDailyMetrics200Response](docs/Model/GetDailyMetrics200Response.md)
 - [GetDailyMetrics200ResponseDailyDataInner](docs/Model/GetDailyMetrics200ResponseDailyDataInner.md)
 - [GetDailyMetrics200ResponseDailyDataInnerMetrics](docs/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.md)
@@ -1312,6 +1319,9 @@ Class | Method | HTTP request | Description
 - [UpdateAdSetRequest](docs/Model/UpdateAdSetRequest.md)
 - [UpdateAdSetRequestBudget](docs/Model/UpdateAdSetRequestBudget.md)
 - [UpdateAdSetStatus200Response](docs/Model/UpdateAdSetStatus200Response.md)
+- [UpdateAdTrackingTagsRequest](docs/Model/UpdateAdTrackingTagsRequest.md)
+- [UpdateAdTrackingTagsRequestCreative](docs/Model/UpdateAdTrackingTagsRequestCreative.md)
+- [UpdateAdTrackingTagsRequestUrlTagsInner](docs/Model/UpdateAdTrackingTagsRequestUrlTagsInner.md)
 - [UpdateBroadcast200Response](docs/Model/UpdateBroadcast200Response.md)
 - [UpdateBroadcast200ResponseBroadcast](docs/Model/UpdateBroadcast200ResponseBroadcast.md)
 - [UpdateBroadcastRequest](docs/Model/UpdateBroadcastRequest.md)

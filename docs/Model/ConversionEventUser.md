@@ -12,6 +12,11 @@ Name | Type | Description | Notes
 **ip_address** | **string** | Client IP address. Sent plaintext. | [optional]
 **user_agent** | **string** | Client user-agent string. Sent plaintext. | [optional]
 **country** | **string** | ISO 3166-1 alpha-2 country code, e.g. &#39;us&#39;. | [optional]
+**city** | **string** | Meta advanced matching (ct). Plaintext city; normalized + SHA-256 hashed server-side. Meta only. | [optional]
+**state** | **string** | Meta advanced matching (st). 2-letter ANSI for US; hashed server-side. Meta only. | [optional]
+**zip** | **string** | Meta advanced matching (zp). US uses first 5 digits; hashed server-side. Meta only. | [optional]
+**dob** | **string** | Meta advanced matching (db). YYYYMMDD; hashed server-side. Meta only. | [optional]
+**gender** | **string** | Meta advanced matching (ge). &#39;f&#39; or &#39;m&#39;; hashed server-side. Meta only. | [optional]
 **click_ids** | [**\Zernio\Model\ConversionEventUserClickIds**](ConversionEventUserClickIds.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -343,6 +343,7 @@ docs/Model/GetAdAudience200Response.md
 docs/Model/GetAdComments200Response.md
 docs/Model/GetAdComments200ResponseMeta.md
 docs/Model/GetAdComments200ResponsePagination.md
+docs/Model/GetAdTrackingTags200Response.md
 docs/Model/GetAdTree200Response.md
 docs/Model/GetAdsTimeline200Response.md
 docs/Model/GetAdsTimeline200ResponseRowsInner.md
@@ -373,6 +374,9 @@ docs/Model/GetContentDecay200ResponseBucketsInner.md
 docs/Model/GetConversionMetrics200Response.md
 docs/Model/GetConversionMetrics200ResponseRowsInner.md
 docs/Model/GetConversionMetrics200ResponseRowsInnerMetricsValue.md
+docs/Model/GetConversionsQuality200Response.md
+docs/Model/GetConversionsQuality200ResponseRowsInner.md
+docs/Model/GetConversionsQuality200ResponseRowsInnerMatchKeysInner.md
 docs/Model/GetDailyMetrics200Response.md
 docs/Model/GetDailyMetrics200ResponseDailyDataInner.md
 docs/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.md
@@ -942,6 +946,9 @@ docs/Model/UpdateAdSet200Response.md
 docs/Model/UpdateAdSetRequest.md
 docs/Model/UpdateAdSetRequestBudget.md
 docs/Model/UpdateAdSetStatus200Response.md
+docs/Model/UpdateAdTrackingTagsRequest.md
+docs/Model/UpdateAdTrackingTagsRequestCreative.md
+docs/Model/UpdateAdTrackingTagsRequestUrlTagsInner.md
 docs/Model/UpdateBroadcast200Response.md
 docs/Model/UpdateBroadcast200ResponseBroadcast.md
 docs/Model/UpdateBroadcastRequest.md
@@ -1501,6 +1508,7 @@ lib/Model/GetAdAudience200Response.php
 lib/Model/GetAdComments200Response.php
 lib/Model/GetAdComments200ResponseMeta.php
 lib/Model/GetAdComments200ResponsePagination.php
+lib/Model/GetAdTrackingTags200Response.php
 lib/Model/GetAdTree200Response.php
 lib/Model/GetAdsTimeline200Response.php
 lib/Model/GetAdsTimeline200ResponseRowsInner.php
@@ -1531,6 +1539,9 @@ lib/Model/GetContentDecay200ResponseBucketsInner.php
 lib/Model/GetConversionMetrics200Response.php
 lib/Model/GetConversionMetrics200ResponseRowsInner.php
 lib/Model/GetConversionMetrics200ResponseRowsInnerMetricsValue.php
+lib/Model/GetConversionsQuality200Response.php
+lib/Model/GetConversionsQuality200ResponseRowsInner.php
+lib/Model/GetConversionsQuality200ResponseRowsInnerMatchKeysInner.php
 lib/Model/GetDailyMetrics200Response.php
 lib/Model/GetDailyMetrics200ResponseDailyDataInner.php
 lib/Model/GetDailyMetrics200ResponseDailyDataInnerMetrics.php
@@ -2101,6 +2112,9 @@ lib/Model/UpdateAdSet200Response.php
 lib/Model/UpdateAdSetRequest.php
 lib/Model/UpdateAdSetRequestBudget.php
 lib/Model/UpdateAdSetStatus200Response.php
+lib/Model/UpdateAdTrackingTagsRequest.php
+lib/Model/UpdateAdTrackingTagsRequestCreative.php
+lib/Model/UpdateAdTrackingTagsRequestUrlTagsInner.php
 lib/Model/UpdateBroadcast200Response.php
 lib/Model/UpdateBroadcast200ResponseBroadcast.php
 lib/Model/UpdateBroadcastRequest.php
@@ -2317,4 +2331,10 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/UpdatePostRequestPlatformsInnerTest.php
+test/Model/GetAdTrackingTags200ResponseTest.php
+test/Model/GetConversionsQuality200ResponseRowsInnerMatchKeysInnerTest.php
+test/Model/GetConversionsQuality200ResponseRowsInnerTest.php
+test/Model/GetConversionsQuality200ResponseTest.php
+test/Model/UpdateAdTrackingTagsRequestCreativeTest.php
+test/Model/UpdateAdTrackingTagsRequestTest.php
+test/Model/UpdateAdTrackingTagsRequestUrlTagsInnerTest.php
