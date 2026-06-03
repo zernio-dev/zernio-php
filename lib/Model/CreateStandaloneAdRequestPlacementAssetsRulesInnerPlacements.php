@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements Class Doc Comment
  *
  * @category Class
- * @description Placements this image is pinned to. At least one field must be set (an empty rule is invalid — that role is served by defaultImageUrl). Same enums as the top-level &#x60;placements&#x60; object.
+ * @description Placements this asset is pinned to. At least one field must be set (an empty rule is invalid — that role is served by the default asset). Same enums as the top-level &#x60;placements&#x60; object.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -59,6 +59,8 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
       */
     protected static $openAPITypes = [
         'image_url' => 'string',
+        'video_url' => 'string',
+        'thumbnail_url' => 'string',
         'placements' => '\Zernio\Model\CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements'
     ];
 
@@ -71,6 +73,8 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
       */
     protected static $openAPIFormats = [
         'image_url' => 'uri',
+        'video_url' => 'uri',
+        'thumbnail_url' => 'uri',
         'placements' => null
     ];
 
@@ -81,6 +85,8 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
       */
     protected static array $openAPINullables = [
         'image_url' => false,
+        'video_url' => false,
+        'thumbnail_url' => false,
         'placements' => false
     ];
 
@@ -171,6 +177,8 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
      */
     protected static $attributeMap = [
         'image_url' => 'imageUrl',
+        'video_url' => 'videoUrl',
+        'thumbnail_url' => 'thumbnailUrl',
         'placements' => 'placements'
     ];
 
@@ -181,6 +189,8 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
      */
     protected static $setters = [
         'image_url' => 'setImageUrl',
+        'video_url' => 'setVideoUrl',
+        'thumbnail_url' => 'setThumbnailUrl',
         'placements' => 'setPlacements'
     ];
 
@@ -191,6 +201,8 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
      */
     protected static $getters = [
         'image_url' => 'getImageUrl',
+        'video_url' => 'getVideoUrl',
+        'thumbnail_url' => 'getThumbnailUrl',
         'placements' => 'getPlacements'
     ];
 
@@ -252,6 +264,8 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
     public function __construct(?array $data = null)
     {
         $this->setIfExists('image_url', $data ?? [], null);
+        $this->setIfExists('video_url', $data ?? [], null);
+        $this->setIfExists('thumbnail_url', $data ?? [], null);
         $this->setIfExists('placements', $data ?? [], null);
     }
 
@@ -282,9 +296,6 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
     {
         $invalidProperties = [];
 
-        if ($this->container['image_url'] === null) {
-            $invalidProperties[] = "'image_url' can't be null";
-        }
         if ($this->container['placements'] === null) {
             $invalidProperties[] = "'placements' can't be null";
         }
@@ -306,7 +317,7 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
     /**
      * Gets image_url
      *
-     * @return string
+     * @return string|null
      */
     public function getImageUrl()
     {
@@ -316,7 +327,7 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
     /**
      * Sets image_url
      *
-     * @param string $image_url The image to deliver for this rule's placements.
+     * @param string|null $image_url Image mode. The image to deliver for this rule's placements.
      *
      * @return self
      */
@@ -326,6 +337,60 @@ class CreateStandaloneAdRequestPlacementAssetsRulesInner implements ModelInterfa
             throw new \InvalidArgumentException('non-nullable image_url cannot be null');
         }
         $this->container['image_url'] = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets video_url
+     *
+     * @return string|null
+     */
+    public function getVideoUrl()
+    {
+        return $this->container['video_url'];
+    }
+
+    /**
+     * Sets video_url
+     *
+     * @param string|null $video_url Video mode. The video to deliver for this rule's placements.
+     *
+     * @return self
+     */
+    public function setVideoUrl($video_url)
+    {
+        if (is_null($video_url)) {
+            throw new \InvalidArgumentException('non-nullable video_url cannot be null');
+        }
+        $this->container['video_url'] = $video_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets thumbnail_url
+     *
+     * @return string|null
+     */
+    public function getThumbnailUrl()
+    {
+        return $this->container['thumbnail_url'];
+    }
+
+    /**
+     * Sets thumbnail_url
+     *
+     * @param string|null $thumbnail_url Video mode (optional). Poster image for this rule's video; auto-generated when omitted.
+     *
+     * @return self
+     */
+    public function setThumbnailUrl($thumbnail_url)
+    {
+        if (is_null($thumbnail_url)) {
+            throw new \InvalidArgumentException('non-nullable thumbnail_url cannot be null');
+        }
+        $this->container['thumbnail_url'] = $thumbnail_url;
 
         return $this;
     }

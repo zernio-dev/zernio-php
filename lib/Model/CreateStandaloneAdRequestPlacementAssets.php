@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateStandaloneAdRequestPlacementAssets Class Doc Comment
  *
  * @category Class
- * @description Meta only. Placement asset customization: pin a SPECIFIC image to each placement group on a SINGLE ad (e.g. a 9:16 image on Stories/Reels and a 4:5 on Feed). This is the same thing Meta Ads Manager produces with \&quot;different creative per placement\&quot;, mapped to the creative&#39;s &#x60;asset_feed_spec&#x60; + &#x60;asset_customization_rules&#x60;. It is deterministic pinning, NOT the auto-optimizing pool of &#x60;dynamicCreative&#x60; (the two are mutually exclusive, and it cannot be combined with &#x60;creatives[]&#x60; or &#x60;adSetId&#x60;). The shared copy (headline, body, link, CTA) comes from the top-level single-creative fields (&#x60;headline&#x60;, &#x60;body&#x60;, &#x60;linkUrl&#x60;, &#x60;callToAction&#x60;) since only the image varies by placement. Each rule&#39;s &#x60;placements&#x60; accepts the same fields as the top-level &#x60;placements&#x60; object; Meta enforces co-selection rules and returns an actionable error.
+ * @description Meta only. Placement asset customization: pin a SPECIFIC asset (image OR video) to each placement group on a SINGLE ad (e.g. a 9:16 on Stories/Reels and a 4:5 on Feed). The same thing Meta Ads Manager produces with \&quot;different creative per placement\&quot;, mapped to the creative&#39;s &#x60;asset_feed_spec&#x60; + &#x60;asset_customization_rules&#x60;. Deterministic pinning, NOT the auto-optimizing pool of &#x60;dynamicCreative&#x60; (mutually exclusive, and it cannot be combined with &#x60;creatives[]&#x60; or &#x60;adSetId&#x60;). Shared copy (headline, body, link, CTA) comes from the top-level single-creative fields since only the asset varies by placement. Each rule&#39;s &#x60;placements&#x60; accepts the same fields as the top-level &#x60;placements&#x60; object; Meta enforces co-selection rules and returns an actionable error.  A block is all-image OR all-video, never mixed (Meta&#39;s asset_feed_spec carries one ad format). Image mode: &#x60;defaultImageUrl&#x60; + &#x60;rules[].imageUrl&#x60;. Video mode: &#x60;defaultVideoUrl&#x60; + &#x60;rules[].videoUrl&#x60; (optional &#x60;thumbnailUrl&#x60;/&#x60;defaultThumbnailUrl&#x60; posters; Meta auto-generates when omitted). Exactly one catch-all default is required.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,6 +60,8 @@ class CreateStandaloneAdRequestPlacementAssets implements ModelInterface, ArrayA
       */
     protected static $openAPITypes = [
         'default_image_url' => 'string',
+        'default_video_url' => 'string',
+        'default_thumbnail_url' => 'string',
         'rules' => '\Zernio\Model\CreateStandaloneAdRequestPlacementAssetsRulesInner[]'
     ];
 
@@ -72,6 +74,8 @@ class CreateStandaloneAdRequestPlacementAssets implements ModelInterface, ArrayA
       */
     protected static $openAPIFormats = [
         'default_image_url' => 'uri',
+        'default_video_url' => 'uri',
+        'default_thumbnail_url' => 'uri',
         'rules' => null
     ];
 
@@ -82,6 +86,8 @@ class CreateStandaloneAdRequestPlacementAssets implements ModelInterface, ArrayA
       */
     protected static array $openAPINullables = [
         'default_image_url' => false,
+        'default_video_url' => false,
+        'default_thumbnail_url' => false,
         'rules' => false
     ];
 
@@ -172,6 +178,8 @@ class CreateStandaloneAdRequestPlacementAssets implements ModelInterface, ArrayA
      */
     protected static $attributeMap = [
         'default_image_url' => 'defaultImageUrl',
+        'default_video_url' => 'defaultVideoUrl',
+        'default_thumbnail_url' => 'defaultThumbnailUrl',
         'rules' => 'rules'
     ];
 
@@ -182,6 +190,8 @@ class CreateStandaloneAdRequestPlacementAssets implements ModelInterface, ArrayA
      */
     protected static $setters = [
         'default_image_url' => 'setDefaultImageUrl',
+        'default_video_url' => 'setDefaultVideoUrl',
+        'default_thumbnail_url' => 'setDefaultThumbnailUrl',
         'rules' => 'setRules'
     ];
 
@@ -192,6 +202,8 @@ class CreateStandaloneAdRequestPlacementAssets implements ModelInterface, ArrayA
      */
     protected static $getters = [
         'default_image_url' => 'getDefaultImageUrl',
+        'default_video_url' => 'getDefaultVideoUrl',
+        'default_thumbnail_url' => 'getDefaultThumbnailUrl',
         'rules' => 'getRules'
     ];
 
@@ -253,6 +265,8 @@ class CreateStandaloneAdRequestPlacementAssets implements ModelInterface, ArrayA
     public function __construct(?array $data = null)
     {
         $this->setIfExists('default_image_url', $data ?? [], null);
+        $this->setIfExists('default_video_url', $data ?? [], null);
+        $this->setIfExists('default_thumbnail_url', $data ?? [], null);
         $this->setIfExists('rules', $data ?? [], null);
     }
 
@@ -283,9 +297,6 @@ class CreateStandaloneAdRequestPlacementAssets implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        if ($this->container['default_image_url'] === null) {
-            $invalidProperties[] = "'default_image_url' can't be null";
-        }
         if ($this->container['rules'] === null) {
             $invalidProperties[] = "'rules' can't be null";
         }
@@ -315,7 +326,7 @@ class CreateStandaloneAdRequestPlacementAssets implements ModelInterface, ArrayA
     /**
      * Gets default_image_url
      *
-     * @return string
+     * @return string|null
      */
     public function getDefaultImageUrl()
     {
@@ -325,7 +336,7 @@ class CreateStandaloneAdRequestPlacementAssets implements ModelInterface, ArrayA
     /**
      * Sets default_image_url
      *
-     * @param string $default_image_url Catch-all image for any placement not matched by a rule. REQUIRED — Meta mandates a default asset customization rule (empty placement spec, lowest priority) on every placement-customized creative.
+     * @param string|null $default_image_url Image mode. Catch-all image for any placement no rule matches. Required in image mode (Meta mandates a default rule).
      *
      * @return self
      */
@@ -335,6 +346,60 @@ class CreateStandaloneAdRequestPlacementAssets implements ModelInterface, ArrayA
             throw new \InvalidArgumentException('non-nullable default_image_url cannot be null');
         }
         $this->container['default_image_url'] = $default_image_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_video_url
+     *
+     * @return string|null
+     */
+    public function getDefaultVideoUrl()
+    {
+        return $this->container['default_video_url'];
+    }
+
+    /**
+     * Sets default_video_url
+     *
+     * @param string|null $default_video_url Video mode. Catch-all video for any placement no rule matches. Required in video mode.
+     *
+     * @return self
+     */
+    public function setDefaultVideoUrl($default_video_url)
+    {
+        if (is_null($default_video_url)) {
+            throw new \InvalidArgumentException('non-nullable default_video_url cannot be null');
+        }
+        $this->container['default_video_url'] = $default_video_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_thumbnail_url
+     *
+     * @return string|null
+     */
+    public function getDefaultThumbnailUrl()
+    {
+        return $this->container['default_thumbnail_url'];
+    }
+
+    /**
+     * Sets default_thumbnail_url
+     *
+     * @param string|null $default_thumbnail_url Video mode (optional). Poster image for the default video; Meta auto-generates one when omitted.
+     *
+     * @return self
+     */
+    public function setDefaultThumbnailUrl($default_thumbnail_url)
+    {
+        if (is_null($default_thumbnail_url)) {
+            throw new \InvalidArgumentException('non-nullable default_thumbnail_url cannot be null');
+        }
+        $this->container['default_thumbnail_url'] = $default_thumbnail_url;
 
         return $this;
     }
@@ -352,7 +417,7 @@ class CreateStandaloneAdRequestPlacementAssets implements ModelInterface, ArrayA
     /**
      * Sets rules
      *
-     * @param \Zernio\Model\CreateStandaloneAdRequestPlacementAssetsRulesInner[] $rules One entry per placement group you want to pin a specific image to.
+     * @param \Zernio\Model\CreateStandaloneAdRequestPlacementAssetsRulesInner[] $rules One entry per placement group you want to pin a specific asset to.
      *
      * @return self
      */
