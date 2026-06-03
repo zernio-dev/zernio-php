@@ -59,6 +59,7 @@ class EstimateAdReachRequest implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPITypes = [
         'account_id' => 'string',
+        'ad_account_id' => 'string',
         'spec' => '\Zernio\Model\TargetingSpec',
         'optimization_goal' => 'string'
     ];
@@ -72,6 +73,7 @@ class EstimateAdReachRequest implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static $openAPIFormats = [
         'account_id' => null,
+        'ad_account_id' => null,
         'spec' => null,
         'optimization_goal' => null
     ];
@@ -83,6 +85,7 @@ class EstimateAdReachRequest implements ModelInterface, ArrayAccess, \JsonSerial
       */
     protected static array $openAPINullables = [
         'account_id' => false,
+        'ad_account_id' => false,
         'spec' => false,
         'optimization_goal' => false
     ];
@@ -174,6 +177,7 @@ class EstimateAdReachRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $attributeMap = [
         'account_id' => 'accountId',
+        'ad_account_id' => 'adAccountId',
         'spec' => 'spec',
         'optimization_goal' => 'optimizationGoal'
     ];
@@ -185,6 +189,7 @@ class EstimateAdReachRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $setters = [
         'account_id' => 'setAccountId',
+        'ad_account_id' => 'setAdAccountId',
         'spec' => 'setSpec',
         'optimization_goal' => 'setOptimizationGoal'
     ];
@@ -196,6 +201,7 @@ class EstimateAdReachRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     protected static $getters = [
         'account_id' => 'getAccountId',
+        'ad_account_id' => 'getAdAccountId',
         'spec' => 'getSpec',
         'optimization_goal' => 'getOptimizationGoal'
     ];
@@ -258,6 +264,7 @@ class EstimateAdReachRequest implements ModelInterface, ArrayAccess, \JsonSerial
     public function __construct(?array $data = null)
     {
         $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('spec', $data ?? [], null);
         $this->setIfExists('optimization_goal', $data ?? [], null);
     }
@@ -292,6 +299,9 @@ class EstimateAdReachRequest implements ModelInterface, ArrayAccess, \JsonSerial
         if ($this->container['account_id'] === null) {
             $invalidProperties[] = "'account_id' can't be null";
         }
+        if ($this->container['ad_account_id'] === null) {
+            $invalidProperties[] = "'ad_account_id' can't be null";
+        }
         if ($this->container['spec'] === null) {
             $invalidProperties[] = "'spec' can't be null";
         }
@@ -323,7 +333,7 @@ class EstimateAdReachRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets account_id
      *
-     * @param string $account_id Social account ID on the target ad platform.
+     * @param string $account_id Zernio social account ID on the target ad platform (the estimate runs against its platform).
      *
      * @return self
      */
@@ -333,6 +343,33 @@ class EstimateAdReachRequest implements ModelInterface, ArrayAccess, \JsonSerial
             throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
         $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_account_id
+     *
+     * @return string
+     */
+    public function getAdAccountId()
+    {
+        return $this->container['ad_account_id'];
+    }
+
+    /**
+     * Sets ad_account_id
+     *
+     * @param string $ad_account_id Required. The platform ad-account ID the reach call runs against (Meta act_..., LinkedIn numeric sponsoredAccount ID, Pinterest ad-account ID, X account ID) - every backing reach API is scoped to one ad account. Get it from GET /v1/ads/accounts.
+     *
+     * @return self
+     */
+    public function setAdAccountId($ad_account_id)
+    {
+        if (is_null($ad_account_id)) {
+            throw new \InvalidArgumentException('non-nullable ad_account_id cannot be null');
+        }
+        $this->container['ad_account_id'] = $ad_account_id;
 
         return $this;
     }

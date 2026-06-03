@@ -2331,10 +2331,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetAdTrackingTags200ResponseTest.php
-test/Model/GetConversionsQuality200ResponseRowsInnerMatchKeysInnerTest.php
-test/Model/GetConversionsQuality200ResponseRowsInnerTest.php
-test/Model/GetConversionsQuality200ResponseTest.php
-test/Model/UpdateAdTrackingTagsRequestCreativeTest.php
-test/Model/UpdateAdTrackingTagsRequestTest.php
-test/Model/UpdateAdTrackingTagsRequestUrlTagsInnerTest.php
