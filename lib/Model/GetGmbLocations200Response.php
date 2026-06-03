@@ -59,6 +59,7 @@ class GetGmbLocations200Response implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'locations' => '\Zernio\Model\GetGmbLocations200ResponseLocationsInner[]',
+        'has_more' => 'bool',
         'selected_location_id' => 'string',
         'cached' => 'bool'
     ];
@@ -72,6 +73,7 @@ class GetGmbLocations200Response implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPIFormats = [
         'locations' => null,
+        'has_more' => null,
         'selected_location_id' => null,
         'cached' => null
     ];
@@ -83,6 +85,7 @@ class GetGmbLocations200Response implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static array $openAPINullables = [
         'locations' => false,
+        'has_more' => false,
         'selected_location_id' => false,
         'cached' => false
     ];
@@ -174,6 +177,7 @@ class GetGmbLocations200Response implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $attributeMap = [
         'locations' => 'locations',
+        'has_more' => 'hasMore',
         'selected_location_id' => 'selectedLocationId',
         'cached' => 'cached'
     ];
@@ -185,6 +189,7 @@ class GetGmbLocations200Response implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $setters = [
         'locations' => 'setLocations',
+        'has_more' => 'setHasMore',
         'selected_location_id' => 'setSelectedLocationId',
         'cached' => 'setCached'
     ];
@@ -196,6 +201,7 @@ class GetGmbLocations200Response implements ModelInterface, ArrayAccess, \JsonSe
      */
     protected static $getters = [
         'locations' => 'getLocations',
+        'has_more' => 'getHasMore',
         'selected_location_id' => 'getSelectedLocationId',
         'cached' => 'getCached'
     ];
@@ -258,6 +264,7 @@ class GetGmbLocations200Response implements ModelInterface, ArrayAccess, \JsonSe
     public function __construct(?array $data = null)
     {
         $this->setIfExists('locations', $data ?? [], null);
+        $this->setIfExists('has_more', $data ?? [], null);
         $this->setIfExists('selected_location_id', $data ?? [], null);
         $this->setIfExists('cached', $data ?? [], null);
     }
@@ -327,6 +334,33 @@ class GetGmbLocations200Response implements ModelInterface, ArrayAccess, \JsonSe
             throw new \InvalidArgumentException('non-nullable locations cannot be null');
         }
         $this->container['locations'] = $locations;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_more
+     *
+     * @return bool|null
+     */
+    public function getHasMore()
+    {
+        return $this->container['has_more'];
+    }
+
+    /**
+     * Sets has_more
+     *
+     * @param bool|null $has_more True when more locations exist than were returned (use search to narrow down).
+     *
+     * @return self
+     */
+    public function setHasMore($has_more)
+    {
+        if (is_null($has_more)) {
+            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
+        }
+        $this->container['has_more'] = $has_more;
 
         return $this;
     }

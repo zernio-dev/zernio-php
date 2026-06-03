@@ -58,7 +58,8 @@ class ListGoogleBusinessLocations200Response implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'locations' => '\Zernio\Model\ListGoogleBusinessLocations200ResponseLocationsInner[]'
+        'locations' => '\Zernio\Model\ListGoogleBusinessLocations200ResponseLocationsInner[]',
+        'has_more' => 'bool'
     ];
 
     /**
@@ -69,7 +70,8 @@ class ListGoogleBusinessLocations200Response implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'locations' => null
+        'locations' => null,
+        'has_more' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class ListGoogleBusinessLocations200Response implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'locations' => false
+        'locations' => false,
+        'has_more' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class ListGoogleBusinessLocations200Response implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'locations' => 'locations'
+        'locations' => 'locations',
+        'has_more' => 'hasMore'
     ];
 
     /**
@@ -176,7 +180,8 @@ class ListGoogleBusinessLocations200Response implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'locations' => 'setLocations'
+        'locations' => 'setLocations',
+        'has_more' => 'setHasMore'
     ];
 
     /**
@@ -185,7 +190,8 @@ class ListGoogleBusinessLocations200Response implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'locations' => 'getLocations'
+        'locations' => 'getLocations',
+        'has_more' => 'getHasMore'
     ];
 
     /**
@@ -246,6 +252,7 @@ class ListGoogleBusinessLocations200Response implements ModelInterface, ArrayAcc
     public function __construct(?array $data = null)
     {
         $this->setIfExists('locations', $data ?? [], null);
+        $this->setIfExists('has_more', $data ?? [], null);
     }
 
     /**
@@ -313,6 +320,33 @@ class ListGoogleBusinessLocations200Response implements ModelInterface, ArrayAcc
             throw new \InvalidArgumentException('non-nullable locations cannot be null');
         }
         $this->container['locations'] = $locations;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_more
+     *
+     * @return bool|null
+     */
+    public function getHasMore()
+    {
+        return $this->container['has_more'];
+    }
+
+    /**
+     * Sets has_more
+     *
+     * @param bool|null $has_more True when more locations exist than were returned (the list is bounded). Prompt the user to narrow the result set with search.
+     *
+     * @return self
+     */
+    public function setHasMore($has_more)
+    {
+        if (is_null($has_more)) {
+            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
+        }
+        $this->container['has_more'] = $has_more;
 
         return $this;
     }

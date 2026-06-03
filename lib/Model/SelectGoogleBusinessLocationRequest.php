@@ -60,6 +60,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     protected static $openAPITypes = [
         'profile_id' => 'string',
         'location_id' => 'string',
+        'account_id' => 'string',
         'pending_data_token' => 'string',
         'redirect_url' => 'string'
     ];
@@ -74,6 +75,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     protected static $openAPIFormats = [
         'profile_id' => null,
         'location_id' => null,
+        'account_id' => null,
         'pending_data_token' => null,
         'redirect_url' => 'uri'
     ];
@@ -86,6 +88,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     protected static array $openAPINullables = [
         'profile_id' => false,
         'location_id' => false,
+        'account_id' => false,
         'pending_data_token' => false,
         'redirect_url' => false
     ];
@@ -178,6 +181,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'profile_id' => 'profileId',
         'location_id' => 'locationId',
+        'account_id' => 'accountId',
         'pending_data_token' => 'pendingDataToken',
         'redirect_url' => 'redirect_url'
     ];
@@ -190,6 +194,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     protected static $setters = [
         'profile_id' => 'setProfileId',
         'location_id' => 'setLocationId',
+        'account_id' => 'setAccountId',
         'pending_data_token' => 'setPendingDataToken',
         'redirect_url' => 'setRedirectUrl'
     ];
@@ -202,6 +207,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     protected static $getters = [
         'profile_id' => 'getProfileId',
         'location_id' => 'getLocationId',
+        'account_id' => 'getAccountId',
         'pending_data_token' => 'getPendingDataToken',
         'redirect_url' => 'getRedirectUrl'
     ];
@@ -265,6 +271,7 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
     {
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('location_id', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('pending_data_token', $data ?? [], null);
         $this->setIfExists('redirect_url', $data ?? [], null);
     }
@@ -370,6 +377,33 @@ class SelectGoogleBusinessLocationRequest implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable location_id cannot be null');
         }
         $this->container['location_id'] = $location_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id Optional but recommended. The Google Business Account resource name (\"accounts/123\") that owns the selected location (returned per-location by GET /v1/connect/googlebusiness/locations). When provided, the location is resolved directly instead of by enumerating the account, which is required for accounts that own many locations. Omit only for small accounts.
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }

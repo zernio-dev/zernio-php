@@ -2736,15 +2736,17 @@ class ConnectApi
      * List GBP locations
      *
      * @param  string $account_id account_id (required)
+     * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
+     * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode&#x3D;\&quot;LH279411\&quot;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetGmbLocations200Response|\Zernio\Model\InlineObject
      */
-    public function getGmbLocations($account_id, string $contentType = self::contentTypes['getGmbLocations'][0])
+    public function getGmbLocations($account_id, $search = null, $filter = null, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
-        list($response) = $this->getGmbLocationsWithHttpInfo($account_id, $contentType);
+        list($response) = $this->getGmbLocationsWithHttpInfo($account_id, $search, $filter, $contentType);
         return $response;
     }
 
@@ -2754,15 +2756,17 @@ class ConnectApi
      * List GBP locations
      *
      * @param  string $account_id (required)
+     * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
+     * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode&#x3D;\&quot;LH279411\&quot;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetGmbLocations200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getGmbLocationsWithHttpInfo($account_id, string $contentType = self::contentTypes['getGmbLocations'][0])
+    public function getGmbLocationsWithHttpInfo($account_id, $search = null, $filter = null, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
-        $request = $this->getGmbLocationsRequest($account_id, $contentType);
+        $request = $this->getGmbLocationsRequest($account_id, $search, $filter, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2853,14 +2857,16 @@ class ConnectApi
      * List GBP locations
      *
      * @param  string $account_id (required)
+     * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
+     * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode&#x3D;\&quot;LH279411\&quot;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGmbLocationsAsync($account_id, string $contentType = self::contentTypes['getGmbLocations'][0])
+    public function getGmbLocationsAsync($account_id, $search = null, $filter = null, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
-        return $this->getGmbLocationsAsyncWithHttpInfo($account_id, $contentType)
+        return $this->getGmbLocationsAsyncWithHttpInfo($account_id, $search, $filter, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2874,15 +2880,17 @@ class ConnectApi
      * List GBP locations
      *
      * @param  string $account_id (required)
+     * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
+     * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode&#x3D;\&quot;LH279411\&quot;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getGmbLocationsAsyncWithHttpInfo($account_id, string $contentType = self::contentTypes['getGmbLocations'][0])
+    public function getGmbLocationsAsyncWithHttpInfo($account_id, $search = null, $filter = null, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
         $returnType = '\Zernio\Model\GetGmbLocations200Response';
-        $request = $this->getGmbLocationsRequest($account_id, $contentType);
+        $request = $this->getGmbLocationsRequest($account_id, $search, $filter, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2924,12 +2932,14 @@ class ConnectApi
      * Create request for operation 'getGmbLocations'
      *
      * @param  string $account_id (required)
+     * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. (optional)
+     * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode&#x3D;\&quot;LH279411\&quot;. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbLocations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getGmbLocationsRequest($account_id, string $contentType = self::contentTypes['getGmbLocations'][0])
+    public function getGmbLocationsRequest($account_id, $search = null, $filter = null, string $contentType = self::contentTypes['getGmbLocations'][0])
     {
 
         // verify the required parameter 'account_id' is set
@@ -2940,6 +2950,8 @@ class ConnectApi
         }
 
 
+
+
         $resourcePath = '/v1/accounts/{accountId}/gmb-locations';
         $formParams = [];
         $queryParams = [];
@@ -2947,6 +2959,24 @@ class ConnectApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search,
+            'search', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            'filter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
@@ -5924,15 +5954,17 @@ class ConnectApi
      * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
      * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
      * @param  string|null $temp_token Legacy. Direct Google access token. Use pendingDataToken instead when available. (optional)
+     * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use this for accounts that own many locations (the response is bounded, see hasMore) so the user can find a specific location without loading the full list. (optional)
+     * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search). Supports fields such as title, storeCode, storefront_address.postal_code, labels and categories, e.g. storeCode&#x3D;\&quot;LH279411\&quot;. See Google&#39;s \&quot;Work with location data\&quot; guide. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessLocations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\ListGoogleBusinessLocations200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response
      */
-    public function listGoogleBusinessLocations($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
+    public function listGoogleBusinessLocations($profile_id = null, $pending_data_token = null, $temp_token = null, $search = null, $filter = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
-        list($response) = $this->listGoogleBusinessLocationsWithHttpInfo($profile_id, $pending_data_token, $temp_token, $contentType);
+        list($response) = $this->listGoogleBusinessLocationsWithHttpInfo($profile_id, $pending_data_token, $temp_token, $search, $filter, $contentType);
         return $response;
     }
 
@@ -5944,15 +5976,17 @@ class ConnectApi
      * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
      * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
      * @param  string|null $temp_token Legacy. Direct Google access token. Use pendingDataToken instead when available. (optional)
+     * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use this for accounts that own many locations (the response is bounded, see hasMore) so the user can find a specific location without loading the full list. (optional)
+     * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search). Supports fields such as title, storeCode, storefront_address.postal_code, labels and categories, e.g. storeCode&#x3D;\&quot;LH279411\&quot;. See Google&#39;s \&quot;Work with location data\&quot; guide. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessLocations'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\ListGoogleBusinessLocations200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetYouTubeDailyViews400Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listGoogleBusinessLocationsWithHttpInfo($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
+    public function listGoogleBusinessLocationsWithHttpInfo($profile_id = null, $pending_data_token = null, $temp_token = null, $search = null, $filter = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
-        $request = $this->listGoogleBusinessLocationsRequest($profile_id, $pending_data_token, $temp_token, $contentType);
+        $request = $this->listGoogleBusinessLocationsRequest($profile_id, $pending_data_token, $temp_token, $search, $filter, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6059,14 +6093,16 @@ class ConnectApi
      * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
      * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
      * @param  string|null $temp_token Legacy. Direct Google access token. Use pendingDataToken instead when available. (optional)
+     * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use this for accounts that own many locations (the response is bounded, see hasMore) so the user can find a specific location without loading the full list. (optional)
+     * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search). Supports fields such as title, storeCode, storefront_address.postal_code, labels and categories, e.g. storeCode&#x3D;\&quot;LH279411\&quot;. See Google&#39;s \&quot;Work with location data\&quot; guide. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessLocations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listGoogleBusinessLocationsAsync($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
+    public function listGoogleBusinessLocationsAsync($profile_id = null, $pending_data_token = null, $temp_token = null, $search = null, $filter = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
-        return $this->listGoogleBusinessLocationsAsyncWithHttpInfo($profile_id, $pending_data_token, $temp_token, $contentType)
+        return $this->listGoogleBusinessLocationsAsyncWithHttpInfo($profile_id, $pending_data_token, $temp_token, $search, $filter, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6082,15 +6118,17 @@ class ConnectApi
      * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
      * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
      * @param  string|null $temp_token Legacy. Direct Google access token. Use pendingDataToken instead when available. (optional)
+     * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use this for accounts that own many locations (the response is bounded, see hasMore) so the user can find a specific location without loading the full list. (optional)
+     * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search). Supports fields such as title, storeCode, storefront_address.postal_code, labels and categories, e.g. storeCode&#x3D;\&quot;LH279411\&quot;. See Google&#39;s \&quot;Work with location data\&quot; guide. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessLocations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listGoogleBusinessLocationsAsyncWithHttpInfo($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
+    public function listGoogleBusinessLocationsAsyncWithHttpInfo($profile_id = null, $pending_data_token = null, $temp_token = null, $search = null, $filter = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
         $returnType = '\Zernio\Model\ListGoogleBusinessLocations200Response';
-        $request = $this->listGoogleBusinessLocationsRequest($profile_id, $pending_data_token, $temp_token, $contentType);
+        $request = $this->listGoogleBusinessLocationsRequest($profile_id, $pending_data_token, $temp_token, $search, $filter, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6134,13 +6172,17 @@ class ConnectApi
      * @param  string|null $profile_id Profile ID from your connection flow. Required for auth validation when provided. (optional)
      * @param  string|null $pending_data_token Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. (optional)
      * @param  string|null $temp_token Legacy. Direct Google access token. Use pendingDataToken instead when available. (optional)
+     * @param  string|null $search Free-text search on the business name, applied server-side by Google. Use this for accounts that own many locations (the response is bounded, see hasMore) so the user can find a specific location without loading the full list. (optional)
+     * @param  string|null $filter Raw Google Business Information API filter expression (advanced; takes precedence over search). Supports fields such as title, storeCode, storefront_address.postal_code, labels and categories, e.g. storeCode&#x3D;\&quot;LH279411\&quot;. See Google&#39;s \&quot;Work with location data\&quot; guide. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listGoogleBusinessLocations'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listGoogleBusinessLocationsRequest($profile_id = null, $pending_data_token = null, $temp_token = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
+    public function listGoogleBusinessLocationsRequest($profile_id = null, $pending_data_token = null, $temp_token = null, $search = null, $filter = null, string $contentType = self::contentTypes['listGoogleBusinessLocations'][0])
     {
+
+
 
 
 
@@ -6175,6 +6217,24 @@ class ConnectApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $temp_token,
             'tempToken', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $search,
+            'search', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            'filter', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

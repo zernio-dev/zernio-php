@@ -11558,6 +11558,24 @@ paths:
           required: false
           schema: { type: string }
           description: Legacy. Direct Google access token. Use pendingDataToken instead when available.
+        - name: search
+          in: query
+          required: false
+          schema: { type: string }
+          description: >
+            Free-text search on the business name, applied server-side by Google.
+            Use this for accounts that own many locations (the response is bounded,
+            see hasMore) so the user can find a specific location without loading
+            the full list.
+        - name: filter
+          in: query
+          required: false
+          schema: { type: string }
+          description: >
+            Raw Google Business Information API filter expression (advanced;
+            takes precedence over search). Supports fields such as title, storeCode,
+            storefront_address.postal_code, labels and categories, e.g.
+            storeCode="LH279411". See Google's "Work with location data" guide.
       security:
         - bearerAuth: []
         - connectToken: []
@@ -11580,6 +11598,12 @@ paths:
                         accountName: { type: string, description: Account name }
                         address: { type: string, description: Business address }
                         category: { type: string, description: Business category }
+                        storeCode: { type: string, description: Store code set on the location in Google Business Profile (if any) }
+                  hasMore:
+                    type: boolean
+                    description: >
+                      True when more locations exist than were returned (the list is
+                      bounded). Prompt the user to narrow the result set with search.
               example:
                 locations:
                   - id: "9281089117903930794"
@@ -11588,6 +11612,8 @@ paths:
                     accountName: "My Business Account"
                     address: "123 Main St, City, Country"
                     category: "Coffee shop"
+                    storeCode: "CS-001"
+                hasMore: false
         '400': { description: Missing required parameters (profileId or tempToken) }
         '401': { $ref: '#/components/responses/Unauthorized' }
         '500': 
@@ -11624,6 +11650,14 @@ paths:
                 locationId:
                   type: string
                   description: The Google Business location ID selected by the user
+                accountId:
+                  type: string
+                  description: >
+                    Optional but recommended. The Google Business Account resource name
+                    ("accounts/123") that owns the selected location (returned per-location
+                    by GET /v1/connect/googlebusiness/locations). When provided, the location
+                    is resolved directly instead of by enumerating the account, which is
+                    required for accounts that own many locations. Omit only for small accounts.
                 pendingDataToken:
                   type: string
                   description: Token from the OAuth callback redirect (pendingDataToken query param). Tokens and profile data are retrieved server-side from this token.
@@ -11634,6 +11668,7 @@ paths:
             example:
               profileId: "507f1f77bcf86cd799439011"
               locationId: "9281089117903930794"
+              accountId: "accounts/113303573364907650416"
               pendingDataToken: "a1b2c3d4e5f6..."
               redirect_url: "https://yourdomain.com/integrations/callback"
       security:
@@ -15665,12 +15700,26 @@ paths:
       operationId: getGmbLocations
       tags: [Connect]
       summary: List GBP locations
-      description: Returns all Google Business Profile locations the connected account has access to, including the currently selected location.
+      description: >
+        Returns Google Business Profile locations the connected account can access,
+        plus the currently selected location. The list is bounded (see hasMore); for
+        accounts that own many locations, use the search or filter query params to find
+        a specific one instead of loading them all.
       parameters:
         - name: accountId
           in: path
           required: true
           schema: { type: string }
+        - name: search
+          in: query
+          required: false
+          schema: { type: string }
+          description: Free-text search on the business name, applied server-side by Google. Use for accounts with many locations.
+        - name: filter
+          in: query
+          required: false
+          schema: { type: string }
+          description: Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode="LH279411".
       responses:
         '200':
           description: Locations list
@@ -15691,6 +15740,10 @@ paths:
                         address: { type: string }
                         category: { type: string }
                         websiteUrl: { type: string }
+                        storeCode: { type: string }
+                  hasMore:
+                    type: boolean
+                    description: True when more locations exist than were returned (use search to narrow down).
                   selectedLocationId: { type: string }
                   cached: { type: boolean }
               example:
@@ -15725,8 +15778,17 @@ paths:
               required: [selectedLocationId]
               properties:
                 selectedLocationId: { type: string }
+                accountId:
+                  type: string
+                  description: >
+                    Optional but recommended. The Google Business Account resource name
+                    ("accounts/123") that owns the new location (from GET gmb-locations).
+                    When provided, the location is resolved directly instead of by
+                    enumerating the account, which is required for accounts with many
+                    locations.
             example:
               selectedLocationId: "12345678901234567890"
+              accountId: "accounts/123456789"
       responses:
         '200':
           description: Location updated

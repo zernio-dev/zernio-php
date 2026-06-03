@@ -64,7 +64,8 @@ class GetGmbLocations200ResponseLocationsInner implements ModelInterface, ArrayA
         'account_name' => 'string',
         'address' => 'string',
         'category' => 'string',
-        'website_url' => 'string'
+        'website_url' => 'string',
+        'store_code' => 'string'
     ];
 
     /**
@@ -81,7 +82,8 @@ class GetGmbLocations200ResponseLocationsInner implements ModelInterface, ArrayA
         'account_name' => null,
         'address' => null,
         'category' => null,
-        'website_url' => null
+        'website_url' => null,
+        'store_code' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class GetGmbLocations200ResponseLocationsInner implements ModelInterface, ArrayA
         'account_name' => false,
         'address' => false,
         'category' => false,
-        'website_url' => false
+        'website_url' => false,
+        'store_code' => false
     ];
 
     /**
@@ -191,7 +194,8 @@ class GetGmbLocations200ResponseLocationsInner implements ModelInterface, ArrayA
         'account_name' => 'accountName',
         'address' => 'address',
         'category' => 'category',
-        'website_url' => 'websiteUrl'
+        'website_url' => 'websiteUrl',
+        'store_code' => 'storeCode'
     ];
 
     /**
@@ -206,7 +210,8 @@ class GetGmbLocations200ResponseLocationsInner implements ModelInterface, ArrayA
         'account_name' => 'setAccountName',
         'address' => 'setAddress',
         'category' => 'setCategory',
-        'website_url' => 'setWebsiteUrl'
+        'website_url' => 'setWebsiteUrl',
+        'store_code' => 'setStoreCode'
     ];
 
     /**
@@ -221,7 +226,8 @@ class GetGmbLocations200ResponseLocationsInner implements ModelInterface, ArrayA
         'account_name' => 'getAccountName',
         'address' => 'getAddress',
         'category' => 'getCategory',
-        'website_url' => 'getWebsiteUrl'
+        'website_url' => 'getWebsiteUrl',
+        'store_code' => 'getStoreCode'
     ];
 
     /**
@@ -288,6 +294,7 @@ class GetGmbLocations200ResponseLocationsInner implements ModelInterface, ArrayA
         $this->setIfExists('address', $data ?? [], null);
         $this->setIfExists('category', $data ?? [], null);
         $this->setIfExists('website_url', $data ?? [], null);
+        $this->setIfExists('store_code', $data ?? [], null);
     }
 
     /**
@@ -517,6 +524,33 @@ class GetGmbLocations200ResponseLocationsInner implements ModelInterface, ArrayA
             throw new \InvalidArgumentException('non-nullable website_url cannot be null');
         }
         $this->container['website_url'] = $website_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets store_code
+     *
+     * @return string|null
+     */
+    public function getStoreCode()
+    {
+        return $this->container['store_code'];
+    }
+
+    /**
+     * Sets store_code
+     *
+     * @param string|null $store_code store_code
+     *
+     * @return self
+     */
+    public function setStoreCode($store_code)
+    {
+        if (is_null($store_code)) {
+            throw new \InvalidArgumentException('non-nullable store_code cannot be null');
+        }
+        $this->container['store_code'] = $store_code;
 
         return $this;
     }

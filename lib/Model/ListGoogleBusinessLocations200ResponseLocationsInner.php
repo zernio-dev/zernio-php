@@ -63,7 +63,8 @@ class ListGoogleBusinessLocations200ResponseLocationsInner implements ModelInter
         'account_id' => 'string',
         'account_name' => 'string',
         'address' => 'string',
-        'category' => 'string'
+        'category' => 'string',
+        'store_code' => 'string'
     ];
 
     /**
@@ -79,7 +80,8 @@ class ListGoogleBusinessLocations200ResponseLocationsInner implements ModelInter
         'account_id' => null,
         'account_name' => null,
         'address' => null,
-        'category' => null
+        'category' => null,
+        'store_code' => null
     ];
 
     /**
@@ -93,7 +95,8 @@ class ListGoogleBusinessLocations200ResponseLocationsInner implements ModelInter
         'account_id' => false,
         'account_name' => false,
         'address' => false,
-        'category' => false
+        'category' => false,
+        'store_code' => false
     ];
 
     /**
@@ -187,7 +190,8 @@ class ListGoogleBusinessLocations200ResponseLocationsInner implements ModelInter
         'account_id' => 'accountId',
         'account_name' => 'accountName',
         'address' => 'address',
-        'category' => 'category'
+        'category' => 'category',
+        'store_code' => 'storeCode'
     ];
 
     /**
@@ -201,7 +205,8 @@ class ListGoogleBusinessLocations200ResponseLocationsInner implements ModelInter
         'account_id' => 'setAccountId',
         'account_name' => 'setAccountName',
         'address' => 'setAddress',
-        'category' => 'setCategory'
+        'category' => 'setCategory',
+        'store_code' => 'setStoreCode'
     ];
 
     /**
@@ -215,7 +220,8 @@ class ListGoogleBusinessLocations200ResponseLocationsInner implements ModelInter
         'account_id' => 'getAccountId',
         'account_name' => 'getAccountName',
         'address' => 'getAddress',
-        'category' => 'getCategory'
+        'category' => 'getCategory',
+        'store_code' => 'getStoreCode'
     ];
 
     /**
@@ -281,6 +287,7 @@ class ListGoogleBusinessLocations200ResponseLocationsInner implements ModelInter
         $this->setIfExists('account_name', $data ?? [], null);
         $this->setIfExists('address', $data ?? [], null);
         $this->setIfExists('category', $data ?? [], null);
+        $this->setIfExists('store_code', $data ?? [], null);
     }
 
     /**
@@ -483,6 +490,33 @@ class ListGoogleBusinessLocations200ResponseLocationsInner implements ModelInter
             throw new \InvalidArgumentException('non-nullable category cannot be null');
         }
         $this->container['category'] = $category;
+
+        return $this;
+    }
+
+    /**
+     * Gets store_code
+     *
+     * @return string|null
+     */
+    public function getStoreCode()
+    {
+        return $this->container['store_code'];
+    }
+
+    /**
+     * Sets store_code
+     *
+     * @param string|null $store_code Store code set on the location in Google Business Profile (if any)
+     *
+     * @return self
+     */
+    public function setStoreCode($store_code)
+    {
+        if (is_null($store_code)) {
+            throw new \InvalidArgumentException('non-nullable store_code cannot be null');
+        }
+        $this->container['store_code'] = $store_code;
 
         return $this;
     }

@@ -548,12 +548,12 @@ try {
 ## `getGmbLocations()`
 
 ```php
-getGmbLocations($account_id): \Zernio\Model\GetGmbLocations200Response
+getGmbLocations($account_id, $search, $filter): \Zernio\Model\GetGmbLocations200Response
 ```
 
 List GBP locations
 
-Returns all Google Business Profile locations the connected account has access to, including the currently selected location.
+Returns Google Business Profile locations the connected account can access, plus the currently selected location. The list is bounded (see hasMore); for accounts that own many locations, use the search or filter query params to find a specific one instead of loading them all.
 
 ### Example
 
@@ -573,9 +573,11 @@ $apiInstance = new Zernio\Api\ConnectApi(
     $config
 );
 $account_id = 'account_id_example'; // string
+$search = 'search_example'; // string | Free-text search on the business name, applied server-side by Google. Use for accounts with many locations.
+$filter = 'filter_example'; // string | Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode=\"LH279411\".
 
 try {
-    $result = $apiInstance->getGmbLocations($account_id);
+    $result = $apiInstance->getGmbLocations($account_id, $search, $filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->getGmbLocations: ', $e->getMessage(), PHP_EOL;
@@ -587,6 +589,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
+| **search** | **string**| Free-text search on the business name, applied server-side by Google. Use for accounts with many locations. | [optional] |
+| **filter** | **string**| Raw Google Business Information API filter expression (advanced; takes precedence over search), e.g. storeCode&#x3D;\&quot;LH279411\&quot;. | [optional] |
 
 ### Return type
 
@@ -1218,7 +1222,7 @@ try {
 ## `listGoogleBusinessLocations()`
 
 ```php
-listGoogleBusinessLocations($profile_id, $pending_data_token, $temp_token): \Zernio\Model\ListGoogleBusinessLocations200Response
+listGoogleBusinessLocations($profile_id, $pending_data_token, $temp_token, $search, $filter): \Zernio\Model\ListGoogleBusinessLocations200Response
 ```
 
 List GBP locations
@@ -1250,9 +1254,11 @@ $apiInstance = new Zernio\Api\ConnectApi(
 $profile_id = 'profile_id_example'; // string | Profile ID from your connection flow. Required for auth validation when provided.
 $pending_data_token = 'pending_data_token_example'; // string | Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required.
 $temp_token = 'temp_token_example'; // string | Legacy. Direct Google access token. Use pendingDataToken instead when available.
+$search = 'search_example'; // string | Free-text search on the business name, applied server-side by Google. Use this for accounts that own many locations (the response is bounded, see hasMore) so the user can find a specific location without loading the full list.
+$filter = 'filter_example'; // string | Raw Google Business Information API filter expression (advanced; takes precedence over search). Supports fields such as title, storeCode, storefront_address.postal_code, labels and categories, e.g. storeCode=\"LH279411\". See Google's \"Work with location data\" guide.
 
 try {
-    $result = $apiInstance->listGoogleBusinessLocations($profile_id, $pending_data_token, $temp_token);
+    $result = $apiInstance->listGoogleBusinessLocations($profile_id, $pending_data_token, $temp_token, $search, $filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ConnectApi->listGoogleBusinessLocations: ', $e->getMessage(), PHP_EOL;
@@ -1266,6 +1272,8 @@ try {
 | **profile_id** | **string**| Profile ID from your connection flow. Required for auth validation when provided. | [optional] |
 | **pending_data_token** | **string**| Token from the OAuth callback redirect. Preferred over tempToken because it preserves server-side token storage. One of pendingDataToken or tempToken is required. | [optional] |
 | **temp_token** | **string**| Legacy. Direct Google access token. Use pendingDataToken instead when available. | [optional] |
+| **search** | **string**| Free-text search on the business name, applied server-side by Google. Use this for accounts that own many locations (the response is bounded, see hasMore) so the user can find a specific location without loading the full list. | [optional] |
+| **filter** | **string**| Raw Google Business Information API filter expression (advanced; takes precedence over search). Supports fields such as title, storeCode, storefront_address.postal_code, labels and categories, e.g. storeCode&#x3D;\&quot;LH279411\&quot;. See Google&#39;s \&quot;Work with location data\&quot; guide. | [optional] |
 
 ### Return type
 
@@ -1635,7 +1643,7 @@ $apiInstance = new Zernio\Api\ConnectApi(
     new GuzzleHttp\Client(),
     $config
 );
-$select_google_business_location_request = {"profileId":"507f1f77bcf86cd799439011","locationId":"9281089117903930794","pendingDataToken":"a1b2c3d4e5f6...","redirect_url":"https://yourdomain.com/integrations/callback"}; // \Zernio\Model\SelectGoogleBusinessLocationRequest
+$select_google_business_location_request = {"profileId":"507f1f77bcf86cd799439011","locationId":"9281089117903930794","accountId":"accounts/113303573364907650416","pendingDataToken":"a1b2c3d4e5f6...","redirect_url":"https://yourdomain.com/integrations/callback"}; // \Zernio\Model\SelectGoogleBusinessLocationRequest
 
 try {
     $result = $apiInstance->selectGoogleBusinessLocation($select_google_business_location_request);
@@ -1940,7 +1948,7 @@ $apiInstance = new Zernio\Api\ConnectApi(
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_gmb_location_request = {"selectedLocationId":"12345678901234567890"}; // \Zernio\Model\UpdateGmbLocationRequest
+$update_gmb_location_request = {"selectedLocationId":"12345678901234567890","accountId":"accounts/123456789"}; // \Zernio\Model\UpdateGmbLocationRequest
 
 try {
     $result = $apiInstance->updateGmbLocation($account_id, $update_gmb_location_request);
