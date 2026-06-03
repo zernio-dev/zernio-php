@@ -58,8 +58,22 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
+        'title' => 'string',
         'content' => 'string',
+        'media_items' => '\Zernio\Model\MediaItem[]',
+        'platforms' => '\Zernio\Model\UpdatePostRequestPlatformsInner[]',
         'scheduled_for' => '\DateTime',
+        'publish_now' => 'bool',
+        'is_draft' => 'bool',
+        'timezone' => 'string',
+        'visibility' => 'string',
+        'tags' => 'string[]',
+        'hashtags' => 'string[]',
+        'mentions' => 'string[]',
+        'crossposting_enabled' => 'bool',
+        'metadata' => 'array<string,mixed>',
+        'queued_from_profile' => 'string',
+        'queue_id' => 'string',
         'tiktok_settings' => '\Zernio\Model\TikTokPlatformData',
         'facebook_settings' => '\Zernio\Model\FacebookPlatformData',
         'recycling' => '\Zernio\Model\RecyclingConfig'
@@ -73,8 +87,22 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'title' => null,
         'content' => null,
+        'media_items' => null,
+        'platforms' => null,
         'scheduled_for' => 'date-time',
+        'publish_now' => null,
+        'is_draft' => null,
+        'timezone' => null,
+        'visibility' => null,
+        'tags' => null,
+        'hashtags' => null,
+        'mentions' => null,
+        'crossposting_enabled' => null,
+        'metadata' => null,
+        'queued_from_profile' => null,
+        'queue_id' => null,
         'tiktok_settings' => null,
         'facebook_settings' => null,
         'recycling' => null
@@ -86,8 +114,22 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'title' => false,
         'content' => false,
+        'media_items' => false,
+        'platforms' => false,
         'scheduled_for' => false,
+        'publish_now' => false,
+        'is_draft' => false,
+        'timezone' => false,
+        'visibility' => false,
+        'tags' => false,
+        'hashtags' => false,
+        'mentions' => false,
+        'crossposting_enabled' => false,
+        'metadata' => false,
+        'queued_from_profile' => false,
+        'queue_id' => false,
         'tiktok_settings' => false,
         'facebook_settings' => false,
         'recycling' => false
@@ -179,8 +221,22 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
+        'title' => 'title',
         'content' => 'content',
+        'media_items' => 'mediaItems',
+        'platforms' => 'platforms',
         'scheduled_for' => 'scheduledFor',
+        'publish_now' => 'publishNow',
+        'is_draft' => 'isDraft',
+        'timezone' => 'timezone',
+        'visibility' => 'visibility',
+        'tags' => 'tags',
+        'hashtags' => 'hashtags',
+        'mentions' => 'mentions',
+        'crossposting_enabled' => 'crosspostingEnabled',
+        'metadata' => 'metadata',
+        'queued_from_profile' => 'queuedFromProfile',
+        'queue_id' => 'queueId',
         'tiktok_settings' => 'tiktokSettings',
         'facebook_settings' => 'facebookSettings',
         'recycling' => 'recycling'
@@ -192,8 +248,22 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
+        'title' => 'setTitle',
         'content' => 'setContent',
+        'media_items' => 'setMediaItems',
+        'platforms' => 'setPlatforms',
         'scheduled_for' => 'setScheduledFor',
+        'publish_now' => 'setPublishNow',
+        'is_draft' => 'setIsDraft',
+        'timezone' => 'setTimezone',
+        'visibility' => 'setVisibility',
+        'tags' => 'setTags',
+        'hashtags' => 'setHashtags',
+        'mentions' => 'setMentions',
+        'crossposting_enabled' => 'setCrosspostingEnabled',
+        'metadata' => 'setMetadata',
+        'queued_from_profile' => 'setQueuedFromProfile',
+        'queue_id' => 'setQueueId',
         'tiktok_settings' => 'setTiktokSettings',
         'facebook_settings' => 'setFacebookSettings',
         'recycling' => 'setRecycling'
@@ -205,8 +275,22 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
+        'title' => 'getTitle',
         'content' => 'getContent',
+        'media_items' => 'getMediaItems',
+        'platforms' => 'getPlatforms',
         'scheduled_for' => 'getScheduledFor',
+        'publish_now' => 'getPublishNow',
+        'is_draft' => 'getIsDraft',
+        'timezone' => 'getTimezone',
+        'visibility' => 'getVisibility',
+        'tags' => 'getTags',
+        'hashtags' => 'getHashtags',
+        'mentions' => 'getMentions',
+        'crossposting_enabled' => 'getCrosspostingEnabled',
+        'metadata' => 'getMetadata',
+        'queued_from_profile' => 'getQueuedFromProfile',
+        'queue_id' => 'getQueueId',
         'tiktok_settings' => 'getTiktokSettings',
         'facebook_settings' => 'getFacebookSettings',
         'recycling' => 'getRecycling'
@@ -253,6 +337,23 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         return self::$openAPIModelName;
     }
 
+    public const VISIBILITY__PUBLIC = 'public';
+    public const VISIBILITY__PRIVATE = 'private';
+    public const VISIBILITY_UNLISTED = 'unlisted';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getVisibilityAllowableValues()
+    {
+        return [
+            self::VISIBILITY__PUBLIC,
+            self::VISIBILITY__PRIVATE,
+            self::VISIBILITY_UNLISTED,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -269,8 +370,22 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('content', $data ?? [], null);
+        $this->setIfExists('media_items', $data ?? [], null);
+        $this->setIfExists('platforms', $data ?? [], null);
         $this->setIfExists('scheduled_for', $data ?? [], null);
+        $this->setIfExists('publish_now', $data ?? [], false);
+        $this->setIfExists('is_draft', $data ?? [], null);
+        $this->setIfExists('timezone', $data ?? [], null);
+        $this->setIfExists('visibility', $data ?? [], null);
+        $this->setIfExists('tags', $data ?? [], null);
+        $this->setIfExists('hashtags', $data ?? [], null);
+        $this->setIfExists('mentions', $data ?? [], null);
+        $this->setIfExists('crossposting_enabled', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
+        $this->setIfExists('queued_from_profile', $data ?? [], null);
+        $this->setIfExists('queue_id', $data ?? [], null);
         $this->setIfExists('tiktok_settings', $data ?? [], null);
         $this->setIfExists('facebook_settings', $data ?? [], null);
         $this->setIfExists('recycling', $data ?? [], null);
@@ -303,6 +418,15 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getVisibilityAllowableValues();
+        if (!is_null($this->container['visibility']) && !in_array($this->container['visibility'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'visibility', must be one of '%s'",
+                $this->container['visibility'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -317,6 +441,33 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
 
     /**
      * Gets content
@@ -346,6 +497,60 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
     }
 
     /**
+     * Gets media_items
+     *
+     * @return \Zernio\Model\MediaItem[]|null
+     */
+    public function getMediaItems()
+    {
+        return $this->container['media_items'];
+    }
+
+    /**
+     * Sets media_items
+     *
+     * @param \Zernio\Model\MediaItem[]|null $media_items media_items
+     *
+     * @return self
+     */
+    public function setMediaItems($media_items)
+    {
+        if (is_null($media_items)) {
+            throw new \InvalidArgumentException('non-nullable media_items cannot be null');
+        }
+        $this->container['media_items'] = $media_items;
+
+        return $this;
+    }
+
+    /**
+     * Gets platforms
+     *
+     * @return \Zernio\Model\UpdatePostRequestPlatformsInner[]|null
+     */
+    public function getPlatforms()
+    {
+        return $this->container['platforms'];
+    }
+
+    /**
+     * Sets platforms
+     *
+     * @param \Zernio\Model\UpdatePostRequestPlatformsInner[]|null $platforms Target platforms and accounts for this post. Each item must include platform and accountId.
+     *
+     * @return self
+     */
+    public function setPlatforms($platforms)
+    {
+        if (is_null($platforms)) {
+            throw new \InvalidArgumentException('non-nullable platforms cannot be null');
+        }
+        $this->container['platforms'] = $platforms;
+
+        return $this;
+    }
+
+    /**
      * Gets scheduled_for
      *
      * @return \DateTime|null
@@ -368,6 +573,313 @@ class UpdatePostRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
             throw new \InvalidArgumentException('non-nullable scheduled_for cannot be null');
         }
         $this->container['scheduled_for'] = $scheduled_for;
+
+        return $this;
+    }
+
+    /**
+     * Gets publish_now
+     *
+     * @return bool|null
+     */
+    public function getPublishNow()
+    {
+        return $this->container['publish_now'];
+    }
+
+    /**
+     * Sets publish_now
+     *
+     * @param bool|null $publish_now publish_now
+     *
+     * @return self
+     */
+    public function setPublishNow($publish_now)
+    {
+        if (is_null($publish_now)) {
+            throw new \InvalidArgumentException('non-nullable publish_now cannot be null');
+        }
+        $this->container['publish_now'] = $publish_now;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_draft
+     *
+     * @return bool|null
+     */
+    public function getIsDraft()
+    {
+        return $this->container['is_draft'];
+    }
+
+    /**
+     * Sets is_draft
+     *
+     * @param bool|null $is_draft is_draft
+     *
+     * @return self
+     */
+    public function setIsDraft($is_draft)
+    {
+        if (is_null($is_draft)) {
+            throw new \InvalidArgumentException('non-nullable is_draft cannot be null');
+        }
+        $this->container['is_draft'] = $is_draft;
+
+        return $this;
+    }
+
+    /**
+     * Gets timezone
+     *
+     * @return string|null
+     */
+    public function getTimezone()
+    {
+        return $this->container['timezone'];
+    }
+
+    /**
+     * Sets timezone
+     *
+     * @param string|null $timezone timezone
+     *
+     * @return self
+     */
+    public function setTimezone($timezone)
+    {
+        if (is_null($timezone)) {
+            throw new \InvalidArgumentException('non-nullable timezone cannot be null');
+        }
+        $this->container['timezone'] = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * Gets visibility
+     *
+     * @return string|null
+     */
+    public function getVisibility()
+    {
+        return $this->container['visibility'];
+    }
+
+    /**
+     * Sets visibility
+     *
+     * @param string|null $visibility visibility
+     *
+     * @return self
+     */
+    public function setVisibility($visibility)
+    {
+        if (is_null($visibility)) {
+            throw new \InvalidArgumentException('non-nullable visibility cannot be null');
+        }
+        $allowedValues = $this->getVisibilityAllowableValues();
+        if (!in_array($visibility, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'visibility', must be one of '%s'",
+                    $visibility,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['visibility'] = $visibility;
+
+        return $this;
+    }
+
+    /**
+     * Gets tags
+     *
+     * @return string[]|null
+     */
+    public function getTags()
+    {
+        return $this->container['tags'];
+    }
+
+    /**
+     * Sets tags
+     *
+     * @param string[]|null $tags tags
+     *
+     * @return self
+     */
+    public function setTags($tags)
+    {
+        if (is_null($tags)) {
+            throw new \InvalidArgumentException('non-nullable tags cannot be null');
+        }
+        $this->container['tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets hashtags
+     *
+     * @return string[]|null
+     */
+    public function getHashtags()
+    {
+        return $this->container['hashtags'];
+    }
+
+    /**
+     * Sets hashtags
+     *
+     * @param string[]|null $hashtags hashtags
+     *
+     * @return self
+     */
+    public function setHashtags($hashtags)
+    {
+        if (is_null($hashtags)) {
+            throw new \InvalidArgumentException('non-nullable hashtags cannot be null');
+        }
+        $this->container['hashtags'] = $hashtags;
+
+        return $this;
+    }
+
+    /**
+     * Gets mentions
+     *
+     * @return string[]|null
+     */
+    public function getMentions()
+    {
+        return $this->container['mentions'];
+    }
+
+    /**
+     * Sets mentions
+     *
+     * @param string[]|null $mentions mentions
+     *
+     * @return self
+     */
+    public function setMentions($mentions)
+    {
+        if (is_null($mentions)) {
+            throw new \InvalidArgumentException('non-nullable mentions cannot be null');
+        }
+        $this->container['mentions'] = $mentions;
+
+        return $this;
+    }
+
+    /**
+     * Gets crossposting_enabled
+     *
+     * @return bool|null
+     */
+    public function getCrosspostingEnabled()
+    {
+        return $this->container['crossposting_enabled'];
+    }
+
+    /**
+     * Sets crossposting_enabled
+     *
+     * @param bool|null $crossposting_enabled crossposting_enabled
+     *
+     * @return self
+     */
+    public function setCrosspostingEnabled($crossposting_enabled)
+    {
+        if (is_null($crossposting_enabled)) {
+            throw new \InvalidArgumentException('non-nullable crossposting_enabled cannot be null');
+        }
+        $this->container['crossposting_enabled'] = $crossposting_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,mixed>|null $metadata metadata
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+        $this->container['metadata'] = $metadata;
+
+        return $this;
+    }
+
+    /**
+     * Gets queued_from_profile
+     *
+     * @return string|null
+     */
+    public function getQueuedFromProfile()
+    {
+        return $this->container['queued_from_profile'];
+    }
+
+    /**
+     * Sets queued_from_profile
+     *
+     * @param string|null $queued_from_profile Profile ID to schedule via queue.
+     *
+     * @return self
+     */
+    public function setQueuedFromProfile($queued_from_profile)
+    {
+        if (is_null($queued_from_profile)) {
+            throw new \InvalidArgumentException('non-nullable queued_from_profile cannot be null');
+        }
+        $this->container['queued_from_profile'] = $queued_from_profile;
+
+        return $this;
+    }
+
+    /**
+     * Gets queue_id
+     *
+     * @return string|null
+     */
+    public function getQueueId()
+    {
+        return $this->container['queue_id'];
+    }
+
+    /**
+     * Sets queue_id
+     *
+     * @param string|null $queue_id Specific queue ID to use when scheduling via queue.
+     *
+     * @return self
+     */
+    public function setQueueId($queue_id)
+    {
+        if (is_null($queue_id)) {
+            throw new \InvalidArgumentException('non-nullable queue_id cannot be null');
+        }
+        $this->container['queue_id'] = $queue_id;
 
         return $this;
     }

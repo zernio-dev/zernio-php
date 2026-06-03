@@ -1,6 +1,6 @@
 <?php
 /**
- * RecyclingConfig
+ * UpdatePostRequestPlatformsInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * RecyclingConfig Class Doc Comment
+ * UpdatePostRequestPlatformsInner Class Doc Comment
  *
  * @category Class
- * @description Configure automatic post recycling (reposting at regular intervals). After the post is published, the system creates new scheduled copies at the specified interval until expiration conditions are met. Supports weekly or monthly intervals. Maximum 10 active recycling posts per account. YouTube and TikTok platforms are excluded from recycling. Content variations are recommended for Twitter and Pinterest to avoid duplicate flags.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
+class UpdatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'RecyclingConfig';
+    protected static $openAPIModelName = 'updatePost_request_platforms_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,13 +58,12 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'enabled' => 'bool',
-        'gap' => 'int',
-        'gap_freq' => 'string',
-        'start_date' => '\DateTime',
-        'expire_count' => 'int',
-        'expire_date' => '\DateTime',
-        'content_variations' => 'string[]'
+        'platform' => 'string',
+        'account_id' => 'string',
+        'custom_content' => 'string',
+        'custom_media' => '\Zernio\Model\MediaItem[]',
+        'scheduled_for' => '\DateTime',
+        'platform_specific_data' => 'array<string,mixed>'
     ];
 
     /**
@@ -76,13 +74,12 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'enabled' => null,
-        'gap' => null,
-        'gap_freq' => null,
-        'start_date' => 'date-time',
-        'expire_count' => null,
-        'expire_date' => 'date-time',
-        'content_variations' => null
+        'platform' => null,
+        'account_id' => null,
+        'custom_content' => null,
+        'custom_media' => null,
+        'scheduled_for' => 'date-time',
+        'platform_specific_data' => null
     ];
 
     /**
@@ -91,13 +88,12 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'enabled' => false,
-        'gap' => false,
-        'gap_freq' => false,
-        'start_date' => false,
-        'expire_count' => false,
-        'expire_date' => false,
-        'content_variations' => false
+        'platform' => false,
+        'account_id' => false,
+        'custom_content' => false,
+        'custom_media' => false,
+        'scheduled_for' => false,
+        'platform_specific_data' => false
     ];
 
     /**
@@ -186,13 +182,12 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'enabled' => 'enabled',
-        'gap' => 'gap',
-        'gap_freq' => 'gapFreq',
-        'start_date' => 'startDate',
-        'expire_count' => 'expireCount',
-        'expire_date' => 'expireDate',
-        'content_variations' => 'contentVariations'
+        'platform' => 'platform',
+        'account_id' => 'accountId',
+        'custom_content' => 'customContent',
+        'custom_media' => 'customMedia',
+        'scheduled_for' => 'scheduledFor',
+        'platform_specific_data' => 'platformSpecificData'
     ];
 
     /**
@@ -201,13 +196,12 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'enabled' => 'setEnabled',
-        'gap' => 'setGap',
-        'gap_freq' => 'setGapFreq',
-        'start_date' => 'setStartDate',
-        'expire_count' => 'setExpireCount',
-        'expire_date' => 'setExpireDate',
-        'content_variations' => 'setContentVariations'
+        'platform' => 'setPlatform',
+        'account_id' => 'setAccountId',
+        'custom_content' => 'setCustomContent',
+        'custom_media' => 'setCustomMedia',
+        'scheduled_for' => 'setScheduledFor',
+        'platform_specific_data' => 'setPlatformSpecificData'
     ];
 
     /**
@@ -216,13 +210,12 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'enabled' => 'getEnabled',
-        'gap' => 'getGap',
-        'gap_freq' => 'getGapFreq',
-        'start_date' => 'getStartDate',
-        'expire_count' => 'getExpireCount',
-        'expire_date' => 'getExpireDate',
-        'content_variations' => 'getContentVariations'
+        'platform' => 'getPlatform',
+        'account_id' => 'getAccountId',
+        'custom_content' => 'getCustomContent',
+        'custom_media' => 'getCustomMedia',
+        'scheduled_for' => 'getScheduledFor',
+        'platform_specific_data' => 'getPlatformSpecificData'
     ];
 
     /**
@@ -266,21 +259,6 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    public const GAP_FREQ_WEEK = 'week';
-    public const GAP_FREQ_MONTH = 'month';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getGapFreqAllowableValues()
-    {
-        return [
-            self::GAP_FREQ_WEEK,
-            self::GAP_FREQ_MONTH,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -297,13 +275,12 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('enabled', $data ?? [], true);
-        $this->setIfExists('gap', $data ?? [], null);
-        $this->setIfExists('gap_freq', $data ?? [], 'month');
-        $this->setIfExists('start_date', $data ?? [], null);
-        $this->setIfExists('expire_count', $data ?? [], null);
-        $this->setIfExists('expire_date', $data ?? [], null);
-        $this->setIfExists('content_variations', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('custom_content', $data ?? [], null);
+        $this->setIfExists('custom_media', $data ?? [], null);
+        $this->setIfExists('scheduled_for', $data ?? [], null);
+        $this->setIfExists('platform_specific_data', $data ?? [], null);
     }
 
     /**
@@ -333,27 +310,12 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['gap']) && ($this->container['gap'] < 1)) {
-            $invalidProperties[] = "invalid value for 'gap', must be bigger than or equal to 1.";
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
         }
-
-        $allowedValues = $this->getGapFreqAllowableValues();
-        if (!is_null($this->container['gap_freq']) && !in_array($this->container['gap_freq'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'gap_freq', must be one of '%s'",
-                $this->container['gap_freq'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
         }
-
-        if (!is_null($this->container['expire_count']) && ($this->container['expire_count'] < 1)) {
-            $invalidProperties[] = "invalid value for 'expire_count', must be bigger than or equal to 1.";
-        }
-
-        if (!is_null($this->container['content_variations']) && (count($this->container['content_variations']) > 20)) {
-            $invalidProperties[] = "invalid value for 'content_variations', number of items must be less than or equal to 20.";
-        }
-
         return $invalidProperties;
     }
 
@@ -370,214 +332,163 @@ class RecyclingConfig implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets enabled
+     * Gets platform
      *
-     * @return bool|null
+     * @return string
      */
-    public function getEnabled()
+    public function getPlatform()
     {
-        return $this->container['enabled'];
+        return $this->container['platform'];
     }
 
     /**
-     * Sets enabled
+     * Sets platform
      *
-     * @param bool|null $enabled Set to false to disable recycling on this post
+     * @param string $platform platform
      *
      * @return self
      */
-    public function setEnabled($enabled)
+    public function setPlatform($platform)
     {
-        if (is_null($enabled)) {
-            throw new \InvalidArgumentException('non-nullable enabled cannot be null');
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
         }
-        $this->container['enabled'] = $enabled;
+        $this->container['platform'] = $platform;
 
         return $this;
     }
 
     /**
-     * Gets gap
+     * Gets account_id
      *
-     * @return int|null
+     * @return string
      */
-    public function getGap()
+    public function getAccountId()
     {
-        return $this->container['gap'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets gap
+     * Sets account_id
      *
-     * @param int|null $gap Number of interval units between each repost. Required when enabling recycling.
+     * @param string $account_id account_id
      *
      * @return self
      */
-    public function setGap($gap)
+    public function setAccountId($account_id)
     {
-        if (is_null($gap)) {
-            throw new \InvalidArgumentException('non-nullable gap cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-
-        if (($gap < 1)) {
-            throw new \InvalidArgumentException('invalid value for $gap when calling RecyclingConfig., must be bigger than or equal to 1.');
-        }
-
-        $this->container['gap'] = $gap;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets gap_freq
+     * Gets custom_content
      *
      * @return string|null
      */
-    public function getGapFreq()
+    public function getCustomContent()
     {
-        return $this->container['gap_freq'];
+        return $this->container['custom_content'];
     }
 
     /**
-     * Sets gap_freq
+     * Sets custom_content
      *
-     * @param string|null $gap_freq Interval unit for the gap. Defaults to 'month'.
+     * @param string|null $custom_content Platform-specific text override.
      *
      * @return self
      */
-    public function setGapFreq($gap_freq)
+    public function setCustomContent($custom_content)
     {
-        if (is_null($gap_freq)) {
-            throw new \InvalidArgumentException('non-nullable gap_freq cannot be null');
+        if (is_null($custom_content)) {
+            throw new \InvalidArgumentException('non-nullable custom_content cannot be null');
         }
-        $allowedValues = $this->getGapFreqAllowableValues();
-        if (!in_array($gap_freq, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'gap_freq', must be one of '%s'",
-                    $gap_freq,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['gap_freq'] = $gap_freq;
+        $this->container['custom_content'] = $custom_content;
 
         return $this;
     }
 
     /**
-     * Gets start_date
+     * Gets custom_media
+     *
+     * @return \Zernio\Model\MediaItem[]|null
+     */
+    public function getCustomMedia()
+    {
+        return $this->container['custom_media'];
+    }
+
+    /**
+     * Sets custom_media
+     *
+     * @param \Zernio\Model\MediaItem[]|null $custom_media custom_media
+     *
+     * @return self
+     */
+    public function setCustomMedia($custom_media)
+    {
+        if (is_null($custom_media)) {
+            throw new \InvalidArgumentException('non-nullable custom_media cannot be null');
+        }
+        $this->container['custom_media'] = $custom_media;
+
+        return $this;
+    }
+
+    /**
+     * Gets scheduled_for
      *
      * @return \DateTime|null
      */
-    public function getStartDate()
+    public function getScheduledFor()
     {
-        return $this->container['start_date'];
+        return $this->container['scheduled_for'];
     }
 
     /**
-     * Sets start_date
+     * Sets scheduled_for
      *
-     * @param \DateTime|null $start_date When to start the recycling cycle. Defaults to the post's scheduledFor date.
+     * @param \DateTime|null $scheduled_for Optional per-platform scheduled time override.
      *
      * @return self
      */
-    public function setStartDate($start_date)
+    public function setScheduledFor($scheduled_for)
     {
-        if (is_null($start_date)) {
-            throw new \InvalidArgumentException('non-nullable start_date cannot be null');
+        if (is_null($scheduled_for)) {
+            throw new \InvalidArgumentException('non-nullable scheduled_for cannot be null');
         }
-        $this->container['start_date'] = $start_date;
+        $this->container['scheduled_for'] = $scheduled_for;
 
         return $this;
     }
 
     /**
-     * Gets expire_count
+     * Gets platform_specific_data
      *
-     * @return int|null
+     * @return array<string,mixed>|null
      */
-    public function getExpireCount()
+    public function getPlatformSpecificData()
     {
-        return $this->container['expire_count'];
+        return $this->container['platform_specific_data'];
     }
 
     /**
-     * Sets expire_count
+     * Sets platform_specific_data
      *
-     * @param int|null $expire_count Stop recycling after this many copies have been created. Send null on update to clear this limit.
+     * @param array<string,mixed>|null $platform_specific_data platform_specific_data
      *
      * @return self
      */
-    public function setExpireCount($expire_count)
+    public function setPlatformSpecificData($platform_specific_data)
     {
-        if (is_null($expire_count)) {
-            throw new \InvalidArgumentException('non-nullable expire_count cannot be null');
+        if (is_null($platform_specific_data)) {
+            throw new \InvalidArgumentException('non-nullable platform_specific_data cannot be null');
         }
-
-        if (($expire_count < 1)) {
-            throw new \InvalidArgumentException('invalid value for $expire_count when calling RecyclingConfig., must be bigger than or equal to 1.');
-        }
-
-        $this->container['expire_count'] = $expire_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets expire_date
-     *
-     * @return \DateTime|null
-     */
-    public function getExpireDate()
-    {
-        return $this->container['expire_date'];
-    }
-
-    /**
-     * Sets expire_date
-     *
-     * @param \DateTime|null $expire_date Stop recycling after this date, regardless of count. Send null on update to clear this limit.
-     *
-     * @return self
-     */
-    public function setExpireDate($expire_date)
-    {
-        if (is_null($expire_date)) {
-            throw new \InvalidArgumentException('non-nullable expire_date cannot be null');
-        }
-        $this->container['expire_date'] = $expire_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets content_variations
-     *
-     * @return string[]|null
-     */
-    public function getContentVariations()
-    {
-        return $this->container['content_variations'];
-    }
-
-    /**
-     * Sets content_variations
-     *
-     * @param string[]|null $content_variations Array of content variations for recycled copies. On each recycle, the next variation is used in round-robin order. Recommended for Twitter and Pinterest to avoid duplicate content flags. If omitted, the original post content is used for all recycled copies. Send an empty array [] to clear existing variations. Must have 2+ entries when setting variations. Platform-level customContent still overrides the base content per platform.
-     *
-     * @return self
-     */
-    public function setContentVariations($content_variations)
-    {
-        if (is_null($content_variations)) {
-            throw new \InvalidArgumentException('non-nullable content_variations cannot be null');
-        }
-
-        if ((count($content_variations) > 20)) {
-            throw new \InvalidArgumentException('invalid value for $content_variations when calling RecyclingConfig., number of items must be less than or equal to 20.');
-        }
-        $this->container['content_variations'] = $content_variations;
+        $this->container['platform_specific_data'] = $platform_specific_data;
 
         return $this;
     }

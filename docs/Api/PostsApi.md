@@ -536,7 +536,7 @@ updatePost($post_id, $update_post_request): \Zernio\Model\PostUpdateResponse
 
 Update post
 
-Update an existing post. Only draft, scheduled, failed, and partial posts can be edited. Published, publishing, and cancelled posts cannot be modified.
+Update an existing post. Draft, scheduled, failed, partial, and cancelled posts can be edited. Published posts can only have their recycling config updated.
 
 ### Example
 

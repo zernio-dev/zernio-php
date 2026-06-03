@@ -310,6 +310,12 @@ class CreatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
+        if ($this->container['platform'] === null) {
+            $invalidProperties[] = "'platform' can't be null";
+        }
+        if ($this->container['account_id'] === null) {
+            $invalidProperties[] = "'account_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -328,7 +334,7 @@ class CreatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Gets platform
      *
-     * @return string|null
+     * @return string
      */
     public function getPlatform()
     {
@@ -338,7 +344,7 @@ class CreatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets platform
      *
-     * @param string|null $platform platform
+     * @param string $platform platform
      *
      * @return self
      */
@@ -355,7 +361,7 @@ class CreatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Gets account_id
      *
-     * @return string|null
+     * @return string
      */
     public function getAccountId()
     {
@@ -365,7 +371,7 @@ class CreatePostRequestPlatformsInner implements ModelInterface, ArrayAccess, \J
     /**
      * Sets account_id
      *
-     * @param string|null $account_id account_id
+     * @param string $account_id account_id
      *
      * @return self
      */

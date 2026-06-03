@@ -999,6 +999,7 @@ docs/Model/UpdatePinterestBoardsRequest.md
 docs/Model/UpdatePostMetadata200Response.md
 docs/Model/UpdatePostMetadataRequest.md
 docs/Model/UpdatePostRequest.md
+docs/Model/UpdatePostRequestPlatformsInner.md
 docs/Model/UpdateProfile200Response.md
 docs/Model/UpdateProfileRequest.md
 docs/Model/UpdateQueueSlot200Response.md
@@ -2157,6 +2158,7 @@ lib/Model/UpdatePinterestBoardsRequest.php
 lib/Model/UpdatePostMetadata200Response.php
 lib/Model/UpdatePostMetadataRequest.php
 lib/Model/UpdatePostRequest.php
+lib/Model/UpdatePostRequestPlatformsInner.php
 lib/Model/UpdateProfile200Response.php
 lib/Model/UpdateProfileRequest.php
 lib/Model/UpdateQueueSlot200Response.php
@@ -2315,6 +2317,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacementsTest.php
-test/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerTest.php
-test/Model/CreateStandaloneAdRequestPlacementAssetsTest.php
+test/Model/UpdatePostRequestPlatformsInnerTest.php
