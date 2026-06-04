@@ -2029,15 +2029,16 @@ class AdsApi
      * Create standalone ad
      *
      * @param  \Zernio\Model\CreateStandaloneAdRequest $create_standalone_ad_request create_standalone_ad_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes create retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\CreateStandaloneAd201Response|\Zernio\Model\InlineObject
      */
-    public function createStandaloneAd($create_standalone_ad_request, string $contentType = self::contentTypes['createStandaloneAd'][0])
+    public function createStandaloneAd($create_standalone_ad_request, $idempotency_key = null, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
-        list($response) = $this->createStandaloneAdWithHttpInfo($create_standalone_ad_request, $contentType);
+        list($response) = $this->createStandaloneAdWithHttpInfo($create_standalone_ad_request, $idempotency_key, $contentType);
         return $response;
     }
 
@@ -2047,15 +2048,16 @@ class AdsApi
      * Create standalone ad
      *
      * @param  \Zernio\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes create retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\CreateStandaloneAd201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createStandaloneAdWithHttpInfo($create_standalone_ad_request, string $contentType = self::contentTypes['createStandaloneAd'][0])
+    public function createStandaloneAdWithHttpInfo($create_standalone_ad_request, $idempotency_key = null, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
-        $request = $this->createStandaloneAdRequest($create_standalone_ad_request, $contentType);
+        $request = $this->createStandaloneAdRequest($create_standalone_ad_request, $idempotency_key, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2146,14 +2148,15 @@ class AdsApi
      * Create standalone ad
      *
      * @param  \Zernio\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes create retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createStandaloneAdAsync($create_standalone_ad_request, string $contentType = self::contentTypes['createStandaloneAd'][0])
+    public function createStandaloneAdAsync($create_standalone_ad_request, $idempotency_key = null, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
-        return $this->createStandaloneAdAsyncWithHttpInfo($create_standalone_ad_request, $contentType)
+        return $this->createStandaloneAdAsyncWithHttpInfo($create_standalone_ad_request, $idempotency_key, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2167,15 +2170,16 @@ class AdsApi
      * Create standalone ad
      *
      * @param  \Zernio\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes create retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createStandaloneAdAsyncWithHttpInfo($create_standalone_ad_request, string $contentType = self::contentTypes['createStandaloneAd'][0])
+    public function createStandaloneAdAsyncWithHttpInfo($create_standalone_ad_request, $idempotency_key = null, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
         $returnType = '\Zernio\Model\CreateStandaloneAd201Response';
-        $request = $this->createStandaloneAdRequest($create_standalone_ad_request, $contentType);
+        $request = $this->createStandaloneAdRequest($create_standalone_ad_request, $idempotency_key, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2217,12 +2221,13 @@ class AdsApi
      * Create request for operation 'createStandaloneAd'
      *
      * @param  \Zernio\Model\CreateStandaloneAdRequest $create_standalone_ad_request (required)
+     * @param  string|null $idempotency_key Optional client-generated unique key (e.g. a UUID) that makes create retries safe. Same key + same body replays the original response; same key + different body → 422; key still processing → 409. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStandaloneAd'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createStandaloneAdRequest($create_standalone_ad_request, string $contentType = self::contentTypes['createStandaloneAd'][0])
+    public function createStandaloneAdRequest($create_standalone_ad_request, $idempotency_key = null, string $contentType = self::contentTypes['createStandaloneAd'][0])
     {
 
         // verify the required parameter 'create_standalone_ad_request' is set
@@ -2232,6 +2237,10 @@ class AdsApi
             );
         }
 
+        if ($idempotency_key !== null && strlen($idempotency_key) > 255) {
+            throw new \InvalidArgumentException('invalid length for "$idempotency_key" when calling AdsApi.createStandaloneAd, must be smaller than or equal to 255.');
+        }
+        
 
         $resourcePath = '/v1/ads/create';
         $formParams = [];
@@ -2241,6 +2250,10 @@ class AdsApi
         $multipart = false;
 
 
+        // header params
+        if ($idempotency_key !== null) {
+            $headerParams['Idempotency-Key'] = ObjectSerializer::toHeaderValue($idempotency_key);
+        }
 
 
 
