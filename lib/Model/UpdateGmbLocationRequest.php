@@ -59,7 +59,7 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'selected_location_id' => 'string',
-        'account_id' => 'string'
+        'google_account_id' => 'string'
     ];
 
     /**
@@ -71,7 +71,7 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'selected_location_id' => null,
-        'account_id' => null
+        'google_account_id' => null
     ];
 
     /**
@@ -81,7 +81,7 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'selected_location_id' => false,
-        'account_id' => false
+        'google_account_id' => false
     ];
 
     /**
@@ -171,7 +171,7 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'selected_location_id' => 'selectedLocationId',
-        'account_id' => 'accountId'
+        'google_account_id' => 'googleAccountId'
     ];
 
     /**
@@ -181,7 +181,7 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'selected_location_id' => 'setSelectedLocationId',
-        'account_id' => 'setAccountId'
+        'google_account_id' => 'setGoogleAccountId'
     ];
 
     /**
@@ -191,7 +191,7 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'selected_location_id' => 'getSelectedLocationId',
-        'account_id' => 'getAccountId'
+        'google_account_id' => 'getGoogleAccountId'
     ];
 
     /**
@@ -252,7 +252,7 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
     public function __construct(?array $data = null)
     {
         $this->setIfExists('selected_location_id', $data ?? [], null);
-        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('google_account_id', $data ?? [], null);
     }
 
     /**
@@ -328,28 +328,28 @@ class UpdateGmbLocationRequest implements ModelInterface, ArrayAccess, \JsonSeri
     }
 
     /**
-     * Gets account_id
+     * Gets google_account_id
      *
      * @return string|null
      */
-    public function getAccountId()
+    public function getGoogleAccountId()
     {
-        return $this->container['account_id'];
+        return $this->container['google_account_id'];
     }
 
     /**
-     * Sets account_id
+     * Sets google_account_id
      *
-     * @param string|null $account_id Optional but recommended. The Google Business Account resource name (\"accounts/123\") that owns the new location (from GET gmb-locations). When provided, the location is resolved directly instead of by enumerating the account, which is required for accounts with many locations.
+     * @param string|null $google_account_id Optional but recommended. The Google Business Account resource name (\"accounts/123\") that owns the new location (from GET gmb-locations). When provided, the location is resolved directly instead of by enumerating the account, which is required for accounts with many locations. Named `googleAccountId` to disambiguate from the path `accountId` (the Zernio account). The legacy field name `accountId` is still accepted for backwards compatibility.
      *
      * @return self
      */
-    public function setAccountId($account_id)
+    public function setGoogleAccountId($google_account_id)
     {
-        if (is_null($account_id)) {
-            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        if (is_null($google_account_id)) {
+            throw new \InvalidArgumentException('non-nullable google_account_id cannot be null');
         }
-        $this->container['account_id'] = $account_id;
+        $this->container['google_account_id'] = $google_account_id;
 
         return $this;
     }

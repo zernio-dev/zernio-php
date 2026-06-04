@@ -15786,17 +15786,19 @@ paths:
               required: [selectedLocationId]
               properties:
                 selectedLocationId: { type: string }
-                accountId:
+                googleAccountId:
                   type: string
                   description: >
                     Optional but recommended. The Google Business Account resource name
                     ("accounts/123") that owns the new location (from GET gmb-locations).
                     When provided, the location is resolved directly instead of by
                     enumerating the account, which is required for accounts with many
-                    locations.
+                    locations. Named `googleAccountId` to disambiguate from the path
+                    `accountId` (the Zernio account). The legacy field name `accountId`
+                    is still accepted for backwards compatibility.
             example:
               selectedLocationId: "12345678901234567890"
-              accountId: "accounts/123456789"
+              googleAccountId: "accounts/123456789"
       responses:
         '200':
           description: Location updated

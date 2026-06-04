@@ -1948,7 +1948,7 @@ $apiInstance = new Zernio\Api\ConnectApi(
     $config
 );
 $account_id = 'account_id_example'; // string
-$update_gmb_location_request = {"selectedLocationId":"12345678901234567890","accountId":"accounts/123456789"}; // \Zernio\Model\UpdateGmbLocationRequest
+$update_gmb_location_request = {"selectedLocationId":"12345678901234567890","googleAccountId":"accounts/123456789"}; // \Zernio\Model\UpdateGmbLocationRequest
 
 try {
     $result = $apiInstance->updateGmbLocation($account_id, $update_gmb_location_request);
