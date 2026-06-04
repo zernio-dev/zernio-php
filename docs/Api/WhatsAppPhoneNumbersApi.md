@@ -15,6 +15,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**releaseWhatsAppPhoneNumber()**](WhatsAppPhoneNumbersApi.md#releaseWhatsAppPhoneNumber) | **DELETE** /v1/whatsapp/phone-numbers/{phoneNumberId} | Release phone number |
 | [**searchAvailableWhatsAppNumbers()**](WhatsAppPhoneNumbersApi.md#searchAvailableWhatsAppNumbers) | **GET** /v1/whatsapp/phone-numbers/available | Search available numbers to purchase |
 | [**submitWhatsAppNumberKyc()**](WhatsAppPhoneNumbersApi.md#submitWhatsAppNumberKyc) | **POST** /v1/whatsapp/phone-numbers/kyc | Submit regulated-number KYC |
+| [**uploadWhatsAppNumberKycDocument()**](WhatsAppPhoneNumbersApi.md#uploadWhatsAppNumberKycDocument) | **POST** /v1/whatsapp/phone-numbers/kyc/upload-document | Upload a single regulated-number KYC document |
 
 
 ## `getWhatsAppNumberInfo()`
@@ -516,7 +517,7 @@ submitWhatsAppNumberKyc($submit_whats_app_number_kyc_request): \Zernio\Model\Sub
 
 Submit regulated-number KYC
 
-Submit the end customer's KYC (textual values, uploaded documents, address) for a Tier 3/4 country. Documents are streamed straight to the number provider and are not stored by Zernio. Builds + submits a regulatory requirement group and claims a pending_regulatory slot; the number is ordered + activated once the provider approves (asynchronous). Idempotent per (owner, country).
+Submit the end customer's KYC (textual values, uploaded documents, address) for a Tier 3/4 country. Documents are streamed straight to the number provider and are not stored by Zernio. Builds + submits a regulatory requirement group and claims a pending_regulatory slot; the number is ordered + activated once the provider approves (asynchronous). A customer may hold several same-country numbers in review at once; a double-submit of the SAME attempt is deduped via `submissionId`.
 
 ### Example
 
@@ -562,6 +563,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `uploadWhatsAppNumberKycDocument()`
+
+```php
+uploadWhatsAppNumberKycDocument($x_filename, $body): \Zernio\Model\UploadWhatsAppNumberKycDocument200Response
+```
+
+Upload a single regulated-number KYC document
+
+Upload ONE document and get back its provider document id, to reference from POST /v1/whatsapp/phone-numbers/kyc via `documents[].documentId`. Send the RAW file bytes as the request body (not base64); put the filename in the `X-Filename` header. Uploading documents one-per-request keeps each request under the ~4.5MB body limit. The document streams straight to the number provider and is not stored by Zernio.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$x_filename = 'x_filename_example'; // string | URL-encoded original filename.
+$body = '/path/to/file.txt'; // \SplFileObject
+
+try {
+    $result = $apiInstance->uploadWhatsAppNumberKycDocument($x_filename, $body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppPhoneNumbersApi->uploadWhatsAppNumberKycDocument: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **x_filename** | **string**| URL-encoded original filename. | |
+| **body** | **\SplFileObject****\SplFileObject**|  | |
+
+### Return type
+
+[**\Zernio\Model\UploadWhatsAppNumberKycDocument200Response**](../Model/UploadWhatsAppNumberKycDocument200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/octet-stream`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

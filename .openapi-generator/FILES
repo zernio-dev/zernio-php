@@ -904,6 +904,8 @@ docs/Model/SubmitWhatsAppNumberKyc200ResponsePhoneNumber.md
 docs/Model/SubmitWhatsAppNumberKycRequest.md
 docs/Model/SubmitWhatsAppNumberKycRequestAddress.md
 docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInner.md
+docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf.md
+docs/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf1.md
 docs/Model/TargetingSpec.md
 docs/Model/TargetingSpecCitiesInner.md
 docs/Model/TargetingSpecCustomLocationsInner.md
@@ -1042,6 +1044,7 @@ docs/Model/UploadWhatsAppFlowJson200Response.md
 docs/Model/UploadWhatsAppFlowJson200ResponseValidationErrorsInner.md
 docs/Model/UploadWhatsAppFlowJsonRequest.md
 docs/Model/UploadWhatsAppFlowJsonRequestFlowJson.md
+docs/Model/UploadWhatsAppNumberKycDocument200Response.md
 docs/Model/UploadedFile.md
 docs/Model/UploadedOrDerivedAudience.md
 docs/Model/UsageStats.md
@@ -2070,6 +2073,8 @@ lib/Model/SubmitWhatsAppNumberKyc200ResponsePhoneNumber.php
 lib/Model/SubmitWhatsAppNumberKycRequest.php
 lib/Model/SubmitWhatsAppNumberKycRequestAddress.php
 lib/Model/SubmitWhatsAppNumberKycRequestDocumentsInner.php
+lib/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf.php
+lib/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf1.php
 lib/Model/TargetingSpec.php
 lib/Model/TargetingSpecCitiesInner.php
 lib/Model/TargetingSpecCustomLocationsInner.php
@@ -2208,6 +2213,7 @@ lib/Model/UploadWhatsAppFlowJson200Response.php
 lib/Model/UploadWhatsAppFlowJson200ResponseValidationErrorsInner.php
 lib/Model/UploadWhatsAppFlowJsonRequest.php
 lib/Model/UploadWhatsAppFlowJsonRequestFlowJson.php
+lib/Model/UploadWhatsAppNumberKycDocument200Response.php
 lib/Model/UploadedFile.php
 lib/Model/UploadedOrDerivedAudience.php
 lib/Model/UsageStats.php
@@ -2331,3 +2337,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf1Test.php
+test/Model/SubmitWhatsAppNumberKycRequestDocumentsInnerOneOfTest.php
+test/Model/UploadWhatsAppNumberKycDocument200ResponseTest.php

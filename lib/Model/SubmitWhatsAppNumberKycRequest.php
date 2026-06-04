@@ -60,6 +60,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'profile_id' => 'string',
         'country' => 'string',
+        'submission_id' => 'string',
         'reuse' => 'bool',
         'end_user_first_name' => 'string',
         'end_user_last_name' => 'string',
@@ -78,6 +79,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
     protected static $openAPIFormats = [
         'profile_id' => null,
         'country' => null,
+        'submission_id' => null,
         'reuse' => null,
         'end_user_first_name' => null,
         'end_user_last_name' => null,
@@ -94,6 +96,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
     protected static array $openAPINullables = [
         'profile_id' => false,
         'country' => false,
+        'submission_id' => false,
         'reuse' => false,
         'end_user_first_name' => false,
         'end_user_last_name' => false,
@@ -190,6 +193,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
     protected static $attributeMap = [
         'profile_id' => 'profileId',
         'country' => 'country',
+        'submission_id' => 'submissionId',
         'reuse' => 'reuse',
         'end_user_first_name' => 'endUserFirstName',
         'end_user_last_name' => 'endUserLastName',
@@ -206,6 +210,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
     protected static $setters = [
         'profile_id' => 'setProfileId',
         'country' => 'setCountry',
+        'submission_id' => 'setSubmissionId',
         'reuse' => 'setReuse',
         'end_user_first_name' => 'setEndUserFirstName',
         'end_user_last_name' => 'setEndUserLastName',
@@ -222,6 +227,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
     protected static $getters = [
         'profile_id' => 'getProfileId',
         'country' => 'getCountry',
+        'submission_id' => 'getSubmissionId',
         'reuse' => 'getReuse',
         'end_user_first_name' => 'getEndUserFirstName',
         'end_user_last_name' => 'getEndUserLastName',
@@ -289,6 +295,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
     {
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
+        $this->setIfExists('submission_id', $data ?? [], null);
         $this->setIfExists('reuse', $data ?? [], null);
         $this->setIfExists('end_user_first_name', $data ?? [], null);
         $this->setIfExists('end_user_last_name', $data ?? [], null);
@@ -395,6 +402,33 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
         $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets submission_id
+     *
+     * @return string|null
+     */
+    public function getSubmissionId()
+    {
+        return $this->container['submission_id'];
+    }
+
+    /**
+     * Sets submission_id
+     *
+     * @param string|null $submission_id Idempotency token for this submission attempt. A retry/double-submit with the same token returns the same number; omit and each call creates a new number.
+     *
+     * @return self
+     */
+    public function setSubmissionId($submission_id)
+    {
+        if (is_null($submission_id)) {
+            throw new \InvalidArgumentException('non-nullable submission_id cannot be null');
+        }
+        $this->container['submission_id'] = $submission_id;
 
         return $this;
     }
@@ -520,7 +554,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets documents
      *
-     * @param \Zernio\Model\SubmitWhatsAppNumberKycRequestDocumentsInner[]|null $documents documents
+     * @param \Zernio\Model\SubmitWhatsAppNumberKycRequestDocumentsInner[]|null $documents One per document requirement. Each is EITHER inline base64 OR a `documentId` returned by POST /v1/whatsapp/phone-numbers/kyc/upload-document (use the upload endpoint for large files to stay under the request-size limit).
      *
      * @return self
      */

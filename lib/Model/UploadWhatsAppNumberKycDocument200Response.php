@@ -1,6 +1,6 @@
 <?php
 /**
- * SubmitWhatsAppNumberKycRequestDocumentsInner
+ * UploadWhatsAppNumberKycDocument200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SubmitWhatsAppNumberKycRequestDocumentsInner Class Doc Comment
+ * UploadWhatsAppNumberKycDocument200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class UploadWhatsAppNumberKycDocument200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'submitWhatsAppNumberKyc_request_documents_inner';
+    protected static $openAPIModelName = 'uploadWhatsAppNumberKycDocument_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,6 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
       * @var string[]
       */
     protected static $openAPITypes = [
-        'requirement_id' => 'string',
-        'filename' => 'string',
-        'base64' => 'string',
         'document_id' => 'string'
     ];
 
@@ -72,9 +69,6 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'requirement_id' => null,
-        'filename' => null,
-        'base64' => null,
         'document_id' => null
     ];
 
@@ -84,9 +78,6 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'requirement_id' => false,
-        'filename' => false,
-        'base64' => false,
         'document_id' => false
     ];
 
@@ -176,9 +167,6 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
      * @var string[]
      */
     protected static $attributeMap = [
-        'requirement_id' => 'requirementId',
-        'filename' => 'filename',
-        'base64' => 'base64',
         'document_id' => 'documentId'
     ];
 
@@ -188,9 +176,6 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
      * @var string[]
      */
     protected static $setters = [
-        'requirement_id' => 'setRequirementId',
-        'filename' => 'setFilename',
-        'base64' => 'setBase64',
         'document_id' => 'setDocumentId'
     ];
 
@@ -200,9 +185,6 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
      * @var string[]
      */
     protected static $getters = [
-        'requirement_id' => 'getRequirementId',
-        'filename' => 'getFilename',
-        'base64' => 'getBase64',
         'document_id' => 'getDocumentId'
     ];
 
@@ -263,9 +245,6 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('requirement_id', $data ?? [], null);
-        $this->setIfExists('filename', $data ?? [], null);
-        $this->setIfExists('base64', $data ?? [], null);
         $this->setIfExists('document_id', $data ?? [], null);
     }
 
@@ -296,18 +275,6 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
     {
         $invalidProperties = [];
 
-        if ($this->container['requirement_id'] === null) {
-            $invalidProperties[] = "'requirement_id' can't be null";
-        }
-        if ($this->container['filename'] === null) {
-            $invalidProperties[] = "'filename' can't be null";
-        }
-        if ($this->container['base64'] === null) {
-            $invalidProperties[] = "'base64' can't be null";
-        }
-        if ($this->container['document_id'] === null) {
-            $invalidProperties[] = "'document_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -324,90 +291,9 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
 
 
     /**
-     * Gets requirement_id
-     *
-     * @return string
-     */
-    public function getRequirementId()
-    {
-        return $this->container['requirement_id'];
-    }
-
-    /**
-     * Sets requirement_id
-     *
-     * @param string $requirement_id requirement_id
-     *
-     * @return self
-     */
-    public function setRequirementId($requirement_id)
-    {
-        if (is_null($requirement_id)) {
-            throw new \InvalidArgumentException('non-nullable requirement_id cannot be null');
-        }
-        $this->container['requirement_id'] = $requirement_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets filename
-     *
-     * @return string
-     */
-    public function getFilename()
-    {
-        return $this->container['filename'];
-    }
-
-    /**
-     * Sets filename
-     *
-     * @param string $filename filename
-     *
-     * @return self
-     */
-    public function setFilename($filename)
-    {
-        if (is_null($filename)) {
-            throw new \InvalidArgumentException('non-nullable filename cannot be null');
-        }
-        $this->container['filename'] = $filename;
-
-        return $this;
-    }
-
-    /**
-     * Gets base64
-     *
-     * @return string
-     */
-    public function getBase64()
-    {
-        return $this->container['base64'];
-    }
-
-    /**
-     * Sets base64
-     *
-     * @param string $base64 base64
-     *
-     * @return self
-     */
-    public function setBase64($base64)
-    {
-        if (is_null($base64)) {
-            throw new \InvalidArgumentException('non-nullable base64 cannot be null');
-        }
-        $this->container['base64'] = $base64;
-
-        return $this;
-    }
-
-    /**
      * Gets document_id
      *
-     * @return string
+     * @return string|null
      */
     public function getDocumentId()
     {
@@ -417,7 +303,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
     /**
      * Sets document_id
      *
-     * @param string $document_id Id from POST /v1/whatsapp/phone-numbers/kyc/upload-document.
+     * @param string|null $document_id Reference this id in the KYC submit's documents[].documentId.
      *
      * @return self
      */

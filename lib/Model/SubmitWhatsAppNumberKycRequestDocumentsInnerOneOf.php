@@ -1,6 +1,6 @@
 <?php
 /**
- * SubmitWhatsAppNumberKycRequestDocumentsInner
+ * SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SubmitWhatsAppNumberKycRequestDocumentsInner Class Doc Comment
+ * SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubmitWhatsAppNumberKycRequestDocumentsInnerOneOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
       *
       * @var string
       */
-    protected static $openAPIModelName = 'submitWhatsAppNumberKyc_request_documents_inner';
+    protected static $openAPIModelName = 'submitWhatsAppNumberKyc_request_documents_inner_oneOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
     protected static $openAPITypes = [
         'requirement_id' => 'string',
         'filename' => 'string',
-        'base64' => 'string',
-        'document_id' => 'string'
+        'base64' => 'string'
     ];
 
     /**
@@ -74,8 +73,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
     protected static $openAPIFormats = [
         'requirement_id' => null,
         'filename' => null,
-        'base64' => null,
-        'document_id' => null
+        'base64' => null
     ];
 
     /**
@@ -86,8 +84,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
     protected static array $openAPINullables = [
         'requirement_id' => false,
         'filename' => false,
-        'base64' => false,
-        'document_id' => false
+        'base64' => false
     ];
 
     /**
@@ -178,8 +175,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
     protected static $attributeMap = [
         'requirement_id' => 'requirementId',
         'filename' => 'filename',
-        'base64' => 'base64',
-        'document_id' => 'documentId'
+        'base64' => 'base64'
     ];
 
     /**
@@ -190,8 +186,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
     protected static $setters = [
         'requirement_id' => 'setRequirementId',
         'filename' => 'setFilename',
-        'base64' => 'setBase64',
-        'document_id' => 'setDocumentId'
+        'base64' => 'setBase64'
     ];
 
     /**
@@ -202,8 +197,7 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
     protected static $getters = [
         'requirement_id' => 'getRequirementId',
         'filename' => 'getFilename',
-        'base64' => 'getBase64',
-        'document_id' => 'getDocumentId'
+        'base64' => 'getBase64'
     ];
 
     /**
@@ -266,7 +260,6 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
         $this->setIfExists('requirement_id', $data ?? [], null);
         $this->setIfExists('filename', $data ?? [], null);
         $this->setIfExists('base64', $data ?? [], null);
-        $this->setIfExists('document_id', $data ?? [], null);
     }
 
     /**
@@ -304,9 +297,6 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
         }
         if ($this->container['base64'] === null) {
             $invalidProperties[] = "'base64' can't be null";
-        }
-        if ($this->container['document_id'] === null) {
-            $invalidProperties[] = "'document_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -400,33 +390,6 @@ class SubmitWhatsAppNumberKycRequestDocumentsInner implements ModelInterface, Ar
             throw new \InvalidArgumentException('non-nullable base64 cannot be null');
         }
         $this->container['base64'] = $base64;
-
-        return $this;
-    }
-
-    /**
-     * Gets document_id
-     *
-     * @return string
-     */
-    public function getDocumentId()
-    {
-        return $this->container['document_id'];
-    }
-
-    /**
-     * Sets document_id
-     *
-     * @param string $document_id Id from POST /v1/whatsapp/phone-numbers/kyc/upload-document.
-     *
-     * @return self
-     */
-    public function setDocumentId($document_id)
-    {
-        if (is_null($document_id)) {
-            throw new \InvalidArgumentException('non-nullable document_id cannot be null');
-        }
-        $this->container['document_id'] = $document_id;
 
         return $this;
     }
