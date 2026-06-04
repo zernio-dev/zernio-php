@@ -94,6 +94,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'languages' => 'string[]',
         'placements' => '\Zernio\Model\CreateStandaloneAdRequestPlacements',
         'saved_targeting_id' => 'string',
+        'raw_targeting' => 'array<string,mixed>',
         'special_ad_categories' => 'string[]',
         'end_date' => '\DateTime',
         'start_date' => '\DateTime',
@@ -162,6 +163,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'languages' => null,
         'placements' => null,
         'saved_targeting_id' => null,
+        'raw_targeting' => null,
         'special_ad_categories' => null,
         'end_date' => 'date-time',
         'start_date' => 'date-time',
@@ -228,6 +230,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'languages' => false,
         'placements' => false,
         'saved_targeting_id' => false,
+        'raw_targeting' => false,
         'special_ad_categories' => false,
         'end_date' => false,
         'start_date' => false,
@@ -374,6 +377,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'languages' => 'languages',
         'placements' => 'placements',
         'saved_targeting_id' => 'savedTargetingId',
+        'raw_targeting' => 'rawTargeting',
         'special_ad_categories' => 'specialAdCategories',
         'end_date' => 'endDate',
         'start_date' => 'startDate',
@@ -440,6 +444,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'languages' => 'setLanguages',
         'placements' => 'setPlacements',
         'saved_targeting_id' => 'setSavedTargetingId',
+        'raw_targeting' => 'setRawTargeting',
         'special_ad_categories' => 'setSpecialAdCategories',
         'end_date' => 'setEndDate',
         'start_date' => 'setStartDate',
@@ -506,6 +511,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'languages' => 'getLanguages',
         'placements' => 'getPlacements',
         'saved_targeting_id' => 'getSavedTargetingId',
+        'raw_targeting' => 'getRawTargeting',
         'special_ad_categories' => 'getSpecialAdCategories',
         'end_date' => 'getEndDate',
         'start_date' => 'getStartDate',
@@ -825,6 +831,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('languages', $data ?? [], null);
         $this->setIfExists('placements', $data ?? [], null);
         $this->setIfExists('saved_targeting_id', $data ?? [], null);
+        $this->setIfExists('raw_targeting', $data ?? [], null);
         $this->setIfExists('special_ad_categories', $data ?? [], null);
         $this->setIfExists('end_date', $data ?? [], null);
         $this->setIfExists('start_date', $data ?? [], null);
@@ -2080,6 +2087,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable saved_targeting_id cannot be null');
         }
         $this->container['saved_targeting_id'] = $saved_targeting_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets raw_targeting
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getRawTargeting()
+    {
+        return $this->container['raw_targeting'];
+    }
+
+    /**
+     * Sets raw_targeting
+     *
+     * @param array<string,mixed>|null $raw_targeting Meta only. A raw Meta-native targeting spec passed to the ad set VERBATIM (snake_case: `geo_locations`, `age_min`, `excluded_custom_audiences`, `flexible_spec`, `targeting_automation`, business places, etc.) — exactly the shape `GET /v1/ads/{adId}` returns for external ads. Use it to clone a campaign's targeting EXACTLY, preserving advanced fields the camelCase targeting fields can't model. Mutually exclusive with the camelCase targeting fields (countries/regions/cities/interests/ ageMin/...), `audienceId`, and `savedTargetingId` (sending both → 422). Sent as-is; Meta validates and surfaces any errors. If cloning an EU campaign, also pass `dsaBeneficiary` / `dsaPayor` (those are separate fields, not part of targeting).
+     *
+     * @return self
+     */
+    public function setRawTargeting($raw_targeting)
+    {
+        if (is_null($raw_targeting)) {
+            throw new \InvalidArgumentException('non-nullable raw_targeting cannot be null');
+        }
+        $this->container['raw_targeting'] = $raw_targeting;
 
         return $this;
     }
