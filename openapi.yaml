@@ -21095,7 +21095,13 @@ paths:
         - name: status
           in: query
           required: false
-          description: Filter by status (by default excludes released numbers)
+          description: |
+            Filter by status (by default excludes released numbers). NOTE:
+            `status=pending_regulatory` returns the "provisioning" view — numbers
+            still in review PLUS recently-declined (last 30 days) ones, so a
+            failed registration surfaces (with `regulatoryDeclineReason`) instead
+            of silently disappearing. Declined numbers can be re-submitted via
+            POST /v1/whatsapp/phone-numbers/{id}/remediate.
           schema:
             type: string
             enum: [provisioning, pending_payment, pending_regulatory, regulatory_declined, active, suspended, releasing, released]
@@ -21122,6 +21128,8 @@ paths:
                         phoneNumber: { type: string }
                         country: { type: string }
                         status: { type: string, enum: [pending_payment, pending_regulatory, regulatory_declined, provisioning, active, suspended, releasing, released] }
+                        registrantName: { type: string, nullable: true, description: For regulated numbers, who it's registered for (company or person) — set from the submitted KYC. }
+                        telnyxOrderId: { type: string, nullable: true, description: Present once the number order has been placed (i.e. the requirement group was approved). Absent while still in identity review. }
                         monthlyCents: { type: integer, description: Per-country monthly price in cents ($2..$25). }
                         profileId: { type: object }
                         provisionedAt: { type: string, format: date-time }
@@ -21299,6 +21307,45 @@ paths:
                         phoneNumber: { type: string }
         '400': { description: Country not available }
         '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /v1/whatsapp/phone-numbers/availability:
+    get:
+      operationId: checkWhatsAppNumberAvailability
+      tags: [WhatsApp Phone Numbers]
+      summary: Check a country's availability + address constraint
+      description: |
+        Pre-purchase check, so you can warn BEFORE a customer invests in KYC
+        (regulated review is async, 1-3 days). Tells you whether we have
+        deliverable inventory, and what address the customer needs:
+          - `addressConstraint: geo`  → the registered address MUST be in one of
+            the returned `areas` (the only place we have stock). A different-area
+            address passes pre-approval but the number can never be assigned.
+          - `addressConstraint: country` → any in-country address works.
+          - `addressConstraint: none` → field-only / instant country, no address.
+        Call this before starting the KYC form for regulated countries.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: country, in: query, required: true, schema: { type: string }, description: ISO-2 country code. }
+      responses:
+        '200':
+          description: Availability + address constraint.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  country: { type: string }
+                  numberType: { type: string }
+                  available: { type: boolean, description: Whether deliverable voice inventory exists right now. }
+                  addressConstraint: { type: string, enum: [geo, country, none] }
+                  areas:
+                    type: array
+                    description: For `geo` only — the area(s) the registered address must be in.
+                    items: { type: string }
+        '400': { description: Country not offerable }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
   /v1/whatsapp/phone-numbers/kyc:
     get:
       operationId: getWhatsAppNumberKycForm
@@ -21355,6 +21402,16 @@ paths:
         number is ordered + activated once the provider approves (asynchronous).
         A customer may hold several same-country numbers in review at once; a
         double-submit of the SAME attempt is deduped via `submissionId`.
+
+        For an ID-card document requirement, carriers commonly require BOTH sides:
+        combine the front and back into a single file before uploading (the
+        dashboard does this automatically). A one-sided ID is a common decline
+        reason; fix it via POST /v1/whatsapp/phone-numbers/{id}/remediate.
+
+        Before submitting, call GET /v1/whatsapp/phone-numbers/availability to
+        check the country has deliverable inventory and, for geographic-match
+        countries, which area the address must be in — otherwise the submission
+        can pass review yet never be assignable a number.
       security:
         - bearerAuth: []
       requestBody:
@@ -21454,6 +21511,79 @@ paths:
                   documentId: { type: string, description: "Reference this id in the KYC submit's documents[].documentId." }
         '400': { description: "Missing X-Filename, empty body, or file too large (over 20MB)." }
         '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /v1/whatsapp/phone-numbers/{id}/remediate:
+    get:
+      operationId: getWhatsAppNumberRemediation
+      tags: [WhatsApp Phone Numbers]
+      summary: Get the declined requirements to fix
+      description: |
+        For a number in `regulatory_declined`, returns ONLY the requirements the
+        reviewer flagged declined, as a form spec (same shape as the KYC form GET).
+        The customer fixes just those — Telnyx supports correcting a declined
+        requirement group and re-submitting it (no new number/group). Falls back
+        to the full spec if the provider exposes no per-requirement flags.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string }, description: WhatsAppPhoneNumber id. }
+      responses:
+        '200':
+          description: The declined requirements to fix.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  country: { type: string }
+                  numberType: { type: string }
+                  declineReason: { type: string, nullable: true }
+                  fields: { type: array, items: { type: object }, description: Same field shape as GET /v1/whatsapp/phone-numbers/kyc. }
+        '400': { description: Number is not awaiting remediation }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { description: Number not found }
+    post:
+      operationId: remediateWhatsAppNumber
+      tags: [WhatsApp Phone Numbers]
+      summary: Fix a declined number and re-submit
+      description: |
+        Submit corrected values/documents for the declined requirement(s). We
+        PATCH them onto the SAME requirement group and re-submit it for approval;
+        the number goes `regulatory_declined` → `pending_regulatory`. No new
+        number and no new billing. Body shape matches the KYC submit (values /
+        documents / address) — send only the corrected fields.
+      security:
+        - bearerAuth: []
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                values: { type: object, additionalProperties: { type: string } }
+                documents:
+                  type: array
+                  items:
+                    oneOf:
+                      - { type: object, required: [requirementId, filename, base64], properties: { requirementId: { type: string }, filename: { type: string }, base64: { type: string } } }
+                      - { type: object, required: [requirementId, documentId], properties: { requirementId: { type: string }, documentId: { type: string } } }
+                address: { type: object, description: Same shape as the KYC submit address. }
+      responses:
+        '200':
+          description: Re-submitted for approval.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, example: resubmitted }
+                  phoneNumber: { type: object, properties: { id: { type: string }, status: { type: string } } }
+        '400': { description: Number is not awaiting remediation / nothing to remediate }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { description: Number not found }
 
   /v1/whatsapp/phone-numbers/{phoneNumberId}:
     get:

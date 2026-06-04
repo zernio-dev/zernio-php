@@ -1,6 +1,6 @@
 <?php
 /**
- * PauseWorkflow200Response
+ * CheckWhatsAppNumberAvailability200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PauseWorkflow200Response Class Doc Comment
+ * CheckWhatsAppNumberAvailability200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class CheckWhatsAppNumberAvailability200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'pauseWorkflow_200_response';
+    protected static $openAPIModelName = 'checkWhatsAppNumberAvailability_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool',
-        'workflow' => '\Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber'
+        'country' => 'string',
+        'number_type' => 'string',
+        'available' => 'bool',
+        'address_constraint' => 'string',
+        'areas' => 'string[]'
     ];
 
     /**
@@ -70,8 +73,11 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'success' => null,
-        'workflow' => null
+        'country' => null,
+        'number_type' => null,
+        'available' => null,
+        'address_constraint' => null,
+        'areas' => null
     ];
 
     /**
@@ -80,8 +86,11 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'success' => false,
-        'workflow' => false
+        'country' => false,
+        'number_type' => false,
+        'available' => false,
+        'address_constraint' => false,
+        'areas' => false
     ];
 
     /**
@@ -170,8 +179,11 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-        'workflow' => 'workflow'
+        'country' => 'country',
+        'number_type' => 'numberType',
+        'available' => 'available',
+        'address_constraint' => 'addressConstraint',
+        'areas' => 'areas'
     ];
 
     /**
@@ -180,8 +192,11 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-        'workflow' => 'setWorkflow'
+        'country' => 'setCountry',
+        'number_type' => 'setNumberType',
+        'available' => 'setAvailable',
+        'address_constraint' => 'setAddressConstraint',
+        'areas' => 'setAreas'
     ];
 
     /**
@@ -190,8 +205,11 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-        'workflow' => 'getWorkflow'
+        'country' => 'getCountry',
+        'number_type' => 'getNumberType',
+        'available' => 'getAvailable',
+        'address_constraint' => 'getAddressConstraint',
+        'areas' => 'getAreas'
     ];
 
     /**
@@ -235,6 +253,23 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
         return self::$openAPIModelName;
     }
 
+    public const ADDRESS_CONSTRAINT_GEO = 'geo';
+    public const ADDRESS_CONSTRAINT_COUNTRY = 'country';
+    public const ADDRESS_CONSTRAINT_NONE = 'none';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAddressConstraintAllowableValues()
+    {
+        return [
+            self::ADDRESS_CONSTRAINT_GEO,
+            self::ADDRESS_CONSTRAINT_COUNTRY,
+            self::ADDRESS_CONSTRAINT_NONE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -251,8 +286,11 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('success', $data ?? [], null);
-        $this->setIfExists('workflow', $data ?? [], null);
+        $this->setIfExists('country', $data ?? [], null);
+        $this->setIfExists('number_type', $data ?? [], null);
+        $this->setIfExists('available', $data ?? [], null);
+        $this->setIfExists('address_constraint', $data ?? [], null);
+        $this->setIfExists('areas', $data ?? [], null);
     }
 
     /**
@@ -282,6 +320,15 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getAddressConstraintAllowableValues();
+        if (!is_null($this->container['address_constraint']) && !in_array($this->container['address_constraint'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'address_constraint', must be one of '%s'",
+                $this->container['address_constraint'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -298,55 +345,146 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets success
+     * Gets country
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getSuccess()
+    public function getCountry()
     {
-        return $this->container['success'];
+        return $this->container['country'];
     }
 
     /**
-     * Sets success
+     * Sets country
      *
-     * @param bool|null $success success
+     * @param string|null $country country
      *
      * @return self
      */
-    public function setSuccess($success)
+    public function setCountry($country)
     {
-        if (is_null($success)) {
-            throw new \InvalidArgumentException('non-nullable success cannot be null');
+        if (is_null($country)) {
+            throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
-        $this->container['success'] = $success;
+        $this->container['country'] = $country;
 
         return $this;
     }
 
     /**
-     * Gets workflow
+     * Gets number_type
      *
-     * @return \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null
+     * @return string|null
      */
-    public function getWorkflow()
+    public function getNumberType()
     {
-        return $this->container['workflow'];
+        return $this->container['number_type'];
     }
 
     /**
-     * Sets workflow
+     * Sets number_type
      *
-     * @param \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null $workflow workflow
+     * @param string|null $number_type number_type
      *
      * @return self
      */
-    public function setWorkflow($workflow)
+    public function setNumberType($number_type)
     {
-        if (is_null($workflow)) {
-            throw new \InvalidArgumentException('non-nullable workflow cannot be null');
+        if (is_null($number_type)) {
+            throw new \InvalidArgumentException('non-nullable number_type cannot be null');
         }
-        $this->container['workflow'] = $workflow;
+        $this->container['number_type'] = $number_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets available
+     *
+     * @return bool|null
+     */
+    public function getAvailable()
+    {
+        return $this->container['available'];
+    }
+
+    /**
+     * Sets available
+     *
+     * @param bool|null $available Whether deliverable voice inventory exists right now.
+     *
+     * @return self
+     */
+    public function setAvailable($available)
+    {
+        if (is_null($available)) {
+            throw new \InvalidArgumentException('non-nullable available cannot be null');
+        }
+        $this->container['available'] = $available;
+
+        return $this;
+    }
+
+    /**
+     * Gets address_constraint
+     *
+     * @return string|null
+     */
+    public function getAddressConstraint()
+    {
+        return $this->container['address_constraint'];
+    }
+
+    /**
+     * Sets address_constraint
+     *
+     * @param string|null $address_constraint address_constraint
+     *
+     * @return self
+     */
+    public function setAddressConstraint($address_constraint)
+    {
+        if (is_null($address_constraint)) {
+            throw new \InvalidArgumentException('non-nullable address_constraint cannot be null');
+        }
+        $allowedValues = $this->getAddressConstraintAllowableValues();
+        if (!in_array($address_constraint, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'address_constraint', must be one of '%s'",
+                    $address_constraint,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['address_constraint'] = $address_constraint;
+
+        return $this;
+    }
+
+    /**
+     * Gets areas
+     *
+     * @return string[]|null
+     */
+    public function getAreas()
+    {
+        return $this->container['areas'];
+    }
+
+    /**
+     * Sets areas
+     *
+     * @param string[]|null $areas For `geo` only — the area(s) the registered address must be in.
+     *
+     * @return self
+     */
+    public function setAreas($areas)
+    {
+        if (is_null($areas)) {
+            throw new \InvalidArgumentException('non-nullable areas cannot be null');
+        }
+        $this->container['areas'] = $areas;
 
         return $this;
     }

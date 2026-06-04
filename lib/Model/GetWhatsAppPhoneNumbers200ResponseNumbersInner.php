@@ -62,6 +62,8 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         'phone_number' => 'string',
         'country' => 'string',
         'status' => 'string',
+        'registrant_name' => 'string',
+        'telnyx_order_id' => 'string',
         'monthly_cents' => 'int',
         'profile_id' => 'object',
         'provisioned_at' => '\DateTime',
@@ -86,6 +88,8 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         'phone_number' => null,
         'country' => null,
         'status' => null,
+        'registrant_name' => null,
+        'telnyx_order_id' => null,
         'monthly_cents' => null,
         'profile_id' => null,
         'provisioned_at' => 'date-time',
@@ -108,6 +112,8 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         'phone_number' => false,
         'country' => false,
         'status' => false,
+        'registrant_name' => false,
+        'telnyx_order_id' => false,
         'monthly_cents' => false,
         'profile_id' => false,
         'provisioned_at' => false,
@@ -210,6 +216,8 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         'phone_number' => 'phoneNumber',
         'country' => 'country',
         'status' => 'status',
+        'registrant_name' => 'registrantName',
+        'telnyx_order_id' => 'telnyxOrderId',
         'monthly_cents' => 'monthlyCents',
         'profile_id' => 'profileId',
         'provisioned_at' => 'provisionedAt',
@@ -232,6 +240,8 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         'phone_number' => 'setPhoneNumber',
         'country' => 'setCountry',
         'status' => 'setStatus',
+        'registrant_name' => 'setRegistrantName',
+        'telnyx_order_id' => 'setTelnyxOrderId',
         'monthly_cents' => 'setMonthlyCents',
         'profile_id' => 'setProfileId',
         'provisioned_at' => 'setProvisionedAt',
@@ -254,6 +264,8 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         'phone_number' => 'getPhoneNumber',
         'country' => 'getCountry',
         'status' => 'getStatus',
+        'registrant_name' => 'getRegistrantName',
+        'telnyx_order_id' => 'getTelnyxOrderId',
         'monthly_cents' => 'getMonthlyCents',
         'profile_id' => 'getProfileId',
         'provisioned_at' => 'getProvisionedAt',
@@ -354,6 +366,8 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('registrant_name', $data ?? [], null);
+        $this->setIfExists('telnyx_order_id', $data ?? [], null);
         $this->setIfExists('monthly_cents', $data ?? [], null);
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('provisioned_at', $data ?? [], null);
@@ -531,6 +545,60 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets registrant_name
+     *
+     * @return string|null
+     */
+    public function getRegistrantName()
+    {
+        return $this->container['registrant_name'];
+    }
+
+    /**
+     * Sets registrant_name
+     *
+     * @param string|null $registrant_name For regulated numbers
+     *
+     * @return self
+     */
+    public function setRegistrantName($registrant_name)
+    {
+        if (is_null($registrant_name)) {
+            throw new \InvalidArgumentException('non-nullable registrant_name cannot be null');
+        }
+        $this->container['registrant_name'] = $registrant_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets telnyx_order_id
+     *
+     * @return string|null
+     */
+    public function getTelnyxOrderId()
+    {
+        return $this->container['telnyx_order_id'];
+    }
+
+    /**
+     * Sets telnyx_order_id
+     *
+     * @param string|null $telnyx_order_id Present once the number order has been placed (i.e. the requirement group was approved). Absent while still in identity review.
+     *
+     * @return self
+     */
+    public function setTelnyxOrderId($telnyx_order_id)
+    {
+        if (is_null($telnyx_order_id)) {
+            throw new \InvalidArgumentException('non-nullable telnyx_order_id cannot be null');
+        }
+        $this->container['telnyx_order_id'] = $telnyx_order_id;
 
         return $this;
     }

@@ -59,7 +59,7 @@ class CancelBroadcast200Response implements ModelInterface, ArrayAccess, \JsonSe
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'broadcast' => '\Zernio\Model\CancelBroadcast200ResponseBroadcast'
+        'broadcast' => '\Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber'
     ];
 
     /**
@@ -327,7 +327,7 @@ class CancelBroadcast200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Gets broadcast
      *
-     * @return \Zernio\Model\CancelBroadcast200ResponseBroadcast|null
+     * @return \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null
      */
     public function getBroadcast()
     {
@@ -337,7 +337,7 @@ class CancelBroadcast200Response implements ModelInterface, ArrayAccess, \JsonSe
     /**
      * Sets broadcast
      *
-     * @param \Zernio\Model\CancelBroadcast200ResponseBroadcast|null $broadcast broadcast
+     * @param \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null $broadcast broadcast
      *
      * @return self
      */

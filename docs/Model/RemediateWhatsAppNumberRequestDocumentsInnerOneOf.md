@@ -1,10 +1,10 @@
-# # CancelBroadcast200Response
+# # RemediateWhatsAppNumberRequestDocumentsInnerOneOf
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**success** | **bool** |  | [optional]
-**broadcast** | [**\Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber**](RemediateWhatsAppNumber200ResponsePhoneNumber.md) |  | [optional]
+**requirement_id** | **string** |  |
+**document_id** | **string** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -75,10 +75,16 @@ class WhatsAppPhoneNumbersApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'checkWhatsAppNumberAvailability' => [
+            'application/json',
+        ],
         'getWhatsAppNumberInfo' => [
             'application/json',
         ],
         'getWhatsAppNumberKycForm' => [
+            'application/json',
+        ],
+        'getWhatsAppNumberRemediation' => [
             'application/json',
         ],
         'getWhatsAppPhoneNumber' => [
@@ -94,6 +100,9 @@ class WhatsAppPhoneNumbersApi
             'application/json',
         ],
         'releaseWhatsAppPhoneNumber' => [
+            'application/json',
+        ],
+        'remediateWhatsAppNumber' => [
             'application/json',
         ],
         'searchAvailableWhatsAppNumbers' => [
@@ -151,6 +160,293 @@ class WhatsAppPhoneNumbersApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation checkWhatsAppNumberAvailability
+     *
+     * Check a country&#39;s availability + address constraint
+     *
+     * @param  string $country ISO-2 country code. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\CheckWhatsAppNumberAvailability200Response|\Zernio\Model\InlineObject
+     */
+    public function checkWhatsAppNumberAvailability($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    {
+        list($response) = $this->checkWhatsAppNumberAvailabilityWithHttpInfo($country, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation checkWhatsAppNumberAvailabilityWithHttpInfo
+     *
+     * Check a country&#39;s availability + address constraint
+     *
+     * @param  string $country ISO-2 country code. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\CheckWhatsAppNumberAvailability200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function checkWhatsAppNumberAvailabilityWithHttpInfo($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    {
+        $request = $this->checkWhatsAppNumberAvailabilityRequest($country, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\CheckWhatsAppNumberAvailability200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\CheckWhatsAppNumberAvailability200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\CheckWhatsAppNumberAvailability200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation checkWhatsAppNumberAvailabilityAsync
+     *
+     * Check a country&#39;s availability + address constraint
+     *
+     * @param  string $country ISO-2 country code. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function checkWhatsAppNumberAvailabilityAsync($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    {
+        return $this->checkWhatsAppNumberAvailabilityAsyncWithHttpInfo($country, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation checkWhatsAppNumberAvailabilityAsyncWithHttpInfo
+     *
+     * Check a country&#39;s availability + address constraint
+     *
+     * @param  string $country ISO-2 country code. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function checkWhatsAppNumberAvailabilityAsyncWithHttpInfo($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    {
+        $returnType = '\Zernio\Model\CheckWhatsAppNumberAvailability200Response';
+        $request = $this->checkWhatsAppNumberAvailabilityRequest($country, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'checkWhatsAppNumberAvailability'
+     *
+     * @param  string $country ISO-2 country code. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['checkWhatsAppNumberAvailability'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function checkWhatsAppNumberAvailabilityRequest($country, string $contentType = self::contentTypes['checkWhatsAppNumberAvailability'][0])
+    {
+
+        // verify the required parameter 'country' is set
+        if ($country === null || (is_array($country) && count($country) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $country when calling checkWhatsAppNumberAvailability'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/phone-numbers/availability';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $country,
+            'country', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -749,6 +1045,292 @@ class WhatsAppPhoneNumbersApi
     }
 
     /**
+     * Operation getWhatsAppNumberRemediation
+     *
+     * Get the declined requirements to fix
+     *
+     * @param  string $id WhatsAppPhoneNumber id. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppNumberRemediation'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetWhatsAppNumberRemediation200Response|\Zernio\Model\InlineObject
+     */
+    public function getWhatsAppNumberRemediation($id, string $contentType = self::contentTypes['getWhatsAppNumberRemediation'][0])
+    {
+        list($response) = $this->getWhatsAppNumberRemediationWithHttpInfo($id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWhatsAppNumberRemediationWithHttpInfo
+     *
+     * Get the declined requirements to fix
+     *
+     * @param  string $id WhatsAppPhoneNumber id. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppNumberRemediation'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetWhatsAppNumberRemediation200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWhatsAppNumberRemediationWithHttpInfo($id, string $contentType = self::contentTypes['getWhatsAppNumberRemediation'][0])
+    {
+        $request = $this->getWhatsAppNumberRemediationRequest($id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetWhatsAppNumberRemediation200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetWhatsAppNumberRemediation200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetWhatsAppNumberRemediation200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWhatsAppNumberRemediationAsync
+     *
+     * Get the declined requirements to fix
+     *
+     * @param  string $id WhatsAppPhoneNumber id. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppNumberRemediation'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppNumberRemediationAsync($id, string $contentType = self::contentTypes['getWhatsAppNumberRemediation'][0])
+    {
+        return $this->getWhatsAppNumberRemediationAsyncWithHttpInfo($id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWhatsAppNumberRemediationAsyncWithHttpInfo
+     *
+     * Get the declined requirements to fix
+     *
+     * @param  string $id WhatsAppPhoneNumber id. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppNumberRemediation'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppNumberRemediationAsyncWithHttpInfo($id, string $contentType = self::contentTypes['getWhatsAppNumberRemediation'][0])
+    {
+        $returnType = '\Zernio\Model\GetWhatsAppNumberRemediation200Response';
+        $request = $this->getWhatsAppNumberRemediationRequest($id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWhatsAppNumberRemediation'
+     *
+     * @param  string $id WhatsAppPhoneNumber id. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppNumberRemediation'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWhatsAppNumberRemediationRequest($id, string $contentType = self::contentTypes['getWhatsAppNumberRemediation'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling getWhatsAppNumberRemediation'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/phone-numbers/{id}/remediate';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getWhatsAppPhoneNumber
      *
      * Get phone number
@@ -1053,7 +1635,7 @@ class WhatsAppPhoneNumbersApi
      *
      * List phone numbers
      *
-     * @param  string|null $status Filter by status (by default excludes released numbers) (optional)
+     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view — numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/whatsapp/phone-numbers/{id}/remediate. (optional)
      * @param  string|null $profile_id Filter by profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppPhoneNumbers'] to see the possible values for this operation
      *
@@ -1072,7 +1654,7 @@ class WhatsAppPhoneNumbersApi
      *
      * List phone numbers
      *
-     * @param  string|null $status Filter by status (by default excludes released numbers) (optional)
+     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view — numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/whatsapp/phone-numbers/{id}/remediate. (optional)
      * @param  string|null $profile_id Filter by profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppPhoneNumbers'] to see the possible values for this operation
      *
@@ -1172,7 +1754,7 @@ class WhatsAppPhoneNumbersApi
      *
      * List phone numbers
      *
-     * @param  string|null $status Filter by status (by default excludes released numbers) (optional)
+     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view — numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/whatsapp/phone-numbers/{id}/remediate. (optional)
      * @param  string|null $profile_id Filter by profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppPhoneNumbers'] to see the possible values for this operation
      *
@@ -1194,7 +1776,7 @@ class WhatsAppPhoneNumbersApi
      *
      * List phone numbers
      *
-     * @param  string|null $status Filter by status (by default excludes released numbers) (optional)
+     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view — numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/whatsapp/phone-numbers/{id}/remediate. (optional)
      * @param  string|null $profile_id Filter by profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppPhoneNumbers'] to see the possible values for this operation
      *
@@ -1245,7 +1827,7 @@ class WhatsAppPhoneNumbersApi
     /**
      * Create request for operation 'getWhatsAppPhoneNumbers'
      *
-     * @param  string|null $status Filter by status (by default excludes released numbers) (optional)
+     * @param  string|null $status Filter by status (by default excludes released numbers). NOTE: &#x60;status&#x3D;pending_regulatory&#x60; returns the \&quot;provisioning\&quot; view — numbers still in review PLUS recently-declined (last 30 days) ones, so a failed registration surfaces (with &#x60;regulatoryDeclineReason&#x60;) instead of silently disappearing. Declined numbers can be re-submitted via POST /v1/whatsapp/phone-numbers/{id}/remediate. (optional)
      * @param  string|null $profile_id Filter by profile (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppPhoneNumbers'] to see the possible values for this operation
      *
@@ -2203,6 +2785,311 @@ class WhatsAppPhoneNumbersApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation remediateWhatsAppNumber
+     *
+     * Fix a declined number and re-submit
+     *
+     * @param  string $id id (required)
+     * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request remediate_whats_app_number_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remediateWhatsAppNumber'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\RemediateWhatsAppNumber200Response|\Zernio\Model\InlineObject
+     */
+    public function remediateWhatsAppNumber($id, $remediate_whats_app_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
+    {
+        list($response) = $this->remediateWhatsAppNumberWithHttpInfo($id, $remediate_whats_app_number_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation remediateWhatsAppNumberWithHttpInfo
+     *
+     * Fix a declined number and re-submit
+     *
+     * @param  string $id (required)
+     * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remediateWhatsAppNumber'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\RemediateWhatsAppNumber200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function remediateWhatsAppNumberWithHttpInfo($id, $remediate_whats_app_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
+    {
+        $request = $this->remediateWhatsAppNumberRequest($id, $remediate_whats_app_number_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\RemediateWhatsAppNumber200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\RemediateWhatsAppNumber200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\RemediateWhatsAppNumber200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation remediateWhatsAppNumberAsync
+     *
+     * Fix a declined number and re-submit
+     *
+     * @param  string $id (required)
+     * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remediateWhatsAppNumber'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function remediateWhatsAppNumberAsync($id, $remediate_whats_app_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
+    {
+        return $this->remediateWhatsAppNumberAsyncWithHttpInfo($id, $remediate_whats_app_number_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation remediateWhatsAppNumberAsyncWithHttpInfo
+     *
+     * Fix a declined number and re-submit
+     *
+     * @param  string $id (required)
+     * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remediateWhatsAppNumber'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function remediateWhatsAppNumberAsyncWithHttpInfo($id, $remediate_whats_app_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
+    {
+        $returnType = '\Zernio\Model\RemediateWhatsAppNumber200Response';
+        $request = $this->remediateWhatsAppNumberRequest($id, $remediate_whats_app_number_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'remediateWhatsAppNumber'
+     *
+     * @param  string $id (required)
+     * @param  \Zernio\Model\RemediateWhatsAppNumberRequest $remediate_whats_app_number_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remediateWhatsAppNumber'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function remediateWhatsAppNumberRequest($id, $remediate_whats_app_number_request, string $contentType = self::contentTypes['remediateWhatsAppNumber'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling remediateWhatsAppNumber'
+            );
+        }
+
+        // verify the required parameter 'remediate_whats_app_number_request' is set
+        if ($remediate_whats_app_number_request === null || (is_array($remediate_whats_app_number_request) && count($remediate_whats_app_number_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $remediate_whats_app_number_request when calling remediateWhatsAppNumber'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/phone-numbers/{id}/remediate';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($remediate_whats_app_number_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($remediate_whats_app_number_request));
+            } else {
+                $httpBody = $remediate_whats_app_number_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

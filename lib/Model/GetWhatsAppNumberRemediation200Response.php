@@ -1,6 +1,6 @@
 <?php
 /**
- * PauseWorkflow200Response
+ * GetWhatsAppNumberRemediation200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PauseWorkflow200Response Class Doc Comment
+ * GetWhatsAppNumberRemediation200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetWhatsAppNumberRemediation200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'pauseWorkflow_200_response';
+    protected static $openAPIModelName = 'getWhatsAppNumberRemediation_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool',
-        'workflow' => '\Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber'
+        'country' => 'string',
+        'number_type' => 'string',
+        'decline_reason' => 'string',
+        'fields' => 'object[]'
     ];
 
     /**
@@ -70,8 +72,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'success' => null,
-        'workflow' => null
+        'country' => null,
+        'number_type' => null,
+        'decline_reason' => null,
+        'fields' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'success' => false,
-        'workflow' => false
+        'country' => false,
+        'number_type' => false,
+        'decline_reason' => false,
+        'fields' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-        'workflow' => 'workflow'
+        'country' => 'country',
+        'number_type' => 'numberType',
+        'decline_reason' => 'declineReason',
+        'fields' => 'fields'
     ];
 
     /**
@@ -180,8 +188,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-        'workflow' => 'setWorkflow'
+        'country' => 'setCountry',
+        'number_type' => 'setNumberType',
+        'decline_reason' => 'setDeclineReason',
+        'fields' => 'setFields'
     ];
 
     /**
@@ -190,8 +200,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-        'workflow' => 'getWorkflow'
+        'country' => 'getCountry',
+        'number_type' => 'getNumberType',
+        'decline_reason' => 'getDeclineReason',
+        'fields' => 'getFields'
     ];
 
     /**
@@ -251,8 +263,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('success', $data ?? [], null);
-        $this->setIfExists('workflow', $data ?? [], null);
+        $this->setIfExists('country', $data ?? [], null);
+        $this->setIfExists('number_type', $data ?? [], null);
+        $this->setIfExists('decline_reason', $data ?? [], null);
+        $this->setIfExists('fields', $data ?? [], null);
     }
 
     /**
@@ -298,55 +312,109 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets success
+     * Gets country
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getSuccess()
+    public function getCountry()
     {
-        return $this->container['success'];
+        return $this->container['country'];
     }
 
     /**
-     * Sets success
+     * Sets country
      *
-     * @param bool|null $success success
+     * @param string|null $country country
      *
      * @return self
      */
-    public function setSuccess($success)
+    public function setCountry($country)
     {
-        if (is_null($success)) {
-            throw new \InvalidArgumentException('non-nullable success cannot be null');
+        if (is_null($country)) {
+            throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
-        $this->container['success'] = $success;
+        $this->container['country'] = $country;
 
         return $this;
     }
 
     /**
-     * Gets workflow
+     * Gets number_type
      *
-     * @return \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null
+     * @return string|null
      */
-    public function getWorkflow()
+    public function getNumberType()
     {
-        return $this->container['workflow'];
+        return $this->container['number_type'];
     }
 
     /**
-     * Sets workflow
+     * Sets number_type
      *
-     * @param \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null $workflow workflow
+     * @param string|null $number_type number_type
      *
      * @return self
      */
-    public function setWorkflow($workflow)
+    public function setNumberType($number_type)
     {
-        if (is_null($workflow)) {
-            throw new \InvalidArgumentException('non-nullable workflow cannot be null');
+        if (is_null($number_type)) {
+            throw new \InvalidArgumentException('non-nullable number_type cannot be null');
         }
-        $this->container['workflow'] = $workflow;
+        $this->container['number_type'] = $number_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets decline_reason
+     *
+     * @return string|null
+     */
+    public function getDeclineReason()
+    {
+        return $this->container['decline_reason'];
+    }
+
+    /**
+     * Sets decline_reason
+     *
+     * @param string|null $decline_reason decline_reason
+     *
+     * @return self
+     */
+    public function setDeclineReason($decline_reason)
+    {
+        if (is_null($decline_reason)) {
+            throw new \InvalidArgumentException('non-nullable decline_reason cannot be null');
+        }
+        $this->container['decline_reason'] = $decline_reason;
+
+        return $this;
+    }
+
+    /**
+     * Gets fields
+     *
+     * @return object[]|null
+     */
+    public function getFields()
+    {
+        return $this->container['fields'];
+    }
+
+    /**
+     * Sets fields
+     *
+     * @param object[]|null $fields Same field shape as GET /v1/whatsapp/phone-numbers/kyc.
+     *
+     * @return self
+     */
+    public function setFields($fields)
+    {
+        if (is_null($fields)) {
+            throw new \InvalidArgumentException('non-nullable fields cannot be null');
+        }
+        $this->container['fields'] = $fields;
 
         return $this;
     }

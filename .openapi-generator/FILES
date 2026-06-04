@@ -126,7 +126,7 @@ docs/Model/BulkUploadResultRateLimitedAccountsInner.md
 docs/Model/BulkUploadResultResultsInner.md
 docs/Model/BusinessCenter.md
 docs/Model/CancelBroadcast200Response.md
-docs/Model/CancelBroadcast200ResponseBroadcast.md
+docs/Model/CheckWhatsAppNumberAvailability200Response.md
 docs/Model/CompleteGoogleBusinessVerificationRequest.md
 docs/Model/CompleteTelegramConnect200Response.md
 docs/Model/CompleteWhatsAppPhoneSelection200Response.md
@@ -542,6 +542,7 @@ docs/Model/GetWhatsAppNumberInfo200ResponseWaba.md
 docs/Model/GetWhatsAppNumberKycForm200Response.md
 docs/Model/GetWhatsAppNumberKycForm200ResponseFieldsInner.md
 docs/Model/GetWhatsAppNumberKycForm200ResponseReusable.md
+docs/Model/GetWhatsAppNumberRemediation200Response.md
 docs/Model/GetWhatsAppPhoneNumber200Response.md
 docs/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.md
 docs/Model/GetWhatsAppPhoneNumbers200Response.md
@@ -783,6 +784,11 @@ docs/Model/RedditPost.md
 docs/Model/RejectWhatsAppGroupJoinRequestsRequest.md
 docs/Model/ReleaseWhatsAppPhoneNumber200Response.md
 docs/Model/ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber.md
+docs/Model/RemediateWhatsAppNumber200Response.md
+docs/Model/RemediateWhatsAppNumber200ResponsePhoneNumber.md
+docs/Model/RemediateWhatsAppNumberRequest.md
+docs/Model/RemediateWhatsAppNumberRequestDocumentsInner.md
+docs/Model/RemediateWhatsAppNumberRequestDocumentsInnerOneOf.md
 docs/Model/RemoveBookmark200Response.md
 docs/Model/RemoveConversionAssociations200Response.md
 docs/Model/RemoveDiscordMemberRole200Response.md
@@ -1294,7 +1300,7 @@ lib/Model/BulkUploadResultRateLimitedAccountsInner.php
 lib/Model/BulkUploadResultResultsInner.php
 lib/Model/BusinessCenter.php
 lib/Model/CancelBroadcast200Response.php
-lib/Model/CancelBroadcast200ResponseBroadcast.php
+lib/Model/CheckWhatsAppNumberAvailability200Response.php
 lib/Model/CompleteGoogleBusinessVerificationRequest.php
 lib/Model/CompleteTelegramConnect200Response.php
 lib/Model/CompleteWhatsAppPhoneSelection200Response.php
@@ -1710,6 +1716,7 @@ lib/Model/GetWhatsAppNumberInfo200ResponseWaba.php
 lib/Model/GetWhatsAppNumberKycForm200Response.php
 lib/Model/GetWhatsAppNumberKycForm200ResponseFieldsInner.php
 lib/Model/GetWhatsAppNumberKycForm200ResponseReusable.php
+lib/Model/GetWhatsAppNumberRemediation200Response.php
 lib/Model/GetWhatsAppPhoneNumber200Response.php
 lib/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.php
 lib/Model/GetWhatsAppPhoneNumbers200Response.php
@@ -1952,6 +1959,11 @@ lib/Model/RedditPost.php
 lib/Model/RejectWhatsAppGroupJoinRequestsRequest.php
 lib/Model/ReleaseWhatsAppPhoneNumber200Response.php
 lib/Model/ReleaseWhatsAppPhoneNumber200ResponsePhoneNumber.php
+lib/Model/RemediateWhatsAppNumber200Response.php
+lib/Model/RemediateWhatsAppNumber200ResponsePhoneNumber.php
+lib/Model/RemediateWhatsAppNumberRequest.php
+lib/Model/RemediateWhatsAppNumberRequestDocumentsInner.php
+lib/Model/RemediateWhatsAppNumberRequestDocumentsInnerOneOf.php
 lib/Model/RemoveBookmark200Response.php
 lib/Model/RemoveConversionAssociations200Response.php
 lib/Model/RemoveDiscordMemberRole200Response.php
@@ -2337,3 +2349,10 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CheckWhatsAppNumberAvailability200ResponseTest.php
+test/Model/GetWhatsAppNumberRemediation200ResponseTest.php
+test/Model/RemediateWhatsAppNumber200ResponsePhoneNumberTest.php
+test/Model/RemediateWhatsAppNumber200ResponseTest.php
+test/Model/RemediateWhatsAppNumberRequestDocumentsInnerOneOfTest.php
+test/Model/RemediateWhatsAppNumberRequestDocumentsInnerTest.php
+test/Model/RemediateWhatsAppNumberRequestTest.php

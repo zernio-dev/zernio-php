@@ -1,6 +1,6 @@
 <?php
 /**
- * PauseWorkflow200Response
+ * RemediateWhatsAppNumberRequestDocumentsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PauseWorkflow200Response Class Doc Comment
+ * RemediateWhatsAppNumberRequestDocumentsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class RemediateWhatsAppNumberRequestDocumentsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'pauseWorkflow_200_response';
+    protected static $openAPIModelName = 'remediateWhatsAppNumber_request_documents_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool',
-        'workflow' => '\Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber'
+        'requirement_id' => 'string',
+        'filename' => 'string',
+        'base64' => 'string',
+        'document_id' => 'string'
     ];
 
     /**
@@ -70,8 +72,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'success' => null,
-        'workflow' => null
+        'requirement_id' => null,
+        'filename' => null,
+        'base64' => null,
+        'document_id' => null
     ];
 
     /**
@@ -80,8 +84,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'success' => false,
-        'workflow' => false
+        'requirement_id' => false,
+        'filename' => false,
+        'base64' => false,
+        'document_id' => false
     ];
 
     /**
@@ -170,8 +176,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-        'workflow' => 'workflow'
+        'requirement_id' => 'requirementId',
+        'filename' => 'filename',
+        'base64' => 'base64',
+        'document_id' => 'documentId'
     ];
 
     /**
@@ -180,8 +188,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-        'workflow' => 'setWorkflow'
+        'requirement_id' => 'setRequirementId',
+        'filename' => 'setFilename',
+        'base64' => 'setBase64',
+        'document_id' => 'setDocumentId'
     ];
 
     /**
@@ -190,8 +200,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-        'workflow' => 'getWorkflow'
+        'requirement_id' => 'getRequirementId',
+        'filename' => 'getFilename',
+        'base64' => 'getBase64',
+        'document_id' => 'getDocumentId'
     ];
 
     /**
@@ -251,8 +263,10 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('success', $data ?? [], null);
-        $this->setIfExists('workflow', $data ?? [], null);
+        $this->setIfExists('requirement_id', $data ?? [], null);
+        $this->setIfExists('filename', $data ?? [], null);
+        $this->setIfExists('base64', $data ?? [], null);
+        $this->setIfExists('document_id', $data ?? [], null);
     }
 
     /**
@@ -282,6 +296,18 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
+        if ($this->container['requirement_id'] === null) {
+            $invalidProperties[] = "'requirement_id' can't be null";
+        }
+        if ($this->container['filename'] === null) {
+            $invalidProperties[] = "'filename' can't be null";
+        }
+        if ($this->container['base64'] === null) {
+            $invalidProperties[] = "'base64' can't be null";
+        }
+        if ($this->container['document_id'] === null) {
+            $invalidProperties[] = "'document_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -298,55 +324,109 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets success
+     * Gets requirement_id
      *
-     * @return bool|null
+     * @return string
      */
-    public function getSuccess()
+    public function getRequirementId()
     {
-        return $this->container['success'];
+        return $this->container['requirement_id'];
     }
 
     /**
-     * Sets success
+     * Sets requirement_id
      *
-     * @param bool|null $success success
+     * @param string $requirement_id requirement_id
      *
      * @return self
      */
-    public function setSuccess($success)
+    public function setRequirementId($requirement_id)
     {
-        if (is_null($success)) {
-            throw new \InvalidArgumentException('non-nullable success cannot be null');
+        if (is_null($requirement_id)) {
+            throw new \InvalidArgumentException('non-nullable requirement_id cannot be null');
         }
-        $this->container['success'] = $success;
+        $this->container['requirement_id'] = $requirement_id;
 
         return $this;
     }
 
     /**
-     * Gets workflow
+     * Gets filename
      *
-     * @return \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null
+     * @return string
      */
-    public function getWorkflow()
+    public function getFilename()
     {
-        return $this->container['workflow'];
+        return $this->container['filename'];
     }
 
     /**
-     * Sets workflow
+     * Sets filename
      *
-     * @param \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null $workflow workflow
+     * @param string $filename filename
      *
      * @return self
      */
-    public function setWorkflow($workflow)
+    public function setFilename($filename)
     {
-        if (is_null($workflow)) {
-            throw new \InvalidArgumentException('non-nullable workflow cannot be null');
+        if (is_null($filename)) {
+            throw new \InvalidArgumentException('non-nullable filename cannot be null');
         }
-        $this->container['workflow'] = $workflow;
+        $this->container['filename'] = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Gets base64
+     *
+     * @return string
+     */
+    public function getBase64()
+    {
+        return $this->container['base64'];
+    }
+
+    /**
+     * Sets base64
+     *
+     * @param string $base64 base64
+     *
+     * @return self
+     */
+    public function setBase64($base64)
+    {
+        if (is_null($base64)) {
+            throw new \InvalidArgumentException('non-nullable base64 cannot be null');
+        }
+        $this->container['base64'] = $base64;
+
+        return $this;
+    }
+
+    /**
+     * Gets document_id
+     *
+     * @return string
+     */
+    public function getDocumentId()
+    {
+        return $this->container['document_id'];
+    }
+
+    /**
+     * Sets document_id
+     *
+     * @param string $document_id document_id
+     *
+     * @return self
+     */
+    public function setDocumentId($document_id)
+    {
+        if (is_null($document_id)) {
+            throw new \InvalidArgumentException('non-nullable document_id cannot be null');
+        }
+        $this->container['document_id'] = $document_id;
 
         return $this;
     }

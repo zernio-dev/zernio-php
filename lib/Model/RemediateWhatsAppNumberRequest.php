@@ -1,6 +1,6 @@
 <?php
 /**
- * PauseWorkflow200Response
+ * RemediateWhatsAppNumberRequest
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PauseWorkflow200Response Class Doc Comment
+ * RemediateWhatsAppNumberRequest Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class RemediateWhatsAppNumberRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'pauseWorkflow_200_response';
+    protected static $openAPIModelName = 'remediateWhatsAppNumber_request';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,9 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool',
-        'workflow' => '\Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber'
+        'values' => 'array<string,string>',
+        'documents' => '\Zernio\Model\RemediateWhatsAppNumberRequestDocumentsInner[]',
+        'address' => 'object'
     ];
 
     /**
@@ -70,8 +71,9 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'success' => null,
-        'workflow' => null
+        'values' => null,
+        'documents' => null,
+        'address' => null
     ];
 
     /**
@@ -80,8 +82,9 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'success' => false,
-        'workflow' => false
+        'values' => false,
+        'documents' => false,
+        'address' => false
     ];
 
     /**
@@ -170,8 +173,9 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-        'workflow' => 'workflow'
+        'values' => 'values',
+        'documents' => 'documents',
+        'address' => 'address'
     ];
 
     /**
@@ -180,8 +184,9 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-        'workflow' => 'setWorkflow'
+        'values' => 'setValues',
+        'documents' => 'setDocuments',
+        'address' => 'setAddress'
     ];
 
     /**
@@ -190,8 +195,9 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-        'workflow' => 'getWorkflow'
+        'values' => 'getValues',
+        'documents' => 'getDocuments',
+        'address' => 'getAddress'
     ];
 
     /**
@@ -251,8 +257,9 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('success', $data ?? [], null);
-        $this->setIfExists('workflow', $data ?? [], null);
+        $this->setIfExists('values', $data ?? [], null);
+        $this->setIfExists('documents', $data ?? [], null);
+        $this->setIfExists('address', $data ?? [], null);
     }
 
     /**
@@ -298,55 +305,82 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets success
+     * Gets values
      *
-     * @return bool|null
+     * @return array<string,string>|null
      */
-    public function getSuccess()
+    public function getValues()
     {
-        return $this->container['success'];
+        return $this->container['values'];
     }
 
     /**
-     * Sets success
+     * Sets values
      *
-     * @param bool|null $success success
+     * @param array<string,string>|null $values values
      *
      * @return self
      */
-    public function setSuccess($success)
+    public function setValues($values)
     {
-        if (is_null($success)) {
-            throw new \InvalidArgumentException('non-nullable success cannot be null');
+        if (is_null($values)) {
+            throw new \InvalidArgumentException('non-nullable values cannot be null');
         }
-        $this->container['success'] = $success;
+        $this->container['values'] = $values;
 
         return $this;
     }
 
     /**
-     * Gets workflow
+     * Gets documents
      *
-     * @return \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null
+     * @return \Zernio\Model\RemediateWhatsAppNumberRequestDocumentsInner[]|null
      */
-    public function getWorkflow()
+    public function getDocuments()
     {
-        return $this->container['workflow'];
+        return $this->container['documents'];
     }
 
     /**
-     * Sets workflow
+     * Sets documents
      *
-     * @param \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null $workflow workflow
+     * @param \Zernio\Model\RemediateWhatsAppNumberRequestDocumentsInner[]|null $documents documents
      *
      * @return self
      */
-    public function setWorkflow($workflow)
+    public function setDocuments($documents)
     {
-        if (is_null($workflow)) {
-            throw new \InvalidArgumentException('non-nullable workflow cannot be null');
+        if (is_null($documents)) {
+            throw new \InvalidArgumentException('non-nullable documents cannot be null');
         }
-        $this->container['workflow'] = $workflow;
+        $this->container['documents'] = $documents;
+
+        return $this;
+    }
+
+    /**
+     * Gets address
+     *
+     * @return object|null
+     */
+    public function getAddress()
+    {
+        return $this->container['address'];
+    }
+
+    /**
+     * Sets address
+     *
+     * @param object|null $address Same shape as the KYC submit address.
+     *
+     * @return self
+     */
+    public function setAddress($address)
+    {
+        if (is_null($address)) {
+            throw new \InvalidArgumentException('non-nullable address cannot be null');
+        }
+        $this->container['address'] = $address;
 
         return $this;
     }

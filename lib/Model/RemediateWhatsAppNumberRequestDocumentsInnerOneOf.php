@@ -1,6 +1,6 @@
 <?php
 /**
- * PauseWorkflow200Response
+ * RemediateWhatsAppNumberRequestDocumentsInnerOneOf
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PauseWorkflow200Response Class Doc Comment
+ * RemediateWhatsAppNumberRequestDocumentsInnerOneOf Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class RemediateWhatsAppNumberRequestDocumentsInnerOneOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       *
       * @var string
       */
-    protected static $openAPIModelName = 'pauseWorkflow_200_response';
+    protected static $openAPIModelName = 'remediateWhatsAppNumber_request_documents_inner_oneOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,8 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool',
-        'workflow' => '\Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber'
+        'requirement_id' => 'string',
+        'document_id' => 'string'
     ];
 
     /**
@@ -70,8 +70,8 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'success' => null,
-        'workflow' => null
+        'requirement_id' => null,
+        'document_id' => null
     ];
 
     /**
@@ -80,8 +80,8 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'success' => false,
-        'workflow' => false
+        'requirement_id' => false,
+        'document_id' => false
     ];
 
     /**
@@ -170,8 +170,8 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-        'workflow' => 'workflow'
+        'requirement_id' => 'requirementId',
+        'document_id' => 'documentId'
     ];
 
     /**
@@ -180,8 +180,8 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-        'workflow' => 'setWorkflow'
+        'requirement_id' => 'setRequirementId',
+        'document_id' => 'setDocumentId'
     ];
 
     /**
@@ -190,8 +190,8 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-        'workflow' => 'getWorkflow'
+        'requirement_id' => 'getRequirementId',
+        'document_id' => 'getDocumentId'
     ];
 
     /**
@@ -251,8 +251,8 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('success', $data ?? [], null);
-        $this->setIfExists('workflow', $data ?? [], null);
+        $this->setIfExists('requirement_id', $data ?? [], null);
+        $this->setIfExists('document_id', $data ?? [], null);
     }
 
     /**
@@ -282,6 +282,12 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $invalidProperties = [];
 
+        if ($this->container['requirement_id'] === null) {
+            $invalidProperties[] = "'requirement_id' can't be null";
+        }
+        if ($this->container['document_id'] === null) {
+            $invalidProperties[] = "'document_id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -298,55 +304,55 @@ class PauseWorkflow200Response implements ModelInterface, ArrayAccess, \JsonSeri
 
 
     /**
-     * Gets success
+     * Gets requirement_id
      *
-     * @return bool|null
+     * @return string
      */
-    public function getSuccess()
+    public function getRequirementId()
     {
-        return $this->container['success'];
+        return $this->container['requirement_id'];
     }
 
     /**
-     * Sets success
+     * Sets requirement_id
      *
-     * @param bool|null $success success
+     * @param string $requirement_id requirement_id
      *
      * @return self
      */
-    public function setSuccess($success)
+    public function setRequirementId($requirement_id)
     {
-        if (is_null($success)) {
-            throw new \InvalidArgumentException('non-nullable success cannot be null');
+        if (is_null($requirement_id)) {
+            throw new \InvalidArgumentException('non-nullable requirement_id cannot be null');
         }
-        $this->container['success'] = $success;
+        $this->container['requirement_id'] = $requirement_id;
 
         return $this;
     }
 
     /**
-     * Gets workflow
+     * Gets document_id
      *
-     * @return \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null
+     * @return string
      */
-    public function getWorkflow()
+    public function getDocumentId()
     {
-        return $this->container['workflow'];
+        return $this->container['document_id'];
     }
 
     /**
-     * Sets workflow
+     * Sets document_id
      *
-     * @param \Zernio\Model\RemediateWhatsAppNumber200ResponsePhoneNumber|null $workflow workflow
+     * @param string $document_id document_id
      *
      * @return self
      */
-    public function setWorkflow($workflow)
+    public function setDocumentId($document_id)
     {
-        if (is_null($workflow)) {
-            throw new \InvalidArgumentException('non-nullable workflow cannot be null');
+        if (is_null($document_id)) {
+            throw new \InvalidArgumentException('non-nullable document_id cannot be null');
         }
-        $this->container['workflow'] = $workflow;
+        $this->container['document_id'] = $document_id;
 
         return $this;
     }
