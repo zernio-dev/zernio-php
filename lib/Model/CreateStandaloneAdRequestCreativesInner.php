@@ -59,6 +59,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @var string[]
       */
     protected static $openAPITypes = [
+        'name' => 'string',
         'headline' => 'string',
         'body' => 'string',
         'image_url' => 'string',
@@ -75,6 +76,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'name' => null,
         'headline' => null,
         'body' => null,
         'image_url' => 'uri',
@@ -89,6 +91,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'name' => false,
         'headline' => false,
         'body' => false,
         'image_url' => false,
@@ -183,6 +186,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $attributeMap = [
+        'name' => 'name',
         'headline' => 'headline',
         'body' => 'body',
         'image_url' => 'imageUrl',
@@ -197,6 +201,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $setters = [
+        'name' => 'setName',
         'headline' => 'setHeadline',
         'body' => 'setBody',
         'image_url' => 'setImageUrl',
@@ -211,6 +216,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      * @var string[]
      */
     protected static $getters = [
+        'name' => 'getName',
         'headline' => 'getHeadline',
         'body' => 'getBody',
         'image_url' => 'getImageUrl',
@@ -307,6 +313,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('headline', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
@@ -341,6 +348,10 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        }
 
         if ($this->container['headline'] === null) {
             $invalidProperties[] = "'headline' can't be null";
@@ -381,6 +392,37 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Exact name for this ad. Falls back to `<name> #N` (N = 1-based position).
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling CreateStandaloneAdRequestCreativesInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['name'] = $name;
+
+        return $this;
+    }
 
     /**
      * Gets headline

@@ -2349,10 +2349,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CheckWhatsAppNumberAvailability200ResponseTest.php
-test/Model/GetWhatsAppNumberRemediation200ResponseTest.php
-test/Model/RemediateWhatsAppNumber200ResponsePhoneNumberTest.php
-test/Model/RemediateWhatsAppNumber200ResponseTest.php
-test/Model/RemediateWhatsAppNumberRequestDocumentsInnerOneOfTest.php
-test/Model/RemediateWhatsAppNumberRequestDocumentsInnerTest.php
-test/Model/RemediateWhatsAppNumberRequestTest.php

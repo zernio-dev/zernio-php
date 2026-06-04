@@ -327,6 +327,10 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        }
+
         return $invalidProperties;
     }
 
@@ -473,7 +477,7 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string|null $name Rename the ad. Now propagated to Meta (POST /{ad-id}); non-Meta platforms return 501.
      *
      * @return self
      */
@@ -482,6 +486,10 @@ class UpdateAdRequest implements ModelInterface, ArrayAccess, \JsonSerializable
         if (is_null($name)) {
             throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UpdateAdRequest., must be smaller than or equal to 255.');
+        }
+
         $this->container['name'] = $name;
 
         return $this;

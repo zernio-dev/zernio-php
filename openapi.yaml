@@ -25007,6 +25007,7 @@ paths:
                 bidStrategy:
                   allOf: [{ $ref: '#/components/schemas/BidStrategy' }]
                   description: "Campaign-level default. Ad sets inherit this unless they override."
+                name: { type: string, maxLength: 255, description: "Rename the campaign (Meta only; other platforms return 501). At least one of budget/bidStrategy/name is required." }
       responses:
         '200':
           description: Campaign updated
@@ -25226,6 +25227,7 @@ paths:
                     amount: { type: number }
                     type: { type: string, enum: [daily, lifetime] }
                 status: { type: string, enum: [active, paused], description: Omit if not toggling delivery state }
+                name: { type: string, maxLength: 255, description: "Rename the ad set (Meta only; other platforms return 501). At least one of budget/status/bidStrategy/name is required." }
                 bidStrategy:
                   allOf: [{ $ref: '#/components/schemas/BidStrategy' }]
                   description: |
@@ -25513,7 +25515,7 @@ paths:
                     linkUrl: { type: string, format: uri }
                     imageUrl: { type: string, format: uri }
                     videoUrl: { type: string, format: uri }
-                name: { type: string }
+                name: { type: string, maxLength: 255, description: "Rename the ad. Now propagated to Meta (POST /{ad-id}); non-Meta platforms return 501." }
       responses:
         '200':
           description: Ad updated
@@ -26062,6 +26064,8 @@ paths:
                 accountId: { type: string }
                 adAccountId: { type: string }
                 name: { type: string, maxLength: 255 }
+                campaignName: { type: string, maxLength: 255, description: "Meta only. Exact campaign name. Overrides the default `<name> - Campaign`." }
+                adSetName: { type: string, maxLength: 255, description: "Meta only. Exact ad set name. Overrides the default `<name> - Ad Set`. (For per-ad names on the multi-creative shape, set `name` on each `creatives[]` entry.)" }
                 goal: { type: string, enum: [engagement, traffic, awareness, video_views, lead_generation, conversions, app_promotion], description: "Required on legacy + multi-creative shapes. Inherited from the ad set on the attach shape. Available goals vary by platform. Meta-specific: `conversions` requires `promotedObject.pixelId` + `promotedObject.customEventType`; `app_promotion` requires `promotedObject.applicationId` + `promotedObject.objectStoreUrl`; `lead_generation` accepts an optional `promotedObject.pageId` (auto-filled from the connected Page when omitted). TikTok-specific: `conversions` (website-conversion ad group) requires `promotedObject.pixelId` (your TikTok Pixel ID) and accepts an optional `promotedObject.customEventType` (a TikTok `optimization_event` code like `ON_WEB_ORDER`, `INITIATE_ORDER`, `ON_WEB_REGISTER`, `FORM`); to inherit a pixel + event from an existing ad group, pass `adSetId` instead. LinkedIn-specific: `engagement`, `traffic`, `awareness`, and `video_views` are supported for standalone ads (creates a Direct Sponsored Content single image or single video ad). `traffic` requires `linkUrl`; `video_views` requires the `video` field. For `lead_generation` / `conversions` on LinkedIn — or to promote an existing post — use `POST /v1/ads/boost`." }
                 budgetAmount: { type: number, description: "Required on legacy + multi-creative shapes. Inherited on attach." }
                 budgetType: { type: string, enum: [daily, lifetime], description: "Required on legacy + multi-creative shapes. Inherited on attach." }
@@ -26112,6 +26116,7 @@ paths:
                     required: [headline, body, linkUrl, callToAction]
                     description: "Each creative must supply EXACTLY ONE of `imageUrl` (image creative) or `video` (video creative)."
                     properties:
+                      name: { type: string, maxLength: 255, description: "Exact name for this ad. Falls back to `<name> #N` (N = 1-based position)." }
                       headline: { type: string, maxLength: 255 }
                       body: { type: string }
                       imageUrl: { type: string, format: uri, description: "Image creative. Mutually exclusive with `video`." }

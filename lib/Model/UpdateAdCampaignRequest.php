@@ -60,7 +60,8 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPITypes = [
         'platform' => 'string',
         'budget' => '\Zernio\Model\UpdateAdCampaignRequestBudget',
-        'bid_strategy' => '\Zernio\Model\BidStrategy'
+        'bid_strategy' => '\Zernio\Model\BidStrategy',
+        'name' => 'string'
     ];
 
     /**
@@ -73,7 +74,8 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $openAPIFormats = [
         'platform' => null,
         'budget' => null,
-        'bid_strategy' => null
+        'bid_strategy' => null,
+        'name' => null
     ];
 
     /**
@@ -84,7 +86,8 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static array $openAPINullables = [
         'platform' => false,
         'budget' => false,
-        'bid_strategy' => false
+        'bid_strategy' => false,
+        'name' => false
     ];
 
     /**
@@ -175,7 +178,8 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $attributeMap = [
         'platform' => 'platform',
         'budget' => 'budget',
-        'bid_strategy' => 'bidStrategy'
+        'bid_strategy' => 'bidStrategy',
+        'name' => 'name'
     ];
 
     /**
@@ -186,7 +190,8 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $setters = [
         'platform' => 'setPlatform',
         'budget' => 'setBudget',
-        'bid_strategy' => 'setBidStrategy'
+        'bid_strategy' => 'setBidStrategy',
+        'name' => 'setName'
     ];
 
     /**
@@ -197,7 +202,8 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
     protected static $getters = [
         'platform' => 'getPlatform',
         'budget' => 'getBudget',
-        'bid_strategy' => 'getBidStrategy'
+        'bid_strategy' => 'getBidStrategy',
+        'name' => 'getName'
     ];
 
     /**
@@ -275,6 +281,7 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('bid_strategy', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
     }
 
     /**
@@ -314,6 +321,10 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
                 $this->container['platform'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
 
         return $invalidProperties;
@@ -418,6 +429,37 @@ class UpdateAdCampaignRequest implements ModelInterface, ArrayAccess, \JsonSeria
             throw new \InvalidArgumentException('non-nullable bid_strategy cannot be null');
         }
         $this->container['bid_strategy'] = $bid_strategy;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Rename the campaign (Meta only; other platforms return 501). At least one of budget/bidStrategy/name is required.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UpdateAdCampaignRequest., must be smaller than or equal to 255.');
+        }
+
+        $this->container['name'] = $name;
 
         return $this;
     }

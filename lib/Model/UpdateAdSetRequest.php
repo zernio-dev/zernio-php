@@ -61,6 +61,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'platform' => 'string',
         'budget' => '\Zernio\Model\UpdateAdSetRequestBudget',
         'status' => 'string',
+        'name' => 'string',
         'bid_strategy' => '\Zernio\Model\BidStrategy',
         'bid_amount' => 'float',
         'roas_average_floor' => 'float'
@@ -77,6 +78,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'platform' => null,
         'budget' => null,
         'status' => null,
+        'name' => null,
         'bid_strategy' => null,
         'bid_amount' => null,
         'roas_average_floor' => null
@@ -91,6 +93,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'platform' => false,
         'budget' => false,
         'status' => false,
+        'name' => false,
         'bid_strategy' => false,
         'bid_amount' => false,
         'roas_average_floor' => false
@@ -185,6 +188,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'platform' => 'platform',
         'budget' => 'budget',
         'status' => 'status',
+        'name' => 'name',
         'bid_strategy' => 'bidStrategy',
         'bid_amount' => 'bidAmount',
         'roas_average_floor' => 'roasAverageFloor'
@@ -199,6 +203,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'platform' => 'setPlatform',
         'budget' => 'setBudget',
         'status' => 'setStatus',
+        'name' => 'setName',
         'bid_strategy' => 'setBidStrategy',
         'bid_amount' => 'setBidAmount',
         'roas_average_floor' => 'setRoasAverageFloor'
@@ -213,6 +218,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'platform' => 'getPlatform',
         'budget' => 'getBudget',
         'status' => 'getStatus',
+        'name' => 'getName',
         'bid_strategy' => 'getBidStrategy',
         'bid_amount' => 'getBidAmount',
         'roas_average_floor' => 'getRoasAverageFloor'
@@ -318,6 +324,7 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('budget', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('bid_strategy', $data ?? [], null);
         $this->setIfExists('bid_amount', $data ?? [], null);
         $this->setIfExists('roas_average_floor', $data ?? [], null);
@@ -369,6 +376,10 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
                 $this->container['status'],
                 implode("', '", $allowedValues)
             );
+        }
+
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
         }
 
         return $invalidProperties;
@@ -483,6 +494,37 @@ class UpdateAdSetRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name Rename the ad set (Meta only; other platforms return 501). At least one of budget/status/bidStrategy/name is required.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling UpdateAdSetRequest., must be smaller than or equal to 255.');
+        }
+
+        $this->container['name'] = $name;
 
         return $this;
     }

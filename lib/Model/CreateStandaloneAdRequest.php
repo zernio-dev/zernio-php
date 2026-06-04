@@ -61,6 +61,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'account_id' => 'string',
         'ad_account_id' => 'string',
         'name' => 'string',
+        'campaign_name' => 'string',
+        'ad_set_name' => 'string',
         'goal' => 'string',
         'budget_amount' => 'float',
         'budget_type' => 'string',
@@ -130,6 +132,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'account_id' => null,
         'ad_account_id' => null,
         'name' => null,
+        'campaign_name' => null,
+        'ad_set_name' => null,
         'goal' => null,
         'budget_amount' => null,
         'budget_type' => null,
@@ -197,6 +201,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'account_id' => false,
         'ad_account_id' => false,
         'name' => false,
+        'campaign_name' => false,
+        'ad_set_name' => false,
         'goal' => false,
         'budget_amount' => false,
         'budget_type' => false,
@@ -344,6 +350,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'account_id' => 'accountId',
         'ad_account_id' => 'adAccountId',
         'name' => 'name',
+        'campaign_name' => 'campaignName',
+        'ad_set_name' => 'adSetName',
         'goal' => 'goal',
         'budget_amount' => 'budgetAmount',
         'budget_type' => 'budgetType',
@@ -411,6 +419,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'account_id' => 'setAccountId',
         'ad_account_id' => 'setAdAccountId',
         'name' => 'setName',
+        'campaign_name' => 'setCampaignName',
+        'ad_set_name' => 'setAdSetName',
         'goal' => 'setGoal',
         'budget_amount' => 'setBudgetAmount',
         'budget_type' => 'setBudgetType',
@@ -478,6 +488,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'account_id' => 'getAccountId',
         'ad_account_id' => 'getAdAccountId',
         'name' => 'getName',
+        'campaign_name' => 'getCampaignName',
+        'ad_set_name' => 'getAdSetName',
         'goal' => 'getGoal',
         'budget_amount' => 'getBudgetAmount',
         'budget_type' => 'getBudgetType',
@@ -798,6 +810,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('ad_account_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('campaign_name', $data ?? [], null);
+        $this->setIfExists('ad_set_name', $data ?? [], null);
         $this->setIfExists('goal', $data ?? [], null);
         $this->setIfExists('budget_amount', $data ?? [], null);
         $this->setIfExists('budget_type', $data ?? [], null);
@@ -894,6 +908,14 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         }
         if ((mb_strlen($this->container['name']) > 255)) {
             $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['campaign_name']) && (mb_strlen($this->container['campaign_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'campaign_name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['ad_set_name']) && (mb_strlen($this->container['ad_set_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'ad_set_name', the character length must be smaller than or equal to 255.";
         }
 
         $allowedValues = $this->getGoalAllowableValues();
@@ -1117,6 +1139,68 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         }
 
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_name
+     *
+     * @return string|null
+     */
+    public function getCampaignName()
+    {
+        return $this->container['campaign_name'];
+    }
+
+    /**
+     * Sets campaign_name
+     *
+     * @param string|null $campaign_name Meta only. Exact campaign name. Overrides the default `<name> - Campaign`.
+     *
+     * @return self
+     */
+    public function setCampaignName($campaign_name)
+    {
+        if (is_null($campaign_name)) {
+            throw new \InvalidArgumentException('non-nullable campaign_name cannot be null');
+        }
+        if ((mb_strlen($campaign_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $campaign_name when calling CreateStandaloneAdRequest., must be smaller than or equal to 255.');
+        }
+
+        $this->container['campaign_name'] = $campaign_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_set_name
+     *
+     * @return string|null
+     */
+    public function getAdSetName()
+    {
+        return $this->container['ad_set_name'];
+    }
+
+    /**
+     * Sets ad_set_name
+     *
+     * @param string|null $ad_set_name Meta only. Exact ad set name. Overrides the default `<name> - Ad Set`. (For per-ad names on the multi-creative shape, set `name` on each `creatives[]` entry.)
+     *
+     * @return self
+     */
+    public function setAdSetName($ad_set_name)
+    {
+        if (is_null($ad_set_name)) {
+            throw new \InvalidArgumentException('non-nullable ad_set_name cannot be null');
+        }
+        if ((mb_strlen($ad_set_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $ad_set_name when calling CreateStandaloneAdRequest., must be smaller than or equal to 255.');
+        }
+
+        $this->container['ad_set_name'] = $ad_set_name;
 
         return $this;
     }
