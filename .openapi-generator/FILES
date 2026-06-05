@@ -91,6 +91,11 @@ docs/Model/AddUsersToAdAudience200Response.md
 docs/Model/AddUsersToAdAudienceRequest.md
 docs/Model/AddUsersToAdAudienceRequestUsersInner.md
 docs/Model/AddWhatsAppGroupParticipantsRequest.md
+docs/Model/AdjustConversions200Response.md
+docs/Model/AdjustConversions200ResponseFailuresInner.md
+docs/Model/AdjustConversionsRequest.md
+docs/Model/AdjustConversionsRequestAdjustmentsInner.md
+docs/Model/AdjustConversionsRequestAdjustmentsInnerUser.md
 docs/Model/AnalyticsListResponse.md
 docs/Model/AnalyticsListResponsePostsInner.md
 docs/Model/AnalyticsOverview.md
@@ -1294,6 +1299,11 @@ lib/Model/AddUsersToAdAudience200Response.php
 lib/Model/AddUsersToAdAudienceRequest.php
 lib/Model/AddUsersToAdAudienceRequestUsersInner.php
 lib/Model/AddWhatsAppGroupParticipantsRequest.php
+lib/Model/AdjustConversions200Response.php
+lib/Model/AdjustConversions200ResponseFailuresInner.php
+lib/Model/AdjustConversionsRequest.php
+lib/Model/AdjustConversionsRequestAdjustmentsInner.php
+lib/Model/AdjustConversionsRequestAdjustmentsInnerUser.php
 lib/Model/AnalyticsListResponse.php
 lib/Model/AnalyticsListResponsePostsInner.php
 lib/Model/AnalyticsOverview.php
@@ -2407,4 +2417,8 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ExternalPostMediaItemTest.php
+test/Model/AdjustConversions200ResponseFailuresInnerTest.php
+test/Model/AdjustConversions200ResponseTest.php
+test/Model/AdjustConversionsRequestAdjustmentsInnerTest.php
+test/Model/AdjustConversionsRequestAdjustmentsInnerUserTest.php
+test/Model/AdjustConversionsRequestTest.php
