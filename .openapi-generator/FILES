@@ -316,6 +316,8 @@ docs/Model/ErrorResponse.md
 docs/Model/EstimateAdReach200Response.md
 docs/Model/EstimateAdReachRequest.md
 docs/Model/Expired.md
+docs/Model/ExternalPostWebhookPost.md
+docs/Model/ExternalPostWebhookPostMediaItemsInner.md
 docs/Model/FacebookPlatformData.md
 docs/Model/FacebookPlatformDataCarouselCardsInner.md
 docs/Model/FetchGoogleBusinessVerificationOptions200Response.md
@@ -1135,6 +1137,7 @@ docs/Model/WebhookPayloadCommentCommentAuthor.md
 docs/Model/WebhookPayloadCommentPost.md
 docs/Model/WebhookPayloadConversationStarted.md
 docs/Model/WebhookPayloadConversationStartedConversation.md
+docs/Model/WebhookPayloadExternalPost.md
 docs/Model/WebhookPayloadLead.md
 docs/Model/WebhookPayloadLeadAccount.md
 docs/Model/WebhookPayloadLeadLead.md
@@ -1516,6 +1519,8 @@ lib/Model/ErrorResponse.php
 lib/Model/EstimateAdReach200Response.php
 lib/Model/EstimateAdReachRequest.php
 lib/Model/Expired.php
+lib/Model/ExternalPostWebhookPost.php
+lib/Model/ExternalPostWebhookPostMediaItemsInner.php
 lib/Model/FacebookPlatformData.php
 lib/Model/FacebookPlatformDataCarouselCardsInner.php
 lib/Model/FetchGoogleBusinessVerificationOptions200Response.php
@@ -2336,6 +2341,7 @@ lib/Model/WebhookPayloadCommentCommentAuthor.php
 lib/Model/WebhookPayloadCommentPost.php
 lib/Model/WebhookPayloadConversationStarted.php
 lib/Model/WebhookPayloadConversationStartedConversation.php
+lib/Model/WebhookPayloadExternalPost.php
 lib/Model/WebhookPayloadLead.php
 lib/Model/WebhookPayloadLeadAccount.php
 lib/Model/WebhookPayloadLeadLead.php
@@ -2401,4 +2407,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/CreateStandaloneAdRequestTrackingTest.php
+test/Model/ExternalPostWebhookPostMediaItemsInnerTest.php
+test/Model/ExternalPostWebhookPostTest.php
+test/Model/WebhookPayloadExternalPostTest.php

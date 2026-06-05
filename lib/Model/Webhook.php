@@ -286,6 +286,9 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
     public const EVENTS_POST_RECYCLED = 'post.recycled';
     public const EVENTS_POST_PLATFORM_PUBLISHED = 'post.platform.published';
     public const EVENTS_POST_PLATFORM_FAILED = 'post.platform.failed';
+    public const EVENTS_POST_EXTERNAL_CREATED = 'post.external.created';
+    public const EVENTS_POST_EXTERNAL_UPDATED = 'post.external.updated';
+    public const EVENTS_POST_EXTERNAL_DELETED = 'post.external.deleted';
     public const EVENTS_ACCOUNT_CONNECTED = 'account.connected';
     public const EVENTS_ACCOUNT_DISCONNECTED = 'account.disconnected';
     public const EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED = 'account.ads.initial_sync_completed';
@@ -325,6 +328,9 @@ class Webhook implements ModelInterface, ArrayAccess, \JsonSerializable
             self::EVENTS_POST_RECYCLED,
             self::EVENTS_POST_PLATFORM_PUBLISHED,
             self::EVENTS_POST_PLATFORM_FAILED,
+            self::EVENTS_POST_EXTERNAL_CREATED,
+            self::EVENTS_POST_EXTERNAL_UPDATED,
+            self::EVENTS_POST_EXTERNAL_DELETED,
             self::EVENTS_ACCOUNT_CONNECTED,
             self::EVENTS_ACCOUNT_DISCONNECTED,
             self::EVENTS_ACCOUNT_ADS_INITIAL_SYNC_COMPLETED,

@@ -132,6 +132,15 @@ class WebhookEventsApi
         'onPostCancelled' => [
             'application/json',
         ],
+        'onPostExternalCreated' => [
+            'application/json',
+        ],
+        'onPostExternalDeleted' => [
+            'application/json',
+        ],
+        'onPostExternalUpdated' => [
+            'application/json',
+        ],
         'onPostFailed' => [
             'application/json',
         ],
@@ -4382,6 +4391,669 @@ class WebhookEventsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_post));
             } else {
                 $httpBody = $webhook_payload_post;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onPostExternalCreated
+     *
+     * External post created event
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalCreated'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onPostExternalCreated($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalCreated'][0])
+    {
+        $this->onPostExternalCreatedWithHttpInfo($webhook_payload_external_post, $contentType);
+    }
+
+    /**
+     * Operation onPostExternalCreatedWithHttpInfo
+     *
+     * External post created event
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalCreated'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onPostExternalCreatedWithHttpInfo($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalCreated'][0])
+    {
+        $request = $this->onPostExternalCreatedRequest($webhook_payload_external_post, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onPostExternalCreatedAsync
+     *
+     * External post created event
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalCreated'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onPostExternalCreatedAsync($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalCreated'][0])
+    {
+        return $this->onPostExternalCreatedAsyncWithHttpInfo($webhook_payload_external_post, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onPostExternalCreatedAsyncWithHttpInfo
+     *
+     * External post created event
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalCreated'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onPostExternalCreatedAsyncWithHttpInfo($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalCreated'][0])
+    {
+        $returnType = '';
+        $request = $this->onPostExternalCreatedRequest($webhook_payload_external_post, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onPostExternalCreated'
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalCreated'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onPostExternalCreatedRequest($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalCreated'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_external_post' is set
+        if ($webhook_payload_external_post === null || (is_array($webhook_payload_external_post) && count($webhook_payload_external_post) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_external_post when calling onPostExternalCreated'
+            );
+        }
+
+
+        $resourcePath = '/post.external.created';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_external_post)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_external_post));
+            } else {
+                $httpBody = $webhook_payload_external_post;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onPostExternalDeleted
+     *
+     * External post deleted event
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalDeleted'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onPostExternalDeleted($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalDeleted'][0])
+    {
+        $this->onPostExternalDeletedWithHttpInfo($webhook_payload_external_post, $contentType);
+    }
+
+    /**
+     * Operation onPostExternalDeletedWithHttpInfo
+     *
+     * External post deleted event
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalDeleted'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onPostExternalDeletedWithHttpInfo($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalDeleted'][0])
+    {
+        $request = $this->onPostExternalDeletedRequest($webhook_payload_external_post, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onPostExternalDeletedAsync
+     *
+     * External post deleted event
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalDeleted'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onPostExternalDeletedAsync($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalDeleted'][0])
+    {
+        return $this->onPostExternalDeletedAsyncWithHttpInfo($webhook_payload_external_post, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onPostExternalDeletedAsyncWithHttpInfo
+     *
+     * External post deleted event
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalDeleted'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onPostExternalDeletedAsyncWithHttpInfo($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalDeleted'][0])
+    {
+        $returnType = '';
+        $request = $this->onPostExternalDeletedRequest($webhook_payload_external_post, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onPostExternalDeleted'
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalDeleted'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onPostExternalDeletedRequest($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalDeleted'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_external_post' is set
+        if ($webhook_payload_external_post === null || (is_array($webhook_payload_external_post) && count($webhook_payload_external_post) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_external_post when calling onPostExternalDeleted'
+            );
+        }
+
+
+        $resourcePath = '/post.external.deleted';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_external_post)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_external_post));
+            } else {
+                $httpBody = $webhook_payload_external_post;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation onPostExternalUpdated
+     *
+     * External post updated event
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalUpdated'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function onPostExternalUpdated($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalUpdated'][0])
+    {
+        $this->onPostExternalUpdatedWithHttpInfo($webhook_payload_external_post, $contentType);
+    }
+
+    /**
+     * Operation onPostExternalUpdatedWithHttpInfo
+     *
+     * External post updated event
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalUpdated'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function onPostExternalUpdatedWithHttpInfo($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalUpdated'][0])
+    {
+        $request = $this->onPostExternalUpdatedRequest($webhook_payload_external_post, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation onPostExternalUpdatedAsync
+     *
+     * External post updated event
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalUpdated'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onPostExternalUpdatedAsync($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalUpdated'][0])
+    {
+        return $this->onPostExternalUpdatedAsyncWithHttpInfo($webhook_payload_external_post, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation onPostExternalUpdatedAsyncWithHttpInfo
+     *
+     * External post updated event
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalUpdated'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function onPostExternalUpdatedAsyncWithHttpInfo($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalUpdated'][0])
+    {
+        $returnType = '';
+        $request = $this->onPostExternalUpdatedRequest($webhook_payload_external_post, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'onPostExternalUpdated'
+     *
+     * @param  \Zernio\Model\WebhookPayloadExternalPost $webhook_payload_external_post (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['onPostExternalUpdated'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function onPostExternalUpdatedRequest($webhook_payload_external_post, string $contentType = self::contentTypes['onPostExternalUpdated'][0])
+    {
+
+        // verify the required parameter 'webhook_payload_external_post' is set
+        if ($webhook_payload_external_post === null || (is_array($webhook_payload_external_post) && count($webhook_payload_external_post) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $webhook_payload_external_post when calling onPostExternalUpdated'
+            );
+        }
+
+
+        $resourcePath = '/post.external.updated';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            [],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($webhook_payload_external_post)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($webhook_payload_external_post));
+            } else {
+                $httpBody = $webhook_payload_external_post;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
