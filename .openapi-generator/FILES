@@ -2417,8 +2417,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/AdjustConversions200ResponseFailuresInnerTest.php
-test/Model/AdjustConversions200ResponseTest.php
-test/Model/AdjustConversionsRequestAdjustmentsInnerTest.php
-test/Model/AdjustConversionsRequestAdjustmentsInnerUserTest.php
-test/Model/AdjustConversionsRequestTest.php
