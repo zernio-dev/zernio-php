@@ -38,6 +38,9 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onWebhookTest()**](WebhookEventsApi.md#onWebhookTest) | **POST** /webhook.test | Webhook test event |
 | [**onWhatsAppNumberActivated()**](WebhookEventsApi.md#onWhatsAppNumberActivated) | **POST** /whatsapp.number.activated | WhatsApp number activated event |
 | [**onWhatsAppNumberDeclined()**](WebhookEventsApi.md#onWhatsAppNumberDeclined) | **POST** /whatsapp.number.declined | WhatsApp number declined event |
+| [**onWhatsAppNumberReactivated()**](WebhookEventsApi.md#onWhatsAppNumberReactivated) | **POST** /whatsapp.number.reactivated | WhatsApp number reactivated event |
+| [**onWhatsAppNumberReleased()**](WebhookEventsApi.md#onWhatsAppNumberReleased) | **POST** /whatsapp.number.released | WhatsApp number released event |
+| [**onWhatsAppNumberSuspended()**](WebhookEventsApi.md#onWhatsAppNumberSuspended) | **POST** /whatsapp.number.suspended | WhatsApp number suspended event |
 | [**onWhatsAppNumberVerificationRequired()**](WebhookEventsApi.md#onWhatsAppNumberVerificationRequired) | **POST** /whatsapp.number.verification_required | WhatsApp number verification-required event |
 | [**onWhatsAppTemplateStatusUpdated()**](WebhookEventsApi.md#onWhatsAppTemplateStatusUpdated) | **POST** /whatsapp.template.status_updated | WhatsApp template status updated event |
 
@@ -1912,6 +1915,183 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **on_whats_app_number_declined_request** | [**\Zernio\Model\OnWhatsAppNumberDeclinedRequest**](../Model/OnWhatsAppNumberDeclinedRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWhatsAppNumberReactivated()`
+
+```php
+onWhatsAppNumberReactivated($on_whats_app_number_reactivated_request)
+```
+
+WhatsApp number reactivated event
+
+Fired when a suspended number is reactivated (e.g. the payment recovered) and is usable again.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$on_whats_app_number_reactivated_request = new \Zernio\Model\OnWhatsAppNumberReactivatedRequest(); // \Zernio\Model\OnWhatsAppNumberReactivatedRequest
+
+try {
+    $apiInstance->onWhatsAppNumberReactivated($on_whats_app_number_reactivated_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWhatsAppNumberReactivated: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **on_whats_app_number_reactivated_request** | [**\Zernio\Model\OnWhatsAppNumberReactivatedRequest**](../Model/OnWhatsAppNumberReactivatedRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWhatsAppNumberReleased()`
+
+```php
+onWhatsAppNumberReleased($on_whats_app_number_released_request)
+```
+
+WhatsApp number released event
+
+Fired when a number is released and is no longer usable (by the user, a billing cleanup, or an admin). Terminal. `reason` carries the cause (e.g. `user_requested`, `cleanup_suspended`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$on_whats_app_number_released_request = new \Zernio\Model\OnWhatsAppNumberReleasedRequest(); // \Zernio\Model\OnWhatsAppNumberReleasedRequest
+
+try {
+    $apiInstance->onWhatsAppNumberReleased($on_whats_app_number_released_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWhatsAppNumberReleased: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **on_whats_app_number_released_request** | [**\Zernio\Model\OnWhatsAppNumberReleasedRequest**](../Model/OnWhatsAppNumberReleasedRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWhatsAppNumberSuspended()`
+
+```php
+onWhatsAppNumberSuspended($on_whats_app_number_suspended_request)
+```
+
+WhatsApp number suspended event
+
+Fired when an active number is suspended (e.g. a failed payment). The number stops working until the issue is resolved, after which a `whatsapp.number.reactivated` event is sent. `reason` carries the cause (e.g. `payment_failed`, `subscription_ended`).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$on_whats_app_number_suspended_request = new \Zernio\Model\OnWhatsAppNumberSuspendedRequest(); // \Zernio\Model\OnWhatsAppNumberSuspendedRequest
+
+try {
+    $apiInstance->onWhatsAppNumberSuspended($on_whats_app_number_suspended_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWhatsAppNumberSuspended: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **on_whats_app_number_suspended_request** | [**\Zernio\Model\OnWhatsAppNumberSuspendedRequest**](../Model/OnWhatsAppNumberSuspendedRequest.md)|  | |
 
 ### Return type
 

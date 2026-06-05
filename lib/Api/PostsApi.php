@@ -164,7 +164,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\BulkUploadResult|\Zernio\Model\BulkUploadResult|\Zernio\Model\InlineObject|\Zernio\Model\BulkUploadPosts429Response
+     * @return \Zernio\Model\BulkUploadResult|\Zernio\Model\BulkUploadResult|\Zernio\Model\InlineObject|\Zernio\Model\GetInboxVolume400Response
      */
     public function bulkUploadPosts($dry_run = false, $file = null, string $contentType = self::contentTypes['bulkUploadPosts'][0])
     {
@@ -183,7 +183,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\BulkUploadResult|\Zernio\Model\BulkUploadResult|\Zernio\Model\InlineObject|\Zernio\Model\BulkUploadPosts429Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\BulkUploadResult|\Zernio\Model\BulkUploadResult|\Zernio\Model\InlineObject|\Zernio\Model\GetInboxVolume400Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function bulkUploadPostsWithHttpInfo($dry_run = false, $file = null, string $contentType = self::contentTypes['bulkUploadPosts'][0])
     {
@@ -233,7 +233,7 @@ class PostsApi
                     );
                 case 429:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\BulkUploadPosts429Response',
+                        '\Zernio\Model\GetInboxVolume400Response',
                         $request,
                         $response,
                     );
@@ -288,7 +288,7 @@ class PostsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\BulkUploadPosts429Response',
+                        '\Zernio\Model\GetInboxVolume400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2213,7 +2213,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\PostRetryResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1|\Zernio\Model\BulkUploadPosts429Response
+     * @return \Zernio\Model\PostRetryResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1|\Zernio\Model\GetInboxVolume400Response
      */
     public function retryPost($post_id, string $contentType = self::contentTypes['retryPost'][0])
     {
@@ -2231,7 +2231,7 @@ class PostsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\PostRetryResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1|\Zernio\Model\BulkUploadPosts429Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PostRetryResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1|\Zernio\Model\GetInboxVolume400Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function retryPostWithHttpInfo($post_id, string $contentType = self::contentTypes['retryPost'][0])
     {
@@ -2281,7 +2281,7 @@ class PostsApi
                     );
                 case 429:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\BulkUploadPosts429Response',
+                        '\Zernio\Model\GetInboxVolume400Response',
                         $request,
                         $response,
                     );
@@ -2336,7 +2336,7 @@ class PostsApi
                 case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\BulkUploadPosts429Response',
+                        '\Zernio\Model\GetInboxVolume400Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
