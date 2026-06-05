@@ -624,6 +624,7 @@ Class | Method | HTTP request | Description
 - [CreateStandaloneAdRequestPlacements](docs/Model/CreateStandaloneAdRequestPlacements.md)
 - [CreateStandaloneAdRequestPromotedObject](docs/Model/CreateStandaloneAdRequestPromotedObject.md)
 - [CreateStandaloneAdRequestRegionsInner](docs/Model/CreateStandaloneAdRequestRegionsInner.md)
+- [CreateStandaloneAdRequestTracking](docs/Model/CreateStandaloneAdRequestTracking.md)
 - [CreateStandaloneAdRequestVideo](docs/Model/CreateStandaloneAdRequestVideo.md)
 - [CreateStandaloneAdRequestZipsInner](docs/Model/CreateStandaloneAdRequestZipsInner.md)
 - [CreateTestLead200Response](docs/Model/CreateTestLead200Response.md)

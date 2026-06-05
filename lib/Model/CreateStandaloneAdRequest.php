@@ -63,6 +63,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'string',
         'campaign_name' => 'string',
         'ad_set_name' => 'string',
+        'ad_name' => 'string',
+        'tracking' => '\Zernio\Model\CreateStandaloneAdRequestTracking',
         'goal' => 'string',
         'budget_amount' => 'float',
         'budget_type' => 'string',
@@ -134,6 +136,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'name' => null,
         'campaign_name' => null,
         'ad_set_name' => null,
+        'ad_name' => null,
+        'tracking' => null,
         'goal' => null,
         'budget_amount' => null,
         'budget_type' => null,
@@ -203,6 +207,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'name' => false,
         'campaign_name' => false,
         'ad_set_name' => false,
+        'ad_name' => false,
+        'tracking' => false,
         'goal' => false,
         'budget_amount' => false,
         'budget_type' => false,
@@ -352,6 +358,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'name',
         'campaign_name' => 'campaignName',
         'ad_set_name' => 'adSetName',
+        'ad_name' => 'adName',
+        'tracking' => 'tracking',
         'goal' => 'goal',
         'budget_amount' => 'budgetAmount',
         'budget_type' => 'budgetType',
@@ -421,6 +429,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'setName',
         'campaign_name' => 'setCampaignName',
         'ad_set_name' => 'setAdSetName',
+        'ad_name' => 'setAdName',
+        'tracking' => 'setTracking',
         'goal' => 'setGoal',
         'budget_amount' => 'setBudgetAmount',
         'budget_type' => 'setBudgetType',
@@ -490,6 +500,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'name' => 'getName',
         'campaign_name' => 'getCampaignName',
         'ad_set_name' => 'getAdSetName',
+        'ad_name' => 'getAdName',
+        'tracking' => 'getTracking',
         'goal' => 'getGoal',
         'budget_amount' => 'getBudgetAmount',
         'budget_type' => 'getBudgetType',
@@ -812,6 +824,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('campaign_name', $data ?? [], null);
         $this->setIfExists('ad_set_name', $data ?? [], null);
+        $this->setIfExists('ad_name', $data ?? [], null);
+        $this->setIfExists('tracking', $data ?? [], null);
         $this->setIfExists('goal', $data ?? [], null);
         $this->setIfExists('budget_amount', $data ?? [], null);
         $this->setIfExists('budget_type', $data ?? [], null);
@@ -916,6 +930,10 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
 
         if (!is_null($this->container['ad_set_name']) && (mb_strlen($this->container['ad_set_name']) > 255)) {
             $invalidProperties[] = "invalid value for 'ad_set_name', the character length must be smaller than or equal to 255.";
+        }
+
+        if (!is_null($this->container['ad_name']) && (mb_strlen($this->container['ad_name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'ad_name', the character length must be smaller than or equal to 255.";
         }
 
         $allowedValues = $this->getGoalAllowableValues();
@@ -1201,6 +1219,64 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         }
 
         $this->container['ad_set_name'] = $ad_set_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets ad_name
+     *
+     * @return string|null
+     */
+    public function getAdName()
+    {
+        return $this->container['ad_name'];
+    }
+
+    /**
+     * Sets ad_name
+     *
+     * @param string|null $ad_name Meta only. Exact ad name (the single-creative ad object's name). Overrides the default, which is `name`. (For per-ad names on the multi-creative shape, set `name` on each `creatives[]` entry instead.)
+     *
+     * @return self
+     */
+    public function setAdName($ad_name)
+    {
+        if (is_null($ad_name)) {
+            throw new \InvalidArgumentException('non-nullable ad_name cannot be null');
+        }
+        if ((mb_strlen($ad_name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $ad_name when calling CreateStandaloneAdRequest., must be smaller than or equal to 255.');
+        }
+
+        $this->container['ad_name'] = $ad_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracking
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestTracking|null
+     */
+    public function getTracking()
+    {
+        return $this->container['tracking'];
+    }
+
+    /**
+     * Sets tracking
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestTracking|null $tracking tracking
+     *
+     * @return self
+     */
+    public function setTracking($tracking)
+    {
+        if (is_null($tracking)) {
+            throw new \InvalidArgumentException('non-nullable tracking cannot be null');
+        }
+        $this->container['tracking'] = $tracking;
 
         return $this;
     }
