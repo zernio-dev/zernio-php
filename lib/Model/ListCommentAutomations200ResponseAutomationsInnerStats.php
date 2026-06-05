@@ -62,6 +62,7 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'dms_sent' => 'int',
         'dms_failed' => 'int',
         'unique_contacts' => 'int',
+        'tracked_sends' => 'int',
         'link_clicks' => 'int',
         'unique_clicks' => 'int',
         'delivered' => 'int',
@@ -80,6 +81,7 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'dms_sent' => null,
         'dms_failed' => null,
         'unique_contacts' => null,
+        'tracked_sends' => null,
         'link_clicks' => null,
         'unique_clicks' => null,
         'delivered' => null,
@@ -96,6 +98,7 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'dms_sent' => false,
         'dms_failed' => false,
         'unique_contacts' => false,
+        'tracked_sends' => false,
         'link_clicks' => false,
         'unique_clicks' => false,
         'delivered' => false,
@@ -192,6 +195,7 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'dms_sent' => 'dmsSent',
         'dms_failed' => 'dmsFailed',
         'unique_contacts' => 'uniqueContacts',
+        'tracked_sends' => 'trackedSends',
         'link_clicks' => 'linkClicks',
         'unique_clicks' => 'uniqueClicks',
         'delivered' => 'delivered',
@@ -208,6 +212,7 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'dms_sent' => 'setDmsSent',
         'dms_failed' => 'setDmsFailed',
         'unique_contacts' => 'setUniqueContacts',
+        'tracked_sends' => 'setTrackedSends',
         'link_clicks' => 'setLinkClicks',
         'unique_clicks' => 'setUniqueClicks',
         'delivered' => 'setDelivered',
@@ -224,6 +229,7 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         'dms_sent' => 'getDmsSent',
         'dms_failed' => 'getDmsFailed',
         'unique_contacts' => 'getUniqueContacts',
+        'tracked_sends' => 'getTrackedSends',
         'link_clicks' => 'getLinkClicks',
         'unique_clicks' => 'getUniqueClicks',
         'delivered' => 'getDelivered',
@@ -291,6 +297,7 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
         $this->setIfExists('dms_sent', $data ?? [], null);
         $this->setIfExists('dms_failed', $data ?? [], null);
         $this->setIfExists('unique_contacts', $data ?? [], null);
+        $this->setIfExists('tracked_sends', $data ?? [], null);
         $this->setIfExists('link_clicks', $data ?? [], null);
         $this->setIfExists('unique_clicks', $data ?? [], null);
         $this->setIfExists('delivered', $data ?? [], null);
@@ -443,6 +450,33 @@ class ListCommentAutomations200ResponseAutomationsInnerStats implements ModelInt
             throw new \InvalidArgumentException('non-nullable unique_contacts cannot be null');
         }
         $this->container['unique_contacts'] = $unique_contacts;
+
+        return $this;
+    }
+
+    /**
+     * Gets tracked_sends
+     *
+     * @return int|null
+     */
+    public function getTrackedSends()
+    {
+        return $this->container['tracked_sends'];
+    }
+
+    /**
+     * Sets tracked_sends
+     *
+     * @param int|null $tracked_sends DMs sent with a trackable (wrapped) link. CTR denominator: divide clicks by this, not dmsSent. Lags dmsSent for campaigns that predate click tracking.
+     *
+     * @return self
+     */
+    public function setTrackedSends($tracked_sends)
+    {
+        if (is_null($tracked_sends)) {
+            throw new \InvalidArgumentException('non-nullable tracked_sends cannot be null');
+        }
+        $this->container['tracked_sends'] = $tracked_sends;
 
         return $this;
     }

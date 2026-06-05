@@ -2407,6 +2407,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ExternalPostWebhookPostMediaItemsInnerTest.php
-test/Model/ExternalPostWebhookPostTest.php
-test/Model/WebhookPayloadExternalPostTest.php
