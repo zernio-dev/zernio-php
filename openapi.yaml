@@ -1873,16 +1873,7 @@ components:
         mediaItems:
           type: array
           items:
-            type: object
-            required: [type, url]
-            properties:
-              type:
-                type: string
-                enum: [image, video]
-              url:
-                type: string
-              thumbnail:
-                type: string
+            $ref: '#/components/schemas/ExternalPostMediaItem'
         thumbnailUrl:
           type: string
           nullable: true
@@ -2998,6 +2989,23 @@ components:
         tiktokProcessed:
           type: boolean
           description: Internal flag indicating the image was resized for TikTok
+    ExternalPostMediaItem:
+      type: object
+      description: >
+        A media item on a native (external/synced) post, as carried by post.external.*
+        webhook payloads. Distinct from the richer MediaItem used for Zernio-authored
+        posts: external items are always already-published (url required) and limited to
+        image or video. Kept as a separate schema so the generated SDK model does not
+        collide with MediaItem.
+      required: [type, url]
+      properties:
+        type:
+          type: string
+          enum: [image, video]
+        url:
+          type: string
+        thumbnail:
+          type: string
     PlatformTarget:
       type: object
       properties:

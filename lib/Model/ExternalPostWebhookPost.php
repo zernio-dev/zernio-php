@@ -65,7 +65,7 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
         'url' => 'string',
         'content' => 'string',
         'media_type' => 'string',
-        'media_items' => '\Zernio\Model\ExternalPostWebhookPostMediaItemsInner[]',
+        'media_items' => '\Zernio\Model\ExternalPostMediaItem[]',
         'thumbnail_url' => 'string',
         'published_at' => '\DateTime',
         'source' => 'string',
@@ -578,7 +578,7 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets media_items
      *
-     * @return \Zernio\Model\ExternalPostWebhookPostMediaItemsInner[]
+     * @return \Zernio\Model\ExternalPostMediaItem[]
      */
     public function getMediaItems()
     {
@@ -588,7 +588,7 @@ class ExternalPostWebhookPost implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets media_items
      *
-     * @param \Zernio\Model\ExternalPostWebhookPostMediaItemsInner[] $media_items media_items
+     * @param \Zernio\Model\ExternalPostMediaItem[] $media_items media_items
      *
      * @return self
      */
