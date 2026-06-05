@@ -58,10 +58,8 @@ class BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner implements Mo
       * @var string[]
       */
     protected static $openAPITypes = [
-        'location_name' => 'string',
-        'reviews' => 'object[]',
-        'average_rating' => 'float',
-        'total_review_count' => 'int'
+        'name' => 'string',
+        'review' => 'object'
     ];
 
     /**
@@ -72,10 +70,8 @@ class BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner implements Mo
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'location_name' => null,
-        'reviews' => null,
-        'average_rating' => null,
-        'total_review_count' => null
+        'name' => null,
+        'review' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner implements Mo
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'location_name' => false,
-        'reviews' => false,
-        'average_rating' => false,
-        'total_review_count' => false
+        'name' => false,
+        'review' => false
     ];
 
     /**
@@ -176,10 +170,8 @@ class BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner implements Mo
      * @var string[]
      */
     protected static $attributeMap = [
-        'location_name' => 'locationName',
-        'reviews' => 'reviews',
-        'average_rating' => 'averageRating',
-        'total_review_count' => 'totalReviewCount'
+        'name' => 'name',
+        'review' => 'review'
     ];
 
     /**
@@ -188,10 +180,8 @@ class BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner implements Mo
      * @var string[]
      */
     protected static $setters = [
-        'location_name' => 'setLocationName',
-        'reviews' => 'setReviews',
-        'average_rating' => 'setAverageRating',
-        'total_review_count' => 'setTotalReviewCount'
+        'name' => 'setName',
+        'review' => 'setReview'
     ];
 
     /**
@@ -200,10 +190,8 @@ class BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner implements Mo
      * @var string[]
      */
     protected static $getters = [
-        'location_name' => 'getLocationName',
-        'reviews' => 'getReviews',
-        'average_rating' => 'getAverageRating',
-        'total_review_count' => 'getTotalReviewCount'
+        'name' => 'getName',
+        'review' => 'getReview'
     ];
 
     /**
@@ -263,10 +251,8 @@ class BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner implements Mo
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('location_name', $data ?? [], null);
-        $this->setIfExists('reviews', $data ?? [], null);
-        $this->setIfExists('average_rating', $data ?? [], null);
-        $this->setIfExists('total_review_count', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('review', $data ?? [], null);
     }
 
     /**
@@ -312,109 +298,55 @@ class BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner implements Mo
 
 
     /**
-     * Gets location_name
+     * Gets name
      *
      * @return string|null
      */
-    public function getLocationName()
+    public function getName()
     {
-        return $this->container['location_name'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets location_name
+     * Sets name
      *
-     * @param string|null $location_name location_name
+     * @param string|null $name Full review resource name (accounts/_*_/locations/_*_/reviews/_*)
      *
      * @return self
      */
-    public function setLocationName($location_name)
+    public function setName($name)
     {
-        if (is_null($location_name)) {
-            throw new \InvalidArgumentException('non-nullable location_name cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['location_name'] = $location_name;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets reviews
+     * Gets review
      *
-     * @return object[]|null
+     * @return object|null
      */
-    public function getReviews()
+    public function getReview()
     {
-        return $this->container['reviews'];
+        return $this->container['review'];
     }
 
     /**
-     * Sets reviews
+     * Sets review
      *
-     * @param object[]|null $reviews reviews
+     * @param object|null $review The review object (reviewId
      *
      * @return self
      */
-    public function setReviews($reviews)
+    public function setReview($review)
     {
-        if (is_null($reviews)) {
-            throw new \InvalidArgumentException('non-nullable reviews cannot be null');
+        if (is_null($review)) {
+            throw new \InvalidArgumentException('non-nullable review cannot be null');
         }
-        $this->container['reviews'] = $reviews;
-
-        return $this;
-    }
-
-    /**
-     * Gets average_rating
-     *
-     * @return float|null
-     */
-    public function getAverageRating()
-    {
-        return $this->container['average_rating'];
-    }
-
-    /**
-     * Sets average_rating
-     *
-     * @param float|null $average_rating average_rating
-     *
-     * @return self
-     */
-    public function setAverageRating($average_rating)
-    {
-        if (is_null($average_rating)) {
-            throw new \InvalidArgumentException('non-nullable average_rating cannot be null');
-        }
-        $this->container['average_rating'] = $average_rating;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_review_count
-     *
-     * @return int|null
-     */
-    public function getTotalReviewCount()
-    {
-        return $this->container['total_review_count'];
-    }
-
-    /**
-     * Sets total_review_count
-     *
-     * @param int|null $total_review_count total_review_count
-     *
-     * @return self
-     */
-    public function setTotalReviewCount($total_review_count)
-    {
-        if (is_null($total_review_count)) {
-            throw new \InvalidArgumentException('non-nullable total_review_count cannot be null');
-        }
-        $this->container['total_review_count'] = $total_review_count;
+        $this->container['review'] = $review;
 
         return $this;
     }

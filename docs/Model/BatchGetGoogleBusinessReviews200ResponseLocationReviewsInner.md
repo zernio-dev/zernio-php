@@ -4,9 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**location_name** | **string** |  | [optional]
-**reviews** | **object[]** |  | [optional]
-**average_rating** | **float** |  | [optional]
-**total_review_count** | **int** |  | [optional]
+**name** | **string** | Full review resource name (accounts/_*_/locations/_*_/reviews/_*) | [optional]
+**review** | **object** | The review object (reviewId | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
