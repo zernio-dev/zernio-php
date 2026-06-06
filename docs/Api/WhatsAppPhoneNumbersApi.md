@@ -19,6 +19,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**searchAvailableWhatsAppNumbers()**](WhatsAppPhoneNumbersApi.md#searchAvailableWhatsAppNumbers) | **GET** /v1/whatsapp/phone-numbers/available | Search available numbers to purchase |
 | [**submitWhatsAppNumberKyc()**](WhatsAppPhoneNumbersApi.md#submitWhatsAppNumberKyc) | **POST** /v1/whatsapp/phone-numbers/kyc | Submit regulated-number KYC |
 | [**uploadWhatsAppNumberKycDocument()**](WhatsAppPhoneNumbersApi.md#uploadWhatsAppNumberKycDocument) | **POST** /v1/whatsapp/phone-numbers/kyc/upload-document | Upload a single regulated-number KYC document |
+| [**validateWhatsAppNumberKycAddress()**](WhatsAppPhoneNumbersApi.md#validateWhatsAppNumberKycAddress) | **POST** /v1/whatsapp/phone-numbers/kyc/validate-address | Pre-validate a regulated-number KYC address (Tier 4) |
 
 
 ## `checkWhatsAppNumberAvailability()`
@@ -810,6 +811,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/octet-stream`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `validateWhatsAppNumberKycAddress()`
+
+```php
+validateWhatsAppNumberKycAddress($validate_whats_app_number_kyc_address_request): \Zernio\Model\ValidateWhatsAppNumberKycAddress200Response
+```
+
+Pre-validate a regulated-number KYC address (Tier 4)
+
+Optional early check for the address step of a Tier 4 (end-user identity) registration: validates a postal address for deliverability BEFORE the full KYC submit, so it can be corrected before any documents are uploaded. The full submit (POST /v1/whatsapp/phone-numbers/kyc) re-validates the address, so this call is purely a fast feedback path and skipping it is safe. Only the postal address is sent (no documents, no gov-ID fields). A region (`administrative_area`) is required by the validator; when it is omitted the pre-check is skipped and `{ ok: true, skipped: true }` is returned (the final submit still validates).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$validate_whats_app_number_kyc_address_request = new \Zernio\Model\ValidateWhatsAppNumberKycAddressRequest(); // \Zernio\Model\ValidateWhatsAppNumberKycAddressRequest
+
+try {
+    $result = $apiInstance->validateWhatsAppNumberKycAddress($validate_whats_app_number_kyc_address_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppPhoneNumbersApi->validateWhatsAppNumberKycAddress: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **validate_whats_app_number_kyc_address_request** | [**\Zernio\Model\ValidateWhatsAppNumberKycAddressRequest**](../Model/ValidateWhatsAppNumberKycAddressRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\ValidateWhatsAppNumberKycAddress200Response**](../Model/ValidateWhatsAppNumberKycAddress200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

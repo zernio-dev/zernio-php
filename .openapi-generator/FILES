@@ -1111,6 +1111,11 @@ docs/Model/ValidateSubreddit200Response.md
 docs/Model/ValidateSubreddit200ResponseOneOf.md
 docs/Model/ValidateSubreddit200ResponseOneOf1.md
 docs/Model/ValidateSubreddit200ResponseOneOfSubreddit.md
+docs/Model/ValidateWhatsAppNumberKycAddress200Response.md
+docs/Model/ValidateWhatsAppNumberKycAddress400Response.md
+docs/Model/ValidateWhatsAppNumberKycAddress400ResponseDetails.md
+docs/Model/ValidateWhatsAppNumberKycAddress400ResponseDetailsAddressSuggestionsInner.md
+docs/Model/ValidateWhatsAppNumberKycAddressRequest.md
 docs/Model/Webhook.md
 docs/Model/WebhookPayloadAccountAdsInitialSyncCompleted.md
 docs/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccount.md
@@ -2320,6 +2325,11 @@ lib/Model/ValidateSubreddit200Response.php
 lib/Model/ValidateSubreddit200ResponseOneOf.php
 lib/Model/ValidateSubreddit200ResponseOneOf1.php
 lib/Model/ValidateSubreddit200ResponseOneOfSubreddit.php
+lib/Model/ValidateWhatsAppNumberKycAddress200Response.php
+lib/Model/ValidateWhatsAppNumberKycAddress400Response.php
+lib/Model/ValidateWhatsAppNumberKycAddress400ResponseDetails.php
+lib/Model/ValidateWhatsAppNumberKycAddress400ResponseDetailsAddressSuggestionsInner.php
+lib/Model/ValidateWhatsAppNumberKycAddressRequest.php
 lib/Model/Webhook.php
 lib/Model/WebhookPayloadAccountAdsInitialSyncCompleted.php
 lib/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccount.php
@@ -2417,3 +2427,8 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/ValidateWhatsAppNumberKycAddress200ResponseTest.php
+test/Model/ValidateWhatsAppNumberKycAddress400ResponseDetailsAddressSuggestionsInnerTest.php
+test/Model/ValidateWhatsAppNumberKycAddress400ResponseDetailsTest.php
+test/Model/ValidateWhatsAppNumberKycAddress400ResponseTest.php
+test/Model/ValidateWhatsAppNumberKycAddressRequestTest.php
