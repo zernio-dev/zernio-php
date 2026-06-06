@@ -293,6 +293,7 @@ class GetWhatsAppPhoneNumber200ResponsePhoneNumber implements ModelInterface, Ar
     public const STATUS_PENDING_REGULATORY = 'pending_regulatory';
     public const STATUS_REGULATORY_DECLINED = 'regulatory_declined';
     public const STATUS_PROVISIONING = 'provisioning';
+    public const STATUS_VERIFYING = 'verifying';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_SUSPENDED = 'suspended';
     public const STATUS_RELEASING = 'releasing';
@@ -310,6 +311,7 @@ class GetWhatsAppPhoneNumber200ResponsePhoneNumber implements ModelInterface, Ar
             self::STATUS_PENDING_REGULATORY,
             self::STATUS_REGULATORY_DECLINED,
             self::STATUS_PROVISIONING,
+            self::STATUS_VERIFYING,
             self::STATUS_ACTIVE,
             self::STATUS_SUSPENDED,
             self::STATUS_RELEASING,

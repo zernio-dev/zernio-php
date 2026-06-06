@@ -323,6 +323,7 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
     public const STATUS_PENDING_REGULATORY = 'pending_regulatory';
     public const STATUS_REGULATORY_DECLINED = 'regulatory_declined';
     public const STATUS_PROVISIONING = 'provisioning';
+    public const STATUS_VERIFYING = 'verifying';
     public const STATUS_ACTIVE = 'active';
     public const STATUS_SUSPENDED = 'suspended';
     public const STATUS_RELEASING = 'releasing';
@@ -340,6 +341,7 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
             self::STATUS_PENDING_REGULATORY,
             self::STATUS_REGULATORY_DECLINED,
             self::STATUS_PROVISIONING,
+            self::STATUS_VERIFYING,
             self::STATUS_ACTIVE,
             self::STATUS_SUSPENDED,
             self::STATUS_RELEASING,
