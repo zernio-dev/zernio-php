@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * UpdateAdTrackingTagsRequestCreative Class Doc Comment
  *
  * @category Class
- * @description Meta only. Required to rebuild the immutable creative when setting urlTags.
+ * @description Meta only. OPTIONAL — omit to preserve the existing creative verbatim (default). Provide it only to rebuild the creative explicitly, or for creatives whose object_story_spec Meta strips.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
