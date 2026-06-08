@@ -66,6 +66,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'ad_name' => 'string',
         'tracking' => '\Zernio\Model\CreateStandaloneAdRequestTracking',
         'goal' => 'string',
+        'optimization_goal' => 'string',
         'budget_amount' => 'float',
         'budget_type' => 'string',
         'budget_level' => 'string',
@@ -139,6 +140,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'ad_name' => null,
         'tracking' => null,
         'goal' => null,
+        'optimization_goal' => null,
         'budget_amount' => null,
         'budget_type' => null,
         'budget_level' => null,
@@ -210,6 +212,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'ad_name' => false,
         'tracking' => false,
         'goal' => false,
+        'optimization_goal' => false,
         'budget_amount' => false,
         'budget_type' => false,
         'budget_level' => false,
@@ -361,6 +364,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'ad_name' => 'adName',
         'tracking' => 'tracking',
         'goal' => 'goal',
+        'optimization_goal' => 'optimizationGoal',
         'budget_amount' => 'budgetAmount',
         'budget_type' => 'budgetType',
         'budget_level' => 'budgetLevel',
@@ -432,6 +436,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'ad_name' => 'setAdName',
         'tracking' => 'setTracking',
         'goal' => 'setGoal',
+        'optimization_goal' => 'setOptimizationGoal',
         'budget_amount' => 'setBudgetAmount',
         'budget_type' => 'setBudgetType',
         'budget_level' => 'setBudgetLevel',
@@ -503,6 +508,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'ad_name' => 'getAdName',
         'tracking' => 'getTracking',
         'goal' => 'getGoal',
+        'optimization_goal' => 'getOptimizationGoal',
         'budget_amount' => 'getBudgetAmount',
         'budget_type' => 'getBudgetType',
         'budget_level' => 'getBudgetLevel',
@@ -829,6 +835,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('ad_name', $data ?? [], null);
         $this->setIfExists('tracking', $data ?? [], null);
         $this->setIfExists('goal', $data ?? [], null);
+        $this->setIfExists('optimization_goal', $data ?? [], null);
         $this->setIfExists('budget_amount', $data ?? [], null);
         $this->setIfExists('budget_type', $data ?? [], null);
         $this->setIfExists('budget_level', $data ?? [], 'adset');
@@ -1316,6 +1323,33 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['goal'] = $goal;
+
+        return $this;
+    }
+
+    /**
+     * Gets optimization_goal
+     *
+     * @return string|null
+     */
+    public function getOptimizationGoal()
+    {
+        return $this->container['optimization_goal'];
+    }
+
+    /**
+     * Sets optimization_goal
+     *
+     * @param string|null $optimization_goal Meta only. Explicit ad-set `optimization_goal` (e.g. `LANDING_PAGE_VIEWS`, `LINK_CLICKS`, `REACH`, `IMPRESSIONS`, `OFFSITE_CONVERSIONS`, `THRUPLAY`, `LEAD_GENERATION`). Overrides the default derived from `goal` (e.g. `traffic` defaults to `LINK_CLICKS`). Forwarded verbatim to Meta, which validates compatibility with the campaign objective and rejects incompatible combinations.
+     *
+     * @return self
+     */
+    public function setOptimizationGoal($optimization_goal)
+    {
+        if (is_null($optimization_goal)) {
+            throw new \InvalidArgumentException('non-nullable optimization_goal cannot be null');
+        }
+        $this->container['optimization_goal'] = $optimization_goal;
 
         return $this;
     }

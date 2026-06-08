@@ -2427,8 +2427,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ValidateWhatsAppNumberKycAddress200ResponseTest.php
-test/Model/ValidateWhatsAppNumberKycAddress400ResponseDetailsAddressSuggestionsInnerTest.php
-test/Model/ValidateWhatsAppNumberKycAddress400ResponseDetailsTest.php
-test/Model/ValidateWhatsAppNumberKycAddress400ResponseTest.php
-test/Model/ValidateWhatsAppNumberKycAddressRequestTest.php
