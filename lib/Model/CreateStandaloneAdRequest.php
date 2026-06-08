@@ -1644,7 +1644,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets lead_gen_form_id
      *
-     * @param string|null $lead_gen_form_id Meta Lead Gen forms only (facebook/instagram). The leadgen_forms ID to attach to the ad's creative — create one via POST /v1/ads/lead-forms. REQUIRED when `goal` is `lead_generation`; ignored otherwise. The ad set's promoted_object.page_id + LEAD_GENERATION optimization are derived automatically from the goal.
+     * @param string|null $lead_gen_form_id Meta Lead Gen forms only (facebook/instagram). The leadgen_forms ID to attach to the ad's creative — create one via POST /v1/ads/lead-forms. REQUIRED when `goal` is `lead_generation`; ignored otherwise. The ad set's promoted_object.page_id + LEAD_GENERATION optimization are derived automatically from the goal. NOT compatible with `placementAssets` (per-placement creative) or `dynamicCreative` (multiple assets/text): Meta does not allow an asset_feed_spec creative on instant-form lead ads, so that combination is rejected with INVALID_FIELD_VALUE. Per-placement / multi-asset creative is supported on `traffic` and `conversions` goals.
      *
      * @return self
      */
