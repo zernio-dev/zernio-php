@@ -333,7 +333,7 @@ try {
 ## `listAccounts()`
 
 ```php
-listAccounts($profile_id, $platform, $include_over_limit, $page, $limit): \Zernio\Model\ListAccounts200Response
+listAccounts($profile_id, $platform, $status, $include_over_limit, $page, $limit): \Zernio\Model\ListAccounts200Response
 ```
 
 List accounts
@@ -359,12 +359,13 @@ $apiInstance = new Zernio\Api\AccountsApi(
 );
 $profile_id = 'profile_id_example'; // string | Filter accounts by profile ID
 $platform = 'platform_example'; // string | Filter accounts by platform (e.g. \"instagram\", \"twitter\").
+$status = 'status_example'; // string | Filter accounts by connection status. `connected` returns healthy accounts; `disconnected` returns accounts that need reconnection (per the same reconnection check surfaced in the dashboard). Omit to return accounts in any status. When combined with page/limit, pagination totals reflect the filtered result set.
 $include_over_limit = false; // bool | When true, includes accounts from over-limit profiles.
 $page = 56; // int | Page number (1-based). When provided with limit, enables server-side pagination. Omit for all accounts.
 $limit = 56; // int | Page size. Required alongside page for pagination.
 
 try {
-    $result = $apiInstance->listAccounts($profile_id, $platform, $include_over_limit, $page, $limit);
+    $result = $apiInstance->listAccounts($profile_id, $platform, $status, $include_over_limit, $page, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountsApi->listAccounts: ', $e->getMessage(), PHP_EOL;
@@ -377,6 +378,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **profile_id** | **string**| Filter accounts by profile ID | [optional] |
 | **platform** | **string**| Filter accounts by platform (e.g. \&quot;instagram\&quot;, \&quot;twitter\&quot;). | [optional] |
+| **status** | **string**| Filter accounts by connection status. &#x60;connected&#x60; returns healthy accounts; &#x60;disconnected&#x60; returns accounts that need reconnection (per the same reconnection check surfaced in the dashboard). Omit to return accounts in any status. When combined with page/limit, pagination totals reflect the filtered result set. | [optional] |
 | **include_over_limit** | **bool**| When true, includes accounts from over-limit profiles. | [optional] [default to false] |
 | **page** | **int**| Page number (1-based). When provided with limit, enables server-side pagination. Omit for all accounts. | [optional] |
 | **limit** | **int**| Page size. Required alongside page for pagination. | [optional] |
