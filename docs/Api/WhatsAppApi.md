@@ -41,7 +41,7 @@ addWhatsAppGroupParticipants($group_id, $account_id, $add_whats_app_group_partic
 
 Add participants
 
-Add participants to a WhatsApp group. Maximum 8 participants per request.  Not available on [Coexistence](/platforms/whatsapp#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
+Add participants to a WhatsApp group. Maximum 8 participants per request.  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
 
 ### Example
 
@@ -105,7 +105,7 @@ approveWhatsAppGroupJoinRequests($group_id, $account_id, $approve_whats_app_grou
 
 Approve join requests
 
-Approve pending join requests for a WhatsApp group.  Not available on [Coexistence](/platforms/whatsapp#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
+Approve pending join requests for a WhatsApp group.  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
 
 ### Example
 
@@ -229,7 +229,7 @@ createWhatsAppGroupChat($create_whats_app_group_chat_request): \Zernio\Model\Cre
 
 Create group
 
-Create a new WhatsApp group chat. Returns the group ID and optionally an invite link.  Not available on [Coexistence](/platforms/whatsapp#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
+Create a new WhatsApp group chat. Returns the group ID and optionally an invite link.  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
 
 ### Example
 
@@ -289,7 +289,7 @@ createWhatsAppGroupInviteLink($group_id, $account_id): \Zernio\Model\CreateWhats
 
 Create invite link
 
-Create a new invite link for a WhatsApp group. The previous link is revoked.  Not available on [Coexistence](/platforms/whatsapp#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
+Create a new invite link for a WhatsApp group. The previous link is revoked.  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
 
 ### Example
 
@@ -411,7 +411,7 @@ deleteWhatsAppGroupChat($group_id, $account_id): \Zernio\Model\UnpublishPost200R
 
 Delete group
 
-Delete a WhatsApp group and remove all participants.  Not available on [Coexistence](/platforms/whatsapp#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
+Delete a WhatsApp group and remove all participants.  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
 
 ### Example
 
@@ -715,7 +715,7 @@ getWhatsAppGroupChat($group_id, $account_id): \Zernio\Model\GetWhatsAppGroupChat
 
 Get group info
 
-Retrieve metadata about a WhatsApp group including subject, description, participants, and settings.  Not available on [Coexistence](/platforms/whatsapp#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
+Retrieve metadata about a WhatsApp group including subject, description, participants, and settings.  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
 
 ### Example
 
@@ -961,7 +961,7 @@ listWhatsAppGroupChats($account_id, $limit, $after): \Zernio\Model\ListWhatsAppG
 
 List active groups
 
-List active WhatsApp group chats for a business phone number. These are actual WhatsApp group conversations on the platform.  Not available on [Coexistence](/platforms/whatsapp#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
+List active WhatsApp group chats for a business phone number. These are actual WhatsApp group conversations on the platform.  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
 
 ### Example
 
@@ -1025,7 +1025,7 @@ listWhatsAppGroupJoinRequests($group_id, $account_id): \Zernio\Model\ListWhatsAp
 
 List join requests
 
-List pending join requests for a WhatsApp group (only for groups with approval_required mode).  Not available on [Coexistence](/platforms/whatsapp#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
+List pending join requests for a WhatsApp group (only for groups with approval_required mode).  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
 
 ### Example
 
@@ -1087,7 +1087,7 @@ rejectWhatsAppGroupJoinRequests($group_id, $account_id, $reject_whats_app_group_
 
 Reject join requests
 
-Reject pending join requests for a WhatsApp group.  Not available on [Coexistence](/platforms/whatsapp#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
+Reject pending join requests for a WhatsApp group.  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
 
 ### Example
 
@@ -1151,7 +1151,7 @@ removeWhatsAppGroupParticipants($group_id, $account_id, $remove_whats_app_group_
 
 Remove participants
 
-Remove participants from a WhatsApp group.  Not available on [Coexistence](/platforms/whatsapp#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
+Remove participants from a WhatsApp group.  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
 
 ### Example
 
@@ -1395,7 +1395,7 @@ updateWhatsAppGroupChat($group_id, $account_id, $update_whats_app_group_chat_req
 
 Update group settings
 
-Update the subject, description, or join approval mode of a WhatsApp group.  Not available on [Coexistence](/platforms/whatsapp#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
+Update the subject, description, or join approval mode of a WhatsApp group.  Not available on [Coexistence](/platforms/whatsapp/connection#whatsapp-business-app-coexistence) numbers. Requires a Cloud API-only number.
 
 ### Example
 
