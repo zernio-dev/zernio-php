@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **string** |  |
-**text** | **string** |  |
+**text** | **string** | Visible button label. Required for all types except copy_code (whose label is fixed by WhatsApp). | [optional]
 **url** | **string** | Required when type is URL | [optional]
-**example** | **string[]** | Example values for URL suffix variables | [optional]
+**example** | [**\Zernio\Model\WhatsAppTemplateButtonExample**](WhatsAppTemplateButtonExample.md) |  | [optional]
 **phone_number** | **string** | Required when type is phone_number | [optional]
 **otp_type** | **string** | Required when type is otp | [optional]
 **autofill_text** | **string** |  | [optional]

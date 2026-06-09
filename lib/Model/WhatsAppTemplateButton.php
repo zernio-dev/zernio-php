@@ -61,7 +61,7 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
         'type' => 'string',
         'text' => 'string',
         'url' => 'string',
-        'example' => 'string[]',
+        'example' => '\Zernio\Model\WhatsAppTemplateButtonExample',
         'phone_number' => 'string',
         'otp_type' => 'string',
         'autofill_text' => 'string',
@@ -311,6 +311,7 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
     public const TYPE_URL = 'url';
     public const TYPE_PHONE_NUMBER = 'phone_number';
     public const TYPE_OTP = 'otp';
+    public const TYPE_COPY_CODE = 'copy_code';
     public const TYPE_FLOW = 'flow';
     public const TYPE_MPM = 'mpm';
     public const TYPE_CATALOG = 'catalog';
@@ -330,6 +331,7 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
             self::TYPE_URL,
             self::TYPE_PHONE_NUMBER,
             self::TYPE_OTP,
+            self::TYPE_COPY_CODE,
             self::TYPE_FLOW,
             self::TYPE_MPM,
             self::TYPE_CATALOG,
@@ -420,9 +422,6 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
             );
         }
 
-        if ($this->container['text'] === null) {
-            $invalidProperties[] = "'text' can't be null";
-        }
         $allowedValues = $this->getOtpTypeAllowableValues();
         if (!is_null($this->container['otp_type']) && !in_array($this->container['otp_type'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -487,7 +486,7 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets text
      *
-     * @return string
+     * @return string|null
      */
     public function getText()
     {
@@ -497,7 +496,7 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets text
      *
-     * @param string $text text
+     * @param string|null $text Visible button label. Required for all types except copy_code (whose label is fixed by WhatsApp).
      *
      * @return self
      */
@@ -541,7 +540,7 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets example
      *
-     * @return string[]|null
+     * @return \Zernio\Model\WhatsAppTemplateButtonExample|null
      */
     public function getExample()
     {
@@ -551,7 +550,7 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets example
      *
-     * @param string[]|null $example Example values for URL suffix variables
+     * @param \Zernio\Model\WhatsAppTemplateButtonExample|null $example example
      *
      * @return self
      */
