@@ -81,6 +81,9 @@ class WebhooksApi
         'deleteWebhookSettings' => [
             'application/json',
         ],
+        'getWebhookLogs' => [
+            'application/json',
+        ],
         'getWebhookSettings' => [
             'application/json',
         ],
@@ -704,6 +707,392 @@ class WebhooksApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getWebhookLogs
+     *
+     * List webhook delivery logs
+     *
+     * @param  int|null $limit Maximum number of logs to return (optional, default to 50)
+     * @param  int|null $skip Number of logs to skip (offset-based pagination) (optional, default to 0)
+     * @param  string|null $status Filter by delivery outcome (optional)
+     * @param  string|null $event Filter by event type (e.g. post.published) (optional)
+     * @param  string|null $webhook_id Filter by webhook configuration ID (optional)
+     * @param  string|null $event_id Filter by stable webhook event ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookLogs'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetWebhookLogs200Response|\Zernio\Model\InlineObject
+     */
+    public function getWebhookLogs($limit = 50, $skip = 0, $status = null, $event = null, $webhook_id = null, $event_id = null, string $contentType = self::contentTypes['getWebhookLogs'][0])
+    {
+        list($response) = $this->getWebhookLogsWithHttpInfo($limit, $skip, $status, $event, $webhook_id, $event_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWebhookLogsWithHttpInfo
+     *
+     * List webhook delivery logs
+     *
+     * @param  int|null $limit Maximum number of logs to return (optional, default to 50)
+     * @param  int|null $skip Number of logs to skip (offset-based pagination) (optional, default to 0)
+     * @param  string|null $status Filter by delivery outcome (optional)
+     * @param  string|null $event Filter by event type (e.g. post.published) (optional)
+     * @param  string|null $webhook_id Filter by webhook configuration ID (optional)
+     * @param  string|null $event_id Filter by stable webhook event ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookLogs'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetWebhookLogs200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWebhookLogsWithHttpInfo($limit = 50, $skip = 0, $status = null, $event = null, $webhook_id = null, $event_id = null, string $contentType = self::contentTypes['getWebhookLogs'][0])
+    {
+        $request = $this->getWebhookLogsRequest($limit, $skip, $status, $event, $webhook_id, $event_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetWebhookLogs200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetWebhookLogs200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetWebhookLogs200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWebhookLogsAsync
+     *
+     * List webhook delivery logs
+     *
+     * @param  int|null $limit Maximum number of logs to return (optional, default to 50)
+     * @param  int|null $skip Number of logs to skip (offset-based pagination) (optional, default to 0)
+     * @param  string|null $status Filter by delivery outcome (optional)
+     * @param  string|null $event Filter by event type (e.g. post.published) (optional)
+     * @param  string|null $webhook_id Filter by webhook configuration ID (optional)
+     * @param  string|null $event_id Filter by stable webhook event ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookLogs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWebhookLogsAsync($limit = 50, $skip = 0, $status = null, $event = null, $webhook_id = null, $event_id = null, string $contentType = self::contentTypes['getWebhookLogs'][0])
+    {
+        return $this->getWebhookLogsAsyncWithHttpInfo($limit, $skip, $status, $event, $webhook_id, $event_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWebhookLogsAsyncWithHttpInfo
+     *
+     * List webhook delivery logs
+     *
+     * @param  int|null $limit Maximum number of logs to return (optional, default to 50)
+     * @param  int|null $skip Number of logs to skip (offset-based pagination) (optional, default to 0)
+     * @param  string|null $status Filter by delivery outcome (optional)
+     * @param  string|null $event Filter by event type (e.g. post.published) (optional)
+     * @param  string|null $webhook_id Filter by webhook configuration ID (optional)
+     * @param  string|null $event_id Filter by stable webhook event ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookLogs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWebhookLogsAsyncWithHttpInfo($limit = 50, $skip = 0, $status = null, $event = null, $webhook_id = null, $event_id = null, string $contentType = self::contentTypes['getWebhookLogs'][0])
+    {
+        $returnType = '\Zernio\Model\GetWebhookLogs200Response';
+        $request = $this->getWebhookLogsRequest($limit, $skip, $status, $event, $webhook_id, $event_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWebhookLogs'
+     *
+     * @param  int|null $limit Maximum number of logs to return (optional, default to 50)
+     * @param  int|null $skip Number of logs to skip (offset-based pagination) (optional, default to 0)
+     * @param  string|null $status Filter by delivery outcome (optional)
+     * @param  string|null $event Filter by event type (e.g. post.published) (optional)
+     * @param  string|null $webhook_id Filter by webhook configuration ID (optional)
+     * @param  string|null $event_id Filter by stable webhook event ID (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWebhookLogs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWebhookLogsRequest($limit = 50, $skip = 0, $status = null, $event = null, $webhook_id = null, $event_id = null, string $contentType = self::contentTypes['getWebhookLogs'][0])
+    {
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling WebhooksApi.getWebhookLogs, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling WebhooksApi.getWebhookLogs, must be bigger than or equal to 1.');
+        }
+        
+        if ($skip !== null && $skip > 10000) {
+            throw new \InvalidArgumentException('invalid value for "$skip" when calling WebhooksApi.getWebhookLogs, must be smaller than or equal to 10000.');
+        }
+        if ($skip !== null && $skip < 0) {
+            throw new \InvalidArgumentException('invalid value for "$skip" when calling WebhooksApi.getWebhookLogs, must be bigger than or equal to 0.');
+        }
+        
+
+        if ($event !== null && strlen($event) > 100) {
+            throw new \InvalidArgumentException('invalid length for "$event" when calling WebhooksApi.getWebhookLogs, must be smaller than or equal to 100.');
+        }
+        if ($event !== null && strlen($event) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$event" when calling WebhooksApi.getWebhookLogs, must be bigger than or equal to 1.');
+        }
+        
+        if ($webhook_id !== null && strlen($webhook_id) > 100) {
+            throw new \InvalidArgumentException('invalid length for "$webhook_id" when calling WebhooksApi.getWebhookLogs, must be smaller than or equal to 100.');
+        }
+        if ($webhook_id !== null && strlen($webhook_id) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$webhook_id" when calling WebhooksApi.getWebhookLogs, must be bigger than or equal to 1.');
+        }
+        
+        if ($event_id !== null && strlen($event_id) > 200) {
+            throw new \InvalidArgumentException('invalid length for "$event_id" when calling WebhooksApi.getWebhookLogs, must be smaller than or equal to 200.');
+        }
+        if ($event_id !== null && strlen($event_id) < 1) {
+            throw new \InvalidArgumentException('invalid length for "$event_id" when calling WebhooksApi.getWebhookLogs, must be bigger than or equal to 1.');
+        }
+        
+
+        $resourcePath = '/v1/webhooks/logs';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $skip,
+            'skip', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status,
+            'status', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $event,
+            'event', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $webhook_id,
+            'webhookId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $event_id,
+            'eventId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

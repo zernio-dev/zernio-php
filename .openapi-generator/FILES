@@ -537,6 +537,8 @@ docs/Model/GetTrackingTagStats200Response.md
 docs/Model/GetTrackingTagStats200ResponseStats.md
 docs/Model/GetUser200Response.md
 docs/Model/GetUser200ResponseUser.md
+docs/Model/GetWebhookLogs200Response.md
+docs/Model/GetWebhookLogs200ResponsePagination.md
 docs/Model/GetWebhookSettings200Response.md
 docs/Model/GetWhatsAppBusinessProfile200Response.md
 docs/Model/GetWhatsAppBusinessProfile200ResponseBusinessProfile.md
@@ -1118,6 +1120,7 @@ docs/Model/ValidateWhatsAppNumberKycAddress400ResponseDetails.md
 docs/Model/ValidateWhatsAppNumberKycAddress400ResponseDetailsAddressSuggestionsInner.md
 docs/Model/ValidateWhatsAppNumberKycAddressRequest.md
 docs/Model/Webhook.md
+docs/Model/WebhookLog.md
 docs/Model/WebhookPayloadAccountAdsInitialSyncCompleted.md
 docs/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccount.md
 docs/Model/WebhookPayloadAccountAdsInitialSyncCompletedSync.md
@@ -1751,6 +1754,8 @@ lib/Model/GetTrackingTagStats200Response.php
 lib/Model/GetTrackingTagStats200ResponseStats.php
 lib/Model/GetUser200Response.php
 lib/Model/GetUser200ResponseUser.php
+lib/Model/GetWebhookLogs200Response.php
+lib/Model/GetWebhookLogs200ResponsePagination.php
 lib/Model/GetWebhookSettings200Response.php
 lib/Model/GetWhatsAppBusinessProfile200Response.php
 lib/Model/GetWhatsAppBusinessProfile200ResponseBusinessProfile.php
@@ -2333,6 +2338,7 @@ lib/Model/ValidateWhatsAppNumberKycAddress400ResponseDetails.php
 lib/Model/ValidateWhatsAppNumberKycAddress400ResponseDetailsAddressSuggestionsInner.php
 lib/Model/ValidateWhatsAppNumberKycAddressRequest.php
 lib/Model/Webhook.php
+lib/Model/WebhookLog.php
 lib/Model/WebhookPayloadAccountAdsInitialSyncCompleted.php
 lib/Model/WebhookPayloadAccountAdsInitialSyncCompletedAccount.php
 lib/Model/WebhookPayloadAccountAdsInitialSyncCompletedSync.php
@@ -2429,3 +2435,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetWebhookLogs200ResponsePaginationTest.php

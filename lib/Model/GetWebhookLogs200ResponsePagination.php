@@ -1,6 +1,6 @@
 <?php
 /**
- * GetWebhookLogs200Response
+ * GetWebhookLogs200ResponsePagination
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetWebhookLogs200Response Class Doc Comment
+ * GetWebhookLogs200ResponsePagination Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetWebhookLogs200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetWebhookLogs200ResponsePagination implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetWebhookLogs200Response implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getWebhookLogs_200_response';
+    protected static $openAPIModelName = 'getWebhookLogs_200_response_pagination';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class GetWebhookLogs200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'logs' => '\Zernio\Model\WebhookLog[]',
-        'pagination' => '\Zernio\Model\GetWebhookLogs200ResponsePagination'
+        'total' => 'int',
+        'limit' => 'int',
+        'skip' => 'int',
+        'pages' => 'int',
+        'has_more' => 'bool'
     ];
 
     /**
@@ -70,8 +73,11 @@ class GetWebhookLogs200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'logs' => null,
-        'pagination' => null
+        'total' => null,
+        'limit' => null,
+        'skip' => null,
+        'pages' => null,
+        'has_more' => null
     ];
 
     /**
@@ -80,8 +86,11 @@ class GetWebhookLogs200Response implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'logs' => false,
-        'pagination' => false
+        'total' => false,
+        'limit' => false,
+        'skip' => false,
+        'pages' => false,
+        'has_more' => false
     ];
 
     /**
@@ -170,8 +179,11 @@ class GetWebhookLogs200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'logs' => 'logs',
-        'pagination' => 'pagination'
+        'total' => 'total',
+        'limit' => 'limit',
+        'skip' => 'skip',
+        'pages' => 'pages',
+        'has_more' => 'hasMore'
     ];
 
     /**
@@ -180,8 +192,11 @@ class GetWebhookLogs200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'logs' => 'setLogs',
-        'pagination' => 'setPagination'
+        'total' => 'setTotal',
+        'limit' => 'setLimit',
+        'skip' => 'setSkip',
+        'pages' => 'setPages',
+        'has_more' => 'setHasMore'
     ];
 
     /**
@@ -190,8 +205,11 @@ class GetWebhookLogs200Response implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'logs' => 'getLogs',
-        'pagination' => 'getPagination'
+        'total' => 'getTotal',
+        'limit' => 'getLimit',
+        'skip' => 'getSkip',
+        'pages' => 'getPages',
+        'has_more' => 'getHasMore'
     ];
 
     /**
@@ -251,8 +269,11 @@ class GetWebhookLogs200Response implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('logs', $data ?? [], null);
-        $this->setIfExists('pagination', $data ?? [], null);
+        $this->setIfExists('total', $data ?? [], null);
+        $this->setIfExists('limit', $data ?? [], null);
+        $this->setIfExists('skip', $data ?? [], null);
+        $this->setIfExists('pages', $data ?? [], null);
+        $this->setIfExists('has_more', $data ?? [], null);
     }
 
     /**
@@ -298,55 +319,136 @@ class GetWebhookLogs200Response implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets logs
+     * Gets total
      *
-     * @return \Zernio\Model\WebhookLog[]|null
+     * @return int|null
      */
-    public function getLogs()
+    public function getTotal()
     {
-        return $this->container['logs'];
+        return $this->container['total'];
     }
 
     /**
-     * Sets logs
+     * Sets total
      *
-     * @param \Zernio\Model\WebhookLog[]|null $logs logs
+     * @param int|null $total Total number of matching logs
      *
      * @return self
      */
-    public function setLogs($logs)
+    public function setTotal($total)
     {
-        if (is_null($logs)) {
-            throw new \InvalidArgumentException('non-nullable logs cannot be null');
+        if (is_null($total)) {
+            throw new \InvalidArgumentException('non-nullable total cannot be null');
         }
-        $this->container['logs'] = $logs;
+        $this->container['total'] = $total;
 
         return $this;
     }
 
     /**
-     * Gets pagination
+     * Gets limit
      *
-     * @return \Zernio\Model\GetWebhookLogs200ResponsePagination|null
+     * @return int|null
      */
-    public function getPagination()
+    public function getLimit()
     {
-        return $this->container['pagination'];
+        return $this->container['limit'];
     }
 
     /**
-     * Sets pagination
+     * Sets limit
      *
-     * @param \Zernio\Model\GetWebhookLogs200ResponsePagination|null $pagination pagination
+     * @param int|null $limit Maximum number of logs returned per page
      *
      * @return self
      */
-    public function setPagination($pagination)
+    public function setLimit($limit)
     {
-        if (is_null($pagination)) {
-            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        if (is_null($limit)) {
+            throw new \InvalidArgumentException('non-nullable limit cannot be null');
         }
-        $this->container['pagination'] = $pagination;
+        $this->container['limit'] = $limit;
+
+        return $this;
+    }
+
+    /**
+     * Gets skip
+     *
+     * @return int|null
+     */
+    public function getSkip()
+    {
+        return $this->container['skip'];
+    }
+
+    /**
+     * Sets skip
+     *
+     * @param int|null $skip Number of logs skipped
+     *
+     * @return self
+     */
+    public function setSkip($skip)
+    {
+        if (is_null($skip)) {
+            throw new \InvalidArgumentException('non-nullable skip cannot be null');
+        }
+        $this->container['skip'] = $skip;
+
+        return $this;
+    }
+
+    /**
+     * Gets pages
+     *
+     * @return int|null
+     */
+    public function getPages()
+    {
+        return $this->container['pages'];
+    }
+
+    /**
+     * Sets pages
+     *
+     * @param int|null $pages Total number of pages
+     *
+     * @return self
+     */
+    public function setPages($pages)
+    {
+        if (is_null($pages)) {
+            throw new \InvalidArgumentException('non-nullable pages cannot be null');
+        }
+        $this->container['pages'] = $pages;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_more
+     *
+     * @return bool|null
+     */
+    public function getHasMore()
+    {
+        return $this->container['has_more'];
+    }
+
+    /**
+     * Sets has_more
+     *
+     * @param bool|null $has_more Whether more logs are available beyond this page
+     *
+     * @return self
+     */
+    public function setHasMore($has_more)
+    {
+        if (is_null($has_more)) {
+            throw new \InvalidArgumentException('non-nullable has_more cannot be null');
+        }
+        $this->container['has_more'] = $has_more;
 
         return $this;
     }

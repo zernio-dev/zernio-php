@@ -8,6 +8,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | ------------- | ------------- | ------------- |
 | [**createWebhookSettings()**](WebhooksApi.md#createWebhookSettings) | **POST** /v1/webhooks/settings | Create webhook |
 | [**deleteWebhookSettings()**](WebhooksApi.md#deleteWebhookSettings) | **DELETE** /v1/webhooks/settings | Delete webhook |
+| [**getWebhookLogs()**](WebhooksApi.md#getWebhookLogs) | **GET** /v1/webhooks/logs | List webhook delivery logs |
 | [**getWebhookSettings()**](WebhooksApi.md#getWebhookSettings) | **GET** /v1/webhooks/settings | List webhooks |
 | [**testWebhook()**](WebhooksApi.md#testWebhook) | **POST** /v1/webhooks/test | Send test webhook |
 | [**updateWebhookSettings()**](WebhooksApi.md#updateWebhookSettings) | **PUT** /v1/webhooks/settings | Update webhook |
@@ -119,6 +120,76 @@ try {
 ### Return type
 
 [**\Zernio\Model\UpdateYoutubeDefaultPlaylist200Response**](../Model/UpdateYoutubeDefaultPlaylist200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getWebhookLogs()`
+
+```php
+getWebhookLogs($limit, $skip, $status, $event, $webhook_id, $event_id): \Zernio\Model\GetWebhookLogs200Response
+```
+
+List webhook delivery logs
+
+Retrieve recorded webhook delivery attempts for the authenticated user, most recent first. Logs are retained for 30 days. Supports filtering by status, event type, webhook ID, and event ID, plus offset-based pagination.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhooksApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$limit = 50; // int | Maximum number of logs to return
+$skip = 0; // int | Number of logs to skip (offset-based pagination)
+$status = 'status_example'; // string | Filter by delivery outcome
+$event = 'event_example'; // string | Filter by event type (e.g. post.published)
+$webhook_id = 'webhook_id_example'; // string | Filter by webhook configuration ID
+$event_id = 'event_id_example'; // string | Filter by stable webhook event ID
+
+try {
+    $result = $apiInstance->getWebhookLogs($limit, $skip, $status, $event, $webhook_id, $event_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhooksApi->getWebhookLogs: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| Maximum number of logs to return | [optional] [default to 50] |
+| **skip** | **int**| Number of logs to skip (offset-based pagination) | [optional] [default to 0] |
+| **status** | **string**| Filter by delivery outcome | [optional] |
+| **event** | **string**| Filter by event type (e.g. post.published) | [optional] |
+| **webhook_id** | **string**| Filter by webhook configuration ID | [optional] |
+| **event_id** | **string**| Filter by stable webhook event ID | [optional] |
+
+### Return type
+
+[**\Zernio\Model\GetWebhookLogs200Response**](../Model/GetWebhookLogs200Response.md)
 
 ### Authorization
 
