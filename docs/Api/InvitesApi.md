@@ -36,7 +36,7 @@ $apiInstance = new Zernio\Api\InvitesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$create_invite_token_request = {"scope":"profiles","profileIds":["64f0a1b2c3d4e5f6a7b8c9d0","64f0a1b2c3d4e5f6a7b8c9d1"]}; // \Zernio\Model\CreateInviteTokenRequest
+$create_invite_token_request = {"scope":"profiles","profileIds":["64f0a1b2c3d4e5f6a7b8c9d0","64f0a1b2c3d4e5f6a7b8c9d1"],"readOnly":false}; // \Zernio\Model\CreateInviteTokenRequest
 
 try {
     $result = $apiInstance->createInviteToken($create_invite_token_request);

@@ -59,7 +59,9 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPITypes = [
         'scope' => 'string',
-        'profile_ids' => 'string[]'
+        'profile_ids' => 'string[]',
+        'role' => 'string',
+        'read_only' => 'bool'
     ];
 
     /**
@@ -71,7 +73,9 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static $openAPIFormats = [
         'scope' => null,
-        'profile_ids' => null
+        'profile_ids' => null,
+        'role' => null,
+        'read_only' => null
     ];
 
     /**
@@ -81,7 +85,9 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
       */
     protected static array $openAPINullables = [
         'scope' => false,
-        'profile_ids' => false
+        'profile_ids' => false,
+        'role' => false,
+        'read_only' => false
     ];
 
     /**
@@ -171,7 +177,9 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $attributeMap = [
         'scope' => 'scope',
-        'profile_ids' => 'profileIds'
+        'profile_ids' => 'profileIds',
+        'role' => 'role',
+        'read_only' => 'readOnly'
     ];
 
     /**
@@ -181,7 +189,9 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $setters = [
         'scope' => 'setScope',
-        'profile_ids' => 'setProfileIds'
+        'profile_ids' => 'setProfileIds',
+        'role' => 'setRole',
+        'read_only' => 'setReadOnly'
     ];
 
     /**
@@ -191,7 +201,9 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     protected static $getters = [
         'scope' => 'getScope',
-        'profile_ids' => 'getProfileIds'
+        'profile_ids' => 'getProfileIds',
+        'role' => 'getRole',
+        'read_only' => 'getReadOnly'
     ];
 
     /**
@@ -237,6 +249,8 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
 
     public const SCOPE_ALL = 'all';
     public const SCOPE_PROFILES = 'profiles';
+    public const ROLE_MEMBER = 'member';
+    public const ROLE_BILLING_ADMIN = 'billing_admin';
 
     /**
      * Gets allowable values of the enum
@@ -248,6 +262,19 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
         return [
             self::SCOPE_ALL,
             self::SCOPE_PROFILES,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getRoleAllowableValues()
+    {
+        return [
+            self::ROLE_MEMBER,
+            self::ROLE_BILLING_ADMIN,
         ];
     }
 
@@ -268,6 +295,8 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
     {
         $this->setIfExists('scope', $data ?? [], null);
         $this->setIfExists('profile_ids', $data ?? [], null);
+        $this->setIfExists('role', $data ?? [], 'member');
+        $this->setIfExists('read_only', $data ?? [], false);
     }
 
     /**
@@ -305,6 +334,15 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'scope', must be one of '%s'",
                 $this->container['scope'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getRoleAllowableValues();
+        if (!is_null($this->container['role']) && !in_array($this->container['role'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'role', must be one of '%s'",
+                $this->container['role'],
                 implode("', '", $allowedValues)
             );
         }
@@ -384,6 +422,70 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
             throw new \InvalidArgumentException('non-nullable profile_ids cannot be null');
         }
         $this->container['profile_ids'] = $profile_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets role
+     *
+     * @return string|null
+     */
+    public function getRole()
+    {
+        return $this->container['role'];
+    }
+
+    /**
+     * Sets role
+     *
+     * @param string|null $role Org role granted to the invitee. Defaults to 'member'.
+     *
+     * @return self
+     */
+    public function setRole($role)
+    {
+        if (is_null($role)) {
+            throw new \InvalidArgumentException('non-nullable role cannot be null');
+        }
+        $allowedValues = $this->getRoleAllowableValues();
+        if (!in_array($role, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'role', must be one of '%s'",
+                    $role,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['role'] = $role;
+
+        return $this;
+    }
+
+    /**
+     * Gets read_only
+     *
+     * @return bool|null
+     */
+    public function getReadOnly()
+    {
+        return $this->container['read_only'];
+    }
+
+    /**
+     * Sets read_only
+     *
+     * @param bool|null $read_only When true, the invitee can view everything in their profile scope but cannot perform any content mutation (publish, edit, delete, connect accounts).
+     *
+     * @return self
+     */
+    public function setReadOnly($read_only)
+    {
+        if (is_null($read_only)) {
+            throw new \InvalidArgumentException('non-nullable read_only cannot be null');
+        }
+        $this->container['read_only'] = $read_only;
 
         return $this;
     }
