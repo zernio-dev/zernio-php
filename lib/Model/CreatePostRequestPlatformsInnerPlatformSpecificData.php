@@ -65,6 +65,9 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'poll' => '\Zernio\Model\DiscordPlatformDataPoll',
         'long_video' => 'bool',
         'geo_restriction' => '\Zernio\Model\GeoRestriction',
+        'paid_partnership' => 'bool',
+        'made_with_ai' => 'bool',
+        'sensitive_media' => '\Zernio\Model\TwitterPlatformDataSensitiveMedia',
         'topic_tag' => 'string',
         'draft' => 'bool',
         'content_type' => 'string',
@@ -123,6 +126,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'url' => 'string',
         'force_self' => 'bool',
         'flair_id' => 'string',
+        'flair_text' => 'string',
+        'nsfw' => 'bool',
+        'spoiler' => 'bool',
+        'sendreplies' => 'bool',
         'native_video' => 'bool',
         'videogif' => 'bool',
         'video_poster_url' => 'string',
@@ -152,6 +159,9 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'poll' => null,
         'long_video' => null,
         'geo_restriction' => null,
+        'paid_partnership' => null,
+        'made_with_ai' => null,
+        'sensitive_media' => null,
         'topic_tag' => null,
         'draft' => null,
         'content_type' => null,
@@ -210,6 +220,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'url' => 'uri',
         'force_self' => null,
         'flair_id' => null,
+        'flair_text' => null,
+        'nsfw' => null,
+        'spoiler' => null,
+        'sendreplies' => null,
         'native_video' => null,
         'videogif' => null,
         'video_poster_url' => 'uri',
@@ -237,6 +251,9 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'poll' => false,
         'long_video' => false,
         'geo_restriction' => false,
+        'paid_partnership' => false,
+        'made_with_ai' => false,
+        'sensitive_media' => false,
         'topic_tag' => false,
         'draft' => false,
         'content_type' => false,
@@ -295,6 +312,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'url' => false,
         'force_self' => false,
         'flair_id' => false,
+        'flair_text' => false,
+        'nsfw' => false,
+        'spoiler' => false,
+        'sendreplies' => false,
         'native_video' => false,
         'videogif' => false,
         'video_poster_url' => false,
@@ -402,6 +423,9 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'poll' => 'poll',
         'long_video' => 'longVideo',
         'geo_restriction' => 'geoRestriction',
+        'paid_partnership' => 'paidPartnership',
+        'made_with_ai' => 'madeWithAi',
+        'sensitive_media' => 'sensitiveMedia',
         'topic_tag' => 'topic_tag',
         'draft' => 'draft',
         'content_type' => 'contentType',
@@ -460,6 +484,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'url' => 'url',
         'force_self' => 'forceSelf',
         'flair_id' => 'flairId',
+        'flair_text' => 'flairText',
+        'nsfw' => 'nsfw',
+        'spoiler' => 'spoiler',
+        'sendreplies' => 'sendreplies',
         'native_video' => 'nativeVideo',
         'videogif' => 'videogif',
         'video_poster_url' => 'videoPosterUrl',
@@ -487,6 +515,9 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'poll' => 'setPoll',
         'long_video' => 'setLongVideo',
         'geo_restriction' => 'setGeoRestriction',
+        'paid_partnership' => 'setPaidPartnership',
+        'made_with_ai' => 'setMadeWithAi',
+        'sensitive_media' => 'setSensitiveMedia',
         'topic_tag' => 'setTopicTag',
         'draft' => 'setDraft',
         'content_type' => 'setContentType',
@@ -545,6 +576,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'url' => 'setUrl',
         'force_self' => 'setForceSelf',
         'flair_id' => 'setFlairId',
+        'flair_text' => 'setFlairText',
+        'nsfw' => 'setNsfw',
+        'spoiler' => 'setSpoiler',
+        'sendreplies' => 'setSendreplies',
         'native_video' => 'setNativeVideo',
         'videogif' => 'setVideogif',
         'video_poster_url' => 'setVideoPosterUrl',
@@ -572,6 +607,9 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'poll' => 'getPoll',
         'long_video' => 'getLongVideo',
         'geo_restriction' => 'getGeoRestriction',
+        'paid_partnership' => 'getPaidPartnership',
+        'made_with_ai' => 'getMadeWithAi',
+        'sensitive_media' => 'getSensitiveMedia',
         'topic_tag' => 'getTopicTag',
         'draft' => 'getDraft',
         'content_type' => 'getContentType',
@@ -630,6 +668,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'url' => 'getUrl',
         'force_self' => 'getForceSelf',
         'flair_id' => 'getFlairId',
+        'flair_text' => 'getFlairText',
+        'nsfw' => 'getNsfw',
+        'spoiler' => 'getSpoiler',
+        'sendreplies' => 'getSendreplies',
         'native_video' => 'getNativeVideo',
         'videogif' => 'getVideogif',
         'video_poster_url' => 'getVideoPosterUrl',
@@ -827,6 +869,9 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         $this->setIfExists('poll', $data ?? [], null);
         $this->setIfExists('long_video', $data ?? [], false);
         $this->setIfExists('geo_restriction', $data ?? [], null);
+        $this->setIfExists('paid_partnership', $data ?? [], false);
+        $this->setIfExists('made_with_ai', $data ?? [], false);
+        $this->setIfExists('sensitive_media', $data ?? [], null);
         $this->setIfExists('topic_tag', $data ?? [], null);
         $this->setIfExists('draft', $data ?? [], null);
         $this->setIfExists('content_type', $data ?? [], 'story');
@@ -885,6 +930,10 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('force_self', $data ?? [], null);
         $this->setIfExists('flair_id', $data ?? [], null);
+        $this->setIfExists('flair_text', $data ?? [], null);
+        $this->setIfExists('nsfw', $data ?? [], false);
+        $this->setIfExists('spoiler', $data ?? [], false);
+        $this->setIfExists('sendreplies', $data ?? [], true);
         $this->setIfExists('native_video', $data ?? [], true);
         $this->setIfExists('videogif', $data ?? [], null);
         $this->setIfExists('video_poster_url', $data ?? [], null);
@@ -1250,6 +1299,87 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
             throw new \InvalidArgumentException('non-nullable geo_restriction cannot be null');
         }
         $this->container['geo_restriction'] = $geo_restriction;
+
+        return $this;
+    }
+
+    /**
+     * Gets paid_partnership
+     *
+     * @return bool|null
+     */
+    public function getPaidPartnership()
+    {
+        return $this->container['paid_partnership'];
+    }
+
+    /**
+     * Sets paid_partnership
+     *
+     * @param bool|null $paid_partnership When true, the post is labeled by X as a paid partnership / paid promotion. For threads, applies to the root tweet only. Field availability may depend on your X API access tier.
+     *
+     * @return self
+     */
+    public function setPaidPartnership($paid_partnership)
+    {
+        if (is_null($paid_partnership)) {
+            throw new \InvalidArgumentException('non-nullable paid_partnership cannot be null');
+        }
+        $this->container['paid_partnership'] = $paid_partnership;
+
+        return $this;
+    }
+
+    /**
+     * Gets made_with_ai
+     *
+     * @return bool|null
+     */
+    public function getMadeWithAi()
+    {
+        return $this->container['made_with_ai'];
+    }
+
+    /**
+     * Sets made_with_ai
+     *
+     * @param bool|null $made_with_ai When true, the post is labeled by X as containing AI-generated media. Per X, this label is for AI-generated media, not AI-written text. For threads, applies to the root tweet only.
+     *
+     * @return self
+     */
+    public function setMadeWithAi($made_with_ai)
+    {
+        if (is_null($made_with_ai)) {
+            throw new \InvalidArgumentException('non-nullable made_with_ai cannot be null');
+        }
+        $this->container['made_with_ai'] = $made_with_ai;
+
+        return $this;
+    }
+
+    /**
+     * Gets sensitive_media
+     *
+     * @return \Zernio\Model\TwitterPlatformDataSensitiveMedia|null
+     */
+    public function getSensitiveMedia()
+    {
+        return $this->container['sensitive_media'];
+    }
+
+    /**
+     * Sets sensitive_media
+     *
+     * @param \Zernio\Model\TwitterPlatformDataSensitiveMedia|null $sensitive_media sensitive_media
+     *
+     * @return self
+     */
+    public function setSensitiveMedia($sensitive_media)
+    {
+        if (is_null($sensitive_media)) {
+            throw new \InvalidArgumentException('non-nullable sensitive_media cannot be null');
+        }
+        $this->container['sensitive_media'] = $sensitive_media;
 
         return $this;
     }
@@ -2917,6 +3047,114 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
             throw new \InvalidArgumentException('non-nullable flair_id cannot be null');
         }
         $this->container['flair_id'] = $flair_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets flair_text
+     *
+     * @return string|null
+     */
+    public function getFlairText()
+    {
+        return $this->container['flair_text'];
+    }
+
+    /**
+     * Sets flair_text
+     *
+     * @param string|null $flair_text Custom flair text, for subreddits that allow free-text flair. Ignored when flairId is provided (flairId wins).
+     *
+     * @return self
+     */
+    public function setFlairText($flair_text)
+    {
+        if (is_null($flair_text)) {
+            throw new \InvalidArgumentException('non-nullable flair_text cannot be null');
+        }
+        $this->container['flair_text'] = $flair_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets nsfw
+     *
+     * @return bool|null
+     */
+    public function getNsfw()
+    {
+        return $this->container['nsfw'];
+    }
+
+    /**
+     * Sets nsfw
+     *
+     * @param bool|null $nsfw Mark the post as NSFW (Not Safe For Work / over 18).
+     *
+     * @return self
+     */
+    public function setNsfw($nsfw)
+    {
+        if (is_null($nsfw)) {
+            throw new \InvalidArgumentException('non-nullable nsfw cannot be null');
+        }
+        $this->container['nsfw'] = $nsfw;
+
+        return $this;
+    }
+
+    /**
+     * Gets spoiler
+     *
+     * @return bool|null
+     */
+    public function getSpoiler()
+    {
+        return $this->container['spoiler'];
+    }
+
+    /**
+     * Sets spoiler
+     *
+     * @param bool|null $spoiler Mark the post as a spoiler. The subreddit must have spoiler tagging enabled for this to take effect.
+     *
+     * @return self
+     */
+    public function setSpoiler($spoiler)
+    {
+        if (is_null($spoiler)) {
+            throw new \InvalidArgumentException('non-nullable spoiler cannot be null');
+        }
+        $this->container['spoiler'] = $spoiler;
+
+        return $this;
+    }
+
+    /**
+     * Gets sendreplies
+     *
+     * @return bool|null
+     */
+    public function getSendreplies()
+    {
+        return $this->container['sendreplies'];
+    }
+
+    /**
+     * Sets sendreplies
+     *
+     * @param bool|null $sendreplies Whether to receive inbox replies for comments on this post. Set to false to opt out.
+     *
+     * @return self
+     */
+    public function setSendreplies($sendreplies)
+    {
+        if (is_null($sendreplies)) {
+            throw new \InvalidArgumentException('non-nullable sendreplies cannot be null');
+        }
+        $this->container['sendreplies'] = $sendreplies;
 
         return $this;
     }

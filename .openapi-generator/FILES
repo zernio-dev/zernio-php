@@ -959,6 +959,7 @@ docs/Model/TriggerWorkflow200ResponseExecution.md
 docs/Model/TriggerWorkflowRequest.md
 docs/Model/TwitterPlatformData.md
 docs/Model/TwitterPlatformDataPoll.md
+docs/Model/TwitterPlatformDataSensitiveMedia.md
 docs/Model/TwitterPlatformDataThreadItemsInner.md
 docs/Model/UndoRetweet200Response.md
 docs/Model/UnfollowUser200Response.md
@@ -2173,6 +2174,7 @@ lib/Model/TriggerWorkflow200ResponseExecution.php
 lib/Model/TriggerWorkflowRequest.php
 lib/Model/TwitterPlatformData.php
 lib/Model/TwitterPlatformDataPoll.php
+lib/Model/TwitterPlatformDataSensitiveMedia.php
 lib/Model/TwitterPlatformDataThreadItemsInner.php
 lib/Model/UndoRetweet200Response.php
 lib/Model/UnfollowUser200Response.php
@@ -2427,3 +2429,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/TwitterPlatformDataSensitiveMediaTest.php

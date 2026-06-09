@@ -64,6 +64,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'url' => 'string',
         'force_self' => 'bool',
         'flair_id' => 'string',
+        'flair_text' => 'string',
+        'nsfw' => 'bool',
+        'spoiler' => 'bool',
+        'sendreplies' => 'bool',
         'native_video' => 'bool',
         'videogif' => 'bool',
         'video_poster_url' => 'string'
@@ -82,6 +86,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'url' => 'uri',
         'force_self' => null,
         'flair_id' => null,
+        'flair_text' => null,
+        'nsfw' => null,
+        'spoiler' => null,
+        'sendreplies' => null,
         'native_video' => null,
         'videogif' => null,
         'video_poster_url' => 'uri'
@@ -98,6 +106,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'url' => false,
         'force_self' => false,
         'flair_id' => false,
+        'flair_text' => false,
+        'nsfw' => false,
+        'spoiler' => false,
+        'sendreplies' => false,
         'native_video' => false,
         'videogif' => false,
         'video_poster_url' => false
@@ -194,6 +206,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'url' => 'url',
         'force_self' => 'forceSelf',
         'flair_id' => 'flairId',
+        'flair_text' => 'flairText',
+        'nsfw' => 'nsfw',
+        'spoiler' => 'spoiler',
+        'sendreplies' => 'sendreplies',
         'native_video' => 'nativeVideo',
         'videogif' => 'videogif',
         'video_poster_url' => 'videoPosterUrl'
@@ -210,6 +226,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'url' => 'setUrl',
         'force_self' => 'setForceSelf',
         'flair_id' => 'setFlairId',
+        'flair_text' => 'setFlairText',
+        'nsfw' => 'setNsfw',
+        'spoiler' => 'setSpoiler',
+        'sendreplies' => 'setSendreplies',
         'native_video' => 'setNativeVideo',
         'videogif' => 'setVideogif',
         'video_poster_url' => 'setVideoPosterUrl'
@@ -226,6 +246,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         'url' => 'getUrl',
         'force_self' => 'getForceSelf',
         'flair_id' => 'getFlairId',
+        'flair_text' => 'getFlairText',
+        'nsfw' => 'getNsfw',
+        'spoiler' => 'getSpoiler',
+        'sendreplies' => 'getSendreplies',
         'native_video' => 'getNativeVideo',
         'videogif' => 'getVideogif',
         'video_poster_url' => 'getVideoPosterUrl'
@@ -293,6 +317,10 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('force_self', $data ?? [], null);
         $this->setIfExists('flair_id', $data ?? [], null);
+        $this->setIfExists('flair_text', $data ?? [], null);
+        $this->setIfExists('nsfw', $data ?? [], false);
+        $this->setIfExists('spoiler', $data ?? [], false);
+        $this->setIfExists('sendreplies', $data ?? [], true);
         $this->setIfExists('native_video', $data ?? [], true);
         $this->setIfExists('videogif', $data ?? [], null);
         $this->setIfExists('video_poster_url', $data ?? [], null);
@@ -479,6 +507,114 @@ class RedditPlatformData implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable flair_id cannot be null');
         }
         $this->container['flair_id'] = $flair_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets flair_text
+     *
+     * @return string|null
+     */
+    public function getFlairText()
+    {
+        return $this->container['flair_text'];
+    }
+
+    /**
+     * Sets flair_text
+     *
+     * @param string|null $flair_text Custom flair text, for subreddits that allow free-text flair. Ignored when flairId is provided (flairId wins).
+     *
+     * @return self
+     */
+    public function setFlairText($flair_text)
+    {
+        if (is_null($flair_text)) {
+            throw new \InvalidArgumentException('non-nullable flair_text cannot be null');
+        }
+        $this->container['flair_text'] = $flair_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets nsfw
+     *
+     * @return bool|null
+     */
+    public function getNsfw()
+    {
+        return $this->container['nsfw'];
+    }
+
+    /**
+     * Sets nsfw
+     *
+     * @param bool|null $nsfw Mark the post as NSFW (Not Safe For Work / over 18).
+     *
+     * @return self
+     */
+    public function setNsfw($nsfw)
+    {
+        if (is_null($nsfw)) {
+            throw new \InvalidArgumentException('non-nullable nsfw cannot be null');
+        }
+        $this->container['nsfw'] = $nsfw;
+
+        return $this;
+    }
+
+    /**
+     * Gets spoiler
+     *
+     * @return bool|null
+     */
+    public function getSpoiler()
+    {
+        return $this->container['spoiler'];
+    }
+
+    /**
+     * Sets spoiler
+     *
+     * @param bool|null $spoiler Mark the post as a spoiler. The subreddit must have spoiler tagging enabled for this to take effect.
+     *
+     * @return self
+     */
+    public function setSpoiler($spoiler)
+    {
+        if (is_null($spoiler)) {
+            throw new \InvalidArgumentException('non-nullable spoiler cannot be null');
+        }
+        $this->container['spoiler'] = $spoiler;
+
+        return $this;
+    }
+
+    /**
+     * Gets sendreplies
+     *
+     * @return bool|null
+     */
+    public function getSendreplies()
+    {
+        return $this->container['sendreplies'];
+    }
+
+    /**
+     * Sets sendreplies
+     *
+     * @param bool|null $sendreplies Whether to receive inbox replies for comments on this post. Set to false to opt out.
+     *
+     * @return self
+     */
+    public function setSendreplies($sendreplies)
+    {
+        if (is_null($sendreplies)) {
+            throw new \InvalidArgumentException('non-nullable sendreplies cannot be null');
+        }
+        $this->container['sendreplies'] = $sendreplies;
 
         return $this;
     }

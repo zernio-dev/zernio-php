@@ -65,7 +65,10 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'thread_items' => '\Zernio\Model\TwitterPlatformDataThreadItemsInner[]',
         'poll' => '\Zernio\Model\TwitterPlatformDataPoll',
         'long_video' => 'bool',
-        'geo_restriction' => '\Zernio\Model\GeoRestriction'
+        'geo_restriction' => '\Zernio\Model\GeoRestriction',
+        'paid_partnership' => 'bool',
+        'made_with_ai' => 'bool',
+        'sensitive_media' => '\Zernio\Model\TwitterPlatformDataSensitiveMedia'
     ];
 
     /**
@@ -82,7 +85,10 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'thread_items' => null,
         'poll' => null,
         'long_video' => null,
-        'geo_restriction' => null
+        'geo_restriction' => null,
+        'paid_partnership' => null,
+        'made_with_ai' => null,
+        'sensitive_media' => null
     ];
 
     /**
@@ -97,7 +103,10 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'thread_items' => false,
         'poll' => false,
         'long_video' => false,
-        'geo_restriction' => false
+        'geo_restriction' => false,
+        'paid_partnership' => false,
+        'made_with_ai' => false,
+        'sensitive_media' => false
     ];
 
     /**
@@ -192,7 +201,10 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'thread_items' => 'threadItems',
         'poll' => 'poll',
         'long_video' => 'longVideo',
-        'geo_restriction' => 'geoRestriction'
+        'geo_restriction' => 'geoRestriction',
+        'paid_partnership' => 'paidPartnership',
+        'made_with_ai' => 'madeWithAi',
+        'sensitive_media' => 'sensitiveMedia'
     ];
 
     /**
@@ -207,7 +219,10 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'thread_items' => 'setThreadItems',
         'poll' => 'setPoll',
         'long_video' => 'setLongVideo',
-        'geo_restriction' => 'setGeoRestriction'
+        'geo_restriction' => 'setGeoRestriction',
+        'paid_partnership' => 'setPaidPartnership',
+        'made_with_ai' => 'setMadeWithAi',
+        'sensitive_media' => 'setSensitiveMedia'
     ];
 
     /**
@@ -222,7 +237,10 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         'thread_items' => 'getThreadItems',
         'poll' => 'getPoll',
         'long_video' => 'getLongVideo',
-        'geo_restriction' => 'getGeoRestriction'
+        'geo_restriction' => 'getGeoRestriction',
+        'paid_partnership' => 'getPaidPartnership',
+        'made_with_ai' => 'getMadeWithAi',
+        'sensitive_media' => 'getSensitiveMedia'
     ];
 
     /**
@@ -308,6 +326,9 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
         $this->setIfExists('poll', $data ?? [], null);
         $this->setIfExists('long_video', $data ?? [], false);
         $this->setIfExists('geo_restriction', $data ?? [], null);
+        $this->setIfExists('paid_partnership', $data ?? [], false);
+        $this->setIfExists('made_with_ai', $data ?? [], false);
+        $this->setIfExists('sensitive_media', $data ?? [], null);
     }
 
     /**
@@ -556,6 +577,87 @@ class TwitterPlatformData implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable geo_restriction cannot be null');
         }
         $this->container['geo_restriction'] = $geo_restriction;
+
+        return $this;
+    }
+
+    /**
+     * Gets paid_partnership
+     *
+     * @return bool|null
+     */
+    public function getPaidPartnership()
+    {
+        return $this->container['paid_partnership'];
+    }
+
+    /**
+     * Sets paid_partnership
+     *
+     * @param bool|null $paid_partnership When true, the post is labeled by X as a paid partnership / paid promotion. For threads, applies to the root tweet only. Field availability may depend on your X API access tier.
+     *
+     * @return self
+     */
+    public function setPaidPartnership($paid_partnership)
+    {
+        if (is_null($paid_partnership)) {
+            throw new \InvalidArgumentException('non-nullable paid_partnership cannot be null');
+        }
+        $this->container['paid_partnership'] = $paid_partnership;
+
+        return $this;
+    }
+
+    /**
+     * Gets made_with_ai
+     *
+     * @return bool|null
+     */
+    public function getMadeWithAi()
+    {
+        return $this->container['made_with_ai'];
+    }
+
+    /**
+     * Sets made_with_ai
+     *
+     * @param bool|null $made_with_ai When true, the post is labeled by X as containing AI-generated media. Per X, this label is for AI-generated media, not AI-written text. For threads, applies to the root tweet only.
+     *
+     * @return self
+     */
+    public function setMadeWithAi($made_with_ai)
+    {
+        if (is_null($made_with_ai)) {
+            throw new \InvalidArgumentException('non-nullable made_with_ai cannot be null');
+        }
+        $this->container['made_with_ai'] = $made_with_ai;
+
+        return $this;
+    }
+
+    /**
+     * Gets sensitive_media
+     *
+     * @return \Zernio\Model\TwitterPlatformDataSensitiveMedia|null
+     */
+    public function getSensitiveMedia()
+    {
+        return $this->container['sensitive_media'];
+    }
+
+    /**
+     * Sets sensitive_media
+     *
+     * @param \Zernio\Model\TwitterPlatformDataSensitiveMedia|null $sensitive_media sensitive_media
+     *
+     * @return self
+     */
+    public function setSensitiveMedia($sensitive_media)
+    {
+        if (is_null($sensitive_media)) {
+            throw new \InvalidArgumentException('non-nullable sensitive_media cannot be null');
+        }
+        $this->container['sensitive_media'] = $sensitive_media;
 
         return $this;
     }
