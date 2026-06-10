@@ -251,6 +251,7 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
     public const SCOPE_PROFILES = 'profiles';
     public const ROLE_MEMBER = 'member';
     public const ROLE_BILLING_ADMIN = 'billing_admin';
+    public const ROLE_VIEWER = 'viewer';
 
     /**
      * Gets allowable values of the enum
@@ -275,6 +276,7 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
         return [
             self::ROLE_MEMBER,
             self::ROLE_BILLING_ADMIN,
+            self::ROLE_VIEWER,
         ];
     }
 
@@ -296,7 +298,7 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
         $this->setIfExists('scope', $data ?? [], null);
         $this->setIfExists('profile_ids', $data ?? [], null);
         $this->setIfExists('role', $data ?? [], 'member');
-        $this->setIfExists('read_only', $data ?? [], false);
+        $this->setIfExists('read_only', $data ?? [], null);
     }
 
     /**
@@ -439,7 +441,7 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets role
      *
-     * @param string|null $role Org role granted to the invitee. Defaults to 'member'.
+     * @param string|null $role Org role granted to the invitee. Defaults to 'member'. 'viewer' creates a read-only member who can view everything in their profile scope but cannot perform any content mutation (publish, edit, delete, connect accounts).
      *
      * @return self
      */
@@ -467,6 +469,7 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
      * Gets read_only
      *
      * @return bool|null
+     * @deprecated
      */
     public function getReadOnly()
     {
@@ -476,9 +479,10 @@ class CreateInviteTokenRequest implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets read_only
      *
-     * @param bool|null $read_only When true, the invitee can view everything in their profile scope but cannot perform any content mutation (publish, edit, delete, connect accounts).
+     * @param bool|null $read_only Deprecated. Use role 'viewer' instead. When true, the invite is created with role 'viewer'. Cannot be combined with role 'billing_admin'.
      *
      * @return self
+     * @deprecated
      */
     public function setReadOnly($read_only)
     {
