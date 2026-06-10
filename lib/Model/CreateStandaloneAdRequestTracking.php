@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateStandaloneAdRequestTracking Class Doc Comment
  *
  * @category Class
- * @description Meta only. Attaches pixel measurement to the ad regardless of the optimization goal (the \&quot;Website events\&quot; tracking row in Ads Manager). &#x60;pixelId&#x60; becomes the ad&#39;s &#x60;tracking_specs&#x60; (offsite_conversion + fb_pixel); &#x60;urlTags&#x60; becomes the ad&#39;s &#x60;url_tags&#x60; (click-tracking query params). Applied to every ad on the legacy single-creative and multi-creative shapes.
+ * @description Meta only. Attaches pixel measurement to the ad regardless of the optimization goal (the \&quot;Website events\&quot; tracking row in Ads Manager). &#x60;pixelId&#x60; becomes the ad&#39;s &#x60;tracking_specs&#x60; (offsite_conversion + fb_pixel); &#x60;urlTags&#x60; becomes the ad&#39;s &#x60;url_tags&#x60; (click-tracking query params). Applied on the legacy single-creative shape, every ad of the multi-creative shape, and the attach shape. NOTE: tracking lives on the AD object and is not inherited from the ad set, so pass it on EVERY attach call that should carry the pixel.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
