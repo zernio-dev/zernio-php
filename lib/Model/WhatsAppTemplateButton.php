@@ -61,7 +61,7 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
         'type' => 'string',
         'text' => 'string',
         'url' => 'string',
-        'example' => '\Zernio\Model\WhatsAppTemplateButtonExample',
+        'example' => 'mixed',
         'phone_number' => 'string',
         'otp_type' => 'string',
         'autofill_text' => 'string',
@@ -107,7 +107,7 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
         'type' => false,
         'text' => false,
         'url' => false,
-        'example' => false,
+        'example' => true,
         'phone_number' => false,
         'otp_type' => false,
         'autofill_text' => false,
@@ -540,7 +540,7 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets example
      *
-     * @return \Zernio\Model\WhatsAppTemplateButtonExample|null
+     * @return mixed|null
      */
     public function getExample()
     {
@@ -550,14 +550,21 @@ class WhatsAppTemplateButton implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets example
      *
-     * @param \Zernio\Model\WhatsAppTemplateButtonExample|null $example example
+     * @param mixed|null $example example
      *
      * @return self
      */
     public function setExample($example)
     {
         if (is_null($example)) {
-            throw new \InvalidArgumentException('non-nullable example cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'example');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('example', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['example'] = $example;
 

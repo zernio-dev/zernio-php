@@ -1197,7 +1197,6 @@ docs/Model/WhatsAppHeaderComponent.md
 docs/Model/WhatsAppHeaderComponentExample.md
 docs/Model/WhatsAppSandboxSession.md
 docs/Model/WhatsAppTemplateButton.md
-docs/Model/WhatsAppTemplateButtonExample.md
 docs/Model/WhatsAppTemplateComponent.md
 docs/Model/WorkflowEdge.md
 docs/Model/WorkflowExecutionEvent.md
@@ -2417,7 +2416,6 @@ lib/Model/WhatsAppHeaderComponent.php
 lib/Model/WhatsAppHeaderComponentExample.php
 lib/Model/WhatsAppSandboxSession.php
 lib/Model/WhatsAppTemplateButton.php
-lib/Model/WhatsAppTemplateButtonExample.php
 lib/Model/WhatsAppTemplateComponent.php
 lib/Model/WorkflowEdge.php
 lib/Model/WorkflowExecutionEvent.php
