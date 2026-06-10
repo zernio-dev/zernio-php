@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateStandaloneAdRequestCreativesInnerVideo Class Doc Comment
  *
  * @category Class
- * @description Video creative for this entry. Mutually exclusive with &#x60;imageUrl&#x60;.
+ * @description Video creative for this entry. Mutually exclusive with &#x60;imageUrl&#x60;. thumbnailUrl is optional — when omitted, the poster is auto-generated from Meta&#39;s preferred video thumbnail.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -286,9 +286,6 @@ class CreateStandaloneAdRequestCreativesInnerVideo implements ModelInterface, Ar
         if ($this->container['url'] === null) {
             $invalidProperties[] = "'url' can't be null";
         }
-        if ($this->container['thumbnail_url'] === null) {
-            $invalidProperties[] = "'thumbnail_url' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -334,7 +331,7 @@ class CreateStandaloneAdRequestCreativesInnerVideo implements ModelInterface, Ar
     /**
      * Gets thumbnail_url
      *
-     * @return string
+     * @return string|null
      */
     public function getThumbnailUrl()
     {
@@ -344,7 +341,7 @@ class CreateStandaloneAdRequestCreativesInnerVideo implements ModelInterface, Ar
     /**
      * Sets thumbnail_url
      *
-     * @param string $thumbnail_url thumbnail_url
+     * @param string|null $thumbnail_url thumbnail_url
      *
      * @return self
      */
