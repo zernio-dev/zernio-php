@@ -399,6 +399,9 @@ docs/Model/GetFollowerStats200Response.md
 docs/Model/GetFollowerStats200ResponseDateRange.md
 docs/Model/GetFollowerStats200ResponseStatsValueInner.md
 docs/Model/GetFollowerStats403Response.md
+docs/Model/GetGmbAttributeMetadata200Response.md
+docs/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInner.md
+docs/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInnerValueMetadataInner.md
 docs/Model/GetGmbLocations200Response.md
 docs/Model/GetGmbLocations200ResponseLocationsInner.md
 docs/Model/GetGoogleBusinessAttributes200Response.md
@@ -1617,6 +1620,9 @@ lib/Model/GetFollowerStats200Response.php
 lib/Model/GetFollowerStats200ResponseDateRange.php
 lib/Model/GetFollowerStats200ResponseStatsValueInner.php
 lib/Model/GetFollowerStats403Response.php
+lib/Model/GetGmbAttributeMetadata200Response.php
+lib/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInner.php
+lib/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInnerValueMetadataInner.php
 lib/Model/GetGmbLocations200Response.php
 lib/Model/GetGmbLocations200ResponseLocationsInner.php
 lib/Model/GetGoogleBusinessAttributes200Response.php
@@ -2437,3 +2443,6 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInnerTest.php
+test/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInnerValueMetadataInnerTest.php
+test/Model/GetGmbAttributeMetadata200ResponseTest.php

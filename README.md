@@ -244,6 +244,7 @@ Class | Method | HTTP request | Description
 *DiscordApi* | [**unpinDiscordMessage**](docs/Api/DiscordApi.md#unpindiscordmessage) | **DELETE** /v1/discord/channels/{channelId}/pins/{messageId} | Unpin a Discord message
 *DiscordApi* | [**updateDiscordScheduledEvent**](docs/Api/DiscordApi.md#updatediscordscheduledevent) | **PATCH** /v1/discord/guilds/{guildId}/events/{eventId} | Update a Discord scheduled event
 *DiscordApi* | [**updateDiscordSettings**](docs/Api/DiscordApi.md#updatediscordsettings) | **PATCH** /v1/accounts/{accountId}/discord-settings | Update Discord settings
+*GMBAttributesApi* | [**getGmbAttributeMetadata**](docs/Api/GMBAttributesApi.md#getgmbattributemetadata) | **GET** /v1/accounts/{accountId}/gmb-attribute-metadata | Get attribute metadata
 *GMBAttributesApi* | [**getGoogleBusinessAttributes**](docs/Api/GMBAttributesApi.md#getgooglebusinessattributes) | **GET** /v1/accounts/{accountId}/gmb-attributes | Get attributes
 *GMBAttributesApi* | [**updateGoogleBusinessAttributes**](docs/Api/GMBAttributesApi.md#updategooglebusinessattributes) | **PUT** /v1/accounts/{accountId}/gmb-attributes | Update attributes
 *GMBFoodMenusApi* | [**getGoogleBusinessFoodMenus**](docs/Api/GMBFoodMenusApi.md#getgooglebusinessfoodmenus) | **GET** /v1/accounts/{accountId}/gmb-food-menus | Get food menus
@@ -785,6 +786,9 @@ Class | Method | HTTP request | Description
 - [GetFollowerStats200ResponseDateRange](docs/Model/GetFollowerStats200ResponseDateRange.md)
 - [GetFollowerStats200ResponseStatsValueInner](docs/Model/GetFollowerStats200ResponseStatsValueInner.md)
 - [GetFollowerStats403Response](docs/Model/GetFollowerStats403Response.md)
+- [GetGmbAttributeMetadata200Response](docs/Model/GetGmbAttributeMetadata200Response.md)
+- [GetGmbAttributeMetadata200ResponseAttributeMetadataInner](docs/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInner.md)
+- [GetGmbAttributeMetadata200ResponseAttributeMetadataInnerValueMetadataInner](docs/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInnerValueMetadataInner.md)
 - [GetGmbLocations200Response](docs/Model/GetGmbLocations200Response.md)
 - [GetGmbLocations200ResponseLocationsInner](docs/Model/GetGmbLocations200ResponseLocationsInner.md)
 - [GetGoogleBusinessAttributes200Response](docs/Model/GetGoogleBusinessAttributes200Response.md)

@@ -75,6 +75,9 @@ class GMBAttributesApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'getGmbAttributeMetadata' => [
+            'application/json',
+        ],
         'getGoogleBusinessAttributes' => [
             'application/json',
         ],
@@ -127,6 +130,416 @@ class GMBAttributesApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation getGmbAttributeMetadata
+     *
+     * Get attribute metadata
+     *
+     * @param  string $account_id account_id (required)
+     * @param  string|null $location_id GBP location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
+     * @param  string|null $category_name Category resource name, must start with \&quot;categories/\&quot; (e.g. \&quot;categories/gcid:plumber\&quot;). Required together with regionCode. Mutually exclusive with locationId. (optional)
+     * @param  string|null $region_code BCP-47 region code (e.g. \&quot;US\&quot;, \&quot;ES\&quot;). Required when categoryName is provided. (optional)
+     * @param  string|null $language_code BCP-47 language code for display names (e.g. \&quot;en\&quot;, \&quot;es\&quot;). Optional when categoryName is provided. Omitted from the Google call when not supplied. (optional)
+     * @param  int|null $page_size Maximum number of attribute metadata items to return. Google defaults to 200. (optional)
+     * @param  string|null $page_token Pagination token from a previous response&#39;s nextPageToken field. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbAttributeMetadata'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetGmbAttributeMetadata200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse
+     */
+    public function getGmbAttributeMetadata($account_id, $location_id = null, $category_name = null, $region_code = null, $language_code = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['getGmbAttributeMetadata'][0])
+    {
+        list($response) = $this->getGmbAttributeMetadataWithHttpInfo($account_id, $location_id, $category_name, $region_code, $language_code, $page_size, $page_token, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getGmbAttributeMetadataWithHttpInfo
+     *
+     * Get attribute metadata
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $location_id GBP location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
+     * @param  string|null $category_name Category resource name, must start with \&quot;categories/\&quot; (e.g. \&quot;categories/gcid:plumber\&quot;). Required together with regionCode. Mutually exclusive with locationId. (optional)
+     * @param  string|null $region_code BCP-47 region code (e.g. \&quot;US\&quot;, \&quot;ES\&quot;). Required when categoryName is provided. (optional)
+     * @param  string|null $language_code BCP-47 language code for display names (e.g. \&quot;en\&quot;, \&quot;es\&quot;). Optional when categoryName is provided. Omitted from the Google call when not supplied. (optional)
+     * @param  int|null $page_size Maximum number of attribute metadata items to return. Google defaults to 200. (optional)
+     * @param  string|null $page_token Pagination token from a previous response&#39;s nextPageToken field. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbAttributeMetadata'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetGmbAttributeMetadata200Response|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse|\Zernio\Model\ErrorResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getGmbAttributeMetadataWithHttpInfo($account_id, $location_id = null, $category_name = null, $region_code = null, $language_code = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['getGmbAttributeMetadata'][0])
+    {
+        $request = $this->getGmbAttributeMetadataRequest($account_id, $location_id, $category_name, $region_code, $language_code, $page_size, $page_token, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetGmbAttributeMetadata200Response',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\ErrorResponse',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetGmbAttributeMetadata200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetGmbAttributeMetadata200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getGmbAttributeMetadataAsync
+     *
+     * Get attribute metadata
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $location_id GBP location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
+     * @param  string|null $category_name Category resource name, must start with \&quot;categories/\&quot; (e.g. \&quot;categories/gcid:plumber\&quot;). Required together with regionCode. Mutually exclusive with locationId. (optional)
+     * @param  string|null $region_code BCP-47 region code (e.g. \&quot;US\&quot;, \&quot;ES\&quot;). Required when categoryName is provided. (optional)
+     * @param  string|null $language_code BCP-47 language code for display names (e.g. \&quot;en\&quot;, \&quot;es\&quot;). Optional when categoryName is provided. Omitted from the Google call when not supplied. (optional)
+     * @param  int|null $page_size Maximum number of attribute metadata items to return. Google defaults to 200. (optional)
+     * @param  string|null $page_token Pagination token from a previous response&#39;s nextPageToken field. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbAttributeMetadata'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getGmbAttributeMetadataAsync($account_id, $location_id = null, $category_name = null, $region_code = null, $language_code = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['getGmbAttributeMetadata'][0])
+    {
+        return $this->getGmbAttributeMetadataAsyncWithHttpInfo($account_id, $location_id, $category_name, $region_code, $language_code, $page_size, $page_token, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getGmbAttributeMetadataAsyncWithHttpInfo
+     *
+     * Get attribute metadata
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $location_id GBP location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
+     * @param  string|null $category_name Category resource name, must start with \&quot;categories/\&quot; (e.g. \&quot;categories/gcid:plumber\&quot;). Required together with regionCode. Mutually exclusive with locationId. (optional)
+     * @param  string|null $region_code BCP-47 region code (e.g. \&quot;US\&quot;, \&quot;ES\&quot;). Required when categoryName is provided. (optional)
+     * @param  string|null $language_code BCP-47 language code for display names (e.g. \&quot;en\&quot;, \&quot;es\&quot;). Optional when categoryName is provided. Omitted from the Google call when not supplied. (optional)
+     * @param  int|null $page_size Maximum number of attribute metadata items to return. Google defaults to 200. (optional)
+     * @param  string|null $page_token Pagination token from a previous response&#39;s nextPageToken field. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbAttributeMetadata'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getGmbAttributeMetadataAsyncWithHttpInfo($account_id, $location_id = null, $category_name = null, $region_code = null, $language_code = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['getGmbAttributeMetadata'][0])
+    {
+        $returnType = '\Zernio\Model\GetGmbAttributeMetadata200Response';
+        $request = $this->getGmbAttributeMetadataRequest($account_id, $location_id, $category_name, $region_code, $language_code, $page_size, $page_token, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getGmbAttributeMetadata'
+     *
+     * @param  string $account_id (required)
+     * @param  string|null $location_id GBP location ID (e.g. \&quot;6257659026299438786\&quot;). If omitted, uses the account&#39;s stored selectedLocationId. Mutually exclusive with categoryName. (optional)
+     * @param  string|null $category_name Category resource name, must start with \&quot;categories/\&quot; (e.g. \&quot;categories/gcid:plumber\&quot;). Required together with regionCode. Mutually exclusive with locationId. (optional)
+     * @param  string|null $region_code BCP-47 region code (e.g. \&quot;US\&quot;, \&quot;ES\&quot;). Required when categoryName is provided. (optional)
+     * @param  string|null $language_code BCP-47 language code for display names (e.g. \&quot;en\&quot;, \&quot;es\&quot;). Optional when categoryName is provided. Omitted from the Google call when not supplied. (optional)
+     * @param  int|null $page_size Maximum number of attribute metadata items to return. Google defaults to 200. (optional)
+     * @param  string|null $page_token Pagination token from a previous response&#39;s nextPageToken field. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGmbAttributeMetadata'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getGmbAttributeMetadataRequest($account_id, $location_id = null, $category_name = null, $region_code = null, $language_code = null, $page_size = null, $page_token = null, string $contentType = self::contentTypes['getGmbAttributeMetadata'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getGmbAttributeMetadata'
+            );
+        }
+
+
+
+
+
+        if ($page_size !== null && $page_size > 200) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling GMBAttributesApi.getGmbAttributeMetadata, must be smaller than or equal to 200.');
+        }
+        if ($page_size !== null && $page_size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling GMBAttributesApi.getGmbAttributeMetadata, must be bigger than or equal to 1.');
+        }
+        
+
+
+        $resourcePath = '/v1/accounts/{accountId}/gmb-attribute-metadata';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $location_id,
+            'locationId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $category_name,
+            'categoryName', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $region_code,
+            'regionCode', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $language_code,
+            'languageCode', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_token,
+            'pageToken', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($account_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountId' . '}',
+                ObjectSerializer::toPathValue($account_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
