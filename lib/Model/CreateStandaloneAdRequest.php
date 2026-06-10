@@ -74,6 +74,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'headline' => 'string',
         'long_headline' => 'string',
         'body' => 'string',
+        'description' => 'string',
         'call_to_action' => 'string',
         'link_url' => 'string',
         'lead_gen_form_id' => 'string',
@@ -148,6 +149,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'headline' => null,
         'long_headline' => null,
         'body' => null,
+        'description' => null,
         'call_to_action' => null,
         'link_url' => 'uri',
         'lead_gen_form_id' => null,
@@ -220,6 +222,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'headline' => false,
         'long_headline' => false,
         'body' => false,
+        'description' => false,
         'call_to_action' => false,
         'link_url' => false,
         'lead_gen_form_id' => false,
@@ -372,6 +375,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'headline' => 'headline',
         'long_headline' => 'longHeadline',
         'body' => 'body',
+        'description' => 'description',
         'call_to_action' => 'callToAction',
         'link_url' => 'linkUrl',
         'lead_gen_form_id' => 'leadGenFormId',
@@ -444,6 +448,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'headline' => 'setHeadline',
         'long_headline' => 'setLongHeadline',
         'body' => 'setBody',
+        'description' => 'setDescription',
         'call_to_action' => 'setCallToAction',
         'link_url' => 'setLinkUrl',
         'lead_gen_form_id' => 'setLeadGenFormId',
@@ -516,6 +521,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'headline' => 'getHeadline',
         'long_headline' => 'getLongHeadline',
         'body' => 'getBody',
+        'description' => 'getDescription',
         'call_to_action' => 'getCallToAction',
         'link_url' => 'getLinkUrl',
         'lead_gen_form_id' => 'getLeadGenFormId',
@@ -843,6 +849,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('headline', $data ?? [], null);
         $this->setIfExists('long_headline', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('call_to_action', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
         $this->setIfExists('lead_gen_form_id', $data ?? [], null);
@@ -974,6 +981,10 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
 
         if (!is_null($this->container['long_headline']) && (mb_strlen($this->container['long_headline']) > 90)) {
             $invalidProperties[] = "invalid value for 'long_headline', the character length must be smaller than or equal to 90.";
+        }
+
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 255)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 255.";
         }
 
         $allowedValues = $this->getCallToActionAllowableValues();
@@ -1568,6 +1579,37 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description Meta only (facebook/instagram). Link description — the secondary text shown below the headline (Meta's link_data.description; on video creatives mapped to video_data.link_description). When omitted, Meta auto-pulls the destination URL's OpenGraph description. Applies on legacy, attach, and placementAssets shapes; for multi-creative use creatives[].description (this field is the shared fallback). For multi-text variations use dynamicCreative.descriptions instead.
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        if ((mb_strlen($description) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling CreateStandaloneAdRequest., must be smaller than or equal to 255.');
+        }
+
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
      * Gets call_to_action
      *
      * @return string|null
@@ -1644,7 +1686,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets lead_gen_form_id
      *
-     * @param string|null $lead_gen_form_id Meta Lead Gen forms only (facebook/instagram). The leadgen_forms ID to attach to the ad's creative — create one via POST /v1/ads/lead-forms. REQUIRED when `goal` is `lead_generation`; ignored otherwise. The ad set's promoted_object.page_id + LEAD_GENERATION optimization + destination_type ON_AD are derived automatically from the goal. Both `placementAssets` (per-placement creative) and `dynamicCreative` (multi-text / multi-asset pool, e.g. multiple headlines and primary texts) ARE supported on instant-form lead ads — the form is attached for you, and for `dynamicCreative` the ad set is created as a Dynamic Creative ad set automatically (Meta requires that for any multi-text feed; there is no non-DCO multi-text path). Send a single `imageUrls` entry plus your text variations to get Meta's \"Multiple Text Options\" behavior on a lead ad.
+     * @param string|null $lead_gen_form_id Meta Lead Gen forms only (facebook/instagram). The leadgen_forms ID to attach to the ad's creative — create one via POST /v1/ads/lead-forms. REQUIRED when `goal` is `lead_generation`, and on every ATTACH (`adSetId`) call that targets a lead ad set (the form attaches per-ad; Meta rejects a formless ad in a lead ad set). Ignored otherwise. The ad set's promoted_object.page_id + LEAD_GENERATION optimization + destination_type ON_AD are derived automatically from the goal. Both `placementAssets` (per-placement creative) and `dynamicCreative` (multi-text / multi-asset pool, e.g. multiple headlines and primary texts) ARE supported on instant-form lead ads — the form is attached for you, and for `dynamicCreative` the ad set is created as a Dynamic Creative ad set automatically (Meta requires that for any multi-text feed; there is no non-DCO multi-text path). Send a single `imageUrls` entry plus your text variations to get Meta's \"Multiple Text Options\" behavior on a lead ad.
      *
      * @return self
      */
@@ -1784,7 +1826,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets ad_set_id
      *
-     * @param string|null $ad_set_id Meta-only. When present, switches to the attach shape: adds one new ad to this existing ad set without creating a new campaign. Budget, targeting, goal, schedule, AND bid strategy are inherited from the ad set on Meta — passing `bidStrategy` in attach mode returns 400. To change an existing ad set's bid, use `PUT /v1/ads/ad-sets/{adSetId}`. Mutually exclusive with `creatives[]`.  Supported on Meta (facebook, instagram) and TikTok. On TikTok the `adSetId` is the ad group ID; the new ad inherits the ad group's bid + budget + targeting.
+     * @param string|null $ad_set_id Meta-only. When present, switches to the attach shape: adds one new ad to this existing ad set without creating a new campaign. Budget, targeting, goal, schedule, AND bid strategy are inherited from the ad set on Meta — passing `bidStrategy` in attach mode returns 400. To change an existing ad set's bid, use `PUT /v1/ads/ad-sets/{adSetId}`. Mutually exclusive with `creatives[]`.  The attached ad takes the full single-creative surface: `headline`/`body`/`description`/`callToAction` plus either `imageUrl`/`video` OR `placementAssets` (its own per-placement Feed/Story assets), and `leadGenFormId` when the target is a lead ad set (the parent must be ON_AD — true for ad sets created via goal `lead_generation`; Meta rejects a formless ad there, so pass the form on EVERY attached ad). This is the way to build N full ads sharing one ad set: create the first ad via the normal shape, then attach the rest one call each.  Supported on Meta (facebook, instagram) and TikTok. On TikTok the `adSetId` is the ad group ID; the new ad inherits the ad group's bid + budget + targeting.
      *
      * @return self
      */

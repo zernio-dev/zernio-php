@@ -62,6 +62,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         'name' => 'string',
         'headline' => 'string',
         'body' => 'string',
+        'description' => 'string',
         'image_url' => 'string',
         'video' => '\Zernio\Model\CreateStandaloneAdRequestCreativesInnerVideo',
         'link_url' => 'string',
@@ -79,6 +80,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         'name' => null,
         'headline' => null,
         'body' => null,
+        'description' => null,
         'image_url' => 'uri',
         'video' => null,
         'link_url' => 'uri',
@@ -94,6 +96,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         'name' => false,
         'headline' => false,
         'body' => false,
+        'description' => false,
         'image_url' => false,
         'video' => false,
         'link_url' => false,
@@ -189,6 +192,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         'name' => 'name',
         'headline' => 'headline',
         'body' => 'body',
+        'description' => 'description',
         'image_url' => 'imageUrl',
         'video' => 'video',
         'link_url' => 'linkUrl',
@@ -204,6 +208,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         'name' => 'setName',
         'headline' => 'setHeadline',
         'body' => 'setBody',
+        'description' => 'setDescription',
         'image_url' => 'setImageUrl',
         'video' => 'setVideo',
         'link_url' => 'setLinkUrl',
@@ -219,6 +224,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         'name' => 'getName',
         'headline' => 'getHeadline',
         'body' => 'getBody',
+        'description' => 'getDescription',
         'image_url' => 'getImageUrl',
         'video' => 'getVideo',
         'link_url' => 'getLinkUrl',
@@ -316,6 +322,7 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('headline', $data ?? [], null);
         $this->setIfExists('body', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('video', $data ?? [], null);
         $this->setIfExists('link_url', $data ?? [], null);
@@ -363,6 +370,10 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
         if ($this->container['body'] === null) {
             $invalidProperties[] = "'body' can't be null";
         }
+        if (!is_null($this->container['description']) && (mb_strlen($this->container['description']) > 255)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 255.";
+        }
+
         if ($this->container['link_url'] === null) {
             $invalidProperties[] = "'link_url' can't be null";
         }
@@ -478,6 +489,37 @@ class CreateStandaloneAdRequestCreativesInner implements ModelInterface, ArrayAc
             throw new \InvalidArgumentException('non-nullable body cannot be null');
         }
         $this->container['body'] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description Link description for this ad (link_data.description; video creatives: video_data.link_description). Falls back to the top-level `description`; when both are omitted Meta scrapes the destination URL's OG description.
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        }
+        if ((mb_strlen($description) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling CreateStandaloneAdRequestCreativesInner., must be smaller than or equal to 255.');
+        }
+
+        $this->container['description'] = $description;
 
         return $this;
     }
