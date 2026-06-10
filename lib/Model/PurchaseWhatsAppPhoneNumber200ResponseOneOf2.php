@@ -1,6 +1,6 @@
 <?php
 /**
- * PurchaseWhatsAppPhoneNumber200Response
+ * PurchaseWhatsAppPhoneNumber200ResponseOneOf2
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PurchaseWhatsAppPhoneNumber200Response Class Doc Comment
+ * PurchaseWhatsAppPhoneNumber200ResponseOneOf2 Class Doc Comment
  *
  * @category Class
+ * @description A number was already purchased under the supplied purchaseIntentId; no new number was provisioned.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class PurchaseWhatsAppPhoneNumber200ResponseOneOf2 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'purchaseWhatsAppPhoneNumber_200_response';
+    protected static $openAPIModelName = 'purchaseWhatsAppPhoneNumber_200_response_oneOf_2';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +59,9 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message' => 'string',
-        'checkout_url' => 'string',
-        'phone_number' => 'string',
         'status' => 'string',
-        'number_id' => 'string'
+        'number_id' => 'string',
+        'phone_number' => 'string'
     ];
 
     /**
@@ -73,11 +72,9 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'message' => null,
-        'checkout_url' => 'uri',
-        'phone_number' => null,
         'status' => null,
-        'number_id' => null
+        'number_id' => null,
+        'phone_number' => null
     ];
 
     /**
@@ -86,11 +83,9 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'message' => false,
-        'checkout_url' => false,
-        'phone_number' => false,
         'status' => false,
-        'number_id' => false
+        'number_id' => false,
+        'phone_number' => false
     ];
 
     /**
@@ -179,11 +174,9 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'checkout_url' => 'checkoutUrl',
-        'phone_number' => 'phoneNumber',
         'status' => 'status',
-        'number_id' => 'numberId'
+        'number_id' => 'numberId',
+        'phone_number' => 'phoneNumber'
     ];
 
     /**
@@ -192,11 +185,9 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'checkout_url' => 'setCheckoutUrl',
-        'phone_number' => 'setPhoneNumber',
         'status' => 'setStatus',
-        'number_id' => 'setNumberId'
+        'number_id' => 'setNumberId',
+        'phone_number' => 'setPhoneNumber'
     ];
 
     /**
@@ -205,11 +196,9 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'checkout_url' => 'getCheckoutUrl',
-        'phone_number' => 'getPhoneNumber',
         'status' => 'getStatus',
-        'number_id' => 'getNumberId'
+        'number_id' => 'getNumberId',
+        'phone_number' => 'getPhoneNumber'
     ];
 
     /**
@@ -282,11 +271,9 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('checkout_url', $data ?? [], null);
-        $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('number_id', $data ?? [], null);
+        $this->setIfExists('phone_number', $data ?? [], null);
     }
 
     /**
@@ -339,87 +326,6 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets message
-     *
-     * @return string|null
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     *
-     * @param string|null $message message
-     *
-     * @return self
-     */
-    public function setMessage($message)
-    {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
-        }
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets checkout_url
-     *
-     * @return string|null
-     */
-    public function getCheckoutUrl()
-    {
-        return $this->container['checkout_url'];
-    }
-
-    /**
-     * Sets checkout_url
-     *
-     * @param string|null $checkout_url checkout_url
-     *
-     * @return self
-     */
-    public function setCheckoutUrl($checkout_url)
-    {
-        if (is_null($checkout_url)) {
-            throw new \InvalidArgumentException('non-nullable checkout_url cannot be null');
-        }
-        $this->container['checkout_url'] = $checkout_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets phone_number
-     *
-     * @return string|null
-     */
-    public function getPhoneNumber()
-    {
-        return $this->container['phone_number'];
-    }
-
-    /**
-     * Sets phone_number
-     *
-     * @param string|null $phone_number phone_number
-     *
-     * @return self
-     */
-    public function setPhoneNumber($phone_number)
-    {
-        if (is_null($phone_number)) {
-            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
-        }
-        $this->container['phone_number'] = $phone_number;
-
-        return $this;
-    }
 
     /**
      * Gets status
@@ -481,6 +387,33 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
             throw new \InvalidArgumentException('non-nullable number_id cannot be null');
         }
         $this->container['number_id'] = $number_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets phone_number
+     *
+     * @return string|null
+     */
+    public function getPhoneNumber()
+    {
+        return $this->container['phone_number'];
+    }
+
+    /**
+     * Sets phone_number
+     *
+     * @param string|null $phone_number phone_number
+     *
+     * @return self
+     */
+    public function setPhoneNumber($phone_number)
+    {
+        if (is_null($phone_number)) {
+            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
+        }
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }

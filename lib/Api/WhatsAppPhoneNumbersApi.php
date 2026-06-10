@@ -2205,7 +2205,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\PurchaseWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\PurchaseWhatsAppPhoneNumber202Response
+     * @return \Zernio\Model\PurchaseWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\PurchaseWhatsAppPhoneNumber409Response|\Zernio\Model\PurchaseWhatsAppPhoneNumber202Response
      */
     public function purchaseWhatsAppPhoneNumber($purchase_whats_app_phone_number_request, string $contentType = self::contentTypes['purchaseWhatsAppPhoneNumber'][0])
     {
@@ -2223,7 +2223,7 @@ class WhatsAppPhoneNumbersApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\PurchaseWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\PurchaseWhatsAppPhoneNumber202Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\PurchaseWhatsAppPhoneNumber200Response|\Zernio\Model\InlineObject|\Zernio\Model\PurchaseWhatsAppPhoneNumber409Response|\Zernio\Model\PurchaseWhatsAppPhoneNumber202Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function purchaseWhatsAppPhoneNumberWithHttpInfo($purchase_whats_app_phone_number_request, string $contentType = self::contentTypes['purchaseWhatsAppPhoneNumber'][0])
     {
@@ -2262,6 +2262,12 @@ class WhatsAppPhoneNumbersApi
                 case 401:
                     return $this->handleResponseWithDataType(
                         '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+                case 409:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\PurchaseWhatsAppPhoneNumber409Response',
                         $request,
                         $response,
                     );
@@ -2307,6 +2313,14 @@ class WhatsAppPhoneNumbersApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\PurchaseWhatsAppPhoneNumber409Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

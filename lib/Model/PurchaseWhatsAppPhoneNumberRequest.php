@@ -59,7 +59,9 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       */
     protected static $openAPITypes = [
         'profile_id' => 'string',
-        'country' => 'string'
+        'country' => 'string',
+        'purchase_intent_id' => 'string',
+        'allow_multiple' => 'bool'
     ];
 
     /**
@@ -71,7 +73,9 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       */
     protected static $openAPIFormats = [
         'profile_id' => null,
-        'country' => null
+        'country' => null,
+        'purchase_intent_id' => null,
+        'allow_multiple' => null
     ];
 
     /**
@@ -81,7 +85,9 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
       */
     protected static array $openAPINullables = [
         'profile_id' => false,
-        'country' => false
+        'country' => false,
+        'purchase_intent_id' => false,
+        'allow_multiple' => false
     ];
 
     /**
@@ -171,7 +177,9 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      */
     protected static $attributeMap = [
         'profile_id' => 'profileId',
-        'country' => 'country'
+        'country' => 'country',
+        'purchase_intent_id' => 'purchaseIntentId',
+        'allow_multiple' => 'allowMultiple'
     ];
 
     /**
@@ -181,7 +189,9 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      */
     protected static $setters = [
         'profile_id' => 'setProfileId',
-        'country' => 'setCountry'
+        'country' => 'setCountry',
+        'purchase_intent_id' => 'setPurchaseIntentId',
+        'allow_multiple' => 'setAllowMultiple'
     ];
 
     /**
@@ -191,7 +201,9 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
      */
     protected static $getters = [
         'profile_id' => 'getProfileId',
-        'country' => 'getCountry'
+        'country' => 'getCountry',
+        'purchase_intent_id' => 'getPurchaseIntentId',
+        'allow_multiple' => 'getAllowMultiple'
     ];
 
     /**
@@ -253,6 +265,8 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
     {
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('country', $data ?? [], 'US');
+        $this->setIfExists('purchase_intent_id', $data ?? [], null);
+        $this->setIfExists('allow_multiple', $data ?? [], false);
     }
 
     /**
@@ -285,6 +299,10 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
         if ($this->container['profile_id'] === null) {
             $invalidProperties[] = "'profile_id' can't be null";
         }
+        if (!is_null($this->container['purchase_intent_id']) && (mb_strlen($this->container['purchase_intent_id']) > 100)) {
+            $invalidProperties[] = "invalid value for 'purchase_intent_id', the character length must be smaller than or equal to 100.";
+        }
+
         return $invalidProperties;
     }
 
@@ -350,6 +368,64 @@ class PurchaseWhatsAppPhoneNumberRequest implements ModelInterface, ArrayAccess,
             throw new \InvalidArgumentException('non-nullable country cannot be null');
         }
         $this->container['country'] = $country;
+
+        return $this;
+    }
+
+    /**
+     * Gets purchase_intent_id
+     *
+     * @return string|null
+     */
+    public function getPurchaseIntentId()
+    {
+        return $this->container['purchase_intent_id'];
+    }
+
+    /**
+     * Sets purchase_intent_id
+     *
+     * @param string|null $purchase_intent_id Optional idempotency key. Send the same value when retrying a purchase: if a number was already bought under this key, the API returns { status: \"already_purchased\", numberId, phoneNumber } instead of provisioning a second number. Generate a fresh key for each genuinely new purchase.
+     *
+     * @return self
+     */
+    public function setPurchaseIntentId($purchase_intent_id)
+    {
+        if (is_null($purchase_intent_id)) {
+            throw new \InvalidArgumentException('non-nullable purchase_intent_id cannot be null');
+        }
+        if ((mb_strlen($purchase_intent_id) > 100)) {
+            throw new \InvalidArgumentException('invalid length for $purchase_intent_id when calling PurchaseWhatsAppPhoneNumberRequest., must be smaller than or equal to 100.');
+        }
+
+        $this->container['purchase_intent_id'] = $purchase_intent_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_multiple
+     *
+     * @return bool|null
+     */
+    public function getAllowMultiple()
+    {
+        return $this->container['allow_multiple'];
+    }
+
+    /**
+     * Sets allow_multiple
+     *
+     * @param bool|null $allow_multiple Any second purchase within 10 minutes of a previous one is rejected with 409 code PURCHASE_VELOCITY as duplicate protection. Pass true to confirm the additional purchase is intentional (e.g. bulk provisioning).
+     *
+     * @return self
+     */
+    public function setAllowMultiple($allow_multiple)
+    {
+        if (is_null($allow_multiple)) {
+            throw new \InvalidArgumentException('non-nullable allow_multiple cannot be null');
+        }
+        $this->container['allow_multiple'] = $allow_multiple;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * PurchaseWhatsAppPhoneNumber200Response
+ * PurchaseWhatsAppPhoneNumber409Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * PurchaseWhatsAppPhoneNumber200Response Class Doc Comment
+ * PurchaseWhatsAppPhoneNumber409Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class PurchaseWhatsAppPhoneNumber409Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'purchaseWhatsAppPhoneNumber_200_response';
+    protected static $openAPIModelName = 'purchaseWhatsAppPhoneNumber_409_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,11 +58,8 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
       * @var string[]
       */
     protected static $openAPITypes = [
-        'message' => 'string',
-        'checkout_url' => 'string',
-        'phone_number' => 'string',
-        'status' => 'string',
-        'number_id' => 'string'
+        'error' => 'string',
+        'code' => 'string'
     ];
 
     /**
@@ -73,11 +70,8 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'message' => null,
-        'checkout_url' => 'uri',
-        'phone_number' => null,
-        'status' => null,
-        'number_id' => null
+        'error' => null,
+        'code' => null
     ];
 
     /**
@@ -86,11 +80,8 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'message' => false,
-        'checkout_url' => false,
-        'phone_number' => false,
-        'status' => false,
-        'number_id' => false
+        'error' => false,
+        'code' => false
     ];
 
     /**
@@ -179,11 +170,8 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $attributeMap = [
-        'message' => 'message',
-        'checkout_url' => 'checkoutUrl',
-        'phone_number' => 'phoneNumber',
-        'status' => 'status',
-        'number_id' => 'numberId'
+        'error' => 'error',
+        'code' => 'code'
     ];
 
     /**
@@ -192,11 +180,8 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $setters = [
-        'message' => 'setMessage',
-        'checkout_url' => 'setCheckoutUrl',
-        'phone_number' => 'setPhoneNumber',
-        'status' => 'setStatus',
-        'number_id' => 'setNumberId'
+        'error' => 'setError',
+        'code' => 'setCode'
     ];
 
     /**
@@ -205,11 +190,8 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
      * @var string[]
      */
     protected static $getters = [
-        'message' => 'getMessage',
-        'checkout_url' => 'getCheckoutUrl',
-        'phone_number' => 'getPhoneNumber',
-        'status' => 'getStatus',
-        'number_id' => 'getNumberId'
+        'error' => 'getError',
+        'code' => 'getCode'
     ];
 
     /**
@@ -253,17 +235,17 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
         return self::$openAPIModelName;
     }
 
-    public const STATUS_ALREADY_PURCHASED = 'already_purchased';
+    public const CODE_PURCHASE_VELOCITY = 'PURCHASE_VELOCITY';
 
     /**
      * Gets allowable values of the enum
      *
      * @return string[]
      */
-    public function getStatusAllowableValues()
+    public function getCodeAllowableValues()
     {
         return [
-            self::STATUS_ALREADY_PURCHASED,
+            self::CODE_PURCHASE_VELOCITY,
         ];
     }
 
@@ -282,11 +264,8 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('message', $data ?? [], null);
-        $this->setIfExists('checkout_url', $data ?? [], null);
-        $this->setIfExists('phone_number', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('number_id', $data ?? [], null);
+        $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
     }
 
     /**
@@ -316,11 +295,11 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!is_null($this->container['code']) && !in_array($this->container['code'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'status', must be one of '%s'",
-                $this->container['status'],
+                "invalid value '%s' for 'code', must be one of '%s'",
+                $this->container['code'],
                 implode("', '", $allowedValues)
             );
         }
@@ -341,146 +320,65 @@ class PurchaseWhatsAppPhoneNumber200Response implements ModelInterface, ArrayAcc
 
 
     /**
-     * Gets message
+     * Gets error
      *
      * @return string|null
      */
-    public function getMessage()
+    public function getError()
     {
-        return $this->container['message'];
+        return $this->container['error'];
     }
 
     /**
-     * Sets message
+     * Sets error
      *
-     * @param string|null $message message
+     * @param string|null $error error
      *
      * @return self
      */
-    public function setMessage($message)
+    public function setError($error)
     {
-        if (is_null($message)) {
-            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        if (is_null($error)) {
+            throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
-        $this->container['message'] = $message;
+        $this->container['error'] = $error;
 
         return $this;
     }
 
     /**
-     * Gets checkout_url
+     * Gets code
      *
      * @return string|null
      */
-    public function getCheckoutUrl()
+    public function getCode()
     {
-        return $this->container['checkout_url'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets checkout_url
+     * Sets code
      *
-     * @param string|null $checkout_url checkout_url
+     * @param string|null $code code
      *
      * @return self
      */
-    public function setCheckoutUrl($checkout_url)
+    public function setCode($code)
     {
-        if (is_null($checkout_url)) {
-            throw new \InvalidArgumentException('non-nullable checkout_url cannot be null');
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        $this->container['checkout_url'] = $checkout_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets phone_number
-     *
-     * @return string|null
-     */
-    public function getPhoneNumber()
-    {
-        return $this->container['phone_number'];
-    }
-
-    /**
-     * Sets phone_number
-     *
-     * @param string|null $phone_number phone_number
-     *
-     * @return self
-     */
-    public function setPhoneNumber($phone_number)
-    {
-        if (is_null($phone_number)) {
-            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
-        }
-        $this->container['phone_number'] = $phone_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets status
-     *
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     *
-     * @param string|null $status status
-     *
-     * @return self
-     */
-    public function setStatus($status)
-    {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
-        }
-        $allowedValues = $this->getStatusAllowableValues();
-        if (!in_array($status, $allowedValues, true)) {
+        $allowedValues = $this->getCodeAllowableValues();
+        if (!in_array($code, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
-                    "Invalid value '%s' for 'status', must be one of '%s'",
-                    $status,
+                    "Invalid value '%s' for 'code', must be one of '%s'",
+                    $code,
                     implode("', '", $allowedValues)
                 )
             );
         }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets number_id
-     *
-     * @return string|null
-     */
-    public function getNumberId()
-    {
-        return $this->container['number_id'];
-    }
-
-    /**
-     * Sets number_id
-     *
-     * @param string|null $number_id number_id
-     *
-     * @return self
-     */
-    public function setNumberId($number_id)
-    {
-        if (is_null($number_id)) {
-            throw new \InvalidArgumentException('non-nullable number_id cannot be null');
-        }
-        $this->container['number_id'] = $number_id;
+        $this->container['code'] = $code;
 
         return $this;
     }

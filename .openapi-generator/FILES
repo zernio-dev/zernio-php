@@ -807,7 +807,9 @@ docs/Model/PurchaseWhatsAppPhoneNumber200Response.md
 docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf.md
 docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf1.md
 docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf1PhoneNumber.md
+docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf2.md
 docs/Model/PurchaseWhatsAppPhoneNumber202Response.md
+docs/Model/PurchaseWhatsAppPhoneNumber409Response.md
 docs/Model/PurchaseWhatsAppPhoneNumberRequest.md
 docs/Model/QueueDeleteResponse.md
 docs/Model/QueueNextSlotResponse.md
@@ -2029,7 +2031,9 @@ lib/Model/PurchaseWhatsAppPhoneNumber200Response.php
 lib/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf.php
 lib/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf1.php
 lib/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf1PhoneNumber.php
+lib/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf2.php
 lib/Model/PurchaseWhatsAppPhoneNumber202Response.php
+lib/Model/PurchaseWhatsAppPhoneNumber409Response.php
 lib/Model/PurchaseWhatsAppPhoneNumberRequest.php
 lib/Model/QueueDeleteResponse.php
 lib/Model/QueueNextSlotResponse.php
@@ -2443,6 +2447,5 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInnerTest.php
-test/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInnerValueMetadataInnerTest.php
-test/Model/GetGmbAttributeMetadata200ResponseTest.php
+test/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf2Test.php
+test/Model/PurchaseWhatsAppPhoneNumber409ResponseTest.php
