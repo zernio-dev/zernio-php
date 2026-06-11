@@ -61,7 +61,10 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
         'title' => 'string',
         'subtitle' => 'string',
         'image_url' => 'string',
-        'buttons' => '\Zernio\Model\SendInboxMessageRequestTemplateElementsInnerButtonsInner[]'
+        'buttons' => '\Zernio\Model\SendInboxMessageRequestTemplateElementsInnerButtonsInner[]',
+        'name' => 'string',
+        'language' => 'string',
+        'components' => 'array<string,mixed>[]'
     ];
 
     /**
@@ -75,7 +78,10 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
         'title' => null,
         'subtitle' => null,
         'image_url' => null,
-        'buttons' => null
+        'buttons' => null,
+        'name' => null,
+        'language' => null,
+        'components' => null
     ];
 
     /**
@@ -87,7 +93,10 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
         'title' => false,
         'subtitle' => false,
         'image_url' => false,
-        'buttons' => false
+        'buttons' => false,
+        'name' => false,
+        'language' => false,
+        'components' => false
     ];
 
     /**
@@ -179,7 +188,10 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
         'title' => 'title',
         'subtitle' => 'subtitle',
         'image_url' => 'imageUrl',
-        'buttons' => 'buttons'
+        'buttons' => 'buttons',
+        'name' => 'name',
+        'language' => 'language',
+        'components' => 'components'
     ];
 
     /**
@@ -191,7 +203,10 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
         'title' => 'setTitle',
         'subtitle' => 'setSubtitle',
         'image_url' => 'setImageUrl',
-        'buttons' => 'setButtons'
+        'buttons' => 'setButtons',
+        'name' => 'setName',
+        'language' => 'setLanguage',
+        'components' => 'setComponents'
     ];
 
     /**
@@ -203,7 +218,10 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
         'title' => 'getTitle',
         'subtitle' => 'getSubtitle',
         'image_url' => 'getImageUrl',
-        'buttons' => 'getButtons'
+        'buttons' => 'getButtons',
+        'name' => 'getName',
+        'language' => 'getLanguage',
+        'components' => 'getComponents'
     ];
 
     /**
@@ -267,6 +285,9 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
         $this->setIfExists('subtitle', $data ?? [], null);
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('buttons', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('language', $data ?? [], null);
+        $this->setIfExists('components', $data ?? [], null);
     }
 
     /**
@@ -296,10 +317,7 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
     {
         $invalidProperties = [];
 
-        if ($this->container['title'] === null) {
-            $invalidProperties[] = "'title' can't be null";
-        }
-        if ((mb_strlen($this->container['title']) > 80)) {
+        if (!is_null($this->container['title']) && (mb_strlen($this->container['title']) > 80)) {
             $invalidProperties[] = "invalid value for 'title', the character length must be smaller than or equal to 80.";
         }
 
@@ -325,7 +343,7 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
     /**
      * Gets title
      *
-     * @return string
+     * @return string|null
      */
     public function getTitle()
     {
@@ -335,7 +353,7 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
     /**
      * Sets title
      *
-     * @param string $title Element title (max 80 chars)
+     * @param string|null $title Element title (max 80 chars). Required for Instagram/Facebook generic templates.
      *
      * @return self
      */
@@ -366,7 +384,7 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
     /**
      * Sets subtitle
      *
-     * @param string|null $subtitle Element subtitle
+     * @param string|null $subtitle Element subtitle (Instagram/Facebook only)
      *
      * @return self
      */
@@ -393,7 +411,7 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
     /**
      * Sets image_url
      *
-     * @param string|null $image_url Element image URL
+     * @param string|null $image_url Element image URL (Instagram/Facebook only)
      *
      * @return self
      */
@@ -420,7 +438,7 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
     /**
      * Sets buttons
      *
-     * @param \Zernio\Model\SendInboxMessageRequestTemplateElementsInnerButtonsInner[]|null $buttons buttons
+     * @param \Zernio\Model\SendInboxMessageRequestTemplateElementsInnerButtonsInner[]|null $buttons Element buttons (Instagram/Facebook only)
      *
      * @return self
      */
@@ -434,6 +452,87 @@ class SendInboxMessageRequestTemplateElementsInner implements ModelInterface, Ar
             throw new \InvalidArgumentException('invalid value for $buttons when calling SendInboxMessageRequestTemplateElementsInner., number of items must be less than or equal to 3.');
         }
         $this->container['buttons'] = $buttons;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string|null
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string|null $name WhatsApp only. Name of the approved template to send.
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets language
+     *
+     * @return string|null
+     */
+    public function getLanguage()
+    {
+        return $this->container['language'];
+    }
+
+    /**
+     * Sets language
+     *
+     * @param string|null $language WhatsApp only. Template language code (e.g. en_US).
+     *
+     * @return self
+     */
+    public function setLanguage($language)
+    {
+        if (is_null($language)) {
+            throw new \InvalidArgumentException('non-nullable language cannot be null');
+        }
+        $this->container['language'] = $language;
+
+        return $this;
+    }
+
+    /**
+     * Gets components
+     *
+     * @return array<string,mixed>[]|null
+     */
+    public function getComponents()
+    {
+        return $this->container['components'];
+    }
+
+    /**
+     * Sets components
+     *
+     * @param array<string,mixed>[]|null $components WhatsApp only. Meta Cloud API send-shape components array, forwarded to Meta verbatim.
+     *
+     * @return self
+     */
+    public function setComponents($components)
+    {
+        if (is_null($components)) {
+            throw new \InvalidArgumentException('non-nullable components cannot be null');
+        }
+        $this->container['components'] = $components;
 
         return $this;
     }

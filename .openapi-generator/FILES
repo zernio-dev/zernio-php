@@ -2447,5 +2447,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf2Test.php
-test/Model/PurchaseWhatsAppPhoneNumber409ResponseTest.php

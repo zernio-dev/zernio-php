@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * SendInboxMessageRequestTemplate Class Doc Comment
  *
  * @category Class
- * @description Generic template for carousels (Instagram/Facebook only, ignored on Telegram).
+ * @description Platform-dependent template payload. Ignored on Telegram.  Instagram / Facebook: a generic template (carousel). Set &#x60;type: generic&#x60; and provide up to 10 &#x60;elements&#x60;, each with a &#x60;title&#x60; (required) and optional &#x60;subtitle&#x60;, &#x60;imageUrl&#x60;, and &#x60;buttons&#x60;.  WhatsApp: sends an approved WhatsApp template message, the only message type WhatsApp accepts when the 24-hour customer-service window is closed. Provide exactly one element carrying the template reference: &#x60;{ \&quot;elements\&quot;: [{ \&quot;name\&quot;: \&quot;order_update\&quot;, \&quot;language\&quot;: \&quot;en_US\&quot;, \&quot;components\&quot;: [...] }] }&#x60; (&#x60;type&#x60; is ignored on WhatsApp). &#x60;components&#x60; is optional and is forwarded unchanged as the &#x60;template.components&#x60; array of Meta&#39;s Cloud API send payload; use it to fill body/header variables and button parameters, e.g. &#x60;[{ \&quot;type\&quot;: \&quot;body\&quot;, \&quot;parameters\&quot;: [{ \&quot;type\&quot;: \&quot;text\&quot;, \&quot;text\&quot;: \&quot;John\&quot; }] }]&#x60;. Templates with media headers (image, video, document) must include the header component with its media link here at send time. To send a template to a phone number with no existing conversation, or to have media headers filled in automatically from the template definition, use the create-conversation endpoint (POST /v1/inbox/conversations) instead.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -337,7 +337,7 @@ class SendInboxMessageRequestTemplate implements ModelInterface, ArrayAccess, \J
     /**
      * Sets type
      *
-     * @param string|null $type Template type
+     * @param string|null $type Template type. Required for Instagram/Facebook generic templates; ignored on WhatsApp.
      *
      * @return self
      */
