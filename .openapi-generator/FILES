@@ -110,6 +110,10 @@ docs/Model/BatchGetGoogleBusinessReviews200Response.md
 docs/Model/BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner.md
 docs/Model/BatchGetGoogleBusinessReviewsRequest.md
 docs/Model/BidStrategy.md
+docs/Model/BlockWhatsAppUsers200Response.md
+docs/Model/BlockWhatsAppUsers200ResponseBlockedInner.md
+docs/Model/BlockWhatsAppUsers200ResponseFailedInner.md
+docs/Model/BlockWhatsAppUsersRequest.md
 docs/Model/BlueskyPlatformData.md
 docs/Model/BookmarkPost200Response.md
 docs/Model/BookmarkPostRequest.md
@@ -543,6 +547,8 @@ docs/Model/GetUser200ResponseUser.md
 docs/Model/GetWebhookLogs200Response.md
 docs/Model/GetWebhookLogs200ResponsePagination.md
 docs/Model/GetWebhookSettings200Response.md
+docs/Model/GetWhatsAppBlockedUsers200Response.md
+docs/Model/GetWhatsAppBlockedUsers200ResponseBlockedUsersInner.md
 docs/Model/GetWhatsAppBusinessProfile200Response.md
 docs/Model/GetWhatsAppBusinessProfile200ResponseBusinessProfile.md
 docs/Model/GetWhatsAppCall200Response.md
@@ -911,6 +917,7 @@ docs/Model/SendInboxMessageRequestInteractiveActionOneOf1Parameters.md
 docs/Model/SendInboxMessageRequestInteractiveActionOneOf2.md
 docs/Model/SendInboxMessageRequestInteractiveActionOneOf2Parameters.md
 docs/Model/SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload.md
+docs/Model/SendInboxMessageRequestInteractiveActionOneOf3.md
 docs/Model/SendInboxMessageRequestInteractiveActionOneOfSectionsInner.md
 docs/Model/SendInboxMessageRequestInteractiveActionOneOfSectionsInnerRowsInner.md
 docs/Model/SendInboxMessageRequestInteractiveBody.md
@@ -974,6 +981,8 @@ docs/Model/TwitterPlatformData.md
 docs/Model/TwitterPlatformDataPoll.md
 docs/Model/TwitterPlatformDataSensitiveMedia.md
 docs/Model/TwitterPlatformDataThreadItemsInner.md
+docs/Model/UnblockWhatsAppUsers200Response.md
+docs/Model/UnblockWhatsAppUsersRequest.md
 docs/Model/UndoRetweet200Response.md
 docs/Model/UnfollowUser200Response.md
 docs/Model/UnlikeInboxComment200Response.md
@@ -1338,6 +1347,10 @@ lib/Model/BatchGetGoogleBusinessReviews200Response.php
 lib/Model/BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner.php
 lib/Model/BatchGetGoogleBusinessReviewsRequest.php
 lib/Model/BidStrategy.php
+lib/Model/BlockWhatsAppUsers200Response.php
+lib/Model/BlockWhatsAppUsers200ResponseBlockedInner.php
+lib/Model/BlockWhatsAppUsers200ResponseFailedInner.php
+lib/Model/BlockWhatsAppUsersRequest.php
 lib/Model/BlueskyPlatformData.php
 lib/Model/BookmarkPost200Response.php
 lib/Model/BookmarkPostRequest.php
@@ -1771,6 +1784,8 @@ lib/Model/GetUser200ResponseUser.php
 lib/Model/GetWebhookLogs200Response.php
 lib/Model/GetWebhookLogs200ResponsePagination.php
 lib/Model/GetWebhookSettings200Response.php
+lib/Model/GetWhatsAppBlockedUsers200Response.php
+lib/Model/GetWhatsAppBlockedUsers200ResponseBlockedUsersInner.php
 lib/Model/GetWhatsAppBusinessProfile200Response.php
 lib/Model/GetWhatsAppBusinessProfile200ResponseBusinessProfile.php
 lib/Model/GetWhatsAppCall200Response.php
@@ -2140,6 +2155,7 @@ lib/Model/SendInboxMessageRequestInteractiveActionOneOf1Parameters.php
 lib/Model/SendInboxMessageRequestInteractiveActionOneOf2.php
 lib/Model/SendInboxMessageRequestInteractiveActionOneOf2Parameters.php
 lib/Model/SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload.php
+lib/Model/SendInboxMessageRequestInteractiveActionOneOf3.php
 lib/Model/SendInboxMessageRequestInteractiveActionOneOfSectionsInner.php
 lib/Model/SendInboxMessageRequestInteractiveActionOneOfSectionsInnerRowsInner.php
 lib/Model/SendInboxMessageRequestInteractiveBody.php
@@ -2203,6 +2219,8 @@ lib/Model/TwitterPlatformData.php
 lib/Model/TwitterPlatformDataPoll.php
 lib/Model/TwitterPlatformDataSensitiveMedia.php
 lib/Model/TwitterPlatformDataThreadItemsInner.php
+lib/Model/UnblockWhatsAppUsers200Response.php
+lib/Model/UnblockWhatsAppUsersRequest.php
 lib/Model/UndoRetweet200Response.php
 lib/Model/UnfollowUser200Response.php
 lib/Model/UnlikeInboxComment200Response.php
@@ -2457,7 +2475,12 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/ListAdCatalogProductSets200ResponseProductSetsInnerTest.php
-test/Model/ListAdCatalogProductSets200ResponseTest.php
-test/Model/ListAdCatalogs200ResponseCatalogsInnerTest.php
-test/Model/ListAdCatalogs200ResponseTest.php
+test/Model/BlockWhatsAppUsers200ResponseBlockedInnerTest.php
+test/Model/BlockWhatsAppUsers200ResponseFailedInnerTest.php
+test/Model/BlockWhatsAppUsers200ResponseTest.php
+test/Model/BlockWhatsAppUsersRequestTest.php
+test/Model/GetWhatsAppBlockedUsers200ResponseBlockedUsersInnerTest.php
+test/Model/GetWhatsAppBlockedUsers200ResponseTest.php
+test/Model/SendInboxMessageRequestInteractiveActionOneOf3Test.php
+test/Model/UnblockWhatsAppUsers200ResponseTest.php
+test/Model/UnblockWhatsAppUsersRequestTest.php

@@ -1299,7 +1299,7 @@ class GetInboxConversationMessages200ResponseMessagesInner implements ModelInter
     /**
      * Sets metadata
      *
-     * @param array<string,mixed>|null $metadata Platform-specific extras. Free-form, but commonly includes: `quotedMessageId` (platformMessageId this message replies to), `waInteractive` (a compact descriptor of WhatsApp interactive content sent: buttons / list / cta_url / flow), and for inbound interactive taps `interactiveType` / `interactiveId`.
+     * @param array<string,mixed>|null $metadata Platform-specific extras. Free-form, but commonly includes: `quotedMessageId` (platformMessageId this message replies to), `waInteractive` (a compact descriptor of WhatsApp interactive content sent: buttons / list / cta_url / flow / location_request), and for inbound interactive taps `interactiveType` / `interactiveId`.
      *
      * @return self
      */

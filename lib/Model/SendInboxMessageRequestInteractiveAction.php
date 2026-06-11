@@ -247,7 +247,7 @@ class SendInboxMessageRequestInteractiveAction implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
-    public const NAME_FLOW = 'flow';
+    public const NAME_SEND_LOCATION = 'send_location';
 
     /**
      * Gets allowable values of the enum
@@ -257,7 +257,7 @@ class SendInboxMessageRequestInteractiveAction implements ModelInterface, ArrayA
     public function getNameAllowableValues()
     {
         return [
-            self::NAME_FLOW,
+            self::NAME_SEND_LOCATION,
         ];
     }
 

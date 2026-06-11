@@ -8,6 +8,6 @@ Name | Type | Description | Notes
 **header** | [**\Zernio\Model\SendInboxMessageRequestInteractiveHeader**](SendInboxMessageRequestInteractiveHeader.md) |  | [optional]
 **body** | [**\Zernio\Model\SendInboxMessageRequestInteractiveBody**](SendInboxMessageRequestInteractiveBody.md) |  |
 **footer** | [**\Zernio\Model\SendInboxMessageRequestInteractiveFooter**](SendInboxMessageRequestInteractiveFooter.md) |  | [optional]
-**action** | [**\Zernio\Model\SendInboxMessageRequestInteractiveAction**](SendInboxMessageRequestInteractiveAction.md) |  |
+**action** | [**\Zernio\Model\SendInboxMessageRequestInteractiveAction**](SendInboxMessageRequestInteractiveAction.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -81,6 +81,9 @@ class WhatsAppApi
         'approveWhatsAppGroupJoinRequests' => [
             'application/json',
         ],
+        'blockWhatsAppUsers' => [
+            'application/json',
+        ],
         'createWhatsAppDataset' => [
             'application/json',
         ],
@@ -97,6 +100,9 @@ class WhatsAppApi
             'application/json',
         ],
         'deleteWhatsAppTemplate' => [
+            'application/json',
+        ],
+        'getWhatsAppBlockedUsers' => [
             'application/json',
         ],
         'getWhatsAppBusinessProfile' => [
@@ -133,6 +139,9 @@ class WhatsAppApi
             'application/json',
         ],
         'sendWhatsAppConversion' => [
+            'application/json',
+        ],
+        'unblockWhatsAppUsers' => [
             'application/json',
         ],
         'updateWhatsAppBusinessProfile' => [
@@ -799,6 +808,291 @@ class WhatsAppApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($approve_whats_app_group_join_requests_request));
             } else {
                 $httpBody = $approve_whats_app_group_join_requests_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation blockWhatsAppUsers
+     *
+     * Block users
+     *
+     * @param  \Zernio\Model\BlockWhatsAppUsersRequest $block_whats_app_users_request block_whats_app_users_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockWhatsAppUsers'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\BlockWhatsAppUsers200Response|\Zernio\Model\InlineObject
+     */
+    public function blockWhatsAppUsers($block_whats_app_users_request, string $contentType = self::contentTypes['blockWhatsAppUsers'][0])
+    {
+        list($response) = $this->blockWhatsAppUsersWithHttpInfo($block_whats_app_users_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation blockWhatsAppUsersWithHttpInfo
+     *
+     * Block users
+     *
+     * @param  \Zernio\Model\BlockWhatsAppUsersRequest $block_whats_app_users_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockWhatsAppUsers'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\BlockWhatsAppUsers200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function blockWhatsAppUsersWithHttpInfo($block_whats_app_users_request, string $contentType = self::contentTypes['blockWhatsAppUsers'][0])
+    {
+        $request = $this->blockWhatsAppUsersRequest($block_whats_app_users_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\BlockWhatsAppUsers200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\BlockWhatsAppUsers200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\BlockWhatsAppUsers200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation blockWhatsAppUsersAsync
+     *
+     * Block users
+     *
+     * @param  \Zernio\Model\BlockWhatsAppUsersRequest $block_whats_app_users_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockWhatsAppUsers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function blockWhatsAppUsersAsync($block_whats_app_users_request, string $contentType = self::contentTypes['blockWhatsAppUsers'][0])
+    {
+        return $this->blockWhatsAppUsersAsyncWithHttpInfo($block_whats_app_users_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation blockWhatsAppUsersAsyncWithHttpInfo
+     *
+     * Block users
+     *
+     * @param  \Zernio\Model\BlockWhatsAppUsersRequest $block_whats_app_users_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockWhatsAppUsers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function blockWhatsAppUsersAsyncWithHttpInfo($block_whats_app_users_request, string $contentType = self::contentTypes['blockWhatsAppUsers'][0])
+    {
+        $returnType = '\Zernio\Model\BlockWhatsAppUsers200Response';
+        $request = $this->blockWhatsAppUsersRequest($block_whats_app_users_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'blockWhatsAppUsers'
+     *
+     * @param  \Zernio\Model\BlockWhatsAppUsersRequest $block_whats_app_users_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['blockWhatsAppUsers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function blockWhatsAppUsersRequest($block_whats_app_users_request, string $contentType = self::contentTypes['blockWhatsAppUsers'][0])
+    {
+
+        // verify the required parameter 'block_whats_app_users_request' is set
+        if ($block_whats_app_users_request === null || (is_array($block_whats_app_users_request) && count($block_whats_app_users_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $block_whats_app_users_request when calling blockWhatsAppUsers'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/block-users';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($block_whats_app_users_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($block_whats_app_users_request));
+            } else {
+                $httpBody = $block_whats_app_users_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2648,6 +2942,329 @@ class WhatsAppApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getWhatsAppBlockedUsers
+     *
+     * List blocked users
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  int|null $limit Page size. (optional)
+     * @param  string|null $after Cursor from a previous response&#39;s &#x60;nextCursor&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBlockedUsers'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\GetWhatsAppBlockedUsers200Response|\Zernio\Model\InlineObject
+     */
+    public function getWhatsAppBlockedUsers($account_id, $limit = null, $after = null, string $contentType = self::contentTypes['getWhatsAppBlockedUsers'][0])
+    {
+        list($response) = $this->getWhatsAppBlockedUsersWithHttpInfo($account_id, $limit, $after, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getWhatsAppBlockedUsersWithHttpInfo
+     *
+     * List blocked users
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  int|null $limit Page size. (optional)
+     * @param  string|null $after Cursor from a previous response&#39;s &#x60;nextCursor&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBlockedUsers'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\GetWhatsAppBlockedUsers200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getWhatsAppBlockedUsersWithHttpInfo($account_id, $limit = null, $after = null, string $contentType = self::contentTypes['getWhatsAppBlockedUsers'][0])
+    {
+        $request = $this->getWhatsAppBlockedUsersRequest($account_id, $limit, $after, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\GetWhatsAppBlockedUsers200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\GetWhatsAppBlockedUsers200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\GetWhatsAppBlockedUsers200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getWhatsAppBlockedUsersAsync
+     *
+     * List blocked users
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  int|null $limit Page size. (optional)
+     * @param  string|null $after Cursor from a previous response&#39;s &#x60;nextCursor&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBlockedUsers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppBlockedUsersAsync($account_id, $limit = null, $after = null, string $contentType = self::contentTypes['getWhatsAppBlockedUsers'][0])
+    {
+        return $this->getWhatsAppBlockedUsersAsyncWithHttpInfo($account_id, $limit, $after, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getWhatsAppBlockedUsersAsyncWithHttpInfo
+     *
+     * List blocked users
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  int|null $limit Page size. (optional)
+     * @param  string|null $after Cursor from a previous response&#39;s &#x60;nextCursor&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBlockedUsers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getWhatsAppBlockedUsersAsyncWithHttpInfo($account_id, $limit = null, $after = null, string $contentType = self::contentTypes['getWhatsAppBlockedUsers'][0])
+    {
+        $returnType = '\Zernio\Model\GetWhatsAppBlockedUsers200Response';
+        $request = $this->getWhatsAppBlockedUsersRequest($account_id, $limit, $after, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getWhatsAppBlockedUsers'
+     *
+     * @param  string $account_id WhatsApp social account ID (required)
+     * @param  int|null $limit Page size. (optional)
+     * @param  string|null $after Cursor from a previous response&#39;s &#x60;nextCursor&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppBlockedUsers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getWhatsAppBlockedUsersRequest($account_id, $limit = null, $after = null, string $contentType = self::contentTypes['getWhatsAppBlockedUsers'][0])
+    {
+
+        // verify the required parameter 'account_id' is set
+        if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $account_id when calling getWhatsAppBlockedUsers'
+            );
+        }
+
+        if ($limit !== null && $limit > 100) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling WhatsAppApi.getWhatsAppBlockedUsers, must be smaller than or equal to 100.');
+        }
+        if ($limit !== null && $limit < 1) {
+            throw new \InvalidArgumentException('invalid value for "$limit" when calling WhatsAppApi.getWhatsAppBlockedUsers, must be bigger than or equal to 1.');
+        }
+        
+
+
+        $resourcePath = '/v1/whatsapp/block-users';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $account_id,
+            'accountId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            true // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -6310,6 +6927,291 @@ class WhatsAppApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation unblockWhatsAppUsers
+     *
+     * Unblock users
+     *
+     * @param  \Zernio\Model\UnblockWhatsAppUsersRequest $unblock_whats_app_users_request unblock_whats_app_users_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockWhatsAppUsers'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Zernio\Model\UnblockWhatsAppUsers200Response|\Zernio\Model\InlineObject
+     */
+    public function unblockWhatsAppUsers($unblock_whats_app_users_request, string $contentType = self::contentTypes['unblockWhatsAppUsers'][0])
+    {
+        list($response) = $this->unblockWhatsAppUsersWithHttpInfo($unblock_whats_app_users_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation unblockWhatsAppUsersWithHttpInfo
+     *
+     * Unblock users
+     *
+     * @param  \Zernio\Model\UnblockWhatsAppUsersRequest $unblock_whats_app_users_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockWhatsAppUsers'] to see the possible values for this operation
+     *
+     * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Zernio\Model\UnblockWhatsAppUsers200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function unblockWhatsAppUsersWithHttpInfo($unblock_whats_app_users_request, string $contentType = self::contentTypes['unblockWhatsAppUsers'][0])
+    {
+        $request = $this->unblockWhatsAppUsersRequest($unblock_whats_app_users_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\UnblockWhatsAppUsers200Response',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\Zernio\Model\InlineObject',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Zernio\Model\UnblockWhatsAppUsers200Response',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\UnblockWhatsAppUsers200Response',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Zernio\Model\InlineObject',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation unblockWhatsAppUsersAsync
+     *
+     * Unblock users
+     *
+     * @param  \Zernio\Model\UnblockWhatsAppUsersRequest $unblock_whats_app_users_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockWhatsAppUsers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function unblockWhatsAppUsersAsync($unblock_whats_app_users_request, string $contentType = self::contentTypes['unblockWhatsAppUsers'][0])
+    {
+        return $this->unblockWhatsAppUsersAsyncWithHttpInfo($unblock_whats_app_users_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation unblockWhatsAppUsersAsyncWithHttpInfo
+     *
+     * Unblock users
+     *
+     * @param  \Zernio\Model\UnblockWhatsAppUsersRequest $unblock_whats_app_users_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockWhatsAppUsers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function unblockWhatsAppUsersAsyncWithHttpInfo($unblock_whats_app_users_request, string $contentType = self::contentTypes['unblockWhatsAppUsers'][0])
+    {
+        $returnType = '\Zernio\Model\UnblockWhatsAppUsers200Response';
+        $request = $this->unblockWhatsAppUsersRequest($unblock_whats_app_users_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'unblockWhatsAppUsers'
+     *
+     * @param  \Zernio\Model\UnblockWhatsAppUsersRequest $unblock_whats_app_users_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['unblockWhatsAppUsers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function unblockWhatsAppUsersRequest($unblock_whats_app_users_request, string $contentType = self::contentTypes['unblockWhatsAppUsers'][0])
+    {
+
+        // verify the required parameter 'unblock_whats_app_users_request' is set
+        if ($unblock_whats_app_users_request === null || (is_array($unblock_whats_app_users_request) && count($unblock_whats_app_users_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $unblock_whats_app_users_request when calling unblockWhatsAppUsers'
+            );
+        }
+
+
+        $resourcePath = '/v1/whatsapp/block-users';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($unblock_whats_app_users_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($unblock_whats_app_users_request));
+            } else {
+                $httpBody = $unblock_whats_app_users_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer (JWT) authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
