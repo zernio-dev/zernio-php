@@ -1,6 +1,6 @@
 <?php
 /**
- * GetWhatsAppPhoneNumbers200Response
+ * GetWhatsAppPhoneNumbers200ResponseConnectedInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetWhatsAppPhoneNumbers200Response Class Doc Comment
+ * GetWhatsAppPhoneNumbers200ResponseConnectedInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetWhatsAppPhoneNumbers200ResponseConnectedInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getWhatsAppPhoneNumbers_200_response';
+    protected static $openAPIModelName = 'getWhatsAppPhoneNumbers_200_response_connected_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,11 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @var string[]
       */
     protected static $openAPITypes = [
-        'numbers' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]',
-        'connected' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseConnectedInner[]',
-        'sandbox' => '\Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox'
+        'account_id' => 'string',
+        'phone_number' => 'string',
+        'display_name' => 'string',
+        'profile_id' => 'string',
+        'connected_at' => '\DateTime'
     ];
 
     /**
@@ -71,9 +73,11 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'numbers' => null,
-        'connected' => null,
-        'sandbox' => null
+        'account_id' => null,
+        'phone_number' => null,
+        'display_name' => null,
+        'profile_id' => null,
+        'connected_at' => 'date-time'
     ];
 
     /**
@@ -82,9 +86,11 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'numbers' => false,
-        'connected' => false,
-        'sandbox' => false
+        'account_id' => false,
+        'phone_number' => false,
+        'display_name' => false,
+        'profile_id' => false,
+        'connected_at' => false
     ];
 
     /**
@@ -173,9 +179,11 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $attributeMap = [
-        'numbers' => 'numbers',
-        'connected' => 'connected',
-        'sandbox' => 'sandbox'
+        'account_id' => 'accountId',
+        'phone_number' => 'phoneNumber',
+        'display_name' => 'displayName',
+        'profile_id' => 'profileId',
+        'connected_at' => 'connectedAt'
     ];
 
     /**
@@ -184,9 +192,11 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $setters = [
-        'numbers' => 'setNumbers',
-        'connected' => 'setConnected',
-        'sandbox' => 'setSandbox'
+        'account_id' => 'setAccountId',
+        'phone_number' => 'setPhoneNumber',
+        'display_name' => 'setDisplayName',
+        'profile_id' => 'setProfileId',
+        'connected_at' => 'setConnectedAt'
     ];
 
     /**
@@ -195,9 +205,11 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      * @var string[]
      */
     protected static $getters = [
-        'numbers' => 'getNumbers',
-        'connected' => 'getConnected',
-        'sandbox' => 'getSandbox'
+        'account_id' => 'getAccountId',
+        'phone_number' => 'getPhoneNumber',
+        'display_name' => 'getDisplayName',
+        'profile_id' => 'getProfileId',
+        'connected_at' => 'getConnectedAt'
     ];
 
     /**
@@ -257,9 +269,11 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('numbers', $data ?? [], null);
-        $this->setIfExists('connected', $data ?? [], null);
-        $this->setIfExists('sandbox', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
+        $this->setIfExists('phone_number', $data ?? [], null);
+        $this->setIfExists('display_name', $data ?? [], null);
+        $this->setIfExists('profile_id', $data ?? [], null);
+        $this->setIfExists('connected_at', $data ?? [], null);
     }
 
     /**
@@ -305,82 +319,136 @@ class GetWhatsAppPhoneNumbers200Response implements ModelInterface, ArrayAccess,
 
 
     /**
-     * Gets numbers
+     * Gets account_id
      *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]|null
+     * @return string|null
      */
-    public function getNumbers()
+    public function getAccountId()
     {
-        return $this->container['numbers'];
+        return $this->container['account_id'];
     }
 
     /**
-     * Sets numbers
+     * Sets account_id
      *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseNumbersInner[]|null $numbers numbers
+     * @param string|null $account_id account_id
      *
      * @return self
      */
-    public function setNumbers($numbers)
+    public function setAccountId($account_id)
     {
-        if (is_null($numbers)) {
-            throw new \InvalidArgumentException('non-nullable numbers cannot be null');
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
         }
-        $this->container['numbers'] = $numbers;
+        $this->container['account_id'] = $account_id;
 
         return $this;
     }
 
     /**
-     * Gets connected
+     * Gets phone_number
      *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseConnectedInner[]|null
+     * @return string|null
      */
-    public function getConnected()
+    public function getPhoneNumber()
     {
-        return $this->container['connected'];
+        return $this->container['phone_number'];
     }
 
     /**
-     * Sets connected
+     * Sets phone_number
      *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseConnectedInner[]|null $connected Connected (bring-your-own) WhatsApp numbers — your own WABA numbers linked via Embedded Signup. Not provisioned or billed by Zernio, so they are not in `numbers`; `accountId` is the social-account id used by the messaging and inbox endpoints. Included only on the default and `status=active` views.
+     * @param string|null $phone_number phone_number
      *
      * @return self
      */
-    public function setConnected($connected)
+    public function setPhoneNumber($phone_number)
     {
-        if (is_null($connected)) {
-            throw new \InvalidArgumentException('non-nullable connected cannot be null');
+        if (is_null($phone_number)) {
+            throw new \InvalidArgumentException('non-nullable phone_number cannot be null');
         }
-        $this->container['connected'] = $connected;
+        $this->container['phone_number'] = $phone_number;
 
         return $this;
     }
 
     /**
-     * Gets sandbox
+     * Gets display_name
      *
-     * @return \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox|null
+     * @return string|null
      */
-    public function getSandbox()
+    public function getDisplayName()
     {
-        return $this->container['sandbox'];
+        return $this->container['display_name'];
     }
 
     /**
-     * Sets sandbox
+     * Sets display_name
      *
-     * @param \Zernio\Model\GetWhatsAppPhoneNumbers200ResponseSandbox|null $sandbox sandbox
+     * @param string|null $display_name display_name
      *
      * @return self
      */
-    public function setSandbox($sandbox)
+    public function setDisplayName($display_name)
     {
-        if (is_null($sandbox)) {
-            throw new \InvalidArgumentException('non-nullable sandbox cannot be null');
+        if (is_null($display_name)) {
+            throw new \InvalidArgumentException('non-nullable display_name cannot be null');
         }
-        $this->container['sandbox'] = $sandbox;
+        $this->container['display_name'] = $display_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets profile_id
+     *
+     * @return string|null
+     */
+    public function getProfileId()
+    {
+        return $this->container['profile_id'];
+    }
+
+    /**
+     * Sets profile_id
+     *
+     * @param string|null $profile_id profile_id
+     *
+     * @return self
+     */
+    public function setProfileId($profile_id)
+    {
+        if (is_null($profile_id)) {
+            throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
+        }
+        $this->container['profile_id'] = $profile_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets connected_at
+     *
+     * @return \DateTime|null
+     */
+    public function getConnectedAt()
+    {
+        return $this->container['connected_at'];
+    }
+
+    /**
+     * Sets connected_at
+     *
+     * @param \DateTime|null $connected_at connected_at
+     *
+     * @return self
+     */
+    public function setConnectedAt($connected_at)
+    {
+        if (is_null($connected_at)) {
+            throw new \InvalidArgumentException('non-nullable connected_at cannot be null');
+        }
+        $this->container['connected_at'] = $connected_at;
 
         return $this;
     }

@@ -965,6 +965,7 @@ Class | Method | HTTP request | Description
 - [GetWhatsAppPhoneNumber200Response](docs/Model/GetWhatsAppPhoneNumber200Response.md)
 - [GetWhatsAppPhoneNumber200ResponsePhoneNumber](docs/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.md)
 - [GetWhatsAppPhoneNumbers200Response](docs/Model/GetWhatsAppPhoneNumbers200Response.md)
+- [GetWhatsAppPhoneNumbers200ResponseConnectedInner](docs/Model/GetWhatsAppPhoneNumbers200ResponseConnectedInner.md)
 - [GetWhatsAppPhoneNumbers200ResponseNumbersInner](docs/Model/GetWhatsAppPhoneNumbers200ResponseNumbersInner.md)
 - [GetWhatsAppPhoneNumbers200ResponseSandbox](docs/Model/GetWhatsAppPhoneNumbers200ResponseSandbox.md)
 - [GetWhatsAppPhoneNumbers200ResponseSandboxTemplate](docs/Model/GetWhatsAppPhoneNumbers200ResponseSandboxTemplate.md)

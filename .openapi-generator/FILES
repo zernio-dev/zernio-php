@@ -578,6 +578,7 @@ docs/Model/GetWhatsAppNumberRemediation200Response.md
 docs/Model/GetWhatsAppPhoneNumber200Response.md
 docs/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.md
 docs/Model/GetWhatsAppPhoneNumbers200Response.md
+docs/Model/GetWhatsAppPhoneNumbers200ResponseConnectedInner.md
 docs/Model/GetWhatsAppPhoneNumbers200ResponseNumbersInner.md
 docs/Model/GetWhatsAppPhoneNumbers200ResponseSandbox.md
 docs/Model/GetWhatsAppPhoneNumbers200ResponseSandboxTemplate.md
@@ -1801,6 +1802,7 @@ lib/Model/GetWhatsAppNumberRemediation200Response.php
 lib/Model/GetWhatsAppPhoneNumber200Response.php
 lib/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.php
 lib/Model/GetWhatsAppPhoneNumbers200Response.php
+lib/Model/GetWhatsAppPhoneNumbers200ResponseConnectedInner.php
 lib/Model/GetWhatsAppPhoneNumbers200ResponseNumbersInner.php
 lib/Model/GetWhatsAppPhoneNumbers200ResponseSandbox.php
 lib/Model/GetWhatsAppPhoneNumbers200ResponseSandboxTemplate.php
@@ -2447,3 +2449,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetWhatsAppPhoneNumbers200ResponseConnectedInnerTest.php
