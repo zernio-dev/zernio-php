@@ -414,6 +414,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     public const GOAL_LEAD_CONVERSION = 'lead_conversion';
     public const GOAL_CONVERSIONS = 'conversions';
     public const GOAL_APP_PROMOTION = 'app_promotion';
+    public const GOAL_CATALOG_SALES = 'catalog_sales';
 
     /**
      * Gets allowable values of the enum
@@ -462,6 +463,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
             self::GOAL_LEAD_CONVERSION,
             self::GOAL_CONVERSIONS,
             self::GOAL_APP_PROMOTION,
+            self::GOAL_CATALOG_SALES,
         ];
     }
 
@@ -748,7 +750,7 @@ class Ad implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets goal
      *
-     * @param string|null $goal Available goals vary by platform. Meta (Facebook/Instagram) supports all 8 (incl. `lead_conversion` = website pixel lead optimization). TikTok supports the 7 non-`lead_conversion` goals. LinkedIn supports all except app_promotion / lead_conversion. Twitter/X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views.
+     * @param string|null $goal Available goals vary by platform. Meta (Facebook/Instagram) supports all 9 (incl. `lead_conversion` = website pixel lead optimization and `catalog_sales` = Advantage+ catalog ads). TikTok supports the 7 non-`lead_conversion` goals. LinkedIn supports all except app_promotion / lead_conversion. Twitter/X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views.
      *
      * @return self
      */

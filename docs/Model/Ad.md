@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **platform** | **string** |  | [optional]
 **status** | [**\Zernio\Model\AdStatus**](AdStatus.md) |  | [optional]
 **ad_type** | **string** |  | [optional]
-**goal** | **string** | Available goals vary by platform. Meta (Facebook/Instagram) supports all 8 (incl. &#x60;lead_conversion&#x60; &#x3D; website pixel lead optimization). TikTok supports the 7 non-&#x60;lead_conversion&#x60; goals. LinkedIn supports all except app_promotion / lead_conversion. Twitter/X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views. | [optional]
+**goal** | **string** | Available goals vary by platform. Meta (Facebook/Instagram) supports all 9 (incl. &#x60;lead_conversion&#x60; &#x3D; website pixel lead optimization and &#x60;catalog_sales&#x60; &#x3D; Advantage+ catalog ads). TikTok supports the 7 non-&#x60;lead_conversion&#x60; goals. LinkedIn supports all except app_promotion / lead_conversion. Twitter/X supports engagement, traffic, awareness, video_views, app_promotion. Pinterest and Google Ads support only engagement, traffic, awareness, video_views. | [optional]
 **is_external** | **bool** | True for ads synced from platform ad managers | [optional]
 **budget** | [**\Zernio\Model\AdBudget**](AdBudget.md) |  | [optional]
 **metrics** | [**\Zernio\Model\AdMetrics**](AdMetrics.md) |  | [optional]

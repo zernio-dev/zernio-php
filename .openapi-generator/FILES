@@ -651,6 +651,10 @@ docs/Model/ListAdAccounts200ResponseAccountsInner.md
 docs/Model/ListAdAudiences200Response.md
 docs/Model/ListAdAudiences200ResponseAudiencesInner.md
 docs/Model/ListAdCampaigns200Response.md
+docs/Model/ListAdCatalogProductSets200Response.md
+docs/Model/ListAdCatalogProductSets200ResponseProductSetsInner.md
+docs/Model/ListAdCatalogs200Response.md
+docs/Model/ListAdCatalogs200ResponseCatalogsInner.md
 docs/Model/ListAds200Response.md
 docs/Model/ListAdsBusinessCenters200Response.md
 docs/Model/ListApiKeys200Response.md
@@ -1875,6 +1879,10 @@ lib/Model/ListAdAccounts200ResponseAccountsInner.php
 lib/Model/ListAdAudiences200Response.php
 lib/Model/ListAdAudiences200ResponseAudiencesInner.php
 lib/Model/ListAdCampaigns200Response.php
+lib/Model/ListAdCatalogProductSets200Response.php
+lib/Model/ListAdCatalogProductSets200ResponseProductSetsInner.php
+lib/Model/ListAdCatalogs200Response.php
+lib/Model/ListAdCatalogs200ResponseCatalogsInner.php
 lib/Model/ListAds200Response.php
 lib/Model/ListAdsBusinessCenters200Response.php
 lib/Model/ListApiKeys200Response.php
@@ -2449,4 +2457,7 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetWhatsAppPhoneNumbers200ResponseConnectedInnerTest.php
+test/Model/ListAdCatalogProductSets200ResponseProductSetsInnerTest.php
+test/Model/ListAdCatalogProductSets200ResponseTest.php
+test/Model/ListAdCatalogs200ResponseCatalogsInnerTest.php
+test/Model/ListAdCatalogs200ResponseTest.php

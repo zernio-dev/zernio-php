@@ -118,6 +118,8 @@ Class | Method | HTTP request | Description
 *AdsApi* | [**getConversionsQuality**](docs/Api/AdsApi.md#getconversionsquality) | **GET** /v1/ads/conversions/quality | Read Event Match Quality + coverage for a Meta pixel
 *AdsApi* | [**getLeadForm**](docs/Api/AdsApi.md#getleadform) | **GET** /v1/ads/lead-forms/{formId} | Get a single Lead Gen form
 *AdsApi* | [**listAdAccounts**](docs/Api/AdsApi.md#listadaccounts) | **GET** /v1/ads/accounts | List ad accounts
+*AdsApi* | [**listAdCatalogProductSets**](docs/Api/AdsApi.md#listadcatalogproductsets) | **GET** /v1/ads/catalogs/{catalogId}/product-sets | List a catalog&#39;s product sets
+*AdsApi* | [**listAdCatalogs**](docs/Api/AdsApi.md#listadcatalogs) | **GET** /v1/ads/catalogs | List Meta product catalogs
 *AdsApi* | [**listAds**](docs/Api/AdsApi.md#listads) | **GET** /v1/ads | List ads
 *AdsApi* | [**listAdsBusinessCenters**](docs/Api/AdsApi.md#listadsbusinesscenters) | **GET** /v1/ads/business-centers | List TikTok Business Centers
 *AdsApi* | [**listConversionAssociations**](docs/Api/AdsApi.md#listconversionassociations) | **GET** /v1/accounts/{accountId}/conversion-destinations/{destinationId}/associations | List campaigns associated with a conversion destination
@@ -1038,6 +1040,10 @@ Class | Method | HTTP request | Description
 - [ListAdAudiences200Response](docs/Model/ListAdAudiences200Response.md)
 - [ListAdAudiences200ResponseAudiencesInner](docs/Model/ListAdAudiences200ResponseAudiencesInner.md)
 - [ListAdCampaigns200Response](docs/Model/ListAdCampaigns200Response.md)
+- [ListAdCatalogProductSets200Response](docs/Model/ListAdCatalogProductSets200Response.md)
+- [ListAdCatalogProductSets200ResponseProductSetsInner](docs/Model/ListAdCatalogProductSets200ResponseProductSetsInner.md)
+- [ListAdCatalogs200Response](docs/Model/ListAdCatalogs200Response.md)
+- [ListAdCatalogs200ResponseCatalogsInner](docs/Model/ListAdCatalogs200ResponseCatalogsInner.md)
 - [ListAds200Response](docs/Model/ListAds200Response.md)
 - [ListAdsBusinessCenters200Response](docs/Model/ListAdsBusinessCenters200Response.md)
 - [ListApiKeys200Response](docs/Model/ListApiKeys200Response.md)
