@@ -61,7 +61,7 @@ class GetMediaPresignedUrl200Response implements ModelInterface, ArrayAccess, \J
         'upload_url' => 'string',
         'public_url' => 'string',
         'key' => 'string',
-        'type' => 'string'
+        'expires_in' => 'int'
     ];
 
     /**
@@ -75,7 +75,7 @@ class GetMediaPresignedUrl200Response implements ModelInterface, ArrayAccess, \J
         'upload_url' => 'uri',
         'public_url' => 'uri',
         'key' => null,
-        'type' => null
+        'expires_in' => null
     ];
 
     /**
@@ -87,7 +87,7 @@ class GetMediaPresignedUrl200Response implements ModelInterface, ArrayAccess, \J
         'upload_url' => false,
         'public_url' => false,
         'key' => false,
-        'type' => false
+        'expires_in' => false
     ];
 
     /**
@@ -179,7 +179,7 @@ class GetMediaPresignedUrl200Response implements ModelInterface, ArrayAccess, \J
         'upload_url' => 'uploadUrl',
         'public_url' => 'publicUrl',
         'key' => 'key',
-        'type' => 'type'
+        'expires_in' => 'expiresIn'
     ];
 
     /**
@@ -191,7 +191,7 @@ class GetMediaPresignedUrl200Response implements ModelInterface, ArrayAccess, \J
         'upload_url' => 'setUploadUrl',
         'public_url' => 'setPublicUrl',
         'key' => 'setKey',
-        'type' => 'setType'
+        'expires_in' => 'setExpiresIn'
     ];
 
     /**
@@ -203,7 +203,7 @@ class GetMediaPresignedUrl200Response implements ModelInterface, ArrayAccess, \J
         'upload_url' => 'getUploadUrl',
         'public_url' => 'getPublicUrl',
         'key' => 'getKey',
-        'type' => 'getType'
+        'expires_in' => 'getExpiresIn'
     ];
 
     /**
@@ -247,23 +247,6 @@ class GetMediaPresignedUrl200Response implements ModelInterface, ArrayAccess, \J
         return self::$openAPIModelName;
     }
 
-    public const TYPE_IMAGE = 'image';
-    public const TYPE_VIDEO = 'video';
-    public const TYPE_DOCUMENT = 'document';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_IMAGE,
-            self::TYPE_VIDEO,
-            self::TYPE_DOCUMENT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -283,7 +266,7 @@ class GetMediaPresignedUrl200Response implements ModelInterface, ArrayAccess, \J
         $this->setIfExists('upload_url', $data ?? [], null);
         $this->setIfExists('public_url', $data ?? [], null);
         $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('expires_in', $data ?? [], null);
     }
 
     /**
@@ -312,15 +295,6 @@ class GetMediaPresignedUrl200Response implements ModelInterface, ArrayAccess, \J
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'type', must be one of '%s'",
-                $this->container['type'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -419,38 +393,28 @@ class GetMediaPresignedUrl200Response implements ModelInterface, ArrayAccess, \J
     }
 
     /**
-     * Gets type
+     * Gets expires_in
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getType()
+    public function getExpiresIn()
     {
-        return $this->container['type'];
+        return $this->container['expires_in'];
     }
 
     /**
-     * Sets type
+     * Sets expires_in
      *
-     * @param string|null $type Detected file type based on content type
+     * @param int|null $expires_in Seconds until the presigned uploadUrl expires (always 3600)
      *
      * @return self
      */
-    public function setType($type)
+    public function setExpiresIn($expires_in)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($expires_in)) {
+            throw new \InvalidArgumentException('non-nullable expires_in cannot be null');
         }
-        $allowedValues = $this->getTypeAllowableValues();
-        if (!in_array($type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'type', must be one of '%s'",
-                    $type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['type'] = $type;
+        $this->container['expires_in'] = $expires_in;
 
         return $this;
     }
