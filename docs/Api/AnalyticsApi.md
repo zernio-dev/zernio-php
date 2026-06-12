@@ -27,6 +27,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**getYouTubeChannelInsights()**](AnalyticsApi.md#getYouTubeChannelInsights) | **GET** /v1/analytics/youtube/channel-insights | Get YouTube channel-level insights |
 | [**getYouTubeDailyViews()**](AnalyticsApi.md#getYouTubeDailyViews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views |
 | [**getYouTubeDemographics()**](AnalyticsApi.md#getYouTubeDemographics) | **GET** /v1/analytics/youtube/demographics | Get YouTube demographics |
+| [**getYouTubeVideoRetention()**](AnalyticsApi.md#getYouTubeVideoRetention) | **GET** /v1/analytics/youtube/video-retention | Get YouTube video retention curve |
 
 
 ## `getAnalytics()`
@@ -1431,6 +1432,72 @@ try {
 ### Return type
 
 [**\Zernio\Model\YouTubeDemographicsResponse**](../Model/YouTubeDemographicsResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getYouTubeVideoRetention()`
+
+```php
+getYouTubeVideoRetention($video_id, $account_id, $start_date, $end_date): \Zernio\Model\YouTubeVideoRetentionResponse
+```
+
+Get YouTube video retention curve
+
+Returns the audience retention curve for a single YouTube video, plus the video's duration for rendering the curve on a time axis. The curve has up to 100 points (elapsedVideoTimeRatio 0.01-1.0) aggregated over the whole date range; YouTube does not support per-day retention breakdowns.  audienceWatchRatio is the absolute share of viewers watching at that point in the video and can exceed 1 (rewinds and looping, common on Shorts). relativeRetentionPerformance compares against videos of similar length (0 = worst, 0.5 = median, 1 = best). YouTube returns an empty curve for videos with very few views or before analytics processing completes (2-3 day delay).  Requires yt-analytics.readonly scope (re-authorization may be needed).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\AnalyticsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$video_id = 'video_id_example'; // string | The YouTube video ID (e.g., \"dQw4w9WgXcQ\")
+$account_id = 'account_id_example'; // string | The Zernio account ID for the YouTube account
+$start_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Start date (YYYY-MM-DD). Defaults to the video's publish date (lifetime curve).
+$end_date = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency).
+
+try {
+    $result = $apiInstance->getYouTubeVideoRetention($video_id, $account_id, $start_date, $end_date);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AnalyticsApi->getYouTubeVideoRetention: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **video_id** | **string**| The YouTube video ID (e.g., \&quot;dQw4w9WgXcQ\&quot;) | |
+| **account_id** | **string**| The Zernio account ID for the YouTube account | |
+| **start_date** | **\DateTime**| Start date (YYYY-MM-DD). Defaults to the video&#39;s publish date (lifetime curve). | [optional] |
+| **end_date** | **\DateTime**| End date (YYYY-MM-DD). Defaults to 3 days ago (YouTube data latency). | [optional] |
+
+### Return type
+
+[**\Zernio\Model\YouTubeVideoRetentionResponse**](../Model/YouTubeVideoRetentionResponse.md)
 
 ### Authorization
 

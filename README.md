@@ -157,6 +157,7 @@ Class | Method | HTTP request | Description
 *AnalyticsApi* | [**getYouTubeChannelInsights**](docs/Api/AnalyticsApi.md#getyoutubechannelinsights) | **GET** /v1/analytics/youtube/channel-insights | Get YouTube channel-level insights
 *AnalyticsApi* | [**getYouTubeDailyViews**](docs/Api/AnalyticsApi.md#getyoutubedailyviews) | **GET** /v1/analytics/youtube/daily-views | Get YouTube daily views
 *AnalyticsApi* | [**getYouTubeDemographics**](docs/Api/AnalyticsApi.md#getyoutubedemographics) | **GET** /v1/analytics/youtube/demographics | Get YouTube demographics
+*AnalyticsApi* | [**getYouTubeVideoRetention**](docs/Api/AnalyticsApi.md#getyoutubevideoretention) | **GET** /v1/analytics/youtube/video-retention | Get YouTube video retention curve
 *BroadcastsApi* | [**addBroadcastRecipients**](docs/Api/BroadcastsApi.md#addbroadcastrecipients) | **POST** /v1/broadcasts/{broadcastId}/recipients | Add recipients to a broadcast
 *BroadcastsApi* | [**cancelBroadcast**](docs/Api/BroadcastsApi.md#cancelbroadcast) | **POST** /v1/broadcasts/{broadcastId}/cancel | Cancel broadcast
 *BroadcastsApi* | [**createBroadcast**](docs/Api/BroadcastsApi.md#createbroadcast) | **POST** /v1/broadcasts | Create broadcast draft
@@ -995,6 +996,7 @@ Class | Method | HTTP request | Description
 - [GetYouTubeDailyViews500Response](docs/Model/GetYouTubeDailyViews500Response.md)
 - [GetYouTubeDemographics412Response](docs/Model/GetYouTubeDemographics412Response.md)
 - [GetYouTubeDemographics412ResponseScopeStatus](docs/Model/GetYouTubeDemographics412ResponseScopeStatus.md)
+- [GetYouTubeVideoRetention404Response](docs/Model/GetYouTubeVideoRetention404Response.md)
 - [GetYoutubePlaylists200Response](docs/Model/GetYoutubePlaylists200Response.md)
 - [GetYoutubePlaylists200ResponsePlaylistsInner](docs/Model/GetYoutubePlaylists200ResponsePlaylistsInner.md)
 - [GoogleBusinessPlatformData](docs/Model/GoogleBusinessPlatformData.md)
@@ -1629,6 +1631,8 @@ Class | Method | HTTP request | Description
 - [YouTubePlatformData](docs/Model/YouTubePlatformData.md)
 - [YouTubeScopeMissingResponse](docs/Model/YouTubeScopeMissingResponse.md)
 - [YouTubeScopeMissingResponseScopeStatus](docs/Model/YouTubeScopeMissingResponseScopeStatus.md)
+- [YouTubeVideoRetentionResponse](docs/Model/YouTubeVideoRetentionResponse.md)
+- [YouTubeVideoRetentionResponseRetentionCurveInner](docs/Model/YouTubeVideoRetentionResponseRetentionCurveInner.md)
 
 ## Authorization
 

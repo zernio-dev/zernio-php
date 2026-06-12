@@ -602,6 +602,7 @@ docs/Model/GetYouTubeDailyViews403Response.md
 docs/Model/GetYouTubeDailyViews500Response.md
 docs/Model/GetYouTubeDemographics412Response.md
 docs/Model/GetYouTubeDemographics412ResponseScopeStatus.md
+docs/Model/GetYouTubeVideoRetention404Response.md
 docs/Model/GetYoutubePlaylists200Response.md
 docs/Model/GetYoutubePlaylists200ResponsePlaylistsInner.md
 docs/Model/GoogleBusinessPlatformData.md
@@ -1236,6 +1237,8 @@ docs/Model/YouTubeDemographicsResponseDemographicsValueInner.md
 docs/Model/YouTubePlatformData.md
 docs/Model/YouTubeScopeMissingResponse.md
 docs/Model/YouTubeScopeMissingResponseScopeStatus.md
+docs/Model/YouTubeVideoRetentionResponse.md
+docs/Model/YouTubeVideoRetentionResponseRetentionCurveInner.md
 git_push.sh
 lib/Api/APIKeysApi.php
 lib/Api/AccountGroupsApi.php
@@ -1840,6 +1843,7 @@ lib/Model/GetYouTubeDailyViews403Response.php
 lib/Model/GetYouTubeDailyViews500Response.php
 lib/Model/GetYouTubeDemographics412Response.php
 lib/Model/GetYouTubeDemographics412ResponseScopeStatus.php
+lib/Model/GetYouTubeVideoRetention404Response.php
 lib/Model/GetYoutubePlaylists200Response.php
 lib/Model/GetYoutubePlaylists200ResponsePlaylistsInner.php
 lib/Model/GoogleBusinessPlatformData.php
@@ -2475,5 +2479,10 @@ lib/Model/YouTubeDemographicsResponseDemographicsValueInner.php
 lib/Model/YouTubePlatformData.php
 lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
+lib/Model/YouTubeVideoRetentionResponse.php
+lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetYouTubeVideoRetention404ResponseTest.php
+test/Model/YouTubeVideoRetentionResponseRetentionCurveInnerTest.php
+test/Model/YouTubeVideoRetentionResponseTest.php

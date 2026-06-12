@@ -1,6 +1,6 @@
 <?php
 /**
- * YouTubeDailyViewsResponse
+ * YouTubeVideoRetentionResponse
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * YouTubeDailyViewsResponse Class Doc Comment
+ * YouTubeVideoRetentionResponse Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class YouTubeVideoRetentionResponse implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'YouTubeDailyViewsResponse';
+    protected static $openAPIModelName = 'YouTubeVideoRetentionResponse';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,14 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPITypes = [
         'success' => 'bool',
+        'account_id' => 'string',
         'video_id' => 'string',
+        'title' => 'string',
+        'published_at' => '\DateTime',
         'duration_seconds' => 'int',
         'date_range' => '\Zernio\Model\YouTubeDailyViewsResponseDateRange',
-        'total_views' => 'int',
-        'daily_views' => '\Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]',
-        'last_synced_at' => '\DateTime',
+        'retention_curve' => '\Zernio\Model\YouTubeVideoRetentionResponseRetentionCurveInner[]',
+        'note' => 'string',
         'scope_status' => '\Zernio\Model\YouTubeDailyViewsResponseScopeStatus'
     ];
 
@@ -77,12 +79,14 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static $openAPIFormats = [
         'success' => null,
+        'account_id' => null,
         'video_id' => null,
+        'title' => null,
+        'published_at' => 'date-time',
         'duration_seconds' => null,
         'date_range' => null,
-        'total_views' => null,
-        'daily_views' => null,
-        'last_synced_at' => 'date-time',
+        'retention_curve' => null,
+        'note' => null,
         'scope_status' => null
     ];
 
@@ -93,12 +97,14 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
       */
     protected static array $openAPINullables = [
         'success' => false,
+        'account_id' => false,
         'video_id' => false,
+        'title' => false,
+        'published_at' => false,
         'duration_seconds' => false,
         'date_range' => false,
-        'total_views' => false,
-        'daily_views' => false,
-        'last_synced_at' => false,
+        'retention_curve' => false,
+        'note' => false,
         'scope_status' => false
     ];
 
@@ -189,12 +195,14 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $attributeMap = [
         'success' => 'success',
+        'account_id' => 'accountId',
         'video_id' => 'videoId',
+        'title' => 'title',
+        'published_at' => 'publishedAt',
         'duration_seconds' => 'durationSeconds',
         'date_range' => 'dateRange',
-        'total_views' => 'totalViews',
-        'daily_views' => 'dailyViews',
-        'last_synced_at' => 'lastSyncedAt',
+        'retention_curve' => 'retentionCurve',
+        'note' => 'note',
         'scope_status' => 'scopeStatus'
     ];
 
@@ -205,12 +213,14 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $setters = [
         'success' => 'setSuccess',
+        'account_id' => 'setAccountId',
         'video_id' => 'setVideoId',
+        'title' => 'setTitle',
+        'published_at' => 'setPublishedAt',
         'duration_seconds' => 'setDurationSeconds',
         'date_range' => 'setDateRange',
-        'total_views' => 'setTotalViews',
-        'daily_views' => 'setDailyViews',
-        'last_synced_at' => 'setLastSyncedAt',
+        'retention_curve' => 'setRetentionCurve',
+        'note' => 'setNote',
         'scope_status' => 'setScopeStatus'
     ];
 
@@ -221,12 +231,14 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     protected static $getters = [
         'success' => 'getSuccess',
+        'account_id' => 'getAccountId',
         'video_id' => 'getVideoId',
+        'title' => 'getTitle',
+        'published_at' => 'getPublishedAt',
         'duration_seconds' => 'getDurationSeconds',
         'date_range' => 'getDateRange',
-        'total_views' => 'getTotalViews',
-        'daily_views' => 'getDailyViews',
-        'last_synced_at' => 'getLastSyncedAt',
+        'retention_curve' => 'getRetentionCurve',
+        'note' => 'getNote',
         'scope_status' => 'getScopeStatus'
     ];
 
@@ -288,12 +300,14 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     public function __construct(?array $data = null)
     {
         $this->setIfExists('success', $data ?? [], null);
+        $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('video_id', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('published_at', $data ?? [], null);
         $this->setIfExists('duration_seconds', $data ?? [], null);
         $this->setIfExists('date_range', $data ?? [], null);
-        $this->setIfExists('total_views', $data ?? [], null);
-        $this->setIfExists('daily_views', $data ?? [], null);
-        $this->setIfExists('last_synced_at', $data ?? [], null);
+        $this->setIfExists('retention_curve', $data ?? [], null);
+        $this->setIfExists('note', $data ?? [], null);
         $this->setIfExists('scope_status', $data ?? [], null);
     }
 
@@ -367,6 +381,33 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
+     * Gets account_id
+     *
+     * @return string|null
+     */
+    public function getAccountId()
+    {
+        return $this->container['account_id'];
+    }
+
+    /**
+     * Sets account_id
+     *
+     * @param string|null $account_id The Zernio account ID for the YouTube account
+     *
+     * @return self
+     */
+    public function setAccountId($account_id)
+    {
+        if (is_null($account_id)) {
+            throw new \InvalidArgumentException('non-nullable account_id cannot be null');
+        }
+        $this->container['account_id'] = $account_id;
+
+        return $this;
+    }
+
+    /**
      * Gets video_id
      *
      * @return string|null
@@ -389,6 +430,60 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable video_id cannot be null');
         }
         $this->container['video_id'] = $video_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title Video title
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets published_at
+     *
+     * @return \DateTime|null
+     */
+    public function getPublishedAt()
+    {
+        return $this->container['published_at'];
+    }
+
+    /**
+     * Sets published_at
+     *
+     * @param \DateTime|null $published_at When the video was published on YouTube
+     *
+     * @return self
+     */
+    public function setPublishedAt($published_at)
+    {
+        if (is_null($published_at)) {
+            throw new \InvalidArgumentException('non-nullable published_at cannot be null');
+        }
+        $this->container['published_at'] = $published_at;
 
         return $this;
     }
@@ -448,82 +543,55 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
     }
 
     /**
-     * Gets total_views
+     * Gets retention_curve
      *
-     * @return int|null
+     * @return \Zernio\Model\YouTubeVideoRetentionResponseRetentionCurveInner[]|null
      */
-    public function getTotalViews()
+    public function getRetentionCurve()
     {
-        return $this->container['total_views'];
+        return $this->container['retention_curve'];
     }
 
     /**
-     * Sets total_views
+     * Sets retention_curve
      *
-     * @param int|null $total_views Sum of views across all days in the range
+     * @param \Zernio\Model\YouTubeVideoRetentionResponseRetentionCurveInner[]|null $retention_curve Up to 100 points covering the video timeline, aggregated over the date range. Empty for videos with very few views.
      *
      * @return self
      */
-    public function setTotalViews($total_views)
+    public function setRetentionCurve($retention_curve)
     {
-        if (is_null($total_views)) {
-            throw new \InvalidArgumentException('non-nullable total_views cannot be null');
+        if (is_null($retention_curve)) {
+            throw new \InvalidArgumentException('non-nullable retention_curve cannot be null');
         }
-        $this->container['total_views'] = $total_views;
+        $this->container['retention_curve'] = $retention_curve;
 
         return $this;
     }
 
     /**
-     * Gets daily_views
+     * Gets note
      *
-     * @return \Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]|null
+     * @return string|null
      */
-    public function getDailyViews()
+    public function getNote()
     {
-        return $this->container['daily_views'];
+        return $this->container['note'];
     }
 
     /**
-     * Sets daily_views
+     * Sets note
      *
-     * @param \Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]|null $daily_views daily_views
+     * @param string|null $note Present only when the curve is empty, explaining why
      *
      * @return self
      */
-    public function setDailyViews($daily_views)
+    public function setNote($note)
     {
-        if (is_null($daily_views)) {
-            throw new \InvalidArgumentException('non-nullable daily_views cannot be null');
+        if (is_null($note)) {
+            throw new \InvalidArgumentException('non-nullable note cannot be null');
         }
-        $this->container['daily_views'] = $daily_views;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_synced_at
-     *
-     * @return \DateTime|null
-     */
-    public function getLastSyncedAt()
-    {
-        return $this->container['last_synced_at'];
-    }
-
-    /**
-     * Sets last_synced_at
-     *
-     * @param \DateTime|null $last_synced_at When the data was last synced from YouTube
-     *
-     * @return self
-     */
-    public function setLastSyncedAt($last_synced_at)
-    {
-        if (is_null($last_synced_at)) {
-            throw new \InvalidArgumentException('non-nullable last_synced_at cannot be null');
-        }
-        $this->container['last_synced_at'] = $last_synced_at;
+        $this->container['note'] = $note;
 
         return $this;
     }

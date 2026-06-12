@@ -1,6 +1,6 @@
 <?php
 /**
- * YouTubeDailyViewsResponse
+ * YouTubeVideoRetentionResponseRetentionCurveInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * YouTubeDailyViewsResponse Class Doc Comment
+ * YouTubeVideoRetentionResponseRetentionCurveInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class YouTubeVideoRetentionResponseRetentionCurveInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'YouTubeDailyViewsResponse';
+    protected static $openAPIModelName = 'YouTubeVideoRetentionResponse_retentionCurve_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,12 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool',
-        'video_id' => 'string',
-        'duration_seconds' => 'int',
-        'date_range' => '\Zernio\Model\YouTubeDailyViewsResponseDateRange',
-        'total_views' => 'int',
-        'daily_views' => '\Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]',
-        'last_synced_at' => '\DateTime',
-        'scope_status' => '\Zernio\Model\YouTubeDailyViewsResponseScopeStatus'
+        'elapsed_video_time_ratio' => 'float',
+        'audience_watch_ratio' => 'float',
+        'relative_retention_performance' => 'float',
+        'started_watching' => 'int',
+        'stopped_watching' => 'int',
+        'total_segment_impressions' => 'int'
     ];
 
     /**
@@ -76,14 +74,12 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'success' => null,
-        'video_id' => null,
-        'duration_seconds' => null,
-        'date_range' => null,
-        'total_views' => null,
-        'daily_views' => null,
-        'last_synced_at' => 'date-time',
-        'scope_status' => null
+        'elapsed_video_time_ratio' => null,
+        'audience_watch_ratio' => null,
+        'relative_retention_performance' => null,
+        'started_watching' => null,
+        'stopped_watching' => null,
+        'total_segment_impressions' => null
     ];
 
     /**
@@ -92,14 +88,12 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'success' => false,
-        'video_id' => false,
-        'duration_seconds' => false,
-        'date_range' => false,
-        'total_views' => false,
-        'daily_views' => false,
-        'last_synced_at' => false,
-        'scope_status' => false
+        'elapsed_video_time_ratio' => false,
+        'audience_watch_ratio' => false,
+        'relative_retention_performance' => false,
+        'started_watching' => false,
+        'stopped_watching' => false,
+        'total_segment_impressions' => false
     ];
 
     /**
@@ -188,14 +182,12 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-        'video_id' => 'videoId',
-        'duration_seconds' => 'durationSeconds',
-        'date_range' => 'dateRange',
-        'total_views' => 'totalViews',
-        'daily_views' => 'dailyViews',
-        'last_synced_at' => 'lastSyncedAt',
-        'scope_status' => 'scopeStatus'
+        'elapsed_video_time_ratio' => 'elapsedVideoTimeRatio',
+        'audience_watch_ratio' => 'audienceWatchRatio',
+        'relative_retention_performance' => 'relativeRetentionPerformance',
+        'started_watching' => 'startedWatching',
+        'stopped_watching' => 'stoppedWatching',
+        'total_segment_impressions' => 'totalSegmentImpressions'
     ];
 
     /**
@@ -204,14 +196,12 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-        'video_id' => 'setVideoId',
-        'duration_seconds' => 'setDurationSeconds',
-        'date_range' => 'setDateRange',
-        'total_views' => 'setTotalViews',
-        'daily_views' => 'setDailyViews',
-        'last_synced_at' => 'setLastSyncedAt',
-        'scope_status' => 'setScopeStatus'
+        'elapsed_video_time_ratio' => 'setElapsedVideoTimeRatio',
+        'audience_watch_ratio' => 'setAudienceWatchRatio',
+        'relative_retention_performance' => 'setRelativeRetentionPerformance',
+        'started_watching' => 'setStartedWatching',
+        'stopped_watching' => 'setStoppedWatching',
+        'total_segment_impressions' => 'setTotalSegmentImpressions'
     ];
 
     /**
@@ -220,14 +210,12 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-        'video_id' => 'getVideoId',
-        'duration_seconds' => 'getDurationSeconds',
-        'date_range' => 'getDateRange',
-        'total_views' => 'getTotalViews',
-        'daily_views' => 'getDailyViews',
-        'last_synced_at' => 'getLastSyncedAt',
-        'scope_status' => 'getScopeStatus'
+        'elapsed_video_time_ratio' => 'getElapsedVideoTimeRatio',
+        'audience_watch_ratio' => 'getAudienceWatchRatio',
+        'relative_retention_performance' => 'getRelativeRetentionPerformance',
+        'started_watching' => 'getStartedWatching',
+        'stopped_watching' => 'getStoppedWatching',
+        'total_segment_impressions' => 'getTotalSegmentImpressions'
     ];
 
     /**
@@ -287,14 +275,12 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('success', $data ?? [], null);
-        $this->setIfExists('video_id', $data ?? [], null);
-        $this->setIfExists('duration_seconds', $data ?? [], null);
-        $this->setIfExists('date_range', $data ?? [], null);
-        $this->setIfExists('total_views', $data ?? [], null);
-        $this->setIfExists('daily_views', $data ?? [], null);
-        $this->setIfExists('last_synced_at', $data ?? [], null);
-        $this->setIfExists('scope_status', $data ?? [], null);
+        $this->setIfExists('elapsed_video_time_ratio', $data ?? [], null);
+        $this->setIfExists('audience_watch_ratio', $data ?? [], null);
+        $this->setIfExists('relative_retention_performance', $data ?? [], null);
+        $this->setIfExists('started_watching', $data ?? [], null);
+        $this->setIfExists('stopped_watching', $data ?? [], null);
+        $this->setIfExists('total_segment_impressions', $data ?? [], null);
     }
 
     /**
@@ -340,217 +326,163 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets success
+     * Gets elapsed_video_time_ratio
      *
-     * @return bool|null
+     * @return float|null
      */
-    public function getSuccess()
+    public function getElapsedVideoTimeRatio()
     {
-        return $this->container['success'];
+        return $this->container['elapsed_video_time_ratio'];
     }
 
     /**
-     * Sets success
+     * Sets elapsed_video_time_ratio
      *
-     * @param bool|null $success success
+     * @param float|null $elapsed_video_time_ratio Position in the video as a ratio (0.01-1.0, exclusive end of each interval)
      *
      * @return self
      */
-    public function setSuccess($success)
+    public function setElapsedVideoTimeRatio($elapsed_video_time_ratio)
     {
-        if (is_null($success)) {
-            throw new \InvalidArgumentException('non-nullable success cannot be null');
+        if (is_null($elapsed_video_time_ratio)) {
+            throw new \InvalidArgumentException('non-nullable elapsed_video_time_ratio cannot be null');
         }
-        $this->container['success'] = $success;
+        $this->container['elapsed_video_time_ratio'] = $elapsed_video_time_ratio;
 
         return $this;
     }
 
     /**
-     * Gets video_id
+     * Gets audience_watch_ratio
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getVideoId()
+    public function getAudienceWatchRatio()
     {
-        return $this->container['video_id'];
+        return $this->container['audience_watch_ratio'];
     }
 
     /**
-     * Sets video_id
+     * Sets audience_watch_ratio
      *
-     * @param string|null $video_id The YouTube video ID
+     * @param float|null $audience_watch_ratio Absolute share of viewers watching at this point. Can exceed 1 (rewinds/looping, common on Shorts).
      *
      * @return self
      */
-    public function setVideoId($video_id)
+    public function setAudienceWatchRatio($audience_watch_ratio)
     {
-        if (is_null($video_id)) {
-            throw new \InvalidArgumentException('non-nullable video_id cannot be null');
+        if (is_null($audience_watch_ratio)) {
+            throw new \InvalidArgumentException('non-nullable audience_watch_ratio cannot be null');
         }
-        $this->container['video_id'] = $video_id;
+        $this->container['audience_watch_ratio'] = $audience_watch_ratio;
 
         return $this;
     }
 
     /**
-     * Gets duration_seconds
+     * Gets relative_retention_performance
+     *
+     * @return float|null
+     */
+    public function getRelativeRetentionPerformance()
+    {
+        return $this->container['relative_retention_performance'];
+    }
+
+    /**
+     * Sets relative_retention_performance
+     *
+     * @param float|null $relative_retention_performance Retention vs videos of similar length (0 = worst, 0.5 = median, 1 = best)
+     *
+     * @return self
+     */
+    public function setRelativeRetentionPerformance($relative_retention_performance)
+    {
+        if (is_null($relative_retention_performance)) {
+            throw new \InvalidArgumentException('non-nullable relative_retention_performance cannot be null');
+        }
+        $this->container['relative_retention_performance'] = $relative_retention_performance;
+
+        return $this;
+    }
+
+    /**
+     * Gets started_watching
      *
      * @return int|null
      */
-    public function getDurationSeconds()
+    public function getStartedWatching()
     {
-        return $this->container['duration_seconds'];
+        return $this->container['started_watching'];
     }
 
     /**
-     * Sets duration_seconds
+     * Sets started_watching
      *
-     * @param int|null $duration_seconds Video length in seconds (from YouTube contentDetails.duration)
+     * @param int|null $started_watching Viewers who started watching in this segment
      *
      * @return self
      */
-    public function setDurationSeconds($duration_seconds)
+    public function setStartedWatching($started_watching)
     {
-        if (is_null($duration_seconds)) {
-            throw new \InvalidArgumentException('non-nullable duration_seconds cannot be null');
+        if (is_null($started_watching)) {
+            throw new \InvalidArgumentException('non-nullable started_watching cannot be null');
         }
-        $this->container['duration_seconds'] = $duration_seconds;
+        $this->container['started_watching'] = $started_watching;
 
         return $this;
     }
 
     /**
-     * Gets date_range
-     *
-     * @return \Zernio\Model\YouTubeDailyViewsResponseDateRange|null
-     */
-    public function getDateRange()
-    {
-        return $this->container['date_range'];
-    }
-
-    /**
-     * Sets date_range
-     *
-     * @param \Zernio\Model\YouTubeDailyViewsResponseDateRange|null $date_range date_range
-     *
-     * @return self
-     */
-    public function setDateRange($date_range)
-    {
-        if (is_null($date_range)) {
-            throw new \InvalidArgumentException('non-nullable date_range cannot be null');
-        }
-        $this->container['date_range'] = $date_range;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_views
+     * Gets stopped_watching
      *
      * @return int|null
      */
-    public function getTotalViews()
+    public function getStoppedWatching()
     {
-        return $this->container['total_views'];
+        return $this->container['stopped_watching'];
     }
 
     /**
-     * Sets total_views
+     * Sets stopped_watching
      *
-     * @param int|null $total_views Sum of views across all days in the range
+     * @param int|null $stopped_watching Viewers who stopped watching in this segment
      *
      * @return self
      */
-    public function setTotalViews($total_views)
+    public function setStoppedWatching($stopped_watching)
     {
-        if (is_null($total_views)) {
-            throw new \InvalidArgumentException('non-nullable total_views cannot be null');
+        if (is_null($stopped_watching)) {
+            throw new \InvalidArgumentException('non-nullable stopped_watching cannot be null');
         }
-        $this->container['total_views'] = $total_views;
+        $this->container['stopped_watching'] = $stopped_watching;
 
         return $this;
     }
 
     /**
-     * Gets daily_views
+     * Gets total_segment_impressions
      *
-     * @return \Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]|null
+     * @return int|null
      */
-    public function getDailyViews()
+    public function getTotalSegmentImpressions()
     {
-        return $this->container['daily_views'];
+        return $this->container['total_segment_impressions'];
     }
 
     /**
-     * Sets daily_views
+     * Sets total_segment_impressions
      *
-     * @param \Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]|null $daily_views daily_views
+     * @param int|null $total_segment_impressions Total views of this segment, including rewatches
      *
      * @return self
      */
-    public function setDailyViews($daily_views)
+    public function setTotalSegmentImpressions($total_segment_impressions)
     {
-        if (is_null($daily_views)) {
-            throw new \InvalidArgumentException('non-nullable daily_views cannot be null');
+        if (is_null($total_segment_impressions)) {
+            throw new \InvalidArgumentException('non-nullable total_segment_impressions cannot be null');
         }
-        $this->container['daily_views'] = $daily_views;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_synced_at
-     *
-     * @return \DateTime|null
-     */
-    public function getLastSyncedAt()
-    {
-        return $this->container['last_synced_at'];
-    }
-
-    /**
-     * Sets last_synced_at
-     *
-     * @param \DateTime|null $last_synced_at When the data was last synced from YouTube
-     *
-     * @return self
-     */
-    public function setLastSyncedAt($last_synced_at)
-    {
-        if (is_null($last_synced_at)) {
-            throw new \InvalidArgumentException('non-nullable last_synced_at cannot be null');
-        }
-        $this->container['last_synced_at'] = $last_synced_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets scope_status
-     *
-     * @return \Zernio\Model\YouTubeDailyViewsResponseScopeStatus|null
-     */
-    public function getScopeStatus()
-    {
-        return $this->container['scope_status'];
-    }
-
-    /**
-     * Sets scope_status
-     *
-     * @param \Zernio\Model\YouTubeDailyViewsResponseScopeStatus|null $scope_status scope_status
-     *
-     * @return self
-     */
-    public function setScopeStatus($scope_status)
-    {
-        if (is_null($scope_status)) {
-            throw new \InvalidArgumentException('non-nullable scope_status cannot be null');
-        }
-        $this->container['scope_status'] = $scope_status;
+        $this->container['total_segment_impressions'] = $total_segment_impressions;
 
         return $this;
     }

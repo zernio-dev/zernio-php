@@ -62,6 +62,7 @@ class YouTubeDailyViewsResponseDailyViewsInner implements ModelInterface, ArrayA
         'views' => 'int',
         'estimated_minutes_watched' => 'float',
         'average_view_duration' => 'float',
+        'average_view_percentage' => 'float',
         'subscribers_gained' => 'int',
         'subscribers_lost' => 'int',
         'likes' => 'int',
@@ -81,6 +82,7 @@ class YouTubeDailyViewsResponseDailyViewsInner implements ModelInterface, ArrayA
         'views' => null,
         'estimated_minutes_watched' => null,
         'average_view_duration' => null,
+        'average_view_percentage' => null,
         'subscribers_gained' => null,
         'subscribers_lost' => null,
         'likes' => null,
@@ -98,6 +100,7 @@ class YouTubeDailyViewsResponseDailyViewsInner implements ModelInterface, ArrayA
         'views' => false,
         'estimated_minutes_watched' => false,
         'average_view_duration' => false,
+        'average_view_percentage' => false,
         'subscribers_gained' => false,
         'subscribers_lost' => false,
         'likes' => false,
@@ -195,6 +198,7 @@ class YouTubeDailyViewsResponseDailyViewsInner implements ModelInterface, ArrayA
         'views' => 'views',
         'estimated_minutes_watched' => 'estimatedMinutesWatched',
         'average_view_duration' => 'averageViewDuration',
+        'average_view_percentage' => 'averageViewPercentage',
         'subscribers_gained' => 'subscribersGained',
         'subscribers_lost' => 'subscribersLost',
         'likes' => 'likes',
@@ -212,6 +216,7 @@ class YouTubeDailyViewsResponseDailyViewsInner implements ModelInterface, ArrayA
         'views' => 'setViews',
         'estimated_minutes_watched' => 'setEstimatedMinutesWatched',
         'average_view_duration' => 'setAverageViewDuration',
+        'average_view_percentage' => 'setAverageViewPercentage',
         'subscribers_gained' => 'setSubscribersGained',
         'subscribers_lost' => 'setSubscribersLost',
         'likes' => 'setLikes',
@@ -229,6 +234,7 @@ class YouTubeDailyViewsResponseDailyViewsInner implements ModelInterface, ArrayA
         'views' => 'getViews',
         'estimated_minutes_watched' => 'getEstimatedMinutesWatched',
         'average_view_duration' => 'getAverageViewDuration',
+        'average_view_percentage' => 'getAverageViewPercentage',
         'subscribers_gained' => 'getSubscribersGained',
         'subscribers_lost' => 'getSubscribersLost',
         'likes' => 'getLikes',
@@ -297,6 +303,7 @@ class YouTubeDailyViewsResponseDailyViewsInner implements ModelInterface, ArrayA
         $this->setIfExists('views', $data ?? [], null);
         $this->setIfExists('estimated_minutes_watched', $data ?? [], null);
         $this->setIfExists('average_view_duration', $data ?? [], null);
+        $this->setIfExists('average_view_percentage', $data ?? [], null);
         $this->setIfExists('subscribers_gained', $data ?? [], null);
         $this->setIfExists('subscribers_lost', $data ?? [], null);
         $this->setIfExists('likes', $data ?? [], null);
@@ -450,6 +457,33 @@ class YouTubeDailyViewsResponseDailyViewsInner implements ModelInterface, ArrayA
             throw new \InvalidArgumentException('non-nullable average_view_duration cannot be null');
         }
         $this->container['average_view_duration'] = $average_view_duration;
+
+        return $this;
+    }
+
+    /**
+     * Gets average_view_percentage
+     *
+     * @return float|null
+     */
+    public function getAverageViewPercentage()
+    {
+        return $this->container['average_view_percentage'];
+    }
+
+    /**
+     * Sets average_view_percentage
+     *
+     * @param float|null $average_view_percentage Average percentage of the video watched per view. Can exceed 100 on Shorts (looping rewatches), so do not clamp it client-side.
+     *
+     * @return self
+     */
+    public function setAverageViewPercentage($average_view_percentage)
+    {
+        if (is_null($average_view_percentage)) {
+            throw new \InvalidArgumentException('non-nullable average_view_percentage cannot be null');
+        }
+        $this->container['average_view_percentage'] = $average_view_percentage;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * YouTubeDailyViewsResponse
+ * GetYouTubeVideoRetention404Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * YouTubeDailyViewsResponse Class Doc Comment
+ * GetYouTubeVideoRetention404Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetYouTubeVideoRetention404Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'YouTubeDailyViewsResponse';
+    protected static $openAPIModelName = 'getYouTubeVideoRetention_404_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,14 +58,10 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool',
-        'video_id' => 'string',
-        'duration_seconds' => 'int',
-        'date_range' => '\Zernio\Model\YouTubeDailyViewsResponseDateRange',
-        'total_views' => 'int',
-        'daily_views' => '\Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]',
-        'last_synced_at' => '\DateTime',
-        'scope_status' => '\Zernio\Model\YouTubeDailyViewsResponseScopeStatus'
+        'error' => 'string',
+        'type' => 'string',
+        'code' => 'string',
+        'param' => 'string'
     ];
 
     /**
@@ -76,14 +72,10 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'success' => null,
-        'video_id' => null,
-        'duration_seconds' => null,
-        'date_range' => null,
-        'total_views' => null,
-        'daily_views' => null,
-        'last_synced_at' => 'date-time',
-        'scope_status' => null
+        'error' => null,
+        'type' => null,
+        'code' => null,
+        'param' => null
     ];
 
     /**
@@ -92,14 +84,10 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'success' => false,
-        'video_id' => false,
-        'duration_seconds' => false,
-        'date_range' => false,
-        'total_views' => false,
-        'daily_views' => false,
-        'last_synced_at' => false,
-        'scope_status' => false
+        'error' => false,
+        'type' => false,
+        'code' => false,
+        'param' => false
     ];
 
     /**
@@ -188,14 +176,10 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-        'video_id' => 'videoId',
-        'duration_seconds' => 'durationSeconds',
-        'date_range' => 'dateRange',
-        'total_views' => 'totalViews',
-        'daily_views' => 'dailyViews',
-        'last_synced_at' => 'lastSyncedAt',
-        'scope_status' => 'scopeStatus'
+        'error' => 'error',
+        'type' => 'type',
+        'code' => 'code',
+        'param' => 'param'
     ];
 
     /**
@@ -204,14 +188,10 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-        'video_id' => 'setVideoId',
-        'duration_seconds' => 'setDurationSeconds',
-        'date_range' => 'setDateRange',
-        'total_views' => 'setTotalViews',
-        'daily_views' => 'setDailyViews',
-        'last_synced_at' => 'setLastSyncedAt',
-        'scope_status' => 'setScopeStatus'
+        'error' => 'setError',
+        'type' => 'setType',
+        'code' => 'setCode',
+        'param' => 'setParam'
     ];
 
     /**
@@ -220,14 +200,10 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-        'video_id' => 'getVideoId',
-        'duration_seconds' => 'getDurationSeconds',
-        'date_range' => 'getDateRange',
-        'total_views' => 'getTotalViews',
-        'daily_views' => 'getDailyViews',
-        'last_synced_at' => 'getLastSyncedAt',
-        'scope_status' => 'getScopeStatus'
+        'error' => 'getError',
+        'type' => 'getType',
+        'code' => 'getCode',
+        'param' => 'getParam'
     ];
 
     /**
@@ -287,14 +263,10 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('success', $data ?? [], null);
-        $this->setIfExists('video_id', $data ?? [], null);
-        $this->setIfExists('duration_seconds', $data ?? [], null);
-        $this->setIfExists('date_range', $data ?? [], null);
-        $this->setIfExists('total_views', $data ?? [], null);
-        $this->setIfExists('daily_views', $data ?? [], null);
-        $this->setIfExists('last_synced_at', $data ?? [], null);
-        $this->setIfExists('scope_status', $data ?? [], null);
+        $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('param', $data ?? [], null);
     }
 
     /**
@@ -340,217 +312,109 @@ class YouTubeDailyViewsResponse implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets success
-     *
-     * @return bool|null
-     */
-    public function getSuccess()
-    {
-        return $this->container['success'];
-    }
-
-    /**
-     * Sets success
-     *
-     * @param bool|null $success success
-     *
-     * @return self
-     */
-    public function setSuccess($success)
-    {
-        if (is_null($success)) {
-            throw new \InvalidArgumentException('non-nullable success cannot be null');
-        }
-        $this->container['success'] = $success;
-
-        return $this;
-    }
-
-    /**
-     * Gets video_id
+     * Gets error
      *
      * @return string|null
      */
-    public function getVideoId()
+    public function getError()
     {
-        return $this->container['video_id'];
+        return $this->container['error'];
     }
 
     /**
-     * Sets video_id
+     * Sets error
      *
-     * @param string|null $video_id The YouTube video ID
+     * @param string|null $error error
      *
      * @return self
      */
-    public function setVideoId($video_id)
+    public function setError($error)
     {
-        if (is_null($video_id)) {
-            throw new \InvalidArgumentException('non-nullable video_id cannot be null');
+        if (is_null($error)) {
+            throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
-        $this->container['video_id'] = $video_id;
+        $this->container['error'] = $error;
 
         return $this;
     }
 
     /**
-     * Gets duration_seconds
+     * Gets type
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getDurationSeconds()
+    public function getType()
     {
-        return $this->container['duration_seconds'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets duration_seconds
+     * Sets type
      *
-     * @param int|null $duration_seconds Video length in seconds (from YouTube contentDetails.duration)
+     * @param string|null $type type
      *
      * @return self
      */
-    public function setDurationSeconds($duration_seconds)
+    public function setType($type)
     {
-        if (is_null($duration_seconds)) {
-            throw new \InvalidArgumentException('non-nullable duration_seconds cannot be null');
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
         }
-        $this->container['duration_seconds'] = $duration_seconds;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets date_range
+     * Gets code
      *
-     * @return \Zernio\Model\YouTubeDailyViewsResponseDateRange|null
+     * @return string|null
      */
-    public function getDateRange()
+    public function getCode()
     {
-        return $this->container['date_range'];
+        return $this->container['code'];
     }
 
     /**
-     * Sets date_range
+     * Sets code
      *
-     * @param \Zernio\Model\YouTubeDailyViewsResponseDateRange|null $date_range date_range
+     * @param string|null $code code
      *
      * @return self
      */
-    public function setDateRange($date_range)
+    public function setCode($code)
     {
-        if (is_null($date_range)) {
-            throw new \InvalidArgumentException('non-nullable date_range cannot be null');
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
         }
-        $this->container['date_range'] = $date_range;
+        $this->container['code'] = $code;
 
         return $this;
     }
 
     /**
-     * Gets total_views
+     * Gets param
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getTotalViews()
+    public function getParam()
     {
-        return $this->container['total_views'];
+        return $this->container['param'];
     }
 
     /**
-     * Sets total_views
+     * Sets param
      *
-     * @param int|null $total_views Sum of views across all days in the range
+     * @param string|null $param param
      *
      * @return self
      */
-    public function setTotalViews($total_views)
+    public function setParam($param)
     {
-        if (is_null($total_views)) {
-            throw new \InvalidArgumentException('non-nullable total_views cannot be null');
+        if (is_null($param)) {
+            throw new \InvalidArgumentException('non-nullable param cannot be null');
         }
-        $this->container['total_views'] = $total_views;
-
-        return $this;
-    }
-
-    /**
-     * Gets daily_views
-     *
-     * @return \Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]|null
-     */
-    public function getDailyViews()
-    {
-        return $this->container['daily_views'];
-    }
-
-    /**
-     * Sets daily_views
-     *
-     * @param \Zernio\Model\YouTubeDailyViewsResponseDailyViewsInner[]|null $daily_views daily_views
-     *
-     * @return self
-     */
-    public function setDailyViews($daily_views)
-    {
-        if (is_null($daily_views)) {
-            throw new \InvalidArgumentException('non-nullable daily_views cannot be null');
-        }
-        $this->container['daily_views'] = $daily_views;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_synced_at
-     *
-     * @return \DateTime|null
-     */
-    public function getLastSyncedAt()
-    {
-        return $this->container['last_synced_at'];
-    }
-
-    /**
-     * Sets last_synced_at
-     *
-     * @param \DateTime|null $last_synced_at When the data was last synced from YouTube
-     *
-     * @return self
-     */
-    public function setLastSyncedAt($last_synced_at)
-    {
-        if (is_null($last_synced_at)) {
-            throw new \InvalidArgumentException('non-nullable last_synced_at cannot be null');
-        }
-        $this->container['last_synced_at'] = $last_synced_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets scope_status
-     *
-     * @return \Zernio\Model\YouTubeDailyViewsResponseScopeStatus|null
-     */
-    public function getScopeStatus()
-    {
-        return $this->container['scope_status'];
-    }
-
-    /**
-     * Sets scope_status
-     *
-     * @param \Zernio\Model\YouTubeDailyViewsResponseScopeStatus|null $scope_status scope_status
-     *
-     * @return self
-     */
-    public function setScopeStatus($scope_status)
-    {
-        if (is_null($scope_status)) {
-            throw new \InvalidArgumentException('non-nullable scope_status cannot be null');
-        }
-        $this->container['scope_status'] = $scope_status;
+        $this->container['param'] = $param;
 
         return $this;
     }
