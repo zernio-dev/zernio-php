@@ -76,6 +76,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_account_name' => 'string',
         'account_id' => 'string',
         'profile_id' => 'string',
+        'advertising_channel_type' => 'string',
         'platform_objective' => 'string',
         'optimization_goal' => 'string',
         'bid_strategy' => '\Zernio\Model\BidStrategy',
@@ -112,6 +113,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_account_name' => null,
         'account_id' => null,
         'profile_id' => null,
+        'advertising_channel_type' => null,
         'platform_objective' => null,
         'optimization_goal' => null,
         'bid_strategy' => null,
@@ -146,6 +148,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_account_name' => false,
         'account_id' => false,
         'profile_id' => false,
+        'advertising_channel_type' => false,
         'platform_objective' => false,
         'optimization_goal' => false,
         'bid_strategy' => false,
@@ -260,6 +263,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_account_name' => 'platformAdAccountName',
         'account_id' => 'accountId',
         'profile_id' => 'profileId',
+        'advertising_channel_type' => 'advertisingChannelType',
         'platform_objective' => 'platformObjective',
         'optimization_goal' => 'optimizationGoal',
         'bid_strategy' => 'bidStrategy',
@@ -294,6 +298,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_account_name' => 'setPlatformAdAccountName',
         'account_id' => 'setAccountId',
         'profile_id' => 'setProfileId',
+        'advertising_channel_type' => 'setAdvertisingChannelType',
         'platform_objective' => 'setPlatformObjective',
         'optimization_goal' => 'setOptimizationGoal',
         'bid_strategy' => 'setBidStrategy',
@@ -328,6 +333,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         'platform_ad_account_name' => 'getPlatformAdAccountName',
         'account_id' => 'getAccountId',
         'profile_id' => 'getProfileId',
+        'advertising_channel_type' => 'getAdvertisingChannelType',
         'platform_objective' => 'getPlatformObjective',
         'optimization_goal' => 'getOptimizationGoal',
         'bid_strategy' => 'getBidStrategy',
@@ -472,6 +478,7 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('platform_ad_account_name', $data ?? [], null);
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('profile_id', $data ?? [], null);
+        $this->setIfExists('advertising_channel_type', $data ?? [], null);
         $this->setIfExists('platform_objective', $data ?? [], null);
         $this->setIfExists('optimization_goal', $data ?? [], null);
         $this->setIfExists('bid_strategy', $data ?? [], null);
@@ -1063,6 +1070,33 @@ class AdCampaign implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
         }
         $this->container['profile_id'] = $profile_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets advertising_channel_type
+     *
+     * @return string|null
+     */
+    public function getAdvertisingChannelType()
+    {
+        return $this->container['advertising_channel_type'];
+    }
+
+    /**
+     * Sets advertising_channel_type
+     *
+     * @param string|null $advertising_channel_type Google-only. Raw campaign.advertising_channel_type. See AdTreeCampaign.advertisingChannelType.
+     *
+     * @return self
+     */
+    public function setAdvertisingChannelType($advertising_channel_type)
+    {
+        if (is_null($advertising_channel_type)) {
+            throw new \InvalidArgumentException('non-nullable advertising_channel_type cannot be null');
+        }
+        $this->container['advertising_channel_type'] = $advertising_channel_type;
 
         return $this;
     }

@@ -2487,6 +2487,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/SendInboxMessageRequestInteractiveActionOneOf3ParametersFlowActionPayloadTest.php
-test/Model/SendInboxMessageRequestInteractiveActionOneOf3ParametersTest.php
-test/Model/SendInboxMessageRequestInteractiveActionOneOf4Test.php
