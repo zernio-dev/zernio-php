@@ -1,6 +1,6 @@
 <?php
 /**
- * GetWhatsAppNumberKycForm200ResponseReusable
+ * GetWhatsAppNumberKycForm200ResponseReusableOptionsInner
  *
  * PHP version 8.1
  *
@@ -33,16 +33,15 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetWhatsAppNumberKycForm200ResponseReusable Class Doc Comment
+ * GetWhatsAppNumberKycForm200ResponseReusableOptionsInner Class Doc Comment
  *
  * @category Class
- * @description Present when this account already has an approved verification for the country that can be reused (skip the form). &#x60;fromPhoneNumber&#x60;/&#x60;details&#x60; mirror the newest option; &#x60;options&#x60; lists ALL approved verifications (agencies hold one per end client) — pass the chosen option&#39;s &#x60;fromPhoneNumber&#x60; as &#x60;reuseFrom&#x60; on POST.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetWhatsAppNumberKycForm200ResponseReusable implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetWhatsAppNumberKycForm200ResponseReusableOptionsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +50,7 @@ class GetWhatsAppNumberKycForm200ResponseReusable implements ModelInterface, Arr
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getWhatsAppNumberKycForm_200_response_reusable';
+    protected static $openAPIModelName = 'getWhatsAppNumberKycForm_200_response_reusable_options_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +58,8 @@ class GetWhatsAppNumberKycForm200ResponseReusable implements ModelInterface, Arr
       * @var string[]
       */
     protected static $openAPITypes = [
-        'available' => 'bool',
         'from_phone_number' => 'string',
-        'details' => '\Zernio\Model\GetWhatsAppNumberKycForm200ResponseReusableDetailsInner[]',
-        'options' => '\Zernio\Model\GetWhatsAppNumberKycForm200ResponseReusableOptionsInner[]'
+        'details' => '\Zernio\Model\GetWhatsAppNumberKycForm200ResponseReusableDetailsInner[]'
     ];
 
     /**
@@ -73,10 +70,8 @@ class GetWhatsAppNumberKycForm200ResponseReusable implements ModelInterface, Arr
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'available' => null,
         'from_phone_number' => null,
-        'details' => null,
-        'options' => null
+        'details' => null
     ];
 
     /**
@@ -85,10 +80,8 @@ class GetWhatsAppNumberKycForm200ResponseReusable implements ModelInterface, Arr
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'available' => false,
         'from_phone_number' => false,
-        'details' => false,
-        'options' => false
+        'details' => false
     ];
 
     /**
@@ -177,10 +170,8 @@ class GetWhatsAppNumberKycForm200ResponseReusable implements ModelInterface, Arr
      * @var string[]
      */
     protected static $attributeMap = [
-        'available' => 'available',
         'from_phone_number' => 'fromPhoneNumber',
-        'details' => 'details',
-        'options' => 'options'
+        'details' => 'details'
     ];
 
     /**
@@ -189,10 +180,8 @@ class GetWhatsAppNumberKycForm200ResponseReusable implements ModelInterface, Arr
      * @var string[]
      */
     protected static $setters = [
-        'available' => 'setAvailable',
         'from_phone_number' => 'setFromPhoneNumber',
-        'details' => 'setDetails',
-        'options' => 'setOptions'
+        'details' => 'setDetails'
     ];
 
     /**
@@ -201,10 +190,8 @@ class GetWhatsAppNumberKycForm200ResponseReusable implements ModelInterface, Arr
      * @var string[]
      */
     protected static $getters = [
-        'available' => 'getAvailable',
         'from_phone_number' => 'getFromPhoneNumber',
-        'details' => 'getDetails',
-        'options' => 'getOptions'
+        'details' => 'getDetails'
     ];
 
     /**
@@ -264,10 +251,8 @@ class GetWhatsAppNumberKycForm200ResponseReusable implements ModelInterface, Arr
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('available', $data ?? [], null);
         $this->setIfExists('from_phone_number', $data ?? [], null);
         $this->setIfExists('details', $data ?? [], null);
-        $this->setIfExists('options', $data ?? [], null);
     }
 
     /**
@@ -313,33 +298,6 @@ class GetWhatsAppNumberKycForm200ResponseReusable implements ModelInterface, Arr
 
 
     /**
-     * Gets available
-     *
-     * @return bool|null
-     */
-    public function getAvailable()
-    {
-        return $this->container['available'];
-    }
-
-    /**
-     * Sets available
-     *
-     * @param bool|null $available available
-     *
-     * @return self
-     */
-    public function setAvailable($available)
-    {
-        if (is_null($available)) {
-            throw new \InvalidArgumentException('non-nullable available cannot be null');
-        }
-        $this->container['available'] = $available;
-
-        return $this;
-    }
-
-    /**
      * Gets from_phone_number
      *
      * @return string|null
@@ -379,7 +337,7 @@ class GetWhatsAppNumberKycForm200ResponseReusable implements ModelInterface, Arr
     /**
      * Sets details
      *
-     * @param \Zernio\Model\GetWhatsAppNumberKycForm200ResponseReusableDetailsInner[]|null $details Human-readable summary of the verification on file (field labels + values, plus the address as one line). Best-effort — may be empty if the provider lookup fails.
+     * @param \Zernio\Model\GetWhatsAppNumberKycForm200ResponseReusableDetailsInner[]|null $details details
      *
      * @return self
      */
@@ -389,33 +347,6 @@ class GetWhatsAppNumberKycForm200ResponseReusable implements ModelInterface, Arr
             throw new \InvalidArgumentException('non-nullable details cannot be null');
         }
         $this->container['details'] = $details;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \Zernio\Model\GetWhatsAppNumberKycForm200ResponseReusableOptionsInner[]|null
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \Zernio\Model\GetWhatsAppNumberKycForm200ResponseReusableOptionsInner[]|null $options One entry per distinct approved verification, newest first.
-     *
-     * @return self
-     */
-    public function setOptions($options)
-    {
-        if (is_null($options)) {
-            throw new \InvalidArgumentException('non-nullable options cannot be null');
-        }
-        $this->container['options'] = $options;
 
         return $this;
     }

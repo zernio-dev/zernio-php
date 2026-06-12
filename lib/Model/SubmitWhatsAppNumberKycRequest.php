@@ -62,6 +62,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'country' => 'string',
         'submission_id' => 'string',
         'reuse' => 'bool',
+        'reuse_from' => 'string',
         'end_user_first_name' => 'string',
         'end_user_last_name' => 'string',
         'values' => 'array<string,string>',
@@ -81,6 +82,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'country' => null,
         'submission_id' => null,
         'reuse' => null,
+        'reuse_from' => null,
         'end_user_first_name' => null,
         'end_user_last_name' => null,
         'values' => null,
@@ -98,6 +100,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'country' => false,
         'submission_id' => false,
         'reuse' => false,
+        'reuse_from' => false,
         'end_user_first_name' => false,
         'end_user_last_name' => false,
         'values' => false,
@@ -195,6 +198,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'country' => 'country',
         'submission_id' => 'submissionId',
         'reuse' => 'reuse',
+        'reuse_from' => 'reuseFrom',
         'end_user_first_name' => 'endUserFirstName',
         'end_user_last_name' => 'endUserLastName',
         'values' => 'values',
@@ -212,6 +216,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'country' => 'setCountry',
         'submission_id' => 'setSubmissionId',
         'reuse' => 'setReuse',
+        'reuse_from' => 'setReuseFrom',
         'end_user_first_name' => 'setEndUserFirstName',
         'end_user_last_name' => 'setEndUserLastName',
         'values' => 'setValues',
@@ -229,6 +234,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         'country' => 'getCountry',
         'submission_id' => 'getSubmissionId',
         'reuse' => 'getReuse',
+        'reuse_from' => 'getReuseFrom',
         'end_user_first_name' => 'getEndUserFirstName',
         'end_user_last_name' => 'getEndUserLastName',
         'values' => 'getValues',
@@ -297,6 +303,7 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('country', $data ?? [], null);
         $this->setIfExists('submission_id', $data ?? [], null);
         $this->setIfExists('reuse', $data ?? [], null);
+        $this->setIfExists('reuse_from', $data ?? [], null);
         $this->setIfExists('end_user_first_name', $data ?? [], null);
         $this->setIfExists('end_user_last_name', $data ?? [], null);
         $this->setIfExists('values', $data ?? [], null);
@@ -456,6 +463,33 @@ class SubmitWhatsAppNumberKycRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable reuse cannot be null');
         }
         $this->container['reuse'] = $reuse;
+
+        return $this;
+    }
+
+    /**
+     * Gets reuse_from
+     *
+     * @return string|null
+     */
+    public function getReuseFrom()
+    {
+        return $this->container['reuse_from'];
+    }
+
+    /**
+     * Sets reuse_from
+     *
+     * @param string|null $reuse_from Which approved verification to reuse when several exist: the phone number it was originally approved for (GET reusable.options[].fromPhoneNumber). Omitted = newest. No match = 409.
+     *
+     * @return self
+     */
+    public function setReuseFrom($reuse_from)
+    {
+        if (is_null($reuse_from)) {
+            throw new \InvalidArgumentException('non-nullable reuse_from cannot be null');
+        }
+        $this->container['reuse_from'] = $reuse_from;
 
         return $this;
     }

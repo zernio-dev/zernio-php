@@ -582,6 +582,7 @@ docs/Model/GetWhatsAppNumberKycForm200Response.md
 docs/Model/GetWhatsAppNumberKycForm200ResponseFieldsInner.md
 docs/Model/GetWhatsAppNumberKycForm200ResponseReusable.md
 docs/Model/GetWhatsAppNumberKycForm200ResponseReusableDetailsInner.md
+docs/Model/GetWhatsAppNumberKycForm200ResponseReusableOptionsInner.md
 docs/Model/GetWhatsAppNumberRemediation200Response.md
 docs/Model/GetWhatsAppPhoneNumber200Response.md
 docs/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.md
@@ -1826,6 +1827,7 @@ lib/Model/GetWhatsAppNumberKycForm200Response.php
 lib/Model/GetWhatsAppNumberKycForm200ResponseFieldsInner.php
 lib/Model/GetWhatsAppNumberKycForm200ResponseReusable.php
 lib/Model/GetWhatsAppNumberKycForm200ResponseReusableDetailsInner.php
+lib/Model/GetWhatsAppNumberKycForm200ResponseReusableOptionsInner.php
 lib/Model/GetWhatsAppNumberRemediation200Response.php
 lib/Model/GetWhatsAppPhoneNumber200Response.php
 lib/Model/GetWhatsAppPhoneNumber200ResponsePhoneNumber.php
@@ -2489,4 +2491,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetWhatsAppNumberKycForm200ResponseReusableDetailsInnerTest.php
+test/Model/GetWhatsAppNumberKycForm200ResponseReusableOptionsInnerTest.php
