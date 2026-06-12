@@ -15,6 +15,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**createWhatsAppTemplate()**](WhatsAppApi.md#createWhatsAppTemplate) | **POST** /v1/whatsapp/templates | Create template |
 | [**deleteWhatsAppGroupChat()**](WhatsAppApi.md#deleteWhatsAppGroupChat) | **DELETE** /v1/whatsapp/wa-groups/{groupId} | Delete group |
 | [**deleteWhatsAppTemplate()**](WhatsAppApi.md#deleteWhatsAppTemplate) | **DELETE** /v1/whatsapp/templates/{templateName} | Delete template |
+| [**getWhatsAppBlockStatus()**](WhatsAppApi.md#getWhatsAppBlockStatus) | **GET** /v1/whatsapp/block-users/status | Check if a user is blocked |
 | [**getWhatsAppBlockedUsers()**](WhatsAppApi.md#getWhatsAppBlockedUsers) | **GET** /v1/whatsapp/block-users | List blocked users |
 | [**getWhatsAppBusinessProfile()**](WhatsAppApi.md#getWhatsAppBusinessProfile) | **GET** /v1/whatsapp/business-profile | Get business profile |
 | [**getWhatsAppDataset()**](WhatsAppApi.md#getWhatsAppDataset) | **GET** /v1/whatsapp/dataset | Get CTWA conversions dataset |
@@ -576,6 +577,68 @@ try {
 ### Return type
 
 [**\Zernio\Model\UnpublishPost200Response**](../Model/UnpublishPost200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getWhatsAppBlockStatus()`
+
+```php
+getWhatsAppBlockStatus($account_id, $user): \Zernio\Model\GetWhatsAppBlockStatus200Response
+```
+
+Check if a user is blocked
+
+Definitive blocked-state lookup for a single contact. Meta exposes no membership endpoint, so this reads Zernio's blocklist mirror (kept in sync by the block/unblock endpoints; the first call per account backfills the mirror from Meta's full list). Constant-time regardless of blocklist size.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string
+$user = 'user_example'; // string | Consumer wa_id or E.164 phone (leading + optional)
+
+try {
+    $result = $apiInstance->getWhatsAppBlockStatus($account_id, $user);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppApi->getWhatsAppBlockStatus: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **account_id** | **string**|  | |
+| **user** | **string**| Consumer wa_id or E.164 phone (leading + optional) | |
+
+### Return type
+
+[**\Zernio\Model\GetWhatsAppBlockStatus200Response**](../Model/GetWhatsAppBlockStatus200Response.md)
 
 ### Authorization
 

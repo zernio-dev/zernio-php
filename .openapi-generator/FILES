@@ -547,6 +547,7 @@ docs/Model/GetUser200ResponseUser.md
 docs/Model/GetWebhookLogs200Response.md
 docs/Model/GetWebhookLogs200ResponsePagination.md
 docs/Model/GetWebhookSettings200Response.md
+docs/Model/GetWhatsAppBlockStatus200Response.md
 docs/Model/GetWhatsAppBlockedUsers200Response.md
 docs/Model/GetWhatsAppBlockedUsers200ResponseBlockedUsersInner.md
 docs/Model/GetWhatsAppBusinessProfile200Response.md
@@ -1784,6 +1785,7 @@ lib/Model/GetUser200ResponseUser.php
 lib/Model/GetWebhookLogs200Response.php
 lib/Model/GetWebhookLogs200ResponsePagination.php
 lib/Model/GetWebhookSettings200Response.php
+lib/Model/GetWhatsAppBlockStatus200Response.php
 lib/Model/GetWhatsAppBlockedUsers200Response.php
 lib/Model/GetWhatsAppBlockedUsers200ResponseBlockedUsersInner.php
 lib/Model/GetWhatsAppBusinessProfile200Response.php
@@ -2475,3 +2477,4 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetWhatsAppBlockStatus200ResponseTest.php

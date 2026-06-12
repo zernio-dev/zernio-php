@@ -369,6 +369,7 @@ Class | Method | HTTP request | Description
 *WhatsAppApi* | [**createWhatsAppTemplate**](docs/Api/WhatsAppApi.md#createwhatsapptemplate) | **POST** /v1/whatsapp/templates | Create template
 *WhatsAppApi* | [**deleteWhatsAppGroupChat**](docs/Api/WhatsAppApi.md#deletewhatsappgroupchat) | **DELETE** /v1/whatsapp/wa-groups/{groupId} | Delete group
 *WhatsAppApi* | [**deleteWhatsAppTemplate**](docs/Api/WhatsAppApi.md#deletewhatsapptemplate) | **DELETE** /v1/whatsapp/templates/{templateName} | Delete template
+*WhatsAppApi* | [**getWhatsAppBlockStatus**](docs/Api/WhatsAppApi.md#getwhatsappblockstatus) | **GET** /v1/whatsapp/block-users/status | Check if a user is blocked
 *WhatsAppApi* | [**getWhatsAppBlockedUsers**](docs/Api/WhatsAppApi.md#getwhatsappblockedusers) | **GET** /v1/whatsapp/block-users | List blocked users
 *WhatsAppApi* | [**getWhatsAppBusinessProfile**](docs/Api/WhatsAppApi.md#getwhatsappbusinessprofile) | **GET** /v1/whatsapp/business-profile | Get business profile
 *WhatsAppApi* | [**getWhatsAppDataset**](docs/Api/WhatsAppApi.md#getwhatsappdataset) | **GET** /v1/whatsapp/dataset | Get CTWA conversions dataset
@@ -939,6 +940,7 @@ Class | Method | HTTP request | Description
 - [GetWebhookLogs200Response](docs/Model/GetWebhookLogs200Response.md)
 - [GetWebhookLogs200ResponsePagination](docs/Model/GetWebhookLogs200ResponsePagination.md)
 - [GetWebhookSettings200Response](docs/Model/GetWebhookSettings200Response.md)
+- [GetWhatsAppBlockStatus200Response](docs/Model/GetWhatsAppBlockStatus200Response.md)
 - [GetWhatsAppBlockedUsers200Response](docs/Model/GetWhatsAppBlockedUsers200Response.md)
 - [GetWhatsAppBlockedUsers200ResponseBlockedUsersInner](docs/Model/GetWhatsAppBlockedUsers200ResponseBlockedUsersInner.md)
 - [GetWhatsAppBusinessProfile200Response](docs/Model/GetWhatsAppBusinessProfile200Response.md)
