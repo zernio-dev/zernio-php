@@ -1401,15 +1401,16 @@ class AnalyticsApi
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
+     * @param  string|null $attribution How each post&#39;s engagement is attributed to a day. \&quot;publish\&quot; (default) sums each post&#39;s lifetime total on its publish date. \&quot;received\&quot; buckets the per-day increase in engagement by the day it actually arrived (engagement-over-time), so engagement on older posts appears on the day it was gained rather than the post&#39;s publish date. (optional, default to 'publish')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetDailyMetrics200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response
      */
-    public function getDailyMetrics($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
+    public function getDailyMetrics($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', $attribution = 'publish', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
-        list($response) = $this->getDailyMetricsWithHttpInfo($platform, $profile_id, $account_id, $from_date, $to_date, $source, $contentType);
+        list($response) = $this->getDailyMetricsWithHttpInfo($platform, $profile_id, $account_id, $from_date, $to_date, $source, $attribution, $contentType);
         return $response;
     }
 
@@ -1424,15 +1425,16 @@ class AnalyticsApi
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
+     * @param  string|null $attribution How each post&#39;s engagement is attributed to a day. \&quot;publish\&quot; (default) sums each post&#39;s lifetime total on its publish date. \&quot;received\&quot; buckets the per-day increase in engagement by the day it actually arrived (engagement-over-time), so engagement on older posts appears on the day it was gained rather than the post&#39;s publish date. (optional, default to 'publish')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetDailyMetrics200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetAnalytics402Response, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDailyMetricsWithHttpInfo($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
+    public function getDailyMetricsWithHttpInfo($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', $attribution = 'publish', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
-        $request = $this->getDailyMetricsRequest($platform, $profile_id, $account_id, $from_date, $to_date, $source, $contentType);
+        $request = $this->getDailyMetricsRequest($platform, $profile_id, $account_id, $from_date, $to_date, $source, $attribution, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1542,14 +1544,15 @@ class AnalyticsApi
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
+     * @param  string|null $attribution How each post&#39;s engagement is attributed to a day. \&quot;publish\&quot; (default) sums each post&#39;s lifetime total on its publish date. \&quot;received\&quot; buckets the per-day increase in engagement by the day it actually arrived (engagement-over-time), so engagement on older posts appears on the day it was gained rather than the post&#39;s publish date. (optional, default to 'publish')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDailyMetricsAsync($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
+    public function getDailyMetricsAsync($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', $attribution = 'publish', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
-        return $this->getDailyMetricsAsyncWithHttpInfo($platform, $profile_id, $account_id, $from_date, $to_date, $source, $contentType)
+        return $this->getDailyMetricsAsyncWithHttpInfo($platform, $profile_id, $account_id, $from_date, $to_date, $source, $attribution, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1568,15 +1571,16 @@ class AnalyticsApi
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
+     * @param  string|null $attribution How each post&#39;s engagement is attributed to a day. \&quot;publish\&quot; (default) sums each post&#39;s lifetime total on its publish date. \&quot;received\&quot; buckets the per-day increase in engagement by the day it actually arrived (engagement-over-time), so engagement on older posts appears on the day it was gained rather than the post&#39;s publish date. (optional, default to 'publish')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getDailyMetricsAsyncWithHttpInfo($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
+    public function getDailyMetricsAsyncWithHttpInfo($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', $attribution = 'publish', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
         $returnType = '\Zernio\Model\GetDailyMetrics200Response';
-        $request = $this->getDailyMetricsRequest($platform, $profile_id, $account_id, $from_date, $to_date, $source, $contentType);
+        $request = $this->getDailyMetricsRequest($platform, $profile_id, $account_id, $from_date, $to_date, $source, $attribution, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1623,13 +1627,15 @@ class AnalyticsApi
      * @param  \DateTime|null $from_date Inclusive start date (ISO 8601). Defaults to 180 days ago. (optional)
      * @param  \DateTime|null $to_date Inclusive end date (ISO 8601). Defaults to now. (optional)
      * @param  string|null $source Filter by post origin. \&quot;late\&quot; for posts published via Zernio, \&quot;external\&quot; for posts imported from platforms. (optional, default to 'all')
+     * @param  string|null $attribution How each post&#39;s engagement is attributed to a day. \&quot;publish\&quot; (default) sums each post&#39;s lifetime total on its publish date. \&quot;received\&quot; buckets the per-day increase in engagement by the day it actually arrived (engagement-over-time), so engagement on older posts appears on the day it was gained rather than the post&#39;s publish date. (optional, default to 'publish')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDailyMetrics'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getDailyMetricsRequest($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', string $contentType = self::contentTypes['getDailyMetrics'][0])
+    public function getDailyMetricsRequest($platform = null, $profile_id = null, $account_id = null, $from_date = null, $to_date = null, $source = 'all', $attribution = 'publish', string $contentType = self::contentTypes['getDailyMetrics'][0])
     {
+
 
 
 
@@ -1694,6 +1700,15 @@ class AnalyticsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $source,
             'source', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $attribution,
+            'attribution', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
