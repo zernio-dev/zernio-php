@@ -1,6 +1,6 @@
 <?php
 /**
- * SendInboxMessageRequestInteractiveActionOneOf2
+ * SendInboxMessageRequestInteractiveActionOneOf3ParametersFlowActionPayload
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendInboxMessageRequestInteractiveActionOneOf2 Class Doc Comment
+ * SendInboxMessageRequestInteractiveActionOneOf3ParametersFlowActionPayload Class Doc Comment
  *
  * @category Class
- * @description Voice-call action. &#x60;type&#x60; on the parent must be &#x60;voice_call&#x60;. Renders WhatsApp&#39;s native call button (requires Calling enabled on the sending number).
+ * @description Required when flow_action is &#x60;navigate&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendInboxMessageRequestInteractiveActionOneOf3ParametersFlowActionPayload implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendInboxMessage_request_interactive_action_oneOf_2';
+    protected static $openAPIModelName = 'sendInboxMessage_request_interactive_action_oneOf_3_parameters_flow_action_payload';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,8 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'parameters' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters'
+        'screen' => 'string',
+        'data' => 'array<string,mixed>'
     ];
 
     /**
@@ -71,8 +71,8 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'parameters' => null
+        'screen' => null,
+        'data' => null
     ];
 
     /**
@@ -81,8 +81,8 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'parameters' => false
+        'screen' => false,
+        'data' => false
     ];
 
     /**
@@ -171,8 +171,8 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'parameters' => 'parameters'
+        'screen' => 'screen',
+        'data' => 'data'
     ];
 
     /**
@@ -181,8 +181,8 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'parameters' => 'setParameters'
+        'screen' => 'setScreen',
+        'data' => 'setData'
     ];
 
     /**
@@ -191,8 +191,8 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'parameters' => 'getParameters'
+        'screen' => 'getScreen',
+        'data' => 'getData'
     ];
 
     /**
@@ -236,19 +236,6 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
         return self::$openAPIModelName;
     }
 
-    public const NAME_VOICE_CALL = 'voice_call';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getNameAllowableValues()
-    {
-        return [
-            self::NAME_VOICE_CALL,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -265,8 +252,8 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('parameters', $data ?? [], null);
+        $this->setIfExists('screen', $data ?? [], null);
+        $this->setIfExists('data', $data ?? [], null);
     }
 
     /**
@@ -296,18 +283,6 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        $allowedValues = $this->getNameAllowableValues();
-        if (!is_null($this->container['name']) && !in_array($this->container['name'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'name', must be one of '%s'",
-                $this->container['name'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -324,65 +299,55 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
 
 
     /**
-     * Gets name
+     * Gets screen
      *
-     * @return string
+     * @return string|null
      */
-    public function getName()
+    public function getScreen()
     {
-        return $this->container['name'];
+        return $this->container['screen'];
     }
 
     /**
-     * Sets name
+     * Sets screen
      *
-     * @param string $name name
+     * @param string|null $screen First screen to show.
      *
      * @return self
      */
-    public function setName($name)
+    public function setScreen($screen)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($screen)) {
+            throw new \InvalidArgumentException('non-nullable screen cannot be null');
         }
-        $allowedValues = $this->getNameAllowableValues();
-        if (!in_array($name, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'name', must be one of '%s'",
-                    $name,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['name'] = $name;
+        $this->container['screen'] = $screen;
 
         return $this;
     }
 
     /**
-     * Gets parameters
+     * Gets data
      *
-     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters|null
+     * @return array<string,mixed>|null
      */
-    public function getParameters()
+    public function getData()
     {
-        return $this->container['parameters'];
+        return $this->container['data'];
     }
 
     /**
-     * Sets parameters
+     * Sets data
      *
-     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters|null $parameters parameters
+     * @param array<string,mixed>|null $data Optional pre-filled data passed to the screen.
      *
      * @return self
      */
-    public function setParameters($parameters)
+    public function setData($data)
     {
-        if (is_null($parameters)) {
-            throw new \InvalidArgumentException('non-nullable parameters cannot be null');
+        if (is_null($data)) {
+            throw new \InvalidArgumentException('non-nullable data cannot be null');
         }
-        $this->container['parameters'] = $parameters;
+        $this->container['data'] = $data;
 
         return $this;
     }

@@ -1,10 +1,9 @@
-# # SendInboxMessageRequestInteractiveActionOneOf2
+# # SendInboxMessageRequestInteractiveActionOneOf4
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  |
-**parameters** | [**\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters**](SendInboxMessageRequestInteractiveActionOneOf2Parameters.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

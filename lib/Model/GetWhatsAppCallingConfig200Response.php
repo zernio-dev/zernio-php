@@ -61,6 +61,7 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
         'phone_number_doc_id' => 'string',
         'phone_number' => 'string',
         'calling_enabled' => 'bool',
+        'call_deep_link' => 'string',
         'forward_to' => 'string',
         'recording_enabled' => 'bool',
         'sip_auth_username' => 'string',
@@ -79,6 +80,7 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
         'phone_number_doc_id' => null,
         'phone_number' => null,
         'calling_enabled' => null,
+        'call_deep_link' => null,
         'forward_to' => null,
         'recording_enabled' => null,
         'sip_auth_username' => null,
@@ -95,6 +97,7 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
         'phone_number_doc_id' => false,
         'phone_number' => false,
         'calling_enabled' => false,
+        'call_deep_link' => false,
         'forward_to' => false,
         'recording_enabled' => false,
         'sip_auth_username' => false,
@@ -191,6 +194,7 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
         'phone_number_doc_id' => 'phoneNumberDocId',
         'phone_number' => 'phoneNumber',
         'calling_enabled' => 'callingEnabled',
+        'call_deep_link' => 'callDeepLink',
         'forward_to' => 'forwardTo',
         'recording_enabled' => 'recordingEnabled',
         'sip_auth_username' => 'sipAuthUsername',
@@ -207,6 +211,7 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
         'phone_number_doc_id' => 'setPhoneNumberDocId',
         'phone_number' => 'setPhoneNumber',
         'calling_enabled' => 'setCallingEnabled',
+        'call_deep_link' => 'setCallDeepLink',
         'forward_to' => 'setForwardTo',
         'recording_enabled' => 'setRecordingEnabled',
         'sip_auth_username' => 'setSipAuthUsername',
@@ -223,6 +228,7 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
         'phone_number_doc_id' => 'getPhoneNumberDocId',
         'phone_number' => 'getPhoneNumber',
         'calling_enabled' => 'getCallingEnabled',
+        'call_deep_link' => 'getCallDeepLink',
         'forward_to' => 'getForwardTo',
         'recording_enabled' => 'getRecordingEnabled',
         'sip_auth_username' => 'getSipAuthUsername',
@@ -290,6 +296,7 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
         $this->setIfExists('phone_number_doc_id', $data ?? [], null);
         $this->setIfExists('phone_number', $data ?? [], null);
         $this->setIfExists('calling_enabled', $data ?? [], null);
+        $this->setIfExists('call_deep_link', $data ?? [], null);
         $this->setIfExists('forward_to', $data ?? [], null);
         $this->setIfExists('recording_enabled', $data ?? [], null);
         $this->setIfExists('sip_auth_username', $data ?? [], null);
@@ -416,6 +423,33 @@ class GetWhatsAppCallingConfig200Response implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable calling_enabled cannot be null');
         }
         $this->container['calling_enabled'] = $calling_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets call_deep_link
+     *
+     * @return string|null
+     */
+    public function getCallDeepLink()
+    {
+        return $this->container['call_deep_link'];
+    }
+
+    /**
+     * Sets call_deep_link
+     *
+     * @param string|null $call_deep_link Public calling deep link (https://wa.me/call/<number>). Tapping it on a phone starts a WhatsApp voice call to this number. Embed it on websites, emails, or QR codes. Null while calling is disabled; not supported by WhatsApp desktop clients.
+     *
+     * @return self
+     */
+    public function setCallDeepLink($call_deep_link)
+    {
+        if (is_null($call_deep_link)) {
+            throw new \InvalidArgumentException('non-nullable call_deep_link cannot be null');
+        }
+        $this->container['call_deep_link'] = $call_deep_link;
 
         return $this;
     }

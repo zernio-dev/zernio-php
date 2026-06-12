@@ -36,6 +36,7 @@ use \Zernio\ObjectSerializer;
  * SendInboxMessageRequestInteractiveActionOneOf2Parameters Class Doc Comment
  *
  * @category Class
+ * @description All optional.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -58,13 +59,9 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
       * @var string[]
       */
     protected static $openAPITypes = [
-        'flow_message_version' => 'string',
-        'flow_token' => 'string',
-        'flow_id' => 'string',
-        'flow_cta' => 'string',
-        'flow_action' => 'string',
-        'flow_action_payload' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload',
-        'mode' => 'string'
+        'display_text' => 'string',
+        'ttl_minutes' => 'int',
+        'payload' => 'string'
     ];
 
     /**
@@ -75,13 +72,9 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'flow_message_version' => null,
-        'flow_token' => null,
-        'flow_id' => null,
-        'flow_cta' => null,
-        'flow_action' => null,
-        'flow_action_payload' => null,
-        'mode' => null
+        'display_text' => null,
+        'ttl_minutes' => null,
+        'payload' => null
     ];
 
     /**
@@ -90,13 +83,9 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'flow_message_version' => false,
-        'flow_token' => false,
-        'flow_id' => false,
-        'flow_cta' => false,
-        'flow_action' => false,
-        'flow_action_payload' => false,
-        'mode' => false
+        'display_text' => false,
+        'ttl_minutes' => false,
+        'payload' => false
     ];
 
     /**
@@ -185,13 +174,9 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
      * @var string[]
      */
     protected static $attributeMap = [
-        'flow_message_version' => 'flow_message_version',
-        'flow_token' => 'flow_token',
-        'flow_id' => 'flow_id',
-        'flow_cta' => 'flow_cta',
-        'flow_action' => 'flow_action',
-        'flow_action_payload' => 'flow_action_payload',
-        'mode' => 'mode'
+        'display_text' => 'display_text',
+        'ttl_minutes' => 'ttl_minutes',
+        'payload' => 'payload'
     ];
 
     /**
@@ -200,13 +185,9 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
      * @var string[]
      */
     protected static $setters = [
-        'flow_message_version' => 'setFlowMessageVersion',
-        'flow_token' => 'setFlowToken',
-        'flow_id' => 'setFlowId',
-        'flow_cta' => 'setFlowCta',
-        'flow_action' => 'setFlowAction',
-        'flow_action_payload' => 'setFlowActionPayload',
-        'mode' => 'setMode'
+        'display_text' => 'setDisplayText',
+        'ttl_minutes' => 'setTtlMinutes',
+        'payload' => 'setPayload'
     ];
 
     /**
@@ -215,13 +196,9 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
      * @var string[]
      */
     protected static $getters = [
-        'flow_message_version' => 'getFlowMessageVersion',
-        'flow_token' => 'getFlowToken',
-        'flow_id' => 'getFlowId',
-        'flow_cta' => 'getFlowCta',
-        'flow_action' => 'getFlowAction',
-        'flow_action_payload' => 'getFlowActionPayload',
-        'mode' => 'getMode'
+        'display_text' => 'getDisplayText',
+        'ttl_minutes' => 'getTtlMinutes',
+        'payload' => 'getPayload'
     ];
 
     /**
@@ -265,47 +242,6 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
         return self::$openAPIModelName;
     }
 
-    public const FLOW_MESSAGE_VERSION__3 = '3';
-    public const FLOW_ACTION_NAVIGATE = 'navigate';
-    public const FLOW_ACTION_DATA_EXCHANGE = 'data_exchange';
-    public const MODE_DRAFT = 'draft';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFlowMessageVersionAllowableValues()
-    {
-        return [
-            self::FLOW_MESSAGE_VERSION__3,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFlowActionAllowableValues()
-    {
-        return [
-            self::FLOW_ACTION_NAVIGATE,
-            self::FLOW_ACTION_DATA_EXCHANGE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getModeAllowableValues()
-    {
-        return [
-            self::MODE_DRAFT,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -322,13 +258,9 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('flow_message_version', $data ?? [], null);
-        $this->setIfExists('flow_token', $data ?? [], null);
-        $this->setIfExists('flow_id', $data ?? [], null);
-        $this->setIfExists('flow_cta', $data ?? [], null);
-        $this->setIfExists('flow_action', $data ?? [], null);
-        $this->setIfExists('flow_action_payload', $data ?? [], null);
-        $this->setIfExists('mode', $data ?? [], null);
+        $this->setIfExists('display_text', $data ?? [], null);
+        $this->setIfExists('ttl_minutes', $data ?? [], null);
+        $this->setIfExists('payload', $data ?? [], null);
     }
 
     /**
@@ -358,43 +290,20 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getFlowMessageVersionAllowableValues();
-        if (!is_null($this->container['flow_message_version']) && !in_array($this->container['flow_message_version'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'flow_message_version', must be one of '%s'",
-                $this->container['flow_message_version'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['display_text']) && (mb_strlen($this->container['display_text']) > 20)) {
+            $invalidProperties[] = "invalid value for 'display_text', the character length must be smaller than or equal to 20.";
         }
 
-        if ($this->container['flow_token'] === null) {
-            $invalidProperties[] = "'flow_token' can't be null";
-        }
-        if ($this->container['flow_id'] === null) {
-            $invalidProperties[] = "'flow_id' can't be null";
-        }
-        if ($this->container['flow_cta'] === null) {
-            $invalidProperties[] = "'flow_cta' can't be null";
-        }
-        if ($this->container['flow_action'] === null) {
-            $invalidProperties[] = "'flow_action' can't be null";
-        }
-        $allowedValues = $this->getFlowActionAllowableValues();
-        if (!is_null($this->container['flow_action']) && !in_array($this->container['flow_action'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'flow_action', must be one of '%s'",
-                $this->container['flow_action'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['ttl_minutes']) && ($this->container['ttl_minutes'] > 43200)) {
+            $invalidProperties[] = "invalid value for 'ttl_minutes', must be smaller than or equal to 43200.";
         }
 
-        $allowedValues = $this->getModeAllowableValues();
-        if (!is_null($this->container['mode']) && !in_array($this->container['mode'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'mode', must be one of '%s'",
-                $this->container['mode'],
-                implode("', '", $allowedValues)
-            );
+        if (!is_null($this->container['ttl_minutes']) && ($this->container['ttl_minutes'] < 1)) {
+            $invalidProperties[] = "invalid value for 'ttl_minutes', must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['payload']) && (mb_strlen($this->container['payload']) > 512)) {
+            $invalidProperties[] = "invalid value for 'payload', the character length must be smaller than or equal to 512.";
         }
 
         return $invalidProperties;
@@ -413,220 +322,98 @@ class SendInboxMessageRequestInteractiveActionOneOf2Parameters implements ModelI
 
 
     /**
-     * Gets flow_message_version
+     * Gets display_text
      *
      * @return string|null
      */
-    public function getFlowMessageVersion()
+    public function getDisplayText()
     {
-        return $this->container['flow_message_version'];
+        return $this->container['display_text'];
     }
 
     /**
-     * Sets flow_message_version
+     * Sets display_text
      *
-     * @param string|null $flow_message_version Defaults to \"3\" when omitted.
+     * @param string|null $display_text Button label. Defaults to \"Call Now\".
      *
      * @return self
      */
-    public function setFlowMessageVersion($flow_message_version)
+    public function setDisplayText($display_text)
     {
-        if (is_null($flow_message_version)) {
-            throw new \InvalidArgumentException('non-nullable flow_message_version cannot be null');
+        if (is_null($display_text)) {
+            throw new \InvalidArgumentException('non-nullable display_text cannot be null');
         }
-        $allowedValues = $this->getFlowMessageVersionAllowableValues();
-        if (!in_array($flow_message_version, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'flow_message_version', must be one of '%s'",
-                    $flow_message_version,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if ((mb_strlen($display_text) > 20)) {
+            throw new \InvalidArgumentException('invalid length for $display_text when calling SendInboxMessageRequestInteractiveActionOneOf2Parameters., must be smaller than or equal to 20.');
         }
-        $this->container['flow_message_version'] = $flow_message_version;
+
+        $this->container['display_text'] = $display_text;
 
         return $this;
     }
 
     /**
-     * Gets flow_token
+     * Gets ttl_minutes
      *
-     * @return string
+     * @return int|null
      */
-    public function getFlowToken()
+    public function getTtlMinutes()
     {
-        return $this->container['flow_token'];
+        return $this->container['ttl_minutes'];
     }
 
     /**
-     * Sets flow_token
+     * Sets ttl_minutes
      *
-     * @param string $flow_token Opaque token you choose to correlate Flow responses with your own state (max 200 chars).
+     * @param int|null $ttl_minutes How long the button stays tappable. Defaults to 10080 (7 days).
      *
      * @return self
      */
-    public function setFlowToken($flow_token)
+    public function setTtlMinutes($ttl_minutes)
     {
-        if (is_null($flow_token)) {
-            throw new \InvalidArgumentException('non-nullable flow_token cannot be null');
+        if (is_null($ttl_minutes)) {
+            throw new \InvalidArgumentException('non-nullable ttl_minutes cannot be null');
         }
-        $this->container['flow_token'] = $flow_token;
+
+        if (($ttl_minutes > 43200)) {
+            throw new \InvalidArgumentException('invalid value for $ttl_minutes when calling SendInboxMessageRequestInteractiveActionOneOf2Parameters., must be smaller than or equal to 43200.');
+        }
+        if (($ttl_minutes < 1)) {
+            throw new \InvalidArgumentException('invalid value for $ttl_minutes when calling SendInboxMessageRequestInteractiveActionOneOf2Parameters., must be bigger than or equal to 1.');
+        }
+
+        $this->container['ttl_minutes'] = $ttl_minutes;
 
         return $this;
     }
 
     /**
-     * Gets flow_id
-     *
-     * @return string
-     */
-    public function getFlowId()
-    {
-        return $this->container['flow_id'];
-    }
-
-    /**
-     * Sets flow_id
-     *
-     * @param string $flow_id Published Flow ID from Meta Business Manager.
-     *
-     * @return self
-     */
-    public function setFlowId($flow_id)
-    {
-        if (is_null($flow_id)) {
-            throw new \InvalidArgumentException('non-nullable flow_id cannot be null');
-        }
-        $this->container['flow_id'] = $flow_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets flow_cta
-     *
-     * @return string
-     */
-    public function getFlowCta()
-    {
-        return $this->container['flow_cta'];
-    }
-
-    /**
-     * Sets flow_cta
-     *
-     * @param string $flow_cta Button label that opens the Flow (max 20 chars).
-     *
-     * @return self
-     */
-    public function setFlowCta($flow_cta)
-    {
-        if (is_null($flow_cta)) {
-            throw new \InvalidArgumentException('non-nullable flow_cta cannot be null');
-        }
-        $this->container['flow_cta'] = $flow_cta;
-
-        return $this;
-    }
-
-    /**
-     * Gets flow_action
-     *
-     * @return string
-     */
-    public function getFlowAction()
-    {
-        return $this->container['flow_action'];
-    }
-
-    /**
-     * Sets flow_action
-     *
-     * @param string $flow_action `navigate` sends the user to `flow_action_payload.screen`; `data_exchange` posts data to your Flow endpoint.
-     *
-     * @return self
-     */
-    public function setFlowAction($flow_action)
-    {
-        if (is_null($flow_action)) {
-            throw new \InvalidArgumentException('non-nullable flow_action cannot be null');
-        }
-        $allowedValues = $this->getFlowActionAllowableValues();
-        if (!in_array($flow_action, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'flow_action', must be one of '%s'",
-                    $flow_action,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['flow_action'] = $flow_action;
-
-        return $this;
-    }
-
-    /**
-     * Gets flow_action_payload
-     *
-     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload|null
-     */
-    public function getFlowActionPayload()
-    {
-        return $this->container['flow_action_payload'];
-    }
-
-    /**
-     * Sets flow_action_payload
-     *
-     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2ParametersFlowActionPayload|null $flow_action_payload flow_action_payload
-     *
-     * @return self
-     */
-    public function setFlowActionPayload($flow_action_payload)
-    {
-        if (is_null($flow_action_payload)) {
-            throw new \InvalidArgumentException('non-nullable flow_action_payload cannot be null');
-        }
-        $this->container['flow_action_payload'] = $flow_action_payload;
-
-        return $this;
-    }
-
-    /**
-     * Gets mode
+     * Gets payload
      *
      * @return string|null
      */
-    public function getMode()
+    public function getPayload()
     {
-        return $this->container['mode'];
+        return $this->container['payload'];
     }
 
     /**
-     * Sets mode
+     * Sets payload
      *
-     * @param string|null $mode Set to `draft` to test an unpublished Flow.
+     * @param string|null $payload Arbitrary string echoed back as `cta_payload` on the `calls` webhook (connect/terminate) for attribution.
      *
      * @return self
      */
-    public function setMode($mode)
+    public function setPayload($payload)
     {
-        if (is_null($mode)) {
-            throw new \InvalidArgumentException('non-nullable mode cannot be null');
+        if (is_null($payload)) {
+            throw new \InvalidArgumentException('non-nullable payload cannot be null');
         }
-        $allowedValues = $this->getModeAllowableValues();
-        if (!in_array($mode, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'mode', must be one of '%s'",
-                    $mode,
-                    implode("', '", $allowedValues)
-                )
-            );
+        if ((mb_strlen($payload) > 512)) {
+            throw new \InvalidArgumentException('invalid length for $payload when calling SendInboxMessageRequestInteractiveActionOneOf2Parameters., must be smaller than or equal to 512.');
         }
-        $this->container['mode'] = $mode;
+
+        $this->container['payload'] = $payload;
 
         return $this;
     }

@@ -61,7 +61,7 @@ class SendInboxMessageRequestInteractiveAction implements ModelInterface, ArrayA
         'button' => 'string',
         'sections' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOfSectionsInner[]',
         'name' => 'string',
-        'parameters' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters'
+        'parameters' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf3Parameters'
     ];
 
     /**
@@ -454,7 +454,7 @@ class SendInboxMessageRequestInteractiveAction implements ModelInterface, ArrayA
     /**
      * Gets parameters
      *
-     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf3Parameters
      */
     public function getParameters()
     {
@@ -464,7 +464,7 @@ class SendInboxMessageRequestInteractiveAction implements ModelInterface, ArrayA
     /**
      * Sets parameters
      *
-     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters $parameters parameters
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf3Parameters $parameters parameters
      *
      * @return self
      */

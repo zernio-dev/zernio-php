@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * SendInboxMessageRequestInteractiveActionOneOf3 Class Doc Comment
  *
  * @category Class
- * @description Location request action. &#x60;type&#x60; on the parent must be &#x60;location_request_message&#x60;. May be omitted entirely; it is defaulted.
+ * @description Flow action. &#x60;type&#x60; on the parent must be &#x60;flow&#x60;.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,7 +59,8 @@ class SendInboxMessageRequestInteractiveActionOneOf3 implements ModelInterface, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string'
+        'name' => 'string',
+        'parameters' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf3Parameters'
     ];
 
     /**
@@ -70,7 +71,8 @@ class SendInboxMessageRequestInteractiveActionOneOf3 implements ModelInterface, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null
+        'name' => null,
+        'parameters' => null
     ];
 
     /**
@@ -79,7 +81,8 @@ class SendInboxMessageRequestInteractiveActionOneOf3 implements ModelInterface, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false
+        'name' => false,
+        'parameters' => false
     ];
 
     /**
@@ -168,7 +171,8 @@ class SendInboxMessageRequestInteractiveActionOneOf3 implements ModelInterface, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name'
+        'name' => 'name',
+        'parameters' => 'parameters'
     ];
 
     /**
@@ -177,7 +181,8 @@ class SendInboxMessageRequestInteractiveActionOneOf3 implements ModelInterface, 
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName'
+        'name' => 'setName',
+        'parameters' => 'setParameters'
     ];
 
     /**
@@ -186,7 +191,8 @@ class SendInboxMessageRequestInteractiveActionOneOf3 implements ModelInterface, 
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName'
+        'name' => 'getName',
+        'parameters' => 'getParameters'
     ];
 
     /**
@@ -230,7 +236,7 @@ class SendInboxMessageRequestInteractiveActionOneOf3 implements ModelInterface, 
         return self::$openAPIModelName;
     }
 
-    public const NAME_SEND_LOCATION = 'send_location';
+    public const NAME_FLOW = 'flow';
 
     /**
      * Gets allowable values of the enum
@@ -240,7 +246,7 @@ class SendInboxMessageRequestInteractiveActionOneOf3 implements ModelInterface, 
     public function getNameAllowableValues()
     {
         return [
-            self::NAME_SEND_LOCATION,
+            self::NAME_FLOW,
         ];
     }
 
@@ -260,6 +266,7 @@ class SendInboxMessageRequestInteractiveActionOneOf3 implements ModelInterface, 
     public function __construct(?array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('parameters', $data ?? [], null);
     }
 
     /**
@@ -301,6 +308,9 @@ class SendInboxMessageRequestInteractiveActionOneOf3 implements ModelInterface, 
             );
         }
 
+        if ($this->container['parameters'] === null) {
+            $invalidProperties[] = "'parameters' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -349,6 +359,33 @@ class SendInboxMessageRequestInteractiveActionOneOf3 implements ModelInterface, 
             );
         }
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets parameters
+     *
+     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf3Parameters
+     */
+    public function getParameters()
+    {
+        return $this->container['parameters'];
+    }
+
+    /**
+     * Sets parameters
+     *
+     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf3Parameters $parameters parameters
+     *
+     * @return self
+     */
+    public function setParameters($parameters)
+    {
+        if (is_null($parameters)) {
+            throw new \InvalidArgumentException('non-nullable parameters cannot be null');
+        }
+        $this->container['parameters'] = $parameters;
 
         return $this;
     }

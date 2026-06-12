@@ -1,6 +1,6 @@
 <?php
 /**
- * SendInboxMessageRequestInteractiveActionOneOf2
+ * SendInboxMessageRequestInteractiveActionOneOf4
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SendInboxMessageRequestInteractiveActionOneOf2 Class Doc Comment
+ * SendInboxMessageRequestInteractiveActionOneOf4 Class Doc Comment
  *
  * @category Class
- * @description Voice-call action. &#x60;type&#x60; on the parent must be &#x60;voice_call&#x60;. Renders WhatsApp&#39;s native call button (requires Calling enabled on the sending number).
+ * @description Location request action. &#x60;type&#x60; on the parent must be &#x60;location_request_message&#x60;. May be omitted entirely; it is defaulted.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendInboxMessageRequestInteractiveActionOneOf4 implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
       *
       * @var string
       */
-    protected static $openAPIModelName = 'sendInboxMessage_request_interactive_action_oneOf_2';
+    protected static $openAPIModelName = 'sendInboxMessage_request_interactive_action_oneOf_4';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,8 +59,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
       * @var string[]
       */
     protected static $openAPITypes = [
-        'name' => 'string',
-        'parameters' => '\Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters'
+        'name' => 'string'
     ];
 
     /**
@@ -71,8 +70,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'name' => null,
-        'parameters' => null
+        'name' => null
     ];
 
     /**
@@ -81,8 +79,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'parameters' => false
+        'name' => false
     ];
 
     /**
@@ -171,8 +168,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
      * @var string[]
      */
     protected static $attributeMap = [
-        'name' => 'name',
-        'parameters' => 'parameters'
+        'name' => 'name'
     ];
 
     /**
@@ -181,8 +177,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
      * @var string[]
      */
     protected static $setters = [
-        'name' => 'setName',
-        'parameters' => 'setParameters'
+        'name' => 'setName'
     ];
 
     /**
@@ -191,8 +186,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
      * @var string[]
      */
     protected static $getters = [
-        'name' => 'getName',
-        'parameters' => 'getParameters'
+        'name' => 'getName'
     ];
 
     /**
@@ -236,7 +230,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
         return self::$openAPIModelName;
     }
 
-    public const NAME_VOICE_CALL = 'voice_call';
+    public const NAME_SEND_LOCATION = 'send_location';
 
     /**
      * Gets allowable values of the enum
@@ -246,7 +240,7 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
     public function getNameAllowableValues()
     {
         return [
-            self::NAME_VOICE_CALL,
+            self::NAME_SEND_LOCATION,
         ];
     }
 
@@ -266,7 +260,6 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
     public function __construct(?array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('parameters', $data ?? [], null);
     }
 
     /**
@@ -356,33 +349,6 @@ class SendInboxMessageRequestInteractiveActionOneOf2 implements ModelInterface, 
             );
         }
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets parameters
-     *
-     * @return \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters|null
-     */
-    public function getParameters()
-    {
-        return $this->container['parameters'];
-    }
-
-    /**
-     * Sets parameters
-     *
-     * @param \Zernio\Model\SendInboxMessageRequestInteractiveActionOneOf2Parameters|null $parameters parameters
-     *
-     * @return self
-     */
-    public function setParameters($parameters)
-    {
-        if (is_null($parameters)) {
-            throw new \InvalidArgumentException('non-nullable parameters cannot be null');
-        }
-        $this->container['parameters'] = $parameters;
 
         return $this;
     }

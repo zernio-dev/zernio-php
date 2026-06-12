@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **phone_number_doc_id** | **string** | WhatsAppPhoneNumber Mongo ID (use on /v1/whatsapp/phone-numbers/{id}/calling) | [optional]
 **phone_number** | **string** |  | [optional]
 **calling_enabled** | **bool** |  | [optional]
+**call_deep_link** | **string** | Public calling deep link (https://wa.me/call/&lt;number&gt;). Tapping it on a phone starts a WhatsApp voice call to this number. Embed it on websites, emails, or QR codes. Null while calling is disabled; not supported by WhatsApp desktop clients. | [optional]
 **forward_to** | **string** | tel:+E164 / sip:... / wss://... destination | [optional]
 **recording_enabled** | **bool** |  | [optional]
 **sip_auth_username** | **string** |  | [optional]
