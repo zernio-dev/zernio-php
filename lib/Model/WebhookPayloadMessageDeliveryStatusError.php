@@ -61,7 +61,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
     protected static $openAPITypes = [
         'code' => 'int',
         'title' => 'string',
-        'message' => 'string'
+        'message' => 'string',
+        'explanation' => 'string'
     ];
 
     /**
@@ -74,7 +75,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
     protected static $openAPIFormats = [
         'code' => null,
         'title' => null,
-        'message' => null
+        'message' => null,
+        'explanation' => null
     ];
 
     /**
@@ -85,7 +87,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
     protected static array $openAPINullables = [
         'code' => false,
         'title' => false,
-        'message' => false
+        'message' => false,
+        'explanation' => false
     ];
 
     /**
@@ -176,7 +179,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
     protected static $attributeMap = [
         'code' => 'code',
         'title' => 'title',
-        'message' => 'message'
+        'message' => 'message',
+        'explanation' => 'explanation'
     ];
 
     /**
@@ -187,7 +191,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
     protected static $setters = [
         'code' => 'setCode',
         'title' => 'setTitle',
-        'message' => 'setMessage'
+        'message' => 'setMessage',
+        'explanation' => 'setExplanation'
     ];
 
     /**
@@ -198,7 +203,8 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
     protected static $getters = [
         'code' => 'getCode',
         'title' => 'getTitle',
-        'message' => 'getMessage'
+        'message' => 'getMessage',
+        'explanation' => 'getExplanation'
     ];
 
     /**
@@ -261,6 +267,7 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
         $this->setIfExists('code', $data ?? [], null);
         $this->setIfExists('title', $data ?? [], null);
         $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('explanation', $data ?? [], null);
     }
 
     /**
@@ -382,6 +389,33 @@ class WebhookPayloadMessageDeliveryStatusError implements ModelInterface, ArrayA
             throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
         $this->container['message'] = $message;
+
+        return $this;
+    }
+
+    /**
+     * Gets explanation
+     *
+     * @return string|null
+     */
+    public function getExplanation()
+    {
+        return $this->container['explanation'];
+    }
+
+    /**
+     * Sets explanation
+     *
+     * @param string|null $explanation Plain-language translation of `code` (e.g. for 131026, that the recipient has likely opted out of marketing messages while utility templates are unaffected). Null for unmapped codes; fall back to title/message.
+     *
+     * @return self
+     */
+    public function setExplanation($explanation)
+    {
+        if (is_null($explanation)) {
+            throw new \InvalidArgumentException('non-nullable explanation cannot be null');
+        }
+        $this->container['explanation'] = $explanation;
 
         return $this;
     }

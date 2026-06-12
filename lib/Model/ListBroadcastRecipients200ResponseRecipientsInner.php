@@ -67,6 +67,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'message_id' => 'string',
         'error' => 'string',
         'error_code' => 'int',
+        'error_explanation' => 'string',
         'sent_at' => '\DateTime',
         'delivered_at' => '\DateTime',
         'read_at' => '\DateTime'
@@ -89,6 +90,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'message_id' => null,
         'error' => null,
         'error_code' => null,
+        'error_explanation' => null,
         'sent_at' => 'date-time',
         'delivered_at' => 'date-time',
         'read_at' => 'date-time'
@@ -109,6 +111,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'message_id' => false,
         'error' => false,
         'error_code' => false,
+        'error_explanation' => false,
         'sent_at' => false,
         'delivered_at' => false,
         'read_at' => false
@@ -209,6 +212,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'message_id' => 'messageId',
         'error' => 'error',
         'error_code' => 'errorCode',
+        'error_explanation' => 'errorExplanation',
         'sent_at' => 'sentAt',
         'delivered_at' => 'deliveredAt',
         'read_at' => 'readAt'
@@ -229,6 +233,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'message_id' => 'setMessageId',
         'error' => 'setError',
         'error_code' => 'setErrorCode',
+        'error_explanation' => 'setErrorExplanation',
         'sent_at' => 'setSentAt',
         'delivered_at' => 'setDeliveredAt',
         'read_at' => 'setReadAt'
@@ -249,6 +254,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         'message_id' => 'getMessageId',
         'error' => 'getError',
         'error_code' => 'getErrorCode',
+        'error_explanation' => 'getErrorExplanation',
         'sent_at' => 'getSentAt',
         'delivered_at' => 'getDeliveredAt',
         'read_at' => 'getReadAt'
@@ -341,6 +347,7 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
         $this->setIfExists('message_id', $data ?? [], null);
         $this->setIfExists('error', $data ?? [], null);
         $this->setIfExists('error_code', $data ?? [], null);
+        $this->setIfExists('error_explanation', $data ?? [], null);
         $this->setIfExists('sent_at', $data ?? [], null);
         $this->setIfExists('delivered_at', $data ?? [], null);
         $this->setIfExists('read_at', $data ?? [], null);
@@ -646,6 +653,33 @@ class ListBroadcastRecipients200ResponseRecipientsInner implements ModelInterfac
             throw new \InvalidArgumentException('non-nullable error_code cannot be null');
         }
         $this->container['error_code'] = $error_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets error_explanation
+     *
+     * @return string|null
+     */
+    public function getErrorExplanation()
+    {
+        return $this->container['error_explanation'];
+    }
+
+    /**
+     * Sets error_explanation
+     *
+     * @param string|null $error_explanation Plain-language translation of errorCode (e.g. for 131026, that the recipient has likely opted out of marketing messages). Null for unmapped codes; fall back to error.
+     *
+     * @return self
+     */
+    public function setErrorExplanation($error_explanation)
+    {
+        if (is_null($error_explanation)) {
+            throw new \InvalidArgumentException('non-nullable error_explanation cannot be null');
+        }
+        $this->container['error_explanation'] = $error_explanation;
 
         return $this;
     }
