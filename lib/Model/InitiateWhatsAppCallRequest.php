@@ -60,6 +60,8 @@ class InitiateWhatsAppCallRequest implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPITypes = [
         'account_id' => 'string',
         'to' => 'string',
+        'action' => 'string',
+        'body_text' => 'string',
         'forward_to' => 'string',
         'record_override' => 'bool',
         'biz_opaque_callback_data' => 'string'
@@ -75,6 +77,8 @@ class InitiateWhatsAppCallRequest implements ModelInterface, ArrayAccess, \JsonS
     protected static $openAPIFormats = [
         'account_id' => null,
         'to' => null,
+        'action' => null,
+        'body_text' => null,
         'forward_to' => null,
         'record_override' => null,
         'biz_opaque_callback_data' => null
@@ -88,6 +92,8 @@ class InitiateWhatsAppCallRequest implements ModelInterface, ArrayAccess, \JsonS
     protected static array $openAPINullables = [
         'account_id' => false,
         'to' => false,
+        'action' => false,
+        'body_text' => false,
         'forward_to' => false,
         'record_override' => false,
         'biz_opaque_callback_data' => false
@@ -181,6 +187,8 @@ class InitiateWhatsAppCallRequest implements ModelInterface, ArrayAccess, \JsonS
     protected static $attributeMap = [
         'account_id' => 'accountId',
         'to' => 'to',
+        'action' => 'action',
+        'body_text' => 'bodyText',
         'forward_to' => 'forwardTo',
         'record_override' => 'recordOverride',
         'biz_opaque_callback_data' => 'biz_opaque_callback_data'
@@ -194,6 +202,8 @@ class InitiateWhatsAppCallRequest implements ModelInterface, ArrayAccess, \JsonS
     protected static $setters = [
         'account_id' => 'setAccountId',
         'to' => 'setTo',
+        'action' => 'setAction',
+        'body_text' => 'setBodyText',
         'forward_to' => 'setForwardTo',
         'record_override' => 'setRecordOverride',
         'biz_opaque_callback_data' => 'setBizOpaqueCallbackData'
@@ -207,6 +217,8 @@ class InitiateWhatsAppCallRequest implements ModelInterface, ArrayAccess, \JsonS
     protected static $getters = [
         'account_id' => 'getAccountId',
         'to' => 'getTo',
+        'action' => 'getAction',
+        'body_text' => 'getBodyText',
         'forward_to' => 'getForwardTo',
         'record_override' => 'getRecordOverride',
         'biz_opaque_callback_data' => 'getBizOpaqueCallbackData'
@@ -253,6 +265,19 @@ class InitiateWhatsAppCallRequest implements ModelInterface, ArrayAccess, \JsonS
         return self::$openAPIModelName;
     }
 
+    public const ACTION_SEND_CALL_PERMISSION_REQUEST = 'send_call_permission_request';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getActionAllowableValues()
+    {
+        return [
+            self::ACTION_SEND_CALL_PERMISSION_REQUEST,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -271,6 +296,8 @@ class InitiateWhatsAppCallRequest implements ModelInterface, ArrayAccess, \JsonS
     {
         $this->setIfExists('account_id', $data ?? [], null);
         $this->setIfExists('to', $data ?? [], null);
+        $this->setIfExists('action', $data ?? [], null);
+        $this->setIfExists('body_text', $data ?? [], null);
         $this->setIfExists('forward_to', $data ?? [], null);
         $this->setIfExists('record_override', $data ?? [], null);
         $this->setIfExists('biz_opaque_callback_data', $data ?? [], null);
@@ -309,6 +336,19 @@ class InitiateWhatsAppCallRequest implements ModelInterface, ArrayAccess, \JsonS
         if ($this->container['to'] === null) {
             $invalidProperties[] = "'to' can't be null";
         }
+        $allowedValues = $this->getActionAllowableValues();
+        if (!is_null($this->container['action']) && !in_array($this->container['action'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'action', must be one of '%s'",
+                $this->container['action'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if (!is_null($this->container['body_text']) && (mb_strlen($this->container['body_text']) > 1024)) {
+            $invalidProperties[] = "invalid value for 'body_text', the character length must be smaller than or equal to 1024.";
+        }
+
         if (!is_null($this->container['biz_opaque_callback_data']) && (mb_strlen($this->container['biz_opaque_callback_data']) > 512)) {
             $invalidProperties[] = "invalid value for 'biz_opaque_callback_data', the character length must be smaller than or equal to 512.";
         }
@@ -378,6 +418,74 @@ class InitiateWhatsAppCallRequest implements ModelInterface, ArrayAccess, \JsonS
             throw new \InvalidArgumentException('non-nullable to cannot be null');
         }
         $this->container['to'] = $to;
+
+        return $this;
+    }
+
+    /**
+     * Gets action
+     *
+     * @return string|null
+     */
+    public function getAction()
+    {
+        return $this->container['action'];
+    }
+
+    /**
+     * Sets action
+     *
+     * @param string|null $action Omit to place a call. Set to send the consent prompt instead.
+     *
+     * @return self
+     */
+    public function setAction($action)
+    {
+        if (is_null($action)) {
+            throw new \InvalidArgumentException('non-nullable action cannot be null');
+        }
+        $allowedValues = $this->getActionAllowableValues();
+        if (!in_array($action, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'action', must be one of '%s'",
+                    $action,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['action'] = $action;
+
+        return $this;
+    }
+
+    /**
+     * Gets body_text
+     *
+     * @return string|null
+     */
+    public function getBodyText()
+    {
+        return $this->container['body_text'];
+    }
+
+    /**
+     * Sets body_text
+     *
+     * @param string|null $body_text Body text shown with the consent prompt (send_call_permission_request only).
+     *
+     * @return self
+     */
+    public function setBodyText($body_text)
+    {
+        if (is_null($body_text)) {
+            throw new \InvalidArgumentException('non-nullable body_text cannot be null');
+        }
+        if ((mb_strlen($body_text) > 1024)) {
+            throw new \InvalidArgumentException('invalid length for $body_text when calling InitiateWhatsAppCallRequest., must be smaller than or equal to 1024.');
+        }
+
+        $this->container['body_text'] = $body_text;
 
         return $this;
     }

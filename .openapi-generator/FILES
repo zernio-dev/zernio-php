@@ -2475,12 +2475,3 @@ lib/Model/YouTubeScopeMissingResponse.php
 lib/Model/YouTubeScopeMissingResponseScopeStatus.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/BlockWhatsAppUsers200ResponseBlockedInnerTest.php
-test/Model/BlockWhatsAppUsers200ResponseFailedInnerTest.php
-test/Model/BlockWhatsAppUsers200ResponseTest.php
-test/Model/BlockWhatsAppUsersRequestTest.php
-test/Model/GetWhatsAppBlockedUsers200ResponseBlockedUsersInnerTest.php
-test/Model/GetWhatsAppBlockedUsers200ResponseTest.php
-test/Model/SendInboxMessageRequestInteractiveActionOneOf3Test.php
-test/Model/UnblockWhatsAppUsers200ResponseTest.php
-test/Model/UnblockWhatsAppUsersRequestTest.php
