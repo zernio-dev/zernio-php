@@ -66,7 +66,9 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
         'view_through_attribution_window_size' => 'int',
         'value_type' => 'string',
         'value' => '\Zernio\Model\CreateConversionDestinationRequestValue',
-        'auto_association_type' => 'string'
+        'auto_association_type' => 'string',
+        'counting_type' => 'string',
+        'primary_for_goal' => 'bool'
     ];
 
     /**
@@ -85,7 +87,9 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
         'view_through_attribution_window_size' => null,
         'value_type' => null,
         'value' => null,
-        'auto_association_type' => null
+        'auto_association_type' => null,
+        'counting_type' => null,
+        'primary_for_goal' => null
     ];
 
     /**
@@ -102,7 +106,9 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
         'view_through_attribution_window_size' => false,
         'value_type' => false,
         'value' => false,
-        'auto_association_type' => false
+        'auto_association_type' => false,
+        'counting_type' => false,
+        'primary_for_goal' => false
     ];
 
     /**
@@ -199,7 +205,9 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
         'view_through_attribution_window_size' => 'viewThroughAttributionWindowSize',
         'value_type' => 'valueType',
         'value' => 'value',
-        'auto_association_type' => 'autoAssociationType'
+        'auto_association_type' => 'autoAssociationType',
+        'counting_type' => 'countingType',
+        'primary_for_goal' => 'primaryForGoal'
     ];
 
     /**
@@ -216,7 +224,9 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
         'view_through_attribution_window_size' => 'setViewThroughAttributionWindowSize',
         'value_type' => 'setValueType',
         'value' => 'setValue',
-        'auto_association_type' => 'setAutoAssociationType'
+        'auto_association_type' => 'setAutoAssociationType',
+        'counting_type' => 'setCountingType',
+        'primary_for_goal' => 'setPrimaryForGoal'
     ];
 
     /**
@@ -233,7 +243,9 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
         'view_through_attribution_window_size' => 'getViewThroughAttributionWindowSize',
         'value_type' => 'getValueType',
         'value' => 'getValue',
-        'auto_association_type' => 'getAutoAssociationType'
+        'auto_association_type' => 'getAutoAssociationType',
+        'counting_type' => 'getCountingType',
+        'primary_for_goal' => 'getPrimaryForGoal'
     ];
 
     /**
@@ -295,6 +307,8 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
     public const AUTO_ASSOCIATION_TYPE_ALL_CAMPAIGNS = 'ALL_CAMPAIGNS';
     public const AUTO_ASSOCIATION_TYPE_OBJECTIVE_BASED = 'OBJECTIVE_BASED';
     public const AUTO_ASSOCIATION_TYPE_NONE = 'NONE';
+    public const COUNTING_TYPE_MANY_PER_CLICK = 'MANY_PER_CLICK';
+    public const COUNTING_TYPE_ONE_PER_CLICK = 'ONE_PER_CLICK';
 
     /**
      * Gets allowable values of the enum
@@ -370,6 +384,19 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
     }
 
     /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCountingTypeAllowableValues()
+    {
+        return [
+            self::COUNTING_TYPE_MANY_PER_CLICK,
+            self::COUNTING_TYPE_ONE_PER_CLICK,
+        ];
+    }
+
+    /**
      * Associative array for storing property values
      *
      * @var mixed[]
@@ -393,6 +420,8 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
         $this->setIfExists('value_type', $data ?? [], null);
         $this->setIfExists('value', $data ?? [], null);
         $this->setIfExists('auto_association_type', $data ?? [], 'ALL_CAMPAIGNS');
+        $this->setIfExists('counting_type', $data ?? [], null);
+        $this->setIfExists('primary_for_goal', $data ?? [], null);
     }
 
     /**
@@ -480,6 +509,15 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
             );
         }
 
+        $allowedValues = $this->getCountingTypeAllowableValues();
+        if (!is_null($this->container['counting_type']) && !in_array($this->container['counting_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'counting_type', must be one of '%s'",
+                $this->container['counting_type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -508,7 +546,7 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets ad_account_id
      *
-     * @param string $ad_account_id Sponsored ad account ID. Numeric (e.g. \"5123456\") or full `urn:li:sponsoredAccount:{id}` URN.
+     * @param string $ad_account_id Ad account ID. For LinkedIn: numeric (e.g. \"5123456\") or full `urn:li:sponsoredAccount:{id}` URN. For Google: numeric customer ID (e.g. \"1234567890\") or `customers/{id}` form.
      *
      * @return self
      */
@@ -566,7 +604,7 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets type
      *
-     * @param string $type Either a unified standard event name (e.g. \"Purchase\", \"Lead\", \"AddToCart\") or a LinkedIn rule type enum value (e.g. \"PURCHASE\", \"QUALIFIED_LEAD\"). The API maps standard names to LinkedIn enum values automatically.
+     * @param string $type Conversion type. For LinkedIn: a unified standard event name (e.g. \"Purchase\", \"Lead\", \"AddToCart\") or a LinkedIn rule type enum (e.g. \"PURCHASE\", \"QUALIFIED_LEAD\"). For Google: a unified standard event name (Purchase, Subscribe, CompleteRegistration, Lead, Schedule) or a Google ConversionActionCategory enum value directly (e.g. \"PURCHASE\", \"SUBSCRIBE_PAID\", \"SIGNUP\", \"IMPORTED_LEAD\", \"BOOK_APPOINTMENT\"). Unknown values pass through to the platform.
      *
      * @return self
      */
@@ -593,7 +631,7 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets attribution_type
      *
-     * @param string|null $attribution_type attribution_type
+     * @param string|null $attribution_type LinkedIn only.
      *
      * @return self
      */
@@ -630,7 +668,7 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets post_click_attribution_window_size
      *
-     * @param int|null $post_click_attribution_window_size Default 30. 365 only allowed for LEAD, PURCHASE, ADD_TO_CART, QUALIFIED_LEAD, SUBMIT_APPLICATION rule types — the API rejects other combinations locally.
+     * @param int|null $post_click_attribution_window_size LinkedIn only. Default 30. 365 only allowed for LEAD, PURCHASE, ADD_TO_CART, QUALIFIED_LEAD, SUBMIT_APPLICATION rule types; the API rejects other combinations locally.
      *
      * @return self
      */
@@ -667,7 +705,7 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets view_through_attribution_window_size
      *
-     * @param int|null $view_through_attribution_window_size Default 7. Same 365-day-window type restriction applies as `postClickAttributionWindowSize`.
+     * @param int|null $view_through_attribution_window_size LinkedIn only. Default 7. Same 365-day-window type restriction applies as `postClickAttributionWindowSize`.
      *
      * @return self
      */
@@ -704,7 +742,7 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets value_type
      *
-     * @param string|null $value_type DYNAMIC (default) uses the per-event `value` from `sendConversions`. FIXED uses the rule's `value` field. NO_VALUE drops monetary value entirely.
+     * @param string|null $value_type LinkedIn only. DYNAMIC (default) uses the per-event `value` from `sendConversions`. FIXED uses the rule's `value` field. NO_VALUE drops monetary value entirely.
      *
      * @return self
      */
@@ -768,7 +806,7 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
     /**
      * Sets auto_association_type
      *
-     * @param string|null $auto_association_type Controls campaign association at rule-creation time: - ALL_CAMPAIGNS: associate the rule with every active,   paused, and draft campaign in the ad account - OBJECTIVE_BASED: associate only campaigns whose   objective matches the rule's type - NONE: don't auto-associate. Manage associations via   the `/associations` endpoints below. Note: auto-association runs once at create time; new campaigns added after the rule still need explicit association.
+     * @param string|null $auto_association_type LinkedIn only. Controls campaign association at rule-creation time: - ALL_CAMPAIGNS: associate the rule with every active,   paused, and draft campaign in the ad account - OBJECTIVE_BASED: associate only campaigns whose   objective matches the rule's type - NONE: don't auto-associate. Manage associations via   the `/associations` endpoints below. Note: auto-association runs once at create time; new campaigns added after the rule still need explicit association.
      *
      * @return self
      */
@@ -788,6 +826,70 @@ class CreateConversionDestinationRequest implements ModelInterface, ArrayAccess,
             );
         }
         $this->container['auto_association_type'] = $auto_association_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets counting_type
+     *
+     * @return string|null
+     */
+    public function getCountingType()
+    {
+        return $this->container['counting_type'];
+    }
+
+    /**
+     * Sets counting_type
+     *
+     * @param string|null $counting_type Google Ads only. Whether to count multiple conversions from the same click (MANY_PER_CLICK) or at most one (ONE_PER_CLICK). Defaults to MANY_PER_CLICK if omitted.
+     *
+     * @return self
+     */
+    public function setCountingType($counting_type)
+    {
+        if (is_null($counting_type)) {
+            throw new \InvalidArgumentException('non-nullable counting_type cannot be null');
+        }
+        $allowedValues = $this->getCountingTypeAllowableValues();
+        if (!in_array($counting_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'counting_type', must be one of '%s'",
+                    $counting_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['counting_type'] = $counting_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets primary_for_goal
+     *
+     * @return bool|null
+     */
+    public function getPrimaryForGoal()
+    {
+        return $this->container['primary_for_goal'];
+    }
+
+    /**
+     * Sets primary_for_goal
+     *
+     * @param bool|null $primary_for_goal Google Ads only. When true, the conversion action is marked as primary and immediately influences Smart Bidding. Defaults to false (secondary, record-only) to avoid unintentionally steering the customer's campaigns on creation.
+     *
+     * @return self
+     */
+    public function setPrimaryForGoal($primary_for_goal)
+    {
+        if (is_null($primary_for_goal)) {
+            throw new \InvalidArgumentException('non-nullable primary_for_goal cannot be null');
+        }
+        $this->container['primary_for_goal'] = $primary_for_goal;
 
         return $this;
     }

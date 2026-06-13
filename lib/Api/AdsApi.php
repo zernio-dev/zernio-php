@@ -1445,9 +1445,9 @@ class AdsApi
     /**
      * Operation createConversionDestination
      *
-     * Create a conversion destination (LinkedIn)
+     * Create a conversion destination (LinkedIn, Google Ads)
      *
-     * @param  string $account_id SocialAccount ID (linkedinads). (required)
+     * @param  string $account_id SocialAccount ID (linkedinads or googleads). (required)
      * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request create_conversion_destination_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionDestination'] to see the possible values for this operation
      *
@@ -1464,9 +1464,9 @@ class AdsApi
     /**
      * Operation createConversionDestinationWithHttpInfo
      *
-     * Create a conversion destination (LinkedIn)
+     * Create a conversion destination (LinkedIn, Google Ads)
      *
-     * @param  string $account_id SocialAccount ID (linkedinads). (required)
+     * @param  string $account_id SocialAccount ID (linkedinads or googleads). (required)
      * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionDestination'] to see the possible values for this operation
      *
@@ -1564,9 +1564,9 @@ class AdsApi
     /**
      * Operation createConversionDestinationAsync
      *
-     * Create a conversion destination (LinkedIn)
+     * Create a conversion destination (LinkedIn, Google Ads)
      *
-     * @param  string $account_id SocialAccount ID (linkedinads). (required)
+     * @param  string $account_id SocialAccount ID (linkedinads or googleads). (required)
      * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionDestination'] to see the possible values for this operation
      *
@@ -1586,9 +1586,9 @@ class AdsApi
     /**
      * Operation createConversionDestinationAsyncWithHttpInfo
      *
-     * Create a conversion destination (LinkedIn)
+     * Create a conversion destination (LinkedIn, Google Ads)
      *
-     * @param  string $account_id SocialAccount ID (linkedinads). (required)
+     * @param  string $account_id SocialAccount ID (linkedinads or googleads). (required)
      * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionDestination'] to see the possible values for this operation
      *
@@ -1639,7 +1639,7 @@ class AdsApi
     /**
      * Create request for operation 'createConversionDestination'
      *
-     * @param  string $account_id SocialAccount ID (linkedinads). (required)
+     * @param  string $account_id SocialAccount ID (linkedinads or googleads). (required)
      * @param  \Zernio\Model\CreateConversionDestinationRequest $create_conversion_destination_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createConversionDestination'] to see the possible values for this operation
      *
@@ -5078,7 +5078,7 @@ class AdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetConversionDestination200Response|\Zernio\Model\InlineObject
      */
     public function getConversionDestination($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['getConversionDestination'][0])
     {
@@ -5098,7 +5098,7 @@ class AdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetConversionDestination200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function getConversionDestinationWithHttpInfo($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['getConversionDestination'][0])
     {
@@ -5130,7 +5130,7 @@ class AdsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\CreateConversionDestination201Response',
+                        '\Zernio\Model\GetConversionDestination200Response',
                         $request,
                         $response,
                     );
@@ -5158,7 +5158,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\CreateConversionDestination201Response',
+                '\Zernio\Model\GetConversionDestination200Response',
                 $request,
                 $response,
             );
@@ -5167,7 +5167,7 @@ class AdsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\CreateConversionDestination201Response',
+                        '\Zernio\Model\GetConversionDestination200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5225,7 +5225,7 @@ class AdsApi
      */
     public function getConversionDestinationAsyncWithHttpInfo($account_id, $destination_id, $ad_account_id, string $contentType = self::contentTypes['getConversionDestination'][0])
     {
-        $returnType = '\Zernio\Model\CreateConversionDestination201Response';
+        $returnType = '\Zernio\Model\GetConversionDestination200Response';
         $request = $this->getConversionDestinationRequest($account_id, $destination_id, $ad_account_id, $contentType);
 
         return $this->client
@@ -12214,7 +12214,7 @@ class AdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject
+     * @return \Zernio\Model\GetConversionDestination200Response|\Zernio\Model\InlineObject
      */
     public function updateConversionDestination($account_id, $destination_id, $update_conversion_destination_request, string $contentType = self::contentTypes['updateConversionDestination'][0])
     {
@@ -12234,7 +12234,7 @@ class AdsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\CreateConversionDestination201Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\GetConversionDestination200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateConversionDestinationWithHttpInfo($account_id, $destination_id, $update_conversion_destination_request, string $contentType = self::contentTypes['updateConversionDestination'][0])
     {
@@ -12266,7 +12266,7 @@ class AdsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\CreateConversionDestination201Response',
+                        '\Zernio\Model\GetConversionDestination200Response',
                         $request,
                         $response,
                     );
@@ -12294,7 +12294,7 @@ class AdsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\CreateConversionDestination201Response',
+                '\Zernio\Model\GetConversionDestination200Response',
                 $request,
                 $response,
             );
@@ -12303,7 +12303,7 @@ class AdsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\CreateConversionDestination201Response',
+                        '\Zernio\Model\GetConversionDestination200Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -12361,7 +12361,7 @@ class AdsApi
      */
     public function updateConversionDestinationAsyncWithHttpInfo($account_id, $destination_id, $update_conversion_destination_request, string $contentType = self::contentTypes['updateConversionDestination'][0])
     {
-        $returnType = '\Zernio\Model\CreateConversionDestination201Response';
+        $returnType = '\Zernio\Model\GetConversionDestination200Response';
         $request = $this->updateConversionDestinationRequest($account_id, $destination_id, $update_conversion_destination_request, $contentType);
 
         return $this->client

@@ -383,6 +383,7 @@ docs/Model/GetContactChannels200Response.md
 docs/Model/GetContactChannels200ResponseChannelsInner.md
 docs/Model/GetContentDecay200Response.md
 docs/Model/GetContentDecay200ResponseBucketsInner.md
+docs/Model/GetConversionDestination200Response.md
 docs/Model/GetConversionMetrics200Response.md
 docs/Model/GetConversionMetrics200ResponseRowsInner.md
 docs/Model/GetConversionMetrics200ResponseRowsInnerMetricsValue.md
@@ -1628,6 +1629,7 @@ lib/Model/GetContactChannels200Response.php
 lib/Model/GetContactChannels200ResponseChannelsInner.php
 lib/Model/GetContentDecay200Response.php
 lib/Model/GetContentDecay200ResponseBucketsInner.php
+lib/Model/GetConversionDestination200Response.php
 lib/Model/GetConversionMetrics200Response.php
 lib/Model/GetConversionMetrics200ResponseRowsInner.php
 lib/Model/GetConversionMetrics200ResponseRowsInnerMetricsValue.php
@@ -2491,4 +2493,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetWhatsAppNumberKycForm200ResponseReusableOptionsInnerTest.php
+test/Model/GetConversionDestination200ResponseTest.php

@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * CreateConversionDestinationRequestValue Class Doc Comment
  *
  * @category Class
- * @description Static conversion value. Used when &#x60;valueType&#x3D;FIXED&#x60;. The currency should match the ad account&#39;s currency.
+ * @description LinkedIn only. Static conversion value. Used when &#x60;valueType&#x3D;FIXED&#x60;. The currency should match the ad account&#39;s currency.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateConversionDestination201Response
+ * GetConversionDestination200Response
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * CreateConversionDestination201Response Class Doc Comment
+ * GetConversionDestination200Response Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateConversionDestination201Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetConversionDestination200Response implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class CreateConversionDestination201Response implements ModelInterface, ArrayAcc
       *
       * @var string
       */
-    protected static $openAPIModelName = 'createConversionDestination_201_response';
+    protected static $openAPIModelName = 'getConversionDestination_200_response';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -236,7 +236,6 @@ class CreateConversionDestination201Response implements ModelInterface, ArrayAcc
     }
 
     public const PLATFORM_LINKEDINADS = 'linkedinads';
-    public const PLATFORM_GOOGLEADS = 'googleads';
 
     /**
      * Gets allowable values of the enum
@@ -247,7 +246,6 @@ class CreateConversionDestination201Response implements ModelInterface, ArrayAcc
     {
         return [
             self::PLATFORM_LINKEDINADS,
-            self::PLATFORM_GOOGLEADS,
         ];
     }
 

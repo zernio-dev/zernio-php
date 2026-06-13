@@ -10,7 +10,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**adjustConversions()**](AdsApi.md#adjustConversions) | **POST** /v1/ads/conversions/adjustments | Adjust already-uploaded conversions (Google only) |
 | [**archiveLeadForm()**](AdsApi.md#archiveLeadForm) | **DELETE** /v1/ads/lead-forms/{formId} | Archive a Lead Gen form |
 | [**boostPost()**](AdsApi.md#boostPost) | **POST** /v1/ads/boost | Boost post as ad |
-| [**createConversionDestination()**](AdsApi.md#createConversionDestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination (LinkedIn) |
+| [**createConversionDestination()**](AdsApi.md#createConversionDestination) | **POST** /v1/accounts/{accountId}/conversion-destinations | Create a conversion destination (LinkedIn, Google Ads) |
 | [**createCtwaAd()**](AdsApi.md#createCtwaAd) | **POST** /v1/ads/ctwa | Create Click-to-WhatsApp ad(s) |
 | [**createLeadForm()**](AdsApi.md#createLeadForm) | **POST** /v1/ads/lead-forms | Create a Lead Gen (Instant) form |
 | [**createStandaloneAd()**](AdsApi.md#createStandaloneAd) | **POST** /v1/ads/create | Create standalone ad |
@@ -299,9 +299,9 @@ try {
 createConversionDestination($account_id, $create_conversion_destination_request): \Zernio\Model\CreateConversionDestination201Response
 ```
 
-Create a conversion destination (LinkedIn)
+Create a conversion destination (LinkedIn, Google Ads)
 
-Create a new conversion rule on the platform. LinkedIn-only today; other platforms manage destinations in their own UIs and return 405.  For LinkedIn, the rule is created with `conversionMethod=CONVERSIONS_API` and (by default) auto-associated with all of the ad account's campaigns via `autoAssociationType=ALL_CAMPAIGNS`. Pass `autoAssociationType: NONE` to opt out and manage associations explicitly via the associations endpoints below.  365-day attribution windows are only valid for `SUBMIT_APPLICATION`, `PURCHASE`, `ADD_TO_CART`, `QUALIFIED_LEAD`, and `LEAD` rule types; the API rejects other combinations locally.
+Create a new conversion destination on the platform. Supported for LinkedIn (conversion rule) and Google Ads (conversion action). Meta manages destinations in its own UI and returns 405.  **WARNING: creation is NOT idempotent.** A retry creates a second destination. Deduplicate before retrying.  **LinkedIn:** the rule is created with `conversionMethod=CONVERSIONS_API` and (by default) auto-associated with all of the ad account's campaigns via `autoAssociationType=ALL_CAMPAIGNS`. Pass `autoAssociationType: NONE` to opt out and manage associations explicitly via the associations endpoints below.  365-day attribution windows are only valid for `SUBMIT_APPLICATION`, `PURCHASE`, `ADD_TO_CART`, `QUALIFIED_LEAD`, and `LEAD` rule types; the API rejects other combinations locally.  **Google Ads:** the conversion action is created with `type=UPLOAD_CLICKS` (required for API-uploaded offline conversions, immutable after creation). The `type` field carries the Google `ConversionActionCategory` enum value, e.g. `PURCHASE`, `SUBSCRIBE_PAID`, `SIGNUP`, `IMPORTED_LEAD`, `BOOK_APPOINTMENT`. Unified standard event names (e.g. `Purchase`, `Subscribe`, `CompleteRegistration`, `Lead`, `Schedule`) are resolved to their Google category equivalents automatically. The action defaults to secondary (non-primary) to avoid immediately steering Smart Bidding; pass `primaryForGoal: true` to opt in.
 
 ### Example
 
@@ -320,7 +320,7 @@ $apiInstance = new Zernio\Api\AdsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | SocialAccount ID (linkedinads).
+$account_id = 'account_id_example'; // string | SocialAccount ID (linkedinads or googleads).
 $create_conversion_destination_request = new \Zernio\Model\CreateConversionDestinationRequest(); // \Zernio\Model\CreateConversionDestinationRequest
 
 try {
@@ -335,7 +335,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **account_id** | **string**| SocialAccount ID (linkedinads). | |
+| **account_id** | **string**| SocialAccount ID (linkedinads or googleads). | |
 | **create_conversion_destination_request** | [**\Zernio\Model\CreateConversionDestinationRequest**](../Model/CreateConversionDestinationRequest.md)|  | |
 
 ### Return type
@@ -1037,7 +1037,7 @@ try {
 ## `getConversionDestination()`
 
 ```php
-getConversionDestination($account_id, $destination_id, $ad_account_id): \Zernio\Model\CreateConversionDestination201Response
+getConversionDestination($account_id, $destination_id, $ad_account_id): \Zernio\Model\GetConversionDestination200Response
 ```
 
 Fetch a single conversion destination
@@ -1083,7 +1083,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\CreateConversionDestination201Response**](../Model/CreateConversionDestination201Response.md)
+[**\Zernio\Model\GetConversionDestination200Response**](../Model/GetConversionDestination200Response.md)
 
 ### Authorization
 
@@ -2454,7 +2454,7 @@ void (empty response body)
 ## `updateConversionDestination()`
 
 ```php
-updateConversionDestination($account_id, $destination_id, $update_conversion_destination_request): \Zernio\Model\CreateConversionDestination201Response
+updateConversionDestination($account_id, $destination_id, $update_conversion_destination_request): \Zernio\Model\GetConversionDestination200Response
 ```
 
 Update a conversion destination
@@ -2500,7 +2500,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\CreateConversionDestination201Response**](../Model/CreateConversionDestination201Response.md)
+[**\Zernio\Model\GetConversionDestination200Response**](../Model/GetConversionDestination200Response.md)
 
 ### Authorization
 
