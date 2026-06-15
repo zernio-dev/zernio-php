@@ -1061,7 +1061,8 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination — pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
+     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). Affects only the spend/impression numbers overlaid on each node, NOT which campaigns are returned. Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
@@ -1070,9 +1071,9 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \Zernio\Model\GetAdTree200Response|\Zernio\Model\InlineObject
      */
-    public function getAdTree($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTree($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
     {
-        list($response) = $this->getAdTreeWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $sort, $contentType);
+        list($response) = $this->getAdTreeWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $campaign_id, $from_date, $to_date, $sort, $contentType);
         return $response;
     }
 
@@ -1089,7 +1090,8 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination — pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
+     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). Affects only the spend/impression numbers overlaid on each node, NOT which campaigns are returned. Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
@@ -1098,9 +1100,9 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return array of \Zernio\Model\GetAdTree200Response|\Zernio\Model\InlineObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAdTreeWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
     {
-        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $sort, $contentType);
+        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $campaign_id, $from_date, $to_date, $sort, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1198,7 +1200,8 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination — pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
+     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). Affects only the spend/impression numbers overlaid on each node, NOT which campaigns are returned. Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
@@ -1206,9 +1209,9 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdTreeAsync($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeAsync($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
     {
-        return $this->getAdTreeAsyncWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $sort, $contentType)
+        return $this->getAdTreeAsyncWithHttpInfo($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $campaign_id, $from_date, $to_date, $sort, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1229,7 +1232,8 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination — pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
+     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). Affects only the spend/impression numbers overlaid on each node, NOT which campaigns are returned. Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
@@ -1237,10 +1241,10 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAdTreeAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeAsyncWithHttpInfo($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
     {
         $returnType = '\Zernio\Model\GetAdTree200Response';
-        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $from_date, $to_date, $sort, $contentType);
+        $request = $this->getAdTreeRequest($page, $limit, $source, $platform, $status, $ad_account_id, $account_id, $profile_id, $campaign_id, $from_date, $to_date, $sort, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1289,7 +1293,8 @@ class AdCampaignsApi
      * @param  string|null $ad_account_id Platform ad account ID (optional)
      * @param  string|null $account_id Social account ID (optional)
      * @param  string|null $profile_id Profile ID (optional)
-     * @param  \DateTime|null $from_date Start of metrics date range (YYYY-MM-DD). Defaults to 90 days ago. (optional)
+     * @param  string|null $campaign_id Restrict the tree to a single campaign by its platform campaign id (the id the platform assigns, e.g. Meta&#39;s numeric campaign id). Filters the campaign set itself, so it works regardless of account size and pagination — pass this when you already hold a campaign id instead of paging the tree to find it. Mirrors the &#x60;campaignId&#x60; filter on GET /v1/ads. (optional)
+     * @param  \DateTime|null $from_date Start of the METRICS date range (YYYY-MM-DD). Affects only the spend/impression numbers overlaid on each node, NOT which campaigns are returned. Defaults to 90 days ago. (optional)
      * @param  \DateTime|null $to_date End of metrics date range (YYYY-MM-DD). Defaults to today. Max 730-day range. (optional)
      * @param  string|null $sort Campaign-level sort order. &#x60;newest&#x60; (default) / &#x60;oldest&#x60; order by the campaign&#39;s newest-ad createdAt. &#x60;spend_desc&#x60; / &#x60;spend_asc&#x60; order by aggregated spend in the requested date range; campaigns with no spend land at the end. (optional, default to 'newest')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAdTree'] to see the possible values for this operation
@@ -1297,7 +1302,7 @@ class AdCampaignsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAdTreeRequest($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
+    public function getAdTreeRequest($page = 1, $limit = 20, $source = 'all', $platform = null, $status = null, $ad_account_id = null, $account_id = null, $profile_id = null, $campaign_id = null, $from_date = null, $to_date = null, $sort = 'newest', string $contentType = self::contentTypes['getAdTree'][0])
     {
 
         if ($page !== null && $page < 1) {
@@ -1311,6 +1316,7 @@ class AdCampaignsApi
             throw new \InvalidArgumentException('invalid value for "$limit" when calling AdCampaignsApi.getAdTree, must be bigger than or equal to 1.');
         }
         
+
 
 
 
@@ -1395,6 +1401,15 @@ class AdCampaignsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $profile_id,
             'profileId', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $campaign_id,
+            'campaignId', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

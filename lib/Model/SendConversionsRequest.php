@@ -344,7 +344,7 @@ class SendConversionsRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets account_id
      *
-     * @param string $account_id SocialAccount ID (metaads, googleads, or linkedinads).
+     * @param string $account_id SocialAccount ID (metaads, googleads, linkedinads, or tiktokads).
      *
      * @return self
      */
