@@ -564,7 +564,7 @@ class GetWhatsAppPhoneNumbers200ResponseNumbersInner implements ModelInterface, 
     /**
      * Sets registrant_name
      *
-     * @param string|null $registrant_name For regulated numbers
+     * @param string|null $registrant_name For regulated numbers, who it's registered for (company or person) — set from the submitted KYC.
      *
      * @return self
      */

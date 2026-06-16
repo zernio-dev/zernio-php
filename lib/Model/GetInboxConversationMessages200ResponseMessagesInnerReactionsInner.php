@@ -344,7 +344,7 @@ class GetInboxConversationMessages200ResponseMessagesInnerReactionsInner impleme
     /**
      * Sets from_me
      *
-     * @param bool|null $from_me true if the connected account reacted
+     * @param bool|null $from_me true if the connected account reacted, false if the contact did.
      *
      * @return self
      */

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | Field name (max 256 chars) |
-**value** | **string** | Field value (max 1 |
+**value** | **string** | Field value (max 1,024 chars) |
 **inline** | **bool** | Display fields side-by-side | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -337,7 +337,7 @@ class BatchGetGoogleBusinessReviews200ResponseLocationReviewsInner implements Mo
     /**
      * Sets review
      *
-     * @param object|null $review The review object (reviewId
+     * @param object|null $review The review object (reviewId, starRating, comment, reviewer, createTime, updateTime, reviewReply)
      *
      * @return self
      */

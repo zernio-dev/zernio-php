@@ -310,7 +310,7 @@ class DiscordPlatformDataEmbedsInnerFooter implements ModelInterface, ArrayAcces
     /**
      * Sets text
      *
-     * @param string|null $text Footer text (max 2
+     * @param string|null $text Footer text (max 2,048 chars)
      *
      * @return self
      */

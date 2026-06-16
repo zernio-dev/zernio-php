@@ -439,7 +439,7 @@ class ValidateWhatsAppNumberKycAddressRequest implements ModelInterface, ArrayAc
     /**
      * Sets administrative_area
      *
-     * @param string|null $administrative_area State / province / region. When omitted
+     * @param string|null $administrative_area State / province / region. When omitted, the pre-check is skipped (the final submit still validates).
      *
      * @return self
      */

@@ -344,7 +344,7 @@ class ConfigureTikTokAdsBrandIdentity200Response implements ModelInterface, Arra
     /**
      * Sets identity_id
      *
-     * @param string|null $identity_id The TikTok-assigned identity_id
+     * @param string|null $identity_id The TikTok-assigned identity_id, cached on the account.
      *
      * @return self
      */

@@ -510,7 +510,7 @@ class GetInboxPostComments200ResponsePost implements ModelInterface, ArrayAccess
     /**
      * Sets author
      *
-     * @param string|null $author Reddit username
+     * @param string|null $author Reddit username, without the u/ prefix
      *
      * @return self
      */
@@ -537,7 +537,7 @@ class GetInboxPostComments200ResponsePost implements ModelInterface, ArrayAccess
     /**
      * Sets subreddit
      *
-     * @param string|null $subreddit Subreddit name
+     * @param string|null $subreddit Subreddit name, without the r/ prefix
      *
      * @return self
      */
@@ -591,7 +591,7 @@ class GetInboxPostComments200ResponsePost implements ModelInterface, ArrayAccess
     /**
      * Sets url
      *
-     * @param string|null $url For link posts
+     * @param string|null $url For link posts, the external URL; for self-posts, the Reddit permalink
      *
      * @return self
      */

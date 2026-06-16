@@ -318,7 +318,7 @@ class GetGoogleBusinessVerifications200ResponseVoiceOfMerchantState implements M
     /**
      * Sets has_voice_of_merchant
      *
-     * @param bool|null $has_voice_of_merchant True when the listing is verified and published (eligible to surface reviews
+     * @param bool|null $has_voice_of_merchant True when the listing is verified and published (eligible to surface reviews, edits, etc.).
      *
      * @return self
      */

@@ -372,7 +372,7 @@ class TriggerWorkflowRequest implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets text
      *
-     * @param string|null $text Simulated inbound text
+     * @param string|null $text Simulated inbound text, seeded as the run's lastMessage variable
      *
      * @return self
      */

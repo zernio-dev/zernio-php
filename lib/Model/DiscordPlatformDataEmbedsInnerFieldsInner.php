@@ -350,7 +350,7 @@ class DiscordPlatformDataEmbedsInnerFieldsInner implements ModelInterface, Array
     /**
      * Sets value
      *
-     * @param string $value Field value (max 1
+     * @param string $value Field value (max 1,024 chars)
      *
      * @return self
      */

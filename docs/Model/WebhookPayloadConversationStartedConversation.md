@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **id** | **string** | Internal conversation ID |
 **platform** | **string** |  |
 **platform_conversation_id** | **string** |  |
-**participant_id** | **string** | Contact&#39;s platform identifier (IGSID | [optional]
+**participant_id** | **string** | Contact&#39;s platform identifier (IGSID, PSID, wa_id, etc.) | [optional]
 **participant_name** | **string** |  |
 **participant_username** | **string** | Contact&#39;s handle when the platform exposes one | [optional]
 **participant_picture** | **string** |  | [optional]

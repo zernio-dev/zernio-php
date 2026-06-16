@@ -480,7 +480,7 @@ class ListWorkflowVersions200ResponseVersionsInner implements ModelInterface, Ar
     /**
      * Sets restored_from_version
      *
-     * @param int|null $restored_from_version When non-null
+     * @param int|null $restored_from_version When non-null, this snapshot was created by restoring that version
      *
      * @return self
      */

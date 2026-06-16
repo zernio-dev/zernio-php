@@ -425,7 +425,7 @@ class EnableWhatsAppCallingRequest implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets sip_auth_password
      *
-     * @param string|null $sip_auth_password Stored encrypted
+     * @param string|null $sip_auth_password Stored encrypted, never returned by any endpoint.
      *
      * @return self
      */

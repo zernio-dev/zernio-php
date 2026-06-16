@@ -294,7 +294,7 @@ $apiInstance = new Zernio\Api\WhatsAppCallingApi(
     $config
 );
 $account_id = 'account_id_example'; // string
-$to = 'to_example'; // string | Consumer wa_id (E.164
+$to = 'to_example'; // string | Consumer wa_id (E.164, leading + optional)
 
 try {
     $result = $apiInstance->getWhatsAppCallPermissions($account_id, $to);
@@ -309,7 +309,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **account_id** | **string**|  | |
-| **to** | **string**| Consumer wa_id (E.164 | |
+| **to** | **string**| Consumer wa_id (E.164, leading + optional) | |
 
 ### Return type
 

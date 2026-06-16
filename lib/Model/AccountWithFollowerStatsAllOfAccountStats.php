@@ -428,7 +428,7 @@ class AccountWithFollowerStatsAllOfAccountStats implements ModelInterface, Array
     /**
      * Sets video_count
      *
-     * @param float|null $video_count Total videos (YouTube
+     * @param float|null $video_count Total videos (YouTube, TikTok)
      *
      * @return self
      */

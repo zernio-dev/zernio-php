@@ -375,7 +375,7 @@ class SharedAdAccount implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets business_id
      *
-     * @param string|null $business_id Business Manager id that owns the ad account
+     * @param string|null $business_id Business Manager id that owns the ad account, when reported.
      *
      * @return self
      */

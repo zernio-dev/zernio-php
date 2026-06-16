@@ -544,7 +544,7 @@ class RedditPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets url
      *
-     * @param string|null $url Post URL (may be a gallery URL
+     * @param string|null $url Post URL (may be a gallery URL, external link, or self-post URL)
      *
      * @return self
      */

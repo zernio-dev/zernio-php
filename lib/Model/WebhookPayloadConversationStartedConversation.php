@@ -523,7 +523,7 @@ class WebhookPayloadConversationStartedConversation implements ModelInterface, A
     /**
      * Sets participant_id
      *
-     * @param string|null $participant_id Contact's platform identifier (IGSID
+     * @param string|null $participant_id Contact's platform identifier (IGSID, PSID, wa_id, etc.)
      *
      * @return self
      */

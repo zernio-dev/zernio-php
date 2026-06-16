@@ -733,7 +733,7 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     /**
      * Sets can_hide
      *
-     * @param bool|null $can_hide Whether this comment can be hidden (Facebook
+     * @param bool|null $can_hide Whether this comment can be hidden (Facebook, Instagram, Threads)
      *
      * @return self
      */
@@ -760,7 +760,7 @@ class GetInboxPostComments200ResponseCommentsInner implements ModelInterface, Ar
     /**
      * Sets can_like
      *
-     * @param bool|null $can_like Whether this comment can be liked (Facebook
+     * @param bool|null $can_like Whether this comment can be liked (Facebook, Twitter/X, Bluesky, Reddit)
      *
      * @return self
      */

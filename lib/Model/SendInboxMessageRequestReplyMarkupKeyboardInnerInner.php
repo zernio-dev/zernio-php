@@ -348,7 +348,7 @@ class SendInboxMessageRequestReplyMarkupKeyboardInnerInner implements ModelInter
     /**
      * Sets callback_data
      *
-     * @param string|null $callback_data Callback data (inline_keyboard only
+     * @param string|null $callback_data Callback data (inline_keyboard only, max 64 bytes)
      *
      * @return self
      */

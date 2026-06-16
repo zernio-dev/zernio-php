@@ -408,7 +408,7 @@ class InitiateWhatsAppCallRequest implements ModelInterface, ArrayAccess, \JsonS
     /**
      * Sets to
      *
-     * @param string $to Consumer wa_id (E.164
+     * @param string $to Consumer wa_id (E.164, leading + optional)
      *
      * @return self
      */

@@ -1363,7 +1363,7 @@ class WhatsAppCallingApi
      * Check call permission for a consumer
      *
      * @param  string $account_id account_id (required)
-     * @param  string $to Consumer wa_id (E.164 (required)
+     * @param  string $to Consumer wa_id (E.164, leading + optional) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallPermissions'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1382,7 +1382,7 @@ class WhatsAppCallingApi
      * Check call permission for a consumer
      *
      * @param  string $account_id (required)
-     * @param  string $to Consumer wa_id (E.164 (required)
+     * @param  string $to Consumer wa_id (E.164, leading + optional) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallPermissions'] to see the possible values for this operation
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1482,7 +1482,7 @@ class WhatsAppCallingApi
      * Check call permission for a consumer
      *
      * @param  string $account_id (required)
-     * @param  string $to Consumer wa_id (E.164 (required)
+     * @param  string $to Consumer wa_id (E.164, leading + optional) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallPermissions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1504,7 +1504,7 @@ class WhatsAppCallingApi
      * Check call permission for a consumer
      *
      * @param  string $account_id (required)
-     * @param  string $to Consumer wa_id (E.164 (required)
+     * @param  string $to Consumer wa_id (E.164, leading + optional) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallPermissions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1555,7 +1555,7 @@ class WhatsAppCallingApi
      * Create request for operation 'getWhatsAppCallPermissions'
      *
      * @param  string $account_id (required)
-     * @param  string $to Consumer wa_id (E.164 (required)
+     * @param  string $to Consumer wa_id (E.164, leading + optional) (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getWhatsAppCallPermissions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

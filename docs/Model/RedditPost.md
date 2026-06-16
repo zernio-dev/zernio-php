@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **title** | **string** |  | [optional]
 **author** | **string** |  | [optional]
 **subreddit** | **string** |  | [optional]
-**url** | **string** | Post URL (may be a gallery URL | [optional]
+**url** | **string** | Post URL (may be a gallery URL, external link, or self-post URL) | [optional]
 **permalink** | **string** | Full permalink to the Reddit post | [optional]
 **selftext** | **string** | Self-post body text (empty string for link posts) | [optional]
 **created_utc** | **float** | Unix timestamp of post creation | [optional]
