@@ -87,6 +87,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'document_title' => 'string',
         'organization_urn' => 'string',
         'disable_link_preview' => 'bool',
+        'reshare_url' => 'string',
         'board_id' => 'string',
         'link' => 'string',
         'cover_image_url' => 'string',
@@ -181,6 +182,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'document_title' => null,
         'organization_urn' => null,
         'disable_link_preview' => null,
+        'reshare_url' => null,
         'board_id' => null,
         'link' => 'uri',
         'cover_image_url' => 'uri',
@@ -273,6 +275,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'document_title' => false,
         'organization_urn' => false,
         'disable_link_preview' => false,
+        'reshare_url' => false,
         'board_id' => false,
         'link' => false,
         'cover_image_url' => false,
@@ -445,6 +448,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'document_title' => 'documentTitle',
         'organization_urn' => 'organizationUrn',
         'disable_link_preview' => 'disableLinkPreview',
+        'reshare_url' => 'reshareUrl',
         'board_id' => 'boardId',
         'link' => 'link',
         'cover_image_url' => 'coverImageUrl',
@@ -537,6 +541,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'document_title' => 'setDocumentTitle',
         'organization_urn' => 'setOrganizationUrn',
         'disable_link_preview' => 'setDisableLinkPreview',
+        'reshare_url' => 'setReshareUrl',
         'board_id' => 'setBoardId',
         'link' => 'setLink',
         'cover_image_url' => 'setCoverImageUrl',
@@ -629,6 +634,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'document_title' => 'getDocumentTitle',
         'organization_urn' => 'getOrganizationUrn',
         'disable_link_preview' => 'getDisableLinkPreview',
+        'reshare_url' => 'getReshareUrl',
         'board_id' => 'getBoardId',
         'link' => 'getLink',
         'cover_image_url' => 'getCoverImageUrl',
@@ -891,6 +897,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         $this->setIfExists('document_title', $data ?? [], null);
         $this->setIfExists('organization_urn', $data ?? [], null);
         $this->setIfExists('disable_link_preview', $data ?? [], null);
+        $this->setIfExists('reshare_url', $data ?? [], null);
         $this->setIfExists('board_id', $data ?? [], null);
         $this->setIfExists('link', $data ?? [], null);
         $this->setIfExists('cover_image_url', $data ?? [], null);
@@ -1930,6 +1937,33 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
             throw new \InvalidArgumentException('non-nullable disable_link_preview cannot be null');
         }
         $this->container['disable_link_preview'] = $disable_link_preview;
+
+        return $this;
+    }
+
+    /**
+     * Gets reshare_url
+     *
+     * @return string|null
+     */
+    public function getReshareUrl()
+    {
+        return $this->container['reshare_url'];
+    }
+
+    /**
+     * Sets reshare_url
+     *
+     * @param string|null $reshare_url LinkedIn post link to repost (use the post's \"Copy link to post\" action), or a urn:li:share / urn:li:ugcPost / urn:li:groupPost URN. The published post becomes a quote-reshare: your content is shown as the commentary and the original post is embedded underneath (LinkedIn's \"repost with your thoughts\"). Mutually exclusive with media. Works on personal profiles and organization pages.
+     *
+     * @return self
+     */
+    public function setReshareUrl($reshare_url)
+    {
+        if (is_null($reshare_url)) {
+            throw new \InvalidArgumentException('non-nullable reshare_url cannot be null');
+        }
+        $this->container['reshare_url'] = $reshare_url;
 
         return $this;
     }
