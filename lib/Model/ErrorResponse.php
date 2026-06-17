@@ -36,6 +36,7 @@ use \Zernio\ObjectSerializer;
  * ErrorResponse Class Doc Comment
  *
  * @category Class
+ * @description Canonical error envelope. &#x60;error&#x60; is the human-readable message; &#x60;type&#x60;, &#x60;code&#x60;, &#x60;param&#x60;, &#x60;platform&#x60;, and &#x60;platformError&#x60; are top-level siblings for programmatic handling. For upstream platform failures (&#x60;type: platform_error&#x60;), &#x60;platformError&#x60; carries the provider&#39;s raw payload verbatim (for Meta: &#x60;error_subcode&#x60;, &#x60;error_user_title&#x60;, &#x60;error_user_msg&#x60;).
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,6 +60,11 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'error' => 'string',
+        'type' => 'string',
+        'code' => 'string',
+        'param' => 'string',
+        'platform' => 'string',
+        'platform_error' => 'array<string,mixed>',
         'details' => 'array<string,mixed>'
     ];
 
@@ -71,6 +77,11 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'error' => null,
+        'type' => null,
+        'code' => null,
+        'param' => null,
+        'platform' => null,
+        'platform_error' => null,
         'details' => null
     ];
 
@@ -81,6 +92,11 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         'error' => false,
+        'type' => false,
+        'code' => false,
+        'param' => false,
+        'platform' => false,
+        'platform_error' => false,
         'details' => false
     ];
 
@@ -171,6 +187,11 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'error' => 'error',
+        'type' => 'type',
+        'code' => 'code',
+        'param' => 'param',
+        'platform' => 'platform',
+        'platform_error' => 'platformError',
         'details' => 'details'
     ];
 
@@ -181,6 +202,11 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'error' => 'setError',
+        'type' => 'setType',
+        'code' => 'setCode',
+        'param' => 'setParam',
+        'platform' => 'setPlatform',
+        'platform_error' => 'setPlatformError',
         'details' => 'setDetails'
     ];
 
@@ -191,6 +217,11 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'error' => 'getError',
+        'type' => 'getType',
+        'code' => 'getCode',
+        'param' => 'getParam',
+        'platform' => 'getPlatform',
+        'platform_error' => 'getPlatformError',
         'details' => 'getDetails'
     ];
 
@@ -235,6 +266,31 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const TYPE_INVALID_REQUEST_ERROR = 'invalid_request_error';
+    public const TYPE_AUTHENTICATION_ERROR = 'authentication_error';
+    public const TYPE_PERMISSION_ERROR = 'permission_error';
+    public const TYPE_NOT_FOUND = 'not_found';
+    public const TYPE_RATE_LIMIT_ERROR = 'rate_limit_error';
+    public const TYPE_PLATFORM_ERROR = 'platform_error';
+    public const TYPE_API_ERROR = 'api_error';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_INVALID_REQUEST_ERROR,
+            self::TYPE_AUTHENTICATION_ERROR,
+            self::TYPE_PERMISSION_ERROR,
+            self::TYPE_NOT_FOUND,
+            self::TYPE_RATE_LIMIT_ERROR,
+            self::TYPE_PLATFORM_ERROR,
+            self::TYPE_API_ERROR,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -252,6 +308,11 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('error', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('param', $data ?? [], null);
+        $this->setIfExists('platform', $data ?? [], null);
+        $this->setIfExists('platform_error', $data ?? [], null);
         $this->setIfExists('details', $data ?? [], null);
     }
 
@@ -282,6 +343,15 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -310,7 +380,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets error
      *
-     * @param string|null $error error
+     * @param string|null $error Human-readable error message.
      *
      * @return self
      */
@@ -320,6 +390,151 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable error cannot be null');
         }
         $this->container['error'] = $error;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Error class for programmatic handling.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets code
+     *
+     * @return string|null
+     */
+    public function getCode()
+    {
+        return $this->container['code'];
+    }
+
+    /**
+     * Sets code
+     *
+     * @param string|null $code Stable machine-readable error code.
+     *
+     * @return self
+     */
+    public function setCode($code)
+    {
+        if (is_null($code)) {
+            throw new \InvalidArgumentException('non-nullable code cannot be null');
+        }
+        $this->container['code'] = $code;
+
+        return $this;
+    }
+
+    /**
+     * Gets param
+     *
+     * @return string|null
+     */
+    public function getParam()
+    {
+        return $this->container['param'];
+    }
+
+    /**
+     * Sets param
+     *
+     * @param string|null $param The request field that caused the error, when applicable.
+     *
+     * @return self
+     */
+    public function setParam($param)
+    {
+        if (is_null($param)) {
+            throw new \InvalidArgumentException('non-nullable param cannot be null');
+        }
+        $this->container['param'] = $param;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform
+     *
+     * @return string|null
+     */
+    public function getPlatform()
+    {
+        return $this->container['platform'];
+    }
+
+    /**
+     * Sets platform
+     *
+     * @param string|null $platform Upstream platform (e.g. meta, google, tiktok) — present when type is platform_error.
+     *
+     * @return self
+     */
+    public function setPlatform($platform)
+    {
+        if (is_null($platform)) {
+            throw new \InvalidArgumentException('non-nullable platform cannot be null');
+        }
+        $this->container['platform'] = $platform;
+
+        return $this;
+    }
+
+    /**
+     * Gets platform_error
+     *
+     * @return array<string,mixed>|null
+     */
+    public function getPlatformError()
+    {
+        return $this->container['platform_error'];
+    }
+
+    /**
+     * Sets platform_error
+     *
+     * @param array<string,mixed>|null $platform_error Raw error payload from the upstream platform, passed through verbatim so integrators can read provider-specific codes. For Meta this includes error_subcode, error_user_title, and error_user_msg.
+     *
+     * @return self
+     */
+    public function setPlatformError($platform_error)
+    {
+        if (is_null($platform_error)) {
+            throw new \InvalidArgumentException('non-nullable platform_error cannot be null');
+        }
+        $this->container['platform_error'] = $platform_error;
 
         return $this;
     }
@@ -337,7 +552,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets details
      *
-     * @param array<string,mixed>|null $details details
+     * @param array<string,mixed>|null $details Additional structured context (e.g. field-level validation errors).
      *
      * @return self
      */
