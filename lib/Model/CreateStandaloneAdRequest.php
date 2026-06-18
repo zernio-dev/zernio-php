@@ -70,6 +70,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_amount' => 'float',
         'budget_type' => 'string',
         'status' => 'string',
+        'campaign_status' => 'string',
         'budget_level' => 'string',
         'currency' => 'string',
         'headline' => 'string',
@@ -148,6 +149,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_amount' => null,
         'budget_type' => null,
         'status' => null,
+        'campaign_status' => null,
         'budget_level' => null,
         'currency' => null,
         'headline' => null,
@@ -224,6 +226,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_amount' => false,
         'budget_type' => false,
         'status' => false,
+        'campaign_status' => false,
         'budget_level' => false,
         'currency' => false,
         'headline' => false,
@@ -380,6 +383,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_amount' => 'budgetAmount',
         'budget_type' => 'budgetType',
         'status' => 'status',
+        'campaign_status' => 'campaignStatus',
         'budget_level' => 'budgetLevel',
         'currency' => 'currency',
         'headline' => 'headline',
@@ -456,6 +460,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_amount' => 'setBudgetAmount',
         'budget_type' => 'setBudgetType',
         'status' => 'setStatus',
+        'campaign_status' => 'setCampaignStatus',
         'budget_level' => 'setBudgetLevel',
         'currency' => 'setCurrency',
         'headline' => 'setHeadline',
@@ -532,6 +537,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'budget_amount' => 'getBudgetAmount',
         'budget_type' => 'getBudgetType',
         'status' => 'getStatus',
+        'campaign_status' => 'getCampaignStatus',
         'budget_level' => 'getBudgetLevel',
         'currency' => 'getCurrency',
         'headline' => 'getHeadline',
@@ -644,6 +650,8 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     public const BUDGET_TYPE_LIFETIME = 'lifetime';
     public const STATUS_ACTIVE = 'ACTIVE';
     public const STATUS_PAUSED = 'PAUSED';
+    public const CAMPAIGN_STATUS_ACTIVE = 'ACTIVE';
+    public const CAMPAIGN_STATUS_PAUSED = 'PAUSED';
     public const BUDGET_LEVEL_ADSET = 'adset';
     public const BUDGET_LEVEL_CAMPAIGN = 'campaign';
     public const CALL_TO_ACTION_LEARN_MORE = 'LEARN_MORE';
@@ -725,6 +733,19 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         return [
             self::STATUS_ACTIVE,
             self::STATUS_PAUSED,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getCampaignStatusAllowableValues()
+    {
+        return [
+            self::CAMPAIGN_STATUS_ACTIVE,
+            self::CAMPAIGN_STATUS_PAUSED,
         ];
     }
 
@@ -880,6 +901,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('budget_amount', $data ?? [], null);
         $this->setIfExists('budget_type', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('campaign_status', $data ?? [], null);
         $this->setIfExists('budget_level', $data ?? [], 'adset');
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('headline', $data ?? [], null);
@@ -1013,6 +1035,15 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'status', must be one of '%s'",
                 $this->container['status'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getCampaignStatusAllowableValues();
+        if (!is_null($this->container['campaign_status']) && !in_array($this->container['campaign_status'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'campaign_status', must be one of '%s'",
+                $this->container['campaign_status'],
                 implode("', '", $allowedValues)
             );
         }
@@ -1489,7 +1520,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets status
      *
-     * @param string|null $status Meta only. Publish state of the created ad set + ad. Omitted or ACTIVE publishes live (default, back-compat); PAUSED creates them paused and skips activation, so you can review before they spend.
+     * @param string|null $status Meta only. Desired publish state of the ad (and, on the legacy/multi-ad-set shapes, the ad set too). Omitted or `ACTIVE` publishes live immediately (default). `PAUSED` creates the objects paused and skips activation — useful to stage ads before they spend. On the attach shape (`adSetId`), only the new ad is affected; the existing ad set and campaign are already live and are not touched.
      *
      * @return self
      */
@@ -1509,6 +1540,43 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             );
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets campaign_status
+     *
+     * @return string|null
+     */
+    public function getCampaignStatus()
+    {
+        return $this->container['campaign_status'];
+    }
+
+    /**
+     * Sets campaign_status
+     *
+     * @param string|null $campaign_status Meta only. Independent publish state for the CAMPAIGN when the create makes both a new campaign and a new ad set (legacy shape). When omitted, the campaign follows `status`. Use this to stage a paused campaign with an active ad set (`status: ACTIVE, campaignStatus: PAUSED`) — the ad set will start delivering as soon as the campaign is activated later. Ignored when `existingCampaignId` is set (the campaign is already live and its status is not changed).
+     *
+     * @return self
+     */
+    public function setCampaignStatus($campaign_status)
+    {
+        if (is_null($campaign_status)) {
+            throw new \InvalidArgumentException('non-nullable campaign_status cannot be null');
+        }
+        $allowedValues = $this->getCampaignStatusAllowableValues();
+        if (!in_array($campaign_status, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'campaign_status', must be one of '%s'",
+                    $campaign_status,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['campaign_status'] = $campaign_status;
 
         return $this;
     }
@@ -1964,7 +2032,7 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
     /**
      * Sets existing_creative_id
      *
-     * @param string|null $existing_creative_id Meta only. Reuse an EXISTING ad creative by id instead of building a new one from the copy/media fields (which are then ignored). Combine with `existingCampaignId` to build a multi-ad-set campaign that shares one creative. Mutually exclusive with `creatives[]`, `dynamicCreative`, and `placementAssets`. The creative id used is returned as `creativeId` on the create response.
+     * @param string|null $existing_creative_id Meta only. Reuse an EXISTING ad creative by id instead of building a new one from the copy/media fields (which are then ignored). Works on both shapes: - Legacy/multi-ad-set (`existingCampaignId`): combine with   `existingCampaignId` to build a multi-ad-set campaign that   shares one creative across audiences. - Attach (`adSetId`): combine with `adSetId` to add a second   (or Nth) ad to an existing ad set reusing the same creative —   no `headline`/`body`/`imageUrl` required on the body. Mutually exclusive with `creatives[]`, `dynamicCreative`, and `placementAssets`. The creative id is returned as `creativeId` on the create response.
      *
      * @return self
      */
