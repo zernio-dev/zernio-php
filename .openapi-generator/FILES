@@ -38,6 +38,7 @@ docs/Api/ProfilesApi.md
 docs/Api/QueueApi.md
 docs/Api/RedditSearchApi.md
 docs/Api/ReviewsApi.md
+docs/Api/SMSApi.md
 docs/Api/SequencesApi.md
 docs/Api/TrackingTagsApi.md
 docs/Api/TwitterEngagementApi.md
@@ -945,6 +946,8 @@ docs/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOf.md
 docs/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOf1.md
 docs/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOf2.md
 docs/Model/SendPrivateReplyToCommentRequestQuickRepliesInner.md
+docs/Model/SendSms200Response.md
+docs/Model/SendSmsRequest.md
 docs/Model/SendTypingIndicatorRequest.md
 docs/Model/SendWhatsAppConversion200Response.md
 docs/Model/SendWhatsAppConversionRequest.md
@@ -1280,6 +1283,7 @@ lib/Api/ProfilesApi.php
 lib/Api/QueueApi.php
 lib/Api/RedditSearchApi.php
 lib/Api/ReviewsApi.php
+lib/Api/SMSApi.php
 lib/Api/SequencesApi.php
 lib/Api/TrackingTagsApi.php
 lib/Api/TwitterEngagementApi.php
@@ -2192,6 +2196,8 @@ lib/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOf.php
 lib/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOf1.php
 lib/Model/SendPrivateReplyToCommentRequestButtonsInnerOneOf2.php
 lib/Model/SendPrivateReplyToCommentRequestQuickRepliesInner.php
+lib/Model/SendSms200Response.php
+lib/Model/SendSmsRequest.php
 lib/Model/SendTypingIndicatorRequest.php
 lib/Model/SendWhatsAppConversion200Response.php
 lib/Model/SendWhatsAppConversionRequest.php
@@ -2493,3 +2499,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/SMSApiTest.php
+test/Model/SendSms200ResponseTest.php
+test/Model/SendSmsRequestTest.php

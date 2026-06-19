@@ -6704,6 +6704,55 @@ paths:
   # NOTE: Tools download endpoints (/v1/tools/{platform}/download, /transcript, /hashtag-checker) removed from docs but still functional for existing customers
 
   # ============================================
+  # SMS
+  # ============================================
+  /v1/sms/messages:
+    post:
+      operationId: sendSms
+      tags: [SMS]
+      summary: Send an SMS or MMS
+      description: |
+        Send a text (SMS) or media (MMS) message from one of your SMS-enabled numbers.
+
+        Provide `text`, `mediaUrls`, or both. Supply an `Idempotency-Key` header to make retries safe (a repeated key replays the original result instead of sending again). US numbers must have an approved carrier registration before they can deliver.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [from, to]
+              properties:
+                from:
+                  type: string
+                  description: One of your SMS-enabled numbers (E.164).
+                  example: "+14155550192"
+                to:
+                  type: string
+                  description: Recipient number (E.164).
+                  example: "+14155550123"
+                text:
+                  type: string
+                  example: "Your verification code is 123456."
+                mediaUrls:
+                  type: array
+                  items: { type: string, format: uri }
+                  description: Publicly reachable media URLs for MMS (max 10, total < 1MB).
+      responses:
+        "200":
+          description: Message accepted for delivery.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id: { type: string, description: Telnyx message id }
+                  conversationId: { type: string }
+                  status: { type: string, example: sent }
+
+  # ============================================
   # Validate
   # ============================================
   /v1/tools/validate/post-length:
