@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * GetLeadForm200ResponseFormQuestionsInner
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * GetLeadForm200ResponseFormQuestionsInner Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetLeadForm200ResponseFormQuestionsInner implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'getLeadForm_200_response_form_questions_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'form' => '\Zernio\Model\GetLeadForm200ResponseForm'
+        'key' => 'string',
+        'label' => 'string',
+        'type' => 'string',
+        'options' => '\Zernio\Model\CreateLeadFormRequestQuestionsInnerOptionsInner[]',
+        'inline_context' => 'string'
     ];
 
     /**
@@ -70,8 +73,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'form' => null
+        'key' => null,
+        'label' => null,
+        'type' => null,
+        'options' => null,
+        'inline_context' => null
     ];
 
     /**
@@ -80,8 +86,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'form' => false
+        'key' => false,
+        'label' => false,
+        'type' => false,
+        'options' => false,
+        'inline_context' => false
     ];
 
     /**
@@ -170,8 +179,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'form' => 'form'
+        'key' => 'key',
+        'label' => 'label',
+        'type' => 'type',
+        'options' => 'options',
+        'inline_context' => 'inline_context'
     ];
 
     /**
@@ -180,8 +192,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'form' => 'setForm'
+        'key' => 'setKey',
+        'label' => 'setLabel',
+        'type' => 'setType',
+        'options' => 'setOptions',
+        'inline_context' => 'setInlineContext'
     ];
 
     /**
@@ -190,8 +205,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'form' => 'getForm'
+        'key' => 'getKey',
+        'label' => 'getLabel',
+        'type' => 'getType',
+        'options' => 'getOptions',
+        'inline_context' => 'getInlineContext'
     ];
 
     /**
@@ -251,8 +269,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('key', $data ?? [], null);
+        $this->setIfExists('label', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('options', $data ?? [], null);
+        $this->setIfExists('inline_context', $data ?? [], null);
     }
 
     /**
@@ -298,55 +319,136 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets status
+     * Gets key
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getKey()
     {
-        return $this->container['status'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets status
+     * Sets key
      *
-     * @param string|null $status status
+     * @param string|null $key key
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setKey($key)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($key)) {
+            throw new \InvalidArgumentException('non-nullable key cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['key'] = $key;
 
         return $this;
     }
 
     /**
-     * Gets form
+     * Gets label
      *
-     * @return \Zernio\Model\GetLeadForm200ResponseForm|null
+     * @return string|null
      */
-    public function getForm()
+    public function getLabel()
     {
-        return $this->container['form'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets form
+     * Sets label
      *
-     * @param \Zernio\Model\GetLeadForm200ResponseForm|null $form form
+     * @param string|null $label label
      *
      * @return self
      */
-    public function setForm($form)
+    public function setLabel($label)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($label)) {
+            throw new \InvalidArgumentException('non-nullable label cannot be null');
         }
-        $this->container['form'] = $form;
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type EMAIL, PHONE, FULL_NAME, FIRST_NAME, LAST_NAME, CUSTOM, …
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets options
+     *
+     * @return \Zernio\Model\CreateLeadFormRequestQuestionsInnerOptionsInner[]|null
+     */
+    public function getOptions()
+    {
+        return $this->container['options'];
+    }
+
+    /**
+     * Sets options
+     *
+     * @param \Zernio\Model\CreateLeadFormRequestQuestionsInnerOptionsInner[]|null $options options
+     *
+     * @return self
+     */
+    public function setOptions($options)
+    {
+        if (is_null($options)) {
+            throw new \InvalidArgumentException('non-nullable options cannot be null');
+        }
+        $this->container['options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Gets inline_context
+     *
+     * @return string|null
+     */
+    public function getInlineContext()
+    {
+        return $this->container['inline_context'];
+    }
+
+    /**
+     * Sets inline_context
+     *
+     * @param string|null $inline_context inline_context
+     *
+     * @return self
+     */
+    public function setInlineContext($inline_context)
+    {
+        if (is_null($inline_context)) {
+            throw new \InvalidArgumentException('non-nullable inline_context cannot be null');
+        }
+        $this->container['inline_context'] = $inline_context;
 
         return $this;
     }

@@ -28829,7 +28829,45 @@ paths:
           description: Form metadata.
           content:
             application/json:
-              schema: { type: object, properties: { status: { type: string }, form: { type: object } } }
+              schema:
+                type: object
+                properties:
+                  status: { type: string, example: success }
+                  form:
+                    type: object
+                    description: Full form config — sufficient to duplicate the form via POST /v1/ads/lead-forms.
+                    properties:
+                      id: { type: string }
+                      name: { type: string }
+                      status: { type: string, enum: [ACTIVE, ARCHIVED], description: "ARCHIVED forms can't receive new leads." }
+                      locale: { type: string, example: EN_US }
+                      created_time: { type: string, format: date-time }
+                      leads_count: { type: integer }
+                      privacy_policy_url: { type: string, format: uri }
+                      follow_up_action_url: { type: string, format: uri, nullable: true }
+                      questions:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            key: { type: string }
+                            label: { type: string }
+                            type: { type: string, description: "EMAIL, PHONE, FULL_NAME, FIRST_NAME, LAST_NAME, CUSTOM, …" }
+                            options: { type: array, items: { type: object, properties: { key: { type: string }, value: { type: string } } } }
+                            inline_context: { type: string }
+                      thank_you_page:
+                        type: object
+                        nullable: true
+                        properties:
+                          title: { type: string }
+                          body: { type: string }
+                          button_text: { type: string }
+                          button_type: { type: string, example: VIEW_WEBSITE }
+                          website_url: { type: string, format: uri }
+                      context_card:
+                        type: object
+                        nullable: true
+                        description: Intro card shown before the form questions (title, content, button label).
         '401': { $ref: '#/components/responses/Unauthorized' }
     delete:
       operationId: archiveLeadForm
@@ -28982,7 +29020,7 @@ paths:
         - { name: accountId, in: query, required: true, schema: { type: string }, description: "Social account ID (a connected account on the target ad platform)." }
         - { name: q, in: query, required: true, schema: { type: string }, description: "Search query. For geo, the locality name only (no region/country suffix)." }
         - { name: dimension, in: query, required: false, schema: { type: string, enum: [geo, interest, behavior, income], default: interest }, description: "What to search. `geo` resolves locations (scope further with `geoType`), `interest`/`behavior` resolve audience entities, `income` resolves income-tier options. Defaults to `interest` for backward compatibility with the deprecated /v1/ads/interests alias." }
-        - { name: geoType, in: query, required: false, schema: { type: string, enum: [country, region, city, zip, metro], default: city }, description: "Only used when `dimension=geo`. The kind of location to resolve. Defaults to `city`." }
+        - { name: geoType, in: query, required: false, schema: { type: string, enum: [country, region, city, subcity, neighborhood, place, zip, metro_area, geo_market], default: city }, description: "Only used when `dimension=geo`. The kind of location to resolve. `place` resolves named points of interest (businesses, landmarks) by proximity. `neighborhood` resolves named neighbourhood areas. Defaults to `city`." }
         - { name: countryCode, in: query, required: false, schema: { type: string, minLength: 2, maxLength: 2 }, description: "ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search." }
         - { name: limit, in: query, required: false, schema: { type: integer, minimum: 1, maximum: 100, default: 25 }, description: "Maximum results to return." }
       responses:

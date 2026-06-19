@@ -494,6 +494,9 @@ docs/Model/GetInstagramStoryInsights200Response.md
 docs/Model/GetInstagramStoryInsights200ResponseData.md
 docs/Model/GetInstagramStoryInsights200ResponseDataMetrics.md
 docs/Model/GetLeadForm200Response.md
+docs/Model/GetLeadForm200ResponseForm.md
+docs/Model/GetLeadForm200ResponseFormQuestionsInner.md
+docs/Model/GetLeadForm200ResponseFormThankYouPage.md
 docs/Model/GetLinkedInAggregateAnalytics200Response.md
 docs/Model/GetLinkedInAggregateAnalytics400Response.md
 docs/Model/GetLinkedInAggregateAnalytics402Response.md
@@ -1743,6 +1746,9 @@ lib/Model/GetInstagramStoryInsights200Response.php
 lib/Model/GetInstagramStoryInsights200ResponseData.php
 lib/Model/GetInstagramStoryInsights200ResponseDataMetrics.php
 lib/Model/GetLeadForm200Response.php
+lib/Model/GetLeadForm200ResponseForm.php
+lib/Model/GetLeadForm200ResponseFormQuestionsInner.php
+lib/Model/GetLeadForm200ResponseFormThankYouPage.php
 lib/Model/GetLinkedInAggregateAnalytics200Response.php
 lib/Model/GetLinkedInAggregateAnalytics400Response.php
 lib/Model/GetLinkedInAggregateAnalytics402Response.php
@@ -2499,3 +2505,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/GetLeadForm200ResponseFormQuestionsInnerTest.php
+test/Model/GetLeadForm200ResponseFormTest.php
+test/Model/GetLeadForm200ResponseFormThankYouPageTest.php

@@ -5,6 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **string** |  | [optional]
-**form** | **object** |  | [optional]
+**form** | [**\Zernio\Model\GetLeadForm200ResponseForm**](GetLeadForm200ResponseForm.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1,6 +1,6 @@
 <?php
 /**
- * GetLeadForm200Response
+ * GetLeadForm200ResponseFormThankYouPage
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * GetLeadForm200Response Class Doc Comment
+ * GetLeadForm200ResponseFormThankYouPage Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerializable
+class GetLeadForm200ResponseFormThankYouPage implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       *
       * @var string
       */
-    protected static $openAPIModelName = 'getLeadForm_200_response';
+    protected static $openAPIModelName = 'getLeadForm_200_response_form_thank_you_page';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,8 +58,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'status' => 'string',
-        'form' => '\Zernio\Model\GetLeadForm200ResponseForm'
+        'title' => 'string',
+        'body' => 'string',
+        'button_text' => 'string',
+        'button_type' => 'string',
+        'website_url' => 'string'
     ];
 
     /**
@@ -70,8 +73,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'status' => null,
-        'form' => null
+        'title' => null,
+        'body' => null,
+        'button_text' => null,
+        'button_type' => null,
+        'website_url' => 'uri'
     ];
 
     /**
@@ -80,8 +86,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'status' => false,
-        'form' => false
+        'title' => false,
+        'body' => false,
+        'button_text' => false,
+        'button_type' => false,
+        'website_url' => false
     ];
 
     /**
@@ -170,8 +179,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $attributeMap = [
-        'status' => 'status',
-        'form' => 'form'
+        'title' => 'title',
+        'body' => 'body',
+        'button_text' => 'button_text',
+        'button_type' => 'button_type',
+        'website_url' => 'website_url'
     ];
 
     /**
@@ -180,8 +192,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $setters = [
-        'status' => 'setStatus',
-        'form' => 'setForm'
+        'title' => 'setTitle',
+        'body' => 'setBody',
+        'button_text' => 'setButtonText',
+        'button_type' => 'setButtonType',
+        'website_url' => 'setWebsiteUrl'
     ];
 
     /**
@@ -190,8 +205,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      * @var string[]
      */
     protected static $getters = [
-        'status' => 'getStatus',
-        'form' => 'getForm'
+        'title' => 'getTitle',
+        'body' => 'getBody',
+        'button_text' => 'getButtonText',
+        'button_type' => 'getButtonType',
+        'website_url' => 'getWebsiteUrl'
     ];
 
     /**
@@ -251,8 +269,11 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('form', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('body', $data ?? [], null);
+        $this->setIfExists('button_text', $data ?? [], null);
+        $this->setIfExists('button_type', $data ?? [], null);
+        $this->setIfExists('website_url', $data ?? [], null);
     }
 
     /**
@@ -298,55 +319,136 @@ class GetLeadForm200Response implements ModelInterface, ArrayAccess, \JsonSerial
 
 
     /**
-     * Gets status
+     * Gets title
      *
      * @return string|null
      */
-    public function getStatus()
+    public function getTitle()
     {
-        return $this->container['status'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets status
+     * Sets title
      *
-     * @param string|null $status status
+     * @param string|null $title title
      *
      * @return self
      */
-    public function setStatus($status)
+    public function setTitle($title)
     {
-        if (is_null($status)) {
-            throw new \InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
-        $this->container['status'] = $status;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets form
+     * Gets body
      *
-     * @return \Zernio\Model\GetLeadForm200ResponseForm|null
+     * @return string|null
      */
-    public function getForm()
+    public function getBody()
     {
-        return $this->container['form'];
+        return $this->container['body'];
     }
 
     /**
-     * Sets form
+     * Sets body
      *
-     * @param \Zernio\Model\GetLeadForm200ResponseForm|null $form form
+     * @param string|null $body body
      *
      * @return self
      */
-    public function setForm($form)
+    public function setBody($body)
     {
-        if (is_null($form)) {
-            throw new \InvalidArgumentException('non-nullable form cannot be null');
+        if (is_null($body)) {
+            throw new \InvalidArgumentException('non-nullable body cannot be null');
         }
-        $this->container['form'] = $form;
+        $this->container['body'] = $body;
+
+        return $this;
+    }
+
+    /**
+     * Gets button_text
+     *
+     * @return string|null
+     */
+    public function getButtonText()
+    {
+        return $this->container['button_text'];
+    }
+
+    /**
+     * Sets button_text
+     *
+     * @param string|null $button_text button_text
+     *
+     * @return self
+     */
+    public function setButtonText($button_text)
+    {
+        if (is_null($button_text)) {
+            throw new \InvalidArgumentException('non-nullable button_text cannot be null');
+        }
+        $this->container['button_text'] = $button_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets button_type
+     *
+     * @return string|null
+     */
+    public function getButtonType()
+    {
+        return $this->container['button_type'];
+    }
+
+    /**
+     * Sets button_type
+     *
+     * @param string|null $button_type button_type
+     *
+     * @return self
+     */
+    public function setButtonType($button_type)
+    {
+        if (is_null($button_type)) {
+            throw new \InvalidArgumentException('non-nullable button_type cannot be null');
+        }
+        $this->container['button_type'] = $button_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets website_url
+     *
+     * @return string|null
+     */
+    public function getWebsiteUrl()
+    {
+        return $this->container['website_url'];
+    }
+
+    /**
+     * Sets website_url
+     *
+     * @param string|null $website_url website_url
+     *
+     * @return self
+     */
+    public function setWebsiteUrl($website_url)
+    {
+        if (is_null($website_url)) {
+            throw new \InvalidArgumentException('non-nullable website_url cannot be null');
+        }
+        $this->container['website_url'] = $website_url;
 
         return $this;
     }
