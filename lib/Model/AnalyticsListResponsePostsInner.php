@@ -69,6 +69,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'platform' => 'string',
         'platform_post_url' => 'string',
         'is_external' => 'bool',
+        'is_ad' => 'bool',
         'profile_id' => 'string',
         'thumbnail_url' => 'string',
         'media_type' => 'string',
@@ -94,6 +95,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'platform' => null,
         'platform_post_url' => 'uri',
         'is_external' => null,
+        'is_ad' => null,
         'profile_id' => null,
         'thumbnail_url' => 'uri',
         'media_type' => null,
@@ -117,6 +119,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'platform' => false,
         'platform_post_url' => false,
         'is_external' => false,
+        'is_ad' => false,
         'profile_id' => false,
         'thumbnail_url' => false,
         'media_type' => false,
@@ -220,6 +223,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'platform' => 'platform',
         'platform_post_url' => 'platformPostUrl',
         'is_external' => 'isExternal',
+        'is_ad' => 'isAd',
         'profile_id' => 'profileId',
         'thumbnail_url' => 'thumbnailUrl',
         'media_type' => 'mediaType',
@@ -243,6 +247,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'platform' => 'setPlatform',
         'platform_post_url' => 'setPlatformPostUrl',
         'is_external' => 'setIsExternal',
+        'is_ad' => 'setIsAd',
         'profile_id' => 'setProfileId',
         'thumbnail_url' => 'setThumbnailUrl',
         'media_type' => 'setMediaType',
@@ -266,6 +271,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         'platform' => 'getPlatform',
         'platform_post_url' => 'getPlatformPostUrl',
         'is_external' => 'getIsExternal',
+        'is_ad' => 'getIsAd',
         'profile_id' => 'getProfileId',
         'thumbnail_url' => 'getThumbnailUrl',
         'media_type' => 'getMediaType',
@@ -363,6 +369,7 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
         $this->setIfExists('platform', $data ?? [], null);
         $this->setIfExists('platform_post_url', $data ?? [], null);
         $this->setIfExists('is_external', $data ?? [], null);
+        $this->setIfExists('is_ad', $data ?? [], null);
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('thumbnail_url', $data ?? [], null);
         $this->setIfExists('media_type', $data ?? [], null);
@@ -713,6 +720,33 @@ class AnalyticsListResponsePostsInner implements ModelInterface, ArrayAccess, \J
             throw new \InvalidArgumentException('non-nullable is_external cannot be null');
         }
         $this->container['is_external'] = $is_external;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_ad
+     *
+     * @return bool|null
+     */
+    public function getIsAd()
+    {
+        return $this->container['is_ad'];
+    }
+
+    /**
+     * Sets is_ad
+     *
+     * @param bool|null $is_ad True when the post is an ad creative. False for organic posts or platforms where the signal is unavailable. For now is only available for LinkedIn posts.
+     *
+     * @return self
+     */
+    public function setIsAd($is_ad)
+    {
+        if (is_null($is_ad)) {
+            throw new \InvalidArgumentException('non-nullable is_ad cannot be null');
+        }
+        $this->container['is_ad'] = $is_ad;
 
         return $this;
     }

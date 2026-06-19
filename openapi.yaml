@@ -4623,6 +4623,7 @@ components:
               platform: { type: string }
               platformPostUrl: { type: string, format: uri }
               isExternal: { type: boolean }
+              isAd: { type: boolean, description: 'True when the post is an ad creative. False for organic posts or platforms where the signal is unavailable. For now is only available for LinkedIn posts.' }
               profileId: { type: string, nullable: true }
               thumbnailUrl: { type: string, format: uri }
               mediaType: { type: string, enum: [image, video, gif, document, carousel, text] }

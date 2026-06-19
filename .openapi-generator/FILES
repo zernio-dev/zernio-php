@@ -2499,6 +2499,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/SMSApiTest.php
-test/Model/SendSms200ResponseTest.php
-test/Model/SendSmsRequestTest.php
