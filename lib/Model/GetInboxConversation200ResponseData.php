@@ -70,7 +70,8 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
         'last_message_at' => '\DateTime',
         'updated_time' => '\DateTime',
         'participants' => '\Zernio\Model\UpdateFacebookPage200ResponseSelectedPage[]',
-        'instagram_profile' => '\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile'
+        'instagram_profile' => '\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile',
+        'metadata' => 'array<string,string>'
     ];
 
     /**
@@ -93,7 +94,8 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
         'last_message_at' => 'date-time',
         'updated_time' => 'date-time',
         'participants' => null,
-        'instagram_profile' => null
+        'instagram_profile' => null,
+        'metadata' => null
     ];
 
     /**
@@ -114,7 +116,8 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
         'last_message_at' => false,
         'updated_time' => false,
         'participants' => false,
-        'instagram_profile' => false
+        'instagram_profile' => false,
+        'metadata' => false
     ];
 
     /**
@@ -215,7 +218,8 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
         'last_message_at' => 'lastMessageAt',
         'updated_time' => 'updatedTime',
         'participants' => 'participants',
-        'instagram_profile' => 'instagramProfile'
+        'instagram_profile' => 'instagramProfile',
+        'metadata' => 'metadata'
     ];
 
     /**
@@ -236,7 +240,8 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
         'last_message_at' => 'setLastMessageAt',
         'updated_time' => 'setUpdatedTime',
         'participants' => 'setParticipants',
-        'instagram_profile' => 'setInstagramProfile'
+        'instagram_profile' => 'setInstagramProfile',
+        'metadata' => 'setMetadata'
     ];
 
     /**
@@ -257,7 +262,8 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
         'last_message_at' => 'getLastMessageAt',
         'updated_time' => 'getUpdatedTime',
         'participants' => 'getParticipants',
-        'instagram_profile' => 'getInstagramProfile'
+        'instagram_profile' => 'getInstagramProfile',
+        'metadata' => 'getMetadata'
     ];
 
     /**
@@ -364,6 +370,7 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
         $this->setIfExists('updated_time', $data ?? [], null);
         $this->setIfExists('participants', $data ?? [], null);
         $this->setIfExists('instagram_profile', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -793,6 +800,33 @@ class GetInboxConversation200ResponseData implements ModelInterface, ArrayAccess
             throw new \InvalidArgumentException('non-nullable instagram_profile cannot be null');
         }
         $this->container['instagram_profile'] = $instagram_profile;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,string>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,string>|null $metadata Ad-click attribution captured on the first inbound message of the conversation. Only present when the conversation originated from a click-to-message ad. Absent on organic conversations.  Two sources populate this field:   - WhatsApp CTWA (Click-to-WhatsApp): `ctwa_clid`, `ctwa_source_id`,     `ctwa_source_url`, `ctwa_headline`, `ctwa_source_type`, `ctwa_captured_at`.   - Facebook Messenger CTM / Instagram CTD: `meta_ad_id`, `meta_ad_title`,     `meta_ad_source`, `meta_ad_type`, `meta_ad_ref`, `meta_ad_captured_at`,     `meta_ad_photo_url`, `meta_ad_video_url`, `meta_ad_post_id`,     `meta_ad_product_id`, `meta_ad_flow_id`.  Note: `meta_ad_photo_url` and `meta_ad_video_url` are Facebook CDN URLs that may expire. Use `meta_ad_id` for a permanent reference to the ad (e.g. to link to Meta Ads Manager).
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }

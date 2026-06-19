@@ -71,7 +71,8 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'status' => 'string',
         'unread_count' => 'int',
         'url' => 'string',
-        'instagram_profile' => '\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile'
+        'instagram_profile' => '\Zernio\Model\ListInboxConversations200ResponseDataInnerInstagramProfile',
+        'metadata' => 'array<string,string>'
     ];
 
     /**
@@ -95,7 +96,8 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'status' => null,
         'unread_count' => null,
         'url' => null,
-        'instagram_profile' => null
+        'instagram_profile' => null,
+        'metadata' => null
     ];
 
     /**
@@ -117,7 +119,8 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'status' => false,
         'unread_count' => false,
         'url' => false,
-        'instagram_profile' => false
+        'instagram_profile' => false,
+        'metadata' => false
     ];
 
     /**
@@ -219,7 +222,8 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'status' => 'status',
         'unread_count' => 'unreadCount',
         'url' => 'url',
-        'instagram_profile' => 'instagramProfile'
+        'instagram_profile' => 'instagramProfile',
+        'metadata' => 'metadata'
     ];
 
     /**
@@ -241,7 +245,8 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'status' => 'setStatus',
         'unread_count' => 'setUnreadCount',
         'url' => 'setUrl',
-        'instagram_profile' => 'setInstagramProfile'
+        'instagram_profile' => 'setInstagramProfile',
+        'metadata' => 'setMetadata'
     ];
 
     /**
@@ -263,7 +268,8 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         'status' => 'getStatus',
         'unread_count' => 'getUnreadCount',
         'url' => 'getUrl',
-        'instagram_profile' => 'getInstagramProfile'
+        'instagram_profile' => 'getInstagramProfile',
+        'metadata' => 'getMetadata'
     ];
 
     /**
@@ -371,6 +377,7 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
         $this->setIfExists('unread_count', $data ?? [], null);
         $this->setIfExists('url', $data ?? [], null);
         $this->setIfExists('instagram_profile', $data ?? [], null);
+        $this->setIfExists('metadata', $data ?? [], null);
     }
 
     /**
@@ -827,6 +834,33 @@ class ListInboxConversations200ResponseDataInner implements ModelInterface, Arra
             throw new \InvalidArgumentException('non-nullable instagram_profile cannot be null');
         }
         $this->container['instagram_profile'] = $instagram_profile;
+
+        return $this;
+    }
+
+    /**
+     * Gets metadata
+     *
+     * @return array<string,string>|null
+     */
+    public function getMetadata()
+    {
+        return $this->container['metadata'];
+    }
+
+    /**
+     * Sets metadata
+     *
+     * @param array<string,string>|null $metadata Ad-click attribution captured on the first inbound message of the conversation. Only present when the conversation originated from a click-to-message ad. Absent on organic conversations.  Two sources populate this field:   - WhatsApp CTWA (Click-to-WhatsApp): `ctwa_clid`, `ctwa_source_id`,     `ctwa_source_url`, `ctwa_headline`, `ctwa_source_type`, `ctwa_captured_at`.   - Facebook Messenger CTM / Instagram CTD: `meta_ad_id`, `meta_ad_title`,     `meta_ad_source`, `meta_ad_type`, `meta_ad_ref`, `meta_ad_captured_at`,     `meta_ad_photo_url`, `meta_ad_video_url`, `meta_ad_post_id`,     `meta_ad_product_id`, `meta_ad_flow_id`.  Note: `meta_ad_photo_url` and `meta_ad_video_url` are Facebook CDN URLs that may expire. Use `meta_ad_id` for a permanent reference to the ad.
+     *
+     * @return self
+     */
+    public function setMetadata($metadata)
+    {
+        if (is_null($metadata)) {
+            throw new \InvalidArgumentException('non-nullable metadata cannot be null');
+        }
+        $this->container['metadata'] = $metadata;
 
         return $this;
     }
