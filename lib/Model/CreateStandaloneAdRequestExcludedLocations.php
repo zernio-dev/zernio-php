@@ -1,6 +1,6 @@
 <?php
 /**
- * SearchAdTargeting200ResponseResultsInner
+ * CreateStandaloneAdRequestExcludedLocations
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SearchAdTargeting200ResponseResultsInner Class Doc Comment
+ * CreateStandaloneAdRequestExcludedLocations Class Doc Comment
  *
  * @category Class
+ * @description Geo exclusions. Meta only. Maps to excluded_geo_locations. Supports countries, regions, cities, and zips.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateStandaloneAdRequestExcludedLocations implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
       *
       * @var string
       */
-    protected static $openAPIModelName = 'searchAdTargeting_200_response_results_inner';
+    protected static $openAPIModelName = 'createStandaloneAd_request_excludedLocations';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +59,10 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'type' => 'string',
-        'path' => 'string[]',
-        'audience_size' => 'int',
-        'latitude' => 'float',
-        'longitude' => 'float'
+        'countries' => 'string[]',
+        'regions' => '\Zernio\Model\CreateStandaloneAdRequestPlacesInner[]',
+        'cities' => '\Zernio\Model\CreateStandaloneAdRequestPlacesInner[]',
+        'zips' => '\Zernio\Model\CreateStandaloneAdRequestPlacesInner[]'
     ];
 
     /**
@@ -75,13 +73,10 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'type' => null,
-        'path' => null,
-        'audience_size' => null,
-        'latitude' => 'float',
-        'longitude' => 'float'
+        'countries' => null,
+        'regions' => null,
+        'cities' => null,
+        'zips' => null
     ];
 
     /**
@@ -90,13 +85,10 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'type' => false,
-        'path' => false,
-        'audience_size' => false,
-        'latitude' => false,
-        'longitude' => false
+        'countries' => false,
+        'regions' => false,
+        'cities' => false,
+        'zips' => false
     ];
 
     /**
@@ -185,13 +177,10 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'type' => 'type',
-        'path' => 'path',
-        'audience_size' => 'audienceSize',
-        'latitude' => 'latitude',
-        'longitude' => 'longitude'
+        'countries' => 'countries',
+        'regions' => 'regions',
+        'cities' => 'cities',
+        'zips' => 'zips'
     ];
 
     /**
@@ -200,13 +189,10 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'type' => 'setType',
-        'path' => 'setPath',
-        'audience_size' => 'setAudienceSize',
-        'latitude' => 'setLatitude',
-        'longitude' => 'setLongitude'
+        'countries' => 'setCountries',
+        'regions' => 'setRegions',
+        'cities' => 'setCities',
+        'zips' => 'setZips'
     ];
 
     /**
@@ -215,13 +201,10 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'type' => 'getType',
-        'path' => 'getPath',
-        'audience_size' => 'getAudienceSize',
-        'latitude' => 'getLatitude',
-        'longitude' => 'getLongitude'
+        'countries' => 'getCountries',
+        'regions' => 'getRegions',
+        'cities' => 'getCities',
+        'zips' => 'getZips'
     ];
 
     /**
@@ -281,13 +264,10 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('path', $data ?? [], null);
-        $this->setIfExists('audience_size', $data ?? [], null);
-        $this->setIfExists('latitude', $data ?? [], null);
-        $this->setIfExists('longitude', $data ?? [], null);
+        $this->setIfExists('countries', $data ?? [], null);
+        $this->setIfExists('regions', $data ?? [], null);
+        $this->setIfExists('cities', $data ?? [], null);
+        $this->setIfExists('zips', $data ?? [], null);
     }
 
     /**
@@ -317,15 +297,6 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -342,190 +313,109 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
 
 
     /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id The platform's opaque id. Use as a geo `key` (regions/cities/zips/metros) or an entity `id` (interests/behaviors) in TargetingSpec.
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
-        }
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Human-readable label.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type What the result is (e.g. city, region, country, zip, metro, interest, behavior, income).
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets path
+     * Gets countries
      *
      * @return string[]|null
      */
-    public function getPath()
+    public function getCountries()
     {
-        return $this->container['path'];
+        return $this->container['countries'];
     }
 
     /**
-     * Sets path
+     * Sets countries
      *
-     * @param string[]|null $path Optional breadcrumb of parent labels (e.g. ['United States', 'California', 'Los Angeles']). Disambiguates same-named results.
+     * @param string[]|null $countries ISO-3166 alpha-2 country codes to exclude.
      *
      * @return self
      */
-    public function setPath($path)
+    public function setCountries($countries)
     {
-        if (is_null($path)) {
-            throw new \InvalidArgumentException('non-nullable path cannot be null');
+        if (is_null($countries)) {
+            throw new \InvalidArgumentException('non-nullable countries cannot be null');
         }
-        $this->container['path'] = $path;
+        $this->container['countries'] = $countries;
 
         return $this;
     }
 
     /**
-     * Gets audience_size
+     * Gets regions
      *
-     * @return int|null
+     * @return \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null
      */
-    public function getAudienceSize()
+    public function getRegions()
     {
-        return $this->container['audience_size'];
+        return $this->container['regions'];
     }
 
     /**
-     * Sets audience_size
+     * Sets regions
      *
-     * @param int|null $audience_size Optional estimated reachable users for this option, when the platform returns it.
+     * @param \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null $regions regions
      *
      * @return self
      */
-    public function setAudienceSize($audience_size)
+    public function setRegions($regions)
     {
-        if (is_null($audience_size)) {
-            throw new \InvalidArgumentException('non-nullable audience_size cannot be null');
+        if (is_null($regions)) {
+            throw new \InvalidArgumentException('non-nullable regions cannot be null');
         }
-        $this->container['audience_size'] = $audience_size;
+        $this->container['regions'] = $regions;
 
         return $this;
     }
 
     /**
-     * Gets latitude
+     * Gets cities
      *
-     * @return float|null
+     * @return \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null
      */
-    public function getLatitude()
+    public function getCities()
     {
-        return $this->container['latitude'];
+        return $this->container['cities'];
     }
 
     /**
-     * Sets latitude
+     * Sets cities
      *
-     * @param float|null $latitude Centre latitude of the location. Populated on Meta geo results (city, neighborhood, place, etc.). Useful for map views.
+     * @param \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null $cities cities
      *
      * @return self
      */
-    public function setLatitude($latitude)
+    public function setCities($cities)
     {
-        if (is_null($latitude)) {
-            throw new \InvalidArgumentException('non-nullable latitude cannot be null');
+        if (is_null($cities)) {
+            throw new \InvalidArgumentException('non-nullable cities cannot be null');
         }
-        $this->container['latitude'] = $latitude;
+        $this->container['cities'] = $cities;
 
         return $this;
     }
 
     /**
-     * Gets longitude
+     * Gets zips
      *
-     * @return float|null
+     * @return \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null
      */
-    public function getLongitude()
+    public function getZips()
     {
-        return $this->container['longitude'];
+        return $this->container['zips'];
     }
 
     /**
-     * Sets longitude
+     * Sets zips
      *
-     * @param float|null $longitude Centre longitude of the location.
+     * @param \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null $zips zips
      *
      * @return self
      */
-    public function setLongitude($longitude)
+    public function setZips($zips)
     {
-        if (is_null($longitude)) {
-            throw new \InvalidArgumentException('non-nullable longitude cannot be null');
+        if (is_null($zips)) {
+            throw new \InvalidArgumentException('non-nullable zips cannot be null');
         }
-        $this->container['longitude'] = $longitude;
+        $this->container['zips'] = $zips;
 
         return $this;
     }

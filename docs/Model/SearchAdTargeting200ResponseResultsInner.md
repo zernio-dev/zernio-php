@@ -9,5 +9,7 @@ Name | Type | Description | Notes
 **type** | **string** | What the result is (e.g. city, region, country, zip, metro, interest, behavior, income). |
 **path** | **string[]** | Optional breadcrumb of parent labels (e.g. [&#39;United States&#39;, &#39;California&#39;, &#39;Los Angeles&#39;]). Disambiguates same-named results. | [optional]
 **audience_size** | **int** | Optional estimated reachable users for this option, when the platform returns it. | [optional]
+**latitude** | **float** | Centre latitude of the location. Populated on Meta geo results (city, neighborhood, place, etc.). Useful for map views. | [optional]
+**longitude** | **float** | Centre longitude of the location. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

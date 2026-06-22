@@ -70,7 +70,12 @@ class CreateLeadFormRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'thank_you_button_text' => 'string',
         'thank_you_button_type' => 'string',
         'thank_you_website_url' => 'string',
-        'is_optimized_for_quality' => 'bool'
+        'is_optimized_for_quality' => 'bool',
+        'form_type' => 'string',
+        'block_display_for_non_targeted_viewer' => 'bool',
+        'allow_organic_lead_gen' => 'bool',
+        'question_page_custom_headline' => 'string',
+        'context_card' => '\Zernio\Model\CreateLeadFormRequestContextCard'
     ];
 
     /**
@@ -93,7 +98,12 @@ class CreateLeadFormRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'thank_you_button_text' => null,
         'thank_you_button_type' => null,
         'thank_you_website_url' => 'uri',
-        'is_optimized_for_quality' => null
+        'is_optimized_for_quality' => null,
+        'form_type' => null,
+        'block_display_for_non_targeted_viewer' => null,
+        'allow_organic_lead_gen' => null,
+        'question_page_custom_headline' => null,
+        'context_card' => null
     ];
 
     /**
@@ -114,7 +124,12 @@ class CreateLeadFormRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'thank_you_button_text' => false,
         'thank_you_button_type' => false,
         'thank_you_website_url' => false,
-        'is_optimized_for_quality' => false
+        'is_optimized_for_quality' => false,
+        'form_type' => false,
+        'block_display_for_non_targeted_viewer' => false,
+        'allow_organic_lead_gen' => false,
+        'question_page_custom_headline' => false,
+        'context_card' => false
     ];
 
     /**
@@ -215,7 +230,12 @@ class CreateLeadFormRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'thank_you_button_text' => 'thankYouButtonText',
         'thank_you_button_type' => 'thankYouButtonType',
         'thank_you_website_url' => 'thankYouWebsiteUrl',
-        'is_optimized_for_quality' => 'isOptimizedForQuality'
+        'is_optimized_for_quality' => 'isOptimizedForQuality',
+        'form_type' => 'formType',
+        'block_display_for_non_targeted_viewer' => 'blockDisplayForNonTargetedViewer',
+        'allow_organic_lead_gen' => 'allowOrganicLeadGen',
+        'question_page_custom_headline' => 'questionPageCustomHeadline',
+        'context_card' => 'contextCard'
     ];
 
     /**
@@ -236,7 +256,12 @@ class CreateLeadFormRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'thank_you_button_text' => 'setThankYouButtonText',
         'thank_you_button_type' => 'setThankYouButtonType',
         'thank_you_website_url' => 'setThankYouWebsiteUrl',
-        'is_optimized_for_quality' => 'setIsOptimizedForQuality'
+        'is_optimized_for_quality' => 'setIsOptimizedForQuality',
+        'form_type' => 'setFormType',
+        'block_display_for_non_targeted_viewer' => 'setBlockDisplayForNonTargetedViewer',
+        'allow_organic_lead_gen' => 'setAllowOrganicLeadGen',
+        'question_page_custom_headline' => 'setQuestionPageCustomHeadline',
+        'context_card' => 'setContextCard'
     ];
 
     /**
@@ -257,7 +282,12 @@ class CreateLeadFormRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         'thank_you_button_text' => 'getThankYouButtonText',
         'thank_you_button_type' => 'getThankYouButtonType',
         'thank_you_website_url' => 'getThankYouWebsiteUrl',
-        'is_optimized_for_quality' => 'getIsOptimizedForQuality'
+        'is_optimized_for_quality' => 'getIsOptimizedForQuality',
+        'form_type' => 'getFormType',
+        'block_display_for_non_targeted_viewer' => 'getBlockDisplayForNonTargetedViewer',
+        'allow_organic_lead_gen' => 'getAllowOrganicLeadGen',
+        'question_page_custom_headline' => 'getQuestionPageCustomHeadline',
+        'context_card' => 'getContextCard'
     ];
 
     /**
@@ -301,6 +331,23 @@ class CreateLeadFormRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
+    public const FORM_TYPE_MORE_VOLUME = 'MORE_VOLUME';
+    public const FORM_TYPE_HIGHER_INTENT = 'HIGHER_INTENT';
+    public const FORM_TYPE_RICH_CREATIVE = 'RICH_CREATIVE';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFormTypeAllowableValues()
+    {
+        return [
+            self::FORM_TYPE_MORE_VOLUME,
+            self::FORM_TYPE_HIGHER_INTENT,
+            self::FORM_TYPE_RICH_CREATIVE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -330,6 +377,11 @@ class CreateLeadFormRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('thank_you_button_type', $data ?? [], null);
         $this->setIfExists('thank_you_website_url', $data ?? [], null);
         $this->setIfExists('is_optimized_for_quality', $data ?? [], null);
+        $this->setIfExists('form_type', $data ?? [], null);
+        $this->setIfExists('block_display_for_non_targeted_viewer', $data ?? [], null);
+        $this->setIfExists('allow_organic_lead_gen', $data ?? [], null);
+        $this->setIfExists('question_page_custom_headline', $data ?? [], null);
+        $this->setIfExists('context_card', $data ?? [], null);
     }
 
     /**
@@ -381,6 +433,15 @@ class CreateLeadFormRequest implements ModelInterface, ArrayAccess, \JsonSeriali
         }
         if (!is_null($this->container['privacy_policy_link_text']) && (mb_strlen($this->container['privacy_policy_link_text']) > 70)) {
             $invalidProperties[] = "invalid value for 'privacy_policy_link_text', the character length must be smaller than or equal to 70.";
+        }
+
+        $allowedValues = $this->getFormTypeAllowableValues();
+        if (!is_null($this->container['form_type']) && !in_array($this->container['form_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'form_type', must be one of '%s'",
+                $this->container['form_type'],
+                implode("', '", $allowedValues)
+            );
         }
 
         return $invalidProperties;
@@ -748,7 +809,7 @@ class CreateLeadFormRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets is_optimized_for_quality
      *
-     * @param bool|null $is_optimized_for_quality is_optimized_for_quality
+     * @param bool|null $is_optimized_for_quality Legacy form type toggle. Prefer formType instead. false = More Volume, true = Higher Intent.
      *
      * @return self
      */
@@ -758,6 +819,151 @@ class CreateLeadFormRequest implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable is_optimized_for_quality cannot be null');
         }
         $this->container['is_optimized_for_quality'] = $is_optimized_for_quality;
+
+        return $this;
+    }
+
+    /**
+     * Gets form_type
+     *
+     * @return string|null
+     */
+    public function getFormType()
+    {
+        return $this->container['form_type'];
+    }
+
+    /**
+     * Sets form_type
+     *
+     * @param string|null $form_type Form type. MORE_VOLUME = optimized for lead quantity (default). HIGHER_INTENT = adds a review/confirmation step before submit. RICH_CREATIVE = includes context card and custom headline to educate users before they submit. Supersedes isOptimizedForQuality.
+     *
+     * @return self
+     */
+    public function setFormType($form_type)
+    {
+        if (is_null($form_type)) {
+            throw new \InvalidArgumentException('non-nullable form_type cannot be null');
+        }
+        $allowedValues = $this->getFormTypeAllowableValues();
+        if (!in_array($form_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'form_type', must be one of '%s'",
+                    $form_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['form_type'] = $form_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets block_display_for_non_targeted_viewer
+     *
+     * @return bool|null
+     */
+    public function getBlockDisplayForNonTargetedViewer()
+    {
+        return $this->container['block_display_for_non_targeted_viewer'];
+    }
+
+    /**
+     * Sets block_display_for_non_targeted_viewer
+     *
+     * @param bool|null $block_display_for_non_targeted_viewer Sharing setting. true = Restricted (only people targeted by the ad can open the form link). false = Open (shareable link, default).
+     *
+     * @return self
+     */
+    public function setBlockDisplayForNonTargetedViewer($block_display_for_non_targeted_viewer)
+    {
+        if (is_null($block_display_for_non_targeted_viewer)) {
+            throw new \InvalidArgumentException('non-nullable block_display_for_non_targeted_viewer cannot be null');
+        }
+        $this->container['block_display_for_non_targeted_viewer'] = $block_display_for_non_targeted_viewer;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_organic_lead_gen
+     *
+     * @return bool|null
+     */
+    public function getAllowOrganicLeadGen()
+    {
+        return $this->container['allow_organic_lead_gen'];
+    }
+
+    /**
+     * Sets allow_organic_lead_gen
+     *
+     * @param bool|null $allow_organic_lead_gen Flexible form delivery. true = the form can surface organically on the Page (not just as a paid ad). Defaults to false.
+     *
+     * @return self
+     */
+    public function setAllowOrganicLeadGen($allow_organic_lead_gen)
+    {
+        if (is_null($allow_organic_lead_gen)) {
+            throw new \InvalidArgumentException('non-nullable allow_organic_lead_gen cannot be null');
+        }
+        $this->container['allow_organic_lead_gen'] = $allow_organic_lead_gen;
+
+        return $this;
+    }
+
+    /**
+     * Gets question_page_custom_headline
+     *
+     * @return string|null
+     */
+    public function getQuestionPageCustomHeadline()
+    {
+        return $this->container['question_page_custom_headline'];
+    }
+
+    /**
+     * Sets question_page_custom_headline
+     *
+     * @param string|null $question_page_custom_headline Custom subheadline shown above the form fields on the questions page (the contact-information section description). Defaults to Meta's generic copy when omitted.
+     *
+     * @return self
+     */
+    public function setQuestionPageCustomHeadline($question_page_custom_headline)
+    {
+        if (is_null($question_page_custom_headline)) {
+            throw new \InvalidArgumentException('non-nullable question_page_custom_headline cannot be null');
+        }
+        $this->container['question_page_custom_headline'] = $question_page_custom_headline;
+
+        return $this;
+    }
+
+    /**
+     * Gets context_card
+     *
+     * @return \Zernio\Model\CreateLeadFormRequestContextCard|null
+     */
+    public function getContextCard()
+    {
+        return $this->container['context_card'];
+    }
+
+    /**
+     * Sets context_card
+     *
+     * @param \Zernio\Model\CreateLeadFormRequestContextCard|null $context_card context_card
+     *
+     * @return self
+     */
+    public function setContextCard($context_card)
+    {
+        if (is_null($context_card)) {
+            throw new \InvalidArgumentException('non-nullable context_card cannot be null');
+        }
+        $this->container['context_card'] = $context_card;
 
         return $this;
     }

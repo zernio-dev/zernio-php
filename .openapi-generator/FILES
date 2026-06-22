@@ -215,6 +215,7 @@ docs/Model/CreateInviteToken201Response.md
 docs/Model/CreateInviteTokenRequest.md
 docs/Model/CreateLeadForm200Response.md
 docs/Model/CreateLeadFormRequest.md
+docs/Model/CreateLeadFormRequestContextCard.md
 docs/Model/CreateLeadFormRequestQuestionsInner.md
 docs/Model/CreateLeadFormRequestQuestionsInnerOptionsInner.md
 docs/Model/CreatePost409Response.md
@@ -244,11 +245,13 @@ docs/Model/CreateStandaloneAdRequestCreativesInner.md
 docs/Model/CreateStandaloneAdRequestCreativesInnerVideo.md
 docs/Model/CreateStandaloneAdRequestCustomLocationsInner.md
 docs/Model/CreateStandaloneAdRequestDynamicCreative.md
+docs/Model/CreateStandaloneAdRequestExcludedLocations.md
 docs/Model/CreateStandaloneAdRequestImages.md
 docs/Model/CreateStandaloneAdRequestPlacementAssets.md
 docs/Model/CreateStandaloneAdRequestPlacementAssetsRulesInner.md
 docs/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements.md
 docs/Model/CreateStandaloneAdRequestPlacements.md
+docs/Model/CreateStandaloneAdRequestPlacesInner.md
 docs/Model/CreateStandaloneAdRequestPromotedObject.md
 docs/Model/CreateStandaloneAdRequestRegionsInner.md
 docs/Model/CreateStandaloneAdRequestTracking.md
@@ -1467,6 +1470,7 @@ lib/Model/CreateInviteToken201Response.php
 lib/Model/CreateInviteTokenRequest.php
 lib/Model/CreateLeadForm200Response.php
 lib/Model/CreateLeadFormRequest.php
+lib/Model/CreateLeadFormRequestContextCard.php
 lib/Model/CreateLeadFormRequestQuestionsInner.php
 lib/Model/CreateLeadFormRequestQuestionsInnerOptionsInner.php
 lib/Model/CreatePost409Response.php
@@ -1496,11 +1500,13 @@ lib/Model/CreateStandaloneAdRequestCreativesInner.php
 lib/Model/CreateStandaloneAdRequestCreativesInnerVideo.php
 lib/Model/CreateStandaloneAdRequestCustomLocationsInner.php
 lib/Model/CreateStandaloneAdRequestDynamicCreative.php
+lib/Model/CreateStandaloneAdRequestExcludedLocations.php
 lib/Model/CreateStandaloneAdRequestImages.php
 lib/Model/CreateStandaloneAdRequestPlacementAssets.php
 lib/Model/CreateStandaloneAdRequestPlacementAssetsRulesInner.php
 lib/Model/CreateStandaloneAdRequestPlacementAssetsRulesInnerPlacements.php
 lib/Model/CreateStandaloneAdRequestPlacements.php
+lib/Model/CreateStandaloneAdRequestPlacesInner.php
 lib/Model/CreateStandaloneAdRequestPromotedObject.php
 lib/Model/CreateStandaloneAdRequestRegionsInner.php
 lib/Model/CreateStandaloneAdRequestTracking.php
@@ -2505,3 +2511,6 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/CreateLeadFormRequestContextCardTest.php
+test/Model/CreateStandaloneAdRequestExcludedLocationsTest.php
+test/Model/CreateStandaloneAdRequestPlacesInnerTest.php

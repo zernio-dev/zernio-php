@@ -28267,6 +28267,30 @@ paths:
                       distanceUnit: { type: string, enum: [mile, kilometer] }
                       name: { type: string }
                       address: { type: string }
+                places:
+                  type: array
+                  description: "Named points of interest (businesses, landmarks). Meta only. `key` from /v1/ads/targeting/search?dimension=geo&geoType=place. Maps to geo_locations.places."
+                  items:
+                    type: object
+                    required: [key]
+                    properties:
+                      key: { type: string }
+                neighborhoods:
+                  type: array
+                  description: "Named neighbourhood areas. Meta only. `key` from /v1/ads/targeting/search?dimension=geo&geoType=neighborhood. Maps to geo_locations.neighborhoods."
+                  items:
+                    type: object
+                    required: [key]
+                    properties:
+                      key: { type: string }
+                excludedLocations:
+                  type: object
+                  description: "Geo exclusions. Meta only. Maps to excluded_geo_locations. Supports countries, regions, cities, and zips."
+                  properties:
+                    countries: { type: array, items: { type: string }, description: "ISO-3166 alpha-2 country codes to exclude." }
+                    regions: { type: array, items: { type: object, required: [key], properties: { key: { type: string } } } }
+                    cities: { type: array, items: { type: object, required: [key], properties: { key: { type: string } } } }
+                    zips: { type: array, items: { type: object, required: [key], properties: { key: { type: string } } } }
                 behaviors:
                   type: array
                   description: "Behaviour entities from /v1/ads/targeting/search?dimension=behavior. Supported on Meta and TikTok. Each must include id."
@@ -28807,7 +28831,29 @@ paths:
                 thankYouButtonText: { type: string }
                 thankYouButtonType: { type: string, example: VIEW_WEBSITE }
                 thankYouWebsiteUrl: { type: string, format: uri }
-                isOptimizedForQuality: { type: boolean }
+                isOptimizedForQuality: { type: boolean, description: "Legacy form type toggle. Prefer formType instead. false = More Volume, true = Higher Intent." }
+                formType:
+                  type: string
+                  enum: [MORE_VOLUME, HIGHER_INTENT, RICH_CREATIVE]
+                  description: "Form type. MORE_VOLUME = optimized for lead quantity (default). HIGHER_INTENT = adds a review/confirmation step before submit. RICH_CREATIVE = includes context card and custom headline to educate users before they submit. Supersedes isOptimizedForQuality."
+                blockDisplayForNonTargetedViewer:
+                  type: boolean
+                  description: "Sharing setting. true = Restricted (only people targeted by the ad can open the form link). false = Open (shareable link, default)."
+                allowOrganicLeadGen:
+                  type: boolean
+                  description: "Flexible form delivery. true = the form can surface organically on the Page (not just as a paid ad). Defaults to false."
+                questionPageCustomHeadline:
+                  type: string
+                  description: "Custom subheadline shown above the form fields on the questions page (the contact-information section description). Defaults to Meta's generic copy when omitted."
+                contextCard:
+                  type: object
+                  description: "Intro card shown before the questions page. Omit to skip the intro screen."
+                  properties:
+                    title: { type: string, description: "Headline / title of the intro card." }
+                    content: { type: array, items: { type: string }, description: "Body text lines shown on the intro card." }
+                    style: { type: string, enum: [LIST_STYLE, PARAGRAPH_STYLE], description: "Visual layout of the intro card." }
+                    buttonText: { type: string, description: "CTA button label on the intro card." }
+                    coverPhoto: { type: string, description: "Image hash of the cover photo (obtain from the Meta Ad Images API). Omit to show no image." }
       responses:
         '200':
           description: Created form.
@@ -29025,7 +29071,7 @@ paths:
         - { name: accountId, in: query, required: true, schema: { type: string }, description: "Social account ID (a connected account on the target ad platform)." }
         - { name: q, in: query, required: true, schema: { type: string }, description: "Search query. For geo, the locality name only (no region/country suffix)." }
         - { name: dimension, in: query, required: false, schema: { type: string, enum: [geo, interest, behavior, income], default: interest }, description: "What to search. `geo` resolves locations (scope further with `geoType`), `interest`/`behavior` resolve audience entities, `income` resolves income-tier options. Defaults to `interest` for backward compatibility with the deprecated /v1/ads/interests alias." }
-        - { name: geoType, in: query, required: false, schema: { type: string, enum: [country, region, city, subcity, neighborhood, place, zip, metro_area, geo_market], default: city }, description: "Only used when `dimension=geo`. The kind of location to resolve. `place` resolves named points of interest (businesses, landmarks) by proximity. `neighborhood` resolves named neighbourhood areas. Defaults to `city`." }
+        - { name: geoType, in: query, required: false, schema: { type: string, enum: [all, country, region, city, subcity, neighborhood, place, zip, metro_area, geo_market], default: city }, description: "Only used when `dimension=geo`. The kind of location to resolve. `place` resolves named points of interest (businesses, landmarks). `neighborhood` resolves named neighbourhood areas. Use `all` to search every geo type in a single relevance-ranked call — mirrors Meta's own unified search box. Defaults to `city`." }
         - { name: countryCode, in: query, required: false, schema: { type: string, minLength: 2, maxLength: 2 }, description: "ISO 3166-1 alpha-2 country code (e.g. NL) to scope a geo search." }
         - { name: limit, in: query, required: false, schema: { type: integer, minimum: 1, maximum: 100, default: 25 }, description: "Maximum results to return." }
       responses:
@@ -29047,6 +29093,8 @@ paths:
                         type: { type: string, description: "What the result is (e.g. city, region, country, zip, metro, interest, behavior, income)." }
                         path: { type: array, items: { type: string }, description: "Optional breadcrumb of parent labels (e.g. ['United States', 'California', 'Los Angeles']). Disambiguates same-named results." }
                         audienceSize: { type: integer, nullable: true, description: "Optional estimated reachable users for this option, when the platform returns it." }
+                        latitude: { type: number, format: float, nullable: true, description: "Centre latitude of the location. Populated on Meta geo results (city, neighborhood, place, etc.). Useful for map views." }
+                        longitude: { type: number, format: float, nullable: true, description: "Centre longitude of the location." }
         '400':
           description: Missing or invalid query parameters
         '401': { $ref: '#/components/responses/Unauthorized' }

@@ -1,6 +1,6 @@
 <?php
 /**
- * SearchAdTargeting200ResponseResultsInner
+ * CreateLeadFormRequestContextCard
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * SearchAdTargeting200ResponseResultsInner Class Doc Comment
+ * CreateLeadFormRequestContextCard Class Doc Comment
  *
  * @category Class
+ * @description Intro card shown before the questions page. Omit to skip the intro screen.
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateLeadFormRequestContextCard implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
       *
       * @var string
       */
-    protected static $openAPIModelName = 'searchAdTargeting_200_response_results_inner';
+    protected static $openAPIModelName = 'createLeadForm_request_contextCard';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,13 +59,11 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'type' => 'string',
-        'path' => 'string[]',
-        'audience_size' => 'int',
-        'latitude' => 'float',
-        'longitude' => 'float'
+        'title' => 'string',
+        'content' => 'string[]',
+        'style' => 'string',
+        'button_text' => 'string',
+        'cover_photo' => 'string'
     ];
 
     /**
@@ -75,13 +74,11 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'name' => null,
-        'type' => null,
-        'path' => null,
-        'audience_size' => null,
-        'latitude' => 'float',
-        'longitude' => 'float'
+        'title' => null,
+        'content' => null,
+        'style' => null,
+        'button_text' => null,
+        'cover_photo' => null
     ];
 
     /**
@@ -90,13 +87,11 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'name' => false,
-        'type' => false,
-        'path' => false,
-        'audience_size' => false,
-        'latitude' => false,
-        'longitude' => false
+        'title' => false,
+        'content' => false,
+        'style' => false,
+        'button_text' => false,
+        'cover_photo' => false
     ];
 
     /**
@@ -185,13 +180,11 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'type' => 'type',
-        'path' => 'path',
-        'audience_size' => 'audienceSize',
-        'latitude' => 'latitude',
-        'longitude' => 'longitude'
+        'title' => 'title',
+        'content' => 'content',
+        'style' => 'style',
+        'button_text' => 'buttonText',
+        'cover_photo' => 'coverPhoto'
     ];
 
     /**
@@ -200,13 +193,11 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'type' => 'setType',
-        'path' => 'setPath',
-        'audience_size' => 'setAudienceSize',
-        'latitude' => 'setLatitude',
-        'longitude' => 'setLongitude'
+        'title' => 'setTitle',
+        'content' => 'setContent',
+        'style' => 'setStyle',
+        'button_text' => 'setButtonText',
+        'cover_photo' => 'setCoverPhoto'
     ];
 
     /**
@@ -215,13 +206,11 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'type' => 'getType',
-        'path' => 'getPath',
-        'audience_size' => 'getAudienceSize',
-        'latitude' => 'getLatitude',
-        'longitude' => 'getLongitude'
+        'title' => 'getTitle',
+        'content' => 'getContent',
+        'style' => 'getStyle',
+        'button_text' => 'getButtonText',
+        'cover_photo' => 'getCoverPhoto'
     ];
 
     /**
@@ -265,6 +254,21 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
         return self::$openAPIModelName;
     }
 
+    public const STYLE_LIST_STYLE = 'LIST_STYLE';
+    public const STYLE_PARAGRAPH_STYLE = 'PARAGRAPH_STYLE';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getStyleAllowableValues()
+    {
+        return [
+            self::STYLE_LIST_STYLE,
+            self::STYLE_PARAGRAPH_STYLE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -281,13 +285,11 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('path', $data ?? [], null);
-        $this->setIfExists('audience_size', $data ?? [], null);
-        $this->setIfExists('latitude', $data ?? [], null);
-        $this->setIfExists('longitude', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('content', $data ?? [], null);
+        $this->setIfExists('style', $data ?? [], null);
+        $this->setIfExists('button_text', $data ?? [], null);
+        $this->setIfExists('cover_photo', $data ?? [], null);
     }
 
     /**
@@ -317,15 +319,15 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        $allowedValues = $this->getStyleAllowableValues();
+        if (!is_null($this->container['style']) && !in_array($this->container['style'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'style', must be one of '%s'",
+                $this->container['style'],
+                implode("', '", $allowedValues)
+            );
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
-        }
+
         return $invalidProperties;
     }
 
@@ -342,190 +344,146 @@ class SearchAdTargeting200ResponseResultsInner implements ModelInterface, ArrayA
 
 
     /**
-     * Gets id
+     * Gets title
      *
-     * @return string
+     * @return string|null
      */
-    public function getId()
+    public function getTitle()
     {
-        return $this->container['id'];
+        return $this->container['title'];
     }
 
     /**
-     * Sets id
+     * Sets title
      *
-     * @param string $id The platform's opaque id. Use as a geo `key` (regions/cities/zips/metros) or an entity `id` (interests/behaviors) in TargetingSpec.
+     * @param string|null $title Headline / title of the intro card.
      *
      * @return self
      */
-    public function setId($id)
+    public function setTitle($title)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['title'] = $title;
 
         return $this;
     }
 
     /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Human-readable label.
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type What the result is (e.g. city, region, country, zip, metro, interest, behavior, income).
-     *
-     * @return self
-     */
-    public function setType($type)
-    {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
-        }
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets path
+     * Gets content
      *
      * @return string[]|null
      */
-    public function getPath()
+    public function getContent()
     {
-        return $this->container['path'];
+        return $this->container['content'];
     }
 
     /**
-     * Sets path
+     * Sets content
      *
-     * @param string[]|null $path Optional breadcrumb of parent labels (e.g. ['United States', 'California', 'Los Angeles']). Disambiguates same-named results.
+     * @param string[]|null $content Body text lines shown on the intro card.
      *
      * @return self
      */
-    public function setPath($path)
+    public function setContent($content)
     {
-        if (is_null($path)) {
-            throw new \InvalidArgumentException('non-nullable path cannot be null');
+        if (is_null($content)) {
+            throw new \InvalidArgumentException('non-nullable content cannot be null');
         }
-        $this->container['path'] = $path;
+        $this->container['content'] = $content;
 
         return $this;
     }
 
     /**
-     * Gets audience_size
+     * Gets style
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getAudienceSize()
+    public function getStyle()
     {
-        return $this->container['audience_size'];
+        return $this->container['style'];
     }
 
     /**
-     * Sets audience_size
+     * Sets style
      *
-     * @param int|null $audience_size Optional estimated reachable users for this option, when the platform returns it.
+     * @param string|null $style Visual layout of the intro card.
      *
      * @return self
      */
-    public function setAudienceSize($audience_size)
+    public function setStyle($style)
     {
-        if (is_null($audience_size)) {
-            throw new \InvalidArgumentException('non-nullable audience_size cannot be null');
+        if (is_null($style)) {
+            throw new \InvalidArgumentException('non-nullable style cannot be null');
         }
-        $this->container['audience_size'] = $audience_size;
+        $allowedValues = $this->getStyleAllowableValues();
+        if (!in_array($style, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'style', must be one of '%s'",
+                    $style,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['style'] = $style;
 
         return $this;
     }
 
     /**
-     * Gets latitude
+     * Gets button_text
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getLatitude()
+    public function getButtonText()
     {
-        return $this->container['latitude'];
+        return $this->container['button_text'];
     }
 
     /**
-     * Sets latitude
+     * Sets button_text
      *
-     * @param float|null $latitude Centre latitude of the location. Populated on Meta geo results (city, neighborhood, place, etc.). Useful for map views.
+     * @param string|null $button_text CTA button label on the intro card.
      *
      * @return self
      */
-    public function setLatitude($latitude)
+    public function setButtonText($button_text)
     {
-        if (is_null($latitude)) {
-            throw new \InvalidArgumentException('non-nullable latitude cannot be null');
+        if (is_null($button_text)) {
+            throw new \InvalidArgumentException('non-nullable button_text cannot be null');
         }
-        $this->container['latitude'] = $latitude;
+        $this->container['button_text'] = $button_text;
 
         return $this;
     }
 
     /**
-     * Gets longitude
+     * Gets cover_photo
      *
-     * @return float|null
+     * @return string|null
      */
-    public function getLongitude()
+    public function getCoverPhoto()
     {
-        return $this->container['longitude'];
+        return $this->container['cover_photo'];
     }
 
     /**
-     * Sets longitude
+     * Sets cover_photo
      *
-     * @param float|null $longitude Centre longitude of the location.
+     * @param string|null $cover_photo Image hash of the cover photo (obtain from the Meta Ad Images API). Omit to show no image.
      *
      * @return self
      */
-    public function setLongitude($longitude)
+    public function setCoverPhoto($cover_photo)
     {
-        if (is_null($longitude)) {
-            throw new \InvalidArgumentException('non-nullable longitude cannot be null');
+        if (is_null($cover_photo)) {
+            throw new \InvalidArgumentException('non-nullable cover_photo cannot be null');
         }
-        $this->container['longitude'] = $longitude;
+        $this->container['cover_photo'] = $cover_photo;
 
         return $this;
     }

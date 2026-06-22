@@ -99,6 +99,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'zips' => '\Zernio\Model\CreateStandaloneAdRequestZipsInner[]',
         'metros' => '\Zernio\Model\CreateStandaloneAdRequestZipsInner[]',
         'custom_locations' => '\Zernio\Model\CreateStandaloneAdRequestCustomLocationsInner[]',
+        'places' => '\Zernio\Model\CreateStandaloneAdRequestPlacesInner[]',
+        'neighborhoods' => '\Zernio\Model\CreateStandaloneAdRequestPlacesInner[]',
+        'excluded_locations' => '\Zernio\Model\CreateStandaloneAdRequestExcludedLocations',
         'behaviors' => '\Zernio\Model\CreateStandaloneAdRequestBehaviorsInner[]',
         'income_tier' => 'string',
         'languages' => 'string[]',
@@ -178,6 +181,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'zips' => null,
         'metros' => null,
         'custom_locations' => null,
+        'places' => null,
+        'neighborhoods' => null,
+        'excluded_locations' => null,
         'behaviors' => null,
         'income_tier' => null,
         'languages' => null,
@@ -255,6 +261,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'zips' => false,
         'metros' => false,
         'custom_locations' => false,
+        'places' => false,
+        'neighborhoods' => false,
+        'excluded_locations' => false,
         'behaviors' => false,
         'income_tier' => false,
         'languages' => false,
@@ -412,6 +421,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'zips' => 'zips',
         'metros' => 'metros',
         'custom_locations' => 'customLocations',
+        'places' => 'places',
+        'neighborhoods' => 'neighborhoods',
+        'excluded_locations' => 'excludedLocations',
         'behaviors' => 'behaviors',
         'income_tier' => 'incomeTier',
         'languages' => 'languages',
@@ -489,6 +501,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'zips' => 'setZips',
         'metros' => 'setMetros',
         'custom_locations' => 'setCustomLocations',
+        'places' => 'setPlaces',
+        'neighborhoods' => 'setNeighborhoods',
+        'excluded_locations' => 'setExcludedLocations',
         'behaviors' => 'setBehaviors',
         'income_tier' => 'setIncomeTier',
         'languages' => 'setLanguages',
@@ -566,6 +581,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         'zips' => 'getZips',
         'metros' => 'getMetros',
         'custom_locations' => 'getCustomLocations',
+        'places' => 'getPlaces',
+        'neighborhoods' => 'getNeighborhoods',
+        'excluded_locations' => 'getExcludedLocations',
         'behaviors' => 'getBehaviors',
         'income_tier' => 'getIncomeTier',
         'languages' => 'getLanguages',
@@ -930,6 +948,9 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
         $this->setIfExists('zips', $data ?? [], null);
         $this->setIfExists('metros', $data ?? [], null);
         $this->setIfExists('custom_locations', $data ?? [], null);
+        $this->setIfExists('places', $data ?? [], null);
+        $this->setIfExists('neighborhoods', $data ?? [], null);
+        $this->setIfExists('excluded_locations', $data ?? [], null);
         $this->setIfExists('behaviors', $data ?? [], null);
         $this->setIfExists('income_tier', $data ?? [], null);
         $this->setIfExists('languages', $data ?? [], null);
@@ -2386,6 +2407,87 @@ class CreateStandaloneAdRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable custom_locations cannot be null');
         }
         $this->container['custom_locations'] = $custom_locations;
+
+        return $this;
+    }
+
+    /**
+     * Gets places
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null
+     */
+    public function getPlaces()
+    {
+        return $this->container['places'];
+    }
+
+    /**
+     * Sets places
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null $places Named points of interest (businesses, landmarks). Meta only. `key` from /v1/ads/targeting/search?dimension=geo&geoType=place. Maps to geo_locations.places.
+     *
+     * @return self
+     */
+    public function setPlaces($places)
+    {
+        if (is_null($places)) {
+            throw new \InvalidArgumentException('non-nullable places cannot be null');
+        }
+        $this->container['places'] = $places;
+
+        return $this;
+    }
+
+    /**
+     * Gets neighborhoods
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null
+     */
+    public function getNeighborhoods()
+    {
+        return $this->container['neighborhoods'];
+    }
+
+    /**
+     * Sets neighborhoods
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestPlacesInner[]|null $neighborhoods Named neighbourhood areas. Meta only. `key` from /v1/ads/targeting/search?dimension=geo&geoType=neighborhood. Maps to geo_locations.neighborhoods.
+     *
+     * @return self
+     */
+    public function setNeighborhoods($neighborhoods)
+    {
+        if (is_null($neighborhoods)) {
+            throw new \InvalidArgumentException('non-nullable neighborhoods cannot be null');
+        }
+        $this->container['neighborhoods'] = $neighborhoods;
+
+        return $this;
+    }
+
+    /**
+     * Gets excluded_locations
+     *
+     * @return \Zernio\Model\CreateStandaloneAdRequestExcludedLocations|null
+     */
+    public function getExcludedLocations()
+    {
+        return $this->container['excluded_locations'];
+    }
+
+    /**
+     * Sets excluded_locations
+     *
+     * @param \Zernio\Model\CreateStandaloneAdRequestExcludedLocations|null $excluded_locations excluded_locations
+     *
+     * @return self
+     */
+    public function setExcludedLocations($excluded_locations)
+    {
+        if (is_null($excluded_locations)) {
+            throw new \InvalidArgumentException('non-nullable excluded_locations cannot be null');
+        }
+        $this->container['excluded_locations'] = $excluded_locations;
 
         return $this;
     }
