@@ -2505,6 +2505,3 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/GetLeadForm200ResponseFormQuestionsInnerTest.php
-test/Model/GetLeadForm200ResponseFormTest.php
-test/Model/GetLeadForm200ResponseFormThankYouPageTest.php
