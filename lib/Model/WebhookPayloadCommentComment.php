@@ -67,7 +67,8 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
         'created_at' => '\DateTime',
         'is_reply' => 'bool',
         'parent_comment_id' => 'string',
-        'ad' => '\Zernio\Model\WebhookPayloadCommentCommentAd'
+        'ad' => '\Zernio\Model\WebhookPayloadCommentCommentAd',
+        'attachment' => '\Zernio\Model\WebhookPayloadCommentCommentAttachment'
     ];
 
     /**
@@ -87,7 +88,8 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'date-time',
         'is_reply' => null,
         'parent_comment_id' => null,
-        'ad' => null
+        'ad' => null,
+        'attachment' => null
     ];
 
     /**
@@ -105,7 +107,8 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
         'created_at' => false,
         'is_reply' => false,
         'parent_comment_id' => true,
-        'ad' => false
+        'ad' => false,
+        'attachment' => false
     ];
 
     /**
@@ -203,7 +206,8 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'createdAt',
         'is_reply' => 'isReply',
         'parent_comment_id' => 'parentCommentId',
-        'ad' => 'ad'
+        'ad' => 'ad',
+        'attachment' => 'attachment'
     ];
 
     /**
@@ -221,7 +225,8 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'setCreatedAt',
         'is_reply' => 'setIsReply',
         'parent_comment_id' => 'setParentCommentId',
-        'ad' => 'setAd'
+        'ad' => 'setAd',
+        'attachment' => 'setAttachment'
     ];
 
     /**
@@ -239,7 +244,8 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
         'created_at' => 'getCreatedAt',
         'is_reply' => 'getIsReply',
         'parent_comment_id' => 'getParentCommentId',
-        'ad' => 'getAd'
+        'ad' => 'getAd',
+        'attachment' => 'getAttachment'
     ];
 
     /**
@@ -334,6 +340,7 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('is_reply', $data ?? [], null);
         $this->setIfExists('parent_comment_id', $data ?? [], null);
         $this->setIfExists('ad', $data ?? [], null);
+        $this->setIfExists('attachment', $data ?? [], null);
     }
 
     /**
@@ -704,6 +711,33 @@ class WebhookPayloadCommentComment implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable ad cannot be null');
         }
         $this->container['ad'] = $ad;
+
+        return $this;
+    }
+
+    /**
+     * Gets attachment
+     *
+     * @return \Zernio\Model\WebhookPayloadCommentCommentAttachment|null
+     */
+    public function getAttachment()
+    {
+        return $this->container['attachment'];
+    }
+
+    /**
+     * Sets attachment
+     *
+     * @param \Zernio\Model\WebhookPayloadCommentCommentAttachment|null $attachment attachment
+     *
+     * @return self
+     */
+    public function setAttachment($attachment)
+    {
+        if (is_null($attachment)) {
+            throw new \InvalidArgumentException('non-nullable attachment cannot be null');
+        }
+        $this->container['attachment'] = $attachment;
 
         return $this;
     }

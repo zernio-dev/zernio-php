@@ -1154,6 +1154,7 @@ docs/Model/WebhookPayloadComment.md
 docs/Model/WebhookPayloadCommentAccount.md
 docs/Model/WebhookPayloadCommentComment.md
 docs/Model/WebhookPayloadCommentCommentAd.md
+docs/Model/WebhookPayloadCommentCommentAttachment.md
 docs/Model/WebhookPayloadCommentCommentAuthor.md
 docs/Model/WebhookPayloadCommentPost.md
 docs/Model/WebhookPayloadConversationStarted.md
@@ -2381,6 +2382,7 @@ lib/Model/WebhookPayloadComment.php
 lib/Model/WebhookPayloadCommentAccount.php
 lib/Model/WebhookPayloadCommentComment.php
 lib/Model/WebhookPayloadCommentCommentAd.php
+lib/Model/WebhookPayloadCommentCommentAttachment.php
 lib/Model/WebhookPayloadCommentCommentAuthor.php
 lib/Model/WebhookPayloadCommentPost.php
 lib/Model/WebhookPayloadConversationStarted.php
@@ -2453,3 +2455,4 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Model/WebhookPayloadCommentCommentAttachmentTest.php

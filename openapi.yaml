@@ -1827,6 +1827,23 @@ components:
                     Facebook promotion status returned by Graph API. Common values:
                     "active" (organic post currently boosted), "ineligible" (dark
                     post or ad creative, not promotable because it already is an ad).
+            attachment:
+              type: object
+              description: |
+                Facebook only. Present on graphic-only comments (sticker, GIF, photo) that
+                carry no text. URLs are ephemeral and may expire for Meta platforms (oe= expiry),
+                so fetch promptly. Instagram comments do not support attachments.
+              required: [type]
+              properties:
+                type:
+                  type: string
+                  description: 'Attachment type: sticker, animated_image_share, or photo.'
+                imageUrl:
+                  type: string
+                  description: Rendered image/preview URL (from attachment.media.image.src).
+                url:
+                  type: string
+                  description: 'Source URL (from attachment.url). For GIFs this is an l.facebook.com redirect.'
         post:
           type: object
           required: [id, platformPostId]
