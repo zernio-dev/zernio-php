@@ -61,7 +61,7 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
     protected static $openAPITypes = [
         'name' => 'string',
         'language' => 'string',
-        'components' => 'mixed[]',
+        'components' => 'array<string,mixed>[]',
         'variable_mapping' => 'array<string,\Zernio\Model\CreateBroadcastRequestTemplateVariableMappingValue>'
     ];
 
@@ -369,7 +369,7 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
     /**
      * Gets components
      *
-     * @return mixed[]|null
+     * @return array<string,mixed>[]|null
      */
     public function getComponents()
     {
@@ -379,7 +379,7 @@ class CreateBroadcastRequestTemplate implements ModelInterface, ArrayAccess, \Js
     /**
      * Sets components
      *
-     * @param mixed[]|null $components components
+     * @param array<string,mixed>[]|null $components components
      *
      * @return self
      */
