@@ -42,6 +42,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | [**onWhatsAppNumberActionRequired()**](WebhookEventsApi.md#onWhatsAppNumberActionRequired) | **POST** /whatsapp.number.action_required | WhatsApp number action required event |
 | [**onWhatsAppNumberActivated()**](WebhookEventsApi.md#onWhatsAppNumberActivated) | **POST** /whatsapp.number.activated | WhatsApp number activated event |
 | [**onWhatsAppNumberDeclined()**](WebhookEventsApi.md#onWhatsAppNumberDeclined) | **POST** /whatsapp.number.declined | WhatsApp number declined event |
+| [**onWhatsAppNumberKycSubmitted()**](WebhookEventsApi.md#onWhatsAppNumberKycSubmitted) | **POST** /whatsapp.number.kyc_submitted | WhatsApp number KYC submitted event |
 | [**onWhatsAppNumberReactivated()**](WebhookEventsApi.md#onWhatsAppNumberReactivated) | **POST** /whatsapp.number.reactivated | WhatsApp number reactivated event |
 | [**onWhatsAppNumberReleased()**](WebhookEventsApi.md#onWhatsAppNumberReleased) | **POST** /whatsapp.number.released | WhatsApp number released event |
 | [**onWhatsAppNumberSuspended()**](WebhookEventsApi.md#onWhatsAppNumberSuspended) | **POST** /whatsapp.number.suspended | WhatsApp number suspended event |
@@ -2155,6 +2156,65 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **on_whats_app_number_declined_request** | [**\Zernio\Model\OnWhatsAppNumberDeclinedRequest**](../Model/OnWhatsAppNumberDeclinedRequest.md)|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `onWhatsAppNumberKycSubmitted()`
+
+```php
+onWhatsAppNumberKycSubmitted($on_whats_app_number_kyc_submitted_request)
+```
+
+WhatsApp number KYC submitted event
+
+Fired when an end customer completes a hosted KYC share link (POST /v1/whatsapp/phone-numbers/kyc/share). The number enters review (pending_regulatory) under your account; `whatsapp.number.activated` or `whatsapp.number.declined` follows once the provider rules on it.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WebhookEventsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$on_whats_app_number_kyc_submitted_request = new \Zernio\Model\OnWhatsAppNumberKycSubmittedRequest(); // \Zernio\Model\OnWhatsAppNumberKycSubmittedRequest
+
+try {
+    $apiInstance->onWhatsAppNumberKycSubmitted($on_whats_app_number_kyc_submitted_request);
+} catch (Exception $e) {
+    echo 'Exception when calling WebhookEventsApi->onWhatsAppNumberKycSubmitted: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **on_whats_app_number_kyc_submitted_request** | [**\Zernio\Model\OnWhatsAppNumberKycSubmittedRequest**](../Model/OnWhatsAppNumberKycSubmittedRequest.md)|  | |
 
 ### Return type
 

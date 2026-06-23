@@ -7,6 +7,7 @@ All URIs are relative to https://zernio.com/api, except if the operation defines
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**checkWhatsAppNumberAvailability()**](WhatsAppPhoneNumbersApi.md#checkWhatsAppNumberAvailability) | **GET** /v1/whatsapp/phone-numbers/availability | Check a country&#39;s availability + address constraint |
+| [**createWhatsAppNumberKycLink()**](WhatsAppPhoneNumbersApi.md#createWhatsAppNumberKycLink) | **POST** /v1/whatsapp/phone-numbers/kyc/share | Create a hosted KYC link |
 | [**getWhatsAppNumberInfo()**](WhatsAppPhoneNumbersApi.md#getWhatsAppNumberInfo) | **GET** /v1/whatsapp/number-info | Get number status |
 | [**getWhatsAppNumberKycForm()**](WhatsAppPhoneNumbersApi.md#getWhatsAppNumberKycForm) | **GET** /v1/whatsapp/phone-numbers/kyc | Get regulated-number KYC form spec |
 | [**getWhatsAppNumberRemediation()**](WhatsAppPhoneNumbersApi.md#getWhatsAppNumberRemediation) | **GET** /v1/whatsapp/phone-numbers/{id}/remediate | Get the declined requirements to fix |
@@ -76,6 +77,66 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `createWhatsAppNumberKycLink()`
+
+```php
+createWhatsAppNumberKycLink($create_whats_app_number_kyc_link_request): \Zernio\Model\CreateWhatsAppNumberKycLink200Response
+```
+
+Create a hosted KYC link
+
+Create a single-use, 7-day hosted KYC link that your end customer completes WITHOUT a Zernio login — useful when the person who holds the ID and address is not your team. They fill the regulated verification on a Zernio-hosted page; the number provisions under YOUR account once they submit. Only regulated (KYC) countries are valid: a country that does not require KYC returns 400.  White-label the page with `branding` (your company name, logo, brand color). Supply `redirect_url` to send the end customer back to your own site after a successful submit (completion params are appended — see below). Listen for the `whatsapp.number.kyc_submitted` webhook to react when the form is completed.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer (JWT) authorization: bearerAuth
+$config = Zernio\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new Zernio\Api\WhatsAppPhoneNumbersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_whats_app_number_kyc_link_request = new \Zernio\Model\CreateWhatsAppNumberKycLinkRequest(); // \Zernio\Model\CreateWhatsAppNumberKycLinkRequest
+
+try {
+    $result = $apiInstance->createWhatsAppNumberKycLink($create_whats_app_number_kyc_link_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WhatsAppPhoneNumbersApi->createWhatsAppNumberKycLink: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_whats_app_number_kyc_link_request** | [**\Zernio\Model\CreateWhatsAppNumberKycLinkRequest**](../Model/CreateWhatsAppNumberKycLinkRequest.md)|  | |
+
+### Return type
+
+[**\Zernio\Model\CreateWhatsAppNumberKycLink200Response**](../Model/CreateWhatsAppNumberKycLink200Response.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

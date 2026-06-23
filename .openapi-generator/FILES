@@ -266,6 +266,9 @@ docs/Model/CreateWhatsAppGroupChat201Response.md
 docs/Model/CreateWhatsAppGroupChat201ResponseGroup.md
 docs/Model/CreateWhatsAppGroupChatRequest.md
 docs/Model/CreateWhatsAppGroupInviteLink200Response.md
+docs/Model/CreateWhatsAppNumberKycLink200Response.md
+docs/Model/CreateWhatsAppNumberKycLinkRequest.md
+docs/Model/CreateWhatsAppNumberKycLinkRequestBranding.md
 docs/Model/CreateWhatsAppSandboxSession200Response.md
 docs/Model/CreateWhatsAppSandboxSessionRequest.md
 docs/Model/CreateWhatsAppTemplate200Response.md
@@ -784,6 +787,7 @@ docs/Model/OnWhatsAppNumberActivatedRequest.md
 docs/Model/OnWhatsAppNumberActivatedRequestNumber.md
 docs/Model/OnWhatsAppNumberDeclinedRequest.md
 docs/Model/OnWhatsAppNumberDeclinedRequestNumber.md
+docs/Model/OnWhatsAppNumberKycSubmittedRequest.md
 docs/Model/OnWhatsAppNumberReactivatedRequest.md
 docs/Model/OnWhatsAppNumberReleasedRequest.md
 docs/Model/OnWhatsAppNumberSuspendedRequest.md
@@ -1493,6 +1497,9 @@ lib/Model/CreateWhatsAppGroupChat201Response.php
 lib/Model/CreateWhatsAppGroupChat201ResponseGroup.php
 lib/Model/CreateWhatsAppGroupChatRequest.php
 lib/Model/CreateWhatsAppGroupInviteLink200Response.php
+lib/Model/CreateWhatsAppNumberKycLink200Response.php
+lib/Model/CreateWhatsAppNumberKycLinkRequest.php
+lib/Model/CreateWhatsAppNumberKycLinkRequestBranding.php
 lib/Model/CreateWhatsAppSandboxSession200Response.php
 lib/Model/CreateWhatsAppSandboxSessionRequest.php
 lib/Model/CreateWhatsAppTemplate200Response.php
@@ -2012,6 +2019,7 @@ lib/Model/OnWhatsAppNumberActivatedRequest.php
 lib/Model/OnWhatsAppNumberActivatedRequestNumber.php
 lib/Model/OnWhatsAppNumberDeclinedRequest.php
 lib/Model/OnWhatsAppNumberDeclinedRequestNumber.php
+lib/Model/OnWhatsAppNumberKycSubmittedRequest.php
 lib/Model/OnWhatsAppNumberReactivatedRequest.php
 lib/Model/OnWhatsAppNumberReleasedRequest.php
 lib/Model/OnWhatsAppNumberSuspendedRequest.php
@@ -2455,4 +2463,7 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/WebhookPayloadCommentCommentAttachmentTest.php
+test/Model/CreateWhatsAppNumberKycLink200ResponseTest.php
+test/Model/CreateWhatsAppNumberKycLinkRequestBrandingTest.php
+test/Model/CreateWhatsAppNumberKycLinkRequestTest.php
+test/Model/OnWhatsAppNumberKycSubmittedRequestTest.php

@@ -299,6 +299,7 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
     public const EVENTS_WHATSAPP_NUMBER_SUSPENDED = 'whatsapp.number.suspended';
     public const EVENTS_WHATSAPP_NUMBER_REACTIVATED = 'whatsapp.number.reactivated';
     public const EVENTS_WHATSAPP_NUMBER_RELEASED = 'whatsapp.number.released';
+    public const EVENTS_WHATSAPP_NUMBER_KYC_SUBMITTED = 'whatsapp.number.kyc_submitted';
 
     /**
      * Gets allowable values of the enum
@@ -342,6 +343,7 @@ class UpdateWebhookSettingsRequest implements ModelInterface, ArrayAccess, \Json
             self::EVENTS_WHATSAPP_NUMBER_SUSPENDED,
             self::EVENTS_WHATSAPP_NUMBER_REACTIVATED,
             self::EVENTS_WHATSAPP_NUMBER_RELEASED,
+            self::EVENTS_WHATSAPP_NUMBER_KYC_SUBMITTED,
         ];
     }
 

@@ -336,7 +336,7 @@ tags:
   - name: Webhooks
     description: |
       Configure webhooks for real-time notifications. Webhooks can be created from the dashboard (Settings → Webhooks) or via this API.
-      Events: post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, post.platform.published, post.platform.failed, post.external.created, post.external.updated, post.external.deleted, account.connected, account.disconnected, account.ads.initial_sync_completed, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, reaction.received, comment.received, review.new, review.updated, lead.received, ad.status_changed, whatsapp.template.status_updated, whatsapp.number.activated, whatsapp.number.declined, whatsapp.number.action_required, whatsapp.number.verification_required, whatsapp.number.suspended, whatsapp.number.reactivated, whatsapp.number.released, webhook.test.
+      Events: post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, post.platform.published, post.platform.failed, post.external.created, post.external.updated, post.external.deleted, account.connected, account.disconnected, account.ads.initial_sync_completed, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, reaction.received, comment.received, review.new, review.updated, lead.received, ad.status_changed, whatsapp.template.status_updated, whatsapp.number.activated, whatsapp.number.declined, whatsapp.number.action_required, whatsapp.number.verification_required, whatsapp.number.suspended, whatsapp.number.reactivated, whatsapp.number.released, whatsapp.number.kyc_submitted, webhook.test.
       Security: optional HMAC-SHA256 signature in X-Zernio-Signature header. Configure a secret key to enable verification. Custom headers supported.
   - name: Webhook Events
     description: |
@@ -1396,7 +1396,7 @@ components:
           type: array
           items:
             type: string
-            enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, post.platform.published, post.platform.failed, post.external.created, post.external.updated, post.external.deleted, account.connected, account.disconnected, account.ads.initial_sync_completed, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, reaction.received, comment.received, review.new, review.updated, ad.status_changed, whatsapp.template.status_updated, whatsapp.number.activated, whatsapp.number.declined, whatsapp.number.action_required, whatsapp.number.verification_required, whatsapp.number.suspended, whatsapp.number.reactivated, whatsapp.number.released]
+            enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, post.platform.published, post.platform.failed, post.external.created, post.external.updated, post.external.deleted, account.connected, account.disconnected, account.ads.initial_sync_completed, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, reaction.received, comment.received, review.new, review.updated, ad.status_changed, whatsapp.template.status_updated, whatsapp.number.activated, whatsapp.number.declined, whatsapp.number.action_required, whatsapp.number.verification_required, whatsapp.number.suspended, whatsapp.number.reactivated, whatsapp.number.released, whatsapp.number.kyc_submitted]
           description: Events subscribed to
         isActive:
           type: boolean
@@ -6480,6 +6480,36 @@ webhooks:
                     country: { type: string }
                     profileId: { type: string }
                 reason: { type: [string, "null"] }
+      responses:
+        '200':
+          description: Webhook received successfully
+  whatsapp.number.kyc_submitted:
+    post:
+      operationId: onWhatsAppNumberKycSubmitted
+      summary: WhatsApp number KYC submitted event
+      description: |
+        Fired when an end customer completes a hosted KYC share link
+        (POST /v1/whatsapp/phone-numbers/kyc/share). The number enters review
+        (pending_regulatory) under your account; `whatsapp.number.activated` or
+        `whatsapp.number.declined` follows once the provider rules on it.
+      tags: [Webhook Events]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id: { type: string }
+                event: { type: string, enum: [whatsapp.number.kyc_submitted] }
+                timestamp: { type: string, format: date-time }
+                number:
+                  type: object
+                  properties:
+                    id: { type: string }
+                    phoneNumber: { type: string }
+                    country: { type: string }
+                    profileId: { type: string }
       responses:
         '200':
           description: Webhook received successfully
@@ -18318,7 +18348,7 @@ paths:
                   minItems: 1
                   items:
                     type: string
-                    enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, post.platform.published, post.platform.failed, post.external.created, post.external.updated, post.external.deleted, account.connected, account.disconnected, account.ads.initial_sync_completed, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, reaction.received, comment.received, review.new, review.updated, ad.status_changed, whatsapp.template.status_updated, whatsapp.number.activated, whatsapp.number.declined, whatsapp.number.action_required, whatsapp.number.verification_required, whatsapp.number.suspended, whatsapp.number.reactivated, whatsapp.number.released]
+                    enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, post.platform.published, post.platform.failed, post.external.created, post.external.updated, post.external.deleted, account.connected, account.disconnected, account.ads.initial_sync_completed, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, reaction.received, comment.received, review.new, review.updated, ad.status_changed, whatsapp.template.status_updated, whatsapp.number.activated, whatsapp.number.declined, whatsapp.number.action_required, whatsapp.number.verification_required, whatsapp.number.suspended, whatsapp.number.reactivated, whatsapp.number.released, whatsapp.number.kyc_submitted]
                   description: Events to subscribe to (at least one required)
                 isActive:
                   type: boolean
@@ -18392,7 +18422,7 @@ paths:
                   minItems: 1
                   items:
                     type: string
-                    enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, post.platform.published, post.platform.failed, post.external.created, post.external.updated, post.external.deleted, account.connected, account.disconnected, account.ads.initial_sync_completed, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, reaction.received, comment.received, review.new, review.updated, ad.status_changed, whatsapp.template.status_updated, whatsapp.number.activated, whatsapp.number.declined, whatsapp.number.action_required, whatsapp.number.verification_required, whatsapp.number.suspended, whatsapp.number.reactivated, whatsapp.number.released]
+                    enum: [post.scheduled, post.published, post.failed, post.partial, post.cancelled, post.recycled, post.platform.published, post.platform.failed, post.external.created, post.external.updated, post.external.deleted, account.connected, account.disconnected, account.ads.initial_sync_completed, message.received, message.sent, message.edited, message.deleted, message.delivered, message.read, message.failed, reaction.received, comment.received, review.new, review.updated, ad.status_changed, whatsapp.template.status_updated, whatsapp.number.activated, whatsapp.number.declined, whatsapp.number.action_required, whatsapp.number.verification_required, whatsapp.number.suspended, whatsapp.number.reactivated, whatsapp.number.released, whatsapp.number.kyc_submitted]
                   description: Events to subscribe to. Must contain at least one event if provided.
                 isActive:
                   type: boolean
@@ -23155,6 +23185,65 @@ paths:
                             field: { type: string, example: administrative_area }
                             label: { type: string, example: State / Province }
                             value: { type: string, example: Dublin }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /v1/whatsapp/phone-numbers/kyc/share:
+    post:
+      operationId: createWhatsAppNumberKycLink
+      tags: [WhatsApp Phone Numbers]
+      summary: Create a hosted KYC link
+      description: |
+        Create a single-use, 7-day hosted KYC link that your end customer
+        completes WITHOUT a Zernio login — useful when the person who holds the
+        ID and address is not your team. They fill the regulated verification on
+        a Zernio-hosted page; the number provisions under YOUR account once they
+        submit. Only regulated (KYC) countries are valid: a country that does not
+        require KYC returns 400.
+
+        White-label the page with `branding` (your company name, logo, brand
+        color). Supply `redirect_url` to send the end customer back to your own
+        site after a successful submit (completion params are appended — see
+        below). Listen for the `whatsapp.number.kyc_submitted` webhook to react
+        when the form is completed.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [profileId, country]
+              properties:
+                profileId: { type: string }
+                country: { type: string, minLength: 2, maxLength: 2, description: ISO 3166-1 alpha-2 country code (must be a regulated/KYC country). }
+                branding:
+                  type: object
+                  description: Optional white-label of the hosted page the end customer sees.
+                  properties:
+                    companyName: { type: string, maxLength: 60, description: Your company name, shown on the hosted page. }
+                    logoUrl: { type: string, format: uri, description: Logo shown above the form. }
+                    brandColor: { type: string, pattern: '^#[0-9a-fA-F]{6}$', description: Hex color (e.g. "#1a73e8") applied to the primary action. }
+                redirect_url:
+                  type: string
+                  format: uri
+                  description: |
+                    Where to send the end customer's browser after a successful
+                    submit. On completion Zernio appends `kyc=submitted` and
+                    `country=<ISO-2>` as query params. When omitted, the hosted
+                    page shows a built-in confirmation screen instead.
+      responses:
+        '200':
+          description: Hosted KYC link created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url: { type: string, description: The hosted link to send your end customer. }
+                  token: { type: string }
+                  expiresAt: { type: string, format: date-time }
+        '400': { description: Country does not require KYC (not a regulated country). }
         '401': { $ref: '#/components/responses/Unauthorized' }
 
   /v1/whatsapp/phone-numbers/{id}/remediate:
