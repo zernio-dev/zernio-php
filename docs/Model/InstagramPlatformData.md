@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **thumb_offset** | **int** | Millisecond offset from video start for the Reel cover frame. Ignored when instagramThumbnail or reelCover is provided. Defaults to 0. | [optional]
 **instagram_thumbnail** | **string** | Custom cover image URL for Instagram Reels (JPG or PNG, publicly accessible). Overrides thumbOffset when provided. Also accepted as reelCover (alias). | [optional]
 **reel_cover** | **string** | Alias for instagramThumbnail. If both are provided, instagramThumbnail takes priority. | [optional]
+**is_ai_generated** | **bool** | When true, the post is labeled by Instagram as containing AI-generated media. Per Meta, this self-disclosure label is for AI-generated media, not AI-written captions. Applies to feed posts, Reels, Stories, and carousels. | [optional] [default to false]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

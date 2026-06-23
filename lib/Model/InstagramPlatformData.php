@@ -68,7 +68,8 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
         'audio_name' => 'string',
         'thumb_offset' => 'int',
         'instagram_thumbnail' => 'string',
-        'reel_cover' => 'string'
+        'reel_cover' => 'string',
+        'is_ai_generated' => 'bool'
     ];
 
     /**
@@ -88,7 +89,8 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
         'audio_name' => null,
         'thumb_offset' => null,
         'instagram_thumbnail' => 'uri',
-        'reel_cover' => 'uri'
+        'reel_cover' => 'uri',
+        'is_ai_generated' => null
     ];
 
     /**
@@ -106,7 +108,8 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
         'audio_name' => false,
         'thumb_offset' => false,
         'instagram_thumbnail' => false,
-        'reel_cover' => false
+        'reel_cover' => false,
+        'is_ai_generated' => false
     ];
 
     /**
@@ -204,7 +207,8 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
         'audio_name' => 'audioName',
         'thumb_offset' => 'thumbOffset',
         'instagram_thumbnail' => 'instagramThumbnail',
-        'reel_cover' => 'reelCover'
+        'reel_cover' => 'reelCover',
+        'is_ai_generated' => 'isAiGenerated'
     ];
 
     /**
@@ -222,7 +226,8 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
         'audio_name' => 'setAudioName',
         'thumb_offset' => 'setThumbOffset',
         'instagram_thumbnail' => 'setInstagramThumbnail',
-        'reel_cover' => 'setReelCover'
+        'reel_cover' => 'setReelCover',
+        'is_ai_generated' => 'setIsAiGenerated'
     ];
 
     /**
@@ -240,7 +245,8 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
         'audio_name' => 'getAudioName',
         'thumb_offset' => 'getThumbOffset',
         'instagram_thumbnail' => 'getInstagramThumbnail',
-        'reel_cover' => 'getReelCover'
+        'reel_cover' => 'getReelCover',
+        'is_ai_generated' => 'getIsAiGenerated'
     ];
 
     /**
@@ -323,6 +329,7 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('thumb_offset', $data ?? [], null);
         $this->setIfExists('instagram_thumbnail', $data ?? [], null);
         $this->setIfExists('reel_cover', $data ?? [], null);
+        $this->setIfExists('is_ai_generated', $data ?? [], false);
     }
 
     /**
@@ -661,6 +668,33 @@ class InstagramPlatformData implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable reel_cover cannot be null');
         }
         $this->container['reel_cover'] = $reel_cover;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_ai_generated
+     *
+     * @return bool|null
+     */
+    public function getIsAiGenerated()
+    {
+        return $this->container['is_ai_generated'];
+    }
+
+    /**
+     * Sets is_ai_generated
+     *
+     * @param bool|null $is_ai_generated When true, the post is labeled by Instagram as containing AI-generated media. Per Meta, this self-disclosure label is for AI-generated media, not AI-written captions. Applies to feed posts, Reels, Stories, and carousels.
+     *
+     * @return self
+     */
+    public function setIsAiGenerated($is_ai_generated)
+    {
+        if (is_null($is_ai_generated)) {
+            throw new \InvalidArgumentException('non-nullable is_ai_generated cannot be null');
+        }
+        $this->container['is_ai_generated'] = $is_ai_generated;
 
         return $this;
     }

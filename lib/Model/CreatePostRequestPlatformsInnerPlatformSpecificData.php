@@ -84,6 +84,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'thumb_offset' => 'int',
         'instagram_thumbnail' => 'string',
         'reel_cover' => 'string',
+        'is_ai_generated' => 'bool',
         'document_title' => 'string',
         'organization_urn' => 'string',
         'disable_link_preview' => 'bool',
@@ -179,6 +180,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'thumb_offset' => null,
         'instagram_thumbnail' => 'uri',
         'reel_cover' => 'uri',
+        'is_ai_generated' => null,
         'document_title' => null,
         'organization_urn' => null,
         'disable_link_preview' => null,
@@ -272,6 +274,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'thumb_offset' => false,
         'instagram_thumbnail' => false,
         'reel_cover' => false,
+        'is_ai_generated' => false,
         'document_title' => false,
         'organization_urn' => false,
         'disable_link_preview' => false,
@@ -445,6 +448,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'thumb_offset' => 'thumbOffset',
         'instagram_thumbnail' => 'instagramThumbnail',
         'reel_cover' => 'reelCover',
+        'is_ai_generated' => 'isAiGenerated',
         'document_title' => 'documentTitle',
         'organization_urn' => 'organizationUrn',
         'disable_link_preview' => 'disableLinkPreview',
@@ -538,6 +542,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'thumb_offset' => 'setThumbOffset',
         'instagram_thumbnail' => 'setInstagramThumbnail',
         'reel_cover' => 'setReelCover',
+        'is_ai_generated' => 'setIsAiGenerated',
         'document_title' => 'setDocumentTitle',
         'organization_urn' => 'setOrganizationUrn',
         'disable_link_preview' => 'setDisableLinkPreview',
@@ -631,6 +636,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         'thumb_offset' => 'getThumbOffset',
         'instagram_thumbnail' => 'getInstagramThumbnail',
         'reel_cover' => 'getReelCover',
+        'is_ai_generated' => 'getIsAiGenerated',
         'document_title' => 'getDocumentTitle',
         'organization_urn' => 'getOrganizationUrn',
         'disable_link_preview' => 'getDisableLinkPreview',
@@ -894,6 +900,7 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
         $this->setIfExists('thumb_offset', $data ?? [], null);
         $this->setIfExists('instagram_thumbnail', $data ?? [], null);
         $this->setIfExists('reel_cover', $data ?? [], null);
+        $this->setIfExists('is_ai_generated', $data ?? [], false);
         $this->setIfExists('document_title', $data ?? [], null);
         $this->setIfExists('organization_urn', $data ?? [], null);
         $this->setIfExists('disable_link_preview', $data ?? [], null);
@@ -1856,6 +1863,33 @@ class CreatePostRequestPlatformsInnerPlatformSpecificData implements ModelInterf
             throw new \InvalidArgumentException('non-nullable reel_cover cannot be null');
         }
         $this->container['reel_cover'] = $reel_cover;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_ai_generated
+     *
+     * @return bool|null
+     */
+    public function getIsAiGenerated()
+    {
+        return $this->container['is_ai_generated'];
+    }
+
+    /**
+     * Sets is_ai_generated
+     *
+     * @param bool|null $is_ai_generated When true, the post is labeled by Instagram as containing AI-generated media. Per Meta, this self-disclosure label is for AI-generated media, not AI-written captions. Applies to feed posts, Reels, Stories, and carousels.
+     *
+     * @return self
+     */
+    public function setIsAiGenerated($is_ai_generated)
+    {
+        if (is_null($is_ai_generated)) {
+            throw new \InvalidArgumentException('non-nullable is_ai_generated cannot be null');
+        }
+        $this->container['is_ai_generated'] = $is_ai_generated;
 
         return $this;
     }
