@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **profile_id** | **string** |  | [optional]
+**queue_id** | **string** |  | [optional]
+**queue_name** | **string** |  | [optional]
 **count** | **int** |  | [optional]
 **slots** | **\DateTime[]** |  | [optional]
 

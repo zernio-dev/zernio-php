@@ -2139,7 +2139,7 @@ class AnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetFollowerStats200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetFollowerStats403Response
+     * @return \Zernio\Model\FollowerStatsResponse|\Zernio\Model\InlineObject|\Zernio\Model\GetFollowerStats403Response
      */
     public function getFollowerStats($account_ids = null, $profile_id = null, $from_date = null, $to_date = null, $granularity = 'daily', string $contentType = self::contentTypes['getFollowerStats'][0])
     {
@@ -2161,7 +2161,7 @@ class AnalyticsApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetFollowerStats200Response|\Zernio\Model\InlineObject|\Zernio\Model\GetFollowerStats403Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\FollowerStatsResponse|\Zernio\Model\InlineObject|\Zernio\Model\GetFollowerStats403Response, HTTP status code, HTTP response headers (array of strings)
      */
     public function getFollowerStatsWithHttpInfo($account_ids = null, $profile_id = null, $from_date = null, $to_date = null, $granularity = 'daily', string $contentType = self::contentTypes['getFollowerStats'][0])
     {
@@ -2193,7 +2193,7 @@ class AnalyticsApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\GetFollowerStats200Response',
+                        '\Zernio\Model\FollowerStatsResponse',
                         $request,
                         $response,
                     );
@@ -2227,7 +2227,7 @@ class AnalyticsApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\GetFollowerStats200Response',
+                '\Zernio\Model\FollowerStatsResponse',
                 $request,
                 $response,
             );
@@ -2236,7 +2236,7 @@ class AnalyticsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\GetFollowerStats200Response',
+                        '\Zernio\Model\FollowerStatsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2306,7 +2306,7 @@ class AnalyticsApi
      */
     public function getFollowerStatsAsyncWithHttpInfo($account_ids = null, $profile_id = null, $from_date = null, $to_date = null, $granularity = 'daily', string $contentType = self::contentTypes['getFollowerStats'][0])
     {
-        $returnType = '\Zernio\Model\GetFollowerStats200Response';
+        $returnType = '\Zernio\Model\FollowerStatsResponse';
         $request = $this->getFollowerStatsRequest($account_ids, $profile_id, $from_date, $to_date, $granularity, $contentType);
 
         return $this->client

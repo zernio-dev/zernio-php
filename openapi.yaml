@@ -4812,6 +4812,143 @@ components:
           type: string
         profile:
           $ref: '#/components/schemas/Profile'
+    ProfileGetResponse:
+      type: object
+      properties:
+        profile:
+          $ref: '#/components/schemas/Profile'
+    ProfileUpdateResponse:
+      type: object
+      properties:
+        message: { type: string }
+        profile:
+          $ref: '#/components/schemas/Profile'
+    ProfileDeleteResponse:
+      type: object
+      properties:
+        message: { type: string }
+    AccountsListResponse:
+      type: object
+      required: [accounts, hasAnalyticsAccess]
+      properties:
+        accounts:
+          type: array
+          items: { $ref: '#/components/schemas/SocialAccount' }
+        hasAnalyticsAccess:
+          type: boolean
+          description: Whether user has analytics add-on access
+        pagination:
+          description: Only present when page/limit params are provided
+          $ref: '#/components/schemas/Pagination'
+    FollowerStatsResponse:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountWithFollowerStats'
+        stats:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                date: { type: string, format: date }
+                followers: { type: number }
+        dateRange:
+          type: object
+          properties:
+            from: { type: string, format: date-time }
+            to: { type: string, format: date-time }
+        granularity: { type: string }
+    UploadedFile:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [image, video, document]
+        url: { type: string, format: uri }
+        filename: { type: string }
+        size: { type: integer }
+        mimeType: { type: string }
+    MediaUploadResponse:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/UploadedFile'
+    UploadTokenResponse:
+      type: object
+      properties:
+        token: { type: string }
+        uploadUrl: { type: string, format: uri }
+        expiresAt: { type: string, format: date-time }
+        status:
+          type: string
+          enum: [pending, completed, expired]
+    UploadTokenStatusResponse:
+      type: object
+      properties:
+        token: { type: string }
+        status:
+          type: string
+          enum: [pending, completed, expired]
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/UploadedFile'
+        createdAt: { type: string, format: date-time }
+        expiresAt: { type: string, format: date-time }
+        completedAt: { type: string, format: date-time }
+    QueueSlotsResponse:
+      type: object
+      description: Single queue response (default behavior)
+      properties:
+        exists: { type: boolean }
+        schedule:
+          $ref: '#/components/schemas/QueueSchedule'
+        nextSlots:
+          type: array
+          items: { type: string, format: date-time }
+    QueueUpdateResponse:
+      type: object
+      properties:
+        success: { type: boolean }
+        schedule:
+          $ref: '#/components/schemas/QueueSchedule'
+        nextSlots:
+          type: array
+          items: { type: string, format: date-time }
+        reshuffledCount: { type: integer }
+        skippedDailyLimit: { type: integer }
+        isNewQueue: { type: boolean }
+    QueueDeleteResponse:
+      type: object
+      properties:
+        success: { type: boolean }
+        deleted: { type: boolean }
+        deletedCount: { type: integer }
+        message: { type: string }
+    QueuePreviewResponse:
+      type: object
+      properties:
+        profileId: { type: string }
+        queueId: { type: string }
+        queueName: { type: string }
+        count: { type: integer }
+        slots:
+          type: array
+          items: { type: string, format: date-time }
+    QueueNextSlotResponse:
+      type: object
+      properties:
+        profileId: { type: string }
+        nextSlot: { type: string, format: date-time }
+        timezone: { type: string }
+        queueId: { type: string, description: Queue ID this slot belongs to }
+        queueName: { type: string, description: Queue name }
     # Users Responses
     User:
       type: object
@@ -4827,6 +4964,18 @@ components:
         createdAt:
           type: string
           format: date-time
+    UsersListResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+    UserGetResponse:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
     AdMetrics:
       type: object
       properties:
@@ -11309,9 +11458,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  profile: { $ref: '#/components/schemas/Profile' }
+                $ref: '#/components/schemas/ProfileGetResponse'
               example:
                 profile:
                   _id: "64f0a1b2c3d4e5f6a7b8c9d0"
@@ -11354,10 +11501,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message: { type: string }
-                  profile: { $ref: '#/components/schemas/Profile' }
+                $ref: '#/components/schemas/ProfileUpdateResponse'
               example:
                 message: "Profile updated successfully"
                 profile:
@@ -11386,9 +11530,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  message: { type: string }
+                $ref: '#/components/schemas/ProfileDeleteResponse'
               example:
                 message: "Profile deleted successfully"
         '400': { description: Has connected accounts }
@@ -11440,18 +11582,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                required: [accounts, hasAnalyticsAccess]
-                properties:
-                  accounts:
-                    type: array
-                    items: { $ref: '#/components/schemas/SocialAccount' }
-                  hasAnalyticsAccess:
-                    type: boolean
-                    description: Whether user has analytics add-on access
-                  pagination:
-                    description: Only present when page/limit params are provided
-                    $ref: '#/components/schemas/Pagination'
+                $ref: '#/components/schemas/AccountsListResponse'
               examples:
                 example:
                   value:
@@ -11503,27 +11634,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  accounts:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/AccountWithFollowerStats'
-                  stats:
-                    type: object
-                    additionalProperties:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          date: { type: string, format: date }
-                          followers: { type: number }
-                  dateRange:
-                    type: object
-                    properties:
-                      from: { type: string, format: date-time }
-                      to: { type: string, format: date-time }
-                  granularity: { type: string }
+                $ref: '#/components/schemas/FollowerStatsResponse'
               examples:
                 example:
                   value:
@@ -17958,15 +18069,7 @@ paths:
             application/json:
               schema:
                 oneOf:
-                  - type: object
-                    description: Single queue response (default behavior)
-                    properties:
-                      exists: { type: boolean }
-                      schedule:
-                        $ref: '#/components/schemas/QueueSchedule'
-                      nextSlots:
-                        type: array
-                        items: { type: string, format: date-time }
+                  - $ref: '#/components/schemas/QueueSlotsResponse'
                   - type: object
                     description: All queues response (when all=true)
                     properties:
@@ -18117,15 +18220,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  success: { type: boolean }
-                  schedule:
-                    $ref: '#/components/schemas/QueueSchedule'
-                  nextSlots:
-                    type: array
-                    items: { type: string, format: date-time }
-                  reshuffledCount: { type: integer }
+                $ref: '#/components/schemas/QueueUpdateResponse'
               example:
                 success: true
                 schedule:
@@ -18172,10 +18267,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  success: { type: boolean }
-                  deleted: { type: boolean }
+                $ref: '#/components/schemas/QueueDeleteResponse'
               example:
                 success: true
                 deleted: true
@@ -18205,13 +18297,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  profileId: { type: string }
-                  count: { type: integer }
-                  slots:
-                    type: array
-                    items: { type: string, format: date-time }
+                $ref: '#/components/schemas/QueuePreviewResponse'
               example:
                 profileId: "64f0a1b2c3d4e5f6a7b8c9d0"
                 count: 10
@@ -18251,13 +18337,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  profileId: { type: string }
-                  nextSlot: { type: string, format: date-time }
-                  timezone: { type: string }
-                  queueId: { type: string, description: Queue ID this slot belongs to }
-                  queueName: { type: string, description: Queue name }
+                $ref: '#/components/schemas/QueueNextSlotResponse'
               example:
                 profileId: "64f0a1b2c3d4e5f6a7b8c9d0"
                 nextSlot: "2024-11-04T09:00:00-05:00"

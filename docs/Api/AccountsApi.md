@@ -203,7 +203,7 @@ try {
 ## `getFollowerStats()`
 
 ```php
-getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity): \Zernio\Model\GetFollowerStats200Response
+getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity): \Zernio\Model\FollowerStatsResponse
 ```
 
 Get follower stats
@@ -253,7 +253,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\GetFollowerStats200Response**](../Model/GetFollowerStats200Response.md)
+[**\Zernio\Model\FollowerStatsResponse**](../Model/FollowerStatsResponse.md)
 
 ### Authorization
 
@@ -333,7 +333,7 @@ try {
 ## `listAccounts()`
 
 ```php
-listAccounts($profile_id, $platform, $status, $include_over_limit, $page, $limit): \Zernio\Model\ListAccounts200Response
+listAccounts($profile_id, $platform, $status, $include_over_limit, $page, $limit): \Zernio\Model\AccountsListResponse
 ```
 
 List accounts
@@ -385,7 +385,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\ListAccounts200Response**](../Model/ListAccounts200Response.md)
+[**\Zernio\Model\AccountsListResponse**](../Model/AccountsListResponse.md)
 
 ### Authorization
 

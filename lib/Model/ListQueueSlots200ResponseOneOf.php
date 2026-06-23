@@ -36,7 +36,7 @@ use \Zernio\ObjectSerializer;
  * ListQueueSlots200ResponseOneOf Class Doc Comment
  *
  * @category Class
- * @description Single queue response (default behavior)
+ * @description All queues response (when all&#x3D;true)
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,9 +59,8 @@ class ListQueueSlots200ResponseOneOf implements ModelInterface, ArrayAccess, \Js
       * @var string[]
       */
     protected static $openAPITypes = [
-        'exists' => 'bool',
-        'schedule' => '\Zernio\Model\QueueSchedule',
-        'next_slots' => '\DateTime[]'
+        'queues' => '\Zernio\Model\QueueSchedule[]',
+        'count' => 'int'
     ];
 
     /**
@@ -72,9 +71,8 @@ class ListQueueSlots200ResponseOneOf implements ModelInterface, ArrayAccess, \Js
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'exists' => null,
-        'schedule' => null,
-        'next_slots' => 'date-time'
+        'queues' => null,
+        'count' => null
     ];
 
     /**
@@ -83,9 +81,8 @@ class ListQueueSlots200ResponseOneOf implements ModelInterface, ArrayAccess, \Js
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'exists' => false,
-        'schedule' => false,
-        'next_slots' => false
+        'queues' => false,
+        'count' => false
     ];
 
     /**
@@ -174,9 +171,8 @@ class ListQueueSlots200ResponseOneOf implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $attributeMap = [
-        'exists' => 'exists',
-        'schedule' => 'schedule',
-        'next_slots' => 'nextSlots'
+        'queues' => 'queues',
+        'count' => 'count'
     ];
 
     /**
@@ -185,9 +181,8 @@ class ListQueueSlots200ResponseOneOf implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $setters = [
-        'exists' => 'setExists',
-        'schedule' => 'setSchedule',
-        'next_slots' => 'setNextSlots'
+        'queues' => 'setQueues',
+        'count' => 'setCount'
     ];
 
     /**
@@ -196,9 +191,8 @@ class ListQueueSlots200ResponseOneOf implements ModelInterface, ArrayAccess, \Js
      * @var string[]
      */
     protected static $getters = [
-        'exists' => 'getExists',
-        'schedule' => 'getSchedule',
-        'next_slots' => 'getNextSlots'
+        'queues' => 'getQueues',
+        'count' => 'getCount'
     ];
 
     /**
@@ -258,9 +252,8 @@ class ListQueueSlots200ResponseOneOf implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('exists', $data ?? [], null);
-        $this->setIfExists('schedule', $data ?? [], null);
-        $this->setIfExists('next_slots', $data ?? [], null);
+        $this->setIfExists('queues', $data ?? [], null);
+        $this->setIfExists('count', $data ?? [], null);
     }
 
     /**
@@ -306,82 +299,55 @@ class ListQueueSlots200ResponseOneOf implements ModelInterface, ArrayAccess, \Js
 
 
     /**
-     * Gets exists
+     * Gets queues
      *
-     * @return bool|null
+     * @return \Zernio\Model\QueueSchedule[]|null
      */
-    public function getExists()
+    public function getQueues()
     {
-        return $this->container['exists'];
+        return $this->container['queues'];
     }
 
     /**
-     * Sets exists
+     * Sets queues
      *
-     * @param bool|null $exists exists
+     * @param \Zernio\Model\QueueSchedule[]|null $queues queues
      *
      * @return self
      */
-    public function setExists($exists)
+    public function setQueues($queues)
     {
-        if (is_null($exists)) {
-            throw new \InvalidArgumentException('non-nullable exists cannot be null');
+        if (is_null($queues)) {
+            throw new \InvalidArgumentException('non-nullable queues cannot be null');
         }
-        $this->container['exists'] = $exists;
+        $this->container['queues'] = $queues;
 
         return $this;
     }
 
     /**
-     * Gets schedule
+     * Gets count
      *
-     * @return \Zernio\Model\QueueSchedule|null
+     * @return int|null
      */
-    public function getSchedule()
+    public function getCount()
     {
-        return $this->container['schedule'];
+        return $this->container['count'];
     }
 
     /**
-     * Sets schedule
+     * Sets count
      *
-     * @param \Zernio\Model\QueueSchedule|null $schedule schedule
+     * @param int|null $count count
      *
      * @return self
      */
-    public function setSchedule($schedule)
+    public function setCount($count)
     {
-        if (is_null($schedule)) {
-            throw new \InvalidArgumentException('non-nullable schedule cannot be null');
+        if (is_null($count)) {
+            throw new \InvalidArgumentException('non-nullable count cannot be null');
         }
-        $this->container['schedule'] = $schedule;
-
-        return $this;
-    }
-
-    /**
-     * Gets next_slots
-     *
-     * @return \DateTime[]|null
-     */
-    public function getNextSlots()
-    {
-        return $this->container['next_slots'];
-    }
-
-    /**
-     * Sets next_slots
-     *
-     * @param \DateTime[]|null $next_slots next_slots
-     *
-     * @return self
-     */
-    public function setNextSlots($next_slots)
-    {
-        if (is_null($next_slots)) {
-            throw new \InvalidArgumentException('non-nullable next_slots cannot be null');
-        }
-        $this->container['next_slots'] = $next_slots;
+        $this->container['count'] = $count;
 
         return $this;
     }

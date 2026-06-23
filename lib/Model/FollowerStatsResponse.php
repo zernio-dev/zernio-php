@@ -59,8 +59,9 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPITypes = [
         'accounts' => '\Zernio\Model\AccountWithFollowerStats[]',
-        'date_range' => '\Zernio\Model\GetFollowerStats200ResponseDateRange',
-        'aggregation' => 'string'
+        'stats' => 'array<string,\Zernio\Model\FollowerStatsResponseStatsValueInner[]>',
+        'date_range' => '\Zernio\Model\FollowerStatsResponseDateRange',
+        'granularity' => 'string'
     ];
 
     /**
@@ -72,8 +73,9 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static $openAPIFormats = [
         'accounts' => null,
+        'stats' => null,
         'date_range' => null,
-        'aggregation' => null
+        'granularity' => null
     ];
 
     /**
@@ -83,8 +85,9 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
       */
     protected static array $openAPINullables = [
         'accounts' => false,
+        'stats' => false,
         'date_range' => false,
-        'aggregation' => false
+        'granularity' => false
     ];
 
     /**
@@ -174,8 +177,9 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $attributeMap = [
         'accounts' => 'accounts',
+        'stats' => 'stats',
         'date_range' => 'dateRange',
-        'aggregation' => 'aggregation'
+        'granularity' => 'granularity'
     ];
 
     /**
@@ -185,8 +189,9 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $setters = [
         'accounts' => 'setAccounts',
+        'stats' => 'setStats',
         'date_range' => 'setDateRange',
-        'aggregation' => 'setAggregation'
+        'granularity' => 'setGranularity'
     ];
 
     /**
@@ -196,8 +201,9 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     protected static $getters = [
         'accounts' => 'getAccounts',
+        'stats' => 'getStats',
         'date_range' => 'getDateRange',
-        'aggregation' => 'getAggregation'
+        'granularity' => 'getGranularity'
     ];
 
     /**
@@ -241,23 +247,6 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         return self::$openAPIModelName;
     }
 
-    public const AGGREGATION_DAILY = 'daily';
-    public const AGGREGATION_WEEKLY = 'weekly';
-    public const AGGREGATION_MONTHLY = 'monthly';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAggregationAllowableValues()
-    {
-        return [
-            self::AGGREGATION_DAILY,
-            self::AGGREGATION_WEEKLY,
-            self::AGGREGATION_MONTHLY,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -275,8 +264,9 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function __construct(?array $data = null)
     {
         $this->setIfExists('accounts', $data ?? [], null);
+        $this->setIfExists('stats', $data ?? [], null);
         $this->setIfExists('date_range', $data ?? [], null);
-        $this->setIfExists('aggregation', $data ?? [], null);
+        $this->setIfExists('granularity', $data ?? [], null);
     }
 
     /**
@@ -305,15 +295,6 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getAggregationAllowableValues();
-        if (!is_null($this->container['aggregation']) && !in_array($this->container['aggregation'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'aggregation', must be one of '%s'",
-                $this->container['aggregation'],
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -358,9 +339,36 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
+     * Gets stats
+     *
+     * @return array<string,\Zernio\Model\FollowerStatsResponseStatsValueInner[]>|null
+     */
+    public function getStats()
+    {
+        return $this->container['stats'];
+    }
+
+    /**
+     * Sets stats
+     *
+     * @param array<string,\Zernio\Model\FollowerStatsResponseStatsValueInner[]>|null $stats stats
+     *
+     * @return self
+     */
+    public function setStats($stats)
+    {
+        if (is_null($stats)) {
+            throw new \InvalidArgumentException('non-nullable stats cannot be null');
+        }
+        $this->container['stats'] = $stats;
+
+        return $this;
+    }
+
+    /**
      * Gets date_range
      *
-     * @return \Zernio\Model\GetFollowerStats200ResponseDateRange|null
+     * @return \Zernio\Model\FollowerStatsResponseDateRange|null
      */
     public function getDateRange()
     {
@@ -370,7 +378,7 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets date_range
      *
-     * @param \Zernio\Model\GetFollowerStats200ResponseDateRange|null $date_range date_range
+     * @param \Zernio\Model\FollowerStatsResponseDateRange|null $date_range date_range
      *
      * @return self
      */
@@ -385,38 +393,28 @@ class FollowerStatsResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     }
 
     /**
-     * Gets aggregation
+     * Gets granularity
      *
      * @return string|null
      */
-    public function getAggregation()
+    public function getGranularity()
     {
-        return $this->container['aggregation'];
+        return $this->container['granularity'];
     }
 
     /**
-     * Sets aggregation
+     * Sets granularity
      *
-     * @param string|null $aggregation aggregation
+     * @param string|null $granularity granularity
      *
      * @return self
      */
-    public function setAggregation($aggregation)
+    public function setGranularity($granularity)
     {
-        if (is_null($aggregation)) {
-            throw new \InvalidArgumentException('non-nullable aggregation cannot be null');
+        if (is_null($granularity)) {
+            throw new \InvalidArgumentException('non-nullable granularity cannot be null');
         }
-        $allowedValues = $this->getAggregationAllowableValues();
-        if (!in_array($aggregation, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'aggregation', must be one of '%s'",
-                    $aggregation,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['aggregation'] = $aggregation;
+        $this->container['granularity'] = $granularity;
 
         return $this;
     }

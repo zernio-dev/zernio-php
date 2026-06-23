@@ -1,6 +1,6 @@
 <?php
 /**
- * QueueUpdateResponse
+ * FollowerStatsResponseDateRange
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Zernio\ObjectSerializer;
 
 /**
- * QueueUpdateResponse Class Doc Comment
+ * FollowerStatsResponseDateRange Class Doc Comment
  *
  * @category Class
  * @package  Zernio
@@ -41,7 +41,7 @@ use \Zernio\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class QueueUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class FollowerStatsResponseDateRange implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class QueueUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       *
       * @var string
       */
-    protected static $openAPIModelName = 'QueueUpdateResponse';
+    protected static $openAPIModelName = 'FollowerStatsResponse_dateRange';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,8 @@ class QueueUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'success' => 'bool',
-        'schedule' => '\Zernio\Model\QueueSchedule',
-        'next_slots' => '\DateTime[]',
-        'reshuffled_count' => 'int',
-        'skipped_daily_limit' => 'int',
-        'is_new_queue' => 'bool'
+        'from' => '\DateTime',
+        'to' => '\DateTime'
     ];
 
     /**
@@ -74,12 +70,8 @@ class QueueUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'success' => null,
-        'schedule' => null,
-        'next_slots' => 'date-time',
-        'reshuffled_count' => null,
-        'skipped_daily_limit' => null,
-        'is_new_queue' => null
+        'from' => 'date-time',
+        'to' => 'date-time'
     ];
 
     /**
@@ -88,12 +80,8 @@ class QueueUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'success' => false,
-        'schedule' => false,
-        'next_slots' => false,
-        'reshuffled_count' => false,
-        'skipped_daily_limit' => false,
-        'is_new_queue' => false
+        'from' => false,
+        'to' => false
     ];
 
     /**
@@ -182,12 +170,8 @@ class QueueUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'success' => 'success',
-        'schedule' => 'schedule',
-        'next_slots' => 'nextSlots',
-        'reshuffled_count' => 'reshuffledCount',
-        'skipped_daily_limit' => 'skippedDailyLimit',
-        'is_new_queue' => 'isNewQueue'
+        'from' => 'from',
+        'to' => 'to'
     ];
 
     /**
@@ -196,12 +180,8 @@ class QueueUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'success' => 'setSuccess',
-        'schedule' => 'setSchedule',
-        'next_slots' => 'setNextSlots',
-        'reshuffled_count' => 'setReshuffledCount',
-        'skipped_daily_limit' => 'setSkippedDailyLimit',
-        'is_new_queue' => 'setIsNewQueue'
+        'from' => 'setFrom',
+        'to' => 'setTo'
     ];
 
     /**
@@ -210,12 +190,8 @@ class QueueUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'success' => 'getSuccess',
-        'schedule' => 'getSchedule',
-        'next_slots' => 'getNextSlots',
-        'reshuffled_count' => 'getReshuffledCount',
-        'skipped_daily_limit' => 'getSkippedDailyLimit',
-        'is_new_queue' => 'getIsNewQueue'
+        'from' => 'getFrom',
+        'to' => 'getTo'
     ];
 
     /**
@@ -275,12 +251,8 @@ class QueueUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('success', $data ?? [], null);
-        $this->setIfExists('schedule', $data ?? [], null);
-        $this->setIfExists('next_slots', $data ?? [], null);
-        $this->setIfExists('reshuffled_count', $data ?? [], null);
-        $this->setIfExists('skipped_daily_limit', $data ?? [], null);
-        $this->setIfExists('is_new_queue', $data ?? [], null);
+        $this->setIfExists('from', $data ?? [], null);
+        $this->setIfExists('to', $data ?? [], null);
     }
 
     /**
@@ -326,163 +298,55 @@ class QueueUpdateResponse implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets success
+     * Gets from
      *
-     * @return bool|null
+     * @return \DateTime|null
      */
-    public function getSuccess()
+    public function getFrom()
     {
-        return $this->container['success'];
+        return $this->container['from'];
     }
 
     /**
-     * Sets success
+     * Sets from
      *
-     * @param bool|null $success success
+     * @param \DateTime|null $from from
      *
      * @return self
      */
-    public function setSuccess($success)
+    public function setFrom($from)
     {
-        if (is_null($success)) {
-            throw new \InvalidArgumentException('non-nullable success cannot be null');
+        if (is_null($from)) {
+            throw new \InvalidArgumentException('non-nullable from cannot be null');
         }
-        $this->container['success'] = $success;
+        $this->container['from'] = $from;
 
         return $this;
     }
 
     /**
-     * Gets schedule
+     * Gets to
      *
-     * @return \Zernio\Model\QueueSchedule|null
+     * @return \DateTime|null
      */
-    public function getSchedule()
+    public function getTo()
     {
-        return $this->container['schedule'];
+        return $this->container['to'];
     }
 
     /**
-     * Sets schedule
+     * Sets to
      *
-     * @param \Zernio\Model\QueueSchedule|null $schedule schedule
+     * @param \DateTime|null $to to
      *
      * @return self
      */
-    public function setSchedule($schedule)
+    public function setTo($to)
     {
-        if (is_null($schedule)) {
-            throw new \InvalidArgumentException('non-nullable schedule cannot be null');
+        if (is_null($to)) {
+            throw new \InvalidArgumentException('non-nullable to cannot be null');
         }
-        $this->container['schedule'] = $schedule;
-
-        return $this;
-    }
-
-    /**
-     * Gets next_slots
-     *
-     * @return \DateTime[]|null
-     */
-    public function getNextSlots()
-    {
-        return $this->container['next_slots'];
-    }
-
-    /**
-     * Sets next_slots
-     *
-     * @param \DateTime[]|null $next_slots next_slots
-     *
-     * @return self
-     */
-    public function setNextSlots($next_slots)
-    {
-        if (is_null($next_slots)) {
-            throw new \InvalidArgumentException('non-nullable next_slots cannot be null');
-        }
-        $this->container['next_slots'] = $next_slots;
-
-        return $this;
-    }
-
-    /**
-     * Gets reshuffled_count
-     *
-     * @return int|null
-     */
-    public function getReshuffledCount()
-    {
-        return $this->container['reshuffled_count'];
-    }
-
-    /**
-     * Sets reshuffled_count
-     *
-     * @param int|null $reshuffled_count reshuffled_count
-     *
-     * @return self
-     */
-    public function setReshuffledCount($reshuffled_count)
-    {
-        if (is_null($reshuffled_count)) {
-            throw new \InvalidArgumentException('non-nullable reshuffled_count cannot be null');
-        }
-        $this->container['reshuffled_count'] = $reshuffled_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets skipped_daily_limit
-     *
-     * @return int|null
-     */
-    public function getSkippedDailyLimit()
-    {
-        return $this->container['skipped_daily_limit'];
-    }
-
-    /**
-     * Sets skipped_daily_limit
-     *
-     * @param int|null $skipped_daily_limit skipped_daily_limit
-     *
-     * @return self
-     */
-    public function setSkippedDailyLimit($skipped_daily_limit)
-    {
-        if (is_null($skipped_daily_limit)) {
-            throw new \InvalidArgumentException('non-nullable skipped_daily_limit cannot be null');
-        }
-        $this->container['skipped_daily_limit'] = $skipped_daily_limit;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_new_queue
-     *
-     * @return bool|null
-     */
-    public function getIsNewQueue()
-    {
-        return $this->container['is_new_queue'];
-    }
-
-    /**
-     * Sets is_new_queue
-     *
-     * @param bool|null $is_new_queue is_new_queue
-     *
-     * @return self
-     */
-    public function setIsNewQueue($is_new_queue)
-    {
-        if (is_null($is_new_queue)) {
-            throw new \InvalidArgumentException('non-nullable is_new_queue cannot be null');
-        }
-        $this->container['is_new_queue'] = $is_new_queue;
+        $this->container['to'] = $to;
 
         return $this;
     }

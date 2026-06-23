@@ -447,7 +447,7 @@ class ProfilesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ProfileDeleteResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function deleteProfile($profile_id, string $contentType = self::contentTypes['deleteProfile'][0])
     {
@@ -465,7 +465,7 @@ class ProfilesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\DeleteAccountGroup200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ProfileDeleteResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function deleteProfileWithHttpInfo($profile_id, string $contentType = self::contentTypes['deleteProfile'][0])
     {
@@ -497,7 +497,7 @@ class ProfilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\DeleteAccountGroup200Response',
+                        '\Zernio\Model\ProfileDeleteResponse',
                         $request,
                         $response,
                     );
@@ -531,7 +531,7 @@ class ProfilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\DeleteAccountGroup200Response',
+                '\Zernio\Model\ProfileDeleteResponse',
                 $request,
                 $response,
             );
@@ -540,7 +540,7 @@ class ProfilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\DeleteAccountGroup200Response',
+                        '\Zernio\Model\ProfileDeleteResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -602,7 +602,7 @@ class ProfilesApi
      */
     public function deleteProfileAsyncWithHttpInfo($profile_id, string $contentType = self::contentTypes['deleteProfile'][0])
     {
-        $returnType = '\Zernio\Model\DeleteAccountGroup200Response';
+        $returnType = '\Zernio\Model\ProfileDeleteResponse';
         $request = $this->deleteProfileRequest($profile_id, $contentType);
 
         return $this->client
@@ -747,7 +747,7 @@ class ProfilesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\GetProfile200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ProfileGetResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function getProfile($profile_id, string $contentType = self::contentTypes['getProfile'][0])
     {
@@ -765,7 +765,7 @@ class ProfilesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\GetProfile200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ProfileGetResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function getProfileWithHttpInfo($profile_id, string $contentType = self::contentTypes['getProfile'][0])
     {
@@ -797,7 +797,7 @@ class ProfilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\GetProfile200Response',
+                        '\Zernio\Model\ProfileGetResponse',
                         $request,
                         $response,
                     );
@@ -831,7 +831,7 @@ class ProfilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\GetProfile200Response',
+                '\Zernio\Model\ProfileGetResponse',
                 $request,
                 $response,
             );
@@ -840,7 +840,7 @@ class ProfilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\GetProfile200Response',
+                        '\Zernio\Model\ProfileGetResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -902,7 +902,7 @@ class ProfilesApi
      */
     public function getProfileAsyncWithHttpInfo($profile_id, string $contentType = self::contentTypes['getProfile'][0])
     {
-        $returnType = '\Zernio\Model\GetProfile200Response';
+        $returnType = '\Zernio\Model\ProfileGetResponse';
         $request = $this->getProfileRequest($profile_id, $contentType);
 
         return $this->client
@@ -1329,7 +1329,7 @@ class ProfilesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Zernio\Model\UpdateProfile200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
+     * @return \Zernio\Model\ProfileUpdateResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1
      */
     public function updateProfile($profile_id, $update_profile_request, string $contentType = self::contentTypes['updateProfile'][0])
     {
@@ -1348,7 +1348,7 @@ class ProfilesApi
      *
      * @throws \Zernio\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Zernio\Model\UpdateProfile200Response|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Zernio\Model\ProfileUpdateResponse|\Zernio\Model\InlineObject|\Zernio\Model\InlineObject1, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateProfileWithHttpInfo($profile_id, $update_profile_request, string $contentType = self::contentTypes['updateProfile'][0])
     {
@@ -1380,7 +1380,7 @@ class ProfilesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Zernio\Model\UpdateProfile200Response',
+                        '\Zernio\Model\ProfileUpdateResponse',
                         $request,
                         $response,
                     );
@@ -1414,7 +1414,7 @@ class ProfilesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Zernio\Model\UpdateProfile200Response',
+                '\Zernio\Model\ProfileUpdateResponse',
                 $request,
                 $response,
             );
@@ -1423,7 +1423,7 @@ class ProfilesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Zernio\Model\UpdateProfile200Response',
+                        '\Zernio\Model\ProfileUpdateResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1487,7 +1487,7 @@ class ProfilesApi
      */
     public function updateProfileAsyncWithHttpInfo($profile_id, $update_profile_request, string $contentType = self::contentTypes['updateProfile'][0])
     {
-        $returnType = '\Zernio\Model\UpdateProfile200Response';
+        $returnType = '\Zernio\Model\ProfileUpdateResponse';
         $request = $this->updateProfileRequest($profile_id, $update_profile_request, $contentType);
 
         return $this->client

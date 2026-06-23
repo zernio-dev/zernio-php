@@ -59,7 +59,8 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'accounts' => '\Zernio\Model\SocialAccount[]',
-        'has_analytics_access' => 'bool'
+        'has_analytics_access' => 'bool',
+        'pagination' => '\Zernio\Model\Pagination'
     ];
 
     /**
@@ -71,7 +72,8 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'accounts' => null,
-        'has_analytics_access' => null
+        'has_analytics_access' => null,
+        'pagination' => null
     ];
 
     /**
@@ -81,7 +83,8 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'accounts' => false,
-        'has_analytics_access' => false
+        'has_analytics_access' => false,
+        'pagination' => false
     ];
 
     /**
@@ -171,7 +174,8 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'accounts' => 'accounts',
-        'has_analytics_access' => 'hasAnalyticsAccess'
+        'has_analytics_access' => 'hasAnalyticsAccess',
+        'pagination' => 'pagination'
     ];
 
     /**
@@ -181,7 +185,8 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'accounts' => 'setAccounts',
-        'has_analytics_access' => 'setHasAnalyticsAccess'
+        'has_analytics_access' => 'setHasAnalyticsAccess',
+        'pagination' => 'setPagination'
     ];
 
     /**
@@ -191,7 +196,8 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'accounts' => 'getAccounts',
-        'has_analytics_access' => 'getHasAnalyticsAccess'
+        'has_analytics_access' => 'getHasAnalyticsAccess',
+        'pagination' => 'getPagination'
     ];
 
     /**
@@ -253,6 +259,7 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $this->setIfExists('accounts', $data ?? [], null);
         $this->setIfExists('has_analytics_access', $data ?? [], null);
+        $this->setIfExists('pagination', $data ?? [], null);
     }
 
     /**
@@ -282,6 +289,12 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['accounts'] === null) {
+            $invalidProperties[] = "'accounts' can't be null";
+        }
+        if ($this->container['has_analytics_access'] === null) {
+            $invalidProperties[] = "'has_analytics_access' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -300,7 +313,7 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets accounts
      *
-     * @return \Zernio\Model\SocialAccount[]|null
+     * @return \Zernio\Model\SocialAccount[]
      */
     public function getAccounts()
     {
@@ -310,7 +323,7 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets accounts
      *
-     * @param \Zernio\Model\SocialAccount[]|null $accounts accounts
+     * @param \Zernio\Model\SocialAccount[] $accounts accounts
      *
      * @return self
      */
@@ -327,7 +340,7 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets has_analytics_access
      *
-     * @return bool|null
+     * @return bool
      */
     public function getHasAnalyticsAccess()
     {
@@ -337,7 +350,7 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets has_analytics_access
      *
-     * @param bool|null $has_analytics_access Whether user has analytics add-on access
+     * @param bool $has_analytics_access Whether user has analytics add-on access
      *
      * @return self
      */
@@ -347,6 +360,33 @@ class AccountsListResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable has_analytics_access cannot be null');
         }
         $this->container['has_analytics_access'] = $has_analytics_access;
+
+        return $this;
+    }
+
+    /**
+     * Gets pagination
+     *
+     * @return \Zernio\Model\Pagination|null
+     */
+    public function getPagination()
+    {
+        return $this->container['pagination'];
+    }
+
+    /**
+     * Sets pagination
+     *
+     * @param \Zernio\Model\Pagination|null $pagination Only present when page/limit params are provided
+     *
+     * @return self
+     */
+    public function setPagination($pagination)
+    {
+        if (is_null($pagination)) {
+            throw new \InvalidArgumentException('non-nullable pagination cannot be null');
+        }
+        $this->container['pagination'] = $pagination;
 
         return $this;
     }

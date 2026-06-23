@@ -55,6 +55,7 @@ docs/Api/WhatsAppTemplatesApi.md
 docs/Api/WorkflowsApi.md
 docs/Model/AccountWithFollowerStats.md
 docs/Model/AccountWithFollowerStatsAllOfAccountStats.md
+docs/Model/AccountsListResponse.md
 docs/Model/ActivateSequence200Response.md
 docs/Model/ActivateWorkflow200Response.md
 docs/Model/ActivateWorkflow200ResponseWorkflow.md
@@ -291,7 +292,6 @@ docs/Model/DeleteGoogleBusinessReviewReply200Response.md
 docs/Model/DeleteInboxComment200Response.md
 docs/Model/DeleteInboxReviewReply200Response.md
 docs/Model/DeleteInboxReviewReplyRequest.md
-docs/Model/DeleteQueueSlot200Response.md
 docs/Model/DiscordPlatformData.md
 docs/Model/DiscordPlatformDataEmbedsInner.md
 docs/Model/DiscordPlatformDataEmbedsInnerAuthor.md
@@ -334,6 +334,9 @@ docs/Model/FetchGoogleBusinessVerificationOptions200ResponseOptionsInner.md
 docs/Model/FetchGoogleBusinessVerificationOptionsRequest.md
 docs/Model/FollowUser200Response.md
 docs/Model/FollowUserRequest.md
+docs/Model/FollowerStatsResponse.md
+docs/Model/FollowerStatsResponseDateRange.md
+docs/Model/FollowerStatsResponseStatsValueInner.md
 docs/Model/FoodMenu.md
 docs/Model/FoodMenuItem.md
 docs/Model/FoodMenuItemAttributes.md
@@ -399,9 +402,6 @@ docs/Model/GetDiscordSettings200Response.md
 docs/Model/GetDiscordSettings200ResponseAccount.md
 docs/Model/GetFacebookPages200Response.md
 docs/Model/GetFacebookPages200ResponsePagesInner.md
-docs/Model/GetFollowerStats200Response.md
-docs/Model/GetFollowerStats200ResponseDateRange.md
-docs/Model/GetFollowerStats200ResponseStatsValueInner.md
 docs/Model/GetFollowerStats403Response.md
 docs/Model/GetGmbAttributeMetadata200Response.md
 docs/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInner.md
@@ -511,7 +511,6 @@ docs/Model/GetLinkedInPostReactions400Response.md
 docs/Model/GetMediaPresignedUrl200Response.md
 docs/Model/GetMediaPresignedUrlRequest.md
 docs/Model/GetMessengerMenu200Response.md
-docs/Model/GetNextQueueSlot200Response.md
 docs/Model/GetPendingOAuthData200Response.md
 docs/Model/GetPendingOAuthData200ResponseOrganizationsInner.md
 docs/Model/GetPinterestBoards200Response.md
@@ -523,7 +522,6 @@ docs/Model/GetPostTimeline403Response.md
 docs/Model/GetPostTimeline404Response.md
 docs/Model/GetPostingFrequency200Response.md
 docs/Model/GetPostingFrequency200ResponseFrequencyInner.md
-docs/Model/GetProfile200Response.md
 docs/Model/GetRedditFlairs200Response.md
 docs/Model/GetRedditFlairs200ResponseFlairsInner.md
 docs/Model/GetRedditSubreddits200Response.md
@@ -654,7 +652,6 @@ docs/Model/LinkedInAggregateAnalyticsTotalResponseAnalytics.md
 docs/Model/LinkedInPlatformData.md
 docs/Model/ListAccountGroups200Response.md
 docs/Model/ListAccountGroups200ResponseGroupsInner.md
-docs/Model/ListAccounts200Response.md
 docs/Model/ListAdAccounts200Response.md
 docs/Model/ListAdAccounts200ResponseAccountsInner.md
 docs/Model/ListAdAudiences200Response.md
@@ -735,7 +732,6 @@ docs/Model/ListPinterestBoardsForSelection200Response.md
 docs/Model/ListPinterestBoardsForSelection200ResponseBoardsInner.md
 docs/Model/ListQueueSlots200Response.md
 docs/Model/ListQueueSlots200ResponseOneOf.md
-docs/Model/ListQueueSlots200ResponseOneOf1.md
 docs/Model/ListSequenceEnrollments200Response.md
 docs/Model/ListSequenceEnrollments200ResponseEnrollmentsInner.md
 docs/Model/ListSequences200Response.md
@@ -779,6 +775,7 @@ docs/Model/ListWorkflows200Response.md
 docs/Model/ListWorkflows200ResponseWorkflowsInner.md
 docs/Model/MarkConversationRead200Response.md
 docs/Model/MediaItem.md
+docs/Model/MediaUploadResponse.md
 docs/Model/Money.md
 docs/Model/MoveAccountToProfile200Response.md
 docs/Model/MoveAccountToProfileRequest.md
@@ -810,9 +807,11 @@ docs/Model/PostRetryResponse.md
 docs/Model/PostUpdateResponse.md
 docs/Model/PostUserId.md
 docs/Model/PostsListResponse.md
-docs/Model/PreviewQueue200Response.md
 docs/Model/Profile.md
 docs/Model/ProfileCreateResponse.md
+docs/Model/ProfileDeleteResponse.md
+docs/Model/ProfileGetResponse.md
+docs/Model/ProfileUpdateResponse.md
 docs/Model/ProfilesListResponse.md
 docs/Model/PurchaseWhatsAppPhoneNumber200Response.md
 docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf.md
@@ -822,8 +821,13 @@ docs/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf2.md
 docs/Model/PurchaseWhatsAppPhoneNumber202Response.md
 docs/Model/PurchaseWhatsAppPhoneNumber409Response.md
 docs/Model/PurchaseWhatsAppPhoneNumberRequest.md
+docs/Model/QueueDeleteResponse.md
+docs/Model/QueueNextSlotResponse.md
+docs/Model/QueuePreviewResponse.md
 docs/Model/QueueSchedule.md
 docs/Model/QueueSlot.md
+docs/Model/QueueSlotsResponse.md
+docs/Model/QueueUpdateResponse.md
 docs/Model/RecyclingConfig.md
 docs/Model/RecyclingState.md
 docs/Model/RedditPlatformData.md
@@ -1068,9 +1072,7 @@ docs/Model/UpdatePostMetadata200Response.md
 docs/Model/UpdatePostMetadataRequest.md
 docs/Model/UpdatePostRequest.md
 docs/Model/UpdatePostRequestPlatformsInner.md
-docs/Model/UpdateProfile200Response.md
 docs/Model/UpdateProfileRequest.md
-docs/Model/UpdateQueueSlot200Response.md
 docs/Model/UpdateQueueSlotRequest.md
 docs/Model/UpdateRedditSubredditsRequest.md
 docs/Model/UpdateSequence200Response.md
@@ -1097,11 +1099,14 @@ docs/Model/UpdateWorkflowRequest.md
 docs/Model/UpdateYoutubeDefaultPlaylist200Response.md
 docs/Model/UpdateYoutubeDefaultPlaylistRequest.md
 docs/Model/UploadMediaDirect200Response.md
+docs/Model/UploadTokenResponse.md
+docs/Model/UploadTokenStatusResponse.md
 docs/Model/UploadWhatsAppFlowJson200Response.md
 docs/Model/UploadWhatsAppFlowJson200ResponseValidationErrorsInner.md
 docs/Model/UploadWhatsAppFlowJsonRequest.md
 docs/Model/UploadWhatsAppFlowJsonRequestFlowJson.md
 docs/Model/UploadWhatsAppNumberKycDocument200Response.md
+docs/Model/UploadedFile.md
 docs/Model/UploadedOrDerivedAudience.md
 docs/Model/UsageStats.md
 docs/Model/UsageStatsLimits.md
@@ -1109,6 +1114,8 @@ docs/Model/UsageStatsSpend.md
 docs/Model/UsageStatsUsage.md
 docs/Model/UsageStatsUsageXApiCalls.md
 docs/Model/User.md
+docs/Model/UserGetResponse.md
+docs/Model/UsersListResponse.md
 docs/Model/ValidateMedia200Response.md
 docs/Model/ValidateMedia200ResponsePlatformLimitsValue.md
 docs/Model/ValidateMediaRequest.md
@@ -1287,6 +1294,7 @@ lib/FormDataProcessor.php
 lib/HeaderSelector.php
 lib/Model/AccountWithFollowerStats.php
 lib/Model/AccountWithFollowerStatsAllOfAccountStats.php
+lib/Model/AccountsListResponse.php
 lib/Model/ActivateSequence200Response.php
 lib/Model/ActivateWorkflow200Response.php
 lib/Model/ActivateWorkflow200ResponseWorkflow.php
@@ -1523,7 +1531,6 @@ lib/Model/DeleteGoogleBusinessReviewReply200Response.php
 lib/Model/DeleteInboxComment200Response.php
 lib/Model/DeleteInboxReviewReply200Response.php
 lib/Model/DeleteInboxReviewReplyRequest.php
-lib/Model/DeleteQueueSlot200Response.php
 lib/Model/DiscordPlatformData.php
 lib/Model/DiscordPlatformDataEmbedsInner.php
 lib/Model/DiscordPlatformDataEmbedsInnerAuthor.php
@@ -1566,6 +1573,9 @@ lib/Model/FetchGoogleBusinessVerificationOptions200ResponseOptionsInner.php
 lib/Model/FetchGoogleBusinessVerificationOptionsRequest.php
 lib/Model/FollowUser200Response.php
 lib/Model/FollowUserRequest.php
+lib/Model/FollowerStatsResponse.php
+lib/Model/FollowerStatsResponseDateRange.php
+lib/Model/FollowerStatsResponseStatsValueInner.php
 lib/Model/FoodMenu.php
 lib/Model/FoodMenuItem.php
 lib/Model/FoodMenuItemAttributes.php
@@ -1631,9 +1641,6 @@ lib/Model/GetDiscordSettings200Response.php
 lib/Model/GetDiscordSettings200ResponseAccount.php
 lib/Model/GetFacebookPages200Response.php
 lib/Model/GetFacebookPages200ResponsePagesInner.php
-lib/Model/GetFollowerStats200Response.php
-lib/Model/GetFollowerStats200ResponseDateRange.php
-lib/Model/GetFollowerStats200ResponseStatsValueInner.php
 lib/Model/GetFollowerStats403Response.php
 lib/Model/GetGmbAttributeMetadata200Response.php
 lib/Model/GetGmbAttributeMetadata200ResponseAttributeMetadataInner.php
@@ -1743,7 +1750,6 @@ lib/Model/GetLinkedInPostReactions400Response.php
 lib/Model/GetMediaPresignedUrl200Response.php
 lib/Model/GetMediaPresignedUrlRequest.php
 lib/Model/GetMessengerMenu200Response.php
-lib/Model/GetNextQueueSlot200Response.php
 lib/Model/GetPendingOAuthData200Response.php
 lib/Model/GetPendingOAuthData200ResponseOrganizationsInner.php
 lib/Model/GetPinterestBoards200Response.php
@@ -1755,7 +1761,6 @@ lib/Model/GetPostTimeline403Response.php
 lib/Model/GetPostTimeline404Response.php
 lib/Model/GetPostingFrequency200Response.php
 lib/Model/GetPostingFrequency200ResponseFrequencyInner.php
-lib/Model/GetProfile200Response.php
 lib/Model/GetRedditFlairs200Response.php
 lib/Model/GetRedditFlairs200ResponseFlairsInner.php
 lib/Model/GetRedditSubreddits200Response.php
@@ -1886,7 +1891,6 @@ lib/Model/LinkedInAggregateAnalyticsTotalResponseAnalytics.php
 lib/Model/LinkedInPlatformData.php
 lib/Model/ListAccountGroups200Response.php
 lib/Model/ListAccountGroups200ResponseGroupsInner.php
-lib/Model/ListAccounts200Response.php
 lib/Model/ListAdAccounts200Response.php
 lib/Model/ListAdAccounts200ResponseAccountsInner.php
 lib/Model/ListAdAudiences200Response.php
@@ -1967,7 +1971,6 @@ lib/Model/ListPinterestBoardsForSelection200Response.php
 lib/Model/ListPinterestBoardsForSelection200ResponseBoardsInner.php
 lib/Model/ListQueueSlots200Response.php
 lib/Model/ListQueueSlots200ResponseOneOf.php
-lib/Model/ListQueueSlots200ResponseOneOf1.php
 lib/Model/ListSequenceEnrollments200Response.php
 lib/Model/ListSequenceEnrollments200ResponseEnrollmentsInner.php
 lib/Model/ListSequences200Response.php
@@ -2011,6 +2014,7 @@ lib/Model/ListWorkflows200Response.php
 lib/Model/ListWorkflows200ResponseWorkflowsInner.php
 lib/Model/MarkConversationRead200Response.php
 lib/Model/MediaItem.php
+lib/Model/MediaUploadResponse.php
 lib/Model/ModelInterface.php
 lib/Model/Money.php
 lib/Model/MoveAccountToProfile200Response.php
@@ -2043,9 +2047,11 @@ lib/Model/PostRetryResponse.php
 lib/Model/PostUpdateResponse.php
 lib/Model/PostUserId.php
 lib/Model/PostsListResponse.php
-lib/Model/PreviewQueue200Response.php
 lib/Model/Profile.php
 lib/Model/ProfileCreateResponse.php
+lib/Model/ProfileDeleteResponse.php
+lib/Model/ProfileGetResponse.php
+lib/Model/ProfileUpdateResponse.php
 lib/Model/ProfilesListResponse.php
 lib/Model/PurchaseWhatsAppPhoneNumber200Response.php
 lib/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf.php
@@ -2055,8 +2061,13 @@ lib/Model/PurchaseWhatsAppPhoneNumber200ResponseOneOf2.php
 lib/Model/PurchaseWhatsAppPhoneNumber202Response.php
 lib/Model/PurchaseWhatsAppPhoneNumber409Response.php
 lib/Model/PurchaseWhatsAppPhoneNumberRequest.php
+lib/Model/QueueDeleteResponse.php
+lib/Model/QueueNextSlotResponse.php
+lib/Model/QueuePreviewResponse.php
 lib/Model/QueueSchedule.php
 lib/Model/QueueSlot.php
+lib/Model/QueueSlotsResponse.php
+lib/Model/QueueUpdateResponse.php
 lib/Model/RecyclingConfig.php
 lib/Model/RecyclingState.php
 lib/Model/RedditPlatformData.php
@@ -2301,9 +2312,7 @@ lib/Model/UpdatePostMetadata200Response.php
 lib/Model/UpdatePostMetadataRequest.php
 lib/Model/UpdatePostRequest.php
 lib/Model/UpdatePostRequestPlatformsInner.php
-lib/Model/UpdateProfile200Response.php
 lib/Model/UpdateProfileRequest.php
-lib/Model/UpdateQueueSlot200Response.php
 lib/Model/UpdateQueueSlotRequest.php
 lib/Model/UpdateRedditSubredditsRequest.php
 lib/Model/UpdateSequence200Response.php
@@ -2330,11 +2339,14 @@ lib/Model/UpdateWorkflowRequest.php
 lib/Model/UpdateYoutubeDefaultPlaylist200Response.php
 lib/Model/UpdateYoutubeDefaultPlaylistRequest.php
 lib/Model/UploadMediaDirect200Response.php
+lib/Model/UploadTokenResponse.php
+lib/Model/UploadTokenStatusResponse.php
 lib/Model/UploadWhatsAppFlowJson200Response.php
 lib/Model/UploadWhatsAppFlowJson200ResponseValidationErrorsInner.php
 lib/Model/UploadWhatsAppFlowJsonRequest.php
 lib/Model/UploadWhatsAppFlowJsonRequestFlowJson.php
 lib/Model/UploadWhatsAppNumberKycDocument200Response.php
+lib/Model/UploadedFile.php
 lib/Model/UploadedOrDerivedAudience.php
 lib/Model/UsageStats.php
 lib/Model/UsageStatsLimits.php
@@ -2342,6 +2354,8 @@ lib/Model/UsageStatsSpend.php
 lib/Model/UsageStatsUsage.php
 lib/Model/UsageStatsUsageXApiCalls.php
 lib/Model/User.php
+lib/Model/UserGetResponse.php
+lib/Model/UsersListResponse.php
 lib/Model/ValidateMedia200Response.php
 lib/Model/ValidateMedia200ResponsePlatformLimitsValue.php
 lib/Model/ValidateMediaRequest.php
@@ -2465,4 +2479,5 @@ lib/Model/YouTubeVideoRetentionResponse.php
 lib/Model/YouTubeVideoRetentionResponseRetentionCurveInner.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Model/SubmitWhatsAppNumberKyc200ResponseNumbersInnerTest.php
+test/Model/FollowerStatsResponseDateRangeTest.php
+test/Model/FollowerStatsResponseStatsValueInnerTest.php

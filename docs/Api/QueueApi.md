@@ -77,7 +77,7 @@ try {
 ## `deleteQueueSlot()`
 
 ```php
-deleteQueueSlot($profile_id, $queue_id): \Zernio\Model\DeleteQueueSlot200Response
+deleteQueueSlot($profile_id, $queue_id): \Zernio\Model\QueueDeleteResponse
 ```
 
 Delete schedule
@@ -121,7 +121,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\DeleteQueueSlot200Response**](../Model/DeleteQueueSlot200Response.md)
+[**\Zernio\Model\QueueDeleteResponse**](../Model/QueueDeleteResponse.md)
 
 ### Authorization
 
@@ -139,7 +139,7 @@ try {
 ## `getNextQueueSlot()`
 
 ```php
-getNextQueueSlot($profile_id, $queue_id): \Zernio\Model\GetNextQueueSlot200Response
+getNextQueueSlot($profile_id, $queue_id): \Zernio\Model\QueueNextSlotResponse
 ```
 
 Get next available slot
@@ -183,7 +183,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\GetNextQueueSlot200Response**](../Model/GetNextQueueSlot200Response.md)
+[**\Zernio\Model\QueueNextSlotResponse**](../Model/QueueNextSlotResponse.md)
 
 ### Authorization
 
@@ -265,7 +265,7 @@ try {
 ## `previewQueue()`
 
 ```php
-previewQueue($profile_id, $queue_id, $count): \Zernio\Model\PreviewQueue200Response
+previewQueue($profile_id, $queue_id, $count): \Zernio\Model\QueuePreviewResponse
 ```
 
 Preview upcoming slots
@@ -311,7 +311,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\PreviewQueue200Response**](../Model/PreviewQueue200Response.md)
+[**\Zernio\Model\QueuePreviewResponse**](../Model/QueuePreviewResponse.md)
 
 ### Authorization
 
@@ -329,7 +329,7 @@ try {
 ## `updateQueueSlot()`
 
 ```php
-updateQueueSlot($update_queue_slot_request): \Zernio\Model\UpdateQueueSlot200Response
+updateQueueSlot($update_queue_slot_request): \Zernio\Model\QueueUpdateResponse
 ```
 
 Update schedule
@@ -371,7 +371,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\UpdateQueueSlot200Response**](../Model/UpdateQueueSlot200Response.md)
+[**\Zernio\Model\QueueUpdateResponse**](../Model/QueueUpdateResponse.md)
 
 ### Authorization
 

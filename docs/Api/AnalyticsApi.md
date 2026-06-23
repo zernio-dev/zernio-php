@@ -385,7 +385,7 @@ try {
 ## `getFollowerStats()`
 
 ```php
-getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity): \Zernio\Model\GetFollowerStats200Response
+getFollowerStats($account_ids, $profile_id, $from_date, $to_date, $granularity): \Zernio\Model\FollowerStatsResponse
 ```
 
 Get follower stats
@@ -435,7 +435,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\GetFollowerStats200Response**](../Model/GetFollowerStats200Response.md)
+[**\Zernio\Model\FollowerStatsResponse**](../Model/FollowerStatsResponse.md)
 
 ### Authorization
 

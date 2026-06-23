@@ -76,7 +76,7 @@ try {
 ## `deleteProfile()`
 
 ```php
-deleteProfile($profile_id): \Zernio\Model\DeleteAccountGroup200Response
+deleteProfile($profile_id): \Zernio\Model\ProfileDeleteResponse
 ```
 
 Delete profile
@@ -118,7 +118,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\DeleteAccountGroup200Response**](../Model/DeleteAccountGroup200Response.md)
+[**\Zernio\Model\ProfileDeleteResponse**](../Model/ProfileDeleteResponse.md)
 
 ### Authorization
 
@@ -136,7 +136,7 @@ try {
 ## `getProfile()`
 
 ```php
-getProfile($profile_id): \Zernio\Model\GetProfile200Response
+getProfile($profile_id): \Zernio\Model\ProfileGetResponse
 ```
 
 Get profile
@@ -178,7 +178,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\GetProfile200Response**](../Model/GetProfile200Response.md)
+[**\Zernio\Model\ProfileGetResponse**](../Model/ProfileGetResponse.md)
 
 ### Authorization
 
@@ -256,7 +256,7 @@ try {
 ## `updateProfile()`
 
 ```php
-updateProfile($profile_id, $update_profile_request): \Zernio\Model\UpdateProfile200Response
+updateProfile($profile_id, $update_profile_request): \Zernio\Model\ProfileUpdateResponse
 ```
 
 Update profile
@@ -300,7 +300,7 @@ try {
 
 ### Return type
 
-[**\Zernio\Model\UpdateProfile200Response**](../Model/UpdateProfile200Response.md)
+[**\Zernio\Model\ProfileUpdateResponse**](../Model/ProfileUpdateResponse.md)
 
 ### Authorization
 

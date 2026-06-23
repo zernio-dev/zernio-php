@@ -60,7 +60,9 @@ class QueueNextSlotResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPITypes = [
         'profile_id' => 'string',
         'next_slot' => '\DateTime',
-        'timezone' => 'string'
+        'timezone' => 'string',
+        'queue_id' => 'string',
+        'queue_name' => 'string'
     ];
 
     /**
@@ -73,7 +75,9 @@ class QueueNextSlotResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $openAPIFormats = [
         'profile_id' => null,
         'next_slot' => 'date-time',
-        'timezone' => null
+        'timezone' => null,
+        'queue_id' => null,
+        'queue_name' => null
     ];
 
     /**
@@ -84,7 +88,9 @@ class QueueNextSlotResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static array $openAPINullables = [
         'profile_id' => false,
         'next_slot' => false,
-        'timezone' => false
+        'timezone' => false,
+        'queue_id' => false,
+        'queue_name' => false
     ];
 
     /**
@@ -175,7 +181,9 @@ class QueueNextSlotResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $attributeMap = [
         'profile_id' => 'profileId',
         'next_slot' => 'nextSlot',
-        'timezone' => 'timezone'
+        'timezone' => 'timezone',
+        'queue_id' => 'queueId',
+        'queue_name' => 'queueName'
     ];
 
     /**
@@ -186,7 +194,9 @@ class QueueNextSlotResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $setters = [
         'profile_id' => 'setProfileId',
         'next_slot' => 'setNextSlot',
-        'timezone' => 'setTimezone'
+        'timezone' => 'setTimezone',
+        'queue_id' => 'setQueueId',
+        'queue_name' => 'setQueueName'
     ];
 
     /**
@@ -197,7 +207,9 @@ class QueueNextSlotResponse implements ModelInterface, ArrayAccess, \JsonSeriali
     protected static $getters = [
         'profile_id' => 'getProfileId',
         'next_slot' => 'getNextSlot',
-        'timezone' => 'getTimezone'
+        'timezone' => 'getTimezone',
+        'queue_id' => 'getQueueId',
+        'queue_name' => 'getQueueName'
     ];
 
     /**
@@ -260,6 +272,8 @@ class QueueNextSlotResponse implements ModelInterface, ArrayAccess, \JsonSeriali
         $this->setIfExists('profile_id', $data ?? [], null);
         $this->setIfExists('next_slot', $data ?? [], null);
         $this->setIfExists('timezone', $data ?? [], null);
+        $this->setIfExists('queue_id', $data ?? [], null);
+        $this->setIfExists('queue_name', $data ?? [], null);
     }
 
     /**
@@ -381,6 +395,60 @@ class QueueNextSlotResponse implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable timezone cannot be null');
         }
         $this->container['timezone'] = $timezone;
+
+        return $this;
+    }
+
+    /**
+     * Gets queue_id
+     *
+     * @return string|null
+     */
+    public function getQueueId()
+    {
+        return $this->container['queue_id'];
+    }
+
+    /**
+     * Sets queue_id
+     *
+     * @param string|null $queue_id Queue ID this slot belongs to
+     *
+     * @return self
+     */
+    public function setQueueId($queue_id)
+    {
+        if (is_null($queue_id)) {
+            throw new \InvalidArgumentException('non-nullable queue_id cannot be null');
+        }
+        $this->container['queue_id'] = $queue_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets queue_name
+     *
+     * @return string|null
+     */
+    public function getQueueName()
+    {
+        return $this->container['queue_name'];
+    }
+
+    /**
+     * Sets queue_name
+     *
+     * @param string|null $queue_name Queue name
+     *
+     * @return self
+     */
+    public function setQueueName($queue_name)
+    {
+        if (is_null($queue_name)) {
+            throw new \InvalidArgumentException('non-nullable queue_name cannot be null');
+        }
+        $this->container['queue_name'] = $queue_name;
 
         return $this;
     }

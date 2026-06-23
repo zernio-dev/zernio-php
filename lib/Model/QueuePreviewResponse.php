@@ -59,6 +59,8 @@ class QueuePreviewResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'profile_id' => 'string',
+        'queue_id' => 'string',
+        'queue_name' => 'string',
         'count' => 'int',
         'slots' => '\DateTime[]'
     ];
@@ -72,6 +74,8 @@ class QueuePreviewResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'profile_id' => null,
+        'queue_id' => null,
+        'queue_name' => null,
         'count' => null,
         'slots' => 'date-time'
     ];
@@ -83,6 +87,8 @@ class QueuePreviewResponse implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'profile_id' => false,
+        'queue_id' => false,
+        'queue_name' => false,
         'count' => false,
         'slots' => false
     ];
@@ -174,6 +180,8 @@ class QueuePreviewResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'profile_id' => 'profileId',
+        'queue_id' => 'queueId',
+        'queue_name' => 'queueName',
         'count' => 'count',
         'slots' => 'slots'
     ];
@@ -185,6 +193,8 @@ class QueuePreviewResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'profile_id' => 'setProfileId',
+        'queue_id' => 'setQueueId',
+        'queue_name' => 'setQueueName',
         'count' => 'setCount',
         'slots' => 'setSlots'
     ];
@@ -196,6 +206,8 @@ class QueuePreviewResponse implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'profile_id' => 'getProfileId',
+        'queue_id' => 'getQueueId',
+        'queue_name' => 'getQueueName',
         'count' => 'getCount',
         'slots' => 'getSlots'
     ];
@@ -258,6 +270,8 @@ class QueuePreviewResponse implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(?array $data = null)
     {
         $this->setIfExists('profile_id', $data ?? [], null);
+        $this->setIfExists('queue_id', $data ?? [], null);
+        $this->setIfExists('queue_name', $data ?? [], null);
         $this->setIfExists('count', $data ?? [], null);
         $this->setIfExists('slots', $data ?? [], null);
     }
@@ -327,6 +341,60 @@ class QueuePreviewResponse implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable profile_id cannot be null');
         }
         $this->container['profile_id'] = $profile_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets queue_id
+     *
+     * @return string|null
+     */
+    public function getQueueId()
+    {
+        return $this->container['queue_id'];
+    }
+
+    /**
+     * Sets queue_id
+     *
+     * @param string|null $queue_id queue_id
+     *
+     * @return self
+     */
+    public function setQueueId($queue_id)
+    {
+        if (is_null($queue_id)) {
+            throw new \InvalidArgumentException('non-nullable queue_id cannot be null');
+        }
+        $this->container['queue_id'] = $queue_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets queue_name
+     *
+     * @return string|null
+     */
+    public function getQueueName()
+    {
+        return $this->container['queue_name'];
+    }
+
+    /**
+     * Sets queue_name
+     *
+     * @param string|null $queue_name queue_name
+     *
+     * @return self
+     */
+    public function setQueueName($queue_name)
+    {
+        if (is_null($queue_name)) {
+            throw new \InvalidArgumentException('non-nullable queue_name cannot be null');
+        }
+        $this->container['queue_name'] = $queue_name;
 
         return $this;
     }

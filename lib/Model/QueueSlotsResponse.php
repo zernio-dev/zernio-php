@@ -36,6 +36,7 @@ use \Zernio\ObjectSerializer;
  * QueueSlotsResponse Class Doc Comment
  *
  * @category Class
+ * @description Single queue response (default behavior)
  * @package  Zernio
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech

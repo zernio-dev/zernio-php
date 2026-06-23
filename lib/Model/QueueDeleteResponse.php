@@ -59,7 +59,9 @@ class QueueDeleteResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPITypes = [
         'success' => 'bool',
-        'deleted' => 'bool'
+        'deleted' => 'bool',
+        'deleted_count' => 'int',
+        'message' => 'string'
     ];
 
     /**
@@ -71,7 +73,9 @@ class QueueDeleteResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static $openAPIFormats = [
         'success' => null,
-        'deleted' => null
+        'deleted' => null,
+        'deleted_count' => null,
+        'message' => null
     ];
 
     /**
@@ -81,7 +85,9 @@ class QueueDeleteResponse implements ModelInterface, ArrayAccess, \JsonSerializa
       */
     protected static array $openAPINullables = [
         'success' => false,
-        'deleted' => false
+        'deleted' => false,
+        'deleted_count' => false,
+        'message' => false
     ];
 
     /**
@@ -171,7 +177,9 @@ class QueueDeleteResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $attributeMap = [
         'success' => 'success',
-        'deleted' => 'deleted'
+        'deleted' => 'deleted',
+        'deleted_count' => 'deletedCount',
+        'message' => 'message'
     ];
 
     /**
@@ -181,7 +189,9 @@ class QueueDeleteResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $setters = [
         'success' => 'setSuccess',
-        'deleted' => 'setDeleted'
+        'deleted' => 'setDeleted',
+        'deleted_count' => 'setDeletedCount',
+        'message' => 'setMessage'
     ];
 
     /**
@@ -191,7 +201,9 @@ class QueueDeleteResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     protected static $getters = [
         'success' => 'getSuccess',
-        'deleted' => 'getDeleted'
+        'deleted' => 'getDeleted',
+        'deleted_count' => 'getDeletedCount',
+        'message' => 'getMessage'
     ];
 
     /**
@@ -253,6 +265,8 @@ class QueueDeleteResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $this->setIfExists('success', $data ?? [], null);
         $this->setIfExists('deleted', $data ?? [], null);
+        $this->setIfExists('deleted_count', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
     }
 
     /**
@@ -347,6 +361,60 @@ class QueueDeleteResponse implements ModelInterface, ArrayAccess, \JsonSerializa
             throw new \InvalidArgumentException('non-nullable deleted cannot be null');
         }
         $this->container['deleted'] = $deleted;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted_count
+     *
+     * @return int|null
+     */
+    public function getDeletedCount()
+    {
+        return $this->container['deleted_count'];
+    }
+
+    /**
+     * Sets deleted_count
+     *
+     * @param int|null $deleted_count deleted_count
+     *
+     * @return self
+     */
+    public function setDeletedCount($deleted_count)
+    {
+        if (is_null($deleted_count)) {
+            throw new \InvalidArgumentException('non-nullable deleted_count cannot be null');
+        }
+        $this->container['deleted_count'] = $deleted_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     *
+     * @return string|null
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     *
+     * @param string|null $message message
+     *
+     * @return self
+     */
+    public function setMessage($message)
+    {
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
+        }
+        $this->container['message'] = $message;
 
         return $this;
     }
